@@ -74,8 +74,8 @@ if [ -e "$chord_ext_dst_withtime" ] && [ -e "$chord_ext_dst" ]; then
     echo ${green}file $chord_ext_dst already exist$defcol > /dev/stderr
 else
     # 本処理
-    echo python -m chordExtract \"$chord_ext_dst\" > /dev/stderr
-         python -m chordExtract "$chord_ext_dst"
+    echo python -m chordExtract \"$chord_ext_src\" > /dev/stderr
+         python -m chordExtract "$chord_ext_src"
 fi
 
 # コードをローマ数字変換
