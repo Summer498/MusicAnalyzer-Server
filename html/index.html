@@ -1,0 +1,24 @@
+<html lang="ja">
+
+<head>
+  <title>Hello Node Server</title>
+  <meta http-equiv="content-language" content="ja" charset="utf8">
+  <link href="./index.css" rel="stylesheet">
+  <script async src="./index.js" type="text/javascript"></script>
+</head>
+
+<body>
+  <h1>Hello Node Server</h1>
+  <div name="insert-here"></div>
+  <div name="insert-here"></div>
+  <form action="/next" enctype="multipart/form-data" method="post">
+    <input type="file" name="upload">
+    <input type="submit">
+  </form>
+  <form action="/next" method="get">
+    <input type="text" name="text-form">
+    <input type="submit">
+  </form>
+</body>
+
+</html>
