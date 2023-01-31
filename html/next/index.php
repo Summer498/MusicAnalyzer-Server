@@ -31,7 +31,7 @@ function saveTmpFile($name)
     <?php
     $file_path = saveTmpFile("upload");
     $result = shell_exec("/var/www/html/MusicAnalyzer-server/mimicopy.sh \"" . $file_path . "\"");
-    echo("result" . $result . "result");
+    echo("result" . $result . "result");  // $result は stdout の出力を得る
     ?>
 </body>
 

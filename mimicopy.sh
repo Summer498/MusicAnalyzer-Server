@@ -8,7 +8,7 @@ green=[32m
 defcol=[39m
 filename=`basename "$1"`  # 引数1から 
 songname=`basename "$1" | sed -e 's/\.[^\.]*$//'`  # 引数1から拡張子を取り除く
-out_place="/dev/stderr"
+out_place="/dev/stdout"
 export PYTHONPATH="./python:$PYTHONPATH"
 
 # 音源分離
