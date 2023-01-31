@@ -13,13 +13,25 @@ const HOST_NAME = '127.0.0.1';
 const PORT = 3000;
 const HOME_DIR = `${HOST_NAME}:${PORT}`;
 const CWD = process.cwd();
-const POST_DATA_PATH = CWD + "/posted";
+const POST_DATA_PATH = `${CWD}/posted`;
+const POST_API_PATH = `html/api.js`;
 const upload = (0, multer_1.default)({ dest: POST_DATA_PATH }); // multer が POST_DATA_PATH にファイルを作成
 const send404NotFound = (req, res) => {
     res.status(404).send("404: Not Found...");
 };
 const send300Redirect = (res, pathname) => {
     res.redirect(300, `${path_1.default.dirname(pathname)}`);
+};
+const sendFile = (req, res, fullpath) => {
+    if (!fs_1.default.existsSync(fullpath)) {
+        const err = `File not Found: ${fullpath}`;
+        console.error(err);
+        res.status(404).send(`<html lang="ja"><head><meta http-equiv="content-lang" content="ja" charset="utf-8"><title>404 Not Found</title></head><h1>404 Not Found...<h1><p>${url_1.default.parse(req.url, true, true).pathname} is not on server directory<p></html>`);
+    }
+    else {
+        res.sendFile(fullpath);
+        console.log(`Accessed on ${fullpath}`);
+    }
 };
 const sendRequestedFile = (req, res) => {
     if (req.url == undefined) {
@@ -30,20 +42,14 @@ const sendRequestedFile = (req, res) => {
         throw TypeError(`path is null`);
     }
     const filepath = path_1.default.extname(pathname) == "" ? pathname + "/index.html" : pathname;
-    const fullpath = CWD + "/html" + filepath;
+    const fullpath = `${CWD}/html${filepath}`;
     // パスの指定先が見つからないとき
     if (0) { }
     else if (path_1.default.basename(pathname) == "index.html") {
         send300Redirect(res, pathname);
     }
-    else if (!fs_1.default.existsSync(fullpath)) {
-        const err = `File not Found: ${fullpath}`;
-        console.error(err);
-        res.status(404).send(`<html lang="ja"><head><meta http-equiv="content-lang" content="ja" charset="utf-8"><title>404 Not Found</title></head><h1>404 Not Found...<h1><p>${url_1.default.parse(req.url, true, true).pathname} is not on server directory<p></html>`);
-    }
     else {
-        res.sendFile(fullpath);
-        console.log(`Accessed on ${fullpath}`);
+        sendFile(req, res, fullpath);
     }
 };
 const main = (argv) => {
@@ -59,8 +65,9 @@ const main = (argv) => {
             const originalname = req.file.originalname;
             console.log(`File uploaded on ${filepath} ${originalname}`);
         }
-        next();
-    }, sendRequestedFile);
+        sendRequestedFile(req, res);
+        sendFile(req, res, `${CWD}/${POST_API_PATH}`); //
+    });
     app.get("/*", sendRequestedFile);
     app.post("*", send404NotFound);
     app.get("*", send404NotFound);
