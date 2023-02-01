@@ -1,1 +1,1 @@
-export declare type IChord = any;
+export type IChord = any;

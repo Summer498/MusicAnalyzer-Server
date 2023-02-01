@@ -7,7 +7,7 @@ import { IChord } from "./ISong/IScene/IChord.js";
 import { ISegment } from "./ISong/IScene/ISegment.js";
 import { INote } from "./ISong/IScene/INote.js";
 import { IRepeat } from "./ISong/IScene/IRepeat.js";
-declare type IChorus = any;
+type IChorus = any;
 export interface ISongleWidget {
     off: (i: any, n: any) => any;
     on: (i: any, n: any, o: any) => any;

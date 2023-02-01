@@ -1,4 +1,4 @@
-declare type ISearchQueries = Record<string, unknown>;
+type ISearchQueries = Record<string, unknown>;
 export interface ISystem {
     stringIsBlanck(): any;
     stringIsBlank(e: any): any;

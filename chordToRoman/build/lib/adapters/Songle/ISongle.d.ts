@@ -4,10 +4,10 @@ import { IPlugin } from "./IPlugin/IPlugin.js";
 import { ISongleAPI } from "./IsongleAPI/ISongleAPI.js";
 import { ISyncPlayer } from "./ISyncPlayer/ISyncPlayer.js";
 import { ISystem } from "./ISystem/ISystem.js";
-export declare type Event = any;
-export declare type BeatEvent = any;
-export declare type ChordEvent = any;
-export declare type SectionEvent = any;
+export type Event = any;
+export type BeatEvent = any;
+export type ChordEvent = any;
+export type SectionEvent = any;
 export declare abstract class ISongle {
     abstract Media: IMedia;
     Player: typeof Player;

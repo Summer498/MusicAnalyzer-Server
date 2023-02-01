@@ -29,10 +29,22 @@ function saveTmpFile($name)
     <h1>前のページにブラウザバックしてください</h1>
     <a href="./next_more/">さらに進む</a>
     <?php
-    $file_path = saveTmpFile("upload");
-    $result = shell_exec("/var/www/html/MusicAnalyzer-server/mimicopy.sh \"" . $file_path . "\"");
-    echo("result" . $result . "result");  // $result は stdout の出力を得る
+        echo(shell_exec("which python"));
     ?>
 </body>
-
 </html>
+
+<?php
+    $file_path = saveTmpFile("upload");
+    $result = shell_exec("/var/www/html/MusicAnalyzer-server/mimicopy.sh \"{$file_path}\" --debug_mode=false");
+    $str = str_replace(array("\r\n","\r"), "\n", $result);
+    $array = explode("\n", $str);
+    // バックエンドで計算した結果に合わせてスクリプトを自動生成
+    echo("<script>");
+    // result が JSON フォーマットで送られてくるので, JavaScript オブジェクトとして代入する
+    echo("if(window.MusicAnalyzer===undefined){window.MusicAnalyzer={roman:undefined}}");
+    echo("window.MusicAnalyzer.roman={$result}");
+    echo("</script>\n");
+    // 静的スクリプトを送る
+    echo("<script src=\"./show_roman.js\"></script>")
+?>

@@ -1,1 +1,1 @@
-export declare type EventBase = any;
+export type EventBase = any;

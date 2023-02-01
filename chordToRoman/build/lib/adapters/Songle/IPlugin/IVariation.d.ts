@@ -1,1 +1,1 @@
-export declare type IVariation = any;
+export type IVariation = any;

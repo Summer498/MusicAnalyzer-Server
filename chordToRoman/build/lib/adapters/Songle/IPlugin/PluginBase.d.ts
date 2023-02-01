@@ -1,1 +1,1 @@
-export declare type PluginBase = any;
+export type PluginBase = any;

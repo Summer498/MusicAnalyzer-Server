@@ -25,7 +25,7 @@ declare const getOnehotInMod: (positionOfOnes: number[] | number, m?: number) =>
 declare const vSum: (...arrays: number[][]) => number[];
 declare const totalSum: (array: number[]) => number;
 declare const totalProd: (array: number[]) => number;
-declare type IBMath = typeof Math;
+type IBMath = typeof Math;
 interface IMath extends IBMath {
     not: typeof not;
     getRange: typeof getRange;

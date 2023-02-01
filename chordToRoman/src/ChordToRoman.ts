@@ -37,7 +37,7 @@ const main = (argv: string[]) => {
         // 引数からコード列の入力があれば受け取る (テスト用)
         console.error(`出力:`);
         const roman_chords = calcChordProgression(argv[2])
-        console.log("%o", roman_chords)
+        console.log(JSON.stringify(roman_chords))
     }
     else {
         // 標準入力からコード進行を受け取る
@@ -48,7 +48,7 @@ const main = (argv: string[]) => {
         reader.on("close", () => {
             // 本処理
             const roman_chords = calcChordProgression(lines.join(" "))
-            console.log("%o", roman_chords)
+            console.log(JSON.stringify(roman_chords))
         });
     }
 }

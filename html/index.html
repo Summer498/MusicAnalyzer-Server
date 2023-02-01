@@ -10,13 +10,13 @@
 <body>
   <h1>Music Analyzer</h1>
   <p>音楽を分析します</p>
-  <form action="./next/" enctype="multipart/form-data" method="post">
+  <form action="./analyze/" enctype="multipart/form-data" method="post">
     <input type="file" name="upload" id="upload_file">
     <div name="fileSizeIsTooLarge"></div>
     <input type="text" name="text-form">
     <input type="submit">
   </form>
-  <form action="./next/" method="get">
+  <form action="./analyze/" method="get">
     <input type="text" name="text-form">
     <input type="submit">
   </form>

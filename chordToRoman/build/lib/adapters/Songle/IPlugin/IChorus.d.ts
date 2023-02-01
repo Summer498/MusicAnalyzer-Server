@@ -1,1 +1,1 @@
-export declare type IChorus = any;
+export type IChorus = any;

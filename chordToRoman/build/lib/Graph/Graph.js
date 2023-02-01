@@ -95,28 +95,33 @@ function dynamicLogViterbi(initial_log_probabilities, getStatesOnTheTime, transi
         });
     });
     // 終了
-    const state_trace = newArray(T).map(_ => [0]);
-    // trace back
     const terminals = (will_find_min) ? states.argMins(k => t1[k]) : states.argMaxes(k => t1[k]);
+    /*
+    // trace back
+    const state_trace = newArray(T).map(_ => [0]);
     state_trace[T - 1] = terminals;
+    Math.getRange(T - 1, 0, -1).forEach(j => {
+        const prev_nodes = state_trace[j].map(node => T2[j][node]).flat(1)  // 最短経路グラフのノードを抽出 (TODO: エッジも考慮した出力をする)
+        state_trace[j - 1] = [...new Set(prev_nodes)];
+    });
+    */
     // console.log(T2);
-    const trace_edge = newArray(T).map(_ => newArray(S).map(_ => newArray(0))); // eslint-disable-line @typescript-eslint/no-unused-vars
+    /*
+    const trace_edge = newArray(T).map(_ => newArray(S).map(_ => newArray<number>(0)));  // eslint-disable-line @typescript-eslint/no-unused-vars
+    Math.getRange(T - 1, 0, -1).forEach(j => {
+
+        // trace_edge は最短経路として選ばれたノードの前時刻へのノードが格納された配列であり, 以下では trace_edge を作ろうとしている
+        // trace_edge[t][i] == [i2, i3] の場合は [t][i] -- [t][i2] と [t][i] -- [t][i3] のエッジがある.
+        // 出力には影響しないがデバッグ用に残しておく
+        state_trace[j].forEach(node => trace_edge[j][node] = T2[j][node]);
+    });
+    */
     let state_trace_pathes = terminals.map(terminal => {
         const ret = newArray(T);
         ret[T - 1] = terminal;
         return ret;
     });
-    // [[,,,7], [,,,10]]
-    // [[,,2,7], [,,2,10]], [,,5,10]]
-    // [[,7,2,7], [[,10,2,7], [,7,2,10]], [,10,2,10]], [,10,5,10]]
-    // [[2,7,2,7], [[2,10,2,7], [[5,10,2,7], [2,7,2,10]], [2,10,2,10]], [5,10,2,10]], [2,10,5,10]], [5,10,5,10]]
     Math_js_1.Math.getRange(T - 1, 0, -1).forEach(j => {
-        const prev_nodes = state_trace[j].map(node => T2[j][node]).flat(1); // 最短経路グラフのノードを抽出 (TODO: エッジも考慮した出力をする)
-        state_trace[j - 1] = [...new Set(prev_nodes)];
-        // trace_edge は最短経路として選ばれたノードの前時刻へのノードが格納された配列であり, 以下では trace_edge を作ろうとしている
-        // trace_edge[t][i] == [i2, i3] の場合は [t][i] -- [t][i2] と [t][i] -- [t][i3] のエッジがある.
-        // 出力には影響しないがデバッグ用に残しておく
-        // state_trace[j].forEach(node => trace_edge[j][node] = T2[j][node]);
         const old_state_trace_pathes = [...state_trace_pathes];
         state_trace_pathes = old_state_trace_pathes.map(path => T2[j][path[j]].map(node => {
             const new_path = [...path];
@@ -127,7 +132,7 @@ function dynamicLogViterbi(initial_log_probabilities, getStatesOnTheTime, transi
     // console.log("state_trace_pathes");
     // console.log(state_trace_pathes);
     return {
-        log_probability: t1[state_trace[T - 1][0]],
+        log_probability: t1[terminals[0]],
         //        trace: state_trace  // state_trace[t] は時刻 t における最短経路上のノード全て
         trace: state_trace_pathes // state_trace_pathes[i] は i 番目の最短経路
     };

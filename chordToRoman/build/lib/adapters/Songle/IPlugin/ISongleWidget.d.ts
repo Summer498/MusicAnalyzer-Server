@@ -1,1 +1,1 @@
-export declare type ISongleWidget = any;
+export type ISongleWidget = any;

@@ -104,6 +104,14 @@ const getChord = (chord_string) => {
 };
 exports.getChord = getChord;
 class ChordProgression {
+    // returns all field
+    debug() {
+        return {
+            lead_sheet_chords: this.lead_sheet_chords,
+            chord_dict: __classPrivateFieldGet(this, _ChordProgression_chord_dictionary, "f").showAll(),
+            scale_dict: __classPrivateFieldGet(this, _ChordProgression_scale_dictionary, "f").showAll(),
+        };
+    }
     constructor(lead_sheet_chords) {
         _ChordProgression_instances.add(this);
         _ChordProgression_chord_dictionary.set(this, void 0);
@@ -112,14 +120,6 @@ class ChordProgression {
         __classPrivateFieldSet(this, _ChordProgression_scale_dictionary, new stdlib_js_1.IdDictionary(), "f");
         this.lead_sheet_chords = lead_sheet_chords;
         __classPrivateFieldGet(this, _ChordProgression_instances, "m", _ChordProgression_setDictionary).call(this, lead_sheet_chords);
-    }
-    // returns all field
-    debug() {
-        return {
-            lead_sheet_chords: this.lead_sheet_chords,
-            chord_dict: __classPrivateFieldGet(this, _ChordProgression_chord_dictionary, "f").showAll(),
-            scale_dict: __classPrivateFieldGet(this, _ChordProgression_scale_dictionary, "f").showAll(),
-        };
     }
     getStatesOnTime(t) {
         const chord = (0, exports.getChord)(this.lead_sheet_chords[t]);

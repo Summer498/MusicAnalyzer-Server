@@ -1,1 +1,1 @@
-export declare type IPluginBase = any;
+export type IPluginBase = any;

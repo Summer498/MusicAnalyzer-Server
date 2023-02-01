@@ -1,1 +1,1 @@
-export declare type ISongleSync = any;
+export type ISongleSync = any;

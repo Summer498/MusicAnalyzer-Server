@@ -1,1 +1,1 @@
-export declare type IMelody = any;
+export type IMelody = any;
