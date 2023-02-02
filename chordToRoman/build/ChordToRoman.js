@@ -28,8 +28,8 @@ const calcChordProgression = (chords) => {
     return progressions.map((progression) => {
         const min_path = progression.getMinimumPath();
         return {
-            keys: min_path.map(e => e.map(e => e.scale.name)),
-            chords: min_path.map(e => e.map(e => e.chord.name)),
+            keys: min_path.map(e => e.map(e => e.scale)),
+            chords: min_path.map(e => e.map(e => e.chord)),
             romans: min_path.map(e => e.map(e => e.roman)),
         };
     });

@@ -21,17 +21,18 @@ function saveTmpFile($name)
 <html lang="ja">
 
 <head>
-    <title>前のページにブラウザバックしてください</title>
+    <title>分析結果</title>
     <meta http-equiv="content-language" content="ja" charset="utf-8">
 </head>
 
 <body>
-    <h1>前のページにブラウザバックしてください</h1>
-    <a href="./next_more/">さらに進む</a>
+    <h1>分析結果</h1>
     <?php
-        echo(shell_exec("which python"));
+        echo(shell_exec(". ../../MUSIC_ANALYZER/bin/activate"));
     ?>
+    <div name="piano-roll-place"></div>
 </body>
+
 </html>
 
 <?php
@@ -46,5 +47,5 @@ function saveTmpFile($name)
     echo("window.MusicAnalyzer.roman={$result}");
     echo("</script>\n");
     // 静的スクリプトを送る
-    echo("<script src=\"./show_roman.js\"></script>")
+    echo("<script src=\"./show_roman.js\"type=\"module\"></script>")
 ?>

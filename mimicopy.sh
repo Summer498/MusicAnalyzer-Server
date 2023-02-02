@@ -2,6 +2,7 @@
 # mimicopy is derived from 耳コピ (Japanese word meaning sound transcription)
 # 文字コードは UTF-8
 pushd `dirname "$0"` > /dev/null
+. ./MUSIC_ANALYZER/bin/activate
 
 red=[31m
 green=[32m
@@ -41,7 +42,6 @@ else
     debug_log python -m demucs -d cuda \"$separate_src\" > $out_place
     python -m demucs -d cuda "$separate_src"
 fi
-
 
 # 音高推定
 extract_src="./separated/htdemucs/$songname/vocals.wav"
