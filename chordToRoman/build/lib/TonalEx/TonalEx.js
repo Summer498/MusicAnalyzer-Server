@@ -1,16 +1,16 @@
 "use strict";
+var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
 var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
     if (kind === "m") throw new TypeError("Private method is not writable");
     if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
     return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
 };
-var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
-    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
-};
-var _RomanChord_scale, _RomanChord_chord, _ChordProgression_instances, _ChordProgression_chord_dictionary, _ChordProgression_scale_dictionary, _ChordProgression_setDictionary;
+var _ChordProgression_instances, _ChordProgression_chord_dictionary, _ChordProgression_scale_dictionary, _ChordProgression_setDictionary;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ChordProgression = exports.getChord = exports.getNonNullableChroma = exports.getIntervalDegree = exports.RomanChord = void 0;
 const dist_1 = require("tonal/dist");
@@ -32,23 +32,19 @@ const stdlib_js_1 = require("../StdLib/stdlib.js");
 const TPS_js_1 = require("../TPS/TPS.js");
 class RomanChord {
     constructor(scale, chord) {
-        _RomanChord_scale.set(this, void 0);
-        _RomanChord_chord.set(this, void 0);
-        __classPrivateFieldSet(this, _RomanChord_scale, scale, "f");
-        __classPrivateFieldSet(this, _RomanChord_chord, chord, "f");
+        this.scale = scale;
+        this.chord = chord;
+        this.roman = this.get_roman(scale, chord);
     }
-    get scale() { return __classPrivateFieldGet(this, _RomanChord_scale, "f"); }
-    get chord() { return __classPrivateFieldGet(this, _RomanChord_chord, "f"); }
-    get roman() {
+    get_roman(scale, chord) {
         // TODO: 確認しておく: もしかしたら # b がないものだけ出力されるバグがあるかもしれない
         // IV# が IV として出力されるなど?
-        const interval = Tonal_js_1.Interval.distance((0, stdlib_js_1.assertNonNullable)(__classPrivateFieldGet(this, _RomanChord_scale, "f").tonic), (0, stdlib_js_1.assertNonNullable)(__classPrivateFieldGet(this, _RomanChord_chord, "f").tonic));
+        const interval = Tonal_js_1.Interval.distance((0, stdlib_js_1.assertNonNullable)(scale.tonic), (0, stdlib_js_1.assertNonNullable)(chord.tonic));
         const roman = dist_1.RomanNumeral.get(Tonal_js_1.Interval.get(interval));
-        return roman.roman + " " + __classPrivateFieldGet(this, _RomanChord_chord, "f").type;
+        return roman.roman + " " + chord.type;
     }
 }
 exports.RomanChord = RomanChord;
-_RomanChord_scale = new WeakMap(), _RomanChord_chord = new WeakMap();
 const getIntervalDegree = (src, dst) => {
     return (0, stdlib_js_1.castToNumber)(Tonal_js_1.Interval.distance(src, dst).slice(0, 1));
 };

@@ -1,10 +1,10 @@
 import { Chord, NoteLiteral, Scale } from "../adapters/Tonal.js";
 export declare class RomanChord {
-    #private;
+    scale: Scale;
+    chord: Chord;
+    roman: string;
     constructor(scale: Scale, chord: Chord);
-    get scale(): Scale;
-    get chord(): Chord;
-    get roman(): string;
+    get_roman(scale: Scale, chord: Chord): string;
 }
 export declare const getIntervalDegree: (src: NoteLiteral, dst: NoteLiteral) => number;
 export declare const getNonNullableChroma: (note: NoteLiteral) => number;

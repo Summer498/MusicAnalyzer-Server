@@ -26,23 +26,23 @@ import { Assertion, assertNonNullable, castToNumber, IdDictionary } from "../Std
 import { getDistance, getKeysIncludeTheChord } from "../TPS/TPS.js";
 
 export class RomanChord {
-    #scale: Scale;
-    #chord: Chord;
+    scale: Scale;
+    chord: Chord;
+    roman: string;
     constructor(
         scale: Scale,
         chord: Chord
     ) {
-        this.#scale = scale;
-        this.#chord = chord;
+        this.scale = scale;
+        this.chord = chord;
+        this.roman = this.get_roman(scale, chord);
     }
-    get scale() { return this.#scale; }
-    get chord() { return this.#chord; }
-    get roman() {
+    get_roman(scale: Scale, chord: Chord) {
         // TODO: 確認しておく: もしかしたら # b がないものだけ出力されるバグがあるかもしれない
         // IV# が IV として出力されるなど?
-        const interval = Interval.distance(assertNonNullable(this.#scale.tonic), assertNonNullable(this.#chord.tonic));
+        const interval = Interval.distance(assertNonNullable(scale.tonic), assertNonNullable(chord.tonic));
         const roman = RomanNumeral.get(Interval.get(interval));
-        return roman.roman + " " + this.#chord.type
+        return roman.roman + " " + chord.type
     }
 }
 

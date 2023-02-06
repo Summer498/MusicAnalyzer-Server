@@ -17,6 +17,10 @@ const remove_item = (array, will_removed) => {
     }
     return ret;
 };
+// 自信のあるものを選ぶ処理は後で実装 (とりあえず [0] としている)
+const select_suitable_progression = (roman_chords) => {
+    return roman_chords[0];
+};
 // Expected Input: "Am7 FM7 G7 CM7"
 const calcChordProgression = (chords) => {
     const tmp = chords.split("N") // ノンコードシンボルを除く     "C F N N G C"                       => ["C F ", " ", " G C"]
@@ -24,15 +28,7 @@ const calcChordProgression = (chords) => {
         .map(arr => remove_item(arr, (item) => item == "")); // 空コードを除く               [["C","F",""], [""], ["","G","C"]]  => [["C","F"], [], ["G","C"]]
     const progressions_str = remove_item(tmp, (item) => item.length == 0); // 空配列を除く                 [["C","F"], [], ["G","C"]]          => [["C","F"], ["G","C"]]
     const progressions = progressions_str.map(chords_str => new TonalEx_js_1.ChordProgression(chords_str));
-    // Output with JSON format
-    return progressions.map((progression) => {
-        const min_path = progression.getMinimumPath();
-        return {
-            keys: min_path.map(e => e.map(e => e.scale)),
-            chords: min_path.map(e => e.map(e => e.chord)),
-            romans: min_path.map(e => e.map(e => e.roman)),
-        };
-    });
+    return progressions.map((progression) => select_suitable_progression(progression.getMinimumPath()));
 };
 const main = (argv) => {
     if (argv.length > 2) {
