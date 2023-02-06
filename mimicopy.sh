@@ -77,16 +77,14 @@ fi
 
 # コード推定
 chord_ext_src=$1  #"./resources/$filename"
-chord_ext_dst_withtime="./resources/$filename.chords.json"
-chord_ext_dst="./resources/$filename.chords.txt"
+chord_ext_dst="./resources/$filename.chords.json"
 
 if [ ! -e "$chord_ext_src" ]; then
     echo ${red}file $chord_ext_src not exist$defcol > $out_place
     popd > /dev/null
     exit 1
 fi
-if [ $USE_ANALYZE_CACHE -eq 1 ] && [ -e "$chord_ext_dst_withtime" ] && [ -e "$chord_ext_dst" ]; then
-    debug_log ${green}file $chord_ext_dst_withtime already exist$defcol > $out_place
+if [ $USE_ANALYZE_CACHE -eq 1 ] && [ -e "$chord_ext_dst" ]; then
     debug_log ${green}file $chord_ext_dst already exist$defcol > $out_place
 else
     # 本処理

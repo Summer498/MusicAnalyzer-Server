@@ -17,24 +17,39 @@ const remove_item = (array, will_removed) => {
     }
     return ret;
 };
-// 自信のあるものを選ぶ処理は後で実装 (とりあえず [0] としている)
+// TODO: 自信のあるものを選ぶ処理は後で実装 (とりあえず [0] としている)
 const select_suitable_progression = (roman_chords) => {
     return roman_chords[0];
 };
+const splitArray = (arr, separator) => {
+    let res = [];
+    let elm = [];
+    arr.forEach(e => {
+        if (separator(e)) {
+            res.push(elm.map(e => e));
+            elm = [];
+        }
+        else {
+            elm.push(e);
+        }
+    });
+    res.push(elm.map(e => e));
+    return res;
+};
 // Expected Input: "Am7 FM7 G7 CM7"
 const calcChordProgression = (chords) => {
-    const tmp = chords.split("N") // ノンコードシンボルを除く     "C F N N G C"                       => ["C F ", " ", " G C"]
-        .map(e => e.split(" ")) // 区切り文字で分割             ["C F ", " ", " G C"]               => [["C","F",""], [""], ["","G","C"]]
-        .map(arr => remove_item(arr, (item) => item == "")); // 空コードを除く               [["C","F",""], [""], ["","G","C"]]  => [["C","F"], [], ["G","C"]]
-    const progressions_str = remove_item(tmp, (item) => item.length == 0); // 空配列を除く                 [["C","F"], [], ["G","C"]]          => [["C","F"], ["G","C"]]
-    const progressions = progressions_str.map(chords_str => new TonalEx_js_1.ChordProgression(chords_str));
-    return progressions.map((progression) => select_suitable_progression(progression.getMinimumPath()));
+    const tmp0 = splitArray(chords, e => e[2] === "N"); // ノンコードシンボルを除く     ["C", "F", "N", "N", "G","C"]       => [["C"],["F"], [], ["G"],["C"]]
+    const tmp = remove_item(tmp0, (item) => item.length == 0); // 空配列を除く                 [["C"],["F"], [], ["G"],["C"]]      => [["C","F"], ["G","C"]]
+    const time_and_progressions = tmp.map(timeAndStrings => { return { time: timeAndStrings.map(e => [e[0], e[1]]), progression: new TonalEx_js_1.ChordProgression(timeAndStrings.map(e => e[2])) }; });
+    return time_and_progressions.map((time_and_progression) => { return { time: time_and_progression.time, progression: select_suitable_progression(time_and_progression.progression.getMinimumPath()) }; });
 };
 const main = (argv) => {
     if (argv.length > 2) {
         // 引数からコード列の入力があれば受け取る (テスト用)
         console.error(`出力:`);
-        const roman_chords = calcChordProgression(argv[2]);
+        const chords = argv[2].split(" ");
+        const chords_with_time = chords.map((e, i) => { return { 0: i * 100, 1: (i + 1) * 100, 2: e }; });
+        const roman_chords = calcChordProgression(chords_with_time);
         console.log(JSON.stringify(roman_chords));
     }
     else {
@@ -44,8 +59,11 @@ const main = (argv) => {
         const reader = readline_1.default.createInterface({ input: process.stdin });
         reader.on("line", (line) => { lines.push(line); });
         reader.on("close", () => {
+            const led_data = JSON.parse(lines.join(""));
+            const times = led_data.map(e => [e[0], e[1]]);
+            const chords = led_data.map(e => e[2].replace(":", ""));
             // 本処理
-            const roman_chords = calcChordProgression(lines.join(" "));
+            const roman_chords = calcChordProgression(led_data.map(e => { return { 0: e[0], 1: e[1], 2: e[2].replace(":", "") }; }));
             console.log(JSON.stringify(roman_chords));
         });
     }

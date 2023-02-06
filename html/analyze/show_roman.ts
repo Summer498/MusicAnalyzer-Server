@@ -3,8 +3,9 @@ import { SVG } from "../lib/HTML/HTML.js";
 import { Math } from "../lib/Math/Math.js";
 import { RomanChord } from "../../chordToRoman/build/lib/TonalEx/TonalEx.js"
 
+type timeAndRoman = {time: number[][], progression: RomanChord[]};
 interface MusicAnalyzerWindow {
-  MusicAnalyzer: { roman: RomanChord[][] }
+  MusicAnalyzer: { roman: timeAndRoman[] }
 }
 declare const window: MusicAnalyzerWindow;
 
@@ -23,8 +24,9 @@ const noteToChroma = (note: string) => {
   return base + acc;
 }
 
-const roman = romans[0][2];  // 0 個目のコード列の2番目のコードの構成音
+const roman = romans[0].progression[2];  // 0 個目のコード列の2番目のコードの構成音
 const chromas = roman.chord.notes.map((note: string) => noteToChroma(note))
+console.log(romans[0].time[2]);
 console.log(chromas);
 
 

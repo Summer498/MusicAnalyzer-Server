@@ -12,8 +12,9 @@ const noteToChroma = (note) => {
     const acc = (note.length > 1) ? "b♮#".indexOf(note[1]) - 1 : 0;
     return base + acc;
 };
-const roman = romans[0][2]; // 0 個目のコード列の2番目のコードの構成音
+const roman = romans[0].progression[2]; // 0 個目のコード列の2番目のコードの構成音
 const chromas = roman.chord.notes.map((note) => noteToChroma(note));
+console.log(romans[0].time[2]);
 console.log(chromas);
 class RectParameters {
     constructor(args) {
