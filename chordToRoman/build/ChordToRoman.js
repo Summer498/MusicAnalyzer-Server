@@ -40,7 +40,7 @@ const splitArray = (arr, separator) => {
 const calcChordProgression = (chords) => {
     const tmp0 = splitArray(chords, e => e[2] === "N"); // ノンコードシンボルを除く     ["C", "F", "N", "N", "G","C"]       => [["C"],["F"], [], ["G"],["C"]]
     const tmp = remove_item(tmp0, (item) => item.length == 0); // 空配列を除く                 [["C"],["F"], [], ["G"],["C"]]      => [["C","F"], ["G","C"]]
-    const time_and_progressions = tmp.map(timeAndStrings => { return { time: timeAndStrings.map(e => [e[0], e[1]]), progression: new TonalEx_js_1.ChordProgression(timeAndStrings.map(e => e[2])) }; });
+    const time_and_progressions = tmp.map(time_and_strings => { return { time: time_and_strings.map(e => [e[0], e[1]]), progression: new TonalEx_js_1.ChordProgression(time_and_strings.map(e => e[2])) }; });
     return time_and_progressions.map((time_and_progression) => { return { time: time_and_progression.time, progression: select_suitable_progression(time_and_progression.progression.getMinimumPath()) }; });
 };
 const main = (argv) => {
