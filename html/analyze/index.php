@@ -18,6 +18,11 @@ function saveTmpFile($name)
     return null;
 }
 ?>
+<?php
+    $file_path = saveTmpFile("upload");
+    $chord_progressions = shell_exec("/var/www/html/MusicAnalyzer-server/mimicopy.sh \"{$file_path}\" --debug_mode=false");
+?>
+
 <html lang="ja">
 
 <head>
@@ -36,15 +41,11 @@ function saveTmpFile($name)
 </html>
 
 <?php
-    $file_path = saveTmpFile("upload");
-    $result = shell_exec("/var/www/html/MusicAnalyzer-server/mimicopy.sh \"{$file_path}\" --debug_mode=false");
-    $str = str_replace(array("\r\n","\r"), "\n", $result);
-    $array = explode("\n", $str);
     // バックエンドで計算した結果に合わせてスクリプトを自動生成
     echo("<script>");
     // result が JSON フォーマットで送られてくるので, JavaScript オブジェクトとして代入する
     echo("if(window.MusicAnalyzer===undefined){window.MusicAnalyzer={roman:undefined}}");
-    echo("window.MusicAnalyzer.roman={$result}");
+    echo("window.MusicAnalyzer.roman={$chord_progressions}");
     echo("</script>\n");
     // 静的スクリプトを送る
     echo("<script src=\"./show_roman.js\"type=\"module\"></script>")

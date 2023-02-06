@@ -66,6 +66,7 @@ function svgElement<T extends keyof SVGElementTagNameMap>(
 export class SVG {
 	static svg(attributes: attribute = {}, text = "", children: recurrentArray<Element> = []) { return svgElement("svg", attributes, text, children); }
 	static g(attributes: attribute = {}, text = "", children: recurrentArray<Element> = []) { return svgElement("g", attributes, text, children); }
+	static circle(attributes: attribute = {}, text = "", children: recurrentArray<Element> = []) { return svgElement("circle", attributes, text, children); }
 	static rect(attributes: attribute = {}, text = "", children: recurrentArray<Element> = []) { return svgElement("rect", attributes, text, children); }
 	static line(attributes: attribute = {}, text = "", children: recurrentArray<Element> = []) { return svgElement("line", attributes, text, children); }
 	static text(attributes: attribute = {}, text = "", children: recurrentArray<Element> = []) { return svgElement("text", attributes, text, children); }

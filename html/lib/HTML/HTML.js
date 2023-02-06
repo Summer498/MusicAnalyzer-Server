@@ -32,6 +32,7 @@ function svgElement(qualifiedName, attributes = {}, text = "", children = []) {
 export class SVG {
     static svg(attributes = {}, text = "", children = []) { return svgElement("svg", attributes, text, children); }
     static g(attributes = {}, text = "", children = []) { return svgElement("g", attributes, text, children); }
+    static circle(attributes = {}, text = "", children = []) { return svgElement("circle", attributes, text, children); }
     static rect(attributes = {}, text = "", children = []) { return svgElement("rect", attributes, text, children); }
     static line(attributes = {}, text = "", children = []) { return svgElement("line", attributes, text, children); }
     static text(attributes = {}, text = "", children = []) { return svgElement("text", attributes, text, children); }
