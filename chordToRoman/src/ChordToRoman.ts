@@ -18,6 +18,15 @@ const remove_item = <T>(array: T[], will_removed: (item: T) => Boolean) => {
 
 // TODO: 自信のあるものを選ぶ処理は後で実装 (とりあえず [0] としている)
 const select_suitable_progression = (roman_chords: RomanChord[][]) => {
+    /*
+    // 全部を出力して確認する
+    console.log(roman_chords.map(e=>e.map(e => {
+        return {
+            scale: e.scale.name, chord: e.chord.name, roman: e.roman
+        }
+    })));
+    */
+
     return roman_chords[0];
 }
 
@@ -36,13 +45,13 @@ const splitArray = <T>(arr: T[], separator: (e: T) => boolean) => {
 }
 
 type TimeAndString = { 0: number, 1: number, 2: string };
-type timeAndRoman = {time: number[][], progression: RomanChord[]};
+type timeAndRoman = { time: number[][], progression: RomanChord[] };
 // Expected Input: "Am7 FM7 G7 CM7"
 const calcChordProgression = (chords: TimeAndString[]): timeAndRoman[] => {
     const tmp0 = splitArray(chords, e => e[2] === "N")                       // ノンコードシンボルを除く     ["C", "F", "N", "N", "G","C"]       => [["C"],["F"], [], ["G"],["C"]]
     const tmp = remove_item(tmp0, (item) => item.length == 0);  // 空配列を除く                 [["C"],["F"], [], ["G"],["C"]]      => [["C","F"], ["G","C"]]
-    const time_and_progressions = tmp.map(time_and_strings => {return {time:time_and_strings.map(e=>[e[0],e[1]]), progression: new ChordProgression(time_and_strings.map(e=>e[2]))}})
-    return time_and_progressions.map((time_and_progression) => {return {time:time_and_progression.time, progression:select_suitable_progression(time_and_progression.progression.getMinimumPath())}});    
+    const time_and_progressions = tmp.map(time_and_strings => { return { time: time_and_strings.map(e => [e[0], e[1]]), progression: new ChordProgression(time_and_strings.map(e => e[2])) } })
+    return time_and_progressions.map((time_and_progression) => { return { time: time_and_progression.time, progression: select_suitable_progression(time_and_progression.progression.getMinimumPath()) } });
 }
 
 const main = (argv: string[]) => {
@@ -62,10 +71,8 @@ const main = (argv: string[]) => {
         reader.on("line", (line: string) => { lines.push(line); });
         reader.on("close", () => {
             const led_data: TimeAndString[] = JSON.parse(lines.join(""));
-            const times = led_data.map(e => [e[0], e[1]]);
-            const chords = led_data.map(e => e[2].replace(":", ""));
             // 本処理
-            const roman_chords = calcChordProgression(led_data.map(e=>{return{0:e[0],1:e[1],2:e[2].replace(":", "")}}))
+            const roman_chords = calcChordProgression(led_data.map(e => { return { 0: e[0], 1: e[1], 2: e[2].replace(":", "") } }))
             console.log(JSON.stringify(roman_chords))
         });
     }

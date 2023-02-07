@@ -1,3 +1,4 @@
+import { exit } from "process";
 import { RomanNumeral, Tonal } from "tonal/dist";
 //*
 import {
@@ -35,9 +36,9 @@ export class RomanChord {
     ) {
         this.scale = scale;
         this.chord = chord;
-        this.roman = this.get_roman(scale, chord);
+        this.roman = this.#get_roman(scale, chord);
     }
-    get_roman(scale: Scale, chord: Chord) {
+    #get_roman(scale: Scale, chord: Chord) {
         // TODO: 確認しておく: もしかしたら # b がないものだけ出力されるバグがあるかもしれない
         // IV# が IV として出力されるなど?
         const interval = Interval.distance(assertNonNullable(scale.tonic), assertNonNullable(chord.tonic));

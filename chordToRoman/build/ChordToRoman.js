@@ -19,6 +19,14 @@ const remove_item = (array, will_removed) => {
 };
 // TODO: 自信のあるものを選ぶ処理は後で実装 (とりあえず [0] としている)
 const select_suitable_progression = (roman_chords) => {
+    /*
+    // 全部を出力して確認する
+    console.log(roman_chords.map(e=>e.map(e => {
+        return {
+            scale: e.scale.name, chord: e.chord.name, roman: e.roman
+        }
+    })));
+    */
     return roman_chords[0];
 };
 const splitArray = (arr, separator) => {
@@ -60,8 +68,6 @@ const main = (argv) => {
         reader.on("line", (line) => { lines.push(line); });
         reader.on("close", () => {
             const led_data = JSON.parse(lines.join(""));
-            const times = led_data.map(e => [e[0], e[1]]);
-            const chords = led_data.map(e => e[2].replace(":", ""));
             // 本処理
             const roman_chords = calcChordProgression(led_data.map(e => { return { 0: e[0], 1: e[1], 2: e[2].replace(":", "") }; }));
             console.log(JSON.stringify(roman_chords));
