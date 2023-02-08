@@ -27,54 +27,6 @@ function debug_log (){
     fi
 }
 
-# 音源分離
-separate_src=$1  #"./resources/$filename"
-separate_dst="./separated/htdemucs/$songname"
-if [ ! -e "$separate_src" ]; then
-    echo ${red}file $separate_src not exist$defcol > $out_place
-    popd > /dev/null
-    exit 1
-fi
-if [ $USE_ANALYZE_CACHE -eq 1 ] && [ -e "$separate_dst" ]; then
-    debug_log ${green}folder $separate_dst already exist$defcol > $out_place
-else
-    # 本処理
-    debug_log python -m demucs -d cuda \"$separate_src\" > $out_place
-    python -m demucs -d cuda "$separate_src"
-fi
-
-# 音高推定
-extract_src="./separated/htdemucs/$songname/vocals.wav"
-extract_dst="./separated/htdemucs/$songname/vocals.f0.csv"
-if [ ! -e "$extract_src" ]; then
-    echo ${red}file $extract_src not exist$defcol > $out_place
-    popd > /dev/null
-    exit 1
-fi
-if [ $USE_ANALYZE_CACHE -eq 1 ] && [ -e "$extract_dst" ]; then
-    debug_log ${green}file $extract_dst already exist$defcol > $out_place
-else
-    # 本処理
-    debug_log python -m crepe \"$extract_src\" > $out_place
-         python -m crepe "$extract_src"
-fi
-
-# 音高推定結果の処理
-post_crepe_src="./separated/htdemucs/$songname/vocals.f0.csv"
-post_crepe_dst="./separated/htdemucs/$songname/vocals.csv"
-if [ ! -e "$post_crepe_src" ]; then
-   echo ${red}file $post_crepe_src not exist$defcol > $out_place
-   popd > /dev/null
-   exit 1
-fi
-if [ $USE_ANALYZE_CACHE -eq 1 ] && [ -e "$post_crepe_dst" ]; then
-    debug_log ${green}file $post_crepe_dst already exist$defcol > $out_place
-else
-    # 本処理
-    debug_log python -m post-crepe \"$post_crepe_src\" > $out_place
-         python -m post-crepe "$post_crepe_src"
-fi
-
 # コード推定
 chord_ext_src=$1  #"./resources/$filename"
 chord_ext_dst="./resources/$filename.chords.json"

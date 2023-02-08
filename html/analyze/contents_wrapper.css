@@ -1,0 +1,25 @@
+.video_wrapper {
+    position: relative;
+    width: 100vw;
+    height: fit-content;
+}
+
+.video_wrapper > video {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40vw;
+    height: fit-content;
+}
+
+.audio_wrapper {
+    position: relative;
+    width: 100vw;
+    height: fit-content;
+}
+
+.audio_wrapper > audio {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}

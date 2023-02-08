@@ -35,6 +35,17 @@ const lastElement = <T>(arr: T[]) => arr[arr.length - 1]
 const chord_time_range = lastElement(lastElement(romans).time)[1]
 console.log(`chord_range:${chord_time_range}`);
 
+/*
+const audio_area = document.getElementById("audio_area")!;
+const audios = audio_area.getElementsByTagName("audio");
+const videos = audio_area.getElementsByTagName("video");
+console.log(audios[0].duration);
+videos[0].onloadedmetadata = () => {
+  console.log(videos[0].duration);
+}
+*/
+
+
 class RectParameters {
   width: number;
   height: number;
@@ -170,11 +181,13 @@ const draw = () => {
       )]
   );
 
-  const piano_roll_place = document.getElementsByName("piano-roll-place")[0];
-  if (piano_roll_place.children.length > 0) {
-    piano_roll_place.removeChild(piano_roll_place.children[0]);
+  const piano_roll_place = document.getElementById("piano-roll-place");
+  if (piano_roll_place !== null) {
+    if (piano_roll_place.children.length > 0) {
+      piano_roll_place.removeChild(piano_roll_place.children[0]);
+    }
+    piano_roll_place.insertAdjacentElement("afterbegin", piano_roll);
   }
-  piano_roll_place.insertAdjacentElement("afterbegin", piano_roll);
 }
 draw();
 window.onresize = (ev) => {
