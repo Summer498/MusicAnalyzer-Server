@@ -42,7 +42,12 @@ exports.RomanChord = RomanChord;
 _RomanChord_instances = new WeakSet(), _RomanChord_get_roman = function _RomanChord_get_roman(scale, chord) {
     // TODO: 確認しておく: もしかしたら # b がないものだけ出力されるバグがあるかもしれない
     // IV# が IV として出力されるなど?
-    const interval = Tonal_js_1.Interval.distance((0, stdlib_js_1.assertNonNullable)(scale.tonic), (0, stdlib_js_1.assertNonNullable)(chord.tonic));
+    if (chord.tonic === null) {
+        throw TypeError("chord.tonic should not be null");
+    }
+    const tonic = chord.tonic;
+    const true_tonic = scale.notes.find(e => Tonal_js_1.Note.chroma(e) === Tonal_js_1.Note.chroma(tonic));
+    const interval = Tonal_js_1.Interval.distance((0, stdlib_js_1.assertNonNullable)(scale.tonic), (0, stdlib_js_1.assertNonNullable)(true_tonic));
     const roman = dist_1.RomanNumeral.get(Tonal_js_1.Interval.get(interval));
     return roman.roman + " " + chord.type;
 };

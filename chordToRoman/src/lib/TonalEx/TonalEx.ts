@@ -41,7 +41,12 @@ export class RomanChord {
     #get_roman(scale: Scale, chord: Chord) {
         // TODO: 確認しておく: もしかしたら # b がないものだけ出力されるバグがあるかもしれない
         // IV# が IV として出力されるなど?
-        const interval = Interval.distance(assertNonNullable(scale.tonic), assertNonNullable(chord.tonic));
+        // 成功: C# Db 混同バグは直してある.
+        if (chord.tonic === null) { throw TypeError("chord.tonic should not be null") }
+        const tonic = chord.tonic;
+        const true_tonic = scale.notes.find(e => Note.chroma(e) === Note.chroma(tonic));
+
+        const interval = Interval.distance(assertNonNullable(scale.tonic), assertNonNullable(true_tonic));
         const roman = RomanNumeral.get(Interval.get(interval));
         return roman.roman + " " + chord.type
     }

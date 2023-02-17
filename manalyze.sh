@@ -80,7 +80,7 @@ chord_ext_src=$1  #"./resources/$filename"
 chord_ext_dst="./resources/$filename.chords.json"
 
 if [ ! -e "$chord_ext_src" ]; then
-    echo ${red}file $chord_ext_src not exist$defcol > $out_place
+    debug_log ${red}file $chord_ext_src not exist$defcol > $out_place
     popd > /dev/null
     exit 1
 fi
@@ -92,27 +92,49 @@ else
          python -m chordExtract "$chord_ext_src"
 fi
 
+# コードをローマ数字変換 (メロディ分析部でローマ数字の情報が必要になれば使う)
+<< COMMNET_CHORD_TO_ROMAN
+chord_to_roman_src=$chord_ext_dst
+chord_to_roman_dst="./resources/$filename.roman.json"
+if [ ! -e "$chord_to_roman_src" ]; then
+    debug_log ${red}file $chord_to_roman_src not exist$defcol > $out_place
+    popd > /dev/null
+    exit 1
+fi
+if [ $USE_ANALYZE_CACHE -eq 1 ] && [ -e "$chord_to_roman_dst" ]; then
+    if [ $roman_reanalyze -eq 1 ]; then
+        debug_log "node ./chordToRoman < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\""
+        node ./chordToRoman < "$chord_to_roman_src" > "$chord_to_roman_dst"
+    else
+        debug_log ${green}file $chord_to_roman_dst already exist$defcol > $out_place
+    fi
+else
+    debug_log "node ./chordToRoman < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\""
+    node ./chordToRoman < "$chord_to_roman_src" > "$chord_to_roman_dst"
+fi
+COMMNET_CHORD_TO_ROMAN
 
 # コードとメロディの関係を求める
 melody_analyze_melody_src=$post_crepe_dst
 melody_analyze_chord_src=$chord_ext_dst
-melody_analyze_dst="./separated/htdemucs/$songname/manalyze.txt"
+melody_analyze_dst="./separated/htdemucs/$songname/manalyze.json"
 if [ ! -e "$melody_analyze_melody_src" ]; then
-    echo ${red}file $melody_analyze_melody_src not exist$defcol > /dev/stderr
+    debug_log ${red}file $melody_analyze_melody_src not exist$defcol > $out_place
     popd > /dev/null
     exit 1
 fi
 if [ ! -e "$melody_analyze_chord_src" ]; then
-    echo ${red}file $melody_analyze_chord_src not exist$defcol > /dev/stderr
+    debug_log ${red}file $melody_analyze_chord_src not exist$defcol > $out_place
     popd > /dev/null
     exit 1
 fi
 #if [ -e "$melody_analyze_dst" ]; then
-#    echo ${green}file $melody_analyze_dst already exist$defcol > /dev/stderr
+#    debug_log ${green}file $melody_analyze_dst already exist$defcol > /dev/stderr
 #else
     # 本処理
-    echo "node ./melodyAnalyze \"$melody_analyze_melody_src\"  \"$melody_analyze_chord_src\" \"$melody_analyze_dst\""
-         node ./melodyAnalyze "$melody_analyze_melody_src" "$melody_analyze_chord_src" "$melody_analyze_dst"
+    debug_log "node ./melodyAnalyze \"$melody_analyze_melody_src\"  \"$melody_analyze_chord_src\" > \"$melody_analyze_dst\""
+         node ./melodyAnalyze "$melody_analyze_melody_src" "$melody_analyze_chord_src" > "$melody_analyze_dst"
 #fi
+cat "$melody_analyze_dst"
 
 popd > /dev/null
