@@ -10,10 +10,11 @@
   <h1>Music Analyzer</h1>
   <p>音楽を分析します</p>
   <form action="./analyze/" enctype="multipart/form-data" method="post">
-    <input type="file" name="upload" id="upload_file">
+    <input type="file" name="upload" id="upload_file" accept=".wav, .mp3, .m4a, .mp4" value="音楽ファイルを入力してください"/>
     <div name="fileSizeIsTooLarge"></div>
-    <input type="submit">
+    <input type="submit" value="分析する!">
   </form>
 </body>
-  <script src="./printFileSize.js"></script>
+<script src="./printFileSize.js"></script>
+
 </html>

@@ -1,6 +1,8 @@
 import fs from "fs";
 import { Chord } from "@tonaljs/chord/dist/index.js";
 import Chord_default from "@tonaljs/chord/dist/index.js";
+// TODO: 悪い依存の仕方。治す。
+import { RomanChord } from "../../chordToRoman/build/lib/TonalEx/TonalEx.js";
 import { exit } from "process";
 
 const min = (a: number, b: number) => a < b ? a : b;
@@ -48,32 +50,14 @@ const freqToMidi = (freq: number) => (Math.log2(freq) - Math.log2(440)) * 12 + 6
 
 type timeAndChord = { time: number[], chord: Chord };
 type timeAndMelody = { time: number[], note: number }
+type timeAndRoman = { time: number[], progression: RomanChord };
 const analyzeMelody = (melody: timeAndMelody[], chord: timeAndChord[]) => {
     const melody_i = 0;
     const chord_i = 0;
-//    const time = min(melody[melody_i].time[0], chord[chord_i].time[0]);
-//    const i = 0;
+    // const time = min(melody[melody_i].time[0], chord[chord_i].time[0]);
+    // const i = 0;
     return melody;
 };
-
-const hogehoge = () => {
-    const a = [10, 20, 30, 40, 50];
-    const b = [1, 5, 10, 15, 21, 25, 31, 35, 40, 45, 51];
-    let i = 0;
-    let j = 0;
-    let t = 0;
-    while (t < max(a[i], b[j])) {
-        console.log(t, a[i], b[j]);
-        // TODO: 最後の要素をうまく扱えないのを何とかする
-        if (0) { }
-        else if (a[i] === b[j]) { t = a[i]; i++; j++; }
-        else if (a[i] <= b[j]) { t = a[i]; i++; }
-        else if (a[i] >= b[j]) { t = b[j]; j++; }
-        else { break; }
-    }
-};
-//hogehoge();
-//exit(0);
 
 const main = (argv: string[]) => {
     const melody_filename = argv[2];

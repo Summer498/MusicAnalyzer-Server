@@ -3,11 +3,11 @@ import { Math } from "../lib/Math/Math.js";
 import { RomanChord } from "../../chordToRoman/build/lib/TonalEx/TonalEx.js";
 import { hsv2rgb } from "../lib/Color/Color.js";
 
-type timeAndRoman = { time: number[][], progression: RomanChord[] };
+type timeAndRoman = { time: number[], progression: RomanChord };
 type timeAndMelody = { time: number[], note: number }
 
 interface MusicAnalyzerWindow extends Window {
-  MusicAnalyzer: { roman: timeAndRoman[], melody: timeAndMelody[] }
+  MusicAnalyzer: { roman: timeAndRoman[][], melody: timeAndMelody[] }
 }
 declare const window: MusicAnalyzerWindow;
 
@@ -94,13 +94,13 @@ const shorten = (chord: string) => {
 
 // svg element の作成
 const chord_svg_elements = romans.map(time_and_roman =>
-  time_and_roman.progression.map((roman, i) => {
-    const fill = romanToColor(roman.roman);
-    const notes: string[] = roman.chord.notes;
+  time_and_roman.map((roman, i) => {
+    const fill = romanToColor(roman.progression.roman);
+    const notes: string[] = roman.progression.chord.notes;
     return {
       rects: notes.map(note => SVG.rect({ name: "chord-note", fill, stroke: "#444" })),
-      text: SVG.text({}, shorten(roman.roman)),
-      time: time_and_roman.time[i],
+      text: SVG.text({}, shorten(roman.progression.roman)),
+      time: time_and_roman[i].time,
       notes,
     };
   }).flat()

@@ -89,13 +89,13 @@ const shorten = (chord) => {
     return seventh;
 };
 // svg element の作成
-const chord_svg_elements = romans.map(time_and_roman => time_and_roman.progression.map((roman, i) => {
-    const fill = romanToColor(roman.roman);
-    const notes = roman.chord.notes;
+const chord_svg_elements = romans.map(time_and_roman => time_and_roman.map((roman, i) => {
+    const fill = romanToColor(roman.progression.roman);
+    const notes = roman.progression.chord.notes;
     return {
         rects: notes.map(note => SVG.rect({ name: "chord-note", fill, stroke: "#444" })),
-        text: SVG.text({}, shorten(roman.roman)),
-        time: time_and_roman.time[i],
+        text: SVG.text({}, shorten(roman.progression.roman)),
+        time: time_and_roman[i].time,
         notes,
     };
 }).flat()).flat();
