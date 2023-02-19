@@ -1,4 +1,3 @@
-"use strict";
 var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
     if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
@@ -10,22 +9,17 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
     return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 var _RomanChord_instances, _RomanChord_get_roman, _ChordProgression_instances, _ChordProgression_chord_dictionary, _ChordProgression_scale_dictionary, _ChordProgression_setDictionary;
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.ChordProgression = exports.getChord = exports.getNonNullableChroma = exports.getIntervalDegree = exports.RomanChord = void 0;
-const dist_1 = require("tonal/dist");
-const chord_1 = __importDefault(require("@tonaljs/chord"));
-const interval_1 = __importDefault(require("@tonaljs/interval"));
-const note_1 = __importDefault(require("@tonaljs/note"));
-const scale_1 = __importDefault(require("@tonaljs/scale"));
-const Graph_js_1 = require("../Graph/Graph.js");
-const Math_js_1 = require("../Math/Math.js");
-const stdlib_js_1 = require("../StdLib/stdlib.js");
-const TPS_js_1 = require("../TPS/TPS.js");
-class RomanChord {
+import { RomanNumeral } from "tonal";
+import Chord_default from "@tonaljs/chord";
+import Interval from "@tonaljs/interval";
+import Note from "@tonaljs/note";
+import Scale_default from "@tonaljs/scale";
+import { dynamicLogViterbi } from "../Graph/Graph.js";
+import { Math } from "../Math/Math.js";
+import { Assertion, assertNonNullable, castToNumber, IdDictionary } from "../StdLib/stdlib.js";
+import { getDistance, getKeysIncludeTheChord } from "../TPS/TPS.js";
+export class RomanChord {
     constructor(scale, chord) {
         _RomanChord_instances.add(this);
         this.scale = scale;
@@ -33,7 +27,6 @@ class RomanChord {
         this.roman = __classPrivateFieldGet(this, _RomanChord_instances, "m", _RomanChord_get_roman).call(this, scale, chord);
     }
 }
-exports.RomanChord = RomanChord;
 _RomanChord_instances = new WeakSet(), _RomanChord_get_roman = function _RomanChord_get_roman(scale, chord) {
     // TODO: 確認しておく: もしかしたら # b がないものだけ出力されるバグがあるかもしれない
     // IV# が IV として出力されるなど?
@@ -42,19 +35,17 @@ _RomanChord_instances = new WeakSet(), _RomanChord_get_roman = function _RomanCh
         throw TypeError("chord.tonic should not be null");
     }
     const tonic = chord.tonic;
-    const true_tonic = scale.notes.find(e => note_1.default.chroma(e) === note_1.default.chroma(tonic));
-    const interval = interval_1.default.distance((0, stdlib_js_1.assertNonNullable)(scale.tonic), (0, stdlib_js_1.assertNonNullable)(true_tonic));
-    const roman = dist_1.RomanNumeral.get(interval_1.default.get(interval));
+    const true_tonic = scale.notes.find(e => Note.chroma(e) === Note.chroma(tonic));
+    const interval = Interval.distance(assertNonNullable(scale.tonic), assertNonNullable(true_tonic));
+    const roman = RomanNumeral.get(Interval.get(interval));
     return roman.roman + " " + chord.type;
 };
-const getIntervalDegree = (src, dst) => {
-    return (0, stdlib_js_1.castToNumber)(interval_1.default.distance(src, dst).slice(0, 1));
+export const getIntervalDegree = (src, dst) => {
+    return castToNumber(Interval.distance(src, dst).slice(0, 1));
 };
-exports.getIntervalDegree = getIntervalDegree;
-const getNonNullableChroma = (note) => {
-    return (0, stdlib_js_1.assertNonNullable)(note_1.default.chroma(note));
+export const getNonNullableChroma = (note) => {
+    return assertNonNullable(Note.chroma(note));
 };
-exports.getNonNullableChroma = getNonNullableChroma;
 const getBodyAndRoot = (chord_string) => {
     chord_string = chord_string.replace("minor/major", "XXXXXXXXXXX");
     let separator = "/";
@@ -70,20 +61,20 @@ const getBodyAndRoot = (chord_string) => {
     return { body, root };
 };
 // ルート付きコードが入力されてもコードを得られるようにする.
-const getChord = (chord_string) => {
+export const getChord = (chord_string) => {
     const body_and_root = getBodyAndRoot(chord_string);
     const root = body_and_root.root;
-    const chord = chord_1.default.get(body_and_root.body);
+    const chord = Chord_default.get(body_and_root.body);
     if (chord_string === "") {
         return chord;
     }
-    new stdlib_js_1.Assertion(chord.tonic != null)
+    new Assertion(chord.tonic != null)
         .onFailed(() => {
         console.log("received:");
         console.log(chord);
         throw new TypeError("tonic must not be null");
     });
-    new stdlib_js_1.Assertion(!chord.empty)
+    new Assertion(!chord.empty)
         .onFailed(() => {
         console.log("received:");
         console.log(chord);
@@ -97,11 +88,10 @@ const getChord = (chord_string) => {
         chord.symbol += `/${root}`;
     }
     chord.root = root;
-    chord.rootDegree = (0, exports.getIntervalDegree)((0, stdlib_js_1.assertNonNullable)(chord.tonic), chord.root);
+    chord.rootDegree = getIntervalDegree(assertNonNullable(chord.tonic), chord.root);
     return chord;
 };
-exports.getChord = getChord;
-class ChordProgression {
+export class ChordProgression {
     // returns all field
     debug() {
         return {
@@ -114,27 +104,27 @@ class ChordProgression {
         _ChordProgression_instances.add(this);
         _ChordProgression_chord_dictionary.set(this, void 0);
         _ChordProgression_scale_dictionary.set(this, void 0);
-        __classPrivateFieldSet(this, _ChordProgression_chord_dictionary, new stdlib_js_1.IdDictionary(), "f");
-        __classPrivateFieldSet(this, _ChordProgression_scale_dictionary, new stdlib_js_1.IdDictionary(), "f");
+        __classPrivateFieldSet(this, _ChordProgression_chord_dictionary, new IdDictionary(), "f");
+        __classPrivateFieldSet(this, _ChordProgression_scale_dictionary, new IdDictionary(), "f");
         this.lead_sheet_chords = lead_sheet_chords;
         __classPrivateFieldGet(this, _ChordProgression_instances, "m", _ChordProgression_setDictionary).call(this, lead_sheet_chords);
     }
     getStatesOnTime(t) {
-        const chord = (0, exports.getChord)(this.lead_sheet_chords[t]);
-        const candidate_scales = (0, TPS_js_1.getKeysIncludeTheChord)(chord); // 候補がない時, ここが空配列になる
+        const chord = getChord(this.lead_sheet_chords[t]);
+        const candidate_scales = getKeysIncludeTheChord(chord); // 候補がない時, ここが空配列になる
         if (candidate_scales.length === 0) {
-            return [__classPrivateFieldGet(this, _ChordProgression_scale_dictionary, "f").getId(scale_1.default.get("").name)];
+            return [__classPrivateFieldGet(this, _ChordProgression_scale_dictionary, "f").getId(Scale_default.get("").name)];
         }
         return candidate_scales.map(scale => __classPrivateFieldGet(this, _ChordProgression_scale_dictionary, "f").getId(scale.name));
     }
     getChordIdSequence() {
-        return this.lead_sheet_chords.map(chord => __classPrivateFieldGet(this, _ChordProgression_chord_dictionary, "f").getId((0, exports.getChord)(chord).name));
+        return this.lead_sheet_chords.map(chord => __classPrivateFieldGet(this, _ChordProgression_chord_dictionary, "f").getId(getChord(chord).name));
     }
     getDistanceOfStates(t1, t2, s1, s2) {
-        const scale1 = scale_1.default.get(__classPrivateFieldGet(this, _ChordProgression_scale_dictionary, "f").getItem(s1));
-        const scale2 = scale_1.default.get(__classPrivateFieldGet(this, _ChordProgression_scale_dictionary, "f").getItem(s2));
-        const chord1 = (0, exports.getChord)(this.lead_sheet_chords[t1]);
-        const chord2 = (0, exports.getChord)(this.lead_sheet_chords[t2]);
+        const scale1 = Scale_default.get(__classPrivateFieldGet(this, _ChordProgression_scale_dictionary, "f").getItem(s1));
+        const scale2 = Scale_default.get(__classPrivateFieldGet(this, _ChordProgression_scale_dictionary, "f").getItem(s2));
+        const chord1 = getChord(this.lead_sheet_chords[t1]);
+        const chord2 = getChord(this.lead_sheet_chords[t2]);
         if (scale1.empty) {
             console.warn("empty scale received");
             return 0;
@@ -143,27 +133,26 @@ class ChordProgression {
             console.warn("empty scale received");
             return 0;
         }
-        return (0, TPS_js_1.getDistance)(new RomanChord(scale1, chord1), new RomanChord(scale2, chord2));
+        return getDistance(new RomanChord(scale1, chord1), new RomanChord(scale2, chord2));
     }
     getMinimumPath() {
-        const viterbi = (0, Graph_js_1.dynamicLogViterbi)(Math_js_1.Math.getZeros(24), // 12 音 x {-mol, -dur}
+        const viterbi = dynamicLogViterbi(Math.getZeros(24), // 12 音 x {-mol, -dur}
         this.getStatesOnTime.bind(this), this.getDistanceOfStates.bind(this), () => 0, this.getChordIdSequence(), true);
         // console.log(viterbi)
         const trace = viterbi.trace;
-        return trace.map(e => e.map((id, i) => new RomanChord(scale_1.default.get(__classPrivateFieldGet(this, _ChordProgression_scale_dictionary, "f").getItem(id)), chord_1.default.get(this.lead_sheet_chords[i]))));
+        return trace.map(e => e.map((id, i) => new RomanChord(Scale_default.get(__classPrivateFieldGet(this, _ChordProgression_scale_dictionary, "f").getItem(id)), Chord_default.get(this.lead_sheet_chords[i]))));
     }
 }
-exports.ChordProgression = ChordProgression;
 _ChordProgression_chord_dictionary = new WeakMap(), _ChordProgression_scale_dictionary = new WeakMap(), _ChordProgression_instances = new WeakSet(), _ChordProgression_setDictionary = function _ChordProgression_setDictionary(lead_sheet_chords) {
     for (const chord_str of lead_sheet_chords) {
-        const chord = (0, exports.getChord)(chord_str);
-        const candidate_scales = (0, TPS_js_1.getKeysIncludeTheChord)(chord);
+        const chord = getChord(chord_str);
+        const candidate_scales = getKeysIncludeTheChord(chord);
         for (const scale of candidate_scales) {
             __classPrivateFieldGet(this, _ChordProgression_chord_dictionary, "f").register(chord.name);
             __classPrivateFieldGet(this, _ChordProgression_scale_dictionary, "f").register(scale.name);
         }
         if (candidate_scales.length === 0) {
-            __classPrivateFieldGet(this, _ChordProgression_scale_dictionary, "f").register(scale_1.default.get("").name);
+            __classPrivateFieldGet(this, _ChordProgression_scale_dictionary, "f").register(Scale_default.get("").name);
         }
     }
 };

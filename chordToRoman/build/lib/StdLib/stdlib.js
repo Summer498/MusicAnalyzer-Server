@@ -1,4 +1,3 @@
-"use strict";
 var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
     if (kind === "m") throw new TypeError("Private method is not writable");
     if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
@@ -11,9 +10,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
 var _IdDictionary_item2id, _IdDictionary_id2item, _Assertion_assertion;
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.castToNumber = exports.assertNotNaN = exports.assertNonNullable = exports.assertNotUndefined = exports.assertNotNull = exports.Assertion = exports.NotImplementedError = exports.UnexpectedErrorThrownError = exports.IdDictionary = exports.hasSameValue = exports.Arraying = void 0;
-function Arraying(e) {
+export function Arraying(e) {
     const concat = function (arr) {
         let res = [];
         for (const e of arr) {
@@ -23,10 +20,9 @@ function Arraying(e) {
     };
     return e instanceof Array ? concat(e) : [e];
 }
-exports.Arraying = Arraying;
 // 引数には any が入る.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const hasSameValue = (o1, o2) => {
+export const hasSameValue = (o1, o2) => {
     if (o1 === o2) {
         return true;
     } // same object
@@ -44,7 +40,7 @@ const hasSameValue = (o1, o2) => {
             return false;
         }
         if (typeof o1[key] === "object") {
-            if (!(0, exports.hasSameValue)(o1[key], o2[key])) {
+            if (!hasSameValue(o1[key], o2[key])) {
                 return false;
             } // deep check
         }
@@ -54,8 +50,7 @@ const hasSameValue = (o1, o2) => {
     }
     return true;
 };
-exports.hasSameValue = hasSameValue;
-class IdDictionary {
+export class IdDictionary {
     constructor() {
         _IdDictionary_item2id.set(this, void 0); // eslint-disable-line @typescript-eslint/no-explicit-any
         _IdDictionary_id2item.set(this, void 0);
@@ -95,22 +90,19 @@ class IdDictionary {
         return __classPrivateFieldGet(this, _IdDictionary_id2item, "f");
     }
 }
-exports.IdDictionary = IdDictionary;
 _IdDictionary_item2id = new WeakMap(), _IdDictionary_id2item = new WeakMap();
 // エラーを期待するテストのための, 予想外のエラーを受け取った時のエラー
-class UnexpectedErrorThrownError extends Error {
+export class UnexpectedErrorThrownError extends Error {
     constructor(message) {
         super(message);
     }
 }
-exports.UnexpectedErrorThrownError = UnexpectedErrorThrownError;
-class NotImplementedError extends Error {
+export class NotImplementedError extends Error {
     constructor(message) {
         super(message);
     }
 }
-exports.NotImplementedError = NotImplementedError;
-class Assertion {
+export class Assertion {
     constructor(assertion) {
         _Assertion_assertion.set(this, void 0);
         __classPrivateFieldSet(this, _Assertion_assertion, assertion, "f");
@@ -121,35 +113,29 @@ class Assertion {
         }
     }
 }
-exports.Assertion = Assertion;
 _Assertion_assertion = new WeakMap();
-const assertNotNull = (value) => {
+export const assertNotNull = (value) => {
     if (value === null) {
         throw new TypeError("null value received");
     }
     return value;
 };
-exports.assertNotNull = assertNotNull;
-const assertNotUndefined = (value) => {
+export const assertNotUndefined = (value) => {
     if (value === undefined) {
         throw new TypeError("undefined value received");
     }
     return value;
 };
-exports.assertNotUndefined = assertNotUndefined;
-const assertNonNullable = (value) => {
-    return (0, exports.assertNotNull)((0, exports.assertNotUndefined)(value));
+export const assertNonNullable = (value) => {
+    return assertNotNull(assertNotUndefined(value));
 };
-exports.assertNonNullable = assertNonNullable;
-const assertNotNaN = (value) => {
+export const assertNotNaN = (value) => {
     if (isNaN(value)) {
         throw new TypeError("NaN value received");
     }
     return value;
 };
-exports.assertNotNaN = assertNotNaN;
-const castToNumber = (value) => {
-    return (0, exports.assertNotNaN)(Number(value));
+export const castToNumber = (value) => {
+    return assertNotNaN(Number(value));
 };
-exports.castToNumber = castToNumber;
 //# sourceMappingURL=stdlib.js.map

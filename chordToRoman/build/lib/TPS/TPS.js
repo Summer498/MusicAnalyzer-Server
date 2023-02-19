@@ -1,119 +1,107 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Alt5 = exports.Chord_index = exports.Key_quality = exports.getKeysIncludeTheChord = exports.getDistance = exports.basicSpaceDistance = exports.getBasicSpace = exports.tonicDistance = exports.regionDistance = void 0;
-const Math_js_1 = require("../Math/Math.js");
-const TonalEx_js_1 = require("../TonalEx/TonalEx.js");
-const stdlib_js_1 = require("../StdLib/stdlib.js");
-const scale_1 = __importDefault(require("@tonaljs/scale"));
-const key_1 = __importDefault(require("@tonaljs/key"));
-const note_1 = __importDefault(require("@tonaljs/note"));
+import { Math } from "../Math/Math.js";
+import { getIntervalDegree, getNonNullableChroma } from "../TonalEx/TonalEx.js";
+import { assertNonNullable, Assertion, NotImplementedError } from "../StdLib/stdlib.js";
+import Scale_default from "@tonaljs/scale";
+import Key_default from "@tonaljs/key";
+import Note from "@tonaljs/note";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const regionDistanceInChromaNumber = (src, dst) => {
-    return Math_js_1.Math.abs(Math_js_1.Math.mod((dst - src) * 7 + 6, 12) - 6);
+    return Math.abs(Math.mod((dst - src) * 7 + 6, 12) - 6);
 };
-const regionDistance = (src, dst) => {
-    const src_chroma = (0, TonalEx_js_1.getNonNullableChroma)((0, stdlib_js_1.assertNonNullable)(src.tonic));
-    const dst_chroma = (0, TonalEx_js_1.getNonNullableChroma)((0, stdlib_js_1.assertNonNullable)(dst.tonic));
+export const regionDistance = (src, dst) => {
+    const src_chroma = getNonNullableChroma(assertNonNullable(src.tonic));
+    const dst_chroma = getNonNullableChroma(assertNonNullable(dst.tonic));
     const region_dist = regionDistanceInChromaNumber(src_chroma, dst_chroma);
     return region_dist;
 };
-exports.regionDistance = regionDistance;
 const tonicDistanceInChromaNumber = (src, dst) => {
-    return Math_js_1.Math.abs(Math_js_1.Math.mod((dst - src) * 3 + 3, 7) - 3);
+    return Math.abs(Math.mod((dst - src) * 3 + 3, 7) - 3);
 };
-const tonicDistance = (src, dst) => {
-    const interval = (0, TonalEx_js_1.getIntervalDegree)((0, stdlib_js_1.assertNonNullable)(src.tonic), (0, stdlib_js_1.assertNonNullable)(dst.tonic));
-    const dist_in_circle_of_3rd = Math_js_1.Math.mod((interval - 1) * 3, 7);
-    return Math_js_1.Math.min(dist_in_circle_of_3rd, 7 - dist_in_circle_of_3rd);
+export const tonicDistance = (src, dst) => {
+    const interval = getIntervalDegree(assertNonNullable(src.tonic), assertNonNullable(dst.tonic));
+    const dist_in_circle_of_3rd = Math.mod((interval - 1) * 3, 7);
+    return Math.min(dist_in_circle_of_3rd, 7 - dist_in_circle_of_3rd);
 };
-exports.tonicDistance = tonicDistance;
 const getTonicChroma = (chord) => {
-    const tonic = (0, stdlib_js_1.assertNonNullable)(chord.tonic);
-    return [(0, TonalEx_js_1.getNonNullableChroma)(tonic)];
+    const tonic = assertNonNullable(chord.tonic);
+    return [getNonNullableChroma(tonic)];
 };
 const getPowerChroma = (chord) => {
-    const tonic = (0, stdlib_js_1.assertNonNullable)(chord.tonic);
+    const tonic = assertNonNullable(chord.tonic);
     const fifths = chord.notes
-        .filter(note => (0, TonalEx_js_1.getIntervalDegree)(tonic, note) == 5);
-    new stdlib_js_1.Assertion(fifths.length == 1)
+        .filter(note => getIntervalDegree(tonic, note) == 5);
+    new Assertion(fifths.length == 1)
         .onFailed(() => {
         console.log(`received:`);
         console.log(chord.notes);
         throw new Error("received chord must have just one 5th code.");
     });
-    return [tonic, fifths[0]].map(note => (0, TonalEx_js_1.getNonNullableChroma)(note));
+    return [tonic, fifths[0]].map(note => getNonNullableChroma(note));
 };
 const getChordChroma = (chord) => {
-    return chord.notes.map(note => (0, TonalEx_js_1.getNonNullableChroma)(note));
+    return chord.notes.map(note => getNonNullableChroma(note));
 };
 const getScaleChroma = (roman) => {
     // TODO: 借用和音に伴いスケール構成音を変異させる
-    new stdlib_js_1.Assertion(Math_js_1.Math.isSubSet(roman.chord.notes.map(note => (0, TonalEx_js_1.getNonNullableChroma)(note)), roman.scale.notes.map(note => (0, TonalEx_js_1.getNonNullableChroma)(note))))
+    new Assertion(Math.isSubSet(roman.chord.notes.map(note => getNonNullableChroma(note)), roman.scale.notes.map(note => getNonNullableChroma(note))))
         .onFailed(() => {
         console.log(`received:`);
         console.log(roman);
-        throw new stdlib_js_1.NotImplementedError("借用和音はまだ実装されていません. 入力ローマ数字コードは, コード構成音がスケール内に収まるようにしてください.");
+        throw new NotImplementedError("借用和音はまだ実装されていません. 入力ローマ数字コードは, コード構成音がスケール内に収まるようにしてください.");
     });
-    return roman.scale.notes.map(note => (0, TonalEx_js_1.getNonNullableChroma)(note));
+    return roman.scale.notes.map(note => getNonNullableChroma(note));
 };
-const getBasicSpace = (roman) => {
-    new stdlib_js_1.Assertion(!roman.scale.empty)
+export const getBasicSpace = (roman) => {
+    new Assertion(!roman.scale.empty)
         .onFailed(() => {
         console.log(`received:`);
         console.log(roman.scale);
         throw new Error("scale must not be empty");
     });
-    new stdlib_js_1.Assertion(!roman.chord.empty)
+    new Assertion(!roman.chord.empty)
         .onFailed(() => {
         console.log(`received:`);
         console.log(roman.chord);
         throw new Error("chord must not be empty");
     });
-    const basic_space = Math_js_1.Math.vSum(Math_js_1.Math.getOnehot(getTonicChroma(roman.chord), 12), Math_js_1.Math.getOnehot(getPowerChroma(roman.chord), 12), Math_js_1.Math.getOnehot(getChordChroma(roman.chord), 12), Math_js_1.Math.getOnehot(getScaleChroma(roman), 12));
+    const basic_space = Math.vSum(Math.getOnehot(getTonicChroma(roman.chord), 12), Math.getOnehot(getPowerChroma(roman.chord), 12), Math.getOnehot(getChordChroma(roman.chord), 12), Math.getOnehot(getScaleChroma(roman), 12));
     return basic_space;
 };
-exports.getBasicSpace = getBasicSpace;
-const basicSpaceDistance = (src, dst) => {
-    const src_bs = (0, exports.getBasicSpace)(src);
-    const dst_bs = (0, exports.getBasicSpace)(dst);
-    const incremented = Math_js_1.Math.vSub(dst_bs, src_bs)
+export const basicSpaceDistance = (src, dst) => {
+    const src_bs = getBasicSpace(src);
+    const dst_bs = getBasicSpace(dst);
+    const incremented = Math.vSub(dst_bs, src_bs)
         .filter(e => e > 0);
-    return Math_js_1.Math.totalSum(incremented);
+    return Math.totalSum(incremented);
     // TODO: 遠隔調の例外処理 (がそもそも必要なのか?)
 };
-exports.basicSpaceDistance = basicSpaceDistance;
-const getDistance = (src_chord_string, dst_chord_string) => {
+export const getDistance = (src_chord_string, dst_chord_string) => {
     const src = src_chord_string;
     const dst = dst_chord_string;
-    const region_dist = (0, exports.regionDistance)(src.scale, dst.scale);
-    const tonic_dist = (0, exports.tonicDistance)(src.chord, dst.chord);
-    const basic_space_dist = (0, exports.basicSpaceDistance)(src, dst);
+    const region_dist = regionDistance(src.scale, dst.scale);
+    const tonic_dist = tonicDistance(src.chord, dst.chord);
+    const basic_space_dist = basicSpaceDistance(src, dst);
     return region_dist + tonic_dist + basic_space_dist; //dummy
 };
-exports.getDistance = getDistance;
-const c_minor = key_1.default.minorKey("C").natural;
+const c_minor = Key_default.minorKey("C").natural;
 const isKeyIncludesTheChord = (key, chord) => {
-    const key_note_chromas = key.scale.map((note) => note_1.default.chroma(note));
-    const chord_note_chromas = chord.notes.map(note => note_1.default.chroma(note));
-    return Math_js_1.Math.isSuperSet(key_note_chromas, chord_note_chromas);
+    const key_note_chromas = key.scale.map((note) => Note.chroma(note));
+    const chord_note_chromas = chord.notes.map(note => Note.chroma(note));
+    return Math.isSuperSet(key_note_chromas, chord_note_chromas);
 };
 // 最も尤もらしいコード進行を見つける
-const major_keys = ['Gb', 'Db', 'Ab', 'Eb', 'Bb', 'F', 'C', 'G', 'D', 'A', 'E', 'B',].map(key => scale_1.default.get(key + " major"));
-const minor_keys = ['Eb', 'Bb', 'F', 'C', 'G', 'D', 'A', 'E', 'B', 'F#', 'C#', 'G#',].map(key => scale_1.default.get(key + " minor"));
+const major_keys = ['Gb', 'Db', 'Ab', 'Eb', 'Bb', 'F', 'C', 'G', 'D', 'A', 'E', 'B',].map(key => Scale_default.get(key + " major"));
+const minor_keys = ['Eb', 'Bb', 'F', 'C', 'G', 'D', 'A', 'E', 'B', 'F#', 'C#', 'G#',].map(key => Scale_default.get(key + " minor"));
 const keys = major_keys.concat(minor_keys);
 const chroma2symbol = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
 // TODO: minor Major 7 を受け取ることがあるので, 任意のキーを候補として使えるようにする. 
-const getKeysIncludeTheChord = (chord) => {
+export const getKeysIncludeTheChord = (chord) => {
     const keys_includes_the_chord = chroma2symbol
-        .flatMap(symbol => [key_1.default.majorKey(symbol), key_1.default.minorKey(symbol).natural])
+        .flatMap(symbol => [Key_default.majorKey(symbol), Key_default.minorKey(symbol).natural])
         .filter(key => isKeyIncludesTheChord(key, chord))
-        .map(key => scale_1.default.get(key.chordScales[0]));
+        .map(key => Scale_default.get(key.chordScales[0]));
     return keys_includes_the_chord;
 };
-exports.getKeysIncludeTheChord = getKeysIncludeTheChord;
 const getMostLikelyChordProgression = (chord_progression) => {
     /*
     const possible_keys = chord_progression.forEach(chord => getKeyIncludesTheChord(chord));
@@ -124,7 +112,7 @@ const getMostLikelyChordProgression = (chord_progression) => {
 /* eslint-disable deprecation/deprecation */
 // BEGIN: 古いやつ
 /** @deprecated */
-exports.Key_quality = {
+export const Key_quality = {
     major: [0, 2, 4, 5, 7, 9, 11],
     minor: [0, 2, 3, 5, 7, 8, 10]
 };
@@ -140,7 +128,7 @@ export const Chroma = {
 };
 */
 /** @deprecated */
-exports.Chord_index = {
+export const Chord_index = {
     none: { rmv: [], add: [] },
     seventh: { rmv: [], add: [7] },
     ninth: { rmv: [], add: [7, 9] },
@@ -148,7 +136,7 @@ exports.Chord_index = {
     added46: { rmv: [3, 5], add: [4, 6] },
 };
 /** @deprecated */
-exports.Alt5 = {
+export const Alt5 = {
     dim5: -1,
     none: 0,
     aug5: 1

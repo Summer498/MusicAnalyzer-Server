@@ -1,10 +1,5 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const fs_1 = __importDefault(require("fs"));
-const index_js_1 = __importDefault(require("@tonaljs/chord/dist/index.js"));
+import fs from "fs";
+import Chord_default from "@tonaljs/chord/dist/index.js";
 const min = (a, b) => a < b ? a : b;
 const max = (a, b) => a > b ? a : b;
 const parse_csv = (str) => {
@@ -32,7 +27,7 @@ const compress = (arr) => {
     return ret;
 };
 const getTimeAndChord = (chord_strs) => {
-    const time_and_chord = chord_strs.map(e => { return { time: [e[0], e[1]], chord: index_js_1.default.get(e[2]) }; });
+    const time_and_chord = chord_strs.map(e => { return { time: [e[0], e[1]], chord: Chord_default.get(e[2]) }; });
     const non_null_chord = (() => {
         const res = [];
         time_and_chord.forEach(e => e.chord.empty ? 0 : res.push({ time: e.time, chord: e.chord })); // chord が空の場合は time ごと除く
@@ -51,8 +46,8 @@ const analyzeMelody = (melody, chord) => {
 const main = (argv) => {
     const melody_filename = argv[2];
     const chord_filename = argv[3];
-    const melody_txt = fs_1.default.readFileSync(melody_filename, "utf-8");
-    const chord_txt = fs_1.default.readFileSync(chord_filename, "utf-8");
+    const melody_txt = fs.readFileSync(melody_filename, "utf-8");
+    const chord_txt = fs.readFileSync(chord_filename, "utf-8");
     const melody_sr = 100; // CREPE から得られるメロディは毎秒 100 サンプル
     const melody_csv = parse_csv(melody_txt).map(e => isNaN(e) ? null : Math.round(freqToMidi(e))); // compress が NaN を全て別のオブジェクト扱いするので null に置換する
     const comp_melody = compress(melody_csv);

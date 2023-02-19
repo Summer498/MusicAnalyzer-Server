@@ -118,7 +118,7 @@ const octave_BG = [...Array(octave_cnt)].map((_, i) => SVG.g({ name: "octave-BG"
 const octave_keys = [...Array(octave_cnt)].map((_, i) => SVG.g({ name: "octave-keys" }, undefined, [white_keys[i], black_keys[i]]));
 const piano_roll = SVG.svg({ name: "piano-roll" }, undefined, [octave_BG, chord_rects, chord_names, melody_rects, octave_keys]);
 const piano_roll_place = document.getElementById("piano-roll-place");
-piano_roll_place === null || piano_roll_place === void 0 ? void 0 : piano_roll_place.insertAdjacentElement("afterbegin", piano_roll);
+piano_roll_place?.insertAdjacentElement("afterbegin", piano_roll);
 const draw = (piano_roll_width) => {
     // 各 svg のパラメータを更新する
     const note_size = piano_roll_width / piano_roll_time;

@@ -1,4 +1,3 @@
-"use strict";
 var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
     if (kind === "m") throw new TypeError("Private method is not writable");
     if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
@@ -11,9 +10,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
 var _MaxCalculableArray_instances, _MaxCalculableArray_args, _MaxCalculableArray_values, _MaxCalculableArray_memo_funcs, _MaxCalculableArray_willRenew, _MaxCalculableArray_renew_min_or_max, _MaxCalculableArray_checkCache;
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.viterbi = exports.logViterbi = exports.dynamicLogViterbi = void 0;
-const Math_js_1 = require("../Math/Math.js");
+import { Math } from "../Math/Math.js";
 class MaxCalculableArray extends Array {
     constructor(...items) {
         super(items.length);
@@ -70,7 +67,7 @@ const newArray = (n) => [...Array(n)];
  * @param observation_sequence
  * @returns Probability of the most likely transition trace and the trace
  */
-function dynamicLogViterbi(initial_log_probabilities, getStatesOnTheTime, transitionLogProbabilities, emissionLogProbabilities, observation_sequence, will_find_min = false) {
+export function dynamicLogViterbi(initial_log_probabilities, getStatesOnTheTime, transitionLogProbabilities, emissionLogProbabilities, observation_sequence, will_find_min = false) {
     const pi = initial_log_probabilities;
     const Y = observation_sequence;
     const S = pi.length;
@@ -84,7 +81,7 @@ function dynamicLogViterbi(initial_log_probabilities, getStatesOnTheTime, transi
     states.forEach(s => { t1[s] = pi[s] + B(s, Y[0]); }); // pi[s] が undefined の場合, 0 にする.
     states.forEach(s => { T2[0][s][0] = 0; });
     // 帰納
-    Math_js_1.Math.getRange(1, T).forEach(t => {
+    Math.getRange(1, T).forEach(t => {
         const old_states = states;
         states = new MaxCalculableArray(...getStatesOnTheTime(t));
         const old_t1 = [...t1];
@@ -121,7 +118,7 @@ function dynamicLogViterbi(initial_log_probabilities, getStatesOnTheTime, transi
         ret[T - 1] = terminal;
         return ret;
     });
-    Math_js_1.Math.getRange(T - 1, 0, -1).forEach(j => {
+    Math.getRange(T - 1, 0, -1).forEach(j => {
         const old_state_trace_pathes = [...state_trace_pathes];
         state_trace_pathes = old_state_trace_pathes.map(path => T2[j][path[j]].map(node => {
             const new_path = [...path];
@@ -137,7 +134,6 @@ function dynamicLogViterbi(initial_log_probabilities, getStatesOnTheTime, transi
         trace: state_trace_pathes // state_trace_pathes[i] は i 番目の最短経路
     };
 }
-exports.dynamicLogViterbi = dynamicLogViterbi;
 /**
  * @brief viterbi algorithm
  * @param initial_log_probabilities
@@ -146,17 +142,15 @@ exports.dynamicLogViterbi = dynamicLogViterbi;
  * @param observation_sequence
  * @returns Probability of the most likely transition trace and the trace
  */
-const logViterbi = (initial_log_probabilities, transition_log_probabilities, emission_log_probabilities, observation_sequence) => {
-    const states = new MaxCalculableArray(...Math_js_1.Math.getRange(0, initial_log_probabilities.length));
+export const logViterbi = (initial_log_probabilities, transition_log_probabilities, emission_log_probabilities, observation_sequence) => {
+    const states = new MaxCalculableArray(...Math.getRange(0, initial_log_probabilities.length));
     return dynamicLogViterbi(initial_log_probabilities, () => states, (prev_time, time, prev_state, state) => transition_log_probabilities[prev_state][state], (state, observation) => emission_log_probabilities[state][observation], observation_sequence);
 };
-exports.logViterbi = logViterbi;
-const viterbi = (initial_probabilities, transition_probabilities, emission_probabilities, observation_sequence) => {
-    const log_viterbi = (0, exports.logViterbi)(initial_probabilities.map(e => Math_js_1.Math.log(e)), transition_probabilities.map(e => e.map(e => Math_js_1.Math.log(e))), emission_probabilities.map(e => e.map(e => Math_js_1.Math.log(e))), observation_sequence);
+export const viterbi = (initial_probabilities, transition_probabilities, emission_probabilities, observation_sequence) => {
+    const log_viterbi = logViterbi(initial_probabilities.map(e => Math.log(e)), transition_probabilities.map(e => e.map(e => Math.log(e))), emission_probabilities.map(e => e.map(e => Math.log(e))), observation_sequence);
     return {
-        probability: Math_js_1.Math.exp(log_viterbi.log_probability),
+        probability: Math.exp(log_viterbi.log_probability),
         trace: log_viterbi.trace
     };
 };
-exports.viterbi = viterbi;
 //# sourceMappingURL=Graph.js.map

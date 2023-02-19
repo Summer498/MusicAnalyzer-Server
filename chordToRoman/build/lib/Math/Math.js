@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Math = void 0;
-const stdlib_js_1 = require("../StdLib/stdlib.js");
+import { hasSameValue } from "../StdLib/stdlib.js";
 const not = (b) => !b;
 const getRange = (begin, end, step = 1) => [...Array(Math.abs(end - begin))].map((_, i) => i * step + begin);
 const getZeros = (length) => [...Array(length)].map(e => 0); // eslint-disable-line @typescript-eslint/no-unused-vars
@@ -38,7 +35,7 @@ const isSubSet = (set, superset) => {
 const isSuperSet = (set, subset) => {
     return isSubSet(subset, set);
 };
-const sameArray = (arr1, arr2) => (0, stdlib_js_1.hasSameValue)(arr1, arr2);
+const sameArray = (arr1, arr2) => hasSameValue(arr1, arr2);
 /** @brief avoid bug from negative value */
 const mod = (n, m) => (Number(n) % m + m) % m;
 const bool2number = (b) => b ? 1 : 0;
@@ -150,5 +147,5 @@ const CMath = {
     tan: Math.tan,
     [Symbol.toStringTag]: "Math"
 };
-exports.Math = CMath;
+export { CMath as Math };
 //# sourceMappingURL=Math.js.map

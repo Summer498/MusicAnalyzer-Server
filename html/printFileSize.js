@@ -30,7 +30,7 @@ const printFileSizeIsTooLarge = (file_size) => {
     file_size_is_too_lerge_area.insertAdjacentElement("afterbegin", message);
 };
 window.addEventListener("DOMContentLoaded", function () {
-    var _a;
-    (_a = this.document
-        .getElementById("upload_file")) === null || _a === void 0 ? void 0 : _a.addEventListener("change", printFileSize);
+    this.document
+        .getElementById("upload_file")
+        ?.addEventListener("change", printFileSize);
 });

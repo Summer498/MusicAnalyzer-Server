@@ -1,10 +1,5 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const TonalEx_js_1 = require("./lib/TonalEx/TonalEx.js");
-const readline_1 = __importDefault(require("readline"));
+import { ChordProgression } from "./lib/TonalEx/TonalEx.js";
+import ReadLine from "readline";
 const green = "\u001b[32m";
 const reset = "\u001b[0m";
 const remove_item = (array, will_removed) => {
@@ -50,7 +45,7 @@ const calcChordProgression = (chords) => {
     const time_and_chordss = remove_item(tmp0, item => item.length === 0); // 空配列を除く                 [["C"],["F"], [], ["G"],["C"]]      => [["C","F"], ["G","C"]]
     return time_and_chordss.map(time_and_chords => {
         const time = time_and_chords.map(e => [e[0], e[1]]);
-        const progression = select_suitable_progression(new TonalEx_js_1.ChordProgression(time_and_chords.map(e => e[2])).getMinimumPath());
+        const progression = select_suitable_progression(new ChordProgression(time_and_chords.map(e => e[2])).getMinimumPath());
         return time_and_chords.map((_, i) => {
             return {
                 time: time[i],
@@ -72,7 +67,7 @@ const main = (argv) => {
         // 標準入力からコード進行を受け取る
         process.stdin.setEncoding("utf8");
         let lines = [];
-        const reader = readline_1.default.createInterface({ input: process.stdin });
+        const reader = ReadLine.createInterface({ input: process.stdin });
         reader.on("line", (line) => { lines.push(line); });
         reader.on("close", () => {
             const led_data = JSON.parse(lines.join(""));

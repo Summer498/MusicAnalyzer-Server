@@ -1,4 +1,4 @@
-import { RomanNumeral } from "tonal/dist";
+import { RomanNumeral } from "tonal";
 import { Chord } from "@tonaljs/chord"
 import Chord_default from "@tonaljs/chord"
 import Interval from "@tonaljs/interval";
