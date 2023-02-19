@@ -13,11 +13,15 @@ out_place="/dev/stdout"
 export PYTHONPATH="./python:$PYTHONPATH"
 debug_mode=1
 force_reanalyze=0
+melody_reanalyze=0
 if [ "$2" = "--debug_mode=false" ]; then
     debug_mode=0
 fi
 if [ "$3" = "--force_reanalyze=true" ]; then
     force_reanalyze=1
+fi
+if [ "$4" = "--melody_reanalyze" ]; then
+    melody_reanalyze=1
 fi
 USE_ANALYZE_CACHE=$((! $force_reanalyze))
 
@@ -128,13 +132,18 @@ if [ ! -e "$melody_analyze_chord_src" ]; then
     popd > /dev/null
     exit 1
 fi
-#if [ -e "$melody_analyze_dst" ]; then
-#    debug_log ${green}file $melody_analyze_dst already exist$defcol > /dev/stderr
-#else
+if [ $USE_ANALYZE_CACHE -eq 1 ] && [ -e "$melody_analyze_dst" ]; then
+    if [ $melody_reanalyze -eq 1 ]; then
+        debug_log "node ./melodyAnalyze \"$melody_analyze_melody_src\"  \"$melody_analyze_chord_src\" > \"$melody_analyze_dst\"" > $out_place
+        node ./melodyAnalyze "$melody_analyze_melody_src" "$melody_analyze_chord_src" > "$melody_analyze_dst"
+    else
+        debug_log ${green}file $melody_analyze_dst already exist$defcol > $out_place
+    fi
+else
     # 本処理
     debug_log "node ./melodyAnalyze \"$melody_analyze_melody_src\"  \"$melody_analyze_chord_src\" > \"$melody_analyze_dst\""
          node ./melodyAnalyze "$melody_analyze_melody_src" "$melody_analyze_chord_src" > "$melody_analyze_dst"
-#fi
+fi
 cat "$melody_analyze_dst"
 
 popd > /dev/null
