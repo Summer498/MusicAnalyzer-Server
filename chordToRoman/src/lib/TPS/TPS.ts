@@ -1,7 +1,11 @@
 import { Math } from "../Math/Math.js";
 import { getIntervalDegree, getNonNullableChroma, RomanChord } from "../TonalEx/TonalEx.js";
-import { Scale_default, Chord, Scale, Key_default, Note, } from "../adapters/Tonal.js";
 import { assertNonNullable, Assertion, NotImplementedError } from "../StdLib/stdlib.js";
+import Scale_default from "@tonaljs/scale";
+import { Chord } from "@tonaljs/chord";
+import { Scale } from "@tonaljs/scale";
+import Key_default from "@tonaljs/key";
+import Note from "@tonaljs/note";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 const regionDistanceInChromaNumber = (src: number, dst: number) => {

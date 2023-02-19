@@ -1,4 +1,6 @@
-import { Chord, NoteLiteral, Scale } from "../adapters/Tonal.js";
+import { Chord } from "@tonaljs/chord";
+import { NoteLiteral } from "tonal";
+import { Scale } from "@tonaljs/scale";
 export declare class RomanChord {
     #private;
     scale: Scale;

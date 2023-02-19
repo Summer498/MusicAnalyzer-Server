@@ -1,5 +1,6 @@
 import { RomanChord } from "../TonalEx/TonalEx.js";
-import { Chord, Scale } from "../adapters/Tonal.js";
+import { Chord } from "@tonaljs/chord";
+import { Scale } from "@tonaljs/scale";
 export declare const regionDistance: (src: Scale, dst: Scale) => number;
 export declare const tonicDistance: (src: Chord, dst: Chord) => number;
 export declare const getBasicSpace: (roman: RomanChord) => number[];

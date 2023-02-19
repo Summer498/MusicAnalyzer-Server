@@ -1,7 +1,12 @@
-import { Chord, ChordDictionary, Chord_default, Key_default, Note, Scale, Scale_default } from "../adapters/Tonal.js";
 import { Math } from "../Math/Math.js";
 import { Assertion, assertNonNullable } from "../StdLib/stdlib.js";
 import { getIntervalDegree, getNonNullableChroma, RomanChord, } from "../TonalEx/TonalEx.js";
+import { ChordDictionary } from "tonal";
+import { Chord } from "@tonaljs/chord";
+import Chord_default from "@tonaljs/chord"
+import Key_default from "@tonaljs/key";
+import Note from "@tonaljs/note";
+import Scale_default from "@tonaljs/scale";
 import {
     getDistance,
     tonicDistance,

@@ -1,10 +1,15 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Alt5 = exports.Chord_index = exports.Key_quality = exports.getKeysIncludeTheChord = exports.getDistance = exports.basicSpaceDistance = exports.getBasicSpace = exports.tonicDistance = exports.regionDistance = void 0;
 const Math_js_1 = require("../Math/Math.js");
 const TonalEx_js_1 = require("../TonalEx/TonalEx.js");
-const Tonal_js_1 = require("../adapters/Tonal.js");
 const stdlib_js_1 = require("../StdLib/stdlib.js");
+const scale_1 = __importDefault(require("@tonaljs/scale"));
+const key_1 = __importDefault(require("@tonaljs/key"));
+const note_1 = __importDefault(require("@tonaljs/note"));
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const regionDistanceInChromaNumber = (src, dst) => {
     return Math_js_1.Math.abs(Math_js_1.Math.mod((dst - src) * 7 + 6, 12) - 6);
@@ -89,23 +94,23 @@ const getDistance = (src_chord_string, dst_chord_string) => {
     return region_dist + tonic_dist + basic_space_dist; //dummy
 };
 exports.getDistance = getDistance;
-const c_minor = Tonal_js_1.Key_default.minorKey("C").natural;
+const c_minor = key_1.default.minorKey("C").natural;
 const isKeyIncludesTheChord = (key, chord) => {
-    const key_note_chromas = key.scale.map((note) => Tonal_js_1.Note.chroma(note));
-    const chord_note_chromas = chord.notes.map(note => Tonal_js_1.Note.chroma(note));
+    const key_note_chromas = key.scale.map((note) => note_1.default.chroma(note));
+    const chord_note_chromas = chord.notes.map(note => note_1.default.chroma(note));
     return Math_js_1.Math.isSuperSet(key_note_chromas, chord_note_chromas);
 };
 // 最も尤もらしいコード進行を見つける
-const major_keys = ['Gb', 'Db', 'Ab', 'Eb', 'Bb', 'F', 'C', 'G', 'D', 'A', 'E', 'B',].map(key => Tonal_js_1.Scale_default.get(key + " major"));
-const minor_keys = ['Eb', 'Bb', 'F', 'C', 'G', 'D', 'A', 'E', 'B', 'F#', 'C#', 'G#',].map(key => Tonal_js_1.Scale_default.get(key + " minor"));
+const major_keys = ['Gb', 'Db', 'Ab', 'Eb', 'Bb', 'F', 'C', 'G', 'D', 'A', 'E', 'B',].map(key => scale_1.default.get(key + " major"));
+const minor_keys = ['Eb', 'Bb', 'F', 'C', 'G', 'D', 'A', 'E', 'B', 'F#', 'C#', 'G#',].map(key => scale_1.default.get(key + " minor"));
 const keys = major_keys.concat(minor_keys);
 const chroma2symbol = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
 // TODO: minor Major 7 を受け取ることがあるので, 任意のキーを候補として使えるようにする. 
 const getKeysIncludeTheChord = (chord) => {
     const keys_includes_the_chord = chroma2symbol
-        .flatMap(symbol => [Tonal_js_1.Key_default.majorKey(symbol), Tonal_js_1.Key_default.minorKey(symbol).natural])
+        .flatMap(symbol => [key_1.default.majorKey(symbol), key_1.default.minorKey(symbol).natural])
         .filter(key => isKeyIncludesTheChord(key, chord))
-        .map(key => Tonal_js_1.Scale_default.get(key.chordScales[0]));
+        .map(key => scale_1.default.get(key.chordScales[0]));
     return keys_includes_the_chord;
 };
 exports.getKeysIncludeTheChord = getKeysIncludeTheChord;

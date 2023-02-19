@@ -1,25 +1,11 @@
-import { exit } from "process";
-import { RomanNumeral, Tonal } from "tonal/dist";
-//*
-import {
-    Chord,
-    Chord_default,
-    Interval,
-    Note,
-    NoteLiteral,
-    Scale,
-    Scale_default
-} from "../adapters/Tonal.js"
-//*/
-/*
+import { RomanNumeral } from "tonal/dist";
 import { Chord } from "@tonaljs/chord"
 import Chord_default from "@tonaljs/chord"
-import { Interval } from "tonal";
-import { Note } from "tonal"
+import Interval from "@tonaljs/interval";
+import Note from "@tonaljs/note"
 import { NoteLiteral } from "tonal";
 import { Scale } from "@tonaljs/scale";
 import Scale_default from "@tonaljs/scale"
-*/
 
 import { dynamicLogViterbi } from "../Graph/Graph.js";
 import { Math } from "../Math/Math.js";
