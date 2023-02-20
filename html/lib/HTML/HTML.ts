@@ -68,6 +68,7 @@ export class SVG {
 	static g(attributes: attribute = {}, text = "", children: recurrentArray<Element> = []) { return svgElement("g", attributes, text, children); }
 	static circle(attributes: attribute = {}, text = "", children: recurrentArray<Element> = []) { return svgElement("circle", attributes, text, children); }
 	static rect(attributes: attribute = {}, text = "", children: recurrentArray<Element> = []) { return svgElement("rect", attributes, text, children); }
+	static polygon(attributes: attribute = {}, text = "", children: recurrentArray<Element> = []) { return svgElement("polygon", attributes, text, children); }
 	static line(attributes: attribute = {}, text = "", children: recurrentArray<Element> = []) { return svgElement("line", attributes, text, children); }
 	static text(attributes: attribute = {}, text = "", children: recurrentArray<Element> = []) { return svgElement("text", attributes, text, children); }
 }

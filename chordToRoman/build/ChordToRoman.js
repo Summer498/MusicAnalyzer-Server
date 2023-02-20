@@ -43,7 +43,7 @@ const splitArray = (arr, separator) => {
 const calcChordProgression = (chords) => {
     const tmp0 = splitArray(chords, e => e[2] === "N"); // ノンコードシンボルを除く     ["C", "F", "N", "N", "G","C"]       => [["C"],["F"], [], ["G"],["C"]]
     const time_and_chordss = remove_item(tmp0, item => item.length === 0); // 空配列を除く                 [["C"],["F"], [], ["G"],["C"]]      => [["C","F"], ["G","C"]]
-    return time_and_chordss.map(time_and_chords => {
+    return time_and_chordss.flatMap(time_and_chords => {
         const time = time_and_chords.map(e => [e[0], e[1]]);
         const progression = select_suitable_progression(new ChordProgression(time_and_chords.map(e => e[2])).getMinimumPath());
         return time_and_chords.map((_, i) => {
@@ -78,5 +78,4 @@ const main = (argv) => {
     }
 };
 main(process.argv);
-//*/
 //# sourceMappingURL=ChordToRoman.js.map

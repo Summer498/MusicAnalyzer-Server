@@ -34,6 +34,7 @@ export class SVG {
     static g(attributes = {}, text = "", children = []) { return svgElement("g", attributes, text, children); }
     static circle(attributes = {}, text = "", children = []) { return svgElement("circle", attributes, text, children); }
     static rect(attributes = {}, text = "", children = []) { return svgElement("rect", attributes, text, children); }
+    static polygon(attributes = {}, text = "", children = []) { return svgElement("polygon", attributes, text, children); }
     static line(attributes = {}, text = "", children = []) { return svgElement("line", attributes, text, children); }
     static text(attributes = {}, text = "", children = []) { return svgElement("text", attributes, text, children); }
 }

@@ -5,9 +5,16 @@ import { hsv2rgb } from "../lib/Color/Color.js";
 
 type timeAndRoman = { time: number[], progression: RomanChord };
 type timeAndMelody = { time: number[], note: number }
+type MelodyAnalysis = {
+  gravity: {
+    destination: number | undefined,
+    resolved: boolean,
+  }[]
+}
+type timeAndMelodyAnalysis = { time: number[], note: number, roman_name: string | undefined, melodyAnalysis: MelodyAnalysis }
 
 interface MusicAnalyzerWindow extends Window {
-  MusicAnalyzer: { roman: timeAndRoman[][], melody: timeAndMelody[] }
+  MusicAnalyzer: { roman: timeAndRoman[], melody: timeAndMelodyAnalysis[] }
 }
 declare const window: MusicAnalyzerWindow;
 
@@ -25,6 +32,12 @@ const noteToChroma = (note: string) => {
   const base = max("A1BC2D3EF4G5".indexOf(note[0]), "a1bc2d3ef4g5".indexOf(note[0]));
   const acc = (note.length > 1) ? "b♮#".indexOf(note[1]) - 1 : 0;
   return base + acc;
+}
+
+const rgbToString = (rgb: number[]) => {
+  let ret = "#"
+  rgb.forEach(e => { ret = `${ret}${(e < 16) ? `0` : ``}${e.toString(16)}` })
+  return ret;
 }
 
 const audio_area = document.getElementById("audio_area")!;
@@ -66,8 +79,11 @@ const white_position = Math.getRange(0, 12).filter(e => !black_position.includes
 const chord_text_size = 32
 const piano_roll_time = 5;  // 1 画面に収める曲の長さ[秒]
 
+const triangle_width = 5
+const triangle_height = 0.25
+
 // コードを表す部分を作成
-const romanToColor = (roman: string) => {
+const romanToColor = (roman: string, s: number, v: number) => {
   let i: number | undefined = undefined;
   const ROMAN = roman.toUpperCase()
   if (0) { }
@@ -79,8 +95,8 @@ const romanToColor = (roman: string) => {
   else if (ROMAN.includes("II")) { i = 5; }
   else if (ROMAN.includes("I")) { i = 2 }
   if (i === undefined) { console.log("888", roman); return "#000000"; }
-  const col = hsv2rgb(360 * i / 7, 0.5, 0.9);
-  return `#${((col[0] * 256 + col[1]) * 256 + col[2]).toString(16)}`;
+  const col = hsv2rgb(360 * i / 7, s, v);
+  return rgbToString(col);
 }
 
 const shorten = (chord: string) => {
@@ -93,26 +109,52 @@ const shorten = (chord: string) => {
 
 
 // svg element の作成
-const chord_svg_elements = romans.map(time_and_roman =>
-  time_and_roman.map((roman, i) => {
-    const fill = romanToColor(roman.progression.roman);
-    const notes: string[] = roman.progression.chord.notes;
-    return {
-      rects: notes.map(note => SVG.rect({ name: "chord-note", fill, stroke: "#444" })),
-      text: SVG.text({}, shorten(roman.progression.roman)),
-      time: time_and_roman[i].time,
-      notes,
-    };
-  }).flat()
-).flat();
-const melody_svg_elements = melodies.map(e => {
-  const fill = hsv2rgb(180 + 360 * 2 / 7, 0.5, 0.9);
+const chord_svg_elements = romans.map(time_and_roman => {
+  const notes: string[] = time_and_roman.progression.chord.notes;
   return {
-    rect: SVG.rect({ name: "chord-note", fill: `#${((fill[0] * 256 + fill[1]) * 256 + fill[2]).toString(16)}`, stroke: "#444" }),
+    rects: notes.map(note => SVG.rect({ name: "chord-note", fill: romanToColor(time_and_roman.progression.roman, 0.5, 0.9), stroke: "#444" })),
+    text: SVG.text({ stroke: romanToColor(time_and_roman.progression.roman, 1, 0.75) }, shorten(time_and_roman.progression.roman)),
+    time: time_and_roman.time,
+    notes,
+  };
+}
+);
+const melody_svg_elements = melodies.map(e => {
+  return {
+    rect: SVG.rect({ name: "chord-note", fill: rgbToString(hsv2rgb(180 + 360 * 2 / 7, 0.5, 0.9)), stroke: "#444" }),
     time: e.time,
     note: e.note
   }
 })
+
+const arrow_svg_elements =
+  (() => {
+    let ret: {
+      triangle: SVGPolygonElement,
+      line: SVGLineElement,
+      time: number[],
+      note: number,
+      destination: number
+    }[] = [];
+
+    const stroke = rgbToString([0, 0, 0]);
+    melodies.forEach(e => {
+      let fill = rgbToString(hsv2rgb(180 + 360 * 2 / 7, 0.5, 0.9));
+      e.melodyAnalysis.gravity.forEach((gravity, i) => {
+        if (i === 1 && e.roman_name !== undefined) { fill = romanToColor(e.roman_name, 0.5, 0.9) }
+        if (gravity.resolved && gravity.destination !== undefined) {
+          ret.push({
+            triangle: SVG.polygon({ name: "gravity-arrow", stroke, fill, "stroke-width": 1 }),
+            line: SVG.line({ name: "gravity-arrow", stroke, "stroke-width": 1 }),
+            time: e.time,
+            note: e.note,
+            destination: gravity.destination
+          })
+        }
+      })
+    })
+    return ret;
+  })();
 
 const white_BGs = [...Array(octave_cnt)].map(i => [...Array(7)].map(j =>
   SVG.rect({ name: "white-BG", fill: white_back_fill, stroke: white_back_stroke, })
@@ -129,9 +171,11 @@ const black_keys = [...Array(octave_cnt)].map(i => [...Array(5)].map(j =>
 const chord_rects = chord_svg_elements.flatMap(e => e.rects);
 const chord_names = chord_svg_elements.map(e => e.text);
 const melody_rects = melody_svg_elements.map(e => e.rect);
-const octave_BG = [...Array(octave_cnt)].map((_,i) => SVG.g({ name: "octave-BG" }, undefined, [white_BGs[i], black_BGs[i]]));
-const octave_keys = [...Array(octave_cnt)].map((_,i) => SVG.g({ name: "octave-keys" }, undefined, [white_keys[i], black_keys[i]]));
-const piano_roll = SVG.svg({ name: "piano-roll" }, undefined, [octave_BG, chord_rects, chord_names, melody_rects, octave_keys]);
+const gravity_arrow_lines = arrow_svg_elements.map(e => e.line);
+const gravity_arrow_triangles = arrow_svg_elements.map(e => e.triangle);
+const octave_BG = [...Array(octave_cnt)].map((_, i) => SVG.g({ name: "octave-BG" }, undefined, [white_BGs[i], black_BGs[i]]));
+const octave_keys = [...Array(octave_cnt)].map((_, i) => SVG.g({ name: "octave-keys" }, undefined, [white_keys[i], black_keys[i]]));
+const piano_roll = SVG.svg({ name: "piano-roll" }, undefined, [octave_BG, chord_rects, chord_names, melody_rects, gravity_arrow_lines, gravity_arrow_triangles, octave_keys]);
 const piano_roll_place = document.getElementById("piano-roll-place");
 piano_roll_place?.insertAdjacentElement("afterbegin", piano_roll);
 
@@ -152,8 +196,26 @@ const draw = (piano_roll_width: number) => {
     width: (e.time[1] - e.time[0]) * note_size,
     height: black_key.height,
   }))
-  console.log(melody_svg_elements.map(e=>e.time));
-  
+  arrow_svg_elements.forEach(e => {
+    e.line.setAttributes({
+      x1: ((e.time[1] - e.time[0]) / 2 + e.time[0]) * note_size,
+      y1: (83 + 0.5 - e.note) * black_key.height,
+      x2: ((e.time[1] - e.time[0]) / 2 + e.time[0]) * note_size,
+      y2: (83 + 0.5 - e.destination) * black_key.height
+    })
+    const tri_pos = [
+      ((e.time[1] - e.time[0]) / 2 + e.time[0]) * note_size,
+      (83 + 0.5 - e.destination) * black_key.height,
+      ((e.time[1] - e.time[0]) / 2 + e.time[0]) * note_size - triangle_width,
+      (83 + 0.5 - e.destination + (e.destination - e.note) * triangle_height) * black_key.height,
+      ((e.time[1] - e.time[0]) / 2 + e.time[0]) * note_size + triangle_width,
+      (83 + 0.5 - e.destination + (e.destination - e.note) * triangle_height) * black_key.height
+    ]
+    e.triangle.setAttributes({
+      points: `${tri_pos[0]},${tri_pos[1]},${tri_pos[2]},${tri_pos[3]},${tri_pos[4]},${tri_pos[5]}`
+    })
+  })
+
   chord_svg_elements.forEach(e => e.text.setAttributes({ x: e.time[0] * note_size, y: piano_roll_height + chord_text_size }))
   white_BGs.forEach((_, i) => _.forEach((_, j) => _.setAttributes({ x: 0, y: octave_height * i + black_key.height * white_position[j], width: piano_roll_width, height: black_key.height })));
   black_BGs.forEach((_, i) => _.forEach((_, j) => _.setAttributes({ x: 0, y: octave_height * i + black_key.height * black_position[j], width: piano_roll_width, height: black_key.height })));
@@ -169,7 +231,24 @@ audio.addEventListener("timeupdate", ev => {
   const std_pos = audio.currentTime * note_size;
   chord_svg_elements.forEach(e => e.rects.forEach(rect => rect.setAttributes({ x: e.time[0] * note_size - std_pos })));  // SVG.rect の位置替える
   chord_svg_elements.forEach(e => e.text.setAttributes({ x: e.time[0] * note_size - std_pos }));
-  melody_svg_elements.forEach(e => e.rect.setAttributes({ x: e.time[0] * note_size - std_pos }))
+  melody_svg_elements.forEach(e => e.rect.setAttributes({ x: e.time[0] * note_size - std_pos }));
+  arrow_svg_elements.forEach(e => {
+    e.line.setAttributes({
+      x1: ((e.time[1] - e.time[0]) / 2 + e.time[0]) * note_size - std_pos,
+      x2: ((e.time[1] - e.time[0]) / 2 + e.time[0]) * note_size - std_pos
+    });
+    const tri_pos = [
+      ((e.time[1] - e.time[0]) / 2 + e.time[0]) * note_size - std_pos,
+      (83 + 0.5 - e.destination) * black_key.height,
+      ((e.time[1] - e.time[0]) / 2 + e.time[0]) * note_size - triangle_width - std_pos,
+      (83 + 0.5 - e.destination + (e.destination - e.note) * triangle_height) * black_key.height,
+      ((e.time[1] - e.time[0]) / 2 + e.time[0]) * note_size + triangle_width - std_pos,
+      (83 + 0.5 - e.destination + (e.destination - e.note) * triangle_height) * black_key.height
+    ]
+    e.triangle.setAttributes({
+      points: `${tri_pos[0]},${tri_pos[1]},${tri_pos[2]},${tri_pos[3]},${tri_pos[4]},${tri_pos[5]}`
+    })
+  })
 });
 
 draw(getPianoRollWidth());

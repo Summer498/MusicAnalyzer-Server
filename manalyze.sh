@@ -97,7 +97,6 @@ else
 fi
 
 # コードをローマ数字変換 (メロディ分析部でローマ数字の情報が必要になれば使う)
-<< COMMNET_CHORD_TO_ROMAN
 chord_to_roman_src=$chord_ext_dst
 chord_to_roman_dst="./resources/$filename.roman.json"
 if [ ! -e "$chord_to_roman_src" ]; then
@@ -106,21 +105,15 @@ if [ ! -e "$chord_to_roman_src" ]; then
     exit 1
 fi
 if [ $USE_ANALYZE_CACHE -eq 1 ] && [ -e "$chord_to_roman_dst" ]; then
-    if [ $roman_reanalyze -eq 1 ]; then
-        debug_log "node ./chordToRoman < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\""
-        node ./chordToRoman < "$chord_to_roman_src" > "$chord_to_roman_dst"
-    else
-        debug_log ${green}file $chord_to_roman_dst already exist$defcol > $out_place
-    fi
+    debug_log ${green}file $chord_to_roman_dst already exist$defcol > $out_place
 else
     debug_log "node ./chordToRoman < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\""
     node ./chordToRoman < "$chord_to_roman_src" > "$chord_to_roman_dst"
 fi
-COMMNET_CHORD_TO_ROMAN
 
 # コードとメロディの関係を求める
 melody_analyze_melody_src=$post_crepe_dst
-melody_analyze_chord_src=$chord_ext_dst
+melody_analyze_chord_src=$chord_to_roman_dst
 melody_analyze_dst="./separated/htdemucs/$songname/manalyze.json"
 if [ ! -e "$melody_analyze_melody_src" ]; then
     debug_log ${red}file $melody_analyze_melody_src not exist$defcol > $out_place

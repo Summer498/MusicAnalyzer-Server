@@ -44,11 +44,11 @@ const splitArray = <T>(arr: T[], separator: (e: T) => boolean) => {
 type TimeAndString = { 0: number, 1: number, 2: string };
 type timeAndRoman = { time: number[], progression: RomanChord };
 // Expected Input: "Am7 FM7 G7 CM7"
-const calcChordProgression = (chords: TimeAndString[]): timeAndRoman[][] => {
+const calcChordProgression = (chords: TimeAndString[]): timeAndRoman[] => {
     const tmp0 = splitArray(chords, e => e[2] === "N")                       // ノンコードシンボルを除く     ["C", "F", "N", "N", "G","C"]       => [["C"],["F"], [], ["G"],["C"]]
     const time_and_chordss = remove_item(tmp0, item => item.length === 0);  // 空配列を除く                 [["C"],["F"], [], ["G"],["C"]]      => [["C","F"], ["G","C"]]
 
-    return time_and_chordss.map(time_and_chords => {
+    return time_and_chordss.flatMap(time_and_chords => {
         const time = time_and_chords.map(e => [e[0], e[1]]);
         const progression = select_suitable_progression(new ChordProgression(time_and_chords.map(e => e[2])).getMinimumPath());
         return time_and_chords.map((_, i) => {
@@ -84,4 +84,3 @@ const main = (argv: string[]) => {
     }
 }
 main(process.argv)
-//*/
