@@ -7,7 +7,7 @@ import os
 def main():
     file_path = f"{sys.argv[1]}"
     file_name = os.path.basename(file_path)
-    file_out = f"./resources/{file_name}.chords.json"
+    file_out = f"{sys.argv[2]}"
 
     chords_with_time = autochord.recognize(file_path)
     with open(file_out, "w+") as f:

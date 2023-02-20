@@ -45,6 +45,7 @@ else
     # 本処理
     debug_log python -m demucs -d cuda \"$separate_src\" > $out_place
     python -m demucs -d cuda "$separate_src"
+    chmod 757 "$separate_dst"
 fi
 
 # 音高推定
@@ -61,11 +62,14 @@ else
     # 本処理
     debug_log python -m crepe \"$extract_src\" > $out_place
          python -m crepe "$extract_src"
+    chmod 757 "$extract_dst"
 fi
+
 
 # 音高推定結果の処理
 post_crepe_src="./separated/htdemucs/$songname/vocals.f0.csv"
-post_crepe_dst="./separated/htdemucs/$songname/vocals.csv"
+post_crepe_dst="./analyzed/melody/$songname/vocals.csv"
+post_crepe_dst_dir=`dirname "$post_crepe_dst"`
 if [ ! -e "$post_crepe_src" ]; then
    echo ${red}file $post_crepe_src not exist$defcol > $out_place
    popd > /dev/null
@@ -75,13 +79,16 @@ if [ $USE_ANALYZE_CACHE -eq 1 ] && [ -e "$post_crepe_dst" ]; then
     debug_log ${green}file $post_crepe_dst already exist$defcol > $out_place
 else
     # 本処理
-    debug_log python -m post-crepe \"$post_crepe_src\" > $out_place
-         python -m post-crepe "$post_crepe_src"
+    mkdir "$post_crepe_dst_dir"
+    debug_log python -m post-crepe \"$post_crepe_src\" \"$post_crepe_dst_dir\" > $out_place
+         python -m post-crepe "$post_crepe_src" "$post_crepe_dst_dir"
+    chmod -R 757 "$post_crepe_dst_dir"
 fi
 
 # コード推定
 chord_ext_src=$1  #"./resources/$filename"
-chord_ext_dst="./resources/$filename.chords.json"
+chord_ext_dst="./analyzed/chord/$songname/chords.json"
+chord_ext_dst_dir=`dirname "$chord_ext_dst"`
 
 if [ ! -e "$chord_ext_src" ]; then
     debug_log ${red}file $chord_ext_src not exist$defcol > $out_place
@@ -92,13 +99,15 @@ if [ $USE_ANALYZE_CACHE -eq 1 ] && [ -e "$chord_ext_dst" ]; then
     debug_log ${green}file $chord_ext_dst already exist$defcol > $out_place
 else
     # 本処理
-    debug_log python -m chordExtract \"$chord_ext_src\" > $out_place
-         python -m chordExtract "$chord_ext_src"
+    mkdir "$chord_ext_dst_dir"
+    debug_log python -m chordExtract \"$chord_ext_src\" \"$chord_ext_dst\" > $out_place
+         python -m chordExtract "$chord_ext_src" "$chord_ext_dst"
+    chmod -R 757 "$chord_ext_dst_dir"
 fi
 
 # コードをローマ数字変換 (メロディ分析部でローマ数字の情報が必要になれば使う)
 chord_to_roman_src=$chord_ext_dst
-chord_to_roman_dst="./resources/$filename.roman.json"
+chord_to_roman_dst="./analyzed/chord/$songname/roman.json"
 if [ ! -e "$chord_to_roman_src" ]; then
     debug_log ${red}file $chord_to_roman_src not exist$defcol > $out_place
     popd > /dev/null
@@ -109,12 +118,13 @@ if [ $USE_ANALYZE_CACHE -eq 1 ] && [ -e "$chord_to_roman_dst" ]; then
 else
     debug_log "node ./chordToRoman < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\""
     node ./chordToRoman < "$chord_to_roman_src" > "$chord_to_roman_dst"
+    chmod 757 "$chord_to_roman_dst"
 fi
 
 # コードとメロディの関係を求める
 melody_analyze_melody_src=$post_crepe_dst
 melody_analyze_chord_src=$chord_to_roman_dst
-melody_analyze_dst="./separated/htdemucs/$songname/manalyze.json"
+melody_analyze_dst="./analyzed/melody/$songname/manalyze.json"
 if [ ! -e "$melody_analyze_melody_src" ]; then
     debug_log ${red}file $melody_analyze_melody_src not exist$defcol > $out_place
     popd > /dev/null
@@ -136,6 +146,7 @@ else
     # 本処理
     debug_log "node ./melodyAnalyze \"$melody_analyze_melody_src\"  \"$melody_analyze_chord_src\" > \"$melody_analyze_dst\""
          node ./melodyAnalyze "$melody_analyze_melody_src" "$melody_analyze_chord_src" > "$melody_analyze_dst"
+    chmod 757 "$melody_analyze_dst"
 fi
 cat "$melody_analyze_dst"
 

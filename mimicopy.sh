@@ -34,7 +34,7 @@ function debug_log (){
 
 # コード推定
 chord_ext_src=$1  #"./resources/$filename"
-chord_ext_dst="./resources/$filename.chords.json"
+chord_ext_dst="./analyzed/chord/$songname/chords.json"
 
 if [ ! -e "$chord_ext_src" ]; then
     echo ${red}file $chord_ext_src not exist$defcol > $out_place
@@ -45,13 +45,15 @@ if [ $USE_ANALYZE_CACHE -eq 1 ] && [ -e "$chord_ext_dst" ]; then
     debug_log ${green}file $chord_ext_dst already exist$defcol > $out_place
 else
     # 本処理
-    debug_log python -m chordExtract \"$chord_ext_src\" > $out_place
-         python -m chordExtract "$chord_ext_src"
+    mkdir "`dirname "$chord_ext_dst"`"
+    debug_log python -m chordExtract \"$chord_ext_src\" \"$chord_ext_dst\" > $out_place
+         python -m chordExtract "$chord_ext_src" "$chord_ext_dst"
+    chmod 757 "$chord_ext_dst"
 fi
 
 # コードをローマ数字変換
 chord_to_roman_src=$chord_ext_dst
-chord_to_roman_dst="./resources/$filename.roman.json"
+chord_to_roman_dst="./analyzed/chord/$songname/roman.json"
 if [ ! -e "$chord_to_roman_src" ]; then
     debug_log ${red}file $chord_to_roman_src not exist$defcol > $out_place
     popd > /dev/null
@@ -67,6 +69,7 @@ if [ $USE_ANALYZE_CACHE -eq 1 ] && [ -e "$chord_to_roman_dst" ]; then
 else
     debug_log "node ./chordToRoman < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\""
     node ./chordToRoman < "$chord_to_roman_src" > "$chord_to_roman_dst"
+    chmod 757 "$chord_to_roman_dst"
 fi
 cat "$chord_to_roman_dst"
 

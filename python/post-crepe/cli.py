@@ -85,7 +85,8 @@ def main():
     frequency = [2 * np.pi * frequency_001_band_passed[int(i // N)] for i in range(size)]
 
     # Output
-    out_filename = f"{path.dirname(csv_file_path)}/vocals"
+    out_filename = f"{sys.argv[2]}/vocals"
+    # out_filename = f"{path.dirname(csv_file_path)}/vocals"
     with open(f"{out_filename}.midi.csv", 'w') as file:
         writer = csv.writer(file)
         writer.writerow(np.round(hz_to_midi(frequency_001_band_passed)))
