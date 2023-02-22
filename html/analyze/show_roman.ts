@@ -226,7 +226,7 @@ const draw = (piano_roll_width: number) => {
   piano_roll.setAttributes({ x: 0, y: 0, width: piano_roll_width, height: piano_roll_height + chord_text_size })
 }
 
-audio.addEventListener("timeupdate", ev => {
+const refresh = () => {
   const note_size = getPianoRollWidth() / piano_roll_time;
   const std_pos = audio.currentTime * note_size;
   chord_svg_elements.forEach(e => e.rects.forEach(rect => rect.setAttributes({ x: e.time[0] * note_size - std_pos })));  // SVG.rect の位置替える
@@ -249,7 +249,9 @@ audio.addEventListener("timeupdate", ev => {
       points: `${tri_pos[0]},${tri_pos[1]},${tri_pos[2]},${tri_pos[3]},${tri_pos[4]},${tri_pos[5]}`
     })
   })
-});
+}
+
+audio.addEventListener("timeupdate", refresh);
 
 draw(getPianoRollWidth());
 window.onresize = (ev) => {
