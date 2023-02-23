@@ -1,5 +1,5 @@
 import { SVG } from "../lib/HTML/HTML.js";
-import { Math } from "../lib/Math/Math.js";
+import { vMod, getRange, vAdd } from "../lib/Math/Math.js";
 import { hsv2rgb } from "../lib/Color/Color.js";
 const romans = window.MusicAnalyzer.roman;
 const melodies = window.MusicAnalyzer.melody;
@@ -39,8 +39,9 @@ class RectParameters {
     }
 }
 // --- ピアノロールの描画
-const octave_height = 14 * 12; // 7 白鍵と 12 半音をきれいに描画するには 7 * 12 の倍数が良い (多分)
+const octave_height = 3 * 84; // 7 白鍵と 12 半音をきれいに描画するには 7 * 12 の倍数が良い (多分)
 const octave_cnt = 3;
+const piano_roll_begin = 83;
 const white_key = new RectParameters({ width: 36, height: octave_height / 7, fill: "#fff", stroke: "#000", });
 const white_back_fill = "#eee";
 const white_back_stroke = "#000";
@@ -49,8 +50,8 @@ const black_back_fill = "#ccc";
 const black_back_stroke = "#000";
 const getPianoRollWidth = () => window.innerWidth - 48;
 const piano_roll_height = octave_height * octave_cnt;
-const black_position = [1, 3, 5, 8, 10];
-const white_position = Math.getRange(0, 12).filter(e => !black_position.includes(e));
+const black_position = vMod(vAdd([2, 4, 6, 9, 11], piano_roll_begin), 12);
+const white_position = getRange(0, 12).filter(e => !black_position.includes(e));
 const chord_text_size = 32;
 const piano_roll_time = 5; // 1 画面に収める曲の長さ[秒]
 const triangle_width = 5;
@@ -116,11 +117,10 @@ const arrow_svg_elements = (() => {
     let ret = [];
     const stroke = rgbToString([0, 0, 0]);
     melodies.forEach(e => {
-        let fill = rgbToString(hsv2rgb(180 + 360 * 2 / 7, 0.5, 0.9));
+        const fill = rgbToString([0, 0, 0]);
+        // let fill = rgbToString(hsv2rgb(180 + 360 * 2 / 7, 0.5, 0.9));
         e.melodyAnalysis.gravity.forEach((gravity, i) => {
-            if (i === 1 && e.roman_name !== undefined) {
-                fill = romanToColor(e.roman_name, 0.5, 0.9);
-            }
+            // if (i === 1 && e.roman_name !== undefined) { fill = romanToColor(e.roman_name, 0.5, 0.9) }
             if (gravity.resolved && gravity.destination !== undefined) {
                 ret.push({
                     triangle: SVG.polygon({ name: "gravity-arrow", stroke, fill, "stroke-width": 1 }),
@@ -159,24 +159,24 @@ const draw = (piano_roll_width) => {
     })));
     melody_svg_elements.forEach(e => e.rect.setAttributes({
         x: e.time[0] * note_size,
-        y: (83 - e.note) * black_key.height,
+        y: (piano_roll_begin - e.note) * black_key.height,
         width: (e.time[1] - e.time[0]) * note_size,
         height: black_key.height,
     }));
     arrow_svg_elements.forEach(e => {
         e.line.setAttributes({
             x1: ((e.time[1] - e.time[0]) / 2 + e.time[0]) * note_size,
-            y1: (83 + 0.5 - e.note) * black_key.height,
+            y1: (piano_roll_begin + 0.5 - e.note) * black_key.height,
             x2: ((e.time[1] - e.time[0]) / 2 + e.time[0]) * note_size,
-            y2: (83 + 0.5 - e.destination) * black_key.height
+            y2: (piano_roll_begin + 0.5 - e.destination) * black_key.height
         });
         const tri_pos = [
             ((e.time[1] - e.time[0]) / 2 + e.time[0]) * note_size,
-            (83 + 0.5 - e.destination) * black_key.height,
+            (piano_roll_begin + 0.5 - e.destination) * black_key.height,
             ((e.time[1] - e.time[0]) / 2 + e.time[0]) * note_size - triangle_width,
-            (83 + 0.5 - e.destination + (e.destination - e.note) * triangle_height) * black_key.height,
+            (piano_roll_begin + 0.5 - e.destination + (e.destination - e.note) * triangle_height) * black_key.height,
             ((e.time[1] - e.time[0]) / 2 + e.time[0]) * note_size + triangle_width,
-            (83 + 0.5 - e.destination + (e.destination - e.note) * triangle_height) * black_key.height
+            (piano_roll_begin + 0.5 - e.destination + (e.destination - e.note) * triangle_height) * black_key.height
         ];
         e.triangle.setAttributes({
             points: `${tri_pos[0]},${tri_pos[1]},${tri_pos[2]},${tri_pos[3]},${tri_pos[4]},${tri_pos[5]}`
@@ -185,7 +185,7 @@ const draw = (piano_roll_width) => {
     chord_svg_elements.forEach(e => e.text.setAttributes({ x: e.time[0] * note_size, y: piano_roll_height + chord_text_size }));
     white_BGs.forEach((_, i) => _.forEach((_, j) => _.setAttributes({ x: 0, y: octave_height * i + black_key.height * white_position[j], width: piano_roll_width, height: black_key.height })));
     black_BGs.forEach((_, i) => _.forEach((_, j) => _.setAttributes({ x: 0, y: octave_height * i + black_key.height * black_position[j], width: piano_roll_width, height: black_key.height })));
-    white_keys.forEach((_, i) => _.forEach((_, j) => _.setAttributes({ x: 0, y: octave_height * i + white_key.height * j, width: white_key.width, height: white_key.height })));
+    white_keys.forEach((_, i) => _.forEach((_, j) => _.setAttributes({ x: 0, y: octave_height * i + white_key.height * j /* TODO: 位置をずらす */, width: white_key.width, height: white_key.height })));
     black_keys.forEach((_, i) => _.forEach((_, j) => _.setAttributes({ x: 0, y: octave_height * i + black_key.height * black_position[j], width: black_key.width, height: black_key.height })));
     octave_BG.forEach((_, i) => _.setAttributes({ x: 0, y: octave_height * i, width: piano_roll_width, height: octave_height }));
     octave_keys.forEach((_, i) => _.setAttributes({ x: 0, y: octave_height * i, width: piano_roll_width, height: octave_height }));
@@ -204,11 +204,11 @@ const refresh = () => {
         });
         const tri_pos = [
             ((e.time[1] - e.time[0]) / 2 + e.time[0]) * note_size - std_pos,
-            (83 + 0.5 - e.destination) * black_key.height,
+            (piano_roll_begin + 0.5 - e.destination) * black_key.height,
             ((e.time[1] - e.time[0]) / 2 + e.time[0]) * note_size - triangle_width - std_pos,
-            (83 + 0.5 - e.destination + (e.destination - e.note) * triangle_height) * black_key.height,
+            (piano_roll_begin + 0.5 - e.destination + (e.destination - e.note) * triangle_height) * black_key.height,
             ((e.time[1] - e.time[0]) / 2 + e.time[0]) * note_size + triangle_width - std_pos,
-            (83 + 0.5 - e.destination + (e.destination - e.note) * triangle_height) * black_key.height
+            (piano_roll_begin + 0.5 - e.destination + (e.destination - e.note) * triangle_height) * black_key.height
         ];
         e.triangle.setAttributes({
             points: `${tri_pos[0]},${tri_pos[1]},${tri_pos[2]},${tri_pos[3]},${tri_pos[4]},${tri_pos[5]}`

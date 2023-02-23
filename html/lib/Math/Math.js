@@ -1,8 +1,8 @@
 import { hasSameValue } from "../StdLib/stdlib.js";
-const not = (b) => !b;
-const getRange = (begin, end, step = 1) => [...Array(Math.abs(end - begin))].map((_, i) => i * step + begin);
-const getZeros = (length) => [...Array(length)].map(e => 0); // eslint-disable-line @typescript-eslint/no-unused-vars
-const vFunc = (a, b, f) => {
+export const not = (b) => !b;
+export const getRange = (begin, end, step = 1) => [...Array(Math.abs(end - begin))].map((_, i) => i * step + begin);
+export const getZeros = (length) => [...Array(length)].map(e => 0); // eslint-disable-line @typescript-eslint/no-unused-vars
+export const vFunc = (a, b, f) => {
     if (typeof b == "number") {
         return a.map(e => f(e, Number(b)));
     }
@@ -11,9 +11,9 @@ const vFunc = (a, b, f) => {
     }
     throw TypeError("arguments of vFunc must be (a:number[], b:number, f:(a:number,b:number)=>number");
 };
-const genArr = (n, f) => [...Array(n)].map((_, i) => f(i));
-const matTrans = (matrix) => getRange(0, matrix[0].length).map(i => getRange(0, matrix.length).map(j => matrix[j][i]));
-const forAll = (set, condition) => {
+export const genArr = (n, f) => [...Array(n)].map((_, i) => f(i));
+export const matTrans = (matrix) => getRange(0, matrix[0].length).map(i => getRange(0, matrix.length).map(j => matrix[j][i]));
+export const forAll = (set, condition) => {
     for (const e of set) {
         if (condition(e) == false) {
             return false;
@@ -21,7 +21,7 @@ const forAll = (set, condition) => {
     }
     return true;
 };
-const forSome = (set, condition) => {
+export const forSome = (set, condition) => {
     for (const e of set) {
         if (condition(e)) {
             return true;
@@ -29,46 +29,46 @@ const forSome = (set, condition) => {
     }
     return false;
 };
-const isSubSet = (set, superset) => {
+export const isSubSet = (set, superset) => {
     return forAll(set, (e) => superset.includes(e));
 };
-const isSuperSet = (set, subset) => {
+export const isSuperSet = (set, subset) => {
     return isSubSet(subset, set);
 };
-const sameArray = (arr1, arr2) => hasSameValue(arr1, arr2);
+export const sameArray = (arr1, arr2) => hasSameValue(arr1, arr2);
 /** @brief avoid bug from negative value */
-const mod = (n, m) => (Number(n) % m + m) % m;
-const bool2number = (b) => b ? 1 : 0;
-const removeFromArray = (array, rmv) => array.filter(e => not(rmv.includes(e)));
-const ringShift = (array, b) => {
+export const mod = (n, m) => (Number(n) % m + m) % m;
+export const bool2number = (b) => b ? 1 : 0;
+export const removeFromArray = (array, rmv) => array.filter(e => not(rmv.includes(e)));
+export const ringShift = (array, b) => {
     const N = array.length;
     const bm = mod(b, N);
     return array.concat(array).slice(N - bm, 2 * N - bm);
 };
-const vAdd = (vector1, vector2) => vFunc(vector1, vector2, (a, b) => a + b);
-const vSub = (vector1, vector2) => vFunc(vector1, vector2, (a, b) => a - b);
-const vMul = (vector1, vector2) => vFunc(vector1, vector2, (a, b) => a * b);
-const vDiv = (vector1, vector2) => vFunc(vector1, vector2, (a, b) => a / b);
-const vMod = (vector1, vector2) => vFunc(vector1, vector2, (a, b) => mod(a, b));
-const vGet = (array, indexes) => indexes.map(e => array[e]);
-const getOnehot = (positionOfOnes, n = 0) => [...Array(Math.max(Math.max(...positionOfOnes) + 1, n))].map((_, i) => bool2number(positionOfOnes.includes(i)));
-const getOnehotInMod = (positionOfOnes, m = 1) => {
+export const vAdd = (vector1, vector2) => vFunc(vector1, vector2, (a, b) => a + b);
+export const vSub = (vector1, vector2) => vFunc(vector1, vector2, (a, b) => a - b);
+export const vMul = (vector1, vector2) => vFunc(vector1, vector2, (a, b) => a * b);
+export const vDiv = (vector1, vector2) => vFunc(vector1, vector2, (a, b) => a / b);
+export const vMod = (vector1, vector2) => vFunc(vector1, vector2, (a, b) => mod(a, b));
+export const vGet = (array, indexes) => indexes.map(e => array[e]);
+export const getOnehot = (positionOfOnes, n = 0) => [...Array(Math.max(Math.max(...positionOfOnes) + 1, n))].map((_, i) => bool2number(positionOfOnes.includes(i)));
+export const getOnehotInMod = (positionOfOnes, m = 1) => {
     if (typeof positionOfOnes === "number") {
         return getOnehot(vMod([positionOfOnes], m), m);
     }
     return getOnehot(vMod(positionOfOnes, m), m);
 };
-const vSum = (...arrays) => {
+export const vSum = (...arrays) => {
     let s = getZeros(arrays[0].length);
     arrays.forEach(arr => { s = vAdd(s, arr); });
     return s;
 };
-const totalSum = (array) => {
+export const totalSum = (array) => {
     let s = 0;
     array.forEach(e => s += e);
     return s;
 };
-const totalProd = (array) => {
+export const totalProd = (array) => {
     let s = 0;
     array.forEach(e => s *= e);
     return s;
