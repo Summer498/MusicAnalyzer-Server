@@ -38,17 +38,12 @@ $melodies = shell_exec("/var/www/html/MusicAnalyzer-server/manalyze.sh \"{$song_
 <body>
     <h1>分析結果</h1>
     <?php
-    if (in_array($song_file_ext, ["mp4"], true)) {
-        // 動画ファイルの場合
-        echo ("<div class=\"video_wrapper\" id=\"audio_area\">");
-        echo ("<video src=\"../../resources/$song_file_name\" controls autoplay playsinline loop crossorigin=\"use-credintials\"></video>");
-        echo ("</div>");
-    } else if (in_array($song_file_ext, ["mp3", "wav", "m4a"], true)) {
-        // 音声ファイルの場合
-        echo ("<div class=\"audio_wrapper\" id=\"audio_area\">");
-        echo ("<audio src=\"../../resources/$song_file_name\" controls autoplay crossorigin=\"use-credintials\"></audio>");
-        echo ("</div>");
-    }
+    $m_src = "src=\"../../resources/$song_file_name\"";  // media source
+    $m_opt = "controls autoplay playsinline loop crossorigin=\"use-credintials\"";  // media option
+    $m_type = (in_array($song_file_ext, ["mp4"], true)) ? "video" : "audio";  // mediia type
+    echo ("<div class=\"${m_type}_wrapper\" id=\"audio_area\">");
+    echo ("<$m_type $m_src $m_opt></$m_type>");
+    echo ("</div>");
     ?>
     <div id="piano-roll-place"></div>
 </body>
