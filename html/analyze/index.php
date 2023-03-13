@@ -39,7 +39,7 @@ $melodies = shell_exec("/var/www/html/MusicAnalyzer-server/manalyze.sh \"{$song_
   <?php
   $m_src = "src=\"../../resources/$song_file_name\""; // media source
   $m_opt = "controls autoplay playsinline loop crossorigin=\"use-credintials\""; // media option
-  $m_type = (in_array($song_file_ext, ["mp4"], true)) ? "video" : "audio"; // mediia type
+  $m_type = (in_array($song_file_ext, ["mp4"], true)) ? "video" : "audio"; // media type
   echo ("<div class=\"${m_type}_wrapper\" id=\"audio_area\">");
   echo ("<$m_type $m_src $m_opt></$m_type>");
   echo ("</div>");
