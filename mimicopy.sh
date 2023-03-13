@@ -23,6 +23,10 @@ fi
 if [ "$4" = "--roman_reanalyze" ]; then
     roman_reanalyze=1
 fi
+if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+    echo $0 \[pathname\] --debug_mode=false --force_reanalyze=true --roman_reanalyze
+    exit 0
+fi
 
 USE_ANALYZE_CACHE=$((! $force_reanalyze))
 
@@ -45,7 +49,9 @@ if [ $USE_ANALYZE_CACHE -eq 1 ] && [ -e "$chord_ext_dst" ]; then
     debug_log ${green}file $chord_ext_dst already exist$defcol > $out_place
 else
     # 本処理
-    mkdir "`dirname "$chord_ext_dst"`"
+    if [ ! -e "`dirname "$chord_ext_dst"`" ]; then
+        mkdir "`dirname "$chord_ext_dst"`"
+    fi
     debug_log python -m chordExtract \"$chord_ext_src\" \"$chord_ext_dst\" > $out_place
          python -m chordExtract "$chord_ext_src" "$chord_ext_dst"
     chmod 757 "$chord_ext_dst"

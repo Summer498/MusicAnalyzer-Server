@@ -23,6 +23,11 @@ fi
 if [ "$4" = "--melody_reanalyze" ]; then
     melody_reanalyze=1
 fi
+if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+    echo $0 \[pathname\] --debug_mode=false --force_reanalyze=true --melody_reanalyze
+    exit 0
+fi
+
 USE_ANALYZE_CACHE=$((! $force_reanalyze))
 
 function debug_log (){
@@ -79,7 +84,9 @@ if [ $USE_ANALYZE_CACHE -eq 1 ] && [ -e "$post_crepe_dst" ]; then
     debug_log ${green}file $post_crepe_dst already exist$defcol > $out_place
 else
     # 本処理
-    mkdir "$post_crepe_dst_dir"
+    if [ ! -e "$post_crepe_dst_dir" ]; then
+        mkdir "$post_crepe_dst_dir"
+    fi
     debug_log python -m post-crepe \"$post_crepe_src\" \"$post_crepe_dst_dir\" > $out_place
          python -m post-crepe "$post_crepe_src" "$post_crepe_dst_dir"
     chmod -R 757 "$post_crepe_dst_dir"
@@ -99,7 +106,9 @@ if [ $USE_ANALYZE_CACHE -eq 1 ] && [ -e "$chord_ext_dst" ]; then
     debug_log ${green}file $chord_ext_dst already exist$defcol > $out_place
 else
     # 本処理
-    mkdir "$chord_ext_dst_dir"
+    if [ ! -e "$chord_ext_dst_dir" ]; then
+        mkdir "$chord_ext_dst_dir"
+    fi
     debug_log python -m chordExtract \"$chord_ext_src\" \"$chord_ext_dst\" > $out_place
          python -m chordExtract "$chord_ext_src" "$chord_ext_dst"
     chmod -R 757 "$chord_ext_dst_dir"
