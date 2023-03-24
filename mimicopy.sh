@@ -62,6 +62,7 @@ do
     elif [[ "$1" =~ ^-.* ]]; then  # short option
         processOptions $1 ${short[*]}
     elif [[ "$1" =~ .* ]]; then  # 引数
+        filepath="$1"
         filename=`basename "$1"`  # 引数のファイル名
         songname=`basename "$1" | sed -e 's/\.[^\.]*$//'`  # 引数から拡張子を取り除く
     fi
@@ -102,7 +103,7 @@ makeNewDir(){
 }
 
 # コード推定
-chord_ext_src="./resources/$filename"
+chord_ext_src="$filepath"
 chord_ext_dst="./analyzed/chord/$songname/chords.json"
 chord_ext_dst_dir=`dirname "$chord_ext_dst"`
 detectFile "$chord_ext_src"
