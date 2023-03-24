@@ -11,7 +11,6 @@ pushd `dirname "$0"` > /dev/null
 red=[31m
 green=[32m
 defcol=[39m
-out_place="/dev/stdout"
 export PYTHONPATH="./python:$PYTHONPATH"
 
 help(){
@@ -35,7 +34,7 @@ processOptions(){
         fi
     done
     if [[ $flag -eq 0 ]]; then  # invalid option
-        echo "invalid option $tgt" > $out_place
+        echo "invalid option $tgt" >&2
     fi
 }
 
@@ -71,13 +70,13 @@ done
 
 debug_log (){
     if [ $debug_mode -eq 1 ]; then
-        echo $@
+        echo $@ >&2
     fi
 }
 detectFile(){
     dst="$1"
     if [ ! -e "$dst" ]; then
-        debug_log ${red}file $dst not exist$defcol > $out_place
+        echo ${red}file $dst not exist$defcol >&2
         popd > /dev/null
         exit 1
     fi
@@ -86,10 +85,10 @@ runProcessWithCache(){
     dst="$1"
     process="$2"
     if [ $force_reanalyze -eq 0 ] && [ -e "$dst" ]; then
-        debug_log ${green}$dst already exist$defcol > $out_place
+        debug_log ${green}$dst already exist$defcol
     else
         # 本処理
-        debug_log "$process" > $out_place
+        debug_log "$process"
         eval $process
         chmod 757 "$dst"
     fi
@@ -117,7 +116,7 @@ detectFile "$chord_to_roman_src"
 runProcessWithCache "$chord_to_roman_dst" "node ./chordToRoman < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\""
 # 最終処理だけ reanalyze option が on の場合は実行する.
 if [ $force_reanalyze -eq 0 ] && [ -e "$chord_to_roman_dst" ] && [ $roman_reanalyze -eq 1 ]; then
-    debug_log "node ./chordToRoman < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\"" > $out_place
+    debug_log "node ./chordToRoman < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\""
     node ./chordToRoman < "$chord_to_roman_src" > "$chord_to_roman_dst"
     chmod 757 "$chord_to_roman_dst"
 fi
