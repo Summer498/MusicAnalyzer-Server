@@ -1,160 +1,152 @@
 #!/bin/bash -e
 # mimicopy is derived from 耳コピ (Japanese word meaning sound transcription)
 # 文字コードは UTF-8
+# -f, --force_reanalyze, ignore cache
+# -h, --help, show help
+# -q, --quiet, don't show success message
+# -r, --melody_reanalyze, reanalyze melody
 pushd `dirname "$0"` > /dev/null
 . ./MUSIC_ANALYZER/bin/activate
 
 red=[31m
 green=[32m
 defcol=[39m
-filename=`basename "$1"`  # 引数1から 
-songname=`basename "$1" | sed -e 's/\.[^\.]*$//'`  # 引数1から拡張子を取り除く
 out_place="/dev/stdout"
 export PYTHONPATH="./python:$PYTHONPATH"
+
+help(){
+    awk 'NR > 3 {                          # シバンは出力しない
+    if (/^#/) { sub("^# ?", ""); print } # /^#/ にマッチしたら "^# ?" を取り除いて出力
+    else { exit }                        # /^#/ にマッチしなくなったら終了
+    }' $0 | column -t -s , # 実行スクリプト自身を引数に取る
+    exit 0;
+}
+processOptions(){
+    tgt=$1
+    shift
+    opts=($@)
+    flag=0
+    for i in ${!opts[@]}
+    do
+        if [[ "$tgt" =~ ${opts[$i]} ]]; then  # NOTE: $tgt includes ${opts[$i]}
+            eval ${command[$i]}
+            flag=1
+            break
+        fi
+    done
+    if [[ $flag -eq 0 ]]; then  # invalid option
+        echo "invalid option $tgt" > $out_place
+    fi
+}
+
 debug_mode=1
 force_reanalyze=0
 melody_reanalyze=0
-if [ "$2" = "--debug_mode=false" ]; then
-    debug_mode=0
-fi
-if [ "$3" = "--force_reanalyze=true" ]; then
-    force_reanalyze=1
-fi
-if [ "$4" = "--melody_reanalyze" ]; then
-    melody_reanalyze=1
-fi
-if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
-    echo $0 \[pathname\] --debug_mode=false --force_reanalyze=true --melody_reanalyze
-    exit 0
-fi
+while (( $# > 0 ))
+do
+    # 配列の番号を対応付けること
+    short=(f h q r)
+    long=(
+        "--force_reanalyze"
+        "--help"
+        "--quiet"
+        "--melody_reanalyze"
+    )
+    command=(
+        "force_reanalyze=1"
+        "help"
+        "debug_mode=0"
+        "melody_reanalyze=1"
+    )
+    if [[ "$1" =~ ^--.*  ]]; then  # long options
+        processOptions $1 ${long[*]}
+    elif [[ "$1" =~ ^-.* ]]; then  # short option
+        processOptions $1 ${short[*]}
+    elif [[ "$1" =~ .* ]]; then  # 引数
+        filename=`basename "$1"`  # 引数のファイル名
+        songname=`basename "$1" | sed -e 's/\.[^\.]*$//'`  # 引数から拡張子を取り除く
+    fi
+    shift
+done
 
-USE_ANALYZE_CACHE=$((! $force_reanalyze))
-
-function debug_log (){
+debug_log(){
     if [ $debug_mode -eq 1 ]; then
         echo $@
     fi
 }
+detectFile(){
+    dst="$1"
+    if [ ! -e "$dst" ]; then
+        debug_log ${red}file $dst not exist$defcol > $out_place
+        popd > /dev/null
+        exit 1
+    fi
+}
+runProcessWithCache(){
+    dst="$1"
+    process="$2"
+    if [ $force_reanalyze -eq 0 ] && [ -e "$dst" ]; then
+        debug_log ${green}$dst already exist$defcol > $out_place
+    else
+        # 本処理
+        debug_log "$process" > $out_place
+        eval $process
+        chmod 757 "$dst"
+    fi
+}
+makeNewDir(){
+    dst_dir="$1"
+    if [ ! -e "$dst_dir" ]; then
+        mkdir "$dst_dir"
+        chmod -R 757 "$dst_dir"    
+    fi
+}
 
 # 音源分離
-separate_src=$1  #"./resources/$filename"
+separate_src="./resources/$filename"
 separate_dst="./separated/htdemucs/$songname"
-if [ ! -e "$separate_src" ]; then
-    echo ${red}file $separate_src not exist$defcol > $out_place
-    popd > /dev/null
-    exit 1
-fi
-if [ $USE_ANALYZE_CACHE -eq 1 ] && [ -e "$separate_dst" ]; then
-    debug_log ${green}folder $separate_dst already exist$defcol > $out_place
-else
-    # 本処理
-    debug_log python -m demucs -d cuda \"$separate_src\" > $out_place
-    python -m demucs -d cuda "$separate_src"
-    chmod 757 "$separate_dst"
-fi
+detectFile "$separate_src"
+runProcessWithCache "$separate_dst" "python -m demucs -d cuda \"$separate_src\""
 
 # 音高推定
-extract_src="./separated/htdemucs/$songname/vocals.wav"
-extract_dst="./separated/htdemucs/$songname/vocals.f0.csv"
-if [ ! -e "$extract_src" ]; then
-    echo ${red}file $extract_src not exist$defcol > $out_place
-    popd > /dev/null
-    exit 1
-fi
-if [ $USE_ANALYZE_CACHE -eq 1 ] && [ -e "$extract_dst" ]; then
-    debug_log ${green}file $extract_dst already exist$defcol > $out_place
-else
-    # 本処理
-    debug_log python -m crepe \"$extract_src\" > $out_place
-         python -m crepe "$extract_src"
-    chmod 757 "$extract_dst"
-fi
-
+extract_src="$separate_dst/vocals.wav"
+extract_dst="$separate_dst/vocals.f0.csv"
+detectFile "$extract_src"
+runProcessWithCache "$extract_dst" "python -m crepe \"$extract_src\""
 
 # 音高推定結果の処理
-post_crepe_src="./separated/htdemucs/$songname/vocals.f0.csv"
+post_crepe_src="$extract_dst"
 post_crepe_dst="./analyzed/melody/$songname/vocals.csv"
 post_crepe_dst_dir=`dirname "$post_crepe_dst"`
-if [ ! -e "$post_crepe_src" ]; then
-   echo ${red}file $post_crepe_src not exist$defcol > $out_place
-   popd > /dev/null
-   exit 1
-fi
-if [ $USE_ANALYZE_CACHE -eq 1 ] && [ -e "$post_crepe_dst" ]; then
-    debug_log ${green}file $post_crepe_dst already exist$defcol > $out_place
-else
-    # 本処理
-    if [ ! -e "$post_crepe_dst_dir" ]; then
-        mkdir "$post_crepe_dst_dir"
-    fi
-    debug_log python -m post-crepe \"$post_crepe_src\" \"$post_crepe_dst_dir\" > $out_place
-         python -m post-crepe "$post_crepe_src" "$post_crepe_dst_dir"
-    chmod -R 757 "$post_crepe_dst_dir"
-fi
+detectFile "$post_crepe_src"
+makeNewDir "$post_crepe_dst_dir"
+runProcessWithCache "$post_crepe_dst" "python -m post-crepe \"$post_crepe_src\" \"$post_crepe_dst_dir\""
 
 # コード推定
-chord_ext_src=$1  #"./resources/$filename"
+chord_ext_src="./resources/$filename"
 chord_ext_dst="./analyzed/chord/$songname/chords.json"
 chord_ext_dst_dir=`dirname "$chord_ext_dst"`
-
-if [ ! -e "$chord_ext_src" ]; then
-    debug_log ${red}file $chord_ext_src not exist$defcol > $out_place
-    popd > /dev/null
-    exit 1
-fi
-if [ $USE_ANALYZE_CACHE -eq 1 ] && [ -e "$chord_ext_dst" ]; then
-    debug_log ${green}file $chord_ext_dst already exist$defcol > $out_place
-else
-    # 本処理
-    if [ ! -e "$chord_ext_dst_dir" ]; then
-        mkdir "$chord_ext_dst_dir"
-    fi
-    debug_log python -m chordExtract \"$chord_ext_src\" \"$chord_ext_dst\" > $out_place
-         python -m chordExtract "$chord_ext_src" "$chord_ext_dst"
-    chmod -R 757 "$chord_ext_dst_dir"
-fi
+detectFile "$chord_ext_src"
+makeNewDir "$chord_ext_dst_dir"
+runProcessWithCache "$chord_ext_dst" "python -m chordExtract \"$chord_ext_src\" \"$chord_ext_dst\""
 
 # コードをローマ数字変換 (メロディ分析部でローマ数字の情報が必要になれば使う)
 chord_to_roman_src=$chord_ext_dst
 chord_to_roman_dst="./analyzed/chord/$songname/roman.json"
-if [ ! -e "$chord_to_roman_src" ]; then
-    debug_log ${red}file $chord_to_roman_src not exist$defcol > $out_place
-    popd > /dev/null
-    exit 1
-fi
-if [ $USE_ANALYZE_CACHE -eq 1 ] && [ -e "$chord_to_roman_dst" ]; then
-    debug_log ${green}file $chord_to_roman_dst already exist$defcol > $out_place
-else
-    debug_log "node ./chordToRoman < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\""
-    node ./chordToRoman < "$chord_to_roman_src" > "$chord_to_roman_dst"
-    chmod 757 "$chord_to_roman_dst"
-fi
+detectFile "$chord_to_roman_src"
+runProcessWithCache "$chord_to_roman_dst" "node ./chordToRoman < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\""
 
 # コードとメロディの関係を求める
 melody_analyze_melody_src=$post_crepe_dst
 melody_analyze_chord_src=$chord_to_roman_dst
 melody_analyze_dst="./analyzed/melody/$songname/manalyze.json"
-if [ ! -e "$melody_analyze_melody_src" ]; then
-    debug_log ${red}file $melody_analyze_melody_src not exist$defcol > $out_place
-    popd > /dev/null
-    exit 1
-fi
-if [ ! -e "$melody_analyze_chord_src" ]; then
-    debug_log ${red}file $melody_analyze_chord_src not exist$defcol > $out_place
-    popd > /dev/null
-    exit 1
-fi
-if [ $USE_ANALYZE_CACHE -eq 1 ] && [ -e "$melody_analyze_dst" ]; then
-    if [ $melody_reanalyze -eq 1 ]; then
-        debug_log "node ./melodyAnalyze \"$melody_analyze_melody_src\"  \"$melody_analyze_chord_src\" > \"$melody_analyze_dst\"" > $out_place
-        node ./melodyAnalyze "$melody_analyze_melody_src" "$melody_analyze_chord_src" > "$melody_analyze_dst"
-    else
-        debug_log ${green}file $melody_analyze_dst already exist$defcol > $out_place
-    fi
-else
-    # 本処理
-    debug_log "node ./melodyAnalyze \"$melody_analyze_melody_src\"  \"$melody_analyze_chord_src\" > \"$melody_analyze_dst\""
-         node ./melodyAnalyze "$melody_analyze_melody_src" "$melody_analyze_chord_src" > "$melody_analyze_dst"
+detectFile "$melody_analyze_melody_src"
+detectFile "$melody_analyze_chord_src"
+runProcessWithCache "$melody_analyze_dst" "node ./melodyAnalyze \"$melody_analyze_melody_src\" \"$melody_analyze_chord_src\" > \"$melody_analyze_dst\""
+# 最終処理だけ reanalyze option が on の場合は実行する.
+if [ $force_reanalyze -eq 0 ] && [ -e "$melody_analyze_dst" ] && [ $melody_reanalyze -eq 1 ]; then
+    debug_log "node ./melodyAnalyze \"$melody_analyze_melody_src\" \"$melody_analyze_chord_src\" > \"$melody_analyze_dst\"" > $out_place
+    node ./melodyAnalyze "$melody_analyze_melody_src" "$melody_analyze_chord_src" > "$melody_analyze_dst"
     chmod 757 "$melody_analyze_dst"
 fi
 cat "$melody_analyze_dst"

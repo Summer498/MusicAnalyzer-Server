@@ -23,8 +23,8 @@ setlocale(LC_ALL, 'ja_JP.UTF-8');
 $song_file_path = saveTmpFile("upload");
 $song_file_name = basename($song_file_path);
 $song_file_ext = pathinfo($song_file_name)["extension"];
-$chords = shell_exec("/var/www/html/MusicAnalyzer-server/mimicopy.sh \"{$song_file_path}\" --debug_mode=false");
-$melodies = shell_exec("/var/www/html/MusicAnalyzer-server/manalyze.sh \"{$song_file_path}\" --debug_mode=false");
+$chords = shell_exec("/var/www/html/MusicAnalyzer-server/mimicopy.sh \"{$song_file_path}\" --quiet");
+$melodies = shell_exec("/var/www/html/MusicAnalyzer-server/manalyze.sh \"{$song_file_path}\" --quiet");
 ?>
 <html lang="ja">
 
