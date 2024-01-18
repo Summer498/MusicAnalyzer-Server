@@ -97,14 +97,14 @@ runProcessWithCache(){
 makeNewDir(){
     dst_dir="$1"
     if [ ! -e "$dst_dir" ]; then
-        mkdir "$dst_dir"
+        mkdir -p "$dst_dir"
         chmod -R 757 "$dst_dir"    
     fi
 }
 
 # コード推定
 chord_ext_src="$filepath"
-chord_ext_dst="./analyzed/chord/$songname/chords.json"
+chord_ext_dst="./resources/$songname/analyzed/chord/chords.json"
 chord_ext_dst_dir=`dirname "$chord_ext_dst"`
 detectFile "$chord_ext_src"
 makeNewDir "$chord_ext_dst_dir"
@@ -112,7 +112,7 @@ runProcessWithCache "$chord_ext_dst" "python -m chordExtract \"$chord_ext_src\" 
 
 # コードをローマ数字変換
 chord_to_roman_src=$chord_ext_dst
-chord_to_roman_dst="./analyzed/chord/$songname/roman.json"
+chord_to_roman_dst="./resources/$songname/analyzed/chord/roman.json"
 detectFile "$chord_to_roman_src"
 runProcessWithCache "$chord_to_roman_dst" "node ./chordToRoman < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\""
 # 最終処理だけ reanalyze option が on の場合は実行する.

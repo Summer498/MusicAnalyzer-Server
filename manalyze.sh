@@ -87,62 +87,70 @@ runProcessWithCache(){
     process="$2"
     if [ $force_reanalyze -eq 0 ] && [ -e "$dst" ]; then
         debug_log ${green}$dst already exist$defcol
+        echo 1
     else
         # 本処理
         debug_log "$process"
         eval $process
         chmod 757 "$dst"
+        echo 0
     fi
 }
 makeNewDir(){
     dst_dir="$1"
     if [ ! -e "$dst_dir" ]; then
-        mkdir "$dst_dir"
+        mkdir -p "$dst_dir"
         chmod -R 757 "$dst_dir"    
     fi
 }
 
 # 音源分離
 separate_src="$filepath"
-separate_dst="./separated/htdemucs/$songname"
+# separate_dst="./separated/htdemucs/$songname"
+separate_dst="./resources/$songname/separated"
 detectFile "$separate_src"
-runProcessWithCache "$separate_dst" "python -m demucs -d cuda \"$separate_src\""
+if [ $force_reanalyze -eq 0 ] && [ -e "$separate_dst" ]; then
+    debug_log ${green}$separate_dst already exist$defcol
+else
+    res=$( runProcessWithCache "./separated/htdemucs/$songname/" "python -m demucs -d cuda \"$separate_src\"" )
+    mv "./separated/htdemucs/$songname" "./$separate_dst"
+fi
 
 # 音高推定
 extract_src="$separate_dst/vocals.wav"
 extract_dst="$separate_dst/vocals.f0.csv"
 detectFile "$extract_src"
-runProcessWithCache "$extract_dst" "python -m crepe \"$extract_src\""
+res=$( runProcessWithCache "$extract_dst" "python -m crepe \"$extract_src\"" )
 
 # 音高推定結果の処理
 post_crepe_src="$extract_dst"
-post_crepe_dst="./analyzed/melody/$songname/vocals.csv"
+post_crepe_dst="./resources/$songname/analyzed/melody/vocals.csv"
 post_crepe_dst_dir=`dirname "$post_crepe_dst"`
 detectFile "$post_crepe_src"
 makeNewDir "$post_crepe_dst_dir"
-runProcessWithCache "$post_crepe_dst" "python -m post-crepe \"$post_crepe_src\" \"$post_crepe_dst_dir\""
+res=$( runProcessWithCache "$post_crepe_dst" "python -m post-crepe \"$post_crepe_src\" \"$post_crepe_dst_dir\"" )
 
 # コード推定
 chord_ext_src="$filepath"
-chord_ext_dst="./analyzed/chord/$songname/chords.json"
+chord_ext_dst="./resources/$songname/analyzed/chord/chords.json"
 chord_ext_dst_dir=`dirname "$chord_ext_dst"`
 detectFile "$chord_ext_src"
 makeNewDir "$chord_ext_dst_dir"
-runProcessWithCache "$chord_ext_dst" "python -m chordExtract \"$chord_ext_src\" \"$chord_ext_dst\""
+res=$( runProcessWithCache "$chord_ext_dst" "python -m chordExtract \"$chord_ext_src\" \"$chord_ext_dst\"" )
 
 # コードをローマ数字変換 (メロディ分析部でローマ数字の情報が必要になれば使う)
 chord_to_roman_src=$chord_ext_dst
-chord_to_roman_dst="./analyzed/chord/$songname/roman.json"
+chord_to_roman_dst="./resources/$songname/analyzed/chord/roman.json"
 detectFile "$chord_to_roman_src"
-runProcessWithCache "$chord_to_roman_dst" "node ./chordToRoman < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\""
+res=$( runProcessWithCache "$chord_to_roman_dst" "node ./chordToRoman < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\"" )
 
 # コードとメロディの関係を求める
 melody_analyze_melody_src=$post_crepe_dst
 melody_analyze_chord_src=$chord_to_roman_dst
-melody_analyze_dst="./analyzed/melody/$songname/manalyze.json"
+melody_analyze_dst="./resources/$songname/analyzed/melody/manalyze.json"
 detectFile "$melody_analyze_melody_src"
 detectFile "$melody_analyze_chord_src"
-runProcessWithCache "$melody_analyze_dst" "node ./melodyAnalyze \"$melody_analyze_melody_src\" \"$melody_analyze_chord_src\" > \"$melody_analyze_dst\""
+res=$( runProcessWithCache "$melody_analyze_dst" "node ./melodyAnalyze \"$melody_analyze_melody_src\" \"$melody_analyze_chord_src\" > \"$melody_analyze_dst\"" )
 # 最終処理だけ reanalyze option が on の場合は実行する.
 if [ $force_reanalyze -eq 0 ] && [ -e "$melody_analyze_dst" ] && [ $melody_reanalyze -eq 1 ]; then
     debug_log "node ./melodyAnalyze \"$melody_analyze_melody_src\" \"$melody_analyze_chord_src\" > \"$melody_analyze_dst\""

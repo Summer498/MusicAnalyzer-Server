@@ -23,8 +23,12 @@ setlocale(LC_ALL, 'ja_JP.UTF-8');
 $song_file_path = saveTmpFile("upload");
 $song_file_name = basename($song_file_path);
 $song_file_ext = pathinfo($song_file_name)["extension"];
+$song_name = pathinfo($song_file_name)["filename"];
+$m_src = "../../resources/$song_name/$song_file_name"; // media source
+
 $chords = shell_exec("/var/www/html/MusicAnalyzer-server/mimicopy.sh \"{$song_file_path}\" --quiet");
 $melodies = shell_exec("/var/www/html/MusicAnalyzer-server/manalyze.sh \"{$song_file_path}\" --quiet");
+shell_exec("mv $song_file_path $m_src");
 ?>
 <html lang="ja">
 
@@ -37,11 +41,10 @@ $melodies = shell_exec("/var/www/html/MusicAnalyzer-server/manalyze.sh \"{$song_
 <body>
   <h1>分析結果</h1>
   <?php
-  $m_src = "src=\"../../resources/$song_file_name\""; // media source
   $m_opt = "controls autoplay playsinline loop crossorigin=\"use-credintials\""; // media option
   $m_type = (in_array($song_file_ext, ["mp4"], true)) ? "video" : "audio"; // media type
   echo ("<div class=\"${m_type}_wrapper\" id=\"audio_area\">");
-  echo ("<$m_type $m_src $m_opt></$m_type>");
+  echo ("<$m_type src=\"$m_src\" $m_opt></$m_type>");
   echo ("</div>");
   ?>
   <div id="piano-roll-place"></div>
