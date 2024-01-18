@@ -21,6 +21,8 @@ declare const window: MusicAnalyzerWindow;
 const romans = window.MusicAnalyzer.roman;
 const melodies = window.MusicAnalyzer.melody;
 console.log(romans);
+console.log(melodies);
+
 // const notes = roman[0].chords[1][2].notes;  // 0 個目のコード列の1番目の推定候補の2個目のコードの構成音
 
 const max = (a: number, b: number) => (a > b) ? a : b;
