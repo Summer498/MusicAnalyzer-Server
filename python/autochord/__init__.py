@@ -6,6 +6,7 @@
 
 """Main functions"""
 import os
+import warnings
 from shutil import copy
 import pkg_resources
 
@@ -15,8 +16,25 @@ import gdown
 import librosa
 import vamp
 import lazycats.np as catnp
-from tensorflow import keras
 import sys
+
+# require: tensorflow>=2.3
+# silence tensorflow >>>
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+warnings.simplefilter(action='ignore', category=FutureWarning)
+warnings.simplefilter(action='ignore', category=Warning)
+
+import tensorflow as tf
+tf.get_logger().setLevel('INFO')
+tf.autograph.set_verbosity(0)
+
+import logging
+tf.get_logger().setLevel(logging.ERROR)
+# <<< silence tensorflow
+
+
+from tensorflow import keras
+
 
 _CHROMA_VAMP_LIB = pkg_resources.resource_filename('autochord', 'res/nnls-chroma.so')
 _CHROMA_VAMP_KEY = 'nnls-chroma:nnls-chroma'
@@ -111,7 +129,7 @@ def predict_chord_labels(chroma_vectors):
     """ Predict (numeric) chord labels from sequence of chroma vectors """
 
     chordseq_vectors = catnp.divide_to_subsequences(chroma_vectors, sub_len=_SEQ_LEN)
-    sys.stdout = sys.stderr  # output predict log to stderr 
+    sys.stdout = sys.__stderr__  # output predict log to stderr 
     pred_labels, _, _, _ = _CHORD_MODEL.predict(chordseq_vectors, batch_size=_BATCH_SIZE)
     sys.stdout = sys.__stdout__
     pred_labels = pred_labels.flatten()
