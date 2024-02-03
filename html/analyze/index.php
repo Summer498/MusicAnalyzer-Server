@@ -28,7 +28,7 @@ $m_src = "../../resources/$song_name/$song_file_name"; // media source
 
 $chords = shell_exec("/var/www/html/MusicAnalyzer-server/mimicopy.sh \"{$song_file_path}\" --quiet");
 $melodies = shell_exec("/var/www/html/MusicAnalyzer-server/manalyze.sh \"{$song_file_path}\" --quiet");
-shell_exec("mv $song_file_path $m_src");
+shell_exec("mv \"$song_file_path\" \"$m_src\"");
 ?>
 <html lang="ja">
 
