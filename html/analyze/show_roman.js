@@ -1,4 +1,4 @@
-import { SVG } from "../lib/HTML/HTML.js";
+import { HTML, SVG } from "../lib/HTML/HTML.js";
 import { vMod, getRange, vAdd } from "../lib/Math/Math.js";
 import { hsv2rgb } from "../lib/Color/Color.js";
 const romans = window.MusicAnalyzer.roman;
@@ -90,6 +90,18 @@ const romanToColor = (roman, s, v) => {
     const col = hsv2rgb(360 * i / 7, s, v);
     return rgbToString(col);
 };
+const c_dur = "C1D2EF3G4A5B";
+const alt = "b♮#";
+const green_hue = 120; // 0:red, 120:green, 240:blue
+const chordToColor = (chord, s, v) => {
+    if (chord.tonic.length === 0) {
+        return "#444";
+    }
+    const _chroma = c_dur.indexOf(chord.tonic[0]);
+    const chroma = (chord.tonic.length === 1) ? _chroma : _chroma + alt.indexOf(chord.tonic[1]) - 1;
+    const col = hsv2rgb(360 * chroma / 12 + green_hue, s, v);
+    return rgbToString(col);
+};
 const shorten = (chord) => {
     const M7 = chord.replace("major seventh", "M7");
     const major = M7.replace("major", "");
@@ -101,8 +113,9 @@ const shorten = (chord) => {
 const chord_svg_elements = romans.map(time_and_roman => {
     const notes = time_and_roman.progression.chord.notes;
     return {
-        rects: notes.map(note => SVG.rect({ name: "chord-note", fill: romanToColor(time_and_roman.progression.roman, 0.5, 0.9), stroke: "#444" })),
-        text: SVG.text({ stroke: romanToColor(time_and_roman.progression.roman, 1, 0.75) }, shorten(time_and_roman.progression.roman)),
+        rects: notes.map(note => SVG.rect({ name: "chord-note", fill: chordToColor(time_and_roman.progression.chord, 0.5, 0.9), stroke: "#444" })),
+        chord: SVG.text({ stroke: chordToColor(time_and_roman.progression.chord, 1, 0.75) }, shorten(time_and_roman.progression.chord.name)),
+        roman: SVG.text({ stroke: chordToColor(time_and_roman.progression.chord, 1, 0.75) }, shorten(time_and_roman.progression.roman)),
         time: time_and_roman.time,
         notes,
     };
@@ -140,13 +153,14 @@ const black_BGs = [...Array(octave_cnt)].map(i => [...Array(5)].map(j => SVG.rec
 const white_keys = [...Array(octave_cnt)].map(i => [...Array(7)].map(j => SVG.rect({ name: "white-key", fill: white_key.fill, stroke: white_key.stroke, })));
 const black_keys = [...Array(octave_cnt)].map(i => [...Array(5)].map(j => SVG.rect({ name: "black-key", fill: black_key.fill, stroke: black_key.stroke, })));
 const chord_rects = chord_svg_elements.flatMap(e => e.rects);
-const chord_names = chord_svg_elements.map(e => e.text);
+const chord_names = chord_svg_elements.map(e => e.chord);
+const roman_names = chord_svg_elements.map(e => e.roman);
 const melody_rects = melody_svg_elements.map(e => e.rect);
 const gravity_arrow_lines = arrow_svg_elements.map(e => e.line);
 const gravity_arrow_triangles = arrow_svg_elements.map(e => e.triangle);
 const octave_BG = [...Array(octave_cnt)].map((_, i) => SVG.g({ name: "octave-BG" }, undefined, [white_BGs[i], black_BGs[i]]));
 const octave_keys = [...Array(octave_cnt)].map((_, i) => SVG.g({ name: "octave-keys" }, undefined, [white_keys[i], black_keys[i]]));
-const piano_roll = SVG.svg({ name: "piano-roll" }, undefined, [octave_BG, chord_rects, chord_names, melody_rects, gravity_arrow_lines, gravity_arrow_triangles, octave_keys]);
+const piano_roll = SVG.svg({ name: "piano-roll" }, undefined, [octave_BG, chord_rects, chord_names, roman_names, melody_rects, gravity_arrow_lines, gravity_arrow_triangles, octave_keys]);
 const piano_roll_place = document.getElementById("piano-roll-place");
 piano_roll_place?.insertAdjacentElement("afterbegin", piano_roll);
 const draw = (piano_roll_width) => {
@@ -183,20 +197,23 @@ const draw = (piano_roll_width) => {
             points: `${tri_pos[0]},${tri_pos[1]},${tri_pos[2]},${tri_pos[3]},${tri_pos[4]},${tri_pos[5]}`
         });
     });
-    chord_svg_elements.forEach(e => e.text.setAttributes({ x: e.time[0] * note_size, y: piano_roll_height + chord_text_size }));
+    const chord_name_margin = 5;
+    chord_svg_elements.forEach(e => e.chord.setAttributes({ x: e.time[0] * note_size, y: piano_roll_height + chord_text_size }));
+    chord_svg_elements.forEach(e => e.roman.setAttributes({ x: e.time[0] * note_size, y: piano_roll_height + chord_text_size * 2 + chord_name_margin }));
     white_BGs.forEach((_, i) => _.forEach((_, j) => _.setAttributes({ x: 0, y: octave_height * i + black_key.height * white_position[j], width: piano_roll_width, height: black_key.height })));
     black_BGs.forEach((_, i) => _.forEach((_, j) => _.setAttributes({ x: 0, y: octave_height * i + black_key.height * black_position[j], width: piano_roll_width, height: black_key.height })));
     white_keys.forEach((_, i) => _.forEach((_, j) => _.setAttributes({ x: 0, y: octave_height * i + white_key.height * j /* TODO: 位置をずらす */, width: white_key.width, height: white_key.height })));
     black_keys.forEach((_, i) => _.forEach((_, j) => _.setAttributes({ x: 0, y: octave_height * i + black_key.height * black_position[j], width: black_key.width, height: black_key.height })));
     octave_BG.forEach((_, i) => _.setAttributes({ x: 0, y: octave_height * i, width: piano_roll_width, height: octave_height }));
     octave_keys.forEach((_, i) => _.setAttributes({ x: 0, y: octave_height * i, width: piano_roll_width, height: octave_height }));
-    piano_roll.setAttributes({ x: 0, y: 0, width: piano_roll_width, height: piano_roll_height + chord_text_size });
+    piano_roll.setAttributes({ x: 0, y: 0, width: piano_roll_width, height: piano_roll_height + chord_text_size * 2 + chord_name_margin });
 };
 const refresh = () => {
     const note_size = getPianoRollWidth() / piano_roll_time;
     const std_pos = audio.currentTime * note_size;
     chord_svg_elements.forEach(e => e.rects.forEach(rect => rect.setAttributes({ x: e.time[0] * note_size - std_pos }))); // SVG.rect の位置替える
-    chord_svg_elements.forEach(e => e.text.setAttributes({ x: e.time[0] * note_size - std_pos }));
+    chord_svg_elements.forEach(e => e.chord.setAttributes({ x: e.time[0] * note_size - std_pos }));
+    chord_svg_elements.forEach(e => e.roman.setAttributes({ x: e.time[0] * note_size - std_pos }));
     melody_svg_elements.forEach(e => e.rect.setAttributes({ x: e.time[0] * note_size - std_pos }));
     arrow_svg_elements.forEach(e => {
         e.line.setAttributes({
