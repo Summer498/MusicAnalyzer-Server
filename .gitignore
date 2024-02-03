@@ -10,3 +10,5 @@ analyzed
 *.pyc
 chroma2chordNB
 apache-error.log
+*/tsconfig.tsbuildinfo
+python2/
