@@ -1,3 +1,6 @@
+type Compare = (a: number, b: number) => boolean;
+export declare const findMin: Compare;
+export declare const findMax: Compare;
 /**
  * @brief dynamic changeable viterbi algorithm
  * @param initial_log_probabilities
@@ -6,7 +9,7 @@
  * @param observation_sequence
  * @returns Probability of the most likely transition trace and the trace
  */
-export declare function dynamicLogViterbi(initial_log_probabilities: number[], getStatesOnTheTime: (time: number) => number[], transitionLogProbabilities: (prev_time: number, time: number, prev_state: number, state: number) => number, emissionLogProbabilities: (state: number, observation: number) => number, observation_sequence: number[], will_find_min?: boolean): {
+export declare const dynamicLogViterbi: (initial_log_probabilities: number[], getStatesOnTheTime: (time: number) => number[], transitionLogProbabilities: (prev_time: number, time: number, prev_state: number, state: number) => number, emissionLogProbabilities: (state: number, observation: number) => number, observation_sequence: number[], compare?: Compare) => {
     log_probability: number;
     trace: number[][];
 };
@@ -26,3 +29,4 @@ export declare const viterbi: (initial_probabilities: number[], transition_proba
     probability: number;
     trace: number[][];
 };
+export {};

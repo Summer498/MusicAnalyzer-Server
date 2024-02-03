@@ -15,7 +15,7 @@ import Chord_default from "@tonaljs/chord";
 import Interval from "@tonaljs/interval";
 import Note from "@tonaljs/note";
 import Scale_default from "@tonaljs/scale";
-import { dynamicLogViterbi } from "../Graph/Graph.js";
+import { dynamicLogViterbi, findMin } from "../Graph/Graph.js";
 import { Math } from "../Math/Math.js";
 import { Assertion, assertNonNullable, castToNumber, IdDictionary } from "../StdLib/stdlib.js";
 import { getDistance, getKeysIncludeTheChord } from "../TPS/TPS.js";
@@ -137,7 +137,7 @@ export class ChordProgression {
     }
     getMinimumPath() {
         const viterbi = dynamicLogViterbi(Math.getZeros(24), // 12 音 x {-mol, -dur}
-        this.getStatesOnTime.bind(this), this.getDistanceOfStates.bind(this), () => 0, this.getChordIdSequence(), true);
+        this.getStatesOnTime.bind(this), this.getDistanceOfStates.bind(this), () => 0, this.getChordIdSequence(), findMin);
         // console.log(viterbi)
         const trace = viterbi.trace;
         return trace.map(e => e.map((id, i) => new RomanChord(Scale_default.get(__classPrivateFieldGet(this, _ChordProgression_scale_dictionary, "f").getItem(id)), Chord_default.get(this.lead_sheet_chords[i]))));

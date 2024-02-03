@@ -7,7 +7,7 @@ import { NoteLiteral } from "tonal";
 import { Scale } from "@tonaljs/scale";
 import Scale_default from "@tonaljs/scale"
 
-import { dynamicLogViterbi } from "../Graph/Graph.js";
+import { dynamicLogViterbi, findMin } from "../Graph/Graph.js";
 import { Math } from "../Math/Math.js";
 import { Assertion, assertNonNullable, castToNumber, IdDictionary } from "../StdLib/stdlib.js";
 import { getDistance, getKeysIncludeTheChord } from "../TPS/TPS.js";
@@ -162,7 +162,7 @@ export class ChordProgression {
             this.getDistanceOfStates.bind(this),
             () => 0,
             this.getChordIdSequence(),
-            true
+            findMin
         );
         // console.log(viterbi)
         const trace = viterbi.trace;
