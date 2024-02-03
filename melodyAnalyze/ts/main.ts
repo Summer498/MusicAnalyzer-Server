@@ -23,7 +23,7 @@ type MelodyAnalysis = {
 type timeAndChord = { time: number[], chord: Chord };
 type timeAndMelody = { time: number[], note: number }
 type timeAndRoman = { time: number[], progression: RomanChord };
-type timeAndMelodyAnalysis = { time: number[], note: number, roman_name: string|undefined, melodyAnalysis: MelodyAnalysis }
+type timeAndMelodyAnalysis = { time: number[], note: number, roman_name: string | undefined, melodyAnalysis: MelodyAnalysis }
 
 const compress = <T>(arr: T[]) => {
     const ret: { time: number[], value: T }[] = [];
@@ -96,7 +96,7 @@ const analyzeMelody = (melodies: timeAndMelody[], romans: timeAndRoman[]): timeA
 
         }
         gravity.forEach((e, j) => {
-            if (e.destination) {
+            if (e.destination && i + 1 < melodies.length) {
                 gravity[j].resolved = melodies[i + 1].note === e.destination;
             }
         });

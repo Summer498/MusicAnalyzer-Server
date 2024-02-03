@@ -75,7 +75,7 @@ const analyzeMelody = (melodies, romans) => {
             }
         }
         gravity.forEach((e, j) => {
-            if (e.destination) {
+            if (e.destination && i + 1 < melodies.length) {
                 gravity[j].resolved = melodies[i + 1].note === e.destination;
             }
         });
