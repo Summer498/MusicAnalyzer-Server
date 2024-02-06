@@ -17,3 +17,8 @@ export const hsv2rgb = (h, s, v) => {
                         [c, 0, x];
     return vFloor(vMul(vAdd(rgb, m), 255));
 };
+export const rgbToString = (rgb) => {
+    let ret = "#";
+    rgb.forEach(e => { ret = `${ret}${(e < 16) ? `0` : ``}${e.toString(16)}`; });
+    return ret;
+};
