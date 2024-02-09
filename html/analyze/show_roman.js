@@ -90,7 +90,8 @@ const getPianoRollWidth = () => window.innerWidth - 48;
 const piano_roll_height = octave_height * octave_cnt;
 const black_position = vMod(vAdd([2, 4, 6, 9, 11], piano_roll_begin), 12);
 const white_position = getRange(0, 12).filter(e => !black_position.includes(e));
-const chord_text_size = 32;
+const chord_text_em = 4;
+const chord_text_size = 16 * chord_text_em;
 const piano_roll_time = 5; // 1 画面に収める曲の長さ[秒]
 const triangle_width = 5;
 const triangle_height = 0.25;
@@ -151,8 +152,8 @@ const chord_svgs = Math.getRange(0, octave_cnt).map(oct => romans.map(time_and_r
     const notes = time_and_roman.progression.chord.notes;
     return {
         rects: notes.map(note => SVG.rect({ name: "chord-note", fill: chordToColor(time_and_roman.progression.chord, 0.5, 0.9), stroke: "#444" })),
-        chord: SVG.text({ stroke: chordToColor(time_and_roman.progression.chord, 1, 0.75) }, shorten(time_and_roman.progression.chord.name)),
-        roman: SVG.text({ stroke: chordToColor(time_and_roman.progression.chord, 1, 0.75) }, shorten(time_and_roman.progression.roman)),
+        chord: SVG.text({ id: "chord-name", "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: chordToColor(time_and_roman.progression.chord, 1, 0.75) }, shorten(time_and_roman.progression.chord.name)),
+        roman: SVG.text({ id: "roman-name", "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: chordToColor(time_and_roman.progression.chord, 1, 0.75) }, shorten(time_and_roman.progression.roman)),
         time: time_and_roman.time,
         notes,
         oct
@@ -317,7 +318,7 @@ const refresh = () => {
         const e = melodies[i];
         // console.log(`now:${now} - e.time[0]:${e.time[0]}`)
         e.sound_reserved = setTimeout(() => {
-            // play([440 * Math.pow(2, (e.note - 69) / 12)], (e.time[1] - e.time[0]) * 100);
+            // play([440 * Math.pow(2, (e.note - 69) / 12)], (e.time[1] - e.time[0]) * 10);
             // TODO: 妙に音が長いのはオシレータがオンのままになっている可能性がある
         }, (e.time[0] - now) * 1000);
     }
