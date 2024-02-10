@@ -13,11 +13,9 @@
     "build": "tsup index.ts --sourcemap --dts --format esm,cjs"
   },
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/node": "^18.11.13"
-  },
+  "license": "MIT",
   "dependencies": {
+    "@types/node": "^18.11.13",
     "tonal": "^4.8.0"
   }
 }
