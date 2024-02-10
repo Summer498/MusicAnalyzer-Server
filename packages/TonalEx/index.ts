@@ -1,10 +1,12 @@
 import { RomanNumeral } from "tonal";
 import { Chord } from "@tonaljs/chord"
+export { Chord } from "@tonaljs/chord"
 import Chord_default from "@tonaljs/chord"
 import Interval from "@tonaljs/interval";
 import Note from "@tonaljs/note"
 import { NoteLiteral } from "tonal";
 import { Scale } from "@tonaljs/scale";
+export { Scale } from "@tonaljs/scale";
 import Scale_default from "@tonaljs/scale"
 
 import { dynamicLogViterbi, findMin } from "../Graph";
