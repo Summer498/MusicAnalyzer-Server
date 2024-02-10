@@ -60,5 +60,5 @@ echo ("window.MusicAnalyzer.roman={$chords};");
 echo ("window.MusicAnalyzer.melody={$melodies};");
 echo ("</script>\n");
 // 静的スクリプトを送る
-echo ("<script src=\"./show_roman.js\"type=\"module\"></script>");
+echo ("<script src=\"./dist/index.js\"type=\"module\"></script>");
 ?>
