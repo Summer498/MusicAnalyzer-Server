@@ -114,11 +114,11 @@ runProcessWithCache "$chord_ext_dst" "python -m chordExtract \"$chord_ext_src\" 
 chord_to_roman_src=$chord_ext_dst
 chord_to_roman_dst="./resources/$songname/analyzed/chord/roman.json"
 detectFile "$chord_to_roman_src"
-runProcessWithCache "$chord_to_roman_dst" "node ./chordToRoman < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\""
+runProcessWithCache "$chord_to_roman_dst" "node ./packages/chordToRoman < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\""
 # 最終処理だけ reanalyze option が on の場合は実行する.
 if [ $force_reanalyze -eq 0 ] && [ -e "$chord_to_roman_dst" ] && [ $roman_reanalyze -eq 1 ]; then
-    debug_log "node ./chordToRoman < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\""
-    node ./chordToRoman < "$chord_to_roman_src" > "$chord_to_roman_dst"
+    debug_log "node ./packages/chordToRoman < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\""
+    node ./packages/chordToRoman < "$chord_to_roman_src" > "$chord_to_roman_dst"
     chmod 757 "$chord_to_roman_dst"
 fi
 cat "$chord_to_roman_dst"

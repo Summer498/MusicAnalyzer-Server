@@ -142,7 +142,7 @@ res=$( runProcessWithCache "$chord_ext_dst" "python -m chordExtract \"$chord_ext
 chord_to_roman_src=$chord_ext_dst
 chord_to_roman_dst="./resources/$songname/analyzed/chord/roman.json"
 detectFile "$chord_to_roman_src"
-res=$( runProcessWithCache "$chord_to_roman_dst" "node ./chordToRoman < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\"" )
+res=$( runProcessWithCache "$chord_to_roman_dst" "node ./packages/chordToRoman < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\"" )
 
 # コードとメロディの関係を求める
 melody_analyze_melody_src=$post_crepe_dst
@@ -150,11 +150,11 @@ melody_analyze_chord_src=$chord_to_roman_dst
 melody_analyze_dst="./resources/$songname/analyzed/melody/manalyze.json"
 detectFile "$melody_analyze_melody_src"
 detectFile "$melody_analyze_chord_src"
-res=$( runProcessWithCache "$melody_analyze_dst" "node ./melodyAnalyze \"$melody_analyze_melody_src\" \"$melody_analyze_chord_src\" > \"$melody_analyze_dst\"" )
+res=$( runProcessWithCache "$melody_analyze_dst" "node ./packages/melodyAnalyze \"$melody_analyze_melody_src\" \"$melody_analyze_chord_src\" > \"$melody_analyze_dst\"" )
 # 最終処理だけ reanalyze option が on の場合は実行する.
 if [ $force_reanalyze -eq 0 ] && [ -e "$melody_analyze_dst" ] && [ $melody_reanalyze -eq 1 ]; then
-    debug_log "node ./melodyAnalyze \"$melody_analyze_melody_src\" \"$melody_analyze_chord_src\" > \"$melody_analyze_dst\""
-    node ./melodyAnalyze "$melody_analyze_melody_src" "$melody_analyze_chord_src" > "$melody_analyze_dst"
+    debug_log "node ./packages/melodyAnalyze \"$melody_analyze_melody_src\" \"$melody_analyze_chord_src\" > \"$melody_analyze_dst\""
+    node ./packages/melodyAnalyze "$melody_analyze_melody_src" "$melody_analyze_chord_src" > "$melody_analyze_dst"
     chmod 757 "$melody_analyze_dst"
 fi
 cat "$melody_analyze_dst"
