@@ -12,3 +12,7 @@ chroma2chordNB
 apache-error.log
 *.tsbuildinfo
 python2/
+adapters
+.turbo
+dist
+toMIDI

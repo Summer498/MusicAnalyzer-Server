@@ -1,1 +1,0 @@
-{"version":3,"file":"SongleWidget.js","sourceRoot":"","sources":["../../../../src/lib/adapters/SongleWidget/SongleWidget.ts"],"names":[],"mappings":";;;AAeA,IAAI,UAAU,CAAC,eAAe,KAAK,SAAS,EAAE;IAAE,MAAM,cAAc,CAAC,iIAAiI,CAAC,CAAC;CAAE;AAC7L,QAAA,eAAe,GAAG,UAAU,CAAC,eAAe,CAAC,CAAE,+BAA+B;AAE9E,QAAA,oBAAoB,GAAG,UAAU,CAAC"}
