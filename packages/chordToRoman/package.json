@@ -1,0 +1,23 @@
+{
+  "name": "chordtoroman",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "scripts": {
+    "build": "tsup index.ts --sourcemap --dts --format esm,cjs"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.11.13"
+  },
+  "dependencies": {
+    "tonal": "^4.8.0"
+  }
+}

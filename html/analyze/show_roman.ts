@@ -1,9 +1,9 @@
-import { HTML, SVG } from "../lib/HTML/HTML.js";
-import { vMod, getRange, vAdd, Math, mod } from "../lib/Math/Math.js";
-import { RomanChord } from "../../chordToRoman/build/lib/TonalEx/TonalEx.js";
-import { hsv2rgb, rgbToString } from "../lib/Color/Color.js";
-import { play } from "../lib/Synth/synth.js"
-import { Assertion } from "../lib/StdLib/stdlib.js";
+import { HTML, SVG } from "../../packages/HTML/dist/index.mjs";
+import { vMod, getRange, vAdd, Math, mod } from "../../packages/Math/dist/index.mjs";
+import { RomanChord } from "../../packages/TonalEx/dist/index.mjs";
+import { hsv2rgb, rgbToString } from "../../packages/Color/dist/index.mjs";
+import { play } from "../../packages/Synth/dist/index.mjs"
+import { Assertion } from "../../packages/StdLib/dist/index.mjs";
 
 const debug_mode = true;
 const debug_log_element = HTML.p({ name: "debug" })

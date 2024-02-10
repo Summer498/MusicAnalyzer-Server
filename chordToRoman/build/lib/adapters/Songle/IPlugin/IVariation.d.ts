@@ -1,1 +1,0 @@
-export type IVariation = any;
