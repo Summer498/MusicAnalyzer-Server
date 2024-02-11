@@ -1,0 +1,67 @@
+{
+  /*
+    "extends": [
+        "eslint:recommended"
+    ],
+    */
+  "env": {
+    "browser": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 13,
+    "sourceType": "module"
+  },
+  // "extends":["eslint:recommended"],
+  "rules": {
+    "block-scoped-var": "warn",
+    "curly": "warn",
+    "init-declarations": ["off", "always"],
+    "multiline-ternary": ["warn", "never"],
+    "no-lone-blocks": "warn",
+    "no-lonely-if": "warn",
+    "no-var": "warn",
+    "no-void": "warn",
+    "no-ex-assign": "warn",
+    "no-self-assign": "warn",
+    "no-cond-assign": "warn",
+    "no-func-assign": "warn",
+    "no-class-assign": "warn",
+    "no-const-assign": "error",
+    "no-sequences": "warn",
+    "no-multi-assign": "warn",
+    "no-global-assign": "warn",
+    "no-return-assign": "warn",
+    "no-extra-parens": ["warn", "all"],
+    "no-unexpected-multiline": "warn",
+    "no-unreachable": "warn",
+    "no-unused-vars": "warn",
+    "no-use-before-define": "warn",
+    "one-var": ["warn", "never"],
+    "prefer-const": "warn",
+    "semi": ["warn", "always"],
+    "switch-colon-spacing": "warn",
+    "vars-on-top": "warn",
+    "yoda": ["warn", "never", { "onlyEquality": true }]
+  },
+  "overrides": [
+    // for TypeScript
+    {
+      "files": ["**/*.ts"],
+      "plugins": ["@typescript-eslint"],
+      "extends": [
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+      },
+      "rules": {
+        "@typescript-eslint/no-unused-vars": "warn",
+        "@typescript-eslint/ban-types": "warn",
+        "@typescript-eslint/no-explicit-any": "warn"
+      }
+    }
+  ]
+}

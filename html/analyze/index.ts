@@ -4,7 +4,8 @@ import { RomanChord } from "../../packages/TonalEx/index";
 import { hsv2rgb, rgbToString } from "../../packages/Color/index";
 import { play } from "../../packages/Synth/index"
 import { Assertion } from "../../packages/StdLib/index";
-import { Scale } from "../../packages/TonalEx/index";
+import { Scale as _Scale } from "tonal";
+type Scale = ReturnType<typeof _Scale.get>;
 
 const debug_mode = true;
 const debug_log_element = HTML.p({ name: "debug" })
@@ -25,7 +26,7 @@ type timeAndMelodyAnalysis = {
   note: number,
   roman_name: string | undefined,
   melodyAnalysis: MelodyAnalysis,
-  sound_reserved: ReturnType<typeof setTimeout> | null;
+  sound_reserved: boolean;
 }
 
 interface MusicAnalyzerWindow extends Window {
@@ -38,7 +39,7 @@ const detected_romans = window.MusicAnalyzer.roman;
 const detected_melodies = window.MusicAnalyzer.melody;
 const romans = window.MusicAnalyzer.roman.map(e => e);
 const melodies = window.MusicAnalyzer.melody.map(e => {
-  e.sound_reserved = null;
+  e.sound_reserved = false;
   return e
 });
 
@@ -130,7 +131,7 @@ const black_position = vMod(vAdd([2, 4, 6, 9, 11], piano_roll_begin), 12);
 const white_position = getRange(0, 12).filter(e => !black_position.includes(e));
 const chord_text_em = 4
 const chord_text_size = 16 * chord_text_em;
-const key_text_pos = -chord_text_size*3;
+const key_text_pos = -chord_text_size * 3;
 const piano_roll_time = 5;  // 1 画面に収める曲の長さ[秒]
 
 const triangle_width = 5
@@ -177,9 +178,9 @@ const shorten_key = (key: Scale) => {
   const type = key.type;
   "aeolian"
   "major"
-  if(type === "aeolian"){return `${tonic?.toLowerCase()}-moll`}
-  else if (type === "major"){return `${tonic?.toUpperCase()}-dur`}
-  else{return key.name}
+  if (type === "aeolian") { return `${tonic?.toLowerCase()}-moll` }
+  else if (type === "major") { return `${tonic?.toUpperCase()}-dur` }
+  else { return key.name }
 }
 
 // svg element の作成
@@ -191,10 +192,10 @@ const chord_svgs =
       const roman = time_and_roman.progression.roman;
       const scale = time_and_roman.progression.scale;
       return {
-        rects: notes.map(note => SVG.rect({ name: "chord-note", fill: chordToColor(chord.tonic, 0.5, 0.9), stroke: "#444" })),
-        chord: SVG.text({ id: "chord-name", "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: chordToColor(chord.tonic, 1, 0.75) }, shorten_chord(chord.name)),
-        roman: SVG.text({ id: "roman-name", "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: chordToColor(chord.tonic, 1, 0.75) }, shorten_chord(roman)),
-        key:   SVG.text({ id: "key-name",   "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: (scale.tonic ? chordToColor(scale.tonic, 1, 0.75) : "#000")}, shorten_key(scale)),
+        rects: notes.map(note => SVG.rect({ name: "chord-note", fill: chordToColor(chord.tonic!, 0.5, 0.9), stroke: "#444" })),
+        chord: SVG.text({ id: "chord-name", "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: chordToColor(chord.tonic!, 1, 0.75) }, shorten_chord(chord.name)),
+        roman: SVG.text({ id: "roman-name", "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: chordToColor(chord.tonic!, 1, 0.75) }, shorten_chord(roman)),
+        key: SVG.text({ id: "key-name", "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: (scale.tonic ? chordToColor(scale.tonic, 1, 0.75) : "#000") }, shorten_key(scale)),
         time: time_and_roman.time,
         notes,
         oct
@@ -251,8 +252,8 @@ const arrow_svgs =
     return ret;
   })();
 
-const white_BGs  = [...Array(octave_cnt)].map(i => [...Array(7)].map(j => SVG.rect({ name: "white-BG" , fill: white_bg_fill,  stroke: white_bg_stroke,  })));
-const black_BGs  = [...Array(octave_cnt)].map(i => [...Array(5)].map(j => SVG.rect({ name: "black-BG" , fill: black_bg_fill,  stroke: black_bg_stroke,  })));
+const white_BGs = [...Array(octave_cnt)].map(i => [...Array(7)].map(j => SVG.rect({ name: "white-BG", fill: white_bg_fill, stroke: white_bg_stroke, })));
+const black_BGs = [...Array(octave_cnt)].map(i => [...Array(5)].map(j => SVG.rect({ name: "black-BG", fill: black_bg_fill, stroke: black_bg_stroke, })));
 const white_keys = [...Array(octave_cnt)].map(i => [...Array(7)].map(j => SVG.rect({ name: "white-key", fill: white_key.fill, stroke: white_key.stroke, })));
 const black_keys = [...Array(octave_cnt)].map(i => [...Array(5)].map(j => SVG.rect({ name: "black-key", fill: black_key.fill, stroke: black_key.stroke, })));
 const current_time_line = SVG.line({ name: "current_time", "stroke-width": 5, stroke: "#000" });
@@ -260,7 +261,7 @@ const current_time_line = SVG.line({ name: "current_time", "stroke-width": 5, st
 const chord_rects = chord_svgs.flatMap(e => e.rects);
 const chord_names = chord_svgs.map(e => e.chord);
 const roman_names = chord_svgs.map(e => e.roman);
-const   key_names = chord_svgs.map(e => e.key);
+const key_names = chord_svgs.map(e => e.key);
 const detected_melody_rects = detected_melody_svgs.map(e => e.rect);
 const melody_rects = melody_svgs.map(e => e.rect);
 const gravity_arrow_lines = arrow_svgs.map(e => e.line);
@@ -375,23 +376,18 @@ const refresh = () => {
   melody_svgs.forEach(e => e.rect.setAttributes({ x: current_time_x + e.time[0] * note_size - std_pos }));
   refresh_arrow(arrow_svgs, note_size, current_time_x, std_pos);
 
-  melodies.forEach(e => {
-    if (e.sound_reserved !== null) {
-      clearTimeout(e.sound_reserved);
-      e.sound_reserved = null;
-    }
-  })
-  const melody_range = search_melody_in_range(melodies, now, now + 1/*(piano_roll_width - current_time_x) / note_size*/)
+  const reservation_range = 1/15
+  const melody_range = search_melody_in_range(melodies, now, now + reservation_range/*(piano_roll_width - current_time_x) / note_size*/)
   for (let i = melody_range.begin_index; i <= melody_range.end_index; i++) {
     const e = melodies[i];
     // console.log(`now:${now} - e.time[0]:${e.time[0]}`)
-    e.sound_reserved = setTimeout(
-      () => {
-        // play([440 * Math.pow(2, (e.note - 69) / 12)], (e.time[1] - e.time[0]) * 10);
-        // TODO: 妙に音が長いのはオシレータがオンのままになっている可能性がある
-      },
-      (e.time[0] - now) * 1000
-    )
+    if (e.sound_reserved === false) {
+      play([440 * Math.pow(2, (e.note - 69) / 12)], e.time[0] - now, (e.time[1] - e.time[0]));
+      e.sound_reserved = true;
+      setTimeout(() => {
+        e.sound_reserved=false;
+      }, reservation_range * 1000);
+    }
   }
 }
 

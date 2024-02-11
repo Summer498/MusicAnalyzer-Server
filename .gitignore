@@ -16,3 +16,4 @@ adapters
 .turbo
 dist
 toMIDI
+coverage
