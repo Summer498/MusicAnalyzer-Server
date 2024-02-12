@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "popular music analyzer",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "html/*"
   ],
   "main": "index.js",
   "scripts": {
