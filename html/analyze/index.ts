@@ -395,10 +395,95 @@ const refresh = () => {
   }
 };
 
+
+(() => {
+  const note = 0;
+  const roman_name = "I";
+  const melodyAnalysis = { gravity: [] };
+  const sound_reserved = false;
+  const sample: timeAndMelodyAnalysis[] = [
+    { time: [2, 4], note, roman_name, melodyAnalysis, sound_reserved, },
+    { time: [6, 8], note, roman_name, melodyAnalysis, sound_reserved, },
+    { time: [10, 12], note, roman_name, melodyAnalysis, sound_reserved, },
+    { time: [14, 16], note, roman_name, melodyAnalysis, sound_reserved, },
+    { time: [18, 20], note, roman_name, melodyAnalysis, sound_reserved, }
+  ];
+  console.log("0:[2,4], 1:[6,8], 2:[10,12], 3:[14,16], 4:[18,20]");
+  console.log("begin");
+  console.log(search_melody_in_range(sample, 1, 9));
+  console.log("[1,9)  →  expected: [0,2]");
+  console.log(search_melody_in_range(sample, 2, 9));
+  console.log("[2,9)  →  expected: [0,2]");
+  console.log(search_melody_in_range(sample, 3, 9));
+  console.log("[3,9)  →  expected: [1,2]");
+
+  console.log(search_melody_in_range(sample, 1, 5));
+  console.log("[1,5)  →  expected: [0,1]");
+  console.log(search_melody_in_range(sample, 1, 6));
+  console.log("[1,6)  →  expected: [0,1]");
+  console.log(search_melody_in_range(sample, 1, 7));
+  console.log("[1,7)  →  expected: [0,2]");
+
+  console.log("---------------");
+
+  console.log(search_melody_in_range(sample, 5, 13));
+  console.log("[5,13)  →  expected: [1,2]");
+  console.log(search_melody_in_range(sample, 6, 13));
+  console.log("[6,13)  →  expected: [1,2]");
+  console.log(search_melody_in_range(sample, 7, 13));
+  console.log("[7,13)  →  expected: [2,2]");
+
+  console.log(search_melody_in_range(sample, 5, 9));
+  console.log("[5,9)  →  expected: [1,1]");
+  console.log(search_melody_in_range(sample, 5, 10));
+  console.log("[5,10)  →  expected: [1,1]");
+  console.log(search_melody_in_range(sample, 5, 11));
+  console.log("[5,11)  →  expected: [1,2]");
+
+  console.log("---------------");
+
+  console.log(search_melody_in_range(sample, 9, 17));
+  console.log("[9,17)  →  expected: [2,3]");
+  console.log(search_melody_in_range(sample, 10, 17));
+  console.log("[10,17)  →  expected: [2,3]");
+  console.log(search_melody_in_range(sample, 11, 17));
+  console.log("[11,17)  →  expected: [3,3]");
+
+  console.log(search_melody_in_range(sample, 9, 13));
+  console.log("[9,13)  →  expected: [2,2]");
+  console.log(search_melody_in_range(sample, 9, 14));
+  console.log("[9,14)  →  expected: [2,2]");
+  console.log(search_melody_in_range(sample, 9, 15));
+  console.log("[9,15)  →  expected: [2,3]");
+
+  console.log("---------------");
+
+  console.log(search_melody_in_range(sample, 13, 21));
+  console.log("[13,21)  →  expected: [3,4]");
+  console.log(search_melody_in_range(sample, 14, 21));
+  console.log("[14,21)  →  expected: [3,4]");
+  console.log(search_melody_in_range(sample, 15, 21));
+  console.log("[15,21)  →  expected: [4,4]");
+
+  console.log(search_melody_in_range(sample, 13, 17));
+  console.log("[13,17)  →  expected: [3,3]");
+  console.log(search_melody_in_range(sample, 13, 18));
+  console.log("[13,18)  →  expected: [3,3]");
+  console.log(search_melody_in_range(sample, 13, 19));
+  console.log("[13,19)  →  expected: [3,4]");
+
+  console.log(search_melody_in_range(sample, 0.5, 1.5));
+  console.log("expected: []");
+
+  console.log("end");
+})();
+console.log(search_melody_in_range(melodies, 30, 90));
+
+
 // audio.addEventListener("timeupdate", refresh);
 
 
-window.onresize = (ev) => {
+window.onresize = (e) => {
   draw(getPianoRollWidth());
 };
 
@@ -409,5 +494,3 @@ const update = () => {
 
 draw(getPianoRollWidth());
 update();
-
-console.log(search_melody_in_range(melodies, 30, 90));
