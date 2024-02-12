@@ -60,28 +60,30 @@ const search_melody_in_range = (melodies: timeAndMelodyAnalysis[], begin: number
   let el = 0;
   let br = melodies.length;
   let er = melodies.length;
+  const b_tgt = begin;
+  const e_tgt = end;
 
-  while (bl !== br - 1 && el !== er - 1) {
-    const bm = Math.ceil((bl + br - 1) / 2);
-    const em = Math.ceil((el + er - 1) / 2);
-    const b_time = melodies[bm].time;
-    const e_time = melodies[em].time;
-    if (b_time[0] < begin) {
-      bl = bm
+  while (br - bl > 1 && er - el > 1) {
+    const bm = bl + Math.floor((br - bl) / 2);
+    const em = el + Math.floor((er - el) / 2);
+    const bm_val = melodies[bm].time[0];
+    const em_val = melodies[em].time[0];
+    if (b_tgt < bm_val) {
+      br = bm;
     } else {
-      br = bm
+      bl = bm;
     }
-    if (e_time[1] < end) {
-      el = em
+    if (e_tgt < em_val) {
+      er = em;
     } else {
-      er = em
+      el = em;
     }
   }
 
   new Assertion(bl < er);
 
   return { begin_index: bl, end_index: er };
-}
+};
 
 
 // WARNING: この方法ではオクターブの差を見ることはできない
@@ -377,16 +379,17 @@ const refresh = () => {
   melody_svgs.forEach(e => e.rect.setAttributes({ x: current_time_x + e.time[0] * note_size - std_pos }));
   refresh_arrow(arrow_svgs, note_size, current_time_x, std_pos);
 
-  const reservation_range = 1/15
-  const melody_range = search_melody_in_range(melodies, now, now + reservation_range/*(piano_roll_width - current_time_x) / note_size*/)
+  const reservation_range = 1 / 15;
+  const melody_range = search_melody_in_range(melodies, now, now + reservation_range);
   for (let i = melody_range.begin_index; i <= melody_range.end_index; i++) {
+    if (i >= melodies.length) { continue; } // TODO: これを書かなくても良いようにロジックを組み直す (エッジケースについて考える)
     const e = melodies[i];
     // console.log(`now:${now} - e.time[0]:${e.time[0]}`)
     if (e.sound_reserved === false) {
-      play([440 * Math.pow(2, (e.note - 69) / 12)], e.time[0] - now, (e.time[1] - e.time[0]));
+      play([440 * Math.pow(2, (e.note - 69) / 12)], e.time[0] - now, e.time[1] - e.time[0]);
       e.sound_reserved = true;
       setTimeout(() => {
-        e.sound_reserved=false;
+        e.sound_reserved = false;
       }, reservation_range * 1000);
     }
   }
