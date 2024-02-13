@@ -3,8 +3,8 @@ import { vMod, getRange, vAdd, Math, mod } from "../../packages/Math/index";
 import { RomanChord } from "../../packages/TonalEx/index";
 import { hsv2rgb, rgbToString } from "../../packages/Color/index";
 import { play } from "../../packages/Synth/index";
-import { Assertion } from "../../packages/StdLib/index";
 import { Scale as _Scale } from "tonal";
+import { search_melody_in_range, timeAndMelodyAnalysis } from "../../packages/melodyView";
 type Scale = ReturnType<typeof _Scale.get>;
 
 const debug_mode = true;
@@ -15,19 +15,6 @@ if (debug_mode) {
 
 type timeAndRoman = { time: number[], progression: RomanChord };
 type timeAndMelody = { time: number[], note: number }
-type MelodyAnalysis = {
-  gravity: {
-    destination: number | undefined,
-    resolved: boolean,
-  }[]
-}
-type timeAndMelodyAnalysis = {
-  time: number[],
-  note: number,
-  roman_name: string | undefined,
-  melodyAnalysis: MelodyAnalysis,
-  sound_reserved: boolean;
-}
 
 interface MusicAnalyzerWindow extends Window {
   MusicAnalyzer: { roman: timeAndRoman[], melody: timeAndMelodyAnalysis[] }
@@ -50,40 +37,6 @@ console.log(melodies);
 // const notes = roman[0].chords[1][2].notes;  // 0 個目のコード列の1番目の推定候補の2個目のコードの構成音
 
 const max = (a: number, b: number) => a > b ? a : b;
-
-// 指定区間の melody の探索
-// begin を含み, end をギリギリ含まない下界 (lower bound) の探索
-// TODO:境界値がどうなっているのかをテストする
-const search_melody_in_range = (melodies: timeAndMelodyAnalysis[], begin: number, end: number) => {
-  // Require: melodies は時間昇順にソート済み
-  let bl = 0;
-  let el = 0;
-  let br = melodies.length;
-  let er = melodies.length;
-  const b_tgt = begin;
-  const e_tgt = end;
-
-  while (br - bl > 1 && er - el > 1) {
-    const bm = bl + Math.floor((br - bl) / 2);
-    const em = el + Math.floor((er - el) / 2);
-    const bm_val = melodies[bm].time[0];
-    const em_val = melodies[em].time[0];
-    if (b_tgt < bm_val) {
-      br = bm;
-    } else {
-      bl = bm;
-    }
-    if (e_tgt < em_val) {
-      er = em;
-    } else {
-      el = em;
-    }
-  }
-
-  new Assertion(bl < er);
-
-  return { begin_index: bl, end_index: er };
-};
 
 
 // WARNING: この方法ではオクターブの差を見ることはできない
@@ -118,7 +71,7 @@ class RectParameters {
 }
 
 // --- ピアノロールの描画
-const octave_height = 3 * 84;  // 7 白鍵と 12 半音をきれいに描画するには 7 * 12 の倍数が良い (多分)
+const octave_height = 3 * 84;  // 7 白鍵と 12 半音をきれいに描画するには 7 * 12 の倍数が良い
 const octave_cnt = 3;
 const piano_roll_begin = 83;
 const white_key = new RectParameters({ width: 36, height: octave_height / 7, fill: "#fff", stroke: "#000", });
@@ -271,7 +224,8 @@ const gravity_arrow_lines = arrow_svgs.map(e => e.line);
 const gravity_arrow_triangles = arrow_svgs.map(e => e.triangle);
 const octave_BG = [...Array(octave_cnt)].map((_, i) => SVG.g({ name: "octave-BG" }, undefined, [white_BGs[i], black_BGs[i]]));
 const octave_keys = [...Array(octave_cnt)].map((_, i) => SVG.g({ name: "octave-keys" }, undefined, [white_keys[i], black_keys[i]]));
-const piano_roll = SVG.svg({ name: "piano-roll" }, undefined, [octave_BG, chord_rects, chord_names, roman_names, key_names, detected_melody_rects, melody_rects, gravity_arrow_lines, gravity_arrow_triangles, octave_keys, current_time_line]);
+const piano_roll = SVG.svg({ name: "piano-roll" }, undefined, [octave_BG, chord_rects]);
+piano_roll.appendChildren([chord_names, roman_names, key_names, detected_melody_rects, melody_rects, gravity_arrow_lines, gravity_arrow_triangles, octave_keys, current_time_line]);
 const piano_roll_place = document.getElementById("piano-roll-place");
 piano_roll_place?.insertAdjacentElement("afterbegin", piano_roll);
 
@@ -371,20 +325,21 @@ const refresh = () => {
   const note_size = piano_roll_width / piano_roll_time;
   const now = audio.currentTime;
   const std_pos = now * note_size;
-  chord_svgs.forEach(e => e.rects.forEach(rect => rect.setAttributes({ x: current_time_x + e.time[0] * note_size - std_pos })));  // SVG.rect の位置替える
-  chord_svgs.forEach(e => e.chord.setAttributes({ x: current_time_x + e.time[0] * note_size - std_pos }));
-  chord_svgs.forEach(e => e.roman.setAttributes({ x: current_time_x + e.time[0] * note_size - std_pos }));
-  chord_svgs.forEach(e => e.key.setAttributes({ x: current_time_x + key_text_pos + e.time[0] * note_size - std_pos }));
-  detected_melody_svgs.forEach(e => e.rect.setAttributes({ x: current_time_x + e.time[0] * note_size - std_pos }));
-  melody_svgs.forEach(e => e.rect.setAttributes({ x: current_time_x + e.time[0] * note_size - std_pos }));
+  const _chord_svgs = chord_svgs.filter(e => now - current_time_x <= e.time[0] && e.time[0] <= now + piano_roll_time);
+  _chord_svgs.forEach(e => e.rects.forEach(rect => rect.setAttributes({ x: current_time_x + (e.time[0] - now) * note_size })));  // SVG.rect の位置替える
+  _chord_svgs.forEach(e => e.chord.setAttributes({ x: current_time_x + (e.time[0] - now) * note_size }));
+  _chord_svgs.forEach(e => e.roman.setAttributes({ x: current_time_x + (e.time[0] - now) * note_size }));
+  _chord_svgs.forEach(e => e.key.setAttributes({ x: current_time_x + key_text_pos + (e.time[0] - now) * note_size }));
+  detected_melody_svgs.filter(e => now - current_time_x <= e.time[1] && e.time[0] <= now + piano_roll_time).forEach(e => e.rect.setAttributes({ x: current_time_x + (e.time[0] - now) * note_size }));
+  melody_svgs.filter(e => now - current_time_x <= e.time[1] && e.time[0] <= now + piano_roll_time).forEach(e => e.rect.setAttributes({ x: current_time_x + (e.time[0] - now) * note_size }));
   refresh_arrow(arrow_svgs, note_size, current_time_x, std_pos);
+
+  const view_range = [now, now + piano_roll_time];
 
   const reservation_range = 1 / 15;
   const melody_range = search_melody_in_range(melodies, now, now + reservation_range);
-  for (let i = melody_range.begin_index; i <= melody_range.end_index; i++) {
-    if (i >= melodies.length) { continue; } // TODO: これを書かなくても良いようにロジックを組み直す (エッジケースについて考える)
+  for (let i = melody_range.begin_index; i < melody_range.end_index; i++) {
     const e = melodies[i];
-    // console.log(`now:${now} - e.time[0]:${e.time[0]}`)
     if (e.sound_reserved === false) {
       play([440 * Math.pow(2, (e.note - 69) / 12)], e.time[0] - now, e.time[1] - e.time[0]);
       e.sound_reserved = true;
@@ -395,88 +350,6 @@ const refresh = () => {
   }
 };
 
-
-(() => {
-  const note = 0;
-  const roman_name = "I";
-  const melodyAnalysis = { gravity: [] };
-  const sound_reserved = false;
-  const sample: timeAndMelodyAnalysis[] = [
-    { time: [2, 4], note, roman_name, melodyAnalysis, sound_reserved, },
-    { time: [6, 8], note, roman_name, melodyAnalysis, sound_reserved, },
-    { time: [10, 12], note, roman_name, melodyAnalysis, sound_reserved, },
-    { time: [14, 16], note, roman_name, melodyAnalysis, sound_reserved, },
-    { time: [18, 20], note, roman_name, melodyAnalysis, sound_reserved, }
-  ];
-  console.log("0:[2,4], 1:[6,8], 2:[10,12], 3:[14,16], 4:[18,20]");
-  console.log("begin");
-  console.log(search_melody_in_range(sample, 1, 9));
-  console.log("[1,9)  →  expected: [0,2]");
-  console.log(search_melody_in_range(sample, 2, 9));
-  console.log("[2,9)  →  expected: [0,2]");
-  console.log(search_melody_in_range(sample, 3, 9));
-  console.log("[3,9)  →  expected: [1,2]");
-
-  console.log(search_melody_in_range(sample, 1, 5));
-  console.log("[1,5)  →  expected: [0,1]");
-  console.log(search_melody_in_range(sample, 1, 6));
-  console.log("[1,6)  →  expected: [0,1]");
-  console.log(search_melody_in_range(sample, 1, 7));
-  console.log("[1,7)  →  expected: [0,2]");
-
-  console.log("---------------");
-
-  console.log(search_melody_in_range(sample, 5, 13));
-  console.log("[5,13)  →  expected: [1,2]");
-  console.log(search_melody_in_range(sample, 6, 13));
-  console.log("[6,13)  →  expected: [1,2]");
-  console.log(search_melody_in_range(sample, 7, 13));
-  console.log("[7,13)  →  expected: [2,2]");
-
-  console.log(search_melody_in_range(sample, 5, 9));
-  console.log("[5,9)  →  expected: [1,1]");
-  console.log(search_melody_in_range(sample, 5, 10));
-  console.log("[5,10)  →  expected: [1,1]");
-  console.log(search_melody_in_range(sample, 5, 11));
-  console.log("[5,11)  →  expected: [1,2]");
-
-  console.log("---------------");
-
-  console.log(search_melody_in_range(sample, 9, 17));
-  console.log("[9,17)  →  expected: [2,3]");
-  console.log(search_melody_in_range(sample, 10, 17));
-  console.log("[10,17)  →  expected: [2,3]");
-  console.log(search_melody_in_range(sample, 11, 17));
-  console.log("[11,17)  →  expected: [3,3]");
-
-  console.log(search_melody_in_range(sample, 9, 13));
-  console.log("[9,13)  →  expected: [2,2]");
-  console.log(search_melody_in_range(sample, 9, 14));
-  console.log("[9,14)  →  expected: [2,2]");
-  console.log(search_melody_in_range(sample, 9, 15));
-  console.log("[9,15)  →  expected: [2,3]");
-
-  console.log("---------------");
-
-  console.log(search_melody_in_range(sample, 13, 21));
-  console.log("[13,21)  →  expected: [3,4]");
-  console.log(search_melody_in_range(sample, 14, 21));
-  console.log("[14,21)  →  expected: [3,4]");
-  console.log(search_melody_in_range(sample, 15, 21));
-  console.log("[15,21)  →  expected: [4,4]");
-
-  console.log(search_melody_in_range(sample, 13, 17));
-  console.log("[13,17)  →  expected: [3,3]");
-  console.log(search_melody_in_range(sample, 13, 18));
-  console.log("[13,18)  →  expected: [3,3]");
-  console.log(search_melody_in_range(sample, 13, 19));
-  console.log("[13,19)  →  expected: [3,4]");
-
-  console.log(search_melody_in_range(sample, 0.5, 1.5));
-  console.log("expected: []");
-
-  console.log("end");
-})();
 console.log(search_melody_in_range(melodies, 30, 90));
 
 
