@@ -1,5 +1,5 @@
 {
-  "name": "musicanalyzer-server",
+  "name": "music-analyzer-server",
   "version": "1.0.0",
   "description": "popular music analyzer",
   "workspaces": [
