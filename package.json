@@ -4,7 +4,8 @@
   "description": "popular music analyzer",
   "workspaces": [
     "packages/*",
-    "html/*"
+    "html/*",
+    "ServerProgram/*"
   ],
   "main": "index.js",
   "scripts": {

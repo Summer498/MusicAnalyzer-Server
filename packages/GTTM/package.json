@@ -1,7 +1,6 @@
 {
-  "name": "melodyanalyze",
+  "name": "gttm",
   "version": "1.0.0",
-  "description": "",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -9,12 +8,12 @@
   "files": [
     "dist"
   ],
+  "license": "MIT",
+  "private": true,
   "scripts": {
     "build": "tsup index.ts --sourcemap --dts --format esm,cjs"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "tonal": "^4.14.0"
+    "fast-xml-parser": "^4.3.4"
   }
 }

@@ -10,9 +10,5 @@
   "scripts": {
     "build": "tsup index.ts --sourcemap --dts --format esm,cjs"
   },
-  "license": "MIT",
-  "devDependencies": {
-    "tsup": "^8.0.2",
-    "typescript": "^5.3.3"
-  }
+  "license": "MIT"
 }
