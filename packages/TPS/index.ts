@@ -3,7 +3,7 @@ import {
   getIntervalDegree,
   getNonNullableChroma,
   RomanChord,
-} from "../TonalEx";
+} from "../KeyEstimation";
 import { assertNonNullable, Assertion, NotImplementedError } from "../StdLib";
 import Scale_default from "@tonaljs/scale";
 import { Chord } from "@tonaljs/chord";

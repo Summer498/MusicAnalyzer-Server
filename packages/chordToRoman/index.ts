@@ -1,4 +1,4 @@
-import { ChordProgression, RomanChord } from "../TonalEx";
+import { ChordProgression, RomanChord } from "../KeyEstimation";
 import ReadLine from "readline";
 
 const green = "\u001b[32m";

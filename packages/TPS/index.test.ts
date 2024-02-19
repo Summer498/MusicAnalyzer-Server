@@ -4,7 +4,7 @@ import {
   getIntervalDegree,
   getNonNullableChroma,
   RomanChord,
-} from "../TonalEx";
+} from "../KeyEstimation";
 import { ChordDictionary } from "tonal";
 import { Chord } from "@tonaljs/chord";
 import Chord_default from "@tonaljs/chord";

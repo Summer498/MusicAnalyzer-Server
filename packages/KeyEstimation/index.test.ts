@@ -1,6 +1,6 @@
-import { Math } from "../Math";
-import { getDistance } from "../TPS";
-import { ChordProgression, RomanChord } from "./";
+import { Math } from "../Math/dist";
+import { getDistance } from "../TPS/dist";
+import { ChordProgression, RomanChord } from ".";
 import Chord_default from "@tonaljs/chord";
 import Scale_default from "@tonaljs/scale";
 

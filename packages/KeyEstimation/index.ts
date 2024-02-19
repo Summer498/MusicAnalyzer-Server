@@ -9,15 +9,15 @@ import { Scale } from "@tonaljs/scale";
 export { Scale } from "@tonaljs/scale";
 import Scale_default from "@tonaljs/scale";
 
-import { dynamicLogViterbi, findMin } from "../Graph";
-import { Math } from "../Math";
+import { dynamicLogViterbi, findMin } from "../Graph/dist";
+import { Math } from "../Math/dist";
 import {
   Assertion,
   assertNonNullable,
   castToNumber,
   IdDictionary,
-} from "../StdLib";
-import { getDistance, getKeysIncludeTheChord } from "../TPS";
+} from "../StdLib/dist";
+import { getDistance, getKeysIncludeTheChord } from "../TPS/dist";
 
 export class RomanChord {
   scale: Scale;

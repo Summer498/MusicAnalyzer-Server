@@ -2,7 +2,7 @@ import fs from "fs";
 import { Chord } from "@tonaljs/chord";
 import Chord_default from "@tonaljs/chord";
 // TODO: 悪い依存の仕方。治す。
-import { RomanChord } from "../TonalEx";
+import { RomanChord } from "../KeyEstimation";
 import { Note } from "tonal";
 
 const min = (a: number, b: number) => a < b ? a : b;
