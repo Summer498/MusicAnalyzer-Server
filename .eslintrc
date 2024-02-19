@@ -12,6 +12,10 @@
     "sourceType": "module"
   },
   // "extends":["eslint:recommended"],
+  "ignorePatterns":[
+    "**/dist/*",
+    "*.d.ts"
+  ],
   "rules": {
     "block-scoped-var": "warn",
     "curly": "warn",
