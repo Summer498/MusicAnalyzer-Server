@@ -23,16 +23,3 @@ export const rgbToString = (rgb: number[]) => {
   });
   return ret;
 };
-
-// WARNING: この方法ではオクターブの差を見ることはできない
-// バックエンドから送られてくる Roman がオクターブの差を吸収しているため, オクターブの差を見るには, そちらも要修正
-// autoChord で符号化している時点で差が吸収されている & KeyEstimation 回りでもオクターブの差を無いものとして扱っている(?)
-export const noteToChroma = (note: string) => {
-  const max = (a: number, b: number) => a > b ? a : b;
-  const base = max(
-    "A1BC2D3EF4G5".indexOf(note[0]),
-    "a1bc2d3ef4g5".indexOf(note[0]),
-  );
-  const acc = note.length > 1 ? "b♮#".indexOf(note[1]) - 1 : 0;
-  return base + acc;
-};

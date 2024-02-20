@@ -1,9 +1,9 @@
 import { HTML, SVG } from "../../packages/HTML";
 import { vMod, getRange, vAdd, Math, mod } from "../../packages/Math";
 import { RomanChord } from "../../packages/KeyEstimation";
-import { hsv2rgb, rgbToString, noteToChroma } from "../../packages/Color";
+import { hsv2rgb, rgbToString } from "../../packages/Color";
 import { play } from "../../packages/Synth";
-import { Scale as _Scale } from "tonal";
+import { Note, Scale as _Scale } from "tonal";
 import { search_melody_in_range } from "../../packages/melodyView";
 import { timeAndMelodyAnalysis as _timeAndMelodyAnalysis } from "../../packages/melodyAnalyze";
 import { chordToColor, shorten_chord, shorten_key } from "../../packages/chordView";
@@ -84,35 +84,61 @@ const piano_roll_time_length = 5;  // 1 画面に収める曲の長さ[秒]
 const triangle_width = 5;
 const triangle_height = 0.25;
 
-// svg element の作成
-const chord_svgs =
-  Math.getRange(0, octave_cnt).map(oct =>
-    romans.map(time_and_roman => {
-      const notes = time_and_roman.progression.chord.notes;
-      const chord = time_and_roman.progression.chord;
-      const roman = time_and_roman.progression.roman;
-      const scale = time_and_roman.progression.scale;
-      return {
-        rects: notes.map(_ => SVG.rect({ name: "chord-note", fill: chordToColor(chord.tonic!, 0.5, 0.9), stroke: "#444" })),
-        chord: SVG.text({ id: "chord-name", "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: chordToColor(chord.tonic!, 1, 0.75) }, shorten_chord(chord.name)),
-        roman: SVG.text({ id: "roman-name", "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: chordToColor(chord.tonic!, 1, 0.75) }, shorten_chord(roman)),
-        key: SVG.text({ id: "key-name", "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: scale.tonic ? chordToColor(scale.tonic, 1, 0.75) : "#000" }, shorten_key(scale)),
-        begin: time_and_roman.time[0],
-        end: time_and_roman.time[1],
-        notes,
-        oct
-      };
-    })
-  ).flat(1);
-// TODO: all と show をこっちに作る
-class SvgWindow<T extends SVGElement> {
-  all: T[];
-  show: T[];
-  constructor(all: T[]) {
+type TimeAndSVGs<T extends SVGElement> = {
+  svg: T,
+  begin: number,
+  end: number,
+}
+
+class SvgWindow<T extends SVGElement, U extends TimeAndSVGs<T>> {
+  readonly all: U[];
+  show: U[];
+  constructor(all: U[]) {
     this.all = all;
     this.show = [];
   }
 }
+
+// svg element の作成
+const chord_svgs =
+  romans.map(time_and_roman => {
+    const notes = time_and_roman.progression.chord.notes;
+    const chord = time_and_roman.progression.chord;
+    const roman = time_and_roman.progression.roman;
+    const scale = time_and_roman.progression.scale;
+    console.log(notes);
+
+    return {
+      rects: Math.getRange(0, octave_cnt).map(oct => {
+        return notes.map(note => ({
+          svg: SVG.rect({ fill: chordToColor(chord.tonic!, 0.5, 0.9), stroke: "#444" }),
+          begin: time_and_roman.time[0],
+          end: time_and_roman.time[1],
+          y: -1 - mod(Note.chroma(note), 12) + 12 * (oct + 1),
+        }));
+      }).flat(),
+      chord: {
+        svg: SVG.text({ id: "chord-name", "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: chordToColor(chord.tonic!, 1, 0.75) }, shorten_chord(chord.name)),
+        begin: time_and_roman.time[0],
+        end: time_and_roman.time[1],
+      },
+      roman: {
+        svg: SVG.text({ id: "roman-name", "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: chordToColor(chord.tonic!, 1, 0.75) }, shorten_chord(roman)),
+        begin: time_and_roman.time[0],
+        end: time_and_roman.time[1],
+      },
+      key: {
+        svg: SVG.text({ id: "key-name", "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: scale.tonic ? chordToColor(scale.tonic, 1, 0.75) : "#000" }, shorten_key(scale)),
+        begin: time_and_roman.time[0],
+        end: time_and_roman.time[1],
+      },
+    };
+  });
+const chord_rects = new SvgWindow(chord_svgs.flatMap(e => e.rects));
+const chord_names = new SvgWindow(chord_svgs.map(e => e.chord));
+const chord_keys = new SvgWindow(chord_svgs.map(e => e.key));
+const chord_romans = new SvgWindow(chord_svgs.map(e => e.roman));
+
 
 const all_d_melody_svgs = detected_melodies.map(e => ({
   rect: SVG.rect({ name: "melody-note", fill: rgbToString(hsv2rgb(0, 0, 0.5)), stroke: "#444" }),
@@ -164,27 +190,33 @@ const arrow_svgs = (() => {
   return ret;
 })();
 
+
 const white_BGs = [...Array(octave_cnt)].map(_ => [...Array(7)].map(_ => SVG.rect({ name: "white-BG", fill: white_bgs_prm.fill, stroke: white_bgs_prm.stroke, })));
 const black_BGs = [...Array(octave_cnt)].map(_ => [...Array(5)].map(_ => SVG.rect({ name: "black-BG", fill: black_bgs_prm.fill, stroke: black_bgs_prm.stroke, })));
 const white_key = [...Array(octave_cnt)].map(_ => [...Array(7)].map(_ => SVG.rect({ name: "white-key", fill: white_key_prm.fill, stroke: white_key_prm.stroke, })));
 const black_key = [...Array(octave_cnt)].map(_ => [...Array(5)].map(_ => SVG.rect({ name: "black-key", fill: black_key_prm.fill, stroke: black_key_prm.stroke, })));
+const octave_BGs = [...Array(octave_cnt)].map((_, i) => SVG.g({ name: "octave-BG" }, undefined, [white_BGs[i], black_BGs[i]]));
+const octave_key = [...Array(octave_cnt)].map((_, i) => SVG.g({ name: "octave-keys" }, undefined, [white_key[i], black_key[i]]));
 const current_time_line = SVG.line({ name: "current_time", "stroke-width": 5, stroke: "#000" });
-const octave_BGs: SVGGElement[] = [...Array(octave_cnt)].map((_, i) => SVG.g({ name: "octave-BG" }, undefined, [white_BGs[i], black_BGs[i]]));
-const octave_keys: SVGGElement[] = [...Array(octave_cnt)].map((_, i) => SVG.g({ name: "octave-keys" }, undefined, [white_key[i], black_key[i]]));
 const piano_roll = SVG.svg({ name: "piano-roll" }, undefined, [
-  SVG.g({ name: "chords" }, undefined, chord_svgs.flatMap(e => e.rects)),  //TODO:出し入れできるようにする
-  SVG.g({ name: "chord-names" }, undefined, chord_svgs.map(e => e.chord)),
-  SVG.g({ name: "roman-names" }, undefined, chord_svgs.map(e => e.roman)),
-  SVG.g({ name: "key-names" }, undefined, chord_svgs.map(e => e.key)),
+  // 奥側
+  SVG.g({ name: "octave-BGs" }, undefined, octave_BGs),
+
+  SVG.g({ name: "chords" }, undefined, chord_rects.all.map(e => e.svg)),  //TODO:出し入れできるようにする
+  SVG.g({ name: "chord-names" }, undefined, chord_names.all.map(e => e.svg)),
+  SVG.g({ name: "roman-names" }, undefined, chord_romans.all.map(e => e.svg)),
+  SVG.g({ name: "key-names" }, undefined, chord_keys.all.map(e => e.svg)),
+
   SVG.g({ name: "d-melodies" }, undefined, all_d_melody_svgs.map(e => e.rect)),
   SVG.g({ name: "melodies" }, undefined, all_melody_svgs.map(e => e.rect)),
   SVG.g({ name: "gravities" }, undefined, [
     arrow_svgs.map(e => e.line),
     arrow_svgs.map(e => e.triangle)
   ]),
-  SVG.g({ name: "octave-BGs" }, undefined, octave_BGs),
-  SVG.g({ name: "octave-keys" }, undefined, octave_keys),
+
+  SVG.g({ name: "octave-keys" }, undefined, octave_key),
   current_time_line,
+  // 手前側
 ]);
 const piano_roll_place = document.getElementById("piano-roll-place");
 piano_roll_place?.insertAdjacentElement("afterbegin", piano_roll);
@@ -198,7 +230,6 @@ const deleteMelody = () => {
 };
 
 type ArrowSVGs = typeof arrow_svgs;
-
 const refresh_arrow = (arrow_svgs: ArrowSVGs, note_size: number, current_time_x: number, std_pos: number) => {
   arrow_svgs.forEach((e, i) => {
     if (arrow_svgs.length <= i + 1) { return; }
@@ -235,11 +266,11 @@ const refresh = () => {
   const note_size = piano_roll_width / piano_roll_time_length;
   const now = audio.currentTime;
   // TODO: 必要分のみを描画する
-  // const _chord_svgs = chord_svgs.filter(e => now - current_time_x <= e.begin && e.begin <= now + piano_roll_time_length);
-  chord_svgs.forEach(e => e.rects.forEach(_ => _.setAttributes({ x: current_time_x + (e.begin - now) * note_size })));  // SVG.rect の位置替える
-  chord_svgs.forEach(e => e.chord.setAttributes({ x: current_time_x + (e.begin - now) * note_size }));
-  chord_svgs.forEach(e => e.roman.setAttributes({ x: current_time_x + (e.begin - now) * note_size }));
-  chord_svgs.forEach(e => e.key.setAttributes({ x: current_time_x + key_text_pos + (e.begin - now) * note_size }));
+  chord_rects.show = chord_rects.all.filter(e => now - current_time_x <= e.begin && e.begin <= now + piano_roll_time_length);
+  chord_rects.all.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size }));
+  chord_names.all.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size }));
+  chord_romans.all.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size }));
+  chord_keys.all.forEach(e => e.svg.setAttributes({ x: current_time_x + key_text_pos + (e.begin - now) * note_size }));
 
   // const _all_d_melody_svgs = all_d_melody_svgs.filter(e => now - current_time_x <= e.end && e.begin <= now + piano_roll_time_length);
   // const _all_melody_svgs = all_melody_svgs.filter(e => now - current_time_x <= e.end && e.begin <= now + piano_roll_time_length);
@@ -274,23 +305,23 @@ const draw = () => {
   const piano_roll_width = getPianoRollWidth();
   const current_time_x = piano_roll_width / 4;
   const note_size = piano_roll_width / piano_roll_time_length;
-  chord_svgs.forEach(e => e.rects.forEach((_, i) => _.setAttributes({ y: (2 - (mod(noteToChroma(e.notes[i]) - 3, 12) + 3) + 12 * (octave_cnt - e.oct)) * black_key_prm.height, width: (e.end - e.begin) * note_size, height: black_key_prm.height, })));
+  chord_rects.all.forEach(e => e.svg.setAttributes({ y: e.y * black_key_prm.height, width: (e.end - e.begin) * note_size, height: black_key_prm.height, }));
   all_d_melody_svgs.forEach(e => e.rect.setAttributes({ y: (piano_roll_begin - e.note) * black_key_prm.height, width: (e.end - e.begin) * note_size, height: black_key_prm.height, onclick: "insertMelody()", }));
   all_melody_svgs.forEach(e => e.rect.setAttributes({ y: (piano_roll_begin - e.note) * black_key_prm.height, width: (e.end - e.begin) * note_size, height: black_key_prm.height, onclick: "deleteMelody()", }));
 
   const chord_name_margin = 5;
-  chord_svgs.forEach(e => e.chord.setAttributes({ y: piano_roll_height + chord_text_size }));
-  chord_svgs.forEach(e => e.roman.setAttributes({ y: piano_roll_height + chord_text_size * 2 + chord_name_margin }));
-  chord_svgs.forEach(e => e.key.setAttributes({ y: piano_roll_height + chord_text_size * 2 + chord_name_margin }));
+  chord_names.all.forEach(e => e.svg.setAttributes({ y: piano_roll_height + chord_text_size }));
+  chord_romans.all.forEach(e => e.svg.setAttributes({ y: piano_roll_height + chord_text_size * 2 + chord_name_margin }));
+  chord_keys.all.forEach(e=>e.svg.setAttributes({ y: piano_roll_height + chord_text_size * 2 + chord_name_margin }));
 
   white_bgs_prm.width = piano_roll_width;
   black_bgs_prm.width = piano_roll_width;
   setBgSvgParams(black_BGs, black_bgs_prm, black_position);
-  setBgSvgParams(white_BGs, white_key_prm, white_position);
+  setBgSvgParams(white_BGs, white_bgs_prm, white_position);
   setBgSvgParams(black_key, black_key_prm, black_position);
   setBgSvgParams(white_key, white_key_prm, [0, 1, 2, 3, 4, 5, 6]);
   octave_BGs.forEach((_, i) => _.setAttributes({ x: 0, y: octave_height * i, width: piano_roll_width, height: octave_height }));
-  octave_keys.forEach((_, i) => _.setAttributes({ x: 0, y: octave_height * i, width: piano_roll_width, height: octave_height }));
+  octave_key.forEach((_, i) => _.setAttributes({ x: 0, y: octave_height * i, width: piano_roll_width, height: octave_height }));
   piano_roll.setAttributes({ x: 0, y: 0, width: piano_roll_width, height: piano_roll_height + chord_text_size * 2 + chord_name_margin });
 
   current_time_line.setAttributes({ x1: current_time_x, x2: current_time_x, y1: 0, y2: piano_roll_height });

@@ -1,12 +1,5 @@
 import { timeAndMelodyAnalysis } from "../melodyAnalyze";
 
-type MelodyAnalysis = {
-  gravity: {
-    destination: number | undefined;
-    resolved: boolean;
-  }[];
-};
-
 // 指定区間の melody の探索
 // begin を含み, end を含まない
 export const search_melody_in_range = (
