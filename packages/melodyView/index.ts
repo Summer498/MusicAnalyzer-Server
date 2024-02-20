@@ -1,16 +1,10 @@
+import { timeAndMelodyAnalysis } from "../melodyAnalyze";
+
 type MelodyAnalysis = {
   gravity: {
     destination: number | undefined;
     resolved: boolean;
   }[];
-};
-
-export type timeAndMelodyAnalysis = {
-  time: number[];
-  note: number;
-  roman_name: string | undefined;
-  melodyAnalysis: MelodyAnalysis;
-  sound_reserved: boolean;
 };
 
 // 指定区間の melody の探索
@@ -35,27 +29,17 @@ export const search_melody_in_range = (
     const emc = el + Math.ceil((er - el) / 2);
     const bm_val = melodies[bmf].time[0];
     const em_val = melodies[emc].time[0];
-    if (b_tgt < bm_val) {
-      br = bmc;
-    } else if (bm_val < b_tgt) {
-      bl = bmf;
-    } // (b_tgt === melodies[bmf].time[0])
-    else {
-      bl = bmf;
-    }
+    if (b_tgt < bm_val) { br = bmc; }
+    else if (bm_val < b_tgt) { bl = bmf; }
+    // (b_tgt === melodies[bmf].time[0])
+    else { bl = bmf; }
 
-    if (e_tgt < em_val) {
-      er = emc;
-    } else if (em_val < e_tgt) {
-      el = emf;
-    } // (e_tgt === melodies[emc].time[0])
-    else {
-      er = emc;
-    }
+    if (e_tgt < em_val) { er = emc; }
+    else if (em_val < e_tgt) { el = emf; }
+    // (e_tgt === melodies[emc].time[0])
+    else { er = emc; }
   }
-  if (b_tgt <= melodies[bl].time[0]) {
-    br = bl;
-  }
+  if (b_tgt <= melodies[bl].time[0]) { br = bl; }
 
   return { begin_index: br, end_index: er };
 };

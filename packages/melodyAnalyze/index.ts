@@ -23,7 +23,8 @@ type MelodyAnalysis = {
 type timeAndChord = { time: number[]; chord: Chord };
 type timeAndMelody = { time: number[]; note: number };
 type timeAndRoman = { time: number[]; progression: RomanChord };
-type timeAndMelodyAnalysis = {
+
+export type timeAndMelodyAnalysis = {
   time: number[];
   note: number;
   roman_name: string | undefined;
