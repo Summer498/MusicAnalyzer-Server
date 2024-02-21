@@ -64,6 +64,7 @@ removeAll(){
     for filename in $targets; do
         echo "$filename"
         cat "$filename"
+        #rm "$filename"
     done
     echo ""
     echo 誤削除防止のセーフガードをかけています。
