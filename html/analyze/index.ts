@@ -4,7 +4,7 @@ import { hsv2rgb, rgbToString } from "../../packages/Color";
 import { play } from "../../packages/Synth";
 import { _Chord, _Note, _Scale } from "../../packages/TonalObjects";
 import { chordToColor, shorten_chord, shorten_key } from "../../packages/chordView";
-import { TimeAndMelodyAnalysis as _TimeAndMelodyAnalysis, TimeAnd, TimeAndRomanAnalysis, TimeAndMelodyAnalysis } from "../../packages/timeAnd";
+import { TimeAndMelodyAnalysis as _TimeAndMelodyAnalysis, TimeAnd, TimeAndRomanAnalysis } from "../../packages/timeAnd";
 import { search_items_in_range } from "../../packages/melodyView";
 
 const debug_mode = true;
@@ -19,10 +19,20 @@ interface MusicAnalyzerWindow extends Window {
 }
 declare const window: MusicAnalyzerWindow;
 
+interface TimeAndMelodyAnalysis extends _TimeAndMelodyAnalysis {
+  sound_reserved: boolean
+}
+
 const detected_romans: TimeAndRomanAnalysis[] = window.MusicAnalyzer.roman.map(e => e);
-const detected_melodies: TimeAndMelodyAnalysis[] = window.MusicAnalyzer.melody.map(e => e);
+const detected_melodies: _TimeAndMelodyAnalysis[] = window.MusicAnalyzer.melody.map(e => e);
 const romans = detected_romans.map(e => e);
-const melodies = detected_melodies.map(e => e);
+const melodies = detected_melodies.map(e => {
+  const res: TimeAndMelodyAnalysis = {
+    ...e,
+    sound_reserved: false
+  };
+  return res;
+});
 
 window.play = play;  // NOTE:コンソールデバッグ用
 console.log(romans);
@@ -81,7 +91,7 @@ class SvgWindow<T extends SVGElement, U extends TimeAndSVGs<T>> {
   readonly show: U[];
   constructor(all: U[]) {
     this.all = all;
-    this.show = [];
+    this.show = all.map(e=>e);
   }
 }
 
@@ -125,14 +135,14 @@ const chord_keys = new SvgWindow(chord_svgs.map(e => e.key));
 const chord_romans = new SvgWindow(chord_svgs.map(e => e.roman));
 
 const all_d_melody_svgs = detected_melodies.map(e => ({
-  rect: SVG.rect({ name: "melody-note", fill: rgbToString(hsv2rgb(0, 0, 0.5)), stroke: "#444" }),
+  svg: SVG.rect({ name: "melody-note", fill: rgbToString(hsv2rgb(0, 0, 0.5)), stroke: "#444" }),
   begin: e.begin,
   end: e.end,
   note: e.note,
 }));
 
 const all_melody_svgs = melodies.map(e => ({
-  rect: SVG.rect({ name: "melody-note", fill: rgbToString(hsv2rgb(180 + 360 * 2 / 7, 0.5, 0.9)), stroke: "#444" }),
+  svg: SVG.rect({ name: "melody-note", fill: rgbToString(hsv2rgb(180 + 360 * 2 / 7, 0.5, 0.9)), stroke: "#444" }),
   begin: e.begin,
   end: e.end,
   note: e.note,
@@ -186,13 +196,13 @@ const piano_roll = SVG.svg({ name: "piano-roll" }, undefined, [
   // 奥側
   SVG.g({ name: "octave-BGs" }, undefined, octave_BGs),
 
-  SVG.g({ name: "chords" }, undefined, chord_rects.all.map(e => e.svg)),  //TODO:出し入れできるようにする
-  SVG.g({ name: "chord-names" }, undefined, chord_names.all.map(e => e.svg)),
-  SVG.g({ name: "roman-names" }, undefined, chord_romans.all.map(e => e.svg)),
-  SVG.g({ name: "key-names" }, undefined, chord_keys.all.map(e => e.svg)),
+  SVG.g({ name: "chords" }, undefined, chord_rects.show.map(e => e.svg)),  //TODO:出し入れできるようにする
+  SVG.g({ name: "chord-names" }, undefined, chord_names.show.map(e => e.svg)),
+  SVG.g({ name: "roman-names" }, undefined, chord_romans.show.map(e => e.svg)),
+  SVG.g({ name: "key-names" }, undefined, chord_keys.show.map(e => e.svg)),
 
-  SVG.g({ name: "d-melodies" }, undefined, all_d_melody_svgs.map(e => e.rect)),
-  SVG.g({ name: "melodies" }, undefined, all_melody_svgs.map(e => e.rect)),
+  SVG.g({ name: "d-melodies" }, undefined, all_d_melody_svgs.map(e => e.svg)),
+  SVG.g({ name: "melodies" }, undefined, all_melody_svgs.map(e => e.svg)),
   SVG.g({ name: "gravities" }, undefined, [
     arrow_svgs.map(e => e.line),
     arrow_svgs.map(e => e.triangle)
@@ -242,6 +252,8 @@ const refresh_arrow = (arrow_svgs: ArrowSVGs, note_size: number, current_time_x:
   });
 };
 
+let old_time = Date.now();
+const fps_element = HTML.p({name:"fps"}, `fps:${0}`);
 
 const refresh = () => {
   const current_time_x = getPianoRollWidth() / 4;
@@ -249,23 +261,22 @@ const refresh = () => {
   const note_size = piano_roll_width / piano_roll_time_length;
   const now = audio.currentTime;
   // TODO: 必要分のみを描画する
-  // chord_rects.show = chord_rects.all.filter(e => now - current_time_x <= e.begin && e.begin <= now + piano_roll_time_length);
-  chord_rects.all.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size }));
-  chord_names.all.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size }));
-  chord_romans.all.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size }));
-  chord_keys.all.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size + key_text_pos }));
+  chord_rects.all.filter(e => now - current_time_x <= e.begin && e.begin <= now + piano_roll_time_length);
+  chord_rects.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size }));
+  chord_names.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size }));
+  chord_romans.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size }));
+  chord_keys.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size + key_text_pos }));
 
   // const _all_d_melody_svgs = all_d_melody_svgs.filter(e => now - current_time_x <= e.end && e.begin <= now + piano_roll_time_length);
   // const _all_melody_svgs = all_melody_svgs.filter(e => now - current_time_x <= e.end && e.begin <= now + piano_roll_time_length);
-  all_d_melody_svgs.forEach(e => e.rect.setAttributes({ x: current_time_x + (e.begin - now) * note_size }));
-  all_melody_svgs.forEach(e => e.rect.setAttributes({ x: current_time_x + (e.begin - now) * note_size }));
+  all_d_melody_svgs.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size }));
+  all_melody_svgs.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size }));
   refresh_arrow(arrow_svgs, note_size, current_time_x, now * note_size);
 
   const view_range = [now, now + piano_roll_time_length];
 
   const reservation_range = 1 / 15;
 
-  /*
   const melody_range = search_items_in_range(melodies, now, now + reservation_range);
   for (let i = melody_range.begin_index; i < melody_range.end_index; i++) {
     const e = melodies[i];
@@ -277,7 +288,9 @@ const refresh = () => {
       }, reservation_range * 1000);
     }
   }
-  */
+  const now_sec = Date.now();
+  fps_element.textContent = `fps:${Math.floor(1000/(now_sec - old_time))}`;
+  old_time = now_sec;
 };
 
 const setBgSvgParams = (rects: SVGRectElement[][], rect_param: RectParameters, position: number[]) => {
@@ -291,14 +304,14 @@ const draw = () => {
   const piano_roll_width = getPianoRollWidth();
   const current_time_x = piano_roll_width / 4;
   const note_size = piano_roll_width / piano_roll_time_length;
-  chord_rects.all.forEach(e => e.svg.setAttributes({ y: e.y * black_key_prm.height, width: (e.end - e.begin) * note_size, height: black_key_prm.height, }));
-  all_d_melody_svgs.forEach(e => e.rect.setAttributes({ y: (piano_roll_begin - e.note) * black_key_prm.height, width: (e.end - e.begin) * note_size, height: black_key_prm.height, onclick: "insertMelody()", }));
-  all_melody_svgs.forEach(e => e.rect.setAttributes({ y: (piano_roll_begin - e.note) * black_key_prm.height, width: (e.end - e.begin) * note_size, height: black_key_prm.height, onclick: "deleteMelody()", }));
+  chord_rects.show.forEach(e => e.svg.setAttributes({ y: e.y * black_key_prm.height, width: (e.end - e.begin) * note_size, height: black_key_prm.height, }));
+  all_d_melody_svgs.forEach(e => e.svg.setAttributes({ y: (piano_roll_begin - e.note) * black_key_prm.height, width: (e.end - e.begin) * note_size, height: black_key_prm.height, onclick: "insertMelody()", }));
+  all_melody_svgs.forEach(e => e.svg.setAttributes({ y: (piano_roll_begin - e.note) * black_key_prm.height, width: (e.end - e.begin) * note_size, height: black_key_prm.height, onclick: "deleteMelody()", }));
 
   const chord_name_margin = 5;
-  chord_names.all.forEach(e => e.svg.setAttributes({ y: piano_roll_height + chord_text_size }));
-  chord_romans.all.forEach(e => e.svg.setAttributes({ y: piano_roll_height + chord_text_size * 2 + chord_name_margin }));
-  chord_keys.all.forEach(e => e.svg.setAttributes({ y: piano_roll_height + chord_text_size * 2 + chord_name_margin }));
+  chord_names.show.forEach(e => e.svg.setAttributes({ y: piano_roll_height + chord_text_size }));
+  chord_romans.show.forEach(e => e.svg.setAttributes({ y: piano_roll_height + chord_text_size * 2 + chord_name_margin }));
+  chord_keys.show.forEach(e => e.svg.setAttributes({ y: piano_roll_height + chord_text_size * 2 + chord_name_margin }));
 
   white_bgs_prm.width = piano_roll_width;
   black_bgs_prm.width = piano_roll_width;
@@ -328,5 +341,9 @@ const main = () => {
   window.onresize = e => draw();
   draw();
   update();
+
+  if(true){
+    document.body.insertAdjacentElement("beforeend", fps_element);
+  }
 };
 main();
