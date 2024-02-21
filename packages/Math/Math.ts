@@ -2,16 +2,15 @@
 import { hasSameValue } from "../StdLib/";
 
 const not = (b: boolean): boolean => !b;
-const getRange = (begin: number, end: number, step = 1): number[] =>
-  [...Array(Math.abs(end - begin))].map((_, i) => i * step + begin);
-const getZeros = (length: number): number[] => [...Array(length)].map((e) => 0); // eslint-disable-line @typescript-eslint/no-unused-vars
+const getRange = (begin: number, end: number, step = 1): number[] => [...Array(Math.abs(end - begin))].map((_, i) => i * step + begin);
+const getZeros = (length: number): number[] => [...Array(length)].map(e => 0); // eslint-disable-line @typescript-eslint/no-unused-vars
 const vFunc = (
   a: number[],
   b: number | number[],
   f: (a: number, b: number) => number,
 ) => {
   if (typeof b == "number") {
-    return a.map((e) => f(e, Number(b)));
+    return a.map(e => f(e, Number(b)));
   }
   if (b instanceof Array) {
     return a.map((_, i) => f(a[i], b[i]));
@@ -24,8 +23,8 @@ const vFunc = (
 const genArr = (n: number, f: (i: number) => number) =>
   [...Array(n)].map((_, i) => f(i));
 const matTrans = (matrix: number[][]) =>
-  getRange(0, matrix[0].length).map((i) =>
-    getRange(0, matrix.length).map((j) => matrix[j][i]),
+  getRange(0, matrix[0].length).map(i =>
+    getRange(0, matrix.length).map(j => matrix[j][i]),
   );
 const forAll = <T>(set: T[], condition: (element: T) => boolean) => {
   for (const e of set) {
@@ -44,7 +43,7 @@ const forSome = <T>(set: T[], condition: (element: T) => boolean) => {
   return false;
 };
 const isSubSet = <T>(set: T[], superset: T[]) => {
-  return forAll(set, (e) => superset.includes(e));
+  return forAll(set, e => superset.includes(e));
 };
 const isSuperSet = <T>(set: T[], subset: T[]) => {
   return isSubSet(subset, set);
@@ -56,7 +55,7 @@ const sameArray = <T>(arr1: T[], arr2: T[]) => hasSameValue(arr1, arr2);
 const mod = (n: number, m: number): number => (Number(n) % m + m) % m;
 const bool2number = (b: boolean) => b ? 1 : 0;
 const removeFromArray = <T>(array: T[], rmv: T[]) =>
-  array.filter((e) => not(rmv.includes(e)));
+  array.filter(e => not(rmv.includes(e)));
 const ringShift = <T>(array: T[], b: number) => {
   const N = array.length;
   const bm = mod(b, N);
@@ -72,7 +71,7 @@ const vDiv = (vector1: number[], vector2: number | number[]) =>
   vFunc(vector1, vector2, (a, b) => a / b);
 const vMod = (vector1: number[], vector2: number | number[]) =>
   vFunc(vector1, vector2, (a, b) => mod(a, b));
-const vGet = <T>(array: T[], indexes: number[]) => indexes.map((e) => array[e]);
+const vGet = <T>(array: T[], indexes: number[]) => indexes.map(e => array[e]);
 
 const getOnehot = (positionOfOnes: number[], n = 0) =>
   [...Array(Math.max(Math.max(...positionOfOnes) + 1, n))].map((_, i) =>
@@ -87,19 +86,17 @@ const getOnehotInMod = (positionOfOnes: number[] | number, m = 1) => {
 
 const vSum = (...arrays: number[][]) => {
   let s: number[] = getZeros(arrays[0].length);
-  arrays.forEach((arr) => {
-    s = vAdd(s, arr);
-  });
+  arrays.forEach(arr => { s = vAdd(s, arr); });
   return s;
 };
 const totalSum = (array: number[]) => {
   let s = 0;
-  array.forEach((e) => s += e);
+  array.forEach(e => s += e);
   return s;
 };
 const totalProd = (array: number[]) => {
   let s = 0;
-  array.forEach((e) => s *= e);
+  array.forEach(e => s *= e);
   return s;
 };
 

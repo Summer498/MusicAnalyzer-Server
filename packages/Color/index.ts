@@ -4,7 +4,7 @@ const mod = Math.mod;
 const abs = Math.abs;
 const vAdd = Math.vAdd;
 const vMul = Math.vMul;
-const vFloor = (a: number[]) => a.map((e) => Math.floor(e));
+const vFloor = (a: number[]) => a.map(e => Math.floor(e));
 
 // 0 <= h < 360; 0 <= s <= 1; 0 <= b <= 1
 export const hsv2rgb = (h: number, s: number, v: number) => {
@@ -18,7 +18,7 @@ export const hsv2rgb = (h: number, s: number, v: number) => {
 
 export const rgbToString = (rgb: number[]) => {
   let ret = "#";
-  rgb.forEach((e) => {
+  rgb.forEach(e => {
     ret = `${ret}${e < 16 ? `0` : ``}${e.toString(16)}`;
   });
   return ret;

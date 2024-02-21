@@ -1,23 +1,33 @@
 import { RomanNumeral } from "tonal";
-import { Chord } from "@tonaljs/chord";
-export { Chord } from "@tonaljs/chord";
+import { NoteLiteral } from "tonal";
 import Chord_default from "@tonaljs/chord";
 import Interval from "@tonaljs/interval";
 import Note from "@tonaljs/note";
-import { NoteLiteral } from "tonal";
-import { Scale } from "@tonaljs/scale";
-export { Scale } from "@tonaljs/scale";
 import Scale_default from "@tonaljs/scale";
+import { Chord, Scale } from "../TonalObjects";
 
-import { dynamicLogViterbi, findMin } from "../Graph/dist";
-import { Math } from "../Math/dist";
-import {
-  Assertion,
-  assertNonNullable,
-  castToNumber,
-  IdDictionary,
-} from "../StdLib/dist";
-import { getDistance, getKeysIncludeTheChord } from "../TPS/dist";
+import { dynamicLogViterbi, findMin } from "../Graph";
+import { Math } from "../Math";
+import { Assertion, assertNonNullable, castToNumber, IdDictionary } from "../StdLib";
+import { getDistance, getKeysIncludeTheChord } from "../TPS";
+
+const get_roman = (scale: Scale, chord: Chord) => {
+  // TODO: 確認しておく: もしかしたら # b がないものだけ出力されるバグがあるかもしれない
+  // IV# が IV として出力されるなど?
+  // 成功: C# Db 混同バグは直してある.
+  if (chord.tonic === null) {
+    throw TypeError("chord.tonic should not be null");
+  }
+  const tonic = chord.tonic;
+  const true_tonic = scale.notes.find(e => Note.chroma(e) === Note.chroma(tonic));
+
+  const interval = Interval.distance(
+    assertNonNullable(scale.tonic),
+    assertNonNullable(true_tonic),
+  );
+  const roman = RomanNumeral.get(Interval.get(interval));
+  return roman.roman + " " + chord.type;
+};
 
 export class RomanChord {
   scale: Scale;
@@ -26,36 +36,12 @@ export class RomanChord {
   constructor(scale: Scale, chord: Chord) {
     this.scale = scale;
     this.chord = chord;
-    this.roman = this.get_roman(scale, chord);
-  }
-  get_roman(scale: Scale, chord: Chord) {
-    // TODO: 確認しておく: もしかしたら # b がないものだけ出力されるバグがあるかもしれない
-    // IV# が IV として出力されるなど?
-    // 成功: C# Db 混同バグは直してある.
-    if (chord.tonic === null) {
-      throw TypeError("chord.tonic should not be null");
-    }
-    const tonic = chord.tonic;
-    const true_tonic = scale.notes.find(
-      (e) => Note.chroma(e) === Note.chroma(tonic),
-    );
-
-    const interval = Interval.distance(
-      assertNonNullable(scale.tonic),
-      assertNonNullable(true_tonic),
-    );
-    const roman = RomanNumeral.get(Interval.get(interval));
-    return roman.roman + " " + chord.type;
+    this.roman = get_roman(scale, chord);
   }
 }
 
-export const getIntervalDegree = (src: NoteLiteral, dst: NoteLiteral) => {
-  return castToNumber(Interval.distance(src, dst).slice(0, 1));
-};
-
-export const getNonNullableChroma = (note: NoteLiteral) => {
-  return assertNonNullable(Note.chroma(note));
-};
+export const getIntervalDegree = (src: NoteLiteral, dst: NoteLiteral) => castToNumber(Interval.distance(src, dst).slice(0, 1));
+export const getNonNullableChroma = (note: NoteLiteral) => assertNonNullable(Note.chroma(note));
 
 const getBodyAndRoot = (chord_string: string) => {
   chord_string = chord_string.replace("minor/major", "XXXXXXXXXXX");
@@ -67,8 +53,7 @@ const getBodyAndRoot = (chord_string: string) => {
   }
   chord_string = chord_string.replace("XXXXXXXXXXX", "minor/major");
 
-  const body_length =
-    before_separator >= 0 ? before_separator : chord_string.length;
+  const body_length = before_separator >= 0 ? before_separator : chord_string.length;
   const body = chord_string.slice(0, body_length);
   const root = chord_string.slice(body_length + separator.length);
   return { body, root };
@@ -100,10 +85,7 @@ export const getChord = (chord_string: string): Chord => {
     chord.symbol += `/${root}`;
   }
   chord.root = root;
-  chord.rootDegree = getIntervalDegree(
-    assertNonNullable(chord.tonic),
-    chord.root,
-  );
+  chord.rootDegree = getIntervalDegree(chord.tonic!, chord.root);
   return chord;
 };
 
@@ -145,14 +127,10 @@ export class ChordProgression {
     if (candidate_scales.length === 0) {
       return [this.#scale_dictionary.getId(Scale_default.get("").name)];
     }
-    return candidate_scales.map((scale) =>
-      this.#scale_dictionary.getId(scale.name),
-    );
+    return candidate_scales.map(scale => this.#scale_dictionary.getId(scale.name));
   }
   getChordIdSequence() {
-    return this.lead_sheet_chords.map((chord) =>
-      this.#chord_dictionary.getId(getChord(chord).name),
-    );
+    return this.lead_sheet_chords.map(chord => this.#chord_dictionary.getId(getChord(chord).name));
   }
 
   getDistanceOfStates(t1: number, t2: number, s1: number, s2: number) {
@@ -179,20 +157,15 @@ export class ChordProgression {
       Math.getZeros(24), // 12 音 x {-mol, -dur}
       this.getStatesOnTime.bind(this),
       this.getDistanceOfStates.bind(this),
-      () => 0,
+      _ => 0,
       this.getChordIdSequence(),
       findMin,
     );
     // console.log(viterbi)
     const trace = viterbi.trace;
-    return trace.map((e) =>
-      e.map(
-        (id, i) =>
-          new RomanChord(
-            Scale_default.get(this.#scale_dictionary.getItem(id)),
-            Chord_default.get(this.lead_sheet_chords[i]),
-          ),
-      ),
-    );
+    return trace.map(e => e.map((id, i) => new RomanChord(
+      Scale_default.get(this.#scale_dictionary.getItem(id)),
+      Chord_default.get(this.lead_sheet_chords[i]),
+    )));
   }
 }

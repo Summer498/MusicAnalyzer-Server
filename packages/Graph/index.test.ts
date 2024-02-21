@@ -12,23 +12,17 @@ describe("dummy", () => {
 const comment = () => {
   /* Viterbi アルゴリズム */
   const initial_probabilities = [0.6, 0.4];
-  const initial_log_probabilities = initial_probabilities.map((e) =>
-    Math.log(e),
-  );
+  const initial_log_probabilities = initial_probabilities.map(e =>Math.log(e),);
   const transition_probabilities = [
     [0.7, 0.3],
     [0.4, 0.6],
   ];
-  const transition_log_probabilities = transition_probabilities.map((e) =>
-    e.map((e) => Math.log(e)),
-  );
+  const transition_log_probabilities = transition_probabilities.map(e =>e.map(e => Math.log(e)));
   const emission_probabilities = [
     [0.5, 0.4, 0.1],
     [0.1, 0.3, 0.6],
   ];
-  const emission_log_probabilities = emission_probabilities.map((e) =>
-    e.map((e) => Math.log(e)),
-  );
+  const emission_log_probabilities = emission_probabilities.map(e =>e.map(e => Math.log(e)));
   const observation_sequence = [0, 1, 2];
   const states = Math.getRange(0, initial_log_probabilities.length);
   const dynamic_log_viterbi = dynamicLogViterbi(

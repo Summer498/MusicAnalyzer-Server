@@ -1,16 +1,16 @@
-import { search_melody_in_range, timeAndMelodyAnalysis } from "./";
+import { search_melody_in_range } from "./";
+import { TimeAndMelodyAnalysis } from "../timeAnd";
 
 describe("test search_melody_in_range", () => {
   const note = 0;
   const roman_name = "I";
-  const melodyAnalysis = { gravity: [] };
-  const sound_reserved = false;
-  const sample: timeAndMelodyAnalysis[] = [
-    { time: [2, 4], note, roman_name, melodyAnalysis, sound_reserved },
-    { time: [6, 8], note, roman_name, melodyAnalysis, sound_reserved },
-    { time: [10, 12], note, roman_name, melodyAnalysis, sound_reserved },
-    { time: [14, 16], note, roman_name, melodyAnalysis, sound_reserved },
-    { time: [18, 20], note, roman_name, melodyAnalysis, sound_reserved },
+  const melody_analysis = { gravity: [] };
+  const sample: TimeAndMelodyAnalysis[] = [
+    { time: [2, 4], note, roman_name, melody_analysis: melody_analysis  },
+    { time: [6, 8], note, roman_name, melody_analysis: melody_analysis  },
+    { time: [10, 12], note, roman_name, melody_analysis: melody_analysis  },
+    { time: [14, 16], note, roman_name, melody_analysis: melody_analysis  },
+    { time: [18, 20], note, roman_name, melody_analysis: melody_analysis },
   ];
 
   test("", () => {

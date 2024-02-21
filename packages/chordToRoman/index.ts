@@ -1,15 +1,11 @@
 import { ChordProgression, RomanChord } from "../KeyEstimation";
 import ReadLine from "readline";
-
-const green = "\u001b[32m";
-const reset = "\u001b[0m";
+import { TimeAndRomanAnalysis } from "../timeAnd";
 
 const remove_item = <T>(array: T[], will_removed: (item: T) => boolean) => {
   const ret: T[] = [];
   for (const e of array) {
-    if (will_removed(e)) {
-      continue;
-    }
+    if (will_removed(e)) { continue; }
     ret.push(e);
   }
   return ret;
@@ -32,34 +28,35 @@ const select_suitable_progression = (roman_chords: RomanChord[][]) => {
 const splitArray = <T>(arr: T[], separator: (e: T) => boolean) => {
   const res: T[][] = [];
   let elm: T[] = [];
-  arr.forEach((e) => {
+  arr.forEach(e => {
     if (separator(e)) {
-      res.push(elm.map((e) => e));
+      res.push(elm.map(e => e));
       elm = [];
-    } else {
-      elm.push(e);
-    }
+    } else { elm.push(e); }
   });
-  res.push(elm.map((e) => e));
+  res.push(elm.map(e => e));
   return res;
 };
 
 type TimeAndString = { 0: number; 1: number; 2: string };
-type timeAndRoman = { time: number[]; progression: RomanChord };
 // Expected Input: "Am7 FM7 G7 CM7"
-const calcChordProgression = (chords: TimeAndString[]): timeAndRoman[] => {
-  const tmp0 = splitArray(chords, (e) => e[2] === "N"); // ノンコードシンボルを除く     ["C", "F", "N", "N", "G","C"]       => [["C"],["F"], [], ["G"],["C"]]
-  const time_and_chordss = remove_item(tmp0, (item) => item.length === 0); // 空配列を除く                 [["C"],["F"], [], ["G"],["C"]]      => [["C","F"], ["G","C"]]
+const calcChordProgression = (chords: TimeAndString[]): TimeAndRomanAnalysis[] => {
+  const tmp0 = splitArray(chords, e => e[2] === "N"); // ノンコードシンボルを除く     ["C", "F", "N", "N", "G","C"]       => [["C"],["F"], [], ["G"],["C"]]
+  const time_and_chordss = remove_item(tmp0, item => item.length === 0); // 空配列を除く                 [["C"],["F"], [], ["G"],["C"]]      => [["C","F"], ["G","C"]]
 
-  return time_and_chordss.flatMap((time_and_chords) => {
-    const time = time_and_chords.map((e) => [e[0], e[1]]);
+  return time_and_chordss.flatMap(time_and_chords => {
+    const time = time_and_chords.map(e => [e[0], e[1]]);
     const progression = select_suitable_progression(
-      new ChordProgression(time_and_chords.map((e) => e[2])).getMinimumPath(),
+      new ChordProgression(time_and_chords.map(e => e[2])).getMinimumPath(),
     );
     return time_and_chords.map((_, i) => {
       return {
-        time: time[i],
+        begin: time[i][0],
+        end: time[i][1],
         progression: progression[i],
+        chord: progression[i].chord,
+        roman: progression[i].roman,
+        scale: progression[i].scale
       };
     });
   });
@@ -87,7 +84,7 @@ const main = (argv: string[]) => {
       const led_data: TimeAndString[] = JSON.parse(lines.join(""));
       // 本処理
       const roman_chords = calcChordProgression(
-        led_data.map((e) => {
+        led_data.map(e => {
           return { 0: e[0], 1: e[1], 2: e[2].replace(":", "") };
         }),
       );

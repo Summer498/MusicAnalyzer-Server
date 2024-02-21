@@ -44,27 +44,23 @@ const getTonicChroma = (chord: Chord) => {
 
 const getPowerChroma = (chord: Chord) => {
   const tonic = assertNonNullable(chord.tonic);
-  const fifths = chord.notes.filter(
-    (note) => getIntervalDegree(tonic, note) == 5,
-  );
+  const fifths = chord.notes.filter(note => getIntervalDegree(tonic, note) == 5);
   new Assertion(fifths.length == 1).onFailed(() => {
     console.log(`received:`);
     console.log(chord.notes);
     throw new Error("received chord must have just one 5th code.");
   });
-  return [tonic, fifths[0]].map((note) => getNonNullableChroma(note));
+  return [tonic, fifths[0]].map(note => getNonNullableChroma(note));
 };
 
-const getChordChroma = (chord: Chord) => {
-  return chord.notes.map((note) => getNonNullableChroma(note));
-};
+const getChordChroma = (chord: Chord) => chord.notes.map(note => getNonNullableChroma(note));
 
 const getScaleChroma = (roman: RomanChord) => {
   // TODO: 借用和音に伴いスケール構成音を変異させる
   new Assertion(
     Math.isSubSet(
-      roman.chord.notes.map((note) => getNonNullableChroma(note)),
-      roman.scale.notes.map((note) => getNonNullableChroma(note)),
+      roman.chord.notes.map(note => getNonNullableChroma(note)),
+      roman.scale.notes.map(note => getNonNullableChroma(note)),
     ),
   ).onFailed(() => {
     console.log(`received:`);
@@ -73,7 +69,7 @@ const getScaleChroma = (roman: RomanChord) => {
       "借用和音はまだ実装されていません. 入力ローマ数字コードは, コード構成音がスケール内に収まるようにしてください.",
     );
   });
-  return roman.scale.notes.map((note) => getNonNullableChroma(note));
+  return roman.scale.notes.map(note => getNonNullableChroma(note));
 };
 
 export const getBasicSpace = (roman: RomanChord) => {
@@ -100,7 +96,7 @@ export const getBasicSpace = (roman: RomanChord) => {
 export const basicSpaceDistance = (src: RomanChord, dst: RomanChord) => {
   const src_bs = getBasicSpace(src);
   const dst_bs = getBasicSpace(dst);
-  const incremented = Math.vSub(dst_bs, src_bs).filter((e) => e > 0);
+  const incremented = Math.vSub(dst_bs, src_bs).filter(e => e > 0);
   return Math.totalSum(incremented);
   // TODO: 遠隔調の例外処理 (がそもそも必要なのか?)
 };
@@ -120,71 +116,32 @@ export const getDistance = (
 const c_minor = Key_default.minorKey("C").natural;
 type KeyScale = typeof c_minor;
 const isKeyIncludesTheChord = (key: KeyScale, chord: Chord) => {
-  const key_note_chromas = key.scale.map((note: any) => Note.chroma(note));
-  const chord_note_chromas = chord.notes.map((note) => Note.chroma(note));
+  const key_note_chromas = key.scale.map(note => Note.chroma(note));
+  const chord_note_chromas = chord.notes.map(note => Note.chroma(note));
   return Math.isSuperSet(key_note_chromas, chord_note_chromas);
 };
 
 // 最も尤もらしいコード進行を見つける
-const major_keys = [
-  "Gb",
-  "Db",
-  "Ab",
-  "Eb",
-  "Bb",
-  "F",
-  "C",
-  "G",
-  "D",
-  "A",
-  "E",
-  "B",
-].map((key) => Scale_default.get(key + " major"));
-const minor_keys = [
-  "Eb",
-  "Bb",
-  "F",
-  "C",
-  "G",
-  "D",
-  "A",
-  "E",
-  "B",
-  "F#",
-  "C#",
-  "G#",
-].map((key) => Scale_default.get(key + " minor"));
+const major_keys = ["Gb", "Db", "Ab", "Eb", "Bb", "F", "C", "G", "D", "A", "E", "B",].map(key => Scale_default.get(key + " major"));
+const minor_keys = ["Eb", "Bb", "F", "C", "G", "D", "A", "E", "B", "F#", "C#", "G#",].map(key => Scale_default.get(key + " minor"));
+const chroma2symbol = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B",];
 const keys = major_keys.concat(minor_keys);
-const chroma2symbol = [
-  "C",
-  "C#",
-  "D",
-  "D#",
-  "E",
-  "F",
-  "F#",
-  "G",
-  "G#",
-  "A",
-  "A#",
-  "B",
-];
 
 // TODO: minor Major 7 を受け取ることがあるので, 任意のキーを候補として使えるようにする.
 export const getKeysIncludeTheChord = (chord: Chord) => {
   const keys_includes_the_chord = chroma2symbol
-    .flatMap((symbol) => [
+    .flatMap(symbol => [
       Key_default.majorKey(symbol),
       Key_default.minorKey(symbol).natural,
     ])
-    .filter((key) => isKeyIncludesTheChord(key, chord))
-    .map((key) => Scale_default.get(key.chordScales[0]));
+    .filter(key => isKeyIncludesTheChord(key, chord))
+    .map(key => Scale_default.get(key.chordScales[0]));
   return keys_includes_the_chord;
 };
 
 const getMostLikelyChordProgression = (chord_progression: string[]) => {
   /*
-	const possible_keys = chord_progression.forEach(chord => getKeyIncludesTheChord(chord));
-	return undefined;
-	*/
+  const possible_keys = chord_progression.forEach(chord => getKeyIncludesTheChord(chord));
+  return undefined;
+  */
 };

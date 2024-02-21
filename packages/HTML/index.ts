@@ -37,7 +37,7 @@ function setComponentsToElement<T extends Element>(
     element.setAttribute(key, String(attributes[key]));
   }
   element.appendChild<Text>(document.createTextNode(text));
-  Arraying(children).forEach((child) => element.appendChild(child));
+  Arraying(children).forEach(child => element.appendChild(child));
   return element;
 }
 

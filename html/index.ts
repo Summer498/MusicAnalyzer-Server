@@ -1,6 +1,5 @@
 const server_max_file_size_mega = 64;
-const file_size_is_too_large_area =
-  this.document.getElementsByName("fileSizeIsTooLarge")[0];
+const file_size_is_too_large_area = document.getElementsByName("fileSizeIsTooLarge")[0];
 
 const getFileSizeStr = (file_size: number) => {
   const kilo = file_size / 1024;

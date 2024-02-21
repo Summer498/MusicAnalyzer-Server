@@ -93,7 +93,7 @@ const comment = () => {
       const diff =
         AtoG.indexOf(all_note_symbols[i].slice(0, 1)) -
         AtoG.indexOf(all_note_symbols[j].slice(0, 1));
-      const correctDistance = ((diff) => {
+      const correctDistance = (diff => {
         const dist_in_circle_of_3rd = Math.mod(diff * 3, 7);
         return Math.min(dist_in_circle_of_3rd, 7 - dist_in_circle_of_3rd);
       })(diff);
@@ -123,7 +123,7 @@ const comment = () => {
 
   // Basic Space Test (No Borrowing)
   for (const key of all_note_symbols
-    .map((key_tonic) => [
+    .map(key_tonic => [
       Key_default.majorKey(key_tonic),
       Key_default.minorKey(key_tonic).natural,
     ])
@@ -195,23 +195,21 @@ const comment = () => {
     const src_BS = getBasicSpace(src_roman);
 
     for (const dst_key of all_note_symbols
-      .map((dst_key_tonic) => [
+      .map(dst_key_tonic => [
         Key_default.majorKey(dst_key_tonic),
         Key_default.minorKey(dst_key_tonic).natural,
       ])
       .flat()) {
       const dst_scale = Scale_default.get(dst_key.chordScales[0]);
       // 固有和音を取り出す
-      const dst_chords = dst_key.chords.map((chord_str: any) =>
-        Chord_default.get(chord_str),
-      );
+      const dst_chords = dst_key.chords.map(chord_str => Chord_default.get(chord_str));
 
       for (const dst_chord of dst_chords) {
         const dst_roman = new RomanChord(dst_scale, dst_chord);
         // getBasicSpace はテスト済み関数として信用する
         const dst_BS = getBasicSpace(dst_roman);
         const expected_dist = Math.totalSum(
-          Math.vSub(dst_BS, src_BS).map((e) => Math.max(e, 0)),
+          Math.vSub(dst_BS, src_BS).map(e => Math.max(e, 0)),
         );
 
         const received_dist = basicSpaceDistance(src_roman, dst_roman);
@@ -273,9 +271,7 @@ const comment = () => {
     throw new Error();
   });
 
-  const chord_types = ChordDictionary.all().flatMap(
-    (chord_type: any) => chord_type.aliases,
-  ); // 要素数 100 以上
+  const chord_types = ChordDictionary.all().flatMap(chord_type => chord_type.aliases); // 要素数 100 以上
   for (const note of all_note_symbols) {
     for (const chord_type of chord_types) {
       if (NO_DEBUG) {
@@ -283,14 +279,10 @@ const comment = () => {
       }
       // |all_note_symbols| * |chord_types| > 12 * 100 = 1200
       const chord = Chord_default.get(note + chord_type);
-      const chord_chromas = chord.notes.map((note: any) => Note.chroma(note));
+      const chord_chromas = chord.notes.map(note => Note.chroma(note));
       const keys = getKeysIncludeTheChord(chord);
       new Assertion(
-        Math.forAll(keys, (key) =>
-          Math.isSuperSet(
-            key.notes.map((note: any) => Note.chroma(note)),
-            chord_chromas,
-          ),
+        Math.forAll(keys, key => Math.isSuperSet(key.notes.map(note => Note.chroma(note)), chord_chromas),
         ),
       ).onFailed(() => {
         console.log(

@@ -55,16 +55,14 @@ const _dynamicLogViterbi = (
   const S = pi.length;
   const T = Y.length;
   const t1 = newArray<number>(S);
-  const T2 = newArray(T).map((_) =>
-    newArray(S).map((_) => newArray<number>(0)),
-  ); // eslint-disable-line @typescript-eslint/no-unused-vars
+  const T2 = newArray(T).map(_ => newArray(S).map(_ => newArray<number>(0)),);
   let states = getStates(0);
 
   // initialize
-  states.forEach((s) => {
+  states.forEach(s => {
     t1[s] = pi[s] === undefined ? 0 : pi[s] + B(s, Y[0]);
   });
-  states.forEach((s) => {
+  states.forEach(s => {
     T2[0][s][0] = 0;
   });
   // 帰納
@@ -72,7 +70,7 @@ const _dynamicLogViterbi = (
     const _states = states;
     states = getStates(j);
     const _t1 = [...t1];
-    states.forEach((i) => {
+    states.forEach(i => {
       const f = (k: number) => _t1[k] + A(j - 1, j, k, i);
       const minmax = argsMinMax(f, _states, compare);
       t1[i] = minmax.val + B(i, Y[j]);
@@ -82,10 +80,10 @@ const _dynamicLogViterbi = (
   // 終了
   // TODO: ココから Wikipedia コードに合わせていく
 
-  const zn_T = argsMinMax((k) => t1[k], states, compare).args; // terminals
+  const zn_T = argsMinMax(k => t1[k], states, compare).args; // terminals
   const N = zn_T.length;
 
-  const z = newArray(N).map((_) => newArray<number>(T)); // state_trace_paths
+  const z = newArray(N).map(_ => newArray<number>(T)); // state_trace_paths
   for (let i = 0; i < N; i++) {
     z[i][T - 1] = zn_T[i];
   }
@@ -182,9 +180,9 @@ export const viterbi = (
   observation_sequence: number[],
 ) => {
   const log_viterbi = logViterbi(
-    initial_probabilities.map((e) => Math.log(e)),
-    transition_probabilities.map((e) => e.map((e) => Math.log(e))),
-    emission_probabilities.map((e) => e.map((e) => Math.log(e))),
+    initial_probabilities.map(e => Math.log(e)),
+    transition_probabilities.map(e => e.map(e => Math.log(e))),
+    emission_probabilities.map(e => e.map(e => Math.log(e))),
     observation_sequence,
   );
   return {
