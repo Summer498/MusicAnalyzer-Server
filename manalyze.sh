@@ -1,5 +1,4 @@
 #!/bin/bash -e
-# mimicopy is derived from 耳コピ (Japanese word meaning sound transcription)
 # 文字コードは UTF-8
 # -f, --force_reanalyze, ignore cache
 # -h, --help, show help
@@ -14,7 +13,7 @@ defcol=[39m
 export PYTHONPATH="./python:$PYTHONPATH"
 
 help(){
-    awk 'NR > 3 {                          # シバンは出力しない
+    awk 'NR > 2 {                          # シバンは出力しない
     if (/^#/) { sub("^# ?", ""); print } # /^#/ にマッチしたら "^# ?" を取り除いて出力
     else { exit }                        # /^#/ にマッチしなくなったら終了
     }' $0 | column -t -s , # 実行スクリプト自身を引数に取る
@@ -150,7 +149,8 @@ melody_analyze_chord_src=$chord_to_roman_dst
 melody_analyze_dst="./resources/$songname/analyzed/melody/manalyze.json"
 detectFile "$melody_analyze_melody_src"
 detectFile "$melody_analyze_chord_src"
-res=$( runProcessWithCache "$melody_analyze_dst" "node ./packages/melodyAnalyze \"$melody_analyze_melody_src\" \"$melody_analyze_chord_src\" > \"$melody_analyze_dst\"" )
+# res=$( runProcessWithCache "$melody_analyze_dst" "node ./packages/melodyAnalyze \"$melody_analyze_melody_src\" \"$melody_analyze_chord_src\" > \"$melody_analyze_dst\"" )
+res=$( eval "node ./packages/melodyAnalyze \"$melody_analyze_melody_src\" \"$melody_analyze_chord_src\" > \"$melody_analyze_dst\"" )
 # 最終処理だけ reanalyze option が on の場合は実行する.
 if [ $force_reanalyze -eq 0 ] && [ -e "$melody_analyze_dst" ] && [ $melody_reanalyze -eq 1 ]; then
     debug_log "node ./packages/melodyAnalyze \"$melody_analyze_melody_src\" \"$melody_analyze_chord_src\" > \"$melody_analyze_dst\""

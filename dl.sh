@@ -1,5 +1,4 @@
 #!/bin/bash -e
-# mimicopy is derived from 耳コピ (Japanese word meaning sound transcription)
 # 文字コードは UTF-8
 # dl.sh song_URL
 pushd `dirname "$0"` > /dev/null
@@ -9,7 +8,7 @@ green=[32m
 defcol=[39m
 
 help(){
-    awk 'NR > 3 {                          # シバンは出力しない
+    awk 'NR > 2 {                          # シバンは出力しない
     if (/^#/) { sub("^# ?", ""); print } # /^#/ にマッチしたら "^# ?" を取り除いて出力
     else { exit }                        # /^#/ にマッチしなくなったら終了
     }' $0 | column -t -s , # 実行スクリプト自身を引数に取る
