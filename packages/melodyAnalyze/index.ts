@@ -1,6 +1,5 @@
 import fs from "fs";
-import Chord_default from "@tonaljs/chord";
-import { Note, RomanNumeral } from "tonal";
+import { _Chord, _Note, _Scale } from "../TonalObjects";
 import { TimeAndMelody, TimeAndChord, TimeAndValue, TimeAndMelodyAnalysis, TimeAndRomanAnalysis } from "../timeAnd";
 
 const mod = (x: number, m: number) => (x % m + m) % m;
@@ -36,7 +35,7 @@ const compress = <T>(arr: T[]) => {
 type TimeAndString = { 0: number; 1: number; 2: string };
 const getTimeAndChord = (chord_strs: TimeAndString[]) => {
   const time_and_chord = chord_strs.map(e => {
-    return { time: [e[0], e[1]], chord: Chord_default.get(e[2]) };
+    return { time: [e[0], e[1]], chord: _Chord.get(e[2]) };
   });
   const non_null_chord = (() => {
     const res: TimeAndChord[] = [];
@@ -46,8 +45,7 @@ const getTimeAndChord = (chord_strs: TimeAndString[]) => {
   return non_null_chord;
 };
 
-const freqToMidi = (freq: number) =>
-  (Math.log2(freq) - Math.log2(440)) * 12 + 69;
+const freqToMidi = (freq: number) => (Math.log2(freq) - Math.log2(440)) * 12 + 69;
 
 const analyzeMelody = (
   melodies: TimeAndMelody[],
@@ -60,44 +58,44 @@ const analyzeMelody = (
     ];
     const _roman = romans.find(roman => roman.begin <= melody.end && melody.begin < roman.end); // TODO: 治す. 現状はとりあえずコードとメロディを大きめに重ならせてみているだけ
     if (_roman) {
-      const scale_tonic = _roman.scale.tonic!;
-      if (_roman.scale.name.includes("major")) {
-        if (mod(melody.note - Note.get(scale_tonic).chroma!, 12) === 11) {
+      const scale_tonic = _Scale.get(_roman.scale).tonic!;
+      if (_roman.scale.includes("major")) {
+        if (mod(melody.note - _Note.get(scale_tonic).chroma!, 12) === 11) {
           // lead note
           gravity[0].destination = melody.note + 1;
         }
-        if (mod(melody.note - Note.get(scale_tonic).chroma!, 12) === 5) {
+        if (mod(melody.note - _Note.get(scale_tonic).chroma!, 12) === 5) {
           // 4th note
           gravity[0].destination = melody.note - 1;
         }
-      } else if (_roman.scale.name.includes("aeolian")) {
-        if (mod(melody.note - Note.get(scale_tonic).chroma!, 12) === 2) {
+      } else if (_roman.scale.includes("aeolian")) {
+        if (mod(melody.note - _Note.get(scale_tonic).chroma!, 12) === 2) {
           // lead note
           gravity[0].destination = melody.note + 1;
         }
-        if (mod(melody.note - Note.get(scale_tonic).chroma!, 12) === 8) {
+        if (mod(melody.note - _Note.get(scale_tonic).chroma!, 12) === 8) {
           // 6th note
           gravity[0].destination = melody.note - 1;
         }
       }
       // TODO: マイナーコードに対応する
-      const chord_tonic = _roman.chord.tonic!;
-      if (_roman.chord.name.includes("major")) {
-        if (mod(melody.note - Note.get(chord_tonic).chroma!, 12) === 11) {
+      const chord_tonic = _Chord.get(_roman.chord).tonic!;
+      if (_roman.chord.includes("major")) {
+        if (mod(melody.note - _Note.get(chord_tonic).chroma!, 12) === 11) {
           // lead note
           gravity[1].destination = melody.note + 1;
         }
-        if (mod(melody.note - Note.get(chord_tonic).chroma!, 12) === 5) {
+        if (mod(melody.note - _Note.get(chord_tonic).chroma!, 12) === 5) {
           // 4th note
           gravity[1].destination = melody.note - 1;
         }
       }
-      if (_roman.chord.name.includes("minor")) {
-        if (mod(melody.note - Note.get(chord_tonic).chroma!, 12) === 2) {
+      if (_roman.chord.includes("minor")) {
+        if (mod(melody.note - _Note.get(chord_tonic).chroma!, 12) === 2) {
           // lead note
           gravity[1].destination = melody.note + 1;
         }
-        if (mod(melody.note - Note.get(chord_tonic).chroma!, 12) === 8) {
+        if (mod(melody.note - _Note.get(chord_tonic).chroma!, 12) === 8) {
           // 4th note
           gravity[1].destination = melody.note - 1;
         }
@@ -136,6 +134,6 @@ const main = (argv: string[]) => {
   const time_and_roman = JSON.parse(roman_txt);
   // TODO: コードとメロディの関係を求める
 
-  console.log(JSON.stringify(analyzeMelody(non_null_melody, time_and_roman)));
+  console.log(JSON.stringify(analyzeMelody(non_null_melody, time_and_roman), undefined, "  "));
 };
 main(process.argv);

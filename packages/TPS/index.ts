@@ -1,32 +1,20 @@
 import { Math } from "../Math";
-import {
-  getIntervalDegree,
-  getNonNullableChroma,
-  RomanChord,
-} from "../KeyEstimation";
+import { _Note, _Scale, _Key, getIntervalDegree, getChroma, Chord, Scale } from "../TonalObjects";
+import { RomanChord } from "../KeyEstimation";
 import { assertNonNullable, Assertion, NotImplementedError } from "../StdLib";
-import Scale_default from "@tonaljs/scale";
-import { Chord } from "@tonaljs/chord";
-import { Scale } from "@tonaljs/scale";
-import Key_default from "@tonaljs/key";
-import Note from "@tonaljs/note";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
-const regionDistanceInChromaNumber = (src: number, dst: number) => {
-  return Math.abs(Math.mod((dst - src) * 7 + 6, 12) - 6);
-};
+const regionDistanceInChromaNumber = (src: number, dst: number) => Math.abs(Math.mod((dst - src) * 7 + 6, 12) - 6);
 
 export const regionDistance = (src: Scale, dst: Scale) => {
-  const src_chroma = getNonNullableChroma(assertNonNullable(src.tonic));
-  const dst_chroma = getNonNullableChroma(assertNonNullable(dst.tonic));
+  const src_chroma = getChroma(src.tonic);
+  const dst_chroma = getChroma(dst.tonic);
 
   const region_dist = regionDistanceInChromaNumber(src_chroma, dst_chroma);
   return region_dist;
 };
 
-const tonicDistanceInChromaNumber = (src: number, dst: number) => {
-  return Math.abs(Math.mod((dst - src) * 3 + 3, 7) - 3);
-};
+const tonicDistanceInChromaNumber = (src: number, dst: number) => Math.abs(Math.mod((dst - src) * 3 + 3, 7) - 3);
 
 export const tonicDistance = (src: Chord, dst: Chord) => {
   const interval = getIntervalDegree(
@@ -37,10 +25,7 @@ export const tonicDistance = (src: Chord, dst: Chord) => {
   return Math.min(dist_in_circle_of_3rd, 7 - dist_in_circle_of_3rd);
 };
 
-const getTonicChroma = (chord: Chord) => {
-  const tonic = assertNonNullable(chord.tonic);
-  return [getNonNullableChroma(tonic)];
-};
+const getTonicChroma = (chord: Chord) => [getChroma(chord.tonic)];
 
 const getPowerChroma = (chord: Chord) => {
   const tonic = assertNonNullable(chord.tonic);
@@ -50,26 +35,24 @@ const getPowerChroma = (chord: Chord) => {
     console.log(chord.notes);
     throw new Error("received chord must have just one 5th code.");
   });
-  return [tonic, fifths[0]].map(note => getNonNullableChroma(note));
+  return [tonic, fifths[0]].map(note => getChroma(note));
 };
 
-const getChordChroma = (chord: Chord) => chord.notes.map(note => getNonNullableChroma(note));
+const getChordChroma = (chord: Chord) => chord.notes.map(note => getChroma(note));
 
 const getScaleChroma = (roman: RomanChord) => {
   // TODO: 借用和音に伴いスケール構成音を変異させる
   new Assertion(
     Math.isSubSet(
-      roman.chord.notes.map(note => getNonNullableChroma(note)),
-      roman.scale.notes.map(note => getNonNullableChroma(note)),
+      roman.chord.notes.map(note => getChroma(note)),
+      roman.scale.notes.map(note => getChroma(note)),
     ),
   ).onFailed(() => {
     console.log(`received:`);
     console.log(roman);
-    throw new NotImplementedError(
-      "借用和音はまだ実装されていません. 入力ローマ数字コードは, コード構成音がスケール内に収まるようにしてください.",
-    );
+    throw new NotImplementedError("借用和音はまだ実装されていません. 入力ローマ数字コードは, コード構成音がスケール内に収まるようにしてください.");
   });
-  return roman.scale.notes.map(note => getNonNullableChroma(note));
+  return roman.scale.notes.map(note => getChroma(note));
 };
 
 export const getBasicSpace = (roman: RomanChord) => {
@@ -113,17 +96,17 @@ export const getDistance = (
   return region_dist + tonic_dist + basic_space_dist; //dummy
 };
 
-const c_minor = Key_default.minorKey("C").natural;
+const c_minor = _Key.minorKey("C").natural;
 type KeyScale = typeof c_minor;
 const isKeyIncludesTheChord = (key: KeyScale, chord: Chord) => {
-  const key_note_chromas = key.scale.map(note => Note.chroma(note));
-  const chord_note_chromas = chord.notes.map(note => Note.chroma(note));
+  const key_note_chromas = key.scale.map(note => _Note.chroma(note));
+  const chord_note_chromas = chord.notes.map(note => _Note.chroma(note));
   return Math.isSuperSet(key_note_chromas, chord_note_chromas);
 };
 
 // 最も尤もらしいコード進行を見つける
-const major_keys = ["Gb", "Db", "Ab", "Eb", "Bb", "F", "C", "G", "D", "A", "E", "B",].map(key => Scale_default.get(key + " major"));
-const minor_keys = ["Eb", "Bb", "F", "C", "G", "D", "A", "E", "B", "F#", "C#", "G#",].map(key => Scale_default.get(key + " minor"));
+const major_keys = ["Gb", "Db", "Ab", "Eb", "Bb", "F", "C", "G", "D", "A", "E", "B",].map(key => _Scale.get(key + " major"));
+const minor_keys = ["Eb", "Bb", "F", "C", "G", "D", "A", "E", "B", "F#", "C#", "G#",].map(key => _Scale.get(key + " minor"));
 const chroma2symbol = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B",];
 const keys = major_keys.concat(minor_keys);
 
@@ -131,11 +114,11 @@ const keys = major_keys.concat(minor_keys);
 export const getKeysIncludeTheChord = (chord: Chord) => {
   const keys_includes_the_chord = chroma2symbol
     .flatMap(symbol => [
-      Key_default.majorKey(symbol),
-      Key_default.minorKey(symbol).natural,
+      _Key.majorKey(symbol),
+      _Key.minorKey(symbol).natural,
     ])
     .filter(key => isKeyIncludesTheChord(key, chord))
-    .map(key => Scale_default.get(key.chordScales[0]));
+    .map(key => _Scale.get(key.chordScales[0]));
   return keys_includes_the_chord;
 };
 

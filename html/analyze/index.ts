@@ -2,7 +2,7 @@ import { HTML, SVG } from "../../packages/HTML";
 import { vMod, getRange, vAdd, Math, mod } from "../../packages/Math";
 import { hsv2rgb, rgbToString } from "../../packages/Color";
 import { play } from "../../packages/Synth";
-import { Note } from "tonal";
+import { _Chord, _Note, _Scale } from "../../packages/TonalObjects";
 import { chordToColor, shorten_chord, shorten_key } from "../../packages/chordView";
 import { TimeAndMelodyAnalysis as _TimeAndMelodyAnalysis, TimeAnd, TimeAndRomanAnalysis, TimeAndMelodyAnalysis } from "../../packages/timeAnd";
 import { search_items_in_range } from "../../packages/melodyView";
@@ -76,7 +76,7 @@ const triangle_height = 0.25;
 
 interface TimeAndSVGs<T extends SVGElement> extends TimeAnd { svg: T; }
 
-export class SvgWindow<T extends SVGElement, U extends TimeAndSVGs<T>> {
+class SvgWindow<T extends SVGElement, U extends TimeAndSVGs<T>> {
   readonly all: U[];
   readonly show: U[];
   constructor(all: U[]) {
@@ -88,11 +88,10 @@ export class SvgWindow<T extends SVGElement, U extends TimeAndSVGs<T>> {
 // svg element の作成
 const chord_svgs =
   romans.map(time_and_roman => {
-    const notes = time_and_roman.chord.notes;
-    const chord = time_and_roman.chord;
+    const chord = _Chord.get(time_and_roman.chord);
+    const scale = _Scale.get(time_and_roman.scale);
     const roman = time_and_roman.roman;
-    const scale = time_and_roman.scale;
-    console.log(notes);
+    const notes = chord.notes;
 
     return {
       rects: Math.getRange(0, octave_cnt).map(oct => {
@@ -100,7 +99,7 @@ const chord_svgs =
           svg: SVG.rect({ fill: chordToColor(chord.tonic!, 0.5, 0.9), stroke: "#444" }),
           begin: time_and_roman.begin,
           end: time_and_roman.end,
-          y: -1 - mod(Note.chroma(note), 12) + 12 * (oct + 1),
+          y: -1 - mod(_Note.chroma(note), 12) + 12 * (oct + 1),
         }));
       }).flat(),
       chord: {
@@ -318,7 +317,7 @@ const draw = () => {
 
 // ---------- main ---------- //
 const main = () => {
-  //console.log(search_items_in_range(melodies, 30, 90));
+  console.log(search_items_in_range(melodies, 30, 90));
   // audio.addEventListener("timeupdate", refresh);
 
   const update = () => {

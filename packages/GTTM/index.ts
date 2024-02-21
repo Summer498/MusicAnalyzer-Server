@@ -40,6 +40,6 @@ const main = (argv: string[]) => {
 
   const parser = new XMLParser(options);
   const data = parser.parse("", validationOptions);
-  console.log(JSON.stringify(data, () => {}, "  "));
+  console.log(JSON.stringify(data, undefined, "  "));
 };
 main(process.argv);

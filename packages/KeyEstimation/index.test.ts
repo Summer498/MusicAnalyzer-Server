@@ -1,8 +1,7 @@
 import { Math } from "../Math/dist";
 import { getDistance } from "../TPS/dist";
 import { ChordProgression, RomanChord } from ".";
-import Chord_default from "@tonaljs/chord";
-import Scale_default from "@tonaljs/scale";
+import { _Chord, _Scale } from "../TonalObjects";
 
 describe("dummy", () => {
   test("dummy", () => {
@@ -24,8 +23,8 @@ const comment = () => {
 
   console.log(
     getDistance(
-      new RomanChord(Scale_default.get("C major"), Chord_default.get("Am7")),
-      new RomanChord(Scale_default.get("C major"), Chord_default.get("G7")),
+      new RomanChord(_Scale.get("C major"), _Chord.get("Am7")),
+      new RomanChord(_Scale.get("C major"), _Chord.get("G7")),
     ),
   );
 
