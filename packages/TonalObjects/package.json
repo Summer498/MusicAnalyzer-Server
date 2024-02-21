@@ -1,7 +1,6 @@
 {
-  "name": "gttm",
+  "name": "tonal-objects",
   "version": "1.0.0",
-  "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -12,8 +11,5 @@
   "private": true,
   "scripts": {
     "build": "tsup index.ts --sourcemap --dts --format esm,cjs --minify"
-  },
-  "dependencies": {
-    "fast-xml-parser": "^4.3.4"
   }
 }

@@ -10,7 +10,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup index.ts --sourcemap --dts --format esm,cjs"
+    "build": "tsup index.ts --sourcemap --dts --format esm,cjs --minify"
   },
   "author": "",
   "license": "ISC",
