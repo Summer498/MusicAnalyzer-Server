@@ -149,8 +149,8 @@ melody_analyze_chord_src=$chord_to_roman_dst
 melody_analyze_dst="./resources/$songname/analyzed/melody/manalyze.json"
 detectFile "$melody_analyze_melody_src"
 detectFile "$melody_analyze_chord_src"
-# res=$( runProcessWithCache "$melody_analyze_dst" "node ./packages/melodyAnalyze \"$melody_analyze_melody_src\" \"$melody_analyze_chord_src\" > \"$melody_analyze_dst\"" )
-res=$( eval "node ./packages/melodyAnalyze \"$melody_analyze_melody_src\" \"$melody_analyze_chord_src\" > \"$melody_analyze_dst\"" )
+res=$( runProcessWithCache "$melody_analyze_dst" "node ./packages/melodyAnalyze \"$melody_analyze_melody_src\" \"$melody_analyze_chord_src\" > \"$melody_analyze_dst\"" )
+# res=$( eval "node ./packages/melodyAnalyze \"$melody_analyze_melody_src\" \"$melody_analyze_chord_src\" > \"$melody_analyze_dst\"" )
 # 最終処理だけ reanalyze option が on の場合は実行する.
 if [ $force_reanalyze -eq 0 ] && [ -e "$melody_analyze_dst" ] && [ $melody_reanalyze -eq 1 ]; then
     debug_log "node ./packages/melodyAnalyze \"$melody_analyze_melody_src\" \"$melody_analyze_chord_src\" > \"$melody_analyze_dst\""
