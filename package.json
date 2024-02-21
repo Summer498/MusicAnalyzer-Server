@@ -10,6 +10,7 @@
   "main": "index.js",
   "scripts": {
     "build": "turbo run build",
+    "build:nc": "yarn build --no-cache",
     "test": "jest --coverage",
     "lint": "eslint 'packages/**/*.ts'",
     "lint:fix": "eslint 'packages/**/*.ts' --fix",
