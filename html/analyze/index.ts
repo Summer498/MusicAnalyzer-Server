@@ -93,8 +93,17 @@ class SvgWindow<T extends SVGElement, U extends TimeAndSVGs<T>> {
   readonly group: SVGGElement;
   constructor(name: string, all: U[]) {
     this.all = all;
-    this.show = all.map(e => e);
+    this.show = [];//all.map(e => e);
     this.group = SVG.g({ name }, undefined, this.show.map(e => e.svg));
+  }
+  updateShow(begin: number, end: number) {
+    // const remain = search_items_in_range(this.show, begin, end);
+    // this.show.splice(0, remain.begin_index).forEach(e=>this.group.removeChild(e.svg));  // 左側にはみ出したものを消す
+    // this.show.splice(remain.end_index, this.show.length - remain.end_index).forEach(e=>this.group.removeChild(e.svg));  // 右側にはみ出したものを消す
+    this.show.splice(0, this.show.length);  // 全部消す
+    this.group.childNodes.forEach(e => this.group.removeChild(e));  // 全部消す
+    const append = search_items_in_range(this.all, begin, end);
+    this.all.slice(append.begin_index, append.end_index).forEach(e => { this.show.push(e); this.group.appendChild(e.svg); });  // 必要分全部追加する
   }
 }
 
@@ -257,23 +266,22 @@ const refresh = () => {
   const piano_roll_width = getPianoRollWidth();
   const note_size = piano_roll_width / piano_roll_time_length;
   const now = audio.currentTime;
-  // TODO: 必要分のみを描画する
-  const show_idx = search_items_in_range(chord_rects.show, now - current_time_x, now + piano_roll_time_length);
-  //  chord_rects.show.splice(0, show_idx.begin_index);  // 左側にはみ出したものを消す
-  //  chord_rects.show.splice(show_idx.end_index, chord_rects.show.length - show_idx.end_index);  // 右側にはみ出したものを消す
-  chord_rects.all.filter(e => now - current_time_x <= e.begin && e.begin <= now + piano_roll_time_length);
-  chord_rects.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size }));
-  chord_names.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size }));
-  chord_romans.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size }));
-  chord_keys.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size + key_text_pos }));
 
-  // const _all_d_melody_svgs = all_d_melody_svgs.filter(e => now - current_time_x <= e.end && e.begin <= now + piano_roll_time_length);
-  // const _all_melody_svgs = all_melody_svgs.filter(e => now - current_time_x <= e.end && e.begin <= now + piano_roll_time_length);
-  all_d_melody_svgs.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size }));
-  all_melody_svgs.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size }));
+  const chord_name_margin = 5;
+  chord_rects.updateShow(now - current_time_x, now + piano_roll_time_length);
+  chord_names.updateShow(now - current_time_x, now + piano_roll_time_length);
+  chord_romans.updateShow(now - current_time_x, now + piano_roll_time_length);
+  chord_keys.updateShow(now - current_time_x, now + piano_roll_time_length);
+  all_d_melody_svgs.updateShow(now - current_time_x, now + piano_roll_time_length);
+  all_melody_svgs.updateShow(now - current_time_x, now + piano_roll_time_length);
+  chord_rects.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size, y: e.y * black_key_prm.height, width: (e.end - e.begin) * note_size, height: black_key_prm.height, }));
+  chord_names.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size, y: piano_roll_height + chord_text_size }));
+  chord_romans.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size, y: piano_roll_height + chord_text_size * 2 + chord_name_margin }));
+  chord_keys.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size + key_text_pos, y: piano_roll_height + chord_text_size * 2 + chord_name_margin }));
+
+  all_d_melody_svgs.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size, y: (piano_roll_begin - e.note) * black_key_prm.height, width: (e.end - e.begin) * note_size, height: black_key_prm.height, onclick: "insertMelody()", }));
+  all_melody_svgs.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size, y: (piano_roll_begin - e.note) * black_key_prm.height, width: (e.end - e.begin) * note_size, height: black_key_prm.height, onclick: "deleteMelody()", }));
   refresh_arrow(arrow_svgs, note_size, current_time_x, now * note_size);
-
-  const view_range = [now, now + piano_roll_time_length];
 
   const reservation_range = 1 / 15;
 
@@ -303,15 +311,7 @@ const draw = () => {
   // 各 svg のパラメータを更新する
   const piano_roll_width = getPianoRollWidth();
   const current_time_x = piano_roll_width / 4;
-  const note_size = piano_roll_width / piano_roll_time_length;
-  chord_rects.show.forEach(e => e.svg.setAttributes({ y: e.y * black_key_prm.height, width: (e.end - e.begin) * note_size, height: black_key_prm.height, }));
-  all_d_melody_svgs.show.forEach(e => e.svg.setAttributes({ y: (piano_roll_begin - e.note) * black_key_prm.height, width: (e.end - e.begin) * note_size, height: black_key_prm.height, onclick: "insertMelody()", }));
-  all_melody_svgs.show.forEach(e => e.svg.setAttributes({ y: (piano_roll_begin - e.note) * black_key_prm.height, width: (e.end - e.begin) * note_size, height: black_key_prm.height, onclick: "deleteMelody()", }));
-
   const chord_name_margin = 5;
-  chord_names.show.forEach(e => e.svg.setAttributes({ y: piano_roll_height + chord_text_size }));
-  chord_romans.show.forEach(e => e.svg.setAttributes({ y: piano_roll_height + chord_text_size * 2 + chord_name_margin }));
-  chord_keys.show.forEach(e => e.svg.setAttributes({ y: piano_roll_height + chord_text_size * 2 + chord_name_margin }));
 
   white_bgs_prm.width = piano_roll_width;
   black_bgs_prm.width = piano_roll_width;

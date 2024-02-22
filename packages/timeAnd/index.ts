@@ -32,6 +32,7 @@ export const search_items_in_range = <U extends TimeAnd>(
   const b_tgt = begin;
   const e_tgt = end;
 
+  if (items.length === 0) { return { begin_index: 0, end_index: 0 }; }
   while (br - bl > 1 && er - el > 1) {
     const bmf = bl + Math.floor((br - bl) / 2);
     const emf = el + Math.floor((er - el) / 2);
