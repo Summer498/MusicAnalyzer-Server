@@ -1,6 +1,6 @@
 import { Assertion, hasSameValue } from "../StdLib/";
 import { dynamicLogViterbi, logViterbi, viterbi } from "./";
-import { Math } from "../Math";
+import { getRange, sameArray } from "../Math";
 
 describe("dummy", () => {
   test("dummy", () => {
@@ -24,7 +24,7 @@ const comment = () => {
   ];
   const emission_log_probabilities = emission_probabilities.map(e =>e.map(e => Math.log(e)));
   const observation_sequence = [0, 1, 2];
-  const states = Math.getRange(0, initial_log_probabilities.length);
+  const states = getRange(0, initial_log_probabilities.length);
   const dynamic_log_viterbi = dynamicLogViterbi(
     initial_log_probabilities,
     () => states,
@@ -63,7 +63,7 @@ const comment = () => {
       "logViterbi(...).log_probability must be equal to Math.log(viterbi(...).probability) . ",
     );
   });
-  new Assertion(Math.sameArray(log_viterbi.trace, viterbied.trace)).onFailed(
+  new Assertion(sameArray(log_viterbi.trace, viterbied.trace)).onFailed(
     () => {
       throw new Error(
         "logViterbi(...).trace and viterbi(...).trace must be same value",
@@ -80,7 +80,7 @@ const comment = () => {
   });
   // const expected_trace = [[0],[0],[1]];
   const expected_trace = [[0, 0, 1]];
-  new Assertion(Math.sameArray(viterbied.trace, expected_trace)).onFailed(
+  new Assertion(sameArray(viterbied.trace, expected_trace)).onFailed(
     () => {
       throw new Error(
         `Assertion failed: (viterbied.trace = ${viterbied.trace}) != ${expected_trace}`,

@@ -1,9 +1,6 @@
-import { Math } from "../Math";
+import { mod, vAdd, vMul } from "../Math";
 
-const mod = Math.mod;
 const abs = Math.abs;
-const vAdd = Math.vAdd;
-const vMul = Math.vMul;
 const vFloor = (a: number[]) => a.map(e => Math.floor(e));
 
 // 0 <= h < 360; 0 <= s <= 1; 0 <= b <= 1

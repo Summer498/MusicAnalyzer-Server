@@ -1,4 +1,4 @@
-import { Math } from "../Math";
+import { forAll, getZeros, isSuperSet, mod, sameArray, totalSum, vSub } from "../Math";
 import { Assertion, assertNonNullable as NN } from "../StdLib";
 import { _Chord, _Key, _Note, _Scale, _ChordDictionary, Chord, getIntervalDegree, getChroma } from "../TonalObjects";
 import { RomanChord } from "../KeyEstimation";
@@ -61,7 +61,7 @@ const comment = () => {
         AtoG.indexOf(all_note_symbols[i].slice(0, 1)) -
         AtoG.indexOf(all_note_symbols[j].slice(0, 1));
       const correctDistance = (diff => {
-        const dist_in_circle_of_3rd = Math.mod(diff * 3, 7);
+        const dist_in_circle_of_3rd = mod(diff * 3, 7);
         return Math.min(dist_in_circle_of_3rd, 7 - dist_in_circle_of_3rd);
       })(diff);
       if (distance !== correctDistance) {
@@ -105,7 +105,7 @@ const comment = () => {
       throw new Error(`chords.length must be 7`);
     });
     for (const chord of chords) {
-      const expected_BS = Math.getZeros(12).map((_, i) => {
+      const expected_BS = getZeros(12).map((_, i) => {
         switch (i) {
           // tonic
           case getChroma(getTonic(chord)):
@@ -135,7 +135,7 @@ const comment = () => {
       });
       const received_BS = getBasicSpace(new RomanChord(scale, chord));
 
-      new Assertion(Math.sameArray(received_BS, expected_BS)).onFailed(() => {
+      new Assertion(sameArray(received_BS, expected_BS)).onFailed(() => {
         console.log(`received: ${received_BS}`);
         console.log(`expected: ${expected_BS}`);
         throw new Error(`basic space is wrong`);
@@ -173,8 +173,8 @@ const comment = () => {
         const dst_roman = new RomanChord(dst_scale, dst_chord);
         // getBasicSpace はテスト済み関数として信用する
         const dst_BS = getBasicSpace(dst_roman);
-        const expected_dist = Math.totalSum(
-          Math.vSub(dst_BS, src_BS).map(e => Math.max(e, 0)),
+        const expected_dist = totalSum(
+          vSub(dst_BS, src_BS).map(e => Math.max(e, 0)),
         );
 
         const received_dist = basicSpaceDistance(src_roman, dst_roman);
@@ -247,7 +247,7 @@ const comment = () => {
       const chord_chromas = chord.notes.map(note => _Note.chroma(note));
       const keys = getKeysIncludeTheChord(chord);
       new Assertion(
-        Math.forAll(keys, key => Math.isSuperSet(key.notes.map(note => _Note.chroma(note)), chord_chromas),
+        forAll(keys, key => isSuperSet(key.notes.map(note => _Note.chroma(note)), chord_chromas),
         ),
       ).onFailed(() => {
         console.log(

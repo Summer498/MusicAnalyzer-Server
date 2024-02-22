@@ -1,6 +1,6 @@
 import { _RomanNumeral, _Chord, _Interval, _Note, _Scale, Chord, Scale, getIntervalDegree } from "../TonalObjects";
 import { dynamicLogViterbi, findMin } from "../Graph";
-import { Math } from "../Math";
+import { getZeros } from "../Math";
 import { _throw, Assertion, assertNonNullable as NN, IdDictionary } from "../StdLib";
 import { getDistance, getKeysIncludeTheChord } from "../TPS";
 
@@ -142,7 +142,7 @@ export class ChordProgression {
 
   getMinimumPath() {
     const viterbi = dynamicLogViterbi(
-      Math.getZeros(24), // 12 音 x {-mol, -dur}
+      getZeros(24), // 12 音 x {-mol, -dur}
       this.getStatesOnTime.bind(this),
       this.getDistanceOfStates.bind(this),
       _ => 0,

@@ -1,4 +1,4 @@
-import { Math } from "../Math/dist";
+import { getRange } from "../Math/dist";
 import { getDistance } from "../TPS/dist";
 import { ChordProgression, RomanChord } from ".";
 import { _Chord, _Scale } from "../TonalObjects";
@@ -16,7 +16,7 @@ const comment = () => {
 
   console.log("J-POP progression");
   console.log(
-    Math.getRange(0, progression.lead_sheet_chords.length).map(
+    getRange(0, progression.lead_sheet_chords.length).map(
       t => progression.getStatesOnTime(t).map(e => e.toString(16))
     )
   );

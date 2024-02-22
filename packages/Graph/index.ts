@@ -1,4 +1,4 @@
-import { Math } from "../Math";
+import { getRange } from "../Math";
 
 type Compare = (a: number, b: number) => boolean;
 export const findMin: Compare = (a, b) => a < b;
@@ -160,7 +160,7 @@ export const logViterbi = (
   emission_log_probabilities: number[][],
   observation_sequence: number[],
 ) => {
-  const states = Math.getRange(0, initial_log_probabilities.length);
+  const states = getRange(0, initial_log_probabilities.length);
   return dynamicLogViterbi(
     initial_log_probabilities,
     () => states,
