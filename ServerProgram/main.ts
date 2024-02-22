@@ -3,6 +3,7 @@ import path from "path";
 import express from "express";
 import multer from "multer";
 import url from "url";
+import { _throw, assertNonNullable as NN } from "../packages/StdLib";
 const app = express();
 
 const HOST_NAME = '127.0.0.1';
@@ -34,9 +35,8 @@ const sendFile = (req: any, res: any, fullpath: string) => {
 };
 
 const sendRequestedFile = (req: any, res: any) => {
-  if (req.url == undefined) { throw TypeError(`requested URL is null`); }
-  const pathname = url.parse(req.url, true, true).pathname;
-  if (pathname == null) { throw TypeError(`path is null`); }
+  req.url || _throw(TypeError(`requested URL is null`));
+  const pathname = NN(url.parse(req.url, true, true).pathname);
   const filepath = path.extname(pathname) == "" ? pathname + "/index.html" : pathname;
   const fullpath = `${CWD}/html${filepath}`;
   // パスの指定先が見つからないとき
@@ -69,9 +69,8 @@ const main = (argv: string[]) => {
   app.get("*", send404NotFound);
 
   const server = app.listen(PORT, () => {
-    if (server == null) { throw TypeError("Error: Server is null"); }
-    const address = server.address();
-    if (address == null) { throw TypeError("Error: Server.address() is null"); }
+    server || _throw(TypeError("Error: Server is null"));
+    const address = NN(server.address());
     if (typeof address == "string") { console.log(`Server listening at address ${address}`); return; }
     const port = address.port;
     console.log(`Server listening at ${address.address}:${port}`);

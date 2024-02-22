@@ -1,20 +1,20 @@
 import { _RomanNumeral, _Chord, _Interval, _Note, _Scale, Chord, Scale, getIntervalDegree } from "../TonalObjects";
 import { dynamicLogViterbi, findMin } from "../Graph";
 import { Math } from "../Math";
-import { Assertion, assertNonNullable, IdDictionary } from "../StdLib";
+import { _throw, Assertion, assertNonNullable as NN, IdDictionary } from "../StdLib";
 import { getDistance, getKeysIncludeTheChord } from "../TPS";
 
 const get_roman = (scale: Scale, chord: Chord) => {
   // TODO: 確認しておく: もしかしたら # b がないものだけ出力されるバグがあるかもしれない
   // IV# が IV として出力されるなど?
   // 成功: C# Db 混同バグは直してある.
-  if (chord.tonic === null) { throw TypeError("chord.tonic should not be null"); }
-  const tonic = chord.tonic;
+  chord.tonic || _throw(TypeError("chord.tonic should not be null"));
+  const tonic = chord.tonic!;
   const true_tonic = scale.notes.find(e => _Note.chroma(e) === _Note.chroma(tonic));
 
   const interval = _Interval.distance(
-    assertNonNullable(scale.tonic),
-    assertNonNullable(true_tonic),
+    NN(scale.tonic),
+    NN(true_tonic),
   );
   const roman = _RomanNumeral.get(_Interval.get(interval));
   return roman.roman + " " + chord.type;

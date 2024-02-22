@@ -1,6 +1,7 @@
 export const console_green = "\u001b[32m";
 export const console_reset = "\u001b[0m";
 
+export const _throw = <E extends Error>(e: E) => { throw e; };  // 文の式化
 export type recurrentArray<T> = T | recurrentArray<T>[];
 export function Arraying<T>(e: recurrentArray<T>): T[] {
   const concat = function (arr: recurrentArray<T>[]): T[] {
@@ -47,12 +48,12 @@ export class IdDictionary<Key extends keyof any> { // eslint-disable-line @types
   }
   getId(item: Key) {
     const id = this.#item2id[item];
-    if (id === undefined) { throw new ReferenceError(`key ${String(item)} not found`); }
+    id || _throw(new ReferenceError(`key ${String(item)} not found`));
     return id;
   }
   getItem(id: number) {
     const item = this.#id2item[id];
-    if (item === undefined) { throw new ReferenceError(`id ${String(id)} not found`); }
+    item || _throw(new ReferenceError(`id ${String(id)} not found`));
     return item;
   }
   showAll() { return this.#id2item; }
@@ -70,21 +71,8 @@ export class Assertion {
   onFailed(errorExecution: () => void) { this.#assertion || errorExecution(); }
 }
 
-export const assertNotNull = <T>(value: T | null) => {
-  if (value === null) { throw new TypeError("null value received"); }
-  return value;
-};
-
-export const assertNotUndefined = <T>(value: T | undefined) => {
-  if (value === undefined) { throw new TypeError("undefined value received"); }
-  return value;
-};
-
+export const assertNotNull = <T>(value: T | null) => value || _throw(new TypeError("null value received"));
+export const assertNotUndefined = <T>(value: T | undefined) => value || _throw(new TypeError("undefined value received"));
 export const assertNonNullable = <T>(value: T | null | undefined) => assertNotNull(assertNotUndefined(value));
-
-export const assertNotNaN = (value: number) => {
-  if (isNaN(value)) { throw new TypeError("NaN value received"); }
-  return value;
-};
-
+export const assertNotNaN = (value: number) => isNaN(value) ? _throw(new TypeError("NaN value received")) : value;
 export const castToNumber = (value: string) => assertNotNaN(Number(value));

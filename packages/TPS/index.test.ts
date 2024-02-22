@@ -1,5 +1,5 @@
 import { Math } from "../Math";
-import { Assertion, assertNonNullable } from "../StdLib";
+import { Assertion, assertNonNullable as NN } from "../StdLib";
 import { _Chord, _Key, _Note, _Scale, _ChordDictionary, Chord, getIntervalDegree, getChroma } from "../TonalObjects";
 import { RomanChord } from "../KeyEstimation";
 import {
@@ -72,7 +72,7 @@ const comment = () => {
   }
 
   const getTonic = (chord: Chord) => {
-    return assertNonNullable(chord.tonic);
+    return NN(chord.tonic);
   };
 
   const getFifth = (chord: Chord) => {

@@ -1,7 +1,7 @@
 import { Math } from "../Math";
 import { _Note, _Scale, _Key, getIntervalDegree, getChroma, Chord, Scale } from "../TonalObjects";
 import { RomanChord } from "../KeyEstimation";
-import { assertNonNullable, Assertion, NotImplementedError } from "../StdLib";
+import { assertNonNullable as NN, Assertion, NotImplementedError } from "../StdLib";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 const regionDistanceInChromaNumber = (src: number, dst: number) => Math.abs(Math.mod((dst - src) * 7 + 6, 12) - 6);
@@ -18,8 +18,8 @@ const tonicDistanceInChromaNumber = (src: number, dst: number) => Math.abs(Math.
 
 export const tonicDistance = (src: Chord, dst: Chord) => {
   const interval = getIntervalDegree(
-    assertNonNullable(src.tonic),
-    assertNonNullable(dst.tonic),
+    NN(src.tonic),
+    NN(dst.tonic),
   );
   const dist_in_circle_of_3rd = Math.mod((interval - 1) * 3, 7);
   return Math.min(dist_in_circle_of_3rd, 7 - dist_in_circle_of_3rd);
@@ -28,7 +28,7 @@ export const tonicDistance = (src: Chord, dst: Chord) => {
 const getTonicChroma = (chord: Chord) => [getChroma(chord.tonic)];
 
 const getPowerChroma = (chord: Chord) => {
-  const tonic = assertNonNullable(chord.tonic);
+  const tonic = NN(chord.tonic);
   const fifths = chord.notes.filter(note => getIntervalDegree(tonic, note) == 5);
   new Assertion(fifths.length == 1).onFailed(() => {
     console.log(`received:`);

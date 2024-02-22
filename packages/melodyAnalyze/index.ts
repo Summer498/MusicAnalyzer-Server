@@ -2,6 +2,7 @@ import fs from "fs";
 import { Chord, _Chord, _Note, _Scale } from "../TonalObjects";
 import { compress, TimeAnd } from "../timeAnd";
 import { TimeAndRomanAnalysis } from "../chordToRoman";
+import { assertNonNullable as NN } from "../StdLib";
 
 const mod = (x: number, m: number) => (x % m + m) % m;
 const parse_csv = (str: string) => {
@@ -51,44 +52,44 @@ const analyzeMelody = (
     ];
     const _roman = romans.find(roman => roman.begin <= melody.end && melody.begin < roman.end); // TODO: 治す. 現状はとりあえずコードとメロディを大きめに重ならせてみているだけ
     if (_roman) {
-      const scale_tonic = _Scale.get(_roman.scale).tonic!;
+      const scale_tonic = NN(_Scale.get(_roman.scale).tonic);
       if (_roman.scale.includes("major")) {
-        if (mod(melody.note - _Note.get(scale_tonic).chroma!, 12) === 11) {
+        if (mod(melody.note - _Note.get(scale_tonic).chroma, 12) === 11) {
           // lead note
           gravity[0].destination = melody.note + 1;
         }
-        if (mod(melody.note - _Note.get(scale_tonic).chroma!, 12) === 5) {
+        if (mod(melody.note - _Note.get(scale_tonic).chroma, 12) === 5) {
           // 4th note
           gravity[0].destination = melody.note - 1;
         }
       } else if (_roman.scale.includes("aeolian")) {
-        if (mod(melody.note - _Note.get(scale_tonic).chroma!, 12) === 2) {
+        if (mod(melody.note - _Note.get(scale_tonic).chroma, 12) === 2) {
           // lead note
           gravity[0].destination = melody.note + 1;
         }
-        if (mod(melody.note - _Note.get(scale_tonic).chroma!, 12) === 8) {
+        if (mod(melody.note - _Note.get(scale_tonic).chroma, 12) === 8) {
           // 6th note
           gravity[0].destination = melody.note - 1;
         }
       }
       // TODO: マイナーコードに対応する
-      const chord_tonic = _Chord.get(_roman.chord).tonic!;
+      const chord_tonic = NN(_Chord.get(_roman.chord).tonic);
       if (_roman.chord.includes("major")) {
-        if (mod(melody.note - _Note.get(chord_tonic).chroma!, 12) === 11) {
+        if (mod(melody.note - _Note.get(chord_tonic).chroma, 12) === 11) {
           // lead note
           gravity[1].destination = melody.note + 1;
         }
-        if (mod(melody.note - _Note.get(chord_tonic).chroma!, 12) === 5) {
+        if (mod(melody.note - _Note.get(chord_tonic).chroma, 12) === 5) {
           // 4th note
           gravity[1].destination = melody.note - 1;
         }
       }
       if (_roman.chord.includes("minor")) {
-        if (mod(melody.note - _Note.get(chord_tonic).chroma!, 12) === 2) {
+        if (mod(melody.note - _Note.get(chord_tonic).chroma, 12) === 2) {
           // lead note
           gravity[1].destination = melody.note + 1;
         }
-        if (mod(melody.note - _Note.get(chord_tonic).chroma!, 12) === 8) {
+        if (mod(melody.note - _Note.get(chord_tonic).chroma, 12) === 8) {
           // 4th note
           gravity[1].destination = melody.note - 1;
         }
