@@ -1,6 +1,7 @@
 import fs from "fs";
-import { _Chord, _Note, _Scale } from "../TonalObjects";
-import { TimeAndMelody, TimeAndChord, TimeAndValue, TimeAndMelodyAnalysis, TimeAndRomanAnalysis } from "../timeAnd";
+import { Chord, _Chord, _Note, _Scale } from "../TonalObjects";
+import { compress, TimeAnd } from "../timeAnd";
+import { TimeAndRomanAnalysis } from "../chordToRoman";
 
 const mod = (x: number, m: number) => (x % m + m) % m;
 const parse_csv = (str: string) => {
@@ -15,21 +16,13 @@ export type MelodyAnalysis = {
     resolved: boolean;
   }[];
 };
-
-const compress = <T>(arr: T[]) => {
-  const ret: TimeAndValue<T>[] = [];
-  let begin = 0;
-  let old = arr[0];
-  arr.forEach((e, i) => {
-    if (old !== e) {
-      ret.push({ begin, end: i, value: old });
-      begin = i;
-      old = e;
-    }
-  });
-  ret.push({ begin, end: arr.length, value: old });
-  return ret;
-};
+export interface TimeAndMelody extends TimeAnd { note: number }
+export interface TimeAndChord extends TimeAnd { chord: Chord }
+export interface TimeAndMelodyAnalysis extends TimeAnd {
+  note: number,
+  roman_name: string,
+  melody_analysis: MelodyAnalysis,
+}
 
 
 type TimeAndString = { 0: number; 1: number; 2: string };
@@ -127,12 +120,11 @@ const main = (argv: string[]) => {
   const comp_melody = compress(melody_csv);
   const non_null_melody = (() => {
     const res: TimeAndMelody[] = [];
-    comp_melody.forEach(e => e.value === null ? 0 : res.push({ begin: e.begin / melody_sr, end: e.end / melody_sr, note: e.value })); // value が null の場合は time ごと除く
+    comp_melody.forEach(e => e.item === null ? 0 : res.push({ begin: e.begin / melody_sr, end: e.end / melody_sr, note: e.item })); // value が null の場合は time ごと除く
     return res;
   })();
 
   const time_and_roman = JSON.parse(roman_txt);
-  // TODO: コードとメロディの関係を求める
 
   console.log(JSON.stringify(analyzeMelody(non_null_melody, time_and_roman), undefined, "  "));
 };

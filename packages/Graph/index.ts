@@ -78,7 +78,6 @@ const _dynamicLogViterbi = (
     });
   }
   // 終了
-  // TODO: ココから Wikipedia コードに合わせていく
 
   const zn_T = argsMinMax(k => t1[k], states, compare).args; // terminals
   const N = zn_T.length;

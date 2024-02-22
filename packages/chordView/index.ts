@@ -1,5 +1,5 @@
 import { hsv2rgb, rgbToString } from "../../packages/Color/index";
-import { _Scale } from "../../packages/TonalObjects";
+import { _Note, _Scale } from "../../packages/TonalObjects";
 
 type Scale = ReturnType<typeof _Scale.get>;
 
@@ -24,13 +24,11 @@ export const romanToColor = (roman: string, s: number, v: number) => {
 };
 
 const c_dur = "C1D2EF3G4A5B";
-const alt = "b♮#";
 const green_hue = 120; // 0:red, 120:green, 240:blue
-export const chordToColor = (tonic: string, s: number, v: number) => {
-  if (tonic.length === 0) { return "#444"; }
-  const _chroma = c_dur.indexOf(tonic[0]);
-  const chroma =
-    tonic.length === 1 ? _chroma : _chroma + alt.indexOf(tonic[1]) - 1;
+export const noteToColor = (note: string, s: number, v: number) => {
+  if (note.length === 0) { return "#444"; }
+  const _chroma = c_dur.indexOf(note[0]);
+  const chroma = _Note.chroma(note);
   const col = hsv2rgb(360 * chroma / 12 + green_hue, s, v);
   return rgbToString(col);
 };

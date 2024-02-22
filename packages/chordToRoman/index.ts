@@ -1,6 +1,12 @@
 import { ChordProgression, RomanChord } from "../KeyEstimation";
 import ReadLine from "readline";
-import { TimeAndRomanAnalysis } from "../timeAnd";
+import { TimeAnd } from "../timeAnd";
+
+export interface TimeAndRomanAnalysis extends TimeAnd {
+  scale: string,
+  chord: string,
+  roman: string,
+}
 
 const remove_item = <T>(array: T[], will_removed: (item: T) => boolean) => {
   const ret: T[] = [];
