@@ -10,11 +10,11 @@
   "main": "index.js",
   "scripts": {
     "build": "turbo run build",
-    "build:nc": "yarn build --no-cache",
+    "build:fc": "yarn build --force",
     "test": "jest --coverage",
     "lint": "eslint 'packages/**/*.ts' && eslint 'html/**/*.ts'",
     "lint:fix": "eslint 'packages/**/*.ts' --fix && eslint 'html/**/*.ts' --fix",
-    "test:ci": "yarn lint:fix && yarn build && yarn test --no-cache"
+    "test:ci": "yarn lint:fix && yarn build:fc && yarn test --no-cache"
   },
   "author": "Summer498 <subore02@gmail.com>",
   "license": "MIT",

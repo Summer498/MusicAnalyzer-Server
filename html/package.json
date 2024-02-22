@@ -16,5 +16,8 @@
     "build": "tsup index.ts --sourcemap --dts --format esm,cjs --minify"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "tsup": "^8.0.2"
+  }
 }
