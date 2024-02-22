@@ -43,7 +43,7 @@ shell_exec("mv \"$song_file_path\" \"$m_src\"");
   <?php
   $m_opt = "controls autoplay playsinline loop crossorigin=\"use-credintials\""; // media option
   $m_type = (in_array($song_file_ext, ["mp4"], true)) ? "video" : "audio"; // media type
-  echo ("<div class=\"${m_type}_wrapper\" id=\"audio_area\">");
+  echo ("<div class=\"".$m_type."_wrapper\" id=\"audio_area\">");
   echo ("<$m_type src=\"$m_src\" $m_opt></$m_type>");
   echo ("</div>");
   ?>
