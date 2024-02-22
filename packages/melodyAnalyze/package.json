@@ -13,8 +13,5 @@
     "build": "tsup index.ts --sourcemap --dts --format esm,cjs --minify"
   },
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "tonal": "^4.14.0"
-  }
+  "license": "ISC"
 }

@@ -11,5 +11,8 @@
   "private": true,
   "scripts": {
     "build": "tsup index.ts --sourcemap --dts --format esm,cjs --minify"
+  },
+  "dependencies": {
+    "tonal": "^6.0.0"
   }
 }

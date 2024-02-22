@@ -13,8 +13,5 @@
     "build": "tsup index.ts --sourcemap --dts --format esm,cjs --minify"
   },
   "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "tonal": "^4.8.0"
-  }
+  "license": "MIT"
 }

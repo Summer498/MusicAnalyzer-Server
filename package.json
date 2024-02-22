@@ -12,8 +12,8 @@
     "build": "turbo run build",
     "build:nc": "yarn build --no-cache",
     "test": "jest --coverage",
-    "lint": "eslint 'packages/**/*.ts'",
-    "lint:fix": "eslint 'packages/**/*.ts' --fix",
+    "lint": "eslint 'packages/**/*.ts' && eslint 'html/**/*.ts'",
+    "lint:fix": "eslint 'packages/**/*.ts' --fix && eslint 'html/**/*.ts' --fix",
     "test:ci": "yarn lint:fix && yarn build && yarn test --no-cache"
   },
   "author": "Summer498 <subore02@gmail.com>",
