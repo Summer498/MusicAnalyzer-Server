@@ -104,15 +104,7 @@ class SvgWindow<T extends SVGElement, U extends TimeAndSVGs<T>> {
     this.show.splice(0, this.show.length);  // 全部消す
     this.group.childNodes.forEach(e => this.group.removeChild(e));  // 全部消す
     const append = search_items_overlaps_range(this.all, begin, end);
-    /*
-    console.log(begin);
-    console.log(end);
-    console.log(append);
-    */
-    this.all.slice(append.begin_index, append.end_index).forEach(e => {
-      this.show.push(e);
-      this.group.appendChild(e.svg);
-    });  // 必要分全部追加する
+    this.all.slice(append.begin_index, append.end_index).forEach(e => { this.show.push(e); this.group.appendChild(e.svg); });  // 必要分全部追加する
   }
 }
 
@@ -203,12 +195,12 @@ const white_BGs = [...Array(octave_cnt)].map(_ => [...Array(7)].map(_ => SVG.rec
 const black_BGs = [...Array(octave_cnt)].map(_ => [...Array(5)].map(_ => SVG.rect({ name: "black-BG", fill: black_bgs_prm.fill, stroke: black_bgs_prm.stroke, })));
 const white_key = [...Array(octave_cnt)].map(_ => [...Array(7)].map(_ => SVG.rect({ name: "white-key", fill: white_key_prm.fill, stroke: white_key_prm.stroke, })));
 const black_key = [...Array(octave_cnt)].map(_ => [...Array(5)].map(_ => SVG.rect({ name: "black-key", fill: black_key_prm.fill, stroke: black_key_prm.stroke, })));
-const octave_BGs = [...Array(octave_cnt)].map((_, i) => SVG.g({ name: "octave-BG" }, undefined, [white_BGs[i], black_BGs[i]]));
-const octave_key = [...Array(octave_cnt)].map((_, i) => SVG.g({ name: "octave-keys" }, undefined, [white_key[i], black_key[i]]));
+const octave_BGs = [...Array(octave_cnt)].map((_, i) => ({ y: i, svg: SVG.g({ name: "octave-BG" }, undefined, [white_BGs[i], black_BGs[i]]) }));
+const octave_key = [...Array(octave_cnt)].map((_, i) => ({ y: i, svg: SVG.g({ name: "octave-keys" }, undefined, [white_key[i], black_key[i]]) }));
 const current_time_line = SVG.line({ name: "current_time", "stroke-width": 5, stroke: "#000" });
 const piano_roll = SVG.svg({ name: "piano-roll" }, undefined, [
   // 奥側
-  SVG.g({ name: "octave-BGs" }, undefined, octave_BGs),
+  SVG.g({ name: "octave-BGs" }, undefined, octave_BGs.map(e => e.svg)),
 
   chord_rects.group,
   chord_names.group,
@@ -222,7 +214,7 @@ const piano_roll = SVG.svg({ name: "piano-roll" }, undefined, [
     arrow_svgs.map(e => e.triangle)
   ]),
 
-  SVG.g({ name: "octave-keys" }, undefined, octave_key),
+  SVG.g({ name: "octave-keys" }, undefined, octave_key.map(e => e.svg)),
   current_time_line,
   // 手前側
 ]);
@@ -274,12 +266,11 @@ const refresh = () => {
   if (audio.paused && now_at === last_audio_time) { return; }
   last_audio_time = now_at;
 
-  const current_time_ratio = 1/4;
+  const current_time_ratio = 1 / 4;
   const current_time_x = getPianoRollWidth() * current_time_ratio;
   const piano_roll_width = getPianoRollWidth();
   const note_size = piano_roll_width / piano_roll_time_length;
 
-  console.log(- piano_roll_time_length * current_time_ratio);
   chord_rects.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
   chord_names.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
   chord_romans.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
@@ -327,8 +318,8 @@ const draw = () => {
   setBgSvgParams(white_BGs, white_bgs_prm, white_position);
   setBgSvgParams(black_key, black_key_prm, black_position);
   setBgSvgParams(white_key, white_key_prm, [0, 1, 2, 3, 4, 5, 6]);
-  octave_BGs.forEach((_, i) => _.setAttributes({ x: 0, y: octave_height * i, width: piano_roll_width, height: octave_height }));
-  octave_key.forEach((_, i) => _.setAttributes({ x: 0, y: octave_height * i, width: piano_roll_width, height: octave_height }));
+  octave_BGs.forEach(e => e.svg.setAttributes({ x: 0, y: octave_height * e.y, width: piano_roll_width, height: octave_height }));
+  octave_key.forEach(e => e.svg.setAttributes({ x: 0, y: octave_height * e.y, width: piano_roll_width, height: octave_height }));
   piano_roll.setAttributes({ x: 0, y: 0, width: piano_roll_width, height: piano_roll_height + chord_text_size * 2 + chord_name_margin });
 
   current_time_line.setAttributes({ x1: current_time_x, x2: current_time_x, y1: 0, y2: piano_roll_height });
