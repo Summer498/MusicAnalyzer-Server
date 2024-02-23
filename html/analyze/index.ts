@@ -4,7 +4,7 @@ import { hsv2rgb, rgbToString } from "../../packages/Color";
 import { play } from "../../packages/Synth";
 import { _Chord, _Note, _Scale } from "../../packages/TonalObjects";
 import { noteToColor, shorten_chord, shorten_key } from "../../packages/chordView";
-import { search_items_in_range, TimeAnd } from "../../packages/timeAnd";
+import { search_items_overlaps_range, search_items_begins_in_range, TimeAnd } from "../../packages/timeAnd";
 import { TimeAndRomanAnalysis } from "../../packages/chordToRoman";
 import { TimeAndMelodyAnalysis as _TimeAndMelodyAnalysis } from "../../packages/melodyAnalyze";
 
@@ -103,8 +103,16 @@ class SvgWindow<T extends SVGElement, U extends TimeAndSVGs<T>> {
     // this.show.splice(remain.end_index, this.show.length - remain.end_index).forEach(e=>this.group.removeChild(e.svg));  // 右側にはみ出したものを消す
     this.show.splice(0, this.show.length);  // 全部消す
     this.group.childNodes.forEach(e => this.group.removeChild(e));  // 全部消す
-    const append = search_items_in_range(this.all, begin, end);
-    this.all.slice(append.begin_index, append.end_index).forEach(e => { this.show.push(e); this.group.appendChild(e.svg); });  // 必要分全部追加する
+    const append = search_items_overlaps_range(this.all, begin, end);
+    /*
+    console.log(begin);
+    console.log(end);
+    console.log(append);
+    */
+    this.all.slice(append.begin_index, append.end_index).forEach(e => {
+      this.show.push(e);
+      this.group.appendChild(e.svg);
+    });  // 必要分全部追加する
   }
 }
 
@@ -256,42 +264,49 @@ const refresh_arrow = (arrow_svgs: ArrowSVGs, note_size: number, current_time_x:
 let old_time = Date.now();
 const fps_element = HTML.p({ name: "fps" }, `fps:${0}`);
 
+let last_audio_time = Number.MIN_SAFE_INTEGER;
 const refresh = () => {
-  const current_time_x = getPianoRollWidth() / 4;
+  const now = Date.now();
+  const fps = Math.floor(1000 / (now - old_time));
+  fps_element.textContent = `fps:${(" " + fps).slice(-3)} ${fps < 60 ? '<' : '>'} 60`;
+  old_time = now;
+  const now_at = audio.currentTime;
+  if (audio.paused && now_at === last_audio_time) { return; }
+  last_audio_time = now_at;
+
+  const current_time_ratio = 1/4;
+  const current_time_x = getPianoRollWidth() * current_time_ratio;
   const piano_roll_width = getPianoRollWidth();
   const note_size = piano_roll_width / piano_roll_time_length;
-  const now = audio.currentTime;
 
-  chord_rects.updateShow(now - current_time_x, now + piano_roll_time_length);
-  chord_names.updateShow(now - current_time_x, now + piano_roll_time_length);
-  chord_romans.updateShow(now - current_time_x, now + piano_roll_time_length);
-  chord_keys.updateShow(now - current_time_x, now + piano_roll_time_length);
-  all_d_melody_svgs.updateShow(now - current_time_x, now + piano_roll_time_length);
-  all_melody_svgs.updateShow(now - current_time_x, now + piano_roll_time_length);
-  chord_rects.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size, y: e.y, width: e.w * note_size, height: e.h, }));
-  chord_names.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size, y: e.y }));
-  chord_romans.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size, y: e.y }));
-  chord_keys.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size + key_text_pos, y: e.y }));
-  all_d_melody_svgs.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size, y: e.y, width: e.w * note_size, height: e.h, onclick: "insertMelody()", }));
-  all_melody_svgs.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now) * note_size, y: e.y, width: e.w * note_size, height: e.h, onclick: "deleteMelody()", }));
-  refresh_arrow(arrow_svgs, note_size, current_time_x, now * note_size);
+  console.log(- piano_roll_time_length * current_time_ratio);
+  chord_rects.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
+  chord_names.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
+  chord_romans.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
+  chord_keys.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
+  all_d_melody_svgs.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
+  all_melody_svgs.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
+  chord_rects.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y, width: e.w * note_size, height: e.h, }));
+  chord_names.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y }));
+  chord_romans.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y }));
+  chord_keys.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size + key_text_pos, y: e.y }));
+  all_d_melody_svgs.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y, width: e.w * note_size, height: e.h, onclick: "insertMelody()", }));
+  all_melody_svgs.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y, width: e.w * note_size, height: e.h, onclick: "deleteMelody()", }));
+  refresh_arrow(arrow_svgs, note_size, current_time_x, now_at * note_size);
 
   const reservation_range = 1 / 15;
 
-  const melody_range = search_items_in_range(melodies, now, now + reservation_range);
+  const melody_range = search_items_begins_in_range(melodies, now_at, now_at + reservation_range);
   for (let i = melody_range.begin_index; i < melody_range.end_index; i++) {
     const e = melodies[i];
     if (e.sound_reserved === false) {
-      play([440 * Math.pow(2, (e.note - 69) / 12)], e.begin - now, e.end - e.begin);
+      play([440 * Math.pow(2, (e.note - 69) / 12)], e.begin - now_at, e.end - e.begin);
       e.sound_reserved = true;
       setTimeout(() => {
         e.sound_reserved = false;
       }, reservation_range * 1000);
     }
   }
-  const now_sec = Date.now();
-  fps_element.textContent = `fps:${Math.floor(1000 / (now_sec - old_time))}`;
-  old_time = now_sec;
 };
 
 const setBgSvgParams = (rects: SVGRectElement[][], rect_param: RectParameters, position: number[]) => {
@@ -323,7 +338,7 @@ const draw = () => {
 
 // ---------- main ---------- //
 const main = () => {
-  console.log(search_items_in_range(melodies, 30, 90));
+  console.log(search_items_begins_in_range(melodies, 30, 90));
   // audio.addEventListener("timeupdate", refresh);
 
   const update = () => {
