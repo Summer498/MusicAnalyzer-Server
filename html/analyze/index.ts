@@ -1,5 +1,5 @@
 import { HTML, SVG } from "../../packages/HTML";
-import { vMod, getRange, vAdd, mod } from "../../packages/Math";
+import { vMod, getRange, vAdd, mod, decimal, argmax, getZeros, totalSum } from "../../packages/Math";
 import { hsv2rgb, rgbToString } from "../../packages/Color";
 import { play } from "../../packages/Synth";
 import { _Chord, _Note, _Scale } from "../../packages/TonalObjects";
@@ -33,13 +33,62 @@ const melodies = detected_melodies.map(e => {
     sound_reserved: false
   };
   return res;
-});
+}).filter((e, i) => i + 1 >= detected_melodies.length || 60 / (detected_melodies[i + 1].begin - detected_melodies[i].begin) < 300 * 4);
 
 window.play = play;  // NOTE:コンソールデバッグ用
 console.log(romans);
 console.log(melodies);
 // const notes = roman[0].chords[1][2].notes;  // 0 個目のコード列の1番目の推定候補の2個目のコードの構成音
 
+// テンポの計算
+const calcTempo = () => {
+  const melody_bpm: number[] = [];
+  const bpm_range = 90;
+  const melody_phase: number[][] = getRange(0, 90).map(i => getZeros(90 + i));  // [bpm][phase]
+  const b = Math.log2(90);  // 90 ~ 180
+  melodies.forEach((e, i) => {
+    if (i + 1 >= melodies.length) { return; }
+    const term = melodies[i + 1].begin - melodies[i].begin + (Math.random() - 0.5) / 100;
+    if (60 / term > 300 * 4) { return; }
+    const bpm2 = Math.round(Math.pow(2, decimal(Math.log2(60 / term) - b) + b));
+    const bpm = Math.round(Math.pow(3, decimal(Math.log2(bpm2) / Math.log2(3) - b / Math.log2(3)) + b / Math.log2(3)));
+    if (isNaN(melody_bpm[bpm])) { melody_bpm[bpm] = 0; }
+    melody_bpm[bpm]++;
+
+    // ビートを求める方法その2 (考え中)
+    getRange(0, bpm_range).forEach(bpm => {
+      melody_phase[bpm][Math.floor(mod(e.begin, bpm + 90))]++;
+    });
+  });
+  console.log("melody_bpm");
+  console.log(melody_bpm);
+
+  // ビートを求める方法その2 (考え中)
+  const entropy = melody_phase.map(e => {
+    const sum = totalSum(e);
+    const prob = e.map(e => e / sum);
+    return totalSum(prob.map(p => p === 0 ? 0 : -p * Math.log2(p)));
+  });
+  console.log(melody_phase);
+  console.log("bpm_entropy");
+  console.log(entropy);
+
+  // NOTE: 未使用
+  const roman_bpm: number[] = [];
+  romans.forEach((_, i) => {
+    if (i + 1 >= romans.length) { return; }
+    const term = romans[i + 1].begin - romans[i].begin;
+    const bpm2 = Math.round(Math.pow(2, decimal(Math.log2(60 / term) - b) + b));
+    const bpm = Math.round(Math.pow(3, decimal(Math.log2(bpm2) / Math.log2(3) - b / Math.log2(3)) + b / Math.log2(3)));
+    if (isNaN(roman_bpm[bpm])) { roman_bpm[bpm] = 0; }
+    roman_bpm[bpm]++;
+  });
+  console.log("roman_bpm");
+  console.log(roman_bpm);
+  return argmax(melody_bpm);
+};
+const tempo = calcTempo();
+const phase = 0;
 
 const audio_area = document.getElementById("audio_area")!;
 const audio: HTMLAudioElement | HTMLVideoElement
@@ -144,9 +193,25 @@ const chord_keys = new SvgWindow("key-names",
   }))
 );
 
+console.log("tempo");
+console.log(tempo);
+console.log("duration");
+console.log(audio.duration);
+console.log("last melody");
+console.log(melodies[melodies.length - 1].end);
+const beat_bars = new SvgWindow("beat-bars",
+  getRange(0, Math.ceil(tempo * melodies[melodies.length - 1].end) + phase).map(i => ({
+    svg: SVG.line({ id: "bar", stroke: "#000" }),
+    begin: i * 60 / tempo,
+    end: (i + 1) * 60 / tempo,
+    y1: 0,
+    y2: piano_roll_height
+  }))
+);
+
 const all_d_melody_svgs = new SvgWindow("detected-melody",
   detected_melodies.map(e => ({
-    svg: SVG.rect({ name: "melody-note", fill: rgbToString(hsv2rgb(0, 0, 0.5)), stroke: "#444" }),
+    svg: SVG.rect({ name: "melody-note", fill: rgbToString(hsv2rgb(0, 0, 0.75)), stroke: "#444" }),
     begin: e.begin,
     end: e.end,
     note: e.note,
@@ -202,6 +267,8 @@ const piano_roll = SVG.svg({ name: "piano-roll" }, undefined, [
   // 奥側
   SVG.g({ name: "octave-BGs" }, undefined, octave_BGs.map(e => e.svg)),
 
+  beat_bars.group,
+
   chord_rects.group,
   chord_names.group,
   chord_romans.group,
@@ -209,6 +276,7 @@ const piano_roll = SVG.svg({ name: "piano-roll" }, undefined, [
 
   all_d_melody_svgs.group,
   all_melody_svgs.group,
+
   SVG.g({ name: "gravities" }, undefined, [
     arrow_svgs.map(e => e.line),
     arrow_svgs.map(e => e.triangle)
@@ -275,12 +343,14 @@ const refresh = () => {
   chord_names.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
   chord_romans.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
   chord_keys.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
+  beat_bars.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
   all_d_melody_svgs.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
   all_melody_svgs.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
   chord_rects.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y, width: e.w * note_size, height: e.h, }));
   chord_names.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y }));
   chord_romans.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y }));
   chord_keys.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size + key_text_pos, y: e.y }));
+  beat_bars.show.forEach(e => e.svg.setAttributes({ x1: current_time_x + (e.begin - now_at) * note_size, x2: current_time_x + (e.begin - now_at) * note_size, y1: e.y1, y2: e.y2 }));
   all_d_melody_svgs.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y, width: e.w * note_size, height: e.h, onclick: "insertMelody()", }));
   all_melody_svgs.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y, width: e.w * note_size, height: e.h, onclick: "deleteMelody()", }));
   refresh_arrow(arrow_svgs, note_size, current_time_x, now_at * note_size);
@@ -327,6 +397,7 @@ const draw = () => {
 };
 
 
+
 // ---------- main ---------- //
 const main = () => {
   console.log(search_items_begins_in_range(melodies, 30, 90));
@@ -341,6 +412,9 @@ const main = () => {
   draw();
   update();
 
-  1 && document.body.insertAdjacentElement("beforeend", fps_element);
+  1 && (
+    document.body.insertAdjacentElement("beforeend", fps_element),
+    console.log(tempo)
+  );
 };
 main();
