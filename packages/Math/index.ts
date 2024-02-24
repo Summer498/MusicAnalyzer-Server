@@ -61,3 +61,61 @@ export const getOnehotInMod = (positionOfOnes: number[] | number, m = 1) => {
 export const vSum = (...arrays: number[][]) => arrays.reduce((p, c) => vAdd(p, c));
 export const totalSum = (array: number[]) => array.reduce((p, c) => p + c);
 export const totalProd = (array: number[]) => array.reduce((p, c) => p * c);
+
+export const complex = {
+  multiply: (c1: number[], c2: number[]) => [c1[0] * c2[0] - c1[1] * c2[1], c1[0] * c2[1] + c1[1] * c2[0]],
+  add: (c1: number[], c2: number[]) => [c1[0] + c2[0], c1[1] + c2[1]],
+  subtract: (c1: number[], c2: number[]) => [c1[0] - c2[0], c1[1] - c2[1]]
+};
+export class fftUtil {
+  private static readonly cache: { [index: number]: number[][] } = {};
+  static exponent(k: number, N: number) {
+    const x = -2 * Math.PI * (k / N);
+    this.cache[N] ||= [];
+    this.cache[N][k] ||= [Math.cos(x), Math.sin(x)];
+    return this.cache[N][k];
+  }
+};
+
+type RealOrComplex = number | number[]
+// real number fft
+// thanks for fft-js
+export const fft = (seq: (RealOrComplex)[]): number[][] => {
+  const N = Math.pow(2, Math.ceil(Math.log2(seq.length)));
+  if (N !== seq.length) {
+    const zero = Array.isArray(seq[0]) ? [0, 0] : 0;
+    seq = [...Array(N)].map((_, i) => i < seq.length ? seq[i] : zero);
+  }
+  const res: number[][] = [];
+
+  // expected real number
+  if (N == 1) {
+    if (Array.isArray(seq[0])) { return [[seq[0][0], seq[0][1]]]; }
+    else { return [[seq[0], 0]]; }
+  }
+
+  const X_evens = fft(seq.filter((_, i) => i % 2 === 0));
+  const X_odds = fft(seq.filter((_, i) => i % 2 == 1));
+
+  for (let k = 0; k < N / 2; k++) {
+    const t = X_evens[k];
+    const e = complex.multiply(fftUtil.exponent(k, N), X_odds[k]);
+    res[k] = complex.add(t, e);
+    res[k + N / 2] = complex.subtract(t, e);
+  }
+  return res;
+};
+
+export const ifft = (seq: number[][]): number[][] => {
+  const ps = fft(seq.map(e => [e[1], e[0]]));
+  return ps.map(e => [e[1] / ps.length, e[0] / ps.length]);
+};
+
+export const convolution = (seq1: RealOrComplex[], seq2: RealOrComplex[]) => {
+  const f_seq1 = fft(seq1);
+  const f_seq2 = fft(seq2);
+  const mul = f_seq1.map((e, i) => complex.multiply(e, f_seq2[i]));
+  return ifft(mul);
+};
+
+export const correlation = (seq1: RealOrComplex[], seq2: RealOrComplex[]) => convolution(seq1, seq2.reverse());
