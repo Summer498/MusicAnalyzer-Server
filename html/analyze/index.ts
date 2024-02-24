@@ -1,12 +1,12 @@
 import { HTML, SVG } from "../../packages/HTML";
-import { vMod, getRange, vAdd, mod, decimal, argmax, getZeros, totalSum } from "../../packages/Math";
+import { vMod, getRange, vAdd, mod, decimal, argmax, getZeros, totalSum, correlation } from "../../packages/Math";
 import { hsv2rgb, rgbToString } from "../../packages/Color";
 import { play } from "../../packages/Synth";
 import { _Chord, _Note, _Scale } from "../../packages/TonalObjects";
 import { noteToColor, shorten_chord, shorten_key } from "../../packages/chordView";
 import { search_items_overlaps_range, search_items_begins_in_range, TimeAnd } from "../../packages/timeAnd";
 import { TimeAndRomanAnalysis } from "../../packages/chordToRoman";
-import { TimeAndMelodyAnalysis as _TimeAndMelodyAnalysis } from "../../packages/melodyAnalyze";
+import { TimeAndMelodyAnalysis } from "../../packages/melodyAnalyze";
 
 const debug_mode = true;
 const debug_log_element = HTML.p({ name: "debug" });
@@ -15,25 +15,15 @@ if (debug_mode) {
 }
 
 interface MusicAnalyzerWindow extends Window {
-  MusicAnalyzer: { roman: TimeAndRomanAnalysis[], melody: _TimeAndMelodyAnalysis[] }
+  MusicAnalyzer: { roman: TimeAndRomanAnalysis[], melody: TimeAndMelodyAnalysis[] }
   play: typeof play
 }
 declare const window: MusicAnalyzerWindow;
 
-interface TimeAndMelodyAnalysis extends _TimeAndMelodyAnalysis {
-  sound_reserved: boolean
-}
-
 const detected_romans: TimeAndRomanAnalysis[] = window.MusicAnalyzer.roman.map(e => e);
-const detected_melodies: _TimeAndMelodyAnalysis[] = window.MusicAnalyzer.melody.map(e => e);
+const detected_melodies: TimeAndMelodyAnalysis[] = window.MusicAnalyzer.melody.map(e => e);
 const romans = detected_romans.map(e => e);
-const melodies = detected_melodies.map(e => {
-  const res: TimeAndMelodyAnalysis = {
-    ...e,
-    sound_reserved: false
-  };
-  return res;
-}).filter((e, i) => i + 1 >= detected_melodies.length || 60 / (detected_melodies[i + 1].begin - detected_melodies[i].begin) < 300 * 4);
+const melodies = detected_melodies.map(e => e).filter((e, i) => i + 1 >= detected_melodies.length || 60 / (detected_melodies[i + 1].begin - detected_melodies[i].begin) < 300 * 4);
 
 window.play = play;  // NOTE:コンソールデバッグ用
 console.log(romans);
@@ -44,6 +34,7 @@ console.log(melodies);
 const calcTempo = () => {
   const melody_bpm: number[] = [];
   const bpm_range = 90;
+  const onsets = getZeros(Math.ceil(melodies[melodies.length - 1].end * 100));
   const melody_phase: number[][] = getRange(0, 90).map(i => getZeros(90 + i));  // [bpm][phase]
   const b = Math.log2(90);  // 90 ~ 180
   melodies.forEach((e, i) => {
@@ -59,6 +50,8 @@ const calcTempo = () => {
     getRange(0, bpm_range).forEach(bpm => {
       melody_phase[bpm][Math.floor(mod(e.begin, bpm + 90))]++;
     });
+    // ビートを求める方法その3 (採用中 & 考え中)
+    onsets[Math.floor(e.begin * 100)] = 1;
   });
   console.log("melody_bpm");
   console.log(melody_bpm);
@@ -73,6 +66,22 @@ const calcTempo = () => {
   console.log("bpm_entropy");
   console.log(entropy);
 
+  // ビートを求める方法その3 (採用中 & 考え中)
+  onsets.forEach((e, i) => e === 0 && i !== 0 && (onsets[i] = onsets[i - 1] * 0.9));  // オンセット時に最大値, 時間経過で減衰する信号を作る
+  const w = (tau: number) => {
+    const tau_0 = 50;  // 0.5 * 100
+    const sigma_tau = 2;
+    const x = Math.log2(tau / tau_0) / sigma_tau;
+    return Math.exp(-x * x / 2);
+  };
+  console.log("onsets");
+  console.log(onsets);
+  const tps = correlation(onsets, onsets).map((e, tau) => w(tau) * e[0]);
+  console.log("tempo period strength");
+  console.log(tps);
+  console.log(argmax(tps));
+  console.log(tps.map((e, i) => [e, i]).sort((p, c) => p[0] > c[0] ? -1 : p[0] === c[0] ? 0 : 1));
+
   // NOTE: 未使用
   const roman_bpm: number[] = [];
   romans.forEach((_, i) => {
@@ -85,7 +94,7 @@ const calcTempo = () => {
   });
   console.log("roman_bpm");
   console.log(roman_bpm);
-  return argmax(melody_bpm);
+  return argmax(tps);
 };
 const tempo = calcTempo();
 const phase = 0;
@@ -205,11 +214,12 @@ const beat_bars = new SvgWindow("beat-bars",
     begin: i * 60 / tempo,
     end: (i + 1) * 60 / tempo,
     y1: 0,
-    y2: piano_roll_height
+    y2: piano_roll_height,
+    sound_reserved: false
   }))
 );
 
-const all_d_melody_svgs = new SvgWindow("detected-melody",
+const d_melody_svgs = new SvgWindow("detected-melody",
   detected_melodies.map(e => ({
     svg: SVG.rect({ name: "melody-note", fill: rgbToString(hsv2rgb(0, 0, 0.75)), stroke: "#444" }),
     begin: e.begin,
@@ -221,7 +231,7 @@ const all_d_melody_svgs = new SvgWindow("detected-melody",
   }))
 );
 
-const all_melody_svgs = new SvgWindow("melody",
+const melody_svgs = new SvgWindow("melody",
   melodies.map(e => ({
     svg: SVG.rect({ name: "melody-note", fill: rgbToString(hsv2rgb(180 + 360 * 2 / 7, 0.5, 0.9)), stroke: "#444" }),
     begin: e.begin,
@@ -229,7 +239,8 @@ const all_melody_svgs = new SvgWindow("melody",
     note: e.note,
     y: (piano_roll_begin - e.note) * black_key_prm.height,
     w: e.end - e.begin,
-    h: black_key_prm.height
+    h: black_key_prm.height,
+    sound_reserved: false,
   }))
 );
 const arrow_svgs = melodies.map((e, i) => {
@@ -274,8 +285,8 @@ const piano_roll = SVG.svg({ name: "piano-roll" }, undefined, [
   chord_romans.group,
   chord_keys.group,
 
-  all_d_melody_svgs.group,
-  all_melody_svgs.group,
+  d_melody_svgs.group,
+  melody_svgs.group,
 
   SVG.g({ name: "gravities" }, undefined, [
     arrow_svgs.map(e => e.line),
@@ -344,28 +355,36 @@ const refresh = () => {
   chord_romans.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
   chord_keys.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
   beat_bars.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
-  all_d_melody_svgs.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
-  all_melody_svgs.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
+  d_melody_svgs.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
+  melody_svgs.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
   chord_rects.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y, width: e.w * note_size, height: e.h, }));
   chord_names.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y }));
   chord_romans.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y }));
   chord_keys.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size + key_text_pos, y: e.y }));
   beat_bars.show.forEach(e => e.svg.setAttributes({ x1: current_time_x + (e.begin - now_at) * note_size, x2: current_time_x + (e.begin - now_at) * note_size, y1: e.y1, y2: e.y2 }));
-  all_d_melody_svgs.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y, width: e.w * note_size, height: e.h, onclick: "insertMelody()", }));
-  all_melody_svgs.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y, width: e.w * note_size, height: e.h, onclick: "deleteMelody()", }));
+  d_melody_svgs.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y, width: e.w * note_size, height: e.h, onclick: "insertMelody()", }));
+  melody_svgs.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y, width: e.w * note_size, height: e.h, onclick: "deleteMelody()", }));
   refresh_arrow(arrow_svgs, note_size, current_time_x, now_at * note_size);
 
-  const reservation_range = 1 / 15;
+  const reservation_range = 1 / 15;  // second
 
-  const melody_range = search_items_begins_in_range(melodies, now_at, now_at + reservation_range);
+  const beat_range = search_items_begins_in_range(beat_bars.show, now_at, now_at + reservation_range);
+  for (let i = beat_range.begin_index; i < beat_range.end_index; i++) {
+    const e = beat_bars.show[i];
+    if (e.sound_reserved === false) {
+      play([220], e.begin - now_at, 0.125);
+      e.sound_reserved = true;
+      setTimeout(() => { e.sound_reserved = false; }, reservation_range * 1000);
+    }
+  }
+
+  const melody_range = search_items_begins_in_range(melody_svgs.show, now_at, now_at + reservation_range);
   for (let i = melody_range.begin_index; i < melody_range.end_index; i++) {
-    const e = melodies[i];
+    const e = melody_svgs.show[i];
     if (e.sound_reserved === false) {
       play([440 * Math.pow(2, (e.note - 69) / 12)], e.begin - now_at, e.end - e.begin);
       e.sound_reserved = true;
-      setTimeout(() => {
-        e.sound_reserved = false;
-      }, reservation_range * 1000);
+      setTimeout(() => { e.sound_reserved = false; }, reservation_range * 1000);
     }
   }
 };
