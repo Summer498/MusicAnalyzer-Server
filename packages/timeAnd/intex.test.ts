@@ -1,5 +1,5 @@
 import { search_items_begins_in_range, search_items_overlaps_range } from "./";
-import { TimeAndMelodyAnalysis } from "../melodyAnalyze/dist";
+import { TimeAndMelodyAnalysis } from "../melodyAnalyze";
 
 const note = 0;
 const roman_name = "I";

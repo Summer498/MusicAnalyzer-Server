@@ -1,5 +1,5 @@
-import { getRange } from "../Math/dist";
-import { getDistance } from "../TPS/dist";
+import { getRange } from "../Math";
+import { getDistance } from "../TPS";
 import { ChordProgression, RomanChord } from ".";
 import { _Chord, _Scale } from "../TonalObjects";
 
