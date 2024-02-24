@@ -1,5 +1,6 @@
 import { hsv2rgb, rgbToString } from "../../packages/Color/index";
 import { _Note, _Scale } from "../../packages/TonalObjects";
+import { mod } from "../Math";
 
 type Scale = ReturnType<typeof _Scale.get>;
 
@@ -23,12 +24,17 @@ export const romanToColor = (roman: string, s: number, v: number) => {
   return rgbToString(col);
 };
 
-const c_dur = "C1D2EF3G4A5B";
 const green_hue = 120; // 0:red, 120:green, 240:blue
 export const noteToColor = (note: string, s: number, v: number) => {
   if (note.length === 0) { return "#444"; }
-  const _chroma = c_dur.indexOf(note[0]);
   const chroma = _Note.chroma(note);
+  const col = hsv2rgb(360 * chroma / 12 + green_hue, s, v);
+  return rgbToString(col);
+};
+
+export const fifthToColor = (note: string, s: number, v: number) => {
+  if (note.length === 0) { return "#444"; }
+  const chroma = mod(_Note.chroma(note) * 7, 12);
   const col = hsv2rgb(360 * chroma / 12 + green_hue, s, v);
   return rgbToString(col);
 };
