@@ -1,8 +1,8 @@
 class _Magnitude {
-  magnitude: string;
+  name: string;
   closure_degree: number;
-  constructor(magnitude: string, closure_degree: number) {
-    this.magnitude = magnitude;
+  constructor(name: string, closure_degree: number) {
+    this.name = name;
     this.closure_degree = closure_degree;
   }
 }

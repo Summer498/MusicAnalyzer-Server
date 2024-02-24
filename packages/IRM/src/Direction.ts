@@ -1,8 +1,8 @@
 class _Direction {
-  direction: string;
+  name: string;
   closure_degree: number;
-  constructor(direction: string, closure_degree: number) {
-    this.direction = direction;
+  constructor(name: string, closure_degree: number) {
+    this.name = name;
     this.closure_degree = closure_degree;
   }
 }
