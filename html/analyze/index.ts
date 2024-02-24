@@ -267,12 +267,61 @@ const arrow_svgs = melodies.map((e, i) => {
 }).flat(2);
 
 
-const white_BGs = [...Array(octave_cnt)].map(_ => [...Array(7)].map(_ => SVG.rect({ name: "white-BG", fill: white_bgs_prm.fill, stroke: white_bgs_prm.stroke, })));
-const black_BGs = [...Array(octave_cnt)].map(_ => [...Array(5)].map(_ => SVG.rect({ name: "black-BG", fill: black_bgs_prm.fill, stroke: black_bgs_prm.stroke, })));
-const white_key = [...Array(octave_cnt)].map(_ => [...Array(7)].map(_ => SVG.rect({ name: "white-key", fill: white_key_prm.fill, stroke: white_key_prm.stroke, })));
-const black_key = [...Array(octave_cnt)].map(_ => [...Array(5)].map(_ => SVG.rect({ name: "black-key", fill: black_key_prm.fill, stroke: black_key_prm.stroke, })));
-const octave_BGs = [...Array(octave_cnt)].map((_, i) => ({ y: i, svg: SVG.g({ name: "octave-BG" }, undefined, [white_BGs[i], black_BGs[i]]) }));
-const octave_key = [...Array(octave_cnt)].map((_, i) => ({ y: i, svg: SVG.g({ name: "octave-keys" }, undefined, [white_key[i], black_key[i]]) }));
+const white_BGs = [...Array(octave_cnt)].map((_, oct) =>
+  [...Array(7)].map((_, j) => ({
+    svg: SVG.rect({ name: "white-BG", fill: white_bgs_prm.fill, stroke: white_bgs_prm.stroke, }),
+    oct,
+    y: octave_height * oct + white_bgs_prm.height * white_position[j],
+    width: white_bgs_prm.width,
+    height: white_bgs_prm.height
+  }))
+).flat();
+const black_BGs = [...Array(octave_cnt)].map((_, oct) =>
+  [...Array(5)].map((_, j) => ({
+    svg: SVG.rect({ name: "black-BG", fill: black_bgs_prm.fill, stroke: black_bgs_prm.stroke, }),
+    oct,
+    y: octave_height * oct + black_bgs_prm.height * black_position[j],
+    width: black_bgs_prm.width,
+    height: black_bgs_prm.height
+  }))
+).flat();
+const white_key = [...Array(octave_cnt)].map((_, oct) =>
+  [...Array(7)].map((_, j) => ({
+    svg: SVG.rect({ name: "white-key", fill: white_key_prm.fill, stroke: white_key_prm.stroke, }),
+    oct,
+    y: octave_height * oct + white_key_prm.height * [0, 1, 2, 3, 4, 5, 6][j],
+    width: white_key_prm.width,
+    height: white_key_prm.height
+  }))
+).flat();
+const black_key = [...Array(octave_cnt)].map((_, oct) =>
+  [...Array(5)].map((_, j) => ({
+    svg: SVG.rect({ name: "black-key", fill: black_key_prm.fill, stroke: black_key_prm.stroke, }),
+    oct,
+    y: octave_height * oct + black_key_prm.height * black_position[j],
+    width: black_key_prm.width,
+    height: black_key_prm.height
+  }))
+).flat();
+
+const octave_BGs = [...Array(octave_cnt)].map((_, oct) => ({
+  y: octave_height * oct,
+  height: octave_height,
+  oct,
+  svg: SVG.g({ name: "octave-BG" }, undefined, [
+    white_BGs.filter(e => e.oct === oct).map(e => e.svg),
+    black_BGs.filter(e => e.oct === oct).map(e => e.svg)
+  ])
+}));
+const octave_key = [...Array(octave_cnt)].map((_, oct) => ({
+  y: octave_height * oct,
+  height: octave_height,
+  oct,
+  svg: SVG.g({ name: "octave-key" }, undefined, [
+    white_key.filter(e => e.oct === oct).map(e => e.svg),
+    black_key.filter(e => e.oct === oct).map(e => e.svg)
+  ])
+}));
 const current_time_line = SVG.line({ name: "current_time", "stroke-width": 5, stroke: "#000" });
 const piano_roll = SVG.svg({ name: "piano-roll" }, undefined, [
   // 奥側
@@ -389,10 +438,6 @@ const refresh = () => {
   }
 };
 
-const setBgSvgParams = (rects: SVGRectElement[][], rect_param: RectParameters, position: number[]) => {
-  rects.forEach((_, i) => _.forEach((_, j) => _.setAttributes({ x: 0, y: octave_height * i + rect_param.height * position[j], width: rect_param.width, height: rect_param.height })));
-};
-
 // TODO: refresh を draw のときに呼び出すようにする
 // 多分値が最初の時刻を想定した値になっているので直す
 const draw = () => {
@@ -403,12 +448,14 @@ const draw = () => {
 
   white_bgs_prm.width = piano_roll_width;
   black_bgs_prm.width = piano_roll_width;
-  setBgSvgParams(black_BGs, black_bgs_prm, black_position);
-  setBgSvgParams(white_BGs, white_bgs_prm, white_position);
-  setBgSvgParams(black_key, black_key_prm, black_position);
-  setBgSvgParams(white_key, white_key_prm, [0, 1, 2, 3, 4, 5, 6]);
-  octave_BGs.forEach(e => e.svg.setAttributes({ x: 0, y: octave_height * e.y, width: piano_roll_width, height: octave_height }));
-  octave_key.forEach(e => e.svg.setAttributes({ x: 0, y: octave_height * e.y, width: piano_roll_width, height: octave_height }));
+
+  black_BGs.forEach(e => e.svg.setAttributes({ x: 0, y: e.y, width: e.width, height: e.height }));
+  white_BGs.forEach(e => e.svg.setAttributes({ x: 0, y: e.y, width: e.width, height: e.height }));
+  black_key.forEach(e => e.svg.setAttributes({ x: 0, y: e.y, width: e.width, height: e.height }));
+  white_key.forEach(e => e.svg.setAttributes({ x: 0, y: e.y, width: e.width, height: e.height }));
+
+  octave_BGs.forEach(e => e.svg.setAttributes({ x: 0, y: e.y, width: piano_roll_width, height: e.height }));
+  octave_key.forEach(e => e.svg.setAttributes({ x: 0, y: e.y, width: piano_roll_width, height: e.height }));
   piano_roll.setAttributes({ x: 0, y: 0, width: piano_roll_width, height: piano_roll_height + chord_text_size * 2 + chord_name_margin });
 
   current_time_line.setAttributes({ x1: current_time_x, x2: current_time_x, y1: 0, y2: piano_roll_height });
