@@ -1,6 +1,6 @@
 class _Magnitude {
-  name: string;
-  closure_degree: number;
+  readonly name: string;
+  readonly closure_degree: number;
   constructor(name: string, closure_degree: number) {
     this.name = name;
     this.closure_degree = closure_degree;
