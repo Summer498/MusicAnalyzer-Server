@@ -3,7 +3,7 @@ import { vMod, getRange, vAdd, mod, decimal, argmax, getZeros, totalSum, correla
 import { hsv2rgb, rgbToString } from "../../packages/Color";
 import { play } from "../../packages/Synth";
 import { _Chord, _Note, _Scale } from "../../packages/TonalObjects";
-import { noteToColor, shorten_chord, shorten_key } from "../../packages/chordView";
+import { fifthToColor, shorten_chord, shorten_key } from "../../packages/chordView";
 import { search_items_overlaps_range, search_items_begins_in_range, TimeAnd } from "../../packages/timeAnd";
 import { TimeAndRomanAnalysis } from "../../packages/chordToRoman";
 import { TimeAndMelodyAnalysis } from "../../packages/melodyAnalyze";
@@ -100,8 +100,7 @@ const tempo = calcTempo();
 const phase = 0;
 
 const audio_area = document.getElementById("audio_area")!;
-const audio: HTMLAudioElement | HTMLVideoElement
-  = (() => {
+const audio: HTMLAudioElement | HTMLVideoElement = (() => {
     const a = audio_area.getElementsByTagName("audio");
     const v = audio_area.getElementsByTagName("video");
     if (a.length > 0) { return a[0]; }
@@ -113,7 +112,7 @@ class RectParameters {
   height: number;
   fill: string;
   stroke: string;
-  constructor(args: { width: number, height: number, fill: string, stroke: string, }) {
+  constructor(args: { width: number, height: number, fill: string, stroke: string }) {
     this.width = args.width;
     this.height = args.height;
     this.fill = args.fill;
@@ -169,7 +168,7 @@ class SvgWindow<T extends SVGElement, U extends TimeAndSVGs<T>> {
 // svg element の作成
 const chord_rects = new SvgWindow("chords",
   romans.map(e => getRange(0, octave_cnt).map(oct => _Chord.get(e.chord).notes.map(note => ({
-    svg: SVG.rect({ fill: noteToColor(_Chord.get(e.chord).tonic!, 0.5, 0.9), stroke: "#444" }),
+    svg: SVG.rect({ fill: fifthToColor(_Chord.get(e.chord).tonic!, 0.5, 0.9), stroke: "#444" }),
     begin: e.begin,
     end: e.end,
     y: (-1 - mod(_Note.chroma(note), 12) + 12 * (oct + 1)) * black_key_prm.height,
@@ -179,7 +178,7 @@ const chord_rects = new SvgWindow("chords",
 );
 const chord_names = new SvgWindow("chord-names",
   romans.map(e => ({
-    svg: SVG.text({ id: "chord-name", "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: noteToColor(_Chord.get(e.chord).tonic!, 1, 0.75) || "#000" }, shorten_chord(_Chord.get(e.chord).name)),
+    svg: SVG.text({ id: "chord-name", "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: fifthToColor(_Chord.get(e.chord).tonic!, 1, 0.75) || "#000" }, shorten_chord(_Chord.get(e.chord).name)),
     begin: e.begin,
     end: e.end,
     y: piano_roll_height + chord_text_size
@@ -187,7 +186,7 @@ const chord_names = new SvgWindow("chord-names",
 );
 const chord_romans = new SvgWindow("roman-names",
   romans.map(e => ({
-    svg: SVG.text({ id: "roman-name", "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: noteToColor(_Chord.get(e.chord).tonic!, 1, 0.75) || "#000" }, shorten_chord(e.roman)),
+    svg: SVG.text({ id: "roman-name", "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: fifthToColor(_Chord.get(e.chord).tonic!, 1, 0.75) || "#000" }, shorten_chord(e.roman)),
     begin: e.begin,
     end: e.end,
     y: piano_roll_height + chord_text_size * 2 + chord_name_margin
@@ -195,7 +194,7 @@ const chord_romans = new SvgWindow("roman-names",
 );
 const chord_keys = new SvgWindow("key-names",
   romans.map(e => ({
-    svg: SVG.text({ id: "key-name", "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: noteToColor(_Scale.get(e.scale).tonic!, 1, 0.75) || "#000" }, shorten_key(_Scale.get(e.scale))),
+    svg: SVG.text({ id: "key-name", "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: fifthToColor(_Scale.get(e.scale).tonic!, 1, 0.75) || "#000" }, shorten_key(_Scale.get(e.scale))),
     begin: e.begin,
     end: e.end,
     y: piano_roll_height + chord_text_size * 2 + chord_name_margin

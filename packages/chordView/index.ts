@@ -1,8 +1,6 @@
 import { hsv2rgb, rgbToString } from "../../packages/Color/index";
-import { _Note, _Scale } from "../../packages/TonalObjects";
+import { _Note, _Scale, Scale } from "../../packages/TonalObjects";
 import { mod } from "../Math";
-
-type Scale = ReturnType<typeof _Scale.get>;
 
 // コードを表す部分を作成
 export const romanToColor = (roman: string, s: number, v: number) => {
@@ -25,6 +23,7 @@ export const romanToColor = (roman: string, s: number, v: number) => {
 };
 
 const green_hue = 120; // 0:red, 120:green, 240:blue
+// C(green), Db, D, Eb, E(red), F, Gb, G, Ab(blue), A, Bb, B 
 export const noteToColor = (note: string, s: number, v: number) => {
   if (note.length === 0) { return "#444"; }
   const chroma = _Note.chroma(note);
@@ -32,9 +31,10 @@ export const noteToColor = (note: string, s: number, v: number) => {
   return rgbToString(col);
 };
 
+// F C(green) G D A E(red) B F#/Gb Db Ab(blue) Eb Bb
 export const fifthToColor = (note: string, s: number, v: number) => {
   if (note.length === 0) { return "#444"; }
-  const chroma = mod(_Note.chroma(note) * 7, 12);
+  const chroma = mod(_Note.chroma(note) * 5, 12);
   const col = hsv2rgb(360 * chroma / 12 + green_hue, s, v);
   return rgbToString(col);
 };
