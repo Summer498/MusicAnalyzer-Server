@@ -2,6 +2,12 @@ export const console_green = "\u001b[32m";
 export const console_reset = "\u001b[0m";
 
 export const _throw = <E extends Error>(e: E) => { throw e; };  // 文の式化
+export const assertNotNull = <T>(value: T | null, error = new TypeError("null value received")) => value !== null ? value : _throw(error);
+export const assertNotUndefined = <T>(value: T | undefined, error = new TypeError("undefined value received")) => value !== undefined ? value : _throw(error);
+export const assertNonNullable = <T>(value: T | null | undefined) => assertNotNull(assertNotUndefined(value));
+export const assertNotNaN = (value: number) => isNaN(value) ? _throw(new TypeError("NaN value received")) : value;
+export const castToNumber = (value: string) => assertNotNaN(Number(value));
+
 export type recurrentArray<T> = T | recurrentArray<T>[];
 export function Arraying<T>(e: recurrentArray<T>): T[] {
   const concat = function (arr: recurrentArray<T>[]): T[] {
@@ -46,16 +52,8 @@ export class IdDictionary<Key extends keyof any> { // eslint-disable-line @types
       return i;
     }
   }
-  getId(item: Key) {
-    const id = this.#item2id[item];
-    id || _throw(new ReferenceError(`key ${String(item)} not found`));
-    return id;
-  }
-  getItem(id: number) {
-    const item = this.#id2item[id];
-    item || _throw(new ReferenceError(`id ${String(id)} not found`));
-    return item;
-  }
+  getId(item: Key) { return assertNotUndefined(this.#item2id[item], new ReferenceError(`key ${String(item)} not found`)); }
+  getItem(id: number) { return assertNotUndefined(this.#id2item[id], new ReferenceError(`id ${String(id)} not found`)); }
   showAll() { return this.#id2item; }
 }
 
@@ -71,8 +69,3 @@ export class Assertion {
   onFailed(errorExecution: () => void) { this.#assertion || errorExecution(); }
 }
 
-export const assertNotNull = <T>(value: T | null) => value || _throw(new TypeError("null value received"));
-export const assertNotUndefined = <T>(value: T | undefined) => value || _throw(new TypeError("undefined value received"));
-export const assertNonNullable = <T>(value: T | null | undefined) => assertNotNull(assertNotUndefined(value));
-export const assertNotNaN = (value: number) => isNaN(value) ? _throw(new TypeError("NaN value received")) : value;
-export const castToNumber = (value: string) => assertNotNaN(Number(value));
