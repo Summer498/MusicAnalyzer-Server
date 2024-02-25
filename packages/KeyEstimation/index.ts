@@ -11,6 +11,14 @@ const get_roman = (scale: Scale, chord: Chord) => {
   chord.tonic || _throw(TypeError("chord.tonic should not be null"));
   const tonic = chord.tonic!;
   const true_tonic = scale.notes.find(e => _Note.chroma(e) === _Note.chroma(tonic));
+  console.error(JSON.stringify(scale));
+  console.error(scale.notes.map(e => e));
+  console.error(scale.notes.map(e => _Note.chroma(e)));
+  console.error(JSON.stringify(chord));
+  console.error(tonic);
+  console.error(_Note.chroma(tonic));
+  console.error(scale.tonic);
+  console.error(true_tonic);
 
   const interval = _Interval.distance(
     NN(scale.tonic),
@@ -111,19 +119,12 @@ export class ChordProgression {
     const chord = getChord(this.lead_sheet_chords[t]);
     const candidate_scales = getKeysIncludeTheChord(chord); // 候補がない時, ここが空配列になる
     if (candidate_scales.length === 0) {
-      return [this.#scale_dictionary.getId(_Scale.get("").name)];
+      return [_Scale.get("")];
     }
-    return candidate_scales.map(scale => this.#scale_dictionary.getId(scale.name));
-  }
-  getChordIdSequence() {
-    return this.lead_sheet_chords.map(chord => this.#chord_dictionary.getId(chord));
+    return candidate_scales;
   }
 
-  getDistanceOfStates(t1: number, t2: number, s1: number, s2: number) {
-    const scale1 = _Scale.get(this.#scale_dictionary.getItem(s1));
-    const scale2 = _Scale.get(this.#scale_dictionary.getItem(s2));
-    const chord1 = getChord(this.lead_sheet_chords[t1]);
-    const chord2 = getChord(this.lead_sheet_chords[t2]);
+  getDistanceOfStates(t1: number, t2: number, scale1: Scale, scale2: Scale) {
     if (scale1.empty) {
       console.warn("empty scale received");
       return 0;
@@ -133,24 +134,24 @@ export class ChordProgression {
       return 0;
     }
     return getDistance(
-      new RomanChord(scale1, chord1),
-      new RomanChord(scale2, chord2),
+      new RomanChord(scale1, getChord(this.lead_sheet_chords[t1])),
+      new RomanChord(scale2, getChord(this.lead_sheet_chords[t2])),
     );
   }
 
   getMinimumPath() {
     const viterbi = dynamicLogViterbi(
-      getZeros(24), // 12 音 x {-mol, -dur}
       this.getStatesOnTime.bind(this),
+      [0],
       this.getDistanceOfStates.bind(this),
-      _ => 0,
-      this.getChordIdSequence(),
+      e => 0,
+      this.lead_sheet_chords,
       findMin,
     );
-    // console.log(viterbi)
     const trace = viterbi.trace;
-    return trace.map(e => e.map((id, i) => new RomanChord(
-      _Scale.get(this.#scale_dictionary.getItem(id)),
+    console.error(trace);
+    return trace.map(e => e.map((scale, i) => new RomanChord(
+      scale,
       _Chord.get(this.lead_sheet_chords[i]),
     )));
   }

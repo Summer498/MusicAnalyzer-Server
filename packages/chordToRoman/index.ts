@@ -17,8 +17,9 @@ const remove_item = <T>(array: T[], will_removed: (item: T) => boolean) => {
   return ret;
 };
 
-// TODO: 自信のあるものを選ぶ処理は後で実装 (とりあえず [0] としている)
+// TODO: 自信のあるものを選ぶ処理は後で実装 (とりあえず type が major のものとしている)
 const select_suitable_progression = (roman_chords: RomanChord[][]) => {
+  // 入力は roman_chords[時刻][候補番号]
   /*
     // 全部を出力して確認する
     console.log(roman_chords.map(e=>e.map(e => {
@@ -27,8 +28,7 @@ const select_suitable_progression = (roman_chords: RomanChord[][]) => {
         }
     })));
     */
-
-  return roman_chords[0];
+  return roman_chords.map(e_t => e_t.reduce((c, p) => c.scale.type === "major" ? c : p));
 };
 
 const splitArray = <T>(arr: T[], separator: (e: T) => boolean) => {

@@ -7,6 +7,7 @@ export const assertNotUndefined = <T>(value: T | undefined, error = new TypeErro
 export const assertNonNullable = <T>(value: T | null | undefined) => assertNotNull(assertNotUndefined(value));
 export const assertNotNaN = (value: number) => isNaN(value) ? _throw(new TypeError("NaN value received")) : value;
 export const castToNumber = (value: string) => assertNotNaN(Number(value));
+export const unique = <T>(arr: T[]) => Array.from(new Set(arr));
 
 export type recurrentArray<T> = T | recurrentArray<T>[];
 export function Arraying<T>(e: recurrentArray<T>): T[] {
