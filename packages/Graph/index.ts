@@ -45,8 +45,6 @@ const _dynamicLogViterbi = <O, S>(
   const T1 = [[0]];
   const T2 = [[states[0]]];
 
-  console.error("dynamic log viterbi: v0.0.5");
-
   // initialize
   states[0].forEach((s_i, i) => {
     T1[0][i] = pi[i] === undefined ? 0 : pi[i] + B(s_i, Y[0]);
@@ -71,11 +69,6 @@ const _dynamicLogViterbi = <O, S>(
   for (let j = T - 1; j > 0; j--) {
     x[j - 1] = unique(x[j].map(x_j => states[j].indexOf(x_j)).map(i => T2[j][i]).flat()); // 最大/最小は基本1つ取れる
   }
-
-  console.error(`T = ${T}`);
-  console.error(`x.length = ${x.length}`);
-  console.error(x.map(e=>e.length));
-  console.error(x.map(e=>e.map(e=>JSON.stringify(e))));
   return {
     log_probability: terminal.val,
     trace: x,

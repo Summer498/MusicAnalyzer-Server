@@ -128,17 +128,14 @@ export class ChordProgression {
   }
 
   getMinimumPath() {
-    const viterbi = dynamicLogViterbi(
+    return dynamicLogViterbi(
       this.getStatesOnTime.bind(this),
       [0],
       this.getDistanceOfStates.bind(this),
       e => 0,
       this.lead_sheet_chords,
       findMin,
-    );
-    const trace = viterbi.trace;
-    console.error(trace);
-    return trace.map(e => e.map((scale, i) => new RomanChord(
+    ).trace.map((e, i) => e.map(scale => new RomanChord(
       scale,
       _Chord.get(this.lead_sheet_chords[i]),
     )));
