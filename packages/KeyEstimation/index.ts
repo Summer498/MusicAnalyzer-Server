@@ -1,6 +1,5 @@
 import { _RomanNumeral, _Chord, _Interval, _Note, _Scale, Chord, Scale, getIntervalDegree } from "../TonalObjects";
 import { dynamicLogViterbi, findMin } from "../Graph";
-import { getZeros } from "../Math";
 import { _throw, Assertion, assertNonNullable as NN, IdDictionary } from "../StdLib";
 import { getDistance, getKeysIncludeTheChord } from "../TPS";
 
@@ -10,20 +9,9 @@ const get_roman = (scale: Scale, chord: Chord) => {
   // 成功: C# Db 混同バグは直してある.
   chord.tonic || _throw(TypeError("chord.tonic should not be null"));
   const tonic = chord.tonic!;
-  const true_tonic = scale.notes.find(e => _Note.chroma(e) === _Note.chroma(tonic));
-  console.error(JSON.stringify(scale));
-  console.error(scale.notes.map(e => e));
-  console.error(scale.notes.map(e => _Note.chroma(e)));
-  console.error(JSON.stringify(chord));
-  console.error(tonic);
-  console.error(_Note.chroma(tonic));
-  console.error(scale.tonic);
-  console.error(true_tonic);
-
-  const interval = _Interval.distance(
-    NN(scale.tonic),
-    NN(true_tonic),
-  );
+  // const true_tonic = scale.notes.find(e => _Note.chroma(e) === _Note.chroma(tonic));
+  // const interval = _Interval.distance(NN(scale.tonic), NN(true_tonic));
+  const interval = _Interval.distance(NN(scale.tonic), NN(tonic));
   const roman = _RomanNumeral.get(_Interval.get(interval));
   return roman.roman + " " + chord.type;
 };
