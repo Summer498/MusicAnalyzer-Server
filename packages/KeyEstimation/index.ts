@@ -52,9 +52,7 @@ export const getChord = (chord_string: string): Chord => {
   const body_and_root = getBodyAndRoot(chord_string);
   const root = body_and_root.root;
   const chord = _Chord.get(body_and_root.body);
-  if (chord_string === "") {
-    return chord;
-  }
+  if (chord_string === "") { return chord; }
   new Assertion(chord.tonic != null).onFailed(() => {
     console.log("received:");
     console.log(chord);
@@ -106,8 +104,8 @@ export class ChordProgression {
   constructor(lead_sheet_chords: string[]) {
     this.#chord_dictionary = new IdDictionary<string>();
     this.#scale_dictionary = new IdDictionary<string>();
-    this.lead_sheet_chords = lead_sheet_chords;
-    this.#setDictionary(lead_sheet_chords);
+    this.lead_sheet_chords = lead_sheet_chords.map(e => getChord(e).name);
+    this.#setDictionary(this.lead_sheet_chords);
   }
   getStatesOnTime(t: number) {
     const chord = getChord(this.lead_sheet_chords[t]);
@@ -118,7 +116,7 @@ export class ChordProgression {
     return candidate_scales.map(scale => this.#scale_dictionary.getId(scale.name));
   }
   getChordIdSequence() {
-    return this.lead_sheet_chords.map(chord => this.#chord_dictionary.getId(getChord(chord).name));
+    return this.lead_sheet_chords.map(chord => this.#chord_dictionary.getId(chord));
   }
 
   getDistanceOfStates(t1: number, t2: number, s1: number, s2: number) {
