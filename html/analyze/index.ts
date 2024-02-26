@@ -101,11 +101,11 @@ const phase = 0;
 
 const audio_area = document.getElementById("audio_area")!;
 const audio: HTMLAudioElement | HTMLVideoElement = (() => {
-    const a = audio_area.getElementsByTagName("audio");
-    const v = audio_area.getElementsByTagName("video");
-    if (a.length > 0) { return a[0]; }
-    else { return v[0]; }
-  })();
+  const a = audio_area.getElementsByTagName("audio");
+  const v = audio_area.getElementsByTagName("video");
+  if (a.length > 0) { return a[0]; }
+  else { return v[0]; }
+})();
 
 class RectParameters {
   width: number;
@@ -176,30 +176,24 @@ const chord_rects = new SvgWindow("chords",
     h: black_key_prm.height
   })))).flat(2)
 );
-const chord_names = new SvgWindow("chord-names",
-  romans.map(e => ({
-    svg: SVG.text({ id: "chord-name", "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: fifthToColor(_Chord.get(e.chord).tonic!, 1, 0.75) || "#000" }, shorten_chord(_Chord.get(e.chord).name)),
-    begin: e.begin,
-    end: e.end,
-    y: piano_roll_height + chord_text_size
-  }))
-);
-const chord_romans = new SvgWindow("roman-names",
-  romans.map(e => ({
-    svg: SVG.text({ id: "roman-name", "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: fifthToColor(_Chord.get(e.chord).tonic!, 1, 0.75) || "#000" }, shorten_chord(e.roman)),
-    begin: e.begin,
-    end: e.end,
-    y: piano_roll_height + chord_text_size * 2 + chord_name_margin
-  }))
-);
-const chord_keys = new SvgWindow("key-names",
-  romans.map(e => ({
-    svg: SVG.text({ id: "key-name", "font-family": "Times New Roman", "font-size": `${chord_text_em}em`, "text-anchor":"end", fill: fifthToColor(_Scale.get(e.scale).tonic!, 1, 0.75) || "#000" }, shorten_key(_Scale.get(e.scale))+': '),
-    begin: e.begin,
-    end: e.end,
-    y: piano_roll_height + chord_text_size * 2 + chord_name_margin
-  }))
-);
+const chord_names = new SvgWindow("chord-names", romans.map(e => ({
+  svg: SVG.text({ id: "chord-name", "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: fifthToColor(_Chord.get(e.chord).tonic!, 1, 0.75) || "#000" }, shorten_chord(_Chord.get(e.chord).name)),
+  begin: e.begin,
+  end: e.end,
+  y: piano_roll_height + chord_text_size
+})));
+const chord_romans = new SvgWindow("roman-names", romans.map(e => ({
+  svg: SVG.text({ id: "roman-name", "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: fifthToColor(_Chord.get(e.chord).tonic!, 1, 0.75) || "#000" }, shorten_chord(e.roman)),
+  begin: e.begin,
+  end: e.end,
+  y: piano_roll_height + chord_text_size * 2 + chord_name_margin
+})));
+const chord_keys = new SvgWindow("key-names", romans.map(e => ({
+  svg: SVG.text({ id: "key-name", "font-family": "Times New Roman", "font-size": `${chord_text_em}em`, "text-anchor": "end", fill: fifthToColor(_Scale.get(e.scale).tonic!, 1, 0.75) || "#000" }, shorten_key(_Scale.get(e.scale)) + ': '),
+  begin: e.begin,
+  end: e.end,
+  y: piano_roll_height + chord_text_size * 2 + chord_name_margin
+})));
 
 console.log("tempo");
 console.log(tempo);
@@ -248,21 +242,19 @@ const arrow_svgs = melodies.map((e, i) => {
   const fill = rgbToString([0, 0, 0]);
   // let fill = rgbToString(hsv2rgb(180 + 360 * 2 / 7, 0.5, 0.9));
   // if (i === 1 && e.roman_name !== undefined) { fill = romanToColor(e.roman_name, 0.5, 0.9) }
-  return e.melody_analysis.gravity.filter(g => g.resolved && g.destination !== undefined).map(gravity => {
-    return {
-      triangle: SVG.polygon({ name: "gravity-arrow", stroke, fill, "stroke-width": 5 }),
-      line: SVG.line({ name: "gravity-arrow", stroke, "stroke-width": 5 }),
-      begin: e.begin,
-      end: e.end,
-      note: e.note,
-      next,
-      destination: gravity.destination,
-      src_x0: (e.end - e.begin) / 2 + e.begin,
-      dst_x0: next.begin,
-      src_y0: (piano_roll_begin + 0.5 - e.note) * black_key_prm.height,
-      dst_y0: (piano_roll_begin + 0.5 - gravity.destination!) * black_key_prm.height,
-    };
-  });
+  return e.melody_analysis.gravity.filter(g => g.resolved && g.destination !== undefined).map(gravity => ({
+    triangle: SVG.polygon({ name: "gravity-arrow", stroke, fill, "stroke-width": 5 }),
+    line: SVG.line({ name: "gravity-arrow", stroke, "stroke-width": 5 }),
+    begin: e.begin,
+    end: e.end,
+    note: e.note,
+    next,
+    destination: gravity.destination,
+    src_x0: (e.end - e.begin) / 2 + e.begin,
+    dst_x0: next.begin,
+    src_y0: (piano_roll_begin + 0.5 - e.note) * black_key_prm.height,
+    dst_y0: (piano_roll_begin + 0.5 - gravity.destination!) * black_key_prm.height,
+  }));
 }).flat(2);
 
 
@@ -383,6 +375,7 @@ const refresh_arrow = (arrow_svgs: ArrowSVGs, note_size: number, current_time_x:
 let old_time = Date.now();
 const fps_element = HTML.p({ name: "fps" }, `fps:${0}`);
 
+let once_refreshed = false;
 let last_audio_time = Number.MIN_SAFE_INTEGER;
 const refresh = () => {
   const now = Date.now();
@@ -390,7 +383,11 @@ const refresh = () => {
   fps_element.textContent = `fps:${(" " + fps).slice(-3)} ${fps < 60 ? '<' : '>'} 60`;
   old_time = now;
   const now_at = audio.currentTime;
-  if (audio.paused && now_at === last_audio_time) { return; }
+  // TODO: 止めたときの挙動がおかしいので直す
+  if (audio.paused && now_at === last_audio_time) {
+    if (once_refreshed) { return; }
+    else { once_refreshed = true; }
+  } else { once_refreshed = false; }
   last_audio_time = now_at;
 
   const current_time_ratio = 1 / 4;
@@ -398,13 +395,7 @@ const refresh = () => {
   const piano_roll_width = getPianoRollWidth();
   const note_size = piano_roll_width / piano_roll_time_length;
 
-  chord_rects.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
-  chord_names.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
-  chord_romans.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
-  chord_keys.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
-  beat_bars.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
-  d_melody_svgs.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
-  melody_svgs.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
+  [chord_rects, chord_names, chord_romans, chord_keys, beat_bars, d_melody_svgs, melody_svgs].forEach(e => e.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length));
   chord_rects.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y, width: e.w * note_size, height: e.h, }));
   chord_names.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y }));
   chord_romans.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y }));
@@ -416,6 +407,7 @@ const refresh = () => {
 
   const reservation_range = 1 / 15;  // second
 
+  // 音出し
   const beat_range = search_items_begins_in_range(beat_bars.show, now_at, now_at + reservation_range);
   for (let i = beat_range.begin_index; i < beat_range.end_index; i++) {
     const e = beat_bars.show[i];
@@ -447,12 +439,10 @@ const draw = () => {
 
   white_bgs_prm.width = piano_roll_width;
   black_bgs_prm.width = piano_roll_width;
-
-  black_BGs.forEach(e => e.svg.setAttributes({ x: 0, y: e.y, width: e.width, height: e.height }));
-  white_BGs.forEach(e => e.svg.setAttributes({ x: 0, y: e.y, width: e.width, height: e.height }));
   black_key.forEach(e => e.svg.setAttributes({ x: 0, y: e.y, width: e.width, height: e.height }));
   white_key.forEach(e => e.svg.setAttributes({ x: 0, y: e.y, width: e.width, height: e.height }));
-
+  black_BGs.forEach(e => e.svg.setAttributes({ x: 0, y: e.y, width: piano_roll_width, height: e.height }));
+  white_BGs.forEach(e => e.svg.setAttributes({ x: 0, y: e.y, width: piano_roll_width, height: e.height }));
   octave_BGs.forEach(e => e.svg.setAttributes({ x: 0, y: e.y, width: piano_roll_width, height: e.height }));
   octave_key.forEach(e => e.svg.setAttributes({ x: 0, y: e.y, width: piano_roll_width, height: e.height }));
   piano_roll.setAttributes({ x: 0, y: 0, width: piano_roll_width, height: piano_roll_height + chord_text_size * 2 + chord_name_margin });

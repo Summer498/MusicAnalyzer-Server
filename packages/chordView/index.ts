@@ -28,15 +28,17 @@ const green_hue = 120; // 0:red, 120:green, 240:blue
 export const noteToColor = (note: string, s: number, v: number) => {
   if (note.length === 0) { return "#444"; }
   const chroma = _Note.chroma(note);
-  const col = hsv2rgb(360 * chroma / 12 + green_hue, s, v);
+  const col = hsv2rgb(chroma * 360 / 12 + green_hue, s, v);
   return rgbToString(col);
 };
 
-// F C(green) G D A E(red) B F#/Gb Db Ab(blue) Eb Bb
+// hsv2rgb(A*chroma+B): F C(green) G D A E(red) B F#/Gb Db Ab(blue) Eb Bb
+// hsv2rgb(-A*chroma+B): F C(green) G D A E(blue) B F#/Gb Db Ab(red) Eb Bb
+//   C長調のマイナーコードが青寄りに, 半音上げ転調が赤寄りになる半音下げ転調が青寄りにになる
 export const fifthToColor = (note: string, s: number, v: number) => {
   if (note.length === 0) { return "#444"; }
   const chroma = mod(_Note.chroma(note) * 5, 12);
-  const col = hsv2rgb(360 * chroma / 12 + green_hue, s, v);
+  const col = hsv2rgb(-chroma * 360 / 12 + green_hue, s, v);
   return rgbToString(col);
 };
 
