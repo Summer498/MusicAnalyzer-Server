@@ -28,8 +28,8 @@ export function Arraying<T>(e: recurrentArray<T>): T[] {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const hasSameValue = (o1: any, o2: any) => {
   if (o1 === o2) { return true; } // same object
-  if (o1 == null) { return false; } // because the other is not null
-  if (o2 == null) { return false; } // because the other is not null
+  if (o1 === null) { return false; } // because the other is not null
+  if (o2 === null) { return false; } // because the other is not null
   if (Object.keys(o1).length != Object.keys(o2).length) { return false; }
   for (const key in o1) {
     if (!(key in o2)) { return false; }
