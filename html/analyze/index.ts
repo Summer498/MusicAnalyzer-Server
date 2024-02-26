@@ -167,14 +167,17 @@ class SvgWindow<T extends SVGElement, U extends TimeAndSVGs<T>> {
 
 // svg element の作成
 const chord_rects = new SvgWindow("chords",
-  romans.map(e => getRange(0, octave_cnt).map(oct => _Chord.get(e.chord).notes.map(note => ({
-    svg: SVG.rect({ fill: fifthToColor(_Chord.get(e.chord).tonic!, 0.5, 0.9), stroke: "#444" }),
-    begin: e.begin,
-    end: e.end,
-    y: (-1 - mod(_Note.chroma(note), 12) + 12 * (oct + 1)) * black_key_prm.height,
-    w: e.end - e.begin,
-    h: black_key_prm.height
-  })))).flat(2)
+  romans.map(e => {
+    const chord = _Chord.get(e.chord);
+    return getRange(0, octave_cnt).map(oct => chord.notes.map(note => ({
+      svg: SVG.rect({ fill: fifthToColor(chord.tonic!, 0.5, chord.type === "major" ? 0.9: 0.7), stroke: "#444" }),
+      begin: e.begin,
+      end: e.end,
+      y: (-1 - mod(_Note.chroma(note), 12) + 12 * (oct + 1)) * black_key_prm.height,
+      w: e.end - e.begin,
+      h: black_key_prm.height
+    })));
+  }).flat(2)
 );
 const chord_names = new SvgWindow("chord-names", romans.map(e => ({
   svg: SVG.text({ id: "chord-name", "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: fifthToColor(_Chord.get(e.chord).tonic!, 1, 0.75) || "#000" }, shorten_chord(_Chord.get(e.chord).name)),
