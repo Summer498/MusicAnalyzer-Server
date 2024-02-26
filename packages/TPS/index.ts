@@ -105,26 +105,18 @@ const isKeyIncludesTheChord = (key: KeyScale, chord: Chord) => {
 };
 
 // 最も尤もらしいコード進行を見つける
-const major_keys = ["Gb", "Db", "Ab", "Eb", "Bb", "F", "C", "G", "D", "A", "E", "B",].map(key => _Scale.get(key + " major"));
-const minor_keys = ["Eb", "Bb", "F", "C", "G", "D", "A", "E", "B", "F#", "C#", "G#",].map(key => _Scale.get(key + " minor"));
-const chroma2symbol = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B",];
-const keys = major_keys.concat(minor_keys);
+const chroma2symbol = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B",];
 
 // TODO: minor Major 7 を受け取ることがあるので, 任意のキーを候補として使えるようにする.
+// NOTE: major キーのみ受け取るようにしている
 export const getKeysIncludeTheChord = (chord: Chord) => {
   const keys_includes_the_chord = chroma2symbol
     .flatMap(symbol => [
       _Key.majorKey(symbol),
-      _Key.minorKey(symbol).natural,
+      // _Key.minorKey(symbol).natural,
     ])
     .filter(key => isKeyIncludesTheChord(key, chord))
     .map(key => _Scale.get(key.chordScales[0]));
   return keys_includes_the_chord;
 };
 
-const getMostLikelyChordProgression = (chord_progression: string[]) => {
-  /*
-  const possible_keys = chord_progression.forEach(chord => getKeyIncludesTheChord(chord));
-  return undefined;
-  */
-};
