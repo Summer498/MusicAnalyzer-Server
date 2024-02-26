@@ -1,6 +1,7 @@
-import { hsv2rgb, rgbToString } from "../../packages/Color/index";
-import { _Note, _Scale, Scale } from "../../packages/TonalObjects";
+import { hsv2rgb, rgbToString } from "../Color";
+import { _Note, _Scale, Scale } from "../TonalObjects";
 import { mod } from "../Math";
+import { getLowerCase, getCapitalCase } from "../StdLib";
 
 // コードを表す部分を作成
 export const romanToColor = (roman: string, s: number, v: number) => {
@@ -50,9 +51,9 @@ export const shorten_chord = (chord: string) => {
 export const shorten_key = (key: Scale) => {
   const tonic = key.tonic;
   const type = key.type;
-  if (type === "aeolian") { return `${tonic?.toLowerCase()}-moll`; }
-  else if (type === "ionian") { return `${tonic?.toUpperCase()}-dur`; }
-  else if (type === "minor") { return `${tonic?.toUpperCase()}-moll`; }
-  else if (type === "major") { return `${tonic?.toUpperCase()}-dur`; }
+  if (type === "aeolian") { return getLowerCase(`${tonic}-moll`); }
+  else if (type === "ionian") { return getCapitalCase(`${tonic}-dur`); }
+  else if (type === "minor") { return getCapitalCase(`${tonic}-moll`); }
+  else if (type === "major") { return getCapitalCase(`${tonic}-dur`); }
   else { return key.name; }
 };

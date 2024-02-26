@@ -121,8 +121,9 @@ class RectParameters {
 }
 
 // --- ピアノロールの描画パラメータ
+const size = 2;
 const getPianoRollWidth = () => window.innerWidth - 48;  // innerWidth が動的に変化する
-const octave_height = 3 * 84;  // 7 白鍵と 12 半音をきれいに描画するには 7 * 12 の倍数が良い
+const octave_height = size * 84;  // 7 白鍵と 12 半音をきれいに描画するには 7 * 12 の倍数が良い
 const octave_cnt = 3;
 const piano_roll_begin = 83;
 const white_key_prm = new RectParameters({ width: 36, height: octave_height / 7, fill: "#fff", stroke: "#000", });
@@ -133,9 +134,8 @@ const black_bgs_prm = new RectParameters({ width: getPianoRollWidth(), height: o
 const piano_roll_height = octave_height * octave_cnt;
 const black_position = vMod(vAdd([2, 4, 6, 9, 11], piano_roll_begin), 12);
 const white_position = getRange(0, 12).filter(e => !black_position.includes(e));
-const chord_text_em = 4;
+const chord_text_em = size;
 const chord_text_size = 16 * chord_text_em;
-const key_text_pos = -chord_text_size * 3;
 const piano_roll_time_length = 5;  // 1 画面に収める曲の長さ[秒]
 const chord_name_margin = 5;
 
@@ -194,7 +194,7 @@ const chord_romans = new SvgWindow("roman-names",
 );
 const chord_keys = new SvgWindow("key-names",
   romans.map(e => ({
-    svg: SVG.text({ id: "key-name", "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: fifthToColor(_Scale.get(e.scale).tonic!, 1, 0.75) || "#000" }, shorten_key(_Scale.get(e.scale))),
+    svg: SVG.text({ id: "key-name", "font-family": "Times New Roman", "font-size": `${chord_text_em}em`, "text-anchor":"end", fill: fifthToColor(_Scale.get(e.scale).tonic!, 1, 0.75) || "#000" }, shorten_key(_Scale.get(e.scale))+': '),
     begin: e.begin,
     end: e.end,
     y: piano_roll_height + chord_text_size * 2 + chord_name_margin
@@ -408,7 +408,7 @@ const refresh = () => {
   chord_rects.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y, width: e.w * note_size, height: e.h, }));
   chord_names.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y }));
   chord_romans.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y }));
-  chord_keys.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size + key_text_pos, y: e.y }));
+  chord_keys.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y }));
   beat_bars.show.forEach(e => e.svg.setAttributes({ x1: current_time_x + (e.begin - now_at) * note_size, x2: current_time_x + (e.begin - now_at) * note_size, y1: e.y1, y2: e.y2 }));
   d_melody_svgs.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y, width: e.w * note_size, height: e.h, onclick: "insertMelody()", }));
   melody_svgs.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y, width: e.w * note_size, height: e.h, onclick: "deleteMelody()", }));

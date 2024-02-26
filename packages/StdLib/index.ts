@@ -8,6 +8,9 @@ export const assertNonNullable = <T>(value: T | null | undefined) => assertNotNu
 export const assertNotNaN = (value: number) => isNaN(value) ? _throw(new TypeError("NaN value received")) : value;
 export const castToNumber = (value: string) => assertNotNaN(Number(value));
 export const unique = <T>(arr: T[]) => Array.from(new Set(arr));
+export const getLowerCase = (str: string) => str.toLowerCase();
+export const getCapitalCase = (str: string) => str[0].toUpperCase().concat(str.slice(1));
+
 
 export type recurrentArray<T> = T | recurrentArray<T>[];
 export function Arraying<T>(e: recurrentArray<T>): T[] {
