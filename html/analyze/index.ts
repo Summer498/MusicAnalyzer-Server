@@ -206,7 +206,7 @@ console.log("last melody");
 console.log(melodies[melodies.length - 1].end);
 const beat_bars = new SvgWindow("beat-bars",
   getRange(0, Math.ceil(tempo * melodies[melodies.length - 1].end) + phase).map(i => ({
-    svg: SVG.line({ id: "bar", stroke: "#000" }),
+    svg: SVG.line({ id: "bar", stroke: "#000", display: "none" }), //NOTE: 一旦非表示にしている
     begin: i * 60 / tempo,
     end: (i + 1) * 60 / tempo,
     y1: 0,
@@ -408,9 +408,10 @@ const refresh = () => {
   melody_svgs.show.forEach(e => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y, width: e.w * note_size, height: e.h, onclick: "deleteMelody()", }));
   refresh_arrow(arrow_svgs, note_size, current_time_x, now_at * note_size);
 
-  const reservation_range = 1 / 15;  // second
 
   // 音出し
+  /* NOTE: うるさいので停止中
+  const reservation_range = 1 / 15;  // second
   const beat_range = search_items_begins_in_range(beat_bars.show, now_at, now_at + reservation_range);
   for (let i = beat_range.begin_index; i < beat_range.end_index; i++) {
     const e = beat_bars.show[i];
@@ -420,7 +421,6 @@ const refresh = () => {
       setTimeout(() => { e.sound_reserved = false; }, reservation_range * 1000);
     }
   }
-
   const melody_range = search_items_begins_in_range(melody_svgs.show, now_at, now_at + reservation_range);
   for (let i = melody_range.begin_index; i < melody_range.end_index; i++) {
     const e = melody_svgs.show[i];
@@ -430,6 +430,7 @@ const refresh = () => {
       setTimeout(() => { e.sound_reserved = false; }, reservation_range * 1000);
     }
   }
+  */
 };
 
 // TODO: refresh を draw のときに呼び出すようにする
