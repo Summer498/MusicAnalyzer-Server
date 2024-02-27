@@ -3,7 +3,7 @@ import { vMod, getRange, vAdd, mod, decimal, argmax, getZeros, totalSum, correla
 import { hsv2rgb, rgbToString } from "../../packages/Color";
 import { play } from "../../packages/Synth";
 import { _Chord, _Note, _Scale } from "../../packages/TonalObjects";
-import { fifthToColor, shorten_chord, shorten_key } from "../../packages/chordView";
+import { fifthChromaToColor, fifthToColor, shorten_chord, shorten_key } from "../../packages/chordView";
 import { search_items_overlaps_range, search_items_begins_in_range, TimeAnd } from "../../packages/timeAnd";
 import { TimeAndRomanAnalysis } from "../../packages/chordToRoman";
 import { TimeAndMelodyAnalysis } from "../../packages/melodyAnalyze";
@@ -170,7 +170,7 @@ const chord_rects = new SvgWindow("chords",
   romans.map(e => {
     const chord = _Chord.get(e.chord);
     return getRange(0, octave_cnt).map(oct => chord.notes.map(note => ({
-      svg: SVG.rect({ fill: fifthToColor(chord.tonic!, 0.5, chord.type === "major" ? 0.9: 0.7), stroke: "#444" }),
+      svg: SVG.rect({ fill: fifthToColor(chord.tonic!, 0.25, chord.type === "major" ? 1 : 0.9), stroke: "#444" }),
       begin: e.begin,
       end: e.end,
       y: (-1 - mod(_Note.chroma(note), 12) + 12 * (oct + 1)) * black_key_prm.height,
@@ -228,16 +228,18 @@ const d_melody_svgs = new SvgWindow("detected-melody",
 );
 
 const melody_svgs = new SvgWindow("melody",
-  melodies.map(e => ({
-    svg: SVG.rect({ name: "melody-note", fill: rgbToString(hsv2rgb(180 + 360 * 2 / 7, 0.5, 0.9)), stroke: "#444" }),
-    begin: e.begin,
-    end: e.end,
-    note: e.note,
-    y: (piano_roll_begin - e.note) * black_key_prm.height,
-    w: e.end - e.begin,
-    h: black_key_prm.height,
-    sound_reserved: false,
-  }))
+  melodies.map(e => {
+    return {
+      svg: SVG.rect({ name: "melody-note", fill: fifthChromaToColor(e.note, 0.75, 0.9), stroke: "#444" }),
+      begin: e.begin,
+      end: e.end,
+      note: e.note,
+      y: (piano_roll_begin - e.note) * black_key_prm.height,
+      w: e.end - e.begin,
+      h: black_key_prm.height,
+      sound_reserved: false,
+    };
+  })
 );
 const arrow_svgs = melodies.map((e, i) => {
   const stroke = rgbToString([0, 0, 0]);
