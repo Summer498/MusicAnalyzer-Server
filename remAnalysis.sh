@@ -72,12 +72,17 @@ removeAll(){
 
 if [ $melody -eq 1 ]; then
     removeAll "./resources/*/analyzed/melody/manalyze.json"
+    exit 0
 fi
 
 if [ $chord -eq 1 ]; then
     removeAll "./resources/*/analyzed/chord/chords.json"
+    exit 0
 fi
 
 if [ $roman -eq 1 ]; then
     removeAll "./resources/*/analyzed/chord/roman.json"
+    exit 0
 fi
+
+help
