@@ -1,23 +1,18 @@
-import { RomanNumeral } from "tonal";
-import { Chord } from "@tonaljs/chord";
-export { Chord } from "@tonaljs/chord";
-import Chord_default from "@tonaljs/chord";
-import Interval from "@tonaljs/interval";
-import Note from "@tonaljs/note";
-import { NoteLiteral } from "tonal";
-import { Scale } from "@tonaljs/scale";
-export { Scale } from "@tonaljs/scale";
-import Scale_default from "@tonaljs/scale";
-
+import { _RomanNumeral, _Chord, _Interval, _Note, _Scale, Chord, Scale, getIntervalDegree } from "../TonalObjects";
 import { dynamicLogViterbi, findMin } from "../Graph";
-import { Math } from "../Math";
-import {
-  Assertion,
-  assertNonNullable,
-  castToNumber,
-  IdDictionary,
-} from "../StdLib";
+import { _throw, Assertion, assertNonNullable as NN, IdDictionary } from "../StdLib";
 import { getDistance, getKeysIncludeTheChord } from "../TPS";
+
+const get_roman = (scale: Scale, chord: Chord) => {
+  // TODO: Vb が V として出力される
+  chord.tonic || _throw(TypeError("chord.tonic should not be null"));
+  const tonic = chord.tonic!;
+  // const true_tonic = scale.notes.find(e => _Note.chroma(e) === _Note.chroma(tonic));
+  // const interval = _Interval.distance(NN(scale.tonic), NN(true_tonic));
+  const interval = _Interval.distance(NN(scale.tonic), NN(tonic));
+  const roman = _RomanNumeral.get(_Interval.get(interval));
+  return roman.roman + " " + chord.type;
+};
 
 export class RomanChord {
   scale: Scale;
@@ -26,36 +21,9 @@ export class RomanChord {
   constructor(scale: Scale, chord: Chord) {
     this.scale = scale;
     this.chord = chord;
-    this.roman = this.get_roman(scale, chord);
-  }
-  get_roman(scale: Scale, chord: Chord) {
-    // TODO: 確認しておく: もしかしたら # b がないものだけ出力されるバグがあるかもしれない
-    // IV# が IV として出力されるなど?
-    // 成功: C# Db 混同バグは直してある.
-    if (chord.tonic === null) {
-      throw TypeError("chord.tonic should not be null");
-    }
-    const tonic = chord.tonic;
-    const true_tonic = scale.notes.find(
-      (e) => Note.chroma(e) === Note.chroma(tonic),
-    );
-
-    const interval = Interval.distance(
-      assertNonNullable(scale.tonic),
-      assertNonNullable(true_tonic),
-    );
-    const roman = RomanNumeral.get(Interval.get(interval));
-    return roman.roman + " " + chord.type;
+    this.roman = get_roman(scale, chord);
   }
 }
-
-export const getIntervalDegree = (src: NoteLiteral, dst: NoteLiteral) => {
-  return castToNumber(Interval.distance(src, dst).slice(0, 1));
-};
-
-export const getNonNullableChroma = (note: NoteLiteral) => {
-  return assertNonNullable(Note.chroma(note));
-};
 
 const getBodyAndRoot = (chord_string: string) => {
   chord_string = chord_string.replace("minor/major", "XXXXXXXXXXX");
@@ -67,8 +35,7 @@ const getBodyAndRoot = (chord_string: string) => {
   }
   chord_string = chord_string.replace("XXXXXXXXXXX", "minor/major");
 
-  const body_length =
-    before_separator >= 0 ? before_separator : chord_string.length;
+  const body_length = before_separator >= 0 ? before_separator : chord_string.length;
   const body = chord_string.slice(0, body_length);
   const root = chord_string.slice(body_length + separator.length);
   return { body, root };
@@ -78,10 +45,8 @@ const getBodyAndRoot = (chord_string: string) => {
 export const getChord = (chord_string: string): Chord => {
   const body_and_root = getBodyAndRoot(chord_string);
   const root = body_and_root.root;
-  const chord = Chord_default.get(body_and_root.body);
-  if (chord_string === "") {
-    return chord;
-  }
+  const chord = _Chord.get(body_and_root.body);
+  if (chord_string === "") { return chord; }
   new Assertion(chord.tonic != null).onFailed(() => {
     console.log("received:");
     console.log(chord);
@@ -100,10 +65,7 @@ export const getChord = (chord_string: string): Chord => {
     chord.symbol += `/${root}`;
   }
   chord.root = root;
-  chord.rootDegree = getIntervalDegree(
-    assertNonNullable(chord.tonic),
-    chord.root,
-  );
+  chord.rootDegree = getIntervalDegree(chord.tonic!, chord.root);
   return chord;
 };
 
@@ -121,7 +83,7 @@ export class ChordProgression {
         this.#scale_dictionary.register(scale.name);
       }
       if (candidate_scales.length === 0) {
-        this.#scale_dictionary.register(Scale_default.get("").name);
+        this.#scale_dictionary.register(_Scale.get("").name);
       }
     }
   }
@@ -136,30 +98,19 @@ export class ChordProgression {
   constructor(lead_sheet_chords: string[]) {
     this.#chord_dictionary = new IdDictionary<string>();
     this.#scale_dictionary = new IdDictionary<string>();
-    this.lead_sheet_chords = lead_sheet_chords;
-    this.#setDictionary(lead_sheet_chords);
+    this.lead_sheet_chords = lead_sheet_chords.map(e => getChord(e).name);
+    this.#setDictionary(this.lead_sheet_chords);
   }
   getStatesOnTime(t: number) {
     const chord = getChord(this.lead_sheet_chords[t]);
     const candidate_scales = getKeysIncludeTheChord(chord); // 候補がない時, ここが空配列になる
     if (candidate_scales.length === 0) {
-      return [this.#scale_dictionary.getId(Scale_default.get("").name)];
+      return [_Scale.get("")];
     }
-    return candidate_scales.map((scale) =>
-      this.#scale_dictionary.getId(scale.name),
-    );
-  }
-  getChordIdSequence() {
-    return this.lead_sheet_chords.map((chord) =>
-      this.#chord_dictionary.getId(getChord(chord).name),
-    );
+    return candidate_scales;
   }
 
-  getDistanceOfStates(t1: number, t2: number, s1: number, s2: number) {
-    const scale1 = Scale_default.get(this.#scale_dictionary.getItem(s1));
-    const scale2 = Scale_default.get(this.#scale_dictionary.getItem(s2));
-    const chord1 = getChord(this.lead_sheet_chords[t1]);
-    const chord2 = getChord(this.lead_sheet_chords[t2]);
+  getDistanceOfStates(t1: number, t2: number, scale1: Scale, scale2: Scale) {
     if (scale1.empty) {
       console.warn("empty scale received");
       return 0;
@@ -169,30 +120,22 @@ export class ChordProgression {
       return 0;
     }
     return getDistance(
-      new RomanChord(scale1, chord1),
-      new RomanChord(scale2, chord2),
+      new RomanChord(scale1, getChord(this.lead_sheet_chords[t1])),
+      new RomanChord(scale2, getChord(this.lead_sheet_chords[t2])),
     );
   }
 
   getMinimumPath() {
-    const viterbi = dynamicLogViterbi(
-      Math.getZeros(24), // 12 音 x {-mol, -dur}
+    return dynamicLogViterbi(
       this.getStatesOnTime.bind(this),
+      [0],
       this.getDistanceOfStates.bind(this),
-      () => 0,
-      this.getChordIdSequence(),
+      e => 0,
+      this.lead_sheet_chords,
       findMin,
-    );
-    // console.log(viterbi)
-    const trace = viterbi.trace;
-    return trace.map((e) =>
-      e.map(
-        (id, i) =>
-          new RomanChord(
-            Scale_default.get(this.#scale_dictionary.getItem(id)),
-            Chord_default.get(this.lead_sheet_chords[i]),
-          ),
-      ),
-    );
+    ).trace.map((e, i) => e.map(scale => new RomanChord(
+      scale,
+      _Chord.get(this.lead_sheet_chords[i]),
+    )));
   }
 }

@@ -1,19 +1,20 @@
 {
-  "name": "musicanalyzer-server",
+  "name": "music-analyzer-server",
   "version": "1.0.0",
   "description": "popular music analyzer",
   "workspaces": [
     "packages/*",
-    "html/*"
+    "html/*",
+    "ServerProgram/*"
   ],
   "main": "index.js",
   "scripts": {
     "build": "turbo run build",
-    "format": "prettier --write packages/**/*.ts packages/**/package.json",
+    "build:fc": "yarn build --force",
     "test": "jest --coverage",
-    "lint": "eslint 'packages/**/*.ts'",
-    "lint:fix": "eslint 'packages/**/*.ts' --fix",
-    "test:ci": "yarn format && yarn lint:fix && yarn build && yarn test --no-cache"
+    "lint": "eslint 'packages/**/*.ts' && eslint 'html/**/*.ts'",
+    "lint:fix": "eslint 'packages/**/*.ts' --fix && eslint 'html/**/*.ts' --fix",
+    "test:ci": "yarn lint:fix && yarn build:fc && yarn test --no-cache"
   },
   "author": "Summer498 <subore02@gmail.com>",
   "license": "MIT",
@@ -28,7 +29,6 @@
     "@typescript-eslint/parser": "^6.21.0",
     "eslint": "^8.56.0",
     "jest": "^29.7.0",
-    "prettier": "^3.2.5",
     "ts-jest": "^29.1.2",
     "tsup": "^8.0.2",
     "turbo": "^1.12.3",

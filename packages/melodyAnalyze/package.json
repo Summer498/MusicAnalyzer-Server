@@ -10,13 +10,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup index.ts --sourcemap --dts --format esm,cjs"
+    "build": "tsup index.ts --sourcemap --dts --format esm,cjs --minify"
   },
   "author": "",
-  "license": "ISC",
-  "devDependencies": {},
-  "dependencies": {
-    "@types/node": "^20.11.17",
-    "tonal": "^4.14.0"
-  }
+  "license": "ISC"
 }

@@ -8,11 +8,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup index.ts --sourcemap --dts --format esm,cjs"
+    "build": "tsup index.ts --sourcemap --dts --format esm,cjs --minify"
   },
-  "license": "MIT",
-  "devDependencies": {
-    "tsup": "^8.0.2",
-    "typescript": "^5.3.3"
-  }
+  "license": "MIT"
 }

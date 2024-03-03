@@ -26,8 +26,8 @@ $song_file_ext = pathinfo($song_file_name)["extension"];
 $song_name = pathinfo($song_file_name)["filename"];
 $m_src = "../../resources/$song_name/$song_file_name"; // media source
 
-$chords = shell_exec("../../mimicopy.sh \"{$song_file_path}\" --quiet");
-$melodies = shell_exec("../../manalyze.sh \"{$song_file_path}\" --quiet");
+$chords = shell_exec("../../ranalyze.sh \"{$song_file_path}\" --quiet");  //  --roman_reanalyze, reanalyze roman
+$melodies = shell_exec("../../manalyze.sh \"{$song_file_path}\" --quiet");  // --melody_reanalyze, reanalyze melody
 shell_exec("mv \"$song_file_path\" \"$m_src\"");
 ?>
 <html lang="ja">
@@ -43,7 +43,7 @@ shell_exec("mv \"$song_file_path\" \"$m_src\"");
   <?php
   $m_opt = "controls autoplay playsinline loop crossorigin=\"use-credintials\""; // media option
   $m_type = (in_array($song_file_ext, ["mp4"], true)) ? "video" : "audio"; // media type
-  echo ("<div class=\"${m_type}_wrapper\" id=\"audio_area\">");
+  echo ("<div class=\"".$m_type."_wrapper\" id=\"audio_area\">");
   echo ("<$m_type src=\"$m_src\" $m_opt></$m_type>");
   echo ("</div>");
   ?>
@@ -60,5 +60,5 @@ echo ("window.MusicAnalyzer.roman={$chords};");
 echo ("window.MusicAnalyzer.melody={$melodies};");
 echo ("</script>\n");
 // 静的スクリプトを送る
-echo ("<script src=\"./dist/index.js\"type=\"module\"></script>");
+echo ("<script src=\"./dist/index.mjs\"type=\"module\"></script>");
 ?>
