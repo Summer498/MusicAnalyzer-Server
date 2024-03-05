@@ -2,12 +2,11 @@ import { HTML, SVG } from "../../packages/HTML";
 import { play } from "../../packages/Synth";
 import { _Chord, _Note, _Scale } from "../../packages/TonalObjects";
 import { chord_text_size, getChordKeysSVG, getChordNamesSVG, getChordNotesSVG, getChordRomansSVG } from "../../packages/chordView";
-import { search_items_begins_in_range } from "../../packages/timeAnd";
 import { TimeAndRomanAnalysis } from "../../packages/chordToRoman";
 import { TimeAndMelodyAnalysis } from "../../packages/melodyAnalyze";
+import { calcTempo } from "../../packages/BeatEstimation";
 import { black_bgs_prm, getBlackBGs, getBlackKeys, getOctaveBGs, getOctaveKeys, getPianoRollWidth, getWhiteBGs, getWhiteKeys, piano_roll_height, piano_roll_time_length, white_bgs_prm, } from "../../packages/View";
 import { getArrowSVG, getDMelodySVG, getMelodySVG, refresh_arrow } from "../../packages/melodyView";
-import { calcTempo } from "../../packages/BeatEstimation";
 import { getBeatBars } from "../../packages/BeatView";
 
 const debug_mode = true;
@@ -166,9 +165,6 @@ const draw = () => {
 
 // ---------- main ---------- //
 const main = () => {
-  console.log(search_items_begins_in_range(melodies, 30, 90));
-  // audio.addEventListener("timeupdate", refresh);
-
   const update = () => {
     requestAnimationFrame(update);
     refresh();
