@@ -1,7 +1,11 @@
 import { hsv2rgb, rgbToString } from "../Color";
-import { _Note, _Scale, Scale } from "../TonalObjects";
-import { mod } from "../Math";
+import { _Chord, _Note, _Scale, Scale } from "../TonalObjects";
+import { getRange, mod } from "../Math";
 import { getLowerCase, getCapitalCase } from "../StdLib";
+import { SvgWindow, black_key_prm, octave_cnt, piano_roll_height, size } from "../View";
+import { SVG } from "../HTML";
+import { TimeAndRomanAnalysis } from "../chordToRoman";
+import { fifthToColor } from "../Color";
 
 // コードを表す部分を作成
 export const romanToColor = (roman: string, s: number, v: number) => {
@@ -23,17 +27,6 @@ export const romanToColor = (roman: string, s: number, v: number) => {
   return rgbToString(col);
 };
 
-const green_hue = 120; // 0:red, 120:green, 240:blue
-// C(green), Db, D, Eb, E(red), F, Gb, G, Ab(blue), A, Bb, B 
-export const noteChromaToColor = (chroma: number, s: number, v: number) => rgbToString(hsv2rgb(chroma * 360 / 12 + green_hue, s, v));
-export const noteToColor = (note: string, s: number, v: number) => note.length ? noteChromaToColor(_Note.chroma(note), s, v) : "#444";
-
-// hsv2rgb(A*chroma+B): F C(green) G D A E(red) B F#/Gb Db Ab(blue) Eb Bb
-// hsv2rgb(-A*chroma+B): F C(green) G D A E(blue) B F#/Gb Db Ab(red) Eb Bb
-//   C長調のマイナーコードが青寄りに, 半音上げ転調が赤寄りになる半音下げ転調が青寄りにになる
-export const fifthChromaToColor = (chroma: number, s: number, v: number) => rgbToString(hsv2rgb(-mod(chroma * 5, 12) * 360 / 12 + green_hue, s, v));
-export const fifthToColor = (note: string, s: number, v: number) => note.length ? fifthChromaToColor(_Note.chroma(note), s, v) : "#444";
-
 export const shorten_chord = (chord: string) => {
   const M7 = chord.replace("major seventh", "M7");
   const major = M7.replace("major", "");
@@ -51,3 +44,52 @@ export const shorten_key = (key: Scale) => {
   else if (type === "major") { return getCapitalCase(`${tonic}-dur`); }
   else { return key.name; }
 };
+
+const chord_text_em = size;
+export const chord_text_size = 16 * chord_text_em;
+const chord_name_margin = 5;
+
+export const getChordNotesSVG = (romans: TimeAndRomanAnalysis[]) => new SvgWindow("chords",
+  romans.map(e => {
+    const chord = _Chord.get(e.chord);
+    return getRange(0, octave_cnt).map(oct => chord.notes.map(note => ({
+      svg: SVG.rect({ fill: fifthToColor(chord.tonic!, 0.25, chord.type === "major" ? 1 : 0.9), stroke: "#444" }),
+      begin: e.begin,
+      end: e.end,
+      y: (-1 - mod(_Note.chroma(note), 12) + 12 * (oct + 1)) * black_key_prm.height,
+      w: e.end - e.begin,
+      h: black_key_prm.height
+    })));
+  }).flat(2),
+  (e, current_time_x, now_at, note_size) => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y, width: e.w * note_size, height: e.h, })
+);
+
+export const getChordNamesSVG = (romans: TimeAndRomanAnalysis[]) => new SvgWindow("chord-names", romans.map(e => (
+  {
+    svg: SVG.text({ id: "chord-name", "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: fifthToColor(_Chord.get(e.chord).tonic!, 1, 0.75) || "#000" }, shorten_chord(_Chord.get(e.chord).name)),
+    begin: e.begin,
+    end: e.end,
+    y: piano_roll_height + chord_text_size,
+  })),
+  (e, current_time_x, now_at, note_size) => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y })
+);
+
+export const getChordRomansSVG = (romans: TimeAndRomanAnalysis[]) => new SvgWindow("roman-names", romans.map(e => (
+  {
+    svg: SVG.text({ id: "roman-name", "font-family": 'Times New Roman', "font-size": `${chord_text_em}em`, fill: fifthToColor(_Chord.get(e.chord).tonic!, 1, 0.75) || "#000" }, shorten_chord(e.roman)),
+    begin: e.begin,
+    end: e.end,
+    y: piano_roll_height + chord_text_size * 2 + chord_name_margin
+  })),
+  (e, current_time_x, now_at, note_size) => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y })
+);
+
+export const getChordKeysSVG = (romans: TimeAndRomanAnalysis[]) => new SvgWindow("key-names", romans.map(e => (
+  {
+    svg: SVG.text({ id: "key-name", "font-family": "Times New Roman", "font-size": `${chord_text_em}em`, "text-anchor": "end", fill: fifthToColor(_Scale.get(e.scale).tonic!, 1, 0.75) || "#000" }, shorten_key(_Scale.get(e.scale)) + ': '),
+    begin: e.begin,
+    end: e.end,
+    y: piano_roll_height + chord_text_size * 2 + chord_name_margin
+  })),
+  (e, current_time_x, now_at, note_size) => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y })
+);
