@@ -1,22 +1,28 @@
 import { SVG } from "../HTML";
-import { TimeAndMelodyAnalysis } from "../melodyAnalyze";
+import { Gravity, TimeAndMelodyAnalysis } from "../melodyAnalyze";
 import { fifthChromaToColor, hsv2rgb, rgbToString } from "../Color";
 import { SvgWindow, black_key_prm, piano_roll_begin, reservation_range } from "../View";
-import { search_items_begins_in_range } from "../timeAnd/";
+import { TimeAnd, search_items_begins_in_range } from "../timeAnd/";
 import { play } from "../Synth";
 
 const triangle_width = 5;
 const triangle_height = 5;
 
+export const insertMelody = () => {
+  console.log("insertMelody called");
+};
+
+export const deleteMelody = () => {
+  console.log("deleteMelody called");
+};
+
 export const getDMelodySVG = (detected_melodies: TimeAndMelodyAnalysis[]) => new SvgWindow("detected-melody",
   detected_melodies.map(e => ({
-    svg: SVG.rect(
-      {
-        name: "melody-note",
-        fill: rgbToString(hsv2rgb(0, 0, 0.75)),
-        stroke: "#444"
-      }
-    ),
+    svg: SVG.rect({
+      name: "melody-note",
+      fill: rgbToString(hsv2rgb(0, 0, 0.75)),
+      stroke: "#444"
+    }),
     begin: e.begin,
     end: e.end,
     note: e.note,
@@ -24,81 +30,94 @@ export const getDMelodySVG = (detected_melodies: TimeAndMelodyAnalysis[]) => new
     w: e.end - e.begin,
     h: black_key_prm.height
   })),
-  (e, current_time_x, now_at, note_size) => e.svg.setAttributes(
-    {
-      x: current_time_x + (e.begin - now_at) * note_size,
-      y: e.y,
-      width: e.w * note_size,
-      height: e.h,
-      onclick: "insertMelody()",
-    })
+  (e, current_time_x, now_at, note_size) => e.svg.setAttributes({
+    x: current_time_x + (e.begin - now_at) * note_size,
+    y: e.y,
+    width: e.w * note_size,
+    height: e.h,
+    onclick: "MusicAnalyzer.insertMelody()",
+  })
 );
 
 export const getMelodySVG = (melodies: TimeAndMelodyAnalysis[]) => new SvgWindow("melody",
   melodies.map(e => ({
-  svg: SVG.rect(
-    {
+    svg: SVG.rect({
       name: "melody-note",
       fill: fifthChromaToColor(e.note, 0.75, 0.9),
       stroke: "#444"
-    }
-  ),
+    }),
+    begin: e.begin,
+    end: e.end,
+    note: e.note,
+    y: (piano_roll_begin - e.note) * black_key_prm.height,
+    w: e.end - e.begin,
+    h: black_key_prm.height,
+    sound_reserved: false,
+  })),
+  (e, current_time_x, now_at, note_size) => e.svg.setAttributes({
+    x: current_time_x + (e.begin - now_at) * note_size,
+    y: e.y,
+    width: e.w * note_size,
+    height: e.h,
+    onclick: "MusicAnalyzer.deleteMelody()",
+  })
+);
+
+interface ArrowSVG extends TimeAnd {
+  triangle: SVGPolygonElement
+  line: SVGLineElement
+  note: number
+  next: TimeAndMelodyAnalysis
+  destination?: number
+  src_x0: number
+  dst_x0: number
+  src_y0: number
+  dst_y0: number
+}
+
+const _getArrowSVG = (e: TimeAndMelodyAnalysis, next: TimeAndMelodyAnalysis, gravity: Gravity, fill: string, stroke: string): ArrowSVG => ({
+  triangle: SVG.polygon({
+    name: "gravity-arrow",
+    stroke,
+    "stroke-width": 5,
+    fill,
+  }),
+  line: SVG.line({
+    name: "gravity-arrow",
+    stroke,
+    "stroke-width": 5
+  }),
   begin: e.begin,
   end: e.end,
   note: e.note,
-  y: (piano_roll_begin - e.note) * black_key_prm.height,
-  w: e.end - e.begin,
-  h: black_key_prm.height,
-  sound_reserved: false,
-})),
-  (e, current_time_x, now_at, note_size) => e.svg.setAttributes(
-    {
-      x: current_time_x + (e.begin - now_at) * note_size,
-      y: e.y,
-      width: e.w * note_size,
-      height: e.h,
-      onclick: "deleteMelody()",
-    }
-  )
-);
+  next,
+  destination: gravity.destination,
+  src_x0: (e.end - e.begin) / 2 + e.begin,
+  dst_x0: next.begin,
+  src_y0: (piano_roll_begin + 0.5 - e.note) * black_key_prm.height,
+  dst_y0: (piano_roll_begin + 0.5 - gravity.destination!) * black_key_prm.height,
+});
 
-export const getArrowSVG = (melodies: TimeAndMelodyAnalysis[]) => melodies.map((e, i) => {
+export const getArrowSVGs = (melodies: TimeAndMelodyAnalysis[]) => melodies.map((e, i) => {
   const stroke = rgbToString([0, 0, 0]);
   const next = melodies.length <= i + 1 ? melodies[i] : melodies[i + 1];
   const fill = rgbToString([0, 0, 0]);
   // let fill = rgbToString(hsv2rgb(180 + 360 * 2 / 7, 0.5, 0.9));
   // if (i === 1 && e.roman_name !== undefined) { fill = romanToColor(e.roman_name, 0.5, 0.9) }
-  return e.melody_analysis.gravity.filter(g => g.resolved && g.destination !== undefined).map(gravity => ({
-    triangle: SVG.polygon(
-      {
-        name: "gravity-arrow",
-        stroke,
-        "stroke-width": 5,
-        fill,
-      }
-    ),
-    line: SVG.line(
-      {
-        name: "gravity-arrow",
-        stroke,
-        "stroke-width": 5
-      }
-    ),
-    begin: e.begin,
-    end: e.end,
-    note: e.note,
-    next,
-    destination: gravity.destination,
-    src_x0: (e.end - e.begin) / 2 + e.begin,
-    dst_x0: next.begin,
-    src_y0: (piano_roll_begin + 0.5 - e.note) * black_key_prm.height,
-    dst_y0: (piano_roll_begin + 0.5 - gravity.destination!) * black_key_prm.height,
-  }));
+  const res: ArrowSVG[] = [];
+  const scale_gravity = e.melody_analysis.scale_gravity;
+  const chord_gravity = e.melody_analysis.chord_gravity;
+  if (scale_gravity?.resolved && scale_gravity.destination !== undefined) {
+    res.push(_getArrowSVG(e, next, scale_gravity, fill, stroke));
+  }
+  if (chord_gravity?.resolved && chord_gravity.destination !== undefined) {
+    res.push(_getArrowSVG(e, next, chord_gravity, fill, stroke));
+  }
+
+  return res;
 }).flat(2);
 
-type ArrowSVGs = ReturnType<typeof getArrowSVG>;
-
-export const refresh_arrow = (arrow_svgs: ArrowSVGs, current_time_x: number, now_at: number, note_size: number) =>
+export const refresh_arrow = (arrow_svgs: ArrowSVG[], current_time_x: number, now_at: number, note_size: number) =>
   arrow_svgs.forEach(e => {
     const std_pos = now_at * note_size;
     const src_x = e.src_x0 * note_size - std_pos + current_time_x;

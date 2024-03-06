@@ -6,7 +6,7 @@ import { TimeAndRomanAnalysis } from "../../packages/chordToRoman";
 import { TimeAndMelodyAnalysis } from "../../packages/melodyAnalyze";
 import { calcTempo } from "../../packages/BeatEstimation";
 import { getBlackBGs, getBlackKeys, getOctaveBGs, getOctaveKeys, getPianoRollWidth, getWhiteBGs, getWhiteKeys, piano_roll_height, piano_roll_time_length, window_reflectable_registry, updatable_registry, current_time_ratio, } from "../../packages/View";
-import { getArrowSVG, getDMelodySVG, getMelodySVG, refresh_arrow } from "../../packages/melodyView";
+import { deleteMelody, getArrowSVGs, getDMelodySVG, getMelodySVG, insertMelody, refresh_arrow } from "../../packages/melodyView";
 import { getBeatBars } from "../../packages/BeatView";
 
 const debug_mode = true;
@@ -18,8 +18,10 @@ interface MusicAnalyzerWindow extends Window {
   MusicAnalyzer: {
     roman: TimeAndRomanAnalysis[],
     melody: TimeAndMelodyAnalysis[]
+    insertMelody: typeof insertMelody,
+    deleteMelody: typeof deleteMelody,
+    play: typeof play
   }
-  play: typeof play
 }
 declare const window: MusicAnalyzerWindow;
 
@@ -28,7 +30,9 @@ const d_melodies: TimeAndMelodyAnalysis[] = window.MusicAnalyzer.melody.map(e =>
 const romans = d_romans.map(e => e);
 const melodies = d_melodies.map(e => e).filter((e, i) => i + 1 >= d_melodies.length || 60 / (d_melodies[i + 1].begin - d_melodies[i].begin) < 300 * 4);
 
-window.play = play;  // NOTE:コンソールデバッグ用
+window.MusicAnalyzer.insertMelody = insertMelody;
+window.MusicAnalyzer.deleteMelody = deleteMelody;
+window.MusicAnalyzer.play = play;  // NOTE:コンソールデバッグ用
 console.log(romans);
 console.log(melodies);
 // const notes = roman[0].chords[1][2].notes;  // 0 個目のコード列の1番目の推定候補の2個目のコードの構成音
@@ -51,7 +55,7 @@ console.log("last melody");
 console.log(melodies[melodies.length - 1].end);
 
 // svg element の作成
-const arrow_svgs = getArrowSVG(melodies);
+const arrow_svgs = getArrowSVGs(melodies);
 const updatable = [
   getBeatBars(beat_info, melodies),
   getChordNotesSVG(romans),
@@ -67,7 +71,7 @@ const piano_roll = SVG.svg({ name: "piano-roll" }, undefined, [
   // 奥側
   SVG.g({ name: "octave-BGs" }, undefined, getOctaveBGs(getWhiteBGs(), getBlackBGs()).svg.map(e => e.svg)),
 
-  updatable.map(e=>e.group),
+  updatable.map(e => e.group),
 
   SVG.g({ name: "gravities" }, undefined, [
     arrow_svgs.map(e => e.line),
@@ -78,16 +82,9 @@ const piano_roll = SVG.svg({ name: "piano-roll" }, undefined, [
   current_time_line,
   // 手前側
 ].flat());
-document.getElementById("piano-roll-place")!
-  .insertAdjacentElement("afterbegin", piano_roll);
-
-const _insertMelody = () => {
-  console.log("insert melody");
-};
-
-const _deleteMelody = () => {
-  console.log("delete melody");
-};
+const piano_roll_place = document.getElementById("piano-roll-place")!;
+// piano_roll_place.insertAdjacentElement("beforeend", );
+piano_roll_place.insertAdjacentElement("beforeend", piano_roll);
 
 let old_time = Date.now();
 const fps_element = HTML.p({ name: "fps" }, `fps:${0}`);
