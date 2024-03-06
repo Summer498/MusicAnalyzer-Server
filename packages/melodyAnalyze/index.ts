@@ -27,7 +27,7 @@ export interface TimeAndMelodyAnalysis extends TimeAnd {
 
 
 type TimeAndString = { 0: number; 1: number; 2: string };
-const getTimeAndChord = (chord_strs: TimeAndString[]) => {
+const _getTimeAndChord = (chord_strs: TimeAndString[]) => {
   const time_and_chord = chord_strs.map(e => {
     return { time: [e[0], e[1]], chord: _Chord.get(e[2]) };
   });

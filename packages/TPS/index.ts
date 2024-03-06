@@ -14,7 +14,7 @@ export const regionDistance = (src: Scale, dst: Scale) => {
   return region_dist;
 };
 
-const tonicDistanceInChromaNumber = (src: number, dst: number) => Math.abs(mod((dst - src) * 3 + 3, 7) - 3);
+const _tonicDistanceInChromaNumber = (src: number, dst: number) => Math.abs(mod((dst - src) * 3 + 3, 7) - 3);
 
 export const tonicDistance = (src: Chord, dst: Chord) => {
   const interval = getIntervalDegree(

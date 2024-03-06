@@ -5,7 +5,7 @@ import { chord_name_margin, chord_text_size, getChordKeysSVG, getChordNamesSVG, 
 import { TimeAndRomanAnalysis } from "../../packages/chordToRoman";
 import { TimeAndMelodyAnalysis } from "../../packages/melodyAnalyze";
 import { calcTempo } from "../../packages/BeatEstimation";
-import { getBlackBGs, getBlackKeys, getOctaveBGs, getOctaveKeys, getPianoRollWidth, getWhiteBGs, getWhiteKeys, piano_roll_height, piano_roll_time_length, window_reflectable_registry, white_bgs_prm, updatable_registry, current_time_ratio, } from "../../packages/View";
+import { getBlackBGs, getBlackKeys, getOctaveBGs, getOctaveKeys, getPianoRollWidth, getWhiteBGs, getWhiteKeys, piano_roll_height, piano_roll_time_length, window_reflectable_registry, updatable_registry, current_time_ratio, } from "../../packages/View";
 import { getArrowSVG, getDMelodySVG, getMelodySVG, refresh_arrow } from "../../packages/melodyView";
 import { getBeatBars } from "../../packages/BeatView";
 
