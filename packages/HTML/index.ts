@@ -196,6 +196,30 @@ export class HTML {
   static iframe(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("iframe", attributes, text, children); }
   static img(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("img", attributes, text, children); }
   static input(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", attributes, text, children); }
+
+  static input_button(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "button" }, text, children); }
+  static input_checkbox(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "checkbox" }, text, children); }
+  static input_color(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "color" }, text, children); }
+  static input_date(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "date" }, text, children); }
+  static input_datetime_local(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "datetime-local" }, text, children); }
+  static input_email(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "email" }, text, children); }
+  static input_file(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "file" }, text, children); }
+  static input_hidden(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "hidden" }, text, children); }
+  static input_image(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "image" }, text, children); }
+  static input_month(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "month" }, text, children); }
+  static input_number(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "number" }, text, children); }
+  static input_password(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "password" }, text, children); }
+  static input_radio(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "radio" }, text, children); }
+  static input_range(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "range" }, text, children); }
+  static input_reset(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "reset" }, text, children); }
+  static input_search(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "search" }, text, children); }
+  static input_submit(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "submit" }, text, children); }
+  static input_tel(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "tel" }, text, children); }
+  static input_text(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "text" }, text, children); }
+  static input_time(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "time" }, text, children); }
+  static input_url(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "url" }, text, children); }
+  static input_week(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "week" }, text, children); }
+
   static ins(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("ins", attributes, text, children); }
   static kbd(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("kbd", attributes, text, children); }
   static label(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("label", attributes, text, children); }
