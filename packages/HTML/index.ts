@@ -5,7 +5,6 @@ type attribute = { [key: string]: string | number };
 declare global {
   interface Element {
     setAttributes: (attributes: attribute) => Element;
-    setText: (text: string) => Element;
     appendChildren: (elements: recurrentArray<Element>) => Element;
   }
 }
@@ -16,10 +15,7 @@ Element.prototype.setAttributes = function (attributes) {
   }
   return this;
 };
-Element.prototype.setText = function (text) {
-  this.appendChild(document.createTextNode(text));
-  return this;
-};
+
 Element.prototype.appendChildren = function (nodes: recurrentArray<Element>) {
   for (const node of Arraying(nodes)) {
     this.appendChild(node);
@@ -39,7 +35,7 @@ function setComponentsToElement<T extends Element>(
   for (const key in attributes) {
     element.setAttribute(key, String(attributes[key]));
   }
-  element.appendChild<Text>(document.createTextNode(text));
+  element.appendChild(document.createTextNode(text));
   Arraying(children).forEach(child => element.appendChild(child));
   return element;
 }
