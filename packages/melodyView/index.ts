@@ -27,7 +27,8 @@ export const getDMelodySVG = (detected_melodies: TimeAndMelodyAnalysis[]) => new
   (e, current_time_x, now_at, note_size) => e.svg.setAttributes(
     {
       x: current_time_x + (e.begin - now_at) * note_size,
-      y: e.y, width: e.w * note_size,
+      y: e.y,
+      width: e.w * note_size,
       height: e.h,
       onclick: "insertMelody()",
     })
@@ -35,21 +36,21 @@ export const getDMelodySVG = (detected_melodies: TimeAndMelodyAnalysis[]) => new
 
 export const getMelodySVG = (melodies: TimeAndMelodyAnalysis[]) => new SvgWindow("melody",
   melodies.map(e => ({
-    svg: SVG.rect(
-      {
-        name: "melody-note",
-        fill: fifthChromaToColor(e.note, 0.75, 0.9),
-        stroke: "#444"
-      }
-    ),
-    begin: e.begin,
-    end: e.end,
-    note: e.note,
-    y: (piano_roll_begin - e.note) * black_key_prm.height,
-    w: e.end - e.begin,
-    h: black_key_prm.height,
-    sound_reserved: false,
-  })),
+  svg: SVG.rect(
+    {
+      name: "melody-note",
+      fill: fifthChromaToColor(e.note, 0.75, 0.9),
+      stroke: "#444"
+    }
+  ),
+  begin: e.begin,
+  end: e.end,
+  note: e.note,
+  y: (piano_roll_begin - e.note) * black_key_prm.height,
+  w: e.end - e.begin,
+  h: black_key_prm.height,
+  sound_reserved: false,
+})),
   (e, current_time_x, now_at, note_size) => e.svg.setAttributes(
     {
       x: current_time_x + (e.begin - now_at) * note_size,
@@ -97,28 +98,30 @@ export const getArrowSVG = (melodies: TimeAndMelodyAnalysis[]) => melodies.map((
 
 type ArrowSVGs = ReturnType<typeof getArrowSVG>;
 
-export const refresh_arrow = (arrow_svgs: ArrowSVGs, note_size: number, current_time_x: number, std_pos: number) => arrow_svgs.forEach(e => {
-  const src_x = e.src_x0 * note_size - std_pos + current_time_x;
-  const dst_x = e.dst_x0 * note_size - std_pos + current_time_x;
-  const src_y = e.src_y0;
-  const dst_y = e.dst_y0;
+export const refresh_arrow = (arrow_svgs: ArrowSVGs, current_time_x: number, now_at: number, note_size: number) =>
+  arrow_svgs.forEach(e => {
+    const std_pos = now_at * note_size;
+    const src_x = e.src_x0 * note_size - std_pos + current_time_x;
+    const dst_x = e.dst_x0 * note_size - std_pos + current_time_x;
+    const src_y = e.src_y0;
+    const dst_y = e.dst_y0;
 
-  const dx = dst_x - src_x;
-  const dy = dst_y - src_y;
-  const r = Math.sqrt(dx * dx + dy * dy);
-  const cos = -dy / r;
-  const sin = dx / r;
-  const p = [
-    dst_x,
-    dst_y,
-    dst_x + cos * triangle_width - sin * triangle_height,
-    dst_y + sin * triangle_width + cos * triangle_height,
-    dst_x + cos * -triangle_width - sin * triangle_height,
-    dst_y + sin * -triangle_width + cos * triangle_height
-  ];
-  e.triangle.setAttributes({ points: `${p.join(",")}` });
-  e.line.setAttributes({ x1: src_x, x2: dst_x, y1: src_y, y2: dst_y });
-});
+    const dx = dst_x - src_x;
+    const dy = dst_y - src_y;
+    const r = Math.sqrt(dx * dx + dy * dy);
+    const cos = -dy / r;
+    const sin = dx / r;
+    const p = [
+      dst_x,
+      dst_y,
+      dst_x + cos * triangle_width - sin * triangle_height,
+      dst_y + sin * triangle_width + cos * triangle_height,
+      dst_x + cos * -triangle_width - sin * triangle_height,
+      dst_y + sin * -triangle_width + cos * triangle_height
+    ];
+    e.triangle.setAttributes({ points: `${p.join(",")}` });
+    e.line.setAttributes({ x1: src_x, x2: dst_x, y1: src_y, y2: dst_y });
+  });
 
 export const beepMelody = (melody_svgs: ReturnType<typeof getMelodySVG>, now_at: number) => {
   const melody_range = search_items_begins_in_range(melody_svgs.show, now_at, now_at + reservation_range);

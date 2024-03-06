@@ -49,7 +49,7 @@ export const shorten_key = (key: Scale) => {
   else { return key.name; }
 };
 
-export const getChordNotesSVG = (romans: TimeAndRomanAnalysis[]) => new SvgWindow("chords",
+export const getChordNotesSVG = (romans: TimeAndRomanAnalysis[]) => new SvgWindow("chords", 
   romans.map(e => {
     const chord = _Chord.get(e.chord);
     return getRange(0, octave_cnt).map(oct => chord.notes.map(note => ({
@@ -63,19 +63,18 @@ export const getChordNotesSVG = (romans: TimeAndRomanAnalysis[]) => new SvgWindo
       type: chord.type,
     })));
   }).flat(2),
-  (e, current_time_x, now_at, note_size) => e.svg.setAttributes(
-    {
-      x: current_time_x + (e.begin - now_at) * note_size,
-      y: e.y,
-      width: e.w * note_size,
-      height: e.h,
-      stroke: "#444",
-      fill: fifthToColor(e.tonic, 0.25, e.type === "major" ? 1 : 0.9),
-    })
+  (e, current_time_x, now_at, note_size) => e.svg.setAttributes({
+    x: current_time_x + (e.begin - now_at) * note_size,
+    y: e.y,
+    width: e.w * note_size,
+    height: e.h,
+    stroke: "#444",
+    fill: fifthToColor(e.tonic, 0.25, e.type === "major" ? 1 : 0.9),
+  })
 );
 
-export const getChordNamesSVG = (romans: TimeAndRomanAnalysis[]) => new SvgWindow("chord-names", romans.map(e => (
-  {
+export const getChordNamesSVG = (romans: TimeAndRomanAnalysis[]) => new SvgWindow("chord-names", 
+  romans.map(e => ({
     svg: SVG.text(
       {
         id: "chord-name",
@@ -89,17 +88,15 @@ export const getChordNamesSVG = (romans: TimeAndRomanAnalysis[]) => new SvgWindo
     y: piano_roll_height + chord_text_size,
     tonic: _Chord.get(e.chord).tonic!
   })),
-  (e, current_time_x, now_at, note_size) => e.svg.setAttributes(
-    {
-      x: current_time_x + (e.begin - now_at) * note_size,
-      y: e.y,
-      fill: fifthToColor(e.tonic, 1, 0.75) || "#000"
-    }
-  )
+  (e, current_time_x, now_at, note_size) => e.svg.setAttributes({
+    x: current_time_x + (e.begin - now_at) * note_size,
+    y: e.y,
+    fill: fifthToColor(e.tonic, 1, 0.75) || "#000"
+  })
 );
 
-export const getChordRomansSVG = (romans: TimeAndRomanAnalysis[]) => new SvgWindow("roman-names", romans.map(e => (
-  {
+export const getChordRomansSVG = (romans: TimeAndRomanAnalysis[]) => new SvgWindow("roman-names", 
+  romans.map(e => ({
     svg: SVG.text(
       {
         id: "roman-name",
@@ -113,17 +110,15 @@ export const getChordRomansSVG = (romans: TimeAndRomanAnalysis[]) => new SvgWind
     y: piano_roll_height + chord_text_size * 2 + chord_name_margin,
     tonic: _Chord.get(e.chord).tonic!
   })),
-  (e, current_time_x, now_at, note_size) => e.svg.setAttributes(
-    {
-      x: current_time_x + (e.begin - now_at) * note_size,
-      y: e.y,
-      fill: fifthToColor(e.tonic, 1, 0.75) || "#000"
-    }
-  )
+  (e, current_time_x, now_at, note_size) => e.svg.setAttributes({
+    x: current_time_x + (e.begin - now_at) * note_size,
+    y: e.y,
+    fill: fifthToColor(e.tonic, 1, 0.75) || "#000"
+  })
 );
 
-export const getChordKeysSVG = (romans: TimeAndRomanAnalysis[]) => new SvgWindow("key-names", romans.map(e => (
-  {
+export const getChordKeysSVG = (romans: TimeAndRomanAnalysis[]) => new SvgWindow("key-names", 
+  romans.map(e => ({
     svg: SVG.text(
       {
         id: "key-name",
@@ -138,11 +133,9 @@ export const getChordKeysSVG = (romans: TimeAndRomanAnalysis[]) => new SvgWindow
     y: piano_roll_height + chord_text_size * 2 + chord_name_margin,
     tonic: _Scale.get(e.scale).tonic!
   })),
-  (e, current_time_x, now_at, note_size) => e.svg.setAttributes(
-    {
-      x: current_time_x + (e.begin - now_at) * note_size,
-      y: e.y,
-      fill: fifthToColor(e.tonic, 1, 0.75) || "#000"
-    }
-  )
+  (e, current_time_x, now_at, note_size) => e.svg.setAttributes({
+    x: current_time_x + (e.begin - now_at) * note_size,
+    y: e.y,
+    fill: fifthToColor(e.tonic, 1, 0.75) || "#000"
+  })
 );

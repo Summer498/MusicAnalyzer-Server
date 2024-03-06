@@ -5,7 +5,7 @@ import { chord_name_margin, chord_text_size, getChordKeysSVG, getChordNamesSVG, 
 import { TimeAndRomanAnalysis } from "../../packages/chordToRoman";
 import { TimeAndMelodyAnalysis } from "../../packages/melodyAnalyze";
 import { calcTempo } from "../../packages/BeatEstimation";
-import { getBlackBGs, getBlackKeys, getOctaveBGs, getOctaveKeys, getPianoRollWidth, getWhiteBGs, getWhiteKeys, piano_roll_height, piano_roll_time_length, white_bgs_prm, } from "../../packages/View";
+import { getBlackBGs, getBlackKeys, getOctaveBGs, getOctaveKeys, getPianoRollWidth, getWhiteBGs, getWhiteKeys, piano_roll_height, piano_roll_time_length, window_reflectable_registry, white_bgs_prm, updatable_registry, current_time_ratio, } from "../../packages/View";
 import { getArrowSVG, getDMelodySVG, getMelodySVG, refresh_arrow } from "../../packages/melodyView";
 import { getBeatBars } from "../../packages/BeatView";
 
@@ -51,52 +51,41 @@ console.log("last melody");
 console.log(melodies[melodies.length - 1].end);
 
 // svg element の作成
-const beat_bars = getBeatBars(beat_info, melodies);
-const chord_rects = getChordNotesSVG(romans);
-const chord_names = getChordNamesSVG(romans);
-const chord_romans = getChordRomansSVG(romans);
-const chord_keys = getChordKeysSVG(romans);
-const d_melody_svgs = getDMelodySVG(d_melodies);
-const melody_svgs = getMelodySVG(melodies);
 const arrow_svgs = getArrowSVG(melodies);
-const white_BGs = getWhiteBGs();
-const black_BGs = getBlackBGs();
-const white_key = getWhiteKeys();
-const black_key = getBlackKeys();
-const octave_BGs = getOctaveBGs(white_BGs, black_BGs);
-const octave_key = getOctaveKeys(white_key, black_key);
+const updatable = [
+  getBeatBars(beat_info, melodies),
+  getChordNotesSVG(romans),
+  getChordNamesSVG(romans),
+  getChordRomansSVG(romans),
+  getChordKeysSVG(romans),
+  getDMelodySVG(d_melodies),
+  getMelodySVG(melodies),
+];
+updatable.forEach(e => updatable_registry.register(e));
 const current_time_line = SVG.line({ name: "current_time", "stroke-width": 5, stroke: "#000" });
 const piano_roll = SVG.svg({ name: "piano-roll" }, undefined, [
   // 奥側
-  SVG.g({ name: "octave-BGs" }, undefined, octave_BGs.svg.map(e => e.svg)),
+  SVG.g({ name: "octave-BGs" }, undefined, getOctaveBGs(getWhiteBGs(), getBlackBGs()).svg.map(e => e.svg)),
 
-  beat_bars.group,
-
-  chord_rects.group,
-  chord_names.group,
-  chord_romans.group,
-  chord_keys.group,
-
-  /*d_melody_svgs.group,*/
-  melody_svgs.group,
+  updatable.map(e=>e.group),
 
   SVG.g({ name: "gravities" }, undefined, [
     arrow_svgs.map(e => e.line),
     arrow_svgs.map(e => e.triangle)
   ]),
 
-  SVG.g({ name: "octave-keys" }, undefined, octave_key.svg.map(e => e.svg)),
+  SVG.g({ name: "octave-keys" }, undefined, getOctaveKeys(getWhiteKeys(), getBlackKeys()).svg.map(e => e.svg)),
   current_time_line,
   // 手前側
-]);
+].flat());
 document.getElementById("piano-roll-place")!
   .insertAdjacentElement("afterbegin", piano_roll);
 
-const insertMelody = () => {
+const _insertMelody = () => {
   console.log("insert melody");
 };
 
-const deleteMelody = () => {
+const _deleteMelody = () => {
   console.log("delete melody");
 };
 
@@ -105,7 +94,7 @@ const fps_element = HTML.p({ name: "fps" }, `fps:${0}`);
 
 let once_refreshed = false;
 let last_audio_time = Number.MIN_SAFE_INTEGER;
-const refresh = () => {
+const onUpdate = () => {
   const now = Date.now();
   const fps = Math.floor(1000 / (now - old_time));
   fps_element.textContent = `fps:${(" " + fps).slice(-3)} ${fps < 60 ? '<' : '>'} 60`;
@@ -119,16 +108,12 @@ const refresh = () => {
   } else { once_refreshed = false; }
   last_audio_time = now_at;
 
-  const current_time_ratio = 1 / 4;
   const piano_roll_width = getPianoRollWidth();
   const current_time_x = piano_roll_width * current_time_ratio;
   const note_size = piano_roll_width / piano_roll_time_length;
 
-  [chord_rects, chord_names, chord_romans, chord_keys, beat_bars, d_melody_svgs, melody_svgs].forEach(e => {
-    e.updateShow(now_at - piano_roll_time_length * current_time_ratio, now_at + piano_roll_time_length);
-    e.update(current_time_x, now_at, note_size);
-  });
-  refresh_arrow(arrow_svgs, note_size, current_time_x, now_at * note_size);
+  updatable_registry.onUpdate(current_time_x, now_at, note_size);
+  refresh_arrow(arrow_svgs, current_time_x, now_at, note_size);
 
 
   // 音出し
@@ -141,17 +126,15 @@ const refresh = () => {
 
 // TODO: refresh を draw のときに呼び出すようにする
 // 多分値が最初の時刻を想定した値になっているので直す
-const draw = () => {
+const onWindowResized = () => {
   // 各 svg のパラメータを更新する
   const piano_roll_width = getPianoRollWidth();
-  const current_time_x = piano_roll_width / 4;
-
-  [white_BGs, black_BGs, white_key, black_key, octave_BGs, octave_key]
-    .forEach(e => e.onWindowResized(piano_roll_width));
+  window_reflectable_registry.onWindowResized(piano_roll_width);
   piano_roll.setAttributes({ x: 0, y: 0, width: piano_roll_width, height: piano_roll_height + chord_text_size * 2 + chord_name_margin });
 
+  const current_time_x = piano_roll_width * current_time_ratio;
   current_time_line.setAttributes({ x1: current_time_x, x2: current_time_x, y1: 0, y2: piano_roll_height });
-  refresh();
+  onUpdate();
 };
 
 
@@ -160,11 +143,11 @@ const draw = () => {
 const main = () => {
   const update = () => {
     requestAnimationFrame(update);
-    refresh();
+    onUpdate();
   };
 
-  window.onresize = e => draw();
-  draw();
+  window.onresize = e => onWindowResized();
+  onWindowResized();
   update();
 
   0 && (

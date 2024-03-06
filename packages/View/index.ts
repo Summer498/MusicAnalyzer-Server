@@ -34,17 +34,56 @@ export const white_position = getRange(0, 12).filter(e => !black_position.includ
 export const piano_roll_time_length = 5;  // 1 画面に収める曲の長さ[秒]
 
 export const reservation_range = 1 / 15;  // play range [second]
+export const current_time_ratio = 1 / 4;
+
+type Updatable = {
+  updateShow: (begin: number, end: number) => void,
+  onUpdate: (current_time_x: number, now_at: number, note_size: number) => void
+}
+type WindowReflectable = {
+  onWindowResized: (piano_roll_width: number) => void
+}
+
+export class UpdatableRegistry {
+  private static _instance: UpdatableRegistry;
+  private readonly registered: Updatable[];
+  private constructor() { this.registered = []; }
+  public static get instance() {
+    return this._instance || (this._instance = new UpdatableRegistry);
+  }
+  register(updatable: Updatable) { this.registered.push(updatable); }
+  onUpdate(current_time_x: number, now_at: number, note_size: number) {
+    this.registered.forEach(e => {
+      e.updateShow(
+        now_at - piano_roll_time_length * current_time_ratio,
+        now_at + piano_roll_time_length
+      );
+      e.onUpdate(current_time_x, now_at, note_size);
+    });
+  }
+}
+class WindowReflectableRegistry {
+  private readonly registered: WindowReflectable[];
+  constructor() { this.registered = []; }
+  register(updatable: WindowReflectable) { this.registered.push(updatable); }
+  onWindowResized(piano_roll_width: number) {
+    this.registered.forEach(e => e.onWindowResized(piano_roll_width));
+  }
+}
+export const updatable_registry = UpdatableRegistry.instance;
+export const window_reflectable_registry = new WindowReflectableRegistry();
 
 export class SvgWindow<T extends SVGElement, U extends TimeAndSVGs<T>> {
   readonly all: U[];
   readonly show: U[];
   readonly group: SVGGElement;
-  readonly update: (current_time_x: number, now_at: number, note_size: number) => void;
-  constructor(name: string, all: U[], update: (e: U, current_time_x: number, now_at: number, note_size: number) => any) {
+  readonly onUpdate: (current_time_x: number, now_at: number, note_size: number) => void;
+  constructor(name: string, all: U[], onUpdate: (e: U, current_time_x: number, now_at: number, note_size: number) => void) {
     this.all = all;
     this.show = [];
     this.group = SVG.g({ name }, undefined, this.show.map(e => e.svg));
-    this.update = (current_time, now_at, note_size) => this.show.forEach(e => update(e, current_time, now_at, note_size));
+    this.onUpdate = (current_time, now_at, note_size) => this.show.forEach(e => onUpdate(e, current_time, now_at, note_size));
+    // updatable_registry.register(this);  // TODO: 複数ファイルにコピーされてしまい updatable_registry の同一性が保証されず, 役に立たなくなる
   }
   updateShow(begin: number, end: number) {
     // const remain = search_items_in_range(this.show, begin, end);
@@ -78,6 +117,7 @@ class SvgAndParams<T extends { svg: SVGElement }> {
   constructor(svg_and_params: T[], onWindowResized: (e: T, piano_roll_width: number) => void) {
     this.svg = svg_and_params;
     this.onWindowResized = (piano_roll_width: number) => this.svg.forEach(e => onWindowResized(e, piano_roll_width));
+    window_reflectable_registry.register(this);
   }
 }
 
