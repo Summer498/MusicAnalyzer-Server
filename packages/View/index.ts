@@ -5,15 +5,15 @@ import { getRange, vAdd, vMod } from "../Math";
 export interface TimeAndSVGs<T extends SVGElement> extends TimeAnd { svg: T; }
 
 class RectParameters {
-  width: number;
-  height: number;
-  fill: string;
-  stroke: string;
-  constructor(args: { width: number, height: number, fill: string, stroke: string }) {
-    this.width = args.width;
-    this.height = args.height;
-    this.fill = args.fill;
-    this.stroke = args.stroke;
+  readonly width;
+  readonly height;
+  readonly fill;
+  readonly stroke;
+  constructor(fill: string, stroke: string, width: number, height: number) {
+    this.width = width;
+    this.height = height;
+    this.fill = fill;
+    this.stroke = stroke;
   }
 }
 
@@ -23,10 +23,10 @@ export const getPianoRollWidth = () => window.innerWidth - 48;  // innerWidth �
 export const octave_height = size * 84;  // 7 白鍵と 12 半音をきれいに描画するには 7 * 12 の倍数が良い
 export const octave_cnt = 3;
 export const piano_roll_begin = 83;
-export const white_key_prm = new RectParameters({ width: 36, height: octave_height / 7, fill: "#fff", stroke: "#000", });
-export const black_key_prm = new RectParameters({ width: white_key_prm.width * 2 / 3, height: octave_height / 12, fill: "#444", stroke: "#000", });
-export const white_bgs_prm = new RectParameters({ width: getPianoRollWidth(), height: octave_height / 12, fill: "#eee", stroke: "#000", });
-export const black_bgs_prm = new RectParameters({ width: getPianoRollWidth(), height: octave_height / 12, fill: "#ccc", stroke: "#000", });
+export const white_key_prm = new RectParameters("#fff", "#000", 36, octave_height / 7);
+export const black_key_prm = new RectParameters("#444", "#000", white_key_prm.width * 2 / 3, octave_height / 12);
+export const white_bgs_prm = new RectParameters("#eee", "#000", getPianoRollWidth(), octave_height / 12);
+export const black_bgs_prm = new RectParameters("#ccc", "#000", getPianoRollWidth(), octave_height / 12);
 
 export const piano_roll_height = octave_height * octave_cnt;
 export const black_position = vMod(vAdd([2, 4, 6, 9, 11], piano_roll_begin), 12);
@@ -42,7 +42,7 @@ export class SvgWindow<T extends SVGElement, U extends TimeAndSVGs<T>> {
   readonly update: (current_time_x: number, now_at: number, note_size: number) => void;
   constructor(name: string, all: U[], update: (e: U, current_time_x: number, now_at: number, note_size: number) => any) {
     this.all = all;
-    this.show = [];//all.map(e => e);
+    this.show = [];
     this.group = SVG.g({ name }, undefined, this.show.map(e => e.svg));
     this.update = (current_time, now_at, note_size) => this.show.forEach(e => update(e, current_time, now_at, note_size));
   }
@@ -57,71 +57,108 @@ export class SvgWindow<T extends SVGElement, U extends TimeAndSVGs<T>> {
   }
 }
 
-type RectAndParam = {
-  svg: SVGRectElement,
-  oct: number,
-  y: number,
-  width: number,
-  height: number,
+class SvgAndParam {
+  svg;
+  oct;
+  y;
+  width;
+  height;
+  constructor(svg: SVGElement, oct: number, y: number, width: number, height: number) {
+    this.svg = svg;
+    this.oct = oct;
+    this.y = y;
+    this.width = width;
+    this.height = height;
+  }
 }
 
-export const getWhiteBGs = () => [...Array(octave_cnt)].map((_, oct) =>
-  [...Array(7)].map((_, j): RectAndParam => ({
-    svg: SVG.rect({ name: "white-BG", fill: white_bgs_prm.fill, stroke: white_bgs_prm.stroke, }),
+class SvgAndParams<T extends { svg: SVGElement }> {
+  svg;
+  onWindowResized;
+  constructor(svg_and_params: T[], onWindowResized: (e: T, piano_roll_width: number) => void) {
+    this.svg = svg_and_params;
+    this.onWindowResized = (piano_roll_width: number) => this.svg.forEach(e => onWindowResized(e, piano_roll_width));
+  }
+}
+
+export const getWhiteBGs = () => new SvgAndParams(
+  [...Array(octave_cnt)].map((_, oct) =>
+    [...Array(7)].map((_, j) => ({
+      svg: SVG.rect({ name: "white-BG", fill: white_bgs_prm.fill, stroke: white_bgs_prm.stroke, }),
+      oct,
+      y: octave_height * oct + white_bgs_prm.height * white_position[j],
+      width: white_bgs_prm.width,
+      height: white_bgs_prm.height
+    }))
+  ).flat(),
+  (e, piano_roll_width) => e.svg.setAttributes({ x: 0, y: e.y, width: piano_roll_width, height: e.height })
+);
+
+export const getBlackBGs = () => new SvgAndParams(
+  [...Array(octave_cnt)].map((_, oct) =>
+    [...Array(5)].map((_, j) => ({
+      svg: SVG.rect({ name: "black-BG", fill: black_bgs_prm.fill, stroke: black_bgs_prm.stroke, }),
+      oct,
+      y: octave_height * oct + black_bgs_prm.height * black_position[j],
+      width: black_bgs_prm.width,
+      height: black_bgs_prm.height
+    }))
+  ).flat(),
+  (e, piano_roll_width) => e.svg.setAttributes({ x: 0, y: e.y, width: piano_roll_width, height: e.height })
+);
+
+export const getOctaveBGs = (white_BGs: SvgAndParams<SvgAndParam>, black_BGs: SvgAndParams<SvgAndParam>) => new SvgAndParams(
+  [...Array(octave_cnt)].map((_, oct) => ({
+    svg: SVG.g({ name: "octave-BG" }, undefined, [
+      white_BGs.svg.filter(e => e.oct === oct).map(e => e.svg),
+      black_BGs.svg.filter(e => e.oct === oct).map(e => e.svg)
+    ]),
+    y: octave_height * oct,
+    height: octave_height,
     oct,
-    y: octave_height * oct + white_bgs_prm.height * white_position[j],
-    width: white_bgs_prm.width,
-    height: white_bgs_prm.height
-  }))
-).flat();
-
-export const getBlackBGs = () => [...Array(octave_cnt)].map((_, oct) =>
-  [...Array(5)].map((_, j): RectAndParam => ({
-    svg: SVG.rect({ name: "black-BG", fill: black_bgs_prm.fill, stroke: black_bgs_prm.stroke, }),
-    oct,
-    y: octave_height * oct + black_bgs_prm.height * black_position[j],
-    width: black_bgs_prm.width,
-    height: black_bgs_prm.height
-  }))
-).flat();
-
-export const getOctaveBGs = (white_BGs: RectAndParam[], black_BGs: RectAndParam[]) => [...Array(octave_cnt)].map((_, oct) => ({
-  y: octave_height * oct,
-  height: octave_height,
-  oct,
-  svg: SVG.g({ name: "octave-BG" }, undefined, [
-    white_BGs.filter(e => e.oct === oct).map(e => e.svg),
-    black_BGs.filter(e => e.oct === oct).map(e => e.svg)
-  ])
-}));
+    width: 0
+  })),
+  (e, piano_roll_width) => e.svg.setAttributes({ x: 0, y: e.y, width: piano_roll_width, height: e.height })
+);
 
 
-export const getWhiteKeys = () => [...Array(octave_cnt)].map((_, oct) =>
-  [...Array(7)].map((_, j): RectAndParam => ({
-    svg: SVG.rect({ name: "white-key", fill: white_key_prm.fill, stroke: white_key_prm.stroke, }),
-    oct,
-    y: octave_height * oct + white_key_prm.height * [0, 1, 2, 3, 4, 5, 6][j],
-    width: white_key_prm.width,
-    height: white_key_prm.height
-  }))
-).flat();
+export const getWhiteKeys = () => new SvgAndParams(
+  [...Array(octave_cnt)].map((_, oct) =>
+    [...Array(7)].map((_, j) => ({
+      svg: SVG.rect({ name: "white-key", fill: white_key_prm.fill, stroke: white_key_prm.stroke, }),
+      oct,
+      y: octave_height * oct + white_key_prm.height * [0, 1, 2, 3, 4, 5, 6][j],
+      width: white_key_prm.width,
+      height: white_key_prm.height
+    }))
+  ).flat(),
+  e => e.svg.setAttributes({ x: 0, y: e.y, width: e.width, height: e.height })
+);
 
-export const getBlackKeys = () => [...Array(octave_cnt)].map((_, oct) =>
-  [...Array(5)].map((_, j): RectAndParam => ({
-    svg: SVG.rect({ name: "black-key", fill: black_key_prm.fill, stroke: black_key_prm.stroke, }),
-    oct,
-    y: octave_height * oct + black_key_prm.height * black_position[j],
-    width: black_key_prm.width,
-    height: black_key_prm.height
-  }))
-).flat();
+export const getBlackKeys = () => new SvgAndParams(
+  [...Array(octave_cnt)].map((_, oct) =>
+    [...Array(5)].map((_, j) => ({
+      svg: SVG.rect({ name: "black-key", fill: black_key_prm.fill, stroke: black_key_prm.stroke, }),
+      oct,
+      y: octave_height * oct + black_key_prm.height * black_position[j],
+      width: black_key_prm.width,
+      height: black_key_prm.height
+    }))
+  ).flat(),
+  e => e.svg.setAttributes({ x: 0, y: e.y, width: e.width, height: e.height })
+);
 
-export const getOctaveKeys = (white_key: RectAndParam[], black_key: RectAndParam[]) => [...Array(octave_cnt)].map((_, oct) => ({
-  y: octave_height * oct,
-  height: octave_height,
-  oct,
-  svg: SVG.g({ name: "octave-key" }, undefined, [
-    white_key.filter(e => e.oct === oct).map(e => e.svg),
-    black_key.filter(e => e.oct === oct).map(e => e.svg)
-  ])
-}));
+export const getOctaveKeys = (white_key: SvgAndParams<SvgAndParam>, black_key: SvgAndParams<SvgAndParam>) =>
+  new SvgAndParams(
+    [...Array(octave_cnt)].map((_, oct) => ({
+      svg: SVG.g({ name: "octave-key" }, undefined, [
+        white_key.svg.filter(e => e.oct === oct).map(e => e.svg),
+        black_key.svg.filter(e => e.oct === oct).map(e => e.svg)
+      ]),
+      y: octave_height * oct,
+      height: octave_height,
+      oct,
+      width: 0
+    })),
+    (e, piano_roll_width) => e.svg.setAttributes({ x: 0, y: e.y, width: piano_roll_width, height: e.height })
+  );

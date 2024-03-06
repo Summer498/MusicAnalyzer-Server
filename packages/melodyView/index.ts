@@ -10,7 +10,13 @@ const triangle_height = 5;
 
 export const getDMelodySVG = (detected_melodies: TimeAndMelodyAnalysis[]) => new SvgWindow("detected-melody",
   detected_melodies.map(e => ({
-    svg: SVG.rect({ name: "melody-note", fill: rgbToString(hsv2rgb(0, 0, 0.75)), stroke: "#444" }),
+    svg: SVG.rect(
+      {
+        name: "melody-note",
+        fill: rgbToString(hsv2rgb(0, 0, 0.75)),
+        stroke: "#444"
+      }
+    ),
     begin: e.begin,
     end: e.end,
     note: e.note,
@@ -18,12 +24,24 @@ export const getDMelodySVG = (detected_melodies: TimeAndMelodyAnalysis[]) => new
     w: e.end - e.begin,
     h: black_key_prm.height
   })),
-  (e, current_time_x, now_at, note_size) => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y, width: e.w * note_size, height: e.h, onclick: "insertMelody()", })
+  (e, current_time_x, now_at, note_size) => e.svg.setAttributes(
+    {
+      x: current_time_x + (e.begin - now_at) * note_size,
+      y: e.y, width: e.w * note_size,
+      height: e.h,
+      onclick: "insertMelody()",
+    })
 );
 
 export const getMelodySVG = (melodies: TimeAndMelodyAnalysis[]) => new SvgWindow("melody",
   melodies.map(e => ({
-    svg: SVG.rect({ name: "melody-note", fill: fifthChromaToColor(e.note, 0.75, 0.9), stroke: "#444" }),
+    svg: SVG.rect(
+      {
+        name: "melody-note",
+        fill: fifthChromaToColor(e.note, 0.75, 0.9),
+        stroke: "#444"
+      }
+    ),
     begin: e.begin,
     end: e.end,
     note: e.note,
@@ -32,7 +50,15 @@ export const getMelodySVG = (melodies: TimeAndMelodyAnalysis[]) => new SvgWindow
     h: black_key_prm.height,
     sound_reserved: false,
   })),
-  (e, current_time_x, now_at, note_size) => e.svg.setAttributes({ x: current_time_x + (e.begin - now_at) * note_size, y: e.y, width: e.w * note_size, height: e.h, onclick: "deleteMelody()", })
+  (e, current_time_x, now_at, note_size) => e.svg.setAttributes(
+    {
+      x: current_time_x + (e.begin - now_at) * note_size,
+      y: e.y,
+      width: e.w * note_size,
+      height: e.h,
+      onclick: "deleteMelody()",
+    }
+  )
 );
 
 export const getArrowSVG = (melodies: TimeAndMelodyAnalysis[]) => melodies.map((e, i) => {
@@ -42,8 +68,21 @@ export const getArrowSVG = (melodies: TimeAndMelodyAnalysis[]) => melodies.map((
   // let fill = rgbToString(hsv2rgb(180 + 360 * 2 / 7, 0.5, 0.9));
   // if (i === 1 && e.roman_name !== undefined) { fill = romanToColor(e.roman_name, 0.5, 0.9) }
   return e.melody_analysis.gravity.filter(g => g.resolved && g.destination !== undefined).map(gravity => ({
-    triangle: SVG.polygon({ name: "gravity-arrow", stroke, fill, "stroke-width": 5 }),
-    line: SVG.line({ name: "gravity-arrow", stroke, "stroke-width": 5 }),
+    triangle: SVG.polygon(
+      {
+        name: "gravity-arrow",
+        stroke,
+        "stroke-width": 5,
+        fill,
+      }
+    ),
+    line: SVG.line(
+      {
+        name: "gravity-arrow",
+        stroke,
+        "stroke-width": 5
+      }
+    ),
     begin: e.begin,
     end: e.end,
     note: e.note,
