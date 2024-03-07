@@ -54,6 +54,28 @@ console.log(audio.duration);
 console.log("last melody");
 console.log(melodies[melodies.length - 1].end);
 
+
+// ボタン
+const slider = HTML.input({ type: "range", id: "slider" });
+const show_slider_value = HTML.span({}, slider.value);
+slider.addEventListener("input", e => { show_slider_value.textContent = slider.value; });
+const key_gravity_switcher_id = "key-gravity-switcher";
+const chord_gravity_switcher_id = "chord-gravity-switcher";
+const melody_color_selector_name = "melody-color-selector";
+const key_gravity_switcher = HTML.input_checkbox({ id: key_gravity_switcher_id, name: key_gravity_switcher_id });
+const chord_gravity_switcher = HTML.input_checkbox({ id: chord_gravity_switcher_id, name: chord_gravity_switcher_id });
+const key_color_selector = HTML.input_radio({ name: melody_color_selector_name, id: "color-selector-key", value: "key", checked: `${true}` }, "key based color");
+const chord_color_selector = HTML.input_radio({ name: melody_color_selector_name, id: "color-selector-chord", value: "chord" }, "chord based color");
+const melody_color_selector =
+  HTML.div({ display: "inline" }, "", [
+    HTML.label({ for: "color-selector-key" }, "key based color"),
+    key_color_selector,
+    HTML.label({ for: "color-selector-chord" }, "chord based color"),
+    chord_color_selector,
+  ]);
+key_gravity_switcher.addEventListener("click", () => { once_refreshed = false; });
+chord_gravity_switcher.addEventListener("click", () => { once_refreshed = false; });
+
 // svg element の作成
 const arrow_svgs = getArrowSVGs(melodies);
 const updatable = [
