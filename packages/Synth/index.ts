@@ -26,14 +26,13 @@ function createGain(ctx: AudioContext, parentNode: AudioNode, gain: number) {
 
 // 任意個の音符を鳴らす
 export function play(
-  audio_ctx: AudioContext,
   hzs = [330, 440, 550],
   begin_sec: number,
   length_sec: number,
   amplitude = 1,
 ) {
-  const ctx = audio_ctx;
-  const parent = audio_ctx.destination;
+  const ctx = audioCtx;
+  const parent = audioCtx.destination;
 
   const peak = amplitude / hzs.length;  // amplitude
   const attack = 0.02; // [s]
@@ -53,7 +52,7 @@ export function play(
       detune + detune_delta * i,
     );
 
-    const start = audio_ctx.currentTime + begin_sec; // 現在時刻[s]
+    const start = audioCtx.currentTime + begin_sec; // 現在時刻[s]
     const delay = Math.random() * 0.1; // 0~0.1[s]の遅延ノイズ
     const audioParam = gain_node.gain;
     osc.start(start);
@@ -71,6 +70,6 @@ export function play(
   });
 }
 
-export function play_note(audio_ctx: AudioContext, hzs = [330, 440, 550], bpm = 60, note_value = 4, amplitude = 1) {
-  play(audio_ctx, hzs, 0, 240 / (bpm * note_value), amplitude);
+export function play_note(hzs = [330, 440, 550], bpm = 60, note_value = 4, amplitude = 1) {
+  play(hzs, 0, 240 / (bpm * note_value), amplitude);
 }
