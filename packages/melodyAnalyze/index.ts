@@ -2,6 +2,7 @@ import fs from "fs";
 import { Chord, _Chord, _Note, _Scale } from "../TonalObjects";
 import { compress, TimeAnd } from "../timeAnd";
 import { TimeAndRomanAnalysis } from "../chordToRoman";
+import { Archetype } from "../IRM";
 
 const mod = (x: number, m: number) => (x % m + m) % m;
 const parse_csv = (str: string) => {
@@ -14,6 +15,7 @@ export type Gravity = { destination?: number; resolved?: true }
 export type MelodyAnalysis = {
   scale_gravity?: Gravity,
   chord_gravity?: Gravity,
+  implication_realization: Archetype,
 };
 export interface TimeAndMelody extends TimeAnd { note: number }
 export interface TimeAndChord extends TimeAnd { chord: Chord }
@@ -58,6 +60,8 @@ const analyzeMelody = (
 ): TimeAndMelodyAnalysis[] => {
   return melodies.map((melody, i) => {
     const _roman = romans.find(roman => roman.begin <= melody.end && melody.begin < roman.end); // TODO: 治す. 現状はとりあえずコードとメロディを大きめに重ならせてみているだけ
+    const start = i > 1 ? i - 1 : 0;
+    const next = i + 1;
     return {
       begin: melody.begin,
       end: melody.end,
@@ -76,6 +80,7 @@ const analyzeMelody = (
           melodies,
           i
         ),
+        implication_realization: new Archetype(melodies.slice(start, next + 1).map(e => _Note.fromMidi(e.note)))
       },
     };
   });
