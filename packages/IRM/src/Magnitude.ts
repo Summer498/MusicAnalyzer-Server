@@ -1,13 +1,14 @@
-class _Magnitude {
-  readonly name: string;
-  readonly closure_degree: number;
-  constructor(name: string, closure_degree: number) {
+export type MagnitudeName = "AA" | "AB";
+
+export class Magnitude {
+  readonly name;
+  readonly closure_degree;
+  readonly value;
+  constructor(name: MagnitudeName, value: number) {
     this.name = name;
-    this.closure_degree = closure_degree;
+    this.value = value;
+    // NOTE: とりあえず closure degree を 1 と 2 にしているが、もっと細かな差異がありそう
+    if (name === "AA") { this.closure_degree = 1; }
+    if (name === "AB") { this.closure_degree = 2; }
   }
 }
-
-export type Magnitude = _Magnitude;
-export const AA = new _Magnitude("AA", 1); // similar
-export const AB = new _Magnitude("AB", 2); // different
-// NOTE: とりあえず closure degree を 1 と 2 にしているが、もっと細かな差異がありそう

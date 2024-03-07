@@ -1,20 +1,17 @@
 import { _Interval, _Note, NoteLiteral } from "../../TonalObjects";
-import { Interval } from "../../TonalObjects";
 
 export class RegistralReturnForm {
-  is_null: boolean;
-  notes: NoteLiteral[];
-  return_degree: Interval;
+  readonly is_null;
+  readonly return_degree;
   constructor(notes: NoteLiteral[]) {
     this.is_null = true;
     if (notes.length !== 3) { throw new Error(`Invalid argument length. Required 3 arguments but given was ${notes.length} notes: ${JSON.stringify(notes)}`,); }
-    this.notes = notes;
     if (_Note.get(notes[0]) === _Note.get("")) {
       // null object
-      this.return_degree = _Interval.get("");
+      this.return_degree = ""; //_Interval.get("");
       return;
     }
-    this.return_degree = _Interval.get(_Interval.distance(notes[2], notes[0]));
+    this.return_degree = _Interval.distance(notes[0], notes[2]); //_Interval.get(_Interval.distance(notes[2], notes[0]));
     const dir1 = Math.sign(
       _Interval.semitones(_Interval.distance(notes[0], notes[1])),
     );
