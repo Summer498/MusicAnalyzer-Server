@@ -62,6 +62,13 @@ export const vSum = (...arrays: number[][]) => arrays.reduce((p, c) => vAdd(p, c
 export const totalSum = (array: number[]) => array.reduce((p, c) => p + c);
 export const totalProd = (array: number[]) => array.reduce((p, c) => p * c);
 
+// 正規乱数を生成
+export const normal_rand = (m: number, s: number) => {
+  const r = Math.sqrt(-2 * Math.log(Math.random()));
+  const t = 2 * Math.PI * Math.random();
+  return [r * Math.cos(t), r * Math.sin(t)];
+};
+
 export const complex = {
   multiply: (c1: number[], c2: number[]) => [c1[0] * c2[0] - c1[1] * c2[1], c1[0] * c2[1] + c1[1] * c2[0]],
   add: (c1: number[], c2: number[]) => [c1[0] + c2[0], c1[1] + c2[1]],
