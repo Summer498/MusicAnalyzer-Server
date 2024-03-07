@@ -36,14 +36,15 @@ export function play(
   hzs = [330, 440, 550],
   begin_sec: number,
   length_sec: number,
+  amplitude = 1,
 ) {
   const ctx = audioCtx;
   const parent = audioCtx.destination;
 
-  const peak = 1 / hzs.length;
+  const peak = amplitude / hzs.length;  // amplitude
   const attack = 0.02; // [s]
   const decay = 0.4; // [s]
-  const sustain = 0.7 * peak;
+  const sustain = 0.7 * peak;  // amplitude
   const release = 0.1 * length_sec; // [s]
 
   const detune = 0;
@@ -76,6 +77,6 @@ export function play(
   });
 }
 
-export function play_note(hzs = [330, 440, 550], bpm = 60, note_value = 4) {
-  play(hzs, 0, 240 / (bpm * note_value));
+export function play_note(hzs = [330, 440, 550], bpm = 60, note_value = 4, amplitude = 1) {
+  play(hzs, 0, 240 / (bpm * note_value), amplitude);
 }

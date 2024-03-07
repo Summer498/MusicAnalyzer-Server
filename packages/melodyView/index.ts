@@ -149,12 +149,12 @@ export const refresh_arrow = (arrow_svgs: ArrowSVG[], current_time_x: number, no
     e.line.setAttributes({ x1: src_x, x2: dst_x, y1: src_y, y2: dst_y });
   });
 
-export const beepMelody = (melody_svgs: ReturnType<typeof getMelodySVG>, now_at: number) => {
+export const beepMelody = (melody_svgs: ReturnType<typeof getMelodySVG>, now_at: number, volume: number) => {
   const melody_range = search_items_begins_in_range(melody_svgs.show, now_at, now_at + reservation_range);
   for (let i = melody_range.begin_index; i < melody_range.end_index; i++) {
     const e = melody_svgs.show[i];
     if (e.sound_reserved === false) {
-      play([440 * Math.pow(2, (e.note - 69) / 12)], e.begin - now_at, e.end - e.begin);
+      play([440 * Math.pow(2, (e.note - 69) / 12)], e.begin - now_at, e.end - e.begin, volume);
       e.sound_reserved = true;
       setTimeout(() => { e.sound_reserved = false; }, reservation_range * 1000);
     }

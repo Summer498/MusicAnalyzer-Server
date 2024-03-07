@@ -6,7 +6,7 @@ import { TimeAndRomanAnalysis } from "../../packages/chordToRoman";
 import { TimeAndMelodyAnalysis } from "../../packages/melodyAnalyze";
 import { calcTempo } from "../../packages/BeatEstimation";
 import { getBlackBGs, getBlackKeys, getOctaveBGs, getOctaveKeys, getPianoRollWidth, getWhiteBGs, getWhiteKeys, piano_roll_height, piano_roll_time_length, window_reflectable_registry, updatable_registry, current_time_ratio } from "../../packages/View";
-import { chord_gravities, deleteMelody, getArrowSVGs, getDMelodySVG, getMelodySVG, insertMelody, key_gravities, refresh_arrow } from "../../packages/melodyView";
+import { beepMelody, chord_gravities, deleteMelody, getArrowSVGs, getDMelodySVG, getMelodySVG, insertMelody, key_gravities, refresh_arrow } from "../../packages/melodyView";
 import { getBeatBars } from "../../packages/BeatView";
 
 const debug_mode = true;
@@ -62,8 +62,13 @@ slider.addEventListener("input", e => { show_slider_value.textContent = slider.v
 const key_gravity_switcher_id = "key-gravity-switcher";
 const chord_gravity_switcher_id = "chord-gravity-switcher";
 const melody_color_selector_name = "melody-color-selector";
+const melody_beep_switcher_id = "melody-sound-switcher";
 const key_gravity_switcher = HTML.input_checkbox({ id: key_gravity_switcher_id, name: key_gravity_switcher_id });
 const chord_gravity_switcher = HTML.input_checkbox({ id: chord_gravity_switcher_id, name: chord_gravity_switcher_id });
+const melody_beep_switcher = HTML.input_checkbox({ id: melody_beep_switcher_id, name: melody_beep_switcher_id });
+const melody_beep_volume = HTML.input_range({ id: "melody-volume", min: 0, max: 100, step: 1 });
+const show_melody_beep_volume = HTML.span({}, `volume: ${melody_beep_volume.value}`);
+melody_beep_volume.addEventListener("input", e => { show_melody_beep_volume.textContent = `volume: ${melody_beep_volume.value}`; });
 const key_color_selector = HTML.input_radio({ name: melody_color_selector_name, id: "color-selector-key", value: "key", checked: `${true}` }, "key based color");
 const chord_color_selector = HTML.input_radio({ name: melody_color_selector_name, id: "color-selector-chord", value: "chord" }, "chord based color");
 const melody_color_selector =
@@ -78,6 +83,7 @@ chord_gravity_switcher.addEventListener("click", () => { once_refreshed = false;
 
 // svg element の作成
 const arrow_svgs = getArrowSVGs(melodies);
+const melody_svgs = getMelodySVG(melodies);
 const updatable = [
   getBeatBars(beat_info, melodies),
   getChordNotesSVG(romans),
@@ -85,7 +91,7 @@ const updatable = [
   getChordRomansSVG(romans),
   getChordKeysSVG(romans),
   getDMelodySVG(d_melodies),
-  getMelodySVG(melodies),
+  melody_svgs,
 ];
 updatable.forEach(e => updatable_registry.register(e));
 const current_time_line = SVG.line({ name: "current_time", "stroke-width": 5, stroke: "#000" });
@@ -110,10 +116,22 @@ const piano_roll_place = document.getElementById("piano-roll-place")!;
 piano_roll_place.appendChildren([
   slider,
   show_slider_value,
-  HTML.label({ for: key_gravity_switcher_id }, "Key Gravity"),
-  key_gravity_switcher,
-  HTML.label({ for: chord_gravity_switcher_id }, "Chord Gravity"),
-  chord_gravity_switcher,
+  HTML.div({ id: "gravity-switcher" }, "", [
+    HTML.span({}, "", [
+      HTML.label({ for: key_gravity_switcher_id }, "Key Gravity"),
+      key_gravity_switcher,
+    ]),
+    HTML.span({}, "", [
+      HTML.label({ for: chord_gravity_switcher_id }, "Chord Gravity"),
+      chord_gravity_switcher,
+    ])
+  ]),
+  HTML.span({}, "", [
+    HTML.label({ for: melody_beep_switcher_id }, "Beep Melody"),
+    melody_beep_switcher,
+    melody_beep_volume,
+    show_melody_beep_volume,
+  ]),
   melody_color_selector,
   piano_roll
 ]);
@@ -151,8 +169,8 @@ const onUpdate = () => {
   // 音出し
   /* NOTE: うるさいので停止中
   beepBeat(beat_bars, now_at);
-  beepMelody(melody_svgs, now_at);
   */
+  melody_beep_switcher.checked && beepMelody(melody_svgs, now_at, Number(melody_beep_volume.value) / 100);
 };
 
 
