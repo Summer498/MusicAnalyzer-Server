@@ -1,23 +1,26 @@
 import { X2jOptions, XMLParser, validationOptions } from "fast-xml-parser";
 import fs from "fs";
+import { do_re_mi_grp_xml } from "./src/sample.grp";
+import { do_re_mi_mpr_xml } from "./src/sample.mtr";
+import { do_re_mi_tsr_xml } from "./src/sample.tsr";
 
 const options: X2jOptions = {
   preserveOrder: false,
-  attributeNamePrefix: "@_",
+  attributeNamePrefix: "",
   attributesGroupName: false,
   textNodeName: "#text",
-  ignoreAttributes: true,
+  ignoreAttributes: false,
   removeNSPrefix: false,
-  allowBooleanAttributes: false,
+  allowBooleanAttributes: true,
   parseTagValue: true,
-  parseAttributeValue: false,
+  parseAttributeValue: true,
   trimValues: true,
   cdataPropName: false,
   commentPropName: false,
   numberParseOptions: {
     hex: false,
     leadingZeros: false,
-    skipLike: /.^/,
+    skipLike: /.^/,  // /.^/ matches nothing
     eNotation: false,
   },
   stopNodes: [],
@@ -25,7 +28,7 @@ const options: X2jOptions = {
   alwaysCreateTextNode: false,
   processEntities: true,
   htmlEntities: false,
-  ignoreDeclaration: false,
+  ignoreDeclaration: true,
   ignorePiTags: false,
   transformTagName: false,
   transformAttributeName: false,
@@ -36,10 +39,12 @@ const validationOptions: validationOptions = {
 };
 
 const main = (argv: string[]) => {
-  //  fs;
+  const grp = do_re_mi_grp_xml;
+  const mtr = do_re_mi_mpr_xml;
+  const tsr = do_re_mi_tsr_xml;
 
   const parser = new XMLParser(options);
-  const data = parser.parse("", validationOptions);
+  const data = parser.parse(grp);
   console.log(JSON.stringify(data, undefined, "  "));
 };
 main(process.argv);
