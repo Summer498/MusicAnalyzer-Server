@@ -75,7 +75,7 @@ interface ArrowSVG extends TimeAnd {
   dst_y0: number
 }
 
-const _getArrowSVG = (e: TimeAndMelodyAnalysis, next: TimeAndMelodyAnalysis, gravity: Gravity, fill: string, stroke: string): ArrowSVG => ({
+const getArrowSVG = (e: TimeAndMelodyAnalysis, next: TimeAndMelodyAnalysis, gravity: Gravity, fill: string, stroke: string): ArrowSVG => ({
   triangle: SVG.polygon({
     name: "gravity-arrow",
     stroke,
@@ -98,20 +98,27 @@ const _getArrowSVG = (e: TimeAndMelodyAnalysis, next: TimeAndMelodyAnalysis, gra
   dst_y0: (piano_roll_begin + 0.5 - gravity.destination!) * black_key_prm.height,
 });
 
+export const key_gravities: SVGElement[] = [];
+export const chord_gravities: SVGElement[] = [];
+
 export const getArrowSVGs = (melodies: TimeAndMelodyAnalysis[]) => melodies.map((e, i) => {
   const stroke = rgbToString([0, 0, 0]);
   const next = melodies.length <= i + 1 ? melodies[i] : melodies[i + 1];
   const fill = rgbToString([0, 0, 0]);
-  // let fill = rgbToString(hsv2rgb(180 + 360 * 2 / 7, 0.5, 0.9));
-  // if (i === 1 && e.roman_name !== undefined) { fill = romanToColor(e.roman_name, 0.5, 0.9) }
   const res: ArrowSVG[] = [];
   const scale_gravity = e.melody_analysis.scale_gravity;
   const chord_gravity = e.melody_analysis.chord_gravity;
   if (scale_gravity?.resolved && scale_gravity.destination !== undefined) {
-    res.push(_getArrowSVG(e, next, scale_gravity, fill, stroke));
+    const svg = getArrowSVG(e, next, scale_gravity, fill, stroke);
+    res.push(svg);
+    key_gravities.push(svg.line);
+    key_gravities.push(svg.triangle);
   }
   if (chord_gravity?.resolved && chord_gravity.destination !== undefined) {
-    res.push(_getArrowSVG(e, next, chord_gravity, fill, stroke));
+    const svg = getArrowSVG(e, next, chord_gravity, fill, stroke);
+    res.push(svg);
+    chord_gravities.push(svg.line);
+    chord_gravities.push(svg.triangle);
   }
 
   return res;

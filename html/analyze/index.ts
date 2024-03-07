@@ -5,8 +5,8 @@ import { chord_name_margin, chord_text_size, getChordKeysSVG, getChordNamesSVG, 
 import { TimeAndRomanAnalysis } from "../../packages/chordToRoman";
 import { TimeAndMelodyAnalysis } from "../../packages/melodyAnalyze";
 import { calcTempo } from "../../packages/BeatEstimation";
-import { getBlackBGs, getBlackKeys, getOctaveBGs, getOctaveKeys, getPianoRollWidth, getWhiteBGs, getWhiteKeys, piano_roll_height, piano_roll_time_length, window_reflectable_registry, updatable_registry, current_time_ratio, } from "../../packages/View";
-import { deleteMelody, getArrowSVGs, getDMelodySVG, getMelodySVG, insertMelody, refresh_arrow } from "../../packages/melodyView";
+import { getBlackBGs, getBlackKeys, getOctaveBGs, getOctaveKeys, getPianoRollWidth, getWhiteBGs, getWhiteKeys, piano_roll_height, piano_roll_time_length, window_reflectable_registry, updatable_registry, current_time_ratio } from "../../packages/View";
+import { chord_gravities, deleteMelody, getArrowSVGs, getDMelodySVG, getMelodySVG, insertMelody, key_gravities, refresh_arrow } from "../../packages/melodyView";
 import { getBeatBars } from "../../packages/BeatView";
 
 const debug_mode = true;
@@ -105,8 +105,18 @@ const piano_roll = SVG.svg({ name: "piano-roll" }, undefined, [
   // 手前側
 ].flat());
 const piano_roll_place = document.getElementById("piano-roll-place")!;
-// piano_roll_place.insertAdjacentElement("beforeend", );
-piano_roll_place.insertAdjacentElement("beforeend", piano_roll);
+
+// 設定
+piano_roll_place.appendChildren([
+  slider,
+  show_slider_value,
+  HTML.label({ for: key_gravity_switcher_id }, "Key Gravity"),
+  key_gravity_switcher,
+  HTML.label({ for: chord_gravity_switcher_id }, "Chord Gravity"),
+  chord_gravity_switcher,
+  melody_color_selector,
+  piano_roll
+]);
 
 let old_time = Date.now();
 const fps_element = HTML.p({ name: "fps" }, `fps:${0}`);
@@ -130,6 +140,9 @@ const onUpdate = () => {
   const piano_roll_width = getPianoRollWidth();
   const current_time_x = piano_roll_width * current_time_ratio;
   const note_size = piano_roll_width / piano_roll_time_length;
+
+  key_gravities.forEach(e => e.setAttribute("visibility", key_gravity_switcher.checked ? "visible" : "hidden"));
+  chord_gravities.forEach(e => e.setAttribute("visibility", chord_gravity_switcher.checked ? "visible" : "hidden"));
 
   updatable_registry.onUpdate(current_time_x, now_at, note_size);
   refresh_arrow(arrow_svgs, current_time_x, now_at, note_size);
