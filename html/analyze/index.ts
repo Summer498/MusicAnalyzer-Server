@@ -60,6 +60,7 @@ console.log(audio.duration);
 console.log("last melody");
 console.log(melodies[melodies.length - 1].end);
 
+let once_refreshed = false;  // activate refresher flag
 
 // ボタン
 const slider = HTML.input({ type: "range", id: "slider" });
@@ -148,7 +149,6 @@ piano_roll_place.appendChildren([
 let old_time = Date.now();
 const fps_element = HTML.p({ name: "fps" }, `fps:${0}`);
 
-let once_refreshed = false;
 let last_audio_time = Number.MIN_SAFE_INTEGER;
 const onUpdate = () => {
   const now = Date.now();
