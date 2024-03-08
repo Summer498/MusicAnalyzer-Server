@@ -179,7 +179,7 @@ const onUpdate = () => {
   /* NOTE: うるさいので停止中
   beepBeat(beat_bars, now_at);
   */
-  melody_beep_switcher.checked && beepMelody(melody_svgs, now_at, Number(melody_beep_volume.value) / 100);
+  melody_beep_switcher.checked && beepMelody(melody_svgs, now_at, Number(melody_beep_volume.value) / 400);
 };
 
 
