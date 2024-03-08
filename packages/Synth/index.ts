@@ -35,10 +35,10 @@ export function play(
   const parent = audioCtx.destination;
 
   const peak = amplitude / hzs.length;  // amplitude
-  const attack = 0.02; // [s]
+  const attack = 0.01; // [s]
   const decay = 0.4; // [s]
   const sustain = 0.7 * peak;  // amplitude
-  const release = 0.1 * length_sec; // [s]
+  const release = 0.05 * length_sec; // [s]
 
   const detune = 0;
   const detune_delta = 1;
