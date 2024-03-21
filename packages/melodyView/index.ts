@@ -1,10 +1,12 @@
 import { SVG } from "../HTML";
 import { Gravity, TimeAndMelodyAnalysis } from "../melodyAnalyze";
 import { fifthChromaToColor, hsv2rgb, rgbToString } from "../Color";
-import { SvgWindow, black_key_prm, piano_roll_begin, reservation_range } from "../View";
+import { SvgWindow, black_key_prm, piano_roll_begin, reservation_range, size } from "../View";
 import { TimeAnd, search_items_begins_in_range } from "../timeAnd/";
+import { get_color_of_Narmour_concept } from "../IRM";
 import { play } from "../Synth";
 
+const ir_analysis_em = size;
 const triangle_width = 5;
 const triangle_height = 5;
 
@@ -60,6 +62,29 @@ export const getMelodySVG = (melodies: TimeAndMelodyAnalysis[]) => new SvgWindow
     width: e.w * note_size,
     height: e.h,
     onclick: "MusicAnalyzer.deleteMelody()",
+  })
+);
+
+export const getIRSymbolSVG = (melodies: TimeAndMelodyAnalysis[]) => new SvgWindow("I-R Symbols",
+  melodies.map(e => {console.log("getIRSymbolSVG called"); return {
+    svg: SVG.text(
+      {
+        id: "I-R Symbol",
+        "font-family": 'Times New Roman',
+        "font-size": `${ir_analysis_em}em`,
+        "text-anchor": "middle",
+      },
+      e.melody_analysis.implication_realization.symbol,
+    ),
+    begin: e.begin,
+    end: e.end,
+    y: (piano_roll_begin - e.note) * black_key_prm.height,
+    archetype: e.melody_analysis.implication_realization
+  };}),
+  (e, current_time_x, now_at, note_size) => e.svg.setAttributes({
+    x: current_time_x + (e.begin - now_at) * note_size,
+    y: e.y,
+    fill: get_color_of_Narmour_concept(e.archetype) || "#000"
   })
 );
 

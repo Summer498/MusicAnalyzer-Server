@@ -9,11 +9,32 @@ const P5 = _Interval.get("P5");
 const P4 = _Interval.get("P4");
 const T = _Interval.get("T");
 
-export type ArchetypeSymbol =
+export type TrigramProspectiveSymbol =
   | "P" | "IP" | "VP"
   | "R" | "IR" | "VR"
   | "D" | "ID"
-  | "M" | "dyad";
+
+  export type RetrospectiveSymbol =
+  | "(P)" | "(IP)" | "(VP)"
+  | "(R)" | "(IR)" | "(VR)"
+  | "(D)" | "(ID)"
+  
+export type ProspectiveSymbol = TrigramProspectiveSymbol | "M" | "dyad"
+export type ArchetypeSymbol = ProspectiveSymbol | RetrospectiveSymbol
+
+const retrospectiveSymbol = (symbol: TrigramProspectiveSymbol): RetrospectiveSymbol => {
+  switch (symbol) {
+    case "P": return "(P)";
+    case "IP": return "(IP)";
+    case "VP": return "(VP)";
+    case "R": return "(R)";
+    case "IR": return "(IR)";
+    case "VR": return "(VR)";
+    case "D": return "(D)";
+    case "ID": return "(ID)";
+    default: throw new Error(`Illegal symbol given.\nExpected symbol: P, IP, VP, R, IR, VR, D, ID\n Given symbol:${symbol}`);
+  }
+};
 
 export class Archetype {
   symbol: ArchetypeSymbol;
@@ -73,6 +94,10 @@ export class Archetype {
     }
     if (P4.chroma <= initial.chroma && initial.chroma < P5.chroma) {
       this.retrospective = null;
+    }
+    if(this.retrospective){
+      console.error("retrospective");
+      this.symbol = retrospectiveSymbol(this.symbol);
     }
   }
 }
