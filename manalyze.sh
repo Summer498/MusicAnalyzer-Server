@@ -127,6 +127,7 @@ post_crepe_dst="./resources/$songname/analyzed/melody/vocals.csv"
 post_crepe_dst_dir=`dirname "$post_crepe_dst"`
 detectFile "$post_crepe_src"
 makeNewDir "$post_crepe_dst_dir"
+# res=$( eval "python -m post-crepe \"$post_crepe_src\" \"$post_crepe_dst_dir\"" )
 res=$( runProcessWithCache "$post_crepe_dst" "python -m post-crepe \"$post_crepe_src\" \"$post_crepe_dst_dir\"" )
 
 # コード推定
