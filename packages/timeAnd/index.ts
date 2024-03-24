@@ -4,15 +4,15 @@ export interface TimeAndItem<T> extends TimeAnd { item: T }
 export const compress = <T>(arr: T[]) => {
   const ret: TimeAndItem<T>[] = [];
   let begin = 0;
-  let _item = arr[0];
-  arr.forEach((e, i) => {
-    if (_item !== e) {
-      ret.push({ begin, end: i, item: _item });
-      begin = i;
-      _item = e;
+  let item = arr[0];
+  arr.forEach((e, end) => {
+    if (item !== e) {
+      ret.push({ begin, end, item });
+      begin = end;
+      item = e;
     }
   });
-  ret.push({ begin, end: arr.length, item: _item });
+  ret.push({ begin, end: arr.length, item: item });
   return ret;
 };
 
