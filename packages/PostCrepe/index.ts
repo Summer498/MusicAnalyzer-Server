@@ -1,7 +1,6 @@
 import { default as fs } from "fs";
 import { default as csv } from "csv";
 import { getRange, median } from "../Math";
-import { TimeAndItem } from "../timeAnd";
 import { WaveFile } from "wavefile";
 
 const bandpass = (x: number, low: number, high: number) => low <= x && x < high ? x : NaN;
@@ -39,21 +38,6 @@ class Freq2Phase {
     return this.s + this.s0;
   }
 }
-
-const compress = <T>(arr: T[]): TimeAndItem<T>[] => {
-  const ret: TimeAndItem<T>[] = [];
-  let begin = 0;
-  let item = arr[0];
-  arr.forEach((e, end) => {
-    if (item != e) {
-      ret.push({ begin, end, item });
-      begin = end;
-      item = e;
-    }
-  });
-  ret.push({ begin, end: arr.length, item });
-  return ret;
-};
 
 type VocalsF0CSV = { time: number, frequency: number, confidence: number }
 const main = (argv: string[]) => {
