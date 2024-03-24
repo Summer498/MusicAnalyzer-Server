@@ -32,9 +32,11 @@ export const isSuperSet = <T>(set: T[], subset: T[]) => isSubSet(subset, set);
 export const sameArray = <T>(arr1: T[], arr2: T[]) => hasSameValue(arr1, arr2);
 
 /** @brief avoid bug from negative value */
-export const mod = (n: number, m: number): number => (n % m + m) % m;
-export const decimal = (n: number) => n - Math.floor(n);
+export const mod = (x: number, m: number): number => (x % m + m) % m;
+export const decimal = (x: number) => x - Math.floor(x);
 export const bool2number = (b: boolean) => b ? 1 : 0;
+export const square = (x: number) => x * x;
+export const intPow = (b: number, p: number): number => p ? square(intPow(b, p >> 1)) * (p & 1 ? b : 1) : 1;
 export const removeFromArray = <T>(array: T[], rmv: T[]) => array.filter(e => not(rmv.includes(e)));
 export const ringShift = <T>(array: T[], b: number) => {
   const N = array.length;
@@ -61,6 +63,10 @@ export const getOnehotInMod = (positionOfOnes: number[] | number, m = 1) => {
 export const vSum = (...arrays: number[][]) => arrays.reduce((p, c) => vAdd(p, c));
 export const totalSum = (array: number[]) => array.reduce((p, c) => p + c);
 export const totalProd = (array: number[]) => array.reduce((p, c) => p * c);
+export const squareSum = (array: number[]) => [0, ...array].reduce((p, c) => p + c * c);
+export const average = (array: number[]) => totalSum(array) / array.length;
+export const variant = (array: number[]) => squareSum(array) / array.length - square(average(array));
+export const median = (array: number[]) => ((s, H) => (s[Math.floor(H)] + s[Math.ceil(H)]) / 2)(array.sort(), array.length / 2);
 
 // 正規乱数を生成
 export const normal_rand = (m: number, s: number) => {
