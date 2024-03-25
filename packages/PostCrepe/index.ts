@@ -1,12 +1,11 @@
 import { default as fs } from "fs";
-import { default as csv } from "csv";
 import { getRange, median } from "../Math";
 import { WaveFile } from "wavefile";
+import { parse } from "csv-parse/sync";
 
 const bandpass = (x: number, low: number, high: number) => low <= x && x < high ? x : NaN;
 const freq2midi = (freq: number) => 12 * (Math.log2(freq) - Math.log2(440)) + 69;
 const midi2freq = (midi: number) => 440 * Math.pow(2, (midi - 69) / 12);
-
 const roundOnMIDI = (freq: number) => midi2freq(Math.round(freq2midi(freq)));
 
 class MedianFilter {
@@ -40,90 +39,71 @@ class Freq2Phase {
 }
 
 type VocalsF0CSV = { time: number, frequency: number, confidence: number }
-const main = (argv: string[]) => {
-  const csv_file_path = argv[2];
-  const dictionary_from_csv: VocalsF0CSV[] = [];
-  const CSV_SAMPLING_RATE = 100;
 
-  const csv_file_stream = fs.createReadStream(csv_file_path);
-  console.log("起動！");
-  csv_file_stream.pipe(csv.parse(
-    { columns: true, cast: true, delimiter: ',' },
-    (err, data: VocalsF0CSV) => {
-      dictionary_from_csv.push(data);
-    }
-  ));
-  console.log("CSV読み込み！");
-  let __LINE__ = 0;
 
-  // 瞬間周波数 [Hz/s]
-  const frequency_row = dictionary_from_csv.map(e => e.frequency);
-  const frequency_rounded = frequency_row.map(freq => roundOnMIDI(freq));
-  console.log(__LINE__++); // 0
-
+const getMedianFrequency = (freq_rounded: number[]) => {
   // 中央値を用いたフィルタ (ヘンペルフィルタ) を用いてスパイクノイズを除去する
   const WINDOW_SIZE = 25;
-  const median_filter = new MedianFilter(frequency_rounded, WINDOW_SIZE);
-  const frequency_median_filtered = getRange(0, frequency_rounded.length).map(i => median_filter.median(i));
-  console.log(__LINE__++); // 1
+  const median_filter = new MedianFilter(freq_rounded, WINDOW_SIZE);
+  return getRange(0, freq_rounded.length).map(i => median_filter.median(i));
+};
 
+const getBandpassEdFrequency = (freq_median_filtered: number[]) => {
   const LOW = 220; // hz
   const HIGH = 880; // hz
   // バンドパスで低すぎる/高すぎる音を除く
-  const frequency_001_band_passed = frequency_median_filtered.map(freq => bandpass(freq, LOW, HIGH));
-  console.log(__LINE__++); // 2
+  return freq_median_filtered.map(freq => bandpass(freq, LOW, HIGH));
+};
 
-  // 1/100[s] 刻みのデータをサンプリング周波数に合わせる
-  const SAMPLING_RATE = 22050;
+// 1/100[s] 刻みのデータをサンプリング周波数に合わせる
+const getFrequency = (freq_band_passed: number[], SAMPLING_RATE: number) => {
+  const CSV_SAMPLING_RATE = 100;
   const N = SAMPLING_RATE / CSV_SAMPLING_RATE;
-  const size = frequency_001_band_passed.length * SAMPLING_RATE; // CSV_SAMPLING_RATE
-  const frequency = getRange(0, size).map(i => 2 * Math.PI * frequency_001_band_passed[Math.floor(i / N)]);
-  console.log(__LINE__++); // 3
+  const size = Math.floor(freq_band_passed.length * SAMPLING_RATE / CSV_SAMPLING_RATE);
+  console.log(`size: ${size}`);
+  const frequency = getRange(0, size).map(i => 2 * Math.PI * freq_band_passed[Math.floor(i / N)]);
+  return frequency;
+};
+
+const getWav = (src: number[], SAMPLING_RATE: number) => {
+  const wav = new WaveFile();
+  wav.fromScratch(1, SAMPLING_RATE, "16", src);
+  return wav.toBuffer();
+};
+
+const main = (argv: string[]) => {
+  const csv_file_path = argv[2];
+
+  const input_data = fs.readFileSync(csv_file_path);
+  const parsed_data: VocalsF0CSV[] = parse(input_data, { columns: true, cast: true, delimiter: ',' });
+
+  const SAMPLING_RATE = 22050;
+  // 瞬間周波数 [Hz/s]
+  const freq_row = parsed_data.map(e => e.frequency);
+  const freq_rounded = freq_row.map(freq => roundOnMIDI(freq));
+  const freq_median_filtered = getMedianFrequency(freq_rounded);
+  const freq_band_passed = getBandpassEdFrequency(freq_median_filtered);
+  const frequency = getFrequency(freq_band_passed, SAMPLING_RATE);
 
   // output
-  const out_filename = `${argv[3]}/vocals`;
-  const out_midi_json = fs.createWriteStream(`${out_filename}.midi.json`);
-  out_midi_json.write(JSON.stringify(frequency_001_band_passed.map(e => Math.round(freq2midi(e))), undefined, "  "));
-  out_midi_json.on("error",(e)=>{
-    console.log(e);
-    console.log("エラーの表示");
-  });
-  console.log(__LINE__++); // 4
-
-  const out_json = fs.createWriteStream(`${out_filename}.json`);
-  console.log(__LINE__++); // 5
-  out_json.write(JSON.stringify(frequency_001_band_passed));
-  out_json.on("error", (e)=>{
-    console.log(e);
-    console.log("エラーの表示2");
-  });
-  console.log(__LINE__++); // 6
+  const out_dir = `${argv[3]}`;
+  if (!fs.existsSync(out_dir)) { fs.mkdirSync(out_dir); }
+  const out_filename = out_dir + "/vocals";
+  fs.writeFileSync(`${out_filename}.midi.json`, JSON.stringify(freq_band_passed.map(e => Math.round(freq2midi(e)))/*, undefined, "  "*/));
+  fs.writeFileSync(`${out_filename}.json`, JSON.stringify(freq_band_passed/*, undefined, " "*/));
 
   // サイン波の音で確認するため, 瞬間周波数を積分して位相を求める
   const freq2phase = new Freq2Phase(frequency[0], SAMPLING_RATE);
   const phase = frequency.map(freq => freq2phase.calc(freq));
-  const sinoid = phase.map(e=>Math.floor(Math.sin(e)*0.8*32767));
-  const sinoid_wav = new WaveFile();
-  sinoid_wav.fromScratch(1, SAMPLING_RATE, "16", sinoid);
-  const out_f0_wav = fs.createWriteStream(`${out_filename}.f0.wav`);
-  out_f0_wav.write(sinoid_wav.toBuffer());
-  out_f0_wav.on("error", (e)=>{
-    console.log(e);
-    console.log("エラーの表示3");
-  });
-
-  console.log(__LINE__++);  // 7
-
-  const mini_sinoid = sinoid.slice(17 * SAMPLING_RATE, 40 * SAMPLING_RATE);
-  const mini_sinoid_wav = new WaveFile();
-  mini_sinoid_wav.fromScratch(1, SAMPLING_RATE, "16", mini_sinoid);
-  const out_mini_f0_wav = fs.createWriteStream(`${out_filename}mini.f0.wav`);
-  out_mini_f0_wav.write(mini_sinoid_wav.toBuffer());
-  out_mini_f0_wav.on("error", (e)=>{
-    console.log(e);
-    console.log("エラーの表示4");
-  });
-  console.log(__LINE__++);  // 8
+  const sinoid = phase.map(e => Math.floor(Math.sin(e) * 0.8 * 32767));
+  fs.writeFileSync(
+    `${out_filename}.f0.wav`,
+    getWav(sinoid, SAMPLING_RATE)
+  );
+  fs.writeFileSync(
+    `${out_filename}mini.f0.wav`,
+    getWav(sinoid.slice(17 * SAMPLING_RATE, 40 * SAMPLING_RATE), SAMPLING_RATE)
+  );
 };
 
 main(process.argv);

@@ -66,7 +66,7 @@ export const totalProd = (array: number[]) => array.reduce((p, c) => p * c);
 export const squareSum = (array: number[]) => [0, ...array].reduce((p, c) => p + c * c);
 export const average = (array: number[]) => totalSum(array) / array.length;
 export const variant = (array: number[]) => squareSum(array) / array.length - square(average(array));
-export const median = (array: number[]) => ((s, H) => (s[Math.floor(H)] + s[Math.ceil(H)]) / 2)(array.sort(), array.length / 2);
+export const median = (array: number[]) => ((sorted, H) => (sorted[Math.floor(H)] + sorted[Math.ceil(H)]) / 2)(array.sort(), array.length / 2);
 
 // 正規乱数を生成
 export const normal_rand = (m: number, s: number) => {

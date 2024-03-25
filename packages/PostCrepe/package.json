@@ -13,7 +13,7 @@
     "build": "tsup index.ts --sourcemap --dts --format esm,cjs --minify"
   },
   "dependencies": {
-    "csv": "^6.3.8",
+    "csv-parse": "^5.5.5",
     "wavefile": "^11.0.0"
   }
 }
