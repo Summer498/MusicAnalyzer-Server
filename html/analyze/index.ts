@@ -108,7 +108,7 @@ const updatable = [
   getChordKeysSVG(romans),
   getDMelodySVG(d_melodies),
   melody_svgs,
-//  IR_svgs
+  IR_svgs
 ];
 updatable.forEach(e => updatable_registry.register(e));
 const current_time_line = SVG.line({ name: "current_time", "stroke-width": 5, stroke: "#000" });

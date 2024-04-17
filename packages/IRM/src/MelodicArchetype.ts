@@ -14,11 +14,11 @@ export type TrigramProspectiveSymbol =
   | "R" | "IR" | "VR"
   | "D" | "ID"
 
-  export type RetrospectiveSymbol =
+export type RetrospectiveSymbol =
   | "(P)" | "(IP)" | "(VP)"
   | "(R)" | "(IR)" | "(VR)"
   | "(D)" | "(ID)"
-  
+
 export type ProspectiveSymbol = TrigramProspectiveSymbol | "M" | "dyad"
 export type ArchetypeSymbol = ProspectiveSymbol | RetrospectiveSymbol
 
@@ -90,12 +90,12 @@ export class Archetype {
       this.retrospective = T.chroma < initial.chroma;
       if (i_mgn === "AB") { this.symbol = "VP"; }
       else if (v_mgn === "AB") { this.symbol = "IP"; }
-      else { this.symbol = "VP"; }
+      else { this.symbol = "P"; }
     }
     if (P4.chroma <= initial.chroma && initial.chroma < P5.chroma) {
       this.retrospective = null;
     }
-    if(this.retrospective){
+    if (this.retrospective) {
       console.error("retrospective");
       this.symbol = retrospectiveSymbol(this.symbol);
     }
