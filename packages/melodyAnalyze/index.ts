@@ -3,13 +3,10 @@ import { Chord, _Chord, _Note, _Scale } from "../TonalObjects";
 import { compress, TimeAnd } from "../timeAnd";
 import { TimeAndRomanAnalysis } from "../chordToRoman";
 import { Archetype } from "../IRM";
+import { default as yargs } from "yargs";
+import { hideBin } from "yargs/helpers";
 
 const mod = (x: number, m: number) => (x % m + m) % m;
-const parse_csv = (str: string) => {
-  const separated = str.split(",");
-  const ret = separated.map(e => parseFloat(e));
-  return ret;
-};
 
 export type Gravity = { destination?: number; resolved?: true }
 export type MelodyAnalysis = {
@@ -86,22 +83,67 @@ const analyzeMelody = (
   });
 };
 
+interface CommandLineOptions {
+  melody_filename: string;
+  roman_filename: string;
+  sampling_rate: number;
+  outfile: string;
+}
+
+const parseArgs = (argv: string[]) => {
+  const parsed_argv = yargs(hideBin(argv))
+    .option('melody_filename', {
+      alias: 'm',
+      type: 'string',
+      description: 'The filename of the melody',
+      demandOption: true
+    })
+    .option('roman_filename', {
+      alias: 'r',
+      type: 'string',
+      description: 'The filename of the roman chords',
+      demandOption: true
+    })
+    .option('sampling_rate', {
+      alias: 's',
+      type: 'number',
+      description: 'The sampling rate',
+      demandOption: true
+    })
+    .option('outfile', {
+      alias: 'o',
+      type: 'string',
+      description: 'The output file',
+      demandOption: true
+    })
+    .parseSync() as CommandLineOptions; // 引数を解析します
+
+  return {
+    melody_file: parsed_argv.melody_filename,
+    roman_file: parsed_argv.roman_filename,
+    sampling_rate: parsed_argv.sampling_rate,
+    out_file: parsed_argv.outfile
+  };
+};
+
 const main = (argv: string[]) => {
-  const melody_filename = argv[2];
-  const roman_filename = argv[3];
-  const melody_txt = fs.readFileSync(melody_filename, "utf-8");
-  const roman_txt = fs.readFileSync(roman_filename, "utf-8");
-  const melody_sr = 100; // CREPE から得られるメロディは毎秒 100 サンプル
-  const melody_csv = parse_csv(melody_txt).map(e => isNaN(e) ? null : Math.round(freqToMidi(e))); // compress が NaN を全て別のオブジェクト扱いするので null に置換する
-  const comp_melody = compress(melody_csv);
+  const args = parseArgs(argv);
+  const melody_txt = fs.readFileSync(args.melody_file, "utf-8");
+  const roman_txt = fs.readFileSync(args.roman_file, "utf-8");
+  const melody_data: number[] = JSON.parse(melody_txt);
+  const melody = melody_data.map(e => e === null ? null : Math.round(freqToMidi(e)));
+  const comp_melody = compress(melody);
   const non_null_melody = (() => {
     const res: TimeAndMelody[] = [];
-    comp_melody.forEach(e => e.item === null ? 0 : res.push({ begin: e.begin / melody_sr, end: e.end / melody_sr, note: e.item })); // value が null の場合は time ごと除く
+    comp_melody.forEach(e => e.item === null ? 0 : res.push({ begin: e.begin / args.sampling_rate, end: e.end / args.sampling_rate, note: e.item })); // value が null の場合は time ごと除く
     return res;
   })();
 
   const time_and_roman = JSON.parse(roman_txt);
 
-  console.log(JSON.stringify(analyzeMelody(non_null_melody, time_and_roman), undefined, "  "));
+  fs.writeFileSync(
+    args.out_file,
+    JSON.stringify(analyzeMelody(non_null_melody, time_and_roman), undefined, "  ")
+  );
 };
 main(process.argv);
