@@ -26,9 +26,8 @@ $song_file_ext = pathinfo($song_file_name)["extension"];
 $song_name = pathinfo($song_file_name)["filename"];
 $m_src = "../../resources/$song_name/$song_file_name"; // media source
 
-$chords = shell_exec("../../ranalyze.sh \"{$song_file_path}\" --quiet");  //  --roman_reanalyze, reanalyze roman
-//$melodies = shell_exec("../../manalyze.sh \"{$song_file_path}\" --quiet");  // --melody_reanalyze, reanalyze melody
-$melodies = shell_exec("../../manalyze.sh \"{$song_file_path}\" --quiet --melody_reanalyze");  // --melody_reanalyze, reanalyze melody
+$chords = shell_exec("../../ranalyze.sh \"{$song_file_path}\" --quiet");
+$melodies = shell_exec("../../manalyze.sh \"{$song_file_path}\" --quiet");
 shell_exec("mv \"$song_file_path\" \"$m_src\"");
 ?>
 <html lang="ja">
