@@ -3,16 +3,17 @@
 # -f, --force_reanalyze, ignore cache
 # -h, --help, show help
 # -q, --quiet, don't show success message
-# -r, --roman_reanalyze, reanalyze roman
-pushd $(dirname "$0") > /dev/null
-. ./MUSIC_ANALYZER/bin/activate
 
-red=[31m
-green=[32m
-defcol=[39m
+readonly working_dir=$(dirname "$0")
+readonly red=$(echo [31m)
+readonly green=$(echo [32m)
+readonly def_col=$(echo [39m)
 export PYTHONPATH="./python:$PYTHONPATH"
 
-help(){
+pushd "$working_dir" > /dev/null
+. ./MUSIC_ANALYZER/bin/activate
+
+show_help(){
     awk 'NR > 2 {                          # シバンは出力しない
     if (/^#/) { sub("^# ?", ""); print } # /^#/ にマッチしたら "^# ?" を取り除いて出力
     else { exit }                        # /^#/ にマッチしなくなったら終了
@@ -20,15 +21,15 @@ help(){
     exit 0;
 }
 processOptions(){
-    tgt=$1
+    local -r tgt=$1
     shift
-    opts=($@)
-    flag=0
+    local -r opts=($@)
+    local flag=0
     for i in ${!opts[@]}
     do
         if [[ "$tgt" =~ ${opts[$i]} ]]; then  # NOTE: $tgt includes ${opts[$i]}
             eval ${command[$i]}
-            flag=1
+            local flag=1
             break
         fi
     done
@@ -39,53 +40,51 @@ processOptions(){
 
 debug_mode=1
 force_reanalyze=0
-roman_reanalyze=0
+# 配列の番号を対応付けること
+readonly short=(f h q)
+readonly long=(
+    "--force_reanalyze"
+    "--help"
+    "--quiet"
+)
+readonly command=(
+    "force_reanalyze=1"
+    "show_help"
+    "debug_mode=0"
+)
 while (( $# > 0 ))
 do
-    # 配列の番号を対応付けること
-    short=(f h q r)
-    long=(
-        "--force_reanalyze"
-        "--help"
-        "--quiet"
-        "--roman_reanalyze"
-    )
-    command=(
-        "force_reanalyze=1"
-        "help"
-        "debug_mode=0"
-        "roman_reanalyze=1"
-    )
-    if [[ "$1" =~ ^--.*  ]]; then  # long options
-        processOptions $1 ${long[*]}
-    elif [[ "$1" =~ ^-.* ]]; then  # short option
-        processOptions $1 ${short[*]}
+    if [[ "$1" =~ ^--.*  ]]; then processOptions $1 ${long[*]}; # long options
+    elif [[ "$1" =~ ^-.* ]]; then processOptions $1 ${short[*]}; # short option
     elif [[ "$1" =~ .* ]]; then  # 引数
-        filepath="$1"
-        filename=$(basename "$1")  # 引数のファイル名
-        songname=$(basename "$1" | sed -e 's/\.[^\.]*$//')  # 引数から拡張子を取り除く
+        readonly filepath="$1"
+        readonly filename=$(basename "$1")  # 引数のファイル名
+        readonly songname=$(basename "$1" | sed -e 's/\.[^\.]*$//')  # 引数から拡張子を取り除く
     fi
     shift
 done
 
-debug_log (){
-    if [ $debug_mode -eq 1 ]; then
-        echo $@ >&2
-    fi
-}
+debug_log (){ if [ $debug_mode -eq 1 ]; then echo $@ >&2; fi }
 detectFile(){
-    dst="$1"
+    local -r dst="$1"
     if [ ! -e "$dst" ]; then
-        echo ${red}file $dst not exist$defcol >&2
+        echo ${red}file $dst not exist$def_col >&2
         popd > /dev/null
         exit 1
     fi
 }
+makeNewDir(){
+    local -r dst_dir="$1"
+    if [ ! -e "$dst_dir" ]; then
+        mkdir -p "$dst_dir"
+        chmod -R 757 "$dst_dir"    
+    fi
+}
 runProcessWithCache(){
-    dst="$1"
-    process="$2"
-    if [ $force_reanalyze -eq 0 ] && [ -e "$dst" ]; then
-        debug_log ${green}$dst already exist$defcol
+    local -r force=$1    #force を個別に操作できるようにする
+    local -r dst="$2"
+    local -r process="$3"
+    if [ $force_reanalyze -eq 0 ] && [ -e "$dst" ]; then debug_log ${green}$dst already exist$def_col;
     else
         # 本処理
         makeNewDir "$(dirname "$dst")"
@@ -94,32 +93,21 @@ runProcessWithCache(){
         chmod 757 "$dst"
     fi
 }
-makeNewDir(){
-    dst_dir="$1"
-    if [ ! -e "$dst_dir" ]; then
-        mkdir -p "$dst_dir"
-        chmod -R 757 "$dst_dir"    
-    fi
+
+main(){
+    # コード推定
+    local -r chord_ext_src="$filepath"
+    local -r chord_ext_dst="./resources/$songname/analyzed/chord/chords.json"
+    detectFile "$chord_ext_src"
+    runProcessWithCache $force_reanalyze "$chord_ext_dst" "python -m chordExtract \"$chord_ext_src\" \"$chord_ext_dst\""
+
+    # コードをローマ数字変換
+    local -r chord_to_roman_src=$chord_ext_dst
+    local -r chord_to_roman_dst="./resources/$songname/analyzed/chord/roman.json"
+    detectFile "$chord_to_roman_src"
+    runProcessWithCache $force_reanalyze "$chord_to_roman_dst" "node ./packages/chordToRoman < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\""
+    cat "$chord_to_roman_dst"
 }
-
-# コード推定
-chord_ext_src="$filepath"
-chord_ext_dst="./resources/$songname/analyzed/chord/chords.json"
-detectFile "$chord_ext_src"
-runProcessWithCache "$chord_ext_dst" "python -m chordExtract \"$chord_ext_src\" \"$chord_ext_dst\""
-
-# コードをローマ数字変換
-chord_to_roman_src=$chord_ext_dst
-chord_to_roman_dst="./resources/$songname/analyzed/chord/roman.json"
-detectFile "$chord_to_roman_src"
-runProcessWithCache "$chord_to_roman_dst" "node ./packages/chordToRoman < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\""
-# res=$( eval "node ./packages/chordToRoman < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\"" )
-# 最終処理だけ reanalyze option が on の場合は実行する.
-if [ $force_reanalyze -eq 0 ] && [ -e "$chord_to_roman_dst" ] && [ $roman_reanalyze -eq 1 ]; then
-    debug_log "node ./packages/chordToRoman < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\""
-    node ./packages/chordToRoman < "$chord_to_roman_src" > "$chord_to_roman_dst"
-    chmod 757 "$chord_to_roman_dst"
-fi
-cat "$chord_to_roman_dst"
+main
 
 popd > /dev/null
