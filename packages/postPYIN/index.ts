@@ -60,7 +60,7 @@ const getMedianFrequency = (freq_rounded: (number | null)[]) => {
 };
 
 const getBandpassEdFrequency = (freq_median_filtered: number[]) => {
-  const LOW = 220; // hz
+  const LOW = 110; // hz
   const HIGH = 880; // hz
   // バンドパスで低すぎる/高すぎる音を除く
   return freq_median_filtered.map(freq => bandpass(freq, LOW, HIGH));
@@ -71,8 +71,7 @@ const getFrequency = (freq_band_passed: number[]) => {
   const DATA_SAMPLING_RATE = Math.floor(44100 / 512);
   const N = SAMPLING_RATE / DATA_SAMPLING_RATE;
   const size = Math.floor(freq_band_passed.length * SAMPLING_RATE / DATA_SAMPLING_RATE);
-  console.log(`size: ${size}`);
-  const frequency = getRange(0, size).map(i => 2 * Math.PI * freq_band_passed[Math.floor(i / N)]);
+  const frequency = getRange(0, size).map(i => 2 * 2 * Math.PI * freq_band_passed[Math.floor(i / N)]);
   return frequency;
 };
 
@@ -96,8 +95,6 @@ const main = (argv: string[]) => {
 
   const data = fs.readFileSync(vocal_f0_file_path, "utf8");
   const f0_data: Vocals = JSON.parse(data);
-  // const input_data = fs.readFileSync(vocal_f0_file_path);
-  // const parsed_data: VocalsF0CSV[] = parse(input_data, { columns: true, cast: true, delimiter: ',' });
 
   // 瞬間周波数 [Hz/s]
   const freq_row = f0_data.f0;
