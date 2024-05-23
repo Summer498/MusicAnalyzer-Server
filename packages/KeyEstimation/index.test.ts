@@ -10,6 +10,7 @@ describe("dummy", () => {
 });
 
 // TODO: jest 化
+/*
 const comment = () => {
   //const progression = new ChordProgression(["FM7", "G7", "Em7", "Am7"]);
   const progression = new ChordProgression(["CM7", "G7", "Am7", "Em7", "FM7", "CM7", "FM7", "G7", "AmM7"]);
@@ -31,3 +32,4 @@ const comment = () => {
   console.log(progression.getChordIdSequence());
   console.log(progression.getMinimumPath());
 };
+*/
