@@ -6,7 +6,7 @@ defcol=[39m
 # また, 余計な処理を省くことでテストの高速化も図れる
 if find packages/*/dist/*.js -type f > /dev/null 2>&1; then
     for dist in packages/*/dist; do
-        echo $green$dist$defcol
+        echo ${green}remove $dist$defcol
         rm -R $dist
     done
 fi
