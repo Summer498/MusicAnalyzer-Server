@@ -1,13 +1,20 @@
+import { Assertion } from "../StdLib";
 import { mod } from "../Math";
 import { _Note } from "../TonalObjects";
+import { map2rgbByHue } from "./src/util";
 
 // 0 <= h < 360; 0 <= s <= 1; 0 <= b <= 1
 // h |-> [red, yellow, green, cyan, blue, magenta]
 export const hsv2rgb = (h: number, s: number, v: number) => {
-  const H = mod(h, 360) / 60;
-  const x = s * Math.abs(mod(H + 1, 2) - 1);
-  const rgb = [[s, x, 0], [x, s, 0], [0, s, x], [0, x, s], [x, 0, s], [s, 0, x]][Math.floor(H)];
-  return rgb.map(e => Math.floor((e + 1 - s) * v * 255));
+  new Assertion(0 <= s && s <= 1).onFailed(() => { throw new RangeError(`Unexpected value received. It should be in 0 <= s <= 1, but max is ${s}`); });
+  new Assertion(0 <= v && v <= 1).onFailed(() => { throw new RangeError(`Unexpected value received. It should be in 0 <= v <= 1, but mid is ${v}`); });
+
+  const H = mod(h, 360) / 60;  // 0 to 6
+  const max = v * s;
+  const mid = v * s * Math.abs(mod(H + 1, 2) - 1);
+  const m = v * (1 - s);
+  const rgb = map2rgbByHue(H, max, mid);
+  return rgb.map(e => Math.floor((e + m) * 256)).map(e => e > 255 ? 255 : e);
 };
 
 export const rgbToString = (rgb: number[]) => '#' + rgb.map(e => ('0' + e.toString(16)).slice(-2)).join('');
