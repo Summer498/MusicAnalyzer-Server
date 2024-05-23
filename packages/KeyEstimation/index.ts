@@ -1,5 +1,6 @@
 import { _RomanNumeral, _Chord, _Interval, _Note, _Scale, Chord, Scale, getIntervalDegree } from "../TonalObjects";
-import { dynamicLogViterbi, findMin } from "../Graph";
+import { Compare } from "../Math";
+import { dynamicLogViterbi } from "../Graph";
 import { _throw, Assertion, assertNonNullable as NN, IdDictionary } from "../StdLib";
 import { getDistance, getKeysIncludeTheChord } from "../TPS";
 
@@ -132,7 +133,7 @@ export class ChordProgression {
       this.getDistanceOfStates.bind(this),
       e => 0,
       this.lead_sheet_chords,
-      findMin,
+      Compare.findMin,
     ).trace.map((e, i) => e.map(scale => new RomanChord(
       scale,
       _Chord.get(this.lead_sheet_chords[i]),

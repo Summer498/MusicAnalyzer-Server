@@ -49,10 +49,28 @@ export const vMul = (vector1: number[], vector2: number | number[]) => vFunc(vec
 export const vDiv = (vector1: number[], vector2: number | number[]) => vFunc(vector1, vector2, (a, b) => a / b);
 export const vMod = (vector1: number[], vector2: number | number[]) => vFunc(vector1, vector2, (a, b) => mod(a, b));
 export const vGet = <T>(array: T[], indexes: number[]) => indexes.map(e => array[e]);
+
 export const max = (array: number[]) => array.reduce((p, c) => Math.max(p, c));
 export const min = (array: number[]) => array.reduce((p, c) => Math.min(p, c));
 export const argmax = (array: number[]) => array.map((e, i) => [e, i]).reduce((p, c) => c[0] >= p[0] ? c : p)[1];
 export const argmin = (array: number[]) => array.map((e, i) => [e, i]).reduce((p, c) => c[0] <= p[0] ? c : p)[1];
+export type CompareFunc = (a: number, b: number) => boolean;
+export class Compare {
+  static readonly findMin: CompareFunc = (a, b) => a < b;
+  static readonly findMax: CompareFunc = (a, b) => a > b;
+}
+export const argsMinMax = <T>(f: (e: T, i: number) => number, space: T[], compare: CompareFunc,) => {
+  let val = compare(0, 1) ? Infinity : -Infinity;
+  let args: T[] = [];
+  space.forEach((c, i) => {
+    const v = f(c, i);
+    if (compare(v, val)) { val = v; args = [c]; }
+    else if (val === v) { args.push(c); }
+  });
+  return { val, args };
+};
+
+
 
 export const getOnehot = (positionOfOnes: number[], n = 0) => [...Array(Math.max(Math.max(...positionOfOnes) + 1, n))].map((_, i) => bool2number(positionOfOnes.includes(i)),);
 export const getOnehotInMod = (positionOfOnes: number[] | number, m = 1) => {

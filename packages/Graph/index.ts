@@ -1,28 +1,5 @@
 import { unique } from "../StdLib";
-
-type Compare = (a: number, b: number) => boolean;
-export const findMin: Compare = (a, b) => a < b;
-export const findMax: Compare = (a, b) => a > b;
-
-const argsMinMax = <T>(f: (e: T, i: number) => number, space: T[], compare: Compare,) => {
-  let val = compare(0, 1) ? Infinity : -Infinity;
-  let args: T[] = [];
-  space.forEach((c, i) => {
-    const v = f(c, i);
-    if (compare(v, val)) { val = v; args = [c]; }
-    else if (val === v) { args.push(c); }
-  });
-  return { val, args };
-};
-
-const minMax = <T>(f: (e: T) => number, space: T[], compare: Compare) => {
-  let p = compare(0, 1) ? Infinity : -Infinity;
-  for (const c of space) {
-    const val = f(c);
-    if (compare(val, p)) { p = val; }
-  }
-  return p;
-};
+import { argsMinMax, Compare, CompareFunc } from "../Math";
 
 type LogViterbiResult<S> = {
   log_probability: number;
@@ -64,7 +41,7 @@ const _dynamicLogViterbi = <O, S>(
   A: (prev_time: number, time: number, prev_state: S, curr_state: S) => number,
   B: (state: S, observation: O) => number,
   Y: O[],
-  compare: Compare,
+  compare: CompareFunc,
 ): LogViterbiResult<S> => {
   const states = [getStates(0)];  // 最後の trace で回収するためのメモ
   const T = Y.length;
@@ -118,7 +95,7 @@ export const dynamicLogViterbi = <O, S>(
   transitionLogProbabilities: (prev_time: number, time: number, prev_state: S, curr_state: S) => number,
   emissionLogProbabilities: (state: S, observation: O) => number,
   observation_sequence: O[],
-  compare = findMax,
+  compare = Compare.findMax,
 ) => _dynamicLogViterbi(
   getStatesOnTheTime,
   initial_log_probabilities,
@@ -139,21 +116,16 @@ export const dynamicLogViterbi = <O, S>(
 export const logViterbi = <O, S>(
   states: S[],
   initial_log_probabilities: number[],
-  transition_log_probabilities: number[][],
-  emission_log_probabilities: number[][],
+  transitionLogProbabilities: (prev_state: S, curr_state: S) => number,
+  emissionLogProbabilities: (state: S, observation: O) => number,
   observation_sequence: O[],
-) => {
-  const o = Array.from(new Set(observation_sequence));
-  const o2i = (e: O) => o.indexOf(e);
-  const s2i = (e: S) => states.indexOf(e);
-  return dynamicLogViterbi(
-    () => states,
-    initial_log_probabilities,
-    (prev_time: number, time: number, prev_state: S, curr_state: S) => transition_log_probabilities[s2i(prev_state)][s2i(curr_state)],
-    (state: S, observation: O) => emission_log_probabilities[s2i(state)][o2i(observation)],
-    observation_sequence,
-  );
-};
+) => dynamicLogViterbi(
+  () => states,
+  initial_log_probabilities,
+  (pt: number, ct: number, ps: S, cs: S) => transitionLogProbabilities(ps, cs),
+  emissionLogProbabilities,
+  observation_sequence,
+);
 
 /**
  * @brief viterbi algorithm
@@ -166,15 +138,15 @@ export const logViterbi = <O, S>(
 export const viterbi = <O, S>(
   states: S[],
   initial_probabilities: number[],
-  transition_probabilities: number[][],
-  emission_probabilities: number[][],
+  transitionProbabilities: (prev_state: S, curr_state: S) => number,
+  emissionProbabilities: (state: S, observation: O) => number,
   observation_sequence: O[],
 ): ViterbiResult<S> => {
   const log_viterbi = logViterbi(
     states,
     initial_probabilities.map(e => Math.log(e)),
-    transition_probabilities.map(e => e.map(e => Math.log(e))),
-    emission_probabilities.map(e => e.map(e => Math.log(e))),
+    (p, c) => Math.log(transitionProbabilities(p, c)),
+    (s, o) => Math.log(emissionProbabilities(s, o)),
     observation_sequence,
   );
   return {
