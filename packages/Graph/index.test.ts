@@ -47,6 +47,7 @@ describe("viterbi algorithms", () => {
     );
 
     expect(dynamic_log_viterbi_res_with_empty_init.trace).toEqual(expected_trace);
+    expect(dynamic_log_viterbi_res_with_empty_init.log_probability).toBe(Math.log(0.0252));
   });
 
   test("log viterbi test", () => {
