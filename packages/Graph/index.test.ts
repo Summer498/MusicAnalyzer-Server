@@ -37,7 +37,6 @@ describe("viterbi algorithms", () => {
     expect(dynamic_log_viterbi_res.log_probability).toBeCloseTo(Math.log(expected_probability), 15);
   });
 
-  /* TODO: なぜかここの結果が予想と違うので原因を究明する
   test("dynamic log viterbi with empty init test", () => {
     const dynamic_log_viterbi_res_with_empty_init = dynamicLogViterbi(
       () => states,
@@ -49,7 +48,6 @@ describe("viterbi algorithms", () => {
 
     expect(dynamic_log_viterbi_res_with_empty_init.trace).toEqual(expected_trace);
   });
-  */
 
   test("log viterbi test", () => {
     const log_viterbi_res = logViterbi(
@@ -77,7 +75,3 @@ describe("viterbi algorithms", () => {
     expect(viterbi_res.probability).toBeCloseTo(expected_probability, 15);
   });
 });
-
-// TODO: jest 化
-const comment = () => {
-};

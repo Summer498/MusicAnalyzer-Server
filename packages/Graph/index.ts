@@ -50,7 +50,7 @@ const _dynamicLogViterbi = <O, S>(
 
   // initialize
   states[0].forEach((s_i, i) => {
-    T1[0][i] = pi[i] === undefined ? 0 : pi[i] + B(s_i, Y[0]);
+    T1[0][i] = (pi[i] || 0) + B(s_i, Y[0]);
     T2[0][i] = states[0];
   });
   // 帰納
