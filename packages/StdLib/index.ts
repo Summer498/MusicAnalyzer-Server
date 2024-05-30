@@ -40,10 +40,7 @@ export const hasSameValue = (o1: any, o2: any) => {
   return true;
 };
 
-// エラーを期待するテストのための, 予想外のエラーを受け取った時のエラー
-export class UnexpectedErrorThrownError extends Error { constructor(message = "") { super(message); } }
 export class NotImplementedError extends Error { constructor(message = "") { super(message); } }
-
 export class Assertion {
   #assertion: boolean;
   constructor(assertion: boolean) {
