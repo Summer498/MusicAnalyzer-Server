@@ -1,11 +1,11 @@
 import { _RomanNumeral, _Chord, _Interval, _Note, _Scale, Chord, Scale, getIntervalDegree } from "../TonalObjects";
 import { Compare } from "../Math";
 import { dynamicLogViterbi } from "../Graph";
-import { _throw, Assertion, assertNonNullable as NN, IdDictionary } from "../StdLib";
+import { _throw, Assertion, assertNonNullable as NN } from "../StdLib";
 import { getDistance, getKeysIncludeTheChord } from "../TPS";
 
 const get_roman = (scale: Scale, chord: Chord) => {
-  // TODO: Vb が V として出力される
+  // TODO: fix: Vb が V として出力される
   chord.tonic || _throw(TypeError("chord.tonic should not be null"));
   const tonic = chord.tonic!;
   // const true_tonic = scale.notes.find(e => _Note.chroma(e) === _Note.chroma(tonic));
@@ -72,35 +72,15 @@ export const getChord = (chord_string: string): Chord => {
 
 export class ChordProgression {
   lead_sheet_chords: string[];
-  #chord_dictionary: IdDictionary<string>;
-  #scale_dictionary: IdDictionary<string>;
-  #setDictionary(lead_sheet_chords: string[]) {
-    for (const chord_str of lead_sheet_chords) {
-      const chord = getChord(chord_str);
-      const candidate_scales = getKeysIncludeTheChord(chord);
-
-      for (const scale of candidate_scales) {
-        this.#chord_dictionary.register(chord.name);
-        this.#scale_dictionary.register(scale.name);
-      }
-      if (candidate_scales.length === 0) {
-        this.#scale_dictionary.register(_Scale.get("").name);
-      }
-    }
-  }
-  // returns all field
+  // returns all member
   debug() {
     return {
       lead_sheet_chords: this.lead_sheet_chords,
-      chord_dict: this.#chord_dictionary.showAll(),
-      scale_dict: this.#scale_dictionary.showAll(),
     };
   }
+
   constructor(lead_sheet_chords: string[]) {
-    this.#chord_dictionary = new IdDictionary<string>();
-    this.#scale_dictionary = new IdDictionary<string>();
     this.lead_sheet_chords = lead_sheet_chords.map(e => getChord(e).name);
-    this.#setDictionary(this.lead_sheet_chords);
   }
   getStatesOnTime(t: number) {
     const chord = getChord(this.lead_sheet_chords[t]);
@@ -129,7 +109,7 @@ export class ChordProgression {
   getMinimumPath() {
     return dynamicLogViterbi(
       this.getStatesOnTime.bind(this),
-      [0],
+      [],
       this.getDistanceOfStates.bind(this),
       e => 0,
       this.lead_sheet_chords,

@@ -40,27 +40,6 @@ export const hasSameValue = (o1: any, o2: any) => {
   return true;
 };
 
-export class IdDictionary<Key extends keyof any> { // eslint-disable-line @typescript-eslint/no-explicit-any
-  #item2id: { [key: keyof any]: number } = {}; // eslint-disable-line @typescript-eslint/no-explicit-any
-  #id2item: Key[] = [];
-  get length() {
-    return this.#id2item.length;
-  }
-  register(item: Key) {
-    const id = this.#item2id[item];
-    if (id !== undefined) { return id; }
-    else {
-      const i = this.#id2item.length;
-      this.#item2id[item] = i;
-      this.#id2item[i] = item;
-      return i;
-    }
-  }
-  getId(item: Key) { return assertNotUndefined(this.#item2id[item], new ReferenceError(`key ${String(item)} not found`)); }
-  getItem(id: number) { return assertNotUndefined(this.#id2item[id], new ReferenceError(`id ${String(id)} not found`)); }
-  showAll() { return this.#id2item; }
-}
-
 // エラーを期待するテストのための, 予想外のエラーを受け取った時のエラー
 export class UnexpectedErrorThrownError extends Error { constructor(message = "") { super(message); } }
 export class NotImplementedError extends Error { constructor(message = "") { super(message); } }
