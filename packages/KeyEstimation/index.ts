@@ -1,16 +1,20 @@
 import { _RomanNumeral, _Chord, _Interval, _Note, _Scale, Chord, Scale, getIntervalDegree } from "../TonalObjects";
 import { Compare } from "../Math";
 import { dynamicLogViterbi } from "../Graph";
-import { _throw, Assertion, assertNonNullable as NN } from "../StdLib";
+import { _throw, Assertion } from "../StdLib";
+//import { assertNonNullable as NN } from "../StdLib";
 import { getDistance, getKeysIncludeTheChord } from "../TPS";
 
 const get_roman = (scale: Scale, chord: Chord) => {
   // TODO: fix: Vb が V として出力される
-  chord.tonic || _throw(TypeError("chord.tonic should not be null"));
+  // chord.tonic || _throw(TypeError("chord.tonic should not be null"));  // NOTE: chord.tonic を null にするテストケースを思いつかないので(=無さそうなので)コメントアウト
   const tonic = chord.tonic!;
   // const true_tonic = scale.notes.find(e => _Note.chroma(e) === _Note.chroma(tonic));
   // const interval = _Interval.distance(NN(scale.tonic), NN(true_tonic));
-  const interval = _Interval.distance(NN(scale.tonic), NN(tonic));
+  if (scale.tonic == null) {  // NOTE: scale が空の場合, ローマ数字分析ができないのでとりあえずコードをそのまま返す
+    return chord.name;
+  }
+  const interval = _Interval.distance(scale.tonic, tonic);
   const roman = _RomanNumeral.get(_Interval.get(interval));
   return roman.roman + " " + chord.type;
 };
@@ -48,16 +52,10 @@ export const getChord = (chord_string: string): Chord => {
   const root = body_and_root.root;
   const chord = _Chord.get(body_and_root.body);
   if (chord_string === "") { return chord; }
-  new Assertion(chord.tonic != null).onFailed(() => {
-    console.log("received:");
-    console.log(chord);
-    throw new TypeError("tonic must not be null");
-  });
-  new Assertion(!chord.empty).onFailed(() => {
-    console.log("received:");
-    console.log(chord);
-    throw Error('Illegal chord symbol "' + chord_string + '" received');
-  });
+
+  new Assertion(!chord.empty).onFailed(() => { throw Error(`Illegal chord symbol "${chord_string}" received`); });
+  // new Assertion(chord.tonic != null).onFailed(() => { throw new TypeError("tonic must not be null"); });  // NOTE: chord.tonic を null にするテストケースを思いつかないので(=無さそうなので)コメントアウト
+
   if (root != "" && !chord.notes.includes(root)) {
     // TODO: 現在はベース音をプッシュすると同じ(に見える)コードに対して候補が変化するように見えてしまう
     // ベース音を含むといろいろなコードが想定できるので, 候補スケールとして任意のスケールを使えるようにする
@@ -72,12 +70,6 @@ export const getChord = (chord_string: string): Chord => {
 
 export class ChordProgression {
   lead_sheet_chords: string[];
-  // returns all member
-  debug() {
-    return {
-      lead_sheet_chords: this.lead_sheet_chords,
-    };
-  }
 
   constructor(lead_sheet_chords: string[]) {
     this.lead_sheet_chords = lead_sheet_chords.map(e => getChord(e).name);
@@ -92,14 +84,9 @@ export class ChordProgression {
   }
 
   getDistanceOfStates(t1: number, t2: number, scale1: Scale, scale2: Scale) {
-    if (scale1.empty) {
-      console.warn("empty scale received");
-      return 0;
-    }
-    if (scale2.empty) {
-      console.warn("empty scale received");
-      return 0;
-    }
+    if (scale1.empty) { console.warn("empty scale received"); return 0; }
+    if (scale2.empty) { console.warn("empty scale received"); return 0; }
+
     return getDistance(
       new RomanChord(scale1, getChord(this.lead_sheet_chords[t1])),
       new RomanChord(scale2, getChord(this.lead_sheet_chords[t2])),
