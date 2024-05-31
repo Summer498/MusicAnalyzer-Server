@@ -119,12 +119,14 @@ export const logViterbi = <O, S>(
   transitionLogProbabilities: (prev_state: S, curr_state: S) => number,
   emissionLogProbabilities: (state: S, observation: O) => number,
   observation_sequence: O[],
+  compare = Compare.findMax,
 ) => dynamicLogViterbi(
   () => states,
   initial_log_probabilities,
   (pt: number, ct: number, ps: S, cs: S) => transitionLogProbabilities(ps, cs),
   emissionLogProbabilities,
   observation_sequence,
+  compare,
 );
 
 /**
@@ -141,6 +143,7 @@ export const viterbi = <O, S>(
   transitionProbabilities: (prev_state: S, curr_state: S) => number,
   emissionProbabilities: (state: S, observation: O) => number,
   observation_sequence: O[],
+  compare = Compare.findMax,
 ): ViterbiResult<S> => {
   const log_viterbi = logViterbi(
     states,
@@ -148,6 +151,7 @@ export const viterbi = <O, S>(
     (p, c) => Math.log(transitionProbabilities(p, c)),
     (s, o) => Math.log(emissionProbabilities(s, o)),
     observation_sequence,
+    compare,
   );
   return {
     probability: Math.exp(log_viterbi.log_probability),
