@@ -77,7 +77,7 @@ makeNewDir(){
     local -r dst_dir="$1"
     if [ ! -e "$dst_dir" ]; then
         mkdir -p "$dst_dir"
-        chmod -R 757 "$dst_dir"    
+        chmod -R 775 "$dst_dir"    
     fi
 }
 runProcessWithCache(){
@@ -90,7 +90,7 @@ runProcessWithCache(){
         makeNewDir "$(dirname "$dst")"
         debug_log "$process"
         eval $process
-        chmod 757 "$dst"
+        chmod 775 "$dst"
     fi
 }
 

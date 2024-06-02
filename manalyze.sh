@@ -75,7 +75,7 @@ makeNewDir(){
     local -r dir="$1"
     if [ ! -e "$dir" ]; then
         mkdir -p "$dir"
-        chmod -R 757 "$dir"
+        chmod -R 775 "$dir"
     fi
 }
 runProcessWithCache(){
@@ -88,7 +88,7 @@ runProcessWithCache(){
         makeNewDir "$(dirname "$dst")"
         debug_log "$process"
         eval $process
-        chmod 757 "$dst"
+        chmod 775 "$dst"
     fi
 }
 
@@ -135,7 +135,7 @@ main(){
     #TODO: 出力先ファイル名が勝手に決まるのを直して引数から指定できるようにしたい
 
 
-    local -r pitch_est="pYIN"
+    local -r pitch_est="CREPE"
     # 音高推定 (CREPE)
     if [ "CREPE" = $pitch_est ]; then
         local -r crepe_src="$separate_dst"
