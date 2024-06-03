@@ -56,8 +56,8 @@ do
     elif [[ "$1" =~ ^-.* ]]; then processOptions $1 ${short[*]}; # short option
     elif [[ "$1" =~ .* ]]; then  # 引数
         readonly filepath="$1"
-        readonly filename=$(basename "$1")  # 引数のファイル名
-        readonly songname=$(basename "$1" | sed -e 's/\.[^\.]*$//')  # 引数から拡張子を取り除く
+        readonly filename="$(basename "$1")"  # 引数のファイル名
+        readonly songname="$(basename "$1" | sed -e 's/\.[^\.]*$//')"  # 引数から拡張子を取り除く
     fi
     shift
 done
@@ -87,7 +87,7 @@ runProcessWithCache(){
         # 本処理
         makeNewDir "$(dirname "$dst")"
         debug_log "$process"
-        eval $process
+        eval "$process"
         chmod 775 "$dst"
     fi
 }
@@ -169,7 +169,7 @@ main(){
         detectFile "$pyin_src"
         runProcessWithCache $force_reanalyze "$pyin_dst" "python -m pyin \"$pyin_src\" --fmin 128 --fmax 4096 -o \"$pyin_dst\""
         local -r img_src="$pyin_dst"
-        local -r img_dst="$(dirname $pyin_dst)/vocals.f0.png"
+        local -r img_dst="$(dirname "$pyin_dst")/vocals.f0.png"
         runProcessWithCache $force_reanalyze "$img_dst" "python -m pyin2img \"$img_src\" --audio_file \"$pyin_src\" -o \"$img_dst\""
 
         # 音高推定結果の処理 (pYIN 系)
