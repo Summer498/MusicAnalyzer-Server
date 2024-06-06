@@ -1,5 +1,5 @@
 import { default as fs } from "fs";
-import { getRange, median } from "../Math/dist";
+import { getRange, median } from "../Math";
 import { WaveFile } from "wavefile";
 
 const bandpass = (x: number, low: number, high: number) => low <= x && x < high ? x : NaN;
@@ -97,7 +97,7 @@ const main = (argv: string[]) => {
   const f0_data: Vocals = JSON.parse(data);
 
   // 瞬間周波数 [Hz/s]
-  const freq_row = f0_data.f0;
+  const freq_row = f0_data.f0.map(freq => freq === null ? null : freq * 2);  // pYIN の推定結果が 1 オクターブ低く出るので 1 オクターブ上げる
   const freq_rounded = freq_row.map(freq => freq && roundOnMIDI(freq));
   const freq_median_filtered = getMedianFrequency(freq_rounded).map(e => e === null ? NaN : e);
   const freq_band_passed = getBandpassEdFrequency(freq_median_filtered);
