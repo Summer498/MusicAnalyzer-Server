@@ -19,17 +19,17 @@ describe("dummy", () => {
 
 // TODO: jest 化
 const comment = () => {
-  const NO_DEBUG = true;
-  if (NO_DEBUG) {
-    console.warn(`軽量化のために一時的にテストを停止しています.`);
-  }
+  console.log(
+    getDistance(
+      new RomanChord(_Scale.get("C major"), _Chord.get("Am7")),
+      new RomanChord(_Scale.get("C major"), _Chord.get("G7")),
+    ),
+  );
+  
 
   const all_note_symbols = ["Ab", "A", "A#", "Bb", "B", "B#", "Cb", "C", "C#", "Db", "D", "D#", "Eb", "E", "E#", "Fb", "F", "F#", "Gb", "G", "G#",];
   // Range test for regionDistance
   for (let i = 0; i < 21; i++) {
-    if (NO_DEBUG) {
-      break;
-    }
     for (let j = 0; j < 21; j++) {
       const distance = regionDistance(
         _Scale.get(`${all_note_symbols[i]} major`),
@@ -46,9 +46,6 @@ const comment = () => {
   // Range tes for root Distances
   const AtoG = ["A", "B", "C", "D", "E", "F", "G"];
   for (let i = 0; i < 21; i++) {
-    if (NO_DEBUG) {
-      break;
-    }
     for (let j = 0; j < 21; j++) {
       const distance = tonicDistance(
         _Chord.get(all_note_symbols[i]),
@@ -93,9 +90,6 @@ const comment = () => {
       _Key.minorKey(key_tonic).natural,
     ])
     .flat()) {
-    if (NO_DEBUG) {
-      break;
-    }
     const scale = _Scale.get(key.chordScales[0]);
     const chords = key.chords.map((chord_str: string) =>
       _Chord.get(chord_str),
@@ -150,9 +144,6 @@ const comment = () => {
     _Key.majorKey("C"),
     _Key.minorKey("C").natural,
   ]) {
-    if (NO_DEBUG) {
-      break;
-    }
     const src_scale = _Scale.get(src_key.chordScales[0]);
     // 固有和音を取り出す
     const src_chord = _Chord.get(src_key.chords[0]);
@@ -239,9 +230,6 @@ const comment = () => {
   const chord_types = _ChordDictionary.all().flatMap(chord_type => chord_type.aliases); // 要素数 100 以上
   for (const note of all_note_symbols) {
     for (const chord_type of chord_types) {
-      if (NO_DEBUG) {
-        break;
-      }
       // |all_note_symbols| * |chord_types| > 12 * 100 = 1200
       const chord = _Chord.get(note + chord_type);
       const chord_chromas = chord.notes.map(note => _Note.chroma(note));
