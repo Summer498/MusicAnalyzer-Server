@@ -52,13 +52,17 @@ shell_exec("mv \"$song_file_path\" \"$m_src\"");
 
 </html>
 <?php
+
 // バックエンドで計算した結果に合わせてスクリプトを自動生成
+// --> TODO: ここを fetch に直す
 echo ("<script>");
 // result が JSON フォーマットで送られてくるので, JavaScript オブジェクトとして代入する
 echo ("if(window.MusicAnalyzer===undefined){window.MusicAnalyzer={roman:undefined,melody:undefined}}");
 echo ("window.MusicAnalyzer.roman={$chords};");
 echo ("window.MusicAnalyzer.melody={$melodies};");
 echo ("</script>\n");
+// <-- TODO: ここを fetch に直す
+
 // 静的スクリプトを送る
 echo ("<script src=\"./dist/index.mjs\"type=\"module\"></script>");
 ?>
