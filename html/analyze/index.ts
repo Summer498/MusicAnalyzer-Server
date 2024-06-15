@@ -20,6 +20,19 @@ interface MusicAnalyzerWindow extends Window {
 }
 declare const window: MusicAnalyzerWindow;
 
+/*
+TODO: 1. get song name from URL parameter, 2. fetch song↓
+const roman = (await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/chord/roman.json")).json()) as TimeAndRomanAnalysis[];
+const melody = (await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/melody/crepe/manalyze.json")).json()) as TimeAndMelodyAnalysis[];
+window.MusicAnalyzer={
+  roman,
+  melody,
+  insertMelody,
+  deleteMelody,
+  play
+};
+*/
+
 const d_romans: TimeAndRomanAnalysis[] = window.MusicAnalyzer.roman.map(e => e);
 const d_melodies: TimeAndMelodyAnalysis[] = window.MusicAnalyzer.melody.map(e => ({
   begin: e.begin - 0.16,  // ズレ補正
