@@ -33,13 +33,13 @@ shell_exec("mv \"$song_file_path\" \"$m_src\"");
 <html lang="ja">
 
 <head>
-  <title>分析結果</title>
+  <title>Analysis Result</title>
   <meta http-equiv="content-language" content="ja" charset="utf-8">
   <link rel="stylesheet" href="contents_wrapper.css" type="text/css">
 </head>
 
 <body>
-  <h1>分析結果</h1>
+  <h1>Analysis Result</h1>
   <?php
   $m_opt = "controls autoplay playsinline loop crossorigin=\"use-credintials\""; // media option
   $m_type = (in_array($song_file_ext, ["mp4"], true)) ? "video" : "audio"; // media type
