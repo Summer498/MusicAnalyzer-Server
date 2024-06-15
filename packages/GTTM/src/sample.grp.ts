@@ -326,5 +326,3 @@ export const do_re_mi_grp: GRP = {
     }
   }
 };
-
-console.log(do_re_mi_grp);

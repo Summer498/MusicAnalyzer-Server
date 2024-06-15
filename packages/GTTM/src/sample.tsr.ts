@@ -1671,5 +1671,3 @@ export const do_re_mi_tsr: TSR = {
     }
   }
 };
-
-console.log(do_re_mi_tsr);

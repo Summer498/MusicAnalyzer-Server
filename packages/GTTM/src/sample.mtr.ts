@@ -1,6 +1,6 @@
 import { MTR } from "./MTR";
 
-export const do_re_mi_mpr_xml = `
+export const do_re_mi_mtr_xml = `
 <?xml version="1.0" encoding="UTF-8"?>
 <MPR>
   <part id="P1">
@@ -629,7 +629,7 @@ export const do_re_mi_mpr_xml = `
 </MPR>
 `;
 
-export const do_re_mi_mpr: MTR = {
+export const do_re_mi_mtr: MTR = {
   MPR: {
     part: {
       id: "P1", metric: [
@@ -1701,5 +1701,3 @@ export const do_re_mi_mpr: MTR = {
     }
   }
 };
-
-console.log(do_re_mi_mpr);

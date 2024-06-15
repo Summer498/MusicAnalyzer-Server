@@ -1,0 +1,15 @@
+{
+  "name": "hierarchical-analysis-sample",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup index.ts --format esm",
+    "build:minify": "tsup index.ts --sourcemap --dts --format esm --minify"
+  },
+  "license": "MIT"
+}
