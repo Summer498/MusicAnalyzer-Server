@@ -9,11 +9,6 @@ import { getBlackBGs, getBlackKeys, getOctaveBGs, getOctaveKeys, getPianoRollWid
 import { beepMelody, chord_gravities, deleteMelody, getArrowSVGs, getDMelodySVG, getIRSymbolSVG, getMelodySVG, insertMelody, key_gravities, refresh_arrow } from "../../packages/melodyView";
 import { getBeatBars } from "../../packages/BeatView";
 
-const debug_mode = true;
-const debug_log_element = HTML.p({ name: "debug" });
-debug_mode || document.body.insertAdjacentElement("afterbegin", debug_log_element);
-
-
 interface MusicAnalyzerWindow extends Window {
   MusicAnalyzer: {
     roman: TimeAndRomanAnalysis[],
