@@ -102,9 +102,6 @@ import { X2jOptions, XMLParser } from "fast-xml-parser";
   window.MusicAnalyzer.insertMelody = insertMelody;
   window.MusicAnalyzer.deleteMelody = deleteMelody;
   window.MusicAnalyzer.play = play;  // NOTE:コンソールデバッグ用
-  console.log(romans);
-  console.log(melodies);
-  // const notes = roman[0].chords[1][2].notes;  // 0 個目のコード列の1番目の推定候補の2個目のコードの構成音
 
   // テンポの計算 (試運転)
   const beat_info = calcTempo(melodies, romans);

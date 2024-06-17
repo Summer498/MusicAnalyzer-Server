@@ -48,9 +48,6 @@ const melodies = d_melodies.map(e => e).filter((e, i) => i + 1 >= d_melodies.len
 window.MusicAnalyzer.insertMelody = insertMelody;
 window.MusicAnalyzer.deleteMelody = deleteMelody;
 window.MusicAnalyzer.play = play;  // NOTE:コンソールデバッグ用
-console.log(romans);
-console.log(melodies);
-// const notes = roman[0].chords[1][2].notes;  // 0 個目のコード列の1番目の推定候補の2個目のコードの構成音
 
 // テンポの計算
 const beat_info = calcTempo(melodies, romans);
