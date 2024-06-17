@@ -29,6 +29,8 @@ interface MusicAnalyzerWindow extends Window {
 }
 
 declare const window: MusicAnalyzerWindow;
+declare const audio_player: HTMLAudioElement | HTMLVideoElement;
+declare const piano_roll_place: HTMLDivElement;
 
 import { X2jOptions, XMLParser } from "fast-xml-parser";
 (async () => {
@@ -104,20 +106,12 @@ import { X2jOptions, XMLParser } from "fast-xml-parser";
   console.log(melodies);
   // const notes = roman[0].chords[1][2].notes;  // 0 個目のコード列の1番目の推定候補の2個目のコードの構成音
 
-  const audio_area = document.getElementById("audio_area")!;
-  const audio: HTMLAudioElement | HTMLVideoElement = (() => {
-    const a = audio_area.getElementsByTagName("audio");
-    const v = audio_area.getElementsByTagName("video");
-    if (a.length > 0) { return a[0]; }
-    else { return v[0]; }
-  })();
-
   // テンポの計算 (試運転)
   const beat_info = calcTempo(melodies, romans);
   console.log("tempo");
   console.log(beat_info.tempo);
   console.log("duration");
-  console.log(audio.duration);
+  console.log(audio_player.duration);
   console.log("last melody");
   console.log(melodies[melodies.length - 1].end);
 
@@ -186,7 +180,6 @@ import { X2jOptions, XMLParser } from "fast-xml-parser";
     current_time_line,
     // 手前側
   ].flat());
-  const piano_roll_place = document.getElementById("piano-roll-place")!;
 
   // 設定
   piano_roll_place.appendChildren([
@@ -222,10 +215,10 @@ import { X2jOptions, XMLParser } from "fast-xml-parser";
     const fps = Math.floor(1000 / (now - old_time));
     fps_element.textContent = `fps:${(" " + fps).slice(-3)} ${fps < 60 ? '<' : '>'} 60`;
     old_time = now;
-    const now_at = audio.currentTime;
+    const now_at = audio_player.currentTime;
     // TODO: 止めたときの挙動がおかしいので直す
     // 大量の計算を行った後のアニメーションの挙動はちょっとおかしくなるらしい
-    if (audio.paused && now_at === last_audio_time) {
+    if (audio_player.paused && now_at === last_audio_time) {
       if (once_refreshed) { return; }
       else { once_refreshed = true; }
     } else { once_refreshed = false; }
