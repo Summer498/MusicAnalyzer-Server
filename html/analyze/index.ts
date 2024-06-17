@@ -1,6 +1,5 @@
 import { HTML, SVG } from "@music-analyzer/html";
 import { play } from "@music-analyzer/synth";
-import { _Chord, _Note, _Scale } from "@music-analyzer/tonal-objects";
 import { chord_name_margin, chord_text_size, getChordKeysSVG, getChordNamesSVG, getChordNotesSVG, getChordRomansSVG } from "@music-analyzer/chord-view";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
