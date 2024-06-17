@@ -215,8 +215,8 @@ const onWindowResized = () => {
 // ---------- main ---------- //
 const main = () => {
   const update = () => {
-    requestAnimationFrame(update);
     onUpdate();
+    requestAnimationFrame(update);
   };
 
   window.onresize = e => onWindowResized();

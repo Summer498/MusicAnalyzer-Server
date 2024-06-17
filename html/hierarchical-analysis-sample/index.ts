@@ -261,8 +261,8 @@ import { X2jOptions, XMLParser } from "fast-xml-parser";
   // ---------- main ---------- //
   const main = async () => {
     const update = () => {
-      requestAnimationFrame(update);
       onUpdate();
+      requestAnimationFrame(update);
     };
 
     window.onresize = e => onWindowResized();
