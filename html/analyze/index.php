@@ -64,5 +64,5 @@ echo ("</script>\n");
 // <-- TODO: ここを fetch に直す
 
 // 静的スクリプトを送る
-echo ("<script src=\"./dist/index.mjs\"type=\"module\"></script>");
+echo ("<script src=\"./dist/index.global.js\"type=\"module\"></script>");
 ?>

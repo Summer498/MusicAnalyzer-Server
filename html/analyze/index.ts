@@ -1,13 +1,13 @@
-import { HTML, SVG } from "../../packages/HTML";
-import { play } from "../../packages/Synth";
-import { _Chord, _Note, _Scale } from "../../packages/TonalObjects";
-import { chord_name_margin, chord_text_size, getChordKeysSVG, getChordNamesSVG, getChordNotesSVG, getChordRomansSVG } from "../../packages/chordView";
-import { TimeAndRomanAnalysis } from "../../packages/chordToRoman";
-import { TimeAndMelodyAnalysis } from "../../packages/melodyAnalyze";
-import { calcTempo } from "../../packages/BeatEstimation";
-import { getBlackBGs, getBlackKeys, getOctaveBGs, getOctaveKeys, getPianoRollWidth, getWhiteBGs, getWhiteKeys, piano_roll_height, piano_roll_time_length, window_reflectable_registry, updatable_registry, current_time_ratio } from "../../packages/View";
-import { beepMelody, chord_gravities, deleteMelody, getArrowSVGs, getDMelodySVG, getIRSymbolSVG, getMelodySVG, insertMelody, key_gravities, refresh_arrow } from "../../packages/melodyView";
-import { getBeatBars } from "../../packages/BeatView";
+import { HTML, SVG } from "@music-analyzer/html";
+import { play } from "@music-analyzer/synth";
+import { _Chord, _Note, _Scale } from "@music-analyzer/tonal-objects";
+import { chord_name_margin, chord_text_size, getChordKeysSVG, getChordNamesSVG, getChordNotesSVG, getChordRomansSVG } from "@music-analyzer/chord-view";
+import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
+import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
+import { calcTempo } from "@music-analyzer/beat-estimation";
+import { getBlackBGs, getBlackKeys, getOctaveBGs, getOctaveKeys, getPianoRollWidth, getWhiteBGs, getWhiteKeys, piano_roll_height, piano_roll_time_length, current_time_ratio, WindowReflectableRegistry, UpdatableRegistry } from "@music-analyzer/view";
+import { beepMelody, chord_gravities, deleteMelody, getArrowSVGs, getDMelodySVG, getIRSymbolSVG, getMelodySVG, insertMelody, key_gravities, refresh_arrow } from "@music-analyzer/melody-view";
+import { getBeatBars } from "@music-analyzer/beat-view";
 
 interface MusicAnalyzerWindow extends Window {
   MusicAnalyzer: {
@@ -108,23 +108,22 @@ const melody_svgs = getMelodySVG(melodies);
 const IR_svgs = getIRSymbolSVG(melodies);
 console.log("IR symbols");
 console.log(IR_svgs);
-const updatable = [
-  getBeatBars(beat_info, melodies),
-  getChordNotesSVG(romans),
-  getChordNamesSVG(romans),
-  getChordRomansSVG(romans),
-  getChordKeysSVG(romans),
-  getDMelodySVG(d_melodies),
-  melody_svgs,
-  IR_svgs
-];
-updatable.forEach(e => updatable_registry.register(e));
+
 const current_time_line = SVG.line({ name: "current_time", "stroke-width": 5, stroke: "#000" });
 const piano_roll = SVG.svg({ name: "piano-roll" }, undefined, [
   // 奥側
   SVG.g({ name: "octave-BGs" }, undefined, getOctaveBGs(getWhiteBGs(), getBlackBGs()).svg.map(e => e.svg)),
 
-  updatable.map(e => e.group),
+  [
+    getBeatBars(beat_info, melodies),
+    getChordNotesSVG(romans),
+    getChordNamesSVG(romans),
+    getChordRomansSVG(romans),
+    getChordKeysSVG(romans),
+    getDMelodySVG(d_melodies),
+    melody_svgs,
+    IR_svgs
+  ].map(e => e.group),
 
   SVG.g({ name: "gravities" }, undefined, [
     arrow_svgs.map(e => e.line),
@@ -167,10 +166,14 @@ const fps_element = HTML.p({ name: "fps" }, `fps:${0}`);
 
 let last_audio_time = Number.MIN_SAFE_INTEGER;
 const onUpdate = () => {
+  // fps 関連処理 -->
   const now = Date.now();
   const fps = Math.floor(1000 / (now - old_time));
   fps_element.textContent = `fps:${(" " + fps).slice(-3)} ${fps < 60 ? '<' : '>'} 60`;
   old_time = now;
+  // <-- fps 関連処理
+
+  // --> audio 関連処理
   const now_at = audio.currentTime;
   // TODO: 止めたときの挙動がおかしいので直す
   // 大量の計算を行った後のアニメーションの挙動はちょっとおかしくなるらしい
@@ -179,16 +182,19 @@ const onUpdate = () => {
     else { once_refreshed = true; }
   } else { once_refreshed = false; }
   last_audio_time = now_at;
+  // <-- audio 関連処理
 
+  // svg アップデート -->
   const piano_roll_width = getPianoRollWidth();
   const current_time_x = piano_roll_width * current_time_ratio;
   const note_size = piano_roll_width / piano_roll_time_length;
 
   key_gravities.forEach(e => e.setAttribute("visibility", key_gravity_switcher.checked ? "visible" : "hidden"));
   chord_gravities.forEach(e => e.setAttribute("visibility", chord_gravity_switcher.checked ? "visible" : "hidden"));
-
-  updatable_registry.onUpdate(current_time_x, now_at, note_size);
+  
+  UpdatableRegistry.instance.onUpdate(current_time_x, now_at, note_size);
   refresh_arrow(arrow_svgs, current_time_x, now_at, note_size);
+  // <-- svg アップデート
 
 
   // 音出し
@@ -204,7 +210,7 @@ const onUpdate = () => {
 const onWindowResized = () => {
   // 各 svg のパラメータを更新する
   const piano_roll_width = getPianoRollWidth();
-  window_reflectable_registry.onWindowResized(piano_roll_width);
+  WindowReflectableRegistry.instance.onWindowResized(piano_roll_width);
   piano_roll.setAttributes({ x: 0, y: 0, width: piano_roll_width, height: piano_roll_height + chord_text_size * 2 + chord_name_margin });
 
   const current_time_x = piano_roll_width * current_time_ratio;

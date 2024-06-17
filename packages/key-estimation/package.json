@@ -1,0 +1,24 @@
+{
+  "name": "@music-analyzer/key-estimation",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "tsup index.ts --format esm,cjs",
+    "build:minify": "tsup index.ts --sourcemap --dts --format esm,cjs --minify"
+  },
+  "dependencies": {
+    "@music-analyzer/tonal-objects": "1.0.0",
+    "@music-analyzer/math": "1.0.0",
+    "@music-analyzer/graph": "1.0.0",
+    "@music-analyzer/stdlib": "1.0.0",
+    "@music-analyzer/tps": "1.0.0",
+    "@music-analyzer/roman-chord": "1.0.0"
+  }
+}
