@@ -5,8 +5,8 @@ import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { getBeatBars } from "@music-analyzer/beat-view";
 import { chord_name_margin, chord_text_size, getChordKeysSVG, getChordNamesSVG, getChordNotesSVG, getChordRomansSVG } from "@music-analyzer/chord-view";
-import { getBlackBGs, getBlackKeys, getOctaveBGs, getOctaveKeys, getWhiteBGs, getWhiteKeys, piano_roll_height, WindowReflectableRegistry, UpdatableRegistry, SvgAndParams, PianoRollWidth, CurrentTimeX } from "@music-analyzer/view";
-import { beepMelody, chord_gravities, deleteMelody, getArrowSVGs, getDMelodySVG, getIRSymbolSVG, getMelodySVG, insertMelody, key_gravities, melody_beep_switcher, melody_beep_volume, refresh_arrow, show_melody_beep_volume } from "@music-analyzer/melody-view";
+import { getBlackBGs, getBlackKeys, getOctaveBGs, getOctaveKeys, getWhiteBGs, getWhiteKeys, piano_roll_height, WindowReflectableRegistry, UpdatableRegistry, SvgAndParams, PianoRollWidth, getCurrentTimeLine } from "@music-analyzer/view";
+import { beepMelody, chord_gravities, deleteMelody, getArrowSVGs, getDMelodySVG, getIRSymbolSVG, getMelodySVG, insertMelody, key_gravities, melody_beep_switcher, melody_beep_volume, show_melody_beep_volume } from "@music-analyzer/melody-view";
 
 interface MusicAnalyzerWindow extends Window {
   MusicAnalyzer: {
@@ -42,7 +42,7 @@ const d_melodies: TimeAndMelodyAnalysis[] = window.MusicAnalyzer.melody.map(e =>
   note: e.note,
   roman_name: e.roman_name
 }));
-const romans =  d_romans.map(e => e);
+const romans = d_romans.map(e => e);
 const melodies = d_melodies.map(e => e).filter((e, i) => i + 1 >= d_melodies.length || 60 / (d_melodies[i + 1].begin - d_melodies[i].begin) < 300 * 4);
 
 window.MusicAnalyzer.insertMelody = insertMelody;
@@ -86,10 +86,7 @@ const melody_color_selector =
 */
 
 // svg element の作成
-const arrow_svgs = getArrowSVGs(melodies);
 const melody_svgs = getMelodySVG(melodies);
-
-const current_time_line = SVG.line({ name: "current_time", "stroke-width": 5, stroke: "#000" });
 
 const piano_roll = new SvgAndParams(
   [{
@@ -108,13 +105,16 @@ const piano_roll = new SvgAndParams(
         getIRSymbolSVG(melodies),
       ].map(e => e.group),
 
-      SVG.g({ name: "gravities" }, undefined, [
-        arrow_svgs.map(e => e.line),
-        arrow_svgs.map(e => e.triangle)
-      ]),
+      SVG.g({ name: "gravities" }, undefined, (()=>{
+        const arrow_svgs = getArrowSVGs(melodies);
+        
+        return [
+        arrow_svgs.all.map(e => e.line),
+        arrow_svgs.all.map(e => e.triangle)
+      ];})()),
 
       SVG.g({ name: "octave-keys" }, undefined, getOctaveKeys(getWhiteKeys(), getBlackKeys()).svg.map(e => e.svg)),
-      current_time_line,
+      getCurrentTimeLine().svg[0].svg,
       // 手前側
     ].flat())
   }],
@@ -170,11 +170,7 @@ const onUpdate = () => {
   last_audio_time = now_at;
   // <-- audio 関連処理
 
-  // svg アップデート -->
   UpdatableRegistry.instance.onUpdate(now_at);
-  refresh_arrow(arrow_svgs, now_at);
-  // <-- svg アップデート
-
 
   // 音出し
   /* NOTE: うるさいので停止中
@@ -189,8 +185,6 @@ const onUpdate = () => {
 const onWindowResized = () => {
   // 各 svg のパラメータを更新する
   WindowReflectableRegistry.instance.onWindowResized();
-
-  current_time_line.setAttributes({ x1: CurrentTimeX.value, x2: CurrentTimeX.value, y1: 0, y2: piano_roll_height });
   onUpdate();
 };
 

@@ -36,7 +36,7 @@ export class CurrentTimeX {
 }
 export class NoteSize {
   static #value = PianoRollWidth.value / piano_roll_time_length;
-  static get value() {return this.#value;}
+  static get value() { return this.#value; }
   static onWindowResized() {
     NoteSize.#value = PianoRollWidth.value / piano_roll_time_length;
   }
@@ -120,7 +120,7 @@ export class SvgWindow<T extends SVGElement, U extends TimeAndSVGs<T>> implement
     // this.show.splice(remain.end_index, this.show.length - remain.end_index).forEach(e=>this.group.removeChild(e.svg));  // 右側にはみ出したものを消す
     this.show.splice(0, this.show.length);  // 全部消す
     this.group.childNodes.forEach(e => this.group.removeChild(e));  // 全部消す
-    const append = search_items_overlaps_range(this.all, begin, end);
+    const append = search_items_overlaps_range(this.all, begin - 5, end + 5);  // melodic gravity の矢印を隠すために ±5 のマージンを取る
     this.all.slice(append.begin_index, append.end_index).forEach(e => { this.show.push(e); this.group.appendChild(e.svg); });  // 必要分全部追加する
   }
 }
@@ -149,6 +149,13 @@ export class SvgAndParams<T extends { svg: SVGElement }> implements WindowReflec
     WindowReflectableRegistry.instance.register(this);
   }
 }
+
+export const getCurrentTimeLine = () => new SvgAndParams(
+  [{
+    svg: SVG.line({ name: "current_time", "stroke-width": 5, stroke: "#000" })
+  }],
+  e => e.svg.setAttributes({ x1: CurrentTimeX.value, x2: CurrentTimeX.value, y1: 0, y2: piano_roll_height })
+);
 
 export const getWhiteBGs = () => new SvgAndParams(
   [...Array(octave_cnt)].map((_, oct) =>

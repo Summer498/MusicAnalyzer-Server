@@ -104,6 +104,7 @@ export const getIRSymbolSVG = (melodies: TimeAndMelodyAnalysis[]) => {
 
 
 interface ArrowSVG extends TimeAnd {
+  svg: SVGGElement
   triangle: SVGPolygonElement
   line: SVGLineElement
   note: number
@@ -115,63 +116,71 @@ interface ArrowSVG extends TimeAnd {
   dst_y0: number
 }
 
-const getArrowSVG = (e: TimeAndMelodyAnalysis, next: TimeAndMelodyAnalysis, gravity: Gravity, fill: string, stroke: string): ArrowSVG => ({
-  triangle: SVG.polygon({
+const getArrowSVG = (e: TimeAndMelodyAnalysis, next: TimeAndMelodyAnalysis, gravity: Gravity, fill: string, stroke: string): ArrowSVG => {
+  const triangle = SVG.polygon({
     name: "gravity-arrow",
     stroke,
     "stroke-width": 5,
     fill,
-  }),
-  line: SVG.line({
+  });
+  const line = SVG.line({
     name: "gravity-arrow",
     stroke,
     "stroke-width": 5
-  }),
-  begin: e.begin,
-  end: e.end,
-  note: e.note,
-  next,
-  destination: gravity.destination,
-  src_x0: (e.end - e.begin) / 2 + e.begin,
-  dst_x0: next.begin,
-  src_y0: (piano_roll_begin + 0.5 - e.note) * black_key_prm.height,
-  dst_y0: (piano_roll_begin + 0.5 - gravity.destination!) * black_key_prm.height,
-});
+  });
+  return {
+    svg: SVG.g(
+      { name: "gravity" }, "", [
+      triangle,
+      line
+    ]),
+    triangle,
+    line,
+    begin: e.begin,
+    end: e.end,
+    note: e.note,
+    next,
+    destination: gravity.destination,
+    src_x0: (e.end - e.begin) / 2 + e.begin,
+    dst_x0: next.begin,
+    src_y0: (piano_roll_begin + 0.5 - e.note) * black_key_prm.height,
+    dst_y0: (piano_roll_begin + 0.5 - gravity.destination!) * black_key_prm.height,
+  };
+};
 
 export const key_gravities: SVGElement[] = [];
 export const chord_gravities: SVGElement[] = [];
 
-export const getArrowSVGs = (melodies: TimeAndMelodyAnalysis[]) => melodies.map((e, i) => {
-  const stroke = rgbToString([0, 0, 0]);
-  const next = melodies.length <= i + 1 ? melodies[i] : melodies[i + 1];
-  const fill = rgbToString([0, 0, 0]);
-  const res: ArrowSVG[] = [];
-  const scale_gravity = e.melody_analysis.scale_gravity;
-  const chord_gravity = e.melody_analysis.chord_gravity;
-  if (scale_gravity?.resolved && scale_gravity.destination !== undefined) {
-    const svg = getArrowSVG(e, next, scale_gravity, fill, stroke);
-    res.push(svg);
-    key_gravities.push(svg.line);
-    key_gravities.push(svg.triangle);
-  }
-  if (chord_gravity?.resolved && chord_gravity.destination !== undefined) {
-    const svg = getArrowSVG(e, next, chord_gravity, fill, stroke);
-    res.push(svg);
-    chord_gravities.push(svg.line);
-    chord_gravities.push(svg.triangle);
-  }
+export const getArrowSVGs = (melodies: TimeAndMelodyAnalysis[]) => new SvgWindow("gravity-arrow",
+  melodies.map((e, i) => {
+    const stroke = rgbToString([0, 0, 0]);
+    const next = melodies.length <= i + 1 ? melodies[i] : melodies[i + 1];
+    const fill = rgbToString([0, 0, 0]);
+    const res: ArrowSVG[] = [];
+    const scale_gravity = e.melody_analysis.scale_gravity;
+    const chord_gravity = e.melody_analysis.chord_gravity;
+    if (scale_gravity?.resolved && scale_gravity.destination !== undefined) {
+      const svg = getArrowSVG(e, next, scale_gravity, fill, stroke);
+      res.push(svg);
+      key_gravities.push(svg.line);
+      key_gravities.push(svg.triangle);
+    }
+    if (chord_gravity?.resolved && chord_gravity.destination !== undefined) {
+      const svg = getArrowSVG(e, next, chord_gravity, fill, stroke);
+      res.push(svg);
+      chord_gravities.push(svg.line);
+      chord_gravities.push(svg.triangle);
+    }  
+    return res;
+  }).flat(2),
 
-  return res;
-}).flat(2);
-
-export const refresh_arrow = (arrow_svgs: ArrowSVG[], now_at: number) =>
-  arrow_svgs.forEach(e => {
+  (arrow_svg: ArrowSVG, now_at: number) => {
     const std_pos = now_at * NoteSize.value;
-    const src_x = e.src_x0 * NoteSize.value - std_pos + CurrentTimeX.value;
-    const dst_x = e.dst_x0 * NoteSize.value - std_pos + CurrentTimeX.value;
-    const src_y = e.src_y0;
-    const dst_y = e.dst_y0;
-
+    const src_x = arrow_svg.src_x0 * NoteSize.value - std_pos + CurrentTimeX.value;
+    const dst_x = arrow_svg.dst_x0 * NoteSize.value - std_pos + CurrentTimeX.value;
+    const src_y = arrow_svg.src_y0;
+    const dst_y = arrow_svg.dst_y0;
+  
     const dx = dst_x - src_x;
     const dy = dst_y - src_y;
     const r = Math.sqrt(dx * dx + dy * dy);
@@ -185,9 +194,10 @@ export const refresh_arrow = (arrow_svgs: ArrowSVG[], now_at: number) =>
       dst_x + cos * -triangle_width - sin * triangle_height,
       dst_y + sin * -triangle_width + cos * triangle_height
     ];
-    e.triangle.setAttributes({ points: `${p.join(",")}` });
-    e.line.setAttributes({ x1: src_x, x2: dst_x, y1: src_y, y2: dst_y });
-  });
+    arrow_svg.triangle.setAttributes({ points: `${p.join(",")}` });
+    arrow_svg.line.setAttributes({ x1: src_x, x2: dst_x, y1: src_y, y2: dst_y });
+  }
+);
 
 export const beepMelody = (melody_svgs: ReturnType<typeof getMelodySVG>, now_at: number, volume: number) => {
   const melody_range = search_items_begins_in_range(melody_svgs.show, now_at, now_at + reservation_range);

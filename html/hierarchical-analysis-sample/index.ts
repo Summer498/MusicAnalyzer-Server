@@ -5,8 +5,8 @@ import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { getBeatBars } from "@music-analyzer/beat-view";
 import { chord_name_margin, chord_text_size, getChordKeysSVG, getChordNamesSVG, getChordNotesSVG, getChordRomansSVG } from "@music-analyzer/chord-view";
-import { getBlackBGs, getBlackKeys, getOctaveBGs, getOctaveKeys, getWhiteBGs, getWhiteKeys, piano_roll_height, WindowReflectableRegistry, UpdatableRegistry, SvgAndParams, PianoRollWidth, CurrentTimeX } from "@music-analyzer/view";
-import { beepMelody, chord_gravities, deleteMelody, getArrowSVGs, getDMelodySVG, getIRSymbolSVG, getMelodySVG, insertMelody, key_gravities, melody_beep_switcher, melody_beep_volume, refresh_arrow, show_melody_beep_volume } from "@music-analyzer/melody-view";
+import { getBlackBGs, getBlackKeys, getOctaveBGs, getOctaveKeys, getWhiteBGs, getWhiteKeys, piano_roll_height, WindowReflectableRegistry, UpdatableRegistry, SvgAndParams, PianoRollWidth, getCurrentTimeLine } from "@music-analyzer/view";
+import { beepMelody, chord_gravities, deleteMelody, getArrowSVGs, getDMelodySVG, getIRSymbolSVG, getMelodySVG, insertMelody, key_gravities, melody_beep_switcher, melody_beep_volume, show_melody_beep_volume } from "@music-analyzer/melody-view";
 
 // 分析データ-->
 import { GRP as Grouping, MTR as Metric, TSR as TimeSpan, PR as Prolongation, do_re_mi_grp, do_re_mi_mtr, do_re_mi_tsr } from "@music-analyzer/gttm";
@@ -138,10 +138,7 @@ import { X2jOptions, XMLParser } from "fast-xml-parser";
   */
 
   // svg element の作成
-  const arrow_svgs = getArrowSVGs(melodies);
   const melody_svgs = getMelodySVG(melodies);
-
-  const current_time_line = SVG.line({ name: "current_time", "stroke-width": 5, stroke: "#000" });
 
   const piano_roll =  new SvgAndParams(
     [{
@@ -160,13 +157,16 @@ import { X2jOptions, XMLParser } from "fast-xml-parser";
           getIRSymbolSVG(melodies)
         ].map(e => e.group),
       
-        SVG.g({ name: "gravities" }, undefined, [
-          arrow_svgs.map(e => e.line),
-          arrow_svgs.map(e => e.triangle)
-        ]),
+        SVG.g({ name: "gravities" }, undefined, (()=>{
+          const arrow_svgs = getArrowSVGs(melodies);
+
+          return [
+          arrow_svgs.all.map(e => e.line),
+          arrow_svgs.all.map(e => e.triangle)
+        ];})()),
       
         SVG.g({ name: "octave-keys" }, undefined, getOctaveKeys(getWhiteKeys(), getBlackKeys()).svg.map(e => e.svg)),
-        current_time_line,
+        getCurrentTimeLine().svg[0].svg,
         // 手前側
       ].flat())
     }],
@@ -223,14 +223,7 @@ import { X2jOptions, XMLParser } from "fast-xml-parser";
     last_audio_time = now_at;
     // <-- audio 関連処理
 
-    // svg アップデート -->
-    key_gravities.forEach(e => e.setAttribute("visibility", key_gravity_switcher.checked ? "visible" : "hidden"));
-    chord_gravities.forEach(e => e.setAttribute("visibility", chord_gravity_switcher.checked ? "visible" : "hidden"));
-
     UpdatableRegistry.instance.onUpdate(now_at);
-    refresh_arrow(arrow_svgs, now_at);
-    // <-- svg アップデート
-
 
     // 音出し
     /* NOTE: うるさいので停止中
@@ -245,8 +238,6 @@ import { X2jOptions, XMLParser } from "fast-xml-parser";
   const onWindowResized = () => {
     // 各 svg のパラメータを更新する
     WindowReflectableRegistry.instance.onWindowResized();
-
-    current_time_line.setAttributes({ x1: CurrentTimeX.value, x2: CurrentTimeX.value, y1: 0, y2: piano_roll_height });
     onUpdate();
   };
 
