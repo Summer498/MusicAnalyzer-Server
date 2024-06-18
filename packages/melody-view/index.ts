@@ -1,7 +1,7 @@
 import { HTML, SVG } from "@music-analyzer/html";
 import { Gravity, TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { fifthChromaToColor, hsv2rgb, rgbToString } from "@music-analyzer/color";
-import { SvgWindow, black_key_prm, piano_roll_begin, reservation_range, size } from "@music-analyzer/view";
+import { CurrentTimeX, NoteSize, SvgWindow, black_key_prm, piano_roll_begin, reservation_range, size } from "@music-analyzer/view";
 import { TimeAnd, search_items_begins_in_range } from "@music-analyzer/time-and";
 import { get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { play } from "@music-analyzer/synth";
@@ -39,10 +39,10 @@ export const getDMelodySVG = (detected_melodies: TimeAndMelodyAnalysis[]) => new
     w: e.end - e.begin,
     h: black_key_prm.height
   })),
-  (e, current_time_x, now_at, note_size) => e.svg.setAttributes({
-    x: current_time_x + (e.begin - now_at) * note_size,
+  (e, now_at) => e.svg.setAttributes({
+    x: CurrentTimeX.value + (e.begin - now_at) * NoteSize.value,
     y: e.y,
-    width: e.w * note_size,
+    width: e.w * NoteSize.value,
     height: e.h,
     onclick: "MusicAnalyzer.insertMelody()",
   })
@@ -63,11 +63,11 @@ export const getMelodySVG = (melodies: TimeAndMelodyAnalysis[]) => new SvgWindow
     h: black_key_prm.height,
     sound_reserved: false,
   })),
-  (e, current_time_x, now_at, note_size) => {
+  (e, now_at) => {
     e.svg.setAttributes({
-      x: current_time_x + (e.begin - now_at) * note_size,
+      x: CurrentTimeX.value + (e.begin - now_at) * NoteSize.value,
       y: e.y,
-      width: e.w * note_size,
+      width: e.w * NoteSize.value,
       height: e.h,
       onclick: "MusicAnalyzer.deleteMelody()",
     });
@@ -91,8 +91,8 @@ export const getIRSymbolSVG = (melodies: TimeAndMelodyAnalysis[]) => {
       y: (piano_roll_begin - e.note) * black_key_prm.height,
       archetype: e.melody_analysis.implication_realization
     })),
-    (e, current_time_x, now_at, note_size) => e.svg.setAttributes({
-      x: current_time_x + (e.begin - now_at) * note_size,
+    (e, now_at) => e.svg.setAttributes({
+      x: CurrentTimeX.value + (e.begin - now_at) * NoteSize.value,
       y: e.y,
       fill: get_color_of_Narmour_concept(e.archetype) || "#000"
     })
@@ -164,11 +164,11 @@ export const getArrowSVGs = (melodies: TimeAndMelodyAnalysis[]) => melodies.map(
   return res;
 }).flat(2);
 
-export const refresh_arrow = (arrow_svgs: ArrowSVG[], current_time_x: number, now_at: number, note_size: number) =>
+export const refresh_arrow = (arrow_svgs: ArrowSVG[], now_at: number) =>
   arrow_svgs.forEach(e => {
-    const std_pos = now_at * note_size;
-    const src_x = e.src_x0 * note_size - std_pos + current_time_x;
-    const dst_x = e.dst_x0 * note_size - std_pos + current_time_x;
+    const std_pos = now_at * NoteSize.value;
+    const src_x = e.src_x0 * NoteSize.value - std_pos + CurrentTimeX.value;
+    const dst_x = e.dst_x0 * NoteSize.value - std_pos + CurrentTimeX.value;
     const src_y = e.src_y0;
     const dst_y = e.dst_y0;
 

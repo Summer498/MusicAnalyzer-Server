@@ -17,31 +17,53 @@ class RectParameters {
   }
 }
 
+export const piano_roll_time_length = 5;  // 1 画面に収める曲の長さ[秒]
+export const current_time_ratio = 1 / 4;
+
+export class PianoRollWidth {
+  static #value = window.innerWidth - 48;
+  static get value() { return this.#value; }
+  static onWindowResized() {
+    PianoRollWidth.#value = window.innerWidth - 48;
+  }
+}
+export class CurrentTimeX {
+  static #value = PianoRollWidth.value * current_time_ratio;
+  static get value() { return this.#value; }
+  static onWindowResized() {
+    CurrentTimeX.#value = PianoRollWidth.value * current_time_ratio;
+  }
+}
+export class NoteSize {
+  static #value = PianoRollWidth.value / piano_roll_time_length;
+  static get value() {return this.#value;}
+  static onWindowResized() {
+    NoteSize.#value = PianoRollWidth.value / piano_roll_time_length;
+  }
+}
 // --- ピアノロールの描画パラメータ
 export const size = 2;
-export const getPianoRollWidth = () => window.innerWidth - 48;  // innerWidth が動的に変化する
+// export const getPianoRollWidth = () => window.innerWidth - 48;  // innerWidth が動的に変化するpiano_roll_width
 export const octave_height = size * 84;  // 7 白鍵と 12 半音をきれいに描画するには 7 * 12 の倍数が良い
 export const octave_cnt = 3;
 export const piano_roll_begin = 83;
 export const white_key_prm = new RectParameters("#fff", "#000", 36, octave_height / 7);
 export const black_key_prm = new RectParameters("#444", "#000", white_key_prm.width * 2 / 3, octave_height / 12);
-export const white_bgs_prm = new RectParameters("#eee", "#000", getPianoRollWidth(), octave_height / 12);
-export const black_bgs_prm = new RectParameters("#ccc", "#000", getPianoRollWidth(), octave_height / 12);
+export const white_bgs_prm = new RectParameters("#eee", "#000", PianoRollWidth.value, octave_height / 12);
+export const black_bgs_prm = new RectParameters("#ccc", "#000", PianoRollWidth.value, octave_height / 12);
 
 export const piano_roll_height = octave_height * octave_cnt;
 export const black_position = vMod(vAdd([2, 4, 6, 9, 11], piano_roll_begin), 12);
 export const white_position = getRange(0, 12).filter(e => !black_position.includes(e));
-export const piano_roll_time_length = 5;  // 1 画面に収める曲の長さ[秒]
 
 export const reservation_range = 1 / 15;  // play range [second]
-export const current_time_ratio = 1 / 4;
 
 export interface Updatable {
   updateShow: (begin: number, end: number) => void,
-  onUpdate: (current_time_x: number, now_at: number, note_size: number) => void
+  onUpdate: (now_at: number) => void
 }
 export interface WindowReflectable {
-  onWindowResized: (piano_roll_width: number) => void
+  onWindowResized: () => void
 }
 
 export class UpdatableRegistry {
@@ -52,13 +74,13 @@ export class UpdatableRegistry {
     return this._instance || (this._instance = new UpdatableRegistry());
   }
   register(updatable: Updatable) { this.registered.push(updatable); }
-  onUpdate(current_time_x: number, now_at: number, note_size: number) {
+  onUpdate(now_at: number) {
     this.registered.forEach(e => {
       e.updateShow(
         now_at - piano_roll_time_length * current_time_ratio,
         now_at + piano_roll_time_length
       );
-      e.onUpdate(current_time_x, now_at, note_size);
+      e.onUpdate(now_at);
     });
   }
 }
@@ -67,25 +89,29 @@ export class WindowReflectableRegistry {
   private static _instance: WindowReflectableRegistry;
   private readonly registered: WindowReflectable[];
   private constructor() { this.registered = []; }
-  public static get instance(){
+  public static get instance() {
     return this._instance || (this._instance = new WindowReflectableRegistry());
   }
   register(updatable: WindowReflectable) { this.registered.push(updatable); }
-  onWindowResized(piano_roll_width: number) {
-    this.registered.forEach(e => e.onWindowResized(piano_roll_width));
+  onWindowResized() {
+    PianoRollWidth.onWindowResized();
+    CurrentTimeX.onWindowResized();
+    NoteSize.onWindowResized();
+
+    this.registered.forEach(e => e.onWindowResized());
   }
 }
 
-export class SvgWindow<T extends SVGElement, U extends TimeAndSVGs<T>> {
+export class SvgWindow<T extends SVGElement, U extends TimeAndSVGs<T>> implements Updatable {
   readonly all: U[];
   readonly show: U[];
   readonly group: SVGGElement;
-  readonly onUpdate: (current_time_x: number, now_at: number, note_size: number) => void;
-  constructor(name: string, all: U[], onUpdate: (e: U, current_time_x: number, now_at: number, note_size: number) => void) {
+  readonly onUpdate: (now_at: number) => void;
+  constructor(name: string, all: U[], onUpdate: (e: U, now_at: number) => void) {
     this.all = all;
     this.show = [];
     this.group = SVG.g({ name }, undefined, this.show.map(e => e.svg));
-    this.onUpdate = (current_time, now_at, note_size) => this.show.forEach(e => onUpdate(e, current_time, now_at, note_size));
+    this.onUpdate = (now_at) => this.show.forEach(e => onUpdate(e, now_at));
     UpdatableRegistry.instance.register(this);  // TODO: 複数ファイルにコピーされてしまい updatable_registry の同一性が保証されず, 役に立たなくなる
   }
   updateShow(begin: number, end: number) {
@@ -114,12 +140,12 @@ class SvgAndParam {
   }
 }
 
-export class SvgAndParams<T extends { svg: SVGElement }> {
+export class SvgAndParams<T extends { svg: SVGElement }> implements WindowReflectable {
   svg;
   onWindowResized;
-  constructor(svg_and_params: T[], onWindowResized: (e: T, piano_roll_width: number) => void) {
+  constructor(svg_and_params: T[], onWindowResized: (e: T) => void) {
     this.svg = svg_and_params;
-    this.onWindowResized = (piano_roll_width: number) => this.svg.forEach(e => onWindowResized(e, piano_roll_width));
+    this.onWindowResized = () => this.svg.forEach(e => onWindowResized(e));
     WindowReflectableRegistry.instance.register(this);
   }
 }
@@ -134,7 +160,7 @@ export const getWhiteBGs = () => new SvgAndParams(
       height: white_bgs_prm.height
     }))
   ).flat(),
-  (e, piano_roll_width) => e.svg.setAttributes({ x: 0, y: e.y, width: piano_roll_width, height: e.height })
+  (e) => e.svg.setAttributes({ x: 0, y: e.y, width: PianoRollWidth.value, height: e.height })
 );
 
 export const getBlackBGs = () => new SvgAndParams(
@@ -147,7 +173,7 @@ export const getBlackBGs = () => new SvgAndParams(
       height: black_bgs_prm.height
     }))
   ).flat(),
-  (e, piano_roll_width) => e.svg.setAttributes({ x: 0, y: e.y, width: piano_roll_width, height: e.height })
+  (e) => e.svg.setAttributes({ x: 0, y: e.y, width: PianoRollWidth.value, height: e.height })
 );
 
 export const getOctaveBGs = (white_BGs: SvgAndParams<SvgAndParam>, black_BGs: SvgAndParams<SvgAndParam>) => new SvgAndParams(
@@ -161,7 +187,7 @@ export const getOctaveBGs = (white_BGs: SvgAndParams<SvgAndParam>, black_BGs: Sv
     oct,
     width: 0
   })),
-  (e, piano_roll_width) => e.svg.setAttributes({ x: 0, y: e.y, width: piano_roll_width, height: e.height })
+  (e) => e.svg.setAttributes({ x: 0, y: e.y, width: PianoRollWidth.value, height: e.height })
 );
 
 
@@ -203,5 +229,5 @@ export const getOctaveKeys = (white_key: SvgAndParams<SvgAndParam>, black_key: S
       oct,
       width: 0
     })),
-    (e, piano_roll_width) => e.svg.setAttributes({ x: 0, y: e.y, width: piano_roll_width, height: e.height })
+    (e) => e.svg.setAttributes({ x: 0, y: e.y, width: PianoRollWidth.value, height: e.height })
   );

@@ -2,7 +2,7 @@ import { hsv2rgb, rgbToString, fifthToColor } from "@music-analyzer/color";
 import { _Chord, _Note, _Scale, Scale } from "@music-analyzer/tonal-objects";
 import { getRange, mod } from "@music-analyzer/math";
 import { getLowerCase, getCapitalCase } from "@music-analyzer/stdlib";
-import { SvgWindow, black_key_prm, octave_cnt, piano_roll_height, size } from "@music-analyzer/view";
+import { CurrentTimeX, NoteSize, SvgWindow, black_key_prm, octave_cnt, piano_roll_height, size } from "@music-analyzer/view";
 import { SVG } from "@music-analyzer/html";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 
@@ -62,10 +62,10 @@ export const getChordNotesSVG = (romans: TimeAndRomanAnalysis[]) => new SvgWindo
       type: chord.type,
     })));
   }).flat(2),
-  (e, current_time_x, now_at, note_size) => e.svg.setAttributes({
-    x: current_time_x + (e.begin - now_at) * note_size,
+  (e, now_at) => e.svg.setAttributes({
+    x: CurrentTimeX.value + (e.begin - now_at) * NoteSize.value,
     y: e.y,
-    width: e.w * note_size,
+    width: e.w * NoteSize.value,
     height: e.h,
     stroke: "#444",
     fill: fifthToColor(e.tonic, 0.25, e.type === "major" ? 1 : 0.9),
@@ -87,8 +87,8 @@ export const getChordNamesSVG = (romans: TimeAndRomanAnalysis[]) => new SvgWindo
     y: piano_roll_height + chord_text_size,
     tonic: _Chord.get(e.chord).tonic!
   })),
-  (e, current_time_x, now_at, note_size) => e.svg.setAttributes({
-    x: current_time_x + (e.begin - now_at) * note_size,
+  (e, now_at) => e.svg.setAttributes({
+    x: CurrentTimeX.value + (e.begin - now_at) * NoteSize.value,
     y: e.y,
     fill: fifthToColor(e.tonic, 1, 0.75) || "#000"
   })
@@ -109,8 +109,8 @@ export const getChordRomansSVG = (romans: TimeAndRomanAnalysis[]) => new SvgWind
     y: piano_roll_height + chord_text_size * 2 + chord_name_margin,
     tonic: _Chord.get(e.chord).tonic!
   })),
-  (e, current_time_x, now_at, note_size) => e.svg.setAttributes({
-    x: current_time_x + (e.begin - now_at) * note_size,
+  (e, now_at) => e.svg.setAttributes({
+    x: CurrentTimeX.value + (e.begin - now_at) * NoteSize.value,
     y: e.y,
     fill: fifthToColor(e.tonic, 1, 0.75) || "#000"
   })
@@ -132,8 +132,8 @@ export const getChordKeysSVG = (romans: TimeAndRomanAnalysis[]) => new SvgWindow
     y: piano_roll_height + chord_text_size * 2 + chord_name_margin,
     tonic: _Scale.get(e.scale).tonic!
   })),
-  (e, current_time_x, now_at, note_size) => e.svg.setAttributes({
-    x: current_time_x + (e.begin - now_at) * note_size,
+  (e, now_at) => e.svg.setAttributes({
+    x: CurrentTimeX.value + (e.begin - now_at) * NoteSize.value,
     y: e.y,
     fill: fifthToColor(e.tonic, 1, 0.75) || "#000"
   })

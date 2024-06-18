@@ -1,4 +1,4 @@
-import { SvgWindow, TimeAndSVGs, piano_roll_height, reservation_range } from "@music-analyzer/view";
+import { CurrentTimeX, NoteSize, SvgWindow, TimeAndSVGs, piano_roll_height, reservation_range } from "@music-analyzer/view";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { getRange } from "@music-analyzer/math";
 import { SVG } from "@music-analyzer/html";
@@ -22,7 +22,7 @@ export const getBeatBars = (beat_info: BeatInfo, melodies: TimeAndMelodyAnalysis
     y2: piano_roll_height,
     sound_reserved: false
   })),
-  (e, current_time_x, now_at, note_size) => e.svg.setAttributes({ x1: current_time_x + (e.begin - now_at) * note_size, x2: current_time_x + (e.begin - now_at) * note_size, y1: e.y1, y2: e.y2 })
+  (e, now_at) => e.svg.setAttributes({ x1: CurrentTimeX.value + (e.begin - now_at) * NoteSize.value, x2: CurrentTimeX.value + (e.begin - now_at) * NoteSize.value, y1: e.y1, y2: e.y2 })
 );
 
 export const beepBeat = (beat_bars: SvgWindow<SVGLineElement, BeatBar>, now_at:number, ) => {
