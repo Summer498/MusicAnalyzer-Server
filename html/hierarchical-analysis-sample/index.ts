@@ -15,7 +15,7 @@ interface MusicAnalyzerWindow extends Window {
   MusicAnalyzer: {
     roman: TimeAndRomanAnalysis[],
     melody: TimeAndMelodyAnalysis[],
-    musicxml: any,
+    musicxml: object,
     GTTM: {
       grouping: Grouping,
       metric: Metric,
@@ -113,9 +113,11 @@ import { X2jOptions, XMLParser } from "fast-xml-parser";
   
   // SVG -->
   // ボタン
+  /*
   const slider = HTML.input({ type: "range", id: "slider" });
   const show_slider_value = HTML.span({}, slider.value);
   slider.addEventListener("input", e => { show_slider_value.textContent = slider.value; });
+  */
   const key_gravity_switcher = HTML.input_checkbox({ id: "key_gravity_switcher", name: "key_gravity_switcher" });
   key_gravity_switcher.checked = true;
   key_gravity_switcher.addEventListener("change", e => { key_gravities.forEach(key_gravity => key_gravity.setAttribute("visibility", key_gravity_switcher.checked ? "visible" : "hidden")); });
@@ -173,8 +175,8 @@ import { X2jOptions, XMLParser } from "fast-xml-parser";
 
   // 設定
   piano_roll_place.appendChildren([
-    slider,
-    show_slider_value,
+    // slider,
+    // show_slider_value,
     HTML.div({ id: "gravity-switcher" }, "", [
       HTML.span({}, "", [
         HTML.label({ for: "key_gravity_switcher" }, "Key Gravity"),
