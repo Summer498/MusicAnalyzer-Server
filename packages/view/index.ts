@@ -36,11 +36,11 @@ export const piano_roll_time_length = 5;  // 1 画面に収める曲の長さ[�
 export const reservation_range = 1 / 15;  // play range [second]
 export const current_time_ratio = 1 / 4;
 
-type Updatable = {
+export interface Updatable {
   updateShow: (begin: number, end: number) => void,
   onUpdate: (current_time_x: number, now_at: number, note_size: number) => void
 }
-type WindowReflectable = {
+export interface WindowReflectable {
   onWindowResized: (piano_roll_width: number) => void
 }
 
@@ -114,7 +114,7 @@ class SvgAndParam {
   }
 }
 
-class SvgAndParams<T extends { svg: SVGElement }> {
+export class SvgAndParams<T extends { svg: SVGElement }> {
   svg;
   onWindowResized;
   constructor(svg_and_params: T[], onWindowResized: (e: T, piano_roll_width: number) => void) {

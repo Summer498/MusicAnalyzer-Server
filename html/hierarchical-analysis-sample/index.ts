@@ -4,8 +4,8 @@ import { chord_name_margin, chord_text_size, getChordKeysSVG, getChordNamesSVG, 
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
-import { getBlackBGs, getBlackKeys, getOctaveBGs, getOctaveKeys, getPianoRollWidth, getWhiteBGs, getWhiteKeys, piano_roll_height, piano_roll_time_length, current_time_ratio, WindowReflectableRegistry, UpdatableRegistry } from "@music-analyzer/view";
-import { beepMelody, chord_gravities, deleteMelody, getArrowSVGs, getDMelodySVG, getIRSymbolSVG, getMelodySVG, insertMelody, key_gravities, refresh_arrow } from "@music-analyzer/melody-view";
+import { getBlackBGs, getBlackKeys, getOctaveBGs, getOctaveKeys, getPianoRollWidth, getWhiteBGs, getWhiteKeys, piano_roll_height, piano_roll_time_length, current_time_ratio, WindowReflectableRegistry, UpdatableRegistry, SvgAndParams } from "@music-analyzer/view";
+import { beepMelody, chord_gravities, deleteMelody, getArrowSVGs, getDMelodySVG, getIRSymbolSVG, getMelodySVG, insertMelody, key_gravities, melody_beep_switcher, melody_beep_volume, refresh_arrow, show_melody_beep_volume } from "@music-analyzer/melody-view";
 import { getBeatBars } from "@music-analyzer/beat-view";
 
 // 分析データ-->
@@ -86,8 +86,7 @@ import { X2jOptions, XMLParser } from "fast-xml-parser";
 
   // <-- 分析データ
 
-  // SVG -->
-
+  
   const d_romans: TimeAndRomanAnalysis[] = window.MusicAnalyzer.roman.map(e => e);
   const d_melodies: TimeAndMelodyAnalysis[] = window.MusicAnalyzer.melody.map(e => ({
     begin: e.begin - 0.16,  // ズレ補正
@@ -98,11 +97,11 @@ import { X2jOptions, XMLParser } from "fast-xml-parser";
   }));
   const romans = d_romans.map(e => e);
   const melodies = d_melodies.map(e => e).filter((e, i) => i + 1 >= d_melodies.length || 60 / (d_melodies[i + 1].begin - d_melodies[i].begin) < 300 * 4);
-
+  
   window.MusicAnalyzer.insertMelody = insertMelody;
   window.MusicAnalyzer.deleteMelody = deleteMelody;
   window.MusicAnalyzer.play = play;  // NOTE:コンソールデバッグ用
-
+  
   // テンポの計算 (試運転)
   const beat_info = calcTempo(melodies, romans);
   console.log("tempo");
@@ -111,30 +110,22 @@ import { X2jOptions, XMLParser } from "fast-xml-parser";
   console.log(audio_player.duration);
   console.log("last melody");
   console.log(melodies[melodies.length - 1].end);
-
-  let once_refreshed = false;  // activate refresher flag
-
+  
+  // SVG -->
   // ボタン
   const slider = HTML.input({ type: "range", id: "slider" });
   const show_slider_value = HTML.span({}, slider.value);
-  const key_gravity_switcher_id = "key-gravity-switcher";
-  const chord_gravity_switcher_id = "chord-gravity-switcher";
-  const melody_beep_switcher_id = "melody-sound-switcher";
-  const key_gravity_switcher = HTML.input_checkbox({ id: key_gravity_switcher_id, name: key_gravity_switcher_id });
-  const chord_gravity_switcher = HTML.input_checkbox({ id: chord_gravity_switcher_id, name: chord_gravity_switcher_id });
-  const melody_beep_switcher = HTML.input_checkbox({ id: melody_beep_switcher_id, name: melody_beep_switcher_id });
-  const melody_beep_volume = HTML.input_range({ id: "melody-volume", min: 0, max: 100, step: 1 });
-  const show_melody_beep_volume = HTML.span({}, `volume: ${melody_beep_volume.value}`);
   slider.addEventListener("input", e => { show_slider_value.textContent = slider.value; });
-  melody_beep_volume.addEventListener("input", e => { show_melody_beep_volume.textContent = `volume: ${melody_beep_volume.value}`; });
+  const key_gravity_switcher = HTML.input_checkbox({ id: "key_gravity_switcher", name: "key_gravity_switcher" });
   key_gravity_switcher.checked = true;
+  key_gravity_switcher.addEventListener("change", e => { key_gravities.forEach(key_gravity => key_gravity.setAttribute("visibility", key_gravity_switcher.checked ? "visible" : "hidden")); });
+  const chord_gravity_switcher = HTML.input_checkbox({ id: "chord_gravity_switcher", name: "chord_gravity_switcher" });
   chord_gravity_switcher.checked = true;
-  melody_beep_switcher.checked = true;
+  chord_gravity_switcher.addEventListener("change", e => { chord_gravities.forEach(chord_gravity => chord_gravity.setAttribute("visibility", chord_gravity_switcher.checked ? "visible" : "hidden")); });
   /*
   // NOTE: 色選択は未実装なので消しておく
-  const melody_color_selector_name = "melody-color-selector";
-  const key_color_selector = HTML.input_radio({ name: melody_color_selector_name, id: "color-selector-key", value: "key", checked: `${true}` }, "key based color");
-  const chord_color_selector = HTML.input_radio({ name: melody_color_selector_name, id: "color-selector-chord", value: "chord" }, "chord based color");
+  const key_color_selector = HTML.input_radio({ name: "key_color_selector", id: "key_color_selector", value: "key", checked: `${true}` }, "key based color");
+  const chord_color_selector = HTML.input_radio({ name: "chord_color_selector", id: "chord_color_selector", value: "chord" }, "chord based color");
   const melody_color_selector =
   HTML.div({ display: "inline" }, "", [
     HTML.label({ for: "color-selector-key" }, "key based color"),
@@ -142,41 +133,43 @@ import { X2jOptions, XMLParser } from "fast-xml-parser";
     HTML.label({ for: "color-selector-chord" }, "chord based color"),
     chord_color_selector,
     ]);
-    */
-  key_gravity_switcher.addEventListener("click", () => { once_refreshed = false; });
-  chord_gravity_switcher.addEventListener("click", () => { once_refreshed = false; });
+  */
 
   // svg element の作成
   const arrow_svgs = getArrowSVGs(melodies);
   const melody_svgs = getMelodySVG(melodies);
-  const IR_svgs = getIRSymbolSVG(melodies);
-  console.log("IR symbols");
-  console.log(IR_svgs);
+
   const current_time_line = SVG.line({ name: "current_time", "stroke-width": 5, stroke: "#000" });
-  const piano_roll = SVG.svg({ name: "piano-roll" }, undefined, [
-    // 奥側
-    SVG.g({ name: "octave-BGs" }, undefined, getOctaveBGs(getWhiteBGs(), getBlackBGs()).svg.map(e => e.svg)),
 
-    [
-      getBeatBars(beat_info, melodies),
-      getChordNotesSVG(romans),
-      getChordNamesSVG(romans),
-      getChordRomansSVG(romans),
-      getChordKeysSVG(romans),
-      getDMelodySVG(d_melodies),
-      melody_svgs,
-      IR_svgs
-    ].map(e => e.group),
-
-    SVG.g({ name: "gravities" }, undefined, [
-      arrow_svgs.map(e => e.line),
-      arrow_svgs.map(e => e.triangle)
-    ]),
-
-    SVG.g({ name: "octave-keys" }, undefined, getOctaveKeys(getWhiteKeys(), getBlackKeys()).svg.map(e => e.svg)),
-    current_time_line,
-    // 手前側
-  ].flat());
+  const piano_roll =  new SvgAndParams(
+    [{
+      svg: SVG.svg({ name: "piano-roll" }, undefined, [
+        // 奥側
+        SVG.g({ name: "octave-BGs" }, undefined, getOctaveBGs(getWhiteBGs(), getBlackBGs()).svg.map(e => e.svg)),
+      
+        [
+          getBeatBars(beat_info, melodies),
+          getChordNotesSVG(romans),
+          getChordNamesSVG(romans),
+          getChordRomansSVG(romans),
+          getChordKeysSVG(romans),
+          getDMelodySVG(d_melodies),
+          melody_svgs,
+          getIRSymbolSVG(melodies)
+        ].map(e => e.group),
+      
+        SVG.g({ name: "gravities" }, undefined, [
+          arrow_svgs.map(e => e.line),
+          arrow_svgs.map(e => e.triangle)
+        ]),
+      
+        SVG.g({ name: "octave-keys" }, undefined, getOctaveKeys(getWhiteKeys(), getBlackKeys()).svg.map(e => e.svg)),
+        current_time_line,
+        // 手前側
+      ].flat())
+    }],
+    (e, piano_roll_width) => { e.svg.setAttributes({ x: 0, y: 0, width: piano_roll_width, height: piano_roll_height + chord_text_size * 2 + chord_name_margin }); }
+  );
 
   // 設定
   piano_roll_place.appendChildren([
@@ -184,43 +177,51 @@ import { X2jOptions, XMLParser } from "fast-xml-parser";
     show_slider_value,
     HTML.div({ id: "gravity-switcher" }, "", [
       HTML.span({}, "", [
-        HTML.label({ for: key_gravity_switcher_id }, "Key Gravity"),
+        HTML.label({ for: "key_gravity_switcher" }, "Key Gravity"),
         key_gravity_switcher,
       ]),
       HTML.span({}, "", [
-        HTML.label({ for: chord_gravity_switcher_id }, "Chord Gravity"),
+        HTML.label({ for: "chord_gravity_switcher" }, "Chord Gravity"),
         chord_gravity_switcher,
       ])
     ]),
     HTML.span({}, "", [
-      HTML.label({ for: melody_beep_switcher_id }, "Beep Melody"),
+      HTML.label({ for: "melody_beep_switcher" }, "Beep Melody"),
       melody_beep_switcher,
       melody_beep_volume,
       show_melody_beep_volume,
     ]),
     // NOTE: 色選択は未実装なので消しておく
     // melody_color_selector,
-    piano_roll
+    piano_roll.svg[0].svg
   ]);
+  // <-- SVG
+
+  // メインループ -->
 
   let old_time = Date.now();
   const fps_element = HTML.p({ name: "fps" }, `fps:${0}`);
 
   let last_audio_time = Number.MIN_SAFE_INTEGER;
   const onUpdate = () => {
+    // fps 関連処理 -->
     const now = Date.now();
     const fps = Math.floor(1000 / (now - old_time));
     fps_element.textContent = `fps:${(" " + fps).slice(-3)} ${fps < 60 ? '<' : '>'} 60`;
     old_time = now;
+    // <-- fps 関連処理
+
+    // --> audio 関連処理
     const now_at = audio_player.currentTime;
     // TODO: 止めたときの挙動がおかしいので直す
     // 大量の計算を行った後のアニメーションの挙動はちょっとおかしくなるらしい
     if (audio_player.paused && now_at === last_audio_time) {
-      if (once_refreshed) { return; }
-      else { once_refreshed = true; }
-    } else { once_refreshed = false; }
+      return;
+    }
     last_audio_time = now_at;
+    // <-- audio 関連処理
 
+    // svg アップデート -->
     const piano_roll_width = getPianoRollWidth();
     const current_time_x = piano_roll_width * current_time_ratio;
     const note_size = piano_roll_width / piano_roll_time_length;
@@ -230,6 +231,7 @@ import { X2jOptions, XMLParser } from "fast-xml-parser";
 
     UpdatableRegistry.instance.onUpdate(current_time_x, now_at, note_size);
     refresh_arrow(arrow_svgs, current_time_x, now_at, note_size);
+    // <-- svg アップデート
 
 
     // 音出し
@@ -246,7 +248,7 @@ import { X2jOptions, XMLParser } from "fast-xml-parser";
     // 各 svg のパラメータを更新する
     const piano_roll_width = getPianoRollWidth();
     WindowReflectableRegistry.instance.onWindowResized(piano_roll_width);
-    piano_roll.setAttributes({ x: 0, y: 0, width: piano_roll_width, height: piano_roll_height + chord_text_size * 2 + chord_name_margin });
+    // piano_roll.svg[0].svg.setAttributes({ x: 0, y: 0, width: piano_roll_width, height: piano_roll_height + chord_text_size * 2 + chord_name_margin });
 
     const current_time_x = piano_roll_width * current_time_ratio;
     current_time_line.setAttributes({ x1: current_time_x, x2: current_time_x, y1: 0, y2: piano_roll_height });

@@ -1,4 +1,4 @@
-import { SVG } from "@music-analyzer/html";
+import { HTML, SVG } from "@music-analyzer/html";
 import { Gravity, TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { fifthChromaToColor, hsv2rgb, rgbToString } from "@music-analyzer/color";
 import { SvgWindow, black_key_prm, piano_roll_begin, reservation_range, size } from "@music-analyzer/view";
@@ -9,6 +9,13 @@ import { play } from "@music-analyzer/synth";
 const ir_analysis_em = size;
 const triangle_width = 5;
 const triangle_height = 5;
+
+export const melody_beep_switcher = HTML.input_checkbox({ id: "melody_beep_switcher", name: "melody_beep_switcher" });
+melody_beep_switcher.checked = true;
+export const melody_beep_volume = HTML.input_range({ id: "melody_beep_volume", min: 0, max: 100, step: 1 });
+export const show_melody_beep_volume = HTML.span({}, `volume: ${melody_beep_volume.value}`);
+melody_beep_volume.addEventListener("input", e => { show_melody_beep_volume.textContent = `volume: ${melody_beep_volume.value}`; });
+
 
 export const insertMelody = () => {
   console.log("insertMelody called");
@@ -56,37 +63,45 @@ export const getMelodySVG = (melodies: TimeAndMelodyAnalysis[]) => new SvgWindow
     h: black_key_prm.height,
     sound_reserved: false,
   })),
-  (e, current_time_x, now_at, note_size) => e.svg.setAttributes({
-    x: current_time_x + (e.begin - now_at) * note_size,
-    y: e.y,
-    width: e.w * note_size,
-    height: e.h,
-    onclick: "MusicAnalyzer.deleteMelody()",
-  })
+  (e, current_time_x, now_at, note_size) => {
+    e.svg.setAttributes({
+      x: current_time_x + (e.begin - now_at) * note_size,
+      y: e.y,
+      width: e.w * note_size,
+      height: e.h,
+      onclick: "MusicAnalyzer.deleteMelody()",
+    });
+  }
 );
 
-export const getIRSymbolSVG = (melodies: TimeAndMelodyAnalysis[]) => new SvgWindow("I-R Symbols",
-  melodies.map(e => {console.log("getIRSymbolSVG called"); return {
-    svg: SVG.text(
-      {
-        id: "I-R Symbol",
-        "font-family": 'Times New Roman',
-        "font-size": `${ir_analysis_em}em`,
-        "text-anchor": "middle",
-      },
-      e.melody_analysis.implication_realization.symbol,
-    ),
-    begin: e.begin,
-    end: e.end,
-    y: (piano_roll_begin - e.note) * black_key_prm.height,
-    archetype: e.melody_analysis.implication_realization
-  };}),
-  (e, current_time_x, now_at, note_size) => e.svg.setAttributes({
-    x: current_time_x + (e.begin - now_at) * note_size,
-    y: e.y,
-    fill: get_color_of_Narmour_concept(e.archetype) || "#000"
-  })
-);
+export const getIRSymbolSVG = (melodies: TimeAndMelodyAnalysis[]) => {
+  const IR_svgs = new SvgWindow("I-R Symbols",
+    melodies.map(e => ({
+      svg: SVG.text(
+        {
+          id: "I-R Symbol",
+          "font-family": 'Times New Roman',
+          "font-size": `${ir_analysis_em}em`,
+          "text-anchor": "middle",
+        },
+        e.melody_analysis.implication_realization.symbol,
+      ),
+      begin: e.begin,
+      end: e.end,
+      y: (piano_roll_begin - e.note) * black_key_prm.height,
+      archetype: e.melody_analysis.implication_realization
+    })),
+    (e, current_time_x, now_at, note_size) => e.svg.setAttributes({
+      x: current_time_x + (e.begin - now_at) * note_size,
+      y: e.y,
+      fill: get_color_of_Narmour_concept(e.archetype) || "#000"
+    })
+  );
+  console.log("IR symbols");
+  console.log(IR_svgs);
+  return IR_svgs;
+};
+
 
 interface ArrowSVG extends TimeAnd {
   triangle: SVGPolygonElement
