@@ -2,7 +2,7 @@ import { HTML, SVG } from "@music-analyzer/html";
 import { Gravity, TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { fifthChromaToColor, hsv2rgb, rgbToString } from "@music-analyzer/color";
 import { CurrentTimeX, NoteSize, SvgWindow, black_key_prm, piano_roll_begin, reservation_range, size } from "@music-analyzer/view";
-import { TimeAnd, search_items_begins_in_range } from "@music-analyzer/time-and";
+import { TimeAnd } from "@music-analyzer/time-and";
 import { get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { play } from "@music-analyzer/synth";
 
@@ -48,8 +48,19 @@ export const getDMelodySVG = (detected_melodies: TimeAndMelodyAnalysis[]) => new
   })
 );
 
+type MelodySVG = {
+  svg: SVGRectElement,
+  begin: number,
+  end: number,
+  note: number,
+  y: number,
+  w: number,
+  h: number,
+  sound_reserved: boolean,
+}
+
 export const getMelodySVG = (melodies: TimeAndMelodyAnalysis[]) => new SvgWindow("melody",
-  melodies.map(e => ({
+  melodies.map((e): MelodySVG => ({
     svg: SVG.rect({
       name: "melody-note",
       fill: fifthChromaToColor(e.note, 0.75, 0.9),
@@ -71,6 +82,7 @@ export const getMelodySVG = (melodies: TimeAndMelodyAnalysis[]) => new SvgWindow
       height: e.h,
       onclick: "MusicAnalyzer.deleteMelody()",
     });
+    melody_beep_switcher.checked && beepMelody(e, now_at, Number(melody_beep_volume.value) / 400);
   }
 );
 
@@ -170,7 +182,7 @@ export const getArrowSVGs = (melodies: TimeAndMelodyAnalysis[]) => new SvgWindow
       res.push(svg);
       chord_gravities.push(svg.line);
       chord_gravities.push(svg.triangle);
-    }  
+    }
     return res;
   }).flat(2),
 
@@ -180,7 +192,7 @@ export const getArrowSVGs = (melodies: TimeAndMelodyAnalysis[]) => new SvgWindow
     const dst_x = arrow_svg.dst_x0 * NoteSize.value - std_pos + CurrentTimeX.value;
     const src_y = arrow_svg.src_y0;
     const dst_y = arrow_svg.dst_y0;
-  
+
     const dx = dst_x - src_x;
     const dy = dst_y - src_y;
     const r = Math.sqrt(dx * dx + dy * dy);
@@ -199,14 +211,13 @@ export const getArrowSVGs = (melodies: TimeAndMelodyAnalysis[]) => new SvgWindow
   }
 );
 
-export const beepMelody = (melody_svgs: ReturnType<typeof getMelodySVG>, now_at: number, volume: number) => {
-  const melody_range = search_items_begins_in_range(melody_svgs.show, now_at, now_at + reservation_range);
-  for (let i = melody_range.begin_index; i < melody_range.end_index; i++) {
-    const e = melody_svgs.show[i];
-    if (e.sound_reserved === false) {
-      play([440 * Math.pow(2, (e.note - 69) / 12)], e.begin - now_at, e.end - e.begin, volume);
-      e.sound_reserved = true;
-      setTimeout(() => { e.sound_reserved = false; }, reservation_range * 1000);
+
+const beepMelody = (melody_svg: MelodySVG, now_at: number, volume: number) => {
+  if(now_at <= melody_svg.begin && melody_svg.begin < now_at + reservation_range){
+    if (melody_svg.sound_reserved === false) {
+      play([440 * Math.pow(2, (melody_svg.note - 69) / 12)], melody_svg.begin - now_at, melody_svg.end - melody_svg.begin, volume);
+      melody_svg.sound_reserved = true;
+      setTimeout(() => { melody_svg.sound_reserved = false; }, reservation_range * 1000);
     }
   }
 };

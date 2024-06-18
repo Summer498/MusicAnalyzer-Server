@@ -4,7 +4,6 @@ import { getRange } from "@music-analyzer/math";
 import { SVG } from "@music-analyzer/html";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { play } from "@music-analyzer/synth";
-import { search_items_begins_in_range } from "@music-analyzer/time-and";
 
 interface BeatBar extends TimeAndSVGs<SVGLineElement> {
   svg: SVGLineElement,
@@ -22,17 +21,19 @@ export const getBeatBars = (beat_info: BeatInfo, melodies: TimeAndMelodyAnalysis
     y2: piano_roll_height,
     sound_reserved: false
   })),
-  (e, now_at) => e.svg.setAttributes({ x1: CurrentTimeX.value + (e.begin - now_at) * NoteSize.value, x2: CurrentTimeX.value + (e.begin - now_at) * NoteSize.value, y1: e.y1, y2: e.y2 })
+  (e, now_at) => {
+    e.svg.setAttributes({ x1: CurrentTimeX.value + (e.begin - now_at) * NoteSize.value, x2: CurrentTimeX.value + (e.begin - now_at) * NoteSize.value, y1: e.y1, y2: e.y2 });
+    // NOTE: うるさいので停止中
+    0 && beepBeat(e, now_at);
+  }
 );
 
-export const beepBeat = (beat_bars: SvgWindow<SVGLineElement, BeatBar>, now_at:number, ) => {
-  const beat_range = search_items_begins_in_range(beat_bars.show, now_at, now_at + reservation_range);
-  for (let i = beat_range.begin_index; i < beat_range.end_index; i++) {
-    const e = beat_bars.show[i];
-    if (e.sound_reserved === false) {
-      play([220], e.begin - now_at, 0.125);
-      e.sound_reserved = true;
-      setTimeout(() => { e.sound_reserved = false; }, reservation_range * 1000);
+const beepBeat = (beat_bar: BeatBar, now_at:number) => {
+  if(now_at <= beat_bar.begin && beat_bar.begin < now_at + reservation_range){
+    if (beat_bar.sound_reserved === false) {
+      play([220], beat_bar.begin - now_at, 0.125);
+      beat_bar.sound_reserved = true;
+      setTimeout(() => { beat_bar.sound_reserved = false; }, reservation_range * 1000);
     }
   }
 };

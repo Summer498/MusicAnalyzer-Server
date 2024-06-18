@@ -6,7 +6,7 @@ import { calcTempo } from "@music-analyzer/beat-estimation";
 import { getBeatBars } from "@music-analyzer/beat-view";
 import { chord_name_margin, chord_text_size, getChordKeysSVG, getChordNamesSVG, getChordNotesSVG, getChordRomansSVG } from "@music-analyzer/chord-view";
 import { getBlackBGs, getBlackKeys, getOctaveBGs, getOctaveKeys, getWhiteBGs, getWhiteKeys, piano_roll_height, WindowReflectableRegistry, UpdatableRegistry, SvgAndParams, PianoRollWidth, getCurrentTimeLine } from "@music-analyzer/view";
-import { beepMelody, chord_gravities, deleteMelody, getArrowSVGs, getDMelodySVG, getIRSymbolSVG, getMelodySVG, insertMelody, key_gravities, melody_beep_switcher, melody_beep_volume, show_melody_beep_volume } from "@music-analyzer/melody-view";
+import { chord_gravities, deleteMelody, getArrowSVGs, getDMelodySVG, getIRSymbolSVG, getMelodySVG, insertMelody, key_gravities, melody_beep_switcher, melody_beep_volume, show_melody_beep_volume } from "@music-analyzer/melody-view";
 
 interface MusicAnalyzerWindow extends Window {
   MusicAnalyzer: {
@@ -86,8 +86,6 @@ const melody_color_selector =
 */
 
 // svg element の作成
-const melody_svgs = getMelodySVG(melodies);
-
 const piano_roll = new SvgAndParams(
   [{
     svg: SVG.svg({ name: "piano-roll" }, undefined, [
@@ -101,7 +99,7 @@ const piano_roll = new SvgAndParams(
         getChordRomansSVG(romans),
         getChordKeysSVG(romans),
         getDMelodySVG(d_melodies),
-        melody_svgs,
+        getMelodySVG(melodies),
         getIRSymbolSVG(melodies),
       ].map(e => e.group),
 
@@ -171,12 +169,6 @@ const onUpdate = () => {
   // <-- audio 関連処理
 
   UpdatableRegistry.instance.onUpdate(now_at);
-
-  // 音出し
-  /* NOTE: うるさいので停止中
-  beepBeat(beat_bars, now_at);
-  */
-  melody_beep_switcher.checked && beepMelody(melody_svgs, now_at, Number(melody_beep_volume.value) / 400);
 };
 
 
