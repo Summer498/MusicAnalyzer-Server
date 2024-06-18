@@ -1,4 +1,5 @@
-import { CurrentTimeX, NoteSize, SvgWindow, TimeAndSVGs, piano_roll_height, reservation_range } from "@music-analyzer/view";
+import { SvgWindow, TimeAndSVGs } from "@music-analyzer/view";
+import { CurrentTimeX, NoteSize, piano_roll_height, reservation_range } from "@music-analyzer/view-parameters";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { getRange } from "@music-analyzer/math";
 import { SVG } from "@music-analyzer/html";

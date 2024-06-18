@@ -1,12 +1,11 @@
-import { HTML, SVG } from "@music-analyzer/html";
+import { HTML } from "@music-analyzer/html";
 import { play } from "@music-analyzer/synth";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
-import { getBeatBars } from "@music-analyzer/beat-view";
-import { chord_name_margin, chord_text_size, getChordKeysSVG, getChordNamesSVG, getChordNotesSVG, getChordRomansSVG } from "@music-analyzer/chord-view";
-import { getBlackBGs, getBlackKeys, getOctaveBGs, getOctaveKeys, getWhiteBGs, getWhiteKeys, piano_roll_height, WindowReflectableRegistry, UpdatableRegistry, SvgAndParams, PianoRollWidth, getCurrentTimeLine } from "@music-analyzer/view";
-import { chord_gravities, deleteMelody, getArrowSVGs, getDMelodySVG, getIRSymbolSVG, getMelodySVG, insertMelody, key_gravities, melody_beep_switcher, melody_beep_volume, show_melody_beep_volume } from "@music-analyzer/melody-view";
+import { WindowReflectableRegistry, UpdatableRegistry } from "@music-analyzer/view";
+import { getPianoRoll } from "@music-analyzer/svg-objects";
+import { chord_gravities, deleteMelody, insertMelody, key_gravities, melody_beep_switcher, melody_beep_volume, show_melody_beep_volume } from "@music-analyzer/melody-view";
 
 interface MusicAnalyzerWindow extends Window {
   MusicAnalyzer: {
@@ -72,8 +71,8 @@ const chord_gravity_switcher = HTML.input_checkbox({ id: "chord_gravity_switcher
 chord_gravity_switcher.checked = true;
 chord_gravity_switcher.addEventListener("change", e => { chord_gravities.forEach(chord_gravity => chord_gravity.setAttribute("visibility", chord_gravity_switcher.checked ? "visible" : "hidden")); });
 
-/*
 // NOTE: 色選択は未実装なので消しておく
+/*
 const key_color_selector = HTML.input_radio({ name: "key_color_selector", id: "key_color_selector", value: "key", checked: `${true}` }, "key based color");
 const chord_color_selector = HTML.input_radio({ name: "chord_color_selector", id: "chord_color_selector", value: "chord" }, "chord based color");
 const melody_color_selector =
@@ -85,39 +84,7 @@ const melody_color_selector =
   ]);
 */
 
-// svg element の作成
-const piano_roll = new SvgAndParams(
-  [{
-    svg: SVG.svg({ name: "piano-roll" }, undefined, [
-      // 奥側
-      SVG.g({ name: "octave-BGs" }, undefined, getOctaveBGs(getWhiteBGs(), getBlackBGs()).svg.map(e => e.svg)),
-
-      [
-        getBeatBars(beat_info, melodies),
-        getChordNotesSVG(romans),
-        getChordNamesSVG(romans),
-        getChordRomansSVG(romans),
-        getChordKeysSVG(romans),
-        getDMelodySVG(d_melodies),
-        getMelodySVG(melodies),
-        getIRSymbolSVG(melodies),
-      ].map(e => e.group),
-
-      SVG.g({ name: "gravities" }, undefined, (()=>{
-        const arrow_svgs = getArrowSVGs(melodies);
-        
-        return [
-        arrow_svgs.all.map(e => e.line),
-        arrow_svgs.all.map(e => e.triangle)
-      ];})()),
-
-      SVG.g({ name: "octave-keys" }, undefined, getOctaveKeys(getWhiteKeys(), getBlackKeys()).svg.map(e => e.svg)),
-      getCurrentTimeLine().svg[0].svg,
-      // 手前側
-    ].flat())
-  }],
-  (e) => { e.svg.setAttributes({ x: 0, y: 0, width: PianoRollWidth.value, height: piano_roll_height + chord_text_size * 2 + chord_name_margin }); }
-);
+const piano_roll = getPianoRoll({ beat_info, romans, melodies, d_melodies });
 
 
 // 設定

@@ -1,7 +1,8 @@
 import { HTML, SVG } from "@music-analyzer/html";
 import { Gravity, TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { fifthChromaToColor, hsv2rgb, rgbToString } from "@music-analyzer/color";
-import { CurrentTimeX, NoteSize, SvgWindow, black_key_prm, piano_roll_begin, reservation_range, size } from "@music-analyzer/view";
+import { SvgWindow } from "@music-analyzer/view";
+import { CurrentTimeX, NoteSize, black_key_prm, piano_roll_begin, reservation_range, size } from "@music-analyzer/view-parameters";
 import { TimeAnd } from "@music-analyzer/time-and";
 import { get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { play } from "@music-analyzer/synth";

@@ -23,6 +23,7 @@
     "@music-analyzer/melody-view": "1.0.0",
     "@music-analyzer/beat-view": "1.0.0",
     "@music-analyzer/gttm": "1.0.0",
-    "fast-xml-parser": "4.4.0"
+    "fast-xml-parser": "4.4.0",
+    "@music-analyzer/svg-objects": "1.0.0"
   }
 }

@@ -2,7 +2,8 @@ import { hsv2rgb, rgbToString, fifthToColor } from "@music-analyzer/color";
 import { _Chord, _Note, _Scale, Scale } from "@music-analyzer/tonal-objects";
 import { getRange, mod } from "@music-analyzer/math";
 import { getLowerCase, getCapitalCase } from "@music-analyzer/stdlib";
-import { CurrentTimeX, NoteSize, SvgWindow, black_key_prm, octave_cnt, piano_roll_height, size } from "@music-analyzer/view";
+import { SvgWindow } from "@music-analyzer/view";
+import { CurrentTimeX, NoteSize, black_key_prm, octave_cnt, piano_roll_height, size } from "@music-analyzer/view-parameters";
 import { SVG } from "@music-analyzer/html";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 
