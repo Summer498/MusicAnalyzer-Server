@@ -13,31 +13,31 @@ type Beam = {
   text: string
 }
 type Note = {
-  default_x: number
-  default_y: number
+  "default-x": number
+  "default-y": number
   duration: number
   voice: number
   type: string
   accidental?: string
-  dot?: Record<string, never>
+  dot?: string
   stem?: string
   beam?: Beam
   pitch: Pitch
 }
 type SystemMargins = {
-  left_margin: number,
-  right_margin: number
+  "left-margin": number,
+  "right-margin": number
 }
 type SystemLayout = {
-  top_system_distance: number
-  system_margins: SystemMargins
+  "top-system-distance": number
+  "system-margins": SystemMargins
 }
 type Key = {
   fifths: number
 }
 type Time = {
   beats: number,
-  beat_type: number
+  "beat-type": number
 }
 type Clef = {
   sign: string,
@@ -50,11 +50,11 @@ type Attribute = {
   clef: Clef
 }
 type Print = {
-  system_layout: SystemLayout
+  "system-layout": SystemLayout
 }
 type Barline = {
   location: string,
-  bar_style: string
+  "bar-style": string
 }
 type Measure = {
   number: number
@@ -64,7 +64,7 @@ type Measure = {
   note: SingleOrArray<Note>
   barline?: Barline
 }
-interface Part extends HasID {
+export interface Part extends HasID {
   measure: Measure[]
 }
 type Support = {
@@ -74,7 +74,7 @@ type Support = {
 }
 type Encoding = {
   software: string
-  encoding_date: string
+  "encoding-date": string
   supports: Support[]
 }
 type Creator = {
@@ -86,7 +86,7 @@ type Identification = {
   encoding: Encoding
 }
 type Work = {
-  work_title: string
+  "work-title": string
 }
 type Scaling = {
   millimeters: number,
@@ -94,71 +94,71 @@ type Scaling = {
 }
 type PageMargins = {
   type: string,
-  left_margin: number,
-  right_margin: number,
-  top_margin: number,
-  bottom_margin: number,
+  "left-margin": number,
+  "right-margin": number,
+  "top-margin": number,
+  "bottom-margin": number,
 }
 type PageLayout = {
-  page_height: number,
-  page_width: number,
-  page_margins: PageMargins[]
+  "page-height": number,
+  "page-width": number,
+  "page-margins": PageMargins[]
 }
 type Font = {
-  font_family: string,
-  font_size: number
+  "font-family": string,
+  "font-size": number
 }
 type Defaults = {
   scaling: Scaling
-  page_layout: PageLayout
-  word_font: Font
-  lyric_font: Font
+  "page-layout": PageLayout
+  "word-font": Font
+  "lyric-font": Font
 }
 type CreditWords = {
-  default_x: number
-  default_y: number
+  "default-x": number
+  "default-y": number
   justify: string
   valign: string
-  font_size: number
+  "font-size": number
   text: string
 }
 type Credit = {
   page: number
-  credit_type: string
-  credit_words: CreditWords
+  "credit-type": string
+  "credit-words": CreditWords
 }
 interface ScoreInstrument extends HasID {
-  instrument_name: string
+  "instrument-name": string
 }
 interface MidiDevice extends HasID {
   port: number
 }
 interface MidiInstrument extends HasID {
-  midi_channel: number,
-  midi_program: number,
+  "midi-channel": number,
+  "midi-program": number,
   volume: number,
   pan: number
 }
 interface ScorePart extends HasID {
-  part_name: string
-  part_abbreviation: string
-  score_instrument: ScoreInstrument
-  midi_device: MidiDevice
-  midi_instrument: MidiInstrument
+  "part-name": string
+  "part-abbreviation": string
+  "score-instrument": ScoreInstrument
+  "midi-device": MidiDevice
+  "midi-instrument": MidiInstrument
 }
 type PartList = {
-  score_part: ScorePart
+  "score-part": ScorePart
 }
-type ScorePartwise = {
+export type ScorePartwise = {
   version: number
   work: Work
   part: Part
   identification: Identification
   defaults: Defaults
   credit: Credit
-  part_list: PartList
+  "part-list": PartList
 }
 
 export type MusicXML = {
-  score_partwise: (Record<string, never> | ScorePartwise)[]
+  "score-partwise": ScorePartwise
 }

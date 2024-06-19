@@ -5,6 +5,8 @@ import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { getPianoRoll } from "@music-analyzer/svg-objects";
 import { chord_gravities, deleteMelody, insertMelody, key_gravities, melody_beep_switcher, melody_beep_volume, show_melody_beep_volume } from "@music-analyzer/melody-view";
+import { MusicXML, } from "@music-analyzer/gttm/src/MusicXML";
+import { getChroma } from "@music-analyzer/tonal-objects";
 
 // 分析データ-->
 import { GRP as Grouping, MTR as Metric, TSR as TimeSpan, PR as Prolongation, do_re_mi_grp, do_re_mi_mtr, do_re_mi_tsr } from "@music-analyzer/gttm";
@@ -13,7 +15,7 @@ interface MusicAnalyzerWindow extends Window {
   MusicAnalyzer: {
     roman: TimeAndRomanAnalysis[],
     melody: TimeAndMelodyAnalysis[],
-    musicxml: object,
+    musicxml: MusicXML,
     GTTM: {
       grouping: Grouping,
       metric: Metric,
@@ -37,7 +39,7 @@ import { UpdatableRegistry, WindowReflectableRegistry } from "@music-analyzer/vi
     preserveOrder: false,
     attributeNamePrefix: "",
     attributesGroupName: false,
-    textNodeName: "#text",
+    textNodeName: "text",
     ignoreAttributes: false,
     removeNSPrefix: false,
     allowBooleanAttributes: true,
@@ -67,7 +69,13 @@ import { UpdatableRegistry, WindowReflectableRegistry } from "@music-analyzer/vi
   // TODO: avoid specific file: change to general
   const roman = (await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/chord/roman.json")).json()) as TimeAndRomanAnalysis[];
   const melody = (await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/melody/crepe/manalyze.json")).json()) as TimeAndMelodyAnalysis[];
-  const musicxml = await xml_parser.parse(await (await fetch("../../resources/Hierarchical Analysis Sample/sample1.xml")).text());
+  const musicxml = (await xml_parser.parse(await (await fetch("../../resources/Hierarchical Analysis Sample/sample1.xml")).text())) as MusicXML;
+  console.log("roman");
+  console.log(roman);
+  console.log("melody");
+  console.log(melody);
+  console.log("musicxml");
+  console.log(musicxml);
   window.MusicAnalyzer = {
     roman,
     melody,
@@ -83,9 +91,40 @@ import { UpdatableRegistry, WindowReflectableRegistry } from "@music-analyzer/vi
     play
   };
 
+
+  // NOTE: duration と chroma を取るところまではできた
+  // TODO: 
+  // 1. duration と given parameters から時刻に変換する
+  // 2. chroma と時刻から melody svg を作る
+  (() => {
+    const calcChroma = (pitch: {
+      alter?: number,
+      step: string,
+      octave: number
+    }) => 12 + pitch.octave * 12 + (pitch.alter || 0) + getChroma(pitch.step);
+    const part = musicxml["score-partwise"].part;
+    console.log(part.measure.map(e => {
+      const note = e.note;
+      if (Array.isArray(note)) {
+        return note.map(e => ({
+            duration: e.duration,
+            chroma: calcChroma(e.pitch),
+          })
+        );
+      }
+      else {
+        return {
+          duration: note.duration,
+          chroma: calcChroma(note.pitch),
+        };
+      }
+    }));
+
+  })();
+
   // <-- 分析データ
 
-  
+
   const d_romans: TimeAndRomanAnalysis[] = window.MusicAnalyzer.roman.map(e => e);
   const d_melodies: TimeAndMelodyAnalysis[] = window.MusicAnalyzer.melody.map(e => ({
     begin: e.begin - 0.16,  // ズレ補正
@@ -96,11 +135,11 @@ import { UpdatableRegistry, WindowReflectableRegistry } from "@music-analyzer/vi
   }));
   const romans = d_romans.map(e => e);
   const melodies = d_melodies.map(e => e).filter((e, i) => i + 1 >= d_melodies.length || 60 / (d_melodies[i + 1].begin - d_melodies[i].begin) < 300 * 4);
-  
+
   window.MusicAnalyzer.insertMelody = insertMelody;
   window.MusicAnalyzer.deleteMelody = deleteMelody;
   window.MusicAnalyzer.play = play;  // NOTE:コンソールデバッグ用
-  
+
   // テンポの計算 (試運転)
   const beat_info = calcTempo(melodies, romans);
   console.log("tempo");
@@ -109,7 +148,7 @@ import { UpdatableRegistry, WindowReflectableRegistry } from "@music-analyzer/vi
   console.log(audio_player.duration);
   console.log("last melody");
   console.log(melodies[melodies.length - 1].end);
-  
+
   // SVG -->
   // ボタン
   /*
