@@ -1,5 +1,5 @@
 import { ChordProgression } from "@music-analyzer/key-estimation";
-import ReadLine from "readline";
+import { default as ReadLine } from "readline";
 import { TimeAnd } from "@music-analyzer/time-and";
 import { RomanChord } from "@music-analyzer/roman-chord";
 
