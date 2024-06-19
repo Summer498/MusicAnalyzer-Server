@@ -50,12 +50,14 @@ window.MusicAnalyzer.play = play;  // NOTE:コンソールデバッグ用
 
 // テンポの計算
 const beat_info = calcTempo(melodies, romans);
+/*
 console.log("tempo");
 console.log(beat_info.tempo);
 console.log("duration");
 console.log(audio_player.duration);
 console.log("last melody");
 console.log(melodies[melodies.length - 1].end);
+*/
 
 // SVG -->
 // ボタン
@@ -158,9 +160,9 @@ const main = () => {
   onWindowResized();
   update();
 
-  0 && (
-    document.body.insertAdjacentElement("beforeend", fps_element),
+  document.body.insertAdjacentElement("beforeend", fps_element),
+  0 && 
     console.log(beat_info.tempo)
-  );
+  ;
 };
 main();

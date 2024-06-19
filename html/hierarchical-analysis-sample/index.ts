@@ -120,6 +120,8 @@ import { UpdatableRegistry, WindowReflectableRegistry } from "@music-analyzer/vi
       }
     }));
 
+    console.log(do_re_mi_tsr);
+
   })();
 
   // <-- 分析データ
@@ -142,12 +144,14 @@ import { UpdatableRegistry, WindowReflectableRegistry } from "@music-analyzer/vi
 
   // テンポの計算 (試運転)
   const beat_info = calcTempo(melodies, romans);
+  /*
   console.log("tempo");
   console.log(beat_info.tempo);
   console.log("duration");
   console.log(audio_player.duration);
   console.log("last melody");
   console.log(melodies[melodies.length - 1].end);
+  */
 
   // SVG -->
   // ボタン

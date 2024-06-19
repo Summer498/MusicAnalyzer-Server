@@ -120,8 +120,10 @@ export const getIRSymbolSVG = (melodies: TimeAndMelodyAnalysis[]) => {
       fill: get_color_of_Narmour_concept(e.archetype) || "#000"
     })
   );
+  /*
   console.log("IR symbols");
   console.log(IR_svgs);
+  */
   return IR_svgs;
 };
 

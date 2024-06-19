@@ -30,8 +30,10 @@ export const calcTempo = (melodies: TimeAndMelodyAnalysis[], romans: TimeAndRoma
     // ビートを求める方法その3 (採用中 & 考え中)
     onsets[Math.floor(e.begin * 100)] = 1;
   });
+  /*
   console.log("melody_bpm");
   console.log(melody_bpm);
+  */
 
   // ビートを求める方法その2 (考え中)
   const entropy = melody_phase.map(e => {
@@ -39,9 +41,11 @@ export const calcTempo = (melodies: TimeAndMelodyAnalysis[], romans: TimeAndRoma
     const prob = e.map(e => e / sum);
     return { phase, tempo: totalSum(prob.map(p => p === 0 ? 0 : -p * Math.log2(p))) };
   });
+  /*
   console.log(melody_phase);
   console.log("bpm_entropy");
   console.log(entropy);
+  */
 
   // ビートを求める方法その3 (採用中 & 考え中)
   onsets.forEach((e, i) => e === 0 && i !== 0 && (onsets[i] = onsets[i - 1] * 0.9));  // オンセット時に最大値, 時間経過で減衰する信号を作る
@@ -51,13 +55,17 @@ export const calcTempo = (melodies: TimeAndMelodyAnalysis[], romans: TimeAndRoma
     const x = Math.log2(tau / tau_0) / sigma_tau;
     return Math.exp(-x * x / 2);
   };
+  /*
   console.log("onsets");
   console.log(onsets);
+  */
   const tps = correlation(onsets, onsets).map((e, tau) => w(tau) * e[0]);
+  /*
   console.log("tempo period strength");
   console.log(tps);
   console.log(argmax(tps));
   console.log(tps.map((e, i) => [e, i]).sort((p, c) => p[0] > c[0] ? -1 : p[0] === c[0] ? 0 : 1));
+  */
 
   // NOTE: 未使用
   const roman_bpm: number[] = [];
@@ -69,7 +77,9 @@ export const calcTempo = (melodies: TimeAndMelodyAnalysis[], romans: TimeAndRoma
     if (isNaN(roman_bpm[bpm])) { roman_bpm[bpm] = 0; }
     roman_bpm[bpm]++;
   });
+  /*
   console.log("roman_bpm");
   console.log(roman_bpm);
+  */
   return { phase, tempo: argmax(tps) };
 };
