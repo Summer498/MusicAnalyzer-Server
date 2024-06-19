@@ -60,6 +60,16 @@ type MelodySVG = {
   sound_reserved: boolean,
 }
 
+const beepMelody = (melody_svg: MelodySVG, now_at: number, volume: number) => {
+  if(now_at <= melody_svg.begin && melody_svg.begin < now_at + reservation_range){
+    if (melody_svg.sound_reserved === false) {
+      play([440 * Math.pow(2, (melody_svg.note - 69) / 12)], melody_svg.begin - now_at, melody_svg.end - melody_svg.begin, volume);
+      melody_svg.sound_reserved = true;
+      setTimeout(() => { melody_svg.sound_reserved = false; }, reservation_range * 1000);
+    }
+  }
+};
+
 export const getMelodySVG = (melodies: TimeAndMelodyAnalysis[]) => new SvgWindow("melody",
   melodies.map((e): MelodySVG => ({
     svg: SVG.rect({
@@ -211,14 +221,3 @@ export const getArrowSVGs = (melodies: TimeAndMelodyAnalysis[]) => new SvgWindow
     arrow_svg.line.setAttributes({ x1: src_x, x2: dst_x, y1: src_y, y2: dst_y });
   }
 );
-
-
-const beepMelody = (melody_svg: MelodySVG, now_at: number, volume: number) => {
-  if(now_at <= melody_svg.begin && melody_svg.begin < now_at + reservation_range){
-    if (melody_svg.sound_reserved === false) {
-      play([440 * Math.pow(2, (melody_svg.note - 69) / 12)], melody_svg.begin - now_at, melody_svg.end - melody_svg.begin, volume);
-      melody_svg.sound_reserved = true;
-      setTimeout(() => { melody_svg.sound_reserved = false; }, reservation_range * 1000);
-    }
-  }
-};

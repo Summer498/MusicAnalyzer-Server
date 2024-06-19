@@ -13,6 +13,16 @@ interface BeatBar extends TimeAndSVGs<SVGLineElement> {
   sound_reserved: boolean
 }
 
+const beepBeat = (beat_bar: BeatBar, now_at:number) => {
+  if(now_at <= beat_bar.begin && beat_bar.begin < now_at + reservation_range){
+    if (beat_bar.sound_reserved === false) {
+      play([220], beat_bar.begin - now_at, 0.125);
+      beat_bar.sound_reserved = true;
+      setTimeout(() => { beat_bar.sound_reserved = false; }, reservation_range * 1000);
+    }
+  }
+};
+
 export const getBeatBars = (beat_info: BeatInfo, melodies: TimeAndMelodyAnalysis[]) => new SvgWindow("beat-bars",
   getRange(0, Math.ceil(beat_info.tempo * melodies[melodies.length - 1].end) + beat_info.phase).map((i): BeatBar => ({
     svg: SVG.line({ id: "bar", stroke: "#000", display: "none" }), //NOTE: 一旦非表示にしている
@@ -28,13 +38,3 @@ export const getBeatBars = (beat_info: BeatInfo, melodies: TimeAndMelodyAnalysis
     0 && beepBeat(e, now_at);
   }
 );
-
-const beepBeat = (beat_bar: BeatBar, now_at:number) => {
-  if(now_at <= beat_bar.begin && beat_bar.begin < now_at + reservation_range){
-    if (beat_bar.sound_reserved === false) {
-      play([220], beat_bar.begin - now_at, 0.125);
-      beat_bar.sound_reserved = true;
-      setTimeout(() => { beat_bar.sound_reserved = false; }, reservation_range * 1000);
-    }
-  }
-};
