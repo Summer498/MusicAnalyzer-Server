@@ -1,9 +1,9 @@
 import { assertNonNullable as NN, castToNumber } from "@music-analyzer/stdlib";
 import { NoteLiteral as _NoteLiteral } from "tonal";
-import _Interval from "@tonaljs/interval";
-import _Note from "@tonaljs/note";
-import __Chord from "@tonaljs/chord";
-import __Scale from "@tonaljs/scale";
+import { default as _Interval } from "@tonaljs/interval";
+import { default as _Note } from "@tonaljs/note";
+import { default as __Chord } from "@tonaljs/chord";
+import { default as __Scale } from "@tonaljs/scale";
 
 
 export { type Chord } from '@tonaljs/chord';
