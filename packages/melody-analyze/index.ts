@@ -1,4 +1,4 @@
-import fs from "fs";
+import { default as fs } from "fs";
 import { Chord, _Chord, _Note, _Scale } from "@music-analyzer/tonal-objects";
 import { compress, TimeAnd } from "@music-analyzer/time-and";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
