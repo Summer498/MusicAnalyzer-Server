@@ -9,7 +9,7 @@ import { MusicXML, } from "@music-analyzer/gttm/src/MusicXML";
 import { getChroma } from "@music-analyzer/tonal-objects";
 
 // 分析データ-->
-import { GRP as Grouping, MTR as Metric, TSR as TimeSpan, PR as Prolongation, do_re_mi_grp, do_re_mi_mtr, do_re_mi_tsr } from "@music-analyzer/gttm";
+import { GRP, MTR, D_TSR, PR, do_re_mi_grp, do_re_mi_mtr, do_re_mi_tsr } from "@music-analyzer/gttm";
 
 interface MusicAnalyzerWindow extends Window {
   MusicAnalyzer: {
@@ -17,10 +17,10 @@ interface MusicAnalyzerWindow extends Window {
     melody: TimeAndMelodyAnalysis[],
     musicxml: MusicXML,
     GTTM: {
-      grouping: Grouping,
-      metric: Metric,
-      time_span: TimeSpan,
-      prolongation: Prolongation,
+      grouping: GRP,
+      metric: MTR,
+      time_span: D_TSR,
+      prolongation: PR,
     }
     insertMelody: typeof insertMelody,
     deleteMelody: typeof deleteMelody,
@@ -72,12 +72,6 @@ import { BeatPos } from "@music-analyzer/gttm/src/common";
   const roman = (await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/chord/roman.json")).json()) as TimeAndRomanAnalysis[];
   const melody = (await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/melody/crepe/manalyze.json")).json()) as TimeAndMelodyAnalysis[];
   const musicxml = (await xml_parser.parse(await (await fetch("../../resources/Hierarchical Analysis Sample/sample1.xml")).text())) as MusicXML;
-  console.log("roman");
-  console.log(roman);
-  console.log("melody");
-  console.log(melody);
-  console.log("musicxml");
-  console.log(musicxml);
   window.MusicAnalyzer = {
     roman,
     melody,
@@ -122,21 +116,21 @@ import { BeatPos } from "@music-analyzer/gttm/src/common";
       }
     }));
 
-    const getNoteFromId = (id: BeatPos)=>{
+    const getNoteFromId = (id: BeatPos) => {
       const regexp = /P1-([0-9]+)-([0-9]+)/;
       const match = id.match(regexp);
       if (match) {
         const id_measure = Number(match[1]);
         const id_note = Number(match[2]);
-        const note = musicxml["score-partwise"].part.measure[id_measure-1].note;
+        const note = musicxml["score-partwise"].part.measure[id_measure - 1].note;
         if (Array.isArray(note)) {
-          return note[id_note-1];
+          return note[id_note - 1];
         }
         else {
           return note;
         }
       }
-      else{
+      else {
         throw new SyntaxError(`Unexpected id received.\nExpected id is: ${regexp}`);
       }
     };
