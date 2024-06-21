@@ -34,6 +34,8 @@ declare const piano_roll_place: HTMLDivElement;
 
 import { X2jOptions, XMLParser } from "fast-xml-parser";
 import { UpdatableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
+import { TSR } from "@music-analyzer/gttm/src/TSR";
+import { BeatPos } from "@music-analyzer/gttm/src/common";
 (async () => {
   const xml_options: X2jOptions = {
     preserveOrder: false,
@@ -107,9 +109,9 @@ import { UpdatableRegistry, WindowReflectableRegistry } from "@music-analyzer/vi
       const note = e.note;
       if (Array.isArray(note)) {
         return note.map(e => ({
-            duration: e.duration,
-            chroma: calcChroma(e.pitch),
-          })
+          duration: e.duration,
+          chroma: calcChroma(e.pitch),
+        })
         );
       }
       else {
@@ -119,6 +121,40 @@ import { UpdatableRegistry, WindowReflectableRegistry } from "@music-analyzer/vi
         };
       }
     }));
+
+    const getNoteFromId = (id: BeatPos)=>{
+      const regexp = /P1-([0-9]+)-([0-9]+)/;
+      const match = id.match(regexp);
+      if (match) {
+        const id_measure = Number(match[1]);
+        const id_note = Number(match[2]);
+        const note = musicxml["score-partwise"].part.measure[id_measure-1].note;
+        if (Array.isArray(note)) {
+          return note[id_note-1];
+        }
+        else {
+          return note;
+        }
+      }
+      else{
+        throw new SyntaxError(`Unexpected id received.\nExpected id is: ${regexp}`);
+      }
+    };
+
+    const ts = new TSR(do_re_mi_tsr).tstree.ts;
+    const id = ts.head.chord.note.id;
+    const primary = ts.primary?.ts.head.chord.note.id;
+    const pripri = ts.primary?.ts.primary?.ts.primary?.ts.head.chord.note.id;
+    console.log("layers of ts tree");
+    console.log(ts.getArrayOfLayer(0));
+    console.log(ts.getArrayOfLayer(1));
+    console.log(ts.getArrayOfLayer(2));
+    console.log(ts.getArrayOfLayer(3));
+    console.log(ts.getArrayOfLayer(1000));
+    console.log(ts.getArrayOfLayer()?.map(e => e.head.chord.note.id));
+    console.log(ts.getArrayOfLayer()?.map(e => e.head.chord.note.id).map(getNoteFromId));  // レイヤー毎に note[] を取れる
+    // id をパースすれば musicxml 上の位置がわかる
+    // musicxml 上の位置がわかればピッチもわかる
 
     console.log(do_re_mi_tsr);
 

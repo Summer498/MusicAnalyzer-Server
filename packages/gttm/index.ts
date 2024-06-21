@@ -1,6 +1,6 @@
 export { GRP } from "./src/GRP";
 export { MTR } from "./src/MTR";
-export { TSR } from "./src/TSR";
+export { D_TSR, TSR } from "./src/TSR";
 export type PR = undefined;
 // export { PR } from "./src/PR";
 

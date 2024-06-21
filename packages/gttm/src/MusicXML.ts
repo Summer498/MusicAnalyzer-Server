@@ -56,16 +56,20 @@ type Barline = {
   location: string,
   "bar-style": string
 }
-type Measure = {
+interface Measure {
   number: number
   width: number
-  print?: Print
-  attributes?: Attribute
   note: SingleOrArray<Note>
-  barline?: Barline
 }
+
+interface ExtendedMeasure extends Measure {
+  print: Print
+  attributes: Attribute
+  barline: Barline
+}
+
 export interface Part extends HasID {
-  measure: Measure[]
+  measure: (Measure | ExtendedMeasure)[]
 }
 type Support = {
   attribute?: string
