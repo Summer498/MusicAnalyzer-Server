@@ -85,8 +85,7 @@ export const getChordNotesSVG = (romans: TimeAndRomanAnalysis[]) => new SvgColle
   romans.map(e => {
     const chord = _Chord.get(e.chord);
     return getRange(0, octave_cnt).map(oct => chord.notes.map(note => new ChordNoteSVG(e, chord, note, oct)));
-  }).flat(2),
-  (e, now_at) => e.onUpdate(now_at)
+  }).flat(2)
 );
 
 class ChordNameSVG implements Updatable {
@@ -120,8 +119,7 @@ class ChordNameSVG implements Updatable {
 
 export const getChordNamesSVG = (romans: TimeAndRomanAnalysis[]) => new SvgCollection(
   "chord-names",
-  romans.map((e): ChordNameSVG => new ChordNameSVG(e)),
-  (e, now_at) => e.onUpdate(now_at)
+  romans.map(e => new ChordNameSVG(e))
 );
 
 class ChordRomanSVG implements Updatable {
@@ -155,8 +153,7 @@ class ChordRomanSVG implements Updatable {
 
 export const getChordRomansSVG = (romans: TimeAndRomanAnalysis[]) => new SvgCollection(
   "roman-names",
-  romans.map((e): ChordRomanSVG => new ChordRomanSVG(e)),
-  (e, now_at) => e.onUpdate(now_at)
+  romans.map(e => new ChordRomanSVG(e))
 );
 
 class ChordKeySVG implements Updatable {
@@ -191,6 +188,5 @@ class ChordKeySVG implements Updatable {
 
 export const getChordKeysSVG = (romans: TimeAndRomanAnalysis[]) => new SvgCollection(
   "key-names",
-  romans.map((e): ChordKeySVG => new ChordKeySVG(e)),
-  (e, now_at) => e.onUpdate(now_at)
+  romans.map(e => new ChordKeySVG(e))
 );

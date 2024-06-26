@@ -1,11 +1,11 @@
 import { TimeAnd, search_items_overlaps_range } from "@music-analyzer/time-and";
 import { SVG } from "@music-analyzer/html";
-import { 
-  piano_roll_time_length, 
-  current_time_ratio, 
-  PianoRollWidth, 
-  CurrentTimeX, 
-  NoteSize, 
+import {
+  piano_roll_time_length,
+  current_time_ratio,
+  PianoRollWidth,
+  CurrentTimeX,
+  NoteSize,
 } from "@music-analyzer/view-parameters";
 
 
@@ -15,11 +15,7 @@ export interface Updatable {
   onUpdate: (now_at: number) => void
 }
 
-// WARNING: リファクタリング途中の汚いインターフェイス
-export interface UpdatableAndShowable {
-  updateShow: (begin: number, end: number) => void,
-  onUpdate: (now_at: number) => void
-}
+interface UpdatableTimeAndSVGs<T extends SVGElement> extends Updatable, TimeAndSVGs<T> { }
 
 export interface WindowReflectable {
   onWindowResized: () => void
@@ -27,18 +23,14 @@ export interface WindowReflectable {
 
 export class UpdatableRegistry {
   private static _instance: UpdatableRegistry;
-  private readonly registered: UpdatableAndShowable[];
+  private readonly registered: Updatable[];
   private constructor() { this.registered = []; }
   public static get instance() {
     return this._instance || (this._instance = new UpdatableRegistry());
   }
-  register(updatable: UpdatableAndShowable) { this.registered.push(updatable); }
+  register(updatable: Updatable) { this.registered.push(updatable); }
   onUpdate(now_at: number) {
     this.registered.forEach(e => {
-      e.updateShow(
-        now_at - piano_roll_time_length * current_time_ratio,
-        now_at + piano_roll_time_length
-      );
       e.onUpdate(now_at);
     });
   }
@@ -61,16 +53,15 @@ export class WindowReflectableRegistry {
   }
 }
 
-export class SvgCollection<T extends SVGElement, Updatable extends TimeAndSVGs<T>> implements UpdatableAndShowable {
-  readonly all: Updatable[];
-  readonly show: Updatable[];
+
+export class SvgCollection<T extends SVGElement, U extends UpdatableTimeAndSVGs<T>> implements Updatable {
+  readonly all: U[];
+  readonly show: U[];
   readonly group: SVGGElement;
-  readonly onUpdate: (now_at: number) => void;
-  constructor(name: string, all: Updatable[], onUpdate: (e: Updatable, now_at: number) => void) {
+  constructor(name: string, all: U[]) {
     this.all = all;
     this.show = [];
     this.group = SVG.g({ name }, undefined, this.show.map(e => e.svg));
-    this.onUpdate = (now_at) => this.show.forEach(e => onUpdate(e, now_at));
     UpdatableRegistry.instance.register(this);
   }
   updateShow(begin: number, end: number) {
@@ -81,6 +72,13 @@ export class SvgCollection<T extends SVGElement, Updatable extends TimeAndSVGs<T
     this.group.childNodes.forEach(e => this.group.removeChild(e));  // 全部消す
     const append = search_items_overlaps_range(this.all, begin - 5, end + 5);  // melodic gravity の矢印を隠すために ±5 のマージンを取る
     this.all.slice(append.begin_index, append.end_index).forEach(e => { this.show.push(e); this.group.appendChild(e.svg); });  // 必要分全部追加する
+  }
+  onUpdate(now_at: number) {
+    this.updateShow(
+      now_at - piano_roll_time_length * current_time_ratio,
+      now_at + piano_roll_time_length
+    );
+    this.show.forEach(e => e.onUpdate(now_at));
   }
 }
 

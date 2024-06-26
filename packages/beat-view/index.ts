@@ -39,6 +39,5 @@ class BeatBarSVG implements Updatable {
 
 export const getBeatBars = (beat_info: BeatInfo, melodies: TimeAndMelodyAnalysis[]) => new SvgCollection(
   "beat-bars",
-  getRange(0, Math.ceil(beat_info.tempo * melodies[melodies.length - 1].end) + beat_info.phase).map(i => new BeatBarSVG(beat_info, i)),
-  (e, now_at) => e.onUpdate(now_at)
+  getRange(0, Math.ceil(beat_info.tempo * melodies[melodies.length - 1].end) + beat_info.phase).map(i => new BeatBarSVG(beat_info, i))
 );

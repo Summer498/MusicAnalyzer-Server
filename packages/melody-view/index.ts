@@ -3,7 +3,6 @@ import { Gravity, TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { fifthChromaToColor, hsv2rgb, rgbToString } from "@music-analyzer/color";
 import { SvgCollection, Updatable } from "@music-analyzer/view";
 import { CurrentTimeX, NoteSize, black_key_prm, piano_roll_begin, reservation_range, size } from "@music-analyzer/view-parameters";
-import { TimeAnd } from "@music-analyzer/time-and";
 import { Archetype, get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { play } from "@music-analyzer/synth";
 
@@ -60,8 +59,7 @@ class DMelodySVG implements Updatable {
 
 export const getDMelodySVGs = (detected_melodies: TimeAndMelodyAnalysis[]) => new SvgCollection(
   "detected-melody",
-  detected_melodies.map(e => new DMelodySVG(e)),
-  (e, now_at) => e.onUpdate(now_at)
+  detected_melodies.map(e => new DMelodySVG(e))
 );
 
 class MelodySVG implements Updatable {
@@ -113,8 +111,7 @@ class MelodySVG implements Updatable {
 
 export const getMelodySVGs = (melodies: TimeAndMelodyAnalysis[]) => new SvgCollection(
   "melody",
-  melodies.map(e => new MelodySVG(e)),
-  (e, now_at) => e.onUpdate(now_at)
+  melodies.map(e => new MelodySVG(e))
 );
 
 class IRSymbolSVG implements Updatable {
@@ -150,8 +147,7 @@ class IRSymbolSVG implements Updatable {
 export const getIRSymbolSVGs = (melodies: TimeAndMelodyAnalysis[]) => {
   const IR_svgs = new SvgCollection(
     "I-R Symbols",
-    melodies.map((e): IRSymbolSVG => new IRSymbolSVG(e)),
-    (e, now_at) => e.onUpdate(now_at)
+    melodies.map(e => new IRSymbolSVG(e))
   );
   /*
   console.log("IR symbols");
@@ -254,6 +250,5 @@ export const getArrowSVGs = (melodies: TimeAndMelodyAnalysis[]) => new SvgCollec
       chord_gravities.push(svg.triangle);
     }
     return res;
-  }).flat(2),
-  (arrow_svg: ArrowSVG, now_at: number) => arrow_svg.onUpdate(now_at)
+  }).flat(2)
 );
