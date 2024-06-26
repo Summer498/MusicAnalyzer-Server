@@ -12,21 +12,27 @@ import {
 export interface TimeAndSVGs<T extends SVGElement> extends TimeAnd { svg: T; }
 
 export interface Updatable {
+  onUpdate: (now_at: number) => void
+}
+
+// WARNING: リファクタリング途中の汚いインターフェイス
+export interface UpdatableAndShowable {
   updateShow: (begin: number, end: number) => void,
   onUpdate: (now_at: number) => void
 }
+
 export interface WindowReflectable {
   onWindowResized: () => void
 }
 
 export class UpdatableRegistry {
   private static _instance: UpdatableRegistry;
-  private readonly registered: Updatable[];
+  private readonly registered: UpdatableAndShowable[];
   private constructor() { this.registered = []; }
   public static get instance() {
     return this._instance || (this._instance = new UpdatableRegistry());
   }
-  register(updatable: Updatable) { this.registered.push(updatable); }
+  register(updatable: UpdatableAndShowable) { this.registered.push(updatable); }
   onUpdate(now_at: number) {
     this.registered.forEach(e => {
       e.updateShow(
@@ -55,12 +61,12 @@ export class WindowReflectableRegistry {
   }
 }
 
-export class SvgWindow<T extends SVGElement, U extends TimeAndSVGs<T>> implements Updatable {
-  readonly all: U[];
-  readonly show: U[];
+export class SvgCollection<T extends SVGElement, Updatable extends TimeAndSVGs<T>> implements UpdatableAndShowable {
+  readonly all: Updatable[];
+  readonly show: Updatable[];
   readonly group: SVGGElement;
   readonly onUpdate: (now_at: number) => void;
-  constructor(name: string, all: U[], onUpdate: (e: U, now_at: number) => void) {
+  constructor(name: string, all: Updatable[], onUpdate: (e: Updatable, now_at: number) => void) {
     this.all = all;
     this.show = [];
     this.group = SVG.g({ name }, undefined, this.show.map(e => e.svg));
