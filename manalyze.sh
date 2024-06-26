@@ -121,7 +121,7 @@ main(){
     local -r chord_to_roman_src="$chord_ext_dst"
     local -r chord_to_roman_dst="./resources/$songname/analyzed/chord/roman.json"
     detectFile "$chord_to_roman_src"
-    runProcessWithCache $force_reanalyze "$chord_to_roman_dst" "node ./packages/chordToRoman < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\""
+    runProcessWithCache $force_reanalyze "$chord_to_roman_dst" "node ./packages/chord-to-roman < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\""
 
 
 
@@ -158,7 +158,7 @@ main(){
         local -r melody_analyze_dst="./resources/$songname/analyzed/melody/crepe/manalyze.json"
         detectFile "$melody_analyze_melody_src"
         detectFile "$melody_analyze_chord_src"
-        runProcessWithCache $force_reanalyze "$melody_analyze_dst" "node ./packages/melodyAnalyze -m \"$melody_analyze_melody_src\" -r \"$melody_analyze_chord_src\" -o \"$melody_analyze_dst\" --sampling_rate 100"
+        runProcessWithCache $force_reanalyze "$melody_analyze_dst" "node ./packages/melody-analyze-cli -m \"$melody_analyze_melody_src\" -r \"$melody_analyze_chord_src\" -o \"$melody_analyze_dst\" --sampling_rate 100"
     fi
 
     # 音高推定 (pYIN)
@@ -177,7 +177,7 @@ main(){
         local -r post_pyin_src="$pyin_dst"
         local -r post_pyin_dst="./resources/$songname/analyzed/melody/pyin/vocals.json"
         detectFile "$post_pyin_src"
-        runProcessWithCache $force_reanalyze "$post_pyin_dst" "node ./packages/postPYIN \"$post_pyin_src\" \"$(dirname "$post_pyin_dst")\""
+        runProcessWithCache $force_reanalyze "$post_pyin_dst" "node ./packages/post-pyin \"$post_pyin_src\" \"$(dirname "$post_pyin_dst")\""
 
         # コードとメロディの関係を求める (pYIN 系)
         echo "call melody analyze (from pYIN)" >&2
@@ -187,7 +187,7 @@ main(){
         detectFile "$melody_analyze_melody_src"
         detectFile "$melody_analyze_chord_src"
         local -r sr=$((22050/1024))
-        runProcessWithCache $force_reanalyze "$melody_analyze_dst" "node ./packages/melodyAnalyze -m \"$melody_analyze_melody_src\" -r \"$melody_analyze_chord_src\" -o \"$melody_analyze_dst\" --sampling_rate $sr"
+        runProcessWithCache $force_reanalyze "$melody_analyze_dst" "node ./packages/melody-analyze-cli -m \"$melody_analyze_melody_src\" -r \"$melody_analyze_chord_src\" -o \"$melody_analyze_dst\" --sampling_rate $sr"
     fi
 
     cat "$melody_analyze_dst"
