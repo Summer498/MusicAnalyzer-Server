@@ -1,4 +1,4 @@
-import { TimeAnd, search_items_overlaps_range } from "@music-analyzer/time-and";
+import { search_items_overlaps_range, TimeAnd } from "@music-analyzer/time-and";
 import { SVG } from "@music-analyzer/html";
 import {
   piano_roll_time_length,
@@ -8,14 +8,13 @@ import {
   NoteSize,
 } from "@music-analyzer/view-parameters";
 
-
-export interface TimeAndSVGs<T extends SVGElement> extends TimeAnd { svg: T; }
-
 export interface Updatable {
   onUpdate: (now_at: number) => void
 }
 
-interface UpdatableTimeAndSVGs<T extends SVGElement> extends Updatable, TimeAndSVGs<T> { }
+interface UpdatableTimeAndSVGs extends Updatable, TimeAnd {
+  svg: SVGElement;
+}
 
 export interface WindowReflectable {
   onWindowResized: () => void
@@ -54,11 +53,11 @@ export class WindowReflectableRegistry {
 }
 
 
-export class SvgCollection<T extends SVGElement, U extends UpdatableTimeAndSVGs<T>> implements Updatable {
-  readonly all: U[];
-  readonly show: U[];
+export class SvgCollection implements Updatable {
+  readonly all: UpdatableTimeAndSVGs[];
+  readonly show: UpdatableTimeAndSVGs[];
   readonly group: SVGGElement;
-  constructor(name: string, all: U[]) {
+  constructor(name: string, all: UpdatableTimeAndSVGs[]) {
     this.all = all;
     this.show = [];
     this.group = SVG.g({ name }, undefined, this.show.map(e => e.svg));
