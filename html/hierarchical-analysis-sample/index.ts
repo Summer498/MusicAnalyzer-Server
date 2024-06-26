@@ -1,7 +1,7 @@
 import { HTML } from "@music-analyzer/html";
 import { play } from "@music-analyzer/synth";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
-import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
+import { analyzeMelody, getTimeAndMelody, TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { getPianoRoll } from "@music-analyzer/svg-objects";
 import { chord_gravities, deleteMelody, insertMelody, key_gravities, melody_beep_switcher, melody_beep_volume, show_melody_beep_volume } from "@music-analyzer/melody-view";
@@ -70,7 +70,10 @@ import { BeatPos } from "@music-analyzer/gttm/src/common";
 
   // TODO: avoid specific file: change to general
   const roman = (await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/chord/roman.json")).json()) as TimeAndRomanAnalysis[];
-  const melody = (await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/melody/crepe/manalyze.json")).json()) as TimeAndMelodyAnalysis[];
+  const org_melody = await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/melody/crepe/vocals.json")).json() as number[];
+  const time_and_melody = getTimeAndMelody(org_melody, 100);
+  const melody = analyzeMelody(time_and_melody, roman);  // NOTE: analyzeMelody フロントからを取り扱えるようにした
+  // const melody = (await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/melody/crepe/manalyze.json")).json()) as TimeAndMelodyAnalysis[];
   const musicxml = (await xml_parser.parse(await (await fetch("../../resources/Hierarchical Analysis Sample/sample1.xml")).text())) as MusicXML;
   window.MusicAnalyzer = {
     roman,
@@ -149,6 +152,7 @@ import { BeatPos } from "@music-analyzer/gttm/src/common";
     console.log(ts.getArrayOfLayer()?.map(e => e.head.chord.note.id).map(getNoteFromId));  // レイヤー毎に note[] を取れる
     // id をパースすれば musicxml 上の位置がわかる
     // musicxml 上の位置がわかればピッチもわかる
+    // { begin, end, note }[] を求めたい
 
     console.log(do_re_mi_tsr);
 
