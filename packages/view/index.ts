@@ -65,7 +65,7 @@ export class SvgWindow<T extends SVGElement, U extends TimeAndSVGs<T>> implement
     this.show = [];
     this.group = SVG.g({ name }, undefined, this.show.map(e => e.svg));
     this.onUpdate = (now_at) => this.show.forEach(e => onUpdate(e, now_at));
-    UpdatableRegistry.instance.register(this);  // TODO: 複数ファイルにコピーされてしまい updatable_registry の同一性が保証されず, 役に立たなくなる
+    UpdatableRegistry.instance.register(this);
   }
   updateShow(begin: number, end: number) {
     // const remain = search_items_in_range(this.show, begin, end);
