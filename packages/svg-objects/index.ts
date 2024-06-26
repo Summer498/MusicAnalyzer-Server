@@ -148,8 +148,8 @@ export const getOctaveKeys = (white_key: SvgAndParams<SvgAndParam>, black_key: S
             const arrow_svgs = getArrowSVGs(analysis_data.melodies);
   
             return [
-              arrow_svgs.all.map(e => e.line),
-              arrow_svgs.all.map(e => e.triangle)
+              (arrow_svgs.all as unknown as {line:SVGLineElement}[]).map(e => e.line),
+              (arrow_svgs.all as unknown as {triangle:SVGPolygonElement}[]).map(e => e.triangle)
             ];
           })()),
   
