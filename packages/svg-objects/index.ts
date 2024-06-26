@@ -6,14 +6,14 @@ import { getArrowSVGs, getDMelodySVGs, getIRSymbolSVGs, getMelodySVGs } from "@m
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { SvgAndParam, WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
-import { 
-  PianoRollWidth, 
-  CurrentTimeX, 
-  octave_cnt, 
-  white_bgs_prm, 
-  piano_roll_height, 
-  octave_height, 
-  white_position, 
+import {
+  PianoRollWidth,
+  CurrentTimeX,
+  octave_cnt,
+  white_bgs_prm,
+  piano_roll_height,
+  octave_height,
+  white_position,
   black_bgs_prm,
   white_key_prm,
   black_position,
@@ -119,45 +119,44 @@ export const getOctaveKeys = (white_key: SvgAndParams<SvgAndParam>, black_key: S
     (e) => e.svg.setAttributes({ x: 0, y: e.y, width: PianoRollWidth.value, height: e.height })
   );
 
-  type AnalysisData = {
-    beat_info: BeatInfo
-    romans: TimeAndRomanAnalysis[]
-    melodies: TimeAndMelodyAnalysis[]
-    d_melodies: TimeAndMelodyAnalysis[]
-  }
-  export const getPianoRoll = (analysis_data: AnalysisData) =>
-    // svg element の作成
-    new SvgAndParams(
-      [{
-        svg: SVG.svg({ name: "piano-roll" }, undefined, [
-          // 奥側
-          SVG.g({ name: "octave-BGs" }, undefined, getOctaveBGs(getWhiteBGs(), getBlackBGs()).svg.map(e => e.svg)),
-  
-          [
-            getBeatBars(analysis_data.beat_info, analysis_data.melodies),
-            getChordNotesSVG(analysis_data.romans),
-            getChordNamesSVG(analysis_data.romans),
-            getChordRomansSVG(analysis_data.romans),
-            getChordKeysSVG(analysis_data.romans),
-            getDMelodySVGs(analysis_data.d_melodies),
-            getMelodySVGs(analysis_data.melodies),
-            getIRSymbolSVGs(analysis_data.melodies),
-          ].map(e => e.group),
-  
-          SVG.g({ name: "gravities" }, undefined, (() => {
-            const arrow_svgs = getArrowSVGs(analysis_data.melodies);
-  
-            return [
-              (arrow_svgs.all as unknown as {line:SVGLineElement}[]).map(e => e.line),
-              (arrow_svgs.all as unknown as {triangle:SVGPolygonElement}[]).map(e => e.triangle)
-            ];
-          })()),
-  
-          SVG.g({ name: "octave-keys" }, undefined, getOctaveKeys(getWhiteKeys(), getBlackKeys()).svg.map(e => e.svg)),
-          getCurrentTimeLine().svg[0].svg,
-          // 手前側
-        ].flat())
-      }],
-      (e) => { e.svg.setAttributes({ x: 0, y: 0, width: PianoRollWidth.value, height: piano_roll_height + chord_text_size * 2 + chord_name_margin }); }
-    );
-  
+type AnalysisData = {
+  beat_info: BeatInfo
+  romans: TimeAndRomanAnalysis[]
+  melodies: TimeAndMelodyAnalysis[]
+  d_melodies: TimeAndMelodyAnalysis[]
+}
+export const getPianoRoll = (analysis_data: AnalysisData) =>
+  // svg element の作成
+  new SvgAndParams(
+    [{
+      svg: SVG.svg({ name: "piano-roll" }, undefined, [
+        // 奥側
+        SVG.g({ name: "octave-BGs" }, undefined, getOctaveBGs(getWhiteBGs(), getBlackBGs()).svg.map(e => e.svg)),
+
+        [
+          getBeatBars(analysis_data.beat_info, analysis_data.melodies),
+          getChordNotesSVG(analysis_data.romans),
+          getChordNamesSVG(analysis_data.romans),
+          getChordRomansSVG(analysis_data.romans),
+          getChordKeysSVG(analysis_data.romans),
+          getDMelodySVGs(analysis_data.d_melodies),
+          getMelodySVGs(analysis_data.melodies),
+          getIRSymbolSVGs(analysis_data.melodies),
+        ].map(e => e.group),
+
+        SVG.g({ name: "gravities" }, undefined, (() => {
+          const arrow_svgs = getArrowSVGs(analysis_data.melodies);
+
+          return [
+            (arrow_svgs.all as unknown as { line: SVGLineElement }[]).map(e => e.line),
+            (arrow_svgs.all as unknown as { triangle: SVGPolygonElement }[]).map(e => e.triangle)
+          ];
+        })()),
+
+        SVG.g({ name: "octave-keys" }, undefined, getOctaveKeys(getWhiteKeys(), getBlackKeys()).svg.map(e => e.svg)),
+        getCurrentTimeLine().svg[0].svg,
+        // 手前側
+      ].flat())
+    }],
+    (e) => { e.svg.setAttributes({ x: 0, y: 0, width: PianoRollWidth.value, height: piano_roll_height + chord_text_size * 2 + chord_name_margin }); }
+  );
