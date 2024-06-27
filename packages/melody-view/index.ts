@@ -252,3 +252,63 @@ export const getArrowSVGs = (melodies: TimeAndMelodyAnalysis[]) => new SvgCollec
     return res;
   }).flat(2)
 );
+
+class TSR_SVG implements Updatable {
+  svg: SVGGElement;
+  group: SVGPathElement;
+  head: SVGCircleElement;
+  begin: number;
+  end: number;
+  y: number;
+  w: number;
+  h: number;
+  r: number;
+  constructor() {
+    this.group = SVG.path({
+      name: "group",
+      stroke: "#004",
+      "stroke-width": 5,
+      fill: "none",
+    });
+    this.head = SVG.circle({
+      name: "head",
+      stroke: "#c00",
+      fill: "#c00",
+    });
+    this.svg = SVG.g(
+      { name: "time-span-node" },
+      undefined, [
+      this.group,
+      this.head
+    ]);
+    this.begin = 0;
+    this.end = 0;
+    this.y = 500;
+    this.w = 100;
+    this.h = 50;
+    this.r = 5;
+  }
+  onUpdate(now_at: number) {
+    const x = 0;
+    const y = this.y;
+    const w = this.w;
+    const h = this.h;
+    const b = { x: x, y: y };
+    const ct11 = { x: x, y: y - h * 6 / 10 };
+    const ct12 = { x: x + w * 1 / 10, y: y - h };
+    const c1 = { x: x + w * 2 / 10, y: y - h };
+    const c2 = { x: x + w * 8 / 10, y: y - h };
+    const ct21 = { x: x + w * 9 / 10, y: y - h };
+    const ct22 = { x: x + w, y: y - h * 6 / 10 };
+    const e = { x: x + w, y: y };
+    this.group.setAttributes({d:`M${b.x} ${b.y}C${ct11.x} ${ct11.y} ${ct12.x} ${ct12.y} ${c1.x} ${c1.y}L${c2.x} ${c2.y}C${ct21.x} ${ct21.y} ${ct22.x} ${ct22.y} ${e.x} ${e.y}`});
+    const cx = x + w / 2;
+    const cy = this.y - h;
+    this.head.setAttributes({cx,cy,r:this.r});
+  }
+}
+
+export const getTSR_SVGs = () => new SvgCollection(
+  "time-span-tree",
+  [new TSR_SVG()]
+);

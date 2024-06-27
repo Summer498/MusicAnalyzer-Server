@@ -2,7 +2,7 @@ import { SVG } from "@music-analyzer/html";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { getBeatBars } from "@music-analyzer/beat-view";
 import { chord_name_margin, chord_text_size, getChordKeysSVG, getChordNamesSVG, getChordNotesSVG, getChordRomansSVG } from "@music-analyzer/chord-view";
-import { getArrowSVGs, getDMelodySVGs, getIRSymbolSVGs, getMelodySVGs } from "@music-analyzer/melody-view";
+import { getArrowSVGs, getDMelodySVGs, getIRSymbolSVGs, getMelodySVGs, getTSR_SVGs } from "@music-analyzer/melody-view";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { SvgAndParam, WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
@@ -142,6 +142,7 @@ export const getPianoRoll = (analysis_data: AnalysisData) =>
           getDMelodySVGs(analysis_data.d_melodies),
           getMelodySVGs(analysis_data.melodies),
           getIRSymbolSVGs(analysis_data.melodies),
+          getTSR_SVGs(),
         ].map(e => e.group),
 
         SVG.g({ name: "gravities" }, undefined, (() => {
