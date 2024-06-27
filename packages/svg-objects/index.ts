@@ -122,6 +122,7 @@ export const getOctaveKeys = (white_key: SvgAndParams<SvgAndParam>, black_key: S
 type AnalysisData = {
   beat_info: BeatInfo
   romans: TimeAndRomanAnalysis[]
+  hierarchical_melody?: TimeAndMelodyAnalysis[][]
   melodies: TimeAndMelodyAnalysis[]
   d_melodies: TimeAndMelodyAnalysis[]
 }
@@ -142,6 +143,7 @@ export const getPianoRoll = (analysis_data: AnalysisData) =>
           getDMelodySVGs(analysis_data.d_melodies),
           getMelodySVGs(analysis_data.melodies),
           getIRSymbolSVGs(analysis_data.melodies),
+          // TODO: TSR_SVG, (hierarchical)IRSymbolSVG, (hierarchical)MelodySVG を hierarchical_melody から生成
           getTSR_SVGs(),
         ].map(e => e.group),
 

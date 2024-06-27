@@ -3,7 +3,7 @@ import { BeatPos, SingleOrArray } from "./common";
 type HasID = {
   id: BeatPos
 }
-type Pitch = {
+export type Pitch = {
   alter?: number,
   step: string,
   octave: number

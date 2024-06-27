@@ -49,7 +49,7 @@ interface D_TS {
   secondary?: D_TS_Tree
 }
 
-class TS implements D_TS {
+export class TS implements D_TS {
   timespan: number;
   leftend: number;
   rightend: number;
@@ -70,6 +70,13 @@ class TS implements D_TS {
     callback(this);
     this.primary?.ts.forEach(callback);
     this.secondary?.ts.forEach(callback);
+  }
+  getDepthCount(): number {
+    // returns depth count (1 based)
+    // this.getArrayOfLayer(this.getDepth()-1) すると this と同じ階層の配列が取れる
+    const p_depth = this.primary?.ts.getDepthCount() || 0;
+    const s_depth = this.secondary?.ts.getDepthCount() || 0;
+    return 1 + Math.max(p_depth, s_depth);
   }
   private _getArrayOfLayer(i: number, layer?: number): (TS[] | undefined) {
     if (layer !== undefined && i >= layer) { return [this]; }  // stop search

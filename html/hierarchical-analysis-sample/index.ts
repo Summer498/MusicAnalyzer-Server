@@ -5,7 +5,7 @@ import { analyzeMelody, getTimeAndMelody, TimeAndMelodyAnalysis } from "@music-a
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { getPianoRoll } from "@music-analyzer/svg-objects";
 import { chord_gravities, deleteMelody, insertMelody, key_gravities, melody_beep_switcher, melody_beep_volume, show_melody_beep_volume } from "@music-analyzer/melody-view";
-import { MusicXML, } from "@music-analyzer/gttm/src/MusicXML";
+import { MusicXML, Pitch, } from "@music-analyzer/gttm/src/MusicXML";
 import { getChroma } from "@music-analyzer/tonal-objects";
 
 // 分析データ-->
@@ -14,6 +14,7 @@ import { GRP, MTR, D_TSR, PR, do_re_mi_grp, do_re_mi_mtr, do_re_mi_tsr } from "@
 interface MusicAnalyzerWindow extends Window {
   MusicAnalyzer: {
     roman: TimeAndRomanAnalysis[],
+    hierarchical_melody: TimeAndMelodyAnalysis[][],
     melody: TimeAndMelodyAnalysis[],
     musicxml: MusicXML,
     GTTM: {
@@ -34,8 +35,9 @@ declare const piano_roll_place: HTMLDivElement;
 
 import { X2jOptions, XMLParser } from "fast-xml-parser";
 import { UpdatableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
-import { TSR } from "@music-analyzer/gttm/src/TSR";
+import { TS, TSR } from "@music-analyzer/gttm/src/TSR";
 import { BeatPos } from "@music-analyzer/gttm/src/common";
+import { getRange } from "@music-analyzer/math";
 (async () => {
   const xml_options: X2jOptions = {
     preserveOrder: false,
@@ -70,14 +72,67 @@ import { BeatPos } from "@music-analyzer/gttm/src/common";
 
   // TODO: avoid specific file: change to general
   const roman = (await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/chord/roman.json")).json()) as TimeAndRomanAnalysis[];
-  const org_melody = await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/melody/crepe/vocals.json")).json() as number[];
-  const time_and_melody = getTimeAndMelody(org_melody, 100);
-  const melody = analyzeMelody(time_and_melody, roman);  // NOTE: analyzeMelody フロントからを取り扱えるようにした
-  // const melody = (await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/melody/crepe/manalyze.json")).json()) as TimeAndMelodyAnalysis[];
   const musicxml = (await xml_parser.parse(await (await fetch("../../resources/Hierarchical Analysis Sample/sample1.xml")).text())) as MusicXML;
+
+
+  // NOTE: duration と chroma を取るところまではできた
+  // TODO: 
+  // 1. duration と given parameters から時刻に変換する
+  // 2. chroma と時刻から melody svg を作る
+  const calcChroma = (pitch: Pitch) => 12 + pitch.octave * 12 + (pitch.alter || 0) + getChroma(pitch.step);
+  const getTimeAndMelodyFromTS = (ts: TS, musicxml: MusicXML) => {
+    const regexp = /P1-([0-9]+)-([0-9]+)/;
+    const match = ts.head.chord.note.id.match(regexp);
+    if (match) {
+      const id_measure = Number(match[1]);
+      const id_note = Number(match[2]);
+      const note = musicxml["score-partwise"].part.measure[id_measure - 1].note;
+      const pitch = Array.isArray(note) ? note[id_note - 1].pitch : note.pitch;
+      return { note: calcChroma(pitch), begin: ts.leftend, end: ts.leftend + (ts.rightend -ts.leftend)*7/8 };  // 開始と終了がくっつくのを防ぐために note の長さをちょっと短くしておく
+    }
+    else {
+      throw new SyntaxError(`Unexpected id received.\nExpected id is: ${regexp}`);
+    }
+  };
+
+  const ts = new TSR(do_re_mi_tsr).tstree.ts;
+  console.log("layers of ts tree");
+  console.log(ts.getArrayOfLayer(1000));
+  console.log(ts.getArrayOfLayer());
+  console.log(ts.getArrayOfLayer()?.map(e => getTimeAndMelodyFromTS(e, musicxml)));  // レイヤー毎に note[] を取れる
+  // 階層 3 の IR 分析
+  const time_and_melodies = ts.getArrayOfLayer(3)!.map(e => getTimeAndMelodyFromTS(e, musicxml));
+  console.log(time_and_melodies);
+  console.log(analyzeMelody(time_and_melodies, roman));
+
+  // 全階層分の IR 分析
+  console.log(`depth: ${ts.getDepthCount()}`);
+  console.log(getRange(0, ts.getDepthCount()).map(i => ts.getArrayOfLayer(i)));
+  const hierarchical_time_and_melodies = getRange(0, ts.getDepthCount()).map(i => ts.getArrayOfLayer(i)!.map(e => getTimeAndMelodyFromTS(e, musicxml)));
+  console.log(hierarchical_time_and_melodies);
+  //TODO: begin, end を適切な位置 (開始位置＋長さ) に変換する
+  hierarchical_time_and_melodies.forEach(e=>e.forEach(e=>{
+    const w = 3.5 / 8;  // NOTE: 1 measure = 3.5
+    const b = 0.16;  // 補正される分を逆補正
+    e.begin = e.begin * w + b;
+    e.end = e.end * w + b;
+    e.note = e.note - 2;  // ハ長調から変ロ長調にシフト
+  }));
+  console.log(hierarchical_time_and_melodies);
+  const hierarchical_melody = hierarchical_time_and_melodies.map(e => analyzeMelody(e, roman).map(e => ({ IR: e.melody_analysis.implication_realization.symbol, ...e })));
+  console.log(hierarchical_melody);
+  
+  console.log(do_re_mi_tsr);
+
+  // const org_melody = await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/melody/crepe/vocals.json")).json() as number[];
+  // const time_and_melody = getTimeAndMelody(org_melody, 100);
+  const melody = hierarchical_melody[hierarchical_melody.length-1];
+  // const melody = analyzeMelody(time_and_melody, roman);  // NOTE: analyzeMelody フロントからを取り扱えるようにした
+  // const melody = (await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/melody/crepe/manalyze.json")).json()) as TimeAndMelodyAnalysis[];
   window.MusicAnalyzer = {
     roman,
     melody,
+    hierarchical_melody,
     musicxml,
     GTTM: {
       grouping: do_re_mi_grp,
@@ -89,74 +144,6 @@ import { BeatPos } from "@music-analyzer/gttm/src/common";
     deleteMelody,
     play
   };
-
-
-  // NOTE: duration と chroma を取るところまではできた
-  // TODO: 
-  // 1. duration と given parameters から時刻に変換する
-  // 2. chroma と時刻から melody svg を作る
-  (() => {
-    const calcChroma = (pitch: {
-      alter?: number,
-      step: string,
-      octave: number
-    }) => 12 + pitch.octave * 12 + (pitch.alter || 0) + getChroma(pitch.step);
-    const part = musicxml["score-partwise"].part;
-    console.log(part.measure.map(e => {
-      const note = e.note;
-      if (Array.isArray(note)) {
-        return note.map(e => ({
-          duration: e.duration,
-          chroma: calcChroma(e.pitch),
-        })
-        );
-      }
-      else {
-        return {
-          duration: note.duration,
-          chroma: calcChroma(note.pitch),
-        };
-      }
-    }));
-
-    const getNoteFromId = (id: BeatPos) => {
-      const regexp = /P1-([0-9]+)-([0-9]+)/;
-      const match = id.match(regexp);
-      if (match) {
-        const id_measure = Number(match[1]);
-        const id_note = Number(match[2]);
-        const note = musicxml["score-partwise"].part.measure[id_measure - 1].note;
-        if (Array.isArray(note)) {
-          return note[id_note - 1];
-        }
-        else {
-          return note;
-        }
-      }
-      else {
-        throw new SyntaxError(`Unexpected id received.\nExpected id is: ${regexp}`);
-      }
-    };
-
-    const ts = new TSR(do_re_mi_tsr).tstree.ts;
-    const id = ts.head.chord.note.id;
-    const primary = ts.primary?.ts.head.chord.note.id;
-    const pripri = ts.primary?.ts.primary?.ts.primary?.ts.head.chord.note.id;
-    console.log("layers of ts tree");
-    console.log(ts.getArrayOfLayer(0));
-    console.log(ts.getArrayOfLayer(1));
-    console.log(ts.getArrayOfLayer(2));
-    console.log(ts.getArrayOfLayer(3));
-    console.log(ts.getArrayOfLayer(1000));
-    console.log(ts.getArrayOfLayer()?.map(e => e.head.chord.note.id));
-    console.log(ts.getArrayOfLayer()?.map(e => e.head.chord.note.id).map(getNoteFromId));  // レイヤー毎に note[] を取れる
-    // id をパースすれば musicxml 上の位置がわかる
-    // musicxml 上の位置がわかればピッチもわかる
-    // { begin, end, note }[] を求めたい
-
-    console.log(do_re_mi_tsr);
-
-  })();
 
   // <-- 分析データ
 
@@ -214,7 +201,7 @@ import { BeatPos } from "@music-analyzer/gttm/src/common";
   */
 
   // svg element の作成
-  const piano_roll = getPianoRoll({ beat_info, romans, melodies, d_melodies });
+  const piano_roll = getPianoRoll({ beat_info, hierarchical_melody, romans, melodies, d_melodies });
 
   // 設定
   piano_roll_place.appendChildren([

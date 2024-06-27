@@ -25,6 +25,7 @@
     "@music-analyzer/beat-view": "1.0.0",
     "@music-analyzer/gttm": "1.0.0",
     "@music-analyzer/svg-objects": "1.0.0",
-    "@music-analyzer/tonal-objects": "1.0.0"
+    "@music-analyzer/tonal-objects": "1.0.0",
+    "@music-analyzer/math": "1.0.0"
   }
 }
