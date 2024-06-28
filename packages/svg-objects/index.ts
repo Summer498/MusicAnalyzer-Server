@@ -2,7 +2,7 @@ import { SVG } from "@music-analyzer/html";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { getBeatBars } from "@music-analyzer/beat-view";
 import { chord_name_margin, chord_text_size, getChordKeysSVG, getChordNamesSVG, getChordNotesSVG, getChordRomansSVG } from "@music-analyzer/chord-view";
-import { getArrowSVGs, getDMelodySVGs, getIRSymbolSVGs, getMelodySVGs, getTSR_SVGs } from "@music-analyzer/melody-view";
+import { getArrowSVGs, getDMelodySVGs, getHierarchicalMelodySVGs, getIRSymbolSVGs, getMelodySVGs, getTSR_SVGs } from "@music-analyzer/melody-view";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
@@ -221,18 +221,18 @@ class PianoRoll extends SvgAndParam {
         getChordRomansSVG(analysis_data.romans),
         getChordKeysSVG(analysis_data.romans),
         getDMelodySVGs(analysis_data.d_melodies),
-        getMelodySVGs(analysis_data.melodies),
+        // getMelodySVGs(analysis_data.melodies),
         getIRSymbolSVGs(analysis_data.melodies),
         // TODO: TSR_SVG, (hierarchical)IRSymbolSVG, (hierarchical)MelodySVG を hierarchical_melody から生成
         getTSR_SVGs(),
+        getArrowSVGs(analysis_data.melodies)
       ].map(e => e.group),
-
-      SVG.g({ name: "gravities" }, undefined, getArrowSVGs(analysis_data.melodies).group),
+      (analysis_data.hierarchical_melody ? getHierarchicalMelodySVGs(analysis_data.hierarchical_melody) : [getMelodySVGs(analysis_data.melodies)]).map(e=>e.group),
 
       SVG.g({ name: "octave-keys" }, undefined, getOctaveKeys(getWhiteKeys(), getBlackKeys()).svg.map(e => e.svg)),
       getCurrentTimeLine().svg[0].svg,
       // 手前側
-    ].flat());    
+    ]);    
   }
   onWindowResized() {
     this.svg.setAttributes({ x: 0, y: 0, width: PianoRollWidth.value, height: piano_roll_height + chord_text_size * 2 + chord_name_margin });

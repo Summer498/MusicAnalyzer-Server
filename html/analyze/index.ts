@@ -5,7 +5,7 @@ import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { WindowReflectableRegistry, UpdatableRegistry } from "@music-analyzer/view";
 import { getPianoRoll } from "@music-analyzer/svg-objects";
-import { chord_gravities, deleteMelody, insertMelody, key_gravities, melody_beep_switcher, melody_beep_volume, show_melody_beep_volume } from "@music-analyzer/melody-view";
+import { chord_gravities, d_melody_switcher, deleteMelody, insertMelody, key_gravities, melody_beep_switcher, melody_beep_volume, show_melody_beep_volume } from "@music-analyzer/melody-view";
 
 interface MusicAnalyzerWindow extends Window {
   MusicAnalyzer: {
@@ -93,18 +93,24 @@ const piano_roll = getPianoRoll({ beat_info, romans, melodies, d_melodies });
 piano_roll_place.appendChildren([
   // slider,
   // show_slider_value,
+  HTML.div({ id: "d-melody" }, "", [
+    HTML.span({}, "", [
+      HTML.label({ for: d_melody_switcher.id }, "detected melody before fix"),
+      d_melody_switcher,
+    ]),
+  ]),
   HTML.div({ id: "gravity-switcher" }, "", [
     HTML.span({}, "", [
-      HTML.label({ for: "key_gravity_switcher" }, "Key Gravity"),
+      HTML.label({ for: key_gravity_switcher.id }, "Key Gravity"),
       key_gravity_switcher,
     ]),
     HTML.span({}, "", [
-      HTML.label({ for: "chord_gravity_switcher" }, "Chord Gravity"),
+      HTML.label({ for: chord_gravity_switcher.id }, "Chord Gravity"),
       chord_gravity_switcher,
     ])
   ]),
   HTML.span({}, "", [
-    HTML.label({ for: "melody_beep_switcher" }, "Beep Melody"),
+    HTML.label({ for: melody_beep_switcher.id }, "Beep Melody"),
     melody_beep_switcher,
     melody_beep_volume,
     show_melody_beep_volume,

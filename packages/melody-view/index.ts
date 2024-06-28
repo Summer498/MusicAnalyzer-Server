@@ -10,11 +10,24 @@ const ir_analysis_em = size;
 const triangle_width = 5;
 const triangle_height = 5;
 
+export const d_melody_switcher = HTML.input_checkbox({ id: "d_melody_switcher", name: "d_melody_switcher" });
+d_melody_switcher.checked = false;
 export const melody_beep_switcher = HTML.input_checkbox({ id: "melody_beep_switcher", name: "melody_beep_switcher" });
-melody_beep_switcher.checked = true;
+melody_beep_switcher.checked = false;
 export const melody_beep_volume = HTML.input_range({ id: "melody_beep_volume", min: 0, max: 100, step: 1 });
 export const show_melody_beep_volume = HTML.span({}, `volume: ${melody_beep_volume.value}`);
 melody_beep_volume.addEventListener("input", e => { show_melody_beep_volume.textContent = `volume: ${melody_beep_volume.value}`; });
+export const hierarchy_level_slider = HTML.input_range({ id: "hierarchy_level_slider", name: "hierarchy_level_slider", min: 0, max: 1, step: 1 });
+export const show_hierarchy_level_slider_value = HTML.span({}, `layer: ${hierarchy_level_slider.value}`);
+hierarchy_level_slider.addEventListener("input", e => { 
+  show_hierarchy_level_slider_value.textContent = `layer: ${hierarchy_level_slider.value}`;
+});
+export const setHierarchyLevelSliderValues = (max: number) => {
+  console.log(`max: ${max}`);
+  hierarchy_level_slider.max = String(max);
+  hierarchy_level_slider.value = String(max);
+  show_hierarchy_level_slider_value.textContent = `layer: ${hierarchy_level_slider.value}`;
+};
 
 
 export const insertMelody = () => {
@@ -53,6 +66,7 @@ class DMelodySVG implements Updatable {
       width: this.w * NoteSize.value,
       height: this.h,
       onclick: "MusicAnalyzer.insertMelody()",
+      visibility: d_melody_switcher.checked ? "visible" : "hidden"
     });
   }
 }
@@ -67,12 +81,13 @@ class MelodySVG implements Updatable {
   begin: number;
   end: number;
   note: number;
+  layer: number;
   y: number;
   w: number;
   h: number;
   sound_reserved: boolean;
 
-  constructor(melody: TimeAndMelodyAnalysis) {
+  constructor(melody: TimeAndMelodyAnalysis, layer?: number) {
     this.svg = SVG.rect({
       name: "melody-note",
       fill: fifthChromaToColor(melody.note, 0.75, 0.9),
@@ -81,6 +96,7 @@ class MelodySVG implements Updatable {
     this.begin = melody.begin;
     this.end = melody.end;
     this.note = melody.note;
+    this.layer = layer || 0;
     this.y = (piano_roll_begin - melody.note) * black_key_prm.height;
     this.w = melody.end - melody.begin;
     this.h = black_key_prm.height;
@@ -98,14 +114,18 @@ class MelodySVG implements Updatable {
   };
 
   onUpdate(now_at: number) {
+    const is_visible = hierarchy_level_slider.value === String(this.layer);
     this.svg.setAttributes({
       x: CurrentTimeX.value + (this.begin - now_at) * NoteSize.value,
       y: this.y,
       width: this.w * NoteSize.value,
       height: this.h,
       onclick: "MusicAnalyzer.deleteMelody()",
+      visibility: is_visible ? "visible" : "hidden"
     });
-    melody_beep_switcher.checked && this.beepMelody(now_at, Number(melody_beep_volume.value) / 400);
+    if (melody_beep_switcher.checked && is_visible) {
+      this.beepMelody(now_at, Number(melody_beep_volume.value) / 400);
+    }
   }
 }
 
@@ -113,6 +133,14 @@ export const getMelodySVGs = (melodies: TimeAndMelodyAnalysis[]) => new SvgColle
   "melody",
   melodies.map(e => new MelodySVG(e))
 );
+
+export const getHierarchicalMelodySVGs = (hierarchical_melodies: TimeAndMelodyAnalysis[][]) =>
+  hierarchical_melodies.map((e, l) =>
+    new SvgCollection(
+      `layer-${l}`,
+      e.map(e => new MelodySVG(e, l))
+    )
+  );
 
 class IRSymbolSVG implements Updatable {
   svg: SVGTextElement;
@@ -221,7 +249,7 @@ class ArrowSVG implements Updatable {
     for (const e of this.svg.getElementsByClassName("triangle")) {
       e.setAttributes({ points: `${p.join(",")}` });
     }
-    for (const e of this.svg.getElementsByClassName("line")){
+    for (const e of this.svg.getElementsByClassName("line")) {
       e.setAttributes({ x1: src_x, x2: dst_x, y1: src_y, y2: dst_y });
     }
   }
@@ -302,10 +330,10 @@ class TSR_SVG implements Updatable {
     const ct21 = { x: x + w * 9 / 10, y: y - h };
     const ct22 = { x: x + w, y: y - h * 6 / 10 };
     const e = { x: x + w, y: y };
-    this.group.setAttributes({d:`M${b.x} ${b.y}C${ct11.x} ${ct11.y} ${ct12.x} ${ct12.y} ${c1.x} ${c1.y}L${c2.x} ${c2.y}C${ct21.x} ${ct21.y} ${ct22.x} ${ct22.y} ${e.x} ${e.y}`});
+    this.group.setAttributes({ d: `M${b.x} ${b.y}C${ct11.x} ${ct11.y} ${ct12.x} ${ct12.y} ${c1.x} ${c1.y}L${c2.x} ${c2.y}C${ct21.x} ${ct21.y} ${ct22.x} ${ct22.y} ${e.x} ${e.y}` });
     const cx = x + w / 2;
     const cy = this.y - h;
-    this.head.setAttributes({cx,cy,r:this.r});
+    this.head.setAttributes({ cx, cy, r: this.r });
   }
 }
 

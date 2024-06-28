@@ -4,7 +4,7 @@ import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { analyzeMelody, TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { getPianoRoll } from "@music-analyzer/svg-objects";
-import { chord_gravities, deleteMelody, insertMelody, key_gravities, melody_beep_switcher, melody_beep_volume, show_melody_beep_volume } from "@music-analyzer/melody-view";
+import { chord_gravities, deleteMelody, insertMelody, key_gravities, melody_beep_switcher, melody_beep_volume, show_melody_beep_volume, hierarchy_level_slider, setHierarchyLevelSliderValues, show_hierarchy_level_slider_value } from "@music-analyzer/melody-view";
 import { MusicXML, Pitch, } from "@music-analyzer/gttm/src/MusicXML";
 import { getChroma } from "@music-analyzer/tonal-objects";
 
@@ -88,7 +88,7 @@ import { getRange } from "@music-analyzer/math";
       const id_note = Number(match[2]);
       const note = musicxml["score-partwise"].part.measure[id_measure - 1].note;
       const pitch = Array.isArray(note) ? note[id_note - 1].pitch : note.pitch;
-      return { note: calcChroma(pitch), begin: ts.leftend, end: ts.leftend + (ts.rightend -ts.leftend)*7/8 };  // 開始と終了がくっつくのを防ぐために note の長さをちょっと短くしておく
+      return { note: calcChroma(pitch), begin: ts.leftend, end: ts.leftend + (ts.rightend - ts.leftend) * 7 / 8 };  // 開始と終了がくっつくのを防ぐために note の長さをちょっと短くしておく
     }
     else {
       throw new SyntaxError(`Unexpected id received.\nExpected id is: ${regexp}`);
@@ -111,9 +111,9 @@ import { getRange } from "@music-analyzer/math";
   const hierarchical_time_and_melodies = getRange(0, ts.getDepthCount()).map(i => ts.getArrayOfLayer(i)!.map(e => getTimeAndMelodyFromTS(e, musicxml)));
   console.log(hierarchical_time_and_melodies);
   //TODO: begin, end を適切な位置 (開始位置＋長さ) に変換する
-  hierarchical_time_and_melodies.forEach(e=>e.forEach(e=>{
+  hierarchical_time_and_melodies.forEach(e => e.forEach(e => {
     const w = 3.5 / 8;  // NOTE: 1 measure = 3.5
-    const b = 0.16;  // 補正される分を逆補正
+    const b = 0;
     e.begin = e.begin * w + b;
     e.end = e.end * w + b;
     e.note = e.note - 2;  // ハ長調から変ロ長調にシフト
@@ -121,12 +121,13 @@ import { getRange } from "@music-analyzer/math";
   console.log(hierarchical_time_and_melodies);
   const hierarchical_melody = hierarchical_time_and_melodies.map(e => analyzeMelody(e, roman).map(e => ({ IR: e.melody_analysis.implication_realization.symbol, ...e })));
   console.log(hierarchical_melody);
-  
+
   console.log(do_re_mi_tsr);
 
   // const org_melody = await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/melody/crepe/vocals.json")).json() as number[];
   // const time_and_melody = getTimeAndMelody(org_melody, 100);
-  const melody = hierarchical_melody[hierarchical_melody.length-1];
+  const melody = hierarchical_melody[hierarchical_melody.length - 1];
+  setHierarchyLevelSliderValues(hierarchical_melody.length-1); 
   // const melody = analyzeMelody(time_and_melody, roman);  // NOTE: analyzeMelody フロントからを取り扱えるようにした
   // const melody = (await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/melody/crepe/manalyze.json")).json()) as TimeAndMelodyAnalysis[];
   window.MusicAnalyzer = {
@@ -150,8 +151,8 @@ import { getRange } from "@music-analyzer/math";
 
   const d_romans: TimeAndRomanAnalysis[] = window.MusicAnalyzer.roman.map(e => e);
   const d_melodies: TimeAndMelodyAnalysis[] = window.MusicAnalyzer.melody.map(e => ({
-    begin: e.begin - 0.16,  // ズレ補正
-    end: e.end - 0.16,
+    begin: e.begin,
+    end: e.end,
     melody_analysis: e.melody_analysis,
     note: e.note,
     roman_name: e.roman_name
@@ -204,21 +205,29 @@ import { getRange } from "@music-analyzer/math";
   const piano_roll = getPianoRoll({ beat_info, hierarchical_melody, romans, melodies, d_melodies });
 
   // 設定
+  // TODO: ボタン周りのリファクタリングをする
   piano_roll_place.appendChildren([
     // slider,
     // show_slider_value,
+    HTML.div({ id: "hierarchy-level" }, "", [
+      HTML.span({}, "", [
+        HTML.label({ for: hierarchy_level_slider.id }, "Melody Hierarchy Level"),
+        hierarchy_level_slider,
+        show_hierarchy_level_slider_value,
+      ])
+    ]),
     HTML.div({ id: "gravity-switcher" }, "", [
       HTML.span({}, "", [
-        HTML.label({ for: "key_gravity_switcher" }, "Key Gravity"),
+        HTML.label({ for: key_gravity_switcher.id }, "Key Gravity"),
         key_gravity_switcher,
       ]),
       HTML.span({}, "", [
-        HTML.label({ for: "chord_gravity_switcher" }, "Chord Gravity"),
+        HTML.label({ for: chord_gravity_switcher.id }, "Chord Gravity"),
         chord_gravity_switcher,
       ])
     ]),
     HTML.span({}, "", [
-      HTML.label({ for: "melody_beep_switcher" }, "Beep Melody"),
+      HTML.label({ for: melody_beep_switcher.id }, "Beep Melody"),
       melody_beep_switcher,
       melody_beep_volume,
       show_melody_beep_volume,
