@@ -9,7 +9,7 @@ import {
 } from "@music-analyzer/view-parameters";
 
 export interface Updatable {
-  onUpdate: (now_at: number) => void
+  onUpdate(now_at: number): void
 }
 
 interface UpdatableTimeAndSVGs extends Updatable, TimeAnd {
@@ -17,7 +17,7 @@ interface UpdatableTimeAndSVGs extends Updatable, TimeAnd {
 }
 
 export interface WindowReflectable {
-  onWindowResized: () => void
+  onWindowResized(): void
 }
 
 export class UpdatableRegistry {
@@ -78,20 +78,5 @@ export class SvgCollection implements Updatable {
       now_at + piano_roll_time_length
     );
     this.show.forEach(e => e.onUpdate(now_at));
-  }
-}
-
-export class SvgAndParam {
-  svg;
-  oct;
-  y;
-  width;
-  height;
-  constructor(svg: SVGElement, oct: number, y: number, width: number, height: number) {
-    this.svg = svg;
-    this.oct = oct;
-    this.y = y;
-    this.width = width;
-    this.height = height;
   }
 }
