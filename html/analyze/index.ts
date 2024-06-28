@@ -166,9 +166,7 @@ const main = () => {
   onWindowResized();
   update();
 
-  document.body.insertAdjacentElement("beforeend", fps_element),
-  0 && 
-    console.log(beat_info.tempo)
-  ;
+  document.body.insertAdjacentElement("beforeend", fps_element);
+  0 && console.log(beat_info.tempo);
 };
 main();
