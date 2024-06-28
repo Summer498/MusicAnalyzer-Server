@@ -1,7 +1,7 @@
 import { HTML } from "@music-analyzer/html";
 import { play } from "@music-analyzer/synth";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
-import { analyzeMelody, getTimeAndMelody, TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
+import { analyzeMelody, TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { getPianoRoll } from "@music-analyzer/svg-objects";
 import { chord_gravities, deleteMelody, insertMelody, key_gravities, melody_beep_switcher, melody_beep_volume, show_melody_beep_volume } from "@music-analyzer/melody-view";
