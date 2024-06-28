@@ -161,8 +161,6 @@ class ArrowSVG implements Updatable {
   svg: SVGGElement;
   begin: number;
   end: number;
-  triangle: SVGPolygonElement;
-  line: SVGLineElement;
   note: number;
   next: TimeAndMelodyAnalysis;
   destination?: number;
@@ -173,12 +171,14 @@ class ArrowSVG implements Updatable {
   constructor(melody: TimeAndMelodyAnalysis, next: TimeAndMelodyAnalysis, gravity: Gravity, fill: string, stroke: string) {
     const triangle = SVG.polygon({
       name: "gravity-arrow",
+      class: "triangle",
       stroke,
       "stroke-width": 5,
       fill,
     });
     const line = SVG.line({
       name: "gravity-arrow",
+      class: "line",
       stroke,
       "stroke-width": 5
     });
@@ -188,8 +188,6 @@ class ArrowSVG implements Updatable {
       triangle,
       line
     ]);
-    this.triangle = triangle;
-    this.line = line;
     this.begin = melody.begin;
     this.end = melody.end;
     this.note = melody.note;
@@ -220,11 +218,16 @@ class ArrowSVG implements Updatable {
       dst_x + cos * -triangle_width - sin * triangle_height,
       dst_y + sin * -triangle_width + cos * triangle_height
     ];
-    this.triangle.setAttributes({ points: `${p.join(",")}` });
-    this.line.setAttributes({ x1: src_x, x2: dst_x, y1: src_y, y2: dst_y });
+    for (const e of this.svg.getElementsByClassName("triangle")) {
+      e.setAttributes({ points: `${p.join(",")}` });
+    }
+    for (const e of this.svg.getElementsByClassName("line")){
+      e.setAttributes({ x1: src_x, x2: dst_x, y1: src_y, y2: dst_y });
+    }
   }
 }
 
+// TODO: chord gravities と key gravities を別オブジェクトとして得られるようにする
 export const key_gravities: SVGElement[] = [];
 export const chord_gravities: SVGElement[] = [];
 
@@ -240,14 +243,12 @@ export const getArrowSVGs = (melodies: TimeAndMelodyAnalysis[]) => new SvgCollec
     if (scale_gravity?.resolved && scale_gravity.destination !== undefined) {
       const svg = new ArrowSVG(melody, next, scale_gravity, fill, stroke);
       res.push(svg);
-      key_gravities.push(svg.line);
-      key_gravities.push(svg.triangle);
+      key_gravities.push(svg.svg);
     }
     if (chord_gravity?.resolved && chord_gravity.destination !== undefined) {
       const svg = new ArrowSVG(melody, next, chord_gravity, fill, stroke);
       res.push(svg);
-      chord_gravities.push(svg.line);
-      chord_gravities.push(svg.triangle);
+      chord_gravities.push(svg.svg);
     }
     return res;
   }).flat(2)

@@ -227,14 +227,7 @@ class PianoRoll extends SvgAndParam {
         getTSR_SVGs(),
       ].map(e => e.group),
 
-      SVG.g({ name: "gravities" }, undefined, (() => {
-        const arrow_svgs = getArrowSVGs(analysis_data.melodies);
-
-        return [
-          (arrow_svgs.all as unknown as { line: SVGLineElement }[]).map(e => e.line),
-          (arrow_svgs.all as unknown as { triangle: SVGPolygonElement }[]).map(e => e.triangle)
-        ];
-      })()),
+      SVG.g({ name: "gravities" }, undefined, getArrowSVGs(analysis_data.melodies).group),
 
       SVG.g({ name: "octave-keys" }, undefined, getOctaveKeys(getWhiteKeys(), getBlackKeys()).svg.map(e => e.svg)),
       getCurrentTimeLine().svg[0].svg,
