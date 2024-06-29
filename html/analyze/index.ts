@@ -5,7 +5,7 @@ import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { WindowReflectableRegistry, UpdatableRegistry } from "@music-analyzer/view";
 import { getPianoRoll } from "@music-analyzer/svg-objects";
-import { chord_gravities, d_melody_switcher, deleteMelody, insertMelody, key_gravities, melody_beep_switcher, melody_beep_volume, show_melody_beep_volume } from "@music-analyzer/melody-view";
+import { controllers, deleteMelody, insertMelody } from "@music-analyzer/melody-view";
 
 interface MusicAnalyzerWindow extends Window {
   MusicAnalyzer: {
@@ -59,65 +59,11 @@ console.log("last melody");
 console.log(melodies[melodies.length - 1].end);
 */
 
+
 // SVG -->
-// ボタン
-/*
-const slider = HTML.input({ type: "range", id: "slider" });
-const show_slider_value = HTML.span({}, slider.value);
-slider.addEventListener("input", e => { show_slider_value.textContent = slider.value; });
-*/
-const key_gravity_switcher = HTML.input_checkbox({ id: "key_gravity_switcher", name: "key_gravity_switcher" });
-key_gravity_switcher.checked = true;
-key_gravity_switcher.addEventListener("change", e => { key_gravities.forEach(key_gravity => key_gravity.setAttribute("visibility", key_gravity_switcher.checked ? "visible" : "hidden")); });
-const chord_gravity_switcher = HTML.input_checkbox({ id: "chord_gravity_switcher", name: "chord_gravity_switcher" });
-chord_gravity_switcher.checked = true;
-chord_gravity_switcher.addEventListener("change", e => { chord_gravities.forEach(chord_gravity => chord_gravity.setAttribute("visibility", chord_gravity_switcher.checked ? "visible" : "hidden")); });
-
-// NOTE: 色選択は未実装なので消しておく
-/*
-const key_color_selector = HTML.input_radio({ name: "key_color_selector", id: "key_color_selector", value: "key", checked: `${true}` }, "key based color");
-const chord_color_selector = HTML.input_radio({ name: "chord_color_selector", id: "chord_color_selector", value: "chord" }, "chord based color");
-const melody_color_selector =
-  HTML.div({ display: "inline" }, "", [
-    HTML.label({ for: "key_color_selector" }, "key based color"),
-    key_color_selector,
-    HTML.label({ for: "chord_color_selector" }, "chord based color"),
-    chord_color_selector,
-  ]);
-*/
-
-const piano_roll = getPianoRoll({ beat_info, romans, melodies, d_melodies });
-
-
-// 設定
 piano_roll_place.appendChildren([
-  // slider,
-  // show_slider_value,
-  HTML.div({ id: "d-melody" }, "", [
-    HTML.span({}, "", [
-      HTML.label({ for: d_melody_switcher.id }, "detected melody before fix"),
-      d_melody_switcher,
-    ]),
-  ]),
-  HTML.div({ id: "gravity-switcher" }, "", [
-    HTML.span({}, "", [
-      HTML.label({ for: key_gravity_switcher.id }, "Key Gravity"),
-      key_gravity_switcher,
-    ]),
-    HTML.span({}, "", [
-      HTML.label({ for: chord_gravity_switcher.id }, "Chord Gravity"),
-      chord_gravity_switcher,
-    ])
-  ]),
-  HTML.span({}, "", [
-    HTML.label({ for: melody_beep_switcher.id }, "Beep Melody"),
-    melody_beep_switcher,
-    melody_beep_volume,
-    show_melody_beep_volume,
-  ]),
-  // NOTE: 色選択は未実装なので消しておく
-  // melody_color_selector,
-  piano_roll.svg[0].svg
+  controllers,
+  getPianoRoll({ beat_info, romans, melodies, d_melodies }).svg[0].svg
 ]);
 // <-- SVG
 

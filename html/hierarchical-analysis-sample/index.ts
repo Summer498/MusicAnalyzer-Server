@@ -4,7 +4,7 @@ import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { analyzeMelody, TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { getPianoRoll } from "@music-analyzer/svg-objects";
-import { chord_gravities, deleteMelody, insertMelody, key_gravities, melody_beep_switcher, melody_beep_volume, show_melody_beep_volume, hierarchy_level_slider, setHierarchyLevelSliderValues, show_hierarchy_level_slider_value } from "@music-analyzer/melody-view";
+import { deleteMelody, insertMelody, setHierarchyLevelSliderValues, controllers } from "@music-analyzer/melody-view";
 import { MusicXML, Pitch, } from "@music-analyzer/gttm/src/MusicXML";
 import { getChroma } from "@music-analyzer/tonal-objects";
 
@@ -127,7 +127,7 @@ import { getRange } from "@music-analyzer/math";
   // const org_melody = await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/melody/crepe/vocals.json")).json() as number[];
   // const time_and_melody = getTimeAndMelody(org_melody, 100);
   const melody = hierarchical_melody[hierarchical_melody.length - 1];
-  setHierarchyLevelSliderValues(hierarchical_melody.length-1); 
+  setHierarchyLevelSliderValues(hierarchical_melody.length - 1);
   // const melody = analyzeMelody(time_and_melody, roman);  // NOTE: analyzeMelody フロントからを取り扱えるようにした
   // const melody = (await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/melody/crepe/manalyze.json")).json()) as TimeAndMelodyAnalysis[];
   window.MusicAnalyzer = {
@@ -166,75 +166,21 @@ import { getRange } from "@music-analyzer/math";
 
   // テンポの計算 (試運転)
   const beat_info = calcTempo(melodies, romans);
-  /*
+  //*
   console.log("tempo");
   console.log(beat_info.tempo);
   console.log("duration");
   console.log(audio_player.duration);
   console.log("last melody");
   console.log(melodies[melodies.length - 1].end);
-  */
+  //*/
+
 
   // SVG -->
-  // ボタン
-  /*
-  const slider = HTML.input({ type: "range", id: "slider" });
-  const show_slider_value = HTML.span({}, slider.value);
-  slider.addEventListener("input", e => { show_slider_value.textContent = slider.value; });
-  */
-  const key_gravity_switcher = HTML.input_checkbox({ id: "key_gravity_switcher", name: "key_gravity_switcher" });
-  key_gravity_switcher.checked = true;
-  key_gravity_switcher.addEventListener("change", e => { key_gravities.forEach(key_gravity => key_gravity.setAttribute("visibility", key_gravity_switcher.checked ? "visible" : "hidden")); });
-  const chord_gravity_switcher = HTML.input_checkbox({ id: "chord_gravity_switcher", name: "chord_gravity_switcher" });
-  chord_gravity_switcher.checked = true;
-  chord_gravity_switcher.addEventListener("change", e => { chord_gravities.forEach(chord_gravity => chord_gravity.setAttribute("visibility", chord_gravity_switcher.checked ? "visible" : "hidden")); });
-  /*
-  // NOTE: 色選択は未実装なので消しておく
-  const key_color_selector = HTML.input_radio({ name: "key_color_selector", id: "key_color_selector", value: "key", checked: `${true}` }, "key based color");
-  const chord_color_selector = HTML.input_radio({ name: "chord_color_selector", id: "chord_color_selector", value: "chord" }, "chord based color");
-  const melody_color_selector =
-  HTML.div({ display: "inline" }, "", [
-    HTML.label({ for: "color-selector-key" }, "key based color"),
-    key_color_selector,
-    HTML.label({ for: "color-selector-chord" }, "chord based color"),
-    chord_color_selector,
-    ]);
-  */
-
-  // svg element の作成
-  const piano_roll = getPianoRoll({ beat_info, hierarchical_melody, romans, melodies, d_melodies });
-
-  // 設定
   // TODO: ボタン周りのリファクタリングをする
   piano_roll_place.appendChildren([
-    // slider,
-    // show_slider_value,
-    HTML.div({ id: "hierarchy-level" }, "", [
-      HTML.span({}, "", [
-        HTML.label({ for: hierarchy_level_slider.id }, "Melody Hierarchy Level"),
-        hierarchy_level_slider,
-        show_hierarchy_level_slider_value,
-      ])
-    ]),
-    HTML.div({ id: "gravity-switcher" }, "", [
-      HTML.span({}, "", [
-        HTML.label({ for: key_gravity_switcher.id }, "Key Gravity"),
-        key_gravity_switcher,
-      ]),
-      HTML.span({}, "", [
-        HTML.label({ for: chord_gravity_switcher.id }, "Chord Gravity"),
-        chord_gravity_switcher,
-      ])
-    ]),
-    HTML.span({}, "", [
-      HTML.label({ for: melody_beep_switcher.id }, "Beep Melody"),
-      melody_beep_switcher,
-      melody_beep_volume,
-      show_melody_beep_volume,
-    ]),
-    // NOTE: 色選択は未実装なので消しておく
-    // melody_color_selector,
-    piano_roll.svg[0].svg
+    controllers,
+    getPianoRoll({ beat_info, hierarchical_melody, romans, melodies, d_melodies }).svg[0].svg
   ]);
   // <-- SVG
 
