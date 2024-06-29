@@ -155,14 +155,14 @@ import { getRange } from "@music-analyzer/math";
 
   // テンポの計算 (試運転)
   const beat_info = calcTempo(melodies, romans);
-  //*
+  /*
   console.log("tempo");
   console.log(beat_info.tempo);
   console.log("duration");
   console.log(audio_player.duration);
   console.log("last melody");
   console.log(melodies[melodies.length - 1].end);
-  //*/
+  */
 
 
   // SVG -->
