@@ -222,12 +222,14 @@ class PianoRoll extends SvgAndParam {
         getChordKeysSVG(analysis_data.romans),
         getDMelodySVGs(analysis_data.d_melodies),
         // getMelodySVGs(analysis_data.melodies),
+      ].map(e => e.group),
+      (analysis_data.hierarchical_melody ? getHierarchicalMelodySVGs(analysis_data.hierarchical_melody) : [getMelodySVGs(analysis_data.melodies)]).map(e=>e.group),
+      [
         getIRSymbolSVGs(analysis_data.melodies),
         // TODO: TSR_SVG, (hierarchical)IRSymbolSVG, (hierarchical)MelodySVG を hierarchical_melody から生成
         getTSR_SVGs(),
         getArrowSVGs(analysis_data.melodies)
-      ].map(e => e.group),
-      (analysis_data.hierarchical_melody ? getHierarchicalMelodySVGs(analysis_data.hierarchical_melody) : [getMelodySVGs(analysis_data.melodies)]).map(e=>e.group),
+      ].map(e=>e.group),
 
       SVG.g({ name: "octave-keys" }, undefined, getOctaveKeys(getWhiteKeys(), getBlackKeys()).svg.map(e => e.svg)),
       getCurrentTimeLine().svg[0].svg,
