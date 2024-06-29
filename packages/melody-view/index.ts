@@ -96,11 +96,11 @@ export const controllers = HTML.div({ id: "controllers" }, "", [
 
 // Melody 本体
 
-export const insertMelody = () => {
+const insertMelody = () => {
   console.log("insertMelody called");
 };
 
-export const deleteMelody = () => {
+const deleteMelody = () => {
   console.log("deleteMelody called");
 };
 
@@ -131,9 +131,9 @@ class DMelodySVG implements Updatable {
       y: this.y,
       width: this.w * NoteSize.value,
       height: this.h,
-      onclick: "MusicAnalyzer.insertMelody()",
       visibility: d_melody_switcher.checked ? "visible" : "hidden"
     });
+    this.svg.onclick = insertMelody;
   }
 }
 

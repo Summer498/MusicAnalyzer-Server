@@ -1,10 +1,9 @@
 import { HTML } from "@music-analyzer/html";
-import { play } from "@music-analyzer/synth";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { analyzeMelody, TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { getPianoRoll } from "@music-analyzer/svg-objects";
-import { deleteMelody, insertMelody, setHierarchyLevelSliderValues, controllers } from "@music-analyzer/melody-view";
+import { setHierarchyLevelSliderValues, controllers } from "@music-analyzer/melody-view";
 import { MusicXML, Pitch, } from "@music-analyzer/gttm/src/MusicXML";
 import { getChroma } from "@music-analyzer/tonal-objects";
 
@@ -23,9 +22,6 @@ interface MusicAnalyzerWindow extends Window {
       time_span: D_TSR,
       prolongation: PR,
     }
-    insertMelody: typeof insertMelody,
-    deleteMelody: typeof deleteMelody,
-    play: typeof play
   }
 }
 
@@ -141,9 +137,6 @@ import { getRange } from "@music-analyzer/math";
       time_span: do_re_mi_tsr,
       prolongation: undefined,
     },
-    insertMelody,
-    deleteMelody,
-    play
   };
 
   // <-- 分析データ
@@ -159,10 +152,6 @@ import { getRange } from "@music-analyzer/math";
   }));
   const romans = d_romans.map(e => e);
   const melodies = d_melodies.map(e => e).filter((e, i) => i + 1 >= d_melodies.length || 60 / (d_melodies[i + 1].begin - d_melodies[i].begin) < 300 * 4);
-
-  window.MusicAnalyzer.insertMelody = insertMelody;
-  window.MusicAnalyzer.deleteMelody = deleteMelody;
-  window.MusicAnalyzer.play = play;  // NOTE:コンソールデバッグ用
 
   // テンポの計算 (試運転)
   const beat_info = calcTempo(melodies, romans);

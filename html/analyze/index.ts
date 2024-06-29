@@ -1,19 +1,15 @@
 import { HTML } from "@music-analyzer/html";
-import { play } from "@music-analyzer/synth";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { WindowReflectableRegistry, UpdatableRegistry } from "@music-analyzer/view";
 import { getPianoRoll } from "@music-analyzer/svg-objects";
-import { controllers, deleteMelody, insertMelody } from "@music-analyzer/melody-view";
+import { controllers } from "@music-analyzer/melody-view";
 
 interface MusicAnalyzerWindow extends Window {
   MusicAnalyzer: {
     roman: TimeAndRomanAnalysis[],
     melody: TimeAndMelodyAnalysis[]
-    insertMelody: typeof insertMelody,
-    deleteMelody: typeof deleteMelody,
-    play: typeof play
   }
 }
 declare const window: MusicAnalyzerWindow;
@@ -27,9 +23,6 @@ const melody = (await (await fetch("../../resources/Hierarchical Analysis Sample
 window.MusicAnalyzer={
   roman,
   melody,
-  insertMelody,
-  deleteMelody,
-  play
 };
 */
 
@@ -43,10 +36,6 @@ const d_melodies: TimeAndMelodyAnalysis[] = window.MusicAnalyzer.melody.map(e =>
 }));
 const romans = d_romans.map(e => e);
 const melodies = d_melodies.map(e => e).filter((e, i) => i + 1 >= d_melodies.length || 60 / (d_melodies[i + 1].begin - d_melodies[i].begin) < 300 * 4);
-
-window.MusicAnalyzer.insertMelody = insertMelody;
-window.MusicAnalyzer.deleteMelody = deleteMelody;
-window.MusicAnalyzer.play = play;  // NOTE:コンソールデバッグ用
 
 // テンポの計算
 const beat_info = calcTempo(melodies, romans);
