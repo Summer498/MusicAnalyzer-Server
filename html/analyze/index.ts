@@ -4,7 +4,7 @@ import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { WindowReflectableRegistry, UpdatableRegistry } from "@music-analyzer/view";
 import { getPianoRoll } from "@music-analyzer/svg-objects";
-import { controllers } from "@music-analyzer/melody-view";
+import { controllers, setHierarchyLevelSliderValues } from "@music-analyzer/melody-view";
 
 interface MusicAnalyzerWindow extends Window {
   MusicAnalyzer: {
@@ -36,6 +36,7 @@ const d_melodies: TimeAndMelodyAnalysis[] = window.MusicAnalyzer.melody.map(e =>
 }));
 const romans = d_romans.map(e => e);
 const melodies = d_melodies.map(e => e).filter((e, i) => i + 1 >= d_melodies.length || 60 / (d_melodies[i + 1].begin - d_melodies[i].begin) < 300 * 4);
+setHierarchyLevelSliderValues(0);
 
 // テンポの計算
 const beat_info = calcTempo(melodies, romans);
