@@ -1,5 +1,5 @@
 import { forAll, getZeros, isSuperSet, mod, sameArray, totalSum, vSub } from "@music-analyzer/math";
-import { Assertion, assertNonNullable as NN } from "../stdlib";
+import { Assertion, assertNonNullable as NN } from "@music-analyzer/stdlib";
 import { _Chord, _Key, _Note, _Scale, _ChordDictionary, Chord, getIntervalDegree, getChroma } from "@music-analyzer/tonal-objects";
 import { RomanChord } from "@music-analyzer/roman-chord";
 import {

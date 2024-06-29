@@ -1,5 +1,5 @@
 import { ChordProgression, getChord } from ".";
-import { _Chord, _Scale, Chord } from "../tonal-objects";
+import { _Chord, _Scale, Chord } from "@music-analyzer/tonal-objects";
 
 const empty_chord: Chord = { aliases: [], bass: "", chroma: "", empty: true, intervals: [], name: "", normalized: "", notes: [], quality: "Unknown", root: "", rootDegree: 0, setNum: NaN, symbol: "", tonic: null, type: "" };
 

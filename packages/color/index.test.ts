@@ -88,7 +88,7 @@ describe("test hsv2rgb", () => {
 
 
 // Mocking the hsv2rgb function
-jest.mock("../TonalObjects", () => ({
+jest.mock("@music-analyzer/tonal-objects", () => ({
   _Note: {
     chroma: jest.fn((note) => {
       // Mock implementation of _Note.chroma
