@@ -212,9 +212,10 @@ class IRSymbolSVG implements Updatable {
   svg: SVGTextElement;
   begin: number;
   end: number;
-  y: number;
   archetype: Archetype;
-  constructor(melody: TimeAndMelodyAnalysis) {
+  layer: number;
+  y: number;
+  constructor(melody: TimeAndMelodyAnalysis, layer?:number) {
     this.svg = SVG.text(
       {
         id: "I-R Symbol",
@@ -226,14 +227,17 @@ class IRSymbolSVG implements Updatable {
     );
     this.begin = melody.begin;
     this.end = melody.end;
-    this.y = (piano_roll_begin - melody.note) * black_key_prm.height;
     this.archetype = melody.melody_analysis.implication_realization;
+    this.layer = layer || 0;
+    this.y = (piano_roll_begin - melody.note) * black_key_prm.height;
   }
   onUpdate(now_at: number) {
+    const is_visible = hierarchy_level_slider.value === String(this.layer);
     this.svg.setAttributes({
       x: CurrentTimeX.value + (this.begin - now_at) * NoteSize.value,
       y: this.y,
-      fill: get_color_of_Narmour_concept(this.archetype) || "#000"
+      fill: get_color_of_Narmour_concept(this.archetype) || "#000",
+      visibility: is_visible ? "visible" : "hidden"
     });
   };
 }
@@ -249,6 +253,14 @@ export const getIRSymbolSVGs = (melodies: TimeAndMelodyAnalysis[]) => {
   */
   return IR_svgs;
 };
+
+export const getHierarchicalIRSymbolSVGs = (hierarchical_melodies: TimeAndMelodyAnalysis[][]) =>
+  hierarchical_melodies.map((e, l)=>
+    new SvgCollection(
+      `layer-${l}`,
+      e.map(e => new IRSymbolSVG(e,l))
+    )
+  );
 
 
 class ArrowSVG implements Updatable {
