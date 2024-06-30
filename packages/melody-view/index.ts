@@ -372,7 +372,7 @@ class TSR_SVG implements Updatable {
   w: number;
   h: number;
   r: number;
-  constructor(melody: TimeAndMelodyAnalysis, layer: number, layer_max: number, highest_pitch: number) {
+  constructor(melody: TimeAndMelodyAnalysis, layer: number) {
     this.bracket = SVG.path({
       name: "group",
       stroke: "#004",
@@ -393,7 +393,7 @@ class TSR_SVG implements Updatable {
     this.begin = melody.begin;
     this.end = melody.end;
     this.layer = layer;
-    this.y = (piano_roll_begin - (highest_pitch + 1 + layer_max - layer)) * black_key_prm.height;
+    this.y = (2 + layer) * black_key_prm.height;
     this.w = melody.end - melody.begin;
     this.h = black_key_prm.height;
     this.head = {
@@ -433,12 +433,7 @@ class TSR_SVG implements Updatable {
 }
 
 export const getTSR_SVGs = (hierarchical_melodies: TimeAndMelodyAnalysis[][]) =>
-  hierarchical_melodies.map((e, l) => {
-    const layer_max = hierarchical_melodies.length - 1;
-    const highest_pitch = Math.max(...hierarchical_melodies[hierarchical_melodies.length - 1].map(e => e.note));
-    return new SvgCollection(
-      `layer-${l}`,
-      e.map(e => new TSR_SVG(e, l, layer_max, highest_pitch))
-    );
-  }
-  );
+  hierarchical_melodies.map((e, l) => new SvgCollection(
+    `layer-${l}`,
+    e.map(e => new TSR_SVG(e, l))
+  ));
