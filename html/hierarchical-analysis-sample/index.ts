@@ -84,7 +84,7 @@ import { getRange } from "@music-analyzer/math";
       const id_note = Number(match[2]);
       const note = musicxml["score-partwise"].part.measure[id_measure - 1].note;
       const pitch = Array.isArray(note) ? note[id_note - 1].pitch : note.pitch;
-      return { note: calcChroma(pitch), begin: ts.leftend, end: ts.leftend + (ts.rightend - ts.leftend) * 7 / 8 };  // 開始と終了がくっつくのを防ぐために note の長さをちょっと短くしておく
+      return { note: calcChroma(pitch), begin: ts.leftend, end: ts.rightend };
     }
     else {
       throw new SyntaxError(`Unexpected id received.\nExpected id is: ${regexp}`);

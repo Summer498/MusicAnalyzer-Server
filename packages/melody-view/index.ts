@@ -164,7 +164,7 @@ class MelodySVG implements Updatable {
     this.note = melody.note;
     this.layer = layer || 0;
     this.y = (piano_roll_begin - melody.note) * black_key_prm.height;
-    this.w = melody.end - melody.begin;
+    this.w = (melody.end - melody.begin) * 15 / 16;  // 最初と最後がくっつくのを防ぐために少し短くする
     this.h = black_key_prm.height;
     this.sound_reserved = false;
   }
@@ -215,7 +215,7 @@ class IRSymbolSVG implements Updatable {
   archetype: Archetype;
   layer: number;
   y: number;
-  constructor(melody: TimeAndMelodyAnalysis, layer?:number) {
+  constructor(melody: TimeAndMelodyAnalysis, layer?: number) {
     this.svg = SVG.text(
       {
         id: "I-R Symbol",
@@ -234,7 +234,7 @@ class IRSymbolSVG implements Updatable {
   onUpdate(now_at: number) {
     const is_visible = hierarchy_level_slider.value === String(this.layer);
     this.svg.setAttributes({
-      x: CurrentTimeX.value + (this.begin - now_at) * NoteSize.value,
+      x: CurrentTimeX.value + ((this.begin + this.end) / 2 - now_at) * NoteSize.value,
       y: this.y,
       fill: get_color_of_Narmour_concept(this.archetype) || "#000",
       visibility: is_visible ? "visible" : "hidden"
@@ -255,10 +255,10 @@ export const getIRSymbolSVGs = (melodies: TimeAndMelodyAnalysis[]) => {
 };
 
 export const getHierarchicalIRSymbolSVGs = (hierarchical_melodies: TimeAndMelodyAnalysis[][]) =>
-  hierarchical_melodies.map((e, l)=>
+  hierarchical_melodies.map((e, l) =>
     new SvgCollection(
       `layer-${l}`,
-      e.map(e => new IRSymbolSVG(e,l))
+      e.map(e => new IRSymbolSVG(e, l))
     )
   );
 
@@ -366,16 +366,17 @@ class TSR_SVG implements Updatable {
   head: SVGCircleElement;
   begin: number;
   end: number;
+  layer: number;
   y: number;
   w: number;
   h: number;
   r: number;
-  constructor() {
+  constructor(melody: TimeAndMelodyAnalysis, layer: number, layer_max: number, highest_pitch: number) {
     this.group = SVG.path({
       name: "group",
       stroke: "#004",
-      "stroke-width": 5,
-      fill: "none",
+      "stroke-width": 3,
+      fill: "#eee",
     });
     this.head = SVG.circle({
       name: "head",
@@ -388,34 +389,50 @@ class TSR_SVG implements Updatable {
       this.group,
       this.head
     ]);
-    this.begin = 0;
-    this.end = 0;
-    this.y = 500;
-    this.w = 100;
-    this.h = 50;
+    this.begin = melody.begin;
+    this.end = melody.end;
+    this.layer = layer;
+    this.y = (piano_roll_begin - (highest_pitch + 1 + layer_max - layer)) * black_key_prm.height;
+    this.w = melody.end - melody.begin;
+    this.h = black_key_prm.height;
     this.r = 5;
   }
   onUpdate(now_at: number) {
-    const x = 0;
+    const is_visible = this.layer <= Number(hierarchy_level_slider.value);
+    const x = CurrentTimeX.value + (this.begin - now_at) * NoteSize.value;
     const y = this.y;
-    const w = this.w;
+    const w = this.w * NoteSize.value;
     const h = this.h;
-    const b = { x: x, y: y };
-    const ct11 = { x: x, y: y - h * 6 / 10 };
-    const ct12 = { x: x + w * 1 / 10, y: y - h };
-    const c1 = { x: x + w * 2 / 10, y: y - h };
-    const c2 = { x: x + w * 8 / 10, y: y - h };
-    const ct21 = { x: x + w * 9 / 10, y: y - h };
-    const ct22 = { x: x + w, y: y - h * 6 / 10 };
-    const e = { x: x + w, y: y };
-    this.group.setAttributes({ d: `M${b.x} ${b.y}C${ct11.x} ${ct11.y} ${ct12.x} ${ct12.y} ${c1.x} ${c1.y}L${c2.x} ${c2.y}C${ct21.x} ${ct21.y} ${ct22.x} ${ct22.y} ${e.x} ${e.y}` });
+    const begin = { x: x + w * 0 / 10 + h * 0 / 2, y: y - h * 0 / 10 };
+    const ct11 = { x: x + w * 0 / 10 + h * 0 / 2, y: y - h * 6 / 10 };
+    const ct12 = { x: x + w * 0 / 10 + h * 1 / 2, y: y - h * 10 / 10 };
+    const corner1 = { x: x + w * 0 / 10 + h * 2 / 2, y: y - h * 10 / 10 };
+    const corner2 = { x: x + w * 10 / 10 - h * 2 / 2, y: y - h * 10 / 10 };
+    const ct21 = { x: x + w * 10 / 10 - h * 1 / 2, y: y - h * 10 / 10 };
+    const ct22 = { x: x + w * 10 / 10 - h * 0 / 2, y: y - h * 6 / 10 };
+    const end = { x: x + w * 10 / 10 - h * 0 / 2, y: y - h * 0 / 10 };
+    this.group.setAttributes({
+      d: `M${begin.x} ${begin.y}C${ct11.x} ${ct11.y} ${ct12.x} ${ct12.y} ${corner1.x} ${corner1.y}L${corner2.x} ${corner2.y}C${ct21.x} ${ct21.y} ${ct22.x} ${ct22.y} ${end.x} ${end.y}`,
+      visibility: is_visible ? "visible" : "hidden"
+    });
     const cx = x + w / 2;
     const cy = this.y - h;
-    this.head.setAttributes({ cx, cy, r: this.r });
+    this.head.setAttributes({
+      cx,
+      cy,
+      r: this.r,
+      visibility: "hidden" // is_visible ? "visible" : "hidden"
+    });
   }
 }
 
-export const getTSR_SVGs = () => new SvgCollection(
-  "time-span-tree",
-  [new TSR_SVG()]
-);
+export const getTSR_SVGs = (hierarchical_melodies: TimeAndMelodyAnalysis[][]) =>
+  hierarchical_melodies.map((e, l) => {
+    const layer_max = hierarchical_melodies.length - 1;
+    const highest_pitch = Math.max(...hierarchical_melodies[hierarchical_melodies.length - 1].map(e => e.note));
+    return new SvgCollection(
+      `layer-${l}`,
+      e.map(e => new TSR_SVG(e, l, layer_max, highest_pitch))
+    );
+  }
+  );
