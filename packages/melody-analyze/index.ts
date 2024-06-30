@@ -12,10 +12,11 @@ export type MelodyAnalysis = {
   chord_gravity?: Gravity,
   implication_realization: Archetype,
 };
-export interface TimeAndMelody extends TimeAnd { note: number }
+export interface TimeAndMelody extends TimeAnd { note: number, head: TimeAnd }
 export interface TimeAndChord extends TimeAnd { chord: Chord }
 export interface TimeAndMelodyAnalysis extends TimeAnd {
   note: number,
+  head: TimeAnd,
   roman_name: string,
   melody_analysis: MelodyAnalysis,
 }
@@ -54,7 +55,15 @@ export const getTimeAndMelody = (melody_data: number[], sampling_rate: number) =
   const comp_melody = compress(melody);
   const non_null_melody = (() => {
     const res: TimeAndMelody[] = [];
-    comp_melody.forEach(e => e.item === null || res.push({ begin: e.begin / sampling_rate, end: e.end / sampling_rate, note: e.item })); // value が null の場合は time ごと除く
+    comp_melody.forEach(e => e.item === null || res.push({
+      begin: e.begin / sampling_rate,
+      end: e.end / sampling_rate,
+      head: {
+        begin: e.begin / sampling_rate,
+        end: e.end / sampling_rate,
+      },
+      note: e.item
+    })); // value が null の場合は time ごと除く
     return res;
   })();
   return non_null_melody;
@@ -72,6 +81,7 @@ export const analyzeMelody = (
       begin: melody.begin,
       end: melody.end,
       note: melody.note,
+      head: melody.head,
       roman_name: _roman?.roman || "",
       melody_analysis: {
         scale_gravity: registerGravity(

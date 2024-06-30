@@ -71,6 +71,9 @@ export class TS implements D_TS {
     this.primary?.ts.forEach(callback);
     this.secondary?.ts.forEach(callback);
   }
+  getHeadElement(): TS {
+    return this.primary ? this.primary.ts.getHeadElement() : this;
+  }
   getDepthCount(): number {
     // returns depth count (1 based)
     // this.getArrayOfLayer(this.getDepth()-1) すると this と同じ階層の配列が取れる

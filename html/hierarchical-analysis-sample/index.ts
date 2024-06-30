@@ -1,6 +1,6 @@
 import { HTML } from "@music-analyzer/html";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
-import { analyzeMelody, TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
+import { analyzeMelody, TimeAndMelody, TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { getPianoRoll } from "@music-analyzer/svg-objects";
 import { setHierarchyLevelSliderValues, controllers } from "@music-analyzer/melody-view";
@@ -71,12 +71,8 @@ import { getRange } from "@music-analyzer/math";
   const musicxml = (await xml_parser.parse(await (await fetch("../../resources/Hierarchical Analysis Sample/sample1.xml")).text())) as MusicXML;
 
 
-  // NOTE: duration と chroma を取るところまではできた
-  // TODO: 
-  // 1. duration と given parameters から時刻に変換する
-  // 2. chroma と時刻から melody svg を作る
   const calcChroma = (pitch: Pitch) => 12 + pitch.octave * 12 + (pitch.alter || 0) + getChroma(pitch.step);
-  const getTimeAndMelodyFromTS = (ts: TS, musicxml: MusicXML) => {
+  const getTimeAndMelodyFromTS = (ts: TS, musicxml: MusicXML): TimeAndMelody => {
     const regexp = /P1-([0-9]+)-([0-9]+)/;
     const match = ts.head.chord.note.id.match(regexp);
     if (match) {
@@ -84,7 +80,7 @@ import { getRange } from "@music-analyzer/math";
       const id_note = Number(match[2]);
       const note = musicxml["score-partwise"].part.measure[id_measure - 1].note;
       const pitch = Array.isArray(note) ? note[id_note - 1].pitch : note.pitch;
-      return { note: calcChroma(pitch), begin: ts.leftend, end: ts.rightend };
+      return { note: calcChroma(pitch), begin: ts.leftend, end: ts.rightend, head: { begin: ts.leftend, end: ts.rightend } };
     }
     else {
       throw new SyntaxError(`Unexpected id received.\nExpected id is: ${regexp}`);
@@ -104,7 +100,12 @@ import { getRange } from "@music-analyzer/math";
   // 全階層分の IR 分析
   console.log(`depth: ${ts.getDepthCount()}`);
   console.log(getRange(0, ts.getDepthCount()).map(i => ts.getArrayOfLayer(i)));
-  const hierarchical_time_and_melodies = getRange(0, ts.getDepthCount()).map(i => ts.getArrayOfLayer(i)!.map(e => getTimeAndMelodyFromTS(e, musicxml)));
+  const hierarchical_time_and_melodies = getRange(0, ts.getDepthCount()).map(i => ts.getArrayOfLayer(i)!.map(e => {
+    return {
+      ...getTimeAndMelodyFromTS(e, musicxml),
+      head: { begin: e.getHeadElement().leftend, end: e.getHeadElement().rightend }
+    };
+  }));
   console.log(hierarchical_time_and_melodies);
   //TODO: begin, end を適切な位置 (開始位置＋長さ) に変換する
   hierarchical_time_and_melodies.forEach(e => e.forEach(e => {
@@ -112,10 +113,12 @@ import { getRange } from "@music-analyzer/math";
     const b = 0;
     e.begin = e.begin * w + b;
     e.end = e.end * w + b;
+    e.head.begin = e.head.begin * w + b;
+    e.head.end = e.head.end * w + b;
     e.note = e.note - 2;  // ハ長調から変ロ長調にシフト
   }));
   console.log(hierarchical_time_and_melodies);
-  const hierarchical_melody = hierarchical_time_and_melodies.map(e => analyzeMelody(e, roman).map(e => ({ IR: e.melody_analysis.implication_realization.symbol, ...e })));
+  const hierarchical_melody = hierarchical_time_and_melodies.map(time_and_melody => analyzeMelody(time_and_melody, roman).map(e => ({ IR: e.melody_analysis.implication_realization.symbol, ...e })));
   console.log(hierarchical_melody);
 
   console.log(do_re_mi_tsr);
@@ -146,6 +149,7 @@ import { getRange } from "@music-analyzer/math";
   const d_melodies: TimeAndMelodyAnalysis[] = window.MusicAnalyzer.melody.map(e => ({
     begin: e.begin,
     end: e.end,
+    head: { ...e.head },
     melody_analysis: e.melody_analysis,
     note: e.note,
     roman_name: e.roman_name

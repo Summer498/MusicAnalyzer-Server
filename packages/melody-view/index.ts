@@ -362,23 +362,24 @@ export const getArrowSVGs = (melodies: TimeAndMelodyAnalysis[]) => new SvgCollec
 
 class TSR_SVG implements Updatable {
   svg: SVGGElement;
-  group: SVGPathElement;
-  head: SVGCircleElement;
+  bracket: SVGPathElement;
+  circle: SVGCircleElement;
   begin: number;
   end: number;
+  head: { begin: number, end: number, w: number };
   layer: number;
   y: number;
   w: number;
   h: number;
   r: number;
   constructor(melody: TimeAndMelodyAnalysis, layer: number, layer_max: number, highest_pitch: number) {
-    this.group = SVG.path({
+    this.bracket = SVG.path({
       name: "group",
       stroke: "#004",
       "stroke-width": 3,
       fill: "#eee",
     });
-    this.head = SVG.circle({
+    this.circle = SVG.circle({
       name: "head",
       stroke: "#c00",
       fill: "#c00",
@@ -386,8 +387,8 @@ class TSR_SVG implements Updatable {
     this.svg = SVG.g(
       { name: "time-span-node" },
       undefined, [
-      this.group,
-      this.head
+      this.bracket,
+      this.circle
     ]);
     this.begin = melody.begin;
     this.end = melody.end;
@@ -395,6 +396,10 @@ class TSR_SVG implements Updatable {
     this.y = (piano_roll_begin - (highest_pitch + 1 + layer_max - layer)) * black_key_prm.height;
     this.w = melody.end - melody.begin;
     this.h = black_key_prm.height;
+    this.head = {
+      ...melody.head,
+      w: melody.head.end - melody.head.begin
+    };
     this.r = 5;
   }
   onUpdate(now_at: number) {
@@ -411,17 +416,18 @@ class TSR_SVG implements Updatable {
     const ct21 = { x: x + w * 10 / 10 - h * 1 / 2, y: y - h * 10 / 10 };
     const ct22 = { x: x + w * 10 / 10 - h * 0 / 2, y: y - h * 6 / 10 };
     const end = { x: x + w * 10 / 10 - h * 0 / 2, y: y - h * 0 / 10 };
-    this.group.setAttributes({
+    this.bracket.setAttributes({
       d: `M${begin.x} ${begin.y}C${ct11.x} ${ct11.y} ${ct12.x} ${ct12.y} ${corner1.x} ${corner1.y}L${corner2.x} ${corner2.y}C${ct21.x} ${ct21.y} ${ct22.x} ${ct22.y} ${end.x} ${end.y}`,
       visibility: is_visible ? "visible" : "hidden"
     });
-    const cx = x + w / 2;
+    const cw = this.head.w * NoteSize.value;
+    const cx = CurrentTimeX.value + (this.head.begin - now_at) * NoteSize.value + cw / 2;
     const cy = this.y - h;
-    this.head.setAttributes({
+    this.circle.setAttributes({
       cx,
       cy,
       r: this.r,
-      visibility: "hidden" // is_visible ? "visible" : "hidden"
+      visibility: is_visible ? "visible" : "hidden"
     });
   }
 }
