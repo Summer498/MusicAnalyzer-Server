@@ -28,11 +28,9 @@ window.MusicAnalyzer={
 
 const d_romans: TimeAndRomanAnalysis[] = window.MusicAnalyzer.roman.map(e => e);
 const d_melodies: TimeAndMelodyAnalysis[] = window.MusicAnalyzer.melody.map(e => ({
+  ...e,
   begin: e.begin - 0.16,  // ズレ補正
   end: e.end - 0.16,
-  melody_analysis: e.melody_analysis,
-  note: e.note,
-  roman_name: e.roman_name
 }));
 const romans = d_romans.map(e => e);
 const melodies = d_melodies.map(e => e).filter((e, i) => i + 1 >= d_melodies.length || 60 / (d_melodies[i + 1].begin - d_melodies[i].begin) < 300 * 4);
