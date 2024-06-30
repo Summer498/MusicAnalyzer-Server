@@ -1,5 +1,5 @@
 import { SvgCollection, Updatable } from "@music-analyzer/view";
-import { CurrentTimeX, NoteSize, piano_roll_height, reservation_range } from "@music-analyzer/view-parameters";
+import { CurrentTimeX, NoteSize, NowAt, piano_roll_height, reservation_range } from "@music-analyzer/view-parameters";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { getRange } from "@music-analyzer/math";
 import { SVG } from "@music-analyzer/html";
@@ -21,7 +21,8 @@ class BeatBarSVG implements Updatable {
     this.y2 = piano_roll_height;
     this.sound_reserved = false;
   }
-  beepBeat(now_at: number) {
+  beepBeat() {
+    const now_at = NowAt.value;
     if (now_at <= this.begin && this.begin < now_at + reservation_range) {
       if (this.sound_reserved === false) {
         play([220], this.begin - now_at, 0.125);
@@ -30,10 +31,11 @@ class BeatBarSVG implements Updatable {
       }
     }
   }
-  onUpdate(now_at: number) {
+  onUpdate() {
+    const now_at = NowAt.value;
     this.svg.setAttributes({ x1: CurrentTimeX.value + (this.begin - now_at) * NoteSize.value, x2: CurrentTimeX.value + (this.begin - now_at) * NoteSize.value, y1: this.y1, y2: this.y2 });
     // NOTE: うるさいので停止中
-    0 && this.beepBeat(now_at);
+    0 && this.beepBeat();
   }
 }
 

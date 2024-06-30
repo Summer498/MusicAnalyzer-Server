@@ -37,6 +37,13 @@ export class NoteSize {
     NoteSize.#value = PianoRollWidth.value / piano_roll_time_length;
   }
 }
+export class NowAt {
+  static #value = 0;
+  static get value() { return this.#value; }
+  static onUpdate(now_at: number) {
+    NowAt.#value = now_at;
+  }
+}
 // --- ピアノロールの描画パラメータ
 export const size = 2;
 // export const getPianoRollWidth = () => window.innerWidth - 48;  // innerWidth が動的に変化するpiano_roll_width

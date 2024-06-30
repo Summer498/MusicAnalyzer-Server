@@ -3,7 +3,7 @@ import { _Chord, _Note, _Scale, Chord, Scale } from "@music-analyzer/tonal-objec
 import { getRange, mod } from "@music-analyzer/math";
 import { getLowerCase, getCapitalCase } from "@music-analyzer/stdlib";
 import { SvgCollection, Updatable } from "@music-analyzer/view";
-import { CurrentTimeX, NoteSize, black_key_prm, octave_cnt, piano_roll_height, size } from "@music-analyzer/view-parameters";
+import { CurrentTimeX, NoteSize, NowAt, black_key_prm, octave_cnt, piano_roll_height, size } from "@music-analyzer/view-parameters";
 import { SVG } from "@music-analyzer/html";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 
@@ -68,9 +68,9 @@ class ChordNoteSVG implements Updatable {
     this.tonic = chord.tonic!;
     this.type = chord.type;
   }
-  onUpdate(now_at: number) {
+  onUpdate() {
     this.svg.setAttributes({
-      x: CurrentTimeX.value + (this.begin - now_at) * NoteSize.value,
+      x: CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value,
       y: this.y,
       width: this.w * NoteSize.value,
       height: this.h,
@@ -108,9 +108,9 @@ class ChordNameSVG implements Updatable {
     this.y = piano_roll_height + chord_text_size;
     this.tonic = _Chord.get(e.chord).tonic!;
   }
-  onUpdate(now_at: number) {
+  onUpdate() {
     this.svg.setAttributes({
-      x: CurrentTimeX.value + (this.begin - now_at) * NoteSize.value,
+      x: CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value,
       y: this.y,
       fill: fifthToColor(this.tonic, 1, 0.75) || "#000"
     });
@@ -142,9 +142,9 @@ class ChordRomanSVG implements Updatable {
     this.y = piano_roll_height + chord_text_size * 2 + chord_name_margin;
     this.tonic = _Chord.get(e.chord).tonic!;
   }
-  onUpdate(now_at: number) {
+  onUpdate() {
     this.svg.setAttributes({
-      x: CurrentTimeX.value + (this.begin - now_at) * NoteSize.value,
+      x: CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value,
       y: this.y,
       fill: fifthToColor(this.tonic, 1, 0.75) || "#000"
     });
@@ -177,9 +177,9 @@ class ChordKeySVG implements Updatable {
     this.y = piano_roll_height + chord_text_size * 2 + chord_name_margin;
     this.tonic = _Scale.get(e.scale).tonic!;
   }
-  onUpdate(now_at: number) {
+  onUpdate() {
     this.svg.setAttributes({
-      x: CurrentTimeX.value + (this.begin - now_at) * NoteSize.value,
+      x: CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value,
       y: this.y,
       fill: fifthToColor(this.tonic, 1, 0.75) || "#000"
     });

@@ -5,6 +5,7 @@ import { calcTempo } from "@music-analyzer/beat-estimation";
 import { WindowReflectableRegistry, UpdatableRegistry } from "@music-analyzer/view";
 import { getPianoRoll } from "@music-analyzer/svg-objects";
 import { controllers, setHierarchyLevelSliderValues } from "@music-analyzer/melody-view";
+import { NowAt } from "@music-analyzer/view-parameters";
 
 interface MusicAnalyzerWindow extends Window {
   MusicAnalyzer: {
@@ -76,8 +77,9 @@ const onUpdate = () => {
   if (audio_player.paused && now_at === last_audio_time) { return; }
   last_audio_time = now_at;
   // <-- audio 関連処理
-
-  UpdatableRegistry.instance.onUpdate(now_at);
+  
+  NowAt.onUpdate(now_at);
+  UpdatableRegistry.instance.onUpdate();
 };
 
 

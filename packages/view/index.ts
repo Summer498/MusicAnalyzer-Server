@@ -6,10 +6,11 @@ import {
   PianoRollWidth,
   CurrentTimeX,
   NoteSize,
+  NowAt,
 } from "@music-analyzer/view-parameters";
 
 export interface Updatable {
-  onUpdate(now_at: number): void
+  onUpdate(): void
 }
 
 interface UpdatableTimeAndSVGs extends Updatable, TimeAnd {
@@ -28,9 +29,9 @@ export class UpdatableRegistry {
     return this._instance || (this._instance = new UpdatableRegistry());
   }
   register(updatable: Updatable) { this.registered.push(updatable); }
-  onUpdate(now_at: number) {
+  onUpdate() {
     this.registered.forEach(e => {
-      e.onUpdate(now_at);
+      e.onUpdate();
     });
   }
 }
@@ -72,11 +73,11 @@ export class SvgCollection implements Updatable {
     const append = search_items_overlaps_range(this.all, begin - 5, end + 5);  // melodic gravity の矢印を隠すために ±5 のマージンを取る
     this.all.slice(append.begin_index, append.end_index).forEach(e => { this.show.push(e); this.group.appendChild(e.svg); });  // 必要分全部追加する
   }
-  onUpdate(now_at: number) {
+  onUpdate() {
     this.updateShow(
-      now_at - piano_roll_time_length * current_time_ratio,
-      now_at + piano_roll_time_length
+      NowAt.value - piano_roll_time_length * current_time_ratio,
+      NowAt.value + piano_roll_time_length
     );
-    this.show.forEach(e => e.onUpdate(now_at));
+    this.show.forEach(e => e.onUpdate());
   }
 }

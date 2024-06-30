@@ -34,6 +34,7 @@ import { UpdatableRegistry, WindowReflectableRegistry } from "@music-analyzer/vi
 import { TS, TSR } from "@music-analyzer/gttm/src/TSR";
 import { BeatPos } from "@music-analyzer/gttm/src/common";
 import { getRange } from "@music-analyzer/math";
+import { NowAt } from "@music-analyzer/view-parameters";
 (async () => {
   const xml_options: X2jOptions = {
     preserveOrder: false,
@@ -199,7 +200,8 @@ import { getRange } from "@music-analyzer/math";
     last_audio_time = now_at;
     // <-- audio 関連処理
 
-    UpdatableRegistry.instance.onUpdate(now_at);
+    NowAt.onUpdate(now_at);
+    UpdatableRegistry.instance.onUpdate();
   };
 
 

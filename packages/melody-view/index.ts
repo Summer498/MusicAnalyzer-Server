@@ -2,7 +2,7 @@ import { HTML, SVG } from "@music-analyzer/html";
 import { Gravity, TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { fifthChromaToColor, hsv2rgb, rgbToString } from "@music-analyzer/color";
 import { SvgCollection, Updatable } from "@music-analyzer/view";
-import { CurrentTimeX, NoteSize, black_key_prm, piano_roll_begin, reservation_range, size } from "@music-analyzer/view-parameters";
+import { CurrentTimeX, NoteSize, NowAt, black_key_prm, piano_roll_begin, reservation_range, size } from "@music-analyzer/view-parameters";
 import { Archetype, get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { play } from "@music-analyzer/synth";
 
@@ -125,9 +125,9 @@ class DMelodySVG implements Updatable {
     this.w = d_melody.end - d_melody.begin;
     this.h = black_key_prm.height;
   }
-  onUpdate(now_at: number) {
+  onUpdate() {
     this.svg.setAttributes({
-      x: CurrentTimeX.value + (this.begin - now_at) * NoteSize.value,
+      x: CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value,
       y: this.y,
       width: this.w * NoteSize.value,
       height: this.h,
@@ -169,7 +169,8 @@ class MelodySVG implements Updatable {
     this.sound_reserved = false;
   }
 
-  beepMelody = (now_at: number, volume: number) => {
+  beepMelody = (volume: number) => {
+    const now_at = NowAt.value;
     if (now_at <= this.begin && this.begin < now_at + reservation_range) {
       if (this.sound_reserved === false) {
         play([440 * Math.pow(2, (this.note - 69) / 12)], this.begin - now_at, this.end - this.begin, volume);
@@ -179,10 +180,10 @@ class MelodySVG implements Updatable {
     }
   };
 
-  onUpdate(now_at: number) {
+  onUpdate() {
     const is_visible = hierarchy_level_slider.value === String(this.layer);
     this.svg.setAttributes({
-      x: CurrentTimeX.value + (this.begin - now_at) * NoteSize.value,
+      x: CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value,
       y: this.y,
       width: this.w * NoteSize.value,
       height: this.h,
@@ -190,7 +191,7 @@ class MelodySVG implements Updatable {
       visibility: is_visible ? "visible" : "hidden"
     });
     if (melody_beep_switcher.checked && is_visible) {
-      this.beepMelody(now_at, Number(melody_beep_volume.value) / 400);
+      this.beepMelody(Number(melody_beep_volume.value) / 400);
     }
   }
 }
@@ -231,10 +232,10 @@ class IRSymbolSVG implements Updatable {
     this.layer = layer || 0;
     this.y = (piano_roll_begin - melody.note) * black_key_prm.height;
   }
-  onUpdate(now_at: number) {
+  onUpdate() {
     const is_visible = hierarchy_level_slider.value === String(this.layer);
     this.svg.setAttributes({
-      x: CurrentTimeX.value + ((this.begin + this.end) / 2 - now_at) * NoteSize.value,
+      x: CurrentTimeX.value + ((this.begin + this.end) / 2 - NowAt.value) * NoteSize.value,
       y: this.y,
       fill: get_color_of_Narmour_concept(this.archetype) || "#000",
       visibility: is_visible ? "visible" : "hidden"
@@ -304,8 +305,8 @@ class ArrowSVG implements Updatable {
     this.src_y0 = (piano_roll_begin + 0.5 - melody.note) * black_key_prm.height;
     this.dst_y0 = (piano_roll_begin + 0.5 - gravity.destination!) * black_key_prm.height;
   }
-  onUpdate(now_at: number) {
-    const std_pos = now_at * NoteSize.value;
+  onUpdate() {
+    const std_pos = NowAt.value * NoteSize.value;
     const src_x = this.src_x0 * NoteSize.value - std_pos + CurrentTimeX.value;
     const dst_x = this.dst_x0 * NoteSize.value - std_pos + CurrentTimeX.value;
     const src_y = this.src_y0;
@@ -402,7 +403,8 @@ class TSR_SVG implements Updatable {
     };
     this.r = 5;
   }
-  onUpdate(now_at: number) {
+  onUpdate() {
+    const now_at = NowAt.value;
     const is_visible = this.layer <= Number(hierarchy_level_slider.value);
     const x = CurrentTimeX.value + (this.begin - now_at) * NoteSize.value;
     const y = this.y;
