@@ -13,9 +13,26 @@ class RectParameters {
   }
 }
 
-export const piano_roll_time_length = 5;  // 1 画面に収める曲の長さ[秒]
+// export const piano_roll_time_length = 5;  // 1 画面に収める曲の長さ[秒]
 export const current_time_ratio = 1 / 4;
 
+export class PianoRollTimeLength {
+  static #value = 5;
+  static #song_length = 0;
+  static get value() { return this.#value; }
+  static onChange(piano_roll_time_length: number) {
+    this.#value = piano_roll_time_length;
+    NoteSize.onChange();
+  }
+  static setSongLength(song_length: number) {
+    if (song_length <= 0) { throw new EvalError("song_length should be positive"); }
+    this.#song_length = song_length;
+  }
+  static setRatio(piano_roll_ratio: number) {
+    if (!this.#song_length) { throw new Error("Song length is not set yet. Please use: PianoRollTimeLength.setSongLength(song_length)"); }
+    this.onChange(piano_roll_ratio * this.#song_length);
+  }
+}
 export class PianoRollWidth {
   static #value = window.innerWidth - 48;
   static get value() { return this.#value; }
@@ -31,11 +48,12 @@ export class CurrentTimeX {
   }
 }
 export class NoteSize {
-  static #value = PianoRollWidth.value / piano_roll_time_length;
+  static #value = PianoRollWidth.value / PianoRollTimeLength.value;
   static get value() { return this.#value; }
-  static onWindowResized() {
-    NoteSize.#value = PianoRollWidth.value / piano_roll_time_length;
+  static onChange() {
+    NoteSize.#value = PianoRollWidth.value / PianoRollTimeLength.value;
   }
+  static onWindowResized = this.onChange;
 }
 export class NowAt {
   static #value = 0;

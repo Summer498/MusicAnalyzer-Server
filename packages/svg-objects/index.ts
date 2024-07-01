@@ -6,19 +6,7 @@ import { getArrowSVGs, getDMelodySVGs, getHierarchicalIRSymbolSVGs, getHierarchi
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
-import {
-  PianoRollWidth,
-  CurrentTimeX,
-  octave_cnt,
-  white_bgs_prm,
-  piano_roll_height,
-  octave_height,
-  white_position,
-  black_bgs_prm,
-  white_key_prm,
-  black_position,
-  black_key_prm,
-} from "@music-analyzer/view-parameters";
+import { PianoRollWidth, CurrentTimeX, octave_cnt, white_bgs_prm, piano_roll_height, octave_height, white_position, black_bgs_prm, white_key_prm, black_position, black_key_prm, PianoRollTimeLength, } from "@music-analyzer/view-parameters";
 
 abstract class SvgAndParam implements WindowReflectable {
   abstract svg: SVGElement;
@@ -210,6 +198,11 @@ class PianoRoll extends SvgAndParam {
   svg: SVGSVGElement;
   constructor(analysis_data: AnalysisData) {
     super();
+    PianoRollTimeLength.setSongLength(
+      Math.max(
+        ...analysis_data.romans.map(e => e.end),
+        ...analysis_data.melodies.map(e => e.end)
+      ));
     this.svg = SVG.svg({ name: "piano-roll" }, undefined, [
       // 奥側
       SVG.g({ name: "octave-BGs" }, undefined, getOctaveBGs(getWhiteBGs(), getBlackBGs()).svg.map(e => e.svg)),

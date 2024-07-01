@@ -2,7 +2,7 @@ import { HTML, SVG } from "@music-analyzer/html";
 import { Gravity, TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { fifthChromaToColor, hsv2rgb, rgbToString } from "@music-analyzer/color";
 import { SvgCollection, Updatable } from "@music-analyzer/view";
-import { CurrentTimeX, NoteSize, NowAt, black_key_prm, piano_roll_begin, reservation_range, size } from "@music-analyzer/view-parameters";
+import { CurrentTimeX, NoteSize, NowAt, PianoRollTimeLength, black_key_prm, piano_roll_begin, reservation_range, size } from "@music-analyzer/view-parameters";
 import { Archetype, get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { play } from "@music-analyzer/synth";
 
@@ -12,9 +12,9 @@ const triangle_height = 5;
 
 
 // ボタン (TODO: ボタンを package として抽出する)
-const slider = HTML.input({ type: "range", id: "slider" });
-const show_slider_value = HTML.span({}, slider.value);
-slider.addEventListener("input", e => { show_slider_value.textContent = slider.value; });
+// const slider = HTML.input({ type: "range", id: "slider" });
+// const show_slider_value = HTML.span({}, slider.value);
+// slider.addEventListener("input", e => { show_slider_value.textContent = slider.value; });
 
 const key_gravity_switcher = HTML.input_checkbox({ id: "key_gravity_switcher", name: "key_gravity_switcher" });
 key_gravity_switcher.checked = true;
@@ -33,7 +33,6 @@ const melody_color_selector =
     HTML.label({ for: chord_color_selector.id }, "chord based color"),
     chord_color_selector,
   ]);
-//*/
 
 
 const d_melody_switcher = HTML.input_checkbox({ id: "d_melody_switcher", name: "d_melody_switcher" });
@@ -43,6 +42,12 @@ melody_beep_switcher.checked = false;
 const melody_beep_volume = HTML.input_range({ id: "melody_beep_volume", min: 0, max: 100, step: 1 });
 const show_melody_beep_volume = HTML.span({}, `volume: ${melody_beep_volume.value}`);
 melody_beep_volume.addEventListener("input", e => { show_melody_beep_volume.textContent = `volume: ${melody_beep_volume.value}`; });
+const time_range_slider = HTML.input_range({ id: "time_range_slider", name: "time_range_slider", min: 1, max: 10, step: 1 });
+const show_time_range_slider_value = HTML.span({}, `${Math.pow(2, Number(time_range_slider.value) - Number(time_range_slider.max)) * 100} %`);
+time_range_slider.addEventListener("input", e => {
+  show_time_range_slider_value.textContent = `${Math.pow(2, Number(time_range_slider.value) - Number(time_range_slider.max)) * 100} %`;
+  PianoRollTimeLength.setRatio(Math.pow(2, Number(time_range_slider.value) - Number(time_range_slider.max)));
+});
 const hierarchy_level_slider = HTML.input_range({ id: "hierarchy_level_slider", name: "hierarchy_level_slider", min: 0, max: 1, step: 1 });
 const show_hierarchy_level_slider_value = HTML.span({}, `layer: ${hierarchy_level_slider.value}`);
 hierarchy_level_slider.addEventListener("input", e => {
@@ -68,6 +73,13 @@ export const controllers = HTML.div({ id: "controllers" }, "", [
       HTML.label({ for: hierarchy_level_slider.id }, "Melody Hierarchy Level"),
       hierarchy_level_slider,
       show_hierarchy_level_slider_value,
+    ])
+  ]),
+  HTML.div({ id: "time-length" }, "", [
+    HTML.span({}, "", [
+      HTML.label({for: time_range_slider.id}, "Time Range"),
+      time_range_slider,
+      show_time_range_slider_value,
     ])
   ]),
   HTML.div({ id: "gravity-switcher" }, "", [

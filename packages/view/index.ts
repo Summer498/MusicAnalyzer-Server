@@ -1,13 +1,6 @@
 import { search_items_overlaps_range, TimeAnd } from "@music-analyzer/time-and";
 import { SVG } from "@music-analyzer/html";
-import {
-  piano_roll_time_length,
-  current_time_ratio,
-  PianoRollWidth,
-  CurrentTimeX,
-  NoteSize,
-  NowAt,
-} from "@music-analyzer/view-parameters";
+import { PianoRollTimeLength, current_time_ratio, PianoRollWidth, CurrentTimeX, NoteSize, NowAt } from "@music-analyzer/view-parameters";
 
 export interface Updatable {
   onUpdate(): void
@@ -75,8 +68,8 @@ export class SvgCollection implements Updatable {
   }
   onUpdate() {
     this.updateShow(
-      NowAt.value - piano_roll_time_length * current_time_ratio,
-      NowAt.value + piano_roll_time_length
+      NowAt.value - PianoRollTimeLength.value * current_time_ratio,
+      NowAt.value + PianoRollTimeLength.value
     );
     this.show.forEach(e => e.onUpdate());
   }
