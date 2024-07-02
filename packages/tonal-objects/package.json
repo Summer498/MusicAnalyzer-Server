@@ -21,6 +21,7 @@
     "@tonaljs/scale": "4.12.6",
     "@tonaljs/roman-numeral": "4.8.3",
     "@tonaljs/key": "4.9.4",    
+    "@tonaljs/pitch-interval": "6.0.0",
     "@music-analyzer/stdlib": "1.0.0"
   }
 }

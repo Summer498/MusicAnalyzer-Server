@@ -15,6 +15,7 @@ export { default as _Note } from "@tonaljs/note";
 export { default as _Interval } from "@tonaljs/interval";
 export { default as _Key } from "@tonaljs/key";
 export { ChordDictionary as _ChordDictionary } from "tonal";
+export { type IntervalLiteral, type IntervalName } from '@tonaljs/pitch-interval';
 
 export type Note = ReturnType<typeof _Note.get>
 export type Interval = ReturnType<typeof _Interval.get>
