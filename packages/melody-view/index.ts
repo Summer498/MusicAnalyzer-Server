@@ -247,7 +247,7 @@ class IRSymbolSVG implements Updatable {
   onUpdate() {
     const is_visible = hierarchy_level_slider.value === String(this.layer);
     this.svg.setAttributes({
-      x: CurrentTimeX.value + ((this.begin + this.end) / 2 - NowAt.value) * NoteSize.value,
+      x: CurrentTimeX.value + (this.end - NowAt.value) * NoteSize.value,
       y: this.y,
       fill: get_color_of_Narmour_concept(this.archetype) || "#000",
       visibility: is_visible ? "visible" : "hidden"
