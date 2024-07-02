@@ -208,11 +208,6 @@ class MelodySVG implements Updatable {
   }
 }
 
-export const getMelodySVGs = (melodies: TimeAndMelodyAnalysis[]) => new SvgCollection(
-  "melody",
-  melodies.map(e => new MelodySVG(e))
-);
-
 export const getHierarchicalMelodySVGs = (hierarchical_melodies: TimeAndMelodyAnalysis[][]) =>
   hierarchical_melodies.map((e, l) =>
     new SvgCollection(
@@ -254,18 +249,6 @@ class IRSymbolSVG implements Updatable {
     });
   };
 }
-
-export const getIRSymbolSVGs = (melodies: TimeAndMelodyAnalysis[]) => {
-  const IR_svgs = new SvgCollection(
-    "I-R Symbols",
-    melodies.map(e => new IRSymbolSVG(e))
-  );
-  /*
-  console.log("IR symbols");
-  console.log(IR_svgs);
-  */
-  return IR_svgs;
-};
 
 export const getHierarchicalIRSymbolSVGs = (hierarchical_melodies: TimeAndMelodyAnalysis[][]) =>
   hierarchical_melodies.map((e, l) =>
@@ -378,11 +361,6 @@ const getArrowSVG = (melody: TimeAndMelodyAnalysis, i: number, melodies: TimeAnd
   }
   return res;
 };
-
-export const getArrowSVGs = (melodies: TimeAndMelodyAnalysis[]) => new SvgCollection(
-  "gravity-arrow",
-  melodies.map(getArrowSVG).flat(2)
-);
 
 export const getHierarchicalArrowSVGs = (hierarchical_melodies: TimeAndMelodyAnalysis[][]) =>
   hierarchical_melodies.map((melodies, l) =>

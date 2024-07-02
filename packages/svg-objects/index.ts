@@ -2,11 +2,12 @@ import { SVG } from "@music-analyzer/html";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { getBeatBars } from "@music-analyzer/beat-view";
 import { chord_name_margin, chord_text_size, getChordKeysSVG, getChordNamesSVG, getChordNotesSVG, getChordRomansSVG } from "@music-analyzer/chord-view";
-import { getArrowSVGs, getDMelodySVGs, getHierarchicalArrowSVGs, getHierarchicalIRSymbolSVGs, getHierarchicalMelodySVGs, getIRSymbolSVGs, getMelodySVGs, getTSR_SVGs } from "@music-analyzer/melody-view";
+import { getDMelodySVGs, getHierarchicalArrowSVGs, getHierarchicalIRSymbolSVGs, getHierarchicalMelodySVGs, getTSR_SVGs } from "@music-analyzer/melody-view";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
 import { PianoRollWidth, CurrentTimeX, octave_cnt, white_bgs_prm, piano_roll_height, octave_height, white_position, black_bgs_prm, white_key_prm, black_position, black_key_prm, PianoRollTimeLength, } from "@music-analyzer/view-parameters";
+import { Assertion } from "@music-analyzer/stdlib";
 
 abstract class SvgAndParam implements WindowReflectable {
   abstract svg: SVGElement;
@@ -189,8 +190,8 @@ const getOctaveKeys = (white_key: SvgAndParams<WhiteKeySVG>, black_key: SvgAndPa
 type AnalysisData = {
   beat_info: BeatInfo
   romans: TimeAndRomanAnalysis[]
-  hierarchical_melody?: TimeAndMelodyAnalysis[][]
-  melodies: TimeAndMelodyAnalysis[]
+  hierarchical_melody: TimeAndMelodyAnalysis[][]
+  // melodies: TimeAndMelodyAnalysis[]
   d_melodies: TimeAndMelodyAnalysis[]
 }
 
@@ -198,36 +199,31 @@ class PianoRoll extends SvgAndParam {
   svg: SVGSVGElement;
   constructor(analysis_data: AnalysisData) {
     super();
+    new Assertion(analysis_data.hierarchical_melody.length > 0).onFailed(() => { throw new Error(`hierarchical melody length must be more than 0 but it is ${analysis_data.hierarchical_melody.length}`); });
+    const melodies = analysis_data.hierarchical_melody[analysis_data.hierarchical_melody.length - 1];
     PianoRollTimeLength.setSongLength(
       Math.max(
         ...analysis_data.romans.map(e => e.end),
-        ...analysis_data.melodies.map(e => e.end)
+        ...melodies.map(e => e.end)
       ));
     this.svg = SVG.svg({ name: "piano-roll" }, undefined, [
       // 奥側
       SVG.g({ name: "octave-BGs" }, undefined, getOctaveBGs(getWhiteBGs(), getBlackBGs()).svg.map(e => e.svg)),
 
       [
-        getBeatBars(analysis_data.beat_info, analysis_data.melodies),
+        getBeatBars(analysis_data.beat_info, melodies),
         getChordNotesSVG(analysis_data.romans),
         getChordNamesSVG(analysis_data.romans),
         getChordRomansSVG(analysis_data.romans),
         getChordKeysSVG(analysis_data.romans),
         getDMelodySVGs(analysis_data.d_melodies),
-        // getMelodySVGs(analysis_data.melodies),
       ].map(e => e.group),
-      (
-        analysis_data.hierarchical_melody ? [
-          getHierarchicalMelodySVGs(analysis_data.hierarchical_melody),
-          getHierarchicalIRSymbolSVGs(analysis_data.hierarchical_melody),
-          getHierarchicalArrowSVGs(analysis_data.hierarchical_melody),
-          getTSR_SVGs(analysis_data.hierarchical_melody)
-        ] : [
-          [getMelodySVGs(analysis_data.melodies)],
-          [getIRSymbolSVGs(analysis_data.melodies)],
-          [getArrowSVGs(analysis_data.melodies)]
-        ]
-      ).map(e => e.map(e => e.group)),
+      [
+        getHierarchicalMelodySVGs(analysis_data.hierarchical_melody),
+        getHierarchicalIRSymbolSVGs(analysis_data.hierarchical_melody),
+        getHierarchicalArrowSVGs(analysis_data.hierarchical_melody),
+        getTSR_SVGs(analysis_data.hierarchical_melody)
+      ].map(e => e.map(e => e.group)),
       SVG.g({ name: "octave-keys" }, undefined, getOctaveKeys(getWhiteKeys(), getBlackKeys()).svg.map(e => e.svg)),
       getCurrentTimeLine().svg[0].svg,
       // 手前側
