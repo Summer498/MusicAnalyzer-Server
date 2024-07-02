@@ -77,7 +77,7 @@ export const controllers = HTML.div({ id: "controllers" }, "", [
   ]),
   HTML.div({ id: "time-length" }, "", [
     HTML.span({}, "", [
-      HTML.label({for: time_range_slider.id}, "Time Range"),
+      HTML.label({ for: time_range_slider.id }, "Time Range"),
       time_range_slider,
       show_time_range_slider_value,
     ])
@@ -283,11 +283,12 @@ class ArrowSVG implements Updatable {
   note: number;
   next: TimeAndMelodyAnalysis;
   destination?: number;
+  layer: number;
   src_x0: number;
   dst_x0: number;
   src_y0: number;
   dst_y0: number;
-  constructor(melody: TimeAndMelodyAnalysis, next: TimeAndMelodyAnalysis, gravity: Gravity, fill: string, stroke: string) {
+  constructor(melody: TimeAndMelodyAnalysis, next: TimeAndMelodyAnalysis, gravity: Gravity, fill: string, stroke: string, layer?: number) {
     const triangle = SVG.polygon({
       name: "gravity-arrow",
       class: "triangle",
@@ -312,12 +313,14 @@ class ArrowSVG implements Updatable {
     this.note = melody.note;
     this.next = next;
     this.destination = gravity.destination;
+    this.layer = layer || 0;
     this.src_x0 = (melody.end - melody.begin) / 2 + melody.begin;
     this.dst_x0 = next.begin;
     this.src_y0 = (piano_roll_begin + 0.5 - melody.note) * black_key_prm.height;
     this.dst_y0 = (piano_roll_begin + 0.5 - gravity.destination!) * black_key_prm.height;
   }
   onUpdate() {
+    const is_visible = hierarchy_level_slider.value === String(this.layer);
     const std_pos = NowAt.value * NoteSize.value;
     const src_x = this.src_x0 * NoteSize.value - std_pos + CurrentTimeX.value;
     const dst_x = this.dst_x0 * NoteSize.value - std_pos + CurrentTimeX.value;
@@ -338,10 +341,16 @@ class ArrowSVG implements Updatable {
       dst_y + sin * -triangle_width + cos * triangle_height
     ];
     for (const e of this.svg.getElementsByClassName("triangle")) {
-      e.setAttributes({ points: `${p.join(",")}` });
+      e.setAttributes({
+        points: `${p.join(",")}`,
+        visibility: is_visible ? "visible" : "hidden"
+      });
     }
     for (const e of this.svg.getElementsByClassName("line")) {
-      e.setAttributes({ x1: src_x, x2: dst_x, y1: src_y, y2: dst_y });
+      e.setAttributes({
+        x1: src_x, x2: dst_x, y1: src_y, y2: dst_y,
+        visibility: is_visible ? "visible" : "hidden"
+      });
     }
   }
 }
@@ -350,28 +359,38 @@ class ArrowSVG implements Updatable {
 export const key_gravities: SVGElement[] = [];
 export const chord_gravities: SVGElement[] = [];
 
+const getArrowSVG = (melody: TimeAndMelodyAnalysis, i: number, melodies: TimeAndMelodyAnalysis[], layer?: number) => {
+  const stroke = rgbToString([0, 0, 0]);
+  const next = melodies.length <= i + 1 ? melodies[i] : melodies[i + 1];
+  const fill = rgbToString([0, 0, 0]);
+  const res: ArrowSVG[] = [];
+  const scale_gravity = melody.melody_analysis.scale_gravity;
+  const chord_gravity = melody.melody_analysis.chord_gravity;
+  if (scale_gravity?.resolved && scale_gravity.destination !== undefined) {
+    const svg = new ArrowSVG(melody, next, scale_gravity, fill, stroke, layer);
+    res.push(svg);
+    key_gravities.push(svg.svg);
+  }
+  if (chord_gravity?.resolved && chord_gravity.destination !== undefined) {
+    const svg = new ArrowSVG(melody, next, chord_gravity, fill, stroke, layer);
+    res.push(svg);
+    chord_gravities.push(svg.svg);
+  }
+  return res;
+};
+
 export const getArrowSVGs = (melodies: TimeAndMelodyAnalysis[]) => new SvgCollection(
   "gravity-arrow",
-  melodies.map((melody, i) => {
-    const stroke = rgbToString([0, 0, 0]);
-    const next = melodies.length <= i + 1 ? melodies[i] : melodies[i + 1];
-    const fill = rgbToString([0, 0, 0]);
-    const res: ArrowSVG[] = [];
-    const scale_gravity = melody.melody_analysis.scale_gravity;
-    const chord_gravity = melody.melody_analysis.chord_gravity;
-    if (scale_gravity?.resolved && scale_gravity.destination !== undefined) {
-      const svg = new ArrowSVG(melody, next, scale_gravity, fill, stroke);
-      res.push(svg);
-      key_gravities.push(svg.svg);
-    }
-    if (chord_gravity?.resolved && chord_gravity.destination !== undefined) {
-      const svg = new ArrowSVG(melody, next, chord_gravity, fill, stroke);
-      res.push(svg);
-      chord_gravities.push(svg.svg);
-    }
-    return res;
-  }).flat(2)
+  melodies.map(getArrowSVG).flat(2)
 );
+
+export const getHierarchicalArrowSVGs = (hierarchical_melodies: TimeAndMelodyAnalysis[][]) =>
+  hierarchical_melodies.map((melodies, l) =>
+    new SvgCollection(
+      `layer-${l}`,
+      melodies.map((e, i, a) => getArrowSVG(e, i, a, l)).flat(2)
+    )
+  );
 
 class TSR_SVG implements Updatable {
   svg: SVGGElement;
