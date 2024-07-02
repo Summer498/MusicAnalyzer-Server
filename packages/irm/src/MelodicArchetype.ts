@@ -38,6 +38,13 @@ const retrospectiveSymbol = (symbol: TrigramProspectiveSymbol): RetrospectiveSym
   }
 };
 
+const remove_minus = (src:string) => {
+  if(src.length > 0){
+    return src[0] === "-" ? src.slice(1) : src;
+  }
+  return src;
+};
+
 export class Archetype {
   _symbol: _ArchetypeSymbol;
   symbol: ArchetypeSymbol;
@@ -61,7 +68,7 @@ export class Archetype {
       }
       else if (notes_num === 2) {
         this._symbol = "dyad";
-        this.symbol = _Interval.distance(notes[0], notes[1]);
+        this.symbol = remove_minus(_Interval.distance(notes[0], notes[1]));
       }
       else { throw new Error(`Invalid length of notes. Required 1, 2, or, 3 notes but given was ${notes.length} notes: ${JSON.stringify(notes)}`); }
       return;
