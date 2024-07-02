@@ -25,18 +25,18 @@ class SvgAndParams<T extends SvgAndParam> implements WindowReflectable {
   }
 }
 
-class CurrentTimeLine extends SvgAndParam {
+class CurrentTimeLine implements WindowReflectable {
   svg: SVGLineElement;
   constructor() {
-    super();
     this.svg = SVG.line({ name: "current_time", "stroke-width": 5, stroke: "#000" });
+    WindowReflectableRegistry.instance.register(this);
   }
   onWindowResized() {
     this.svg.setAttributes({ x1: CurrentTimeX.value, x2: CurrentTimeX.value, y1: 0, y2: piano_roll_height });
   }
 }
 
-const getCurrentTimeLine = () => new SvgAndParams([new CurrentTimeLine()]);
+const getCurrentTimeLine = () => new CurrentTimeLine();
 
 class WhiteBG_SVG extends SvgAndParam {
   svg: SVGRectElement;
@@ -195,45 +195,60 @@ type AnalysisData = {
   d_melodies: TimeAndMelodyAnalysis[]
 }
 
-class PianoRoll extends SvgAndParam {
+class PianoRoll implements WindowReflectable {
   svg: SVGSVGElement;
-  constructor(analysis_data: AnalysisData) {
-    super();
-    new Assertion(analysis_data.hierarchical_melody.length > 0).onFailed(() => { throw new Error(`hierarchical melody length must be more than 0 but it is ${analysis_data.hierarchical_melody.length}`); });
-    const melodies = analysis_data.hierarchical_melody[analysis_data.hierarchical_melody.length - 1];
-    PianoRollTimeLength.setSongLength(
-      Math.max(
-        ...analysis_data.romans.map(e => e.end),
-        ...melodies.map(e => e.end)
-      ));
-    this.svg = SVG.svg({ name: "piano-roll" }, undefined, [
-      // 奥側
-      SVG.g({ name: "octave-BGs" }, undefined, getOctaveBGs(getWhiteBGs(), getBlackBGs()).svg.map(e => e.svg)),
-
-      [
-        getBeatBars(analysis_data.beat_info, melodies),
-        getChordNotesSVG(analysis_data.romans),
-        getChordNamesSVG(analysis_data.romans),
-        getChordRomansSVG(analysis_data.romans),
-        getChordKeysSVG(analysis_data.romans),
-        getDMelodySVGs(analysis_data.d_melodies),
-      ].map(e => e.group),
-      [
-        getHierarchicalMelodySVGs(analysis_data.hierarchical_melody),
-        getHierarchicalIRSymbolSVGs(analysis_data.hierarchical_melody),
-        getHierarchicalArrowSVGs(analysis_data.hierarchical_melody),
-        getTSR_SVGs(analysis_data.hierarchical_melody)
-      ].map(e => e.map(e => e.group)),
-      SVG.g({ name: "octave-keys" }, undefined, getOctaveKeys(getWhiteKeys(), getBlackKeys()).svg.map(e => e.svg)),
-      getCurrentTimeLine().svg[0].svg,
-      // 手前側
-    ]);
+  constructor() {
+    this.svg = SVG.svg({ name: "piano-roll" }, undefined);
+    WindowReflectableRegistry.instance.register(this);
   }
   onWindowResized() {
     this.svg.setAttributes({ x: 0, y: 0, width: PianoRollWidth.value, height: piano_roll_height + chord_text_size * 2 + chord_name_margin });
   }
 }
 
-export const getPianoRoll = (analysis_data: AnalysisData) =>
-  // svg element の作成
-  new SvgAndParams([new PianoRoll(analysis_data)]);
+export const getPianoRoll = (analysis_data: AnalysisData) => {
+  const piano_roll = new PianoRoll();
+
+  new Assertion(analysis_data.hierarchical_melody.length > 0).onFailed(() => { throw new Error(`hierarchical melody length must be more than 0 but it is ${analysis_data.hierarchical_melody.length}`); });
+  const melodies = analysis_data.hierarchical_melody[analysis_data.hierarchical_melody.length - 1];
+  PianoRollTimeLength.setSongLength(
+    Math.max(
+      ...analysis_data.romans.map(e => e.end),
+      ...melodies.map(e => e.end)
+    ));
+
+  const beat_bars = getBeatBars(analysis_data.beat_info, melodies);
+  const chord_notes = getChordNotesSVG(analysis_data.romans);
+  const chord_names = getChordNamesSVG(analysis_data.romans);
+  const chord_romans = getChordRomansSVG(analysis_data.romans);
+  const chord_keys = getChordKeysSVG(analysis_data.romans);
+  const d_melody = getDMelodySVGs(analysis_data.d_melodies);
+  const hierarchical_melody = getHierarchicalMelodySVGs(analysis_data.hierarchical_melody);
+  const hierarchical_IR = getHierarchicalIRSymbolSVGs(analysis_data.hierarchical_melody);
+  const hierarchical_arrow = getHierarchicalArrowSVGs(analysis_data.hierarchical_melody);
+  const tsr_svg = getTSR_SVGs(analysis_data.hierarchical_melody);
+  piano_roll.svg.appendChildren([
+    // 奥側
+    SVG.g({ name: "octave-BGs" }, undefined, getOctaveBGs(getWhiteBGs(), getBlackBGs()).svg.map(e => e.svg)),
+
+    [
+      beat_bars,
+      chord_notes,
+      chord_names,
+      chord_romans,
+      chord_keys,
+      d_melody,
+    ].map(e => e.group),
+    [
+      hierarchical_melody,
+      hierarchical_IR,
+      hierarchical_arrow,
+      tsr_svg
+    ].map(e => e.map(e => e.group)),
+    SVG.g({ name: "octave-keys" }, undefined, getOctaveKeys(getWhiteKeys(), getBlackKeys()).svg.map(e => e.svg)),
+    getCurrentTimeLine().svg,
+    // 手前側
+  ]);
+
+  return piano_roll;
+};
