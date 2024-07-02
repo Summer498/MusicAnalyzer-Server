@@ -1,4 +1,4 @@
-import { _Interval, NoteLiteral } from "@music-analyzer/tonal-objects";
+import { _Interval, _Note, IntervalName, NoteLiteral } from "@music-analyzer/tonal-objects";
 import { MelodyMotion, no_motion } from "./MelodyMotion";
 import {
   NULL_REGISTRAL_RETURN_FORM,
@@ -7,7 +7,7 @@ import {
 
 const P5 = _Interval.get("P5");
 const P4 = _Interval.get("P4");
-const T = _Interval.get("T");
+const Tritone = _Interval.get("T");
 
 export type TrigramProspectiveSymbol =
   | "P" | "IP" | "VP"
@@ -19,7 +19,9 @@ export type RetrospectiveSymbol =
   | "(R)" | "(IR)" | "(VR)"
   | "(D)" | "(ID)"
 
-export type ProspectiveSymbol = TrigramProspectiveSymbol | "M" | "dyad"
+export type _ProspectiveSymbol = TrigramProspectiveSymbol | "M" | "dyad"
+export type _ArchetypeSymbol = _ProspectiveSymbol | RetrospectiveSymbol
+export type ProspectiveSymbol = TrigramProspectiveSymbol | "M" | IntervalName
 export type ArchetypeSymbol = ProspectiveSymbol | RetrospectiveSymbol
 
 const retrospectiveSymbol = (symbol: TrigramProspectiveSymbol): RetrospectiveSymbol => {
@@ -37,11 +39,12 @@ const retrospectiveSymbol = (symbol: TrigramProspectiveSymbol): RetrospectiveSym
 };
 
 export class Archetype {
+  _symbol: _ArchetypeSymbol;
   symbol: ArchetypeSymbol;
   retrospective: boolean | null;
   registral_return_form: RegistralReturnForm;
   notes: NoteLiteral[];
-  intervals: string[];
+  intervals: IntervalName[];
   melody_motion: MelodyMotion;
 
   constructor(notes: string[]) {
@@ -50,10 +53,16 @@ export class Archetype {
     if (notes_num !== 3) {
       this.retrospective = false;
       this.registral_return_form = NULL_REGISTRAL_RETURN_FORM;
-      this.intervals = ["", ""]; //[_Interval.get(""), _Interval.get("")];
+      this.intervals = ["", ""];
       this.melody_motion = no_motion;
-      if (notes_num === 1) { this.symbol = "M"; }
-      else if (notes_num === 2) { this.symbol = "dyad"; }
+      if (notes_num === 1) {
+        this._symbol = "M";
+        this.symbol = "M";
+      }
+      else if (notes_num === 2) {
+        this._symbol = "dyad";
+        this.symbol = _Interval.distance(notes[0], notes[1]);
+      }
       else { throw new Error(`Invalid length of notes. Required 1, 2, or, 3 notes but given was ${notes.length} notes: ${JSON.stringify(notes)}`); }
       return;
     }
@@ -74,30 +83,31 @@ export class Archetype {
 
     // Reverse
     if (i_mgn === "AB" && (i_dir === "mL" || v_dir === "mL")) {
-      this.retrospective = initial.chroma < T.chroma;
-      if (i_dir === "mR") { this.symbol = "VR"; }
-      else if (v_dir === "mR") { this.symbol = "IR"; }
-      else { this.symbol = "R"; }
+      this.retrospective = initial.chroma < Tritone.chroma;
+      if (i_dir === "mR") { this._symbol = "VR"; }
+      else if (v_dir === "mR") { this._symbol = "IR"; }
+      else { this._symbol = "R"; }
     }
     // Duplicate
     else if (i_dir === "mN" && v_dir !== "mR") {
-      this.retrospective = T.chroma < initial.chroma;
-      if (v_dir !== "mN") { this.symbol = "ID"; }
-      else { this.symbol = "D"; }
+      this.retrospective = Tritone.chroma < initial.chroma;
+      if (v_dir !== "mN") { this._symbol = "ID"; }
+      else { this._symbol = "D"; }
     }
     // Process
     else {
-      this.retrospective = T.chroma < initial.chroma;
-      if (i_mgn === "AB") { this.symbol = "VP"; }
-      else if (v_mgn === "AB") { this.symbol = "IP"; }
-      else { this.symbol = "P"; }
+      this.retrospective = Tritone.chroma < initial.chroma;
+      if (i_mgn === "AB") { this._symbol = "VP"; }
+      else if (v_mgn === "AB") { this._symbol = "IP"; }
+      else { this._symbol = "P"; }
     }
     if (P4.chroma <= initial.chroma && initial.chroma < P5.chroma) {
       this.retrospective = null;
     }
     if (this.retrospective) {
       console.error("retrospective");
-      this.symbol = retrospectiveSymbol(this.symbol);
+      this._symbol = retrospectiveSymbol(this._symbol);
     }
+    this.symbol = this._symbol;
   }
 }

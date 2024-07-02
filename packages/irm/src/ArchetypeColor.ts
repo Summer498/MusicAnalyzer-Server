@@ -2,7 +2,7 @@ import { Archetype } from "./MelodicArchetype";
 import { hsv2rgb, rgbToString } from "@music-analyzer/color";
 
 const get_rgb_of_Narmour_concept = (archetype: Archetype): number[] => {
-  switch (archetype.symbol) {
+  switch (archetype._symbol) {
     case "P":
     case "(P)":
       return [0x00, 0x00, 0xff];

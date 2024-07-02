@@ -51,8 +51,8 @@ console.log(melodies[melodies.length - 1].end);
 
 // SVG -->
 piano_roll_place.appendChildren([
+  getPianoRoll({ beat_info, romans, melodies, d_melodies }).svg[0].svg,
   controllers,
-  getPianoRoll({ beat_info, romans, melodies, d_melodies }).svg[0].svg
 ]);
 // <-- SVG
 

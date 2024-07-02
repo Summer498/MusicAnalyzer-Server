@@ -173,8 +173,8 @@ import { NowAt } from "@music-analyzer/view-parameters";
   // SVG -->
   // TODO: ボタン周りのリファクタリングをする
   piano_roll_place.appendChildren([
+    getPianoRoll({ beat_info, hierarchical_melody, romans, melodies, d_melodies }).svg[0].svg,
     controllers,
-    getPianoRoll({ beat_info, hierarchical_melody, romans, melodies, d_melodies }).svg[0].svg
   ]);
   // <-- SVG
 
