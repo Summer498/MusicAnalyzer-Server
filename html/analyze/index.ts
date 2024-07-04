@@ -3,6 +3,7 @@ import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { WindowReflectableRegistry, UpdatableRegistry } from "@music-analyzer/view";
+import { SongManager } from "@music-analyzer/song-manager";
 import { getPianoRoll } from "@music-analyzer/svg-objects";
 import { controllers, setHierarchyLevelSliderValues } from "@music-analyzer/melody-view";
 import { NowAt } from "@music-analyzer/view-parameters";
@@ -50,8 +51,10 @@ console.log(melodies[melodies.length - 1].end);
 
 
 // SVG -->
+const song_manager = new SongManager();
+song_manager.analysis_data = { beat_info, hierarchical_melody: [melodies], romans, d_melodies };
 piano_roll_place.appendChildren([
-  getPianoRoll({ beat_info, romans, hierarchical_melody: [melodies], d_melodies }).svg,
+  getPianoRoll(song_manager).svg,
   controllers,
 ]);
 // <-- SVG

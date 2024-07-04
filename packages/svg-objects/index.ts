@@ -1,13 +1,9 @@
 import { SVG } from "@music-analyzer/html";
-import { BeatInfo } from "@music-analyzer/beat-estimation";
-import { getBeatBars } from "@music-analyzer/beat-view";
-import { chord_name_margin, chord_text_size, getChordKeysSVG, getChordNamesSVG, getChordNotesSVG, getChordRomansSVG } from "@music-analyzer/chord-view";
-import { getDMelodySVGs, getHierarchicalArrowSVGs, getHierarchicalIRSymbolSVGs, getHierarchicalMelodySVGs, getTSR_SVGs } from "@music-analyzer/melody-view";
-import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
-import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
+import { chord_name_margin, chord_text_size } from "@music-analyzer/chord-view";
 import { WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
 import { PianoRollWidth, CurrentTimeX, octave_cnt, white_bgs_prm, piano_roll_height, octave_height, white_position, black_bgs_prm, white_key_prm, black_position, black_key_prm, PianoRollTimeLength, } from "@music-analyzer/view-parameters";
 import { Assertion } from "@music-analyzer/stdlib";
+import { SongManager } from "@music-analyzer/song-manager";
 
 abstract class SvgAndParam implements WindowReflectable {
   abstract svg: SVGElement;
@@ -187,14 +183,6 @@ const getOctaveKeys = (white_key: SvgAndParams<WhiteKeySVG>, black_key: SvgAndPa
     [...Array(octave_cnt)].map((_, oct) => new OctaveKeys(oct, white_key, black_key)),
   );
 
-type AnalysisData = {
-  beat_info: BeatInfo
-  romans: TimeAndRomanAnalysis[]
-  hierarchical_melody: TimeAndMelodyAnalysis[][]
-  // melodies: TimeAndMelodyAnalysis[]
-  d_melodies: TimeAndMelodyAnalysis[]
-}
-
 class PianoRoll implements WindowReflectable {
   svg: SVGSVGElement;
   constructor() {
@@ -206,7 +194,8 @@ class PianoRoll implements WindowReflectable {
   }
 }
 
-export const getPianoRoll = (analysis_data: AnalysisData) => {
+export const getPianoRoll = (song_manager: SongManager) => {
+  const analysis_data = song_manager.analysis_data;
   const piano_roll = new PianoRoll();
 
   new Assertion(analysis_data.hierarchical_melody.length > 0).onFailed(() => { throw new Error(`hierarchical melody length must be more than 0 but it is ${analysis_data.hierarchical_melody.length}`); });
@@ -217,33 +206,23 @@ export const getPianoRoll = (analysis_data: AnalysisData) => {
       ...melodies.map(e => e.end)
     ));
 
-  const beat_bars = getBeatBars(analysis_data.beat_info, melodies);
-  const chord_notes = getChordNotesSVG(analysis_data.romans);
-  const chord_names = getChordNamesSVG(analysis_data.romans);
-  const chord_romans = getChordRomansSVG(analysis_data.romans);
-  const chord_keys = getChordKeysSVG(analysis_data.romans);
-  const d_melody = getDMelodySVGs(analysis_data.d_melodies);
-  const hierarchical_melody = getHierarchicalMelodySVGs(analysis_data.hierarchical_melody);
-  const hierarchical_IR = getHierarchicalIRSymbolSVGs(analysis_data.hierarchical_melody);
-  const hierarchical_arrow = getHierarchicalArrowSVGs(analysis_data.hierarchical_melody);
-  const tsr_svg = getTSR_SVGs(analysis_data.hierarchical_melody);
   piano_roll.svg.appendChildren([
     // 奥側
     SVG.g({ name: "octave-BGs" }, undefined, getOctaveBGs(getWhiteBGs(), getBlackBGs()).svg.map(e => e.svg)),
 
     [
-      beat_bars,
-      chord_notes,
-      chord_names,
-      chord_romans,
-      chord_keys,
-      d_melody,
+      song_manager.beat_bars,
+      song_manager.chord_notes,
+      song_manager.chord_names,
+      song_manager.chord_romans,
+      song_manager.chord_keys,
+      song_manager.d_melody,
     ].map(e => e.group),
     [
-      hierarchical_melody,
-      hierarchical_IR,
-      hierarchical_arrow,
-      tsr_svg
+      song_manager.hierarchical_melody,
+      song_manager.hierarchical_IR,
+      song_manager.hierarchical_arrow,
+      song_manager.tsr_svg
     ].map(e => e.map(e => e.group)),
     SVG.g({ name: "octave-keys" }, undefined, getOctaveKeys(getWhiteKeys(), getBlackKeys()).svg.map(e => e.svg)),
     getCurrentTimeLine().svg,

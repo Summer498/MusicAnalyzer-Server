@@ -1,6 +1,7 @@
 import { search_items_overlaps_range, TimeAnd } from "@music-analyzer/time-and";
 import { SVG } from "@music-analyzer/html";
 import { PianoRollTimeLength, current_time_ratio, PianoRollWidth, CurrentTimeX, NoteSize, NowAt } from "@music-analyzer/view-parameters";
+import { _throw } from "@music-analyzer/stdlib";
 
 export interface Updatable {
   onUpdate(): void

@@ -2,13 +2,16 @@ import { HTML } from "@music-analyzer/html";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { analyzeMelody, TimeAndMelody, TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
+import { WindowReflectableRegistry, UpdatableRegistry } from "@music-analyzer/view";
+import { SongManager } from "@music-analyzer/song-manager";
 import { getPianoRoll } from "@music-analyzer/svg-objects";
-import { setHierarchyLevelSliderValues, controllers } from "@music-analyzer/melody-view";
-import { MusicXML, Pitch, } from "@music-analyzer/gttm/src/MusicXML";
-import { getChroma } from "@music-analyzer/tonal-objects";
+import { controllers, setHierarchyLevelSliderValues } from "@music-analyzer/melody-view";
+import { NowAt } from "@music-analyzer/view-parameters";
 
 // 分析データ-->
 import { GRP, MTR, D_TSR, PR, do_re_mi_grp, do_re_mi_mtr, do_re_mi_tsr } from "@music-analyzer/gttm";
+import { MusicXML, Pitch, } from "@music-analyzer/gttm/src/MusicXML";
+import { getChroma } from "@music-analyzer/tonal-objects";
 
 interface MusicAnalyzerWindow extends Window {
   MusicAnalyzer: {
@@ -30,11 +33,8 @@ declare const audio_player: HTMLAudioElement | HTMLVideoElement;
 declare const piano_roll_place: HTMLDivElement;
 
 import { X2jOptions, XMLParser } from "fast-xml-parser";
-import { UpdatableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 import { TS, TSR } from "@music-analyzer/gttm/src/TSR";
-import { BeatPos } from "@music-analyzer/gttm/src/common";
 import { getRange } from "@music-analyzer/math";
-import { NowAt } from "@music-analyzer/view-parameters";
 (async () => {
   const xml_options: X2jOptions = {
     preserveOrder: false,
@@ -171,9 +171,10 @@ import { NowAt } from "@music-analyzer/view-parameters";
 
 
   // SVG -->
-  // TODO: ボタン周りのリファクタリングをする
+  const song_manager = new SongManager();
+  song_manager.analysis_data = { beat_info, hierarchical_melody, romans, d_melodies };
   piano_roll_place.appendChildren([
-    getPianoRoll({ beat_info, hierarchical_melody, romans, d_melodies }).svg,
+    getPianoRoll(song_manager).svg,
     controllers,
   ]);
   // <-- SVG
