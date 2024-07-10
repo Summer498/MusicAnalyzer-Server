@@ -381,7 +381,6 @@ class TSR_SVG implements Updatable {
   y: number;
   w: number;
   h: number;
-  r: number;
   constructor(melody: TimeAndMelodyAnalysis, layer: number) {
     this.bracket = SVG.path({
       name: "group",
@@ -410,11 +409,11 @@ class TSR_SVG implements Updatable {
       ...melody.head,
       w: melody.head.end - melody.head.begin
     };
-    this.r = 5;
   }
   onUpdate() {
     const now_at = NowAt.value;
     const is_visible = this.layer <= Number(hierarchy_level_slider.value);
+    const is_just_layer = String(this.layer) === hierarchy_level_slider.value;
     const x = CurrentTimeX.value + (this.begin - now_at) * NoteSize.value;
     const y = this.y;
     const w = this.w * NoteSize.value;
@@ -429,7 +428,8 @@ class TSR_SVG implements Updatable {
     const end = { x: x + w * 10 / 10 - h * 0 / 2, y: y - h * 0 / 10 };
     this.bracket.setAttributes({
       d: `M${begin.x} ${begin.y}C${ct11.x} ${ct11.y} ${ct12.x} ${ct12.y} ${corner1.x} ${corner1.y}L${corner2.x} ${corner2.y}C${ct21.x} ${ct21.y} ${ct22.x} ${ct22.y} ${end.x} ${end.y}`,
-      visibility: is_visible ? "visible" : "hidden"
+      visibility: is_visible ? "visible" : "hidden",
+      "stroke-width": is_just_layer ? 3 : 1,
     });
     const cw = this.head.w * NoteSize.value;
     const cx = CurrentTimeX.value + (this.head.begin - now_at) * NoteSize.value + cw / 2;
@@ -437,7 +437,7 @@ class TSR_SVG implements Updatable {
     this.circle.setAttributes({
       cx,
       cy,
-      r: this.r,
+      r: is_just_layer ? 5 : 3,
       visibility: is_visible ? "visible" : "hidden"
     });
   }
