@@ -10,17 +10,11 @@ const ir_analysis_em = size;
 const triangle_width = 5;
 const triangle_height = 5;
 
-
-// ボタン (TODO: ボタンを package として抽出する)
-// const slider = HTML.input({ type: "range", id: "slider" });
-// const show_slider_value = HTML.span({}, slider.value);
-// slider.addEventListener("input", e => { show_slider_value.textContent = slider.value; });
-
 interface Controller {
   body: HTMLSpanElement;
 }
 
-class DMelodySwitcher implements Controller{
+class DMelodySwitcher implements Controller {
   body: HTMLSpanElement;
   checkbox: HTMLInputElement;
   constructor() {
@@ -36,7 +30,7 @@ class DMelodySwitcher implements Controller{
   }
 }
 
-class HierarchyLevel implements Controller{
+class HierarchyLevel implements Controller {
   body: HTMLSpanElement;
   range: HTMLInputElement;
   #display: HTMLSpanElement;
@@ -61,7 +55,7 @@ class HierarchyLevel implements Controller{
   };
 };
 
-class TimeRangeSlider implements Controller{
+class TimeRangeSlider implements Controller {
   body: HTMLSpanElement;
   constructor() {
     const time_range_slider = HTML.input_range({ id: "time_range_slider", name: "time_range_slider", min: 1, max: 10, step: 0.1 });
@@ -79,7 +73,7 @@ class TimeRangeSlider implements Controller{
   }
 }
 
-class KeyGravitySwitcher implements Controller{
+class KeyGravitySwitcher implements Controller {
   body: HTMLSpanElement;
   constructor() {
     const key_gravity_switcher = HTML.input_checkbox({ id: "key_gravity_switcher", name: "key_gravity_switcher" });
@@ -95,7 +89,7 @@ class KeyGravitySwitcher implements Controller{
   };
 }
 
-class ChordGravitySwitcher implements Controller{
+class ChordGravitySwitcher implements Controller {
   body: HTMLSpanElement;
   constructor() {
     const chord_gravity_switcher = HTML.input_checkbox({ id: "chord_gravity_switcher", name: "chord_gravity_switcher" });
@@ -111,7 +105,7 @@ class ChordGravitySwitcher implements Controller{
   }
 }
 
-class MelodyBeepSwitcher implements Controller{
+class MelodyBeepSwitcher implements Controller {
   body: HTMLSpanElement;
   checkbox: HTMLInputElement;
   constructor() {
@@ -127,7 +121,7 @@ class MelodyBeepSwitcher implements Controller{
   }
 };
 
-class MelodyBeepVolume implements Controller{
+class MelodyBeepVolume implements Controller {
   body: HTMLSpanElement;
   range: HTMLInputElement;
   constructor() {
@@ -144,7 +138,7 @@ class MelodyBeepVolume implements Controller{
   };
 }
 
-class MelodyColorSelector implements Controller{
+class MelodyColorSelector implements Controller {
   body: HTMLSpanElement;
   constructor() {
     const key_color_selector = HTML.input_radio({ name: "key_color_selector", id: "key_color_selector", value: "key", checked: `${true}` }, "key based color");
