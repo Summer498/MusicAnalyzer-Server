@@ -5,7 +5,7 @@ import { calcTempo } from "@music-analyzer/beat-estimation";
 import { WindowReflectableRegistry, UpdatableRegistry } from "@music-analyzer/view";
 import { SongManager } from "@music-analyzer/song-manager";
 import { getPianoRoll } from "@music-analyzer/svg-objects";
-import { controllers, setHierarchyLevelSliderValues } from "@music-analyzer/melody-view";
+import { controllers, hierarchy_level } from "@music-analyzer/melody-view";
 import { NowAt } from "@music-analyzer/view-parameters";
 
 interface MusicAnalyzerWindow extends Window {
@@ -36,7 +36,7 @@ const d_melodies: TimeAndMelodyAnalysis[] = window.MusicAnalyzer.melody.map(e =>
 }));
 const romans = d_romans.map(e => e);
 const melodies = d_melodies.map(e => e).filter((e, i) => i + 1 >= d_melodies.length || 60 / (d_melodies[i + 1].begin - d_melodies[i].begin) < 300 * 4);
-setHierarchyLevelSliderValues(0);
+hierarchy_level.setHierarchyLevelSliderValues(0);
 
 // テンポの計算
 const beat_info = calcTempo(melodies, romans);
@@ -80,7 +80,7 @@ const onUpdate = () => {
   if (audio_player.paused && now_at === last_audio_time) { return; }
   last_audio_time = now_at;
   // <-- audio 関連処理
-  
+
   NowAt.onUpdate(now_at);
   UpdatableRegistry.instance.onUpdate();
 };

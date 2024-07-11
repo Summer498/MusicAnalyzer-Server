@@ -1,7 +1,7 @@
 import { HTML, SVG } from "@music-analyzer/html";
 import { Gravity, TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { fifthChromaToColor, hsv2rgb, rgbToString } from "@music-analyzer/color";
-import { SvgCollection, Updatable } from "@music-analyzer/view";
+import { SvgCollection, Updatable, UpdatableRegistry } from "@music-analyzer/view";
 import { CurrentTimeX, NoteSize, NowAt, PianoRollTimeLength, black_key_prm, piano_roll_begin, reservation_range, size } from "@music-analyzer/view-parameters";
 import { Archetype, get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { play } from "@music-analyzer/synth";
@@ -16,91 +16,184 @@ const triangle_height = 5;
 // const show_slider_value = HTML.span({}, slider.value);
 // slider.addEventListener("input", e => { show_slider_value.textContent = slider.value; });
 
-const key_gravity_switcher = HTML.input_checkbox({ id: "key_gravity_switcher", name: "key_gravity_switcher" });
-key_gravity_switcher.checked = true;
-key_gravity_switcher.addEventListener("change", e => { key_gravities.forEach(key_gravity => key_gravity.setAttribute("visibility", key_gravity_switcher.checked ? "visible" : "hidden")); });
-const chord_gravity_switcher = HTML.input_checkbox({ id: "chord_gravity_switcher", name: "chord_gravity_switcher" });
-chord_gravity_switcher.checked = true;
-chord_gravity_switcher.addEventListener("change", e => { chord_gravities.forEach(chord_gravity => chord_gravity.setAttribute("visibility", chord_gravity_switcher.checked ? "visible" : "hidden")); });
+interface Controller {
+  body: HTMLSpanElement;
+}
 
-// NOTE: 色選択は未実装なので消しておく
-const key_color_selector = HTML.input_radio({ name: "key_color_selector", id: "key_color_selector", value: "key", checked: `${true}` }, "key based color");
-const chord_color_selector = HTML.input_radio({ name: "chord_color_selector", id: "chord_color_selector", value: "chord" }, "chord based color");
-const melody_color_selector =
-  HTML.div({ display: "inline" }, "", [
-    HTML.label({ for: key_color_selector.id }, "key based color"),
-    key_color_selector,
-    HTML.label({ for: chord_color_selector.id }, "chord based color"),
-    chord_color_selector,
-  ]);
+class DMelodySwitcher implements Controller{
+  body: HTMLSpanElement;
+  checkbox: HTMLInputElement;
+  constructor() {
+    this.checkbox = HTML.input_checkbox({ id: "d_melody_switcher", name: "d_melody_switcher" });
+    this.checkbox.checked = false;
+    this.checkbox.addEventListener("change", e => {
+      UpdatableRegistry.instance.onUpdate();
+    });
+    this.body = HTML.span({}, "", [
+      HTML.label({ for: this.checkbox.id }, "detected melody before fix"),
+      this.checkbox,
+    ]);
+  }
+}
 
-
-const d_melody_switcher = HTML.input_checkbox({ id: "d_melody_switcher", name: "d_melody_switcher" });
-d_melody_switcher.checked = false;
-const melody_beep_switcher = HTML.input_checkbox({ id: "melody_beep_switcher", name: "melody_beep_switcher" });
-melody_beep_switcher.checked = false;
-const melody_beep_volume = HTML.input_range({ id: "melody_beep_volume", min: 0, max: 100, step: 1 });
-const show_melody_beep_volume = HTML.span({}, `volume: ${melody_beep_volume.value}`);
-melody_beep_volume.addEventListener("input", e => { show_melody_beep_volume.textContent = `volume: ${melody_beep_volume.value}`; });
-const time_range_slider = HTML.input_range({ id: "time_range_slider", name: "time_range_slider", min: 1, max: 10, step: 1 });
-const show_time_range_slider_value = HTML.span({}, `${Math.pow(2, Number(time_range_slider.value) - Number(time_range_slider.max)) * 100} %`);
-time_range_slider.addEventListener("input", e => {
-  show_time_range_slider_value.textContent = `${Math.pow(2, Number(time_range_slider.value) - Number(time_range_slider.max)) * 100} %`;
-  PianoRollTimeLength.setRatio(Math.pow(2, Number(time_range_slider.value) - Number(time_range_slider.max)));
-});
-const hierarchy_level_slider = HTML.input_range({ id: "hierarchy_level_slider", name: "hierarchy_level_slider", min: 0, max: 1, step: 1 });
-const show_hierarchy_level_slider_value = HTML.span({}, `layer: ${hierarchy_level_slider.value}`);
-hierarchy_level_slider.addEventListener("input", e => {
-  show_hierarchy_level_slider_value.textContent = `layer: ${hierarchy_level_slider.value}`;
-});
-export const setHierarchyLevelSliderValues = (max: number) => {
-  console.log(`max: ${max}`);
-  hierarchy_level_slider.max = String(max);
-  hierarchy_level_slider.value = String(max);
-  show_hierarchy_level_slider_value.textContent = `layer: ${hierarchy_level_slider.value}`;
+class HierarchyLevel implements Controller{
+  body: HTMLSpanElement;
+  range: HTMLInputElement;
+  #display: HTMLSpanElement;
+  constructor() {
+    this.range = HTML.input_range({ id: "hierarchy_level_slider", name: "hierarchy_level_slider", min: 0, max: 1, step: 1 });
+    this.#display = HTML.span({}, `layer: ${this.range.value}`);
+    this.range.addEventListener("input", e => {
+      this.#display.textContent = `layer: ${this.range.value}`;
+      UpdatableRegistry.instance.onUpdate();
+    });
+    this.body = HTML.span({}, "", [
+      HTML.label({ for: this.range.id }, "Melody Hierarchy Level"),
+      this.range,
+      this.#display,
+    ]);
+  }
+  setHierarchyLevelSliderValues = (max: number) => {
+    console.log(`max: ${max}`);
+    this.range.max = String(max);
+    this.range.value = String(max);
+    this.#display.textContent = `layer: ${this.range.value}`;
+  };
 };
 
-
-export const controllers = HTML.div({ id: "controllers" }, "", [
-  HTML.div({ id: "d-melody" }, "", [
-    HTML.span({}, "", [
-      HTML.label({ for: d_melody_switcher.id }, "detected melody before fix"),
-      d_melody_switcher,
-    ]),
-  ]),
-  HTML.div({ id: "hierarchy-level" }, "", [
-    HTML.span({}, "", [
-      HTML.label({ for: hierarchy_level_slider.id }, "Melody Hierarchy Level"),
-      hierarchy_level_slider,
-      show_hierarchy_level_slider_value,
-    ])
-  ]),
-  HTML.div({ id: "time-length" }, "", [
-    HTML.span({}, "", [
+class TimeRangeSlider implements Controller{
+  body: HTMLSpanElement;
+  constructor() {
+    const time_range_slider = HTML.input_range({ id: "time_range_slider", name: "time_range_slider", min: 1, max: 10, step: 0.1 });
+    const show_time_range_slider_value = HTML.span({}, `${Math.floor(Math.pow(2, Number(time_range_slider.value) - Number(time_range_slider.max)) * 100)} %`);
+    time_range_slider.addEventListener("input", e => {
+      show_time_range_slider_value.textContent = `${Math.floor(Math.pow(2, Number(time_range_slider.value) - Number(time_range_slider.max)) * 100)} %`;
+      PianoRollTimeLength.setRatio(Math.pow(2, Number(time_range_slider.value) - Number(time_range_slider.max)));
+      UpdatableRegistry.instance.onUpdate();
+    });
+    this.body = HTML.span({}, "", [
       HTML.label({ for: time_range_slider.id }, "Time Range"),
       time_range_slider,
       show_time_range_slider_value,
-    ])
-  ]),
-  HTML.div({ id: "gravity-switcher" }, "", [
-    HTML.span({}, "", [
+    ]);
+  }
+}
+
+class KeyGravitySwitcher implements Controller{
+  body: HTMLSpanElement;
+  constructor() {
+    const key_gravity_switcher = HTML.input_checkbox({ id: "key_gravity_switcher", name: "key_gravity_switcher" });
+    key_gravity_switcher.checked = true;
+    key_gravity_switcher.addEventListener("change", e => {
+      key_gravities.forEach(key_gravity => key_gravity.setAttribute("visibility", key_gravity_switcher.checked ? "visible" : "hidden"));
+      UpdatableRegistry.instance.onUpdate();
+    });
+    this.body = HTML.span({}, "", [
       HTML.label({ for: key_gravity_switcher.id }, "Key Gravity"),
       key_gravity_switcher,
-    ]),
-    HTML.span({}, "", [
+    ]);
+  };
+}
+
+class ChordGravitySwitcher implements Controller{
+  body: HTMLSpanElement;
+  constructor() {
+    const chord_gravity_switcher = HTML.input_checkbox({ id: "chord_gravity_switcher", name: "chord_gravity_switcher" });
+    chord_gravity_switcher.checked = true;
+    chord_gravity_switcher.addEventListener("change", e => {
+      chord_gravities.forEach(chord_gravity => chord_gravity.setAttribute("visibility", chord_gravity_switcher.checked ? "visible" : "hidden"));
+      UpdatableRegistry.instance.onUpdate();
+    });
+    this.body = HTML.span({}, "", [
       HTML.label({ for: chord_gravity_switcher.id }, "Chord Gravity"),
       chord_gravity_switcher,
-    ])
-  ]),
-  HTML.span({}, "", [
-    HTML.label({ for: melody_beep_switcher.id }, "Beep Melody"),
-    melody_beep_switcher,
-    melody_beep_volume,
-    show_melody_beep_volume,
-  ]),
-  // NOTE: 色選択は未実装なので消しておく
-  melody_color_selector,
-]);
+    ]);
+  }
+}
+
+class MelodyBeepSwitcher implements Controller{
+  body: HTMLSpanElement;
+  checkbox: HTMLInputElement;
+  constructor() {
+    this.checkbox = HTML.input_checkbox({ id: "melody_beep_switcher", name: "melody_beep_switcher" });
+    this.checkbox.checked = false;
+    this.checkbox.addEventListener("change", e => {
+      UpdatableRegistry.instance.onUpdate();
+    });
+    this.body = HTML.span({}, "", [
+      HTML.label({ for: this.checkbox.id }, "Beep Melody"),
+      this.checkbox,
+    ]);
+  }
+};
+
+class MelodyBeepVolume implements Controller{
+  body: HTMLSpanElement;
+  range: HTMLInputElement;
+  constructor() {
+    this.range = HTML.input_range({ id: "melody_beep_volume", min: 0, max: 100, step: 1 });
+    const show_melody_beep_volume = HTML.span({}, `volume: ${this.range.value}`);
+    this.range.addEventListener("input", e => {
+      show_melody_beep_volume.textContent = `volume: ${this.range.value}`;
+      UpdatableRegistry.instance.onUpdate();
+    });
+    this.body = HTML.span({}, "", [
+      this.range,
+      show_melody_beep_volume,
+    ]);
+  };
+}
+
+class MelodyColorSelector implements Controller{
+  body: HTMLSpanElement;
+  constructor() {
+    const key_color_selector = HTML.input_radio({ name: "key_color_selector", id: "key_color_selector", value: "key", checked: `${true}` }, "key based color");
+    const chord_color_selector = HTML.input_radio({ name: "chord_color_selector", id: "chord_color_selector", value: "chord" }, "chord based color");
+    this.body = HTML.span({ id: "melody_color_selector" }, "", [
+      HTML.label({ for: key_color_selector.id }, "key based color"),
+      key_color_selector,
+      HTML.label({ for: chord_color_selector.id }, "chord based color"),
+      chord_color_selector,
+    ]);
+  }
+}
+
+const d_melody_switcher = new DMelodySwitcher();
+export const hierarchy_level = new HierarchyLevel();
+const time_range_slider = new TimeRangeSlider();
+const key_gravity_switcher = new KeyGravitySwitcher();
+const chord_gravity_switcher = new ChordGravitySwitcher();
+const melody_beep_switcher = new MelodyBeepSwitcher();
+const melody_beep_volume = new MelodyBeepVolume();
+const melody_color_selector = new MelodyColorSelector();
+
+export const controllers = HTML.div(
+  { id: "controllers", style: "margin-top:20px" },
+  "",
+  [
+    HTML.div({ id: "d-melody" }, "", [
+      d_melody_switcher.body,
+    ]),
+    HTML.div({ id: "hierarchy-level" }, "", [
+      hierarchy_level.body
+    ]),
+    HTML.div({ id: "time-length" }, "", [
+      time_range_slider.body
+    ]),
+    HTML.div({ id: "gravity-switcher" }, "", [
+      key_gravity_switcher.body,
+      chord_gravity_switcher.body,
+    ]),
+    HTML.div({ id: "melody-beep-controllers" }, "", [
+      melody_beep_switcher.body,
+      melody_beep_volume.body
+    ]),
+    // NOTE: 色選択は未実装なので消しておく
+    HTML.div({ display: "inline" }, "",
+      melody_color_selector.body,
+    )
+  ]
+);
 
 
 
@@ -143,7 +236,7 @@ class DMelodySVG implements Updatable {
       y: this.y,
       width: this.w * NoteSize.value,
       height: this.h,
-      visibility: d_melody_switcher.checked ? "visible" : "hidden"
+      visibility: d_melody_switcher.checkbox.checked ? "visible" : "hidden"
     });
     this.svg.onclick = insertMelody;
   }
@@ -193,7 +286,7 @@ class MelodySVG implements Updatable {
   };
 
   onUpdate() {
-    const is_visible = hierarchy_level_slider.value === String(this.layer);
+    const is_visible = hierarchy_level.range.value === String(this.layer);
     this.svg.setAttributes({
       x: CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value,
       y: this.y,
@@ -202,8 +295,8 @@ class MelodySVG implements Updatable {
       onclick: "MusicAnalyzer.deleteMelody()",
       visibility: is_visible ? "visible" : "hidden"
     });
-    if (melody_beep_switcher.checked && is_visible) {
-      this.beepMelody(Number(melody_beep_volume.value) / 400);
+    if (melody_beep_switcher.checkbox.checked && is_visible) {
+      this.beepMelody(Number(melody_beep_volume.range.value) / 400);
     }
   }
 }
@@ -240,7 +333,7 @@ class IRSymbolSVG implements Updatable {
     this.y = (piano_roll_begin - melody.note) * black_key_prm.height;
   }
   onUpdate() {
-    const is_visible = hierarchy_level_slider.value === String(this.layer);
+    const is_visible = hierarchy_level.range.value === String(this.layer);
     this.svg.setAttributes({
       x: CurrentTimeX.value + (this.end - NowAt.value) * NoteSize.value,
       y: this.y,
@@ -303,7 +396,7 @@ class ArrowSVG implements Updatable {
     this.dst_y0 = (piano_roll_begin + 0.5 - gravity.destination!) * black_key_prm.height;
   }
   onUpdate() {
-    const is_visible = hierarchy_level_slider.value === String(this.layer);
+    const is_visible = hierarchy_level.range.value === String(this.layer);
     const std_pos = NowAt.value * NoteSize.value;
     const src_x = this.src_x0 * NoteSize.value - std_pos + CurrentTimeX.value;
     const dst_x = this.dst_x0 * NoteSize.value - std_pos + CurrentTimeX.value;
@@ -412,8 +505,8 @@ class TSR_SVG implements Updatable {
   }
   onUpdate() {
     const now_at = NowAt.value;
-    const is_visible = this.layer <= Number(hierarchy_level_slider.value);
-    const is_just_layer = String(this.layer) === hierarchy_level_slider.value;
+    const is_visible = this.layer <= Number(hierarchy_level.range.value);
+    const is_just_layer = String(this.layer) === hierarchy_level.range.value;
     const x = CurrentTimeX.value + (this.begin - now_at) * NoteSize.value;
     const y = this.y;
     const w = this.w * NoteSize.value;

@@ -5,7 +5,7 @@ import { calcTempo } from "@music-analyzer/beat-estimation";
 import { WindowReflectableRegistry, UpdatableRegistry } from "@music-analyzer/view";
 import { SongManager } from "@music-analyzer/song-manager";
 import { getPianoRoll } from "@music-analyzer/svg-objects";
-import { controllers, setHierarchyLevelSliderValues } from "@music-analyzer/melody-view";
+import { controllers, hierarchy_level } from "@music-analyzer/melody-view";
 import { NowAt } from "@music-analyzer/view-parameters";
 
 // 分析データ-->
@@ -127,7 +127,7 @@ import { getRange } from "@music-analyzer/math";
   // const org_melody = await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/melody/crepe/vocals.json")).json() as number[];
   // const time_and_melody = getTimeAndMelody(org_melody, 100);
   const melody = hierarchical_melody[hierarchical_melody.length - 1];
-  setHierarchyLevelSliderValues(hierarchical_melody.length - 1);
+  hierarchy_level.setHierarchyLevelSliderValues(hierarchical_melody.length - 1);
   // const melody = analyzeMelody(time_and_melody, roman);  // NOTE: analyzeMelody フロントからを取り扱えるようにした
   // const melody = (await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/melody/crepe/manalyze.json")).json()) as TimeAndMelodyAnalysis[];
   window.MusicAnalyzer = {
