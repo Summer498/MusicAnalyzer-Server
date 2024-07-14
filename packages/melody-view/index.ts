@@ -75,32 +75,34 @@ class TimeRangeSlider implements Controller {
 
 class KeyGravitySwitcher implements Controller {
   body: HTMLSpanElement;
+  checkbox: HTMLInputElement;
   constructor() {
-    const key_gravity_switcher = HTML.input_checkbox({ id: "key_gravity_switcher", name: "key_gravity_switcher" });
-    key_gravity_switcher.checked = true;
-    key_gravity_switcher.addEventListener("change", e => {
-      key_gravities.forEach(key_gravity => key_gravity.setAttribute("visibility", key_gravity_switcher.checked ? "visible" : "hidden"));
+    this.checkbox = HTML.input_checkbox({ id: "key_gravity_switcher", name: "key_gravity_switcher" });
+    this.checkbox.checked = true;
+    this.checkbox.addEventListener("change", e => {
+      key_gravities.forEach(key_gravity => key_gravity.setAttribute("visibility", this.checkbox.checked ? "visible" : "hidden"));
       UpdatableRegistry.instance.onUpdate();
     });
     this.body = HTML.span({}, "", [
-      HTML.label({ for: key_gravity_switcher.id }, "Key Gravity"),
-      key_gravity_switcher,
+      HTML.label({ for: this.checkbox.id }, "Key Gravity"),
+      this.checkbox,
     ]);
   };
 }
 
 class ChordGravitySwitcher implements Controller {
   body: HTMLSpanElement;
+  checkbox: HTMLInputElement;
   constructor() {
-    const chord_gravity_switcher = HTML.input_checkbox({ id: "chord_gravity_switcher", name: "chord_gravity_switcher" });
-    chord_gravity_switcher.checked = true;
-    chord_gravity_switcher.addEventListener("change", e => {
-      chord_gravities.forEach(chord_gravity => chord_gravity.setAttribute("visibility", chord_gravity_switcher.checked ? "visible" : "hidden"));
+    this.checkbox = HTML.input_checkbox({ id: "chord_gravity_switcher", name: "chord_gravity_switcher" });
+    this.checkbox.checked = true;
+    this.checkbox.addEventListener("change", e => {
+      chord_gravities.forEach(chord_gravity => chord_gravity.setAttribute("visibility", this.checkbox.checked ? "visible" : "hidden"));
       UpdatableRegistry.instance.onUpdate();
     });
     this.body = HTML.span({}, "", [
-      HTML.label({ for: chord_gravity_switcher.id }, "Chord Gravity"),
-      chord_gravity_switcher,
+      HTML.label({ for: this.checkbox.id }, "Chord Gravity"),
+      this.checkbox,
     ]);
   }
 }
@@ -345,19 +347,19 @@ export const getHierarchicalIRSymbolSVGs = (hierarchical_melodies: TimeAndMelody
     )
   );
 
-
+type Vector2D = {
+  readonly x: number;
+  readonly y: number;
+}
 class ArrowSVG implements Updatable {
   svg: SVGGElement;
   begin: number;
   end: number;
   note: number;
-  next: TimeAndMelodyAnalysis;
   destination?: number;
   layer: number;
-  src_x0: number;
-  dst_x0: number;
-  src_y0: number;
-  dst_y0: number;
+  src: Vector2D;
+  dst: Vector2D;
   constructor(melody: TimeAndMelodyAnalysis, next: TimeAndMelodyAnalysis, gravity: Gravity, fill: string, stroke: string, layer?: number) {
     const triangle = SVG.polygon({
       name: "gravity-arrow",
@@ -381,66 +383,72 @@ class ArrowSVG implements Updatable {
     this.begin = melody.begin;
     this.end = melody.end;
     this.note = melody.note;
-    this.next = next;
     this.destination = gravity.destination;
     this.layer = layer || 0;
-    this.src_x0 = (melody.end - melody.begin) / 2 + melody.begin;
-    this.dst_x0 = next.begin;
-    this.src_y0 = (piano_roll_begin + 0.5 - melody.note) * black_key_prm.height;
-    this.dst_y0 = (piano_roll_begin + 0.5 - gravity.destination!) * black_key_prm.height;
+    this.src = {
+      x: (melody.end - melody.begin) / 2 + melody.begin,
+      y: (piano_roll_begin + 0.5 - melody.note) * black_key_prm.height
+    };
+    this.dst = {
+      x: next.begin,
+      y: (piano_roll_begin + 0.5 - gravity.destination!) * black_key_prm.height
+    };
   }
   onUpdate() {
-    const is_visible = hierarchy_level.range.value === String(this.layer);
     const std_pos = NowAt.value * NoteSize.value;
-    const src_x = this.src_x0 * NoteSize.value - std_pos + CurrentTimeX.value;
-    const dst_x = this.dst_x0 * NoteSize.value - std_pos + CurrentTimeX.value;
-    const src_y = this.src_y0;
-    const dst_y = this.dst_y0;
+    const src: Vector2D = {
+      x: this.src.x * NoteSize.value - std_pos + CurrentTimeX.value,
+      y: this.src.y
+    };
+    const dst: Vector2D = {
+      x: this.dst.x * NoteSize.value - std_pos + CurrentTimeX.value,
+      y: this.dst.y
+    };
 
-    const dx = dst_x - src_x;
-    const dy = dst_y - src_y;
+    const dx = dst.x - src.x;
+    const dy = dst.y - src.y;
     const r = Math.sqrt(dx * dx + dy * dy);
     const cos = -dy / r;
     const sin = dx / r;
     const p = [
-      dst_x,
-      dst_y,
-      dst_x + cos * triangle_width - sin * triangle_height,
-      dst_y + sin * triangle_width + cos * triangle_height,
-      dst_x + cos * -triangle_width - sin * triangle_height,
-      dst_y + sin * -triangle_width + cos * triangle_height
+      dst.x,
+      dst.y,
+      dst.x + cos * triangle_width - sin * triangle_height,
+      dst.y + sin * triangle_width + cos * triangle_height,
+      dst.x + cos * -triangle_width - sin * triangle_height,
+      dst.y + sin * -triangle_width + cos * triangle_height
     ];
+    const is_visible = hierarchy_level.range.value === String(this.layer);
+    this.svg.setAttribute("visibility", is_visible ? "visible" : "hidden");
     for (const e of this.svg.getElementsByClassName("triangle")) {
       e.setAttributes({
         points: `${p.join(",")}`,
-        visibility: is_visible ? "visible" : "hidden"
       });
     }
     for (const e of this.svg.getElementsByClassName("line")) {
       e.setAttributes({
-        x1: src_x, x2: dst_x, y1: src_y, y2: dst_y,
-        visibility: is_visible ? "visible" : "hidden"
+        x1: src.x, x2: dst.x, y1: src.y, y2: dst.y,
       });
     }
   }
 }
 
-// TODO: chord gravities と key gravities を別オブジェクトとして得られるようにする
-export const key_gravities: SVGElement[] = [];
-export const chord_gravities: SVGElement[] = [];
+/*
+class GravitySVG implements Updatable {
+  readonly arrow_svg: ArrowSVG;
+}
+*/
 
-const getArrowSVG = (melody: TimeAndMelodyAnalysis, i: number, melodies: TimeAndMelodyAnalysis[], layer?: number) => {
+// TODO: chord gravities と key gravities を別オブジェクトとして得られるようにする
+const key_gravities: SVGElement[] = [];
+const chord_gravities: SVGElement[] = [];
+
+export const getChordGravitySVG = (melody: TimeAndMelodyAnalysis, i: number, melodies: TimeAndMelodyAnalysis[], layer?: number) => {
   const stroke = rgbToString([0, 0, 0]);
   const next = melodies.length <= i + 1 ? melodies[i] : melodies[i + 1];
   const fill = rgbToString([0, 0, 0]);
   const res: ArrowSVG[] = [];
-  const scale_gravity = melody.melody_analysis.scale_gravity;
   const chord_gravity = melody.melody_analysis.chord_gravity;
-  if (scale_gravity?.resolved && scale_gravity.destination !== undefined) {
-    const svg = new ArrowSVG(melody, next, scale_gravity, fill, stroke, layer);
-    res.push(svg);
-    key_gravities.push(svg.svg);
-  }
   if (chord_gravity?.resolved && chord_gravity.destination !== undefined) {
     const svg = new ArrowSVG(melody, next, chord_gravity, fill, stroke, layer);
     res.push(svg);
@@ -449,11 +457,33 @@ const getArrowSVG = (melody: TimeAndMelodyAnalysis, i: number, melodies: TimeAnd
   return res;
 };
 
-export const getHierarchicalArrowSVGs = (hierarchical_melodies: TimeAndMelodyAnalysis[][]) =>
+export const getHierarchicalChordGravitySVGs = (hierarchical_melodies: TimeAndMelodyAnalysis[][]) =>
   hierarchical_melodies.map((melodies, l) =>
     new SvgCollection(
       `layer-${l}`,
-      melodies.map((e, i, a) => getArrowSVG(e, i, a, l)).flat(2)
+      melodies.map((e, i, a) => getChordGravitySVG(e, i, a, l)).flat(2)
+    )
+  );
+
+export const getScaleGravitySVG = (melody: TimeAndMelodyAnalysis, i: number, melodies: TimeAndMelodyAnalysis[], layer?: number) => {
+  const stroke = rgbToString([0, 0, 0]);
+  const next = melodies.length <= i + 1 ? melodies[i] : melodies[i + 1];
+  const fill = rgbToString([0, 0, 0]);
+  const res: ArrowSVG[] = [];
+  const scale_gravity = melody.melody_analysis.scale_gravity;
+  if (scale_gravity?.resolved && scale_gravity.destination !== undefined) {
+    const svg = new ArrowSVG(melody, next, scale_gravity, fill, stroke, layer);
+    res.push(svg);
+    key_gravities.push(svg.svg);
+  }
+  return res;
+};
+
+export const getHierarchicalScaleGravitySVGs = (hierarchical_melodies: TimeAndMelodyAnalysis[][]) =>
+  hierarchical_melodies.map((melodies, l) =>
+    new SvgCollection(
+      `layer-${l}`,
+      melodies.map((e, i, a) => getScaleGravitySVG(e, i, a, l)).flat(2)
     )
   );
 

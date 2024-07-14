@@ -221,7 +221,8 @@ export const getPianoRoll = (song_manager: SongManager) => {
     [
       song_manager.hierarchical_melody,
       song_manager.hierarchical_IR,
-      song_manager.hierarchical_arrow,
+      song_manager.hierarchical_chord_gravity,
+      song_manager.hierarchical_scale_gravity,
       song_manager.tsr_svg
     ].map(e => e.map(e => e.group)),
     SVG.g({ name: "octave-keys" }, undefined, getOctaveKeys(getWhiteKeys(), getBlackKeys()).svg.map(e => e.svg)),
