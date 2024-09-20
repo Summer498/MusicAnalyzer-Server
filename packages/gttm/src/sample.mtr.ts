@@ -629,7 +629,13 @@ export const do_re_mi_mtr_xml = `
 </MPR>
 `;
 
-export const do_re_mi_mtr: MTR = {
+import { XMLParser } from "fast-xml-parser";
+import { options } from "../sandbox";
+
+const parser = new XMLParser(options);
+export const do_re_mi_mtr = parser.parse(do_re_mi_mtr_xml);
+
+const do_re_mi_mtr_raw: MTR = {
   MPR: {
     part: {
       id: "P1", metric: [

@@ -670,7 +670,14 @@ export const do_re_mi_tsr_xml = `
 </tstree>
 `;
 
-export const do_re_mi_tsr: D_TSR = {
+import { XMLParser } from "fast-xml-parser";
+import { options } from "../sandbox";
+
+const parser = new XMLParser(options);
+export const do_re_mi_tsr = parser.parse(do_re_mi_tsr_xml);
+
+
+const do_re_mi_tsr_raw: D_TSR = {
   tstree: {
     ts: {
       timespan: 64.0,

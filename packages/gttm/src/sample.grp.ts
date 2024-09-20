@@ -134,7 +134,14 @@ export const do_re_mi_grp_xml = `
 </GPR>
 `;
 
-export const do_re_mi_grp: GRP = {
+import { XMLParser } from "fast-xml-parser";
+import { options } from "../sandbox";
+
+const parser = new XMLParser(options);
+export const do_re_mi_grp = parser.parse(do_re_mi_grp_xml);
+
+
+const do_re_mi_grp_raw: GRP = {
   GPR: {
     part: {
       id: "P1", group: {
