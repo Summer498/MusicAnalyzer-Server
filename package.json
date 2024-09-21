@@ -4,8 +4,11 @@
   "description": "popular music analyzer",
   "workspaces": [
     "packages/*",
-    "html/**",
-    "ServerProgram/*"
+    "html",
+    "html/analyze",
+    "html/hierarchical-analysis-sample",
+    "html/hierarchical-analysis-sample/view",
+    "ServerProgram"
   ],
   "main": "index.js",
   "scripts": {
