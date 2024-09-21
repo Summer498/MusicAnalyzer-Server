@@ -1,5 +1,5 @@
 {
-  "name": "music-analyzer-server-hidden",
+  "name": "music-analyzer-server",
   "version": "1.0.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
