@@ -3,7 +3,7 @@ import path from "path";
 import express from "express";
 import multer from "multer";
 import url from "url";
-import { _throw, assertNonNullable as NN } from "../packages/StdLib";
+import { _throw, assertNonNullable as NN } from "./src/stdlib";
 const app = express();
 
 const HOST_NAME = '127.0.0.1';
