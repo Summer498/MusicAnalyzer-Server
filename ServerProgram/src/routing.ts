@@ -1,6 +1,6 @@
 import { default as fs } from "fs";
 import { default as path } from "path";
-import { default as express, Request, Response } from "express";
+import { default as express, NextFunction, Request, Response } from "express";
 import { default as multer } from "multer";
 import { default as url } from "url";
 import { _throw, assertNonNullable as NN } from "./stdlib";
@@ -8,6 +8,7 @@ import { _throw, assertNonNullable as NN } from "./stdlib";
 export const app = express();
 export const CWD = process.cwd();
 const POST_DATA_PATH = `${CWD}/posted`;
+const POST_API_PATH = `html/api.js`;
 
 export const upload = multer({ dest: POST_DATA_PATH });  // multer が POST_DATA_PATH にファイルを作成
 
@@ -43,4 +44,17 @@ export const sendRequestedFile = (req: Request, res: Response) => {
   else {
     sendFile(req, res, fullpath);
   }
+};
+
+export const handlePostRequest = (req: Request, res: Response, next: NextFunction) => {
+  // CAUTION: upload.fields の中で指定していない name は受け付けなくなる.
+  // ファイルの処理
+  if (req.file == undefined) { console.log(`File uploaded on "undefined", "undefined"`); }
+  else {
+    const filepath = req.file.path;
+    const originalname = req.file.originalname;
+    console.log(`File uploaded on ${filepath} ${originalname}`);
+  }
+  sendRequestedFile(req, res);
+  sendFile(req, res, `${CWD}/${POST_API_PATH}`);  // 失敗: api.js の中身クライアント側でが実行されていないようだ
 };
