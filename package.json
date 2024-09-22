@@ -19,7 +19,8 @@
     "lint": "eslint 'packages/**/*.ts' && eslint 'html/**/*.ts'",
     "lint:fix": "eslint 'packages/**/*.ts' --fix && eslint 'html/**/*.ts' --fix",
     "test": "jest --coverage",
-    "test:ci": "yarn lint:fix && yarn build:minify:fc && yarn test --no-cache"
+    "test:ci": "yarn lint:fix && yarn build:minify:fc && yarn test --no-cache",
+    "start": "node ServerProgram"
   },
   "author": "Summer498 <subore02@gmail.com>",
   "license": "MIT",
