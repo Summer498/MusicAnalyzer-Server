@@ -12,6 +12,19 @@ const POST_API_PATH = `html/api.js`;
 
 export const upload = multer({ dest: POST_DATA_PATH });  // multer が POST_DATA_PATH にファイルを作成
 
+export const send404HTML = (req: Request, res: Response) => {
+  res.status(404).send(
+    `<html lang="ja">
+      <head>
+        <meta http-equiv="content-lang" content="ja" charset="utf-8">
+        <title>404 Not Found</title>
+      </head>
+      <h1>404 Not Found...<h1>
+      <p>${url.parse(req.url, true, true).pathname} is not on server directory<p>
+    </html>`
+  );
+};
+
 export const send404NotFound = (req: Request, res: Response) => {
   res.status(404).send("404: Not Found...");
 };
@@ -23,11 +36,10 @@ export const sendFile = (req: Request, res: Response, fullpath: string) => {
   if (!fs.existsSync(fullpath)) {
     const err = `File not Found: ${fullpath}`;
     console.error(err);
-    res.status(404).send(`<html lang="ja"><head><meta http-equiv="content-lang" content="ja" charset="utf-8"><title>404 Not Found</title></head><h1>404 Not Found...<h1><p>${url.parse(req.url, true, true).pathname} is not on server directory<p></html>`);
+    send404NotFound(req, res);
   }
   else {
     res.sendFile(fullpath);
-    console.log(`Accessed on ${fullpath}`);
   }
 };
 

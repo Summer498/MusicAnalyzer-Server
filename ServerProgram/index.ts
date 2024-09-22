@@ -1,14 +1,14 @@
 import { _throw, assertNonNullable as NN } from "./src/stdlib";
-import { app, handlePostRequest, send404NotFound, sendRequestedFile, upload } from "./src/routing";
+import { app, handlePostRequest, send404HTML, send404NotFound, sendRequestedFile, upload } from "./src/routing";
 
-const HOST_NAME = '127.0.0.1';
 const PORT = 3000;
-const HOME_DIR = `${HOST_NAME}:${PORT}`;
 
 const main = (argv: string[]) => {
   // URLの部分が一致するもののうち一番上にある関数の処理をする
   app.post("/*", upload.single("upload"), handlePostRequest);
   app.get("/*", sendRequestedFile);
+  app.post("*.html", send404HTML);
+  app.get("*.html", send404HTML);
   app.post("*", send404NotFound);
   app.get("*", send404NotFound);
 
