@@ -6,8 +6,9 @@ import { default as url } from "url";
 import { _throw, assertNonNullable as NN } from "./stdlib";
 
 export const app = express();
-export const CWD = process.cwd();
-const POST_DATA_PATH = `${CWD}/posted`;
+const HOME = "/MusicAnalyzer-server";
+const HOME_DIR = `/var/www/html${HOME}`; // process.cwd();
+const POST_DATA_PATH = `${HOME_DIR}/posted`;
 const POST_API_PATH = `html/api.js`;
 
 export const upload = multer({ dest: POST_DATA_PATH });  // multer が POST_DATA_PATH にファイルを作成
@@ -28,8 +29,8 @@ export const send404HTML = (req: Request, res: Response) => {
 export const send404NotFound = (req: Request, res: Response) => {
   res.status(404).send("404: Not Found...");
 };
-export const send300Redirect = (res: Response, pathname: string) => {
-  res.redirect(300, `${path.dirname(pathname)}`);
+export const send301Redirect = (res: Response, pathname: string) => {
+  res.redirect(301, pathname);
 };
 
 export const sendFile = (req: Request, res: Response, fullpath: string) => {
@@ -45,16 +46,20 @@ export const sendFile = (req: Request, res: Response, fullpath: string) => {
 
 export const sendRequestedFile = (req: Request, res: Response) => {
   req.url || _throw(TypeError(`requested URL is null`));
-  const pathname = NN(url.parse(req.url, true, true).pathname);
-  const filepath = path.extname(pathname) == "" ? pathname + "/index.html" : pathname;
-  const fullpath = `${CWD}/html${filepath}`;
-  // パスの指定先が見つからないとき
-  if (0) { }
-  else if (path.basename(pathname) == "index.html") {
-    send300Redirect(res, pathname);
+  const filepath = decodeURI(NN(url.parse(req.url, true, true).pathname).replace(HOME, ""));
+
+  // caution: order is important
+  if (filepath.endsWith("/index.html")) { // /path/to/index.html
+    send301Redirect(res, `${HOME}${path.dirname(filepath)}/`);
   }
-  else {
-    sendFile(req, res, fullpath);
+  else if (filepath.endsWith(`/`)) {  // /path/to/
+    sendFile(req, res, `${HOME_DIR}${filepath}index.html`);
+  }
+  else if (path.extname(filepath) === "") { // /path/to
+    send301Redirect(res, `${HOME}${filepath}/`);
+  }
+  else {  // /path/to/file.ext
+    sendFile(req, res, `${HOME_DIR}${filepath}`);
   }
 };
 
@@ -68,5 +73,5 @@ export const handlePostRequest = (req: Request, res: Response, next: NextFunctio
     console.log(`File uploaded on ${filepath} ${originalname}`);
   }
   sendRequestedFile(req, res);
-  sendFile(req, res, `${CWD}/${POST_API_PATH}`);  // 失敗: api.js の中身クライアント側でが実行されていないようだ
+  sendFile(req, res, `${HOME_DIR}/${POST_API_PATH}`);  // 失敗: api.js の中身クライアント側でが実行されていないようだ
 };
