@@ -64,6 +64,26 @@ export const sendRequestedFile = (req: Request, res: Response) => {
   }
 };
 
+const getDirectoryContents = (dir_path: string) => new Promise((resolve, reject) => {
+  fs.readdir(dir_path, (err, files) => {
+    if (err) { return reject(err); }
+    else { resolve(files); }
+  });
+});
+
+export const listUpGTTMExample = async (req: Request, res: Response) => {
+  req.url || _throw(TypeError(`requested URL is null`));
+  req.url === "/MusicAnalyzer-server/api/gttm-example/" || _throw(EvalError(`function handleHierarchicalAnalysisSample requires the url ends with '/'`));
+
+  // json にリストを載せて返す
+  const read_dir = `${HOME_DIR}/resources/gttm-example/`;
+  try {
+    const files = await getDirectoryContents(read_dir);
+    res.json(files);
+  } catch (err) {
+    res.status(500).json({ error: `Failed to read directory contents of ${read_dir}` });
+  }
+};
 
 export const handlePostRequest = (req: Request, res: Response, next: NextFunction) => {
   // CAUTION: upload.fields の中で指定していない name は受け付けなくなる.

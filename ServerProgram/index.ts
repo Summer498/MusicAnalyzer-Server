@@ -1,10 +1,12 @@
 import { _throw, assertNonNullable as NN } from "./src/stdlib";
-import { app, handlePostRequest, send404HTML, send404NotFound, sendRequestedFile, upload } from "./src/routing";
+import { app, handlePostRequest, listUpGTTMExample, send404HTML, send404NotFound, sendRequestedFile, upload } from "./src/routing";
 
 const PORT = 3000;
 
 const main = (argv: string[]) => {
   // URLの部分が一致するもののうち一番上にある関数の処理をする
+  // app.get("/MusicAnalyzer-server/html/hierarchical-analysis-sample/", handleHierarchicalAnalysisSample);
+  app.get("/MusicAnalyzer-server/api/gttm-example/", listUpGTTMExample);
   app.post("/*", upload.single("upload"), handlePostRequest);
   app.get("/*", sendRequestedFile);
   app.post("*.html", send404HTML);
