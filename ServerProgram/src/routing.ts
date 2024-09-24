@@ -46,22 +46,24 @@ export const sendFile = (req: Request, res: Response, fullpath: string) => {
 
 export const sendRequestedFile = (req: Request, res: Response) => {
   req.url || _throw(TypeError(`requested URL is null`));
-  const filepath = decodeURI(NN(url.parse(req.url, true, true).pathname).replace(HOME, ""));
-
+  const req_path = decodeURI(NN(url.parse(req.url, true, true).pathname).replace(HOME, ""));
+  
   // caution: order is important
-  if (filepath.endsWith("/index.html")) { // /path/to/index.html
-    send301Redirect(res, `${HOME}${path.dirname(filepath)}/`);
+  if (req_path.endsWith("/index.html")) { // /path/to/index.html
+    const dirname = path.dirname(req_path);
+    send301Redirect(res, req.url.replace(`${dirname}/index.html`, `${dirname}/`));
   }
-  else if (filepath.endsWith(`/`)) {  // /path/to/
-    sendFile(req, res, `${HOME_DIR}${filepath}index.html`);
+  else if (req_path.endsWith(`/`)) {  // /path/to/
+    sendFile(req, res, `${HOME_DIR}${req_path}index.html`);
   }
-  else if (path.extname(filepath) === "") { // /path/to
-    send301Redirect(res, `${HOME}${filepath}/`);
+  else if (path.extname(req_path) === "") { // /path/to
+    send301Redirect(res, req.url.replace(req_path, `${req_path}/`));
   }
   else {  // /path/to/file.ext
-    sendFile(req, res, `${HOME_DIR}${filepath}`);
+    sendFile(req, res, `${HOME_DIR}${req_path}`);
   }
 };
+
 
 export const handlePostRequest = (req: Request, res: Response, next: NextFunction) => {
   // CAUTION: upload.fields の中で指定していない name は受け付けなくなる.
