@@ -68,11 +68,14 @@ import { getRange } from "@music-analyzer/math";
   const xml_parser = new XMLParser(xml_options);
 
   // TODO: avoid specific file: change to general
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const tune_id = urlParams.get("tune");
   const roman = (await (await fetch("/MusicAnalyzer-server/resources/Hierarchical Analysis Sample/analyzed/chord/roman.json")).json()) as TimeAndRomanAnalysis[];
   // const musicxml = (await xml_parser.parse(await (await fetch("/MusicAnalyzer-server/resources/Hierarchical Analysis Sample/sample1.xml")).text())) as MusicXML;
-  const musicxml = (await xml_parser.parse(await (await fetch("/MusicAnalyzer-server/resources/gttm-example/01/01_Waltz in E flat Grande Valse Brillante Op.18.xml")).text())) as MusicXML;
+  const musicxml = (await xml_parser.parse(await (await fetch(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/MSC-${tune_id}.xml`)).text())) as MusicXML;
   // const do_re_mi_tsr = (await xml_parser.parse(await (await fetch("/MusicAnalyzer-server/resources/Hierarchical Analysis Sample/tsr.xml")).text()) as TSR);
-  const do_re_mi_tsr = (await xml_parser.parse(await (await fetch("/MusicAnalyzer-server/resources/gttm-example/01/TS-01.xml")).text()) as TSR);
+  const do_re_mi_tsr = (await xml_parser.parse(await (await fetch(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/TS-${tune_id}.xml`)).text()) as TSR);
 
 
   const calcChroma = (pitch: Pitch) => 12 + pitch.octave * 12 + (pitch.alter || 0) + getChroma(pitch.step);
