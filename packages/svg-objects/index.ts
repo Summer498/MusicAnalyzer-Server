@@ -2,8 +2,6 @@ import { SVG } from "@music-analyzer/html";
 import { chord_name_margin, chord_text_size } from "@music-analyzer/chord-view";
 import { WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
 import { PianoRollWidth, CurrentTimeX, octave_cnt, white_bgs_prm, piano_roll_height, octave_height, white_position, black_bgs_prm, white_key_prm, black_position, black_key_prm, PianoRollTimeLength, } from "@music-analyzer/view-parameters";
-import { Assertion } from "@music-analyzer/stdlib";
-import { SongManager } from "@music-analyzer/song-manager";
 
 abstract class SvgAndParam implements WindowReflectable {
   abstract svg: SVGElement;
@@ -32,7 +30,7 @@ class CurrentTimeLine implements WindowReflectable {
   }
 }
 
-const getCurrentTimeLine = () => new CurrentTimeLine();
+export const getCurrentTimeLine = () => new CurrentTimeLine();
 
 class WhiteBG_SVG extends SvgAndParam {
   svg: SVGRectElement;
@@ -53,7 +51,7 @@ class WhiteBG_SVG extends SvgAndParam {
   }
 }
 
-const getWhiteBGs = () => new SvgAndParams(
+export const getWhiteBGs = () => new SvgAndParams(
   [...Array(octave_cnt)].map((_, oct) =>
     [...Array(7)].map((_, white_index) => new WhiteBG_SVG(oct, white_index))
   ).flat()
@@ -78,7 +76,7 @@ class BlackBG_SVG extends SvgAndParam {
   }
 }
 
-const getBlackBGs = () => new SvgAndParams(
+export const getBlackBGs = () => new SvgAndParams(
   [...Array(octave_cnt)].map((_, oct) =>
     [...Array(5)].map((_, black_index) => new BlackBG_SVG(oct, black_index))
   ).flat()
@@ -104,7 +102,7 @@ class OctaveBG extends SvgAndParam {
   }
 }
 
-const getOctaveBGs = (white_BGs: SvgAndParams<WhiteBG_SVG>, black_BGs: SvgAndParams<BlackBG_SVG>) => new SvgAndParams(
+export const getOctaveBGs = (white_BGs: SvgAndParams<WhiteBG_SVG>, black_BGs: SvgAndParams<BlackBG_SVG>) => new SvgAndParams(
   [...Array(octave_cnt)].map((_, oct) => new OctaveBG(oct, white_BGs, black_BGs))
 );
 
@@ -127,7 +125,7 @@ class WhiteKeySVG extends SvgAndParam {
   }
 }
 
-const getWhiteKeys = () => new SvgAndParams(
+export const getWhiteKeys = () => new SvgAndParams(
   [...Array(octave_cnt)].map((_, oct) =>
     [...Array(7)].map((_, white_index) => new WhiteKeySVG(oct, white_index))
   ).flat()
@@ -152,7 +150,7 @@ class BlackKeySVG extends SvgAndParam {
   }
 }
 
-const getBlackKeys = () => new SvgAndParams(
+export const getBlackKeys = () => new SvgAndParams(
   [...Array(octave_cnt)].map((_, oct) =>
     [...Array(5)].map((_, j) => new BlackKeySVG(oct, j))
   ).flat()
@@ -178,12 +176,12 @@ class OctaveKeys extends SvgAndParam {
   }
 }
 
-const getOctaveKeys = (white_key: SvgAndParams<WhiteKeySVG>, black_key: SvgAndParams<BlackKeySVG>) =>
+export const getOctaveKeys = (white_key: SvgAndParams<WhiteKeySVG>, black_key: SvgAndParams<BlackKeySVG>) =>
   new SvgAndParams(
     [...Array(octave_cnt)].map((_, oct) => new OctaveKeys(oct, white_key, black_key)),
   );
 
-class PianoRoll implements WindowReflectable {
+export class PianoRoll implements WindowReflectable {
   svg: SVGSVGElement;
   constructor() {
     this.svg = SVG.svg({ name: "piano-roll" }, undefined);
@@ -193,42 +191,3 @@ class PianoRoll implements WindowReflectable {
     this.svg.setAttributes({ x: 0, y: 0, width: PianoRollWidth.value, height: piano_roll_height + chord_text_size * 2 + chord_name_margin });
   }
 }
-
-export const getPianoRoll = (song_manager: SongManager) => {
-  const analysis_data = song_manager.analysis_data;
-  const piano_roll = new PianoRoll();
-
-  new Assertion(analysis_data.hierarchical_melody.length > 0).onFailed(() => { throw new Error(`hierarchical melody length must be more than 0 but it is ${analysis_data.hierarchical_melody.length}`); });
-  const melodies = analysis_data.hierarchical_melody[analysis_data.hierarchical_melody.length - 1];
-  PianoRollTimeLength.setSongLength(
-    Math.max(
-      ...analysis_data.romans.map(e => e.end),
-      ...melodies.map(e => e.end)
-    ));
-
-  piano_roll.svg.appendChildren([
-    // 奥側
-    SVG.g({ name: "octave-BGs" }, undefined, getOctaveBGs(getWhiteBGs(), getBlackBGs()).svg.map(e => e.svg)),
-
-    [
-      song_manager.beat_bars,
-      song_manager.chord_notes,
-      song_manager.chord_names,
-      song_manager.chord_romans,
-      song_manager.chord_keys,
-      song_manager.d_melody,
-    ].map(e => e.group),
-    [
-      song_manager.hierarchical_melody,
-      song_manager.hierarchical_IR,
-      song_manager.hierarchical_chord_gravity,
-      song_manager.hierarchical_scale_gravity,
-      song_manager.tsr_svg
-    ].map(e => e.map(e => e.group)),
-    SVG.g({ name: "octave-keys" }, undefined, getOctaveKeys(getWhiteKeys(), getBlackKeys()).svg.map(e => e.svg)),
-    getCurrentTimeLine().svg,
-    // 手前側
-  ]);
-
-  return piano_roll;
-};

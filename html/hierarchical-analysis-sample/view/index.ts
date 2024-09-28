@@ -3,9 +3,7 @@ import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { WindowReflectableRegistry, UpdatableRegistry } from "@music-analyzer/view";
-import { SongManager } from "@music-analyzer/song-manager";
-import { getPianoRoll } from "@music-analyzer/svg-objects";
-import { controllers, hierarchy_level } from "@music-analyzer/melody-view";
+import { appendController, appendPianoRoll, SongManager } from "./src/song-manager";
 import { NowAt } from "@music-analyzer/view-parameters";
 
 // 分析データ-->
@@ -35,7 +33,6 @@ import { getHierarchicalMelody } from "./src/HierarchicalMelody";
   // const org_melody = await (await fetch("/MusicAnalyzer-server/resources/Hierarchical Analysis Sample/analyzed/melody/crepe/vocals.json")).json() as number[];
   // const time_and_melody = getTimeAndMelody(org_melody, 100);
   const melody = hierarchical_melody[hierarchical_melody.length - 1];
-  hierarchy_level.setHierarchyLevelSliderValues(hierarchical_melody.length - 1);
   // const melody = analyzeMelody(time_and_melody, roman);  // NOTE: analyzeMelody をフロントから取り扱えるようにした
   // const melody = (await (await fetch("/MusicAnalyzer-server/resources/Hierarchical Analysis Sample/analyzed/melody/crepe/manalyze.json")).json()) as TimeAndMelodyAnalysis[];
   window.MusicAnalyzer = {
@@ -61,7 +58,7 @@ import { getHierarchicalMelody } from "./src/HierarchicalMelody";
     head: { ...e.head },
     melody_analysis: e.melody_analysis,
     note: e.note,
-    roman_name: e.roman_name
+    roman_name: e.roman_name,
   }));
   const romans = d_romans.map(e => e);
   const melodies = d_melodies.map(e => e).filter((e, i) => i + 1 >= d_melodies.length || 60 / (d_melodies[i + 1].begin - d_melodies[i].begin) < 300 * 4);
@@ -79,12 +76,10 @@ import { getHierarchicalMelody } from "./src/HierarchicalMelody";
 
 
   // SVG -->
-  const song_manager = new SongManager();
-  song_manager.analysis_data = { beat_info, hierarchical_melody, romans, d_melodies };
-  piano_roll_place.appendChildren([
-    getPianoRoll(song_manager).svg,
-    controllers,
-  ]);
+  const song_manager = new SongManager(beat_info, romans, hierarchical_melody, d_melodies);
+  // song_manager.analysis_data = { beat_info, romans, hierarchical_melody: [melodies], d_melodies };
+  appendPianoRoll(piano_roll_place, song_manager);
+  appendController(piano_roll_place);
   // <-- SVG
 
   // メインループ -->

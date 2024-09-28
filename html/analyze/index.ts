@@ -3,9 +3,7 @@ import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { WindowReflectableRegistry, UpdatableRegistry } from "@music-analyzer/view";
-import { SongManager } from "@music-analyzer/song-manager";
-import { getPianoRoll } from "@music-analyzer/svg-objects";
-import { controllers, hierarchy_level } from "@music-analyzer/melody-view";
+import { appendController, appendPianoRoll, SongManager } from "./src/song-manager";
 import { NowAt } from "@music-analyzer/view-parameters";
 
 interface MusicAnalyzerWindow extends Window {
@@ -36,7 +34,6 @@ const d_melodies: TimeAndMelodyAnalysis[] = window.MusicAnalyzer.melody.map(e =>
 }));
 const romans = d_romans.map(e => e);
 const melodies = d_melodies.map(e => e).filter((e, i) => i + 1 >= d_melodies.length || 60 / (d_melodies[i + 1].begin - d_melodies[i].begin) < 300 * 4);
-hierarchy_level.setHierarchyLevelSliderValues(0);
 
 // テンポの計算
 const beat_info = calcTempo(melodies, romans);
@@ -51,12 +48,10 @@ console.log(melodies[melodies.length - 1].end);
 
 
 // SVG -->
-const song_manager = new SongManager();
-song_manager.analysis_data = { beat_info, hierarchical_melody: [melodies], romans, d_melodies };
-piano_roll_place.appendChildren([
-  getPianoRoll(song_manager).svg,
-  controllers,
-]);
+const song_manager = new SongManager(beat_info, romans, [melodies], d_melodies);
+// song_manager.analysis_data = { beat_info, romans, hierarchical_melody: [melodies], d_melodies };
+ appendPianoRoll(piano_roll_place, song_manager);
+ appendController(piano_roll_place);
 // <-- SVG
 
 // メインループ -->
