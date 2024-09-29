@@ -69,14 +69,12 @@ class ChordNoteSVG implements Updatable {
     this.type = chord.type;
   }
   onUpdate() {
-    this.svg.setAttributes({
-      x: CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value,
-      y: this.y,
-      width: this.w * NoteSize.value,
-      height: this.h,
-      stroke: "#444",
-      fill: fifthToColor(this.tonic, 0.25, this.type === "major" ? 1 : 0.9),
-    });
+    this.svg.setAttribute("x", `${CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value}`);
+    this.svg.setAttribute("y", `${this.y}`);
+    this.svg.setAttribute("width", `${this.w * NoteSize.value}`);
+    this.svg.setAttribute("height", `${this.h}`);
+    this.svg.setAttribute("stroke", `${"#444"}`);
+    this.svg.setAttribute("fill", `${fifthToColor(this.tonic, 0.25, this.type === "major" ? 1 : 0.9)}`);
   }
 }
 
@@ -109,11 +107,9 @@ class ChordNameSVG implements Updatable {
     this.tonic = _Chord.get(e.chord).tonic!;
   }
   onUpdate() {
-    this.svg.setAttributes({
-      x: CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value,
-      y: this.y,
-      fill: fifthToColor(this.tonic, 1, 0.75) || "#000"
-    });
+    this.svg.setAttribute("x", `${CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value}`);
+    this.svg.setAttribute("y", `${this.y}`);
+    this.svg.setAttribute("fill", `${fifthToColor(this.tonic, 1, 0.75) || "#000"}`);
   }
 }
 
@@ -143,11 +139,9 @@ class ChordRomanSVG implements Updatable {
     this.tonic = _Chord.get(e.chord).tonic!;
   }
   onUpdate() {
-    this.svg.setAttributes({
-      x: CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value,
-      y: this.y,
-      fill: fifthToColor(this.tonic, 1, 0.75) || "#000"
-    });
+    this.svg.setAttribute("x", `${CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value}`);
+    this.svg.setAttribute("y", `${this.y}`);
+    this.svg.setAttribute("fill", `${fifthToColor(this.tonic, 1, 0.75) || "#000"}`);
   }
 }
 
@@ -178,11 +172,9 @@ class ChordKeySVG implements Updatable {
     this.tonic = _Scale.get(e.scale).tonic!;
   }
   onUpdate() {
-    this.svg.setAttributes({
-      x: CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value,
-      y: this.y,
-      fill: fifthToColor(this.tonic, 1, 0.75) || "#000"
-    });
+    this.svg.setAttribute("x", `${CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value}`);
+    this.svg.setAttribute("y", `${this.y}`);
+    this.svg.setAttribute("fill", `${fifthToColor(this.tonic, 1, 0.75) || "#000"}`);
   }
 }
 

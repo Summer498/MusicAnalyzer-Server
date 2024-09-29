@@ -33,7 +33,10 @@ class BeatBarSVG implements Updatable {
   }
   onUpdate() {
     const now_at = NowAt.value;
-    this.svg.setAttributes({ x1: CurrentTimeX.value + (this.begin - now_at) * NoteSize.value, x2: CurrentTimeX.value + (this.begin - now_at) * NoteSize.value, y1: this.y1, y2: this.y2 });
+    this.svg.setAttribute("x1", `${CurrentTimeX.value + (this.begin - now_at) * NoteSize.value}`); 
+    this.svg.setAttribute("x2", `${CurrentTimeX.value + (this.begin - now_at) * NoteSize.value}`); 
+    this.svg.setAttribute("y1", `${this.y1}`); 
+    this.svg.setAttribute("y2", `${this.y2 }`);
     // NOTE: うるさいので停止中
     0 && this.beepBeat();
   }

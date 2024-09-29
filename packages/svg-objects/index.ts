@@ -26,7 +26,10 @@ class CurrentTimeLine implements WindowReflectable {
     WindowReflectableRegistry.instance.register(this);
   }
   onWindowResized() {
-    this.svg.setAttributes({ x1: CurrentTimeX.value, x2: CurrentTimeX.value, y1: 0, y2: piano_roll_height });
+    this.svg.setAttribute("x1", `${CurrentTimeX.value}`);
+    this.svg.setAttribute("x2", `${CurrentTimeX.value}`);
+    this.svg.setAttribute("y1", `${0}`);
+    this.svg.setAttribute("y2", `${piano_roll_height}`);
   }
 }
 
@@ -47,7 +50,10 @@ class WhiteBG_SVG extends SvgAndParam {
     this.height = white_bgs_prm.height;
   }
   onWindowResized() {
-    this.svg.setAttributes({ x: 0, y: this.y, width: PianoRollWidth.value, height: this.height });
+    this.svg.setAttribute("x", `${0}`);
+    this.svg.setAttribute("y", `${this.y}`);
+    this.svg.setAttribute("width", `${PianoRollWidth.value}`);
+    this.svg.setAttribute("height", `${this.height}`);
   }
 }
 
@@ -72,7 +78,10 @@ class BlackBG_SVG extends SvgAndParam {
     this.height = black_bgs_prm.height;
   }
   onWindowResized() {
-    this.svg.setAttributes({ x: 0, y: this.y, width: PianoRollWidth.value, height: this.height });
+    this.svg.setAttribute("x", `${0}`);
+    this.svg.setAttribute("y", `${this.y}`);
+    this.svg.setAttribute("width", `${PianoRollWidth.value}`);
+    this.svg.setAttribute("height", `${this.height}`);
   }
 }
 
@@ -98,7 +107,10 @@ class OctaveBG extends SvgAndParam {
     this.oct = oct;
   }
   onWindowResized() {
-    this.svg.setAttributes({ x: 0, y: this.y, width: PianoRollWidth.value, height: this.height });
+    this.svg.setAttribute("x", `${0}`);
+    this.svg.setAttribute("y", `${this.y}`);
+    this.svg.setAttribute("width", `${PianoRollWidth.value}`);
+    this.svg.setAttribute("height", `${this.height}`);
   }
 }
 
@@ -121,7 +133,10 @@ class WhiteKeySVG extends SvgAndParam {
     this.height = white_key_prm.height;
   }
   onWindowResized() {
-    this.svg.setAttributes({ x: 0, y: this.y, width: this.width, height: this.height });
+    this.svg.setAttribute("x", `${0}`);
+    this.svg.setAttribute("y", `${this.y}`);
+    this.svg.setAttribute("width", `${this.width}`);
+    this.svg.setAttribute("height", `${this.height}`);
   }
 }
 
@@ -146,7 +161,10 @@ class BlackKeySVG extends SvgAndParam {
     this.height = black_key_prm.height;
   }
   onWindowResized() {
-    this.svg.setAttributes({ x: 0, y: this.y, width: this.width, height: this.height });
+    this.svg.setAttribute("x", `${0}`);
+    this.svg.setAttribute("y", `${this.y}`);
+    this.svg.setAttribute("width", `${this.width}`);
+    this.svg.setAttribute("height", `${this.height}`);
   }
 }
 
@@ -172,7 +190,10 @@ class OctaveKeys extends SvgAndParam {
     this.oct = oct;
   }
   onWindowResized() {
-    this.svg.setAttributes({ x: 0, y: this.y, width: PianoRollWidth.value, height: this.height });
+    this.svg.setAttribute("x", `${0}`);
+    this.svg.setAttribute("y", `${this.y}`);
+    this.svg.setAttribute("width", `${PianoRollWidth.value}`);
+    this.svg.setAttribute("height", `${this.height}`);
   }
 }
 
@@ -188,6 +209,9 @@ export class PianoRoll implements WindowReflectable {
     WindowReflectableRegistry.instance.register(this);
   }
   onWindowResized() {
-    this.svg.setAttributes({ x: 0, y: 0, width: PianoRollWidth.value, height: piano_roll_height + chord_text_size * 2 + chord_name_margin });
+    this.svg.setAttribute("x", `${0}`);
+    this.svg.setAttribute("y", `${0}`);
+    this.svg.setAttribute("width", `${PianoRollWidth.value}`);
+    this.svg.setAttribute("height", `${piano_roll_height + chord_text_size * 2 + chord_name_margin}`);
   }
 }

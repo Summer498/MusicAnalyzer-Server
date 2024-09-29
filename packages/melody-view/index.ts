@@ -43,13 +43,11 @@ class DMelodySVG implements Updatable {
     this.d_melody_switcher = d_melody_switcher;
   }
   onUpdate() {
-    this.svg.setAttributes({
-      x: CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value,
-      y: this.y,
-      width: this.w * NoteSize.value,
-      height: this.h,
-      visibility: this.d_melody_switcher.checkbox.checked ? "visible" : "hidden"
-    });
+    this.svg.setAttribute("x", `${CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value}`);
+    this.svg.setAttribute("y", `${this.y}`);
+    this.svg.setAttribute("width", `${this.w * NoteSize.value}`);
+    this.svg.setAttribute("height", `${this.h}`);
+    this.svg.setAttribute("visibility", `${this.d_melody_switcher.checkbox.checked ? "visible" : "hidden"}`);
     this.svg.onclick = insertMelody;
   }
 }
@@ -105,14 +103,12 @@ class MelodySVG implements Updatable {
 
   onUpdate() {
     const is_visible = this.hierarchy_level.range.value === String(this.layer);
-    this.svg.setAttributes({
-      x: CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value,
-      y: this.y,
-      width: this.w * NoteSize.value,
-      height: this.h,
-      onclick: "MusicAnalyzer.deleteMelody()",
-      visibility: is_visible ? "visible" : "hidden"
-    });
+    this.svg.setAttribute("x", `${CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value}`);
+    this.svg.setAttribute("y", `${this.y}`);
+    this.svg.setAttribute("width", `${this.w * NoteSize.value}`);
+    this.svg.setAttribute("height", `${this.h}`);
+    this.svg.setAttribute("onclick", `${"MusicAnalyzer.deleteMelody()"}`);
+    this.svg.setAttribute("visibility", `${is_visible ? "visible" : "hidden"}`);
     if (this.melody_beep_switcher.checkbox.checked && is_visible) {
       this.beepMelody(Number(this.melody_beep_volume.range.value) / 400);
     }
@@ -154,12 +150,10 @@ class IRSymbolSVG implements Updatable {
   }
   onUpdate() {
     const is_visible = this.hierarchy_level.range.value === String(this.layer);
-    this.svg.setAttributes({
-      x: CurrentTimeX.value + (this.end - NowAt.value) * NoteSize.value,
-      y: this.y,
-      fill: get_color_of_Narmour_concept(this.archetype) || "#000",
-      visibility: is_visible ? "visible" : "hidden"
-    });
+    this.svg.setAttribute("x", `${CurrentTimeX.value + (this.end - NowAt.value) * NoteSize.value}`);
+    this.svg.setAttribute("y", `${this.y}`);
+    this.svg.setAttribute("fill", `${get_color_of_Narmour_concept(this.archetype) || "#000"}`);
+    this.svg.setAttribute("visibility", `${is_visible ? "visible" : "hidden"}`);
   };
 }
 
@@ -249,14 +243,13 @@ class ArrowSVG implements Updatable {
     const is_visible = this.hierarchy_level.range.value === String(this.layer);
     this.svg.setAttribute("visibility", is_visible ? "visible" : "hidden");
     for (const e of this.svg.getElementsByClassName("triangle")) {
-      e.setAttributes({
-        points: `${p.join(",")}`,
-      });
+      e.setAttribute("points", `${p.join(",")}`);
     }
     for (const e of this.svg.getElementsByClassName("line")) {
-      e.setAttributes({
-        x1: src.x, x2: dst.x, y1: src.y, y2: dst.y,
-      });
+      e.setAttribute("x1", `${src.x}`);
+      e.setAttribute("x2", `${dst.x}`);
+      e.setAttribute("y1", `${src.y}`);
+      e.setAttribute("y2", `${dst.y}`);
     }
   }
 }
@@ -373,20 +366,16 @@ class TSR_SVG implements Updatable {
     const ct21 = { x: x + w * 10 / 10 - h * 1 / 2, y: y - h * 10 / 10 };
     const ct22 = { x: x + w * 10 / 10 - h * 0 / 2, y: y - h * 6 / 10 };
     const end = { x: x + w * 10 / 10 - h * 0 / 2, y: y - h * 0 / 10 };
-    this.bracket.setAttributes({
-      d: `M${begin.x} ${begin.y}C${ct11.x} ${ct11.y} ${ct12.x} ${ct12.y} ${corner1.x} ${corner1.y}L${corner2.x} ${corner2.y}C${ct21.x} ${ct21.y} ${ct22.x} ${ct22.y} ${end.x} ${end.y}`,
-      visibility: is_visible ? "visible" : "hidden",
-      "stroke-width": is_just_layer ? 3 : 1,
-    });
+    this.bracket.setAttribute("d", `${`M${begin.x} ${begin.y}C${ct11.x} ${ct11.y} ${ct12.x} ${ct12.y} ${corner1.x} ${corner1.y}L${corner2.x} ${corner2.y}C${ct21.x} ${ct21.y} ${ct22.x} ${ct22.y} ${end.x} ${end.y}`}`);
+    this.bracket.setAttribute("visibility", `${is_visible ? "visible" : "hidden"}`);
+    this.bracket.setAttribute("stroke-width", `${is_just_layer ? 3 : 1}`);
     const cw = this.head.w * NoteSize.value;
     const cx = CurrentTimeX.value + (this.head.begin - now_at) * NoteSize.value + cw / 2;
     const cy = this.y - h;
-    this.circle.setAttributes({
-      cx,
-      cy,
-      r: is_just_layer ? 5 : 3,
-      visibility: is_visible ? "visible" : "hidden"
-    });
+    this.circle.setAttribute("cx", `${cx}`);
+    this.circle.setAttribute("cy", `${cy}`);
+    this.circle.setAttribute("r", `${is_just_layer ? 5 : 3}`);
+    this.circle.setAttribute("visibility", `${is_visible ? "visible" : "hidden"}`);
   }
 }
 
