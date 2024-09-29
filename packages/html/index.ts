@@ -23,28 +23,25 @@ Element.prototype.appendChildren = function (nodes: recurrentArray<Element>) {
   return this;
 };
 
-const empty_attribute: attribute = {};
-const empty_elements: recurrentArray<Element> = [];
-
 function setComponentsToElement<T extends Element>(
   element: T,
-  attributes = empty_attribute,
-  text = "",
-  children = empty_elements,
+  attributes?: attribute,
+  text?: string,
+  children?: recurrentArray<Element>,
 ) {
   for (const key in attributes) {
     element.setAttribute(key, String(attributes[key]));
   }
-  element.appendChild(document.createTextNode(text));
-  Arraying(children).forEach(child => element.appendChild(child));
+  text && element.appendChild(document.createTextNode(text));
+  children && Arraying(children).forEach(child => element.appendChild(child));
   return element;
 }
 
 function htmlElement<T extends keyof HTMLElementTagNameMap>(
   tag: T,
-  attributes = empty_attribute,
-  text = "",
-  children = empty_elements,
+  attributes?:attribute,
+  text?:string,
+  children?:recurrentArray<Element>,
 ) {
   return setComponentsToElement(
     document.createElement<T>(tag),
@@ -56,9 +53,9 @@ function htmlElement<T extends keyof HTMLElementTagNameMap>(
 
 function svgElement<T extends keyof SVGElementTagNameMap>(
   qualifiedName: T,
-  attributes = empty_attribute,
-  text = "",
-  children = empty_elements,
+  attributes?:attribute,
+  text?:string,
+  children?:recurrentArray<Element>,
 ) {
   return setComponentsToElement(
     document.createElementNS("http://www.w3.org/2000/svg", qualifiedName),
@@ -69,69 +66,69 @@ function svgElement<T extends keyof SVGElementTagNameMap>(
 }
 
 export class SVG {
-  static a(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("a", attributes, text, children); }
-  static animate(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("animate", attributes, text, children); }
-  static animateMotion(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("animateMotion", attributes, text, children); }
-  static animateTransform(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("animateTransform", attributes, text, children); }
-  static circle(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("circle", attributes, text, children); }
-  static clipPath(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("clipPath", attributes, text, children); }
-  static defs(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("defs", attributes, text, children); }
-  static desc(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("desc", attributes, text, children); }
-  static ellipse(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("ellipse", attributes, text, children); }
-  static feBlend(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("feBlend", attributes, text, children); }
-  static feColorMatrix(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("feColorMatrix", attributes, text, children); }
-  static feComponentTransfer(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("feComponentTransfer", attributes, text, children); }
-  static feComposite(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("feComposite", attributes, text, children); }
-  static feConvolveMatrix(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("feConvolveMatrix", attributes, text, children); }
-  static feDiffuseLighting(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("feDiffuseLighting", attributes, text, children); }
-  static feDisplacementMap(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("feDisplacementMap", attributes, text, children); }
-  static feDistantLight(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("feDistantLight", attributes, text, children); }
-  static feDropShadow(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("feDropShadow", attributes, text, children); }
-  static feFlood(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("feFlood", attributes, text, children); }
-  static feFuncA(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("feFuncA", attributes, text, children); }
-  static feFuncB(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("feFuncB", attributes, text, children); }
-  static feFuncG(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("feFuncG", attributes, text, children); }
-  static feFuncR(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("feFuncR", attributes, text, children); }
-  static feGaussianBlur(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("feGaussianBlur", attributes, text, children); }
-  static feImage(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("feImage", attributes, text, children); }
-  static feMerge(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("feMerge", attributes, text, children); }
-  static feMergeNode(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("feMergeNode", attributes, text, children); }
-  static feMorphology(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("feMorphology", attributes, text, children); }
-  static feOffset(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("feOffset", attributes, text, children); }
-  static fePointLight(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("fePointLight", attributes, text, children); }
-  static feSpecularLighting(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("feSpecularLighting", attributes, text, children); }
-  static feSpotLight(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("feSpotLight", attributes, text, children); }
-  static feTile(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("feTile", attributes, text, children); }
-  static feTurbulence(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("feTurbulence", attributes, text, children); }
-  static filter(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("filter", attributes, text, children); }
-  static foreignObject(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("foreignObject", attributes, text, children); }
-  static g(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("g", attributes, text, children); }
-  static image(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("image", attributes, text, children); }
-  static line(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("line", attributes, text, children); }
-  static linearGradient(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("linearGradient", attributes, text, children); }
-  static marker(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("marker", attributes, text, children); }
-  static mask(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("mask", attributes, text, children); }
-  static metadata(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("metadata", attributes, text, children); }
-  static mpath(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("mpath", attributes, text, children); }
-  static path(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("path", attributes, text, children); }
-  static pattern(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("pattern", attributes, text, children); }
-  static polygon(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("polygon", attributes, text, children); }
-  static polyline(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("polyline", attributes, text, children); }
-  static radialGradient(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("radialGradient", attributes, text, children); }
-  static rect(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("rect", attributes, text, children); }
-  static script(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("script", attributes, text, children); }
-  static set(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("set", attributes, text, children); }
-  static stop(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("stop", attributes, text, children); }
-  static style(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("style", attributes, text, children); }
-  static svg(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("svg", attributes, text, children); }
-  static switch(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("switch", attributes, text, children); }
-  static symbol(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("symbol", attributes, text, children); }
-  static text(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("text", attributes, text, children); }
-  static textPath(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("textPath", attributes, text, children); }
-  static title(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("title", attributes, text, children); }
-  static tspan(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("tspan", attributes, text, children); }
-  static use(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("use", attributes, text, children); }
-  static view(attributes = empty_attribute, text = "", children = empty_elements) { return svgElement("view", attributes, text, children); }
+  static a(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("a", attributes, text, children); }
+  static animate(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("animate", attributes, text, children); }
+  static animateMotion(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("animateMotion", attributes, text, children); }
+  static animateTransform(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("animateTransform", attributes, text, children); }
+  static circle(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("circle", attributes, text, children); }
+  static clipPath(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("clipPath", attributes, text, children); }
+  static defs(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("defs", attributes, text, children); }
+  static desc(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("desc", attributes, text, children); }
+  static ellipse(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("ellipse", attributes, text, children); }
+  static feBlend(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feBlend", attributes, text, children); }
+  static feColorMatrix(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feColorMatrix", attributes, text, children); }
+  static feComponentTransfer(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feComponentTransfer", attributes, text, children); }
+  static feComposite(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feComposite", attributes, text, children); }
+  static feConvolveMatrix(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feConvolveMatrix", attributes, text, children); }
+  static feDiffuseLighting(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feDiffuseLighting", attributes, text, children); }
+  static feDisplacementMap(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feDisplacementMap", attributes, text, children); }
+  static feDistantLight(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feDistantLight", attributes, text, children); }
+  static feDropShadow(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feDropShadow", attributes, text, children); }
+  static feFlood(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feFlood", attributes, text, children); }
+  static feFuncA(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feFuncA", attributes, text, children); }
+  static feFuncB(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feFuncB", attributes, text, children); }
+  static feFuncG(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feFuncG", attributes, text, children); }
+  static feFuncR(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feFuncR", attributes, text, children); }
+  static feGaussianBlur(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feGaussianBlur", attributes, text, children); }
+  static feImage(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feImage", attributes, text, children); }
+  static feMerge(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feMerge", attributes, text, children); }
+  static feMergeNode(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feMergeNode", attributes, text, children); }
+  static feMorphology(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feMorphology", attributes, text, children); }
+  static feOffset(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feOffset", attributes, text, children); }
+  static fePointLight(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("fePointLight", attributes, text, children); }
+  static feSpecularLighting(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feSpecularLighting", attributes, text, children); }
+  static feSpotLight(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feSpotLight", attributes, text, children); }
+  static feTile(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feTile", attributes, text, children); }
+  static feTurbulence(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feTurbulence", attributes, text, children); }
+  static filter(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("filter", attributes, text, children); }
+  static foreignObject(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("foreignObject", attributes, text, children); }
+  static g(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("g", attributes, text, children); }
+  static image(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("image", attributes, text, children); }
+  static line(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("line", attributes, text, children); }
+  static linearGradient(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("linearGradient", attributes, text, children); }
+  static marker(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("marker", attributes, text, children); }
+  static mask(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("mask", attributes, text, children); }
+  static metadata(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("metadata", attributes, text, children); }
+  static mpath(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("mpath", attributes, text, children); }
+  static path(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("path", attributes, text, children); }
+  static pattern(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("pattern", attributes, text, children); }
+  static polygon(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("polygon", attributes, text, children); }
+  static polyline(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("polyline", attributes, text, children); }
+  static radialGradient(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("radialGradient", attributes, text, children); }
+  static rect(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("rect", attributes, text, children); }
+  static script(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("script", attributes, text, children); }
+  static set(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("set", attributes, text, children); }
+  static stop(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("stop", attributes, text, children); }
+  static style(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("style", attributes, text, children); }
+  static svg(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("svg", attributes, text, children); }
+  static switch(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("switch", attributes, text, children); }
+  static symbol(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("symbol", attributes, text, children); }
+  static text(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("text", attributes, text, children); }
+  static textPath(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("textPath", attributes, text, children); }
+  static title(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("title", attributes, text, children); }
+  static tspan(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("tspan", attributes, text, children); }
+  static use(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("use", attributes, text, children); }
+  static view(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("view", attributes, text, children); }
 }
 
 export class HTML {
@@ -142,143 +139,143 @@ export class HTML {
   static get body() { return document.getElementsByTagName("body")[0]; }
   static get title() { return document.getElementsByTagName("title")[0]; }
   // creators
-  //(attributes = empty_attribute, text: string = "", children= empty_elements) { return htmlElement("", attributes, text, children) }
-  static a(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("a", attributes, text, children); }
-  static abbr(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("abbr", attributes, text, children); }
-  static address(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("address", attributes, text, children); }
-  static area(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("area", attributes, text, children); }
-  static article(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("article", attributes, text, children); }
-  static aside(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("aside", attributes, text, children); }
-  static audio(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("audio", attributes, text, children); }
-  static b(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("b", attributes, text, children); }
-  // static base(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("base", attributes, text, children); }
-  static bdi(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("bdi", attributes, text, children); }
-  static bdo(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("bdo", attributes, text, children); }
-  static blockquote(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("blockquote", attributes, text, children); }
-  // static body(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("body", attributes, text, children); }
-  static br(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("br", attributes, text, children); }
-  static button(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("button", attributes, text, children); }
-  static canvas(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("canvas", attributes, text, children); }
-  static caption(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("caption", attributes, text, children); }
-  static cite(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("cite", attributes, text, children); }
-  static code(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("code", attributes, text, children); }
-  static col(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("col", attributes, text, children); }
-  static colgroup(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("colgroup", attributes, text, children); }
-  static data(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("data", attributes, text, children); }
-  static datalist(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("datalist", attributes, text, children); }
-  static dd(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("dd", attributes, text, children); }
-  static del(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("del", attributes, text, children); }
-  static details(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("details", attributes, text, children); }
-  static dfn(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("dfn", attributes, text, children); }
-  static dialog(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("dialog", attributes, text, children); }
-  static div(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("div", attributes, text, children); }
-  static dl(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("dl", attributes, text, children); }
-  static dt(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("dt", attributes, text, children); }
-  static em(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("em", attributes, text, children); }
-  static embed(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("embed", attributes, text, children); }
-  static fieldset(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("fieldset", attributes, text, children); }
-  static figcaption(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("figcaption", attributes, text, children); }
-  static figure(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("figure", attributes, text, children); }
-  static footer(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("footer", attributes, text, children); }
-  static form(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("form", attributes, text, children); }
-  static h1(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("h1", attributes, text, children); }
-  static h2(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("h2", attributes, text, children); }
-  static h3(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("h3", attributes, text, children); }
-  static h4(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("h4", attributes, text, children); }
-  static h5(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("h5", attributes, text, children); }
-  static h6(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("h6", attributes, text, children); }
-  // static head(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("head", attributes, text, children); }
-  static header(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("header", attributes, text, children); }
-  static hgroup(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("hgroup", attributes, text, children); }
-  static hr(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("hr", attributes, text, children); }
-  static html(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("html", attributes, text, children); }
-  static i(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("i", attributes, text, children); }
-  static iframe(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("iframe", attributes, text, children); }
-  static img(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("img", attributes, text, children); }
-  static input(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", attributes, text, children); }
+  //(attributes?: attribute, text: string = "", children= empty_elements) { return htmlElement("", attributes, text, children) }
+  static a(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("a", attributes, text, children); }
+  static abbr(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("abbr", attributes, text, children); }
+  static address(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("address", attributes, text, children); }
+  static area(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("area", attributes, text, children); }
+  static article(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("article", attributes, text, children); }
+  static aside(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("aside", attributes, text, children); }
+  static audio(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("audio", attributes, text, children); }
+  static b(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("b", attributes, text, children); }
+  // static base(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("base", attributes, text, children); }
+  static bdi(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("bdi", attributes, text, children); }
+  static bdo(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("bdo", attributes, text, children); }
+  static blockquote(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("blockquote", attributes, text, children); }
+  // static body(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("body", attributes, text, children); }
+  static br(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("br", attributes, text, children); }
+  static button(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("button", attributes, text, children); }
+  static canvas(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("canvas", attributes, text, children); }
+  static caption(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("caption", attributes, text, children); }
+  static cite(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("cite", attributes, text, children); }
+  static code(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("code", attributes, text, children); }
+  static col(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("col", attributes, text, children); }
+  static colgroup(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("colgroup", attributes, text, children); }
+  static data(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("data", attributes, text, children); }
+  static datalist(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("datalist", attributes, text, children); }
+  static dd(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("dd", attributes, text, children); }
+  static del(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("del", attributes, text, children); }
+  static details(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("details", attributes, text, children); }
+  static dfn(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("dfn", attributes, text, children); }
+  static dialog(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("dialog", attributes, text, children); }
+  static div(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("div", attributes, text, children); }
+  static dl(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("dl", attributes, text, children); }
+  static dt(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("dt", attributes, text, children); }
+  static em(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("em", attributes, text, children); }
+  static embed(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("embed", attributes, text, children); }
+  static fieldset(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("fieldset", attributes, text, children); }
+  static figcaption(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("figcaption", attributes, text, children); }
+  static figure(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("figure", attributes, text, children); }
+  static footer(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("footer", attributes, text, children); }
+  static form(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("form", attributes, text, children); }
+  static h1(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("h1", attributes, text, children); }
+  static h2(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("h2", attributes, text, children); }
+  static h3(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("h3", attributes, text, children); }
+  static h4(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("h4", attributes, text, children); }
+  static h5(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("h5", attributes, text, children); }
+  static h6(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("h6", attributes, text, children); }
+  // static head(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("head", attributes, text, children); }
+  static header(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("header", attributes, text, children); }
+  static hgroup(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("hgroup", attributes, text, children); }
+  static hr(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("hr", attributes, text, children); }
+  static html(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("html", attributes, text, children); }
+  static i(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("i", attributes, text, children); }
+  static iframe(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("iframe", attributes, text, children); }
+  static img(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("img", attributes, text, children); }
+  static input(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("input", attributes, text, children); }
 
-  static input_button(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "button" }, text, children); }
-  static input_checkbox(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "checkbox" }, text, children); }
-  static input_color(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "color" }, text, children); }
-  static input_date(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "date" }, text, children); }
-  static input_datetime_local(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "datetime-local" }, text, children); }
-  static input_email(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "email" }, text, children); }
-  static input_file(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "file" }, text, children); }
-  static input_hidden(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "hidden" }, text, children); }
-  static input_image(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "image" }, text, children); }
-  static input_month(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "month" }, text, children); }
-  static input_number(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "number" }, text, children); }
-  static input_password(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "password" }, text, children); }
-  static input_radio(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "radio" }, text, children); }
-  static input_range(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "range" }, text, children); }
-  static input_reset(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "reset" }, text, children); }
-  static input_search(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "search" }, text, children); }
-  static input_submit(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "submit" }, text, children); }
-  static input_tel(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "tel" }, text, children); }
-  static input_text(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "text" }, text, children); }
-  static input_time(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "time" }, text, children); }
-  static input_url(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "url" }, text, children); }
-  static input_week(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("input", { ...attributes, type: "week" }, text, children); }
+  static input_button(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("input", { ...attributes, type: "button" }, text, children); }
+  static input_checkbox(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("input", { ...attributes, type: "checkbox" }, text, children); }
+  static input_color(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("input", { ...attributes, type: "color" }, text, children); }
+  static input_date(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("input", { ...attributes, type: "date" }, text, children); }
+  static input_datetime_local(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("input", { ...attributes, type: "datetime-local" }, text, children); }
+  static input_email(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("input", { ...attributes, type: "email" }, text, children); }
+  static input_file(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("input", { ...attributes, type: "file" }, text, children); }
+  static input_hidden(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("input", { ...attributes, type: "hidden" }, text, children); }
+  static input_image(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("input", { ...attributes, type: "image" }, text, children); }
+  static input_month(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("input", { ...attributes, type: "month" }, text, children); }
+  static input_number(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("input", { ...attributes, type: "number" }, text, children); }
+  static input_password(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("input", { ...attributes, type: "password" }, text, children); }
+  static input_radio(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("input", { ...attributes, type: "radio" }, text, children); }
+  static input_range(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("input", { ...attributes, type: "range" }, text, children); }
+  static input_reset(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("input", { ...attributes, type: "reset" }, text, children); }
+  static input_search(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("input", { ...attributes, type: "search" }, text, children); }
+  static input_submit(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("input", { ...attributes, type: "submit" }, text, children); }
+  static input_tel(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("input", { ...attributes, type: "tel" }, text, children); }
+  static input_text(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("input", { ...attributes, type: "text" }, text, children); }
+  static input_time(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("input", { ...attributes, type: "time" }, text, children); }
+  static input_url(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("input", { ...attributes, type: "url" }, text, children); }
+  static input_week(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("input", { ...attributes, type: "week" }, text, children); }
 
-  static ins(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("ins", attributes, text, children); }
-  static kbd(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("kbd", attributes, text, children); }
-  static label(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("label", attributes, text, children); }
-  static legend(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("legend", attributes, text, children); }
-  static li(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("li", attributes, text, children); }
-  static link(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("link", attributes, text, children); }
-  static main(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("main", attributes, text, children); }
-  static map(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("map", attributes, text, children); }
-  static mark(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("mark", attributes, text, children); }
-  static menu(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("menu", attributes, text, children); }
-  static meta(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("meta", attributes, text, children); }
-  static meter(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("meter", attributes, text, children); }
-  static nav(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("nav", attributes, text, children); }
-  static noscript(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("noscript", attributes, text, children); }
-  static object(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("object", attributes, text, children); }
-  static ol(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("ol", attributes, text, children); }
-  static optgroup(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("optgroup", attributes, text, children); }
-  static option(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("option", attributes, text, children); }
-  static output(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("output", attributes, text, children); }
-  static p(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("p", attributes, text, children); }
-  static picture(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("picture", attributes, text, children); }
-  static pre(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("pre", attributes, text, children); }
-  static progress(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("progress", attributes, text, children); }
-  static q(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("q", attributes, text, children); }
-  static rp(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("rp", attributes, text, children); }
-  static rt(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("rt", attributes, text, children); }
-  static ruby(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("ruby", attributes, text, children); }
-  static s(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("s", attributes, text, children); }
-  static samp(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("samp", attributes, text, children); }
-  static script(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("script", attributes, text, children); }
-  static search(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("search", attributes, text, children); }
-  static section(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("section", attributes, text, children); }
-  static select(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("select", attributes, text, children); }
-  static slot(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("slot", attributes, text, children); }
-  static small(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("small", attributes, text, children); }
-  static source(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("source", attributes, text, children); }
-  static span(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("span", attributes, text, children); }
-  static strong(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("strong", attributes, text, children); }
-  static style(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("style", attributes, text, children); }
-  static sub(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("sub", attributes, text, children); }
-  static summary(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("summary", attributes, text, children); }
-  static sup(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("sup", attributes, text, children); }
-  static table(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("table", attributes, text, children); }
-  static tbody(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("tbody", attributes, text, children); }
-  static td(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("td", attributes, text, children); }
-  static template(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("template", attributes, text, children); }
-  static textarea(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("textarea", attributes, text, children); }
-  static tfoot(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("tfoot", attributes, text, children); }
-  static th(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("th", attributes, text, children); }
-  static thead(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("thead", attributes, text, children); }
-  static time(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("time", attributes, text, children); }
-  // static title(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("title", attributes, text, children); }
-  static tr(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("tr", attributes, text, children); }
-  static track(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("track", attributes, text, children); }
-  static u(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("u", attributes, text, children); }
-  static ul(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("ul", attributes, text, children); }
-  static var(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("var", attributes, text, children); }
-  static video(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("video", attributes, text, children); }
-  static wbr(attributes = empty_attribute, text = "", children = empty_elements) { return htmlElement("wbr", attributes, text, children); }
+  static ins(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("ins", attributes, text, children); }
+  static kbd(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("kbd", attributes, text, children); }
+  static label(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("label", attributes, text, children); }
+  static legend(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("legend", attributes, text, children); }
+  static li(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("li", attributes, text, children); }
+  static link(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("link", attributes, text, children); }
+  static main(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("main", attributes, text, children); }
+  static map(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("map", attributes, text, children); }
+  static mark(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("mark", attributes, text, children); }
+  static menu(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("menu", attributes, text, children); }
+  static meta(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("meta", attributes, text, children); }
+  static meter(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("meter", attributes, text, children); }
+  static nav(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("nav", attributes, text, children); }
+  static noscript(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("noscript", attributes, text, children); }
+  static object(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("object", attributes, text, children); }
+  static ol(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("ol", attributes, text, children); }
+  static optgroup(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("optgroup", attributes, text, children); }
+  static option(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("option", attributes, text, children); }
+  static output(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("output", attributes, text, children); }
+  static p(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("p", attributes, text, children); }
+  static picture(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("picture", attributes, text, children); }
+  static pre(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("pre", attributes, text, children); }
+  static progress(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("progress", attributes, text, children); }
+  static q(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("q", attributes, text, children); }
+  static rp(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("rp", attributes, text, children); }
+  static rt(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("rt", attributes, text, children); }
+  static ruby(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("ruby", attributes, text, children); }
+  static s(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("s", attributes, text, children); }
+  static samp(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("samp", attributes, text, children); }
+  static script(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("script", attributes, text, children); }
+  static search(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("search", attributes, text, children); }
+  static section(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("section", attributes, text, children); }
+  static select(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("select", attributes, text, children); }
+  static slot(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("slot", attributes, text, children); }
+  static small(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("small", attributes, text, children); }
+  static source(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("source", attributes, text, children); }
+  static span(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("span", attributes, text, children); }
+  static strong(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("strong", attributes, text, children); }
+  static style(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("style", attributes, text, children); }
+  static sub(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("sub", attributes, text, children); }
+  static summary(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("summary", attributes, text, children); }
+  static sup(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("sup", attributes, text, children); }
+  static table(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("table", attributes, text, children); }
+  static tbody(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("tbody", attributes, text, children); }
+  static td(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("td", attributes, text, children); }
+  static template(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("template", attributes, text, children); }
+  static textarea(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("textarea", attributes, text, children); }
+  static tfoot(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("tfoot", attributes, text, children); }
+  static th(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("th", attributes, text, children); }
+  static thead(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("thead", attributes, text, children); }
+  static time(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("time", attributes, text, children); }
+  // static title(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("title", attributes, text, children); }
+  static tr(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("tr", attributes, text, children); }
+  static track(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("track", attributes, text, children); }
+  static u(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("u", attributes, text, children); }
+  static ul(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("ul", attributes, text, children); }
+  static var(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("var", attributes, text, children); }
+  static video(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("video", attributes, text, children); }
+  static wbr(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return htmlElement("wbr", attributes, text, children); }
 }
 
 
