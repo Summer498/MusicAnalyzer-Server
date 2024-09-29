@@ -85,8 +85,10 @@ import { getHierarchicalMelody } from "./src/HierarchicalMelody";
   // メインループ -->
 
   let old_time = Date.now();
-  const fps_element = HTML.p({ name: "fps" }, `fps:${0}`);
-
+  const fps_element = HTML.p();
+  fps_element.setAttribute("name", "fps");
+  fps_element.textContent = `fps:${0}`;
+  
   let last_audio_time = Number.MIN_SAFE_INTEGER;
   const onUpdate = () => {
     // fps 関連処理 -->

@@ -15,10 +15,12 @@ export class DMelodySwitcher implements Controller {
     this.checkbox.addEventListener("change", e => {
       UpdatableRegistry.instance.onUpdate();
     });
-    this.body = HTML.span({}, "", [
-      HTML.label({ for: this.checkbox.id }, "detected melody before fix"),
-      this.checkbox,
-    ]);
+    const label = HTML.label();
+    label.textContent = "detected melody before fix";
+    label.setAttribute("for", this.checkbox.id);
+    this.body = HTML.span();
+    this.body.appendChildren(label);
+    this.body.appendChildren(this.checkbox);
   }
 }
 
@@ -27,17 +29,25 @@ export class HierarchyLevel implements Controller {
   range: HTMLInputElement;
   #display: HTMLSpanElement;
   constructor() {
-    this.range = HTML.input_range({ id: "hierarchy_level_slider", name: "hierarchy_level_slider", min: 0, max: 1, step: 1 });
-    this.#display = HTML.span({}, `layer: ${this.range.value}`);
+    this.range = HTML.input_range();
+    this.range.setAttribute("id", "hierarchy_level_slider");
+    this.range.setAttribute("name", "hierarchy_level_slider");
+    this.range.setAttribute("min", "0");
+    this.range.setAttribute("max", "1");
+    this.range.setAttribute("step", "1");
+    this.#display = HTML.span();
+    this.#display.textContent = `layer: ${this.range.value}`;
     this.range.addEventListener("input", e => {
       this.#display.textContent = `layer: ${this.range.value}`;
       UpdatableRegistry.instance.onUpdate();
     });
-    this.body = HTML.span({}, "", [
-      HTML.label({ for: this.range.id }, "Melody Hierarchy Level"),
-      this.range,
-      this.#display,
-    ]);
+    const label = HTML.label();
+    label.textContent = "Melody Hierarchy Level";
+    label.setAttribute("for", this.range.id);
+    this.body = HTML.span();
+    this.body.appendChild(label);
+    this.body.appendChild(this.range);
+    this.body.appendChild(this.#display);
   }
   setHierarchyLevelSliderValues = (max: number) => {
     console.log(`max: ${max}`);
@@ -51,17 +61,20 @@ export class TimeRangeSlider implements Controller {
   body: HTMLSpanElement;
   constructor() {
     const time_range_slider = HTML.input_range({ id: "time_range_slider", name: "time_range_slider", min: 1, max: 10, step: 0.1 });
-    const show_time_range_slider_value = HTML.span({}, `${Math.floor(Math.pow(2, Number(time_range_slider.value) - Number(time_range_slider.max)) * 100)} %`);
+    const show_time_range_slider_value = HTML.span();
+    show_time_range_slider_value.textContent = `${Math.floor(Math.pow(2, Number(time_range_slider.value) - Number(time_range_slider.max)) * 100)} %`;
     time_range_slider.addEventListener("input", e => {
       show_time_range_slider_value.textContent = `${Math.floor(Math.pow(2, Number(time_range_slider.value) - Number(time_range_slider.max)) * 100)} %`;
       PianoRollTimeLength.setRatio(Math.pow(2, Number(time_range_slider.value) - Number(time_range_slider.max)));
       UpdatableRegistry.instance.onUpdate();
     });
-    this.body = HTML.span({}, "", [
-      HTML.label({ for: time_range_slider.id }, "Time Range"),
-      time_range_slider,
-      show_time_range_slider_value,
-    ]);
+    const label = HTML.label();
+    label.textContent = "Time Range";
+    label.setAttribute("for", time_range_slider.id);
+    this.body = HTML.span();
+    this.body.appendChild(label);
+    this.body.appendChild(time_range_slider);
+    this.body.appendChild(show_time_range_slider_value);
   }
 }
 
@@ -69,7 +82,7 @@ export class GravitySwitcher implements Controller {
   body: HTMLSpanElement;
   checkbox: HTMLInputElement;
   #gravities: SVGElement[];
-  constructor(id: string, label:string, gravities: SVGElement[]) {
+  constructor(id: string, label: string, gravities: SVGElement[]) {
     this.checkbox = HTML.input_checkbox({ id, name: id });
     this.checkbox.checked = true;
     this.#gravities = gravities;
@@ -77,10 +90,12 @@ export class GravitySwitcher implements Controller {
       this.#gravities.forEach(gravity => gravity.setAttribute("visibility", this.checkbox.checked ? "visible" : "hidden"));
       UpdatableRegistry.instance.onUpdate();
     });
-    this.body = HTML.span({}, "", [
-      HTML.label({ for: this.checkbox.id }, label),
-      this.checkbox,
-    ]);
+    const label_element = HTML.label();
+    label_element.textContent = label;
+    label_element.setAttribute("for", this.checkbox.id);
+    this.body = HTML.span();
+    this.body.appendChild(label_element);
+    this.body.appendChild(this.checkbox);
   };
 }
 
@@ -93,10 +108,12 @@ export class MelodyBeepSwitcher implements Controller {
     this.checkbox.addEventListener("change", e => {
       UpdatableRegistry.instance.onUpdate();
     });
-    this.body = HTML.span({}, "", [
-      HTML.label({ for: this.checkbox.id }, "Beep Melody"),
-      this.checkbox,
-    ]);
+    const label = HTML.label();
+    label.textContent = "Beep Melody";
+    label.setAttribute("for", this.checkbox.id);
+    this.body = HTML.span();
+    this.body.appendChild(label);
+    this.body.appendChild(this.checkbox);
   }
 };
 
@@ -105,15 +122,15 @@ export class MelodyBeepVolume implements Controller {
   range: HTMLInputElement;
   constructor() {
     this.range = HTML.input_range({ id: "melody_beep_volume", min: 0, max: 100, step: 1 });
-    const show_melody_beep_volume = HTML.span({}, `volume: ${this.range.value}`);
+    const show_melody_beep_volume = HTML.span();
+    show_melody_beep_volume.textContent = `volume: ${this.range.value}`;
     this.range.addEventListener("input", e => {
       show_melody_beep_volume.textContent = `volume: ${this.range.value}`;
       UpdatableRegistry.instance.onUpdate();
     });
-    this.body = HTML.span({}, "", [
-      this.range,
-      show_melody_beep_volume,
-    ]);
+    this.body = HTML.span();
+    this.body.appendChild(this.range);
+    this.body.appendChild(show_melody_beep_volume);
   };
 }
 
@@ -122,11 +139,17 @@ export class MelodyColorSelector implements Controller {
   constructor() {
     const key_color_selector = HTML.input_radio({ name: "key_color_selector", id: "key_color_selector", value: "key", checked: `${true}` }, "key based color");
     const chord_color_selector = HTML.input_radio({ name: "chord_color_selector", id: "chord_color_selector", value: "chord" }, "chord based color");
-    this.body = HTML.span({ id: "melody_color_selector" }, "", [
-      HTML.label({ for: key_color_selector.id }, "key based color"),
-      key_color_selector,
-      HTML.label({ for: chord_color_selector.id }, "chord based color"),
-      chord_color_selector,
-    ]);
+    const key_color_label = HTML.label();
+    key_color_label.textContent = "key based color";
+    key_color_label.setAttribute("for", key_color_selector.id);
+    const chord_color_label = HTML.label();
+    chord_color_label.textContent = "chord based color";
+    chord_color_label.setAttribute("for", chord_color_selector.id);
+    this.body = HTML.span();
+    this.body.setAttribute("id", "melody_color_selector");
+    this.body.appendChild(key_color_label);
+    this.body.appendChild(key_color_selector);
+    this.body.appendChild(chord_color_label);
+    this.body.appendChild(chord_color_selector);
   }
 }

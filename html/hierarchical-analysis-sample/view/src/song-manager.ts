@@ -57,59 +57,70 @@ export const appendPianoRoll = (piano_roll_place: HTMLDivElement, song_manager: 
   console.log(`song_manager.hierarchical_melody.length: ${song_manager.hierarchical_melody.length}`);
   hierarchy_level.setHierarchyLevelSliderValues(song_manager.hierarchical_melody.length - 1);
 
-  piano_roll.svg.appendChildren([
-    // 奥側
-    SVG.g({ name: "octave-BGs" }, undefined, getOctaveBGs(getWhiteBGs(), getBlackBGs()).svg.map(e => e.svg)),
+  // 奥側
+  const octave_bgs = SVG.g();
+  octave_bgs.setAttribute("name", "octave-BGs");
+  getOctaveBGs(getWhiteBGs(), getBlackBGs()).svg
+    .forEach(e => octave_bgs.appendChild(e.svg));
 
-    [
-      getBeatBars(song_manager.beat_info, getMelody(song_manager.hierarchical_melody)), // song_manager.beat_bars,
-      getChordNotesSVG(song_manager.romans), // song_manager.chord_notes,
-      getChordNamesSVG(song_manager.romans), // song_manager.chord_names,
-      getChordRomansSVG(song_manager.romans), // song_manager.chord_romans,
-      getChordKeysSVG(song_manager.romans),  // song_manager.chord_keys,
-      getDMelodySVGs(song_manager.d_melodies, d_melody_switcher), // song_manager.d_melody,
-    ].map(e => e.group),
-    [
-      getHierarchicalMelodySVGs(song_manager.hierarchical_melody, hierarchy_level, melody_beep_switcher, melody_beep_volume), // song_manager.hierarchical_melody,
-      getHierarchicalIRSymbolSVGs(song_manager.hierarchical_melody, hierarchy_level), // song_manager.hierarchical_IR,
-      getHierarchicalChordGravitySVGs(song_manager.hierarchical_melody, hierarchy_level), // song_manager.hierarchical_chord_gravity,
-      getHierarchicalScaleGravitySVGs(song_manager.hierarchical_melody, hierarchy_level), // song_manager.hierarchical_scale_gravity,
-      getTSR_SVGs(song_manager.hierarchical_melody, hierarchy_level) // song_manager.tsr_svg
-    ].map(e => e.map(e => e.group)),
-    SVG.g({ name: "octave-keys" }, undefined, getOctaveKeys(getWhiteKeys(), getBlackKeys()).svg.map(e => e.svg)),
-    getCurrentTimeLine().svg,
-    // 手前側
-  ]);
+  piano_roll.svg.appendChild(octave_bgs);
+  piano_roll.svg.appendChild(getBeatBars(song_manager.beat_info, getMelody(song_manager.hierarchical_melody)).group);
+  piano_roll.svg.appendChild(getChordNotesSVG(song_manager.romans).group);
+  piano_roll.svg.appendChild(getChordNamesSVG(song_manager.romans).group);
+  piano_roll.svg.appendChild(getChordRomansSVG(song_manager.romans).group);
+  piano_roll.svg.appendChild(getChordKeysSVG(song_manager.romans).group);
+  piano_roll.svg.appendChild(getDMelodySVGs(song_manager.d_melodies, d_melody_switcher).group);
+  getHierarchicalMelodySVGs(song_manager.hierarchical_melody, hierarchy_level, melody_beep_switcher, melody_beep_volume)
+    .forEach(e => piano_roll.svg.appendChild(e.group));
+  getHierarchicalIRSymbolSVGs(song_manager.hierarchical_melody, hierarchy_level)
+    .forEach(e => piano_roll.svg.appendChild(e.group));
+  getHierarchicalChordGravitySVGs(song_manager.hierarchical_melody, hierarchy_level)
+    .forEach(e => piano_roll.svg.appendChild(e.group));
+  getHierarchicalScaleGravitySVGs(song_manager.hierarchical_melody, hierarchy_level)
+    .forEach(e => piano_roll.svg.appendChild(e.group));
+  getTSR_SVGs(song_manager.hierarchical_melody, hierarchy_level)
+    .forEach(e => piano_roll.svg.appendChild(e.group));
+  const octave_keys = SVG.g();
+  octave_keys.setAttribute("name", "octave-keys");
+  getOctaveKeys(getWhiteKeys(), getBlackKeys()).svg
+    .forEach(e => octave_keys.appendChild(e.svg));
+  piano_roll.svg.appendChild(octave_keys);
+  piano_roll.svg.appendChild(getCurrentTimeLine().svg);
+  // 手前側
 
   piano_roll_place.insertAdjacentElement("beforeend", piano_roll.svg);
 };
 
 export const appendController = (piano_roll_place: HTMLDivElement) => {
-  piano_roll_place.insertAdjacentElement("beforeend", HTML.div(
-    { id: "controllers", style: "margin-top:20px" },
-    "",
-    [
-      HTML.div({ id: "d-melody" }, "", [
-        d_melody_switcher.body,
-      ]),
-      HTML.div({ id: "hierarchy-level" }, "", [
-        hierarchy_level.body
-      ]),
-      HTML.div({ id: "time-length" }, "", [
-        time_range_slider.body
-      ]),
-      HTML.div({ id: "gravity-switcher" }, "", [
-        key_gravity_switcher.body,
-        chord_gravity_switcher.body,
-      ]),
-      HTML.div({ id: "melody-beep-controllers" }, "", [
-        melody_beep_switcher.body,
-        melody_beep_volume.body
-      ]),
-      // NOTE: 色選択は未実装なので消しておく
-      HTML.div({ display: "inline" }, "",
-        melody_color_selector.body,
-      )
-    ]
-  ));
+  const d_melody_div = HTML.div();
+  d_melody_div.setAttribute("id", "d-melody");
+  d_melody_div.appendChild(d_melody_switcher.body);
+  const hierarchy_level_div = HTML.div();
+  hierarchy_level_div.setAttribute("id", "hierarchy-level");
+  hierarchy_level_div.appendChild(hierarchy_level.body);
+  const time_length_div = HTML.div();
+  time_length_div.setAttribute("id", "time-length");
+  time_length_div.appendChild(time_range_slider.body);
+  const gravity_switcher_div = HTML.div();
+  gravity_switcher_div.setAttribute("id", "gravity-switcher");
+  gravity_switcher_div.appendChild(key_gravity_switcher.body);
+  gravity_switcher_div.appendChild(chord_gravity_switcher.body);
+  const melody_beep_controllers_div = HTML.div();
+  melody_beep_controllers_div.appendChild(melody_beep_switcher.body,);
+  melody_beep_controllers_div.appendChild(melody_beep_volume.body);
+  melody_beep_controllers_div.setAttribute("id", "melody-beep-controllers");
+  const melody_color_selector_div = HTML.div();
+  melody_color_selector_div.setAttribute("id", "melody-color-selector");
+  melody_color_selector_div.setAttribute("display", "inline");  // NOTE: 色選択は未実装なので消しておく
+  melody_color_selector_div.appendChild(melody_color_selector.body);
+  const controllers = HTML.div();
+  controllers.setAttribute("id", "controllers");
+  controllers.setAttribute("style", "margin-top:20px");
+  controllers.appendChild(d_melody_div);
+  controllers.appendChild(hierarchy_level_div);
+  controllers.appendChild(time_length_div);
+  controllers.appendChild(gravity_switcher_div);
+  controllers.appendChild(melody_beep_controllers_div);
+  controllers.appendChild(melody_color_selector_div);
+  piano_roll_place.insertAdjacentElement("beforeend", controllers);
 };

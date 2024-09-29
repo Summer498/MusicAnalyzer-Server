@@ -29,11 +29,10 @@ class DMelodySVG implements Updatable {
   h: number;
   d_melody_switcher: DMelodySwitcher;
   constructor(d_melody: TimeAndMelodyAnalysis, d_melody_switcher: DMelodySwitcher) {
-    this.svg = SVG.rect({
-      name: "melody-note",
-      fill: rgbToString(hsv2rgb(0, 0, 0.75)),
-      stroke: "#444"
-    });
+    this.svg = SVG.rect();
+    this.svg.setAttribute("name", "melody-note");
+    this.svg.setAttribute("fill", rgbToString(hsv2rgb(0, 0, 0.75)));
+    this.svg.setAttribute("stroke", "#444");
     this.begin = d_melody.begin;
     this.end = d_melody.end;
     this.note = d_melody.note;
@@ -47,7 +46,7 @@ class DMelodySVG implements Updatable {
     this.svg.setAttribute("y", `${this.y}`);
     this.svg.setAttribute("width", `${this.w * NoteSize.value}`);
     this.svg.setAttribute("height", `${this.h}`);
-    this.svg.setAttribute("visibility", `${this.d_melody_switcher.checkbox.checked ? "visible" : "hidden"}`);
+    this.svg.setAttribute("visibility", this.d_melody_switcher.checkbox.checked ? "visible" : "hidden");
     this.svg.onclick = insertMelody;
   }
 }
@@ -72,11 +71,10 @@ class MelodySVG implements Updatable {
   melody_beep_volume: MelodyBeepVolume;
 
   constructor(melody: TimeAndMelodyAnalysis, hierarchy_level: HierarchyLevel, melody_beep_switcher: MelodyBeepSwitcher, melody_beep_volume: MelodyBeepVolume, layer?: number) {
-    this.svg = SVG.rect({
-      name: "melody-note",
-      fill: fifthChromaToColor(melody.note, 0.75, 0.9),
-      stroke: "#444"
-    });
+    this.svg = SVG.rect();
+    this.svg.setAttribute("name", "melody-note");
+    this.svg.setAttribute("fill", fifthChromaToColor(melody.note, 0.75, 0.9));
+    this.svg.setAttribute("stroke", "#444");
     this.begin = melody.begin;
     this.end = melody.end;
     this.note = melody.note;
@@ -107,8 +105,8 @@ class MelodySVG implements Updatable {
     this.svg.setAttribute("y", `${this.y}`);
     this.svg.setAttribute("width", `${this.w * NoteSize.value}`);
     this.svg.setAttribute("height", `${this.h}`);
-    this.svg.setAttribute("onclick", `${"MusicAnalyzer.deleteMelody()"}`);
-    this.svg.setAttribute("visibility", `${is_visible ? "visible" : "hidden"}`);
+    this.svg.setAttribute("visibility", is_visible ? "visible" : "hidden");
+    this.svg.onclick = deleteMelody;
     if (this.melody_beep_switcher.checkbox.checked && is_visible) {
       this.beepMelody(Number(this.melody_beep_volume.range.value) / 400);
     }
@@ -132,15 +130,12 @@ class IRSymbolSVG implements Updatable {
   y: number;
   hierarchy_level: HierarchyLevel;
   constructor(melody: TimeAndMelodyAnalysis, hierarchy_level: HierarchyLevel, layer?: number) {
-    this.svg = SVG.text(
-      {
-        id: "I-R Symbol",
-        "font-family": 'Times New Roman',
-        "font-size": `${ir_analysis_em}em`,
-        "text-anchor": "middle",
-      },
-      melody.melody_analysis.implication_realization.symbol,
-    );
+    this.svg = SVG.text();
+    this.svg.textContent = melody.melody_analysis.implication_realization.symbol;
+    this.svg.setAttribute("id", "I-R Symbol");
+    this.svg.setAttribute("font-family", "Times New Roman");
+    this.svg.setAttribute("font-size", `${ir_analysis_em}em`);
+    this.svg.setAttribute("text-anchor", "middle");
     this.begin = melody.begin;
     this.end = melody.end;
     this.archetype = melody.melody_analysis.implication_realization;
@@ -152,8 +147,8 @@ class IRSymbolSVG implements Updatable {
     const is_visible = this.hierarchy_level.range.value === String(this.layer);
     this.svg.setAttribute("x", `${CurrentTimeX.value + (this.end - NowAt.value) * NoteSize.value}`);
     this.svg.setAttribute("y", `${this.y}`);
-    this.svg.setAttribute("fill", `${get_color_of_Narmour_concept(this.archetype) || "#000"}`);
-    this.svg.setAttribute("visibility", `${is_visible ? "visible" : "hidden"}`);
+    this.svg.setAttribute("fill", get_color_of_Narmour_concept(this.archetype) || "#000");
+    this.svg.setAttribute("visibility", is_visible ? "visible" : "hidden");
   };
 }
 
@@ -182,25 +177,22 @@ class ArrowSVG implements Updatable {
   hierarchy_level: HierarchyLevel;
 
   constructor(melody: TimeAndMelodyAnalysis, next: TimeAndMelodyAnalysis, gravity: Gravity, fill: string, stroke: string, hierarchy_level: HierarchyLevel, layer?: number) {
-    const triangle = SVG.polygon({
-      name: "gravity-arrow",
-      class: "triangle",
-      stroke,
-      "stroke-width": 5,
-      fill,
-    });
-    const line = SVG.line({
-      name: "gravity-arrow",
-      class: "line",
-      stroke,
-      "stroke-width": 5
-    });
+    const triangle = SVG.polygon();
+    triangle.setAttribute("name", "gravity-arrow");
+    triangle.setAttribute("class", "triangle");
+    triangle.setAttribute("stroke", stroke);
+    triangle.setAttribute("stroke-width", "5");
+    triangle.setAttribute("fill", fill);
+    const line = SVG.line();
+    line.setAttribute("name", "gravity-arrow");
+    line.setAttribute("class", "line");
+    line.setAttribute("stroke", stroke);
+    line.setAttribute("stroke-width", "5");
 
-    this.svg = SVG.g(
-      { name: "gravity" }, "", [
-      triangle,
-      line
-    ]);
+    this.svg = SVG.g();
+    this.svg.setAttribute("name", "gravity");
+    this.svg.appendChild(triangle);
+    this.svg.appendChild(line);
     this.begin = melody.begin;
     this.end = melody.end;
     this.note = melody.note;
@@ -240,10 +232,10 @@ class ArrowSVG implements Updatable {
       dst.x + cos * -triangle_width - sin * triangle_height,
       dst.y + sin * -triangle_width + cos * triangle_height
     ];
-    const is_visible = this.hierarchy_level.range.value === String(this.layer);
+    const is_visible = this.hierarchy_level.range.value === `${this.layer}`;
     this.svg.setAttribute("visibility", is_visible ? "visible" : "hidden");
     for (const e of this.svg.getElementsByClassName("triangle")) {
-      e.setAttribute("points", `${p.join(",")}`);
+      e.setAttribute("points", p.join(","));
     }
     for (const e of this.svg.getElementsByClassName("line")) {
       e.setAttribute("x1", `${src.x}`);
@@ -321,23 +313,19 @@ class TSR_SVG implements Updatable {
   h: number;
   hierarchy_level: HierarchyLevel;
   constructor(melody: TimeAndMelodyAnalysis, hierarchy_level: HierarchyLevel, layer: number) {
-    this.bracket = SVG.path({
-      name: "group",
-      stroke: "#004",
-      "stroke-width": 3,
-      fill: "#eee",
-    });
-    this.circle = SVG.circle({
-      name: "head",
-      stroke: "#c00",
-      fill: "#c00",
-    });
-    this.svg = SVG.g(
-      { name: "time-span-node" },
-      undefined, [
-      this.bracket,
-      this.circle
-    ]);
+    this.bracket = SVG.path();
+    this.bracket.setAttribute("name", "group");
+    this.bracket.setAttribute("stroke", "#004");
+    this.bracket.setAttribute("stroke-width", "3");
+    this.bracket.setAttribute("fill", "#eee");
+    this.circle = SVG.circle();
+    this.circle.setAttribute("name", "head");
+    this.circle.setAttribute("stroke", "#c00");
+    this.circle.setAttribute("fill", "#c00");
+    this.svg = SVG.g();
+    this.svg.setAttribute("name", "time-span-node");
+    this.svg.appendChild(this.bracket);
+    this.svg.appendChild(this.circle);
     this.begin = melody.begin;
     this.end = melody.end;
     this.layer = layer;
@@ -366,16 +354,16 @@ class TSR_SVG implements Updatable {
     const ct21 = { x: x + w * 10 / 10 - h * 1 / 2, y: y - h * 10 / 10 };
     const ct22 = { x: x + w * 10 / 10 - h * 0 / 2, y: y - h * 6 / 10 };
     const end = { x: x + w * 10 / 10 - h * 0 / 2, y: y - h * 0 / 10 };
-    this.bracket.setAttribute("d", `${`M${begin.x} ${begin.y}C${ct11.x} ${ct11.y} ${ct12.x} ${ct12.y} ${corner1.x} ${corner1.y}L${corner2.x} ${corner2.y}C${ct21.x} ${ct21.y} ${ct22.x} ${ct22.y} ${end.x} ${end.y}`}`);
-    this.bracket.setAttribute("visibility", `${is_visible ? "visible" : "hidden"}`);
-    this.bracket.setAttribute("stroke-width", `${is_just_layer ? 3 : 1}`);
+    this.bracket.setAttribute("d", `M${begin.x} ${begin.y}C${ct11.x} ${ct11.y} ${ct12.x} ${ct12.y} ${corner1.x} ${corner1.y}L${corner2.x} ${corner2.y}C${ct21.x} ${ct21.y} ${ct22.x} ${ct22.y} ${end.x} ${end.y}`);
+    this.bracket.setAttribute("visibility", is_visible ? "visible" : "hidden");
+    this.bracket.setAttribute("stroke-width", is_just_layer ? "3" : "1");
     const cw = this.head.w * NoteSize.value;
     const cx = CurrentTimeX.value + (this.head.begin - now_at) * NoteSize.value + cw / 2;
     const cy = this.y - h;
     this.circle.setAttribute("cx", `${cx}`);
     this.circle.setAttribute("cy", `${cy}`);
-    this.circle.setAttribute("r", `${is_just_layer ? 5 : 3}`);
-    this.circle.setAttribute("visibility", `${is_visible ? "visible" : "hidden"}`);
+    this.circle.setAttribute("r", is_just_layer ? "5" : "3");
+    this.circle.setAttribute("visibility", is_visible ? "visible" : "hidden");
   }
 }
 

@@ -9,9 +9,11 @@ declare const tunes: HTMLUListElement;
   const srt_gttm_examples = gttm_examples.sort((a, b) => a.localeCompare(b, [], { numeric: true }));  //  Natural sort order
 
   srt_gttm_examples.forEach(gttm_example => {
-    const item = HTML.li({}, "",
-      HTML.a({ href: `/MusicAnalyzer-server/html/hierarchical-analysis-sample/view?tune=${gttm_example}` }, gttm_example)
-    );
+    const anchor = HTML.a();
+    anchor.textContent = gttm_example;
+    anchor.setAttribute("href", `/MusicAnalyzer-server/html/hierarchical-analysis-sample/view?tune=${gttm_example}`);
+    const item = HTML.li();
+    item.appendChild(anchor);
     tunes.insertAdjacentElement("beforeend", item);
   });
   console.log(srt_gttm_examples);

@@ -14,7 +14,10 @@ class BeatBarSVG implements Updatable {
   y2: number;
   sound_reserved: boolean;
   constructor(beat_info: BeatInfo, i: number) {
-    this.svg = SVG.line({ id: "bar", stroke: "#000", display:"none" }); //NOTE: 一旦非表示にしている
+    this.svg = SVG.line();
+    this.svg.setAttribute("id", "bar");
+    this.svg.setAttribute("stroke", "#000");
+    this.svg.setAttribute("display", "none");  //NOTE: 一旦非表示にしている
     this.begin = i * 60 / beat_info.tempo;
     this.end = (i + 1) * 60 / beat_info.tempo;
     this.y1 = 0;
@@ -33,10 +36,10 @@ class BeatBarSVG implements Updatable {
   }
   onUpdate() {
     const now_at = NowAt.value;
-    this.svg.setAttribute("x1", `${CurrentTimeX.value + (this.begin - now_at) * NoteSize.value}`); 
-    this.svg.setAttribute("x2", `${CurrentTimeX.value + (this.begin - now_at) * NoteSize.value}`); 
-    this.svg.setAttribute("y1", `${this.y1}`); 
-    this.svg.setAttribute("y2", `${this.y2 }`);
+    this.svg.setAttribute("x1", `${CurrentTimeX.value + (this.begin - now_at) * NoteSize.value}`);
+    this.svg.setAttribute("x2", `${CurrentTimeX.value + (this.begin - now_at) * NoteSize.value}`);
+    this.svg.setAttribute("y1", `${this.y1}`);
+    this.svg.setAttribute("y2", `${this.y2}`);
     // NOTE: うるさいので停止中
     0 && this.beepBeat();
   }

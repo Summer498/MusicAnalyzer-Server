@@ -55,7 +55,9 @@ export class SvgCollection implements Updatable {
   constructor(name: string, all: UpdatableTimeAndSVGs[]) {
     this.all = all;
     this.show = [];
-    this.group = SVG.g({ name }, undefined, this.show.map(e => e.svg));
+    this.group = SVG.g();
+    this.group.setAttribute("name", name);
+    this.group.appendChildren(this.show.map(e=>e.svg));
     UpdatableRegistry.instance.register(this);
   }
   updateShow(begin: number, end: number) {

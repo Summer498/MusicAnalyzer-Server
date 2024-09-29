@@ -50,14 +50,16 @@ console.log(melodies[melodies.length - 1].end);
 // SVG -->
 const song_manager = new SongManager(beat_info, romans, [melodies], d_melodies);
 // song_manager.analysis_data = { beat_info, romans, hierarchical_melody: [melodies], d_melodies };
- appendPianoRoll(piano_roll_place, song_manager);
- appendController(piano_roll_place);
+appendPianoRoll(piano_roll_place, song_manager);
+appendController(piano_roll_place);
 // <-- SVG
 
 // メインループ -->
 
 let old_time = Date.now();
-const fps_element = HTML.p({ name: "fps" }, `fps:${0}`);
+const fps_element = HTML.p();
+fps_element.setAttribute("name", "fps");
+fps_element.textContent = `fps:${0}`;
 
 let last_audio_time = Number.MIN_SAFE_INTEGER;
 const onUpdate = () => {
