@@ -1,7 +1,7 @@
 import { SVG } from "@music-analyzer/html";
 import { Gravity, TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { fifthChromaToColor, hsv2rgb, rgbToString } from "@music-analyzer/color";
-import { SvgCollection, Updatable } from "@music-analyzer/view";
+import { SvgCollection, SvgCollection2, Updatable } from "@music-analyzer/view";
 import { CurrentTimeX, NoteSize, NowAt, black_key_prm, piano_roll_begin, reservation_range, size } from "@music-analyzer/view-parameters";
 import { Archetype, get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { DMelodySwitcher, HierarchyLevel, MelodyBeepSwitcher, MelodyBeepVolume } from "@music-analyzer/controllers";
@@ -19,41 +19,62 @@ const deleteMelody = () => {
   console.log("deleteMelody called");
 };
 
-class DMelodySVG implements Updatable {
-  svg: SVGRectElement;
+class DMelodyModel {
   begin: number;
   end: number;
   note: number;
-  y: number;
-  w: number;
-  h: number;
-  d_melody_switcher: DMelodySwitcher;
-  constructor(d_melody: TimeAndMelodyAnalysis, d_melody_switcher: DMelodySwitcher) {
+  constructor(d_melody: TimeAndMelodyAnalysis) {
+    this.begin = d_melody.begin;
+    this.end = d_melody.end;
+    this.note = d_melody.note;
+  }
+}
+
+class DMelodyView {
+  svg: SVGRectElement;
+  constructor() {
     this.svg = SVG.rect();
     this.svg.setAttribute("name", "melody-note");
     this.svg.setAttribute("fill", rgbToString(hsv2rgb(0, 0, 0.75)));
     this.svg.setAttribute("stroke", "#444");
-    this.begin = d_melody.begin;
-    this.end = d_melody.end;
-    this.note = d_melody.note;
-    this.y = (piano_roll_begin - d_melody.note) * black_key_prm.height;
-    this.w = d_melody.end - d_melody.begin;
-    this.h = black_key_prm.height;
-    this.d_melody_switcher = d_melody_switcher;
   }
+  set x(value: number) { this.svg.setAttribute("x", `${value}`); }
+  set y(value: number) { this.svg.setAttribute("y", `${value}`); }
+  set width(value: number) { this.svg.setAttribute("width", `${value}`); }
+  set height(value: number) { this.svg.setAttribute("height", `${value}`); }
+  set visibility(value: "visible" | "hidden") { this.svg.setAttribute("visibility", value); }
+  set onclick(value: () => void) { this.svg.onclick = value; };
+}
+
+class DMelodyController implements Updatable {
+  model: DMelodyModel;
+  view: DMelodyView;
+  d_melody_switcher: DMelodySwitcher;
+  constructor(d_melody: TimeAndMelodyAnalysis, d_melody_switcher: DMelodySwitcher) {
+    this.model = new DMelodyModel(d_melody);
+    this.view = new DMelodyView();
+    this.view.y = (piano_roll_begin - this.model.note) * black_key_prm.height;
+    this.view.width = (this.model.end - this.model.begin) * NoteSize.value;
+    this.view.height = black_key_prm.height;
+    this.d_melody_switcher = d_melody_switcher;
+    CurrentTimeX.onUpdate.push(this.updateX.bind(this));
+    NowAt.onUpdate.push(this.updateX.bind(this));
+    NoteSize.onUpdate.push(this.updateX.bind(this));
+    NoteSize.onUpdate.push(this.updateWidth.bind(this));
+
+    this.onUpdate();
+  }
+  updateX() { this.view.x = CurrentTimeX.value + (this.model.begin - NowAt.value) * NoteSize.value; }
+  updateWidth() { this.view.width = (this.model.end - this.model.begin) * NoteSize.value; }
   onUpdate() {
-    this.svg.setAttribute("x", `${CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value}`);
-    this.svg.setAttribute("y", `${this.y}`);
-    this.svg.setAttribute("width", `${this.w * NoteSize.value}`);
-    this.svg.setAttribute("height", `${this.h}`);
-    this.svg.setAttribute("visibility", this.d_melody_switcher.checkbox.checked ? "visible" : "hidden");
-    this.svg.onclick = insertMelody;
+    this.view.onclick = insertMelody;
+    this.view.visibility = this.d_melody_switcher.checkbox.checked ? "visible" : "hidden";
   }
 }
 
-export const getDMelodySVGs = (detected_melodies: TimeAndMelodyAnalysis[], d_melody_switcher: DMelodySwitcher) => new SvgCollection(
+export const getDMelodyControllers = (detected_melodies: TimeAndMelodyAnalysis[], d_melody_switcher: DMelodySwitcher) => new SvgCollection2(
   "detected-melody",
-  detected_melodies.map(e => new DMelodySVG(e, d_melody_switcher))
+  detected_melodies.map(e => new DMelodyController(e, d_melody_switcher))
 );
 
 class MelodySVG implements Updatable {

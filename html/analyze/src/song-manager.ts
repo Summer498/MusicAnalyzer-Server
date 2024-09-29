@@ -5,7 +5,7 @@ import { getChordKeysSVG, getChordNamesSVG, getChordNotesSVG, getChordRomansSVG 
 import { DMelodySwitcher, GravitySwitcher, HierarchyLevel, MelodyBeepSwitcher, MelodyBeepVolume, MelodyColorSelector, TimeRangeSlider } from "@music-analyzer/controllers";
 import { HTML, SVG } from "@music-analyzer/html";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
-import { getDMelodySVGs, getHierarchicalChordGravitySVGs, getHierarchicalIRSymbolSVGs, getHierarchicalMelodySVGs, getHierarchicalScaleGravitySVGs, getTSR_SVGs } from "@music-analyzer/melody-view";
+import { getDMelodyControllers, getHierarchicalChordGravitySVGs, getHierarchicalIRSymbolSVGs, getHierarchicalMelodySVGs, getHierarchicalScaleGravitySVGs, getTSR_SVGs } from "@music-analyzer/melody-view";
 import { getBlackBGs, getBlackKeys, getCurrentTimeLine, getOctaveBGs, getOctaveKeys, getWhiteBGs, getWhiteKeys, PianoRoll } from "@music-analyzer/svg-objects";
 import { Assertion, _throw } from "@music-analyzer/stdlib";
 import { PianoRollTimeLength } from "@music-analyzer/view-parameters";
@@ -69,7 +69,7 @@ export const appendPianoRoll = (piano_roll_place: HTMLDivElement, song_manager: 
   piano_roll.svg.appendChild(getChordNamesSVG(song_manager.romans).group);
   piano_roll.svg.appendChild(getChordRomansSVG(song_manager.romans).group);
   piano_roll.svg.appendChild(getChordKeysSVG(song_manager.romans).group);
-  piano_roll.svg.appendChild(getDMelodySVGs(song_manager.d_melodies, d_melody_switcher).group);
+  piano_roll.svg.appendChild(getDMelodyControllers(song_manager.d_melodies, d_melody_switcher).group);
   getHierarchicalMelodySVGs(song_manager.hierarchical_melody, hierarchy_level, melody_beep_switcher, melody_beep_volume)
     .forEach(e => piano_roll.svg.appendChild(e.group));
   getHierarchicalIRSymbolSVGs(song_manager.hierarchical_melody, hierarchy_level)

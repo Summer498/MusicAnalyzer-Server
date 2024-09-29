@@ -106,7 +106,7 @@ import { getHierarchicalMelody } from "./src/HierarchicalMelody";
     last_audio_time = now_at;
     // <-- audio 関連処理
 
-    NowAt.onUpdate(now_at);
+    NowAt.value = now_at;
     UpdatableRegistry.instance.onUpdate();
   };
 

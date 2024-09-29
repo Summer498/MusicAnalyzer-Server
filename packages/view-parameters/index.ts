@@ -41,25 +41,31 @@ export class PianoRollWidth {
   }
 }
 export class CurrentTimeX {
+  static onUpdate: (() => void)[] = [];
   static #value = PianoRollWidth.value * current_time_ratio;
   static get value() { return this.#value; }
   static onWindowResized() {
-    CurrentTimeX.#value = PianoRollWidth.value * current_time_ratio;
+    this.#value = PianoRollWidth.value * current_time_ratio;
+    this.onUpdate.forEach(event=>event());
   }
 }
 export class NoteSize {
+  static onUpdate: (() => void)[] = [];
   static #value = PianoRollWidth.value / PianoRollTimeLength.value;
   static get value() { return this.#value; }
   static onChange() {
-    NoteSize.#value = PianoRollWidth.value / PianoRollTimeLength.value;
+    this.#value = PianoRollWidth.value / PianoRollTimeLength.value;
+    this.onUpdate.forEach(event=>event());
   }
   static onWindowResized = this.onChange;
 }
 export class NowAt {
+  static onUpdate: (() => void)[] = [];
   static #value = 0;
   static get value() { return this.#value; }
-  static onUpdate(now_at: number) {
-    NowAt.#value = now_at;
+  static set value(value: number) {
+    this.#value = value;
+    this.onUpdate.forEach(event=>event());
   }
 }
 // --- ピアノロールの描画パラメータ
