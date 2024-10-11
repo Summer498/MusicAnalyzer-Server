@@ -1,7 +1,7 @@
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { getBeatBars } from "@music-analyzer/beat-view";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
-import { getChordKeysSVG, getChordNamesSVG, getChordNotesSVG, getChordRomansSVG } from "@music-analyzer/chord-view";
+// import { getChordKeysSVG, getChordNamesSVG, getChordNotesSVG, getChordRomansSVG } from "@music-analyzer/chord-view";
 import { DMelodySwitcher, GravitySwitcher, HierarchyLevel, MelodyBeepSwitcher, MelodyBeepVolume, MelodyColorSelector, TimeRangeSlider } from "@music-analyzer/controllers";
 import { HTML, SVG } from "@music-analyzer/html";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
@@ -14,8 +14,10 @@ import { PianoRollTimeLength } from "@music-analyzer/view-parameters";
 const d_melody_switcher = new DMelodySwitcher();
 const hierarchy_level = new HierarchyLevel();
 const time_range_slider = new TimeRangeSlider();
+/*
 const key_gravity_switcher = new GravitySwitcher("key_gravity_switcher", "Key Gravity", []);
 const chord_gravity_switcher = new GravitySwitcher("chord_gravity_switcher", "Chord Gravity", []);
+*/
 const melody_beep_switcher = new MelodyBeepSwitcher();
 const melody_beep_volume = new MelodyBeepVolume();
 const melody_color_selector = new MelodyColorSelector();
@@ -65,19 +67,23 @@ export const appendPianoRoll = (piano_roll_place: HTMLDivElement, song_manager: 
 
   piano_roll.svg.appendChild(octave_bgs);
   piano_roll.svg.appendChild(getBeatBars(song_manager.beat_info, getMelody(song_manager.hierarchical_melody)).group);
+/*
   piano_roll.svg.appendChild(getChordNotesSVG(song_manager.romans).group);
   piano_roll.svg.appendChild(getChordNamesSVG(song_manager.romans).group);
   piano_roll.svg.appendChild(getChordRomansSVG(song_manager.romans).group);
   piano_roll.svg.appendChild(getChordKeysSVG(song_manager.romans).group);
+*/
   piano_roll.svg.appendChild(getDMelodyControllers(song_manager.d_melodies, d_melody_switcher).group);
   getHierarchicalMelodyControllers(song_manager.hierarchical_melody, hierarchy_level, melody_beep_switcher, melody_beep_volume)
     .forEach(e => piano_roll.svg.appendChild(e.group));
   getHierarchicalIRSymbolSVGs(song_manager.hierarchical_melody, hierarchy_level)
     .forEach(e => piano_roll.svg.appendChild(e.group));
+/*
   getHierarchicalChordGravitySVGs(song_manager.hierarchical_melody, hierarchy_level)
     .forEach(e => piano_roll.svg.appendChild(e.group));
   getHierarchicalScaleGravitySVGs(song_manager.hierarchical_melody, hierarchy_level)
     .forEach(e => piano_roll.svg.appendChild(e.group));
+*/
   getTSR_SVGs(song_manager.hierarchical_melody, hierarchy_level)
     .forEach(e => piano_roll.svg.appendChild(e.group));
   const octave_keys = SVG.g();
@@ -101,10 +107,12 @@ export const appendController = (piano_roll_place: HTMLDivElement) => {
   const time_length_div = HTML.div();
   time_length_div.setAttribute("id", "time-length");
   time_length_div.appendChild(time_range_slider.body);
+/*
   const gravity_switcher_div = HTML.div();
   gravity_switcher_div.setAttribute("id", "gravity-switcher");
   gravity_switcher_div.appendChild(key_gravity_switcher.body);
   gravity_switcher_div.appendChild(chord_gravity_switcher.body);
+*/
   const melody_beep_controllers_div = HTML.div();
   melody_beep_controllers_div.appendChild(melody_beep_switcher.body,);
   melody_beep_controllers_div.appendChild(melody_beep_volume.body);
@@ -119,7 +127,7 @@ export const appendController = (piano_roll_place: HTMLDivElement) => {
   controllers.appendChild(d_melody_div);
   controllers.appendChild(hierarchy_level_div);
   controllers.appendChild(time_length_div);
-  controllers.appendChild(gravity_switcher_div);
+//  controllers.appendChild(gravity_switcher_div);
   controllers.appendChild(melody_beep_controllers_div);
   controllers.appendChild(melody_color_selector_div);
   piano_roll_place.insertAdjacentElement("beforeend", controllers);

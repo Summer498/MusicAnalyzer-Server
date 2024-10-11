@@ -122,7 +122,9 @@ class MelodyController implements Updatable {
 
   constructor(melody: TimeAndMelodyAnalysis, hierarchy_level: HierarchyLevel, melody_beep_switcher: MelodyBeepSwitcher, melody_beep_volume: MelodyBeepVolume, layer?: number) {
     this.model = new MelodyModel(melody, layer || 0);
-    this.view = new MelodyView(fifthChromaToColor(melody.note, 0.75, 0.9));
+    // this.view = new MelodyView(get_color_on_parametric_scale(melody.melody_analysis.implication_realization));
+    this.view = new MelodyView(get_color_of_Narmour_concept(melody.melody_analysis.implication_realization));
+    // this.view = new MelodyView(fifthChromaToColor(melody.note, 0.75, 0.9));
     this.updateY();
     this.updateWidth();
     this.updateHeight();
@@ -211,6 +213,7 @@ class IRSymbolSVG implements Updatable {
     const is_visible = this.hierarchy_level.range.value === String(this.layer);
     this.svg.setAttribute("x", `${CurrentTimeX.value + (this.end - NowAt.value) * NoteSize.value}`);
     this.svg.setAttribute("y", `${this.y}`);
+    // this.svg.setAttribute("fill", get_color_on_parametric_scale(this.archetype) || "#000");
     this.svg.setAttribute("fill", get_color_of_Narmour_concept(this.archetype) || "#000");
     this.svg.setAttribute("visibility", is_visible ? "visible" : "hidden");
   };
