@@ -4,7 +4,7 @@ import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { WindowReflectableRegistry, UpdatableRegistry } from "@music-analyzer/view";
 import { appendController, appendPianoRoll, SongManager } from "./src/song-manager";
-import { NowAt } from "@music-analyzer/view-parameters";
+import { NowAt, PianoRollBegin } from "@music-analyzer/view-parameters";
 
 // 分析データ-->
 import { MusicAnalyzerWindow } from "./src/MusicAnalyzerWindow";
@@ -76,6 +76,8 @@ import { getHierarchicalMelody } from "./src/HierarchicalMelody";
 
 
   // SVG -->
+  const highest_pitch = hierarchical_melody[hierarchical_melody.length - 1].map(e => e.note).reduce((p, c) => p > c ? p : c);
+  PianoRollBegin.value = highest_pitch + 12;
   const song_manager = new SongManager(beat_info, romans, hierarchical_melody, d_melodies);
   // song_manager.analysis_data = { beat_info, romans, hierarchical_melody: [melodies], d_melodies };
   appendPianoRoll(piano_roll_place, song_manager);
@@ -88,7 +90,7 @@ import { getHierarchicalMelody } from "./src/HierarchicalMelody";
   const fps_element = HTML.p();
   fps_element.setAttribute("name", "fps");
   fps_element.textContent = `fps:${0}`;
-  
+
   let last_audio_time = Number.MIN_SAFE_INTEGER;
   const onUpdate = () => {
     // fps 関連処理 -->

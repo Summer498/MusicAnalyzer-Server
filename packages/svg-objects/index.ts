@@ -1,7 +1,9 @@
 import { SVG } from "@music-analyzer/html";
 import { chord_name_margin, chord_text_size } from "@music-analyzer/chord-view";
 import { WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
-import { PianoRollWidth, CurrentTimeX, octave_cnt, white_bgs_prm, piano_roll_height, octave_height, white_position, black_bgs_prm, white_key_prm, black_position, black_key_prm } from "@music-analyzer/view-parameters";
+import { PianoRollWidth, CurrentTimeX, octave_cnt, white_bgs_prm, piano_roll_height, octave_height, WhitePosition, black_bgs_prm, white_key_prm, BlackPosition, black_key_prm, PianoRollBegin } from "@music-analyzer/view-parameters";
+
+const mod = (x: number, m: number): number => (x % m + m) % m;
 
 abstract class SvgAndParam implements WindowReflectable {
   abstract svg: SVGElement;
@@ -51,7 +53,7 @@ class WhiteBG_SVG extends SvgAndParam {
     this.svg.setAttribute("fill", white_bgs_prm.fill);
     this.svg.setAttribute("stroke", white_bgs_prm.stroke);
     this.oct = oct;
-    this.y = octave_height * oct + white_bgs_prm.height * white_position[white_index];
+    this.y = octave_height * oct + white_bgs_prm.height * WhitePosition.value[white_index];
     this.width = white_bgs_prm.width;
     this.height = white_bgs_prm.height;
   }
@@ -82,7 +84,7 @@ class BlackBG_SVG extends SvgAndParam {
     this.svg.setAttribute("fill", black_bgs_prm.fill);
     this.svg.setAttribute("stroke", black_bgs_prm.stroke);
     this.oct = oct;
-    this.y = octave_height * oct + black_bgs_prm.height * black_position[black_index];
+    this.y = octave_height * oct + black_bgs_prm.height * BlackPosition.value[black_index];
     this.width = black_bgs_prm.width;
     this.height = black_bgs_prm.height;
   }
@@ -140,7 +142,7 @@ class WhiteKeySVG extends SvgAndParam {
     this.svg.setAttribute("fill", white_key_prm.fill);
     this.svg.setAttribute("stroke", white_key_prm.stroke);
     this.oct = oct;
-    this.y = octave_height * oct + white_key_prm.height * [0, 1, 2, 3, 4, 5, 6][white_index];
+    this.y = octave_height * oct + mod(white_key_prm.height * [0, 1, 2, 3, 4, 5, 6][white_index] + (1 + PianoRollBegin.value) * black_key_prm.height, octave_height);
     this.width = white_key_prm.width;
     this.height = white_key_prm.height;
   }
@@ -171,7 +173,7 @@ class BlackKeySVG extends SvgAndParam {
     this.svg.setAttribute("fill", black_key_prm.fill);
     this.svg.setAttribute("stroke", black_key_prm.stroke);
     this.oct = oct;
-    this.y = octave_height * oct + black_key_prm.height * black_position[j];
+    this.y = octave_height * oct + black_key_prm.height * BlackPosition.value[j];
     this.width = black_key_prm.width;
     this.height = black_key_prm.height;
   }

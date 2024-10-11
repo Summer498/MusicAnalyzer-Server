@@ -2,7 +2,7 @@ import { SVG } from "@music-analyzer/html";
 import { Gravity, TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { fifthChromaToColor, hsv2rgb, rgbToString } from "@music-analyzer/color";
 import { SvgCollection, SvgCollection2, Updatable } from "@music-analyzer/view";
-import { CurrentTimeX, NoteSize, NowAt, black_key_prm, piano_roll_begin, reservation_range, size } from "@music-analyzer/view-parameters";
+import { CurrentTimeX, NoteSize, NowAt, black_key_prm, PianoRollBegin, reservation_range, size } from "@music-analyzer/view-parameters";
 import { Archetype, get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { DMelodySwitcher, HierarchyLevel, MelodyBeepSwitcher, MelodyBeepVolume } from "@music-analyzer/controllers";
 import { play } from "@music-analyzer/synth";
@@ -53,7 +53,7 @@ class DMelodyController implements Updatable {
   constructor(d_melody: TimeAndMelodyAnalysis, d_melody_switcher: DMelodySwitcher) {
     this.model = new DMelodyModel(d_melody);
     this.view = new DMelodyView();
-    this.view.y = (piano_roll_begin - this.model.note) * black_key_prm.height;
+    this.view.y = (PianoRollBegin.value - this.model.note) * black_key_prm.height;
     this.view.width = (this.model.end - this.model.begin) * NoteSize.value;
     this.view.height = black_key_prm.height;
     this.d_melody_switcher = d_melody_switcher;
@@ -136,7 +136,7 @@ class MelodyController implements Updatable {
     this.onUpdate();
   }
   updateX() { this.view.x = CurrentTimeX.value + (this.model.begin - NowAt.value) * NoteSize.value; }
-  updateY() { this.view.y = (piano_roll_begin - this.model.note) * black_key_prm.height; }
+  updateY() { this.view.y = (PianoRollBegin.value - this.model.note) * black_key_prm.height; }
   updateWidth() { this.view.width = (this.model.end - this.model.begin) * 15 / 16 * NoteSize.value; }
   updateHeight() { this.view.height = black_key_prm.height; }
   updateVisibility() {
@@ -204,7 +204,7 @@ class IRSymbolSVG implements Updatable {
     this.end = melody.end;
     this.archetype = melody.melody_analysis.implication_realization;
     this.layer = layer || 0;
-    this.y = (piano_roll_begin - melody.note) * black_key_prm.height;
+    this.y = (PianoRollBegin.value - melody.note) * black_key_prm.height;
     this.hierarchy_level = hierarchy_level;
   }
   onUpdate() {
@@ -264,11 +264,11 @@ class ArrowSVG implements Updatable {
     this.layer = layer || 0;
     this.src = {
       x: (melody.end - melody.begin) / 2 + melody.begin,
-      y: (piano_roll_begin + 0.5 - melody.note) * black_key_prm.height
+      y: (PianoRollBegin.value + 0.5 - melody.note) * black_key_prm.height
     };
     this.dst = {
       x: next.begin,
-      y: (piano_roll_begin + 0.5 - gravity.destination!) * black_key_prm.height
+      y: (PianoRollBegin.value + 0.5 - gravity.destination!) * black_key_prm.height
     };
     this.hierarchy_level = hierarchy_level;
   }
