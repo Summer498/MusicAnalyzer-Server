@@ -3,12 +3,15 @@ import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { SvgCollection, Updatable } from "@music-analyzer/view";
 import { CurrentTimeX, NoteSize, NowAt, black_key_prm, bracket_hight } from "@music-analyzer/view-parameters";
 import { HierarchyLevel } from "@music-analyzer/controllers";
+import { Archetype, get_color_of_Narmour_concept } from "@music-analyzer/irm";
 
 
 class TSR_SVG implements Updatable {
   svg: SVGGElement;
   bracket: SVGPathElement;
   circle: SVGCircleElement;
+  ir_symbol: SVGTextElement;
+  archetype: Archetype;
   begin: number;
   end: number;
   head: { begin: number, end: number, w: number };
@@ -27,10 +30,20 @@ class TSR_SVG implements Updatable {
     this.circle.setAttribute("name", "head");
     this.circle.setAttribute("stroke", "#c00");
     this.circle.setAttribute("fill", "#c00");
+
+    this.ir_symbol = SVG.text();
+    this.ir_symbol.textContent = melody.melody_analysis.implication_realization.symbol;
+    this.ir_symbol.setAttribute("id", "I-R Symbol");
+    this.ir_symbol.setAttribute("font-family", "Times New Roman");
+    this.ir_symbol.setAttribute("font-size", `${bracket_hight}em`);
+    this.ir_symbol.setAttribute("text-anchor", "middle");
+    this.archetype = melody.melody_analysis.implication_realization;
+
     this.svg = SVG.g();
     this.svg.setAttribute("name", "time-span-node");
     this.svg.appendChild(this.bracket);
-    this.svg.appendChild(this.circle);
+    //    this.svg.appendChild(this.circle);
+    this.svg.appendChild(this.ir_symbol);
     this.begin = melody.begin;
     this.end = melody.end;
     this.layer = layer;
@@ -69,6 +82,12 @@ class TSR_SVG implements Updatable {
     this.circle.setAttribute("cy", `${cy}`);
     this.circle.setAttribute("r", is_just_layer ? "5" : "3");
     this.circle.setAttribute("visibility", is_visible ? "visible" : "hidden");
+    this.ir_symbol.setAttribute("x", `${cx}`);
+    this.ir_symbol.setAttribute("y", `${this.y}`);
+    this.ir_symbol.setAttribute("font-size", `${Math.min(w / h, bracket_hight)}em`);
+//    this.ir_symbol.setAttribute("fill", this.archetype.color || "#000");
+    this.ir_symbol.setAttribute("fill", get_color_of_Narmour_concept(this.archetype) || "#000");
+    this.ir_symbol.setAttribute("visibility", is_visible ? "visible" : "hidden");
   }
 }
 
