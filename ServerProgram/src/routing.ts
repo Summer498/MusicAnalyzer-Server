@@ -9,7 +9,6 @@ export const app = express();
 const HOME = "/MusicAnalyzer-server";
 const HOME_DIR = `/var/www/html${HOME}`; // process.cwd();
 const POST_DATA_PATH = `${HOME_DIR}/posted`;
-const POST_API_PATH = `html/api.js`;
 
 export const upload = multer({ dest: POST_DATA_PATH });  // multer が POST_DATA_PATH にファイルを作成
 
@@ -86,14 +85,14 @@ export const listUpGTTMExample = async (req: Request, res: Response) => {
 };
 
 export const handlePostRequest = (req: Request, res: Response, next: NextFunction) => {
-  // CAUTION: upload.fields の中で指定していない name は受け付けなくなる.
-  // ファイルの処理
-  if (req.file == undefined) { console.log(`File uploaded on "undefined", "undefined"`); }
+  const req_path = decodeURI(NN(url.parse(req.url, true, true).pathname).replace(HOME, ""));
+
+  if (req.file === undefined) { console.log(`File uploaded on "undefined", "undefined"`); }
   else {
     const filepath = req.file.path;
     const originalname = req.file.originalname;
     console.log(`File uploaded on ${filepath} ${originalname}`);
   }
   sendRequestedFile(req, res);
-  sendFile(req, res, `${HOME_DIR}/${POST_API_PATH}`);  // 失敗: api.js の中身クライアント側でが実行されていないようだ
+  sendFile(req, res, `${HOME_DIR}/${req_path}`);
 };
