@@ -4,7 +4,7 @@ import {
   NULL_REGISTRAL_RETURN_FORM,
   RegistralReturnForm,
 } from "./RegistralReturnForm";
-
+import { get_color_on_intervallic_angle } from "./ArchetypeColor";
 
 export type TrigramProspectiveSymbol =
   | "P" | "IP" | "VP"
@@ -50,6 +50,7 @@ export class Archetype {
   notes: NoteLiteral[];
   intervals: IntervalName[];
   melody_motion: MelodyMotion;
+  color: string;
 
   constructor(notes: (string | undefined)[]) {
     const _notes = notes.map(e => e || "");
@@ -61,6 +62,7 @@ export class Archetype {
       this.registral_return_form = NULL_REGISTRAL_RETURN_FORM;
       this.intervals = ["", ""];
       this.melody_motion = no_motion;
+      this.color = "#000";
       if (has_blank) {
         this._symbol = "";
         this.symbol = "";
@@ -82,6 +84,7 @@ export class Archetype {
       _Interval.distance(_notes[1], _notes[2]),
     ];
 
+    this.color = get_color_on_intervallic_angle(notes);
     const initial = _Interval.get(this.intervals[0]);
     const follow = _Interval.get(this.intervals[1]);
     this.melody_motion = new MelodyMotion(initial, follow);

@@ -35,6 +35,7 @@ class IRSymbolSVG implements Updatable {
     this.svg.setAttribute("y", `${this.y}`);
     // this.svg.setAttribute("fill", get_color_on_parametric_scale(this.archetype) || "#000");
     this.svg.setAttribute("fill", get_color_of_Narmour_concept(this.archetype) || "#000");
+    //this.svg.setAttribute("fill", this.archetype.color || "#000");
     this.svg.setAttribute("visibility", is_visible ? "visible" : "hidden");
   };
 }
