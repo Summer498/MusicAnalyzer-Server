@@ -13,6 +13,7 @@ declare const window: MusicAnalyzerWindow;
 declare const audio_player: HTMLAudioElement | HTMLVideoElement;
 declare const piano_roll_place: HTMLDivElement;
 declare const controllers: HTMLDivElement;
+declare const title: HTMLHeadingElement;
 
 import { MusicXML } from "@music-analyzer/gttm/src/MusicXML";
 import { xml_parser } from "./src/XMLParser";
@@ -30,7 +31,13 @@ import { song_list } from "./src/songlist";
   const do_re_mi_pr = (await xml_parser.parse(await (await fetch(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/PR-${tune_id}.xml`)).text()) as D_PRR);
 
   const mode: "TSR" | "PR" = "TSR";
-  const do_re_mi_tsr = (await xml_parser.parse(await (await fetch(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/TS-${tune_id}.xml`)).text()) as TSR);
+  title.textContent = `[${mode}] ${tune_id}`;
+  const tune_match = tune_id?.match(/([0-9]+)_[0-9]/);
+  const tune_no = tune_match ? Number(tune_match[1]) : Number(tune_id);
+  if (tune_no) {
+    const song_data = song_list[tune_no];
+    title.innerHTML = `[${mode}] ${tune_id}, ${song_data.author}, <i>"${song_data.title}"</i>`;
+  }
 
   const ts = new TSR(do_re_mi_tsr).tstree.ts;
   const pr = (() => {
