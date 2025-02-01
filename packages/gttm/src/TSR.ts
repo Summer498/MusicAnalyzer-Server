@@ -1,4 +1,5 @@
 import { BeatPos, Path } from "./common";
+import { ReductionElement } from "./ReductionElement";
 
 interface D_Chord {
   readonly duration: number,
@@ -51,7 +52,7 @@ interface D_TS {
   readonly secondary?: D_TS_Tree
 }
 
-export class TS implements D_TS {
+export class TS extends ReductionElement implements D_TS {
   readonly timespan: number;
   readonly leftend: number;
   readonly rightend: number;
@@ -60,51 +61,28 @@ export class TS implements D_TS {
   readonly primary?: TS_Tree;
   readonly secondary?: TS_Tree;
   constructor(ts: D_TS) {
+    const primary = ts.primary && new TS_Tree(ts.primary);
+    const secondary = ts.secondary && new TS_Tree(ts.secondary);
+    super(ts.head.chord.note.id, primary?.ts, secondary?.ts);
     this.timespan = ts.timespan;
     this.leftend = ts.leftend;
     this.rightend = ts.rightend;
     this.head = { chord: new Chord(ts.head.chord) };
     this.at = { temp: new Temp(ts.at.temp) };
-    this.primary = ts.primary && new TS_Tree(ts.primary);
-    this.secondary = ts.secondary && new TS_Tree(ts.secondary);
+    this.primary = primary;
+    this.secondary = secondary;
   }
-  forEach(callback: (value: TS) => void) {
-    callback(this);
-    this.primary?.ts.forEach(callback);
-    this.secondary?.ts.forEach(callback);
-  }
-  getHeadElement(): TS {
-    return this.primary ? this.primary.ts.getHeadElement() : this;
-  }
-  getDepthCount(): number {
-    // returns depth count (1 based)
-    // this.getArrayOfLayer(this.getDepth()-1) すると this と同じ階層の配列が取れる
-    const p_depth = this.primary?.ts.getDepthCount() || 0;
-    const s_depth = this.secondary?.ts.getDepthCount() || 0;
-    return 1 + Math.max(p_depth, s_depth);
-  }
-  private _getArrayOfLayer(i: number, layer?: number): (TS[] | undefined) {
-    if (layer !== undefined && i >= layer) { return [this]; }  // stop search
-    if (this.primary === undefined && this.secondary === undefined) { return [this]; }  // arrival at leaf
 
-    const p_array = this.primary?.ts._getArrayOfLayer(i + 1, layer);
-    const s_array = this.secondary?.ts._getArrayOfLayer(i + 1, layer);
-
-    // marge arrays
-    if (!p_array) { return s_array; }
-    else if (!s_array) { return p_array; }
-    else if (p_array[0].leftend < s_array[0].leftend) {
-      return [...p_array, ...s_array];
-    }
-    else if (p_array[0].leftend >= s_array[0].leftend) {
-      return [...s_array, ...p_array];
-    }
-    else {
-      throw new Error(`Reached unexpected code point`);
-    }
-  }
-  getArrayOfLayer(layer?: number): (TS[] | undefined) {
-    return this._getArrayOfLayer(0, layer);
+  getMatrixOfLayer(layer?: number): TS[][] {
+    const array = this.getArrayOfLayer(layer) as TS[];
+    console.log("array:");
+    console.log(array);
+    const matrix: TS[][] = [[]];
+    array?.forEach(e => {
+      if (!matrix[e.measure]) { matrix[e.measure] = []; }
+      matrix[e.measure][e.note] = e;
+    });
+    return matrix;
   }
 }
 

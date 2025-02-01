@@ -1,8 +1,7 @@
 export { GRP } from "./src/GRP";
 export { MTR } from "./src/MTR";
 export { D_TSR, TSR } from "./src/TSR";
-export type PR = undefined;
-// export { PR } from "./src/PR";
+export { D_PRR, PRR } from "./src/PR";
 
 export { do_re_mi_grp } from "./src/sample.grp";
 export { do_re_mi_mtr } from "./src/sample.mtr";
