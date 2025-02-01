@@ -4,10 +4,10 @@ import { hideBin } from "yargs/helpers";
 import { analyzeMelody, getTimeAndMelody } from "@music-analyzer/melody-analyze";
 
 interface CommandLineOptions {
-  melody_filename: string;
-  roman_filename: string;
-  sampling_rate: number;
-  outfile: string;
+  readonly melody_filename: string;
+  readonly roman_filename: string;
+  readonly sampling_rate: number;
+  readonly outfile: string;
 }
 
 const parseArgs = (argv: string[]) => {

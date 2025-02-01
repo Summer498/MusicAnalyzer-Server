@@ -8,17 +8,22 @@ const mod = (x: number, m: number) => (x % m + m) % m;
 
 export type Gravity = { destination?: number; resolved?: true }
 export type MelodyAnalysis = {
-  scale_gravity?: Gravity,
-  chord_gravity?: Gravity,
-  implication_realization: Archetype,
+  readonly scale_gravity?: Gravity,
+  readonly chord_gravity?: Gravity,
+  readonly implication_realization: Archetype,
 };
-export interface TimeAndMelody extends TimeAnd { note?: number, head: TimeAnd }
-export interface TimeAndChord extends TimeAnd { chord: Chord }
+export interface TimeAndMelody extends TimeAnd {
+  readonly note?: number,
+  readonly head: TimeAnd
+}
+export interface TimeAndChord extends TimeAnd {
+  readonly chord: Chord
+}
 export interface TimeAndMelodyAnalysis extends TimeAnd {
-  note?: number,
-  head: TimeAnd,
-  roman_name: string,
-  melody_analysis: MelodyAnalysis,
+  readonly note?: number,
+  readonly head: TimeAnd,
+  readonly roman_name: string,
+  readonly melody_analysis: MelodyAnalysis,
 }
 
 

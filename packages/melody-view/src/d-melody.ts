@@ -6,9 +6,9 @@ import { DMelodySwitcher } from "@music-analyzer/controllers";
 import { insertMelody } from "./melody-editor-function";
 
 class DMelodyModel {
-  begin: number;
-  end: number;
-  note?: number;
+  readonly begin: number;
+  readonly end: number;
+  readonly note?: number;
   constructor(d_melody: TimeAndMelodyAnalysis) {
     this.begin = d_melody.begin;
     this.end = d_melody.end;
@@ -17,7 +17,7 @@ class DMelodyModel {
 }
 
 class DMelodyView {
-  svg: SVGRectElement;
+  readonly svg: SVGRectElement;
   constructor() {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     this.svg.id = "melody-note";
@@ -33,9 +33,9 @@ class DMelodyView {
 }
 
 class DMelodyController implements Updatable {
-  model: DMelodyModel;
-  view: DMelodyView;
-  d_melody_switcher: DMelodySwitcher;
+  readonly model: DMelodyModel;
+  readonly view: DMelodyView;
+  readonly d_melody_switcher: DMelodySwitcher;
   constructor(d_melody: TimeAndMelodyAnalysis, d_melody_switcher: DMelodySwitcher) {
     this.model = new DMelodyModel(d_melody);
     this.view = new DMelodyView();

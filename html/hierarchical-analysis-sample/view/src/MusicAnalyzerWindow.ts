@@ -5,15 +5,15 @@ import { GRP, MTR, D_TSR, D_PRR } from "@music-analyzer/gttm";
 
 export interface MusicAnalyzerWindow extends Window {
   MusicAnalyzer: {
-    roman: TimeAndRomanAnalysis[],
-    hierarchical_melody: TimeAndMelodyAnalysis[][],
-    melody: TimeAndMelodyAnalysis[],
-    musicxml: MusicXML,
-    GTTM: {
-      grouping: GRP,
-      metric: MTR,
-      time_span: D_TSR,
-      prolongation: D_PRR,
+    readonly roman: TimeAndRomanAnalysis[],
+    readonly hierarchical_melody: TimeAndMelodyAnalysis[][],
+    readonly melody: TimeAndMelodyAnalysis[],
+    readonly musicxml: MusicXML,
+    readonly GTTM: {
+      readonly grouping: GRP,
+      readonly metric: MTR,
+      readonly time_span: D_TSR,
+      readonly prolongation: D_PRR,
     }
   }
 }

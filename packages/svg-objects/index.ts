@@ -5,12 +5,12 @@ import { PianoRollWidth, CurrentTimeX, OctaveCount, white_bgs_prm, PianoRollHeig
 const mod = (x: number, m: number): number => (x % m + m) % m;
 
 abstract class SvgAndParam implements WindowReflectable {
-  abstract svg: SVGElement;
+  readonly abstract svg: SVGElement;
   abstract onWindowResized(): void
 }
 
 class SvgAndParams<T extends SvgAndParam> implements WindowReflectable {
-  svg: T[];
+  readonly svg: T[];
   constructor(svg_and_params: T[]) {
     this.svg = svg_and_params;
     WindowReflectableRegistry.instance.register(this);
@@ -21,7 +21,7 @@ class SvgAndParams<T extends SvgAndParam> implements WindowReflectable {
 }
 
 class CurrentTimeLine implements WindowReflectable {
-  svg: SVGLineElement;
+  readonly svg: SVGLineElement;
   constructor() {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "line");
     this.svg.id = "current_time";
@@ -40,11 +40,11 @@ class CurrentTimeLine implements WindowReflectable {
 export const getCurrentTimeLine = () => new CurrentTimeLine();
 
 class WhiteBG_SVG extends SvgAndParam {
-  svg: SVGRectElement;
-  oct: number;
-  y: number;
-  width: number;
-  height: number;
+  readonly svg: SVGRectElement;
+  readonly oct: number;
+  readonly y: number;
+  readonly width: number;
+  readonly height: number;
   constructor(oct: number, white_index: number) {
     super();
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
@@ -71,11 +71,11 @@ export const getWhiteBGs = () => new SvgAndParams(
 );
 
 class BlackBG_SVG extends SvgAndParam {
-  svg: SVGRectElement;
-  oct: number;
-  y: number;
-  width: number;
-  height: number;
+  readonly svg: SVGRectElement;
+  readonly oct: number;
+  readonly y: number;
+  readonly width: number;
+  readonly height: number;
   constructor(oct: number, black_index: number) {
     super();
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
@@ -102,10 +102,10 @@ export const getBlackBGs = () => new SvgAndParams(
 );
 
 class OctaveBG extends SvgAndParam {
-  svg: SVGGElement;
-  y: number;
-  oct: number;
-  height: number;
+  readonly svg: SVGGElement;
+  readonly y: number;
+  readonly oct: number;
+  readonly height: number;
   constructor(oct: number, white_BGs: SvgAndParams<WhiteBG_SVG>, black_BGs: SvgAndParams<BlackBG_SVG>) {
     super();
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
@@ -133,11 +133,11 @@ export const getOctaveBGs = (white_BGs: SvgAndParams<WhiteBG_SVG>, black_BGs: Sv
 );
 
 class WhiteKeySVG extends SvgAndParam {
-  svg: SVGRectElement;
-  oct: number;
-  y: number;
-  width: number;
-  height: number;
+  readonly svg: SVGRectElement;
+  readonly oct: number;
+  readonly y: number;
+  readonly width: number;
+  readonly height: number;
   constructor(oct: number, white_index: number) {
     super();
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
@@ -164,11 +164,11 @@ export const getWhiteKeys = () => new SvgAndParams(
 );
 
 class BlackKeySVG extends SvgAndParam {
-  svg: SVGRectElement;
-  oct: number;
-  y: number;
-  width: number;
-  height: number;
+  readonly svg: SVGRectElement;
+  readonly oct: number;
+  readonly y: number;
+  readonly width: number;
+  readonly height: number;
   constructor(oct: number, j: number) {
     super();
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
@@ -195,10 +195,10 @@ export const getBlackKeys = () => new SvgAndParams(
 );
 
 class OctaveKeys extends SvgAndParam {
-  svg: SVGGElement;
-  y: number;
-  oct: number;
-  height: number;
+  readonly svg: SVGGElement;
+  readonly y: number;
+  readonly oct: number;
+  readonly height: number;
   constructor(oct: number, white_key: SvgAndParams<WhiteKeySVG>, black_key: SvgAndParams<BlackKeySVG>) {
     super();
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
@@ -227,7 +227,7 @@ export const getOctaveKeys = (white_key: SvgAndParams<WhiteKeySVG>, black_key: S
   );
 
 export class PianoRoll implements WindowReflectable {
-  svg: SVGSVGElement;
+  readonly svg: SVGSVGElement;
   constructor() {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     this.svg.id = "piano-roll";

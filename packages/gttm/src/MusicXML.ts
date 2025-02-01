@@ -1,169 +1,169 @@
 import { BeatPos, SingleOrArray } from "./common";
 
 type HasID = {
-  id: BeatPos | `P${number}-I${number}`
+  readonly id: BeatPos | `P${number}-I${number}`
 }
 export type Pitch = {
-  alter?: number,
-  step: string,
-  octave: number
+  readonly alter?: number,
+  readonly step: string,
+  readonly octave: number
 }
 type Beam = {
-  number: number,
-  text: string
+  readonly number: number,
+  readonly text: string
 }
 type Note = {
-  "default-x": number
-  "default-y": number
-  duration: number
-  voice: number
-  type: string
-  accidental?: string
-  dot?: string
-  stem?: string
-  beam?: Beam
-  pitch?: Pitch
-  rest?: "";
+  readonly "default-x": number
+  readonly "default-y": number
+  readonly duration: number
+  readonly voice: number
+  readonly type: string
+  readonly accidental?: string
+  readonly dot?: string
+  readonly stem?: string
+  readonly beam?: Beam
+  readonly pitch?: Pitch
+  readonly rest?: "";
 }
 type SystemMargins = {
-  "left-margin": number,
-  "right-margin": number
+  readonly "left-margin": number,
+  readonly "right-margin": number
 }
 type SystemLayout = {
-  "top-system-distance": number
-  "system-margins": SystemMargins
+  readonly "top-system-distance": number
+  readonly "system-margins": SystemMargins
 }
 type Key = {
-  fifths: number
+  readonly fifths: number
 }
 type Time = {
-  beats: number,
-  "beat-type": number
+  readonly beats: number,
+  readonly "beat-type": number
 }
 type Clef = {
-  sign: string,
-  line: number
+  readonly sign: string,
+  readonly line: number
 }
 type Attribute = {
-  divisions: number
-  key: Key
-  time: Time
-  clef: Clef
+  readonly divisions: number
+  readonly key: Key
+  readonly time: Time
+  readonly clef: Clef
 }
 type Print = {
-  "system-layout": SystemLayout
+  readonly "system-layout": SystemLayout
 }
 type Barline = {
-  location: string,
-  "bar-style": string
+  readonly location: string,
+  readonly "bar-style": string
 }
 interface Measure {
-  number: number
-  width: number
-  note: SingleOrArray<Note>
+  readonly number: number
+  readonly width: number
+  readonly note: SingleOrArray<Note>
 }
 
 interface ExtendedMeasure extends Measure {
-  print: Print
-  attributes: Attribute
-  barline: Barline
+  readonly print: Print
+  readonly attributes: Attribute
+  readonly barline: Barline
 }
 
 export interface Part extends HasID {
-  measure: (Measure | ExtendedMeasure)[]
+  readonly measure: (Measure | ExtendedMeasure)[]
 }
 type Support = {
-  attribute?: string
-  element: string
-  type: string
+  readonly attribute?: string
+  readonly element: string
+  readonly type: string
 }
 type Encoding = {
-  software: string
-  "encoding-date": string
-  supports: Support[]
+  readonly software: string
+  readonly "encoding-date": string
+  readonly supports: Support[]
 }
 type Creator = {
-  type: string
-  text: string
+  readonly type: string
+  readonly text: string
 }
 type Identification = {
-  creator: Creator
-  encoding: Encoding
+  readonly creator: Creator
+  readonly encoding: Encoding
 }
 type Work = {
-  "work-title": string
+  readonly "work-title": string
 }
 type Scaling = {
-  millimeters: number,
-  tenths: number
+  readonly millimeters: number,
+  readonly tenths: number
 }
 type PageMargins = {
-  type: string,
-  "left-margin": number,
-  "right-margin": number,
-  "top-margin": number,
-  "bottom-margin": number,
+  readonly type: string,
+  readonly "left-margin": number,
+  readonly "right-margin": number,
+  readonly "top-margin": number,
+  readonly "bottom-margin": number,
 }
 type PageLayout = {
-  "page-height": number,
-  "page-width": number,
-  "page-margins": PageMargins[]
+  readonly "page-height": number,
+  readonly "page-width": number,
+  readonly "page-margins": PageMargins[]
 }
 type Font = {
-  "font-family": string,
-  "font-size": number
+  readonly "font-family": string,
+  readonly "font-size": number
 }
 type Defaults = {
-  scaling: Scaling
-  "page-layout": PageLayout
-  "word-font": Font
-  "lyric-font": Font
+  readonly scaling: Scaling
+  readonly "page-layout": PageLayout
+  readonly "word-font": Font
+  readonly "lyric-font": Font
 }
 type CreditWords = {
-  "default-x": number
-  "default-y": number
-  justify: string
-  valign: string
-  "font-size": number
-  text: string
+  readonly "default-x": number
+  readonly "default-y": number
+  readonly justify: string
+  readonly valign: string
+  readonly "font-size": number
+  readonly text: string
 }
 type Credit = {
-  page: number
-  "credit-type": string
-  "credit-words": CreditWords
+  readonly page: number
+  readonly "credit-type": string
+  readonly "credit-words": CreditWords
 }
 interface ScoreInstrument extends HasID {
-  "instrument-name": string
+  readonly "instrument-name": string
 }
 interface MidiDevice extends HasID {
-  port: number
+  readonly port: number
 }
 interface MidiInstrument extends HasID {
-  "midi-channel": number,
-  "midi-program": number,
-  volume: number,
-  pan: number
+  readonly "midi-channel": number,
+  readonly "midi-program": number,
+  readonly volume: number,
+  readonly pan: number
 }
 interface ScorePart extends HasID {
-  "part-name": string
-  "part-abbreviation": string
-  "score-instrument": ScoreInstrument
-  "midi-device": MidiDevice
-  "midi-instrument": MidiInstrument
+  readonly "part-name": string
+  readonly "part-abbreviation": string
+  readonly "score-instrument": ScoreInstrument
+  readonly "midi-device": MidiDevice
+  readonly "midi-instrument": MidiInstrument
 }
 type PartList = {
-  "score-part": ScorePart
+  readonly "score-part": ScorePart
 }
 export type ScorePartwise = {
-  version: number
-  work: Work
-  part: Part
-  identification: Identification
-  defaults: Defaults
-  credit: Credit
-  "part-list": PartList
+  readonly version: number
+  readonly work: Work
+  readonly part: Part
+  readonly identification: Identification
+  readonly defaults: Defaults
+  readonly credit: Credit
+  readonly "part-list": PartList
 }
 
 export type MusicXML = {
-  "score-partwise": ScorePartwise
+  readonly "score-partwise": ScorePartwise
 }

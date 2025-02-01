@@ -75,8 +75,6 @@ export class TS extends ReductionElement implements D_TS {
 
   getMatrixOfLayer(layer?: number): TS[][] {
     const array = this.getArrayOfLayer(layer) as TS[];
-    console.log("array:");
-    console.log(array);
     const matrix: TS[][] = [[]];
     array?.forEach(e => {
       if (!matrix[e.measure]) { matrix[e.measure] = []; }

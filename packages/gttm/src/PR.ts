@@ -3,7 +3,7 @@ import { ReductionElement } from "./ReductionElement";
 
 interface D_PR {
   readonly head: {
-    readonly chord: { note: { id: BeatPos } },
+    readonly chord: { readonly note: { readonly id: BeatPos } },
     readonly recipe: "weak" | "progression" | "strong"
   },
   readonly primary?: D_P_Tree,

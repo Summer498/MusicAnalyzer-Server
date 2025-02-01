@@ -49,14 +49,14 @@ export const shorten_key = (key: Scale) => {
 };
 
 class ChordNoteSVG implements Updatable {
-  svg: SVGRectElement;
-  begin: number;
-  end: number;
-  y: number;
-  w: number;
-  h: number;
-  tonic: string;
-  type: string;
+  readonly svg: SVGRectElement;
+  readonly begin: number;
+  readonly end: number;
+  readonly y: number;
+  readonly w: number;
+  readonly h: number;
+  readonly tonic: string;
+  readonly type: string;
   constructor(e: TimeAndRomanAnalysis, chord: Chord, note: string, oct: number) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     this.begin = e.begin;
@@ -86,11 +86,11 @@ export const getChordNotesSVG = (romans: TimeAndRomanAnalysis[]) => new SvgColle
 );
 
 class ChordNameSVG implements Updatable {
-  svg: SVGTextElement;
-  begin: number;
-  end: number;
-  y: number;
-  tonic: string;
+  readonly svg: SVGTextElement;
+  readonly begin: number;
+  readonly end: number;
+  readonly y: number;
+  readonly tonic: string;
   constructor(e: TimeAndRomanAnalysis) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "text");
     this.svg.textContent = shorten_chord(_Chord.get(e.chord).name);
@@ -115,11 +115,11 @@ export const getChordNamesSVG = (romans: TimeAndRomanAnalysis[]) => new SvgColle
 );
 
 class ChordRomanSVG implements Updatable {
-  svg: SVGTextElement;
-  begin: number;
-  end: number;
-  y: number;
-  tonic: string;
+  readonly svg: SVGTextElement;
+  readonly begin: number;
+  readonly end: number;
+  readonly y: number;
+  readonly tonic: string;
   constructor(e: TimeAndRomanAnalysis) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "text");
     this.svg.textContent = shorten_chord(e.roman);
@@ -144,11 +144,11 @@ export const getChordRomansSVG = (romans: TimeAndRomanAnalysis[]) => new SvgColl
 );
 
 class ChordKeySVG implements Updatable {
-  svg: SVGTextElement;
-  begin: number;
-  end: number;
-  y: number;
-  tonic: string;
+  readonly svg: SVGTextElement;
+  readonly begin: number;
+  readonly end: number;
+  readonly y: number;
+  readonly tonic: string;
   constructor(e: TimeAndRomanAnalysis) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "text");
     this.svg.textContent = shorten_key(_Scale.get(e.scale)) + ': ';

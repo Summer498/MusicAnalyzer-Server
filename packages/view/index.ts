@@ -7,15 +7,15 @@ export interface Updatable {
 }
 
 interface UpdatableTimeAndSVGs extends Updatable, TimeAnd {
-  svg: SVGElement;
+  readonly svg: SVGElement;
 }
 interface Model extends TimeAnd { }
 interface View {
-  svg: SVGElement
+  readonly svg: SVGElement
 }
 interface Controller extends Updatable {
-  model: Model;
-  view: View
+  readonly model: Model;
+  readonly view: View
 }
 
 export interface WindowReflectable {

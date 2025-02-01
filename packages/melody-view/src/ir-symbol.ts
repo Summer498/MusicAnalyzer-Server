@@ -7,13 +7,13 @@ import { Archetype, get_color_of_Narmour_concept } from "@music-analyzer/irm";
 const ir_analysis_em = size;
 
 class IRSymbolSVG implements Updatable {
-  svg: SVGTextElement;
-  begin: number;
-  end: number;
-  archetype: Archetype;
-  layer: number;
-  y: number;
-  hierarchy_level: HierarchyLevel;
+  readonly svg: SVGTextElement;
+  readonly begin: number;
+  readonly end: number;
+  readonly archetype: Archetype;
+  readonly layer: number;
+  readonly y: number;
+  readonly hierarchy_level: HierarchyLevel;
   constructor(melody: TimeAndMelodyAnalysis, hierarchy_level: HierarchyLevel, layer?: number) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "text");
     this.svg.textContent = melody.melody_analysis.implication_realization.symbol;
