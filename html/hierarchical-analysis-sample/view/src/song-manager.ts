@@ -132,18 +132,18 @@ export const appendController = (piano_roll_place: HTMLDivElement) => {
   melody_beep_controllers_div.setAttribute("id", "melody-beep-controllers");
   const melody_color_selector_div = HTML.div();
   melody_color_selector_div.setAttribute("id", "melody-color-selector");
-  melody_color_selector_div.setAttribute("display", "inline");  // NOTE: 色選択は未実装なので消しておく
+  melody_color_selector_div.setAttribute("display", "inline");
   melody_color_selector_div.appendChild(melody_color_selector.body);
   const controllers = HTML.div();
   controllers.setAttribute("id", "controllers");
   controllers.setAttribute("style", "margin-top:20px");
-  controllers.appendChild(d_melody_div);
+  //  controllers.appendChild(d_melody_div);
   controllers.appendChild(hierarchy_level_div);
   controllers.appendChild(time_length_div);
   if (!NO_CHORD) {
     controllers.appendChild(gravity_switcher_div);
   }
   controllers.appendChild(melody_beep_controllers_div);
-  controllers.appendChild(melody_color_selector_div);
+  //  controllers.appendChild(melody_color_selector_div);  // NOTE: 色選択は未実装なので消しておく
   piano_roll_place.insertAdjacentElement("beforeend", controllers);
 };
