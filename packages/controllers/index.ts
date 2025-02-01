@@ -60,7 +60,8 @@ export class HierarchyLevel implements Controller {
 export class TimeRangeSlider implements Controller {
   body: HTMLSpanElement;
   constructor() {
-    const time_range_slider = HTML.input_range({ id: "time_range_slider", name: "time_range_slider", min: 1, max: 10, step: 0.1 });
+    const time_range_slider = HTML.input_range({ id: "time_range_slider", name: "time_range_slider", min: 1, max: 10, step: 0.1, value:10 });
+    PianoRollTimeLength.setRatio(Math.pow(2, Number(time_range_slider.value) - Number(time_range_slider.max)));
     const show_time_range_slider_value = HTML.span();
     show_time_range_slider_value.textContent = `${Math.floor(Math.pow(2, Number(time_range_slider.value) - Number(time_range_slider.max)) * 100)} %`;
     time_range_slider.addEventListener("input", e => {

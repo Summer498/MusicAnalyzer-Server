@@ -8,9 +8,15 @@ import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { getDMelodyControllers, getHierarchicalChordGravitySVGs, getHierarchicalIRSymbolSVGs, getHierarchicalMelodyControllers, getHierarchicalScaleGravitySVGs, getTSR_SVGs } from "@music-analyzer/melody-view";
 import { getBlackBGs, getBlackKeys, getCurrentTimeLine, getOctaveBGs, getOctaveKeys, getWhiteBGs, getWhiteKeys, PianoRoll } from "@music-analyzer/svg-objects";
 import { Assertion, _throw } from "@music-analyzer/stdlib";
-import { PianoRollTimeLength } from "@music-analyzer/view-parameters";
+import { CurrentTimeRatio, PianoRollTimeLength } from "@music-analyzer/view-parameters";
 
+declare const audio_player: HTMLAudioElement | HTMLVideoElement;
 
+const FULL_VIEW = true;  // 横いっぱいに分析結果を表示
+if (FULL_VIEW) {
+  CurrentTimeRatio.value = 0.025;
+  audio_player.autoplay = false;
+}
 const d_melody_switcher = new DMelodySwitcher();
 const hierarchy_level = new HierarchyLevel();
 const time_range_slider = new TimeRangeSlider();
@@ -52,9 +58,8 @@ export const appendPianoRoll = (piano_roll_place: HTMLDivElement, song_manager: 
   const melodies = song_manager.hierarchical_melody[song_manager.hierarchical_melody.length - 1];
   PianoRollTimeLength.setSongLength(
     Math.max(
-      ...song_manager.romans.map(e => e.end),
       ...melodies.map(e => e.end)
-    ));
+    ) * 1.05); // ちょっとマージンを取っておく
 
   console.log(`song_manager.hierarchical_melody.length: ${song_manager.hierarchical_melody.length}`);
   hierarchy_level.setHierarchyLevelSliderValues(song_manager.hierarchical_melody.length - 1);
@@ -91,7 +96,9 @@ export const appendPianoRoll = (piano_roll_place: HTMLDivElement, song_manager: 
   getOctaveKeys(getWhiteKeys(), getBlackKeys()).svg
     .forEach(e => octave_keys.appendChild(e.svg));
   piano_roll.svg.appendChild(octave_keys);
-  piano_roll.svg.appendChild(getCurrentTimeLine().svg);
+  if (!FULL_VIEW) {
+    piano_roll.svg.appendChild(getCurrentTimeLine().svg);
+  }
   // 手前側
 
   piano_roll_place.insertAdjacentElement("beforeend", piano_roll.svg);

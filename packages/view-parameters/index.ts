@@ -14,23 +14,33 @@ class RectParameters {
 }
 
 // export const piano_roll_time_length = 5;  // 1 画面に収める曲の長さ[秒]
-export const current_time_ratio = 1 / 4;
+export class CurrentTimeRatio {
+  static onChange: (() => void)[] = [];
+  static #value = 1 / 4;
+  static get value() { return this.#value; }
+  static set value(value: number) {
+    this.#value = value;
+    this.onChange;
+  }
+}
 
 export class PianoRollTimeLength {
   static #value = 5;
   static #song_length = 0;
+  static #piano_roll_ratio = 1;
   static get value() { return this.#value; }
-  static onChange(piano_roll_time_length: number) {
-    this.#value = piano_roll_time_length;
+  static onChange() {
+    this.#value = this.#piano_roll_ratio * this.#song_length;
     NoteSize.onChange();
   }
   static setSongLength(song_length: number) {
     if (song_length <= 0) { throw new EvalError("song_length should be positive"); }
     this.#song_length = song_length;
+    this.onChange();
   }
   static setRatio(piano_roll_ratio: number) {
-    if (!this.#song_length) { throw new Error("Song length is not set yet. Please use: PianoRollTimeLength.setSongLength(song_length)"); }
-    this.onChange(piano_roll_ratio * this.#song_length);
+    this.#piano_roll_ratio = piano_roll_ratio;
+    this.onChange();
   }
 }
 export class PianoRollWidth {
@@ -42,10 +52,10 @@ export class PianoRollWidth {
 }
 export class CurrentTimeX {
   static onUpdate: (() => void)[] = [];
-  static #value = PianoRollWidth.value * current_time_ratio;
+  static #value = PianoRollWidth.value * CurrentTimeRatio.value;
   static get value() { return this.#value; }
   static onWindowResized() {
-    this.#value = PianoRollWidth.value * current_time_ratio;
+    this.#value = PianoRollWidth.value * CurrentTimeRatio.value;
     this.onUpdate.forEach(event => event());
   }
 }
