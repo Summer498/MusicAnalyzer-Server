@@ -1,15 +1,17 @@
 import { BeatPos, Path } from "./common";
 
 interface D_Chord {
-  duration: number,
-  velocity: number,
-  note: { id: BeatPos }
+  readonly duration: number,
+  readonly velocity: number,
+  readonly note: {
+    readonly id: BeatPos
+  }
 }
 
 class Chord implements D_Chord {
-  duration: number;
-  velocity: number;
-  note: { id: BeatPos };
+  readonly duration: number;
+  readonly velocity: number;
+  readonly note: { readonly id: BeatPos };
   constructor(chord: D_Chord) {
     this.duration = chord.duration;
     this.velocity = chord.velocity;
@@ -19,17 +21,17 @@ class Chord implements D_Chord {
 }
 
 interface D_Temp {
-  difference: number,
-  stable: 0 | "unknown" | Path,
-  pred: { temp: 0 | "-inf" | Path }
-  succ: { temp: 0 | "+inf" | Path }
+  readonly difference: number,
+  readonly stable: 0 | "unknown" | Path,
+  readonly pred: { readonly temp: 0 | "-inf" | Path }
+  readonly succ: { readonly temp: 0 | "+inf" | Path }
 }
 
 class Temp implements D_Temp {
-  difference: number;
-  stable: 0 | "unknown" | Path;
-  pred: { temp: 0 | "-inf" | Path };
-  succ: { temp: 0 | "+inf" | Path };
+  readonly difference: number;
+  readonly stable: 0 | "unknown" | Path;
+  readonly pred: { readonly temp: 0 | "-inf" | Path };
+  readonly succ: { readonly temp: 0 | "+inf" | Path };
   constructor(temp: D_Temp) {
     this.difference = temp.difference;
     this.stable = temp.stable;
@@ -40,23 +42,23 @@ class Temp implements D_Temp {
 
 
 interface D_TS {
-  timespan: number,
-  leftend: number,
-  rightend: number,
-  head: { chord: D_Chord },
-  at: { temp: D_Temp },
-  primary?: D_TS_Tree
-  secondary?: D_TS_Tree
+  readonly timespan: number,
+  readonly leftend: number,
+  readonly rightend: number,
+  readonly head: { readonly chord: D_Chord },
+  readonly at: { readonly temp: D_Temp },
+  readonly primary?: D_TS_Tree
+  readonly secondary?: D_TS_Tree
 }
 
 export class TS implements D_TS {
-  timespan: number;
-  leftend: number;
-  rightend: number;
-  head: { chord: Chord };
-  at: { temp: Temp };
-  primary?: TS_Tree;
-  secondary?: TS_Tree;
+  readonly timespan: number;
+  readonly leftend: number;
+  readonly rightend: number;
+  readonly head: { readonly chord: Chord };
+  readonly at: { readonly temp: Temp };
+  readonly primary?: TS_Tree;
+  readonly secondary?: TS_Tree;
   constructor(ts: D_TS) {
     this.timespan = ts.timespan;
     this.leftend = ts.leftend;
@@ -108,22 +110,22 @@ export class TS implements D_TS {
 
 
 interface D_TS_Tree {
-  ts: D_TS
+  readonly ts: D_TS
 }
 
 class TS_Tree implements D_TS_Tree {
-  ts: TS;
+  readonly ts: TS;
   constructor(ts_tree: D_TS_Tree) {
     this.ts = new TS(ts_tree.ts);
   }
 }
 
 export interface D_TSR {
-  tstree: D_TS_Tree;
+  readonly tstree: D_TS_Tree;
 }
 
 export class TSR implements D_TSR {
-  tstree: TS_Tree;
+  readonly tstree: TS_Tree;
   constructor(tsr: D_TSR) {
     this.tstree = new TS_Tree(tsr.tstree);
   }
