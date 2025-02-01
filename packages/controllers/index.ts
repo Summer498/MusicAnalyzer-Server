@@ -2,12 +2,12 @@ import { UpdatableRegistry } from "@music-analyzer/view";
 import { PianoRollTimeLength } from "@music-analyzer/view-parameters";
 
 export interface Controller {
-  body: HTMLSpanElement;
+  readonly body: HTMLSpanElement;
 }
 
 export class DMelodySwitcher implements Controller {
-  body: HTMLSpanElement;
-  checkbox: HTMLInputElement;
+  readonly body: HTMLSpanElement;
+  readonly checkbox: HTMLInputElement;
   constructor() {
     this.checkbox = document.createElement("input");
     this.checkbox.type = "checkbox";
@@ -27,9 +27,9 @@ export class DMelodySwitcher implements Controller {
 }
 
 export class HierarchyLevel implements Controller {
-  body: HTMLSpanElement;
-  range: HTMLInputElement;
-  #display: HTMLSpanElement;
+  readonly body: HTMLSpanElement;
+  readonly range: HTMLInputElement;
+  readonly #display: HTMLSpanElement;
   constructor() {
     this.range = document.createElement("input");
     this.range.type = "range";
@@ -60,7 +60,7 @@ export class HierarchyLevel implements Controller {
 };
 
 export class TimeRangeSlider implements Controller {
-  body: HTMLSpanElement;
+  readonly body: HTMLSpanElement;
   constructor() {
     const time_range_slider = document.createElement("input");
     time_range_slider.type = "range";
@@ -89,9 +89,9 @@ export class TimeRangeSlider implements Controller {
 }
 
 export class GravitySwitcher implements Controller {
-  body: HTMLSpanElement;
-  checkbox: HTMLInputElement;
-  #gravities: SVGElement[];
+  readonly body: HTMLSpanElement;
+  readonly checkbox: HTMLInputElement;
+  readonly #gravities: SVGElement[];
   constructor(id: string, label: string, gravities: SVGElement[]) {
     this.checkbox = document.createElement("input");
     this.checkbox.type = "checkbox";
@@ -113,8 +113,8 @@ export class GravitySwitcher implements Controller {
 }
 
 export class MelodyBeepSwitcher implements Controller {
-  body: HTMLSpanElement;
-  checkbox: HTMLInputElement;
+  readonly body: HTMLSpanElement;
+  readonly checkbox: HTMLInputElement;
   constructor() {
     this.checkbox = document.createElement("input");
     this.checkbox.type = "checkbox";
@@ -134,8 +134,8 @@ export class MelodyBeepSwitcher implements Controller {
 };
 
 export class MelodyBeepVolume implements Controller {
-  body: HTMLSpanElement;
-  range: HTMLInputElement;
+  readonly body: HTMLSpanElement;
+  readonly range: HTMLInputElement;
   constructor() {
     this.range = document.createElement("input");
     this.range.type = "range";
@@ -156,7 +156,7 @@ export class MelodyBeepVolume implements Controller {
 }
 
 export class MelodyColorSelector implements Controller {
-  body: HTMLSpanElement;
+  readonly body: HTMLSpanElement;
   constructor() {
     const key_color_selector = document.createElement("input");
     key_color_selector.id = "key_color_selector";

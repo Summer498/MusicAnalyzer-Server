@@ -13,15 +13,15 @@ type Vector2D = {
 }
 
 class ArrowSVG implements Updatable {
-  svg: SVGGElement;
-  begin: number;
-  end: number;
-  note?: number;
-  destination?: number;
-  layer: number;
-  src: Vector2D;
-  dst: Vector2D;
-  hierarchy_level: HierarchyLevel;
+  readonly svg: SVGGElement;
+  readonly begin: number;
+  readonly end: number;
+  readonly note?: number;
+  readonly destination?: number;
+  readonly layer: number;
+  readonly src: Vector2D;
+  readonly dst: Vector2D;
+  readonly hierarchy_level: HierarchyLevel;
 
   constructor(melody: TimeAndMelodyAnalysis, next: TimeAndMelodyAnalysis, gravity: Gravity, fill: string, stroke: string, hierarchy_level: HierarchyLevel, layer?: number) {
     const triangle = document.createElementNS("http://www.w3.org/2000/svg", "polygon");

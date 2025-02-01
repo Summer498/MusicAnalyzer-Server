@@ -6,11 +6,11 @@ import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { play } from "@music-analyzer/synth";
 
 class BeatBarSVG implements Updatable {
-  svg: SVGLineElement;
-  begin: number;
-  end: number;
-  y1: number;
-  y2: number;
+  readonly svg: SVGLineElement;
+  readonly begin: number;
+  readonly end: number;
+  readonly y1: number;
+  readonly y2: number;
   sound_reserved: boolean;
   constructor(beat_info: BeatInfo, i: number) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "line");

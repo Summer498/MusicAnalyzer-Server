@@ -4,9 +4,9 @@ import { TimeAnd } from "@music-analyzer/time-and";
 import { RomanChord } from "@music-analyzer/roman-chord";
 
 export interface TimeAndRomanAnalysis extends TimeAnd {
-  scale: string,
-  chord: string,
-  roman: string,
+  readonly scale: string,
+  readonly chord: string,
+  readonly roman: string,
 }
 
 const remove_item = <T>(array: T[], will_removed: (item: T) => boolean) => {

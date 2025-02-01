@@ -10,10 +10,10 @@ export { getDMelodyControllers } from "./d-melody";
 
 
 class MelodyModel {
-  begin: number;
-  end: number;
-  note?: number;
-  layer: number;
+  readonly begin: number;
+  readonly end: number;
+  readonly note?: number;
+  readonly layer: number;
   constructor(melody: TimeAndMelodyAnalysis, layer: number) {
     this.begin = melody.begin;
     this.end = melody.end;
@@ -23,7 +23,7 @@ class MelodyModel {
 }
 
 class MelodyView {
-  svg: SVGRectElement;
+  readonly svg: SVGRectElement;
   sound_reserved: boolean;
   constructor(color: string) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
@@ -46,11 +46,11 @@ class MelodyView {
 }
 
 class MelodyController implements Updatable {
-  model: MelodyModel;
-  view: MelodyView;
-  hierarchy_level: HierarchyLevel;
-  melody_beep_switcher: MelodyBeepSwitcher;
-  melody_beep_volume: MelodyBeepVolume;
+  readonly model: MelodyModel;
+  readonly view: MelodyView;
+  readonly hierarchy_level: HierarchyLevel;
+  readonly melody_beep_switcher: MelodyBeepSwitcher;
+  readonly melody_beep_volume: MelodyBeepVolume;
 
   constructor(melody: TimeAndMelodyAnalysis, hierarchy_level: HierarchyLevel, melody_beep_switcher: MelodyBeepSwitcher, melody_beep_volume: MelodyBeepVolume, layer?: number) {
     this.model = new MelodyModel(melody, layer || 0);

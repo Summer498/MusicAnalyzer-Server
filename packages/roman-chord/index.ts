@@ -15,9 +15,9 @@ const get_roman = (scale: Scale, chord: Chord) => {
 };
 
 export class RomanChord {
-  scale: Scale;
-  chord: Chord;
-  roman: string;
+  readonly scale: Scale;
+  readonly chord: Chord;
+  readonly roman: string;
   constructor(scale: Scale, chord: Chord) {
     this.scale = scale;
     this.chord = chord;

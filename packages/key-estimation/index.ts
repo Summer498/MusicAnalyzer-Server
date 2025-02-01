@@ -44,7 +44,7 @@ export const getChord = (chord_string: string): Chord => {
 };
 
 export class ChordProgression {
-  lead_sheet_chords: string[];
+  readonly lead_sheet_chords: string[];
 
   constructor(lead_sheet_chords: string[]) {
     this.lead_sheet_chords = lead_sheet_chords.map(e => getChord(e).name);

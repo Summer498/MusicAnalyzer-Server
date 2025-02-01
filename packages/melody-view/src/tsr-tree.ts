@@ -6,19 +6,19 @@ import { Archetype, get_color_of_Narmour_concept } from "@music-analyzer/irm";
 
 
 class TSR_SVG implements Updatable {
-  svg: SVGGElement;
-  bracket: SVGPathElement;
-  circle: SVGCircleElement;
-  ir_symbol: SVGTextElement;
-  archetype: Archetype;
-  begin: number;
-  end: number;
-  head: { begin: number, end: number, w: number };
-  layer: number;
-  y: number;
-  w: number;
-  h: number;
-  hierarchy_level: HierarchyLevel;
+  readonly svg: SVGGElement;
+  readonly bracket: SVGPathElement;
+  readonly circle: SVGCircleElement;
+  readonly ir_symbol: SVGTextElement;
+  readonly archetype: Archetype;
+  readonly begin: number;
+  readonly end: number;
+  readonly head: { begin: number, end: number, w: number };
+  readonly layer: number;
+  readonly y: number;
+  readonly w: number;
+  readonly h: number;
+  readonly hierarchy_level: HierarchyLevel;
   constructor(melody: TimeAndMelodyAnalysis, hierarchy_level: HierarchyLevel, layer: number) {
     this.bracket = document.createElementNS("http://www.w3.org/2000/svg", "path");
     this.bracket.id = "group";

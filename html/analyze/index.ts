@@ -6,9 +6,9 @@ import { appendController, appendPianoRoll, SongManager } from "./src/song-manag
 import { NowAt } from "@music-analyzer/view-parameters";
 
 interface MusicAnalyzerWindow extends Window {
-  MusicAnalyzer: {
-    roman: TimeAndRomanAnalysis[],
-    melody: TimeAndMelodyAnalysis[]
+  readonly MusicAnalyzer: {
+    readonly roman: TimeAndRomanAnalysis[],
+    readonly melody: TimeAndMelodyAnalysis[]
   }
 }
 declare const window: MusicAnalyzerWindow;

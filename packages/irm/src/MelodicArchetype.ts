@@ -43,14 +43,14 @@ const remove_minus = (src: string) => {
 };
 
 export class Archetype {
-  _symbol: _ArchetypeSymbol;
-  symbol: ArchetypeSymbol;
-  retrospective: boolean;
-  registral_return_form: RegistralReturnForm;
-  notes: NoteLiteral[];
-  intervals: IntervalName[];
-  melody_motion: MelodyMotion;
-  color: string;
+  readonly _symbol: _ArchetypeSymbol;
+  readonly symbol: ArchetypeSymbol;
+  readonly retrospective: boolean;
+  readonly registral_return_form: RegistralReturnForm;
+  readonly notes: NoteLiteral[];
+  readonly intervals: IntervalName[];
+  readonly melody_motion: MelodyMotion;
+  readonly color: string;
 
   constructor(notes: (string | undefined)[]) {
     const _notes = notes.map(e => e || "");

@@ -20,11 +20,11 @@ const melody_beep_volume = new MelodyBeepVolume();
 const melody_color_selector = new MelodyColorSelector();
 
 export class SongManager {
-  beat_info: BeatInfo;
-  romans: TimeAndRomanAnalysis[];
-  hierarchical_melody: TimeAndMelodyAnalysis[][];
-  // melodies: TimeAndMelodyAnalysis[];
-  d_melodies: TimeAndMelodyAnalysis[];
+  readonly beat_info: BeatInfo;
+  readonly romans: TimeAndRomanAnalysis[];
+  readonly hierarchical_melody: TimeAndMelodyAnalysis[][];
+  // readonly melodies: TimeAndMelodyAnalysis[];
+  readonly d_melodies: TimeAndMelodyAnalysis[];
   constructor(
     beat_info: BeatInfo,
     romans: TimeAndRomanAnalysis[],
