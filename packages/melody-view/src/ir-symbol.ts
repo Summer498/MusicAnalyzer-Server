@@ -26,7 +26,7 @@ class IRSymbolSVG implements Updatable {
     this.end = melody.end;
     this.archetype = melody.melody_analysis.implication_realization;
     this.layer = layer || 0;
-    this.y = (PianoRollBegin.value - melody.note) * black_key_prm.height;
+    this.y = melody.note === undefined ? -99 : (PianoRollBegin.value - melody.note) * black_key_prm.height;
     this.hierarchy_level = hierarchy_level;
   }
   onUpdate() {

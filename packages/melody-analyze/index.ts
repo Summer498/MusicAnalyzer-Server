@@ -12,10 +12,10 @@ export type MelodyAnalysis = {
   chord_gravity?: Gravity,
   implication_realization: Archetype,
 };
-export interface TimeAndMelody extends TimeAnd { note: number, head: TimeAnd }
+export interface TimeAndMelody extends TimeAnd { note?: number, head: TimeAnd }
 export interface TimeAndChord extends TimeAnd { chord: Chord }
 export interface TimeAndMelodyAnalysis extends TimeAnd {
-  note: number,
+  note?: number,
   head: TimeAnd,
   roman_name: string,
   melody_analysis: MelodyAnalysis,
@@ -38,9 +38,10 @@ const _getTimeAndChord = (chord_strs: TimeAndString[]) => {
 // TODO: マイナーコードに対応する
 const registerGravity = (name: string, tonic: number, melodies: TimeAndMelody[], i: number): Gravity | undefined => {
   if (!name) { return undefined; }
-  const melody = melodies[i];
-  const chroma = mod(melody.note - tonic - (name.includes("major") ? 0 : 3), 12);
-  const destination = chroma === 11 ? melody.note + 1 : chroma === 5 ? melody.note - 1 : undefined;
+  const pitch = melodies[i].note;
+  if (pitch === undefined) { return undefined; }
+  const chroma = mod(pitch - tonic - (name.includes("major") ? 0 : 3), 12);
+  const destination = chroma === 11 ? pitch + 1 : chroma === 5 ? pitch - 1 : undefined;
   if (destination === undefined) { return undefined; }
   return {
     destination,
@@ -96,7 +97,7 @@ export const analyzeMelody = (
           melodies,
           i
         ),
-        implication_realization: new Archetype(melodies.slice(start, next + 1).map(e => _Note.fromMidi(e.note)))
+        implication_realization: new Archetype(melodies.slice(start, next + 1).map(e => !e.note ? undefined : _Note.fromMidi(e.note)))
       },
     };
   });

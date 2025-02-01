@@ -2,14 +2,14 @@ import { SVG } from "@music-analyzer/html";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { hsv2rgb, rgbToString } from "@music-analyzer/color";
 import { SvgCollection2, Updatable } from "@music-analyzer/view";
-import { CurrentTimeX, NoteSize, NowAt, black_key_prm, PianoRollBegin, } from "@music-analyzer/view-parameters";
-import { DMelodySwitcher,  } from "@music-analyzer/controllers";
+import { CurrentTimeX, NoteSize, NowAt, black_key_prm, PianoRollBegin } from "@music-analyzer/view-parameters";
+import { DMelodySwitcher } from "@music-analyzer/controllers";
 import { insertMelody } from "./melody-editor-function";
 
 class DMelodyModel {
   begin: number;
   end: number;
-  note: number;
+  note?: number;
   constructor(d_melody: TimeAndMelodyAnalysis) {
     this.begin = d_melody.begin;
     this.end = d_melody.end;
@@ -47,7 +47,7 @@ class DMelodyController implements Updatable {
     this.onUpdate();
   }
   initializeView() {
-    this.view.y = (PianoRollBegin.value - this.model.note) * black_key_prm.height;
+    this.view.y = this.model.note === undefined ? -99 : (PianoRollBegin.value - this.model.note) * black_key_prm.height;
     this.view.width = (this.model.end - this.model.begin) * NoteSize.value;
     this.view.height = black_key_prm.height;
   }

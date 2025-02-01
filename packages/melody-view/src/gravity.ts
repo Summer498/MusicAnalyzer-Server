@@ -17,7 +17,7 @@ class ArrowSVG implements Updatable {
   svg: SVGGElement;
   begin: number;
   end: number;
-  note: number;
+  note?: number;
   destination?: number;
   layer: number;
   src: Vector2D;
@@ -48,7 +48,7 @@ class ArrowSVG implements Updatable {
     this.layer = layer || 0;
     this.src = {
       x: (melody.end - melody.begin) / 2 + melody.begin,
-      y: (PianoRollBegin.value + 0.5 - melody.note) * black_key_prm.height
+      y: melody.note === undefined ? -99 : (PianoRollBegin.value + 0.5 - melody.note) * black_key_prm.height
     };
     this.dst = {
       x: next.begin,
