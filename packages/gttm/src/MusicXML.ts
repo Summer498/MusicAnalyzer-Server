@@ -1,7 +1,7 @@
 import { BeatPos, SingleOrArray } from "./common";
 
 type HasID = {
-  id: BeatPos
+  id: BeatPos | `P${number}-I${number}`
 }
 export type Pitch = {
   alter?: number,
@@ -22,7 +22,8 @@ type Note = {
   dot?: string
   stem?: string
   beam?: Beam
-  pitch: Pitch
+  pitch?: Pitch
+  rest?: "";
 }
 type SystemMargins = {
   "left-margin": number,
