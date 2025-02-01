@@ -16,8 +16,9 @@ declare const controllers: HTMLDivElement;
 
 import { MusicXML } from "@music-analyzer/gttm/src/MusicXML";
 import { xml_parser } from "./src/XMLParser";
-import { GRP, MTR, TSR } from "@music-analyzer/gttm";
+import { GRP, MTR, TSR, PRR, D_TSR, D_PRR } from "@music-analyzer/gttm";
 import { getHierarchicalMelody } from "./src/HierarchicalMelody";
+import { song_list } from "./src/songlist";
 (async () => {
   const urlParams = new URLSearchParams(window.location.search);
   const tune_id = urlParams.get("tune");
@@ -25,11 +26,21 @@ import { getHierarchicalMelody } from "./src/HierarchicalMelody";
   const musicxml = (await xml_parser.parse(await (await fetch(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/MSC-${tune_id}.xml`)).text())) as MusicXML;
   const do_re_mi_grp = (await xml_parser.parse(await (await fetch(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/GPR-${tune_id}.xml`)).text()) as GRP);
   const do_re_mi_mtr = (await xml_parser.parse(await (await fetch(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/MPR-${tune_id}.xml`)).text()) as MTR);
+  const do_re_mi_tsr = (await xml_parser.parse(await (await fetch(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/TS-${tune_id}.xml`)).text()) as D_TSR);
+  const do_re_mi_pr = (await xml_parser.parse(await (await fetch(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/PR-${tune_id}.xml`)).text()) as D_PRR);
+
+  const mode: "TSR" | "PR" = "TSR";
   const do_re_mi_tsr = (await xml_parser.parse(await (await fetch(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/TS-${tune_id}.xml`)).text()) as TSR);
 
   const ts = new TSR(do_re_mi_tsr).tstree.ts;
+  const pr = (() => {
+    try {
+      return new PRR(do_re_mi_pr).prtree.pr;
+    } catch (e) { }
+  })();
 
-  const hierarchical_melody = getHierarchicalMelody(ts, musicxml, roman);
+  const matrix = ts.getMatrixOfLayer(ts.getDepthCount() - 1);
+  const hierarchical_melody = getHierarchicalMelody(String(mode) === "PR" ? pr ! : ts, matrix, musicxml, roman);
 
   // const org_melody = await (await fetch("/MusicAnalyzer-server/resources/Hierarchical Analysis Sample/analyzed/melody/crepe/vocals.json")).json() as number[];
   // const time_and_melody = getTimeAndMelody(org_melody, 100);
@@ -45,7 +56,7 @@ import { getHierarchicalMelody } from "./src/HierarchicalMelody";
       grouping: do_re_mi_grp,
       metric: do_re_mi_mtr,
       time_span: do_re_mi_tsr,
-      prolongation: undefined,
+      prolongation: do_re_mi_pr,
     },
   };
 
