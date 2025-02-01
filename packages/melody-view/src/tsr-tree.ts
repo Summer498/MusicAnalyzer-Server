@@ -1,7 +1,7 @@
 import { SVG } from "@music-analyzer/html";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { SvgCollection, Updatable } from "@music-analyzer/view";
-import { CurrentTimeX, NoteSize, NowAt, black_key_prm } from "@music-analyzer/view-parameters";
+import { CurrentTimeX, NoteSize, NowAt, black_key_prm, bracket_hight } from "@music-analyzer/view-parameters";
 import { HierarchyLevel } from "@music-analyzer/controllers";
 
 
@@ -34,9 +34,9 @@ class TSR_SVG implements Updatable {
     this.begin = melody.begin;
     this.end = melody.end;
     this.layer = layer;
-    this.y = (2 + layer) * black_key_prm.height;
+    this.y = (2 + layer) * black_key_prm.height * bracket_hight;
     this.w = melody.end - melody.begin;
-    this.h = black_key_prm.height;
+    this.h = black_key_prm.height * bracket_hight;
     this.head = {
       ...melody.head,
       w: melody.head.end - melody.head.begin
@@ -53,10 +53,10 @@ class TSR_SVG implements Updatable {
     const h = this.h;
     const begin = { x: x + w * 0 / 10 + h * 0 / 2, y: y - h * 0 / 10 };
     const ct11 = { x: x + w * 0 / 10 + h * 0 / 2, y: y - h * 6 / 10 };
-    const ct12 = { x: x + w * 0 / 10 + h * 1 / 2, y: y - h * 10 / 10 };
-    const corner1 = { x: x + w * 0 / 10 + h * 2 / 2, y: y - h * 10 / 10 };
-    const corner2 = { x: x + w * 10 / 10 - h * 2 / 2, y: y - h * 10 / 10 };
-    const ct21 = { x: x + w * 10 / 10 - h * 1 / 2, y: y - h * 10 / 10 };
+    const ct12 = { x: x + w * 0 / 10 + Math.min(w * 0.1, h * 1 / 2), y: y - h * 10 / 10 };
+    const corner1 = { x: x + w * 0 / 10 + Math.min(w * 0.2, h * 2 / 2), y: y - h * 10 / 10 };
+    const corner2 = { x: x + w * 10 / 10 - Math.min(w * 0.2, h * 2 / 2), y: y - h * 10 / 10 };
+    const ct21 = { x: x + w * 10 / 10 - Math.min(w * 0.1, h * 1 / 2), y: y - h * 10 / 10 };
     const ct22 = { x: x + w * 10 / 10 - h * 0 / 2, y: y - h * 6 / 10 };
     const end = { x: x + w * 10 / 10 - h * 0 / 2, y: y - h * 0 / 10 };
     this.bracket.setAttribute("d", `M${begin.x} ${begin.y}C${ct11.x} ${ct11.y} ${ct12.x} ${ct12.y} ${corner1.x} ${corner1.y}L${corner2.x} ${corner2.y}C${ct21.x} ${ct21.y} ${ct22.x} ${ct22.y} ${end.x} ${end.y}`);

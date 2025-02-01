@@ -4,7 +4,7 @@ import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { WindowReflectableRegistry, UpdatableRegistry } from "@music-analyzer/view";
 import { appendController, appendPianoRoll, SongManager } from "./src/song-manager";
-import { NowAt, PianoRollBegin } from "@music-analyzer/view-parameters";
+import { bracket_hight, NowAt, PianoRollBegin, PianoRollEnd } from "@music-analyzer/view-parameters";
 
 // 分析データ-->
 import { MusicAnalyzerWindow } from "./src/MusicAnalyzerWindow";
@@ -12,6 +12,7 @@ import { MusicAnalyzerWindow } from "./src/MusicAnalyzerWindow";
 declare const window: MusicAnalyzerWindow;
 declare const audio_player: HTMLAudioElement | HTMLVideoElement;
 declare const piano_roll_place: HTMLDivElement;
+declare const controllers: HTMLDivElement;
 
 import { MusicXML } from "@music-analyzer/gttm/src/MusicXML";
 import { xml_parser } from "./src/XMLParser";
@@ -76,12 +77,14 @@ import { getHierarchicalMelody } from "./src/HierarchicalMelody";
 
 
   // SVG -->
-  const highest_pitch = hierarchical_melody[hierarchical_melody.length - 1].map(e => e.note).reduce((p, c) => p > c ? p : c);
-  PianoRollBegin.value = highest_pitch + 12;
+  const highest_pitch = melody.reduce((p, c) => p.note === undefined ? c : c.note === undefined ? p : p.note > c.note ? p : c).note || 0;
+  const lowest_pitch = melody.reduce((p, c) => p.note === undefined ? c : c.note === undefined ? p : p.note < c.note ? p : c).note || 0;
+  PianoRollBegin.value = highest_pitch + Math.floor(hierarchical_melody.length * bracket_hight / 12) * 12 + 12;
+  PianoRollEnd.value = lowest_pitch - 3;
   const song_manager = new SongManager(beat_info, romans, hierarchical_melody, d_melodies);
   // song_manager.analysis_data = { beat_info, romans, hierarchical_melody: [melodies], d_melodies };
   appendPianoRoll(piano_roll_place, song_manager);
-  appendController(piano_roll_place);
+  appendController(controllers);
   // <-- SVG
 
   // メインループ -->

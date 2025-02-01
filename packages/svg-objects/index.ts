@@ -1,7 +1,7 @@
 import { SVG } from "@music-analyzer/html";
 import { chord_name_margin, chord_text_size } from "@music-analyzer/chord-view";
 import { WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
-import { PianoRollWidth, CurrentTimeX, octave_cnt, white_bgs_prm, piano_roll_height, octave_height, WhitePosition, black_bgs_prm, white_key_prm, BlackPosition, black_key_prm, PianoRollBegin } from "@music-analyzer/view-parameters";
+import { PianoRollWidth, CurrentTimeX, OctaveCount, white_bgs_prm, PianoRollHeight, octave_height, WhitePosition, black_bgs_prm, white_key_prm, BlackPosition, black_key_prm, PianoRollBegin } from "@music-analyzer/view-parameters";
 
 const mod = (x: number, m: number): number => (x % m + m) % m;
 
@@ -34,7 +34,7 @@ class CurrentTimeLine implements WindowReflectable {
     this.svg.setAttribute("x1", `${CurrentTimeX.value}`);
     this.svg.setAttribute("x2", `${CurrentTimeX.value}`);
     this.svg.setAttribute("y1", "0");
-    this.svg.setAttribute("y2", `${piano_roll_height}`);
+    this.svg.setAttribute("y2", `${PianoRollHeight.value}`);
   }
 }
 
@@ -66,7 +66,7 @@ class WhiteBG_SVG extends SvgAndParam {
 }
 
 export const getWhiteBGs = () => new SvgAndParams(
-  [...Array(octave_cnt)].map((_, oct) =>
+  [...Array(OctaveCount.value)].map((_, oct) =>
     [...Array(7)].map((_, white_index) => new WhiteBG_SVG(oct, white_index))
   ).flat()
 );
@@ -97,7 +97,7 @@ class BlackBG_SVG extends SvgAndParam {
 }
 
 export const getBlackBGs = () => new SvgAndParams(
-  [...Array(octave_cnt)].map((_, oct) =>
+  [...Array(OctaveCount.value)].map((_, oct) =>
     [...Array(5)].map((_, black_index) => new BlackBG_SVG(oct, black_index))
   ).flat()
 );
@@ -126,7 +126,7 @@ class OctaveBG extends SvgAndParam {
 }
 
 export const getOctaveBGs = (white_BGs: SvgAndParams<WhiteBG_SVG>, black_BGs: SvgAndParams<BlackBG_SVG>) => new SvgAndParams(
-  [...Array(octave_cnt)].map((_, oct) => new OctaveBG(oct, white_BGs, black_BGs))
+  [...Array(OctaveCount.value)].map((_, oct) => new OctaveBG(oct, white_BGs, black_BGs))
 );
 
 class WhiteKeySVG extends SvgAndParam {
@@ -155,7 +155,7 @@ class WhiteKeySVG extends SvgAndParam {
 }
 
 export const getWhiteKeys = () => new SvgAndParams(
-  [...Array(octave_cnt)].map((_, oct) =>
+  [...Array(OctaveCount.value)].map((_, oct) =>
     [...Array(7)].map((_, white_index) => new WhiteKeySVG(oct, white_index))
   ).flat()
 );
@@ -186,7 +186,7 @@ class BlackKeySVG extends SvgAndParam {
 }
 
 export const getBlackKeys = () => new SvgAndParams(
-  [...Array(octave_cnt)].map((_, oct) =>
+  [...Array(OctaveCount.value)].map((_, oct) =>
     [...Array(5)].map((_, j) => new BlackKeySVG(oct, j))
   ).flat()
 );
@@ -216,7 +216,7 @@ class OctaveKeys extends SvgAndParam {
 
 export const getOctaveKeys = (white_key: SvgAndParams<WhiteKeySVG>, black_key: SvgAndParams<BlackKeySVG>) =>
   new SvgAndParams(
-    [...Array(octave_cnt)].map((_, oct) => new OctaveKeys(oct, white_key, black_key)),
+    [...Array(OctaveCount.value)].map((_, oct) => new OctaveKeys(oct, white_key, black_key)),
   );
 
 export class PianoRoll implements WindowReflectable {
@@ -230,6 +230,6 @@ export class PianoRoll implements WindowReflectable {
     this.svg.setAttribute("x", "0");
     this.svg.setAttribute("y", "0");
     this.svg.setAttribute("width", `${PianoRollWidth.value}`);
-    this.svg.setAttribute("height", `${piano_roll_height + chord_text_size * 2 + chord_name_margin}`);
+    this.svg.setAttribute("height", `${PianoRollHeight.value + chord_text_size * 2 + chord_name_margin}`);
   }
 }

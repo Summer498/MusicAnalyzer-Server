@@ -1,5 +1,5 @@
 import { SvgCollection, Updatable } from "@music-analyzer/view";
-import { CurrentTimeX, NoteSize, NowAt, piano_roll_height, reservation_range } from "@music-analyzer/view-parameters";
+import { CurrentTimeX, NoteSize, NowAt, PianoRollHeight, reservation_range } from "@music-analyzer/view-parameters";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { getRange } from "@music-analyzer/math";
 import { SVG } from "@music-analyzer/html";
@@ -21,7 +21,7 @@ class BeatBarSVG implements Updatable {
     this.begin = i * 60 / beat_info.tempo;
     this.end = (i + 1) * 60 / beat_info.tempo;
     this.y1 = 0;
-    this.y2 = piano_roll_height;
+    this.y2 = PianoRollHeight.value;
     this.sound_reserved = false;
   }
   beepBeat() {

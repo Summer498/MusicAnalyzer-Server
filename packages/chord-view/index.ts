@@ -3,7 +3,7 @@ import { _Chord, _Note, _Scale, Chord, Scale } from "@music-analyzer/tonal-objec
 import { getRange, mod } from "@music-analyzer/math";
 import { getLowerCase, getCapitalCase } from "@music-analyzer/stdlib";
 import { SvgCollection, Updatable } from "@music-analyzer/view";
-import { CurrentTimeX, NoteSize, NowAt, black_key_prm, octave_cnt, piano_roll_height, size } from "@music-analyzer/view-parameters";
+import { CurrentTimeX, NoteSize, NowAt, black_key_prm, OctaveCount, PianoRollHeight, size } from "@music-analyzer/view-parameters";
 import { SVG } from "@music-analyzer/html";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 
@@ -82,7 +82,7 @@ export const getChordNotesSVG = (romans: TimeAndRomanAnalysis[]) => new SvgColle
   "chords",
   romans.map(e => {
     const chord = _Chord.get(e.chord);
-    return getRange(0, octave_cnt).map(oct => chord.notes.map(note => new ChordNoteSVG(e, chord, note, oct)));
+    return getRange(0, OctaveCount.value).map(oct => chord.notes.map(note => new ChordNoteSVG(e, chord, note, oct)));
   }).flat(2)
 );
 
@@ -100,7 +100,7 @@ class ChordNameSVG implements Updatable {
     this.svg.setAttribute("font-size", `${chord_text_em}em`);
     this.begin = e.begin;
     this.end = e.end;
-    this.y = piano_roll_height + chord_text_size;
+    this.y = PianoRollHeight.value + chord_text_size;
     this.tonic = _Chord.get(e.chord).tonic!;
   }
   onUpdate() {
@@ -129,7 +129,7 @@ class ChordRomanSVG implements Updatable {
     this.svg.setAttribute("font-size", `${chord_text_em}em`);
     this.begin = e.begin;
     this.end = e.end;
-    this.y = piano_roll_height + chord_text_size * 2 + chord_name_margin;
+    this.y = PianoRollHeight.value + chord_text_size * 2 + chord_name_margin;
     this.tonic = _Chord.get(e.chord).tonic!;
   }
   onUpdate() {
@@ -159,7 +159,7 @@ class ChordKeySVG implements Updatable {
     this.svg.setAttribute("text-anchor", "end");
     this.begin = e.begin;
     this.end = e.end;
-    this.y = piano_roll_height + chord_text_size * 2 + chord_name_margin;
+    this.y = PianoRollHeight.value + chord_text_size * 2 + chord_name_margin;
     this.tonic = _Scale.get(e.scale).tonic!;
   }
   onUpdate() {
