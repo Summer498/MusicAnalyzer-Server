@@ -1,4 +1,3 @@
-import { SVG } from "@music-analyzer/html";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { hsv2rgb, rgbToString } from "@music-analyzer/color";
 import { SvgCollection2, Updatable } from "@music-analyzer/view";
@@ -20,16 +19,16 @@ class DMelodyModel {
 class DMelodyView {
   svg: SVGRectElement;
   constructor() {
-    this.svg = SVG.rect();
-    this.svg.setAttribute("name", "melody-note");
-    this.svg.setAttribute("fill", rgbToString(hsv2rgb(0, 0, 0.75)));
-    this.svg.setAttribute("stroke", "#444");
+    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    this.svg.id = "melody-note";
+    this.svg.style.fill=rgbToString(hsv2rgb(0, 0, 0.75));
+    this.svg.style.stroke = "#444";
   }
-  set x(value: number) { this.svg.setAttribute("x", `${value}`); }
-  set y(value: number) { this.svg.setAttribute("y", `${value}`); }
-  set width(value: number) { this.svg.setAttribute("width", `${value}`); }
-  set height(value: number) { this.svg.setAttribute("height", `${value}`); }
-  set visibility(value: "visible" | "hidden") { this.svg.setAttribute("visibility", value); }
+  set x(value: number) { this.svg.style.x = String(value); }
+  set y(value: number) { this.svg.style.y = String(value); }
+  set width(value: number) { this.svg.style.width = String(value); }
+  set height(value: number) { this.svg.style.height = String(value); }
+  set visibility(value: "visible" | "hidden") { this.svg.style.visibility = value; }
   set onclick(value: () => void) { this.svg.onclick = value; };
 }
 

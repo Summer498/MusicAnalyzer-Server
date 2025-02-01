@@ -1,4 +1,3 @@
-import { HTML } from "@music-analyzer/html";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
@@ -108,8 +107,8 @@ import { song_list } from "./src/songlist";
   // メインループ -->
 
   let old_time = Date.now();
-  const fps_element = HTML.p();
-  fps_element.setAttribute("name", "fps");
+  const fps_element = document.createElement("p");
+  fps_element.id = "fps";
   fps_element.textContent = `fps:${0}`;
 
   let last_audio_time = Number.MIN_SAFE_INTEGER;

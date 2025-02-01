@@ -1,5 +1,3 @@
-import { HTML } from "@music-analyzer/html";
-
 console.log("this is hierarchical analysis list");
 
 declare const tunes: HTMLUListElement;
@@ -9,10 +7,10 @@ declare const tunes: HTMLUListElement;
   const srt_gttm_examples = gttm_examples.sort((a, b) => a.localeCompare(b, [], { numeric: true }));  //  Natural sort order
 
   srt_gttm_examples.forEach(gttm_example => {
-    const anchor = HTML.a();
+    const anchor = document.createElement("a");
     anchor.textContent = gttm_example;
-    anchor.setAttribute("href", `/MusicAnalyzer-server/html/hierarchical-analysis-sample/view?tune=${gttm_example}`);
-    const item = HTML.li();
+    anchor.href = `/MusicAnalyzer-server/html/hierarchical-analysis-sample/view?tune=${gttm_example}`;
+    const item = document.createElement("li");
     item.appendChild(anchor);
     tunes.insertAdjacentElement("beforeend", item);
   });

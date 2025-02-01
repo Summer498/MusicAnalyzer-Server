@@ -4,7 +4,6 @@ import { getRange, mod } from "@music-analyzer/math";
 import { getLowerCase, getCapitalCase } from "@music-analyzer/stdlib";
 import { SvgCollection, Updatable } from "@music-analyzer/view";
 import { CurrentTimeX, NoteSize, NowAt, black_key_prm, OctaveCount, PianoRollHeight, size } from "@music-analyzer/view-parameters";
-import { SVG } from "@music-analyzer/html";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 
 const chord_text_em = size;
@@ -59,7 +58,7 @@ class ChordNoteSVG implements Updatable {
   tonic: string;
   type: string;
   constructor(e: TimeAndRomanAnalysis, chord: Chord, note: string, oct: number) {
-    this.svg = SVG.rect();
+    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     this.begin = e.begin;
     this.end = e.end;
     this.y = (-1 - mod(_Note.chroma(note), 12) + 12 * (oct + 1)) * black_key_prm.height;
@@ -69,12 +68,12 @@ class ChordNoteSVG implements Updatable {
     this.type = chord.type;
   }
   onUpdate() {
-    this.svg.setAttribute("x", `${CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value}`);
-    this.svg.setAttribute("y", `${this.y}`);
-    this.svg.setAttribute("width", `${this.w * NoteSize.value}`);
-    this.svg.setAttribute("height", `${this.h}`);
-    this.svg.setAttribute("stroke", "#444");
-    this.svg.setAttribute("fill", fifthToColor(this.tonic, 0.25, this.type === "major" ? 1 : 0.9));
+    this.svg.style.x = String(CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value);
+    this.svg.style.y = String(this.y);
+    this.svg.style.width = String(this.w * NoteSize.value);
+    this.svg.style.height = String(this.h);
+    this.svg.style.stroke = "#444";
+    this.svg.style.fill = fifthToColor(this.tonic, 0.25, this.type === "major" ? 1 : 0.9);
   }
 }
 
@@ -93,20 +92,20 @@ class ChordNameSVG implements Updatable {
   y: number;
   tonic: string;
   constructor(e: TimeAndRomanAnalysis) {
-    this.svg = SVG.text();
+    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "text");
     this.svg.textContent = shorten_chord(_Chord.get(e.chord).name);
-    this.svg.setAttribute("id", "chord-name");
-    this.svg.setAttribute("font-family", "Times New Roman");
-    this.svg.setAttribute("font-size", `${chord_text_em}em`);
+    this.svg.id = "chord-name";
+    this.svg.style.fontFamily = "Times New Roman";
+    this.svg.style.fontSize = `${chord_text_em}em`;
     this.begin = e.begin;
     this.end = e.end;
     this.y = PianoRollHeight.value + chord_text_size;
     this.tonic = _Chord.get(e.chord).tonic!;
   }
   onUpdate() {
-    this.svg.setAttribute("x", `${CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value}`);
+    this.svg.setAttribute("x", String(CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value));
     this.svg.setAttribute("y", `${this.y}`);
-    this.svg.setAttribute("fill", fifthToColor(this.tonic, 1, 0.75) || "#000");
+    this.svg.style.fill = fifthToColor(this.tonic, 1, 0.75) || "#000";
   }
 }
 
@@ -122,20 +121,20 @@ class ChordRomanSVG implements Updatable {
   y: number;
   tonic: string;
   constructor(e: TimeAndRomanAnalysis) {
-    this.svg = SVG.text();
+    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "text");
     this.svg.textContent = shorten_chord(e.roman);
-    this.svg.setAttribute("id", "roman-name");
-    this.svg.setAttribute("font-family", "Times New Roman");
-    this.svg.setAttribute("font-size", `${chord_text_em}em`);
+    this.svg.id = "roman-name";
+    this.svg.style.fontFamily = "Times New Roman";
+    this.svg.style.fontSize = `${chord_text_em}em`;
     this.begin = e.begin;
     this.end = e.end;
     this.y = PianoRollHeight.value + chord_text_size * 2 + chord_name_margin;
     this.tonic = _Chord.get(e.chord).tonic!;
   }
   onUpdate() {
-    this.svg.setAttribute("x", `${CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value}`);
+    this.svg.setAttribute("x", String(CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value));
     this.svg.setAttribute("y", `${this.y}`);
-    this.svg.setAttribute("fill", fifthToColor(this.tonic, 1, 0.75) || "#000");
+    this.svg.style.fill = fifthToColor(this.tonic, 1, 0.75) || "#000";
   }
 }
 
@@ -151,21 +150,21 @@ class ChordKeySVG implements Updatable {
   y: number;
   tonic: string;
   constructor(e: TimeAndRomanAnalysis) {
-    this.svg = SVG.text();
+    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "text");
     this.svg.textContent = shorten_key(_Scale.get(e.scale)) + ': ';
-    this.svg.setAttribute("id", "key-name");
-    this.svg.setAttribute("font-family", "Times New Roman");
-    this.svg.setAttribute("font-size", `${chord_text_em}em`);
-    this.svg.setAttribute("text-anchor", "end");
+    this.svg.id = "key-name";
+    this.svg.style.fontFamily = "Times New Roman";
+    this.svg.style.fontSize = `${chord_text_em}em`;
+    this.svg.style.textAnchor = "end";
     this.begin = e.begin;
     this.end = e.end;
     this.y = PianoRollHeight.value + chord_text_size * 2 + chord_name_margin;
     this.tonic = _Scale.get(e.scale).tonic!;
   }
   onUpdate() {
-    this.svg.setAttribute("x", `${CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value}`);
+    this.svg.setAttribute("x", String(CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value));
     this.svg.setAttribute("y", `${this.y}`);
-    this.svg.setAttribute("fill", fifthToColor(this.tonic, 1, 0.75) || "#000");
+    this.svg.style.fill = fifthToColor(this.tonic, 1, 0.75) || "#000";
   }
 }
 

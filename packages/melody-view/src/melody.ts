@@ -1,4 +1,3 @@
-import { SVG } from "@music-analyzer/html";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { SvgCollection2, Updatable } from "@music-analyzer/view";
 import { CurrentTimeX, NoteSize, NowAt, black_key_prm, PianoRollBegin, reservation_range } from "@music-analyzer/view-parameters";
@@ -27,22 +26,22 @@ class MelodyView {
   svg: SVGRectElement;
   sound_reserved: boolean;
   constructor(color: string) {
-    this.svg = SVG.rect();
-    this.svg.setAttribute("name", "melody-note");
-    this.svg.setAttribute("fill", color);
-    this.svg.setAttribute("stroke", "#444");
+    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    this.svg.id = "melody-note";
+    this.svg.style.fill = color;
+    this.svg.style.stroke = "#444";
     this.sound_reserved = false;
   }
-  set x(value: number) { this.svg.setAttribute("x", `${value}`); }
-  set y(value: number) { this.svg.setAttribute("y", `${value}`); }
-  set width(value: number) { this.svg.setAttribute("width", `${value}`); }
-  set height(value: number) { this.svg.setAttribute("height", `${value}`); }
+  set x(value: number) { this.svg.style.x = String(value); }
+  set y(value: number) { this.svg.style.y = String(value); }
+  set width(value: number) { this.svg.style.width = String(value); }
+  set height(value: number) { this.svg.style.height = String(value); }
   get visibility() {
     const visibility = this.svg.getAttribute("visibility");
     if (visibility === "visible" || visibility === "hidden") { return visibility; }
     else { throw new TypeError(`Illegal string received. Expected is "visible" or "hidden" but reserved is ${visibility}`); }
   }
-  set visibility(value: "visible" | "hidden") { this.svg.setAttribute("visibility", value); }
+  set visibility(value: "visible" | "hidden") { this.svg.style.visibility = value; }
   set onclick(value: () => void) { this.svg.onclick = value; }
 }
 

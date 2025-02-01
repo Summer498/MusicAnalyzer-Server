@@ -1,4 +1,3 @@
-import { SVG } from "@music-analyzer/html";
 import { Gravity, TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { rgbToString } from "@music-analyzer/color";
 import { SvgCollection, Updatable } from "@music-analyzer/view";
@@ -25,20 +24,20 @@ class ArrowSVG implements Updatable {
   hierarchy_level: HierarchyLevel;
 
   constructor(melody: TimeAndMelodyAnalysis, next: TimeAndMelodyAnalysis, gravity: Gravity, fill: string, stroke: string, hierarchy_level: HierarchyLevel, layer?: number) {
-    const triangle = SVG.polygon();
-    triangle.setAttribute("name", "gravity-arrow");
-    triangle.setAttribute("class", "triangle");
-    triangle.setAttribute("stroke", stroke);
-    triangle.setAttribute("stroke-width", "5");
-    triangle.setAttribute("fill", fill);
-    const line = SVG.line();
-    line.setAttribute("name", "gravity-arrow");
-    line.setAttribute("class", "line");
-    line.setAttribute("stroke", stroke);
-    line.setAttribute("stroke-width", "5");
+    const triangle = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+    triangle.classList.add("triangle");
+    triangle.id = "gravity-arrow";
+    triangle.style.stroke = stroke;
+    triangle.style.strokeWidth = String(5);
+    triangle.style.fill = fill;
+    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    line.id = "gravity-arrow";
+    line.classList.add("line");
+    line.style.stroke = stroke;
+    line.style.strokeWidth = String(5);
 
-    this.svg = SVG.g();
-    this.svg.setAttribute("name", "gravity");
+    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    this.svg.id = "gravity";
     this.svg.appendChild(triangle);
     this.svg.appendChild(line);
     this.begin = melody.begin;
@@ -81,11 +80,11 @@ class ArrowSVG implements Updatable {
       dst.y + sin * -triangle_width + cos * triangle_height
     ];
     const is_visible = this.hierarchy_level.range.value === `${this.layer}`;
-    this.svg.setAttribute("visibility", is_visible ? "visible" : "hidden");
-    for (const e of this.svg.getElementsByClassName("triangle")) {
+    this.svg.style.visibility = is_visible ? "visible" : "hidden";
+    for (const e of this.svg.getElementsByClassName("triangle") as HTMLCollectionOf<SVGPolygonElement>) {
       e.setAttribute("points", p.join(","));
     }
-    for (const e of this.svg.getElementsByClassName("line")) {
+    for (const e of this.svg.getElementsByClassName("line") as HTMLCollectionOf<SVGLineElement>) {
       e.setAttribute("x1", `${src.x}`);
       e.setAttribute("x2", `${dst.x}`);
       e.setAttribute("y1", `${src.y}`);

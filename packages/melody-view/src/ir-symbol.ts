@@ -1,4 +1,3 @@
-import { SVG } from "@music-analyzer/html";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { SvgCollection, Updatable } from "@music-analyzer/view";
 import { CurrentTimeX, NoteSize, NowAt, black_key_prm, PianoRollBegin, size } from "@music-analyzer/view-parameters";
@@ -16,12 +15,12 @@ class IRSymbolSVG implements Updatable {
   y: number;
   hierarchy_level: HierarchyLevel;
   constructor(melody: TimeAndMelodyAnalysis, hierarchy_level: HierarchyLevel, layer?: number) {
-    this.svg = SVG.text();
+    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "text");
     this.svg.textContent = melody.melody_analysis.implication_realization.symbol;
-    this.svg.setAttribute("id", "I-R Symbol");
-    this.svg.setAttribute("font-family", "Times New Roman");
-    this.svg.setAttribute("font-size", `${ir_analysis_em}em`);
-    this.svg.setAttribute("text-anchor", "middle");
+    this.svg.id = "I-R Symbol";
+    this.svg.style.fontFamily= "Times New Roman";
+    this.svg.style.fontSize= `${ir_analysis_em}em`;
+    this.svg.style.textAnchor= "middle";
     this.begin = melody.begin;
     this.end = melody.end;
     this.archetype = melody.melody_analysis.implication_realization;
@@ -31,12 +30,12 @@ class IRSymbolSVG implements Updatable {
   }
   onUpdate() {
     const is_visible = this.hierarchy_level.range.value === String(this.layer);
-    this.svg.setAttribute("x", `${CurrentTimeX.value + (this.end - NowAt.value) * NoteSize.value}`);
-    this.svg.setAttribute("y", `${this.y}`);
-    // this.svg.setAttribute("fill", get_color_on_parametric_scale(this.archetype) || "#000");
-    this.svg.setAttribute("fill", get_color_of_Narmour_concept(this.archetype) || "#000");
-    //this.svg.setAttribute("fill", this.archetype.color || "#000");
-    this.svg.setAttribute("visibility", is_visible ? "visible" : "hidden");
+    this.svg.setAttribute("x", String(CurrentTimeX.value + (this.end - NowAt.value) * NoteSize.value));
+    this.svg.setAttribute("y", String(this.y));
+    // this.svg.style.fill = get_color_on_parametric_scale(this.archetype) || "#000";
+    this.svg.style.fill = get_color_of_Narmour_concept(this.archetype) || "#000";
+    //this.svg.style.fill = this.archetype.color || "#000";
+    this.svg.style.visibility = is_visible ? "visible" : "hidden";
   };
 }
 

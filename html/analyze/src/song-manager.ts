@@ -3,7 +3,6 @@ import { getBeatBars } from "@music-analyzer/beat-view";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { getChordKeysSVG, getChordNamesSVG, getChordNotesSVG, getChordRomansSVG } from "@music-analyzer/chord-view";
 import { DMelodySwitcher, GravitySwitcher, HierarchyLevel, MelodyBeepSwitcher, MelodyBeepVolume, MelodyColorSelector, TimeRangeSlider } from "@music-analyzer/controllers";
-import { HTML, SVG } from "@music-analyzer/html";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { getDMelodyControllers, getHierarchicalChordGravitySVGs, getHierarchicalIRSymbolSVGs, getHierarchicalMelodyControllers, getHierarchicalScaleGravitySVGs, getTSR_SVGs } from "@music-analyzer/melody-view";
 import { getBlackBGs, getBlackKeys, getCurrentTimeLine, getOctaveBGs, getOctaveKeys, getWhiteBGs, getWhiteKeys, PianoRoll } from "@music-analyzer/svg-objects";
@@ -58,8 +57,7 @@ export const appendPianoRoll = (piano_roll_place: HTMLDivElement, song_manager: 
   hierarchy_level.setHierarchyLevelSliderValues(song_manager.hierarchical_melody.length - 1);
 
   // 奥側
-  const octave_bgs = SVG.g();
-  octave_bgs.setAttribute("name", "octave-BGs");
+  const octave_bgs = document.createElementNS("http://www.w3.org/2000/svg", "g");
   getOctaveBGs(getWhiteBGs(), getBlackBGs()).svg
     .forEach(e => octave_bgs.appendChild(e.svg));
 
@@ -80,8 +78,7 @@ export const appendPianoRoll = (piano_roll_place: HTMLDivElement, song_manager: 
     .forEach(e => piano_roll.svg.appendChild(e.group));
   getTSR_SVGs(song_manager.hierarchical_melody, hierarchy_level)
     .forEach(e => piano_roll.svg.appendChild(e.group));
-  const octave_keys = SVG.g();
-  octave_keys.setAttribute("name", "octave-keys");
+  const octave_keys = document.createElementNS("http://www.w3.org/2000/svg", "g");
   getOctaveKeys(getWhiteKeys(), getBlackKeys()).svg
     .forEach(e => octave_keys.appendChild(e.svg));
   piano_roll.svg.appendChild(octave_keys);
@@ -92,30 +89,30 @@ export const appendPianoRoll = (piano_roll_place: HTMLDivElement, song_manager: 
 };
 
 export const appendController = (piano_roll_place: HTMLDivElement) => {
-  const d_melody_div = HTML.div();
-  d_melody_div.setAttribute("id", "d-melody");
+  const d_melody_div = document.createElement("div");
+  d_melody_div.id = "d-melody";
   d_melody_div.appendChild(d_melody_switcher.body);
-  const hierarchy_level_div = HTML.div();
-  hierarchy_level_div.setAttribute("id", "hierarchy-level");
+  const hierarchy_level_div = document.createElement("div");
+  hierarchy_level_div.id = "hierarchy-level";
   hierarchy_level_div.appendChild(hierarchy_level.body);
-  const time_length_div = HTML.div();
-  time_length_div.setAttribute("id", "time-length");
+  const time_length_div = document.createElement("div");
+  time_length_div.id = "time-length";
   time_length_div.appendChild(time_range_slider.body);
-  const gravity_switcher_div = HTML.div();
-  gravity_switcher_div.setAttribute("id", "gravity-switcher");
+  const gravity_switcher_div = document.createElement("div");
+  gravity_switcher_div.id = "gravity-switcher";
   gravity_switcher_div.appendChild(key_gravity_switcher.body);
   gravity_switcher_div.appendChild(chord_gravity_switcher.body);
-  const melody_beep_controllers_div = HTML.div();
+  const melody_beep_controllers_div = document.createElement("div");
   melody_beep_controllers_div.appendChild(melody_beep_switcher.body,);
   melody_beep_controllers_div.appendChild(melody_beep_volume.body);
-  melody_beep_controllers_div.setAttribute("id", "melody-beep-controllers");
-  const melody_color_selector_div = HTML.div();
-  melody_color_selector_div.setAttribute("id", "melody-color-selector");
-  melody_color_selector_div.setAttribute("display", "inline");  // NOTE: 色選択は未実装なので消しておく
+  melody_beep_controllers_div.id = "melody-beep-controllers";
+  const melody_color_selector_div = document.createElement("div");
+  melody_color_selector_div.id = "melody-color-selector";
+  melody_color_selector_div.style.display = "inline";  // NOTE: 色選択は未実装なので消しておく
   melody_color_selector_div.appendChild(melody_color_selector.body);
-  const controllers = HTML.div();
-  controllers.setAttribute("id", "controllers");
-  controllers.setAttribute("style", "margin-top:20px");
+  const controllers = document.createElement("div");
+  controllers.id = "controllers";
+  controllers.style="margin-top:20px";
   controllers.appendChild(d_melody_div);
   controllers.appendChild(hierarchy_level_div);
   controllers.appendChild(time_length_div);
