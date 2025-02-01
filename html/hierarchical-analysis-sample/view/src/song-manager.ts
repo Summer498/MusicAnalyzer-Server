@@ -9,9 +9,11 @@ import { getDMelodyControllers, getHierarchicalChordGravitySVGs, getHierarchical
 import { getBlackBGs, getBlackKeys, getCurrentTimeLine, getOctaveBGs, getOctaveKeys, getWhiteBGs, getWhiteKeys, PianoRoll } from "@music-analyzer/svg-objects";
 import { Assertion, _throw } from "@music-analyzer/stdlib";
 import { CurrentTimeRatio, PianoRollTimeLength } from "@music-analyzer/view-parameters";
+import { getChordKeysSVG, getChordNamesSVG, getChordNotesSVG, getChordRomansSVG } from "@music-analyzer/chord-view";
 
 declare const audio_player: HTMLAudioElement | HTMLVideoElement;
 
+const NO_CHORD = true;  // コード関連のものを表示しない
 const FULL_VIEW = true;  // 横いっぱいに分析結果を表示
 if (FULL_VIEW) {
   CurrentTimeRatio.value = 0.025;
@@ -20,10 +22,8 @@ if (FULL_VIEW) {
 const d_melody_switcher = new DMelodySwitcher();
 const hierarchy_level = new HierarchyLevel();
 const time_range_slider = new TimeRangeSlider();
-/*
 const key_gravity_switcher = new GravitySwitcher("key_gravity_switcher", "Key Gravity", []);
 const chord_gravity_switcher = new GravitySwitcher("chord_gravity_switcher", "Chord Gravity", []);
-*/
 const melody_beep_switcher = new MelodyBeepSwitcher();
 const melody_beep_volume = new MelodyBeepVolume();
 const melody_color_selector = new MelodyColorSelector();
@@ -72,23 +72,31 @@ export const appendPianoRoll = (piano_roll_place: HTMLDivElement, song_manager: 
 
   piano_roll.svg.appendChild(octave_bgs);
   piano_roll.svg.appendChild(getBeatBars(song_manager.beat_info, getMelody(song_manager.hierarchical_melody)).group);
-/*
-  piano_roll.svg.appendChild(getChordNotesSVG(song_manager.romans).group);
-  piano_roll.svg.appendChild(getChordNamesSVG(song_manager.romans).group);
-  piano_roll.svg.appendChild(getChordRomansSVG(song_manager.romans).group);
-  piano_roll.svg.appendChild(getChordKeysSVG(song_manager.romans).group);
-*/
+
+  //*
+  // Chord
+  if (!NO_CHORD) {
+    piano_roll.svg.appendChild(getChordNotesSVG(song_manager.romans).group);
+    piano_roll.svg.appendChild(getChordNamesSVG(song_manager.romans).group);
+    piano_roll.svg.appendChild(getChordRomansSVG(song_manager.romans).group);
+    piano_roll.svg.appendChild(getChordKeysSVG(song_manager.romans).group);
+  }
+  //*/
+
   piano_roll.svg.appendChild(getDMelodyControllers(song_manager.d_melodies, d_melody_switcher).group);
   getHierarchicalMelodyControllers(song_manager.hierarchical_melody, hierarchy_level, melody_beep_switcher, melody_beep_volume)
     .forEach(e => piano_roll.svg.appendChild(e.group));
   getHierarchicalIRSymbolSVGs(song_manager.hierarchical_melody, hierarchy_level)
     .forEach(e => piano_roll.svg.appendChild(e.group));
-/*
-  getHierarchicalChordGravitySVGs(song_manager.hierarchical_melody, hierarchy_level)
-    .forEach(e => piano_roll.svg.appendChild(e.group));
-  getHierarchicalScaleGravitySVGs(song_manager.hierarchical_melody, hierarchy_level)
-    .forEach(e => piano_roll.svg.appendChild(e.group));
-*/
+  //*
+  // Gravity
+  if (!NO_CHORD) {
+    getHierarchicalChordGravitySVGs(song_manager.hierarchical_melody, hierarchy_level)
+      .forEach(e => piano_roll.svg.appendChild(e.group));
+    getHierarchicalScaleGravitySVGs(song_manager.hierarchical_melody, hierarchy_level)
+      .forEach(e => piano_roll.svg.appendChild(e.group));
+  }
+  //*/
   getTSR_SVGs(song_manager.hierarchical_melody, hierarchy_level)
     .forEach(e => piano_roll.svg.appendChild(e.group));
   const octave_keys = SVG.g();
@@ -114,12 +122,10 @@ export const appendController = (piano_roll_place: HTMLDivElement) => {
   const time_length_div = HTML.div();
   time_length_div.setAttribute("id", "time-length");
   time_length_div.appendChild(time_range_slider.body);
-/*
   const gravity_switcher_div = HTML.div();
   gravity_switcher_div.setAttribute("id", "gravity-switcher");
   gravity_switcher_div.appendChild(key_gravity_switcher.body);
   gravity_switcher_div.appendChild(chord_gravity_switcher.body);
-*/
   const melody_beep_controllers_div = HTML.div();
   melody_beep_controllers_div.appendChild(melody_beep_switcher.body,);
   melody_beep_controllers_div.appendChild(melody_beep_volume.body);
@@ -134,7 +140,9 @@ export const appendController = (piano_roll_place: HTMLDivElement) => {
   controllers.appendChild(d_melody_div);
   controllers.appendChild(hierarchy_level_div);
   controllers.appendChild(time_length_div);
-//  controllers.appendChild(gravity_switcher_div);
+  if (!NO_CHORD) {
+    controllers.appendChild(gravity_switcher_div);
+  }
   controllers.appendChild(melody_beep_controllers_div);
   controllers.appendChild(melody_color_selector_div);
   piano_roll_place.insertAdjacentElement("beforeend", controllers);
