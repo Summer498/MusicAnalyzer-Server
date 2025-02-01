@@ -5,9 +5,6 @@ import {
   RegistralReturnForm,
 } from "./RegistralReturnForm";
 
-const P5 = _Interval.get("P5");
-const P4 = _Interval.get("P4");
-const Tritone = { semitones: 6 };
 
 export type TrigramProspectiveSymbol =
   | "P" | "IP" | "VP"
@@ -20,9 +17,9 @@ export type RetrospectiveSymbol =
   | "(D)" | "(ID)"
 
 export type _ProspectiveSymbol = TrigramProspectiveSymbol | "M" | "dyad"
-export type _ArchetypeSymbol = _ProspectiveSymbol | RetrospectiveSymbol
+export type _ArchetypeSymbol = "" | _ProspectiveSymbol | RetrospectiveSymbol
 export type ProspectiveSymbol = TrigramProspectiveSymbol | "M" | IntervalName
-export type ArchetypeSymbol = ProspectiveSymbol | RetrospectiveSymbol
+export type ArchetypeSymbol = "" | ProspectiveSymbol | RetrospectiveSymbol
 
 const retrospectiveSymbol = (symbol: TrigramProspectiveSymbol): RetrospectiveSymbol => {
   switch (symbol) {
@@ -48,35 +45,41 @@ const remove_minus = (src: string) => {
 export class Archetype {
   _symbol: _ArchetypeSymbol;
   symbol: ArchetypeSymbol;
-  retrospective: boolean | null;
+  retrospective: boolean;
   registral_return_form: RegistralReturnForm;
   notes: NoteLiteral[];
   intervals: IntervalName[];
   melody_motion: MelodyMotion;
 
-  constructor(notes: string[]) {
-    this.notes = notes;
-    const notes_num = notes.length;
-    if (notes_num !== 3) {
+  constructor(notes: (string | undefined)[]) {
+    const _notes = notes.map(e => e || "");
+    this.notes = _notes;
+    const notes_num = _notes.length;
+    const has_blank = _notes.find(e => !e);
+    if (notes_num !== 3 || has_blank) {
       this.retrospective = false;
       this.registral_return_form = NULL_REGISTRAL_RETURN_FORM;
       this.intervals = ["", ""];
       this.melody_motion = no_motion;
-      if (notes_num === 1) {
+      if (has_blank) {
+        this._symbol = "";
+        this.symbol = "";
+      }
+      else if (notes_num === 1) {
         this._symbol = "M";
         this.symbol = "M";
       }
       else if (notes_num === 2) {
         this._symbol = "dyad";
-        this.symbol = remove_minus(_Interval.distance(notes[0], notes[1]));
+        this.symbol = remove_minus(_Interval.distance(_notes[0], _notes[1]));
       }
-      else { throw new Error(`Invalid length of notes. Required 1, 2, or, 3 notes but given was ${notes.length} notes: ${JSON.stringify(notes)}`); }
+      else { throw new Error(`Invalid length of notes. Required 1, 2, or, 3 notes but given was ${_notes.length} notes: ${JSON.stringify(_notes)}`); }
       return;
     }
 
     this.intervals = [
-      _Interval.distance(notes[0], notes[1]),
-      _Interval.distance(notes[1], notes[2]),
+      _Interval.distance(_notes[0], _notes[1]),
+      _Interval.distance(_notes[1], _notes[2]),
     ];
 
     const initial = _Interval.get(this.intervals[0]);
@@ -86,33 +89,31 @@ export class Archetype {
     const i_mgn = this.melody_motion.intervallic.magnitude.name;
     const v_dir = this.melody_motion.registral.direction.name;
     const v_mgn = this.melody_motion.registral.magnitude.name;
-    this.registral_return_form = new RegistralReturnForm(notes);
+    this.registral_return_form = new RegistralReturnForm(_notes);
+
+    const initial_magnitude = Math.abs(initial.num) < 5 ? "aa" : "ab";
 
     // Reverse
     if (i_mgn === "AB" && (i_dir === "mL" || v_dir === "mL")) {
-      this.retrospective = Math.abs(initial.semitones) < Tritone.semitones;
+      this.retrospective = initial_magnitude === "aa";
       if (i_dir === "mR") { this._symbol = "VR"; }
       else if (v_dir === "mR") { this._symbol = "IR"; }
       else { this._symbol = "R"; }
     }
     // Duplicate
     else if (i_dir === "mN" && v_dir !== "mR") {
-      this.retrospective = Tritone.semitones < Math.abs(initial.semitones);
+      this.retrospective = initial_magnitude === "ab";
       if (v_dir !== "mN") { this._symbol = "ID"; }
       else { this._symbol = "D"; }
     }
     // Process
     else {
-      this.retrospective = Tritone.semitones < Math.abs(initial.semitones);
+      this.retrospective = initial_magnitude === "ab";
       if (i_mgn === "AB") { this._symbol = "VP"; }
       else if (v_mgn === "AB") { this._symbol = "IP"; }
       else { this._symbol = "P"; }
     }
-    if (P4.semitones <= initial.semitones && initial.semitones < P5.semitones) {
-      this.retrospective = null;
-    }
     if (this.retrospective) {
-      console.error("retrospective");
       this._symbol = retrospectiveSymbol(this._symbol);
     }
     this.symbol = this._symbol;

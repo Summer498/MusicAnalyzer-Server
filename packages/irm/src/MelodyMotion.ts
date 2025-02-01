@@ -45,7 +45,7 @@ export class MelodyMotion {
     this.intervallic =
       new Motion(
         new Direction(dir_map[i_sgn + 1], i_sgn),
-        new Magnitude(i_abs > C ? "AB" : "AA", i_abs)
+        new Magnitude(i_abs < C ? "AA" : "AB", i_abs)
       );
   }
 }
