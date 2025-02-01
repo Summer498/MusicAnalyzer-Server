@@ -1,6 +1,8 @@
 .turbo
 .vscode
 
+yarn.lock
+
 *.tsbuildinfo
 *.pyc
 *.log
