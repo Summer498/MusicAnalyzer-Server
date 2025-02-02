@@ -1,5 +1,5 @@
 import { Gravity, TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
-import { CurrentTimeX, NoteSize, NowAt, black_key_prm, PianoRollBegin } from "@music-analyzer/view-parameters";
+import { CurrentTimeX, NoteSize, NowAt, black_key_prm, PianoRollBegin, NowAtX } from "@music-analyzer/view-parameters";
 import { HierarchyLevel } from "@music-analyzer/controllers";
 import { AccompanyToAudio } from "@music-analyzer/view";
 
@@ -55,13 +55,12 @@ export class ArrowSVG implements AccompanyToAudio {
     this.hierarchy_level = hierarchy_level;
   }
   onAudioUpdate() {
-    const std_pos = NowAt.value * NoteSize.value;
     const src: Vector2D = {
-      x: this.src.x * NoteSize.value - std_pos + CurrentTimeX.value,
+      x: CurrentTimeX.value + this.src.x * NoteSize.value - NowAtX.value,
       y: this.src.y
     };
     const dst: Vector2D = {
-      x: this.dst.x * NoteSize.value - std_pos + CurrentTimeX.value,
+      x: CurrentTimeX.value + this.dst.x * NoteSize.value - NowAtX.value,
       y: this.dst.y
     };
 

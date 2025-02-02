@@ -2,11 +2,18 @@ import { CurrentTimeRatio } from "./current-time-ratio";
 import { PianoRollWidth } from "./piano-roll-width";
 
 export class CurrentTimeX {
-  static onUpdate: (() => void)[] = [];
-  static #value = PianoRollWidth.value * CurrentTimeRatio.value;
-  static get value() { return this.#value; }
-  static onWindowResized() {
+  static #piano_roll_width: number;
+  static #current_time_ratio: number;
+  static #value: number;
+  static get value() {
+    if (
+      this.#piano_roll_width === PianoRollWidth.value
+      && this.#current_time_ratio === CurrentTimeRatio.value
+    ) { return this.#value; }
+
+    this.#piano_roll_width = PianoRollWidth.value;
+    this.#current_time_ratio = CurrentTimeRatio.value;
     this.#value = PianoRollWidth.value * CurrentTimeRatio.value;
-    this.onUpdate.forEach(event => event());
+    return this.#value;
   }
 }

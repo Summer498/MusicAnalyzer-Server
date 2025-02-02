@@ -2,12 +2,18 @@ import { PianoRollTimeLength } from "./piano-roll-time-length";
 import { PianoRollWidth } from "./piano-roll-width";
 
 export class NoteSize {
-  static onUpdate: (() => void)[] = [];
-  static #value = PianoRollWidth.value / PianoRollTimeLength.value;
-  static get value() { return this.#value; }
-  static onChange() {
+  static #piano_roll_width: number;
+  static #piano_roll_time_length: number;
+  static #value: number;
+  static get value() {
+    if (
+      this.#piano_roll_width === PianoRollWidth.value
+      && this.#piano_roll_time_length === PianoRollTimeLength.value
+    ) { return this.#value; }
+
+    this.#piano_roll_width = PianoRollWidth.value;
+    this.#piano_roll_time_length = PianoRollTimeLength.value;
     this.#value = PianoRollWidth.value / PianoRollTimeLength.value;
-    this.onUpdate.forEach(event => event());
+    return this.#value;
   }
-  static onWindowResized = this.onChange;
 }

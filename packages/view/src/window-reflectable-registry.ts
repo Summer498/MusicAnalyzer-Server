@@ -1,4 +1,3 @@
-import { CurrentTimeX, NoteSize, PianoRollWidth } from "@music-analyzer/view-parameters";
 import { WindowReflectable } from "./window-reflectable";
 
 export class WindowReflectableRegistry {
@@ -10,9 +9,11 @@ export class WindowReflectableRegistry {
   }
   register(updatable: WindowReflectable) { this.registered.push(updatable); }
   onWindowResized() {
+    /*
     PianoRollWidth.onWindowResized();
     CurrentTimeX.onWindowResized();
     NoteSize.onWindowResized();
+    */
 
     this.registered.forEach(e => e.onWindowResized());
   }

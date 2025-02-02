@@ -7,8 +7,9 @@ import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { getDMelodyControllers, getHierarchicalChordGravitySVGs, getHierarchicalIRSymbolSVGs, getHierarchicalMelodyControllers, getHierarchicalScaleGravitySVGs, getTSR_SVGs } from "@music-analyzer/melody-view";
 import { getBlackBGs, getBlackKeys, getCurrentTimeLine, getOctaveBGs, getOctaveKeys, getWhiteBGs, getWhiteKeys, PianoRoll } from "@music-analyzer/svg-objects";
 import { Assertion, _throw } from "@music-analyzer/stdlib";
-import { CurrentTimeRatio, PianoRollTimeLength } from "@music-analyzer/view-parameters";
+import { CurrentTimeRatio } from "@music-analyzer/view-parameters";
 import { getChordKeysSVG, getChordNamesSVG, getChordNotesSVG, getChordRomansSVG } from "@music-analyzer/chord-view";
+import { SongLength } from "@music-analyzer/view-parameters";
 
 declare const audio_player: HTMLAudioElement | HTMLVideoElement;
 
@@ -55,10 +56,9 @@ export const appendPianoRoll = (piano_roll_place: HTMLDivElement, song_manager: 
 
   new Assertion(song_manager.hierarchical_melody.length > 0).onFailed(() => { throw new Error(`hierarchical melody length must be more than 0 but it is ${song_manager.hierarchical_melody.length}`); });
   const melodies = song_manager.hierarchical_melody[song_manager.hierarchical_melody.length - 1];
-  PianoRollTimeLength.setSongLength(
-    Math.max(
-      ...melodies.map(e => e.end)
-    ) * 1.05); // ちょっとマージンを取っておく
+  SongLength.value = Math.max(
+    ...melodies.map(e => e.end)
+  ) * 1.05; // ちょっとマージンを取っておく
 
   console.log(`song_manager.hierarchical_melody.length: ${song_manager.hierarchical_melody.length}`);
   hierarchy_level.setHierarchyLevelSliderValues(song_manager.hierarchical_melody.length - 1);
@@ -131,11 +131,11 @@ export const appendController = (piano_roll_place: HTMLDivElement) => {
   melody_beep_controllers_div.id = "melody-beep-controllers";
   const melody_color_selector_div = document.createElement("div");
   melody_color_selector_div.id = "melody-color-selector";
-  melody_color_selector_div.style.display="inline";
+  melody_color_selector_div.style.display = "inline";
   melody_color_selector_div.appendChild(melody_color_selector.body);
   const controllers = document.createElement("div");
   controllers.id = "controllers";
-  controllers.style="margin-top:20px";
+  controllers.style = "margin-top:20px";
   //  controllers.appendChild(d_melody_div);
   controllers.appendChild(hierarchy_level_div);
   controllers.appendChild(time_length_div);

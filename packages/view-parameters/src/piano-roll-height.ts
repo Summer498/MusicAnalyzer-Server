@@ -1,11 +1,13 @@
+import { OctaveCount } from "./octave-count";
 import { octave_height } from "./piano-roll-constants";
 
 export class PianoRollHeight {
-  static onUpdate: (() => void)[] = [];
+  static #octave_count: number;
   static #value = octave_height * 4;
-  static get value() { return this.#value; }
-  static set value(value: number) {
-    this.#value = value;
-    this.onUpdate.forEach(event => event());
+  static get value() {
+    if (this.#octave_count) { return this.#value; }
+
+    this.#value = octave_height * OctaveCount.value;
+    return this.#value;
   }
 }

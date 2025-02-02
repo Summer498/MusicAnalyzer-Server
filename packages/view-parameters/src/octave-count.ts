@@ -1,22 +1,19 @@
 import { PianoRollBegin } from "./piano-roll-begin";
-import { octave_height } from "./piano-roll-constants";
 import { PianoRollEnd } from "./piano-roll-end";
-import { PianoRollHeight } from "./piano-roll-height";
 
 export class OctaveCount {
-  static onUpdate: (() => void)[] = [
-    () => { PianoRollHeight.value = octave_height * OctaveCount.value; }
-  ];
+  static #piano_roll_begin: number;
+  static #piano_roll_end: number;
   static #value = 4;
-  static get value() { return this.#value; }
-  static set value(value: number) {
-    this.#value = value;
-    console.log(`OctaveCount.value = ${OctaveCount.value}`);
-    this.onUpdate.forEach(event => event());
+  static get value() {
+    if (
+      this.#piano_roll_begin === PianoRollBegin.value
+      && this.#piano_roll_end === PianoRollEnd.value
+    ) { return this.#value; }
+
+    this.#piano_roll_begin = PianoRollBegin.value;
+    this.#piano_roll_end = PianoRollEnd.value;
+    this.#value = Math.ceil(-(PianoRollEnd.value - PianoRollBegin.value) / 12);
+    return this.#value;
   }
 }
-
-const updateOctaveCount = () => { OctaveCount.value = Math.ceil(-(PianoRollEnd.value - PianoRollBegin.value) / 12); };
-PianoRollBegin.onUpdate.push(updateOctaveCount);
-PianoRollEnd.onUpdate.push(updateOctaveCount);
-

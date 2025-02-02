@@ -1,7 +1,7 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { _Scale } from "@music-analyzer/tonal-objects";
 import { AccompanyToAudio } from "@music-analyzer/view";
-import { CurrentTimeX, NoteSize, NowAt, PianoRollHeight } from "@music-analyzer/view-parameters";
+import { CurrentTimeX, NoteSize, NowAt, NowAtX, PianoRollHeight } from "@music-analyzer/view-parameters";
 import { fifthToColor } from "@music-analyzer/color";
 import { shorten_key } from "./shorten";
 import { chord_name_margin, chord_text_em, chord_text_size } from "./chord-view-params";
@@ -25,7 +25,7 @@ export class ChordKeySVG implements AccompanyToAudio {
     this.tonic = _Scale.get(e.scale).tonic!;
   }
   onAudioUpdate() {
-    this.svg.setAttribute("x", String(CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value));
+    this.svg.setAttribute("x", String(CurrentTimeX.value + this.begin * NoteSize.value - NowAtX.value));
     this.svg.setAttribute("y", `${this.y}`);
     this.svg.style.fill = fifthToColor(this.tonic, 1, 0.75) || "#000";
   }

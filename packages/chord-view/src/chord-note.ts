@@ -3,7 +3,7 @@ import { fifthToColor } from "@music-analyzer/color";
 import { mod } from "@music-analyzer/math";
 import { _Note, Chord } from "@music-analyzer/tonal-objects";
 import { AccompanyToAudio } from "@music-analyzer/view";
-import { black_key_prm, CurrentTimeX, NoteSize, NowAt } from "@music-analyzer/view-parameters";
+import { black_key_prm, CurrentTimeX, NoteSize, NowAt, NowAtX } from "@music-analyzer/view-parameters";
 
 export class ChordNoteSVG implements AccompanyToAudio {
   readonly svg: SVGRectElement;
@@ -25,7 +25,7 @@ export class ChordNoteSVG implements AccompanyToAudio {
     this.type = chord.type;
   }
   onAudioUpdate() {
-    this.svg.style.x = String(CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value);
+    this.svg.style.x = String(CurrentTimeX.value + this.begin * NoteSize.value - NowAtX.value);
     this.svg.style.y = String(this.y);
     this.svg.style.width = String(this.w * NoteSize.value);
     this.svg.style.height = String(this.h);

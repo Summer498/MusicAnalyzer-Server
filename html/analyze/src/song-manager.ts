@@ -7,7 +7,7 @@ import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { getDMelodyControllers, getHierarchicalChordGravitySVGs, getHierarchicalIRSymbolSVGs, getHierarchicalMelodyControllers, getHierarchicalScaleGravitySVGs, getTSR_SVGs } from "@music-analyzer/melody-view";
 import { getBlackBGs, getBlackKeys, getCurrentTimeLine, getOctaveBGs, getOctaveKeys, getWhiteBGs, getWhiteKeys, PianoRoll } from "@music-analyzer/svg-objects";
 import { Assertion, _throw } from "@music-analyzer/stdlib";
-import { PianoRollTimeLength } from "@music-analyzer/view-parameters";
+import { SongLength } from "@music-analyzer/view-parameters";
 
 
 const d_melody_switcher = new DMelodySwitcher();
@@ -47,11 +47,10 @@ export const appendPianoRoll = (piano_roll_place: HTMLDivElement, song_manager: 
 
   new Assertion(song_manager.hierarchical_melody.length > 0).onFailed(() => { throw new Error(`hierarchical melody length must be more than 0 but it is ${song_manager.hierarchical_melody.length}`); });
   const melodies = song_manager.hierarchical_melody[song_manager.hierarchical_melody.length - 1];
-  PianoRollTimeLength.setSongLength(
-    Math.max(
-      ...song_manager.romans.map(e => e.end),
-      ...melodies.map(e => e.end)
-    ));
+  SongLength.value = Math.max(
+    ...song_manager.romans.map(e => e.end),
+    ...melodies.map(e => e.end)
+  );
 
   console.log(`song_manager.hierarchical_melody.length: ${song_manager.hierarchical_melody.length}`);
   hierarchy_level.setHierarchyLevelSliderValues(song_manager.hierarchical_melody.length - 1);
@@ -112,7 +111,7 @@ export const appendController = (piano_roll_place: HTMLDivElement) => {
   melody_color_selector_div.appendChild(melody_color_selector.body);
   const controllers = document.createElement("div");
   controllers.id = "controllers";
-  controllers.style="margin-top:20px";
+  controllers.style = "margin-top:20px";
   controllers.appendChild(d_melody_div);
   controllers.appendChild(hierarchy_level_div);
   controllers.appendChild(time_length_div);

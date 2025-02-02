@@ -1,5 +1,5 @@
 import { SvgCollection__old, AccompanyToAudio } from "@music-analyzer/view";
-import { CurrentTimeX, NoteSize, NowAt, PianoRollHeight, reservation_range } from "@music-analyzer/view-parameters";
+import { CurrentTimeX, NoteSize, NowAt, NowAtX, PianoRollHeight, reservation_range } from "@music-analyzer/view-parameters";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { getRange } from "@music-analyzer/math";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
@@ -21,24 +21,25 @@ class BeatBarSVG implements AccompanyToAudio {
     this.end = (i + 1) * 60 / beat_info.tempo;
     this.y1 = 0;
     this.y2 = PianoRollHeight.value;
+    this.updateY();
     this.sound_reserved = false;
   }
+  updateY(){
+    this.svg.setAttribute("y1", `${this.y1}`);
+    this.svg.setAttribute("y2", `${this.y2}`);
+  }
   beepBeat() {
-    const now_at = NowAt.value;
-    if (now_at <= this.begin && this.begin < now_at + reservation_range) {
+    if (NowAt.value <= this.begin && this.begin < NowAt.value + reservation_range) {
       if (this.sound_reserved === false) {
-        play([220], this.begin - now_at, 0.125);
+        play([220], this.begin - NowAt.value, 0.125);
         this.sound_reserved = true;
         setTimeout(() => { this.sound_reserved = false; }, reservation_range * 1000);
       }
     }
   }
   onAudioUpdate() {
-    const now_at = NowAt.value;
-    this.svg.setAttribute("x1", `${CurrentTimeX.value + (this.begin - now_at) * NoteSize.value}`);
-    this.svg.setAttribute("x2", `${CurrentTimeX.value + (this.begin - now_at) * NoteSize.value}`);
-    this.svg.setAttribute("y1", `${this.y1}`);
-    this.svg.setAttribute("y2", `${this.y2}`);
+    this.svg.setAttribute("x1", `${CurrentTimeX.value + this.begin * NoteSize.value - NowAtX.value}`);
+    this.svg.setAttribute("x2", `${CurrentTimeX.value + this.begin * NoteSize.value - NowAtX.value}`);
     // NOTE: うるさいので停止中
     0 && this.beepBeat();
   }
