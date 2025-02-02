@@ -1,4 +1,4 @@
-import { UpdatableRegistry } from "@music-analyzer/view";
+import { AccompanyToAudioRegistry } from "@music-analyzer/view";
 import { Controller } from "./controller";
 
 export class HierarchyLevel implements Controller {
@@ -16,7 +16,7 @@ export class HierarchyLevel implements Controller {
     this.#display.textContent = `layer: ${this.range.value}`;
     this.range.addEventListener("input", e => {
       this.#display.textContent = `layer: ${this.range.value}`;
-      UpdatableRegistry.instance.onUpdate();
+      AccompanyToAudioRegistry.instance.onAudioUpdate();
     });
     const label = document.createElement("label");
     label.textContent = "Melody Hierarchy Level";

@@ -1,12 +1,12 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { fifthToColor } from "@music-analyzer/color";
 import { _Chord } from "@music-analyzer/tonal-objects";
-import { Updatable } from "@music-analyzer/view";
+import { AccompanyToAudio } from "@music-analyzer/view";
 import { CurrentTimeX, NoteSize, NowAt, PianoRollHeight } from "@music-analyzer/view-parameters";
 import { chord_text_em, chord_text_size } from "./chord-view-params";
 import { shorten_chord } from "./shorten";
 
-export class ChordNameSVG implements Updatable {
+export class ChordNameSVG implements AccompanyToAudio {
   readonly svg: SVGTextElement;
   readonly begin: number;
   readonly end: number;
@@ -23,7 +23,7 @@ export class ChordNameSVG implements Updatable {
     this.y = PianoRollHeight.value + chord_text_size;
     this.tonic = _Chord.get(e.chord).tonic!;
   }
-  onUpdate() {
+  onAudioUpdate() {
     this.svg.setAttribute("x", String(CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value));
     this.svg.setAttribute("y", `${this.y}`);
     this.svg.style.fill = fifthToColor(this.tonic, 1, 0.75) || "#000";

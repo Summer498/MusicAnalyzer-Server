@@ -1,4 +1,4 @@
-import { UpdatableRegistry } from "@music-analyzer/view";
+import { AccompanyToAudioRegistry } from "@music-analyzer/view";
 import { Controller } from "./controller";
 
 export class DMelodySwitcher implements Controller {
@@ -11,7 +11,7 @@ export class DMelodySwitcher implements Controller {
     this.checkbox.id = "d_melody_switcher";
     this.checkbox.checked = false;
     this.checkbox.addEventListener("change", e => {
-      UpdatableRegistry.instance.onUpdate();
+      AccompanyToAudioRegistry.instance.onAudioUpdate();
     });
     const label = document.createElement("label");
     label.textContent = "detected melody before fix";

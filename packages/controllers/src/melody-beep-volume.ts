@@ -1,4 +1,4 @@
-import { UpdatableRegistry } from "@music-analyzer/view";
+import { AccompanyToAudioRegistry } from "@music-analyzer/view";
 import { Controller } from "./controller";
 
 export class MelodyBeepVolume implements Controller {
@@ -15,7 +15,7 @@ export class MelodyBeepVolume implements Controller {
     show_melody_beep_volume.textContent = `volume: ${this.range.value}`;
     this.range.addEventListener("input", e => {
       show_melody_beep_volume.textContent = `volume: ${this.range.value}`;
-      UpdatableRegistry.instance.onUpdate();
+      AccompanyToAudioRegistry.instance.onAudioUpdate();
     });
     this.body = document.createElement("span");
     this.body.appendChild(this.range);

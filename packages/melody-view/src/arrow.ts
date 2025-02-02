@@ -1,7 +1,7 @@
 import { Gravity, TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { CurrentTimeX, NoteSize, NowAt, black_key_prm, PianoRollBegin } from "@music-analyzer/view-parameters";
 import { HierarchyLevel } from "@music-analyzer/controllers";
-import { Updatable } from "@music-analyzer/view";
+import { AccompanyToAudio } from "@music-analyzer/view";
 
 const triangle_width = 5;
 const triangle_height = 5;
@@ -11,7 +11,7 @@ type Vector2D = {
   readonly y: number;
 }
 
-export class ArrowSVG implements Updatable {
+export class ArrowSVG implements AccompanyToAudio {
   readonly svg: SVGGElement;
   readonly begin: number;
   readonly end: number;
@@ -54,7 +54,7 @@ export class ArrowSVG implements Updatable {
     };
     this.hierarchy_level = hierarchy_level;
   }
-  onUpdate() {
+  onAudioUpdate() {
     const std_pos = NowAt.value * NoteSize.value;
     const src: Vector2D = {
       x: this.src.x * NoteSize.value - std_pos + CurrentTimeX.value,

@@ -1,11 +1,11 @@
 import { TimeAnd } from "@music-analyzer/time-and";
-import { Updatable } from "./updatable";
+import { AccompanyToAudio } from "./updatable";
 
 export interface Model extends TimeAnd { }
 export interface View {
   readonly svg: SVGElement
 }
-export interface Controller extends Updatable {
+export interface Controller extends AccompanyToAudio {
   readonly model: Model;
   readonly view: View
 }

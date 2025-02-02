@@ -1,16 +1,16 @@
-import { Updatable } from "./updatable";
+import { AccompanyToAudio } from "./updatable";
 
-export class UpdatableRegistry {
-  private static _instance: UpdatableRegistry;
-  private readonly registered: Updatable[];
+export class AccompanyToAudioRegistry {
+  private static _instance: AccompanyToAudioRegistry;
+  private readonly registered: AccompanyToAudio[];
   private constructor() { this.registered = []; }
   public static get instance() {
-    return this._instance || (this._instance = new UpdatableRegistry());
+    return this._instance || (this._instance = new AccompanyToAudioRegistry());
   }
-  register(updatable: Updatable) { this.registered.push(updatable); }
-  onUpdate() {
+  register(updatable: AccompanyToAudio) { this.registered.push(updatable); }
+  onAudioUpdate() {
     this.registered.forEach(e => {
-      e.onUpdate();
+      e.onAudioUpdate();
     });
   }
 }

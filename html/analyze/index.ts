@@ -1,7 +1,7 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
-import { WindowReflectableRegistry, UpdatableRegistry } from "@music-analyzer/view";
+import { WindowReflectableRegistry, AccompanyToAudioRegistry } from "@music-analyzer/view";
 import { appendController, appendPianoRoll, SongManager } from "./src/song-manager";
 import { NowAt } from "@music-analyzer/view-parameters";
 
@@ -78,7 +78,7 @@ const onUpdate = () => {
   // <-- audio 関連処理
 
   NowAt.value = now_at;
-  UpdatableRegistry.instance.onUpdate();
+  AccompanyToAudioRegistry.instance.onAudioUpdate();
 };
 
 

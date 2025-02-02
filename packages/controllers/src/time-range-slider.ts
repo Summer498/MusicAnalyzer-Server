@@ -1,6 +1,6 @@
 import { PianoRollTimeLength } from "@music-analyzer/view-parameters";
 import { Controller } from "./controller";
-import { UpdatableRegistry } from "@music-analyzer/view";
+import { AccompanyToAudioRegistry } from "@music-analyzer/view";
 
 export class TimeRangeSlider implements Controller {
   readonly body: HTMLSpanElement;
@@ -19,7 +19,7 @@ export class TimeRangeSlider implements Controller {
     time_range_slider.addEventListener("input", e => {
       show_time_range_slider_value.textContent = `${Math.floor(Math.pow(2, Number(time_range_slider.value) - Number(time_range_slider.max)) * 100)} %`;
       PianoRollTimeLength.setRatio(Math.pow(2, Number(time_range_slider.value) - Number(time_range_slider.max)));
-      UpdatableRegistry.instance.onUpdate();
+      AccompanyToAudioRegistry.instance.onAudioUpdate();
     });
     const label = document.createElement("label");
     label.textContent = "Time Range";

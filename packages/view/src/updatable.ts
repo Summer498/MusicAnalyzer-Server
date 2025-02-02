@@ -1,3 +1,3 @@
-export interface Updatable {
-  onUpdate(): void
+export interface AccompanyToAudio {
+  onAudioUpdate(): void
 }

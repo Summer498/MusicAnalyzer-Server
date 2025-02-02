@@ -1,11 +1,11 @@
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
-import { SvgCollection__old, Updatable } from "@music-analyzer/view";
+import { SvgCollection__old, AccompanyToAudio } from "@music-analyzer/view";
 import { CurrentTimeX, NoteSize, NowAt, black_key_prm, bracket_hight } from "@music-analyzer/view-parameters";
 import { HierarchyLevel } from "@music-analyzer/controllers";
 import { Archetype, get_color_of_Narmour_concept } from "@music-analyzer/irm";
 
 
-class TSR_SVG implements Updatable {
+class TSR_SVG implements AccompanyToAudio {
   readonly svg: SVGGElement;
   readonly bracket: SVGPathElement;
   readonly circle: SVGCircleElement;
@@ -55,7 +55,7 @@ class TSR_SVG implements Updatable {
     };
     this.hierarchy_level = hierarchy_level;
   }
-  onUpdate() {
+  onAudioUpdate() {
     const now_at = NowAt.value;
     const is_visible = this.layer <= Number(this.hierarchy_level.range.value);
     const is_just_layer = String(this.layer) === this.hierarchy_level.range.value;

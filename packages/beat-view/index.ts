@@ -1,11 +1,11 @@
-import { SvgCollection__old, Updatable } from "@music-analyzer/view";
+import { SvgCollection__old, AccompanyToAudio } from "@music-analyzer/view";
 import { CurrentTimeX, NoteSize, NowAt, PianoRollHeight, reservation_range } from "@music-analyzer/view-parameters";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { getRange } from "@music-analyzer/math";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { play } from "@music-analyzer/synth";
 
-class BeatBarSVG implements Updatable {
+class BeatBarSVG implements AccompanyToAudio {
   readonly svg: SVGLineElement;
   readonly begin: number;
   readonly end: number;
@@ -33,7 +33,7 @@ class BeatBarSVG implements Updatable {
       }
     }
   }
-  onUpdate() {
+  onAudioUpdate() {
     const now_at = NowAt.value;
     this.svg.setAttribute("x1", `${CurrentTimeX.value + (this.begin - now_at) * NoteSize.value}`);
     this.svg.setAttribute("x2", `${CurrentTimeX.value + (this.begin - now_at) * NoteSize.value}`);

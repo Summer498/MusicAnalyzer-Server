@@ -2,10 +2,10 @@ import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { fifthToColor } from "@music-analyzer/color";
 import { mod } from "@music-analyzer/math";
 import { _Note, Chord } from "@music-analyzer/tonal-objects";
-import { Updatable } from "@music-analyzer/view";
+import { AccompanyToAudio } from "@music-analyzer/view";
 import { black_key_prm, CurrentTimeX, NoteSize, NowAt } from "@music-analyzer/view-parameters";
 
-export class ChordNoteSVG implements Updatable {
+export class ChordNoteSVG implements AccompanyToAudio {
   readonly svg: SVGRectElement;
   readonly begin: number;
   readonly end: number;
@@ -24,7 +24,7 @@ export class ChordNoteSVG implements Updatable {
     this.tonic = chord.tonic!;
     this.type = chord.type;
   }
-  onUpdate() {
+  onAudioUpdate() {
     this.svg.style.x = String(CurrentTimeX.value + (this.begin - NowAt.value) * NoteSize.value);
     this.svg.style.y = String(this.y);
     this.svg.style.width = String(this.w * NoteSize.value);

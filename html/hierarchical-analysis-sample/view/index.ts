@@ -1,7 +1,7 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
-import { WindowReflectableRegistry, UpdatableRegistry } from "@music-analyzer/view";
+import { WindowReflectableRegistry, AccompanyToAudioRegistry } from "@music-analyzer/view";
 import { appendController, appendPianoRoll, SongManager } from "./src/song-manager";
 import { bracket_hight, NowAt, PianoRollBegin, PianoRollEnd } from "@music-analyzer/view-parameters";
 
@@ -112,6 +112,16 @@ import { song_list } from "./src/songlist";
   fps_element.textContent = `fps:${0}`;
 
   let last_audio_time = Number.MIN_SAFE_INTEGER;
+  const audioUpdate = () => {
+    // --> audio 関連処理
+    const now_at = audio_player.currentTime;
+    if (audio_player.paused && now_at === last_audio_time) { return; }
+    last_audio_time = now_at;
+    NowAt.value = now_at;
+    AccompanyToAudioRegistry.instance.onAudioUpdate();
+    // <-- audio 関連処理
+  };
+
   const onUpdate = () => {
     // fps 関連処理 -->
     const now = Date.now();
@@ -120,16 +130,7 @@ import { song_list } from "./src/songlist";
     old_time = now;
     // <-- fps 関連処理
 
-    // --> audio 関連処理
-    const now_at = audio_player.currentTime;
-    // TODO: 止めたときの挙動がおかしいので直す
-    // 大量の計算を行った後のアニメーションの挙動はちょっとおかしくなるらしい
-    if (audio_player.paused && now_at === last_audio_time) { return; }
-    last_audio_time = now_at;
-    // <-- audio 関連処理
-
-    NowAt.value = now_at;
-    UpdatableRegistry.instance.onUpdate();
+    audioUpdate();
   };
 
 

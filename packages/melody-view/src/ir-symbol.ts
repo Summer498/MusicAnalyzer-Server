@@ -1,12 +1,12 @@
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
-import { SvgCollection__old, Updatable } from "@music-analyzer/view";
+import { SvgCollection__old, AccompanyToAudio } from "@music-analyzer/view";
 import { CurrentTimeX, NoteSize, NowAt, black_key_prm, PianoRollBegin, size } from "@music-analyzer/view-parameters";
 import { HierarchyLevel } from "@music-analyzer/controllers";
 import { Archetype, get_color_of_Narmour_concept } from "@music-analyzer/irm";
 
 const ir_analysis_em = size;
 
-class IRSymbolSVG implements Updatable {
+class IRSymbolSVG implements AccompanyToAudio {
   readonly svg: SVGTextElement;
   readonly begin: number;
   readonly end: number;
@@ -28,7 +28,7 @@ class IRSymbolSVG implements Updatable {
     this.y = melody.note === undefined ? -99 : (PianoRollBegin.value - melody.note) * black_key_prm.height;
     this.hierarchy_level = hierarchy_level;
   }
-  onUpdate() {
+  onAudioUpdate() {
     const is_visible = this.hierarchy_level.range.value === String(this.layer);
     this.svg.setAttribute("x", String(CurrentTimeX.value + (this.end - NowAt.value) * NoteSize.value));
     this.svg.setAttribute("y", String(this.y));

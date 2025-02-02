@@ -1,4 +1,4 @@
-import { UpdatableRegistry } from "@music-analyzer/view";
+import { AccompanyToAudioRegistry } from "@music-analyzer/view";
 import { Controller } from "./controller";
 
 export class GravitySwitcher implements Controller {
@@ -14,7 +14,7 @@ export class GravitySwitcher implements Controller {
     this.#gravities = gravities;
     this.checkbox.addEventListener("change", e => {
       this.#gravities.forEach(gravity => gravity.style.visibility = this.checkbox.checked ? "visible" : "hidden");
-      UpdatableRegistry.instance.onUpdate();
+      AccompanyToAudioRegistry.instance.onAudioUpdate();
     });
     const label_element = document.createElement("label");
     label_element.textContent = label;

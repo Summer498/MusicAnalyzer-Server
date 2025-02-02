@@ -2,14 +2,14 @@ import { HierarchyLevel, MelodyBeepSwitcher, MelodyBeepVolume } from "@music-ana
 import { MelodyModel } from "./melody-model";
 import { MelodyView } from "./melody-view";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
-import { Updatable } from "@music-analyzer/view";
+import { AccompanyToAudio } from "@music-analyzer/view";
 import { get_color_of_Narmour_concept, get_color_on_parametric_scale } from "@music-analyzer/irm";
 import { fifthChromaToColor } from "@music-analyzer/color";
 import { black_key_prm, CurrentTimeX, NoteSize, NowAt, PianoRollBegin, reservation_range } from "@music-analyzer/view-parameters";
 import { play } from "@music-analyzer/synth";
 import { deleteMelody } from "./melody-editor-function";
 
-export class MelodyController implements Updatable {
+export class MelodyController implements AccompanyToAudio {
   readonly model: MelodyModel;
   readonly view: MelodyView;
   readonly hierarchy_level: HierarchyLevel;
@@ -32,7 +32,7 @@ export class MelodyController implements Updatable {
     NowAt.onUpdate.push(this.updateX.bind(this));
     NoteSize.onUpdate.push(this.updateX.bind(this));
     NoteSize.onUpdate.push(this.updateWidth.bind(this));
-    this.onUpdate();
+    this.onAudioUpdate();
   }
   updateX() { this.view.x = CurrentTimeX.value + (this.model.begin - NowAt.value) * NoteSize.value; }
   updateY() { this.view.y = this.model.note === undefined ? -99 : (PianoRollBegin.value - this.model.note) * black_key_prm.height; }
@@ -59,7 +59,7 @@ export class MelodyController implements Updatable {
     }
   };
 
-  onUpdate() {
+  onAudioUpdate() {
     this.updateVisibility();
     this.view.onclick = deleteMelody;
     if (this.melody_beep_switcher.checkbox.checked && this.view.visibility === "visible") {
