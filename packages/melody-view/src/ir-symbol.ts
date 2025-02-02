@@ -1,5 +1,5 @@
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
-import { SvgCollection, Updatable } from "@music-analyzer/view";
+import { SvgCollection__old, Updatable } from "@music-analyzer/view";
 import { CurrentTimeX, NoteSize, NowAt, black_key_prm, PianoRollBegin, size } from "@music-analyzer/view-parameters";
 import { HierarchyLevel } from "@music-analyzer/controllers";
 import { Archetype, get_color_of_Narmour_concept } from "@music-analyzer/irm";
@@ -41,7 +41,7 @@ class IRSymbolSVG implements Updatable {
 
 export const getHierarchicalIRSymbolSVGs = (hierarchical_melodies: TimeAndMelodyAnalysis[][], hierarchy_level: HierarchyLevel) =>
   hierarchical_melodies.map((e, l) =>
-    new SvgCollection(
+    new SvgCollection__old(
       `layer-${l}`,
       e.map(e => new IRSymbolSVG(e, hierarchy_level, l))
     )

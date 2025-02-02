@@ -1,5 +1,5 @@
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
-import { SvgCollection, Updatable } from "@music-analyzer/view";
+import { SvgCollection__old, Updatable } from "@music-analyzer/view";
 import { CurrentTimeX, NoteSize, NowAt, black_key_prm, bracket_hight } from "@music-analyzer/view-parameters";
 import { HierarchyLevel } from "@music-analyzer/controllers";
 import { Archetype, get_color_of_Narmour_concept } from "@music-analyzer/irm";
@@ -91,7 +91,7 @@ class TSR_SVG implements Updatable {
 }
 
 export const getTSR_SVGs = (hierarchical_melodies: TimeAndMelodyAnalysis[][], hierarchy_level: HierarchyLevel) =>
-  hierarchical_melodies.map((e, l) => new SvgCollection(
+  hierarchical_melodies.map((e, l) => new SvgCollection__old(
     `layer-${l}`,
     e.map(e => new TSR_SVG(e, hierarchy_level, l))
   ));

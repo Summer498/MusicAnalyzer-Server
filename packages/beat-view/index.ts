@@ -1,4 +1,4 @@
-import { SvgCollection, Updatable } from "@music-analyzer/view";
+import { SvgCollection__old, Updatable } from "@music-analyzer/view";
 import { CurrentTimeX, NoteSize, NowAt, PianoRollHeight, reservation_range } from "@music-analyzer/view-parameters";
 import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { getRange } from "@music-analyzer/math";
@@ -44,7 +44,7 @@ class BeatBarSVG implements Updatable {
   }
 }
 
-export const getBeatBars = (beat_info: BeatInfo, melodies: TimeAndMelodyAnalysis[]) => new SvgCollection(
+export const getBeatBars = (beat_info: BeatInfo, melodies: TimeAndMelodyAnalysis[]) => new SvgCollection__old(
   "beat-bars",
   getRange(0, Math.ceil(beat_info.tempo * melodies[melodies.length - 1].end) + beat_info.phase).map(i => new BeatBarSVG(beat_info, i))
 );
