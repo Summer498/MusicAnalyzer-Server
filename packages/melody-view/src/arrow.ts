@@ -1,4 +1,4 @@
-import { Gravity, TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
+import { Gravity, IMelodyModel } from "@music-analyzer/melody-analyze";
 import { CurrentTimeX, NoteSize, NowAt, black_key_prm, PianoRollBegin, NowAtX } from "@music-analyzer/view-parameters";
 import { HierarchyLevel } from "@music-analyzer/controllers";
 import { AccompanyToAudio } from "@music-analyzer/view";
@@ -22,7 +22,7 @@ export class ArrowSVG implements AccompanyToAudio {
   readonly dst: Vector2D;
   readonly hierarchy_level: HierarchyLevel;
 
-  constructor(melody: TimeAndMelodyAnalysis, next: TimeAndMelodyAnalysis, gravity: Gravity, fill: string, stroke: string, hierarchy_level: HierarchyLevel, layer?: number) {
+  constructor(melody: IMelodyModel, next: IMelodyModel, gravity: Gravity, fill: string, stroke: string, hierarchy_level: HierarchyLevel, layer?: number) {
     const triangle = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
     triangle.classList.add("triangle");
     triangle.id = "gravity-arrow";

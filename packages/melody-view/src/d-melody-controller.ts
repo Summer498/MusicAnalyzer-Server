@@ -2,7 +2,7 @@ import { AccompanyToAudio } from "@music-analyzer/view";
 import { DMelodyModel } from "./d-melody-model";
 import { DMelodyView } from "./d-melody-view";
 import { DMelodySwitcher } from "@music-analyzer/controllers";
-import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
+import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { black_key_prm, CurrentTimeX, NoteSize, NowAt, NowAtX, PianoRollBegin } from "@music-analyzer/view-parameters";
 import { insertMelody } from "./melody-editor-function";
 
@@ -10,7 +10,7 @@ export class DMelodyController implements AccompanyToAudio {
   readonly model: DMelodyModel;
   readonly view: DMelodyView;
   readonly d_melody_switcher: DMelodySwitcher;
-  constructor(d_melody: TimeAndMelodyAnalysis, d_melody_switcher: DMelodySwitcher) {
+  constructor(d_melody: IMelodyModel, d_melody_switcher: DMelodySwitcher) {
     this.model = new DMelodyModel(d_melody);
     this.view = new DMelodyView();
     this.d_melody_switcher = d_melody_switcher;

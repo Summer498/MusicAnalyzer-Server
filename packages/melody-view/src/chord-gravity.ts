@@ -1,11 +1,11 @@
 import { rgbToString } from "@music-analyzer/color";
 import { ArrowSVG } from "./arrow"
-import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
+import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { HierarchyLevel } from "@music-analyzer/controllers";
 
 export const chord_gravities: SVGElement[] = [];
 
-export const getChordGravitySVG = (melody: TimeAndMelodyAnalysis, i: number, melodies: TimeAndMelodyAnalysis[], hierarchy_level: HierarchyLevel, layer?: number) => {
+export const getChordGravitySVG = (melody: IMelodyModel, i: number, melodies: IMelodyModel[], hierarchy_level: HierarchyLevel, layer?: number) => {
   const stroke = rgbToString([0, 0, 0]);
   const next = melodies.length <= i + 1 ? melodies[i] : melodies[i + 1];
   const fill = rgbToString([0, 0, 0]);

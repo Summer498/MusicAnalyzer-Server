@@ -1,5 +1,5 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
-import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
+import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { WindowReflectableRegistry, AccompanyToAudioRegistry } from "@music-analyzer/view";
 import { appendController, appendPianoRoll, SongManager } from "./src/song-manager";
@@ -8,7 +8,7 @@ import { NowAt } from "@music-analyzer/view-parameters";
 interface MusicAnalyzerWindow extends Window {
   readonly MusicAnalyzer: {
     readonly roman: TimeAndRomanAnalysis[],
-    readonly melody: TimeAndMelodyAnalysis[]
+    readonly melody: IMelodyModel[]
   }
 }
 declare const window: MusicAnalyzerWindow;
@@ -18,7 +18,7 @@ declare const piano_roll_place: HTMLDivElement;
 /*
 TODO: 1. get song name from URL parameter, 2. fetch song↓
 const roman = (await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/chord/roman.json")).json()) as TimeAndRomanAnalysis[];
-const melody = (await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/melody/crepe/manalyze.json")).json()) as TimeAndMelodyAnalysis[];
+const melody = (await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/melody/crepe/manalyze.json")).json()) as IMelodyModel[];
 window.MusicAnalyzer={
   roman,
   melody,
@@ -26,7 +26,7 @@ window.MusicAnalyzer={
 */
 
 const d_romans: TimeAndRomanAnalysis[] = window.MusicAnalyzer.roman.map(e => e);
-const d_melodies: TimeAndMelodyAnalysis[] = window.MusicAnalyzer.melody.map(e => ({
+const d_melodies: IMelodyModel[] = window.MusicAnalyzer.melody.map(e => ({
   ...e,
   begin: e.begin - 0.16,  // ズレ補正
   end: e.end - 0.16,

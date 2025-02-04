@@ -1,5 +1,5 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
-import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
+import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { WindowReflectableRegistry, AccompanyToAudioRegistry } from "@music-analyzer/view";
 import { appendController, appendPianoRoll, SongManager } from "./src/song-manager";
@@ -46,13 +46,13 @@ import { song_list } from "./src/songlist";
   })();
 
   const matrix = ts.getMatrixOfLayer(ts.getDepthCount() - 1);
-  const hierarchical_melody = getHierarchicalMelody(String(mode) === "PR" ? pr ! : ts, matrix, musicxml, roman);
+  const hierarchical_melody = getHierarchicalMelody(String(mode) === "PR" ? pr! : ts, matrix, musicxml, roman);
 
   // const org_melody = await (await fetch("/MusicAnalyzer-server/resources/Hierarchical Analysis Sample/analyzed/melody/crepe/vocals.json")).json() as number[];
   // const time_and_melody = getTimeAndMelody(org_melody, 100);
   const melody = hierarchical_melody[hierarchical_melody.length - 1];
   // const melody = analyzeMelody(time_and_melody, roman);  // NOTE: analyzeMelody をフロントから取り扱えるようにした
-  // const melody = (await (await fetch("/MusicAnalyzer-server/resources/Hierarchical Analysis Sample/analyzed/melody/crepe/manalyze.json")).json()) as TimeAndMelodyAnalysis[];
+  // const melody = (await (await fetch("/MusicAnalyzer-server/resources/Hierarchical Analysis Sample/analyzed/melody/crepe/manalyze.json")).json()) as IMelodyModel[];
   window.MusicAnalyzer = {
     roman,
     melody,
@@ -70,13 +70,8 @@ import { song_list } from "./src/songlist";
 
 
   const d_romans: TimeAndRomanAnalysis[] = window.MusicAnalyzer.roman.map(e => e);
-  const d_melodies: TimeAndMelodyAnalysis[] = window.MusicAnalyzer.melody.map(e => ({
-    begin: e.begin,
-    end: e.end,
-    head: { ...e.head },
-    melody_analysis: e.melody_analysis,
-    note: e.note,
-    roman_name: e.roman_name,
+  const d_melodies: IMelodyModel[] = window.MusicAnalyzer.melody.map(e => ({
+    ...e
   }));
   const romans = d_romans.map(e => e);
   const melodies = d_melodies.map(e => e).filter((e, i) => i + 1 >= d_melodies.length || 60 / (d_melodies[i + 1].begin - d_melodies[i].begin) < 300 * 4);

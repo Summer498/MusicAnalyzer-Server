@@ -19,10 +19,9 @@ export interface TimeAndMelody extends TimeAnd {
 export interface TimeAndChord extends TimeAnd {
   readonly chord: Chord
 }
-export interface TimeAndMelodyAnalysis extends TimeAnd {
+export interface IMelodyModel extends TimeAnd {
   readonly note?: number,
   readonly head: TimeAnd,
-  readonly roman_name: string,
   readonly melody_analysis: MelodyAnalysis,
 }
 
@@ -78,7 +77,7 @@ export const getTimeAndMelody = (melody_data: number[], sampling_rate: number) =
 export const analyzeMelody = (
   melodies: TimeAndMelody[],
   romans: TimeAndRomanAnalysis[],
-): TimeAndMelodyAnalysis[] => {
+): IMelodyModel[] => {
   return melodies.map((melody, i) => {
     const _roman = romans.find(roman => roman.begin <= melody.end && melody.begin < roman.end); // TODO: 治す. 現状はとりあえずコードとメロディを大きめに重ならせてみているだけ
     const start = i > 1 ? i - 1 : 0;

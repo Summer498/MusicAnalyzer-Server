@@ -1,4 +1,4 @@
-import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
+import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { SvgCollection__old, AccompanyToAudio } from "@music-analyzer/view";
 import { CurrentTimeX, NoteSize, NowAt, NowAtX, black_key_prm, bracket_hight } from "@music-analyzer/view-parameters";
 import { HierarchyLevel } from "@music-analyzer/controllers";
@@ -19,7 +19,7 @@ class TSR_SVG implements AccompanyToAudio {
   readonly w: number;
   readonly h: number;
   readonly hierarchy_level: HierarchyLevel;
-  constructor(melody: TimeAndMelodyAnalysis, hierarchy_level: HierarchyLevel, layer: number) {
+  constructor(melody: IMelodyModel, hierarchy_level: HierarchyLevel, layer: number) {
     this.bracket = document.createElementNS("http://www.w3.org/2000/svg", "path");
     this.bracket.id = "group";
     this.bracket.style.stroke = "#004";
@@ -89,7 +89,7 @@ class TSR_SVG implements AccompanyToAudio {
   }
 }
 
-export const getTSR_SVGs = (hierarchical_melodies: TimeAndMelodyAnalysis[][], hierarchy_level: HierarchyLevel) =>
+export const getTSR_SVGs = (hierarchical_melodies: IMelodyModel[][], hierarchy_level: HierarchyLevel) =>
   hierarchical_melodies.map((e, l) => new SvgCollection__old(
     `layer-${l}`,
     e.map(e => new TSR_SVG(e, hierarchy_level, l))
