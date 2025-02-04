@@ -1,12 +1,16 @@
-import { IMelodyModel } from "@music-analyzer/melody-analyze";
+import { IMelodyModel, MelodyAnalysis } from "@music-analyzer/melody-analyze";
 
-export class DMelodyModel {
+export class DMelodyModel implements IMelodyModel{
   readonly begin: number;
   readonly end: number;
+  readonly head: {begin:number, end:number};
+  readonly melody_analysis: MelodyAnalysis;
   readonly note?: number;
   constructor(d_melody: IMelodyModel) {
     this.begin = d_melody.begin;
     this.end = d_melody.end;
+    this.head = d_melody.head;
+    this.melody_analysis = d_melody.melody_analysis;
     this.note = d_melody.note;
   }
 }
