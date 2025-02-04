@@ -1,4 +1,4 @@
-import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
+import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { SvgCollection__old, AccompanyToAudio } from "@music-analyzer/view";
 import { CurrentTimeX, NoteSize, NowAt, black_key_prm, PianoRollBegin, size, NowAtX } from "@music-analyzer/view-parameters";
 import { HierarchyLevel } from "@music-analyzer/controllers";
@@ -14,7 +14,7 @@ class IRSymbolSVG implements AccompanyToAudio {
   readonly layer: number;
   readonly y: number;
   readonly hierarchy_level: HierarchyLevel;
-  constructor(melody: TimeAndMelodyAnalysis, hierarchy_level: HierarchyLevel, layer?: number) {
+  constructor(melody: IMelodyModel, hierarchy_level: HierarchyLevel, layer?: number) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "text");
     this.svg.textContent = melody.melody_analysis.implication_realization.symbol;
     this.svg.id = "I-R Symbol";
@@ -39,7 +39,7 @@ class IRSymbolSVG implements AccompanyToAudio {
   };
 }
 
-export const getHierarchicalIRSymbolSVGs = (hierarchical_melodies: TimeAndMelodyAnalysis[][], hierarchy_level: HierarchyLevel) =>
+export const getHierarchicalIRSymbolSVGs = (hierarchical_melodies: IMelodyModel[][], hierarchy_level: HierarchyLevel) =>
   hierarchical_melodies.map((e, l) =>
     new SvgCollection__old(
       `layer-${l}`,

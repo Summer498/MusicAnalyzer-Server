@@ -3,7 +3,7 @@ import { getBeatBars } from "@music-analyzer/beat-view";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { getChordKeysSVG, getChordNamesSVG, getChordNotesSVG, getChordRomansSVG } from "@music-analyzer/chord-view";
 import { DMelodySwitcher, GravitySwitcher, HierarchyLevel, MelodyBeepSwitcher, MelodyBeepVolume, MelodyColorSelector, TimeRangeSlider } from "@music-analyzer/controllers";
-import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
+import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { getDMelodyControllers, getHierarchicalChordGravitySVGs, getHierarchicalIRSymbolSVGs, getHierarchicalMelodyControllers, getHierarchicalScaleGravitySVGs, getTSR_SVGs } from "@music-analyzer/melody-view";
 import { getBlackBGs, getBlackKeys, getCurrentTimeLine, getOctaveBGs, getOctaveKeys, getWhiteBGs, getWhiteKeys, PianoRoll } from "@music-analyzer/svg-objects";
 import { Assertion, _throw } from "@music-analyzer/stdlib";
@@ -22,15 +22,15 @@ const melody_color_selector = new MelodyColorSelector();
 export class SongManager {
   readonly beat_info: BeatInfo;
   readonly romans: TimeAndRomanAnalysis[];
-  readonly hierarchical_melody: TimeAndMelodyAnalysis[][];
-  // readonly melodies: TimeAndMelodyAnalysis[];
-  readonly d_melodies: TimeAndMelodyAnalysis[];
+  readonly hierarchical_melody: IMelodyModel[][];
+  // readonly melodies: IMelodyModel[];
+  readonly d_melodies: IMelodyModel[];
   constructor(
     beat_info: BeatInfo,
     romans: TimeAndRomanAnalysis[],
-    hierarchical_melody: TimeAndMelodyAnalysis[][],
-    // melodies: TimeAndMelodyAnalysis[],
-    d_melodies: TimeAndMelodyAnalysis[]
+    hierarchical_melody: IMelodyModel[][],
+    // melodies: IMelodyModel[],
+    d_melodies: IMelodyModel[]
   ) {
     this.beat_info = beat_info;
     this.romans = romans;
@@ -40,7 +40,7 @@ export class SongManager {
   }
 }
 
-const getMelody = (hierarchical_melody: TimeAndMelodyAnalysis[][]) => hierarchical_melody[hierarchical_melody.length - 1];
+const getMelody = (hierarchical_melody: IMelodyModel[][]) => hierarchical_melody[hierarchical_melody.length - 1];
 
 export const appendPianoRoll = (piano_roll_place: HTMLDivElement, song_manager: SongManager) => {
   const piano_roll = new PianoRoll();

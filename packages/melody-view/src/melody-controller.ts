@@ -1,7 +1,7 @@
 import { HierarchyLevel, MelodyBeepSwitcher, MelodyBeepVolume } from "@music-analyzer/controllers";
 import { MelodyModel } from "./melody-model";
 import { MelodyView } from "./melody-view";
-import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
+import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { AccompanyToAudio } from "@music-analyzer/view";
 import { get_color_of_Narmour_concept, get_color_on_parametric_scale } from "@music-analyzer/irm";
 import { fifthChromaToColor } from "@music-analyzer/color";
@@ -16,7 +16,7 @@ export class MelodyController implements AccompanyToAudio {
   readonly melody_beep_switcher: MelodyBeepSwitcher;
   readonly melody_beep_volume: MelodyBeepVolume;
 
-  constructor(melody: TimeAndMelodyAnalysis, hierarchy_level: HierarchyLevel, melody_beep_switcher: MelodyBeepSwitcher, melody_beep_volume: MelodyBeepVolume, layer?: number) {
+  constructor(melody: IMelodyModel, hierarchy_level: HierarchyLevel, melody_beep_switcher: MelodyBeepSwitcher, melody_beep_volume: MelodyBeepVolume, layer?: number) {
     this.model = new MelodyModel(melody, layer || 0);
     // this.view = new MelodyView(get_color_on_parametric_scale(melody.melody_analysis.implication_realization));
     this.view = new MelodyView("#0c0");
