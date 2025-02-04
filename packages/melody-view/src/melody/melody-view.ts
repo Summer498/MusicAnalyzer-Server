@@ -1,6 +1,6 @@
 import { black_key_prm, CurrentTimeX, NoteSize, NowAtX, PianoRollBegin } from "@music-analyzer/view-parameters";
 import { MelodyModel } from "./melody-model";
-import { deleteMelody } from "./melody-editor-function";
+import { deleteMelody } from "../melody-editor-function";
 import { get_color_of_Narmour_concept, get_color_on_parametric_scale } from "@music-analyzer/irm";
 import { fifthChromaToColor } from "@music-analyzer/color";
 

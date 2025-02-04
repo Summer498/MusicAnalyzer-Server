@@ -3,7 +3,7 @@ import { DMelodyModel } from "./d-melody-model";
 import { DMelodyView } from "./d-melody-view";
 import { DMelodySwitcher } from "@music-analyzer/controllers";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
-import { insertMelody } from "./melody-editor-function";
+import { insertMelody } from "../melody-editor-function";
 
 export class DMelodyController implements AccompanyToAudio {
   readonly model: DMelodyModel;
