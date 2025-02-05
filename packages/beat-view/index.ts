@@ -1,1 +1,1 @@
-export { getBeatBars } from "./src/beat-bar";
+export { BeatBarsGroup } from "./src/beat-bar";

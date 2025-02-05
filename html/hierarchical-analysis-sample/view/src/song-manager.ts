@@ -34,21 +34,21 @@ export const appendPianoRoll = (piano_roll_place: HTMLDivElement, song_manager: 
   analyzed_svgs.input_controller.hierarchy_level.setHierarchyLevelSliderValues(song_manager.hierarchical_melody.length - 1);
 
   piano_roll.svg.appendChild(octave_bgs);
-  //  piano_roll.svg.appendChild(beat_bars.group);
+  //  piano_roll.svg.appendChild(beat_bars.svg);
   if (!NO_CHORD) {
-    piano_roll.svg.appendChild(analyzed_svgs.chord_notes.group);
-    piano_roll.svg.appendChild(analyzed_svgs.chord_names.group);
-    piano_roll.svg.appendChild(analyzed_svgs.chord_romans.group);
-    piano_roll.svg.appendChild(analyzed_svgs.chord_keys.group);
+    piano_roll.svg.appendChild(analyzed_svgs.chord_notes.svg);
+    piano_roll.svg.appendChild(analyzed_svgs.chord_names.svg);
+    piano_roll.svg.appendChild(analyzed_svgs.chord_romans.svg);
+    piano_roll.svg.appendChild(analyzed_svgs.chord_keys.svg);
   }
-  piano_roll.svg.appendChild(analyzed_svgs.d_melody_controllers.group);
-  analyzed_svgs.h_melody_controllers.forEach(e => piano_roll.svg.appendChild(e.group));
-  analyzed_svgs.h_ir_symbols.forEach(e => piano_roll.svg.appendChild(e.group));
+  piano_roll.svg.appendChild(analyzed_svgs.d_melody_controllers.svg);
+  analyzed_svgs.h_melody_controllers.forEach(e => piano_roll.svg.appendChild(e.svg));
+  analyzed_svgs.h_ir_symbols.forEach(e => piano_roll.svg.appendChild(e.svg));
   if (!NO_CHORD) {
-    analyzed_svgs.h_chord_gravities.forEach(e => piano_roll.svg.appendChild(e.group));
-    analyzed_svgs.h_scale_gravities.forEach(e => piano_roll.svg.appendChild(e.group));
+    analyzed_svgs.h_chord_gravities.forEach(e => piano_roll.svg.appendChild(e.svg));
+    analyzed_svgs.h_scale_gravities.forEach(e => piano_roll.svg.appendChild(e.svg));
   }
-  analyzed_svgs.h_time_span_tree.forEach(e => piano_roll.svg.appendChild(e.group));
+  analyzed_svgs.h_time_span_tree.forEach(e => piano_roll.svg.appendChild(e.svg));
   const octave_keys = document.createElementNS("http://www.w3.org/2000/svg", "g");
   octave_keys.id = "octave-keys";
   getOctaveKeys(getWhiteKeys(), getBlackKeys()).svg
