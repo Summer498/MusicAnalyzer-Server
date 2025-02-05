@@ -46,7 +46,7 @@ import { SongManager } from "@music-analyzer/piano-roll";
   console.log(do_re_mi_tsr);
   const keyLength = (obj: object) => Object.keys(obj).length;
   const ts = keyLength(do_re_mi_tsr) ? new TSR(do_re_mi_tsr).tstree.ts : undefined;
-  const pr = keyLength(do_re_mi_pr) ? new PRR(do_re_mi_pr).prtree.pr : undefined;;
+  const pr = keyLength(do_re_mi_pr) ? new PRR(do_re_mi_pr).prtree.pr : undefined;
 
   const matrix = ts ? ts.getMatrixOfLayer(ts.getDepthCount() - 1) : undefined;
   const hierarchical_melody = String(mode) === "PR" ? pr && matrix ? getHierarchicalMelody(pr, matrix, musicxml, roman) : [melody] : ts && matrix ? getHierarchicalMelody(ts, matrix, musicxml, roman) : [melody];
