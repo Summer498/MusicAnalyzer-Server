@@ -3,8 +3,8 @@ import { fifthToColor } from "@music-analyzer/color";
 import { _Chord } from "@music-analyzer/tonal-objects";
 import { AccompanyToAudio } from "@music-analyzer/view";
 import { CurrentTimeX, NoteSize, NowAt, NowAtX, PianoRollHeight } from "@music-analyzer/view-parameters";
-import { chord_text_em, chord_text_size } from "./chord-view-params";
-import { shorten_chord } from "./shorten";
+import { chord_text_em, chord_text_size } from "../chord-view-params";
+import { shorten_chord } from "../shorten";
 
 export class ChordNameSVG implements AccompanyToAudio {
   readonly svg: SVGTextElement;

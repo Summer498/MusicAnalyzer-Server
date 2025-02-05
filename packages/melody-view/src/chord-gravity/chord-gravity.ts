@@ -1,5 +1,5 @@
 import { rgbToString } from "@music-analyzer/color";
-import { ArrowSVG } from "./arrow"
+import { ArrowSVG } from "../arrow/arrow";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { HierarchyLevel } from "@music-analyzer/controllers";
 

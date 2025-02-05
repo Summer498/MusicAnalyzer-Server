@@ -3,10 +3,10 @@ import { getRange } from "@music-analyzer/math";
 import { _Chord } from "@music-analyzer/tonal-objects";
 import { SvgCollection__old } from "@music-analyzer/view";
 import { OctaveCount } from "@music-analyzer/view-parameters";
-import { ChordNoteSVG } from "./src/chord-note";
-import { ChordNameSVG } from "./src/chord-name";
-import { ChordRomanSVG } from "./src/chord-roman";
-import { ChordKeySVG } from "./src/chord-key";
+import { ChordNoteSVG } from "./src/chord-note/chord-note";
+import { ChordNameSVG } from "./src/chord-name/chord-name";
+import { ChordRomanSVG } from "./src/chord-roman/chord-roman";
+import { ChordKeySVG } from "./src/chord-key/chord-key";
 
 export const getChordNotesSVG = (romans: TimeAndRomanAnalysis[]) => new SvgCollection__old(
   "chords",

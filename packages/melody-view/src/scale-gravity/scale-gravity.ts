@@ -1,7 +1,7 @@
 import { rgbToString } from "@music-analyzer/color";
 import { HierarchyLevel } from "@music-analyzer/controllers";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
-import { ArrowSVG } from "./arrow";
+import { ArrowSVG } from "../arrow/arrow";
 
 // TODO: chord gravities と key gravities を別オブジェクトとして得られるようにする
 export const key_gravities: SVGElement[] = [];
