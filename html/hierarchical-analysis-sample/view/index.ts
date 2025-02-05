@@ -2,7 +2,7 @@ import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { WindowReflectableRegistry, AccompanyToAudioRegistry } from "@music-analyzer/view";
-import { appendController, appendPianoRoll, SongManager } from "./src/song-manager";
+import { appendController, appendPianoRoll } from "./src/song-manager";
 import { bracket_hight, NowAt, PianoRollBegin, PianoRollEnd } from "@music-analyzer/view-parameters";
 
 // 分析データ-->
@@ -19,6 +19,7 @@ import { xml_parser } from "./src/XMLParser";
 import { GRP, MTR, TSR, PRR, D_TSR, D_PRR } from "@music-analyzer/gttm";
 import { getHierarchicalMelody } from "./src/HierarchicalMelody";
 import { song_list } from "./src/songlist";
+import { SongManager } from "@music-analyzer/piano-roll";
 (async () => {
   const urlParams = new URLSearchParams(window.location.search);
   const tune_id = urlParams.get("tune");
@@ -95,8 +96,8 @@ import { song_list } from "./src/songlist";
   PianoRollEnd.value = lowest_pitch - 3;
   const song_manager = new SongManager(beat_info, romans, hierarchical_melody, d_melodies);
   // song_manager.analysis_data = { beat_info, romans, hierarchical_melody: [melodies], d_melodies };
-  appendPianoRoll(piano_roll_place, song_manager);
-  appendController(controllers);
+  const piano_roll = appendPianoRoll(piano_roll_place, song_manager);
+  appendController(controllers, piano_roll);
   // <-- SVG
 
   // メインループ -->

@@ -2,8 +2,9 @@ import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { WindowReflectableRegistry, AccompanyToAudioRegistry } from "@music-analyzer/view";
-import { appendController, appendPianoRoll, SongManager } from "./src/song-manager";
+import { appendController, appendPianoRoll } from "./src/song-manager";
 import { NowAt } from "@music-analyzer/view-parameters";
+import { SongManager } from "@music-analyzer/piano-roll";
 
 interface MusicAnalyzerWindow extends Window {
   readonly MusicAnalyzer: {
@@ -49,8 +50,8 @@ console.log(melodies[melodies.length - 1].end);
 // SVG -->
 const song_manager = new SongManager(beat_info, romans, [melodies], d_melodies);
 // song_manager.analysis_data = { beat_info, romans, hierarchical_melody: [melodies], d_melodies };
-appendPianoRoll(piano_roll_place, song_manager);
-appendController(piano_roll_place);
+const piano_roll = appendPianoRoll(piano_roll_place, song_manager);
+appendController(piano_roll_place, piano_roll);
 // <-- SVG
 
 // メインループ -->
