@@ -1,4 +1,3 @@
-import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { BeatBarModel } from "./beat-bar-model";
 import { BeatBarView } from "./beat-bar-view";
 import { Controller } from "@music-analyzer/view";
@@ -9,8 +8,8 @@ export class BeatBarController implements Controller {
   readonly model: BeatBarModel;
   readonly view: BeatBarView;
   sound_reserved: boolean;
-  constructor(beat_info: BeatInfo, i: number) {
-    this.model = new BeatBarModel(beat_info, i);
+  constructor(model: BeatBarModel) {
+    this.model = model;
     this.view = new BeatBarView(this.model);
     this.sound_reserved = false;
   }

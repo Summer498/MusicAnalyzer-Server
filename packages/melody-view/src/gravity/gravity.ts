@@ -1,21 +1,21 @@
 import { SvgCollection } from "@music-analyzer/view";
 import { HierarchyLevel } from "@music-analyzer/controllers";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
-import { getChordGravitySVG } from "../chord-gravity/chord-gravity";
-import { getScaleGravitySVG } from "../scale-gravity/scale-gravity";
+import { getChordGravityController } from "../chord-gravity/chord-gravity";
+import { getScaleGravityController } from "../scale-gravity/scale-gravity";
 
-export const getHierarchicalChordGravitySVGs = (hierarchical_melodies: IMelodyModel[][], hierarchy_level: HierarchyLevel) =>
+export const getHChordGravityController = (hierarchical_melodies: IMelodyModel[][], hierarchy_level: HierarchyLevel) =>
   hierarchical_melodies.map((melodies, l) =>
     new SvgCollection(
       `layer-${l}`,
-      melodies.map((e, i, a) => getChordGravitySVG(e, i, a, hierarchy_level, l)).flat(2)
+      melodies.map((e, i, a) => getChordGravityController(e, i, a, hierarchy_level, l)).flat(2)
     )
   );
 
-export const getHierarchicalScaleGravitySVGs = (hierarchical_melodies: IMelodyModel[][], hierarchy_level: HierarchyLevel) =>
+export const getHScaleGravityController = (hierarchical_melodies: IMelodyModel[][], hierarchy_level: HierarchyLevel) =>
   hierarchical_melodies.map((melodies, l) =>
     new SvgCollection(
       `layer-${l}`,
-      melodies.map((e, i, a) => getScaleGravitySVG(e, i, a, hierarchy_level, l)).flat(2)
+      melodies.map((e, i, a) => getScaleGravityController(e, i, a, hierarchy_level, l)).flat(2)
     )
   );

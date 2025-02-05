@@ -1,8 +1,8 @@
 import { DMelodySwitcher, GravitySwitcher, HierarchyLevel, MelodyBeepSwitcher, MelodyBeepVolume, MelodyColorSelector, TimeRangeSlider } from "@music-analyzer/controllers";
 import { SvgCollection } from "@music-analyzer/view";
 import { getBeatBars } from "@music-analyzer/beat-view";
-import { getChordKeysSVG, getChordNamesSVG, getChordNotesSVG, getChordRomansSVG } from "@music-analyzer/chord-view";
-import { getDMelodyControllers, getHierarchicalChordGravitySVGs, getHierarchicalIRSymbolSVGs, getHierarchicalMelodyControllers, getHierarchicalScaleGravitySVGs, getTSR_SVGs } from "@music-analyzer/melody-view";
+import { getChordKeysController, getChordNamesController, getChordNotesController, getChordRomansController } from "@music-analyzer/chord-view";
+import { getDMelodyControllers, getHChordGravityController, getHIRSymbolController, getHMelodyControllers, getHScaleGravityController, getTSRController } from "@music-analyzer/melody-view";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
@@ -71,15 +71,15 @@ export class PianoRollController2 {
       song_manager.beat_info,
       getMelody(song_manager.hierarchical_melody)
     );
-    this.chord_notes = getChordNotesSVG(song_manager.romans);
-    this.chord_names = getChordNamesSVG(song_manager.romans);
-    this.chord_romans = getChordRomansSVG(song_manager.romans);
-    this.chord_keys = getChordKeysSVG(song_manager.romans);
+    this.chord_notes = getChordNotesController(song_manager.romans);
+    this.chord_names = getChordNamesController(song_manager.romans);
+    this.chord_romans = getChordRomansController(song_manager.romans);
+    this.chord_keys = getChordKeysController(song_manager.romans);
     this.d_melody_controllers = getDMelodyControllers(song_manager.d_melodies, this.input_controller.d_melody_switcher);
-    this.h_melody_controllers = getHierarchicalMelodyControllers(song_manager.hierarchical_melody, this.input_controller.hierarchy_level, this.input_controller.melody_beep_switcher, this.input_controller.melody_beep_volume);
-    this.h_ir_symbols = getHierarchicalIRSymbolSVGs(song_manager.hierarchical_melody, this.input_controller.hierarchy_level);
-    this.h_chord_gravities = getHierarchicalChordGravitySVGs(song_manager.hierarchical_melody, this.input_controller.hierarchy_level);
-    this.h_scale_gravities = getHierarchicalScaleGravitySVGs(song_manager.hierarchical_melody, this.input_controller.hierarchy_level);
-    this.h_time_span_tree = getTSR_SVGs(song_manager.hierarchical_melody, this.input_controller.hierarchy_level);
+    this.h_melody_controllers = getHMelodyControllers(song_manager.hierarchical_melody, this.input_controller.hierarchy_level, this.input_controller.melody_beep_switcher, this.input_controller.melody_beep_volume);
+    this.h_ir_symbols = getHIRSymbolController(song_manager.hierarchical_melody, this.input_controller.hierarchy_level);
+    this.h_chord_gravities = getHChordGravityController(song_manager.hierarchical_melody, this.input_controller.hierarchy_level);
+    this.h_scale_gravities = getHScaleGravityController(song_manager.hierarchical_melody, this.input_controller.hierarchy_level);
+    this.h_time_span_tree = getTSRController(song_manager.hierarchical_melody, this.input_controller.hierarchy_level);
   }
 }

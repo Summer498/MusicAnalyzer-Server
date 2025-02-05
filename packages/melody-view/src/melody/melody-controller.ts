@@ -1,7 +1,6 @@
 import { HierarchyLevel, MelodyBeepSwitcher, MelodyBeepVolume } from "@music-analyzer/controllers";
 import { MelodyModel } from "./melody-model";
 import { MelodyView } from "./melody-view";
-import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { AccompanyToAudio } from "@music-analyzer/view";
 import { play } from "@music-analyzer/synth";
 import { NowAt, reservation_range } from "@music-analyzer/view-parameters";
@@ -14,13 +13,12 @@ export class MelodyController implements AccompanyToAudio {
   readonly melody_beep_volume: MelodyBeepVolume;
 
   constructor(
-    melody: IMelodyModel,
+    model: MelodyModel,
     hierarchy_level: HierarchyLevel,
     melody_beep_switcher: MelodyBeepSwitcher,
     melody_beep_volume: MelodyBeepVolume,
-    layer?: number
   ) {
-    this.model = new MelodyModel(melody, layer || 0);
+    this.model = model;
     this.view = new MelodyView(this.model);
     this.view = new MelodyView(this.model);
     this.view = new MelodyView(this.model);
