@@ -1,5 +1,5 @@
 import { DMelodySwitcher, GravitySwitcher, HierarchyLevel, MelodyBeepSwitcher, MelodyBeepVolume, MelodyColorSelector, TimeRangeSlider } from "@music-analyzer/controllers";
-import { SvgCollection, SvgCollection__old } from "@music-analyzer/view";
+import { SvgCollection } from "@music-analyzer/view";
 import { getBeatBars } from "@music-analyzer/beat-view";
 import { getChordKeysSVG, getChordNamesSVG, getChordNotesSVG, getChordRomansSVG } from "@music-analyzer/chord-view";
 import { getDMelodyControllers, getHierarchicalChordGravitySVGs, getHierarchicalIRSymbolSVGs, getHierarchicalMelodyControllers, getHierarchicalScaleGravitySVGs, getTSR_SVGs } from "@music-analyzer/melody-view";
@@ -52,17 +52,17 @@ export class PianoRollController1 {
 const getMelody = (hierarchical_melody: IMelodyModel[][]) => hierarchical_melody[hierarchical_melody.length - 1];
 
 export class PianoRollController2 {
-  readonly beat_bars: SvgCollection__old;
-  readonly chord_notes: SvgCollection__old;
-  readonly chord_names: SvgCollection__old;
-  readonly chord_romans: SvgCollection__old;
-  readonly chord_keys: SvgCollection__old;
+  readonly beat_bars: SvgCollection;
+  readonly chord_notes: SvgCollection;
+  readonly chord_names: SvgCollection;
+  readonly chord_romans: SvgCollection;
+  readonly chord_keys: SvgCollection;
   readonly d_melody_controllers: SvgCollection;
   readonly h_melody_controllers: SvgCollection[];
-  readonly h_ir_symbols: SvgCollection__old[];
-  readonly h_chord_gravities: SvgCollection__old[];
-  readonly h_scale_gravities: SvgCollection__old[];
-  readonly h_time_span_tree: SvgCollection__old[];
+  readonly h_ir_symbols: SvgCollection[];
+  readonly h_chord_gravities: SvgCollection[];
+  readonly h_scale_gravities: SvgCollection[];
+  readonly h_time_span_tree: SvgCollection[];
   readonly input_controller: PianoRollController1;
 
   constructor(song_manager: SongManager) {
