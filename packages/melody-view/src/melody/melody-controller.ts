@@ -20,9 +20,6 @@ export class MelodyController implements AccompanyToAudio {
   ) {
     this.model = model;
     this.view = new MelodyView(this.model);
-    this.view = new MelodyView(this.model);
-    this.view = new MelodyView(this.model);
-    this.view = new MelodyView(this.model);
     this.hierarchy_level = hierarchy_level;
     this.melody_beep_switcher = melody_beep_switcher;
     this.melody_beep_volume = melody_beep_volume;
