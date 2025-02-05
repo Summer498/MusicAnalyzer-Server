@@ -30,7 +30,11 @@ import { SongManager } from "@music-analyzer/piano-roll";
   const do_re_mi_tsr = (await xml_parser.parse(await (await fetch(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/TS-${tune_id}.xml`)).text()) as D_TSR);
   const do_re_mi_pr = (await xml_parser.parse(await (await fetch(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/PR-${tune_id}.xml`)).text()) as D_PRR);
 
-  const mode: "TSR" | "PR" = "TSR";
+  const keyLength = (obj: object) => Object.keys(obj).length;
+  const ts = new TSR(do_re_mi_tsr).tstree.ts;
+  const pr = keyLength(do_re_mi_pr) ? new PRR(do_re_mi_pr).prtree.pr : undefined;
+  const mode: "TSR" | "PR" = pr ? "PR" : "TSR";
+
   title.textContent = `[${mode}] ${tune_id}`;
   const tune_match = tune_id?.match(/([0-9]+)_[0-9]/);
   const tune_no = tune_match ? Number(tune_match[1]) : Number(tune_id);
@@ -39,15 +43,8 @@ import { SongManager } from "@music-analyzer/piano-roll";
     title.innerHTML = `[${mode}] ${tune_id}, ${song_data.author}, <i>"${song_data.title}"</i>`;
   }
 
-  const ts = new TSR(do_re_mi_tsr).tstree.ts;
-  const pr = (() => {
-    try {
-      return new PRR(do_re_mi_pr).prtree.pr;
-    } catch (e) { }
-  })();
-
   const matrix = ts.getMatrixOfLayer(ts.getDepthCount() - 1);
-  const hierarchical_melody = getHierarchicalMelody(String(mode) === "PR" ? pr! : ts, matrix, musicxml, roman);
+  const hierarchical_melody = getHierarchicalMelody(String(mode) === "PR" && pr ? pr : ts, matrix, musicxml, roman);
 
   // const org_melody = await (await fetch("/MusicAnalyzer-server/resources/Hierarchical Analysis Sample/analyzed/melody/crepe/vocals.json")).json() as number[];
   // const time_and_melody = getTimeAndMelody(org_melody, 100);
