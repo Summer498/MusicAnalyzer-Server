@@ -26,7 +26,8 @@ export class MelodyLayer extends SvgCollection {
 }
 
 export class MelodyGroup {
-  children: MelodyLayer[];
+  readonly svg: SVGGElement;
+  readonly children: MelodyLayer[];
   constructor(
     hierarchical_melodies: IMelodyModel[][],
     hierarchy_level: HierarchyLevel,
@@ -42,5 +43,8 @@ export class MelodyGroup {
         layer
       )
     );
+    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    this.svg.id = "melody";
+    this.children.forEach(e=>this.svg.appendChild(e.svg));
   }
 }

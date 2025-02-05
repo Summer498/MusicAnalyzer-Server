@@ -17,12 +17,16 @@ export class ChordGravityLayer extends SvgCollection {
 }
 
 export class ChordGravityGroup {
-  children: ChordGravityLayer[];
+  readonly svg: SVGGElement;
+  readonly children: ChordGravityLayer[];
   constructor(
     hierarchical_melodies: IMelodyModel[][],
     hierarchy_level: HierarchyLevel
   ) {
     this.children = hierarchical_melodies.map((melodies, layer) => new ChordGravityLayer(melodies, layer, hierarchy_level));
+    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    this.svg.id = "chord-gravity";
+    this.children.forEach(e=> this.svg.appendChild(e.svg));
   }
 }
 
@@ -39,11 +43,15 @@ export class ScaleGravityLayer extends SvgCollection {
 }
 
 export class ScaleGravityGroup {
-  children: ScaleGravityLayer[];
+  readonly svg: SVGGElement;
+  readonly children: ScaleGravityLayer[];
   constructor(
     hierarchical_melodies: IMelodyModel[][],
     hierarchy_level: HierarchyLevel
   ){
     this.children = hierarchical_melodies.map((melodies, layer) => new ScaleGravityLayer(melodies, layer, hierarchy_level));
+    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    this.svg.id = "scale-gravity";
+    this.children.forEach(e=> this.svg.appendChild(e.svg));
   }
 }

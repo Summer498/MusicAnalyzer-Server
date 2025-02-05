@@ -58,11 +58,11 @@ export class PianoRollController2 {
   readonly chord_romans: SvgCollection;
   readonly chord_keys: SvgCollection;
   readonly d_melody_controllers: SvgCollection;
-  readonly h_melody_controllers: SvgCollection[];
-  readonly h_ir_symbols: SvgCollection[];
-  readonly h_chord_gravities: SvgCollection[];
-  readonly h_scale_gravities: SvgCollection[];
-  readonly h_time_span_tree: SvgCollection[];
+  readonly melody_group: { readonly svg: SVGGElement };
+  readonly ir_group: { readonly svg: SVGGElement };
+  readonly chord_gravities: { readonly svg: SVGGElement };
+  readonly scale_gravities: { readonly svg: SVGGElement };
+  readonly time_span_tree: { readonly svg: SVGGElement };
   readonly input_controller: PianoRollController1;
 
   constructor(song_manager: SongManager) {
@@ -75,11 +75,19 @@ export class PianoRollController2 {
     this.chord_names = new ChordNameGroup(song_manager.romans);
     this.chord_romans = new ChordRomanGroup(song_manager.romans);
     this.chord_keys = new CHordKeyGroup(song_manager.romans);
-    this.d_melody_controllers = new DMelodyGroup(song_manager.d_melodies, this.input_controller.d_melody_switcher);
-    this.h_melody_controllers = new MelodyGroup(song_manager.hierarchical_melody, this.input_controller.hierarchy_level, this.input_controller.melody_beep_switcher, this.input_controller.melody_beep_volume).children;
-    this.h_ir_symbols = new IRSymbolGroup(song_manager.hierarchical_melody, this.input_controller.hierarchy_level).children;
-    this.h_chord_gravities = new ChordGravityGroup(song_manager.hierarchical_melody, this.input_controller.hierarchy_level).children;
-    this.h_scale_gravities = new ScaleGravityGroup(song_manager.hierarchical_melody, this.input_controller.hierarchy_level).children;
-    this.h_time_span_tree = new TSRGroup(song_manager.hierarchical_melody, this.input_controller.hierarchy_level).children;
+    this.d_melody_controllers = new DMelodyGroup(song_manager.d_melodies,
+      this.input_controller.d_melody_switcher);
+    this.melody_group = new MelodyGroup(song_manager.hierarchical_melody,
+      this.input_controller.hierarchy_level,
+      this.input_controller.melody_beep_switcher,
+      this.input_controller.melody_beep_volume);
+    this.ir_group = new IRSymbolGroup(song_manager.hierarchical_melody,
+      this.input_controller.hierarchy_level);
+    this.chord_gravities = new ChordGravityGroup(song_manager.hierarchical_melody,
+      this.input_controller.hierarchy_level);
+    this.scale_gravities = new ScaleGravityGroup(song_manager.hierarchical_melody,
+      this.input_controller.hierarchy_level);
+    this.time_span_tree = new TSRGroup(song_manager.hierarchical_melody,
+      this.input_controller.hierarchy_level);
   }
 }

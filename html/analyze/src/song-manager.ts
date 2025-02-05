@@ -30,11 +30,11 @@ export const appendPianoRoll = (piano_roll_place: HTMLDivElement, song_manager: 
   piano_roll.svg.appendChild(analyzed_svgs.chord_romans.svg);
   piano_roll.svg.appendChild(analyzed_svgs.chord_keys.svg);
   piano_roll.svg.appendChild(analyzed_svgs.d_melody_controllers.svg);
-  analyzed_svgs.h_melody_controllers.forEach(e => piano_roll.svg.appendChild(e.svg));
-  analyzed_svgs.h_ir_symbols.forEach(e => piano_roll.svg.appendChild(e.svg));
-  analyzed_svgs.h_chord_gravities.forEach(e => piano_roll.svg.appendChild(e.svg));
-  analyzed_svgs.h_scale_gravities.forEach(e => piano_roll.svg.appendChild(e.svg));
-  analyzed_svgs.h_time_span_tree.forEach(e => piano_roll.svg.appendChild(e.svg));
+  piano_roll.svg.appendChild(analyzed_svgs.melody_group.svg);
+  piano_roll.svg.appendChild(analyzed_svgs.ir_group.svg);
+  piano_roll.svg.appendChild(analyzed_svgs.chord_gravities.svg);
+  piano_roll.svg.appendChild(analyzed_svgs.scale_gravities.svg);
+  piano_roll.svg.appendChild(analyzed_svgs.time_span_tree.svg);
   const octave_keys = document.createElementNS("http://www.w3.org/2000/svg", "g");
   getOctaveKeys(getWhiteKeys(), getBlackKeys()).svg
     .forEach(e => octave_keys.appendChild(e.svg));

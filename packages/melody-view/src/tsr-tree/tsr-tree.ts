@@ -21,13 +21,15 @@ export class TSRLayer extends SvgCollection {
 }
 
 export class TSRGroup {
-  svg: SVGGElement;
-  children: TSRLayer[];
+  readonly svg: SVGGElement;
+  readonly children: TSRLayer[];
   constructor(
     hierarchical_melodies: IMelodyModel[][],
     hierarchy_level: HierarchyLevel
-  ){
+  ) {
     this.children = hierarchical_melodies.map((e, l) => new TSRLayer(e, l, hierarchy_level));
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    this.svg.id = "time-span-reduction";
+    this.children.forEach(e => this.svg.appendChild(e.svg));
   }
 }

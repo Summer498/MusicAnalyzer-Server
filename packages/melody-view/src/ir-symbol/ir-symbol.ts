@@ -17,13 +17,15 @@ export class IRSymbolLayer extends SvgCollection {
 }
 
 export class IRSymbolGroup {
-  svg: SVGGElement;
-  children: IRSymbolLayer[];
+  readonly svg: SVGGElement;
+  readonly children: IRSymbolLayer[];
   constructor(
     hierarchical_melodies: IMelodyModel[][],
     hierarchy_level: HierarchyLevel
   ){
     this.children = hierarchical_melodies.map((melodies, layer) => new IRSymbolLayer(melodies, layer, hierarchy_level));
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    this.svg.id = "implication-realization archetype";
+    this.children.forEach(e=>this.svg.appendChild(e.svg));
   }
 }
