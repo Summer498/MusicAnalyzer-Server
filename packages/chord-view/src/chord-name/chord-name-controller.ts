@@ -11,6 +11,6 @@ export class ChordNameController implements AccompanyToAudio {
     this.view = new ChordNameView(this.model);
   }
   onAudioUpdate() {
-    this.onAudioUpdate();
+    this.view.onAudioUpdate();
   }
 }
