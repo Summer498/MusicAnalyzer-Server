@@ -1,7 +1,8 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { _Note, Chord } from "@music-analyzer/tonal-objects";
+import { MVCModel } from "@music-analyzer/view";
 
-export class ChordNoteModel {
+export class ChordNoteModel extends MVCModel {
   readonly begin: number;
   readonly end: number;
   readonly tonic: string;
@@ -14,6 +15,7 @@ export class ChordNoteModel {
     note: string,
     oct: number
   ) {
+    super();
     this.begin = e.begin;
     this.end = e.end;
     this.tonic = chord.tonic!;

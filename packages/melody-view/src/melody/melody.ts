@@ -1,50 +1,42 @@
-import { SvgCollection } from "@music-analyzer/view";
 import { MelodyController } from "./melody-controller";
-import { HierarchyLevel, MelodyBeepSwitcher, MelodyBeepVolume } from "@music-analyzer/controllers";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { MelodyModel } from "./melody-model";
+import { Layer, LayerGroup } from "@music-analyzer/view";
 
 export { DMelodyGroup } from "../d-melody/d-melody";
 
-export class MelodyLayer extends SvgCollection {
+export class MelodyLayer extends Layer {
   constructor(
     melodies: IMelodyModel[],
-    hierarchy_level: HierarchyLevel,
-    melody_beep_switcher: MelodyBeepSwitcher,
-    melody_beep_volume: MelodyBeepVolume,
     layer: number
-  ){
+  ) {
     const children = melodies.map(e => new MelodyController(
-      new MelodyModel(e, layer),
-      hierarchy_level,
-      melody_beep_switcher,
-      melody_beep_volume
+      new MelodyModel(e),
     ));
-    super(children);
-    this.svg.id = `layer-${layer}`;
+    super(children, layer);
   }
 }
 
-export class MelodyGroup {
-  readonly svg: SVGGElement;
+export class MelodyGroup extends LayerGroup {
   readonly children: MelodyLayer[];
+  get show() { return this._show; }
   constructor(
     hierarchical_melodies: IMelodyModel[][],
-    hierarchy_level: HierarchyLevel,
-    melody_beep_switcher: MelodyBeepSwitcher,
-    melody_beep_volume: MelodyBeepVolume
-  ){
+  ) {
+    super();
     this.children = hierarchical_melodies.map((melodies, layer) =>
-      new MelodyLayer(
-        melodies,
-        hierarchy_level,
-        melody_beep_switcher,
-        melody_beep_volume,
-        layer
-      )
+      new MelodyLayer(melodies, layer)
     );
-    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.svg.id = "melody";
-    this.children.forEach(e=>this.svg.appendChild(e.svg));
+    this.children.forEach(e => this.svg.appendChild(e.svg));
+    this._show = [];
+  }
+  #updateShow() {
+    this.show.forEach(e => e.children.forEach(e => (e as MelodyController).onMelodyBeepCheckChanged(false)));
+    this.show.forEach(e => e.children.forEach(e => (e as MelodyController).onMelodyVolumeBarChanged(0)));
+  }
+  onChangedLayer(value: number) {
+    this.#updateShow();
+    super.onChangedLayer(value);
   }
 }

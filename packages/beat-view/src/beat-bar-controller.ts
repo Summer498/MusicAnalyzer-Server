@@ -1,14 +1,15 @@
 import { BeatBarModel } from "./beat-bar-model";
 import { BeatBarView } from "./beat-bar-view";
-import { Controller } from "@music-analyzer/view";
+import { MVCController } from "@music-analyzer/view";
 import { play } from "@music-analyzer/synth";
 import { NowAt, reservation_range } from "@music-analyzer/view-parameters";
 
-export class BeatBarController implements Controller {
+export class BeatBarController extends MVCController {
   readonly model: BeatBarModel;
   readonly view: BeatBarView;
   sound_reserved: boolean;
   constructor(model: BeatBarModel) {
+    super();
     this.model = model;
     this.view = new BeatBarView(this.model);
     this.sound_reserved = false;

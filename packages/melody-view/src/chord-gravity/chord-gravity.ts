@@ -2,10 +2,8 @@ import { rgbToString } from "@music-analyzer/color";
 import { ArrowController } from "../arrow/arrow";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { HierarchyLevel } from "@music-analyzer/controllers";
-import { Controller } from "@music-analyzer/view";
+import { MVCController } from "@music-analyzer/view";
 import { ArrowModel } from "../arrow/arrow-model";
-
-export const chord_gravities: SVGElement[] = [];
 
 export const getChordGravityController = (
   melody: IMelodyModel,
@@ -13,11 +11,11 @@ export const getChordGravityController = (
   melodies: IMelodyModel[],
   hierarchy_level: HierarchyLevel,
   layer?: number
-): Controller[] => {
+): MVCController[] => {
   const stroke = rgbToString([0, 0, 0]);
   const next = melodies.length <= i + 1 ? melodies[i] : melodies[i + 1];
   const fill = rgbToString([0, 0, 0]);
-  const res: Controller[] = [];
+  const res: MVCController[] = [];
   const chord_gravity = melody.melody_analysis.chord_gravity;
   if (chord_gravity?.resolved && chord_gravity.destination !== undefined) {
     const svg = new ArrowController(
@@ -25,7 +23,6 @@ export const getChordGravityController = (
       fill, stroke
     );
     res.push(svg);
-    chord_gravities.push(svg.view.svg);
   }
   return res;
 };

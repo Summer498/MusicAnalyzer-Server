@@ -1,4 +1,5 @@
-export { Controller, Model, View } from "./src/mvc";
+export { Layer, LayerGroup } from "./src/layer-group";
+export { MVCController, MVCModel, MVCView } from "./src/mvc";
 export { SvgCollection } from "./src/svg-collection";
 export { AccompanyToAudio } from "./src/updatable";
 export { AccompanyToAudioRegistry } from "./src/updatable-registry";

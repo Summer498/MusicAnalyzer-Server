@@ -1,31 +1,26 @@
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
-import { SvgCollection } from "@music-analyzer/view";
-import { HierarchyLevel } from "@music-analyzer/controllers";
 import { IRSymbolController } from "./ir-symbol-controller";
 import { IRSymbolModel } from "./ir-symbol-model";
+import { Layer, LayerGroup } from "@music-analyzer/view";
 
-export class IRSymbolLayer extends SvgCollection {
+export class IRSymbolLayer extends Layer {
   constructor(
     melodies: IMelodyModel[],
-    layer: number,
-    hierarchy_level: HierarchyLevel
+    layer: number
   ) {
-    const children = melodies.map(e => new IRSymbolController(new IRSymbolModel(e, hierarchy_level, layer)));
-    super(children);
-    this.svg.id = `layer-${layer}`;
+    const children = melodies.map(e => new IRSymbolController(new IRSymbolModel(e, layer)));
+    super(children, layer);
   }
 }
 
-export class IRSymbolGroup {
-  readonly svg: SVGGElement;
+export class IRSymbolGroup extends LayerGroup{
   readonly children: IRSymbolLayer[];
   constructor(
     hierarchical_melodies: IMelodyModel[][],
-    hierarchy_level: HierarchyLevel
   ){
-    this.children = hierarchical_melodies.map((melodies, layer) => new IRSymbolLayer(melodies, layer, hierarchy_level));
-    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    super();
     this.svg.id = "implication-realization archetype";
+    this.children = hierarchical_melodies.map((melodies, layer) => new IRSymbolLayer(melodies, layer));
     this.children.forEach(e=>this.svg.appendChild(e.svg));
   }
 }

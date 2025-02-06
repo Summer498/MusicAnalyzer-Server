@@ -1,11 +1,13 @@
 import { hsv2rgb, rgbToString } from "@music-analyzer/color";
 import { DMelodyModel } from "./d-melody-model";
 import { black_key_prm, CurrentTimeX, NoteSize, NowAtX, PianoRollBegin } from "@music-analyzer/view-parameters";
+import { MVCView } from "@music-analyzer/view";
 
-export class DMelodyView {
+export class DMelodyView extends MVCView {
   readonly svg: SVGRectElement;
-  private readonly model: DMelodyModel;
+  protected readonly model: DMelodyModel;
   constructor(model: DMelodyModel) {
+    super();
     this.model = model;
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     this.svg.id = "melody-note";

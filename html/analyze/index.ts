@@ -12,7 +12,7 @@ declare const piano_roll_place: HTMLDivElement;
 declare const controllers: HTMLDivElement;
 declare const title: HTMLHeadingElement;
 
-import { MusicXML } from "@music-analyzer/gttm/src/MusicXML";
+import { MusicXML } from "@music-analyzer/gttm";
 import { xml_parser } from "./src/XMLParser";
 import { GRP, MTR, TSR, PRR, D_TSR, D_PRR } from "@music-analyzer/gttm";
 import { getHierarchicalMelody } from "./src/HierarchicalMelody";

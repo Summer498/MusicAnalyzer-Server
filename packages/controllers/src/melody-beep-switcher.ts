@@ -1,4 +1,3 @@
-import { AccompanyToAudioRegistry } from "@music-analyzer/view";
 import { Controller } from "./controller";
 
 export class MelodyBeepSwitcher implements Controller {
@@ -10,9 +9,6 @@ export class MelodyBeepSwitcher implements Controller {
     this.checkbox.id = "melody_beep_switcher";
     this.checkbox.name = "melody_beep_switcher";
     this.checkbox.checked = false;
-    this.checkbox.addEventListener("change", e => {
-      AccompanyToAudioRegistry.instance.onAudioUpdate();
-    });
     const label = document.createElement("label");
     label.textContent = "Beep Melody";
     label.htmlFor = this.checkbox.id;

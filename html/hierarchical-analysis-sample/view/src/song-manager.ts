@@ -1,4 +1,4 @@
-import { PianoRollController2, SongManager } from "@music-analyzer/piano-roll";
+import { PianoRollController2, registerListener, SongManager } from "@music-analyzer/piano-roll";
 import { getBlackBGs, getBlackKeys, getCurrentTimeLine, getOctaveBGs, getOctaveKeys, getWhiteBGs, getWhiteKeys, PianoRoll } from "@music-analyzer/svg-objects";
 import { Assertion, _throw } from "@music-analyzer/stdlib";
 import { CurrentTimeRatio } from "@music-analyzer/view-parameters";
@@ -30,8 +30,7 @@ export const appendPianoRoll = (piano_roll_place: HTMLDivElement, song_manager: 
   .forEach(e => octave_bgs.appendChild(e.svg));
   
   const analyzed_svgs = new PianoRollController2(song_manager);
-  console.log(`song_manager.hierarchical_melody.length: ${song_manager.hierarchical_melody.length}`);
-  analyzed_svgs.input_controller.hierarchy_level.setHierarchyLevelSliderValues(song_manager.hierarchical_melody.length - 1);
+  registerListener(analyzed_svgs, analyzed_svgs.input_controller);
 
   piano_roll.svg.appendChild(octave_bgs);
   //  piano_roll.svg.appendChild(beat_bars.svg);

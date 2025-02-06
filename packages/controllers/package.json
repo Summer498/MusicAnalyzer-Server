@@ -14,13 +14,5 @@
     "build:minify": "tsup index.ts --sourcemap --dts --format esm,cjs --minify"
   },
   "dependencies": {
-    "@music-analyzer/html": "1.0.0",
-    "@music-analyzer/melody-analyze": "1.0.0",
-    "@music-analyzer/color": "1.0.0",
-    "@music-analyzer/view": "1.0.0",
-    "@music-analyzer/view-parameters": "1.0.0",
-    "@music-analyzer/time-and": "1.0.0",
-    "@music-analyzer/irm": "1.0.0",
-    "@music-analyzer/synth": "1.0.0"
   }
 }

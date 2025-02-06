@@ -1,32 +1,28 @@
 import { Controller } from "./controller";
-import { AccompanyToAudioRegistry } from "@music-analyzer/view";
-import { PianoRollRatio } from "@music-analyzer/view-parameters";
 
 export class TimeRangeSlider implements Controller {
   readonly body: HTMLSpanElement;
+  readonly slider: HTMLInputElement;
+  readonly span: HTMLSpanElement;
   constructor() {
     const time_range_slider = document.createElement("input");
-    time_range_slider.type = "range";
-    time_range_slider.id = "time_range_slider";
-    time_range_slider.name = "time_range_slider";
-    time_range_slider.min = `${1}`;
-    time_range_slider.max = `${10}`;
-    time_range_slider.step = `${0.1}`;
-    time_range_slider.value = `${10}`;
-    PianoRollRatio.value = Math.pow(2, Number(time_range_slider.value) - Number(time_range_slider.max));
+    this.slider = time_range_slider;
+    this.slider.type = "range";
+    this.slider.id = "time_range_slider";
+    this.slider.name = "time_range_slider";
+    this.slider.min = `${1}`;
+    this.slider.max = `${10}`;
+    this.slider.step = `${0.1}`;
+    this.slider.value = `${10}`;
     const show_time_range_slider_value = document.createElement("span");
-    show_time_range_slider_value.textContent = `${Math.floor(Math.pow(2, Number(time_range_slider.value) - Number(time_range_slider.max)) * 100)} %`;
-    time_range_slider.addEventListener("input", e => {
-      show_time_range_slider_value.textContent = `${Math.floor(Math.pow(2, Number(time_range_slider.value) - Number(time_range_slider.max)) * 100)} %`;
-      PianoRollRatio.value = Math.pow(2, Number(time_range_slider.value) - Number(time_range_slider.max));
-      AccompanyToAudioRegistry.instance.onAudioUpdate();
-    });
+    this.span = show_time_range_slider_value;
+    this.span.textContent = `${Math.floor(Math.pow(2, Number(this.slider.value) - Number(this.slider.max)) * 100)} %`;
     const label = document.createElement("label");
     label.textContent = "Time Range";
-    label.htmlFor = time_range_slider.id;
+    label.htmlFor = this.slider.id;
     this.body = document.createElement("span");
     this.body.appendChild(label);
-    this.body.appendChild(time_range_slider);
-    this.body.appendChild(show_time_range_slider_value);
+    this.body.appendChild(this.slider);
+    this.body.appendChild(this.span);
   }
 }

@@ -6,6 +6,8 @@ import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { BeatBarsGroup } from "@music-analyzer/beat-view/";
+import { MelodyController } from "@music-analyzer/melody-view";
+import { PianoRollRatio } from "@music-analyzer/view-parameters";
 
 export class SongManager {
   readonly beat_info: BeatInfo;
@@ -41,8 +43,8 @@ export class PianoRollController1 {
     this.d_melody_switcher = new DMelodySwitcher();
     this.hierarchy_level = new HierarchyLevel();
     this.time_range_slider = new TimeRangeSlider();
-    this.key_gravity_switcher = new GravitySwitcher("key_gravity_switcher", "Key Gravity", []);
-    this.chord_gravity_switcher = new GravitySwitcher("chord_gravity_switcher", "Chord Gravity", []);
+    this.key_gravity_switcher = new GravitySwitcher("key_gravity_switcher", "Key Gravity");
+    this.chord_gravity_switcher = new GravitySwitcher("chord_gravity_switcher", "Chord Gravity");
     this.melody_beep_switcher = new MelodyBeepSwitcher();
     this.melody_beep_volume = new MelodyBeepVolume();
     this.melody_color_selector = new MelodyColorSelector();
@@ -58,11 +60,11 @@ export class PianoRollController2 {
   readonly chord_romans: SvgCollection;
   readonly chord_keys: SvgCollection;
   readonly d_melody_controllers: SvgCollection;
-  readonly melody_group: { readonly svg: SVGGElement };
-  readonly ir_group: { readonly svg: SVGGElement };
-  readonly chord_gravities: { readonly svg: SVGGElement };
-  readonly scale_gravities: { readonly svg: SVGGElement };
-  readonly time_span_tree: { readonly svg: SVGGElement };
+  readonly melody_group: MelodyGroup;
+  readonly ir_group: IRSymbolGroup;
+  readonly chord_gravities: ChordGravityGroup;
+  readonly scale_gravities: ScaleGravityGroup;
+  readonly time_span_tree: TSRGroup;
   readonly input_controller: PianoRollController1;
 
   constructor(song_manager: SongManager) {
@@ -75,19 +77,71 @@ export class PianoRollController2 {
     this.chord_names = new ChordNameGroup(song_manager.romans);
     this.chord_romans = new ChordRomanGroup(song_manager.romans);
     this.chord_keys = new CHordKeyGroup(song_manager.romans);
-    this.d_melody_controllers = new DMelodyGroup(song_manager.d_melodies,
-      this.input_controller.d_melody_switcher);
-    this.melody_group = new MelodyGroup(song_manager.hierarchical_melody,
-      this.input_controller.hierarchy_level,
-      this.input_controller.melody_beep_switcher,
-      this.input_controller.melody_beep_volume);
-    this.ir_group = new IRSymbolGroup(song_manager.hierarchical_melody,
-      this.input_controller.hierarchy_level);
-    this.chord_gravities = new ChordGravityGroup(song_manager.hierarchical_melody,
-      this.input_controller.hierarchy_level);
-    this.scale_gravities = new ScaleGravityGroup(song_manager.hierarchical_melody,
-      this.input_controller.hierarchy_level);
-    this.time_span_tree = new TSRGroup(song_manager.hierarchical_melody,
-      this.input_controller.hierarchy_level);
+    this.d_melody_controllers = new DMelodyGroup(song_manager.d_melodies);
+    this.melody_group = new MelodyGroup(song_manager.hierarchical_melody);
+    this.ir_group = new IRSymbolGroup(song_manager.hierarchical_melody);
+    this.chord_gravities = new ChordGravityGroup(song_manager.hierarchical_melody, this.input_controller.hierarchy_level);
+    this.scale_gravities = new ScaleGravityGroup(song_manager.hierarchical_melody, this.input_controller.hierarchy_level);
+    this.time_span_tree = new TSRGroup(song_manager.hierarchical_melody);
   }
 }
+
+
+export const registerListener = (piano_roll: PianoRollController2, input: PianoRollController1) => {
+  function updateDMelodyVisibility(this: HTMLInputElement) {
+    piano_roll.d_melody_controllers.svg.style.visibility = this.checked ? "visible" : "hidden";
+  }
+  input.d_melody_switcher.checkbox.addEventListener("input", updateDMelodyVisibility);
+  updateDMelodyVisibility.bind(input.d_melody_switcher.checkbox)();
+
+  function updateKeyGravityVisibility(this: HTMLInputElement) {
+    piano_roll.scale_gravities.svg.style.visibility = this.checked ? "visible" : "hidden";
+  }
+  input.key_gravity_switcher.checkbox.addEventListener("input", updateKeyGravityVisibility);
+
+  updateKeyGravityVisibility.bind(input.key_gravity_switcher.checkbox)();
+
+  function updateChordGravityVisibility(this: HTMLInputElement) {
+    piano_roll.chord_gravities.svg.style.visibility = this.checked ? "visible" : "hidden";
+  }
+  input.chord_gravity_switcher.checkbox.addEventListener("input", updateChordGravityVisibility);
+  updateChordGravityVisibility.bind(input.chord_gravity_switcher.checkbox)();
+  
+
+  input.hierarchy_level.setHierarchyLevelSliderValues(piano_roll.melody_group.children.length - 1);
+  function updateHierarchyLevel(this: HTMLInputElement) {
+    const value = Number(this.value);
+    piano_roll.melody_group.onChangedLayer(value);
+    piano_roll.ir_group.onChangedLayer(value);
+    piano_roll.time_span_tree.onChangedLayer(value);
+  }
+  input.hierarchy_level.range.addEventListener("input", updateHierarchyLevel);
+  updateHierarchyLevel.bind(input.hierarchy_level.range)();
+
+  function updateDoMelodyBeep(this: HTMLInputElement) {
+    piano_roll.melody_group.children.forEach(layer =>
+      layer.children.forEach(note =>
+        (note as MelodyController).onMelodyBeepCheckChanged(Boolean(this.value))
+      )
+    );
+  };
+  input.melody_beep_switcher.checkbox.addEventListener("input", updateDoMelodyBeep);
+  updateDoMelodyBeep.bind(input.melody_beep_switcher.checkbox)();
+
+  function updateMelodyBeepVolume(this: HTMLInputElement) {
+    piano_roll.melody_group.children.forEach(layer =>
+      layer.children.forEach(note =>
+        (note as MelodyController).onMelodyVolumeBarChanged(Number(this.value))
+      )
+    );
+  }
+  input.melody_beep_volume.range.addEventListener("input", updateMelodyBeepVolume);
+  updateMelodyBeepVolume.bind(input.melody_beep_volume.range)();
+
+  function updateTimeRange(this: HTMLInputElement){
+    input.time_range_slider.span.textContent = `${Math.floor(Math.pow(2, Number(this.value) - Number(this.max)) * 100)} %`;
+    PianoRollRatio.value = Math.pow(2, Number(this.value) - Number(this.max));
+  }
+  input.time_range_slider.slider.addEventListener("input", updateTimeRange);
+  updateTimeRange.bind(input.time_range_slider.slider)();
+};

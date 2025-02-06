@@ -1,5 +1,6 @@
 import { CurrentTimeX, NoteSize, black_key_prm, PianoRollBegin, NowAtX } from "@music-analyzer/view-parameters";
 import { ArrowModel } from "./arrow-model";
+import { MVCView } from "@music-analyzer/view";
 
 const triangle_width = 5;
 const triangle_height = 5;
@@ -9,8 +10,8 @@ type Vector2D = {
   readonly y: number;
 }
 
-export class ArrowView {
-  private readonly model: ArrowModel;
+export class ArrowView extends MVCView {
+  protected readonly model: ArrowModel;
   readonly svg: SVGGElement;
   readonly triangle: SVGPolygonElement;
   readonly line: SVGLineElement;
@@ -21,6 +22,7 @@ export class ArrowView {
     fill: string,
     stroke: string,
   ) {
+    super();
     this.model = model;
     this.triangle = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
     this.triangle.classList.add("triangle");

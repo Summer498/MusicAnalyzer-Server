@@ -1,12 +1,18 @@
 import { TimeAnd } from "@music-analyzer/time-and";
 import { AccompanyToAudio } from "./updatable";
 
-export interface Model extends TimeAnd { }
-export interface View {
-  readonly svg: SVGElement
-}
-export interface Controller extends AccompanyToAudio {
-  readonly model: Model;
-  readonly view: View
+export abstract class MVCModel implements TimeAnd {
+  readonly abstract begin: number;
+  readonly abstract end: number;
 }
 
+export abstract class MVCView {
+  readonly abstract svg: SVGElement
+  protected readonly abstract model: MVCModel;
+}
+
+export abstract class MVCController implements AccompanyToAudio {
+  readonly abstract model: MVCModel;
+  readonly abstract view: MVCView
+  abstract onAudioUpdate(): void;
+}

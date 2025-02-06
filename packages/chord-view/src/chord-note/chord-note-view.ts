@@ -2,14 +2,16 @@ import { mod } from "@music-analyzer/math";
 import { ChordNoteModel } from "./chord-note-model";
 import { black_key_prm, CurrentTimeX, NoteSize, NowAtX } from "@music-analyzer/view-parameters";
 import { fifthToColor } from "@music-analyzer/color";
+import { MVCView } from "@music-analyzer/view";
 
-export class ChordNoteView {
-  model: ChordNoteModel;
+export class ChordNoteView extends MVCView {
+  protected readonly model: ChordNoteModel;
   readonly svg: SVGRectElement;
   readonly y: number;
   readonly w: number;
   readonly h: number;
   constructor(model: ChordNoteModel) {
+    super();
     this.model = model;
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     this.y = (-1 - mod(this.model.note, 12) + 12 * (this.model.oct + 1)) * black_key_prm.height;
