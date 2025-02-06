@@ -10,10 +10,18 @@ export class MelodyLayer extends Layer {
     melodies: IMelodyModel[],
     layer: number
   ) {
-    const children = melodies.map(e => new MelodyController(
-      new MelodyModel(e),
-    ));
+    const children = melodies.map(e => new MelodyController(new MelodyModel(e),));
     super(children, layer);
+  }
+  onMelodyBeepCheckChanged(do_melody_beep: boolean) {
+    this.children.forEach(e =>
+      (e as MelodyController).onMelodyBeepCheckChanged(do_melody_beep)
+    );
+  }
+  onMelodyVolumeBarChanged(beep_volume: number) {
+    this.children.forEach(e =>
+      (e as MelodyController).onMelodyVolumeBarChanged(beep_volume)
+    );
   }
 }
 
@@ -29,14 +37,18 @@ export class MelodyGroup extends LayerGroup {
     );
     this.svg.id = "melody";
     this.children.forEach(e => this.svg.appendChild(e.svg));
-    this._show = [];
   }
-  #updateShow() {
-    this.show.forEach(e => e.children.forEach(e => (e as MelodyController).onMelodyBeepCheckChanged(false)));
-    this.show.forEach(e => e.children.forEach(e => (e as MelodyController).onMelodyVolumeBarChanged(0)));
+  onMelodyBeepCheckChanged(do_melody_beep: boolean) {
+    this.show.forEach(e => (e as MelodyLayer).onMelodyBeepCheckChanged(do_melody_beep));
+  }
+  onMelodyVolumeBarChanged(beep_volume: number) {
+    this.show.forEach(e => (e as MelodyLayer).onMelodyVolumeBarChanged(beep_volume));
+  }
+  #resetShowBeepParameters() {
+    this.onMelodyBeepCheckChanged(false);
+    this.onMelodyVolumeBarChanged(0);
   }
   onChangedLayer(value: number) {
-    this.#updateShow();
     super.onChangedLayer(value);
   }
 }
