@@ -30,11 +30,6 @@ export class MelodyView extends MVCView {
   updateY() { this.svg.style.y = String(this.model.note === undefined ? -99 : (PianoRollBegin.value - this.model.note) * black_key_prm.height); }
   updateWidth() { this.svg.style.width = String(this.model.end * 15 / 16 * NoteSize.value - this.model.begin * 15 / 16 * NoteSize.value); }
   updateHeight() { this.svg.style.height = String(black_key_prm.height); }
-  get visibility() {
-    const visibility = this.svg.style.visibility;
-    if (visibility === "" || visibility === "visible" || visibility === "hidden") { return visibility; }
-    else { throw new TypeError(`Illegal string received. Expected is "visible" or "hidden" but reserved is ${visibility}`); }
-  }
   set onclick(value: () => void) { this.svg.onclick = value; }
   onAudioUpdate() {
     this.onclick = deleteMelody;

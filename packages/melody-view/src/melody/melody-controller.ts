@@ -41,7 +41,7 @@ export class MelodyController implements AccompanyToAudio {
   onMelodyVolumeBarChanged(beep_volume: number) { this.#beep_volume = beep_volume; }
   onAudioUpdate() {
     this.view.onAudioUpdate();
-    if (this.do_melody_beep && this.view.visibility === "visible") {
+    if (this.do_melody_beep) {
       this.beepMelody();
     }
   }

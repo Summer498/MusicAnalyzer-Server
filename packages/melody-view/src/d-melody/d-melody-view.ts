@@ -17,7 +17,6 @@ export class DMelodyView extends MVCView {
     this.updateWidth();
     this.updateHeight();
   }
-  set visibility(value: "visible" | "hidden") { this.svg.style.visibility = value; }
   set onclick(value: () => void) { this.svg.onclick = value; };
 
   updateX() { this.svg.style.x = String(CurrentTimeX.value + this.model.begin * NoteSize.value - NowAtX.value); }

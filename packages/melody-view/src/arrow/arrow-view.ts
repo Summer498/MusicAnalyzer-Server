@@ -72,8 +72,6 @@ export class ArrowView extends MVCView {
       dst.x + cos * -triangle_width - sin * triangle_height,
       dst.y + sin * -triangle_width + cos * triangle_height
     ];
-    const is_visible = this.model.hierarchy_level.range.value === `${this.model.layer}`;
-    this.svg.style.visibility = is_visible ? "visible" : "hidden";
     this.triangle.setAttribute("points", p.join(","));
     this.line.setAttribute("x1", `${src.x}`);
     this.line.setAttribute("x2", `${dst.x}`);
@@ -81,4 +79,3 @@ export class ArrowView extends MVCView {
     this.line.setAttribute("y2", `${dst.y}`);
   }
 }
-
