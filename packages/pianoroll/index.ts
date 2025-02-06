@@ -6,7 +6,6 @@ import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { BeatBarsGroup } from "@music-analyzer/beat-view/";
-import { MelodyController } from "@music-analyzer/melody-view";
 import { PianoRollRatio } from "@music-analyzer/view-parameters";
 
 export class SongManager {
