@@ -14,8 +14,6 @@ export abstract class SvgCollection implements AccompanyToAudio {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.show.map(e => this.svg.appendChild(e.view.svg));
     AccompanyToAudioRegistry.instance.register(this);
-    console.log("AccompanyToAudioRegistry.instance");
-    console.log(AccompanyToAudioRegistry.instance);
   }
   updateShow(begin: number, end: number) {
     // const remain = search_items_in_range(this.show, begin, end);
