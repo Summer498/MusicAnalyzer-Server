@@ -1,7 +1,6 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
-import { WindowReflectableRegistry, AccompanyToAudioRegistry } from "@music-analyzer/view";
 import { appendController, appendPianoRoll } from "./src/song-manager";
 import { bracket_hight, NowAt, PianoRollBegin, PianoRollEnd } from "@music-analyzer/view-parameters";
 
@@ -111,7 +110,7 @@ import { SongManager } from "@music-analyzer/piano-roll";
     if (audio_player.paused && now_at === last_audio_time) { return; }
     last_audio_time = now_at;
     NowAt.value = now_at;
-    AccompanyToAudioRegistry.instance.onAudioUpdate();
+    piano_roll.accompany_to_audio_registry.onAudioUpdate();
     // <-- audio 関連処理
   };
 
@@ -131,7 +130,7 @@ import { SongManager } from "@music-analyzer/piano-roll";
   // 多分値が最初の時刻を想定した値になっているので直す
   const onWindowResized = () => {
     // 各 svg のパラメータを更新する
-    WindowReflectableRegistry.instance.onWindowResized();
+    piano_roll.window_reflectable_registry.onWindowResized();
     onUpdate();
   };
 

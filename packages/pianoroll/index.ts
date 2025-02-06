@@ -1,5 +1,5 @@
 import { DMelodySwitcher, GravitySwitcher, HierarchyLevel, MelodyBeepSwitcher, MelodyBeepVolume, MelodyColorSelector, TimeRangeSlider } from "@music-analyzer/controllers";
-import { SvgCollection } from "@music-analyzer/view";
+import { AccompanyToAudioRegistry, SvgCollection, WindowReflectableRegistry } from "@music-analyzer/view";
 import { CHordKeyGroup, ChordNameGroup, ChordNotesGroup, ChordRomanGroup } from "@music-analyzer/chord-view";
 import { DMelodyGroup, ChordGravityGroup, IRSymbolGroup, MelodyGroup, ScaleGravityGroup, TSRGroup } from "@music-analyzer/melody-view";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
@@ -65,6 +65,8 @@ export class PianoRollController2 {
   readonly scale_gravities: ScaleGravityGroup;
   readonly time_span_tree: TSRGroup;
   readonly input_controller: PianoRollController1;
+  readonly accompany_to_audio_registry: AccompanyToAudioRegistry;
+  readonly window_reflectable_registry: WindowReflectableRegistry;
 
   constructor(song_manager: SongManager) {
     this.input_controller = new PianoRollController1();
@@ -82,6 +84,8 @@ export class PianoRollController2 {
     this.chord_gravities = new ChordGravityGroup(song_manager.hierarchical_melody, this.input_controller.hierarchy_level);
     this.scale_gravities = new ScaleGravityGroup(song_manager.hierarchical_melody, this.input_controller.hierarchy_level);
     this.time_span_tree = new TSRGroup(song_manager.hierarchical_melody);
+    this.accompany_to_audio_registry = AccompanyToAudioRegistry.instance;
+    this.window_reflectable_registry = WindowReflectableRegistry.instance;
   }
 }
 

@@ -1,7 +1,6 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
-import { WindowReflectableRegistry, AccompanyToAudioRegistry } from "@music-analyzer/view";
 import { appendController, appendPianoRoll } from "./src/song-manager";
 import { bracket_hight, NowAt, PianoRollBegin, PianoRollEnd } from "@music-analyzer/view-parameters";
 import { MusicAnalyzerWindow } from "./src/MusicAnalyzerWindow";
@@ -95,7 +94,7 @@ import { SongManager } from "@music-analyzer/piano-roll";
   const song_manager = new SongManager(beat_info, romans, [melodies], d_melodies);
   // song_manager.analysis_data = { beat_info, romans, hierarchical_melody: [melodies], d_melodies };
   const piano_roll = appendPianoRoll(piano_roll_place, song_manager);
-  appendController(piano_roll_place, piano_roll);
+  appendController(controllers, piano_roll);
   // <-- SVG
 
   // メインループ -->
@@ -123,7 +122,7 @@ import { SongManager } from "@music-analyzer/piano-roll";
     // <-- audio 関連処理
 
     NowAt.value = now_at;
-    AccompanyToAudioRegistry.instance.onAudioUpdate();
+    piano_roll.accompany_to_audio_registry.onAudioUpdate();
   };
 
 
@@ -131,7 +130,7 @@ import { SongManager } from "@music-analyzer/piano-roll";
   // 多分値が最初の時刻を想定した値になっているので直す
   const onWindowResized = () => {
     // 各 svg のパラメータを更新する
-    WindowReflectableRegistry.instance.onWindowResized();
+    piano_roll.window_reflectable_registry.onWindowResized();
     onUpdate();
   };
 
