@@ -5,7 +5,7 @@ import { DMelodyGroup, ChordGravityGroup, IRSymbolGroup, MelodyGroup, ScaleGravi
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
-import { BeatBarsGroup } from "@music-analyzer/beat-view/src/beat-bar";
+import { BeatBarsGroup } from "@music-analyzer/beat-view/";
 
 export class SongManager {
   readonly beat_info: BeatInfo;

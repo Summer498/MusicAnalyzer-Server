@@ -1,9 +1,9 @@
 import { analyzeMelody } from "@music-analyzer/melody-analyze";
-import { TS } from "@music-analyzer/gttm/src/TSR";
+import { TS } from "@music-analyzer/gttm";
 import { getTimeAndMelodyFromTS } from "./TimeSpanMapping";
-import { MusicXML } from "@music-analyzer/gttm/src/MusicXML";
+import { MusicXML } from "@music-analyzer/gttm";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
-import { ReductionElement } from "@music-analyzer/gttm/src/ReductionElement";
+import { ReductionElement } from "@music-analyzer/gttm";
 
 export const getHierarchicalMelody = (reduction: ReductionElement, matrix:TS[][], musicxml:MusicXML, roman: TimeAndRomanAnalysis[]) => {
   // 全階層分の IR 分析

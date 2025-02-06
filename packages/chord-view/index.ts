@@ -11,6 +11,7 @@ import { ChordNoteModel } from "./src/chord-note/chord-note-model";
 import { ChordNameModel } from "./src/chord-name/chord-name-model";
 import { ChordRomanModel } from "./src/chord-roman/chord-roman-model";
 import { ChordKeyModel } from "./src/chord-key/chord-key-model";
+export { chord_name_margin, chord_text_em, chord_text_size } from "./src/chord-view-params";
 
 export class ChordNotesGroup extends SvgCollection {
   constructor(

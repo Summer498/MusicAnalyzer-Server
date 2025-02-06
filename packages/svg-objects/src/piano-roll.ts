@@ -1,4 +1,4 @@
-import { chord_name_margin, chord_text_size } from "@music-analyzer/chord-view/src/chord-view-params";
+import { chord_name_margin, chord_text_size } from "@music-analyzer/chord-view";
 import { WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
 import { PianoRollHeight, PianoRollWidth } from "@music-analyzer/view-parameters";
 
