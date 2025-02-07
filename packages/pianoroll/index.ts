@@ -81,8 +81,8 @@ export class PianoRollController2 {
     this.d_melody_controllers = new DMelodyGroup(song_manager.d_melodies);
     this.melody_group = new MelodyGroup(song_manager.hierarchical_melody);
     this.ir_group = new IRSymbolGroup(song_manager.hierarchical_melody);
-    this.chord_gravities = new ChordGravityGroup(song_manager.hierarchical_melody, this.input_controller.hierarchy_level);
-    this.scale_gravities = new ScaleGravityGroup(song_manager.hierarchical_melody, this.input_controller.hierarchy_level);
+    this.chord_gravities = new ChordGravityGroup(song_manager.hierarchical_melody);
+    this.scale_gravities = new ScaleGravityGroup(song_manager.hierarchical_melody);
     this.time_span_tree = new TSRGroup(song_manager.hierarchical_melody);
     this.accompany_to_audio_registry = AccompanyToAudioRegistry.instance;
     this.window_reflectable_registry = WindowReflectableRegistry.instance;
@@ -117,6 +117,8 @@ export const registerListener = (piano_roll: PianoRollController2, input: PianoR
     piano_roll.melody_group.onChangedLayer(value);
     piano_roll.ir_group.onChangedLayer(value);
     piano_roll.time_span_tree.onChangedLayer(value);
+    piano_roll.scale_gravities.onChangedLayer(value);
+    piano_roll.chord_gravities.onChangedLayer(value);
   }
   input.hierarchy_level.range.addEventListener("input", updateHierarchyLevel);
   updateHierarchyLevel.bind(input.hierarchy_level.range)();

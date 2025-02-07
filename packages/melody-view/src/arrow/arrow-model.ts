@@ -1,4 +1,3 @@
-import { HierarchyLevel } from "@music-analyzer/controllers";
 import { Gravity, IMelodyModel } from "@music-analyzer/melody-analyze";
 import { MVCModel } from "@music-analyzer/view";
 
@@ -10,12 +9,10 @@ export class ArrowModel extends MVCModel {
   readonly gravity: Gravity;
   readonly destination?: number;
   readonly layer: number;
-  readonly hierarchy_level: HierarchyLevel;
   constructor(
     melody: IMelodyModel,
     next: IMelodyModel,
     gravity: Gravity,
-    hierarchy_level: HierarchyLevel,
     layer?: number
   ) {
     super();
@@ -26,6 +23,5 @@ export class ArrowModel extends MVCModel {
     this.gravity = gravity;
     this.destination = gravity.destination;
     this.layer = layer || 0;
-    this.hierarchy_level = hierarchy_level;
   }
 }
