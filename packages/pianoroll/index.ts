@@ -121,11 +121,11 @@ export const registerListener = (piano_roll: PianoRollController2, input: PianoR
   input.hierarchy_level.range.addEventListener("input", updateHierarchyLevel);
   updateHierarchyLevel.bind(input.hierarchy_level.range)();
 
-  function updateDoMelodyBeep(this: HTMLInputElement) {
-    piano_roll.melody_group.onMelodyBeepCheckChanged(Boolean(this.value));
+  function updateMelodyBeep(this: HTMLInputElement) {
+    piano_roll.melody_group.onMelodyBeepCheckChanged(this.checked);
   };
-  input.melody_beep_switcher.checkbox.addEventListener("input", updateDoMelodyBeep);
-  updateDoMelodyBeep.bind(input.melody_beep_switcher.checkbox)();
+  input.melody_beep_switcher.checkbox.addEventListener("input", updateMelodyBeep);
+  updateMelodyBeep.bind(input.melody_beep_switcher.checkbox)();
 
   function updateMelodyBeepVolume(this: HTMLInputElement) {
     piano_roll.melody_group.onMelodyVolumeBarChanged(Number(this.value));
