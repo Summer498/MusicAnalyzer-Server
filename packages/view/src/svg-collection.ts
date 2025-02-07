@@ -1,14 +1,23 @@
-import { search_items_overlaps_range } from "@music-analyzer/time-and";
-import { MVCController } from "./mvc";
+import { search_items_overlaps_range, TimeAnd } from "@music-analyzer/time-and";
+import { MVCController, MVCModel } from "./mvc";
 import { AccompanyToAudio } from "./updatable";
 import { AccompanyToAudioRegistry } from "./updatable-registry";
 import { CurrentTimeRatio, NowAt, PianoRollTimeLength } from "@music-analyzer/view-parameters";
 
+export abstract class TimeAndMVCModel extends MVCModel implements TimeAnd {
+  abstract readonly begin: number;
+  abstract readonly end: number;
+}
+
+export abstract class TimeAndMVCController extends MVCController {
+  abstract readonly model: TimeAndMVCModel;
+}
+
 export abstract class SvgCollection implements AccompanyToAudio {
-  readonly children: MVCController[];
-  readonly show: MVCController[];
+  readonly children: TimeAndMVCController[];
+  readonly show: TimeAndMVCController[];
   readonly svg: SVGGElement;
-  constructor(children: MVCController[]) {
+  constructor(children: TimeAndMVCController[]) {
     this.children = children;
     this.show = [];
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");

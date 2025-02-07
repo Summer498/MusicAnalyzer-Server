@@ -1,10 +1,10 @@
-import { MVCController } from "./mvc";
-import { SvgCollection } from "./svg-collection";
+import { SvgCollection, TimeAndMVCController } from "./svg-collection";
+
 
 export class Layer extends SvgCollection {
   readonly layer: number;
   constructor(
-    children: MVCController[],
+    children: TimeAndMVCController[],
     layer: number
   ) {
     super(children);

@@ -1,10 +1,6 @@
-import { TimeAnd } from "@music-analyzer/time-and";
 import { AccompanyToAudio } from "./updatable";
 
-export abstract class MVCModel implements TimeAnd {
-  readonly abstract begin: number;
-  readonly abstract end: number;
-}
+export abstract class MVCModel {}
 
 export abstract class MVCView {
   readonly abstract svg: SVGElement
