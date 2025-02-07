@@ -136,6 +136,7 @@ export const registerListener = (piano_roll: PianoRollController2, input: PianoR
   function updateTimeRange(this: HTMLInputElement){
     input.time_range_slider.span.textContent = `${Math.floor(Math.pow(2, Number(this.value) - Number(this.max)) * 100)} %`;
     PianoRollRatio.value = Math.pow(2, Number(this.value) - Number(this.max));
+    piano_roll.accompany_to_audio_registry.onAudioUpdate();
   }
   input.time_range_slider.slider.addEventListener("input", updateTimeRange);
   updateTimeRange.bind(input.time_range_slider.slider)();
