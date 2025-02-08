@@ -1,6 +1,16 @@
+import { song_list } from "./view/src/songlist";
+
 console.log("this is hierarchical analysis list");
 
 declare const tunes: HTMLUListElement;
+
+const songData = (tune_id: string) => {
+  const tune_match = tune_id?.match(/([0-9]+)_[0-9]/);
+  const tune_no = tune_match ? Number(tune_match[1]) : Number(tune_id);
+  if (tune_no) {
+    return song_list[tune_no];
+  };
+};
 
 (async () => {
   const gttm_examples: string[] = await (await fetch("/MusicAnalyzer-server/api/gttm-example/")).json();
@@ -8,7 +18,8 @@ declare const tunes: HTMLUListElement;
 
   srt_gttm_examples.forEach(gttm_example => {
     const anchor = document.createElement("a");
-    anchor.textContent = gttm_example;
+    const song_data = songData(gttm_example);
+    anchor.innerHTML = `[${gttm_example}]: ${song_data?.author || ""}, <strong>"${song_data?.title || ""}"</strong>`;
     anchor.href = `/MusicAnalyzer-server/html/hierarchical-analysis-sample/view?tune=${gttm_example}`;
     const item = document.createElement("li");
     item.appendChild(anchor);

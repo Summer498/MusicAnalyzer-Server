@@ -22,7 +22,7 @@ import { SongManager } from "@music-analyzer/piano-roll";
 (async () => {
   const urlParams = new URLSearchParams(window.location.search);
   const tune_id = urlParams.get("tune");
-  const roman = (await (await fetch("/MusicAnalyzer-server/resources/Hierarchical Analysis Sample/analyzed/chord/roman.json")).json()) as TimeAndRomanAnalysis[];
+  const roman = tune_id !== "doremi" ? [] : (await (await fetch("/MusicAnalyzer-server/resources/Hierarchical Analysis Sample/analyzed/chord/roman.json")).json()) as TimeAndRomanAnalysis[];
   const musicxml = (await xml_parser.parse(await (await fetch(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/MSC-${tune_id}.xml`)).text())) as MusicXML;
   const do_re_mi_grp = (await xml_parser.parse(await (await fetch(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/GPR-${tune_id}.xml`)).text()) as GRP);
   const do_re_mi_mtr = (await xml_parser.parse(await (await fetch(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/MPR-${tune_id}.xml`)).text()) as MTR);
@@ -43,7 +43,8 @@ import { SongManager } from "@music-analyzer/piano-roll";
   }
 
   const matrix = ts.getMatrixOfLayer(ts.getDepthCount() - 1);
-  const hierarchical_melody = getHierarchicalMelody(String(mode) === "PR" && pr ? pr : ts, matrix, musicxml, roman);
+  const measure = tune_id === "doremi" ? 3.5 : 7;
+  const hierarchical_melody = getHierarchicalMelody(measure, String(mode) === "PR" && pr ? pr : ts, matrix, musicxml, roman);
 
   // const org_melody = await (await fetch("/MusicAnalyzer-server/resources/Hierarchical Analysis Sample/analyzed/melody/crepe/vocals.json")).json() as number[];
   // const time_and_melody = getTimeAndMelody(org_melody, 100);
