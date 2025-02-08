@@ -1,10 +1,10 @@
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { TSRController } from "./tsr-tree-controller";
 import { TSRModel } from "./tsr-tree-model";
-import { Layer, LayerGroup } from "@music-analyzer/view";
+import { CollectionLayer, CollectionLayerGroup } from "@music-analyzer/view";
 
 
-export class TSRLayer extends Layer {
+export class TSRLayer extends CollectionLayer {
   constructor(
     melodies: IMelodyModel[],
     layer: number,
@@ -20,7 +20,7 @@ export class TSRLayer extends Layer {
   }
 }
 
-export class TSRGroup extends LayerGroup {
+export class TSRGroup extends CollectionLayerGroup {
   readonly svg: SVGGElement;
   readonly children: TSRLayer[];
   constructor(

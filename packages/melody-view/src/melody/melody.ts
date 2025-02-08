@@ -1,11 +1,11 @@
 import { MelodyController } from "./melody-controller";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { MelodyModel } from "./melody-model";
-import { Layer, LayerGroup } from "@music-analyzer/view";
+import { CollectionLayer, CollectionLayerGroup } from "@music-analyzer/view";
 
 export { DMelodyGroup } from "../d-melody/d-melody";
 
-export class MelodyLayer extends Layer {
+export class MelodyLayer extends CollectionLayer {
   constructor(
     melodies: IMelodyModel[],
     layer: number
@@ -25,7 +25,7 @@ export class MelodyLayer extends Layer {
   }
 }
 
-export class MelodyGroup extends LayerGroup {
+export class MelodyGroup extends CollectionLayerGroup {
   readonly children: MelodyLayer[];
   get show() { return this._show; }
   constructor(

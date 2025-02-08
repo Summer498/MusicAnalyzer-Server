@@ -1,9 +1,9 @@
-import { Layer, LayerGroup } from "@music-analyzer/view";
+import { CollectionLayer, CollectionLayerGroup } from "@music-analyzer/view";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { getChordGravityController } from "../chord-gravity/chord-gravity";
 import { getScaleGravityController } from "../scale-gravity/scale-gravity";
 
-export class ChordGravityLayer extends Layer {
+export class ChordGravityLayer extends CollectionLayer {
   constructor(
     melodies: IMelodyModel[],
     layer: number,
@@ -14,7 +14,7 @@ export class ChordGravityLayer extends Layer {
   }
 }
 
-export class ChordGravityGroup extends LayerGroup {
+export class ChordGravityGroup extends CollectionLayerGroup {
   readonly children: ChordGravityLayer[];
   constructor(
     hierarchical_melodies: IMelodyModel[][],
@@ -26,7 +26,7 @@ export class ChordGravityGroup extends LayerGroup {
   }
 }
 
-export class ScaleGravityLayer extends Layer {
+export class ScaleGravityLayer extends CollectionLayer {
   constructor(
     melodies: IMelodyModel[],
     layer: number,
@@ -37,7 +37,7 @@ export class ScaleGravityLayer extends Layer {
   }
 }
 
-export class ScaleGravityGroup extends LayerGroup {
+export class ScaleGravityGroup extends CollectionLayerGroup {
   readonly children: ScaleGravityLayer[];
   constructor(
     hierarchical_melodies: IMelodyModel[][],

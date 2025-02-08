@@ -1,9 +1,9 @@
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { IRSymbolController } from "./ir-symbol-controller";
 import { IRSymbolModel } from "./ir-symbol-model";
-import { Layer, LayerGroup } from "@music-analyzer/view";
+import { CollectionLayer, CollectionLayerGroup } from "@music-analyzer/view";
 
-export class IRSymbolLayer extends Layer {
+export class IRSymbolLayer extends CollectionLayer {
   constructor(
     melodies: IMelodyModel[],
     layer: number
@@ -13,7 +13,7 @@ export class IRSymbolLayer extends Layer {
   }
 }
 
-export class IRSymbolGroup extends LayerGroup{
+export class IRSymbolGroup extends CollectionLayerGroup{
   readonly children: IRSymbolLayer[];
   constructor(
     hierarchical_melodies: IMelodyModel[][],
