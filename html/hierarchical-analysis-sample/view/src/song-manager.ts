@@ -6,7 +6,7 @@ import { SongLength } from "@music-analyzer/view-parameters";
 
 declare const audio_player: HTMLAudioElement | HTMLVideoElement;
 
-const NO_CHORD = true;  // コード関連のものを表示しない
+const NO_CHORD = false;  // コード関連のものを表示しない
 const FULL_VIEW = true;  // 横いっぱいに分析結果を表示
 if (FULL_VIEW) {
   CurrentTimeRatio.value = 0.025;
@@ -22,13 +22,13 @@ export const appendPianoRoll = (piano_roll_place: HTMLDivElement, song_manager: 
     ...melodies.map(e => e.end)
   ) * 1.05; // ちょっとマージンを取っておく
 
-  
+
   // 奥側
   const octave_bgs = document.createElementNS("http://www.w3.org/2000/svg", "g");
   octave_bgs.id = "octave-BGs";
   getOctaveBGs(getWhiteBGs(), getBlackBGs()).svg
-  .forEach(e => octave_bgs.appendChild(e.svg));
-  
+    .forEach(e => octave_bgs.appendChild(e.svg));
+
   const analyzed_svgs = new PianoRollController2(song_manager);
   registerListener(analyzed_svgs, analyzed_svgs.input_controller);
 
@@ -58,7 +58,12 @@ export const appendPianoRoll = (piano_roll_place: HTMLDivElement, song_manager: 
   }
   // 手前側
 
+  const ir_plot = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  ir_plot.appendChild(analyzed_svgs.ir_plot.svg);
+  ir_plot.style.width = analyzed_svgs.ir_plot.svg.style.width;
+  ir_plot.style.height = analyzed_svgs.ir_plot.svg.style.height;
   piano_roll_place.insertAdjacentElement("beforeend", piano_roll.svg);
+  piano_roll_place.insertAdjacentElement("beforeend", ir_plot);
   return analyzed_svgs;
 };
 

@@ -7,6 +7,7 @@ import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { BeatBarsGroup } from "@music-analyzer/beat-view/";
 import { PianoRollRatio } from "@music-analyzer/view-parameters";
+import { IRPlotGroup } from "@music-analyzer/melody-view/src/ir-plot/ir-plot";
 
 export class SongManager {
   readonly beat_info: BeatInfo;
@@ -61,6 +62,7 @@ export class PianoRollController2 {
   readonly d_melody_controllers: SvgCollection;
   readonly melody_group: MelodyGroup;
   readonly ir_group: IRSymbolGroup;
+  readonly ir_plot: IRPlotGroup;
   readonly chord_gravities: ChordGravityGroup;
   readonly scale_gravities: ScaleGravityGroup;
   readonly time_span_tree: TSRGroup;
@@ -81,6 +83,7 @@ export class PianoRollController2 {
     this.d_melody_controllers = new DMelodyGroup(song_manager.d_melodies);
     this.melody_group = new MelodyGroup(song_manager.hierarchical_melody);
     this.ir_group = new IRSymbolGroup(song_manager.hierarchical_melody);
+    this.ir_plot = new IRPlotGroup(song_manager.hierarchical_melody);
     this.chord_gravities = new ChordGravityGroup(song_manager.hierarchical_melody);
     this.scale_gravities = new ScaleGravityGroup(song_manager.hierarchical_melody);
     this.time_span_tree = new TSRGroup(song_manager.hierarchical_melody);
@@ -116,6 +119,7 @@ export const registerListener = (piano_roll: PianoRollController2, input: PianoR
     const value = Number(this.value);
     piano_roll.melody_group.onChangedLayer(value);
     piano_roll.ir_group.onChangedLayer(value);
+    piano_roll.ir_plot.onChangedLayer(value);
     piano_roll.time_span_tree.onChangedLayer(value);
     piano_roll.scale_gravities.onChangedLayer(value);
     piano_roll.chord_gravities.onChangedLayer(value);

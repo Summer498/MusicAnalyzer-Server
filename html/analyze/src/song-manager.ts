@@ -12,7 +12,6 @@ export const appendPianoRoll = (piano_roll_place: HTMLDivElement, song_manager: 
     ...song_manager.romans.map(e => e.end),
     ...melodies.map(e => e.end)
   );
-
   
   // 奥側
   const octave_bgs = document.createElementNS("http://www.w3.org/2000/svg", "g");
@@ -40,8 +39,13 @@ export const appendPianoRoll = (piano_roll_place: HTMLDivElement, song_manager: 
   piano_roll.svg.appendChild(octave_keys);
   piano_roll.svg.appendChild(getCurrentTimeLine().svg);
   // 手前側
-
+  
+  const ir_plot = document.createElementNS("http://www.w3.org/2000/svg","svg");
+  ir_plot.appendChild(analyzed_svgs.ir_plot.svg);
+  ir_plot.style.width = analyzed_svgs.ir_plot.svg.style.width;
+  ir_plot.style.height = analyzed_svgs.ir_plot.svg.style.height;
   piano_roll_place.insertAdjacentElement("beforeend", piano_roll.svg);
+  piano_roll_place.insertAdjacentElement("beforeend",  ir_plot);
   return analyzed_svgs;
 };
 
