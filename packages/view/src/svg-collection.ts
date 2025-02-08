@@ -1,7 +1,6 @@
 import { search_items_overlaps_range, TimeAnd } from "@music-analyzer/time-and";
 import { MVCController, MVCModel } from "./mvc";
 import { AccompanyToAudio } from "./updatable";
-import { AccompanyToAudioRegistry } from "./updatable-registry";
 import { CurrentTimeRatio, NowAt, PianoRollTimeLength } from "@music-analyzer/view-parameters";
 
 export abstract class TimeAndMVCModel extends MVCModel implements TimeAnd {
@@ -22,7 +21,6 @@ export abstract class SvgCollection implements AccompanyToAudio {
     this.show = [];
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.show.map(e => this.svg.appendChild(e.view.svg));
-    AccompanyToAudioRegistry.instance.register(this);
   }
   updateShow(begin: number, end: number) {
     // const remain = search_items_in_range(this.show, begin, end);

@@ -1,7 +1,7 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { getRange } from "@music-analyzer/math";
 import { _Chord } from "@music-analyzer/tonal-objects";
-import { SvgCollection } from "@music-analyzer/view";
+import { AccompanyToAudioRegistry, SvgCollection } from "@music-analyzer/view";
 import { OctaveCount } from "@music-analyzer/view-parameters";
 import { ChordNoteController } from "./src/chord-note/chord-note-controller";
 import { ChordNameController } from "./src/chord-name/chord-name-controller";
@@ -27,6 +27,7 @@ export class ChordNotesGroup extends SvgCollection {
     }).flat(2);
     super(children);
     this.svg.id = "chords";
+    AccompanyToAudioRegistry.instance.register(this);
   }
 }
 
@@ -37,6 +38,7 @@ export class ChordNameGroup extends SvgCollection {
     const children = romans.map(e => new ChordNameController(new ChordNameModel(e)));
     super(children);
     this.svg.id = "chord-names";
+    AccompanyToAudioRegistry.instance.register(this);
   }
 }
 
@@ -47,6 +49,7 @@ export class ChordRomanGroup extends SvgCollection {
     const children = romans.map(e => new ChordRomanController(new ChordRomanModel(e)));
     super(children);
     this.svg.id = "roman-names";
+    AccompanyToAudioRegistry.instance.register(this);
   }
 } 
 
@@ -57,5 +60,6 @@ export class CHordKeyGroup extends SvgCollection{
     const children = romans.map(e => new ChordKeyController(new ChordKeyModel(e)));
     super(children);
     this.svg.id = "key-names";
+    AccompanyToAudioRegistry.instance.register(this);
   }
 }
