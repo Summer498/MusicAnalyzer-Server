@@ -13,17 +13,17 @@ export class IRPlotModel extends MVCModel {
     this.#index = 0;
     this.#cache = [];
   }
-  getCurrentIndex() {
-    this.#index = this.melody_series.findIndex((value) =>
-      value.begin <= NowAt.value && NowAt.value < value.end
-    );
-    return this.#index;
+  private cacheHit() {
+    return this.#cache[1]?.begin <= NowAt.value && NowAt.value < this.#cache[1]?.end;
   }
-  getRangedMelody() {
-    if (this.#cache[1]?.begin <= NowAt.value && NowAt.value < this.#cache[1]?.end) {
-      return this.#cache;
+  private cacheUpdate() {
+    if (this.cacheHit()) { return this.#cache; }
+    else {
+      this.#index = this.melody_series.findIndex((value) =>
+        value.begin <= NowAt.value && NowAt.value < value.end
+      );
     }
-    const i = this.getCurrentIndex();
+    const i = this.#index;
     const N = this.melody_series.length;
     const melodies = [
       this.melody_series[Math.max(0, i - 1)],
@@ -32,7 +32,20 @@ export class IRPlotModel extends MVCModel {
       this.melody_series[Math.min(i + 2, N - 1)],
     ];
     this.#cache = melodies;
-    return melodies;
+  }
+  private getCurrentIndex() {
+    this.cacheUpdate();
+    return this.#index;
+  }
+  get is_visible() {
+    const i = this.getCurrentIndex();
+    console.log(1 <= i && i < this.melody_series.length - 1);
+    console.log(`1 <= ${i} && ${i} < ${this.melody_series.length - 1}`);
+    return 1 <= i && i < this.melody_series.length - 1;
+  }
+  getRangedMelody() {
+    this.cacheUpdate();
+    return this.#cache;
   }
   getPositionRatio() {
     const melodies = this.getRangedMelody();
@@ -90,24 +103,39 @@ export class IRPlotView extends MVCView {
   }
   updatePosition() {
     const interval = this.model.getInterval();
-    const get_pos = (x: number, y: number) => {
+    const get_pos = (_x: number, _y: number) => {
       const a = 1 / 3;
-      const r2 = Math.sqrt(
-        1
-        + a * x * a * x
-        + a * y * a * y
-      );
+      const x = a * _x;
+      const y = a * _y;
+      const double_angle_x = x * x - y * y;
+      const double_angle_y = 2 * x * y;
+      const r2 = 1 + x * x + y * y;
       return [
-        a * x / r2,
-        a * y / r2
+        double_angle_x / r2,
+        double_angle_y / r2
       ];
     };
     const curr = get_pos(interval[0], interval[1]);
     const next = get_pos(interval[1], interval[2]);
     const r = this.easeInOutCos(this.model.getPositionRatio());
-
     this.updateX((1 - r) * curr[0] + r * next[0]);
     this.updateY(-((1 - r) * curr[1] + r * next[1]));
+
+    /*
+    const curr_radius = Math.sqrt(curr[0] * curr[0] + curr[1] * curr[1]);
+    const next_radius = Math.sqrt(next[0] * next[0] + next[1] * next[1]);
+    const curr_angle = Math.atan2(curr[1], curr[0]);
+    const n_angle = Math.atan2(next[1], next[0]);
+    const next_angle = ((curr_angle: number, n_angle: number) => {
+      if (n_angle < curr_angle - Math.PI) { return n_angle + 2 * Math.PI; }
+      else if (curr_angle + Math.PI < n_angle) { return n_angle - 2 * Math.PI; }
+      return n_angle;
+    })(curr_angle, n_angle);
+    const compilation_radius = (1 - r) * curr_radius + r * next_radius;
+    const compilation_angle = (1 - r) * curr_angle + r * next_angle;
+    this.updateX(compilation_radius * Math.cos(compilation_angle));
+    this.updateY(compilation_radius * Math.sin(compilation_angle));
+    */
   }
   updateColor() {
     this.svg.style.stroke = "#111";
@@ -123,7 +151,6 @@ export class IRPlotController extends MVCController {
     super();
     this.model = model;
     this.view = new IRPlotView(this.model);
-    AccompanyToAudioRegistry.instance.register(this);
   }
   onAudioUpdate() {
     this.view.updatePosition();
@@ -144,7 +171,7 @@ export class IRPlotLayer {
   ) {
     this.child = new IRPlotController(new IRPlotModel(melody_series));
     const base = Math.log(Math.min(this.child.view.w, this.child.view.h) / 10) / Math.log(max);
-    this.child.view.updateRadius(Math.pow(base, max - layer/2));
+    this.child.view.updateRadius(Math.pow(base, max - layer / 2));
     // const base = Math.min(this.child.view.w, this.child.view.h) / 10 / max;
     // this.child.view.updateRadius(base * (max - layer/2));
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
@@ -166,8 +193,10 @@ export class IRPlotGroup {
   readonly circles: SVGGElement;
   readonly x_axis: SVGLineElement;
   readonly y_axis: SVGLineElement;
+  #visible_layer: number;
   private readonly children: IRPlotLayer[];
   private _show: IRPlotLayer[];
+  get show() { return this._show; }
   constructor(hierarchical_melody: IMelodyModel[][]) {
     const N = hierarchical_melody.length;
     this.children = hierarchical_melody.map((e, l) => new IRPlotLayer(e, l, N));
@@ -192,20 +221,29 @@ export class IRPlotGroup {
     this.x_axis.style.stroke = "#000";
     this.y_axis.style.stroke = "#000";
     this._show = [];
-    AccompanyToAudioRegistry.instance.onAudioUpdate();
+    this.#visible_layer = N;
+    AccompanyToAudioRegistry.instance.register(this);
   }
   setShow(visible_layers: IRPlotLayer[]) {
     this._show = visible_layers;
     this._show.forEach(e => e.onAudioUpdate());
     this.circles.replaceChildren(...this._show.map(e => e.svg));
   }
-  onChangedLayer(value: number) {
+  updateLayer() {
     const visible_layer = this.children.filter(
-      layer => 1 < layer.layer && layer.layer <= value
+      layer => {
+        if (layer.child.model.is_visible === false) { return false; }
+        return 1 < layer.layer && layer.layer <= this.#visible_layer;
+      }
     );
     this.setShow(visible_layer);
   }
+  onChangedLayer(value: number) {
+    this.#visible_layer = value;
+    this.updateLayer();
+  }
   onAudioUpdate() {
-    this._show.forEach(e => e.onAudioUpdate());
+    this.updateLayer();
+    this.show.forEach(e => e.onAudioUpdate());
   }
 }
