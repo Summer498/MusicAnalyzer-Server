@@ -4,7 +4,7 @@ import { MVCModel } from "@music-analyzer/view";
 export class ArrowModel extends MVCModel {
   readonly begin: number;
   readonly end: number;
-  readonly note?: number;
+  readonly note: number;
   readonly next: IMelodyModel;
   readonly gravity: Gravity;
   readonly destination?: number;

@@ -87,8 +87,8 @@ import { SongManager } from "@music-analyzer/piano-roll";
 
 
   // SVG -->
-  const highest_pitch = melody.reduce((p, c) => p.note === undefined ? c : c.note === undefined ? p : p.note > c.note ? p : c).note || 0;
-  const lowest_pitch = melody.reduce((p, c) => p.note === undefined ? c : c.note === undefined ? p : p.note < c.note ? p : c).note || 0;
+  const highest_pitch = melody.reduce((p, c) => isNaN(p.note) ? c : isNaN(c.note) ? p : p.note > c.note ? p : c).note || 0;
+  const lowest_pitch = melody.reduce((p, c) => isNaN(p.note) ? c : isNaN(c.note) ? p : p.note < c.note ? p : c).note || 0;
   PianoRollBegin.value = highest_pitch + Math.floor(hierarchical_melody.length * bracket_hight / 12) * 12 + 12;
   PianoRollEnd.value = lowest_pitch - 3;
   const song_manager = new SongManager(beat_info, romans, [melodies], d_melodies);

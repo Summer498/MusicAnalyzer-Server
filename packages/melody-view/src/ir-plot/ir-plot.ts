@@ -40,7 +40,7 @@ export class IRPlotModel extends MVCModel {
     return (NowAt.value - t[0]) / (t[1] - t[0]);
   }
   getInterval() {
-    const melodies = this.getRangedMelody().map(e => e.note || NaN);  // TODO: e.note の型を number にする
+    const melodies = this.getRangedMelody().map(e => e.note);  // TODO: e.note の型を number にする
     return [
       melodies[1] - melodies[0] || 0,
       melodies[2] - melodies[1] || 0,

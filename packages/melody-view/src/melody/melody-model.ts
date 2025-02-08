@@ -4,7 +4,7 @@ import { MVCModel } from "@music-analyzer/view";
 export class MelodyModel extends MVCModel implements IMelodyModel {
   readonly begin: number;
   readonly end: number;
-  readonly note?: number;
+  readonly note: number;
   readonly head: {begin:number, end:number};
   readonly melody_analysis: MelodyAnalysis;
   constructor(melody: IMelodyModel) {

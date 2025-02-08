@@ -5,7 +5,7 @@ import { MVCModel } from "@music-analyzer/view";
 export class IRSymbolModel extends MVCModel {
   readonly begin: number;
   readonly end: number;
-  readonly note?: number;
+  readonly note: number;
   readonly archetype: Archetype;
   readonly layer: number;
   constructor(

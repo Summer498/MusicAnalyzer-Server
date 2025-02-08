@@ -13,14 +13,14 @@ export type MelodyAnalysis = {
   readonly implication_realization: Archetype,
 };
 export interface TimeAndMelody extends TimeAnd {
-  readonly note?: number,
+  readonly note: number,
   readonly head: TimeAnd
 }
 export interface TimeAndChord extends TimeAnd {
   readonly chord: Chord
 }
 export interface IMelodyModel extends TimeAnd {
-  readonly note?: number,
+  readonly note: number,
   readonly head: TimeAnd,
   readonly melody_analysis: MelodyAnalysis,
 }

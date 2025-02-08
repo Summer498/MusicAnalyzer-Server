@@ -5,7 +5,7 @@ export class DMelodyModel implements IMelodyModel{
   readonly end: number;
   readonly head: {begin:number, end:number};
   readonly melody_analysis: MelodyAnalysis;
-  readonly note?: number;
+  readonly note: number;
   constructor(d_melody: IMelodyModel) {
     this.begin = d_melody.begin;
     this.end = d_melody.end;

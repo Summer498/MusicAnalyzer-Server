@@ -42,7 +42,7 @@ export class ArrowView extends MVCView {
     this.svg.appendChild(this.line);
     this.src = {
       x: (this.model.end - this.model.begin) / 2 + this.model.begin,
-      y: this.model.note === undefined ? -99 : (PianoRollBegin.value + 0.5 - this.model.note) * black_key_prm.height
+      y: isNaN(this.model.note) ? -99 : (PianoRollBegin.value + 0.5 - this.model.note) * black_key_prm.height
     };
     this.dst = {
       x: this.model.next.begin,

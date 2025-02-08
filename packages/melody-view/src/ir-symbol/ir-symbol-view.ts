@@ -18,7 +18,7 @@ export class IRSymbolView extends MVCView {
     this.svg.style.fontFamily = "Times New Roman";
     this.svg.style.fontSize = `${ir_analysis_em}em`;
     this.svg.style.textAnchor = "middle";
-    this.y = this.model.note === undefined ? -99 : (PianoRollBegin.value - this.model.note) * black_key_prm.height;
+    this.y = isNaN(this.model.note) ? -99 : (PianoRollBegin.value - this.model.note) * black_key_prm.height;
   }
   onAudioUpdate() {
     this.svg.setAttribute("x", String(CurrentTimeX.value + this.model.end * NoteSize.value - NowAtX.value));

@@ -27,7 +27,7 @@ export class MelodyView extends MVCView {
     this.updateHeight();
   }
   updateX() { this.svg.style.x = String(CurrentTimeX.value + this.model.begin * NoteSize.value - NowAtX.value); }
-  updateY() { this.svg.style.y = String(this.model.note === undefined ? -99 : (PianoRollBegin.value - this.model.note) * black_key_prm.height); }
+  updateY() { this.svg.style.y = String(isNaN(this.model.note) ? -99 : (PianoRollBegin.value - this.model.note) * black_key_prm.height); }
   updateWidth() { this.svg.style.width = String(this.model.end * 15 / 16 * NoteSize.value - this.model.begin * 15 / 16 * NoteSize.value); }
   updateHeight() { this.svg.style.height = String(black_key_prm.height); }
   set onclick(value: () => void) { this.svg.onclick = value; }
