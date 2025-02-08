@@ -35,8 +35,8 @@ const get_rgb_on_intervallic_angle = (notes: string[]) => {
     _Interval.distance(notes[0], notes[1]),
     _Interval.distance(notes[1], notes[2])
   ].map(e => _Interval.get(e).semitones);
-  const dist = (p => Math.tanh(p[0] * p[0] + p[1] * p[1]))(intervals);
-  const angle = Math.atan2(intervals[1], intervals[0]);
+  const dist = (p => Math.tanh(p[0] * p[0] + p[1] * p[1]))(intervals) || 0;
+  const angle = Math.atan2(intervals[1], intervals[0]) || 0;
   return hsv2rgb(angle * 360 / Math.PI, 1, dist);
 };
 
