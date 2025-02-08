@@ -110,6 +110,8 @@ export class IRPlotView extends MVCView {
     this.updateY(-((1 - r) * curr[1] + r * next[1]));
   }
   updateColor() {
+    this.svg.style.stroke = "#111";
+    this.svg.style.strokeWidth = String(6);
     this.svg.style.fill = get_color_of_Narmour_concept(this.model.getCurrentNote().melody_analysis.implication_realization);
   }
 }
@@ -142,7 +144,9 @@ export class IRPlotLayer {
   ) {
     this.child = new IRPlotController(new IRPlotModel(melody_series));
     const base = Math.log(Math.min(this.child.view.w, this.child.view.h) / 10) / Math.log(max);
-    this.child.view.updateRadius(Math.pow(base, max - layer));
+    this.child.view.updateRadius(Math.pow(base, max - layer/2));
+    // const base = Math.min(this.child.view.w, this.child.view.h) / 10 / max;
+    // this.child.view.updateRadius(base * (max - layer/2));
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.svg.id = `layer-${layer}`;
     this.svg.appendChild(this.child.view.svg);
