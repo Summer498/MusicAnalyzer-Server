@@ -39,8 +39,6 @@ export class IRPlotModel extends MVCModel {
   }
   get is_visible() {
     const i = this.getCurrentIndex();
-    console.log(1 <= i && i < this.melody_series.length - 1);
-    console.log(`1 <= ${i} && ${i} < ${this.melody_series.length - 1}`);
     return 1 <= i && i < this.melody_series.length - 1;
   }
   getRangedMelody() {
