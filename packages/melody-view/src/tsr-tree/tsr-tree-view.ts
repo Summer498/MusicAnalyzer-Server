@@ -72,7 +72,6 @@ export class TSRView extends MVCView {
     this.ir_symbol.style.fill = get_color_of_Narmour_concept(this.archetype) || "#000";
   }
   onAudioUpdate() {
-    //    const is_just_layer = String(this.model.layer) === this.model.hierarchy_level.range.value;
     const x = CurrentTimeX.value + this.model.begin * NoteSize.value - NowAtX.value;
     const y = this.y;
     const w = this.w * NoteSize.value;
