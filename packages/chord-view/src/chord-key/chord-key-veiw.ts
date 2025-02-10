@@ -19,12 +19,15 @@ export class ChordKeyView extends MVCView {
     this.svg.style.fontFamily = "Times New Roman";
     this.svg.style.fontSize = `${chord_text_em}em`;
     this.svg.style.textAnchor = "end";
-    this.y = PianoRollHeight.value + chord_text_size * 2 + chord_name_margin;
-  }
-  onAudioUpdate() {
-    this.svg.setAttribute("x", String(CurrentTimeX.value + this.model.begin * NoteSize.value - NowAtX.value));
-    this.svg.setAttribute("y", `${this.y}`);
     this.svg.style.fill = fifthToColor(this.model.tonic, 1, 0.75) || "#000";
+    this.y = PianoRollHeight.value + chord_text_size * 2 + chord_name_margin;
+    this.updateX();
+    this.updateY();
+  }
+  updateX() { this.svg.setAttribute("x", String(CurrentTimeX.value + this.model.begin * NoteSize.value - NowAtX.value)); }
+  updateY() { this.svg.setAttribute("y", String(this.y)); }
+  onAudioUpdate() {
+    this.updateX();
   }
 }
 

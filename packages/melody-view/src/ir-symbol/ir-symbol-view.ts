@@ -18,16 +18,17 @@ export class IRSymbolView extends MVCView {
     this.svg.style.fontFamily = "Times New Roman";
     this.svg.style.fontSize = `${ir_analysis_em}em`;
     this.svg.style.textAnchor = "middle";
-    this.y = isNaN(this.model.note) ? -99 : (PianoRollBegin.value - this.model.note) * black_key_prm.height;
-  }
-  onAudioUpdate() {
-    this.svg.setAttribute("x", String(CurrentTimeX.value + this.model.end * NoteSize.value - NowAtX.value));
-    this.svg.setAttribute("y", String(this.y));
     this.svg.style.fill = get_color_of_Narmour_concept(this.model.archetype) || "#000";
     if (0) {
       this.svg.style.fill = get_color_on_parametric_scale(this.model.archetype) || "#000";
       this.svg.style.fill = this.model.archetype.color || "#000";
     }
+    this.y = isNaN(this.model.note) ? -99 : (PianoRollBegin.value - this.model.note) * black_key_prm.height;
+  }
+  onUpdateX() { this.svg.setAttribute("x", String(CurrentTimeX.value + this.model.begin * NoteSize.value - NowAtX.value)); }
+  onUpdateY() { this.svg.setAttribute("y", String(this.y)); }
+  onAudioUpdate() {
+    this.onUpdateX();
   }
 }
 

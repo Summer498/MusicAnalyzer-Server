@@ -13,6 +13,7 @@ export class DMelodyView extends MVCView {
     this.svg.id = "melody-note";
     this.svg.style.fill = rgbToString(hsv2rgb(0, 0, 0.75));
     this.svg.style.stroke = "#444";
+    this.updateX();
     this.updateY();
     this.updateWidth();
     this.updateHeight();
@@ -21,6 +22,6 @@ export class DMelodyView extends MVCView {
 
   updateX() { this.svg.style.x = String(CurrentTimeX.value + this.model.begin * NoteSize.value - NowAtX.value); }
   updateY() { this.svg.style.y = String(isNaN(this.model.note) ? -99 : (PianoRollBegin.value - this.model.note) * black_key_prm.height); }
-  updateWidth() { this.svg.style.width = String(this.model.end * NoteSize.value - this.model.begin * NoteSize.value); }
+  updateWidth() { this.svg.style.width = String(this.model.duration * NoteSize.value); }
   updateHeight() { this.svg.style.height = String(black_key_prm.height); }
 }

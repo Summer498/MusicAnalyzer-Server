@@ -73,9 +73,9 @@ export class ArrowView extends MVCView {
       dst.y + sin * -triangle_width + cos * triangle_height
     ];
     this.triangle.setAttribute("points", p.join(","));
-    this.line.setAttribute("x1", `${src.x}`);
-    this.line.setAttribute("x2", `${dst.x}`);
-    this.line.setAttribute("y1", `${src.y}`);
-    this.line.setAttribute("y2", `${dst.y}`);
+    this.line.setAttribute("x1", String(src.x));
+    this.line.setAttribute("x2", String(dst.x));
+    this.line.setAttribute("y1", String(src.y));
+    this.line.setAttribute("y2", String(dst.y));
   }
 }

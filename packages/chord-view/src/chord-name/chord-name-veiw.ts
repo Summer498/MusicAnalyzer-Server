@@ -10,7 +10,7 @@ export class ChordNameView extends MVCView {
   protected readonly model: ChordNameModel;
   readonly svg: SVGTextElement;
   readonly y: number;
-  constructor(model:ChordNameModel){
+  constructor(model: ChordNameModel) {
     super();
     this.model = model;
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "text");
@@ -20,9 +20,12 @@ export class ChordNameView extends MVCView {
     this.svg.style.fontSize = `${chord_text_em}em`;
     this.svg.style.fill = fifthToColor(this.model.tonic, 1, 0.75) || "#000";
     this.y = PianoRollHeight.value + chord_text_size;
+    this.onUpdateX();
+    this.onUpdateY();
   }
+  onUpdateX() { this.svg.setAttribute("x", String(CurrentTimeX.value + this.model.begin * NoteSize.value - NowAtX.value)); }
+  onUpdateY() { this.svg.setAttribute("y", String(this.y)); }
   onAudioUpdate() {
-    this.svg.setAttribute("x", String(CurrentTimeX.value + this.model.begin * NoteSize.value - NowAtX.value));
-    this.svg.setAttribute("y", `${this.y}`);
+    this.onUpdateX();
   }
 }
