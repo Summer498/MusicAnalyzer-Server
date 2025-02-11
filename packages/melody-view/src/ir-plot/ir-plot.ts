@@ -116,7 +116,7 @@ export class IRPlotView extends MVCView {
     const curr = get_pos(interval[0], interval[1]);
     const next = get_pos(interval[1], interval[2]);
     const r = this.easeInOutCos(this.model.getPositionRatio());
-    this.updateX((1 - r) * curr[0] + r * next[0]);
+    this.updateX(-((1 - r) * curr[0] + r * next[0]));
     this.updateY(-((1 - r) * curr[1] + r * next[1]));
 
     /*
