@@ -9,11 +9,9 @@ export class ArrowController implements AccompanyToAudio {
 
   constructor(
     model: ArrowModel,
-    fill: string,
-    stroke: string,
   ) {
     this.model = model;
-    this.view = new ArrowView(this.model, fill, stroke);
+    this.view = new ArrowView(this.model);
   }
   onAudioUpdate(){
     this.view.onAudioUpdate();

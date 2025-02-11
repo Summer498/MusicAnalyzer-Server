@@ -1,4 +1,3 @@
-import { rgbToString } from "@music-analyzer/color";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { ArrowController } from "../arrow/arrow";
 import { ArrowModel } from "../arrow/arrow-model";
@@ -16,8 +15,6 @@ export const getScaleGravityController = (
   if (scale_gravity?.resolved && scale_gravity.destination !== undefined) {
     const svg = new ArrowController(
       new ArrowModel(melody, next, scale_gravity, layer),
-      rgbToString([0, 0, 0]),
-      rgbToString([0, 0, 0]),
     );
     res.push(svg);
   }
