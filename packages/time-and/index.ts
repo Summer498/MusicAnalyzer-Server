@@ -1,5 +1,5 @@
-export type TimeAnd = { begin: number, end: number }
-export interface TimeAndItem<T> extends TimeAnd { item: T }
+export type TimeAnd = { readonly begin: number, readonly end: number }
+export interface TimeAndItem<T> extends TimeAnd { readonly item: T }
 
 export const compress = <T>(arr: T[]) => {
   const ret: TimeAndItem<T>[] = [];

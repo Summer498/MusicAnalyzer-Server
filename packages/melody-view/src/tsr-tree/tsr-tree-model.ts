@@ -4,7 +4,7 @@ import { MVCModel } from "@music-analyzer/view";
 export class TSRModel extends MVCModel {
   readonly begin: number;
   readonly end: number;
-  readonly head: { begin: number, end: number, w: number };
+  readonly head: { readonly begin: number, readonly end: number, readonly duration: number };
   readonly layer: number;
   constructor(
     melody: IMelodyModel,
