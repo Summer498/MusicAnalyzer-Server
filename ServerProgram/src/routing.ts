@@ -1,16 +1,12 @@
 import { default as fs } from "fs";
 import { default as path } from "path";
 import { default as express, NextFunction, Request, Response } from "express";
-import { default as multer } from "multer";
 import { default as url } from "url";
 import { _throw, assertNonNullable as NN } from "./stdlib";
 
 export const app = express();
-const HOME = "/MusicAnalyzer-server";
-const HOME_DIR = `/var/www/html${HOME}`; // process.cwd();
-const POST_DATA_PATH = `${HOME_DIR}/posted`;
-
-export const upload = multer({ dest: POST_DATA_PATH });  // multer が POST_DATA_PATH にファイルを作成
+export const HOME = "/MusicAnalyzer-server";
+export const HOME_DIR = `/var/www/html${HOME}`; // process.cwd();
 
 export const send404HTML = (req: Request, res: Response) => {
   res.status(404).send(
@@ -46,7 +42,7 @@ export const sendFile = (req: Request, res: Response, fullpath: string) => {
 export const sendRequestedFile = (req: Request, res: Response) => {
   req.url || _throw(TypeError(`requested URL is null`));
   const req_path = decodeURI(NN(url.parse(req.url, true, true).pathname).replace(HOME, ""));
-  
+
   // caution: order is important
   if (req_path.endsWith("/index.html")) { // /path/to/index.html
     const dirname = path.dirname(req_path);
@@ -91,7 +87,7 @@ export const handlePostRequest = (req: Request, res: Response, next: NextFunctio
   else {
     const filepath = req.file.path;
     const originalname = req.file.originalname;
-    console.log(`File uploaded on ${filepath} ${originalname}`);
+    console.log(`File uploaded on ${filepath}. original name: (${Buffer.from(originalname, "latin1").toString("utf8")})`);
   }
   sendRequestedFile(req, res);
   sendFile(req, res, `${HOME_DIR}/${req_path}`);
