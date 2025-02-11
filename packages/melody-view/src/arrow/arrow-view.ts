@@ -39,29 +39,36 @@ export class ArrowView extends MVCView {
     this.svg.appendChild(this.triangle);
     this.svg.appendChild(this.line);
     this.src = {
-      x: (this.model.end - this.model.begin) / 2 + this.model.begin,
+      x: this.model.begin + this.model.duration / 2,
       y: isNaN(this.model.note) ? -99 : (PianoRollBegin.value + 0.5 - this.model.note) * black_key_prm.height
     };
     this.dst = {
       x: this.model.next.begin,
       y: (PianoRollBegin.value + 0.5 - this.model.gravity.destination!) * black_key_prm.height
     };
+    const view_pos = this.getViewPositions();
+    this.triangle.setAttribute("points", view_pos.p.join(","));
+    this.line.setAttribute("x1", String(view_pos.src.x));
+    this.line.setAttribute("x2", String(view_pos.dst.x));
+    this.line.setAttribute("y1", String(view_pos.src.y));
+    this.line.setAttribute("y2", String(view_pos.dst.y));
   }
-  onAudioUpdate() {
+  getViewX(x: number) { return CurrentTimeX.value + x * NoteSize.value; }
+  getViewPositions() {
     const src: Vector2D = {
-      x: CurrentTimeX.value + this.src.x * NoteSize.value - NowAtX.value,
+      x: this.getViewX(this.src.x) - NowAtX.value,
       y: this.src.y
     };
     const dst: Vector2D = {
-      x: CurrentTimeX.value + this.dst.x * NoteSize.value - NowAtX.value,
+      x: this.getViewX(this.dst.x) - NowAtX.value,
       y: this.dst.y
     };
 
-    const dx = dst.x - src.x;
-    const dy = dst.y - src.y;
-    const r = Math.sqrt(dx * dx + dy * dy);
-    const cos = -dy / r;
-    const sin = dx / r;
+    const w = dst.x - src.x;
+    const h = dst.y - src.y;
+    const r = Math.sqrt(w * w + h * h);
+    const cos = -h / r;
+    const sin = w / r;
     const p = [
       dst.x,
       dst.y,
@@ -70,10 +77,14 @@ export class ArrowView extends MVCView {
       dst.x + cos * -triangle_width - sin * triangle_height,
       dst.y + sin * -triangle_width + cos * triangle_height
     ];
-    this.triangle.setAttribute("points", p.join(","));
-    this.line.setAttribute("x1", String(src.x));
-    this.line.setAttribute("x2", String(dst.x));
-    this.line.setAttribute("y1", String(src.y));
-    this.line.setAttribute("y2", String(dst.y));
+    return { p, src, dst } as ({ readonly p: number[], readonly src: Vector2D, readonly dst: Vector2D });
+  }
+  onAudioUpdate() {
+    const view_pos = this.getViewPositions();
+    this.triangle.setAttribute("points", view_pos.p.join(","));
+    this.line.setAttribute("x1", String(view_pos.src.x));
+    this.line.setAttribute("x2", String(view_pos.dst.x));
+    this.line.setAttribute("y1", String(view_pos.src.y));
+    this.line.setAttribute("y2", String(view_pos.dst.y));
   }
 }

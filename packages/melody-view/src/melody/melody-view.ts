@@ -34,6 +34,5 @@ export class MelodyView extends MVCView {
   onAudioUpdate() {
     this.onclick = deleteMelody;
     this.updateX();
-    this.updateWidth();
   }
 }
