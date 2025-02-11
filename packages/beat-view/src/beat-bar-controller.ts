@@ -24,7 +24,6 @@ export class BeatBarController extends MVCController {
     }
   }
   onAudioUpdate() {
-    this.view.onAudioUpdate();
     // NOTE: うるさいので停止中
     0 && this.beepBeat();
   }

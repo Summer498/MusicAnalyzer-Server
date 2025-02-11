@@ -10,8 +10,5 @@ export class IRSymbolController extends MVCController {
     this.model = model;
     this.view = new IRSymbolView(this.model);
   }
-  onAudioUpdate() {
-    this.view.onAudioUpdate();
-  };
 }
 

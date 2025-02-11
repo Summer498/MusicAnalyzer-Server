@@ -24,7 +24,4 @@ export class ChordRomanView extends MVCView {
   }
   onUpdateX() { this.svg.setAttribute("x", String(this.model.begin * NoteSize.value)); }
   onUpdateY() { this.svg.setAttribute("y", String(this.y)); }
-  onAudioUpdate() {
-    // this.onUpdateX();
-  }
 }

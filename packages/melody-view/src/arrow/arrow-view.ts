@@ -1,4 +1,4 @@
-import { NoteSize, black_key_prm, PianoRollBegin, PianoRollTranslateX } from "@music-analyzer/view-parameters";
+import { NoteSize, black_key_prm, PianoRollBegin } from "@music-analyzer/view-parameters";
 import { ArrowModel } from "./arrow-model";
 import { MVCView } from "@music-analyzer/view";
 
@@ -78,15 +78,5 @@ export class ArrowView extends MVCView {
       dst.y + sin * -triangle_width + cos * triangle_height
     ];
     return { p, src, dst } as ({ readonly p: number[], readonly src: Vector2D, readonly dst: Vector2D });
-  }
-  onAudioUpdate() {
-    /*
-    const view_pos = this.getViewPositions();
-    this.triangle.setAttribute("points", view_pos.p.join(","));
-    this.line.setAttribute("x1", String(view_pos.src.x));
-    this.line.setAttribute("x2", String(view_pos.dst.x));
-    this.line.setAttribute("y1", String(view_pos.src.y));
-    this.line.setAttribute("y2", String(view_pos.dst.y));
-    */
   }
 }

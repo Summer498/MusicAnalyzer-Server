@@ -1,10 +1,9 @@
 import { MelodyModel } from "./melody-model";
 import { MelodyView } from "./melody-view";
-import { AccompanyToAudio } from "@music-analyzer/view";
 import { play } from "@music-analyzer/synth";
 import { NowAt, reservation_range } from "@music-analyzer/view-parameters";
 
-export class MelodyController implements AccompanyToAudio {
+export class MelodyController {
   readonly model: MelodyModel;
   readonly view: MelodyView;
   #do_melody_beep: boolean;
@@ -19,7 +18,6 @@ export class MelodyController implements AccompanyToAudio {
     this.view = new MelodyView(this.model);
     this.#do_melody_beep = false;
     this.#beep_volume = 0;
-    this.onAudioUpdate();
   }
 
   beepMelody = () => {
@@ -40,7 +38,6 @@ export class MelodyController implements AccompanyToAudio {
   onMelodyBeepCheckChanged(do_melody_beep: boolean) { this.#do_melody_beep = do_melody_beep; }
   onMelodyVolumeBarChanged(beep_volume: number) { this.#beep_volume = beep_volume; }
   onAudioUpdate() {
-    this.view.onAudioUpdate();
     if (this.do_melody_beep) {
       this.beepMelody();
     }

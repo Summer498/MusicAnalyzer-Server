@@ -14,9 +14,6 @@ export class TSRController extends MVCController {
     this.model = model;
     this.view = new TSRView(this.model, implication_realization);
   }
-  onAudioUpdate() {
-    this.view.onAudioUpdate();
-  }
   renewStrong(strong: boolean) {
     this.view.strong = strong;
   }

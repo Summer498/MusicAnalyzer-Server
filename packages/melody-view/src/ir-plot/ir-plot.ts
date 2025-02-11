@@ -120,6 +120,7 @@ export class IRPlotView extends MVCView {
     this.updateY(-((1 - r) * curr[1] + r * next[1]));
 
     /*
+    // 回転補間
     const curr_radius = Math.sqrt(curr[0] * curr[0] + curr[1] * curr[1]);
     const next_radius = Math.sqrt(next[0] * next[0] + next[1] * next[1]);
     const curr_angle = Math.atan2(curr[1], curr[0]);

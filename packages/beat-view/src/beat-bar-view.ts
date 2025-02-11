@@ -1,4 +1,4 @@
-import { NoteSize, PianoRollTranslateX, PianoRollHeight } from "@music-analyzer/view-parameters";
+import { NoteSize, PianoRollHeight } from "@music-analyzer/view-parameters";
 import { BeatBarModel } from "./beat-bar-model";
 import { MVCView } from "@music-analyzer/view";
 
@@ -27,9 +27,6 @@ export class BeatBarView extends MVCView {
   updateY() {
     this.svg.setAttribute("y1", String(this.y1));
     this.svg.setAttribute("y2", String(this.y2));
-  }
-  onAudioUpdate() {
-    // this.updateX();
   }
 }
 

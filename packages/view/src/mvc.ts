@@ -1,5 +1,3 @@
-import { AccompanyToAudio } from "./updatable";
-
 export abstract class MVCModel {}
 
 export abstract class MVCView {
@@ -7,8 +5,7 @@ export abstract class MVCView {
   protected readonly abstract model: MVCModel;
 }
 
-export abstract class MVCController implements AccompanyToAudio {
+export abstract class MVCController {
   readonly abstract model: MVCModel;
   readonly abstract view: MVCView
-  abstract onAudioUpdate(): void;
 }

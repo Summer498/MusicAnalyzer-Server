@@ -11,7 +11,4 @@ export class ChordKeyController extends MVCController {
     this.model = model;
     this.view = new ChordKeyView(this.model);
   }
-  onAudioUpdate() {
-    this.view.onAudioUpdate();
-  }
 }

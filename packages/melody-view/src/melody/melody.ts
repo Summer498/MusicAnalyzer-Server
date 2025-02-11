@@ -26,7 +26,6 @@ export class MelodyLayer extends CollectionLayer {
   }
   onAudioUpdate() {
     super.onAudioUpdate();
-    this.show.forEach(e=>e.onAudioUpdate());
   }
 }
 

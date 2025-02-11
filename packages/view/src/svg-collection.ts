@@ -25,7 +25,7 @@ export abstract class SvgCollection implements AccompanyToAudio {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.show.map(e => this.svg.appendChild(e.view.svg));
   }
-  updateShow(begin: number, end: number) {
+  private updateShow(begin: number, end: number) {
     /*
     const remain = search_items_overlaps_range(this.show.map(e=>e.model), begin, end);
     this.show.splice(remain.end_index, this.show.length - remain.end_index).forEach(e=>e.view.svg.parentNode?.removeChild(e.view.svg));  // 右側にはみ出したものを消す
@@ -44,13 +44,6 @@ export abstract class SvgCollection implements AccompanyToAudio {
     this.svg.appendChild(fragment);
   }
   onAudioUpdate() {
-    /*
-    this.updateShow(
-      NowAt.value - PianoRollTimeLength.value * CurrentTimeRatio.value,
-      NowAt.value + PianoRollTimeLength.value
-    );
-    */
-    // this.show.forEach(e => e.onAudioUpdate());
     this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.value})`);
   }
 }

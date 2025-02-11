@@ -1,6 +1,6 @@
 import { Archetype, get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { TSRModel } from "./tsr-tree-model";
-import { black_key_prm, bracket_hight, NoteSize, PianoRollTranslateX } from "@music-analyzer/view-parameters";
+import { black_key_prm, bracket_hight, NoteSize } from "@music-analyzer/view-parameters";
 import { MVCView } from "@music-analyzer/view";
 
 export class TSRView extends MVCView {
@@ -90,13 +90,6 @@ export class TSRView extends MVCView {
       this.ir_symbol.style.fill = this.archetype.color || "#000";
     }
     this.ir_symbol.style.fill = get_color_of_Narmour_concept(this.archetype) || "#000";
-  }
-  onAudioUpdate() {
-    /*
-    this.updateBracket(this.#x + NowAtX.value, this.y, this.#w, this.h);
-    this.updateCircle(this.#cx + NowAtX.value, this.y - this.h);
-    this.updateIRSymbol(this.#cx + NowAtX.value, this.y, this.#w, this.h);
-    */
   }
   get strong() { return this.#strong; }
   set strong(value: boolean) {

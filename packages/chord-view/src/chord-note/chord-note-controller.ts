@@ -11,7 +11,4 @@ export class ChordNoteController extends MVCController {
     this.model = model;
     this.view = new ChordNoteView(this.model);
   }
-  onAudioUpdate() {
-    // this.view.onAudioUpdate();
-  }
 }

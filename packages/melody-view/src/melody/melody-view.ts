@@ -1,4 +1,4 @@
-import { black_key_prm, NoteSize, PianoRollTranslateX, PianoRollBegin } from "@music-analyzer/view-parameters";
+import { black_key_prm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
 import { MelodyModel } from "./melody-model";
 import { deleteMelody } from "../melody-editor-function";
 import { get_color_of_Narmour_concept, get_color_on_parametric_scale } from "@music-analyzer/irm";
@@ -21,6 +21,7 @@ export class MelodyView extends MVCView {
       this.svg.style.fill = this.model.note ? fifthChromaToColor(this.model.note, 0.75, 0.9) : "#000";
     }
     this.svg.style.stroke = "#444";
+    this.svg.onclick = deleteMelody;
     this.sound_reserved = false;
     this.updateX();
     this.updateY();
@@ -31,9 +32,4 @@ export class MelodyView extends MVCView {
   updateY() { this.svg.style.y = String(isNaN(this.model.note) ? -99 : (PianoRollBegin.value - this.model.note) * black_key_prm.height); }
   updateWidth() { this.svg.style.width = String(this.model.duration * 15 / 16 * NoteSize.value); }
   updateHeight() { this.svg.style.height = String(black_key_prm.height); }
-  set onclick(value: () => void) { this.svg.onclick = value; }
-  onAudioUpdate() {
-    this.onclick = deleteMelody;
-    // this.updateX();
-  }
 }

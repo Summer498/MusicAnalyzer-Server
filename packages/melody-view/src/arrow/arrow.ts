@@ -1,9 +1,8 @@
-import { AccompanyToAudio } from "@music-analyzer/view";
 import { ArrowModel } from "./arrow-model";
 import { ArrowView } from "./arrow-view";
 
 
-export class ArrowController implements AccompanyToAudio {
+export class ArrowController {
   readonly model: ArrowModel;
   readonly view: ArrowView;
 
@@ -12,8 +11,5 @@ export class ArrowController implements AccompanyToAudio {
   ) {
     this.model = model;
     this.view = new ArrowView(this.model);
-  }
-  onAudioUpdate() {
-    this.view.onAudioUpdate();
   }
 }

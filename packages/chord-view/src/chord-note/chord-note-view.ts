@@ -1,6 +1,6 @@
 import { mod } from "@music-analyzer/math";
 import { ChordNoteModel } from "./chord-note-model";
-import { black_key_prm, NoteSize, PianoRollTranslateX, PianoRollBegin, PianoRollEnd } from "@music-analyzer/view-parameters";
+import { black_key_prm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
 import { fifthToColor } from "@music-analyzer/color";
 import { MVCView } from "@music-analyzer/view";
 
@@ -25,8 +25,5 @@ export class ChordNoteView extends MVCView {
   }
   onUpdateX() { this.svg.setAttribute("x", String(this.model.begin * NoteSize.value)); }
   onUpdateY() { this.svg.setAttribute("y", String(this.y)); }
-  onAudioUpdate() {
-    // this.onUpdateX();
-  }
 }
 
