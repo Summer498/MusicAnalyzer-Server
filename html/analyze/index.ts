@@ -17,6 +17,14 @@ import { GRP, MTR, TSR, PRR, D_TSR, D_PRR } from "@music-analyzer/gttm";
 import { getHierarchicalMelody } from "./src/HierarchicalMelody";
 import { song_list } from "./src/songlist";
 import { SongManager } from "@music-analyzer/piano-roll";
+
+const getJSON = async <T>(url: string) => {
+  return fetch(url).then(res => res.json() as T);
+};
+const getJSONfromXML = async <T>(url: string) => {
+  return fetch(url).then(res => res.text()).then(e => xml_parser.parse(e) as T);
+};
+
 (async () => {
   //*
   // TODO: 1. get song name from URL parameter, 2. fetch song↓
@@ -24,13 +32,14 @@ import { SongManager } from "@music-analyzer/piano-roll";
   const tune_id = urlParams.get("tune");
   console.log("urlParams");
   console.log(urlParams);
-  const roman = (await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/chord/roman.json")).json()) as TimeAndRomanAnalysis[];
-  const melody = (await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/melody/crepe/manalyze.json")).json()).map((e: any) => ({ ...e, head: { begin: e.begin, end: e.end } })) as IMelodyModel[];
-  const musicxml = (await xml_parser.parse(await (await fetch(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/MSC-${tune_id}.xml`)).text())) as MusicXML;
-  const do_re_mi_grp = (await xml_parser.parse(await (await fetch(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/GPR-${tune_id}.xml`)).text()) as GRP);
-  const do_re_mi_mtr = (await xml_parser.parse(await (await fetch(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/MPR-${tune_id}.xml`)).text()) as MTR);
-  const do_re_mi_tsr = (await xml_parser.parse(await (await fetch(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/TS-${tune_id}.xml`)).text()) as D_TSR);
-  const do_re_mi_pr = (await xml_parser.parse(await (await fetch(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/PR-${tune_id}.xml`)).text()) as D_PRR);
+  const roman = await getJSON<TimeAndRomanAnalysis[]>("../../resources/Hierarchical Analysis Sample/analyzed/chord/roman.json");
+  const melody = (await getJSON<IMelodyModel[]>("../../resources/Hierarchical Analysis Sample/analyzed/melody/crepe/manalyze.json"))
+    .map(e => ({ ...e, head: { begin: e.begin, end: e.end } })) as IMelodyModel[];
+  const musicxml = await getJSONfromXML<MusicXML>(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/MSC-${tune_id}.xml`);
+  const do_re_mi_grp = await getJSONfromXML<GRP>(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/GPR-${tune_id}.xml`);
+  const do_re_mi_mtr = await getJSONfromXML<MTR>(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/MPR-${tune_id}.xml`);
+  const do_re_mi_tsr = await getJSONfromXML<D_TSR>(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/TS-${tune_id}.xml`);
+  const do_re_mi_pr = await getJSONfromXML<D_PRR>(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/PR-${tune_id}.xml`);
 
   const mode: "TSR" | "PR" = "TSR";
   title.textContent = `[${mode}] ${tune_id}`;
