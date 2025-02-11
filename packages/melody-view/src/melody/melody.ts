@@ -14,14 +14,19 @@ export class MelodyLayer extends CollectionLayer {
     super(children, layer);
   }
   onMelodyBeepCheckChanged(do_melody_beep: boolean) {
-    this.children.forEach(e =>
-      (e as MelodyController).onMelodyBeepCheckChanged(do_melody_beep)
+    this.children.forEach(e => {
+      (e as MelodyController).onMelodyBeepCheckChanged(do_melody_beep);
+    }
     );
   }
   onMelodyVolumeBarChanged(beep_volume: number) {
     this.children.forEach(e =>
       (e as MelodyController).onMelodyVolumeBarChanged(beep_volume)
     );
+  }
+  onAudioUpdate() {
+    super.onAudioUpdate();
+    this.show.forEach(e=>e.onAudioUpdate());
   }
 }
 

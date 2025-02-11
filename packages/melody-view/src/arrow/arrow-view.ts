@@ -1,4 +1,4 @@
-import { CurrentTimeX, NoteSize, black_key_prm, PianoRollBegin, NowAtX } from "@music-analyzer/view-parameters";
+import { NoteSize, black_key_prm, PianoRollBegin, PianoRollTranslateX } from "@music-analyzer/view-parameters";
 import { ArrowModel } from "./arrow-model";
 import { MVCView } from "@music-analyzer/view";
 
@@ -53,14 +53,14 @@ export class ArrowView extends MVCView {
     this.line.setAttribute("y1", String(view_pos.src.y));
     this.line.setAttribute("y2", String(view_pos.dst.y));
   }
-  getViewX(x: number) { return CurrentTimeX.value + x * NoteSize.value; }
+  getViewX(x: number) { return x * NoteSize.value; }
   getViewPositions() {
     const src: Vector2D = {
-      x: this.getViewX(this.src.x) - NowAtX.value,
+      x: this.getViewX(this.src.x),
       y: this.src.y
     };
     const dst: Vector2D = {
-      x: this.getViewX(this.dst.x) - NowAtX.value,
+      x: this.getViewX(this.dst.x),
       y: this.dst.y
     };
 
@@ -80,11 +80,13 @@ export class ArrowView extends MVCView {
     return { p, src, dst } as ({ readonly p: number[], readonly src: Vector2D, readonly dst: Vector2D });
   }
   onAudioUpdate() {
+    /*
     const view_pos = this.getViewPositions();
     this.triangle.setAttribute("points", view_pos.p.join(","));
     this.line.setAttribute("x1", String(view_pos.src.x));
     this.line.setAttribute("x2", String(view_pos.dst.x));
     this.line.setAttribute("y1", String(view_pos.src.y));
     this.line.setAttribute("y2", String(view_pos.dst.y));
+    */
   }
 }

@@ -1,4 +1,4 @@
-import { CurrentTimeX, NoteSize, NowAtX, PianoRollHeight } from "@music-analyzer/view-parameters";
+import { NoteSize, PianoRollTranslateX, PianoRollHeight } from "@music-analyzer/view-parameters";
 import { BeatBarModel } from "./beat-bar-model";
 import { MVCView } from "@music-analyzer/view";
 
@@ -20,8 +20,8 @@ export class BeatBarView extends MVCView {
     this.updateY();
   }
   updateX() {
-    this.svg.setAttribute("x1", String(CurrentTimeX.value + this.model.begin * NoteSize.value - NowAtX.value));
-    this.svg.setAttribute("x2", String(CurrentTimeX.value + this.model.begin * NoteSize.value - NowAtX.value));
+    this.svg.setAttribute("x1", String(this.model.begin * NoteSize.value));
+    this.svg.setAttribute("x2", String(this.model.begin * NoteSize.value));
 
   }
   updateY() {
@@ -29,7 +29,7 @@ export class BeatBarView extends MVCView {
     this.svg.setAttribute("y2", String(this.y2));
   }
   onAudioUpdate() {
-    this.updateX();
+    // this.updateX();
   }
 }
 

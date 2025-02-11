@@ -1,7 +1,7 @@
 import { _Chord } from "@music-analyzer/tonal-objects";
 import { shorten_chord } from "../shorten";
 import { ChordNameModel } from "./chord-name-model";
-import { CurrentTimeX, NoteSize, NowAtX, PianoRollHeight } from "@music-analyzer/view-parameters";
+import { NoteSize, PianoRollTranslateX, PianoRollHeight } from "@music-analyzer/view-parameters";
 import { chord_text_em, chord_text_size } from "../chord-view-params";
 import { fifthToColor } from "@music-analyzer/color";
 import { MVCView } from "@music-analyzer/view";
@@ -23,9 +23,9 @@ export class ChordNameView extends MVCView {
     this.onUpdateX();
     this.onUpdateY();
   }
-  onUpdateX() { this.svg.setAttribute("x", String(CurrentTimeX.value + this.model.begin * NoteSize.value - NowAtX.value)); }
+  onUpdateX() { this.svg.setAttribute("x", String(this.model.begin * NoteSize.value)); }
   onUpdateY() { this.svg.setAttribute("y", String(this.y)); }
   onAudioUpdate() {
-    this.onUpdateX();
+    // this.onUpdateX();
   }
 }

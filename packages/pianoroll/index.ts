@@ -130,6 +130,7 @@ export const registerListener = (piano_roll: PianoRollController2, input: PianoR
   function updateMelodyBeep(this: HTMLInputElement) {
     piano_roll.melody_group.onMelodyBeepCheckChanged(this.checked);
   };
+  input.melody_beep_switcher.checkbox.checked = true;
   input.melody_beep_switcher.checkbox.addEventListener("input", updateMelodyBeep);
   updateMelodyBeep.bind(input.melody_beep_switcher.checkbox)();
 
@@ -139,7 +140,7 @@ export const registerListener = (piano_roll: PianoRollController2, input: PianoR
   input.melody_beep_volume.range.addEventListener("input", updateMelodyBeepVolume);
   updateMelodyBeepVolume.bind(input.melody_beep_volume.range)();
 
-  function updateTimeRange(this: HTMLInputElement){
+  function updateTimeRange(this: HTMLInputElement) {
     input.time_range_slider.span.textContent = `${Math.floor(Math.pow(2, Number(this.value) - Number(this.max)) * 100)} %`;
     PianoRollRatio.value = Math.pow(2, Number(this.value) - Number(this.max));
     piano_roll.accompany_to_audio_registry.onAudioUpdate();
