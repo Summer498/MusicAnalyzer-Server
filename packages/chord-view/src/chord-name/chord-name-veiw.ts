@@ -1,10 +1,10 @@
 import { _Chord } from "@music-analyzer/tonal-objects";
 import { shorten_chord } from "../shorten";
 import { ChordNameModel } from "./chord-name-model";
-import { NoteSize, PianoRollHeight } from "@music-analyzer/view-parameters";
+import { CurrentTimeX, NoteSize, PianoRollHeight } from "@music-analyzer/view-parameters";
 import { chord_text_em, chord_text_size } from "../chord-view-params";
 import { fifthToColor } from "@music-analyzer/color";
-import { MVCView } from "@music-analyzer/view";
+import { MVCView, WindowReflectableRegistry } from "@music-analyzer/view";
 
 export class ChordNameView extends MVCView {
   protected readonly model: ChordNameModel;
@@ -20,9 +20,13 @@ export class ChordNameView extends MVCView {
     this.svg.style.fontSize = `${chord_text_em}em`;
     this.svg.style.fill = fifthToColor(this.model.tonic, 1, 0.75) || "#000";
     this.y = PianoRollHeight.value + chord_text_size;
-    this.onUpdateX();
-    this.onUpdateY();
+    this.updateX();
+    this.updateY();
+    WindowReflectableRegistry.instance.register(this);
   }
-  onUpdateX() { this.svg.setAttribute("x", String(this.model.begin * NoteSize.value)); }
-  onUpdateY() { this.svg.setAttribute("y", String(this.y)); }
+  updateX() { this.svg.setAttribute("x", String(CurrentTimeX.value + this.model.begin * NoteSize.value)); }
+  updateY() { this.svg.setAttribute("y", String(this.y)); }
+  onWindowResized() {
+    this.updateX();
+  }
 }

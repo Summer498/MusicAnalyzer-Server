@@ -1,7 +1,7 @@
 import { Archetype, get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { TSRModel } from "./tsr-tree-model";
-import { black_key_prm, bracket_hight, NoteSize } from "@music-analyzer/view-parameters";
-import { MVCView } from "@music-analyzer/view";
+import { black_key_prm, bracket_hight, CurrentTimeX, NoteSize } from "@music-analyzer/view-parameters";
+import { MVCView, WindowReflectableRegistry } from "@music-analyzer/view";
 
 export class TSRView extends MVCView {
   protected readonly model: TSRModel;
@@ -55,8 +55,9 @@ export class TSRView extends MVCView {
     this.updateBracket(this.#x, this.y, this.#w, this.h);
     this.updateCircle(this.#cx, this.y - this.h);
     this.updateIRSymbol(this.#cx, this.y, this.#w, this.h);
+    WindowReflectableRegistry.instance.register(this);
   }
-  getViewX(x: number) { return x * NoteSize.value; }
+  getViewX(x: number) { return CurrentTimeX.value + x * NoteSize.value; }
   getViewW(w: number) { return w * NoteSize.value; }
   updateBracket(x: number, y: number, w: number, h: number) {
     const begin = { x: x + w * 0 / 10 + h * 0 / 2, y: y - h * 0 / 10 };
@@ -96,5 +97,20 @@ export class TSRView extends MVCView {
     this.#strong = value;
     this.bracket.style.strokeWidth = this.#strong ? "3" : "1";
     this.circle.style.r = String(this.#strong ? 5 : 3);
+  }
+  updateX(){
+    this.#x = this.getViewX(this.model.begin);
+    this.#cx = this.getViewX(this.model.head.begin) + this.#cw / 2;    
+  }
+  updateWidth() {
+    this.#w = this.getViewW(this.model.duration);
+    this.#cw = this.getViewW(this.model.head.duration);
+  }
+  onWindowResized() {
+    this.updateX();
+    this.updateWidth();
+    this.updateBracket(this.#x, this.y, this.#w, this.h);
+    this.updateCircle(this.#cx, this.y - this.h);
+    this.updateIRSymbol(this.#cx, this.y, this.#w, this.h);
   }
 }

@@ -1,9 +1,9 @@
-import { black_key_prm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
+import { black_key_prm, CurrentTimeX, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
 import { MelodyModel } from "./melody-model";
 import { deleteMelody } from "../melody-editor-function";
 import { get_color_of_Narmour_concept, get_color_on_parametric_scale } from "@music-analyzer/irm";
 import { fifthChromaToColor } from "@music-analyzer/color";
-import { MVCView } from "@music-analyzer/view";
+import { MVCView, WindowReflectableRegistry } from "@music-analyzer/view";
 
 export class MelodyView extends MVCView {
   readonly svg: SVGRectElement;
@@ -27,9 +27,15 @@ export class MelodyView extends MVCView {
     this.updateY();
     this.updateWidth();
     this.updateHeight();
+    WindowReflectableRegistry.instance.register(this);
   }
-  updateX() { this.svg.style.x = String(this.model.begin * NoteSize.value); }
+  updateX() { this.svg.style.x = String(CurrentTimeX.value + this.model.begin * NoteSize.value); }
   updateY() { this.svg.style.y = String(isNaN(this.model.note) ? -99 : (PianoRollBegin.value - this.model.note) * black_key_prm.height); }
   updateWidth() { this.svg.style.width = String(this.model.duration * 15 / 16 * NoteSize.value); }
   updateHeight() { this.svg.style.height = String(black_key_prm.height); }
+  onWindowResized() {
+    this.updateX();
+    this.updateWidth();
+    this.updateHeight();
+  }
 }
