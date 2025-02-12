@@ -28,7 +28,7 @@ export class IRSymbolView extends MVCView {
     this.updateY();
     WindowReflectableRegistry.instance.register(this);
   }
-  updateX() { this.svg.setAttribute("x", String(CurrentTimeX.value + this.model.begin * NoteSize.value)); }
+  updateX() { this.svg.setAttribute("x", String(CurrentTimeX.value + this.model.begin * NoteSize.value + this.model.duration * NoteSize.value)); }
   updateY() { this.svg.setAttribute("y", String(this.y)); }
   onWindowResized() {
     this.updateX();
