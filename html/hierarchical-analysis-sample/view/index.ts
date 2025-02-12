@@ -40,7 +40,7 @@ const getJSONfromXML = async <T>(url: string) => {
   const keyLength = (obj: object) => Object.keys(obj).length;
   const ts = new TSR(do_re_mi_tsr).tstree.ts;
   const pr = keyLength(do_re_mi_pr) ? new PRR(do_re_mi_pr).prtree.pr : undefined;
-  const mode: "TSR" | "PR" = pr ? "PR" : "TSR";
+  const mode: "TSR" | "PR" = urlParams.has("pr") ? "PR" : "TSR";
 
   title.textContent = `[${mode}] ${tune_id}`;
   const tune_match = tune_id?.match(/([0-9]+)_[0-9]/);
@@ -52,7 +52,7 @@ const getJSONfromXML = async <T>(url: string) => {
 
   const matrix = ts.getMatrixOfLayer(ts.getDepthCount() - 1);
   const measure = tune_id === "doremi" ? 3.5 : 7;
-  const hierarchical_melody = getHierarchicalMelody(measure, String(mode) === "PR" && pr ? pr : ts, matrix, musicxml, roman);
+  const hierarchical_melody = getHierarchicalMelody(measure, String(mode) === "PR"? pr! : ts, matrix, musicxml, roman);
 
   // const org_melody = await (await fetch("/MusicAnalyzer-server/resources/Hierarchical Analysis Sample/analyzed/melody/crepe/vocals.json")).json() as number[];
   // const time_and_melody = getTimeAndMelody(org_melody, 100);
