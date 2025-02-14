@@ -73,7 +73,7 @@ export const appendController = (piano_roll_place: HTMLDivElement, piano_roll: P
   melody_color_selector_div.appendChild(piano_roll.input_controller.melody_color_selector.body);
   const controllers = document.createElement("div");
   controllers.id = "controllers";
-  controllers.style = "margin-top:20px";
+  controllers.style.marginTop = `${20}px`;
   controllers.appendChild(d_melody_div);
   controllers.appendChild(hierarchy_level_div);
   controllers.appendChild(time_length_div);
