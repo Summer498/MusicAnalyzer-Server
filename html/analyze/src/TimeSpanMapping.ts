@@ -11,7 +11,7 @@ export const getTimeAndMelodyFromTS = (element: ReductionElement, duration_data:
   const note = musicxml["score-partwise"].part.measure.find(e=>e.number===element.measure)!.note;
   const pitch = Array.isArray(note) ? note[element.note - 1].pitch : note.pitch;
   return {
-    note: pitch ? calcChroma(pitch) : undefined,
+    note: pitch ? calcChroma(pitch) : NaN,
     begin: duration_data[leftend.measure][leftend.note].leftend,
     end: duration_data[rightend.measure][rightend.note].rightend,
     head: {
