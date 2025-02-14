@@ -41,18 +41,19 @@ export const sendFile = (req: Request, res: Response, fullpath: string) => {
 
 export const sendRequestedFile = (req: Request, res: Response) => {
   req.url || _throw(TypeError(`requested URL is null`));
-  const req_path = decodeURI(NN(url.parse(req.url, true, true).pathname).replace(HOME, ""));
+  const decoded_url = decodeURI(req.url);
+  const req_path = decodeURI(NN(url.parse(decoded_url, true, true).pathname).replace(HOME, ""));
 
   // caution: order is important
   if (req_path.endsWith("/index.html")) { // /path/to/index.html
     const dirname = path.dirname(req_path);
-    send301Redirect(res, req.url.replace(`${dirname}/index.html`, `${dirname}/`));
+    send301Redirect(res, decoded_url.replace(`${dirname}/index.html`, `${dirname}/`));
   }
   else if (req_path.endsWith(`/`)) {  // /path/to/
     sendFile(req, res, `${HOME_DIR}${req_path}index.html`);
   }
   else if (path.extname(req_path) === "") { // /path/to
-    send301Redirect(res, req.url.replace(req_path, `${req_path}/`));
+    send301Redirect(res, decoded_url.replace(req_path, `${req_path}/`));
   }
   else {  // /path/to/file.ext
     sendFile(req, res, `${HOME_DIR}${req_path}`);
@@ -68,7 +69,8 @@ const getDirectoryContents = (dir_path: string) => new Promise((resolve, reject)
 
 export const listUpGTTMExample = async (req: Request, res: Response) => {
   req.url || _throw(TypeError(`requested URL is null`));
-  req.url === "/MusicAnalyzer-server/api/gttm-example/" || _throw(EvalError(`function handleHierarchicalAnalysisSample requires the url ends with '/'`));
+  req.url === "/MusicAnalyzer-server/api/gttm-example/"
+    || _throw(EvalError(`function handleHierarchicalAnalysisSample requires the url ends with '/'`));
 
   // json にリストを載せて返す
   const read_dir = `${HOME_DIR}/resources/gttm-example/`;
@@ -80,15 +82,15 @@ export const listUpGTTMExample = async (req: Request, res: Response) => {
   }
 };
 
-export const handlePostRequest = (req: Request, res: Response, next: NextFunction) => {
-  const req_path = decodeURI(NN(url.parse(req.url, true, true).pathname).replace(HOME, ""));
+const latin1toUtf8 = (latin1: string) => Buffer.from(latin1, "latin1").toString("utf8");
 
+export const handlePostRequest = (req: Request, res: Response, next: NextFunction) => {
   if (req.file === undefined) { console.log(`File uploaded on "undefined", "undefined"`); }
   else {
     const filepath = req.file.path;
-    const originalname = req.file.originalname;
-    console.log(`File uploaded on ${filepath}. original name: (${Buffer.from(originalname, "latin1").toString("utf8")})`);
+    const originalname = latin1toUtf8(req.file.originalname);
+    console.log(`File uploaded on ${filepath}. original name: (${originalname})`);
   }
-  sendRequestedFile(req, res);
-  sendFile(req, res, `${HOME_DIR}/${req_path}`);
+  const tune_parameter = req.file ? `?tune=${path.parse(encodeURI(latin1toUtf8(req.file.originalname))).name}` : "";
+  send301Redirect(res, req.url + tune_parameter);
 };
