@@ -29,21 +29,23 @@ const getJSONfromXML = async <T>(url: string) => {
   //*
   // TODO: 1. get song name from URL parameter, 2. fetch song↓
   const urlParams = new URLSearchParams(window.location.search);
-  const tune_id = urlParams.get("tune");
-  console.log("urlParams");
-  console.log(urlParams);
-  const roman = await getJSON<TimeAndRomanAnalysis[]>("../../resources/Hierarchical Analysis Sample/analyzed/chord/roman.json");
-  const melody = (await getJSON<IMelodyModel[]>("../../resources/Hierarchical Analysis Sample/analyzed/melody/crepe/manalyze.json"))
+  const tune_id = urlParams.get("tune") || "";
+  const tune_url = encodeURI(tune_id);
+  const roman = await getJSON<TimeAndRomanAnalysis[]>(`/MusicAnalyzer-server/resources/${tune_url}/analyzed/chord/roman.json`);
+  const melody = (await getJSON<IMelodyModel[]>(`/MusicAnalyzer-server/resources/${tune_url}/analyzed/melody/crepe/manalyze.json`))
     .map(e => ({ ...e, head: { begin: e.begin, end: e.end } })) as IMelodyModel[];
-  const musicxml = await getJSONfromXML<MusicXML>(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/MSC-${tune_id}.xml`);
-  const do_re_mi_grp = await getJSONfromXML<GRP>(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/GPR-${tune_id}.xml`);
-  const do_re_mi_mtr = await getJSONfromXML<MTR>(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/MPR-${tune_id}.xml`);
-  const do_re_mi_tsr = await getJSONfromXML<D_TSR>(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/TS-${tune_id}.xml`);
-  const do_re_mi_pr = await getJSONfromXML<D_PRR>(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/PR-${tune_id}.xml`);
+  // const roman = await getJSON<TimeAndRomanAnalysis[]>("../../resources/Hierarchical Analysis Sample/analyzed/chord/roman.json");
+  // const melody = (await getJSON<IMelodyModel[]>("../../resources/Hierarchical Analysis Sample/analyzed/melody/crepe/manalyze.json"))
+  //   .map(e => ({ ...e, head: { begin: e.begin, end: e.end } })) as IMelodyModel[];
+  const musicxml = await getJSONfromXML<MusicXML>(`/MusicAnalyzer-server/resources/gttm-example/${tune_url}/MSC-${tune_url}.xml`);
+  const grouping = await getJSONfromXML<GRP>(`/MusicAnalyzer-server/resources/gttm-example/${tune_url}/GPR-${tune_url}.xml`);
+  const metric = await getJSONfromXML<MTR>(`/MusicAnalyzer-server/resources/gttm-example/${tune_url}/MPR-${tune_url}.xml`);
+  const time_span = await getJSONfromXML<D_TSR>(`/MusicAnalyzer-server/resources/gttm-example/${tune_url}/TS-${tune_url}.xml`);
+  const prolongation = await getJSONfromXML<D_PRR>(`/MusicAnalyzer-server/resources/gttm-example/${tune_url}/PR-${tune_url}.xml`);
 
   const mode: "TSR" | "PR" = "TSR";
   title.textContent = `[${mode}] ${tune_id}`;
-  const tune_match = tune_id?.match(/([0-9]+)_[0-9]/);
+  const tune_match = tune_id.match(/([0-9]+)_[0-9]/);
   const tune_no = tune_match ? Number(tune_match[1]) : Number(tune_id);
   if (tune_no) {
     const song_data = song_list[tune_no];
@@ -51,13 +53,16 @@ const getJSONfromXML = async <T>(url: string) => {
   }
 
   console.log("do_re_mi_tsr");
-  console.log(do_re_mi_tsr);
+  console.log(time_span);
   const keyLength = (obj: object) => Object.keys(obj).length;
-  const ts = keyLength(do_re_mi_tsr) ? new TSR(do_re_mi_tsr).tstree.ts : undefined;
-  const pr = keyLength(do_re_mi_pr) ? new PRR(do_re_mi_pr).prtree.pr : undefined;
+  const ts = keyLength(time_span) ? new TSR(time_span).tstree.ts : undefined;
+  const pr = keyLength(prolongation) ? new PRR(prolongation).prtree.pr : undefined;
 
   const matrix = ts ? ts.getMatrixOfLayer(ts.getDepthCount() - 1) : undefined;
-  const hierarchical_melody = String(mode) === "PR" ? pr && matrix ? getHierarchicalMelody(pr, matrix, musicxml, roman) : [melody] : ts && matrix ? getHierarchicalMelody(ts, matrix, musicxml, roman) : [melody];
+  const hierarchical_melody = (() => {
+    if (String(mode) === "PR") { return pr && matrix ? getHierarchicalMelody(pr, matrix, musicxml, roman) : [melody]; }
+    else { return ts && matrix ? getHierarchicalMelody(ts, matrix, musicxml, roman) : [melody]; }
+  })();
 
 
   window.MusicAnalyzer = {
@@ -66,10 +71,10 @@ const getJSONfromXML = async <T>(url: string) => {
     hierarchical_melody: hierarchical_melody!,
     musicxml,
     GTTM: {
-      grouping: do_re_mi_grp,
-      metric: do_re_mi_mtr,
-      time_span: do_re_mi_tsr,
-      prolongation: do_re_mi_pr,
+      grouping,
+      metric,
+      time_span,
+      prolongation,
     },
   };
   //*/
