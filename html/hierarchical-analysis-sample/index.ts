@@ -16,7 +16,7 @@ const songData = (tune_id: string) => {
   };
 };
 
-const hoge = (mode: string, song_id: string, song_data: ReturnType<typeof songData>) => {
+const appendURLItem = (mode: string, song_id: string, song_data: ReturnType<typeof songData>) => {
   const anchor = document.createElement("a");
   anchor.innerHTML = `[${song_id}-${mode.toUpperCase()}]: ${song_data?.author || ""}, <strong>"${song_data?.title || ""}"</strong>`;
   anchor.href = `/MusicAnalyzer-server/html/hierarchical-analysis-sample/view?tune=${song_id}&${mode.toLowerCase()}`;
@@ -31,9 +31,9 @@ const hoge = (mode: string, song_id: string, song_data: ReturnType<typeof songDa
 
   srt_gttm_examples.forEach(song_id => {
     const song_data = songData(song_id);
-    hoge("TSR", song_id, song_data);
+    appendURLItem("TSR", song_id, song_data);
     if (song_data?.pr) {
-      hoge("PR", song_id, song_data);
+      appendURLItem("PR", song_id, song_data);
     }
 
   });
