@@ -3,6 +3,8 @@ import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { appendController, appendPianoRoll } from "./src/song-manager";
 import { bracket_hight, NowAt, PianoRollBegin, PianoRollEnd } from "@music-analyzer/view-parameters";
+import * as hoge from "./src/hoge";
+console.log(hoge);
 
 // 分析データ-->
 import { MusicAnalyzerWindow } from "./src/MusicAnalyzerWindow";
@@ -32,14 +34,14 @@ const getJSONfromXML = async <T>(url: string) => {
   const tune_id = urlParams.get("tune");
   const roman = tune_id !== "doremi" ? [] : await getJSON<TimeAndRomanAnalysis[]>("/MusicAnalyzer-server/resources/Hierarchical Analysis Sample/analyzed/chord/roman.json");
   const musicxml = await getJSONfromXML<MusicXML>(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/MSC-${tune_id}.xml`);
-  const do_re_mi_grp = await getJSONfromXML<GRP>(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/GPR-${tune_id}.xml`);
-  const do_re_mi_mtr = await getJSONfromXML<MTR>(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/MPR-${tune_id}.xml`);
-  const do_re_mi_tsr = await getJSONfromXML<D_TSR>(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/TS-${tune_id}.xml`);
-  const do_re_mi_pr = await getJSONfromXML<D_PRR>(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/PR-${tune_id}.xml`);
+  const grouping = await getJSONfromXML<GRP>(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/GPR-${tune_id}.xml`);
+  const metric = await getJSONfromXML<MTR>(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/MPR-${tune_id}.xml`);
+  const time_span = await getJSONfromXML<D_TSR>(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/TS-${tune_id}.xml`);
+  const prolongation = await getJSONfromXML<D_PRR>(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/PR-${tune_id}.xml`);
 
   const keyLength = (obj: object) => Object.keys(obj).length;
-  const ts = new TSR(do_re_mi_tsr).tstree.ts;
-  const pr = keyLength(do_re_mi_pr) ? new PRR(do_re_mi_pr).prtree.pr : undefined;
+  const ts = new TSR(time_span).tstree.ts;
+  const pr = keyLength(prolongation) ? new PRR(prolongation).prtree.pr : undefined;
   const mode: "TSR" | "PR" = urlParams.has("pr") ? "PR" : "TSR";
 
   title.textContent = `[${mode}] ${tune_id}`;
@@ -65,10 +67,10 @@ const getJSONfromXML = async <T>(url: string) => {
     hierarchical_melody,
     musicxml,
     GTTM: {
-      grouping: do_re_mi_grp,
-      metric: do_re_mi_mtr,
-      time_span: do_re_mi_tsr,
-      prolongation: do_re_mi_pr,
+      grouping,
+      metric,
+      time_span,
+      prolongation,
     },
   };
 
