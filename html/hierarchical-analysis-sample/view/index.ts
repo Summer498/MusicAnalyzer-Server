@@ -3,8 +3,6 @@ import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { appendController, appendPianoRoll } from "./src/song-manager";
 import { bracket_hight, NowAt, PianoRollBegin, PianoRollEnd } from "@music-analyzer/view-parameters";
-import * as hoge from "./src/hoge";
-console.log(hoge);
 
 // 分析データ-->
 import { MusicAnalyzerWindow } from "./src/MusicAnalyzerWindow";
