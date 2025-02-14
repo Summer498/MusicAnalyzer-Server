@@ -7,7 +7,7 @@ import { SongLength } from "@music-analyzer/view-parameters";
 declare const audio_player: HTMLAudioElement | HTMLVideoElement;
 
 const NO_CHORD = false;  // コード関連のものを表示しない
-const FULL_VIEW = true;  // 横いっぱいに分析結果を表示
+const FULL_VIEW = false;  // 横いっぱいに分析結果を表示
 if (FULL_VIEW) {
   CurrentTimeRatio.value = 0.025;
   audio_player.autoplay = false;
@@ -58,16 +58,13 @@ export const appendPianoRoll = (piano_roll_place: HTMLDivElement, song_manager: 
   }
   // 手前側
 
-  const ir_plot = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  ir_plot.appendChild(analyzed_svgs.ir_plot.svg);
-  ir_plot.style.width = analyzed_svgs.ir_plot.svg.style.width;
-  ir_plot.style.height = analyzed_svgs.ir_plot.svg.style.height;
+
   piano_roll_place.insertAdjacentElement("beforeend", piano_roll.svg);
-  piano_roll_place.insertAdjacentElement("beforeend", ir_plot);
+
   return analyzed_svgs;
 };
 
-export const appendController = (piano_roll_place: HTMLDivElement, piano_roll: PianoRollController2) => {
+export const appendController = (controller_place: HTMLDivElement, piano_roll: PianoRollController2) => {
   const d_melody_div = document.createElement("div");
   d_melody_div.id = "d-melody";
   d_melody_div.appendChild(piano_roll.input_controller.d_melody_switcher.body);
@@ -100,5 +97,12 @@ export const appendController = (piano_roll_place: HTMLDivElement, piano_roll: P
   }
   controllers.appendChild(melody_beep_controllers_div);
   //  controllers.appendChild(melody_color_selector_div);  // NOTE: 色選択は未実装なので消しておく
-  piano_roll_place.insertAdjacentElement("beforeend", controllers);
+  controller_place.insertAdjacentElement("beforeend", controllers);
+
+  const ir_plot = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  ir_plot.appendChild(piano_roll.ir_plot.svg);
+  ir_plot.style.width = piano_roll.ir_plot.svg.style.width;
+  ir_plot.style.height = piano_roll.ir_plot.svg.style.height;
+  controller_place.insertAdjacentElement("beforeend", ir_plot);
+  controller_place.setAttribute("style", `column-count: ${2}`);
 };
