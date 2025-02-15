@@ -19,6 +19,7 @@
     "@music-analyzer/graph": "1.0.0",
     "@music-analyzer/stdlib": "1.0.0",
     "@music-analyzer/tps": "1.0.0",
-    "@music-analyzer/roman-chord": "1.0.0"
+    "@music-analyzer/roman-chord": "1.0.0",
+    "@music-analyzer/tonal-pitch-space": "1.0.0"
   }
 }
