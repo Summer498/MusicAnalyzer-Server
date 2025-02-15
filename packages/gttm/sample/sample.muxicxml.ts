@@ -1,6 +1,6 @@
 import {
   MusicXML
-} from "./MusicXML";
+} from "../src/MusicXML";
 
 export const do_re_mi_musicXml: MusicXML = {
   "score-partwise": {

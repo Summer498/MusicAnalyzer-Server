@@ -1,4 +1,4 @@
-import { D_TSR } from "./TSR";
+import { D_TSR } from "../src/TSR";
 
 export const do_re_mi_tsr_xml = `
 <?xml version="1.0" encoding="UTF-8"?>
@@ -677,7 +677,7 @@ const parser = new XMLParser(options);
 export const do_re_mi_tsr = parser.parse(do_re_mi_tsr_xml);
 
 
-const do_re_mi_tsr_raw: D_TSR = {
+export const do_re_mi_tsr_raw: D_TSR = {
   tstree: {
     ts: {
       timespan: 64.0,

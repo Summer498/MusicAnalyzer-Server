@@ -1,4 +1,4 @@
-import { D_PRR } from "./PR";
+import { D_PRR } from "../src/PR";
 
 export const chopin_op18_pr_xml = `
 <?xml version="1.0" encoding="UTF-8"?>
