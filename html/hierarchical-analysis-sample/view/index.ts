@@ -20,55 +20,66 @@ import { getHierarchicalMelody } from "./src/HierarchicalMelody";
 import { song_list } from "./src/songlist";
 import { SongManager } from "@music-analyzer/piano-roll";
 
-const getJSON = async <T>(url: string) => {
-  return fetch(url).then(res => res.json() as T);
+const keyLength = (obj: object) => Object.keys(obj).length;
+const getJSON = async <T extends object>(url: string) => {
+  return fetch(url)
+    .then(res => res.json() as T)
+    .catch(e => { console.error(e); return undefined; });
 };
-const getJSONfromXML = async <T>(url: string) => {
-  return fetch(url).then(res => res.text()).then(e => xml_parser.parse(e) as T);
+const getJSONfromXML = async <T extends object>(url: string) => {
+  return fetch(url)
+    .then(res => res.text())
+    .then(e => {
+      const parsed = xml_parser.parse(e) as T;
+      return keyLength(parsed) ? parsed : undefined;
+    })
+    .catch(e => { console.error(e); return undefined; });
 };
 
 (async () => {
   const urlParams = new URLSearchParams(window.location.search);
-  const tune_id = urlParams.get("tune");
+  const tune_id = urlParams.get("tune") || "";
+  const tune_name = encodeURI(tune_id);
   const roman = tune_id !== "doremi" ? [] : await getJSON<TimeAndRomanAnalysis[]>("/MusicAnalyzer-server/resources/Hierarchical Analysis Sample/analyzed/chord/roman.json");
-  const musicxml = await getJSONfromXML<MusicXML>(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/MSC-${tune_id}.xml`);
-  const grouping = await getJSONfromXML<GRP>(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/GPR-${tune_id}.xml`);
-  const metric = await getJSONfromXML<MTR>(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/MPR-${tune_id}.xml`);
-  const time_span = await getJSONfromXML<D_TSR>(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/TS-${tune_id}.xml`);
-  const prolongation = await getJSONfromXML<D_PRR>(`/MusicAnalyzer-server/resources/gttm-example/${tune_id}/PR-${tune_id}.xml`);
+  const read_melody = (await getJSON<IMelodyModel[]>(`/MusicAnalyzer-server/resources/${tune_name}/analyzed/melody/crepe/manalyze.json`))
+    ?.map(e => ({ ...e, head: { begin: e.begin, end: e.end } })) as IMelodyModel[];
+  const musicxml = await getJSONfromXML<MusicXML>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/MSC-${tune_name}.xml`);
+  const grouping = await getJSONfromXML<GRP>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/GPR-${tune_name}.xml`);
+  const metric = await getJSONfromXML<MTR>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/MPR-${tune_name}.xml`);
+  const time_span = await getJSONfromXML<D_TSR>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/TS-${tune_name}.xml`);
+  const prolongation = await getJSONfromXML<D_PRR>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/PR-${tune_name}.xml`);
 
-  const keyLength = (obj: object) => Object.keys(obj).length;
-  const ts = new TSR(time_span).tstree.ts;
-  const pr = keyLength(prolongation) ? new PRR(prolongation).prtree.pr : undefined;
-  const mode: "TSR" | "PR" = urlParams.has("pr") ? "PR" : "TSR";
-
+  const mode: "TSR" | "PR" | "" = urlParams.has("pr") ? "PR" : urlParams.has("tsr") ? "TSR" : "";
   title.textContent = `[${mode}] ${tune_id}`;
-  const tune_match = tune_id?.match(/([0-9]+)_[0-9]/);
+  const tune_match = tune_id.match(/([0-9]+)_[0-9]/);
   const tune_no = tune_match ? Number(tune_match[1]) : Number(tune_id);
   if (tune_no) {
     const song_data = song_list[tune_no];
     title.innerHTML = `[${mode}] ${tune_id}, ${song_data.author}, <i>"${song_data.title}"</i>`;
   }
 
-  const matrix = ts.getMatrixOfLayer(ts.getDepthCount() - 1);
-  const measure = tune_id === "doremi" ? 3.5 : 7;
-  const hierarchical_melody = getHierarchicalMelody(measure, String(mode) === "PR"? pr! : ts, matrix, musicxml, roman);
+  const ts = time_span ? new TSR(time_span).tstree.ts : undefined;
+  const pr = prolongation ? new PRR(prolongation).prtree.pr : undefined;
 
-  // const org_melody = await (await fetch("/MusicAnalyzer-server/resources/Hierarchical Analysis Sample/analyzed/melody/crepe/vocals.json")).json() as number[];
-  // const time_and_melody = getTimeAndMelody(org_melody, 100);
+  const hierarchical_melody = (() => {
+    const matrix = ts ? ts.getMatrixOfLayer(ts.getDepthCount() - 1) : undefined;
+    const measure = tune_id === "doremi" ? 3.5 : 7;
+    if (mode === "PR") { return getHierarchicalMelody(measure, pr!, matrix!, musicxml!, roman!); }
+    else if (mode === "TSR") { return getHierarchicalMelody(measure, ts!, matrix!, musicxml!, roman!); }
+    else { return [read_melody]; }
+  })();
+
   const melody = hierarchical_melody[hierarchical_melody.length - 1];
-  // const melody = analyzeMelody(time_and_melody, roman);  // NOTE: analyzeMelody をフロントから取り扱えるようにした
-  // const melody = (await (await fetch("/MusicAnalyzer-server/resources/Hierarchical Analysis Sample/analyzed/melody/crepe/manalyze.json")).json()) as IMelodyModel[];
   window.MusicAnalyzer = {
-    roman,
+    roman: roman!,
     melody,
     hierarchical_melody,
-    musicxml,
+    musicxml: musicxml!,
     GTTM: {
-      grouping,
-      metric,
-      time_span,
-      prolongation,
+      grouping: grouping!,
+      metric: metric!,
+      time_span: time_span!,
+      prolongation: prolongation!,
     },
   };
 
@@ -82,7 +93,7 @@ const getJSONfromXML = async <T>(url: string) => {
   const romans = d_romans.map(e => e);
   const melodies = d_melodies.map(e => e).filter((e, i) => i + 1 >= d_melodies.length || 60 / (d_melodies[i + 1].begin - d_melodies[i].begin) < 300 * 4);
 
-  // テンポの計算 (試運転)
+  // テンポの計算
   const beat_info = calcTempo(melodies, romans);
   /*
   console.log("tempo");
@@ -156,10 +167,8 @@ const getJSONfromXML = async <T>(url: string) => {
     onWindowResized();
     update();
 
-    0 && (
-      document.body.insertAdjacentElement("beforeend", fps_element),
-      console.log(beat_info.tempo)
-    );
+    document.body.insertAdjacentElement("beforeend", fps_element);
+    0 && console.log(beat_info.tempo);
   };
   main();
 })();

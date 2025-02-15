@@ -1,11 +1,11 @@
-import { analyzeMelody, IMelodyModel } from "@music-analyzer/melody-analyze";
+import { analyzeMelody } from "@music-analyzer/melody-analyze";
 import { TS } from "@music-analyzer/gttm";
 import { getTimeAndMelodyFromTS } from "./TimeSpanMapping";
 import { MusicXML } from "@music-analyzer/gttm";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { ReductionElement } from "@music-analyzer/gttm";
 
-export const getHierarchicalMelody = (reduction: ReductionElement, matrix:TS[][], musicxml:MusicXML, roman: TimeAndRomanAnalysis[]):IMelodyModel[][] => {
+export const getHierarchicalMelody = (measure:number, reduction: ReductionElement, matrix:TS[][], musicxml:MusicXML, roman: TimeAndRomanAnalysis[]) => {
   // 全階層分の IR 分析
   const hierarchical_time_and_melodies = [...Array(reduction.getDepthCount())].map((_, i) => reduction.getArrayOfLayer(i)!.map(element => {
     return {
@@ -18,7 +18,7 @@ export const getHierarchicalMelody = (reduction: ReductionElement, matrix:TS[][]
   }));
   //TODO: begin, end を適切な位置 (開始位置＋長さ) に変換する
   hierarchical_time_and_melodies.forEach(layer => layer.forEach(ts_element => {
-    const w = 3.5 / 8;  // NOTE: 1 measure = 3.5
+    const w = measure / 8;  // NOTE: 1 measure = 3.5
     const b = 0;
     ts_element.begin = ts_element.begin * w + b;
     ts_element.end = ts_element.end * w + b;
