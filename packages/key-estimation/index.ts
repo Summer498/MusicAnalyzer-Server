@@ -2,7 +2,7 @@ import { _RomanNumeral, _Chord, _Interval, _Note, _Scale, Chord, Scale, getInter
 import { Compare } from "@music-analyzer/math";
 import { dynamicLogViterbi } from "@music-analyzer/graph";
 import { _throw, Assertion } from "@music-analyzer/stdlib";
-import { getDistance, getKeysIncludeTheChord } from "@music-analyzer/tps";
+import { getDistance, getKeysIncludeTheChord } from "@music-analyzer/tonal-pitch-space";
 import { RomanChord } from "@music-analyzer/roman-chord";
 
 const getBodyAndRoot = (chord_string: string) => {
