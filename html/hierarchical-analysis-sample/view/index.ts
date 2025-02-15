@@ -16,7 +16,7 @@ declare const controllers: HTMLDivElement;
 declare const title: HTMLHeadingElement;
 type Mode = "TSR" | "PR" | "";
 
-const initializeApplication = async (tune_id:string, mode:Mode) => {
+const initializeApplication = async (tune_id: string, mode: Mode) => {
   window.MusicAnalyzer = await loadMusicAnalysis(tune_id, mode);
 
   const d_romans: TimeAndRomanAnalysis[] = window.MusicAnalyzer.roman.map(e => e);
@@ -83,7 +83,7 @@ const main = async () => {
     onUpdate(piano_roll, fps_monitor);
     requestAnimationFrame(update);
   };
-  
+
   window.onresize = e => piano_roll.window_reflectable_registry.onWindowResized();
   piano_roll.window_reflectable_registry.onWindowResized();
   update();
