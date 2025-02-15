@@ -16,7 +16,7 @@ export const getHierarchicalMelody = (measure:number, reduction: ReductionElemen
       }
     };
   }));
-  //TODO: begin, end を適切な位置 (開始位置＋長さ) に変換する
+
   hierarchical_time_and_melodies.forEach(layer => layer.forEach(ts_element => {
     const w = measure / 8;  // NOTE: 1 measure = 3.5
     const b = 0;

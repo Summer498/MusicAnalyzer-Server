@@ -2,7 +2,6 @@ import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { ArrowController } from "../arrow/arrow";
 import { ArrowModel } from "../arrow/arrow-model";
 
-// TODO: chord gravities と key gravities を別オブジェクトとして得られるようにする
 export const getScaleGravityController = (
   melody: IMelodyModel,
   i: number,
