@@ -1,0 +1,1 @@
+export { loadMusicAnalysis } from "../../../analyze/src/MusicAnalysisLoader";

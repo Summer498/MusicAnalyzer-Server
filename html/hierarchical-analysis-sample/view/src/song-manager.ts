@@ -1,1 +1,1 @@
-export { appendPianoRoll, appendController } from "../../../analyze/src/song-manager";
+export { appendPianoRoll, appendController, setupUI } from "../../../analyze/src/song-manager";

@@ -106,3 +106,9 @@ export const appendController = (controller_place: HTMLDivElement, piano_roll: P
   controller_place.insertAdjacentElement("beforeend", ir_plot);
   controller_place.setAttribute("style", `column-count: ${2}`);
 };
+
+export const setupUI = (song_manager: SongManager, piano_roll_place: HTMLDivElement, controller_place:HTMLDivElement) => {
+  const piano_roll = appendPianoRoll(piano_roll_place, song_manager);
+  appendController(controller_place, piano_roll);
+  return piano_roll;
+};
