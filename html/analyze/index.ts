@@ -2,7 +2,7 @@ import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { bracket_hight, NowAt, PianoRollBegin, PianoRollEnd } from "@music-analyzer/view-parameters";
-import { PianoRollController2, SongManager } from "@music-analyzer/piano-roll";
+import { PianoRollController, SongManager } from "@music-analyzer/piano-roll";
 import { setupUI } from "./src/song-manager";
 import { MusicAnalyzerWindow } from "./src/MusicAnalyzerWindow";
 import { loadMusicAnalysis } from "./src/MusicAnalysisLoader";
@@ -51,7 +51,7 @@ const setupFPSMonitor = () => {
 };
 
 let last_audio_time = Number.MIN_SAFE_INTEGER;
-const audioUpdate = (piano_roll: PianoRollController2) => {
+const audioUpdate = (piano_roll: PianoRollController) => {
   // --> audio 関連処理
   const now_at = audio_player.currentTime;
   if (audio_player.paused && now_at === last_audio_time) { return; }
@@ -62,7 +62,7 @@ const audioUpdate = (piano_roll: PianoRollController2) => {
 };
 
 let old_time = Date.now();
-const onUpdate = (piano_roll: PianoRollController2, fps_element: HTMLParagraphElement) => {
+const onUpdate = (piano_roll: PianoRollController, fps_element: HTMLParagraphElement) => {
   // fps 関連処理 -->
   const now = Date.now();
   const fps = Math.floor(1000 / (now - old_time));
