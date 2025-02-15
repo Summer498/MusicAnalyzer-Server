@@ -3,8 +3,7 @@ import { TimeAnd } from "@music-analyzer/time-and";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { Archetype } from "@music-analyzer/irm";
 import { compress } from "@music-analyzer/time-and";
-
-const mod = (x: number, m: number) => (x % m + m) % m;
+import { mod } from "@music-analyzer/math";
 
 export type Gravity = { destination?: number; resolved?: true }
 export type MelodyAnalysis = {

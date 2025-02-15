@@ -1,7 +1,6 @@
 import { black_key_prm, octave_height, PianoRollBegin, white_key_prm } from "@music-analyzer/view-parameters";
 import { SvgAndParam } from "./svg-and-param";
-
-const mod = (x: number, m: number): number => (x % m + m) % m;
+import { mod } from "@music-analyzer/math";
 
 export class WhiteKeySVG extends SvgAndParam {
   readonly svg: SVGRectElement;
