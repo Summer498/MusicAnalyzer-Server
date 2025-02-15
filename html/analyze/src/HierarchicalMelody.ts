@@ -5,7 +5,13 @@ import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { ReductionElement } from "@music-analyzer/gttm";
 import { getTimeAndMelodyFromTS } from "./TimeSpanMapping";
 
-export const getHierarchicalMelody = (measure:number, reduction: ReductionElement, matrix:TS[][], musicxml:MusicXML, roman: TimeAndRomanAnalysis[]) => {
+export const getHierarchicalMelody = (
+  measure: number,
+  reduction: ReductionElement,
+  matrix: TS[][],
+  musicxml: MusicXML,
+  roman: TimeAndRomanAnalysis[]
+) => {
   // 全階層分の IR 分析
   const hierarchical_time_and_melodies = [...Array(reduction.getDepthCount())].map((_, i) => reduction.getArrayOfLayer(i)!.map(element => {
     return {
