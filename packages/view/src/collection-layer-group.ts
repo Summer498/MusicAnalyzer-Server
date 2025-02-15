@@ -1,20 +1,5 @@
-import { SvgCollection, TimeAndMVCController } from "./svg-collection";
+import { CollectionLayer } from "./collection-layer";
 import { AccompanyToAudioRegistry } from "./updatable-registry";
-
-export class CollectionLayer extends SvgCollection {
-  readonly layer: number;
-  constructor(
-    children: TimeAndMVCController[],
-    layer: number
-  ) {
-    super(children);
-    this.svg.id = `layer-${layer}`;
-    this.layer = layer;
-  }
-  onAudioUpdate(): void {
-    super.onAudioUpdate();
-  }
-}
 
 export abstract class CollectionLayerGroup {
   readonly svg: SVGGElement;

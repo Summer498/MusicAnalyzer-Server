@@ -1,4 +1,5 @@
-export { CollectionLayer, CollectionLayerGroup } from "./src/layer-group";
+export { CollectionLayer } from "./src/collection-layer";
+export { CollectionLayerGroup } from "./src/collection-layer-group";
 export { MVCController, MVCModel, MVCView } from "./src/mvc";
 export { SvgCollection } from "./src/svg-collection";
 export { AccompanyToAudio } from "./src/updatable";
