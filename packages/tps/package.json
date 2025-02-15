@@ -1,5 +1,5 @@
 {
-  "name": "@music-analyzer/tps",
+  "name": "@music-analyzer/tonal-pitch-space",
   "version": "1.0.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
