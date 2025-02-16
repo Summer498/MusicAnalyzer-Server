@@ -1,5 +1,5 @@
-export { PianoRollController } from "./src/piano-roll-controller";
-export { SongManager } from "./src/song-manager";
+export { PianoRollController } from "./src/piano-roll";
+export { ControllerUIs } from "./src/controller-uis";
 
 export {
   ChordGravityMediator,
