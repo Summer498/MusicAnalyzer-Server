@@ -1,2 +1,2 @@
-export { IRPlotGroup } from "./ir-plot-group";
+export { IRPlotHierarchy } from "./ir-plot-hierarchy";
 

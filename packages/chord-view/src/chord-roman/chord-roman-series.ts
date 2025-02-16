@@ -6,7 +6,7 @@ import { OctaveCount } from "@music-analyzer/view-parameters";
 import { ChordNoteController } from "../chord-note/chord-note-controller";
 import { ChordNoteModel } from "../chord-note/chord-note-model";
 
-export class ChordNotesGroup extends SvgCollection {
+export class ChordNotesSeries extends SvgCollection {
   constructor(
     romans: TimeAndRomanAnalysis[]
   ) {

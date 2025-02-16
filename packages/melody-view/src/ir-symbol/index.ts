@@ -1,1 +1,1 @@
-export { IRSymbolGroup } from "./ir-symbol-group";
+export { IRSymbolHierarchy } from "./ir-symbol-hierarchy";

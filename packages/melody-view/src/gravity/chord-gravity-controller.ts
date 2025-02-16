@@ -1,4 +1,4 @@
-import { ArrowController } from "../arrow/arrow";
+import { ArrowController } from "../arrow/arrow-controller";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { ArrowModel } from "../arrow/arrow-model";
 

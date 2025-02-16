@@ -1,9 +1,9 @@
 import { DMelodySwitcher, GravitySwitcher, HierarchyLevel, MelodyBeepSwitcher, MelodyBeepVolume, MelodyColorSelector, TimeRangeSlider } from "@music-analyzer/controllers";
-import { ChordGravityGroup, DMelodyGroup, IRPlotGroup, IRSymbolGroup, MelodyGroup, ScaleGravityGroup, TSRGroup } from "@music-analyzer/melody-view";
+import { ChordGravityHierarchy, DMelodyGroup, IRPlotHierarchy, IRSymbolHierarchy, MelodyHierarchy, ScaleGravityHierarchy, TSRHierarchy } from "@music-analyzer/melody-view";
 import { AccompanyToAudioRegistry, SvgCollection, WindowReflectableRegistry } from "@music-analyzer/view";
 import { SongManager } from "./song-manager";
 import { BeatBarsGroup } from "@music-analyzer/beat-view";
-import { CHordKeyGroup, ChordNameGroup, ChordNotesGroup, ChordRomanGroup } from "@music-analyzer/chord-view";
+import { CHordKeySeries, ChordNameSeries, ChordNotesSeries, ChordRomanSeries } from "@music-analyzer/chord-view";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 
 const getMelody = (hierarchical_melody: IMelodyModel[][]) => hierarchical_melody[hierarchical_melody.length - 1];
@@ -12,7 +12,7 @@ export class PianoRollController {
   readonly d_melody_switcher: DMelodySwitcher;
   readonly hierarchy_level: HierarchyLevel;
   readonly time_range_slider: TimeRangeSlider;
-  readonly key_gravity_switcher: GravitySwitcher;
+  readonly scale_gravity_switcher: GravitySwitcher;
   readonly chord_gravity_switcher: GravitySwitcher;
   readonly melody_beep_switcher: MelodyBeepSwitcher;
   readonly melody_beep_volume: MelodyBeepVolume;
@@ -24,12 +24,12 @@ export class PianoRollController {
   readonly chord_romans: SvgCollection;
   readonly chord_keys: SvgCollection;
   readonly d_melody_controllers: SvgCollection;
-  readonly melody_group: MelodyGroup;
-  readonly ir_group: IRSymbolGroup;
-  readonly ir_plot: IRPlotGroup;
-  readonly chord_gravities: ChordGravityGroup;
-  readonly scale_gravities: ScaleGravityGroup;
-  readonly time_span_tree: TSRGroup;
+  readonly melody_group: MelodyHierarchy;
+  readonly ir_group: IRSymbolHierarchy;
+  readonly ir_plot: IRPlotHierarchy;
+  readonly chord_gravities: ChordGravityHierarchy;
+  readonly scale_gravities: ScaleGravityHierarchy;
+  readonly time_span_tree: TSRHierarchy;
   readonly accompany_to_audio_registry: AccompanyToAudioRegistry;
   readonly window_reflectable_registry: WindowReflectableRegistry;
   
@@ -37,7 +37,7 @@ export class PianoRollController {
     this.d_melody_switcher = new DMelodySwitcher();
     this.hierarchy_level = new HierarchyLevel();
     this.time_range_slider = new TimeRangeSlider();
-    this.key_gravity_switcher = new GravitySwitcher("key_gravity_switcher", "Key Gravity");
+    this.scale_gravity_switcher = new GravitySwitcher("scale_gravity_switcher", "Scale Gravity");
     this.chord_gravity_switcher = new GravitySwitcher("chord_gravity_switcher", "Chord Gravity");
     this.melody_beep_switcher = new MelodyBeepSwitcher();
     this.melody_beep_volume = new MelodyBeepVolume();
@@ -47,17 +47,17 @@ export class PianoRollController {
       song_manager.beat_info,
       getMelody(song_manager.hierarchical_melody)
     );
-    this.chord_notes = new ChordNotesGroup(song_manager.romans);
-    this.chord_names = new ChordNameGroup(song_manager.romans);
-    this.chord_romans = new ChordRomanGroup(song_manager.romans);
-    this.chord_keys = new CHordKeyGroup(song_manager.romans);
+    this.chord_notes = new ChordNotesSeries(song_manager.romans);
+    this.chord_names = new ChordNameSeries(song_manager.romans);
+    this.chord_romans = new ChordRomanSeries(song_manager.romans);
+    this.chord_keys = new CHordKeySeries(song_manager.romans);
     this.d_melody_controllers = new DMelodyGroup(song_manager.d_melodies);
-    this.melody_group = new MelodyGroup(song_manager.hierarchical_melody);
-    this.ir_group = new IRSymbolGroup(song_manager.hierarchical_melody);
-    this.ir_plot = new IRPlotGroup(song_manager.hierarchical_melody);
-    this.chord_gravities = new ChordGravityGroup(song_manager.hierarchical_melody);
-    this.scale_gravities = new ScaleGravityGroup(song_manager.hierarchical_melody);
-    this.time_span_tree = new TSRGroup(song_manager.hierarchical_melody);
+    this.melody_group = new MelodyHierarchy(song_manager.hierarchical_melody);
+    this.ir_group = new IRSymbolHierarchy(song_manager.hierarchical_melody);
+    this.ir_plot = new IRPlotHierarchy(song_manager.hierarchical_melody);
+    this.chord_gravities = new ChordGravityHierarchy(song_manager.hierarchical_melody);
+    this.scale_gravities = new ScaleGravityHierarchy(song_manager.hierarchical_melody);
+    this.time_span_tree = new TSRHierarchy(song_manager.hierarchical_melody);
     this.accompany_to_audio_registry = AccompanyToAudioRegistry.instance;
     this.window_reflectable_registry = WindowReflectableRegistry.instance;
   }

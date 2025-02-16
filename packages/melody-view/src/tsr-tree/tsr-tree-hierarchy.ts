@@ -1,8 +1,8 @@
-import { CollectionLayerGroup } from "@music-analyzer/view";
+import { CollectionHierarchy } from "@music-analyzer/view";
 import { TSRLayer } from "./tsr-tree-layer";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 
-export class TSRGroup extends CollectionLayerGroup {
+export class TSRHierarchy extends CollectionHierarchy {
   readonly svg: SVGGElement;
   readonly children: TSRLayer[];
   constructor(

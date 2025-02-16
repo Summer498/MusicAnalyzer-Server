@@ -1,15 +1,15 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
-import { ChordNameController } from "./chord-name-controller";
-import { ChordNameModel } from "./chord-name-model";
 import { AccompanyToAudioRegistry, SvgCollection } from "@music-analyzer/view";
+import { ChordKeyController } from "./chord-key-controller";
+import { ChordKeyModel } from "./chord-key-model";
 
-export class ChordNameGroup extends SvgCollection {
+export class CHordKeySeries extends SvgCollection{
   constructor(
     romans: TimeAndRomanAnalysis[]
   ){
-    const children = romans.map(e => new ChordNameController(new ChordNameModel(e)));
+    const children = romans.map(e => new ChordKeyController(new ChordKeyModel(e)));
     super(children);
-    this.svg.id = "chord-names";
+    this.svg.id = "key-names";
     AccompanyToAudioRegistry.instance.register(this);
   }
 }

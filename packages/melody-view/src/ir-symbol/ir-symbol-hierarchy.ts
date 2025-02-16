@@ -1,8 +1,8 @@
-import { CollectionLayerGroup } from "@music-analyzer/view";
+import { CollectionHierarchy } from "@music-analyzer/view";
 import { IRSymbolLayer } from "./ir-symbol-layer";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 
-export class IRSymbolGroup extends CollectionLayerGroup{
+export class IRSymbolHierarchy extends CollectionHierarchy{
   readonly children: IRSymbolLayer[];
   constructor(
     hierarchical_melodies: IMelodyModel[][],

@@ -1,8 +1,8 @@
-import { CollectionLayerGroup } from "@music-analyzer/view";
+import { CollectionHierarchy } from "@music-analyzer/view";
 import { ScaleGravityLayer } from "./scale-gravity-layer";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 
-export class ScaleGravityGroup extends CollectionLayerGroup {
+export class ScaleGravityHierarchy extends CollectionHierarchy {
   readonly children: ScaleGravityLayer[];
   constructor(
     hierarchical_melodies: IMelodyModel[][],
