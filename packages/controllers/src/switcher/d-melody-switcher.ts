@@ -1,4 +1,4 @@
-import { Switcher } from ".";
+import { Switcher } from "./abstract-switcher";
 
 class DMelodySwitcher extends Switcher {
   constructor() {
