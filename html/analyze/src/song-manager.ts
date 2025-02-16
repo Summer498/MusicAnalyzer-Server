@@ -3,6 +3,7 @@ import { Assertion, _throw } from "@music-analyzer/stdlib";
 import { CurrentTimeRatio } from "@music-analyzer/view-parameters";
 import { SongLength } from "@music-analyzer/view-parameters";
 import { ChordGravityMediator, DMelodyMediator, HierarchyLevelMediator, MelodyBeepMediator, MelodyVolumeMediator, PianoRollController, ScaleGravityMediator, SongManager, TimeRangeMediator } from "@music-analyzer/piano-roll";
+import { ControllerUIs } from "@music-analyzer/piano-roll/src/controller-uis";
 
 declare const audio_player: HTMLAudioElement | HTMLVideoElement;
 
@@ -27,14 +28,15 @@ export const setupUI = (song_manager: SongManager, place: HTMLDivElement) => {
   getOctaveBGs(getWhiteBGs(), getBlackBGs()).svg
     .forEach(e => octave_bgs.appendChild(e.svg));
 
+  const controller_ui = new ControllerUIs();
   const piano_roll_controller = new PianoRollController(song_manager);
-  const d_melody_switcher_mediator = new DMelodyMediator(piano_roll_controller.d_melody_switcher, piano_roll_controller.d_melody_collection);
-  const scale_gravity_switcher_mediator = new ScaleGravityMediator(piano_roll_controller.scale_gravity_switcher, piano_roll_controller.scale_gravities);
-  const chord_gravity_switcher_mediator = new ChordGravityMediator(piano_roll_controller.chord_gravity_switcher, piano_roll_controller.chord_gravities);
-  const hierarchy_level_slider_mediator = new HierarchyLevelMediator(piano_roll_controller.hierarchy_level, piano_roll_controller.melody_hierarchy, piano_roll_controller.ir_hierarchy, piano_roll_controller.ir_plot, piano_roll_controller.time_span_tree, piano_roll_controller.scale_gravities, piano_roll_controller.chord_gravities);
-  const melody_beep_switcher_mediator = new MelodyBeepMediator(piano_roll_controller.melody_beep_switcher, piano_roll_controller.melody_hierarchy);
-  const melody_beep_volume_mediator = new MelodyVolumeMediator(piano_roll_controller.melody_beep_volume, piano_roll_controller.melody_hierarchy);
-  const time_range_slider_mediator = new TimeRangeMediator(piano_roll_controller.time_range_slider, piano_roll_controller.accompany_to_audio_registry);
+  const d_melody_switcher_mediator = new DMelodyMediator(controller_ui.d_melody_switcher, piano_roll_controller.d_melody_collection);
+  const scale_gravity_switcher_mediator = new ScaleGravityMediator(controller_ui.scale_gravity_switcher, piano_roll_controller.scale_gravities);
+  const chord_gravity_switcher_mediator = new ChordGravityMediator(controller_ui.chord_gravity_switcher, piano_roll_controller.chord_gravities);
+  const hierarchy_level_slider_mediator = new HierarchyLevelMediator(controller_ui.hierarchy_level, piano_roll_controller.melody_hierarchy, piano_roll_controller.ir_hierarchy, piano_roll_controller.ir_plot, piano_roll_controller.time_span_tree, piano_roll_controller.scale_gravities, piano_roll_controller.chord_gravities);
+  const melody_beep_switcher_mediator = new MelodyBeepMediator(controller_ui.melody_beep_switcher, piano_roll_controller.melody_hierarchy);
+  const melody_beep_volume_mediator = new MelodyVolumeMediator(controller_ui.melody_beep_volume, piano_roll_controller.melody_hierarchy);
+  const time_range_slider_mediator = new TimeRangeMediator(controller_ui.time_range_slider, piano_roll_controller.accompany_to_audio_registry);
   
   const piano_roll_view = new PianoRoll();
   piano_roll_view.svg.appendChild(octave_bgs);
@@ -61,25 +63,25 @@ export const setupUI = (song_manager: SongManager, place: HTMLDivElement) => {
 
   const d_melody_div = document.createElement("div");
   d_melody_div.id = "d-melody";
-  d_melody_div.appendChild(piano_roll_controller.d_melody_switcher.body);
+  d_melody_div.appendChild(controller_ui.d_melody_switcher.body);
   const hierarchy_level_div = document.createElement("div");
   hierarchy_level_div.id = "hierarchy-level";
-  hierarchy_level_div.appendChild(piano_roll_controller.hierarchy_level.body);
+  hierarchy_level_div.appendChild(controller_ui.hierarchy_level.body);
   const time_length_div = document.createElement("div");
   time_length_div.id = "time-length";
-  time_length_div.appendChild(piano_roll_controller.time_range_slider.body);
+  time_length_div.appendChild(controller_ui.time_range_slider.body);
   const gravity_switcher_div = document.createElement("div");
   gravity_switcher_div.id = "gravity-switcher";
-  gravity_switcher_div.appendChild(piano_roll_controller.scale_gravity_switcher.body);
-  gravity_switcher_div.appendChild(piano_roll_controller.chord_gravity_switcher.body);
+  gravity_switcher_div.appendChild(controller_ui.scale_gravity_switcher.body);
+  gravity_switcher_div.appendChild(controller_ui.chord_gravity_switcher.body);
   const melody_beep_controllers_div = document.createElement("div");
-  melody_beep_controllers_div.appendChild(piano_roll_controller.melody_beep_switcher.body,);
-  melody_beep_controllers_div.appendChild(piano_roll_controller.melody_beep_volume.body);
+  melody_beep_controllers_div.appendChild(controller_ui.melody_beep_switcher.body,);
+  melody_beep_controllers_div.appendChild(controller_ui.melody_beep_volume.body);
   melody_beep_controllers_div.id = "melody-beep-controllers";
   const melody_color_selector_div = document.createElement("div");
   melody_color_selector_div.id = "melody-color-selector";
   melody_color_selector_div.style.display = "inline";
-  melody_color_selector_div.appendChild(piano_roll_controller.melody_color_selector.body);
+  melody_color_selector_div.appendChild(controller_ui.melody_color_selector.body);
   const controllers = document.createElement("div");
   controllers.id = "controllers";
   controllers.style = "margin-top:20px";
