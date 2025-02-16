@@ -3,7 +3,7 @@ import { AccompanyToAudioRegistry, SvgCollection } from "@music-analyzer/view";
 import { ChordRomanController } from "../chord-roman/chord-roman-controller";
 import { ChordRomanModel } from "../chord-roman/chord-roman-model";
 
-export class ChordRomanGroup extends SvgCollection {
+export class ChordRomanSeries extends SvgCollection {
   constructor(
     romans: TimeAndRomanAnalysis[]
   ){

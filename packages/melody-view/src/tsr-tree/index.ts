@@ -1,1 +1,1 @@
-export { TSRGroup } from "./tsr-tree-group";
+export { TSRHierarchy } from "./tsr-tree-hierarchy";

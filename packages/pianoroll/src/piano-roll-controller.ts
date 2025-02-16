@@ -3,7 +3,7 @@ import { ChordGravityGroup, DMelodyGroup, IRPlotGroup, IRSymbolGroup, MelodyGrou
 import { AccompanyToAudioRegistry, SvgCollection, WindowReflectableRegistry } from "@music-analyzer/view";
 import { SongManager } from "./song-manager";
 import { BeatBarsGroup } from "@music-analyzer/beat-view";
-import { CHordKeyGroup, ChordNameGroup, ChordNotesGroup, ChordRomanGroup } from "@music-analyzer/chord-view";
+import { CHordKeySeries, ChordNameSeries, ChordNotesSeries, ChordRomanSeries } from "@music-analyzer/chord-view";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 
 const getMelody = (hierarchical_melody: IMelodyModel[][]) => hierarchical_melody[hierarchical_melody.length - 1];
@@ -47,10 +47,10 @@ export class PianoRollController {
       song_manager.beat_info,
       getMelody(song_manager.hierarchical_melody)
     );
-    this.chord_notes = new ChordNotesGroup(song_manager.romans);
-    this.chord_names = new ChordNameGroup(song_manager.romans);
-    this.chord_romans = new ChordRomanGroup(song_manager.romans);
-    this.chord_keys = new CHordKeyGroup(song_manager.romans);
+    this.chord_notes = new ChordNotesSeries(song_manager.romans);
+    this.chord_names = new ChordNameSeries(song_manager.romans);
+    this.chord_romans = new ChordRomanSeries(song_manager.romans);
+    this.chord_keys = new CHordKeySeries(song_manager.romans);
     this.d_melody_controllers = new DMelodyGroup(song_manager.d_melodies);
     this.melody_group = new MelodyGroup(song_manager.hierarchical_melody);
     this.ir_group = new IRSymbolGroup(song_manager.hierarchical_melody);

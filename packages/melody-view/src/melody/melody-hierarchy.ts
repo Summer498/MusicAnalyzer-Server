@@ -1,8 +1,8 @@
-import { CollectionLayerGroup } from "@music-analyzer/view";
+import { CollectionHierarchy } from "@music-analyzer/view";
 import { MelodyLayer } from "./melody-layer";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 
-export class MelodyGroup extends CollectionLayerGroup {
+export class MelodyHierarchy extends CollectionHierarchy {
   readonly children: MelodyLayer[];
   get show() { return this._show; }
   #volume: number;

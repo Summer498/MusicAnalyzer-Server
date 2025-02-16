@@ -2,7 +2,7 @@ import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { IRPlotLayer } from "./ir-plot-layer";
 import { AccompanyToAudioRegistry } from "@music-analyzer/view";
 
-export class IRPlotGroup {
+export class IRPlotHierarchy {
   readonly svg: SVGGElement;
   readonly circles: SVGGElement;
   readonly x_axis: SVGLineElement;

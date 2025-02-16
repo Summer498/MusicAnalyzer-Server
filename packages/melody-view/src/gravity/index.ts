@@ -1,4 +1,4 @@
-export { ChordGravityGroup } from "./chord-gravity-group";
-export { ScaleGravityGroup } from "./scale-gravity-group";
+export { ChordGravityHierarchy } from "./chord-gravity-hierarchy";
+export { ScaleGravityHierarchy } from "./scale-gravity-hierarchy";
 export { getScaleGravityController } from "./scale-gravity-controller";
 export { getChordGravityController } from "./chord-gravity-controller";

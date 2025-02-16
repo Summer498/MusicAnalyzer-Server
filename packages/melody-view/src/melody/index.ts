@@ -1,1 +1,1 @@
-export { MelodyGroup } from "./melody-group";
+export { MelodyHierarchy } from "./melody-hierarchy";

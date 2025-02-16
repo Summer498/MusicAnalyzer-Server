@@ -1,7 +1,7 @@
 import { CollectionLayer } from "./collection-layer";
 import { AccompanyToAudioRegistry } from "./updatable-registry";
 
-export abstract class CollectionLayerGroup {
+export abstract class CollectionHierarchy {
   readonly svg: SVGGElement;
   protected abstract readonly children: CollectionLayer[];
   protected _show: CollectionLayer[];

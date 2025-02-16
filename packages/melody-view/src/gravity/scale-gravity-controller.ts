@@ -1,5 +1,5 @@
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
-import { ArrowController } from "../arrow/arrow";
+import { ArrowController } from "../arrow/arrow-controller";
 import { ArrowModel } from "../arrow/arrow-model";
 
 export const getScaleGravityController = (
