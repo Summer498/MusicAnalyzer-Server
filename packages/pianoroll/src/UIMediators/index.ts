@@ -68,8 +68,8 @@ export class MelodyBeepSwitcherMediator extends SwitcherMediator<MelodyHierarchy
     switcher: Switcher,
     melody_hierarchy: MelodyHierarchy,
   ) {
-    super(switcher, [melody_hierarchy]);
     switcher.input.checked = true;
+    super(switcher, [melody_hierarchy]);
   }
   override update() {
     const visibility = this.controller.input.checked;
@@ -92,11 +92,10 @@ export class HierarchyLevelSliderMediator extends SliderMediator<HierarchyLevelS
     slider: HierarchyLevel,
     ...subscribers: HierarchyLevelSubscriber[]
   ) {
-    super(slider, subscribers);
     const max = Math.max(...subscribers.map(e => e.children.length - 1));
     slider.setHierarchyLevelSliderValues(max);
+    super(slider, subscribers);
   }
-
   override update() {
     const value = Number(this.controller.input.value);
     this.subscribers.forEach(e => e.onChangedLayer(value));
