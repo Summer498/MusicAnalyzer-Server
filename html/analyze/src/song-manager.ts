@@ -1,8 +1,8 @@
-import { ChordGravitySwitcherMediator, DMelodySwitcherMediator, HierarchyLevelSliderMediator, MelodyBeepSwitcherMediator, MelodyBeepVolumeMediator, PianoRollController, ScaleGravitySwitcherMediator, SongManager, TimeRangeSliderMediator } from "@music-analyzer/piano-roll";
 import { getBlackBGs, getBlackKeys, getCurrentTimeLine, getOctaveBGs, getOctaveKeys, getWhiteBGs, getWhiteKeys, PianoRoll } from "@music-analyzer/svg-objects";
 import { Assertion, _throw } from "@music-analyzer/stdlib";
 import { CurrentTimeRatio } from "@music-analyzer/view-parameters";
 import { SongLength } from "@music-analyzer/view-parameters";
+import { ChordGravityMediator, DMelodyMediator, HierarchyLevelMediator, MelodyBeepMediator, MelodyVolumeMediator, PianoRollController, ScaleGravityMediator, SongManager, TimeRangeMediator } from "@music-analyzer/piano-roll";
 
 declare const audio_player: HTMLAudioElement | HTMLVideoElement;
 
@@ -28,13 +28,13 @@ export const setupUI = (song_manager: SongManager, place: HTMLDivElement) => {
     .forEach(e => octave_bgs.appendChild(e.svg));
 
   const piano_roll_controller = new PianoRollController(song_manager);
-  const d_melody_switcher_mediator = new DMelodySwitcherMediator(piano_roll_controller.d_melody_switcher, piano_roll_controller.d_melody_collection);
-  const scale_gravity_switcher_mediator = new ScaleGravitySwitcherMediator(piano_roll_controller.scale_gravity_switcher, piano_roll_controller.scale_gravities);
-  const chord_gravity_switcher_mediator = new ChordGravitySwitcherMediator(piano_roll_controller.chord_gravity_switcher, piano_roll_controller.chord_gravities);
-  const hierarchy_level_slider_mediator = new HierarchyLevelSliderMediator(piano_roll_controller.hierarchy_level, piano_roll_controller.melody_hierarchy, piano_roll_controller.ir_hierarchy, piano_roll_controller.ir_plot, piano_roll_controller.time_span_tree, piano_roll_controller.scale_gravities, piano_roll_controller.chord_gravities);
-  const melody_beep_switcher_mediator = new MelodyBeepSwitcherMediator(piano_roll_controller.melody_beep_switcher, piano_roll_controller.melody_hierarchy);
-  const melody_beep_volume_mediator = new MelodyBeepVolumeMediator(piano_roll_controller.melody_beep_volume, piano_roll_controller.melody_hierarchy);
-  const time_range_slider_mediator = new TimeRangeSliderMediator(piano_roll_controller.time_range_slider, piano_roll_controller.accompany_to_audio_registry);
+  const d_melody_switcher_mediator = new DMelodyMediator(piano_roll_controller.d_melody_switcher, piano_roll_controller.d_melody_collection);
+  const scale_gravity_switcher_mediator = new ScaleGravityMediator(piano_roll_controller.scale_gravity_switcher, piano_roll_controller.scale_gravities);
+  const chord_gravity_switcher_mediator = new ChordGravityMediator(piano_roll_controller.chord_gravity_switcher, piano_roll_controller.chord_gravities);
+  const hierarchy_level_slider_mediator = new HierarchyLevelMediator(piano_roll_controller.hierarchy_level, piano_roll_controller.melody_hierarchy, piano_roll_controller.ir_hierarchy, piano_roll_controller.ir_plot, piano_roll_controller.time_span_tree, piano_roll_controller.scale_gravities, piano_roll_controller.chord_gravities);
+  const melody_beep_switcher_mediator = new MelodyBeepMediator(piano_roll_controller.melody_beep_switcher, piano_roll_controller.melody_hierarchy);
+  const melody_beep_volume_mediator = new MelodyVolumeMediator(piano_roll_controller.melody_beep_volume, piano_roll_controller.melody_hierarchy);
+  const time_range_slider_mediator = new TimeRangeMediator(piano_roll_controller.time_range_slider, piano_roll_controller.accompany_to_audio_registry);
   
   const piano_roll_view = new PianoRoll();
   piano_roll_view.svg.appendChild(octave_bgs);
