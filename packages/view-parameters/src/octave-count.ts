@@ -1,5 +1,5 @@
-import { PianoRollBegin } from "./piano-roll-begin";
-import { PianoRollEnd } from "./piano-roll-end";
+import { PianoRollBegin } from "./piano-roll/piano-roll-begin";
+import { PianoRollEnd } from "./piano-roll/piano-roll-end";
 
 export class OctaveCount {
   static #piano_roll_begin: number;

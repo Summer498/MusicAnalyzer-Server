@@ -1,5 +1,5 @@
 import { PianoRollWidth } from "./piano-roll-width";
-import { RectParameters } from "./rect-parameter";
+import { RectParameters } from "../rect-parameter";
 
 // --- ピアノロールの描画パラメータ
 export const size = 2;

@@ -1,5 +1,5 @@
 import { PianoRollRatio } from "./piano-roll-ratio";
-import { SongLength } from "./song-length";
+import { SongLength } from "../song-length";
 
 // export const piano_roll_time_length = 5;  // 1 画面に収める曲の長さ[秒]
 export class PianoRollTimeLength {

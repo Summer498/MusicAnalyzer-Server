@@ -1,24 +1,6 @@
+import { CollectionLayerGroup } from "@music-analyzer/view";
+import { TSRLayer } from "./tsr-tree-layer";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
-import { TSRController } from "./tsr-tree-controller";
-import { TSRModel } from "./tsr-tree-model";
-import { CollectionLayer, CollectionLayerGroup } from "@music-analyzer/view";
-
-
-export class TSRLayer extends CollectionLayer {
-  constructor(
-    melodies: IMelodyModel[],
-    layer: number,
-  ) {
-    const children = melodies.map(e => new TSRController(
-      new TSRModel(e, layer),
-      e.melody_analysis.implication_realization
-    ));
-    super(children, layer);
-  }
-  renewStrong(layer: number) {
-    this.children.forEach((e) => (e as TSRController).renewStrong(layer === this.layer));
-  }
-}
 
 export class TSRGroup extends CollectionLayerGroup {
   readonly svg: SVGGElement;

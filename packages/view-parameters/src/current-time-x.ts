@@ -1,5 +1,5 @@
 import { CurrentTimeRatio } from "./current-time-ratio";
-import { PianoRollWidth } from "./piano-roll-width";
+import { PianoRollWidth } from "./piano-roll/piano-roll-width";
 
 export class CurrentTimeX {
   static #piano_roll_width: number;
