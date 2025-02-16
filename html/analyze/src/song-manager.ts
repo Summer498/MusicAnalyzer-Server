@@ -13,7 +13,7 @@ if (FULL_VIEW) {
   audio_player.autoplay = false;
 }
 
-export const setupUI = (song_manager: SongManager, piano_roll_place: HTMLDivElement, controller_place: HTMLDivElement) => {
+export const setupUI = (song_manager: SongManager, place: HTMLDivElement) => {
   new Assertion(song_manager.hierarchical_melody.length > 0).onFailed(() => { throw new Error(`hierarchical melody length must be more than 0 but it is ${song_manager.hierarchical_melody.length}`); });
   const melodies = song_manager.hierarchical_melody[song_manager.hierarchical_melody.length - 1];
   SongLength.value = Math.max(
@@ -59,9 +59,6 @@ export const setupUI = (song_manager: SongManager, piano_roll_place: HTMLDivElem
   }
   // 手前側
 
-
-  piano_roll_place.insertAdjacentElement("beforeend", piano_roll_view.svg);
-
   const d_melody_div = document.createElement("div");
   d_melody_div.id = "d-melody";
   d_melody_div.appendChild(piano_roll_controller.d_melody_switcher.body);
@@ -94,12 +91,19 @@ export const setupUI = (song_manager: SongManager, piano_roll_place: HTMLDivElem
   }
   controllers.appendChild(melody_beep_controllers_div);
   //  controllers.appendChild(melody_color_selector_div);  // NOTE: 色選択は未実装なので消しておく
-  controller_place.insertAdjacentElement("beforeend", controllers);
+
 
   const ir_plot = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   ir_plot.appendChild(piano_roll_controller.ir_plot.svg);
+  ir_plot.id = "IR-plot";
   ir_plot.style.width = piano_roll_controller.ir_plot.svg.style.width;
   ir_plot.style.height = piano_roll_controller.ir_plot.svg.style.height;
-  controller_place.insertAdjacentElement("beforeend", ir_plot);
-  controller_place.setAttribute("style", `column-count: ${2}`);
+
+
+  const bottom = document.createElement("div");
+  bottom.appendChild(controllers);
+  bottom.appendChild(ir_plot);
+  bottom.setAttribute("style", `column-count: ${2}`);
+  place.appendChild(piano_roll_view.svg);
+  place.appendChild(bottom);
 };

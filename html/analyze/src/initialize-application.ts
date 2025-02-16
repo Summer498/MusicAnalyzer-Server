@@ -13,8 +13,7 @@ export const initializeApplication = async (
   tune_id: string,
   mode: Mode,
   window: MusicAnalyzerWindow,
-  piano_roll_place: HTMLDivElement,
-  controllers: HTMLDivElement
+  place: HTMLDivElement,
 ) => {
   window.MusicAnalyzer = await loadMusicAnalysis(tune_id, mode);
 
@@ -37,5 +36,5 @@ export const initializeApplication = async (
   PianoRollBegin.value = highest_pitch + Math.floor(window.MusicAnalyzer.hierarchical_melody.length * bracket_hight / 12) * 12 + 12;
   PianoRollEnd.value = lowest_pitch - 3;
   const song_manager = new SongManager(beat_info, romans, window.MusicAnalyzer.hierarchical_melody, d_melodies);
-  setupUI(song_manager, piano_roll_place, controllers);
+  setupUI(song_manager, place);
 };
