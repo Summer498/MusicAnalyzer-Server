@@ -1,4 +1,4 @@
-export { CHordKeySeries } from "./src/chord-key/chord-key-series";
+export { ChordKeySeries } from "./src/chord-key/chord-key-series";
 export { ChordNameSeries } from "./src/chord-name/chord-name-series";
 export { ChordRomanSeries } from "./src/chord-note/chord-note-series";
 export { ChordNotesSeries } from "./src/chord-roman/chord-roman-series";

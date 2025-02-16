@@ -3,7 +3,7 @@ import { AccompanyToAudioRegistry, SvgCollection } from "@music-analyzer/view";
 import { ChordKeyController } from "./chord-key-controller";
 import { ChordKeyModel } from "./chord-key-model";
 
-export class CHordKeySeries extends SvgCollection{
+export class ChordKeySeries extends SvgCollection{
   constructor(
     romans: TimeAndRomanAnalysis[]
   ){
