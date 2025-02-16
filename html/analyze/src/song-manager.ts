@@ -103,6 +103,4 @@ export const setupUI = (song_manager: SongManager, piano_roll_place: HTMLDivElem
   ir_plot.style.height = piano_roll_controller.ir_plot.svg.style.height;
   controller_place.insertAdjacentElement("beforeend", ir_plot);
   controller_place.setAttribute("style", `column-count: ${2}`);
-
-  return piano_roll_controller;
 };
