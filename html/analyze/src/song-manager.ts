@@ -14,8 +14,6 @@ if (FULL_VIEW) {
 }
 
 export const setupUI = (song_manager: SongManager, piano_roll_place: HTMLDivElement, controller_place: HTMLDivElement) => {
-  const piano_roll_view = new PianoRoll();
-
   new Assertion(song_manager.hierarchical_melody.length > 0).onFailed(() => { throw new Error(`hierarchical melody length must be more than 0 but it is ${song_manager.hierarchical_melody.length}`); });
   const melodies = song_manager.hierarchical_melody[song_manager.hierarchical_melody.length - 1];
   SongLength.value = Math.max(
@@ -37,7 +35,8 @@ export const setupUI = (song_manager: SongManager, piano_roll_place: HTMLDivElem
   const melody_beep_switcher_mediator = new MelodyBeepSwitcherMediator(piano_roll_controller.melody_beep_switcher, piano_roll_controller.melody_hierarchy);
   const melody_beep_volume_mediator = new MelodyBeepVolumeMediator(piano_roll_controller.melody_beep_volume, piano_roll_controller.melody_hierarchy);
   const time_range_slider_mediator = new TimeRangeSliderMediator(piano_roll_controller.time_range_slider, piano_roll_controller.accompany_to_audio_registry);
-
+  
+  const piano_roll_view = new PianoRoll();
   piano_roll_view.svg.appendChild(octave_bgs);
   //  piano_roll.svg.appendChild(beat_bars.svg);
   piano_roll_view.svg.appendChild(piano_roll_controller.chord_notes.svg);
