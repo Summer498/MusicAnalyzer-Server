@@ -1,70 +1,70 @@
 import { AccompanyToAudioRegistry, SvgCollection, WindowReflectableRegistry } from "@music-analyzer/view";
 import { PianoRollRatio } from "@music-analyzer/view-parameters";
-import { DMelodySwitcher, GravitySwitcher, HierarchyLevel, MelodyBeepSwitcher, MelodyBeepVolume, TimeRangeSlider } from "@music-analyzer/controllers";
+import { HierarchyLevel, MelodyBeepVolume, Switcher, TimeRangeSlider } from "@music-analyzer/controllers";
 import { ChordGravityHierarchy, IRPlotHierarchy, IRSymbolHierarchy, MelodyHierarchy, ScaleGravityHierarchy, TSRHierarchy } from "@music-analyzer/melody-view";
 
 export class DMelodySwitcherMediator {
-  private readonly d_melody_switcher: DMelodySwitcher;
+  private readonly switcher: Switcher;
   private readonly d_melody_collection: SvgCollection;
   constructor(
-    d_melody_switcher: DMelodySwitcher,
+    switcher: Switcher,
     d_melody_collection: SvgCollection
   ) {
-    this.d_melody_switcher = d_melody_switcher;
+    this.switcher = switcher;
     this.d_melody_collection = d_melody_collection;
-    this.init(d_melody_switcher);
+    this.init(switcher);
   }
 
   update() {
-    const visibility = this.d_melody_switcher.checkbox.checked ? "visible" : "hidden";
+    const visibility = this.switcher.checkbox.checked ? "visible" : "hidden";
     this.d_melody_collection.svg.style.visibility = visibility;
   }
-  init(d_melody_switcher: DMelodySwitcher) {
+  init(d_melody_switcher: Switcher) {
     d_melody_switcher.checkbox.addEventListener("input", this.update.bind(this));
     this.update.bind(this)();
   };
 }
 
 export class ScaleGravitySwitcherMediator {
-  private readonly scale_gravity_switcher: GravitySwitcher;
+  private readonly switcher: Switcher;
   private readonly scale_gravities: ScaleGravityHierarchy;
   constructor(
-    scale_gravity_switcher: GravitySwitcher,
+    switcher: Switcher,
     scale_gravities: ScaleGravityHierarchy
   ) {
-    this.scale_gravity_switcher = scale_gravity_switcher;
+    this.switcher = switcher;
     this.scale_gravities = scale_gravities;
-    this.init(scale_gravity_switcher);
+    this.init(switcher);
   }
 
   update() {
-    const visibility = this.scale_gravity_switcher.checkbox.checked ? "visible" : "hidden";
+    const visibility = this.switcher.checkbox.checked ? "visible" : "hidden";
     this.scale_gravities.svg.style.visibility = visibility;
   }
-  init(scale_gravity_switcher: GravitySwitcher) {
-    scale_gravity_switcher.checkbox.addEventListener("input", this.update.bind(this));
+  init(switcher: Switcher) {
+    switcher.checkbox.addEventListener("input", this.update.bind(this));
     this.update.bind(this)();
   };
 }
 
 export class ChordGravitySwitcherMediator {
-  private readonly chord_gravity_switcher: GravitySwitcher;
+  private readonly switcher: Switcher;
   private readonly chord_gravities: ChordGravityHierarchy;
   constructor(
-    chord_gravity_switcher: GravitySwitcher,
+    switcher: Switcher,
     chord_gravities: ChordGravityHierarchy
   ) {
-    this.chord_gravity_switcher = chord_gravity_switcher;
+    this.switcher = switcher;
     this.chord_gravities = chord_gravities;
-    this.init(chord_gravity_switcher);
+    this.init(switcher);
   }
 
   update() {
-    const visibility = this.chord_gravity_switcher.checkbox.checked ? "visible" : "hidden";
+    const visibility = this.switcher.checkbox.checked ? "visible" : "hidden";
     this.chord_gravities.svg.style.visibility = visibility;
   }
-  init(chord_gravity_switcher: GravitySwitcher) {
-    chord_gravity_switcher.checkbox.addEventListener("input", this.update.bind(this));
+  init(switcher: Switcher) {
+    switcher.checkbox.addEventListener("input", this.update.bind(this));
     this.update.bind(this)();
   };
 }
@@ -113,24 +113,24 @@ export class HierarchyLevelSliderMediator {
 }
 
 export class MelodyBeepSwitcherMediator {
-  private readonly melody_beep_switcher: MelodyBeepSwitcher;
+  private readonly switcher: Switcher;
   private readonly melody_hierarchy: MelodyHierarchy;
   constructor(
-    melody_beep_switcher: MelodyBeepSwitcher,
+    switcher: Switcher,
     melody_hierarchy: MelodyHierarchy,
   ) {
-    this.melody_beep_switcher = melody_beep_switcher;
+    this.switcher = switcher;
     this.melody_hierarchy = melody_hierarchy;
-    this.init(melody_beep_switcher);
+    this.init(switcher);
   }
 
   update() {
-    const is_beep = this.melody_beep_switcher.checkbox.checked;
+    const is_beep = this.switcher.checkbox.checked;
     this.melody_hierarchy.onMelodyBeepCheckChanged(is_beep);
   };
-  init(melody_beep_switcher: MelodyBeepSwitcher) {
-    melody_beep_switcher.checkbox.checked = true;
-    melody_beep_switcher.checkbox.addEventListener("input", this.update.bind(this));
+  init(switcher: Switcher) {
+    switcher.checkbox.checked = true;
+    switcher.checkbox.addEventListener("input", this.update.bind(this));
     this.update.bind(this)();
   };
 }
