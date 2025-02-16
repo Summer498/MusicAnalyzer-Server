@@ -23,9 +23,9 @@ export class PianoRollController {
   readonly chord_names: SvgCollection;
   readonly chord_romans: SvgCollection;
   readonly chord_keys: SvgCollection;
-  readonly d_melody_controllers: SvgCollection;
-  readonly melody_group: MelodyHierarchy;
-  readonly ir_group: IRSymbolHierarchy;
+  readonly d_melody_collection: SvgCollection;
+  readonly melody_hierarchy: MelodyHierarchy;
+  readonly ir_hierarchy: IRSymbolHierarchy;
   readonly ir_plot: IRPlotHierarchy;
   readonly chord_gravities: ChordGravityHierarchy;
   readonly scale_gravities: ScaleGravityHierarchy;
@@ -51,9 +51,9 @@ export class PianoRollController {
     this.chord_names = new ChordNameSeries(song_manager.romans);
     this.chord_romans = new ChordRomanSeries(song_manager.romans);
     this.chord_keys = new CHordKeySeries(song_manager.romans);
-    this.d_melody_controllers = new DMelodyGroup(song_manager.d_melodies);
-    this.melody_group = new MelodyHierarchy(song_manager.hierarchical_melody);
-    this.ir_group = new IRSymbolHierarchy(song_manager.hierarchical_melody);
+    this.d_melody_collection = new DMelodyGroup(song_manager.d_melodies);
+    this.melody_hierarchy = new MelodyHierarchy(song_manager.hierarchical_melody);
+    this.ir_hierarchy = new IRSymbolHierarchy(song_manager.hierarchical_melody);
     this.ir_plot = new IRPlotHierarchy(song_manager.hierarchical_melody);
     this.chord_gravities = new ChordGravityHierarchy(song_manager.hierarchical_melody);
     this.scale_gravities = new ScaleGravityHierarchy(song_manager.hierarchical_melody);
