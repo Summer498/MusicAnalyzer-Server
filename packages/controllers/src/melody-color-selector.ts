@@ -1,6 +1,4 @@
-import { Controller } from "./controller";
-
-export class MelodyColorSelector implements Controller {
+export class MelodyColorSelector {
   readonly body: HTMLSpanElement;
   constructor() {
     const key_color_selector = document.createElement("input");
