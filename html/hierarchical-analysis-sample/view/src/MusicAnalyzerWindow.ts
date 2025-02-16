@@ -1,1 +1,0 @@
-export { MusicAnalyzerWindow } from "../../../analyze/src/MusicAnalyzerWindow";

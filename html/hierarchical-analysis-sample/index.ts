@@ -1,4 +1,4 @@
-import { song_list } from "./view/src/songlist";
+import { song_list } from "./src/songlist";
 
 console.log("this is hierarchical analysis list");
 
@@ -19,7 +19,7 @@ const songData = (tune_id: string) => {
 const appendURLItem = (mode: string, song_id: string, song_data: ReturnType<typeof songData>) => {
   const anchor = document.createElement("a");
   anchor.innerHTML = `[${song_id}-${mode.toUpperCase()}]: ${song_data?.author || ""}, <strong>"${song_data?.title || ""}"</strong>`;
-  anchor.href = `/MusicAnalyzer-server/html/hierarchical-analysis-sample/view?tune=${song_id}&${mode.toLowerCase()}`;
+  anchor.href = `/MusicAnalyzer-server/html/analyze?tune=${song_id}&${mode.toLowerCase()}`;
   const item = document.createElement("li");
   item.appendChild(anchor);
   tunes.insertAdjacentElement("beforeend", item);

@@ -1,1 +1,0 @@
-export { setupUI } from "../../../analyze/src/song-manager";

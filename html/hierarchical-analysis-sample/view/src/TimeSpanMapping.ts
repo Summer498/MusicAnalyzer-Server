@@ -1,1 +1,0 @@
-export { getTimeAndMelodyFromTS } from "../../../analyze/src/TimeSpanMapping";

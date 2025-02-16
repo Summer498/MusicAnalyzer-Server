@@ -1,1 +1,0 @@
-export { xml_parser } from "../../../analyze/src/XMLParser";

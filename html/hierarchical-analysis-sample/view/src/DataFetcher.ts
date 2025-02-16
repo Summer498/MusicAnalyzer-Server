@@ -1,1 +1,0 @@
-export { getJSON, getJSONfromXML } from "../../../analyze/src/DataFetcher";
