@@ -3,7 +3,6 @@ import { loadMusicAnalysis } from "./MusicAnalysisLoader";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { bracket_hight, PianoRollBegin, PianoRollEnd } from "@music-analyzer/view-parameters";
-import { SongManager } from "@music-analyzer/piano-roll";
 import { setupUI } from "./song-manager";
 import { MusicAnalyzerWindow } from "./MusicAnalyzerWindow";
 
@@ -35,6 +34,11 @@ export const initializeApplication = async (
   const lowest_pitch = window.MusicAnalyzer.melody.reduce((p, c) => isNaN(p.note) ? c : isNaN(c.note) ? p : p.note < c.note ? p : c).note || 0;
   PianoRollBegin.value = highest_pitch + Math.floor(window.MusicAnalyzer.hierarchical_melody.length * bracket_hight / 12) * 12 + 12;
   PianoRollEnd.value = lowest_pitch - 3;
-  const song_manager = new SongManager(beat_info, romans, window.MusicAnalyzer.hierarchical_melody, d_melodies);
-  setupUI(song_manager, place);
+  setupUI(
+    beat_info,
+    romans,
+    window.MusicAnalyzer.hierarchical_melody,
+    d_melodies,
+    place
+  );
 };

@@ -2,8 +2,11 @@ import { getBlackBGs, getBlackKeys, getCurrentTimeLine, getOctaveBGs, getOctaveK
 import { Assertion, _throw } from "@music-analyzer/stdlib";
 import { CurrentTimeRatio } from "@music-analyzer/view-parameters";
 import { SongLength } from "@music-analyzer/view-parameters";
-import { ChordGravityMediator, DMelodyMediator, HierarchyLevelMediator, MelodyBeepMediator, MelodyVolumeMediator, PianoRollController, ScaleGravityMediator, SongManager, TimeRangeMediator } from "@music-analyzer/piano-roll";
-import { ControllerUIs } from "@music-analyzer/piano-roll/src/controller-uis";
+import { ControllerUIs, ChordGravityMediator, DMelodyMediator, HierarchyLevelMediator, MelodyBeepMediator, MelodyVolumeMediator, PianoRollController, ScaleGravityMediator, TimeRangeMediator } from "@music-analyzer/piano-roll";
+import { AccompanyToAudioRegistry } from "@music-analyzer/view";
+import { BeatInfo } from "@music-analyzer/beat-estimation";
+import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
+import { IMelodyModel } from "@music-analyzer/melody-analyze";
 
 declare const audio_player: HTMLAudioElement | HTMLVideoElement;
 
@@ -14,9 +17,16 @@ if (FULL_VIEW) {
   audio_player.autoplay = false;
 }
 
-export const setupUI = (song_manager: SongManager, place: HTMLDivElement) => {
-  new Assertion(song_manager.hierarchical_melody.length > 0).onFailed(() => { throw new Error(`hierarchical melody length must be more than 0 but it is ${song_manager.hierarchical_melody.length}`); });
-  const melodies = song_manager.hierarchical_melody[song_manager.hierarchical_melody.length - 1];
+export const setupUI = (
+  beat_info: BeatInfo,
+  romans: TimeAndRomanAnalysis[],
+  hierarchical_melody: IMelodyModel[][],
+  // melodies: IMelodyModel[],
+  d_melodies: IMelodyModel[],
+  place: HTMLDivElement
+) => {
+  new Assertion(hierarchical_melody.length > 0).onFailed(() => { throw new Error(`hierarchical melody length must be more than 0 but it is ${hierarchical_melody.length}`); });
+  const melodies = hierarchical_melody[hierarchical_melody.length - 1];
   SongLength.value = Math.max(
     ...melodies.map(e => e.end)
   ) * 1.05; // ちょっとマージンを取っておく
@@ -29,14 +39,19 @@ export const setupUI = (song_manager: SongManager, place: HTMLDivElement) => {
     .forEach(e => octave_bgs.appendChild(e.svg));
 
   const controller_ui = new ControllerUIs();
-  const piano_roll_controller = new PianoRollController(song_manager);
+  const piano_roll_controller = new PianoRollController(
+    beat_info,
+    romans,
+    hierarchical_melody,
+    d_melodies
+  );
   const d_melody_switcher_mediator = new DMelodyMediator(controller_ui.d_melody_switcher, piano_roll_controller.d_melody_collection);
   const scale_gravity_switcher_mediator = new ScaleGravityMediator(controller_ui.scale_gravity_switcher, piano_roll_controller.scale_gravities);
   const chord_gravity_switcher_mediator = new ChordGravityMediator(controller_ui.chord_gravity_switcher, piano_roll_controller.chord_gravities);
   const hierarchy_level_slider_mediator = new HierarchyLevelMediator(controller_ui.hierarchy_level, piano_roll_controller.melody_hierarchy, piano_roll_controller.ir_hierarchy, piano_roll_controller.ir_plot, piano_roll_controller.time_span_tree, piano_roll_controller.scale_gravities, piano_roll_controller.chord_gravities);
   const melody_beep_switcher_mediator = new MelodyBeepMediator(controller_ui.melody_beep_switcher, piano_roll_controller.melody_hierarchy);
   const melody_beep_volume_mediator = new MelodyVolumeMediator(controller_ui.melody_beep_volume, piano_roll_controller.melody_hierarchy);
-  const time_range_slider_mediator = new TimeRangeMediator(controller_ui.time_range_slider, piano_roll_controller.accompany_to_audio_registry);
+  const time_range_slider_mediator = new TimeRangeMediator(controller_ui.time_range_slider, AccompanyToAudioRegistry.instance);
   
   const piano_roll_view = new PianoRoll();
   piano_roll_view.svg.appendChild(octave_bgs);
