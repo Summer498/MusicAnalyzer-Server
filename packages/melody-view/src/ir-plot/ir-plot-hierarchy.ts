@@ -8,7 +8,7 @@ export class IRPlotHierarchy {
   readonly x_axis: SVGLineElement;
   readonly y_axis: SVGLineElement;
   #visible_layer: number;
-  private readonly children: IRPlotLayer[];
+  readonly children: IRPlotLayer[];
   private _show: IRPlotLayer[];
   get show() { return this._show; }
   constructor(hierarchical_melody: IMelodyModel[][]) {

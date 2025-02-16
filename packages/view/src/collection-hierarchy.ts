@@ -3,7 +3,7 @@ import { AccompanyToAudioRegistry } from "./updatable-registry";
 
 export abstract class CollectionHierarchy {
   readonly svg: SVGGElement;
-  protected abstract readonly children: CollectionLayer[];
+  abstract readonly children: CollectionLayer[];
   protected _show: CollectionLayer[];
   get show() { return this._show; }
   constructor() {
