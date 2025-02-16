@@ -35,11 +35,11 @@ export class PianoRollController {
 
   constructor(song_manager: SongManager) {
     this.d_melody_switcher = new Switcher("d_melody_switcher", "detected melody before fix");
-    this.hierarchy_level = new HierarchyLevel();
-    this.time_range_slider = new TimeRangeSlider();
     this.scale_gravity_switcher = new Switcher("scale_gravity_switcher", "Scale Gravity");
     this.chord_gravity_switcher = new Switcher("chord_gravity_switcher", "Chord Gravity");
     this.melody_beep_switcher = new Switcher("melody_beep_switcher", "Beep Melody");
+    this.hierarchy_level = new HierarchyLevel();
+    this.time_range_slider = new TimeRangeSlider();
     this.melody_beep_volume = new MelodyBeepVolume();
     this.melody_color_selector = new MelodyColorSelector();
 
