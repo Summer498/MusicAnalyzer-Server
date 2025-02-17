@@ -29,11 +29,12 @@ export class MelodyColorSelector {
   }
 }
 
-export const melodyColorController = (melody_color_selector: MelodyColorSelector) => {
-  const melody_color_selector_div = document.createElement("div");
-  melody_color_selector_div.id = "melody-color-selector";
-  melody_color_selector_div.style.display = "inline";
-  melody_color_selector_div.appendChild(melody_color_selector.body);
-  return melody_color_selector_div;
-};
-
+export class MelodyColorController {
+  readonly view: HTMLDivElement;
+  constructor(melody_color_selector: MelodyColorSelector) {
+    this.view = document.createElement("div");
+    this.view.id = "melody-color-selector";
+    this.view.style.display = "inline";
+    this.view.appendChild(melody_color_selector.body);
+  }
+}

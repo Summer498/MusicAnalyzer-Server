@@ -6,9 +6,11 @@ export class DMelodySwitcher extends Switcher {
   }
 }
 
-export const dMelodyController = (d_melody_switcher: DMelodySwitcher) => {
-  const d_melody_div = document.createElement("div");
-  d_melody_div.id = "d-melody";
-  d_melody_div.appendChild(d_melody_switcher.body);
-  return d_melody_div;
-};
+export class DMelodyController {
+  readonly view: HTMLDivElement;
+  constructor(d_melody_switcher: DMelodySwitcher) {
+    this.view = document.createElement("div");
+    this.view.id = "d-melody";
+    this.view.appendChild(d_melody_switcher.body);
+  };
+}

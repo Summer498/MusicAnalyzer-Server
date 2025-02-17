@@ -9,9 +9,11 @@ export class TimeRangeSlider extends Slider {
   }
 }
 
-export const timeRangeController = (time_range_slider: TimeRangeSlider) => {
-  const time_length_div = document.createElement("div");
-  time_length_div.id = "time-length";
-  time_length_div.appendChild(time_range_slider.body);
-  return time_length_div;
-};
+export class TimeRangeController {
+  readonly view: HTMLDivElement;
+  constructor(time_range_slider: TimeRangeSlider) {
+    this.view = document.createElement("div");
+    this.view.id = "time-length";
+    this.view.appendChild(time_range_slider.body);
+  }
+}

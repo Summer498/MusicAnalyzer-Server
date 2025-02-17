@@ -6,13 +6,15 @@ export class GravitySwitcher extends Switcher {
   };
 }
 
-export const gravityController = (
-  chord_gravity_switcher: GravitySwitcher,
-  scale_gravity_switcher: GravitySwitcher,
-) => {
-  const gravity_switcher_div = document.createElement("div");
-  gravity_switcher_div.id = "gravity-switcher";
-  gravity_switcher_div.appendChild(scale_gravity_switcher.body);
-  gravity_switcher_div.appendChild(chord_gravity_switcher.body);
-  return gravity_switcher_div;
-};
+export class GravityController {
+  readonly view: HTMLDivElement;
+  constructor(
+    chord_gravity_switcher: GravitySwitcher,
+    scale_gravity_switcher: GravitySwitcher,
+  ) {
+    this.view = document.createElement("div");
+    this.view.id = "gravity-switcher";
+    this.view.appendChild(scale_gravity_switcher.body);
+    this.view.appendChild(chord_gravity_switcher.body);
+  };
+}
