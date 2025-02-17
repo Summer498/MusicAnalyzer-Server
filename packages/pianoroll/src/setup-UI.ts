@@ -9,8 +9,8 @@ import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { BeatElements, ChordElements, MelodyElements } from "@music-analyzer/piano-roll/src/piano-roll";
 import { ControllerUIs } from "./controller-uis";
-import { dMelody, gravitySwitcher, hierarchyLevel, melodyBeepController, timeLength } from "@music-analyzer/controllers";
-import { melodyColorSelector } from "@music-analyzer/controllers/src/melody-color-selector";
+import { dMelodyController, gravityController, hierarchyLevelController, melodyBeepController, timeRangeController } from "@music-analyzer/controllers";
+import { melodyColorController } from "@music-analyzer/controllers/src/melody-color-selector";
 
 const setupAnalysis = (
   beat: BeatElements,
@@ -62,10 +62,10 @@ const setupPianoRoll = (
 };
 
 export const setupControllers = (controller: ControllerUIs, NO_CHORD: boolean) => {
-  const d_melody = dMelody(controller.d_melody_switcher);
-  const hierarchy_level = hierarchyLevel(controller.hierarchy_level);
-  const time_length = timeLength(controller.time_range_slider);
-  const gravity_switcher = gravitySwitcher(
+  const d_melody = dMelodyController(controller.d_melody_switcher);
+  const hierarchy_level = hierarchyLevelController(controller.hierarchy_level);
+  const time_length = timeRangeController(controller.time_range_slider);
+  const gravity_switcher = gravityController(
     controller.chord_gravity_switcher,
     controller.scale_gravity_switcher
   );
@@ -73,7 +73,7 @@ export const setupControllers = (controller: ControllerUIs, NO_CHORD: boolean) =
     controller.melody_beep_switcher,
     controller.melody_beep_volume
   );
-  const melody_color_selector = melodyColorSelector(controller.melody_color_selector);
+  const melody_color_selector = melodyColorController(controller.melody_color_selector);
 
   const controllers = document.createElement("div");
   controllers.id = "controllers";

@@ -6,7 +6,7 @@ export class GravitySwitcher extends Switcher {
   };
 }
 
-export const gravitySwitcher = (
+export const gravityController = (
   chord_gravity_switcher: GravitySwitcher,
   scale_gravity_switcher: GravitySwitcher,
 ) => {

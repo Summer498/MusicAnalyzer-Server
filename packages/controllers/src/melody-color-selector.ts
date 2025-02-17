@@ -29,7 +29,7 @@ export class MelodyColorSelector {
   }
 }
 
-export const melodyColorSelector = (melody_color_selector: MelodyColorSelector) => {
+export const melodyColorController = (melody_color_selector: MelodyColorSelector) => {
   const melody_color_selector_div = document.createElement("div");
   melody_color_selector_div.id = "melody-color-selector";
   melody_color_selector_div.style.display = "inline";
