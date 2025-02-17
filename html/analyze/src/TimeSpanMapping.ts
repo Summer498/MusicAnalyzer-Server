@@ -5,10 +5,14 @@ import { TS } from "@music-analyzer/gttm";
 import { ReductionElement } from "@music-analyzer/gttm";
 
 const calcChroma = (pitch: Pitch) => 12 + pitch.octave * 12 + (pitch.alter || 0) + getChroma(pitch.step);
-export const getTimeAndMelodyFromTS = (element: ReductionElement, duration_data: TS[][], musicxml: MusicXML): TimeAndMelody => {
+export const getTimeAndMelodyFromTS = (
+  element: ReductionElement,
+  duration_data: TS[][],
+  musicxml: MusicXML
+): TimeAndMelody => {
   const leftend = element.getLeftEnd();
   const rightend = element.getRightEnd();
-  const note = musicxml["score-partwise"].part.measure.find(e=>e.number===element.measure)!.note;
+  const note = musicxml["score-partwise"].part.measure.find(e => e.number === element.measure)!.note;
   const pitch = Array.isArray(note) ? note[element.note - 1].pitch : note.pitch;
   return {
     note: pitch ? calcChroma(pitch) : NaN,
