@@ -1,6 +1,6 @@
-import { HierarchyLevel, MelodyBeepVolume, MelodyColorSelector, Switcher, TimeRangeSlider } from "@music-analyzer/controllers";
+import { DMelodySwitcher, GravitySwitcher, HierarchyLevel, MelodyBeepSwitcher, MelodyBeepVolume, MelodyColorSelector, TimeRangeSlider } from "@music-analyzer/controllers";
 
-export const dMelody = (d_melody_switcher: Switcher) => {
+export const dMelody = (d_melody_switcher: DMelodySwitcher) => {
   const d_melody_div = document.createElement("div");
   d_melody_div.id = "d-melody";
   d_melody_div.appendChild(d_melody_switcher.body);
@@ -22,8 +22,8 @@ export const timeLength = (time_range_slider: TimeRangeSlider) => {
 };
 
 export const gravitySwitcher = (
-  chord_gravity_switcher: Switcher,
-  scale_gravity_switcher: Switcher,
+  chord_gravity_switcher: GravitySwitcher,
+  scale_gravity_switcher: GravitySwitcher,
 ) => {
   const gravity_switcher_div = document.createElement("div");
   gravity_switcher_div.id = "gravity-switcher";
@@ -33,7 +33,7 @@ export const gravitySwitcher = (
 };
 
 export const melodyBeepController = (
-  melody_beep_switcher: Switcher,
+  melody_beep_switcher: MelodyBeepSwitcher,
   melody_beep_volume: MelodyBeepVolume,
 ) => {
   const melody_beep_controllers_div = document.createElement("div");
@@ -53,20 +53,20 @@ export const melodyColorSelector = (melody_color_selector: MelodyColorSelector) 
 
 
 export class ControllerUIs {
-  readonly scale_gravity_switcher: Switcher;
-  readonly chord_gravity_switcher: Switcher;
-  readonly d_melody_switcher: Switcher;
-  readonly melody_beep_switcher: Switcher;
+  readonly scale_gravity_switcher: GravitySwitcher;
+  readonly chord_gravity_switcher: GravitySwitcher;
+  readonly d_melody_switcher: DMelodySwitcher;
+  readonly melody_beep_switcher: MelodyBeepSwitcher;
   readonly melody_beep_volume: MelodyBeepVolume;
   readonly melody_color_selector: MelodyColorSelector;
   readonly hierarchy_level: HierarchyLevel;
   readonly time_range_slider: TimeRangeSlider;
 
   constructor(){
-    this.scale_gravity_switcher = new Switcher("scale_gravity_switcher", "Scale Gravity");
-    this.chord_gravity_switcher = new Switcher("chord_gravity_switcher", "Chord Gravity");
-    this.d_melody_switcher = new Switcher("d_melody_switcher", "detected melody before fix");
-    this.melody_beep_switcher = new Switcher("melody_beep_switcher", "Beep Melody");
+    this.scale_gravity_switcher = new GravitySwitcher("scale_gravity_switcher", "Scale Gravity");
+    this.chord_gravity_switcher = new GravitySwitcher("chord_gravity_switcher", "Chord Gravity");
+    this.d_melody_switcher = new DMelodySwitcher("d_melody_switcher", "detected melody before fix");
+    this.melody_beep_switcher = new MelodyBeepSwitcher("melody_beep_switcher", "Beep Melody");
     this.melody_beep_volume = new MelodyBeepVolume();
     this.melody_color_selector = new MelodyColorSelector();
     this.hierarchy_level = new HierarchyLevel();

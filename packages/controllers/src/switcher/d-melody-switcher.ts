@@ -1,7 +1,7 @@
 import { Switcher } from "./abstract-switcher";
 
-class DMelodySwitcher extends Switcher {
-  constructor() {
-    super("d_melody_switcher", "detected melody before fix");
+export class DMelodySwitcher extends Switcher {
+  constructor(id: string, label: string) {
+    super(id, label);
   }
 }
