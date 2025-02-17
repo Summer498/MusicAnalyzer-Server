@@ -1,86 +1,15 @@
-import { getBlackBGs, getBlackKeys, getCurrentTimeLine, getOctaveBGs, getOctaveKeys, getWhiteBGs, getWhiteKeys, PianoRoll } from "@music-analyzer/svg-objects";
 import { Assertion, _throw } from "@music-analyzer/stdlib";
 import { CurrentTimeRatio } from "@music-analyzer/view-parameters";
 import { SongLength } from "@music-analyzer/view-parameters";
-import { ChordGravityMediator, DMelodyMediator, HierarchyLevelMediator, MelodyBeepMediator, MelodyVolumeMediator, ScaleGravityMediator, TimeRangeMediator } from "./UIMediators";
+import { ChordGravityMediator, DMelodyMediator, HierarchyLevelMediator, MelodyBeepMediator, MelodyVolumeMediator, ScaleGravityMediator, TimeRangeMediator } from "../UIMediators";
 import { AccompanyToAudioRegistry } from "@music-analyzer/view";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { BeatElements, ChordElements, MelodyElements } from "@music-analyzer/piano-roll/src/piano-roll";
-import { ControllerUIs } from "./controller-uis";
-
-const setupAnalysis = (
-  beat: BeatElements,
-  chord: ChordElements,
-  melody: MelodyElements,
-) => {
-  const analysis_view = {
-    svg: document.createElementNS("http://www.w3.org/2000/svg", "g")
-  };
-  analysis_view.svg.appendChild(beat.beat_bars.svg);
-  analysis_view.svg.appendChild(chord.chord_notes.svg);
-  analysis_view.svg.appendChild(chord.chord_names.svg);
-  analysis_view.svg.appendChild(chord.chord_romans.svg);
-  analysis_view.svg.appendChild(chord.chord_keys.svg);
-  analysis_view.svg.appendChild(melody.d_melody_collection.svg);
-  analysis_view.svg.appendChild(melody.melody_hierarchy.svg);
-  analysis_view.svg.appendChild(melody.ir_hierarchy.svg);
-  analysis_view.svg.appendChild(melody.chord_gravities.svg);
-  analysis_view.svg.appendChild(melody.scale_gravities.svg);
-  analysis_view.svg.appendChild(melody.time_span_tree.svg);
-  return analysis_view;
-};
-
-const setupPianoRoll = (
-  beat: BeatElements,
-  chord: ChordElements,
-  melody: MelodyElements,
-  FULL_VIEW: boolean
-) => {
-  const octave_bgs = document.createElementNS("http://www.w3.org/2000/svg", "g");
-  octave_bgs.id = "octave-BGs";
-  getOctaveBGs(getWhiteBGs(), getBlackBGs()).svg
-    .forEach(e => octave_bgs.appendChild(e.svg));
-
-  const analysis_view = setupAnalysis(beat, chord, melody);
-  const octave_keys = document.createElementNS("http://www.w3.org/2000/svg", "g");
-  octave_keys.id = "octave-keys";
-  getOctaveKeys(getWhiteKeys(), getBlackKeys()).svg
-    .forEach(e => octave_keys.appendChild(e.svg));
-
-  const piano_roll_view = new PianoRoll();
-  piano_roll_view.svg.appendChild(octave_bgs);
-  piano_roll_view.svg.appendChild(analysis_view.svg);
-  piano_roll_view.svg.appendChild(octave_keys);
-  if (!FULL_VIEW) {
-    piano_roll_view.svg.appendChild(getCurrentTimeLine().svg);
-  }
-  return piano_roll_view;
-};
-
-export const setupControllers = (controller: ControllerUIs, NO_CHORD: boolean) => {
-  const d_melody = controller.d_melody_controller;
-  const hierarchy_level = controller.hierarchy_controller;
-  const time_length = controller.time_range_controller;
-  const gravity_switcher = controller.gravity_controller;
-  const melody_beep_controllers = controller.melody_beep_controller;
-  const melody_color_selector = controller.melody_color_controller;
-
-  const controllers = document.createElement("div");
-  controllers.id = "controllers";
-  controllers.style = "margin-top:20px";
-  controllers.appendChild(d_melody.view);
-  controllers.appendChild(hierarchy_level.view);
-  controllers.appendChild(time_length.view);
-  if (!NO_CHORD) {
-    controllers.appendChild(gravity_switcher.view);
-  }
-  controllers.appendChild(melody_beep_controllers.view);
-  controllers.appendChild(melody_color_selector.view);  // NOTE: 色選択は未実装なので消しておく
-  return controllers;
-};
-
+import { ControllerUIs } from "../controller-uis";
+import { setupPianoRoll } from "./setup-piano-roll";
+import { setupControllers } from "./setup-controllers";
 
 export const setupUI = (
   beat_info: BeatInfo,
@@ -118,10 +47,10 @@ export const setupUI = (
   const melody_beep_switcher_mediator = new MelodyBeepMediator(controller_UIs.melody_beep_controller.checkbox, melody.melody_hierarchy);
   const melody_beep_volume_mediator = new MelodyVolumeMediator(controller_UIs.melody_beep_controller.volume, melody.melody_hierarchy);
   const time_range_slider_mediator = new TimeRangeMediator(controller_UIs.time_range_controller.slider, AccompanyToAudioRegistry.instance);
+
   const piano_roll_view = setupPianoRoll(beat, chord, melody, FULL_VIEW);
-
   const controllers = setupControllers(controller_UIs, NO_CHORD);
-
+  
   const ir_plot = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   ir_plot.appendChild(melody.ir_plot.svg);
   ir_plot.id = "IR-plot";
