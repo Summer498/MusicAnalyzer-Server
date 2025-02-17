@@ -1,6 +1,6 @@
+import { AccompanyToAudioRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 import { MusicAnalyzerWindow } from "./src/MusicAnalyzerWindow";
 import { updateTitle } from "./src/UIManager";
-import { AccompanyToAudioRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 import { initializeApplication } from "./src/initialize-application";
 import { EventLoop } from "./src/EventLoop";
 
