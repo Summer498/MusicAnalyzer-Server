@@ -8,7 +8,9 @@ import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { BeatElements, ChordElements, MelodyElements } from "@music-analyzer/piano-roll/src/piano-roll";
-import { ControllerUIs, dMelody, gravitySwitcher, hierarchyLevel, melodyBeepController, melodyColorSelector, timeLength } from "./controller-uis";
+import { ControllerUIs } from "./controller-uis";
+import { dMelody, gravitySwitcher, hierarchyLevel, melodyBeepController, timeLength } from "@music-analyzer/controllers";
+import { melodyColorSelector } from "@music-analyzer/controllers/src/melody-color-selector";
 
 const setupAnalysis = (
   beat: BeatElements,

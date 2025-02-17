@@ -28,3 +28,12 @@ export class MelodyColorSelector {
     this.body.appendChild(chord_color_selector);
   }
 }
+
+export const melodyColorSelector = (melody_color_selector: MelodyColorSelector) => {
+  const melody_color_selector_div = document.createElement("div");
+  melody_color_selector_div.id = "melody-color-selector";
+  melody_color_selector_div.style.display = "inline";
+  melody_color_selector_div.appendChild(melody_color_selector.body);
+  return melody_color_selector_div;
+};
+

@@ -14,3 +14,10 @@ export class HierarchyLevel extends Slider {
   };
 };
 
+export const hierarchyLevel = (hierarchy_level: HierarchyLevel) => {
+  const hierarchy_level_div = document.createElement("div");
+  hierarchy_level_div.id = "hierarchy-level";
+  hierarchy_level_div.appendChild(hierarchy_level.body);
+  return hierarchy_level_div;
+};
+

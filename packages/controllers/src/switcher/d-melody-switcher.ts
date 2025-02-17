@@ -5,3 +5,10 @@ export class DMelodySwitcher extends Switcher {
     super(id, label);
   }
 }
+
+export const dMelody = (d_melody_switcher: DMelodySwitcher) => {
+  const d_melody_div = document.createElement("div");
+  d_melody_div.id = "d-melody";
+  d_melody_div.appendChild(d_melody_switcher.body);
+  return d_melody_div;
+};
