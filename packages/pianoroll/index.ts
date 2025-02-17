@@ -1,4 +1,3 @@
-export { PianoRollController } from "./src/piano-roll";
 export { ControllerUIs } from "./src/controller-uis";
 
 export {

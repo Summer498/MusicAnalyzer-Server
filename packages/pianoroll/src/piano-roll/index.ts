@@ -6,13 +6,35 @@ import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 
-const getMelody = <T>(hierarchy: T[][]) => hierarchy[hierarchy.length - 1];
-export class PianoRollController {
+export class BeatElements {
   readonly beat_bars: SvgCollection;
+  constructor(
+    beat_info: BeatInfo,
+    melodies: IMelodyModel[],
+  ){
+    this.beat_bars = new BeatBarsGroup(
+      beat_info,
+      melodies
+    );
+  }
+}
+
+export class ChordElements {
   readonly chord_notes: SvgCollection;
   readonly chord_names: SvgCollection;
   readonly chord_romans: SvgCollection;
   readonly chord_keys: SvgCollection;
+  constructor(
+    romans: TimeAndRomanAnalysis[],
+  ){
+    this.chord_notes = new ChordNotesSeries(romans);
+    this.chord_names = new ChordNameSeries(romans);
+    this.chord_romans = new ChordRomanSeries(romans);
+    this.chord_keys = new ChordKeySeries(romans);
+  }
+}
+
+export class MelodyElements {
   readonly d_melody_collection: SvgCollection;
   readonly melody_hierarchy: MelodyHierarchy;
   readonly ir_hierarchy: IRSymbolHierarchy;
@@ -20,22 +42,10 @@ export class PianoRollController {
   readonly chord_gravities: ChordGravityHierarchy;
   readonly scale_gravities: ScaleGravityHierarchy;
   readonly time_span_tree: TSRHierarchy;
-
   constructor(
-    beat_info: BeatInfo,
-    romans: TimeAndRomanAnalysis[],
     hierarchical_melody: IMelodyModel[][],
-    // melodies: IMelodyModel[],
     d_melodies: IMelodyModel[]
-  ) {
-    this.beat_bars = new BeatBarsGroup(
-      beat_info,
-      getMelody(hierarchical_melody)
-    );
-    this.chord_notes = new ChordNotesSeries(romans);
-    this.chord_names = new ChordNameSeries(romans);
-    this.chord_romans = new ChordRomanSeries(romans);
-    this.chord_keys = new ChordKeySeries(romans);
+  ){
     this.d_melody_collection = new DMelodyGroup(d_melodies);
     this.melody_hierarchy = new MelodyHierarchy(hierarchical_melody);
     this.ir_hierarchy = new IRSymbolHierarchy(hierarchical_melody);
