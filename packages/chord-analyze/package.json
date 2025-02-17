@@ -1,5 +1,5 @@
 {
-  "name": "@music-analyzer/chord-to-roman",
+  "name": "@music-analyzer/chord-analyze",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -16,9 +16,13 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "readline": "1.3.0",
-    "@music-analyzer/key-estimation": "1.0.0",
+    "@music-analyzer/graph": "1.0.0",
+    "@music-analyzer/math": "1.0.0",
+    "@music-analyzer/roman-chord": "1.0.0",
+    "@music-analyzer/stdlib": "1.0.0",
     "@music-analyzer/time-and": "1.0.0",
-    "@music-analyzer/roman-chord": "1.0.0"
+    "@music-analyzer/tonal-objects": "1.0.0",
+    "@music-analyzer/tonal-pitch-space": "1.0.0",
+    "readline": "1.3.0"
   }
 }

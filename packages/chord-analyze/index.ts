@@ -1,7 +1,7 @@
-import { ChordProgression } from "@music-analyzer/key-estimation";
-import { default as ReadLine } from "readline";
+import { ChordProgression } from "./src/key-estimation";
 import { TimeAnd } from "@music-analyzer/time-and";
 import { RomanChord } from "@music-analyzer/roman-chord";
+import { default as ReadLine } from "readline";
 
 export interface TimeAndRomanAnalysis extends TimeAnd {
   readonly scale: string,

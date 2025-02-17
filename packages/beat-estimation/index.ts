@@ -1,6 +1,6 @@
 import { argmax, correlation, decimal, getRange, getZeros, mod, totalSum } from "@music-analyzer/math";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
-import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
+import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 
 export type BeatInfo = {
   tempo: number,

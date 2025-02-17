@@ -1,4 +1,4 @@
-import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
+import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { ChordKeySeries, ChordNameSeries, ChordNotesSeries, ChordRomanSeries } from "@music-analyzer/chord-view";
 
 export class ChordElements {

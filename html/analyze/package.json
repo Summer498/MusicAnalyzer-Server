@@ -14,7 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "@music-analyzer/beat-estimation": "1.0.0",
-    "@music-analyzer/chord-to-roman": "1.0.0",
+    "@music-analyzer/chord-analyze": "1.0.0",
     "@music-analyzer/gttm": "1.0.0",
     "@music-analyzer/melody-analyze": "1.0.0",
     "@music-analyzer/piano-roll": "1.0.0",

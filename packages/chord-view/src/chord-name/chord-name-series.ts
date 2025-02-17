@@ -1,4 +1,4 @@
-import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
+import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { ChordNameController } from "./chord-name-controller";
 import { ChordNameModel } from "./chord-name-model";
 import { AccompanyToAudioRegistry, SvgCollection } from "@music-analyzer/view";

@@ -121,7 +121,7 @@ main(){
     local -r chord_to_roman_src="$chord_ext_dst"
     local -r chord_to_roman_dst="./resources/$songname/analyzed/chord/roman.json"
     detectFile "$chord_to_roman_src"
-    runProcessWithCache $force_reanalyze "$chord_to_roman_dst" "node ./packages/chord-to-roman < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\""
+    runProcessWithCache $force_reanalyze "$chord_to_roman_dst" "node ./packages/chord-analyze < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\""
 
 
 

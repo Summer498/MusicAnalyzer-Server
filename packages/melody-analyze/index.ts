@@ -1,6 +1,6 @@
 import { Chord, _Chord, _Note, _Scale } from "@music-analyzer/tonal-objects";
 import { TimeAnd } from "@music-analyzer/time-and";
-import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
+import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { Archetype } from "@music-analyzer/irm";
 import { compress } from "@music-analyzer/time-and";
 import { mod } from "@music-analyzer/math";

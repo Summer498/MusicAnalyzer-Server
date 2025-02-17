@@ -1,6 +1,6 @@
 import { MusicXML } from "@music-analyzer/gttm";
 import { GRP, MTR, TSR, PRR, D_TSR, D_PRR } from "@music-analyzer/gttm";
-import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
+import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { getHierarchicalMelody } from "./HierarchicalMelody";
 import { getJSON, getJSONfromXML } from "./DataFetcher";

@@ -1,4 +1,4 @@
-import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
+import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { _Note, Chord } from "@music-analyzer/tonal-objects";
 import { MVCModel } from "@music-analyzer/view";
 

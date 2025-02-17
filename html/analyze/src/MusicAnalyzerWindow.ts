@@ -1,4 +1,4 @@
-import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
+import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { MusicXML } from "@music-analyzer/gttm";
 import { GRP, MTR, D_TSR, D_PRR } from "@music-analyzer/gttm";
