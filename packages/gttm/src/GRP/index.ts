@@ -1,10 +1,14 @@
-import { BeatPos, SingleOrArray } from "./common";
+import { BeatPos, Note } from "../common";
 
 type GPR = "2a" | "2b" | "3a" | "3b" | "3c" | "3d" | "4" | "6"
+
+type AppliedGPR = {
+  readonly rule: GPR
+}
 type Group = {
-  readonly group?: SingleOrArray<Group>
-  readonly note?: SingleOrArray<{ readonly id: BeatPos }>
-  readonly applied?: SingleOrArray<{ readonly rule: GPR }>
+  readonly group?: Group | Group[]
+  readonly note?: Note | Note[]
+  readonly applied?: AppliedGPR | AppliedGPR[]
 }
 
 export type GRP = {

@@ -1,18 +1,15 @@
-import { BeatPos, Path } from "./common";
-import { ReductionElement } from "./ReductionElement";
+import { Chord as _Chord, Head, Note, Path } from "../common";
+import { ReductionElement } from "../ReductionElement";
 
-interface D_Chord {
+interface D_Chord extends _Chord {
   readonly duration: number,
   readonly velocity: number,
-  readonly note: {
-    readonly id: BeatPos
-  }
 }
 
 class Chord implements D_Chord {
   readonly duration: number;
   readonly velocity: number;
-  readonly note: { readonly id: BeatPos };
+  readonly note: Note;
   constructor(chord: D_Chord) {
     this.duration = chord.duration;
     this.velocity = chord.velocity;
@@ -21,18 +18,21 @@ class Chord implements D_Chord {
   // TODO: get chroma
 }
 
+type Pred = { readonly temp: 0 | "-inf" | Path };
+type Succ = { readonly temp: 0 | "+inf" | Path };
+
 interface D_Temp {
   readonly difference: number,
   readonly stable: 0 | "unknown" | Path,
-  readonly pred: { readonly temp: 0 | "-inf" | Path }
-  readonly succ: { readonly temp: 0 | "+inf" | Path }
+  readonly pred: Pred
+  readonly succ: Succ
 }
 
 class Temp implements D_Temp {
   readonly difference: number;
   readonly stable: 0 | "unknown" | Path;
-  readonly pred: { readonly temp: 0 | "-inf" | Path };
-  readonly succ: { readonly temp: 0 | "+inf" | Path };
+  readonly pred: Pred;
+  readonly succ: Succ;
   constructor(temp: D_Temp) {
     this.difference = temp.difference;
     this.stable = temp.stable;
@@ -41,13 +41,14 @@ class Temp implements D_Temp {
   }
 }
 
+type At = { readonly temp: D_Temp }
 
 interface D_TS {
   readonly timespan: number,
   readonly leftend: number,
   readonly rightend: number,
-  readonly head: { readonly chord: D_Chord },
-  readonly at: { readonly temp: D_Temp },
+  readonly head: Head<D_Chord>,
+  readonly at: At,
   readonly primary?: D_TS_Tree
   readonly secondary?: D_TS_Tree
 }
@@ -56,8 +57,8 @@ export class TS extends ReductionElement implements D_TS {
   readonly timespan: number;
   readonly leftend: number;
   readonly rightend: number;
-  readonly head: { readonly chord: Chord };
-  readonly at: { readonly temp: Temp };
+  readonly head: Head<D_Chord>;
+  readonly at: At;
   readonly primary?: TS_Tree;
   readonly secondary?: TS_Tree;
   constructor(ts: D_TS) {

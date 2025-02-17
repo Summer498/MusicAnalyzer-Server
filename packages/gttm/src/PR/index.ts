@@ -1,20 +1,18 @@
-import { BeatPos } from "./common";
-import { ReductionElement } from "./ReductionElement";
+import { Chord, Head as _Head } from "../common";
+import { ReductionElement } from "../ReductionElement";
+
+interface Head extends _Head<Chord> {
+  readonly recipe: "weak" | "progression" | "strong"
+}
 
 interface D_PR {
-  readonly head: {
-    readonly chord: { readonly note: { readonly id: BeatPos } },
-    readonly recipe: "weak" | "progression" | "strong"
-  },
+  readonly head: Head,
   readonly primary?: D_P_Tree,
   readonly secondary?: D_P_Tree,
 }
 
 class PR extends ReductionElement implements D_PR {
-  override readonly head: {
-    readonly chord: { readonly note: { readonly id: BeatPos } },
-    readonly recipe: "weak" | "progression" | "strong"
-  };
+  override readonly head: Head;
   readonly primary?: D_P_Tree;
   readonly secondary?: D_P_Tree;
   constructor(pr: D_PR) {

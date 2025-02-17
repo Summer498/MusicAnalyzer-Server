@@ -1,4 +1,4 @@
-import { BeatPos, SingleOrArray } from "./common";
+import { BeatPos } from "../common";
 
 type HasID = {
   readonly id: BeatPos | `P${number}-I${number}`
@@ -60,7 +60,7 @@ type Barline = {
 interface Measure {
   readonly number: number
   readonly width: number
-  readonly note: SingleOrArray<Note>
+  readonly note: Note | Note[]
 }
 
 interface ExtendedMeasure extends Measure {
