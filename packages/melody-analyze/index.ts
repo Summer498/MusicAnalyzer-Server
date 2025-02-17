@@ -1,6 +1,6 @@
 import { Chord, _Chord, _Note, _Scale } from "@music-analyzer/tonal-objects";
 import { TimeAnd } from "@music-analyzer/time-and";
-import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
+import { TimeAndRomanAnalysis, TimeAndChord as TimeAndChordSymbol } from "@music-analyzer/chord-analyze";
 import { Archetype } from "@music-analyzer/irm";
 import { compress } from "@music-analyzer/time-and";
 import { mod } from "@music-analyzer/math";
@@ -25,14 +25,17 @@ export interface IMelodyModel extends TimeAnd {
 }
 
 
-type TimeAndString = { 0: number; 1: number; 2: string };
-const _getTimeAndChord = (chord_strs: TimeAndString[]) => {
-  const time_and_chord = chord_strs.map(e => {
-    return { time: [e[0], e[1]], chord: _Chord.get(e[2]) };
+const _getTimeAndChord = (chords: TimeAndChordSymbol[]) => {
+  const time_and_chord = chords.map(e => {
+    return { time: [e.begin, e.end], chord: _Chord.get(e.chord) };
   });
   const non_null_chord = (() => {
     const res: TimeAndChord[] = [];
-    time_and_chord.forEach(e => e.chord.empty ? 0 : res.push({ begin: e.time[0], end: e.time[1], chord: e.chord })); // chord が空の場合は time ごと除く
+    time_and_chord.forEach(e => e.chord.empty ? 0 : res.push({
+      begin: e.time[0],
+      end: e.time[1],
+      chord: e.chord
+    })); // chord が空の場合は time ごと除く
     return res;
   })();
   return non_null_chord;

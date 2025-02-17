@@ -5,7 +5,6 @@ export {
   splitArray,
   TimeAndChord,
   TimeAndRomanAnalysis,
-  TimeAndString
 } from "./src/chord-analyze";
 export {
   ChordProgression,
