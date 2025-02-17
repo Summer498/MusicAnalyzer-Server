@@ -1,13 +1,14 @@
 import { default as multer } from "multer";
 import { _throw, assertNonNullable as NN } from "./src/stdlib";
-import { app, handlePostRequest, HOME_DIR, listUpGTTMExample, send404HTML, send404NotFound, sendRequestedFile } from "./src/routing";
+import { handlePostRequest, listUpGTTMExample, send404HTML, send404NotFound, sendRequestedFile } from "./src/routing";
 import { NextFunction, Request, Response } from "express";
 import { default as fs } from "fs";
+import { app, HOME_DIR } from "./src/constants";
 
 const PORT = 3000;
 const POST_DATA_PATH = `${HOME_DIR}/posted`;
 
-export const upload = multer({ dest: POST_DATA_PATH });  // multer が POST_DATA_PATH にファイルを作成
+const upload = multer({ dest: POST_DATA_PATH });  // multer が POST_DATA_PATH にファイルを作成
 
 const main = (argv: string[]) => {
   // URLの部分が一致するもののうち一番上にある関数の処理をする
