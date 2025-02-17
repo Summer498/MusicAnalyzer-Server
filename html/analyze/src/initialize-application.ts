@@ -13,6 +13,7 @@ export const initializeApplication = async (
   mode: Mode,
   window: MusicAnalyzerWindow,
   place: HTMLDivElement,
+  audio_element: HTMLAudioElement | HTMLVideoElement
 ) => {
   window.MusicAnalyzer = await loadMusicAnalysis(tune_id, mode);
 
@@ -39,6 +40,7 @@ export const initializeApplication = async (
     romans,
     window.MusicAnalyzer.hierarchical_melody,
     d_melodies,
-    place
+    place,
+    audio_element
   );
 };

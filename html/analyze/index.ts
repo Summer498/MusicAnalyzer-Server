@@ -15,7 +15,7 @@ const main = () => {
   const tune_id = urlParams.get("tune") || "";
   const mode: Mode = urlParams.has("pr") ? "PR" : urlParams.has("tsr") ? "TSR" : "";
   updateTitle(title, tune_id, mode);
-  initializeApplication(tune_id, mode, window, piano_roll_place)
+  initializeApplication(tune_id, mode, window, piano_roll_place, audio_player)
     .then(e => WindowReflectableRegistry.instance.onWindowResized());
   new EventLoop(AccompanyToAudioRegistry.instance, audio_player).update();
   window.onresize = e => WindowReflectableRegistry.instance.onWindowResized();
