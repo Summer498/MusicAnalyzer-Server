@@ -3,7 +3,7 @@ import { loadMusicAnalysis } from "./MusicAnalysisLoader";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { bracket_hight, PianoRollBegin, PianoRollEnd } from "@music-analyzer/view-parameters";
-import { setupUI } from "@music-analyzer/piano-roll";
+import { setupUI } from "@music-analyzer/music-analyzer-application";
 import { MusicAnalyzerWindow } from "./MusicAnalyzerWindow";
 
 type Mode = "TSR" | "PR" | "";

@@ -1,4 +1,4 @@
-export { setupUI } from "./src/setup-ui.ts";
+export { setupUI } from "./src/setup-ui";
 
 export { ControllerUIs } from "./src/controller-uis";
 

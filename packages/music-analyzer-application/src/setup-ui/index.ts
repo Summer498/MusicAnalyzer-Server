@@ -6,7 +6,7 @@ import { AccompanyToAudioRegistry } from "@music-analyzer/view";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
-import { BeatElements, ChordElements, MelodyElements } from "@music-analyzer/piano-roll/src/piano-roll";
+import { BeatElements, ChordElements, MelodyElements } from "../piano-roll";
 import { ControllerUIs } from "../controller-uis";
 import { setupPianoRoll } from "./setup-piano-roll";
 import { setupControllers } from "./setup-controllers";
