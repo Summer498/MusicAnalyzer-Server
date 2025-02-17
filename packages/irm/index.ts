@@ -2,7 +2,12 @@ import { Archetype } from "./src/MelodicArchetype";
 
 export { _ArchetypeSymbol as ArchetypeSymbol } from "./src/MelodicArchetype";
 export { Archetype } from "./src/MelodicArchetype";
-export { get_color_of_Narmour_concept, get_color_on_parametric_scale } from "./src/ArchetypeColor";
+export {
+  get_color_of_Narmour_concept,
+  get_color_on_digital_parametric_scale,
+  get_color_on_intervallic_angle,
+  get_color_on_parametric_scale
+} from "./src/ArchetypeColor";
 
 const archetypes = [
   [new Archetype(["F3", "F3", "F3"])],

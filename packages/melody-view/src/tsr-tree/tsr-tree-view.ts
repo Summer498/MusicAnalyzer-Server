@@ -1,4 +1,4 @@
-import { Archetype, get_color_of_Narmour_concept } from "@music-analyzer/irm";
+import { Archetype, get_color_of_Narmour_concept, get_color_on_digital_parametric_scale } from "@music-analyzer/irm";
 import { TSRModel } from "./tsr-tree-model";
 import { black_key_prm, bracket_hight, CurrentTimeX, NoteSize } from "@music-analyzer/view-parameters";
 import { MVCView, WindowReflectableRegistry } from "@music-analyzer/view";
@@ -87,10 +87,11 @@ export class TSRView extends MVCView {
     this.ir_symbol.setAttribute("x", String(cx));
     this.ir_symbol.setAttribute("y", String(y));
     this.ir_symbol.style.fontSize = `${Math.min(w / h, bracket_hight)}em`;
-    if (0) {
+    this.ir_symbol.style.fill = get_color_of_Narmour_concept(this.archetype) || "#000";
+    if (false) {
+      this.ir_symbol.style.fill = get_color_on_digital_parametric_scale(this.archetype) || "#000";
       this.ir_symbol.style.fill = this.archetype.color || "#000";
     }
-    this.ir_symbol.style.fill = get_color_of_Narmour_concept(this.archetype) || "#000";
   }
   get strong() { return this.#strong; }
   set strong(value: boolean) {

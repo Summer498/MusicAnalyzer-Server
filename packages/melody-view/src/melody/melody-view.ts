@@ -15,7 +15,7 @@ export class MelodyView extends MVCView {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     this.svg.id = "melody-note";
     this.svg.style.fill = "#0c0";
-    if (0) {
+    if (false) {
       this.svg.style.fill = get_color_on_parametric_scale(this.model.melody_analysis.implication_realization);
       this.svg.style.fill = get_color_of_Narmour_concept(this.model.melody_analysis.implication_realization);
       this.svg.style.fill = this.model.note ? fifthChromaToColor(this.model.note, 0.75, 0.9) : "#000";
