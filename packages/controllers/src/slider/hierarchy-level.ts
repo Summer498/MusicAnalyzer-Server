@@ -16,9 +16,12 @@ export class HierarchyLevel extends Slider {
 
 export class HierarchyLevelController {
   readonly view: HTMLDivElement;
-  constructor(hierarchy_level: HierarchyLevel) {
+  readonly slider: HierarchyLevel;
+  constructor() {
+    const hierarchy_level = new HierarchyLevel();
     this.view = document.createElement("div");
     this.view.id = "hierarchy-level";
     this.view.appendChild(hierarchy_level.body);
+    this.slider = hierarchy_level;
   }
 }

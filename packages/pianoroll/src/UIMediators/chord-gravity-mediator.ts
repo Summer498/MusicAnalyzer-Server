@@ -1,10 +1,10 @@
-import { Switcher } from "@music-analyzer/controllers";
+import { Checkbox } from "@music-analyzer/controllers";
 import { SwitcherMediator } from "./switcher-mediator";
 import { ChordGravityHierarchy } from "@music-analyzer/melody-view";
 
 export class ChordGravityMediator extends SwitcherMediator<ChordGravityHierarchy> {
   constructor(
-    switcher: Switcher,
+    switcher: Checkbox,
     chord_gravities: ChordGravityHierarchy
   ) {
     super(switcher, [chord_gravities]);

@@ -9,7 +9,6 @@ import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { BeatElements, ChordElements, MelodyElements } from "@music-analyzer/piano-roll/src/piano-roll";
 import { ControllerUIs } from "./controller-uis";
-import { MelodyColorController, DMelodyController, GravityController, HierarchyLevelController, MelodyBeepController, TimeRangeController } from "@music-analyzer/controllers";
 
 const setupAnalysis = (
   beat: BeatElements,
@@ -112,13 +111,13 @@ export const setupUI = (
   const chord = new ChordElements(romans);
   const melody = new MelodyElements(hierarchical_melody, d_melodies);
 
-  const d_melody_switcher_mediator = new DMelodyMediator(controller_UIs.d_melody_switcher, melody.d_melody_collection);
-  const scale_gravity_switcher_mediator = new ScaleGravityMediator(controller_UIs.scale_gravity_switcher, melody.scale_gravities);
-  const chord_gravity_switcher_mediator = new ChordGravityMediator(controller_UIs.chord_gravity_switcher, melody.chord_gravities);
-  const hierarchy_level_slider_mediator = new HierarchyLevelMediator(controller_UIs.hierarchy_level, melody.melody_hierarchy, melody.ir_hierarchy, melody.ir_plot, melody.time_span_tree, melody.scale_gravities, melody.chord_gravities);
-  const melody_beep_switcher_mediator = new MelodyBeepMediator(controller_UIs.melody_beep_switcher, melody.melody_hierarchy);
-  const melody_beep_volume_mediator = new MelodyVolumeMediator(controller_UIs.melody_beep_volume, melody.melody_hierarchy);
-  const time_range_slider_mediator = new TimeRangeMediator(controller_UIs.time_range_slider, AccompanyToAudioRegistry.instance);
+  const d_melody_switcher_mediator = new DMelodyMediator(controller_UIs.d_melody_controller.checkbox, melody.d_melody_collection);
+  const scale_gravity_switcher_mediator = new ScaleGravityMediator(controller_UIs.gravity_controller.scale_checkbox, melody.scale_gravities);
+  const chord_gravity_switcher_mediator = new ChordGravityMediator(controller_UIs.gravity_controller.chord_checkbox, melody.chord_gravities);
+  const hierarchy_level_slider_mediator = new HierarchyLevelMediator(controller_UIs.hierarchy_controller.slider, melody.melody_hierarchy, melody.ir_hierarchy, melody.ir_plot, melody.time_span_tree, melody.scale_gravities, melody.chord_gravities);
+  const melody_beep_switcher_mediator = new MelodyBeepMediator(controller_UIs.melody_beep_controller.checkbox, melody.melody_hierarchy);
+  const melody_beep_volume_mediator = new MelodyVolumeMediator(controller_UIs.melody_beep_controller.volume, melody.melody_hierarchy);
+  const time_range_slider_mediator = new TimeRangeMediator(controller_UIs.time_range_controller.slider, AccompanyToAudioRegistry.instance);
   const piano_roll_view = setupPianoRoll(beat, chord, melody, FULL_VIEW);
 
   const controllers = setupControllers(controller_UIs, NO_CHORD);

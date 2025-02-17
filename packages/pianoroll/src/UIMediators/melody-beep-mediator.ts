@@ -1,10 +1,10 @@
 import { MelodyHierarchy } from "@music-analyzer/melody-view";
 import { SwitcherMediator } from "./switcher-mediator";
-import { Switcher } from "@music-analyzer/controllers";
+import { Checkbox } from "@music-analyzer/controllers";
 
 export class MelodyBeepMediator extends SwitcherMediator<MelodyHierarchy> {
   constructor(
-    switcher: Switcher,
+    switcher: Checkbox,
     melody_hierarchy: MelodyHierarchy,
   ) {
     switcher.input.checked = true;

@@ -1,6 +1,6 @@
 import { Controller } from "../controller";
 
-export class Switcher extends Controller {
+export class Checkbox extends Controller {
   constructor(id: string, label: string) {
     super("checkbox", id, label);
 

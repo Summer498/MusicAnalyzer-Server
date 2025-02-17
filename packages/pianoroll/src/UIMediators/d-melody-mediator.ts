@@ -1,10 +1,10 @@
-import { Switcher } from "@music-analyzer/controllers";
+import { Checkbox } from "@music-analyzer/controllers";
 import { SwitcherMediator } from "./switcher-mediator";
 import { SvgCollection } from "@music-analyzer/view";
 
 export class DMelodyMediator extends SwitcherMediator<SvgCollection> {
   constructor(
-    switcher: Switcher,
+    switcher: Checkbox,
     d_melody_collection: SvgCollection
   ) {
     super(switcher, [d_melody_collection]);

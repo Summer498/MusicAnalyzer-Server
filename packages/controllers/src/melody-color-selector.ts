@@ -31,7 +31,8 @@ export class MelodyColorSelector {
 
 export class MelodyColorController {
   readonly view: HTMLDivElement;
-  constructor(melody_color_selector: MelodyColorSelector) {
+  constructor() {
+    const melody_color_selector = new MelodyColorSelector();
     this.view = document.createElement("div");
     this.view.id = "melody-color-selector";
     this.view.style.display = "inline";
