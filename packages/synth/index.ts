@@ -47,7 +47,7 @@ export function play(
     const osc = createOscillator(
       ctx,
       gain_node,
-      "sawtooth",
+      "square",
       hz,
       detune + detune_delta * i,
     );
