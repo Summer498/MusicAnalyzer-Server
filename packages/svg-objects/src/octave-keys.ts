@@ -30,10 +30,15 @@ export class OctaveKeys extends SvgAndParam {
   }
 }
 
+const getBGs = (
+  white_key: SvgAndParams<WhiteKeySVG>,
+  black_key: SvgAndParams<BlackKeySVG>
+) => {
+  const octave_seed = Array(OctaveCount.value);
+  return octave_seed.map((_, oct) => new OctaveKeys(oct, white_key, black_key));
+};
+
 export const getOctaveKeys = (
   white_key: SvgAndParams<WhiteKeySVG>,
   black_key: SvgAndParams<BlackKeySVG>
-) =>
-  new SvgAndParams(
-    [...Array(OctaveCount.value)].map((_, oct) => new OctaveKeys(oct, white_key, black_key)),
-  );
+) => new SvgAndParams(getBGs(white_key, black_key));

@@ -26,8 +26,14 @@ export class WhiteBG_SVG extends SvgAndParam {
   }
 }
 
-const getOctaveBgs = (oct: number) => [...Array(7)].map((_, white_index) => new WhiteBG_SVG(oct, white_index));
+const getOctaveBgs = (oct: number) => {
+  const white_key_seed = Array(7);
+  return white_key_seed.map((_, white_index) => new WhiteBG_SVG(oct, white_index));
+};
 
-export const getWhiteBGs = () => new SvgAndParams(
-  [...Array(OctaveCount.value)].map((_, oct) => getOctaveBgs(oct)).flat()
-);
+const getBGs = () => {
+  const octave_seed = Array(OctaveCount.value);
+  return octave_seed.map((_, oct) => getOctaveBgs(oct)).flat();
+};
+
+export const getWhiteBGs = () => new SvgAndParams(getBGs());

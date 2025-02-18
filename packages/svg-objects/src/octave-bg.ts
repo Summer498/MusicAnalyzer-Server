@@ -30,9 +30,15 @@ export class OctaveBG extends SvgAndParam {
   }
 }
 
+const getBGs = (
+  white_BGs: SvgAndParams<WhiteBG_SVG>,
+  black_BGs: SvgAndParams<BlackBG_SVG>
+) => {
+  const octave_seed = Array(OctaveCount.value);
+  return octave_seed.map((_, oct) => new OctaveBG(oct, white_BGs, black_BGs));
+};
+
 export const getOctaveBGs = (
   white_BGs: SvgAndParams<WhiteBG_SVG>,
   black_BGs: SvgAndParams<BlackBG_SVG>
-) => new SvgAndParams(
-  [...Array(OctaveCount.value)].map((_, oct) => new OctaveBG(oct, white_BGs, black_BGs))
-);
+) => new SvgAndParams(getBGs(white_BGs,black_BGs));
