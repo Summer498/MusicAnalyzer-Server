@@ -5,7 +5,7 @@ export const setupAnalysis = (
   chord: ChordElements,
   melody: MelodyElements,
 ) => {
-  const analysis_view = {
+  const analysis_view: { readonly svg: SVGGElement } = {
     svg: document.createElementNS("http://www.w3.org/2000/svg", "g")
   };
   analysis_view.svg.appendChild(beat.beat_bars.svg);
