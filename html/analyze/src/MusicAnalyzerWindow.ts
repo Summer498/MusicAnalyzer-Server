@@ -1,7 +1,6 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
-import { MusicXML } from "@music-analyzer/gttm";
-import { GRP, MTR, D_TSR, D_PRR } from "@music-analyzer/gttm";
+import { GroupingStructure, IProlongationalReduction, ITimeSpanReduction, MetricalStructure, MusicXML } from "@music-analyzer/gttm";
 
 export type MusicAnalyzer = {
   readonly roman: TimeAndRomanAnalysis[],
@@ -9,10 +8,10 @@ export type MusicAnalyzer = {
   readonly melody: IMelodyModel[],
   readonly musicxml?: MusicXML,
   readonly GTTM: {
-    readonly grouping?: GRP,
-    readonly metric?: MTR,
-    readonly time_span?: D_TSR,
-    readonly prolongation?: D_PRR,
+    readonly grouping?: GroupingStructure,
+    readonly metric?: MetricalStructure,
+    readonly time_span?: ITimeSpanReduction,
+    readonly prolongation?: IProlongationalReduction,
   }
 }
 

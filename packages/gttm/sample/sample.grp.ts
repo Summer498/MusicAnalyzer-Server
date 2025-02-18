@@ -1,4 +1,4 @@
-import { GRP } from "../src/GRP";
+import { GroupingStructure } from "../src/GRP";
 
 export const do_re_mi_grp_xml = `
 <?xml version="1.0" encoding="UTF-8"?>
@@ -141,7 +141,7 @@ const parser = new XMLParser(options);
 export const do_re_mi_grp = parser.parse(do_re_mi_grp_xml);
 
 
-export const do_re_mi_grp_raw: GRP = {
+export const do_re_mi_grp_raw: GroupingStructure = {
   GPR: {
     part: {
       id: "P1", group: {

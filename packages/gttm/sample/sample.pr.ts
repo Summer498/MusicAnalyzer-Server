@@ -1,4 +1,4 @@
-import { D_PRR } from "../src/PR";
+import { IProlongationalReduction } from "../src/PR";
 
 export const chopin_op18_pr_xml = `
 <?xml version="1.0" encoding="UTF-8"?>
@@ -285,7 +285,7 @@ import { options } from "../sandbox";
 const parser = new XMLParser(options);
 export const chopin_op18_pr = parser.parse(chopin_op18_pr_xml);
 
-export const chopin_op18_pr_raw: D_PRR = {
+export const chopin_op18_pr_raw: IProlongationalReduction = {
   prtree:
   {
     pr: {

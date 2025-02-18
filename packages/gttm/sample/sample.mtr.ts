@@ -1,4 +1,4 @@
-import { MTR } from "../src/MTR";
+import { MetricalStructure } from "../src/MTR";
 
 export const do_re_mi_mtr_xml = `
 <?xml version="1.0" encoding="UTF-8"?>
@@ -635,7 +635,7 @@ import { options } from "../sandbox";
 const parser = new XMLParser(options);
 export const do_re_mi_mtr = parser.parse(do_re_mi_mtr_xml);
 
-export const do_re_mi_mtr_raw: MTR = {
+export const do_re_mi_mtr_raw: MetricalStructure = {
   MPR: {
     part: {
       id: "P1", metric: [
