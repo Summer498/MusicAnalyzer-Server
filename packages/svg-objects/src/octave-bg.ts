@@ -18,10 +18,6 @@ export class OctaveBG extends SvgAndParam {
     super();
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.svg.id = "octave-BG";
-    console.log("white_BG");
-    console.log(white_BGs);
-    console.log("black_BG");
-    console.log(black_BGs);
     this.white_BGs = white_BGs;
     this.black_BGs = black_BGs;
     white_BGs.children.forEach(
@@ -55,7 +51,7 @@ export class OctaveBG extends SvgAndParam {
 }
 
 interface IOctaveBG<T> {
-  children: T[]
+  readonly children: T[]
 }
 const getBGs = (
   white_BGs: IOctaveBGs<WhiteBG_SVG>,
@@ -63,14 +59,12 @@ const getBGs = (
 ) => {
   const octave_seed = [...Array(OctaveCount.value)];
   const ret = octave_seed.map((_, oct) => new OctaveBG(oct, white_BGs, black_BGs));
-  console.log("getBGs");
-  console.log(ret);
   return ret;
 };
 
 
 interface IOctaveBGs<T> {
-  children: IOctaveBG<T>[]
+  readonly children: IOctaveBG<T>[]
 }
 export const getOctaveBGs = (
   white_BGs: IOctaveBGs<WhiteBG_SVG>,
@@ -89,10 +83,6 @@ export class OctaveBGs {
     this.svg.id = "octave-BGs";
     const white_bgs = getWhiteBGs();
     const black_bgs = getBlackBGs();
-    console.log("white_bgs");
-    console.log(white_bgs);
-    console.log("black_bgs");
-    console.log(black_bgs);
     getOctaveBGs(white_bgs, black_bgs).svg
       .forEach(e => this.svg.appendChild(e.svg));
   }

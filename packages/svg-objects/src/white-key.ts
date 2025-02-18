@@ -27,30 +27,23 @@ export class WhiteKeySVG extends SvgAndParam {
   }
 }
 
-type OctaveKey = {
-  children: WhiteKeySVG[]
-}
-const getOctaveBGs = (oct: number): OctaveKey => {
-  const white_seed = [...Array(7)];
-  const ret = {
-    children: white_seed.map((_, white_index) => new WhiteKeySVG(oct, white_index))
-  };
-  console.log("getOctaveBgs");
-  console.log(ret);
-  return ret;
-};
+class OctaveKey {
+  readonly children: WhiteKeySVG[];
+  constructor(oct: number) {
+    const white_seed = [...Array(7)];
+    this.children = white_seed.map((_, white_index) => new WhiteKeySVG(oct, white_index));
 
-type OctaveKeys = {
-  children: OctaveKey[]
+  }
 }
-const getBGs = (): OctaveKeys => {
-  const octave_seed = [...Array(OctaveCount.value)];
-  const ret = {
-    children: octave_seed.map((_, oct) => getOctaveBGs(oct))
-  };
-  console.log("getBGs");
-  console.log(ret);
-  return ret;
-};
+const getOctaveBGs = (oct: number) => new OctaveKey(oct);
+
+class OctaveKeys {
+  readonly children: OctaveKey[];
+  constructor() {
+    const octave_seed = [...Array(OctaveCount.value)];
+    this.children = octave_seed.map((_, oct) => getOctaveBGs(oct));
+  }
+}
+const getBGs = () => new OctaveKeys();
 
 export const getWhiteKeys = () => getBGs();

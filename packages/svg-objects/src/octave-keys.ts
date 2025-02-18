@@ -18,10 +18,6 @@ export class OctaveKey extends SvgAndParam {
     super();
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.svg.id = "octave-key";
-    console.log("white_key");
-    console.log(white_key);
-    console.log("black_key");
-    console.log(black_key);
     this.white_key = white_key;
     this.black_key = black_key;
     white_key.children.forEach(
@@ -55,7 +51,7 @@ export class OctaveKey extends SvgAndParam {
 }
 
 interface IOctaveKey<T> {
-  children: T[]
+  readonly children: T[]
 }
 const getBGs = (
   white_key: IOctaveKeys<WhiteKeySVG>,
@@ -63,21 +59,17 @@ const getBGs = (
 ) => {
   const octave_seed = [...Array(OctaveCount.value)];
   const ret = octave_seed.map((_, oct) => new OctaveKey(oct, white_key, black_key));
-  console.log("getBGs");
-  console.log(ret);
   return ret;
 };
 
 interface IOctaveKeys<T> {
-  children: IOctaveKey<T>[]
+  readonly children: IOctaveKey<T>[]
 }
 export const getOctaveKeys = (
   white_key: IOctaveKeys<WhiteKeySVG>,
   black_key: IOctaveKeys<BlackKeySVG>,
 ) => {
   const ret = new SvgAndParamsReflectable(getBGs(white_key, black_key));
-  console.log("getOctaveKeys");
-  console.log(ret);
   return ret;
 };
 
@@ -88,10 +80,6 @@ export class OctaveKeys {
     this.svg.id = "octave-keys";
     const white_keys = getWhiteKeys();
     const black_keys = getBlackKeys();
-    console.log("white_keys");
-    console.log(white_keys);
-    console.log("black_keys");
-    console.log(black_keys);
     getOctaveKeys(white_keys, black_keys).svg
       .forEach(e => this.svg.appendChild(e.svg));
   }

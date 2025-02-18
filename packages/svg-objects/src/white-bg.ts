@@ -27,7 +27,7 @@ export class WhiteBG_SVG extends SvgAndParam {
 }
 
 type OctaveBG = {
-  children: WhiteBG_SVG[]
+  readonly children: WhiteBG_SVG[]
 }
 const getOctaveBgs = (oct: number): OctaveBG => {
   const white_key_seed = [...Array(7)];
@@ -40,7 +40,7 @@ const getOctaveBgs = (oct: number): OctaveBG => {
 };
 
 type OctaveBGs = {
-  children: OctaveBG[]
+  readonly children: OctaveBG[]
 }
 const getBGs = (): OctaveBGs => {
   const octave_seed = [...Array(OctaveCount.value)];
