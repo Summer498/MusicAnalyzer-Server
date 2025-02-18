@@ -5,7 +5,18 @@ export abstract class SvgAndParam implements WindowReflectable {
   abstract onWindowResized(): void
 }
 
-export class SvgAndParams<T extends SvgAndParam> implements WindowReflectable {
+export abstract class SvgAndParams<T extends SvgAndParam> implements WindowReflectable {
+  readonly svg: SVGGElement;
+  readonly abstract children: T[];
+  constructor() {
+    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  }
+  onWindowResized() {
+    this.children.forEach(e => e.onWindowResized());
+  }
+}
+
+export class SvgAndParamsReflectable<T extends SvgAndParam> implements WindowReflectable {
   readonly svg: T[];
   constructor(svg_and_params: T[]) {
     this.svg = svg_and_params;

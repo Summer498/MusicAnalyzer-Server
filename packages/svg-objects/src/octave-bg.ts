@@ -1,6 +1,6 @@
 import { octave_height, OctaveCount, PianoRollWidth } from "@music-analyzer/view-parameters";
 import { BlackBG_SVG } from "./black-bg";
-import { SvgAndParam, SvgAndParams } from "./svg-and-param";
+import { SvgAndParam, SvgAndParamsReflectable } from "./svg-and-param";
 import { WhiteBG_SVG } from "./white-bg";
 
 export class OctaveBG extends SvgAndParam {
@@ -8,7 +8,7 @@ export class OctaveBG extends SvgAndParam {
   readonly y: number;
   readonly oct: number;
   readonly height: number;
-  constructor(oct: number, white_BGs: SvgAndParams<WhiteBG_SVG>, black_BGs: SvgAndParams<BlackBG_SVG>) {
+  constructor(oct: number, white_BGs: SvgAndParamsReflectable<WhiteBG_SVG>, black_BGs: SvgAndParamsReflectable<BlackBG_SVG>) {
     super();
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.svg.id = "octave-BG";
@@ -31,14 +31,14 @@ export class OctaveBG extends SvgAndParam {
 }
 
 const getBGs = (
-  white_BGs: SvgAndParams<WhiteBG_SVG>,
-  black_BGs: SvgAndParams<BlackBG_SVG>
+  white_BGs: SvgAndParamsReflectable<WhiteBG_SVG>,
+  black_BGs: SvgAndParamsReflectable<BlackBG_SVG>
 ) => {
   const octave_seed = Array(OctaveCount.value);
   return octave_seed.map((_, oct) => new OctaveBG(oct, white_BGs, black_BGs));
 };
 
 export const getOctaveBGs = (
-  white_BGs: SvgAndParams<WhiteBG_SVG>,
-  black_BGs: SvgAndParams<BlackBG_SVG>
-) => new SvgAndParams(getBGs(white_BGs,black_BGs));
+  white_BGs: SvgAndParamsReflectable<WhiteBG_SVG>,
+  black_BGs: SvgAndParamsReflectable<BlackBG_SVG>
+) => new SvgAndParamsReflectable(getBGs(white_BGs, black_BGs));

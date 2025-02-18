@@ -1,6 +1,6 @@
 import { octave_height, OctaveCount, PianoRollWidth } from "@music-analyzer/view-parameters";
 import { BlackKeySVG } from "./black-key";
-import { SvgAndParam, SvgAndParams } from "./svg-and-param";
+import { SvgAndParam, SvgAndParamsReflectable } from "./svg-and-param";
 import { WhiteKeySVG } from "./white-key";
 
 export class OctaveKeys extends SvgAndParam {
@@ -8,7 +8,7 @@ export class OctaveKeys extends SvgAndParam {
   readonly y: number;
   readonly oct: number;
   readonly height: number;
-  constructor(oct: number, white_key: SvgAndParams<WhiteKeySVG>, black_key: SvgAndParams<BlackKeySVG>) {
+  constructor(oct: number, white_key: SvgAndParamsReflectable<WhiteKeySVG>, black_key: SvgAndParamsReflectable<BlackKeySVG>) {
     super();
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.svg.id = "octave-key";
@@ -31,14 +31,14 @@ export class OctaveKeys extends SvgAndParam {
 }
 
 const getBGs = (
-  white_key: SvgAndParams<WhiteKeySVG>,
-  black_key: SvgAndParams<BlackKeySVG>
+  white_key: SvgAndParamsReflectable<WhiteKeySVG>,
+  black_key: SvgAndParamsReflectable<BlackKeySVG>
 ) => {
   const octave_seed = Array(OctaveCount.value);
   return octave_seed.map((_, oct) => new OctaveKeys(oct, white_key, black_key));
 };
 
 export const getOctaveKeys = (
-  white_key: SvgAndParams<WhiteKeySVG>,
-  black_key: SvgAndParams<BlackKeySVG>
-) => new SvgAndParams(getBGs(white_key, black_key));
+  white_key: SvgAndParamsReflectable<WhiteKeySVG>,
+  black_key: SvgAndParamsReflectable<BlackKeySVG>
+) => new SvgAndParamsReflectable(getBGs(white_key, black_key));
