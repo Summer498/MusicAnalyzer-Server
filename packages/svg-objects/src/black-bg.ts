@@ -26,17 +26,27 @@ export class BlackBG_SVG extends SvgAndParam {
   }
 }
 
-const getOctaveBgs = (oct: number) => {
+type OctaveBG = {
+  children: BlackBG_SVG[]
+}
+const getOctaveBgs = (oct: number): OctaveBG => {
   const black_key_seed = [...Array(5)];
-  const ret = black_key_seed.map((_, black_index) => new BlackBG_SVG(oct, black_index));
+  const ret = {
+    children: black_key_seed.map((_, black_index) => new BlackBG_SVG(oct, black_index))
+  };
   console.log("getOctaveBgs");
   console.log(ret);
   return ret;
 };
 
-const getBGs = () => {
+type OctaveBGs = {
+  children: OctaveBG[]
+}
+const getBGs = (): OctaveBGs => {
   const octave_seed = [...Array(OctaveCount.value)];
-  const ret = octave_seed.map((_, oct) => getOctaveBgs(oct));
+  const ret = {
+    children: octave_seed.map((_, oct) => getOctaveBgs(oct))
+  };
   console.log("getBGs");
   console.log(ret);
   return ret;

@@ -8,12 +8,12 @@ export class OctaveBG extends SvgAndParam {
   readonly y: number;
   readonly oct: number;
   readonly height: number;
-  readonly white_BGs: WhiteBG_SVG[][];
-  readonly black_BGs: BlackBG_SVG[][];
+  readonly white_BGs: IOctaveBGs<WhiteBG_SVG>;
+  readonly black_BGs: IOctaveBGs<BlackBG_SVG>;
   constructor(
     oct: number,
-    white_BGs: WhiteBG_SVG[][],
-    black_BGs: BlackBG_SVG[][],
+    white_BGs: IOctaveBGs<WhiteBG_SVG>,
+    black_BGs: IOctaveBGs<BlackBG_SVG>,
   ) {
     super();
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
@@ -24,12 +24,12 @@ export class OctaveBG extends SvgAndParam {
     console.log(black_BGs);
     this.white_BGs = white_BGs;
     this.black_BGs = black_BGs;
-    white_BGs.forEach(
-      e => e.filter(e => e.oct === oct)
+    white_BGs.children.forEach(
+      e => e.children.filter(e => e.oct === oct)
         .forEach(e => this.svg.appendChild(e.svg))
     );
-    black_BGs.forEach(
-      e => e.filter(e => e.oct === oct)
+    black_BGs.children.forEach(
+      e => e.children.filter(e => e.oct === oct)
         .forEach(e => this.svg.appendChild(e.svg))
     );
     this.y = octave_height * oct;
@@ -41,22 +41,25 @@ export class OctaveBG extends SvgAndParam {
     this.svg.style.y = String(this.y);
     this.svg.style.width = String(PianoRollWidth.value);
     this.svg.style.height = String(this.height);
-    this.white_BGs.forEach(e=>{
-      e.forEach(e=>{
+    this.white_BGs.children.forEach(e => {
+      e.children.forEach(e => {
         e.onWindowResized();
       });
     });
-    this.black_BGs.forEach(e=>{
-      e.forEach(e=>{
+    this.black_BGs.children.forEach(e => {
+      e.children.forEach(e => {
         e.onWindowResized();
       });
     });
   }
 }
 
+interface IOctaveBG<T> {
+  children: T[]
+}
 const getBGs = (
-  white_BGs: WhiteBG_SVG[][],
-  black_BGs: BlackBG_SVG[][],
+  white_BGs: IOctaveBGs<WhiteBG_SVG>,
+  black_BGs: IOctaveBGs<BlackBG_SVG>,
 ) => {
   const octave_seed = [...Array(OctaveCount.value)];
   const ret = octave_seed.map((_, oct) => new OctaveBG(oct, white_BGs, black_BGs));
@@ -65,9 +68,13 @@ const getBGs = (
   return ret;
 };
 
+
+interface IOctaveBGs<T> {
+  children: IOctaveBG<T>[]
+}
 export const getOctaveBGs = (
-  white_BGs: WhiteBG_SVG[][],
-  black_BGs: BlackBG_SVG[][],
+  white_BGs: IOctaveBGs<WhiteBG_SVG>,
+  black_BGs: IOctaveBGs<BlackBG_SVG>,
 ) => {
   const ret = new SvgAndParamsReflectable(getBGs(white_BGs, black_BGs));
   console.log("getOctaveKeys");
