@@ -1,5 +1,5 @@
 import { black_bgs_prm, BlackPosition, octave_height, OctaveCount, PianoRollWidth } from "@music-analyzer/view-parameters";
-import { SvgAndParam, SvgAndParams, SvgAndParamsReflectable } from "./svg-and-param";
+import { SvgAndParam } from "./svg-and-param";
 
 export class BlackBG_SVG extends SvgAndParam {
   readonly svg: SVGRectElement;
@@ -27,13 +27,19 @@ export class BlackBG_SVG extends SvgAndParam {
 }
 
 const getOctaveBgs = (oct: number) => {
-  const black_key_seed = Array(5);
-  return black_key_seed.map((_, black_index) => new BlackBG_SVG(oct, black_index));
+  const black_key_seed = [...Array(5)];
+  const ret = black_key_seed.map((_, black_index) => new BlackBG_SVG(oct, black_index));
+  console.log("getOctaveBgs");
+  console.log(ret);
+  return ret;
 };
 
 const getBGs = () => {
-  const octave_seed = Array(OctaveCount.value);
-  return octave_seed.map((_, oct) => getOctaveBgs(oct)).flat();
+  const octave_seed = [...Array(OctaveCount.value)];
+  const ret = octave_seed.map((_, oct) => getOctaveBgs(oct));
+  console.log("getBGs");
+  console.log(ret);
+  return ret;
 };
 
-export const getBlackBGs = () => new SvgAndParamsReflectable(getBGs());
+export const getBlackBGs = () => getBGs();

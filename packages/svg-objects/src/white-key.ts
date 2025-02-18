@@ -1,5 +1,5 @@
 import { black_key_prm, octave_height, OctaveCount, PianoRollBegin, white_key_prm } from "@music-analyzer/view-parameters";
-import { SvgAndParam, SvgAndParamsReflectable } from "./svg-and-param";
+import { SvgAndParam } from "./svg-and-param";
 import { mod } from "@music-analyzer/math";
 
 export class WhiteKeySVG extends SvgAndParam {
@@ -28,13 +28,19 @@ export class WhiteKeySVG extends SvgAndParam {
 }
 
 const getOctaveBGs = (oct: number) => {
-  const white_seed = Array(7);
-  return white_seed.map((_, white_index) => new WhiteKeySVG(oct, white_index));
+  const white_seed = [...Array(7)];
+  const ret = white_seed.map((_, white_index) => new WhiteKeySVG(oct, white_index));
+  console.log("getOctaveBgs");
+  console.log(ret);
+  return ret;
 };
 
 const getBGs = () => {
-  const octave_seed = Array(OctaveCount.value);
-  return octave_seed.map((_, oct) => getOctaveBGs(oct)).flat();
+  const octave_seed = [...Array(OctaveCount.value)];
+  const ret = octave_seed.map((_, oct) => getOctaveBGs(oct));
+  console.log("getBGs");
+  console.log(ret);
+  return ret;
 };
 
-export const getWhiteKeys = () => new SvgAndParamsReflectable(getBGs());
+export const getWhiteKeys = () => getBGs();

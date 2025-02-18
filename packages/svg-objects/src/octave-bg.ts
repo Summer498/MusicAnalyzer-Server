@@ -1,6 +1,6 @@
 import { octave_height, OctaveCount, PianoRollWidth } from "@music-analyzer/view-parameters";
-import { BlackBG_SVG, getBlackBGs } from "./black-bg";
 import { SvgAndParam, SvgAndParamsReflectable } from "./svg-and-param";
+import { BlackBG_SVG, getBlackBGs } from "./black-bg";
 import { getWhiteBGs, WhiteBG_SVG } from "./white-bg";
 
 export class OctaveBG extends SvgAndParam {
@@ -8,16 +8,30 @@ export class OctaveBG extends SvgAndParam {
   readonly y: number;
   readonly oct: number;
   readonly height: number;
-  constructor(oct: number, white_BGs: SvgAndParamsReflectable<WhiteBG_SVG>, black_BGs: SvgAndParamsReflectable<BlackBG_SVG>) {
+  readonly white_BGs: WhiteBG_SVG[][];
+  readonly black_BGs: BlackBG_SVG[][];
+  constructor(
+    oct: number,
+    white_BGs: WhiteBG_SVG[][],
+    black_BGs: BlackBG_SVG[][],
+  ) {
     super();
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.svg.id = "octave-BG";
-    white_BGs.svg
-      .filter(e => e.oct === oct)
-      .forEach(e => this.svg.appendChild(e.svg));
-    black_BGs.svg
-      .filter(e => e.oct === oct)
-      .map(e => this.svg.appendChild(e.svg));
+    console.log("white_BG");
+    console.log(white_BGs);
+    console.log("black_BG");
+    console.log(black_BGs);
+    this.white_BGs = white_BGs;
+    this.black_BGs = black_BGs;
+    white_BGs.forEach(
+      e => e.filter(e => e.oct === oct)
+        .forEach(e => this.svg.appendChild(e.svg))
+    );
+    black_BGs.forEach(
+      e => e.filter(e => e.oct === oct)
+        .forEach(e => this.svg.appendChild(e.svg))
+    );
     this.y = octave_height * oct;
     this.height = octave_height;
     this.oct = oct;
@@ -27,21 +41,39 @@ export class OctaveBG extends SvgAndParam {
     this.svg.style.y = String(this.y);
     this.svg.style.width = String(PianoRollWidth.value);
     this.svg.style.height = String(this.height);
+    this.white_BGs.forEach(e=>{
+      e.forEach(e=>{
+        e.onWindowResized();
+      });
+    });
+    this.black_BGs.forEach(e=>{
+      e.forEach(e=>{
+        e.onWindowResized();
+      });
+    });
   }
 }
 
 const getBGs = (
-  white_BGs: SvgAndParamsReflectable<WhiteBG_SVG>,
-  black_BGs: SvgAndParamsReflectable<BlackBG_SVG>
+  white_BGs: WhiteBG_SVG[][],
+  black_BGs: BlackBG_SVG[][],
 ) => {
-  const octave_seed = Array(OctaveCount.value);
-  return octave_seed.map((_, oct) => new OctaveBG(oct, white_BGs, black_BGs));
+  const octave_seed = [...Array(OctaveCount.value)];
+  const ret = octave_seed.map((_, oct) => new OctaveBG(oct, white_BGs, black_BGs));
+  console.log("getBGs");
+  console.log(ret);
+  return ret;
 };
 
 export const getOctaveBGs = (
-  white_BGs: SvgAndParamsReflectable<WhiteBG_SVG>,
-  black_BGs: SvgAndParamsReflectable<BlackBG_SVG>
-) => new SvgAndParamsReflectable(getBGs(white_BGs, black_BGs));
+  white_BGs: WhiteBG_SVG[][],
+  black_BGs: BlackBG_SVG[][],
+) => {
+  const ret = new SvgAndParamsReflectable(getBGs(white_BGs, black_BGs));
+  console.log("getOctaveKeys");
+  console.log(ret);
+  return ret;
+};
 
 export class OctaveBGs {
   readonly svg: SVGGElement;
@@ -50,6 +82,10 @@ export class OctaveBGs {
     this.svg.id = "octave-BGs";
     const white_bgs = getWhiteBGs();
     const black_bgs = getBlackBGs();
+    console.log("white_bgs");
+    console.log(white_bgs);
+    console.log("black_bgs");
+    console.log(black_bgs);
     getOctaveBGs(white_bgs, black_bgs).svg
       .forEach(e => this.svg.appendChild(e.svg));
   }
