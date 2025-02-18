@@ -30,6 +30,9 @@ export class OctaveBG extends SvgAndParam {
   }
 }
 
-export const getOctaveBGs = (white_BGs: SvgAndParams<WhiteBG_SVG>, black_BGs: SvgAndParams<BlackBG_SVG>) => new SvgAndParams(
+export const getOctaveBGs = (
+  white_BGs: SvgAndParams<WhiteBG_SVG>,
+  black_BGs: SvgAndParams<BlackBG_SVG>
+) => new SvgAndParams(
   [...Array(OctaveCount.value)].map((_, oct) => new OctaveBG(oct, white_BGs, black_BGs))
 );

@@ -27,8 +27,8 @@ export class WhiteKeySVG extends SvgAndParam {
   }
 }
 
+const getOctaveBGs = (oct: number) => [...Array(7)].map((_, white_index) => new WhiteKeySVG(oct, white_index));
+
 export const getWhiteKeys = () => new SvgAndParams(
-  [...Array(OctaveCount.value)].map((_, oct) =>
-    [...Array(7)].map((_, white_index) => new WhiteKeySVG(oct, white_index))
-  ).flat()
+  [...Array(OctaveCount.value)].map((_, oct) => getOctaveBGs(oct)).flat()
 );

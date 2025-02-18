@@ -26,8 +26,8 @@ export class BlackKeySVG extends SvgAndParam {
   }
 }
 
+const getOctaveBgs = (oct: number) => [...Array(5)].map((_, j) => new BlackKeySVG(oct, j));
+
 export const getBlackKeys = () => new SvgAndParams(
-  [...Array(OctaveCount.value)].map((_, oct) =>
-    [...Array(5)].map((_, j) => new BlackKeySVG(oct, j))
-  ).flat()
+  [...Array(OctaveCount.value)].map((_, oct) => getOctaveBgs(oct)).flat()
 );

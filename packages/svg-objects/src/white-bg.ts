@@ -26,8 +26,8 @@ export class WhiteBG_SVG extends SvgAndParam {
   }
 }
 
+const getOctaveBgs = (oct: number) => [...Array(7)].map((_, white_index) => new WhiteBG_SVG(oct, white_index));
+
 export const getWhiteBGs = () => new SvgAndParams(
-  [...Array(OctaveCount.value)].map((_, oct) =>
-    [...Array(7)].map((_, white_index) => new WhiteBG_SVG(oct, white_index))
-  ).flat()
+  [...Array(OctaveCount.value)].map((_, oct) => getOctaveBgs(oct)).flat()
 );
