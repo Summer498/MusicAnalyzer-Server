@@ -1,5 +1,5 @@
-import { octave_height, PianoRollWidth, white_bgs_prm, WhitePosition } from "@music-analyzer/view-parameters";
-import { SvgAndParam } from "./svg-and-param";
+import { octave_height, OctaveCount, PianoRollWidth, white_bgs_prm, WhitePosition } from "@music-analyzer/view-parameters";
+import { SvgAndParam, SvgAndParams } from "./svg-and-param";
 
 export class WhiteBG_SVG extends SvgAndParam {
   readonly svg: SVGRectElement;
@@ -25,3 +25,9 @@ export class WhiteBG_SVG extends SvgAndParam {
     this.svg.style.height = String(this.height);
   }
 }
+
+export const getWhiteBGs = () => new SvgAndParams(
+  [...Array(OctaveCount.value)].map((_, oct) =>
+    [...Array(7)].map((_, white_index) => new WhiteBG_SVG(oct, white_index))
+  ).flat()
+);

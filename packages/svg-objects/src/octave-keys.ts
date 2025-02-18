@@ -1,4 +1,4 @@
-import { octave_height, PianoRollWidth } from "@music-analyzer/view-parameters";
+import { octave_height, OctaveCount, PianoRollWidth } from "@music-analyzer/view-parameters";
 import { BlackKeySVG } from "./black-key";
 import { SvgAndParam, SvgAndParams } from "./svg-and-param";
 import { WhiteKeySVG } from "./white-key";
@@ -29,3 +29,8 @@ export class OctaveKeys extends SvgAndParam {
     this.svg.style.height = String(this.height);
   }
 }
+
+export const getOctaveKeys = (white_key: SvgAndParams<WhiteKeySVG>, black_key: SvgAndParams<BlackKeySVG>) =>
+  new SvgAndParams(
+    [...Array(OctaveCount.value)].map((_, oct) => new OctaveKeys(oct, white_key, black_key)),
+  );

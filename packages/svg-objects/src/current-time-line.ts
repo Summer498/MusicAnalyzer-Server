@@ -17,3 +17,5 @@ export class CurrentTimeLine implements WindowReflectable {
     this.svg.setAttribute("y2", `${PianoRollHeight.value}`);
   }
 }
+
+export const getCurrentTimeLine = () => new CurrentTimeLine();
