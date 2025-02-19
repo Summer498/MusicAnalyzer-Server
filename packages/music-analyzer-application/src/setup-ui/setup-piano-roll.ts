@@ -1,4 +1,4 @@
-import { getCurrentTimeLine, PianoRoll } from "@music-analyzer/svg-objects";
+import { CurrentTimeLine, PianoRoll } from "@music-analyzer/svg-objects";
 import { BeatElements, ChordElements, MelodyElements } from "../piano-roll";
 import { setupAnalysis } from "./setup-analysis";
 import { OctaveBGs } from "@music-analyzer/svg-objects/src/octave-bg";
@@ -10,8 +10,9 @@ export const setupPianoRoll = (
   melody: MelodyElements,
   FULL_VIEW: boolean
 ) => {
-  const octave_bgs = new OctaveBGs();    
+  const octave_bgs = new OctaveBGs();
   const octave_keys = new OctaveKeys();
+  const current_time = new CurrentTimeLine();
 
   const analysis_view = setupAnalysis(beat, chord, melody);
 
@@ -20,7 +21,7 @@ export const setupPianoRoll = (
   piano_roll_view.svg.appendChild(analysis_view.svg);
   piano_roll_view.svg.appendChild(octave_keys.svg);
   if (!FULL_VIEW) {
-    piano_roll_view.svg.appendChild(getCurrentTimeLine().svg);
+    piano_roll_view.svg.appendChild(current_time.svg);
   }
   return piano_roll_view;
 };
