@@ -1,5 +1,5 @@
 import { analyzeMelody } from "@music-analyzer/melody-analyze";
-import { TS } from "@music-analyzer/gttm";
+import { TimeSpan } from "@music-analyzer/gttm";
 import { MusicXML } from "@music-analyzer/gttm";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { ReductionElement } from "@music-analyzer/gttm";
@@ -8,7 +8,7 @@ import { getTimeAndMelodyFromTS } from "./TimeSpanMapping";
 export const getHierarchicalMelody = (
   measure: number,
   reduction: ReductionElement,
-  matrix: TS[][],
+  matrix: TimeSpan[][],
   musicxml: MusicXML,
   roman: TimeAndRomanAnalysis[]
 ) => {

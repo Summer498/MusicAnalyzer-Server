@@ -1,13 +1,13 @@
 import { MusicXML, Pitch, } from "@music-analyzer/gttm";
 import { getChroma } from "@music-analyzer/tonal-objects";
 import { TimeAndMelody } from "@music-analyzer/melody-analyze";
-import { TS } from "@music-analyzer/gttm";
+import { TimeSpan } from "@music-analyzer/gttm";
 import { ReductionElement } from "@music-analyzer/gttm";
 
 const calcChroma = (pitch: Pitch) => 12 + pitch.octave * 12 + (pitch.alter || 0) + getChroma(pitch.step);
 export const getTimeAndMelodyFromTS = (
   element: ReductionElement,
-  duration_data: TS[][],
+  duration_data: TimeSpan[][],
   musicxml: MusicXML
 ): TimeAndMelody => {
   const leftend = element.getLeftEnd();
