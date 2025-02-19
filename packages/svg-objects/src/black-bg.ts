@@ -1,4 +1,4 @@
-import { black_bgs_prm, BlackPosition, octave_height, PianoRollWidth } from "@music-analyzer/view-parameters";
+import { BlackBGsPrm, BlackPosition, OctaveHeight, PianoRollWidth } from "@music-analyzer/view-parameters";
 
 export class BlackBG_SVG {
   readonly svg: SVGRectElement;
@@ -9,12 +9,12 @@ export class BlackBG_SVG {
   constructor(oct: number, black_index: number) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     this.svg.id = "black-BG";
-    this.svg.style.fill = black_bgs_prm.fill;
-    this.svg.style.stroke = black_bgs_prm.stroke;
+    this.svg.style.fill = BlackBGsPrm.fill;
+    this.svg.style.stroke = BlackBGsPrm.stroke;
     this.oct = oct;
-    this.y = octave_height * oct + black_bgs_prm.height * BlackPosition.value[black_index];
-    this.width = black_bgs_prm.width;
-    this.height = black_bgs_prm.height;
+    this.y = OctaveHeight.value * oct + BlackBGsPrm.height * BlackPosition.value[black_index];
+    this.width = BlackBGsPrm.width;
+    this.height = BlackBGsPrm.height;
   }
   onWindowResized() {
     this.svg.style.x = String(0);

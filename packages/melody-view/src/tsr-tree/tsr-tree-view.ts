@@ -1,6 +1,6 @@
 import { Archetype, get_color_of_Narmour_concept, get_color_on_digital_parametric_scale } from "@music-analyzer/irm";
 import { TSRModel } from "./tsr-tree-model";
-import { black_key_prm, bracket_hight, CurrentTimeX, NoteSize } from "@music-analyzer/view-parameters";
+import { BlackKeyPrm, bracket_hight, CurrentTimeX, NoteSize } from "@music-analyzer/view-parameters";
 import { MVCView, WindowReflectableRegistry } from "@music-analyzer/view";
 
 export class TSRView extends MVCView {
@@ -43,8 +43,8 @@ export class TSRView extends MVCView {
     this.#w = this.getViewW(this.model.duration);
     this.#cw = this.getViewW(this.model.head.duration);
     this.#cx = this.getViewX(this.model.head.begin) + this.#cw / 2;
-    this.y = (2 + this.model.layer) * black_key_prm.height * bracket_hight;
-    this.h = black_key_prm.height * bracket_hight;
+    this.y = (2 + this.model.layer) * BlackKeyPrm.height * bracket_hight;
+    this.h = BlackKeyPrm.height * bracket_hight;
 
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.svg.id = "time-span-node";

@@ -1,6 +1,6 @@
 import { mod } from "@music-analyzer/math";
 import { ChordNoteModel } from "./chord-note-model";
-import { black_key_prm, CurrentTimeX, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
+import { BlackKeyPrm, CurrentTimeX, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
 import { fifthToColor } from "@music-analyzer/color";
 import { MVCView, WindowReflectableRegistry } from "@music-analyzer/view";
 
@@ -13,13 +13,13 @@ export class ChordNoteView extends MVCView {
     this.model = model;
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     this.svg.style.width = String(this.model.duration * NoteSize.value);
-    this.svg.style.height = String(black_key_prm.height);
+    this.svg.style.height = String(BlackKeyPrm.height);
     this.svg.style.stroke = "#444";
     this.svg.style.fill = fifthToColor(this.model.tonic, 0.25, this.model.type === "major" ? 1 : 0.9);
     this.y = (
       mod(PianoRollBegin.value - this.model.note, 12)
       + 12 * this.model.oct
-    ) * black_key_prm.height;
+    ) * BlackKeyPrm.height;
     this.updateX();
     this.updateY();
     WindowReflectableRegistry.instance.register(this);
@@ -27,7 +27,7 @@ export class ChordNoteView extends MVCView {
   updateX() { this.svg.setAttribute("x", String(CurrentTimeX.value + this.model.begin * NoteSize.value)); }
   updateY() { this.svg.setAttribute("y", String(this.y)); }
   updateWidth() { this.svg.style.width = String(this.model.duration * NoteSize.value); }
-  updateHeight() { this.svg.style.height = String(black_key_prm.height); }
+  updateHeight() { this.svg.style.height = String(BlackKeyPrm.height); }
   onWindowResized() {
     this.updateX();
     this.updateWidth();

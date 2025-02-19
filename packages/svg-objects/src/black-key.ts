@@ -1,4 +1,4 @@
-import { black_key_prm, BlackPosition, octave_height } from "@music-analyzer/view-parameters";
+import { BlackKeyPrm, BlackPosition, OctaveHeight } from "@music-analyzer/view-parameters";
 
 export class BlackKeySVG {
   readonly svg: SVGRectElement;
@@ -9,12 +9,12 @@ export class BlackKeySVG {
   constructor(oct: number, j: number) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     this.svg.id = "black-key";
-    this.svg.style.fill = black_key_prm.fill;
-    this.svg.style.stroke = black_key_prm.stroke;
+    this.svg.style.fill = BlackKeyPrm.fill;
+    this.svg.style.stroke = BlackKeyPrm.stroke;
     this.oct = oct;
-    this.y = octave_height * oct + black_key_prm.height * BlackPosition.value[j];
-    this.width = black_key_prm.width;
-    this.height = black_key_prm.height;
+    this.y = OctaveHeight.value * oct + BlackKeyPrm.height * BlackPosition.value[j];
+    this.width = BlackKeyPrm.width;
+    this.height = BlackKeyPrm.height;
   }
   onWindowResized() {
     this.svg.style.x = String(0);

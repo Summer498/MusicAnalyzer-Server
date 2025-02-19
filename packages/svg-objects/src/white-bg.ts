@@ -1,4 +1,4 @@
-import { octave_height, PianoRollWidth, white_bgs_prm, WhitePosition } from "@music-analyzer/view-parameters";
+import { OctaveHeight, PianoRollWidth, WhiteBGsPrm, WhitePosition } from "@music-analyzer/view-parameters";
 
 export class WhiteBG_SVG {
   readonly svg: SVGRectElement;
@@ -9,12 +9,12 @@ export class WhiteBG_SVG {
   constructor(oct: number, white_index: number) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     this.svg.id = "white-BG";
-    this.svg.style.fill = white_bgs_prm.fill;
-    this.svg.style.stroke = white_bgs_prm.stroke;
+    this.svg.style.fill = WhiteBGsPrm.fill;
+    this.svg.style.stroke = WhiteBGsPrm.stroke;
     this.oct = oct;
-    this.y = octave_height * oct + white_bgs_prm.height * WhitePosition.value[white_index];
-    this.width = white_bgs_prm.width;
-    this.height = white_bgs_prm.height;
+    this.y = OctaveHeight.value * oct + WhiteBGsPrm.height * WhitePosition.value[white_index];
+    this.width = WhiteBGsPrm.width;
+    this.height = WhiteBGsPrm.height;
   }
   onWindowResized() {
     this.svg.style.x = String(0);
@@ -34,7 +34,7 @@ export class OctaveWhiteBG {
     this.children = white_key_seed.map((_, white_index) => new WhiteBG_SVG(oct, white_index));
     this.children.map(e => this.svg.appendChild(e.svg));
   }
-  onWindowResized(){
-    this.children.forEach(e=>e.onWindowResized());
+  onWindowResized() {
+    this.children.forEach(e => e.onWindowResized());
   }
 }

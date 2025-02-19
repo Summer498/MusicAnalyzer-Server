@@ -1,4 +1,4 @@
-import { NoteSize, black_key_prm, PianoRollBegin, CurrentTimeX } from "@music-analyzer/view-parameters";
+import { NoteSize, BlackKeyPrm, PianoRollBegin, CurrentTimeX } from "@music-analyzer/view-parameters";
 import { ArrowModel } from "./arrow-model";
 import { MVCView, WindowReflectableRegistry } from "@music-analyzer/view";
 
@@ -40,11 +40,11 @@ export class ArrowView extends MVCView {
     this.svg.appendChild(this.line);
     this.src = {
       x: this.model.begin + this.model.duration / 2,
-      y: isNaN(this.model.note) ? -99 : (PianoRollBegin.value + 0.5 - this.model.note) * black_key_prm.height
+      y: isNaN(this.model.note) ? -99 : (PianoRollBegin.value + 0.5 - this.model.note) * BlackKeyPrm.height
     };
     this.dst = {
       x: this.model.next.begin,
-      y: (PianoRollBegin.value + 0.5 - this.model.gravity.destination!) * black_key_prm.height
+      y: (PianoRollBegin.value + 0.5 - this.model.gravity.destination!) * BlackKeyPrm.height
     };
     const view_pos = this.getViewPositions();
     this.triangle.setAttribute("points", view_pos.p.join(","));
@@ -81,7 +81,7 @@ export class ArrowView extends MVCView {
     return { p, src, dst } as ({ readonly p: number[], readonly src: Vector2D, readonly dst: Vector2D });
   }
   updateWidth() { this.svg.style.width = String(this.model.duration * NoteSize.value); }
-  updateHeight() { this.svg.style.height = String(black_key_prm.height); }
+  updateHeight() { this.svg.style.height = String(BlackKeyPrm.height); }
   onWindowResized() {
     this.updateWidth();
     this.updateHeight();

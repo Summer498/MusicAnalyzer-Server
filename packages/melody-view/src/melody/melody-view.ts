@@ -1,4 +1,4 @@
-import { black_key_prm, CurrentTimeX, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
+import { BlackKeyPrm, CurrentTimeX, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
 import { MelodyModel } from "./melody-model";
 import { deleteMelody } from "../melody-editor-function";
 import { get_color_of_Narmour_concept, get_color_on_parametric_scale } from "@music-analyzer/irm";
@@ -30,9 +30,9 @@ export class MelodyView extends MVCView {
     WindowReflectableRegistry.instance.register(this);
   }
   updateX() { this.svg.style.x = String(CurrentTimeX.value + this.model.begin * NoteSize.value); }
-  updateY() { this.svg.style.y = String(isNaN(this.model.note) ? -99 : (PianoRollBegin.value - this.model.note) * black_key_prm.height); }
+  updateY() { this.svg.style.y = String(isNaN(this.model.note) ? -99 : (PianoRollBegin.value - this.model.note) * BlackKeyPrm.height); }
   updateWidth() { this.svg.style.width = String(this.model.duration * 15 / 16 * NoteSize.value); }
-  updateHeight() { this.svg.style.height = String(black_key_prm.height); }
+  updateHeight() { this.svg.style.height = String(BlackKeyPrm.height); }
   onWindowResized() {
     this.updateX();
     this.updateWidth();
