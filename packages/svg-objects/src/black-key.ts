@@ -1,4 +1,4 @@
-import { black_key_prm, BlackPosition, octave_height, OctaveCount } from "@music-analyzer/view-parameters";
+import { black_key_prm, BlackPosition, octave_height } from "@music-analyzer/view-parameters";
 import { SvgAndParam } from "./svg-and-param";
 
 export class BlackKeySVG extends SvgAndParam {
@@ -26,27 +26,14 @@ export class BlackKeySVG extends SvgAndParam {
   }
 }
 
-class OctaveBlackKey {
+export class OctaveBlackKey {
   readonly svg: SVGGElement;
   readonly children: BlackKeySVG[];
   constructor(oct: number) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    this.svg.id = `octave-black-keys-${oct}`;
     const black_key_seed = [...Array(5)];
     this.children = black_key_seed.map((_, j) => new BlackKeySVG(oct, j));
-    this.children.map(e => this.svg.appendChild(e.svg));
-  }
-  onWindowResized(){
-    this.children.forEach(e=>e.onWindowResized());
-  }
-}
-
-export class OctaveBlackKeys {
-  readonly svg: SVGGElement;
-  readonly children: OctaveBlackKey[];
-  constructor() {
-    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    const octave_seed = [...Array(OctaveCount.value)];
-    this.children = octave_seed.map((_, oct) => new OctaveBlackKey(oct));
     this.children.map(e => this.svg.appendChild(e.svg));
   }
   onWindowResized(){

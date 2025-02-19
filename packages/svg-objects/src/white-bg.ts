@@ -1,4 +1,4 @@
-import { octave_height, OctaveCount, PianoRollWidth, white_bgs_prm, WhitePosition } from "@music-analyzer/view-parameters";
+import { octave_height, PianoRollWidth, white_bgs_prm, WhitePosition } from "@music-analyzer/view-parameters";
 import { SvgAndParam } from "./svg-and-param";
 
 export class WhiteBG_SVG extends SvgAndParam {
@@ -26,27 +26,14 @@ export class WhiteBG_SVG extends SvgAndParam {
   }
 }
 
-class OctaveWhiteBG {
+export class OctaveWhiteBG {
   readonly svg: SVGGElement;
   readonly children: WhiteBG_SVG[];
   constructor(oct: number) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    this.svg.id = `octave-white-bgs-${oct}`;
     const white_key_seed = [...Array(7)];
     this.children = white_key_seed.map((_, white_index) => new WhiteBG_SVG(oct, white_index));
-    this.children.map(e => this.svg.appendChild(e.svg));
-  }
-  onWindowResized(){
-    this.children.forEach(e=>e.onWindowResized());
-  }
-}
-
-export class OctaveWhiteBGs {
-  readonly svg: SVGGElement;
-  readonly children: OctaveWhiteBG[];
-  constructor() {
-    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    const octave_seed = [...Array(OctaveCount.value)];
-    this.children = octave_seed.map((_, oct) => new OctaveWhiteBG(oct));
     this.children.map(e => this.svg.appendChild(e.svg));
   }
   onWindowResized(){

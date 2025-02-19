@@ -1,35 +1,27 @@
 import { octave_height, OctaveCount, PianoRollWidth } from "@music-analyzer/view-parameters";
 import { SvgAndParam } from "./svg-and-param";
-import { OctaveBlackBGs } from "./black-bg";
-import { OctaveWhiteBGs } from "./white-bg";
+import { OctaveBlackBG } from "./black-bg";
+import { OctaveWhiteBG } from "./white-bg";
 import { WindowReflectableRegistry } from "@music-analyzer/view";
 
 export class OctaveBG extends SvgAndParam {
   readonly svg: SVGGElement;
   readonly y: number;
   readonly oct: number;
+
   readonly height: number;
-  readonly white_BGs: OctaveWhiteBGs;
-  readonly black_BGs: OctaveBlackBGs;
-  constructor(
-    oct: number,
-    white_BGs: OctaveWhiteBGs,
-    black_BGs: OctaveBlackBGs,
-  ) {
+  readonly white_BGs: OctaveWhiteBG;
+  readonly black_BGs: OctaveBlackBG;
+  constructor(oct: number) {
     super();
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    this.svg.id = "octave-BG";
-    this.white_BGs = white_BGs;
-    this.black_BGs = black_BGs;
-    this.white_BGs.children.forEach(
-      e => e.children.filter(e => e.oct === oct)
-        .forEach(e => this.svg.appendChild(e.svg))
-    );
-    this.black_BGs.children.forEach(
-      e => e.children.filter(e => e.oct === oct)
-        .forEach(e => this.svg.appendChild(e.svg))
-    );
+    this.svg.id = `octave-BG-${oct}`;
+    this.white_BGs = new OctaveWhiteBG(oct);
+    this.black_BGs = new OctaveBlackBG(oct);
+    this.svg.appendChild(this.white_BGs.svg);
+    this.svg.appendChild(this.black_BGs.svg);
     this.y = octave_height * oct;
+    
     this.height = octave_height;
     this.oct = oct;
   }
@@ -49,10 +41,8 @@ export class OctaveBGs {
   constructor() {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.svg.id = "octave-BGs";
-    const white_bgs = new OctaveWhiteBGs();
-    const black_bgs = new OctaveBlackBGs();
     const octave_seed = [...Array(OctaveCount.value)];
-    this.children = octave_seed.map((_, oct) => new OctaveBG(oct, white_bgs, black_bgs));
+    this.children = octave_seed.map((_, oct) => new OctaveBG(oct));
     this.children.forEach(e => this.svg.appendChild(e.svg));
     WindowReflectableRegistry.instance.register(this);
   }
