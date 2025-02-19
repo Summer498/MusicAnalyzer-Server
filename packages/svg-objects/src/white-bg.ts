@@ -1,14 +1,12 @@
 import { octave_height, PianoRollWidth, white_bgs_prm, WhitePosition } from "@music-analyzer/view-parameters";
-import { SvgAndParam } from "./svg-and-param";
 
-export class WhiteBG_SVG extends SvgAndParam {
+export class WhiteBG_SVG {
   readonly svg: SVGRectElement;
   readonly oct: number;
   readonly y: number;
   readonly width: number;
   readonly height: number;
   constructor(oct: number, white_index: number) {
-    super();
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     this.svg.id = "white-BG";
     this.svg.style.fill = white_bgs_prm.fill;

@@ -1,16 +1,14 @@
 import { OctaveCount } from "@music-analyzer/view-parameters";
-import { SvgAndParam } from "./svg-and-param";
 import { OctaveBlackBG } from "./black-bg";
 import { OctaveWhiteBG } from "./white-bg";
 import { WindowReflectableRegistry } from "@music-analyzer/view";
 
-export class OctaveBG extends SvgAndParam {
+export class OctaveBG {
   readonly svg: SVGGElement;
   readonly white_BGs: OctaveWhiteBG;
   readonly black_BGs: OctaveBlackBG;
   readonly oct: number;
   constructor(oct: number) {
-    super();
     this.oct = oct;
     this.white_BGs = new OctaveWhiteBG(oct);
     this.black_BGs = new OctaveBlackBG(oct);

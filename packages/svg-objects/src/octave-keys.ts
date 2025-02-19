@@ -1,16 +1,14 @@
 import { OctaveCount } from "@music-analyzer/view-parameters";
-import { SvgAndParam } from "./svg-and-param";
 import { OctaveBlackKey } from "./black-key";
 import { OctaveWhiteKey } from "./white-key";
 import { WindowReflectableRegistry } from "@music-analyzer/view";
 
-export class OctaveKey extends SvgAndParam {
+export class OctaveKey {
   readonly svg: SVGGElement;
   readonly white_keys: OctaveWhiteKey;
   readonly black_keys: OctaveBlackKey;
   readonly oct: number;
   constructor(oct: number) {
-    super();
     this.oct = oct;
     this.white_keys = new OctaveWhiteKey(oct);
     this.black_keys = new OctaveBlackKey(oct);

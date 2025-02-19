@@ -1,15 +1,13 @@
 import { black_key_prm, octave_height, PianoRollBegin, white_key_prm } from "@music-analyzer/view-parameters";
-import { SvgAndParam } from "./svg-and-param";
 import { mod } from "@music-analyzer/math";
 
-export class WhiteKeySVG extends SvgAndParam {
+export class WhiteKeySVG {
   readonly svg: SVGRectElement;
   readonly oct: number;
   readonly y: number;
   readonly width: number;
   readonly height: number;
   constructor(oct: number, white_index: number) {
-    super();
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     this.svg.id = "white-key";
     this.svg.style.fill = white_key_prm.fill;

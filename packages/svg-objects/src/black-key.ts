@@ -1,14 +1,12 @@
 import { black_key_prm, BlackPosition, octave_height } from "@music-analyzer/view-parameters";
-import { SvgAndParam } from "./svg-and-param";
 
-export class BlackKeySVG extends SvgAndParam {
+export class BlackKeySVG {
   readonly svg: SVGRectElement;
   readonly oct: number;
   readonly y: number;
   readonly width: number;
   readonly height: number;
   constructor(oct: number, j: number) {
-    super();
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     this.svg.id = "black-key";
     this.svg.style.fill = black_key_prm.fill;
