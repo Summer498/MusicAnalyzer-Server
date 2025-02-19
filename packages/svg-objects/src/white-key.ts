@@ -27,23 +27,30 @@ export class WhiteKeySVG extends SvgAndParam {
   }
 }
 
-class OctaveKey {
+class OctaveWhiteKey {
+  readonly svg: SVGGElement;
   readonly children: WhiteKeySVG[];
   constructor(oct: number) {
+    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     const white_seed = [...Array(7)];
     this.children = white_seed.map((_, white_index) => new WhiteKeySVG(oct, white_index));
-
+    this.children.map(e => this.svg.appendChild(e.svg));
+  }
+  onWindowResized(){
+    this.children.forEach(e=>e.onWindowResized());
   }
 }
-const getOctaveBGs = (oct: number) => new OctaveKey(oct);
 
-class OctaveKeys {
-  readonly children: OctaveKey[];
+export class OctaveWhiteKeys {
+  readonly svg: SVGGElement;
+  readonly children: OctaveWhiteKey[];
   constructor() {
+    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     const octave_seed = [...Array(OctaveCount.value)];
-    this.children = octave_seed.map((_, oct) => getOctaveBGs(oct));
+    this.children = octave_seed.map((_, oct) => new OctaveWhiteKey(oct));
+    this.children.map(e => this.svg.appendChild(e.svg));
+  }
+  onWindowResized(){
+    this.children.forEach(e=>e.onWindowResized());
   }
 }
-const getBGs = () => new OctaveKeys();
-
-export const getWhiteKeys = () => getBGs();

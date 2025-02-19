@@ -26,22 +26,30 @@ export class BlackBG_SVG extends SvgAndParam {
   }
 }
 
-class OctaveBG {
+class OctaveBlackBG {
+  readonly svg: SVGGElement;
   readonly children: BlackBG_SVG[];
   constructor(oct: number) {
+    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     const black_key_seed = [...Array(5)];
     this.children = black_key_seed.map((_, black_index) => new BlackBG_SVG(oct, black_index));
+    this.children.map(e => this.svg.appendChild(e.svg));
+  }
+  onWindowResized() {
+    this.children.forEach(e => e.onWindowResized());
   }
 }
-const getOctaveBgs = (oct: number) => new OctaveBG(oct);
 
-class OctaveBGs {
-  readonly children: OctaveBG[];
+export class OctaveBlackBGs {
+  readonly svg: SVGGElement;
+  readonly children: OctaveBlackBG[];
   constructor() {
+    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     const octave_seed = [...Array(OctaveCount.value)];
-    this.children = octave_seed.map((_, oct) => getOctaveBgs(oct));
+    this.children = octave_seed.map((_, oct) => new OctaveBlackBG(oct));
+    this.children.map(e => this.svg.appendChild(e.svg));
+  }
+  onWindowResized() {
+    this.children.forEach(e => e.onWindowResized());
   }
 }
-const getBGs = () => new OctaveBGs();
-
-export const getBlackBGs = () => getBGs();

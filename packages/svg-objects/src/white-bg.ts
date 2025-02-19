@@ -26,30 +26,30 @@ export class WhiteBG_SVG extends SvgAndParam {
   }
 }
 
-type OctaveBG = {
-  readonly children: WhiteBG_SVG[]
+class OctaveWhiteBG {
+  readonly svg: SVGGElement;
+  readonly children: WhiteBG_SVG[];
+  constructor(oct: number) {
+    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    const white_key_seed = [...Array(7)];
+    this.children = white_key_seed.map((_, white_index) => new WhiteBG_SVG(oct, white_index));
+    this.children.map(e => this.svg.appendChild(e.svg));
+  }
+  onWindowResized(){
+    this.children.forEach(e=>e.onWindowResized());
+  }
 }
-const getOctaveBgs = (oct: number): OctaveBG => {
-  const white_key_seed = [...Array(7)];
-  const ret = {
-    children: white_key_seed.map((_, white_index) => new WhiteBG_SVG(oct, white_index))
-  };
-  console.log("getOctaveBgs");
-  console.log(ret);
-  return ret;
-};
 
-type OctaveBGs = {
-  readonly children: OctaveBG[]
+export class OctaveWhiteBGs {
+  readonly svg: SVGGElement;
+  readonly children: OctaveWhiteBG[];
+  constructor() {
+    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    const octave_seed = [...Array(OctaveCount.value)];
+    this.children = octave_seed.map((_, oct) => new OctaveWhiteBG(oct));
+    this.children.map(e => this.svg.appendChild(e.svg));
+  }
+  onWindowResized(){
+    this.children.forEach(e=>e.onWindowResized());
+  }
 }
-const getBGs = (): OctaveBGs => {
-  const octave_seed = [...Array(OctaveCount.value)];
-  const ret = {
-    children: octave_seed.map((_, oct) => getOctaveBgs(oct))
-  };
-  console.log("getBGs");
-  console.log(ret);
-  return ret;
-};
-
-export const getWhiteBGs = () => getBGs();
