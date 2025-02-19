@@ -1,5 +1,5 @@
 import { NoteSize, BlackKeyPrm, PianoRollBegin, CurrentTimeX } from "@music-analyzer/view-parameters";
-import { ArrowModel } from "./arrow-model";
+import { GravityModel } from "./gravity-model";
 import { MVCView, WindowReflectableRegistry } from "@music-analyzer/view";
 
 const triangle_width = 5;
@@ -10,15 +10,15 @@ type Vector2D = {
   readonly y: number;
 }
 
-export class ArrowView extends MVCView {
-  protected readonly model: ArrowModel;
+export class GravityView extends MVCView {
+  protected readonly model: GravityModel;
   readonly svg: SVGGElement;
   readonly triangle: SVGPolygonElement;
   readonly line: SVGLineElement;
   readonly src: Vector2D;
   readonly dst: Vector2D;
   constructor(
-    model: ArrowModel,
+    model: GravityModel,
   ) {
     super();
     this.model = model;

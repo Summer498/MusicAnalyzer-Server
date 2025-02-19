@@ -1,7 +1,7 @@
 import { Gravity, IMelodyModel } from "@music-analyzer/melody-analyze";
 import { MVCModel } from "@music-analyzer/view";
 
-export class ArrowModel extends MVCModel {
+export class GravityModel extends MVCModel {
   readonly begin: number;
   readonly end: number;
   readonly duration: number;

@@ -4,4 +4,4 @@ export { IRSymbolHierarchy } from "./src/ir-symbol";
 export { IRPlotHierarchy } from "./src/ir-plot";
 export { MelodyHierarchy } from "./src/melody";
 export { MelodyController } from "./src/melody/melody-controller";
-export { ChordGravityHierarchy, getChordGravityController, getScaleGravityController, ScaleGravityHierarchy } from "./src/gravity";
+export { GravityHierarchy } from "./src/gravity";
