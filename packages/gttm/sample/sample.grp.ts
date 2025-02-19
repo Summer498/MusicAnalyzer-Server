@@ -1,4 +1,4 @@
-import { GroupingStructure } from "../src/GRP";
+import { GroupingStructure } from "../src/analysis-result/GRP";
 
 export const do_re_mi_grp_xml = `
 <?xml version="1.0" encoding="UTF-8"?>

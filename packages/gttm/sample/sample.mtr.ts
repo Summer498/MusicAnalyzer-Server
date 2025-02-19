@@ -1,4 +1,4 @@
-import { MetricalStructure } from "../src/MTR";
+import { MetricalStructure } from "../src/analysis-result/MTR";
 
 export const do_re_mi_mtr_xml = `
 <?xml version="1.0" encoding="UTF-8"?>

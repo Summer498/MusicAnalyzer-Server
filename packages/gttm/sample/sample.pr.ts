@@ -1,4 +1,4 @@
-import { IProlongationalReduction } from "../src/PR";
+import { IProlongationalReduction } from "../src/analysis-result/PR";
 
 export const chopin_op18_pr_xml = `
 <?xml version="1.0" encoding="UTF-8"?>

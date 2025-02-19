@@ -1,4 +1,4 @@
-import { ITimeSpanReduction } from "../src/TSR";
+import { ITimeSpanReduction } from "../src/analysis-result/TSR";
 
 export const do_re_mi_tsr_xml = `
 <?xml version="1.0" encoding="UTF-8"?>
