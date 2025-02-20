@@ -1,5 +1,5 @@
 import { chord_name_margin, chord_text_size } from "@music-analyzer/chord-view";
-import { WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
+import { WindowReflectable } from "@music-analyzer/view";
 import { PianoRollHeight, PianoRollWidth } from "@music-analyzer/view-parameters";
 
 export class PianoRoll implements WindowReflectable {
@@ -7,7 +7,6 @@ export class PianoRoll implements WindowReflectable {
   constructor() {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     this.svg.id = "piano-roll";
-    WindowReflectableRegistry.instance.register(this);
   }
   onWindowResized() {
     this.svg.style.x = String(0);

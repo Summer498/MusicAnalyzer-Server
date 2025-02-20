@@ -1,4 +1,4 @@
-import { AccompanyToAudioRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
+import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 import { MusicAnalyzerWindow } from "./src/MusicAnalyzerWindow";
 import { updateTitle } from "./src/UIManager";
 import { initializeApplication } from "./src/initialize-application";
@@ -17,7 +17,7 @@ const main = () => {
   updateTitle(title, tune_id, mode);
   initializeApplication(tune_id, mode, window, piano_roll_place, audio_player)
     .then(e => WindowReflectableRegistry.instance.onWindowResized());
-  new EventLoop(AccompanyToAudioRegistry.instance, audio_player).update();
+  new EventLoop(AudioReflectableRegistry.instance, audio_player).update();
   window.onresize = e => WindowReflectableRegistry.instance.onWindowResized();
   WindowReflectableRegistry.instance.onWindowResized();
 };

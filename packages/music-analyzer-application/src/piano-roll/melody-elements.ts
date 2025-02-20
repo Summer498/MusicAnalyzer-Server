@@ -1,7 +1,9 @@
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { GravityHierarchy, DMelodyGroup, IRPlotHierarchy, IRSymbolHierarchy, MelodyHierarchy, TSRHierarchy } from "@music-analyzer/melody-view";
+import { AudioReflectable, WindowReflectable } from "@music-analyzer/view";
 
-export class MelodyElements {
+export class MelodyElements implements AudioReflectable, WindowReflectable {
+  readonly children: (AudioReflectable & WindowReflectable)[];
   readonly d_melody_collection: DMelodyGroup;
   readonly melody_hierarchy: MelodyHierarchy;
   readonly ir_hierarchy: IRSymbolHierarchy;
@@ -20,5 +22,20 @@ export class MelodyElements {
     this.chord_gravities = new GravityHierarchy("chord_gravity", hierarchical_melody);
     this.scale_gravities = new GravityHierarchy("scale_gravity", hierarchical_melody);
     this.time_span_tree = new TSRHierarchy(hierarchical_melody);
+    this.children = [
+      this.d_melody_collection,
+      this.melody_hierarchy,
+      this.ir_hierarchy,
+      this.ir_plot,
+      this.chord_gravities,
+      this.scale_gravities,
+      this.time_span_tree,
+    ];
+  }
+  onAudioUpdate() {
+    this.children.forEach(e=>e.onAudioUpdate());
+  }
+  onWindowResized() {
+    this.children.forEach(e=>e.onWindowResized());
   }
 }

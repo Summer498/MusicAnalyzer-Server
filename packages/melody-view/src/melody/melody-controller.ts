@@ -1,9 +1,10 @@
+import { MVCController } from "@music-analyzer/view";
 import { MelodyModel } from "./melody-model";
 import { MelodyView } from "./melody-view";
 import { play } from "@music-analyzer/synth";
 import { NowAt, reservation_range } from "@music-analyzer/view-parameters";
 
-export class MelodyController {
+export class MelodyController extends MVCController{
   readonly model: MelodyModel;
   readonly view: MelodyView;
   #do_melody_beep: boolean;
@@ -14,6 +15,7 @@ export class MelodyController {
   constructor(
     model: MelodyModel,
   ) {
+    super();
     this.model = model;
     this.view = new MelodyView(this.model);
     this.#do_melody_beep = false;

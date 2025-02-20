@@ -1,7 +1,7 @@
 import { Archetype, get_color_of_Narmour_concept, get_color_on_digital_intervallic_scale, get_color_on_digital_parametric_scale } from "@music-analyzer/irm";
 import { TSRModel } from "./tsr-tree-model";
 import { BlackKeyPrm, bracket_hight, NoteSize } from "@music-analyzer/view-parameters";
-import { MVCView, WindowReflectableRegistry } from "@music-analyzer/view";
+import { MVCView } from "@music-analyzer/view";
 
 export class TSRView extends MVCView {
   protected readonly model: TSRModel;
@@ -55,7 +55,6 @@ export class TSRView extends MVCView {
     this.updateBracket(this.#x, this.y, this.#w, this.h);
     this.updateCircle(this.#cx, this.y - this.h);
     this.updateIRSymbol(this.#cx, this.y, this.#w, this.h);
-    WindowReflectableRegistry.instance.register(this);
   }
   getViewX(x: number) { return x * NoteSize.value; }
   getViewW(w: number) { return w * NoteSize.value; }

@@ -1,6 +1,6 @@
 import { NoteSize, BlackKeyPrm, PianoRollBegin } from "@music-analyzer/view-parameters";
 import { GravityModel } from "./gravity-model";
-import { MVCView, WindowReflectableRegistry } from "@music-analyzer/view";
+import { MVCView } from "@music-analyzer/view";
 
 const triangle_width = 5;
 const triangle_height = 5;
@@ -52,7 +52,6 @@ export class GravityView extends MVCView {
     this.line.setAttribute("x2", String(view_pos.dst.x));
     this.line.setAttribute("y1", String(view_pos.src.y));
     this.line.setAttribute("y2", String(view_pos.dst.y));
-    WindowReflectableRegistry.instance.register(this);
   }
   getViewX(x: number) { return x * NoteSize.value; }
   getViewPositions() {

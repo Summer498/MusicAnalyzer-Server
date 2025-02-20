@@ -1,9 +1,9 @@
 import { OctaveCount } from "@music-analyzer/view-parameters";
 import { OctaveBlackBG } from "./black-bg";
 import { OctaveWhiteBG } from "./white-bg";
-import { WindowReflectableRegistry } from "@music-analyzer/view";
+import { WindowReflectable } from "@music-analyzer/view";
 
-export class OctaveBG {
+export class OctaveBG implements WindowReflectable {
   readonly svg: SVGGElement;
   readonly white_BGs: OctaveWhiteBG;
   readonly black_BGs: OctaveBlackBG;
@@ -16,14 +16,14 @@ export class OctaveBG {
     this.svg.id = `octave-BG-${oct}`;
     this.svg.appendChild(this.white_BGs.svg);
     this.svg.appendChild(this.black_BGs.svg);
-    }
+  }
   onWindowResized() {
     this.white_BGs.onWindowResized();
     this.black_BGs.onWindowResized();
   }
 }
 
-export class OctaveBGs {
+export class OctaveBGs implements WindowReflectable {
   readonly svg: SVGGElement;
   readonly children: OctaveBG[];
   constructor() {
@@ -32,7 +32,6 @@ export class OctaveBGs {
     const octave_seed = [...Array(OctaveCount.value)];
     this.children = octave_seed.map((_, oct) => new OctaveBG(oct));
     this.children.forEach(e => this.svg.appendChild(e.svg));
-    WindowReflectableRegistry.instance.register(this);
   }
   onWindowResized() {
     this.children.forEach(e => e.onWindowResized());

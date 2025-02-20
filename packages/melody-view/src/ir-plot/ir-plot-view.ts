@@ -84,4 +84,6 @@ export class IRPlotView extends MVCView {
       this.svg.style.fill = get_color_on_digital_parametric_scale(this.model.getCurrentNote().melody_analysis.implication_realization);
     }
   }
+  onWindowResized() {
+  }
 }

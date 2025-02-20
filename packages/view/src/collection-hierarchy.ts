@@ -1,7 +1,8 @@
 import { CollectionLayer } from "./collection-layer";
-import { AccompanyToAudioRegistry } from "./updatable-registry";
+import { AudioReflectable } from "./audio-reflectable";
+import { WindowReflectable } from "./window-reflectable";
 
-export abstract class CollectionHierarchy {
+export abstract class CollectionHierarchy implements AudioReflectable, WindowReflectable {
   readonly svg: SVGGElement;
   abstract readonly children: CollectionLayer[];
   protected _show: CollectionLayer[];
@@ -9,7 +10,6 @@ export abstract class CollectionHierarchy {
   constructor() {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this._show = [];
-    AccompanyToAudioRegistry.instance.register(this);
   }
   protected setShow(visible_layers: CollectionLayer[]) {
     this._show = visible_layers;
@@ -24,5 +24,8 @@ export abstract class CollectionHierarchy {
   }
   onAudioUpdate() {
     this.show.forEach(e => e.onAudioUpdate());
+  }
+  onWindowResized() {
+      this.show.forEach(e=> e.onWindowResized());
   }
 }

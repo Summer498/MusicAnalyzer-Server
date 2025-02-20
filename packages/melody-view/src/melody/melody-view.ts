@@ -3,7 +3,7 @@ import { MelodyModel } from "./melody-model";
 import { deleteMelody } from "../melody-editor-function";
 import { get_color_of_Narmour_concept, get_color_on_parametric_scale } from "@music-analyzer/irm";
 import { fifthChromaToColor } from "@music-analyzer/color";
-import { MVCView, WindowReflectableRegistry } from "@music-analyzer/view";
+import { MVCView } from "@music-analyzer/view";
 
 export class MelodyView extends MVCView {
   readonly svg: SVGRectElement;
@@ -27,7 +27,6 @@ export class MelodyView extends MVCView {
     this.updateY();
     this.updateWidth();
     this.updateHeight();
-    WindowReflectableRegistry.instance.register(this);
   }
   updateX() { this.svg.style.x = String(this.model.begin * NoteSize.value); }
   updateY() { this.svg.style.y = String(isNaN(this.model.note) ? -99 : (PianoRollBegin.value - this.model.note) * BlackKeyPrm.height); }

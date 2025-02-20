@@ -1,14 +1,14 @@
-import { AccompanyToAudioRegistry } from "@music-analyzer/view";
+import { AudioReflectableRegistry } from "@music-analyzer/view";
 import { NowAt } from "@music-analyzer/view-parameters";
 
 export class EventLoop {
-  readonly registry: AccompanyToAudioRegistry;
+  readonly registry: AudioReflectableRegistry;
   readonly audio_player: HTMLAudioElement | HTMLVideoElement;
   readonly fps_element: HTMLParagraphElement;
   private last_audio_time = Number.MIN_SAFE_INTEGER;
   private old_time: number;
   constructor(
-    registry: AccompanyToAudioRegistry,
+    registry: AudioReflectableRegistry,
     audio_player: HTMLAudioElement | HTMLVideoElement
   ) {
     this.old_time = Date.now();

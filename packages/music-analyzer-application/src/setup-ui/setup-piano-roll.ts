@@ -3,6 +3,8 @@ import { BeatElements, ChordElements, MelodyElements } from "../piano-roll";
 import { OctaveBGs } from "@music-analyzer/svg-objects/src/octave-bg";
 import { OctaveKeys } from "@music-analyzer/svg-objects/src/octave-keys";
 import { AnalysisView } from "./setup-analysis";
+import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
+import { register } from "module";
 
 export const setupPianoRoll = (
   beat: BeatElements,
@@ -17,6 +19,13 @@ export const setupPianoRoll = (
   const analysis_view = new AnalysisView(beat, chord, melody);
 
   const piano_roll_view = new PianoRoll();
+  AudioReflectableRegistry.instance.register(analysis_view);
+  WindowReflectableRegistry.instance.register(octave_bgs);
+  WindowReflectableRegistry.instance.register(octave_keys);
+  WindowReflectableRegistry.instance.register(current_time);
+  WindowReflectableRegistry.instance.register(analysis_view);
+  WindowReflectableRegistry.instance.register(piano_roll_view);
+
   piano_roll_view.svg.appendChild(octave_bgs.svg);
   piano_roll_view.svg.appendChild(analysis_view.svg);
   piano_roll_view.svg.appendChild(octave_keys.svg);

@@ -2,7 +2,6 @@ import { Assertion, _throw } from "@music-analyzer/stdlib";
 import { CurrentTimeRatio } from "@music-analyzer/view-parameters";
 import { SongLength } from "@music-analyzer/view-parameters";
 import { ChordGravityMediator, DMelodyMediator, HierarchyLevelMediator, MelodyBeepMediator, MelodyVolumeMediator, ScaleGravityMediator, TimeRangeMediator } from "../UIMediators";
-import { AccompanyToAudioRegistry } from "@music-analyzer/view";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
@@ -46,11 +45,11 @@ export const setupUI = (
   const hierarchy_level_slider_mediator = new HierarchyLevelMediator(controller_UIs.hierarchy_controller.slider, melody.melody_hierarchy, melody.ir_hierarchy, melody.ir_plot, melody.time_span_tree, melody.scale_gravities, melody.chord_gravities);
   const melody_beep_switcher_mediator = new MelodyBeepMediator(controller_UIs.melody_beep_controller.checkbox, melody.melody_hierarchy);
   const melody_beep_volume_mediator = new MelodyVolumeMediator(controller_UIs.melody_beep_controller.volume, melody.melody_hierarchy);
-  const time_range_slider_mediator = new TimeRangeMediator(controller_UIs.time_range_controller.slider, AccompanyToAudioRegistry.instance);
+  const time_range_slider_mediator = new TimeRangeMediator(controller_UIs.time_range_controller.slider);
 
   const piano_roll_view = setupPianoRoll(beat, chord, melody, FULL_VIEW);
   const controllers = setupControllers(controller_UIs, NO_CHORD);
-  
+
   const ir_plot = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   ir_plot.appendChild(melody.ir_plot.svg);
   ir_plot.id = "IR-plot";

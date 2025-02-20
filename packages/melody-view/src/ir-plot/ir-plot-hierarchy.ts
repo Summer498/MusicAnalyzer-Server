@@ -1,8 +1,8 @@
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { IRPlotLayer } from "./ir-plot-layer";
-import { AccompanyToAudioRegistry } from "@music-analyzer/view";
+import { AudioReflectable, WindowReflectable } from "@music-analyzer/view";
 
-export class IRPlotHierarchy {
+export class IRPlotHierarchy implements AudioReflectable, WindowReflectable {
   readonly svg: SVGGElement;
   readonly circles: SVGGElement;
   readonly x_axis: SVGLineElement;
@@ -36,7 +36,6 @@ export class IRPlotHierarchy {
     this.y_axis.style.stroke = "#000";
     this._show = [];
     this.#visible_layer = N;
-    AccompanyToAudioRegistry.instance.register(this);
   }
   setShow(visible_layers: IRPlotLayer[]) {
     this._show = visible_layers;
@@ -60,4 +59,5 @@ export class IRPlotHierarchy {
     this.updateLayer();
     this.show.forEach(e => e.onAudioUpdate());
   }
+  onWindowResized() {}
 }

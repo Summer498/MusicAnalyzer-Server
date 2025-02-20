@@ -1,7 +1,7 @@
 import { hsv2rgb, rgbToString } from "@music-analyzer/color";
 import { DMelodyModel } from "./d-melody-model";
 import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
-import { MVCView, WindowReflectableRegistry } from "@music-analyzer/view";
+import { MVCView } from "@music-analyzer/view";
 
 export class DMelodyView extends MVCView {
   readonly svg: SVGRectElement;
@@ -17,7 +17,6 @@ export class DMelodyView extends MVCView {
     this.updateY();
     this.updateWidth();
     this.updateHeight();
-    WindowReflectableRegistry.instance.register(this);
   }
   set onclick(value: () => void) { this.svg.onclick = value; };
 

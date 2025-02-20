@@ -1,6 +1,7 @@
+import { WindowReflectable } from "@music-analyzer/view";
 import { OctaveHeight, PianoRollWidth, WhiteBGsPrm, WhitePosition } from "@music-analyzer/view-parameters";
 
-export class WhiteBG_SVG {
+export class WhiteBG_SVG implements WindowReflectable {
   readonly svg: SVGRectElement;
   readonly oct: number;
   readonly y: number;
@@ -24,7 +25,7 @@ export class WhiteBG_SVG {
   }
 }
 
-export class OctaveWhiteBG {
+export class OctaveWhiteBG implements WindowReflectable {
   readonly svg: SVGGElement;
   readonly children: WhiteBG_SVG[];
   constructor(oct: number) {

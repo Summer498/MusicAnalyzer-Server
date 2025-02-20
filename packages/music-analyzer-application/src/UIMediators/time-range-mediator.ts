@@ -1,14 +1,13 @@
-import { AccompanyToAudioRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
+import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 import { SliderMediator } from "./slider-mediator";
 import { Slider } from "@music-analyzer/controllers";
 import { PianoRollRatio } from "@music-analyzer/view-parameters";
 
-export class TimeRangeMediator extends SliderMediator<AccompanyToAudioRegistry> {
+export class TimeRangeMediator extends SliderMediator<AudioReflectableRegistry> {
   constructor(
     slider: Slider,
-    accompany_to_audio_registry: AccompanyToAudioRegistry,
   ) {
-    super(slider, [accompany_to_audio_registry]);
+    super(slider, [AudioReflectableRegistry.instance]);
   }
 
   override update() {

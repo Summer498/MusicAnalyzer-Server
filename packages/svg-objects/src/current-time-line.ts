@@ -1,4 +1,4 @@
-import { WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
+import { WindowReflectable } from "@music-analyzer/view";
 import { CurrentTimeX, PianoRollHeight } from "@music-analyzer/view-parameters";
 
 export class CurrentTimeLine implements WindowReflectable {
@@ -8,7 +8,6 @@ export class CurrentTimeLine implements WindowReflectable {
     this.svg.id = "current_time";
     this.svg.style.strokeWidth= String(5);
     this.svg.style.stroke = "#000";
-    WindowReflectableRegistry.instance.register(this);
   }
   onWindowResized() {
     this.svg.setAttribute("x1", `${CurrentTimeX.value}`);

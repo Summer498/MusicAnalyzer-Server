@@ -1,4 +1,4 @@
-import { AccompanyToAudioRegistry, SvgCollection } from "@music-analyzer/view";
+import { SvgCollection } from "@music-analyzer/view";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { BeatBarController } from "./beat-bar-controller";
@@ -16,6 +16,5 @@ export class BeatBarsGroup extends SvgCollection {
 
     super(a);
     this.svg.id = "beat-bars";
-    AccompanyToAudioRegistry.instance.register(this);
   }
 }

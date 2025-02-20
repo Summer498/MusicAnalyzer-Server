@@ -1,9 +1,10 @@
 import { SvgCollection, TimeAndMVCController } from "./svg-collection";
+import { WindowReflectable } from "./window-reflectable";
 
 export class CollectionLayer extends SvgCollection {
   readonly layer: number;
   constructor(
-    children: TimeAndMVCController[],
+    children: (TimeAndMVCController & WindowReflectable)[],
     layer: number
   ) {
     super(children);

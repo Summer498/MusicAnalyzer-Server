@@ -1,7 +1,8 @@
 import { BlackKeyPrm, OctaveHeight, PianoRollBegin, WhiteKeyPrm } from "@music-analyzer/view-parameters";
 import { mod } from "@music-analyzer/math";
+import { WindowReflectable } from "@music-analyzer/view";
 
-export class WhiteKeySVG {
+export class WhiteKeySVG implements WindowReflectable {
   readonly svg: SVGRectElement;
   readonly oct: number;
   readonly y: number;
@@ -25,7 +26,7 @@ export class WhiteKeySVG {
   }
 }
 
-export class OctaveWhiteKey {
+export class OctaveWhiteKey implements WindowReflectable {
   readonly svg: SVGGElement;
   readonly children: WhiteKeySVG[];
   constructor(oct: number) {
@@ -35,7 +36,7 @@ export class OctaveWhiteKey {
     this.children = white_seed.map((_, white_index) => new WhiteKeySVG(oct, white_index));
     this.children.map(e => this.svg.appendChild(e.svg));
   }
-  onWindowResized(){
-    this.children.forEach(e=>e.onWindowResized());
+  onWindowResized() {
+    this.children.forEach(e => e.onWindowResized());
   }
 }

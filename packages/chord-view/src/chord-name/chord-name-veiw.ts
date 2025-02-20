@@ -4,7 +4,7 @@ import { ChordNameModel } from "./chord-name-model";
 import { NoteSize, PianoRollHeight } from "@music-analyzer/view-parameters";
 import { chord_text_em, chord_text_size } from "../chord-view-params";
 import { fifthToColor } from "@music-analyzer/color";
-import { MVCView, WindowReflectableRegistry } from "@music-analyzer/view";
+import { MVCView } from "@music-analyzer/view";
 
 export class ChordNameView extends MVCView {
   protected readonly model: ChordNameModel;
@@ -22,7 +22,6 @@ export class ChordNameView extends MVCView {
     this.y = PianoRollHeight.value + chord_text_size;
     this.updateX();
     this.updateY();
-    WindowReflectableRegistry.instance.register(this);
   }
   updateX() { this.svg.setAttribute("x", String(this.model.begin * NoteSize.value)); }
   updateY() { this.svg.setAttribute("y", String(this.y)); }

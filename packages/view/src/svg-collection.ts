@@ -1,7 +1,8 @@
 import { search_items_overlaps_range, TimeAnd } from "@music-analyzer/time-and";
 import { MVCController, MVCModel } from "./mvc";
-import { AccompanyToAudio } from "./updatable";
+import { AudioReflectable } from "./audio-reflectable";
 import { PianoRollTranslateX } from "@music-analyzer/view-parameters";
+import { WindowReflectable } from "./window-reflectable";
 
 export abstract class TimeAndMVCModel extends MVCModel implements TimeAnd {
   abstract readonly begin: number;
@@ -12,13 +13,13 @@ export abstract class TimeAndMVCController extends MVCController {
   abstract readonly model: TimeAndMVCModel;
 }
 
-export abstract class SvgCollection implements AccompanyToAudio {
-  readonly children: TimeAndMVCController[];
+export abstract class SvgCollection implements AudioReflectable, WindowReflectable {
+  readonly children: (TimeAndMVCController & WindowReflectable)[];
   readonly children_model: TimeAndMVCModel[];
   #show: TimeAndMVCController[];
   get show() { return this.#show; };
   readonly svg: SVGGElement;
-  constructor(children: TimeAndMVCController[]) {
+  constructor(children: (TimeAndMVCController & WindowReflectable)[]) {
     this.children = children;
     this.children_model = this.children.map(e => e.model);
     this.#show = children;
@@ -45,5 +46,8 @@ export abstract class SvgCollection implements AccompanyToAudio {
   }
   onAudioUpdate() {
     this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.value})`);
+  }
+  onWindowResized() {
+    this.children.forEach(e => e.onWindowResized());
   }
 }
