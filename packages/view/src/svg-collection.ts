@@ -1,7 +1,7 @@
 import { search_items_overlaps_range, TimeAnd } from "@music-analyzer/time-and";
 import { MVCController, MVCModel } from "./mvc";
 import { AccompanyToAudio } from "./updatable";
-import { NoteSize, NowAt, PianoRollTranslateX } from "@music-analyzer/view-parameters";
+import { PianoRollTranslateX } from "@music-analyzer/view-parameters";
 
 export abstract class TimeAndMVCModel extends MVCModel implements TimeAnd {
   abstract readonly begin: number;
@@ -44,9 +44,6 @@ export abstract class SvgCollection implements AccompanyToAudio {
     this.svg.appendChild(fragment);
   }
   onAudioUpdate() {
-    if (false) {
-      this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.value})`);
-    }
-    this.svg.setAttribute("transform", `translate(${- NowAt.value * NoteSize.value})`);
+    this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.value})`);
   }
 }

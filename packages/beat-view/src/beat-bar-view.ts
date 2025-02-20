@@ -1,4 +1,4 @@
-import { CurrentTimeX, NoteSize, PianoRollHeight } from "@music-analyzer/view-parameters";
+import { NoteSize, PianoRollHeight } from "@music-analyzer/view-parameters";
 import { BeatBarModel } from "./beat-bar-model";
 import { MVCView, WindowReflectableRegistry } from "@music-analyzer/view";
 
@@ -21,7 +21,7 @@ export class BeatBarView extends MVCView {
     WindowReflectableRegistry.instance.register(this);
   }
   updateX() {
-    this.svg.setAttribute("x1", String(CurrentTimeX.value + this.model.begin * NoteSize.value));
+    this.svg.setAttribute("x1", String(this.model.begin * NoteSize.value));
     this.svg.setAttribute("x2", String(this.model.begin * NoteSize.value));
 
   }

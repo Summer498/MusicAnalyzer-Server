@@ -2,7 +2,7 @@ import { fifthToColor } from "@music-analyzer/color";
 import { chord_name_margin, chord_text_em, chord_text_size } from "../chord-view-params";
 import { shorten_chord } from "../shorten";
 import { ChordRomanModel } from "./chord-roman-model";
-import { CurrentTimeX, NoteSize, PianoRollHeight } from "@music-analyzer/view-parameters";
+import { NoteSize, PianoRollHeight } from "@music-analyzer/view-parameters";
 import { MVCView, WindowReflectableRegistry } from "@music-analyzer/view";
 
 export class ChordRomanView extends MVCView {
@@ -23,7 +23,7 @@ export class ChordRomanView extends MVCView {
     this.updateY();
     WindowReflectableRegistry.instance.register(this);
   }
-  updateX() { this.svg.setAttribute("x", String(CurrentTimeX.value + this.model.begin * NoteSize.value)); }
+  updateX() { this.svg.setAttribute("x", String(this.model.begin * NoteSize.value)); }
   updateY() { this.svg.setAttribute("y", String(this.y)); }
   onWindowResized() {
     this.updateX();

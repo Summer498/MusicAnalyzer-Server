@@ -1,6 +1,6 @@
 import { hsv2rgb, rgbToString } from "@music-analyzer/color";
 import { DMelodyModel } from "./d-melody-model";
-import { BlackKeyPrm, CurrentTimeX, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
+import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
 import { MVCView, WindowReflectableRegistry } from "@music-analyzer/view";
 
 export class DMelodyView extends MVCView {
@@ -21,7 +21,7 @@ export class DMelodyView extends MVCView {
   }
   set onclick(value: () => void) { this.svg.onclick = value; };
 
-  updateX() { this.svg.style.x = String(CurrentTimeX.value + this.model.begin * NoteSize.value); }
+  updateX() { this.svg.style.x = String(this.model.begin * NoteSize.value); }
   updateY() { this.svg.style.y = String(isNaN(this.model.note) ? -99 : (PianoRollBegin.value - this.model.note) * BlackKeyPrm.height); }
   updateWidth() { this.svg.style.width = String(this.model.duration * NoteSize.value); }
   updateHeight() { this.svg.style.height = String(BlackKeyPrm.height); }

@@ -1,4 +1,4 @@
-import { BlackKeyPrm, CurrentTimeX, NoteSize, PianoRollBegin, Size } from "@music-analyzer/view-parameters";
+import { BlackKeyPrm, NoteSize, PianoRollBegin, Size } from "@music-analyzer/view-parameters";
 import { IRSymbolModel } from "./ir-symbol-model";
 import { get_color_of_Narmour_concept, get_color_on_digital_intervallic_scale, get_color_on_digital_parametric_scale, get_color_on_parametric_scale } from "@music-analyzer/irm";
 import { MVCView, WindowReflectableRegistry } from "@music-analyzer/view";
@@ -30,7 +30,7 @@ export class IRSymbolView extends MVCView {
     this.updateY();
     WindowReflectableRegistry.instance.register(this);
   }
-  updateX() { this.svg.setAttribute("x", String(CurrentTimeX.value + this.model.begin * NoteSize.value + this.model.duration * NoteSize.value)); }
+  updateX() { this.svg.setAttribute("x", String(this.model.begin * NoteSize.value + this.model.duration * NoteSize.value)); }
   updateY() { this.svg.setAttribute("y", String(this.y)); }
   onWindowResized() {
     this.updateX();
