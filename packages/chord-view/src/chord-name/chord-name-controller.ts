@@ -1,6 +1,6 @@
 import { _Chord } from "@music-analyzer/tonal-objects";
 import { ChordNameModel } from "./chord-name-model";
-import { ChordNameView } from "./chord-name-veiw";
+import { ChordNameView } from "./chord-name-view";
 import { MVCController } from "@music-analyzer/view";
 
 export class ChordNameController extends MVCController{
