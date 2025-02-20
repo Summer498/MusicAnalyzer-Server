@@ -1,14 +1,15 @@
 import { WindowReflectable } from "./window-reflectable";
 
 export class WindowReflectableRegistry {
-  private static _instance: WindowReflectableRegistry;
+  static #count = 0;
   private readonly registered: WindowReflectable[];
-  private constructor() { this.registered = []; }
-  public static get instance() {
-    return this._instance || (this._instance = new WindowReflectableRegistry());
+  constructor() { 
+    if(WindowReflectableRegistry.#count >= 1){ throw new Error("this constructor should not be called twice (singleton)"); }
+    WindowReflectableRegistry.#count++;
+    this.registered = []; 
   }
   register(updatable: WindowReflectable) { this.registered.push(updatable); }
-  onWindowResized() {
+  onUpdate() {
     this.registered.forEach(e => e.onWindowResized());
   }
 }

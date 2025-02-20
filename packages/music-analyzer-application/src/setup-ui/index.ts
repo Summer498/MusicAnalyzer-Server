@@ -9,6 +9,7 @@ import { BeatElements, ChordElements, MelodyElements } from "../piano-roll";
 import { ControllerUIs } from "../controller-uis";
 import { setupPianoRoll } from "./setup-piano-roll";
 import { setupControllers } from "./setup-controllers";
+import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 
 export const setupUI = (
   beat_info: BeatInfo,
@@ -17,7 +18,9 @@ export const setupUI = (
   // melodies: IMelodyModel[],
   d_melodies: IMelodyModel[],
   place: HTMLDivElement,
-  audio_element: HTMLAudioElement | HTMLVideoElement
+  audio_element: HTMLAudioElement | HTMLVideoElement,
+  audio_subscriber: AudioReflectableRegistry,
+  window_subscriber: WindowReflectableRegistry,
 ) => {
   new Assertion(hierarchical_melody.length > 0).onFailed(() => { throw new Error(`hierarchical melody length must be more than 0 but it is ${hierarchical_melody.length}`); });
   const melodies = hierarchical_melody[hierarchical_melody.length - 1];
@@ -45,9 +48,9 @@ export const setupUI = (
   const hierarchy_level_slider_mediator = new HierarchyLevelMediator(controller_UIs.hierarchy_controller.slider, melody.melody_hierarchy, melody.ir_hierarchy, melody.ir_plot, melody.time_span_tree, melody.scale_gravities, melody.chord_gravities);
   const melody_beep_switcher_mediator = new MelodyBeepMediator(controller_UIs.melody_beep_controller.checkbox, melody.melody_hierarchy);
   const melody_beep_volume_mediator = new MelodyVolumeMediator(controller_UIs.melody_beep_controller.volume, melody.melody_hierarchy);
-  const time_range_slider_mediator = new TimeRangeMediator(controller_UIs.time_range_controller.slider);
+  const time_range_slider_mediator = new TimeRangeMediator(controller_UIs.time_range_controller.slider, audio_subscriber, window_subscriber);
 
-  const piano_roll_view = setupPianoRoll(beat, chord, melody, FULL_VIEW);
+  const piano_roll_view = setupPianoRoll(beat, chord, melody, FULL_VIEW, audio_subscriber, window_subscriber);
   const controllers = setupControllers(controller_UIs, NO_CHORD);
 
   const ir_plot = document.createElementNS("http://www.w3.org/2000/svg", "svg");

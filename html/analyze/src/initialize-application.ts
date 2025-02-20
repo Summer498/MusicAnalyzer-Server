@@ -5,6 +5,7 @@ import { calcTempo } from "@music-analyzer/beat-estimation";
 import { bracket_hight, PianoRollBegin, PianoRollEnd } from "@music-analyzer/view-parameters";
 import { setupUI } from "@music-analyzer/music-analyzer-application";
 import { MusicAnalyzerWindow } from "./MusicAnalyzerWindow";
+import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 
 type Mode = "TSR" | "PR" | "";
 
@@ -13,7 +14,9 @@ export const initializeApplication = async (
   mode: Mode,
   window: MusicAnalyzerWindow,
   place: HTMLDivElement,
-  audio_element: HTMLAudioElement | HTMLVideoElement
+  audio_element: HTMLAudioElement | HTMLVideoElement,
+  audio_subscriber: AudioReflectableRegistry,
+  window_subscriber: WindowReflectableRegistry,
 ) => {
   window.MusicAnalyzer = await loadMusicAnalysis(tune_id, mode);
 
@@ -41,6 +44,8 @@ export const initializeApplication = async (
     window.MusicAnalyzer.hierarchical_melody,
     d_melodies,
     place,
-    audio_element
+    audio_element,
+    audio_subscriber,
+    window_subscriber
   );
 };

@@ -3,11 +3,13 @@ import { SliderMediator } from "./slider-mediator";
 import { Slider } from "@music-analyzer/controllers";
 import { PianoRollRatio } from "@music-analyzer/view-parameters";
 
-export class TimeRangeMediator extends SliderMediator<AudioReflectableRegistry> {
+export class TimeRangeMediator extends SliderMediator<{onUpdate:()=>void}> {
   constructor(
     slider: Slider,
+    audio_subscriber: AudioReflectableRegistry,
+    window_subscriber: WindowReflectableRegistry,
   ) {
-    super(slider, [AudioReflectableRegistry.instance]);
+    super(slider, [audio_subscriber, window_subscriber]);
   }
 
   override update() {
@@ -15,7 +17,6 @@ export class TimeRangeMediator extends SliderMediator<AudioReflectableRegistry> 
     const time_range_max = Number(this.controller.input.max);
     const time_range_ratio = Math.pow(2, time_range - time_range_max);
     PianoRollRatio.value = time_range_ratio;
-    this.subscribers.forEach(e => e.onAudioUpdate());
-    WindowReflectableRegistry.instance.onWindowResized();
+    this.subscribers.forEach(e => e.onUpdate());
   }
 }

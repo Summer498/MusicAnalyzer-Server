@@ -24,7 +24,7 @@ export class EventLoop {
     if (this.audio_player.paused && now_at === this.last_audio_time) { return; }
     this.last_audio_time = now_at;
     NowAt.value = now_at;
-    this.registry.onAudioUpdate();
+    this.registry.onUpdate();
   };
   onUpdate() {
     const now = Date.now();

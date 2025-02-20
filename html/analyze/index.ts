@@ -14,11 +14,14 @@ const main = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const tune_id = urlParams.get("tune") || "";
   const mode: Mode = urlParams.has("pr") ? "PR" : urlParams.has("tsr") ? "TSR" : "";
+  const audio_subscriber = new AudioReflectableRegistry();
+  const window_subscriber = new WindowReflectableRegistry();
   updateTitle(title, tune_id, mode);
-  initializeApplication(tune_id, mode, window, piano_roll_place, audio_player)
-    .then(e => WindowReflectableRegistry.instance.onWindowResized());
-  new EventLoop(AudioReflectableRegistry.instance, audio_player).update();
-  window.onresize = e => WindowReflectableRegistry.instance.onWindowResized();
-  WindowReflectableRegistry.instance.onWindowResized();
+  initializeApplication(tune_id, mode, window, piano_roll_place, audio_player, audio_subscriber, window_subscriber)
+    .then(e => {
+      new EventLoop(audio_subscriber, audio_player).update();
+      window.onresize = e => window_subscriber.onUpdate();
+      window_subscriber.onUpdate();
+    });
 };
 main();

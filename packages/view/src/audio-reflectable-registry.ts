@@ -1,16 +1,15 @@
 import { AudioReflectable } from "./audio-reflectable";
 
 export class AudioReflectableRegistry {
-  private static _instance: AudioReflectableRegistry;
+  static #count = 0;
   private readonly registered: AudioReflectable[];
-  private constructor() { this.registered = []; }
-  public static get instance() {
-    return this._instance || (this._instance = new AudioReflectableRegistry());
+  constructor() {
+    if (AudioReflectableRegistry.#count >= 1) { throw new Error("this constructor should not be called twice (singleton)"); }
+    AudioReflectableRegistry.#count++;
+    this.registered = [];
   }
   register(updatable: AudioReflectable) { this.registered.push(updatable); }
-  onAudioUpdate() {
-    this.registered.forEach(e => {
-      e.onAudioUpdate();
-    });
+  onUpdate() {
+    this.registered.forEach(e => { e.onAudioUpdate(); });
   }
 }
