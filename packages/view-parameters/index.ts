@@ -2,7 +2,7 @@ export { CurrentTimeRatio } from "./src/current-time-ratio";
 export { CurrentTimeX } from "./src/current-time-x";
 export { NoteSize } from "./src/note-size";
 export { NowAt } from "./src/now-at";
-export { PianoRollTranslateX } from "./src/now-at-x";
+export { PianoRollTranslateX } from "./src/piano-roll-translate-x";
 export { OctaveCount } from "./src/octave-count";
 export { BlackPosition, WhitePosition } from "./src/position";
 export { RectParameters } from "./src/rect-parameter";
