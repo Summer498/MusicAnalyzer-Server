@@ -1,6 +1,6 @@
 import { BlackKeyPrm, CurrentTimeX, NoteSize, PianoRollBegin, Size } from "@music-analyzer/view-parameters";
 import { IRSymbolModel } from "./ir-symbol-model";
-import { get_color_of_Narmour_concept, get_color_on_digital_parametric_scale, get_color_on_parametric_scale } from "@music-analyzer/irm";
+import { get_color_of_Narmour_concept, get_color_on_digital_intervallic_scale, get_color_on_digital_parametric_scale, get_color_on_parametric_scale } from "@music-analyzer/irm";
 import { MVCView, WindowReflectableRegistry } from "@music-analyzer/view";
 
 const ir_analysis_em = Size.value;
@@ -18,8 +18,9 @@ export class IRSymbolView extends MVCView {
     this.svg.style.fontFamily = "Times New Roman";
     this.svg.style.fontSize = `${ir_analysis_em}em`;
     this.svg.style.textAnchor = "middle";
-    this.svg.style.fill = get_color_of_Narmour_concept(this.model.archetype) || "#000";
+    this.svg.style.fill = get_color_on_digital_intervallic_scale(this.model.archetype) || "#000";
     if (false) {
+      this.svg.style.fill = get_color_of_Narmour_concept(this.model.archetype) || "#000";
       this.svg.style.fill = get_color_on_digital_parametric_scale(this.model.archetype) || "#000";
       this.svg.style.fill = get_color_on_parametric_scale(this.model.archetype) || "#000";
       this.svg.style.fill = this.model.archetype.color || "#000";
