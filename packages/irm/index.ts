@@ -5,6 +5,8 @@ export { Archetype } from "./src/MelodicArchetype";
 export {
   get_color_of_Narmour_concept,
   get_color_on_digital_parametric_scale,
+  get_color_on_digital_intervallic_scale,
+  get_color_on_registral_scale,
   get_color_on_intervallic_angle,
   get_color_on_parametric_scale
 } from "./src/ArchetypeColor";

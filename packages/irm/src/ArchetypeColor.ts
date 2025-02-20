@@ -7,9 +7,11 @@ export const get_color_of_Narmour_concept = (archetype: Archetype) => {
     case "VP": case "(VP)": return "#0af";
     case "P": case "(P)": return "#00f";
     case "IP": case "(IP)": return "#a0f";
+
     case "VR": case "(VR)": return "#f0a";
     case "R": case "(R)": return "#f00";
     case "IR": case "(IR)": return "#fa0";
+
     case "D": case "(D)": return "#0e00";
     case "ID": case "(ID)": return "#0fa";
     case "M":
@@ -19,6 +21,45 @@ export const get_color_of_Narmour_concept = (archetype: Archetype) => {
 };
 
 export const get_color_on_digital_parametric_scale = (archetype: Archetype)  => {
+  throw new Error("get_color_on_digital_parametric_scale is not implemented");
+  // get_color_on_registral_scale と同じになっている.
+  // TODO: intervallic, registral 双方を含むような色配置にする
+  switch (archetype._symbol) {
+    case "VP": case "(VP)": return "#00f";
+    case "P": case "(P)": return "#0ff";
+    case "D": case "(D)": return "#0ff";
+    case "IR": case "(IR)": return "#f0f";
+
+    case "VR": case "(VR)": return "#f0f";
+    case "IP": case "(IP)": return "#ff0";
+    case "ID": case "(ID)": return "#ff0";
+    case "R": case "(R)": return "#f00";
+
+    case "M":
+    case "dyad": return "#444";
+    default: return "#000";
+  }
+};
+
+export const get_color_on_digital_intervallic_scale = (archetype: Archetype)  => {
+  switch (archetype._symbol) {
+    case "VP": case "(VP)": return "#00f";
+    case "P": case "(P)": return "#0f0";
+    case "D": case "(D)": return "#0f0";
+    case "IR": case "(IR)": return "#f00";
+
+    case "VR": case "(VR)": return "#00f";
+    case "IP": case "(IP)": return "#0f0";
+    case "ID": case "(ID)": return "#0f0";
+    case "R": case "(R)": return "#f00";
+
+    case "M":
+    case "dyad": return "#444";
+    default: return "#000";
+  }
+};
+
+export const get_color_on_registral_scale = (archetype: Archetype)  => {
   switch (archetype._symbol) {
     case "VP": case "(VP)": return "#00f";
     case "P": case "(P)": return "#00f";
