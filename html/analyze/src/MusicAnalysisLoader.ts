@@ -19,11 +19,11 @@ const justLoad = (tune_name: string) => {
   ] as [
       Promise<TimeAndRomanAnalysis[]>,
       Promise<IMelodyModel[]>,
-      Promise<MusicXML>,
-      Promise<GroupingStructure>,
-      Promise<MetricalStructure>,
-      Promise<ITimeSpanReduction>,
-      Promise<IProlongationalReduction>,
+      Promise<MusicXML | undefined>,
+      Promise<GroupingStructure | undefined>,
+      Promise<MetricalStructure | undefined>,
+      Promise<ITimeSpanReduction | undefined>,
+      Promise<IProlongationalReduction | undefined>,
     ];
 };
 
