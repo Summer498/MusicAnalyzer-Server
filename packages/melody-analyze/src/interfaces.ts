@@ -19,7 +19,7 @@ export interface TimeAndMelody {
     readonly end: number,
   }
 }
-export interface TimeAndChord {
+export interface ITimeAndChord {
   readonly begin: number,
   readonly end: number,
   readonly chord: Chord

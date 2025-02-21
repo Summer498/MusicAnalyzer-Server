@@ -3,7 +3,7 @@ export {
   remove_item,
   select_suitable_progression,
   splitArray,
-  TimeAndChord,
+  TimeAndChordSymbol,
   TimeAndRomanAnalysis,
 } from "./src/chord-analyze";
 export {

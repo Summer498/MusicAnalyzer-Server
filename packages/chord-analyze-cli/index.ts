@@ -1,12 +1,12 @@
 import { default as ReadLine } from "readline";
-import { calcChordProgression, TimeAndChord } from "@music-analyzer/chord-analyze";
+import { calcChordProgression, TimeAndChordSymbol } from "@music-analyzer/chord-analyze";
 
 const main = (argv: string[]) => {
   if (argv.length > 2) {
     // 引数からコード列の入力があれば受け取る (テスト用)
     console.error(`出力:`);
     const chords = argv[2].split(" ");
-    const chords_with_time = chords.map((e, i) => new TimeAndChord({ 0: i * 100, 1: (i + 1) * 100, 2: e }));
+    const chords_with_time = chords.map((e, i) => new TimeAndChordSymbol({ 0: i * 100, 1: (i + 1) * 100, 2: e }));
     const roman_chords = calcChordProgression(chords_with_time);
     console.log(JSON.stringify(roman_chords, undefined, "  "));
   } else {
@@ -19,7 +19,7 @@ const main = (argv: string[]) => {
       const led_data = JSON.parse(lines.join("")) as { 0: number, 1: number, 2: string }[];
       // 本処理
       const roman_chords = calcChordProgression(
-        led_data.map(e => new TimeAndChord({ 0: e[0], 1: e[1], 2: e[2].replace(":", "") })),
+        led_data.map(e => new TimeAndChordSymbol({ 0: e[0], 1: e[1], 2: e[2].replace(":", "") })),
       );
       console.log(JSON.stringify(roman_chords, undefined, "  "));
     });

@@ -5,6 +5,6 @@ export {
   Gravity,
   IMelodyModel,
   MelodyAnalysis,
-  TimeAndChord,
+  ITimeAndChord,
   TimeAndMelody
 } from "./src/interfaces";

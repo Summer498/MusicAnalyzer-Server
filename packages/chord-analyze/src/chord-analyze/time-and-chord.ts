@@ -3,7 +3,7 @@ type TimeAndString = {
   readonly 1: number;
   readonly 2: string
 };
-export class TimeAndChord {
+export class TimeAndChordSymbol {
   readonly begin: number;
   readonly end: number;
   readonly chord: string;
