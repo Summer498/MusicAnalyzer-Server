@@ -10,13 +10,13 @@ import { ScaleGravityMediator } from "./scale-gravity-mediator";
 import { TimeRangeMediator } from "./time-range-mediator";
 
 export class MediatorsContainer {
-  d_melody: DMelodyMediator;
-  scale_gravity: ScaleGravityMediator;
-  chord_gravity: ChordGravityMediator;
-  hierarchy_level: HierarchyLevelMediator;
-  melody_beep: MelodyBeepMediator;
-  melody_volume: MelodyVolumeMediator;
-  time_range: TimeRangeMediator;
+  readonly d_melody: DMelodyMediator;
+  readonly scale_gravity: ScaleGravityMediator;
+  readonly chord_gravity: ChordGravityMediator;
+  readonly hierarchy_level: HierarchyLevelMediator;
+  readonly melody_beep: MelodyBeepMediator;
+  readonly melody_volume: MelodyVolumeMediator;
+  readonly time_range: TimeRangeMediator;
 
   constructor(
     controller_UIs: ControllerUIs,

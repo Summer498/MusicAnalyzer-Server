@@ -1,23 +1,32 @@
 import { ControllerUIs } from "../controller-uis";
 
-export const setupControllers = (controller: ControllerUIs, NO_CHORD: boolean) => {
-  const d_melody = controller.d_melody_controller;
-  const hierarchy_level = controller.hierarchy_controller;
-  const time_length = controller.time_range_controller;
-  const gravity_switcher = controller.gravity_controller;
-  const melody_beep_controllers = controller.melody_beep_controller;
-  const melody_color_selector = controller.melody_color_controller;
+export class Controllers {
+  readonly div: HTMLDivElement;
+  readonly children: ControllerUIs;
+  constructor(
+    NO_CHORD: boolean
+  ) {
+    this.children = new ControllerUIs();
 
-  const controllers = document.createElement("div");
-  controllers.id = "controllers";
-  controllers.style = "margin-top:20px";
-  controllers.appendChild(d_melody.view);
-  controllers.appendChild(hierarchy_level.view);
-  controllers.appendChild(time_length.view);
-  if (!NO_CHORD) {
-    controllers.appendChild(gravity_switcher.view);
+    const {
+      d_melody,
+      hierarchy,
+      time_range,
+      gravity,
+      melody_beep,
+      melody_color
+    } = this.children;
+
+    this.div = document.createElement("div");
+    this.div.id = "controllers";
+    this.div.style = "margin-top:20px";
+    this.div.appendChild(d_melody.view);
+    this.div.appendChild(hierarchy.view);
+    this.div.appendChild(time_range.view);
+    if (!NO_CHORD) {
+      this.div.appendChild(gravity.view);
+    }
+    this.div.appendChild(melody_beep.view);
+    this.div.appendChild(melody_color.view);  // NOTE: 色選択は未実装なので消しておく
   }
-  controllers.appendChild(melody_beep_controllers.view);
-  controllers.appendChild(melody_color_selector.view);  // NOTE: 色選択は未実装なので消しておく
-  return controllers;
-};
+}

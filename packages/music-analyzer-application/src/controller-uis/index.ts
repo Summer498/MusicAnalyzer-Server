@@ -1,20 +1,20 @@
 import { MelodyColorController, DMelodyController, GravityController, HierarchyLevelController, MelodyBeepController, TimeRangeController } from "@music-analyzer/controllers";
 
 export class ControllerUIs {
-  readonly gravity_controller: GravityController;
-  readonly d_melody_controller: DMelodyController;
-  readonly melody_beep_controller: MelodyBeepController;
-  readonly melody_color_controller: MelodyColorController;
-  readonly hierarchy_controller: HierarchyLevelController;
-  readonly time_range_controller: TimeRangeController;
+  readonly gravity: GravityController;
+  readonly d_melody: DMelodyController;
+  readonly melody_beep: MelodyBeepController;
+  readonly melody_color: MelodyColorController;
+  readonly hierarchy: HierarchyLevelController;
+  readonly time_range: TimeRangeController;
 
 
   constructor() {
-    this.gravity_controller = new GravityController();
-    this.d_melody_controller = new DMelodyController();
-    this.melody_beep_controller = new MelodyBeepController();
-    this.melody_color_controller = new MelodyColorController();
-    this.hierarchy_controller = new HierarchyLevelController();
-    this.time_range_controller = new TimeRangeController();
+    this.gravity = new GravityController();
+    this.d_melody = new DMelodyController();
+    this.melody_beep = new MelodyBeepController();
+    this.melody_color = new MelodyColorController();
+    this.hierarchy = new HierarchyLevelController();
+    this.time_range = new TimeRangeController();
   }
 }

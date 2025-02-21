@@ -2,12 +2,11 @@ import { Assertion, _throw } from "@music-analyzer/stdlib";
 import { CurrentTimeRatio } from "@music-analyzer/view-parameters";
 import { SongLength } from "@music-analyzer/view-parameters";
 import { BeatElements, ChordElements, MelodyElements } from "../piano-roll";
-import { ControllerUIs } from "../controller-uis";
 import { setupPianoRoll } from "./setup-piano-roll";
-import { setupControllers } from "./setup-controllers";
 import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 import { AnalyzedDataContainer } from "../../analyzed-data-container";
-import { registerMediators } from "../UIMediators";
+import { MediatorsContainer } from "../UIMediators";
+import { Controllers } from "./setup-controllers";
 
 export const setupUI = (
   analyzed: AnalyzedDataContainer,
@@ -31,16 +30,14 @@ export const setupUI = (
   }
 
 
-  const controller_UIs = new ControllerUIs();
   const last = <T>(arr: T[]) => arr[arr.length - 1];
   const beat = new BeatElements(beat_info, last(hierarchical_melody));
   const chord = new ChordElements(romans);
   const melody = new MelodyElements(hierarchical_melody, d_melodies);
-
-  registerMediators(controller_UIs, beat, chord, melody, audio_subscriber, window_subscriber);
-
   const piano_roll_view = setupPianoRoll(beat, chord, melody, FULL_VIEW, audio_subscriber, window_subscriber);
-  const controllers = setupControllers(controller_UIs, NO_CHORD);
+  
+  const controllers = new Controllers(NO_CHORD);
+  new MediatorsContainer(controllers.children, beat, chord, melody, audio_subscriber, window_subscriber);
 
   const ir_plot = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   ir_plot.appendChild(melody.ir_plot.svg);
@@ -50,7 +47,7 @@ export const setupUI = (
 
 
   const bottom = document.createElement("div");
-  bottom.appendChild(controllers);
+  bottom.appendChild(controllers.div);
   bottom.appendChild(ir_plot);
   bottom.setAttribute("style", `column-count: ${2}`);
   place.appendChild(piano_roll_view.svg);
