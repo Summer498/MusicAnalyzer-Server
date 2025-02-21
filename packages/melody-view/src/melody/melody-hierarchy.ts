@@ -1,5 +1,5 @@
 import { CollectionHierarchy } from "@music-analyzer/view";
-import { IMelodyModel } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MelodyLayer } from "./melody-layer";
 
 export class MelodyHierarchy extends CollectionHierarchy {
@@ -9,7 +9,7 @@ export class MelodyHierarchy extends CollectionHierarchy {
   #check: boolean;
   #active_layer: number;
   constructor(
-    hierarchical_melodies: IMelodyModel[][],
+    hierarchical_melodies: TimeAndAnalyzedMelody[][],
   ) {
     super();
     this.children = hierarchical_melodies.map((melodies, layer) =>

@@ -1,12 +1,12 @@
-import { IMelodyModel } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MVCModel } from "@music-analyzer/view";
 import { NowAt } from "@music-analyzer/view-parameters";
 
 export class IRPlotModel extends MVCModel {
-  readonly melody_series: IMelodyModel[];
+  readonly melody_series: TimeAndAnalyzedMelody[];
   #index: number;
-  #cache: IMelodyModel[];
-  constructor(melody_series: IMelodyModel[]) {
+  #cache: TimeAndAnalyzedMelody[];
+  constructor(melody_series: TimeAndAnalyzedMelody[]) {
     super();
     this.melody_series = melody_series;
     this.#index = 0;

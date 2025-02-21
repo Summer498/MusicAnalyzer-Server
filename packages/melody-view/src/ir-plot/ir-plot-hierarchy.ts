@@ -1,4 +1,4 @@
-import { IMelodyModel } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { AudioReflectable, WindowReflectable } from "@music-analyzer/view";
 import { IRPlotLayer } from "./ir-plot-layer";
 
@@ -11,7 +11,7 @@ export class IRPlotHierarchy implements AudioReflectable, WindowReflectable {
   readonly children: IRPlotLayer[];
   private _show: IRPlotLayer[];
   get show() { return this._show; }
-  constructor(hierarchical_melody: IMelodyModel[][]) {
+  constructor(hierarchical_melody: TimeAndAnalyzedMelody[][]) {
     const N = hierarchical_melody.length;
     this.children = hierarchical_melody.map((e, l) => new IRPlotLayer(e, l, N));
     this.circles = document.createElementNS("http://www.w3.org/2000/svg", "g");

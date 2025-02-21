@@ -1,4 +1,4 @@
-import { IMelodyModel } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { IRPlotController } from "./ir-plot-controller";
 import { IRPlotModel } from "./ir-plot-model";
 
@@ -9,7 +9,7 @@ export class IRPlotLayer {
   readonly w: number;
   readonly h: number;
   constructor(
-    melody_series: IMelodyModel[],
+    melody_series: TimeAndAnalyzedMelody[],
     layer: number,
     max: number
   ) {

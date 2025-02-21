@@ -1,4 +1,4 @@
-import { Gravity, IMelodyModel } from "@music-analyzer/melody-analyze";
+import { Gravity, TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MVCModel } from "@music-analyzer/view";
 
 export class GravityModel extends MVCModel {
@@ -6,13 +6,13 @@ export class GravityModel extends MVCModel {
   readonly end: number;
   readonly duration: number;
   readonly note: number;
-  readonly next: IMelodyModel;
+  readonly next: TimeAndAnalyzedMelody;
   readonly gravity: Gravity;
   readonly destination?: number;
   readonly layer: number;
   constructor(
-    melody: IMelodyModel,
-    next: IMelodyModel,
+    melody: TimeAndAnalyzedMelody,
+    next: TimeAndAnalyzedMelody,
     gravity: Gravity,
     layer?: number
   ) {

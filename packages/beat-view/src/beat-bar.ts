@@ -1,5 +1,5 @@
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
-import { IMelodyModel } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { BeatBarController } from "./beat-bar-controller";
 import { BeatBarModel } from "./beat-bar-model";
@@ -7,7 +7,7 @@ import { BeatBarModel } from "./beat-bar-model";
 export class BeatBarsGroup extends ReflectableTimeAndMVCControllerCollection {
   constructor(
     beat_info: BeatInfo,
-    melodies: IMelodyModel[]
+    melodies: TimeAndAnalyzedMelody[]
   ) {
     const N = Math.ceil(beat_info.tempo * melodies[melodies.length - 1].end) + beat_info.phase;
     const a = [...Array(N)].map(

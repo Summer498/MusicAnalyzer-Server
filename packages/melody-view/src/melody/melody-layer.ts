@@ -1,11 +1,11 @@
-import { IMelodyModel } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { CollectionLayer } from "@music-analyzer/view";
 import { MelodyController } from "./melody-controller";
 import { MelodyModel } from "./melody-model";
 
 export class MelodyLayer extends CollectionLayer {
   constructor(
-    melodies: IMelodyModel[],
+    melodies: TimeAndAnalyzedMelody[],
     layer: number
   ) {
     const children = melodies.map(e => new MelodyController(new MelodyModel(e),));

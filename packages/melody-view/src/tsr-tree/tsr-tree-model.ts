@@ -1,4 +1,4 @@
-import { IMelodyModel } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MVCModel } from "@music-analyzer/view";
 
 export class TSRModel extends MVCModel {
@@ -8,7 +8,7 @@ export class TSRModel extends MVCModel {
   readonly head: { readonly begin: number, readonly end: number, readonly duration: number };
   readonly layer: number;
   constructor(
-    melody: IMelodyModel,
+    melody: TimeAndAnalyzedMelody,
     layer: number
   ) {
     super();

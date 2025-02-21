@@ -1,5 +1,5 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-import { IMelodyModel } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { bracket_hight, PianoRollBegin, PianoRollEnd } from "@music-analyzer/view-parameters";
 import { AnalyzedDataContainer } from "@music-analyzer/music-analyzer-application/analyzed-data-container";
@@ -10,7 +10,7 @@ export const initializeApplication = (
 ) => {
 
   const d_romans: TimeAndRomanAnalysis[] = analyzed.roman.map(e => e);
-  const d_melodies: IMelodyModel[] = analyzed.melody.map(e => ({
+  const d_melodies: TimeAndAnalyzedMelody[] = analyzed.melody.map(e => ({
     ...e,
     begin: e.begin,  // ズレ補正
     end: e.end,

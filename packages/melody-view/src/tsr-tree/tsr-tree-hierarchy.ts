@@ -1,12 +1,12 @@
 import { CollectionHierarchy } from "@music-analyzer/view";
-import { IMelodyModel } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { TSRLayer } from "./tsr-tree-layer";
 
 export class TSRHierarchy extends CollectionHierarchy {
   readonly svg: SVGGElement;
   readonly children: TSRLayer[];
   constructor(
-    hierarchical_melodies: IMelodyModel[][]
+    hierarchical_melodies: TimeAndAnalyzedMelody[][]
   ) {
     super();
     this.children = hierarchical_melodies.map((e, l) => new TSRLayer(e, l));

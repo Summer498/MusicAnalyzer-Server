@@ -1,11 +1,11 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-import { IMelodyModel } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { GroupingStructure, IProlongationalReduction, ITimeSpanReduction, MetricalStructure, MusicXML } from "@music-analyzer/gttm";
 
 export type AnalyzedMusicData = {
   readonly roman: TimeAndRomanAnalysis[],
-  readonly hierarchical_melody: IMelodyModel[][],
-  readonly melody: IMelodyModel[],
+  readonly hierarchical_melody: TimeAndAnalyzedMelody[][],
+  readonly melody: TimeAndAnalyzedMelody[],
   readonly musicxml?: MusicXML,
   readonly GTTM: {
     readonly grouping?: GroupingStructure,

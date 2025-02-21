@@ -1,11 +1,11 @@
 import { CollectionHierarchy } from "@music-analyzer/view";
-import { IMelodyModel } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { IRSymbolLayer } from "./ir-symbol-layer";
 
 export class IRSymbolHierarchy extends CollectionHierarchy{
   readonly children: IRSymbolLayer[];
   constructor(
-    hierarchical_melodies: IMelodyModel[][],
+    hierarchical_melodies: TimeAndAnalyzedMelody[][],
   ){
     super();
     this.svg.id = "implication-realization archetype";

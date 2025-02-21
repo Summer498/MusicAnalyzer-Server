@@ -24,6 +24,6 @@ export interface ITimeAndChord {
   readonly end: number,
   readonly chord: Chord
 }
-export interface IMelodyModel extends TimeAndMelody {
+export interface TimeAndAnalyzedMelody extends TimeAndMelody {
   readonly melody_analysis: MelodyAnalysis,
 }

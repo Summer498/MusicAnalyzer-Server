@@ -1,6 +1,6 @@
 import { GroupingStructure, IProlongationalReduction, ITimeSpanReduction, MetricalStructure, MusicXML, ProlongationalReduction, TimeSpanReduction } from "@music-analyzer/gttm";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-import { IMelodyModel } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { getHierarchicalMelody } from "./HierarchicalMelody";
 import { getJSON, getJSONfromXML } from "./DataFetcher";
 import { AnalyzedMusicData } from "./MusicAnalyzerWindow";
@@ -9,8 +9,8 @@ const justLoad = (tune_name: string) => {
   return [
     getJSON<TimeAndRomanAnalysis[]>(`/MusicAnalyzer-server/resources/${tune_name}/analyzed/chord/roman.json`)
       .then(res => res || []),
-    getJSON<IMelodyModel[]>(`/MusicAnalyzer-server/resources/${tune_name}/analyzed/melody/crepe/manalyze.json`)
-      .then(res => res?.map(e => ({ ...e, head: { begin: e.begin, end: e.end } })) as IMelodyModel[]),
+    getJSON<TimeAndAnalyzedMelody[]>(`/MusicAnalyzer-server/resources/${tune_name}/analyzed/melody/crepe/manalyze.json`)
+      .then(res => res?.map(e => ({ ...e, head: { begin: e.begin, end: e.end } })) as TimeAndAnalyzedMelody[]),
     getJSONfromXML<MusicXML>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/MSC-${tune_name}.xml`),
     getJSONfromXML<GroupingStructure>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/GPR-${tune_name}.xml`),
     getJSONfromXML<MetricalStructure>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/MPR-${tune_name}.xml`),
@@ -18,7 +18,7 @@ const justLoad = (tune_name: string) => {
     getJSONfromXML<IProlongationalReduction>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/PR-${tune_name}.xml`),
   ] as [
       Promise<TimeAndRomanAnalysis[]>,
-      Promise<IMelodyModel[]>,
+      Promise<TimeAndAnalyzedMelody[]>,
       Promise<MusicXML | undefined>,
       Promise<GroupingStructure | undefined>,
       Promise<MetricalStructure | undefined>,

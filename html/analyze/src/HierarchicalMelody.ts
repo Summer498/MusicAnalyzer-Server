@@ -1,4 +1,4 @@
-import { analyzeMelody, IMelodyModel, TimeAndMelody } from "@music-analyzer/melody-analyze";
+import { analyzeMelody, TimeAndAnalyzedMelody, TimeAndMelody } from "@music-analyzer/melody-analyze";
 import { MusicXML, ReductionElement, TimeSpan } from "@music-analyzer/gttm";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { getTimeAndMelodyFromTS } from "./TimeSpanMapping";
@@ -31,11 +31,11 @@ const scaleAndTranslate = (e: TimeAndMelody, w: number, b: number) => {
   } as TimeAndMelody;
 };
 
-const appendIR = (e: IMelodyModel) => {
+const appendIR = (e: TimeAndAnalyzedMelody) => {
   return {
     ...e,
     IR: e.melody_analysis.implication_realization.symbol,
-  } as IMelodyModel & { IR: string };
+  } as TimeAndAnalyzedMelody & { IR: string };
 };
 
 export const getHierarchicalMelody = (

@@ -1,5 +1,5 @@
 import { argmax, correlation, decimal, getRange, getZeros, mod, totalSum } from "@music-analyzer/math";
-import { IMelodyModel } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 
 export type BeatInfo = {
@@ -7,7 +7,7 @@ export type BeatInfo = {
   phase: number
 }
 
-export const calcTempo = (melodies: IMelodyModel[], romans: TimeAndRomanAnalysis[]): BeatInfo => {
+export const calcTempo = (melodies: TimeAndAnalyzedMelody[], romans: TimeAndRomanAnalysis[]): BeatInfo => {
   const phase = 0;
   const melody_bpm: number[] = [];
   const bpm_range = 90;

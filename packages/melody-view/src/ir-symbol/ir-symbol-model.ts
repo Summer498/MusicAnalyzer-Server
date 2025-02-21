@@ -1,5 +1,5 @@
 import { Archetype } from "@music-analyzer/irm";
-import { IMelodyModel } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MVCModel } from "@music-analyzer/view";
 
 export class IRSymbolModel extends MVCModel {
@@ -10,7 +10,7 @@ export class IRSymbolModel extends MVCModel {
   readonly archetype: Archetype;
   readonly layer: number;
   constructor(
-    melody: IMelodyModel,
+    melody: TimeAndAnalyzedMelody,
     layer?: number
   ) {
     super();

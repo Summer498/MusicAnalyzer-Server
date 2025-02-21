@@ -1,4 +1,4 @@
-import { IMelodyModel } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { GravityHierarchy, DMelodyGroup, IRPlotHierarchy, IRSymbolHierarchy, MelodyHierarchy, TSRHierarchy } from "@music-analyzer/melody-view";
 import { AudioReflectable, WindowReflectable } from "@music-analyzer/view";
 
@@ -12,8 +12,8 @@ export class MelodyElements implements AudioReflectable, WindowReflectable {
   readonly scale_gravities: GravityHierarchy;
   readonly time_span_tree: TSRHierarchy;
   constructor(
-    hierarchical_melody: IMelodyModel[][],
-    d_melodies: IMelodyModel[]
+    hierarchical_melody: TimeAndAnalyzedMelody[][],
+    d_melodies: TimeAndAnalyzedMelody[]
   ) {
     this.d_melody_collection = new DMelodyGroup(d_melodies);
     this.melody_hierarchy = new MelodyHierarchy(hierarchical_melody);

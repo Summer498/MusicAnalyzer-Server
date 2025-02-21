@@ -1,4 +1,4 @@
-import { IMelodyModel } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { CollectionLayer } from "@music-analyzer/view";
 import { GravityController } from "./gravity-controller";
 import { GravityModel } from "./gravity-model";
@@ -6,7 +6,7 @@ import { GravityModel } from "./gravity-model";
 export class GravityLayer extends CollectionLayer {
   constructor(
     mode: "chord_gravity" | "scale_gravity",
-    melodies: IMelodyModel[],
+    melodies: TimeAndAnalyzedMelody[],
     layer: number,
   ) {
     const next = melodies.slice(1);
