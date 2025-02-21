@@ -1,8 +1,8 @@
-import { BeatBarModel } from "./beat-bar-model";
-import { BeatBarView } from "./beat-bar-view";
 import { MVCController } from "@music-analyzer/view";
 import { play } from "@music-analyzer/synth";
 import { NowAt, reservation_range } from "@music-analyzer/view-parameters";
+import { BeatBarModel } from "./beat-bar-model"; 
+import { BeatBarView } from "./beat-bar-view";
 
 export class BeatBarController extends MVCController {
   readonly model: BeatBarModel;

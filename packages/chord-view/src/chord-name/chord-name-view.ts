@@ -1,10 +1,10 @@
 import { _Chord } from "@music-analyzer/tonal-objects";
-import { shorten_chord } from "../shorten";
-import { ChordNameModel } from "./chord-name-model";
 import { NoteSize, PianoRollHeight } from "@music-analyzer/view-parameters";
-import { chord_text_em, chord_text_size } from "../chord-view-params";
 import { fifthToColor } from "@music-analyzer/color";
 import { MVCView } from "@music-analyzer/view";
+import { shorten_chord } from "../shorten"; 
+import { ChordNameModel } from "./chord-name-model";
+import { chord_text_em, chord_text_size } from "../chord-view-params";
 
 export class ChordNameView extends MVCView {
   protected readonly model: ChordNameModel;

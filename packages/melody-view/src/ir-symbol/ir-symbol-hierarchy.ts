@@ -1,6 +1,6 @@
 import { CollectionHierarchy } from "@music-analyzer/view";
-import { IRSymbolLayer } from "./ir-symbol-layer";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
+import { IRSymbolLayer } from "./ir-symbol-layer";
 
 export class IRSymbolHierarchy extends CollectionHierarchy{
   readonly children: IRSymbolLayer[];

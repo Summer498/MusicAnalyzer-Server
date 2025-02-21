@@ -1,6 +1,6 @@
 import { _Chord, Chord, getIntervalDegree } from "@music-analyzer/tonal-objects";
-import { getBodyAndRoot } from "./get-body-and-root";
 import { Assertion } from "@music-analyzer/stdlib";
+import { getBodyAndRoot } from "./get-body-and-root";
 
 // ルート付きコードが入力されてもコードを得られるようにする.
 export const getChord = (chord_string: string): Chord => {

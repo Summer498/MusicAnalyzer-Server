@@ -1,6 +1,6 @@
 import { NoteSize, PianoRollHeight } from "@music-analyzer/view-parameters";
-import { BeatBarModel } from "./beat-bar-model";
 import { MVCView } from "@music-analyzer/view";
+import { BeatBarModel } from "./beat-bar-model";
 
 export class BeatBarView extends MVCView {
   protected readonly model: BeatBarModel;

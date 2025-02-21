@@ -1,6 +1,6 @@
 import { get_color_of_Narmour_concept, get_color_on_digital_intervallic_scale, get_color_on_digital_parametric_scale } from "@music-analyzer/irm";
-import { IRPlotModel } from "./ir-plot-model";
 import { MVCView } from "@music-analyzer/view";
+import { IRPlotModel } from "./ir-plot-model";
 
 export class IRPlotView extends MVCView {
   readonly model: IRPlotModel;

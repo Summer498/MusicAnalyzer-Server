@@ -1,7 +1,7 @@
 import { hsv2rgb, rgbToString } from "@music-analyzer/color";
-import { DMelodyModel } from "./d-melody-model";
 import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
 import { MVCView } from "@music-analyzer/view";
+import { DMelodyModel } from "./d-melody-model";
 
 export class DMelodyView extends MVCView {
   readonly svg: SVGRectElement;

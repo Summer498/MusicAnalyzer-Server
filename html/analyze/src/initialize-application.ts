@@ -2,8 +2,8 @@ import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { bracket_hight, PianoRollBegin, PianoRollEnd } from "@music-analyzer/view-parameters";
-import { AnalyzedMusicData } from "./MusicAnalyzerWindow";
 import { AnalyzedDataContainer } from "@music-analyzer/music-analyzer-application/analyzed-data-container";
+import { AnalyzedMusicData } from "./MusicAnalyzerWindow";
 
 export const initializeApplication = (
   analyzed: AnalyzedMusicData,

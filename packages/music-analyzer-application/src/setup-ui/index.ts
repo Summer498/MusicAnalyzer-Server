@@ -1,9 +1,9 @@
 import { Assertion, _throw } from "@music-analyzer/stdlib";
 import { CurrentTimeRatio } from "@music-analyzer/view-parameters";
 import { SongLength } from "@music-analyzer/view-parameters";
+import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 import { BeatElements, ChordElements, MelodyElements } from "../piano-roll";
 import { setupPianoRoll } from "./setup-piano-roll";
-import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 import { AnalyzedDataContainer } from "../../analyzed-data-container";
 import { MediatorsContainer } from "../UIMediators";
 import { Controllers } from "./setup-controllers";

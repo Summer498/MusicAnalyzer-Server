@@ -1,6 +1,6 @@
 import { NoteSize, BlackKeyPrm, PianoRollBegin } from "@music-analyzer/view-parameters";
-import { GravityModel } from "./gravity-model";
 import { MVCView } from "@music-analyzer/view";
+import { GravityModel } from "./gravity-model";
 
 const triangle_width = 5;
 const triangle_height = 5;

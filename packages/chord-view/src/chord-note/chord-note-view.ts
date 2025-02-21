@@ -1,8 +1,8 @@
 import { mod } from "@music-analyzer/math";
-import { ChordNoteModel } from "./chord-note-model";
 import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
 import { fifthToColor } from "@music-analyzer/color";
 import { MVCView } from "@music-analyzer/view";
+import { ChordNoteModel } from "./chord-note-model";
 
 export class ChordNoteView extends MVCView {
   protected readonly model: ChordNoteModel;

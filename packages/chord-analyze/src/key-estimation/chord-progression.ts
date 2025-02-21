@@ -1,9 +1,9 @@
 import { getDistance, getKeysIncludeTheChord } from "@music-analyzer/tonal-pitch-space";
-import { getChord } from "./get-chord";
 import { _Chord, _Scale, Scale } from "@music-analyzer/tonal-objects";
 import { RomanChord } from "@music-analyzer/roman-chord";
 import { dynamicLogViterbi } from "@music-analyzer/graph";
 import { Compare } from "@music-analyzer/math";
+import { getChord } from "./get-chord"; 
 
 export class ChordProgression {
   readonly lead_sheet_chords: string[];

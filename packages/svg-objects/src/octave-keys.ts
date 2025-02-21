@@ -1,7 +1,7 @@
 import { OctaveCount } from "@music-analyzer/view-parameters";
+import { WindowReflectable } from "@music-analyzer/view";
 import { OctaveBlackKey } from "./black-key";
 import { OctaveWhiteKey } from "./white-key";
-import { WindowReflectable } from "@music-analyzer/view";
 
 export class OctaveKey implements WindowReflectable {
   readonly svg: SVGGElement;

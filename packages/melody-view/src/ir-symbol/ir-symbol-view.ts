@@ -1,7 +1,7 @@
 import { BlackKeyPrm, NoteSize, PianoRollBegin, Size } from "@music-analyzer/view-parameters";
-import { IRSymbolModel } from "./ir-symbol-model";
 import { get_color_of_Narmour_concept, get_color_on_digital_intervallic_scale, get_color_on_digital_parametric_scale, get_color_on_parametric_scale } from "@music-analyzer/irm";
 import { MVCView } from "@music-analyzer/view";
+import { IRSymbolModel } from "./ir-symbol-model";
 
 const ir_analysis_em = Size.value;
 

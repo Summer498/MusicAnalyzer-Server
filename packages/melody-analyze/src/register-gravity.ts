@@ -1,6 +1,6 @@
 import { mod } from "@music-analyzer/math";
-import { Gravity } from "./interfaces";
 import { _Note, Chord, Scale } from "@music-analyzer/tonal-objects";
+import { Gravity } from "./interfaces";
 
 // TODO: マイナーコードに対応する
 export const registerGravity = (pitch_class_set: Scale | Chord | undefined, curr?: number, next?: number) => {

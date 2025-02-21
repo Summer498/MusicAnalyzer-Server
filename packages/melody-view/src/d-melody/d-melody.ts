@@ -1,6 +1,6 @@
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
-import { DMelodyController } from "./d-melody-controller";
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
+import { DMelodyController } from "./d-melody-controller";
 import { DMelodyModel } from "./d-melody-model";
 
 export class DMelodyGroup extends ReflectableTimeAndMVCControllerCollection {

@@ -1,7 +1,7 @@
+import { MVCController } from "@music-analyzer/view";
 import { DMelodyModel } from "./d-melody-model";
 import { DMelodyView } from "./d-melody-view";
 import { insertMelody } from "../melody-editor-function";
-import { MVCController } from "@music-analyzer/view";
 
 export class DMelodyController extends MVCController {
   readonly model: DMelodyModel;

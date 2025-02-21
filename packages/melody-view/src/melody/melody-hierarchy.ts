@@ -1,6 +1,6 @@
 import { CollectionHierarchy } from "@music-analyzer/view";
-import { MelodyLayer } from "./melody-layer";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
+import { MelodyLayer } from "./melody-layer";
 
 export class MelodyHierarchy extends CollectionHierarchy {
   readonly children: MelodyLayer[];

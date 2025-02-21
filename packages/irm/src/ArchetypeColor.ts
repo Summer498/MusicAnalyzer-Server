@@ -1,6 +1,6 @@
 import { _Interval, NoteLiteral } from "@music-analyzer/tonal-objects";
-import { Archetype } from "./MelodicArchetype";
 import { hsv2rgb, rgbToString } from "@music-analyzer/color";
+import { Archetype } from "./MelodicArchetype";
 
 export const get_color_of_Narmour_concept = (archetype: Archetype) => {
   switch (archetype._symbol) {

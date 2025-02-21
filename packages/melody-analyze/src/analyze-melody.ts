@@ -1,7 +1,7 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-import { IMelodyModel, MelodyAnalysis, TimeAndMelody } from "./interfaces";
 import { _Chord, _Note, _Scale } from "@music-analyzer/tonal-objects";
 import { Archetype } from "@music-analyzer/irm";
+import { IMelodyModel, MelodyAnalysis, TimeAndMelody } from "./interfaces";
 import { registerGravity } from "./register-gravity";
 
 const getArchetype = (prev?: number, curr?: number, next?: number) => {

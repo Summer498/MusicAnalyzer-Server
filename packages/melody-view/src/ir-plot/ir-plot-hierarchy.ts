@@ -1,6 +1,6 @@
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
-import { IRPlotLayer } from "./ir-plot-layer";
 import { AudioReflectable, WindowReflectable } from "@music-analyzer/view";
+import { IRPlotLayer } from "./ir-plot-layer";
 
 export class IRPlotHierarchy implements AudioReflectable, WindowReflectable {
   readonly svg: SVGGElement;

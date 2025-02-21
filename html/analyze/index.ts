@@ -1,10 +1,10 @@
 import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
-import { MusicAnalyzerWindow } from "./src/MusicAnalyzerWindow";
-import { updateTitle } from "./src/UIManager";
+import { setupUI } from "@music-analyzer/music-analyzer-application";
+import { MusicAnalyzerWindow } from "./src/MusicAnalyzerWindow"; 
+import { updateTitle } from "./src/UIManager"; 
 import { initializeApplication } from "./src/initialize-application";
 import { EventLoop } from "./src/EventLoop";
 import { loadMusicAnalysis } from "./src/MusicAnalysisLoader";
-import { setupUI } from "@music-analyzer/music-analyzer-application";
 
 declare const window: MusicAnalyzerWindow;
 declare const audio_player: HTMLAudioElement | HTMLVideoElement;

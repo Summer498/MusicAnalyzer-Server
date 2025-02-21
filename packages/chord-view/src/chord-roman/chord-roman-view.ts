@@ -1,9 +1,9 @@
 import { fifthToColor } from "@music-analyzer/color";
-import { chord_name_margin, chord_text_em, chord_text_size } from "../chord-view-params";
-import { shorten_chord } from "../shorten";
-import { ChordRomanModel } from "./chord-roman-model";
 import { NoteSize, PianoRollHeight } from "@music-analyzer/view-parameters";
 import { MVCView } from "@music-analyzer/view";
+import { chord_name_margin, chord_text_em, chord_text_size } from "../chord-view-params"; 
+import { shorten_chord } from "../shorten";
+import { ChordRomanModel } from "./chord-roman-model";
 
 export class ChordRomanView extends MVCView {
   protected readonly model: ChordRomanModel;

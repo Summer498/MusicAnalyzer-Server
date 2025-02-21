@@ -1,6 +1,6 @@
 import { Checkbox } from "@music-analyzer/controllers";
-import { SwitcherMediator } from "./switcher-mediator";
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
+import { SwitcherMediator } from "./switcher-mediator";
 
 export class DMelodyMediator extends SwitcherMediator<ReflectableTimeAndMVCControllerCollection> {
   constructor(

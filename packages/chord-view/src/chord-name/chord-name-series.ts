@@ -1,7 +1,7 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
+import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
 import { ChordNameController } from "./chord-name-controller";
 import { ChordNameModel } from "./chord-name-model";
-import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
 
 export class ChordNameSeries extends ReflectableTimeAndMVCControllerCollection {
   constructor(

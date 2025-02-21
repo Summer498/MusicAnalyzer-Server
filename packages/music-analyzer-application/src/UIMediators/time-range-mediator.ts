@@ -1,7 +1,7 @@
 import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
-import { SliderMediator } from "./slider-mediator";
 import { Slider } from "@music-analyzer/controllers";
 import { PianoRollRatio } from "@music-analyzer/view-parameters";
+import { SliderMediator } from "./slider-mediator";
 
 export class TimeRangeMediator extends SliderMediator<{onUpdate:()=>void}> {
   constructor(
