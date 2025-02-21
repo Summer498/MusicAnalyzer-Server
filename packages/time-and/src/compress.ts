@@ -1,7 +1,5 @@
-import { TimeAndItem } from "./time-and";
-
 export const compress = <T>(arr: T[]) => {
-  const ret: TimeAndItem<T>[] = [];
+  const ret: { begin: number, end: number, item: T }[] = [];
   let begin = 0;
   let item = arr[0];
   arr.forEach((e, end) => {

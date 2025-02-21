@@ -1,9 +1,7 @@
 // 指定区間の item の探索
 
-import { TimeAnd } from "./time-and";
-
 // begin <= item.begin < end
-export const search_items_begins_in_range = <U extends TimeAnd>(
+export const search_items_begins_in_range = <U extends { begin: number, end: number }>(
   items: U[],
   begin: number,
   end: number,
@@ -24,7 +22,7 @@ export const search_items_begins_in_range = <U extends TimeAnd>(
     if (b_tgt < bm_val) { br = bmc; }
     else if (bm_val < b_tgt) { bl = bmf; }
     else { bl = bmf; }
-    
+
     const emf = el + Math.floor((er - el) / 2);
     const emc = el + Math.ceil((er - el) / 2);
     const em_val = items[emc].begin;

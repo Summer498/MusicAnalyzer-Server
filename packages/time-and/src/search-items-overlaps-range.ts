@@ -1,9 +1,7 @@
 // 指定区間の item の探索
 
-import { TimeAnd } from "./time-and";
-
 // begin <= item.end && item.begin < end
-export const search_items_overlaps_range = <U extends TimeAnd>(
+export const search_items_overlaps_range = <U extends { begin: number, end: number }>(
   items: U[],
   begin: number,
   end: number,

@@ -1,10 +1,10 @@
-import { search_items_overlaps_range, TimeAnd } from "@music-analyzer/time-and";
+import { search_items_overlaps_range } from "@music-analyzer/time-and";
 import { MVCController, MVCModel } from "./mvc";
 import { AudioReflectable } from "./audio-reflectable";
 import { PianoRollTranslateX } from "@music-analyzer/view-parameters";
 import { WindowReflectable } from "./window-reflectable";
 
-export abstract class TimeAndMVCModel extends MVCModel implements TimeAnd {
+export abstract class TimeAndMVCModel extends MVCModel {
   abstract readonly begin: number;
   abstract readonly end: number;
 }

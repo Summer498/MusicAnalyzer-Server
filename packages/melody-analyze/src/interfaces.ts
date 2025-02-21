@@ -1,25 +1,36 @@
 import { Archetype } from "@music-analyzer/irm";
-import { TimeAnd } from "@music-analyzer/time-and";
 import { Chord } from "@music-analyzer/tonal-objects";
 
 export type Gravity = {
-  destination?: number;
-  resolved?: true
+  readonly destination?: number;
+  readonly resolved?: true
 }
 export type MelodyAnalysis = {
   readonly scale_gravity?: Gravity,
   readonly chord_gravity?: Gravity,
   readonly implication_realization: Archetype,
 };
-export interface TimeAndMelody extends TimeAnd {
+export interface TimeAndMelody {
+  readonly begin: number,
+  readonly end: number,
   readonly note: number,
-  readonly head: TimeAnd
+  readonly head: {
+    readonly begin: number,
+    readonly end: number,
+  }
 }
-export interface TimeAndChord extends TimeAnd {
+export interface TimeAndChord {
+  readonly begin: number,
+  readonly end: number,
   readonly chord: Chord
 }
-export interface IMelodyModel extends TimeAnd {
+export interface IMelodyModel {
+  readonly begin: number,
+  readonly end: number,
   readonly note: number,
-  readonly head: TimeAnd,
+  readonly head: {
+    readonly begin: number,
+    readonly end: number,
+  }
   readonly melody_analysis: MelodyAnalysis,
 }
