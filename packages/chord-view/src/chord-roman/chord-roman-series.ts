@@ -1,12 +1,12 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { getRange } from "@music-analyzer/math";
 import { _Chord } from "@music-analyzer/tonal-objects";
-import { SvgCollection } from "@music-analyzer/view";
+import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
 import { OctaveCount } from "@music-analyzer/view-parameters";
 import { ChordNoteController } from "../chord-note/chord-note-controller";
 import { ChordNoteModel } from "../chord-note/chord-note-model";
 
-export class ChordNotesSeries extends SvgCollection {
+export class ChordNotesSeries extends ReflectableTimeAndMVCControllerCollection {
   constructor(
     romans: TimeAndRomanAnalysis[]
   ) {

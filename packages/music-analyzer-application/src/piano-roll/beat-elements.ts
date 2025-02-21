@@ -1,11 +1,11 @@
-import { AudioReflectable, SvgCollection, WindowReflectable } from "@music-analyzer/view";
+import { AudioReflectable, ReflectableTimeAndMVCControllerCollection, WindowReflectable } from "@music-analyzer/view";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { BeatBarsGroup } from "@music-analyzer/beat-view";
 
 export class BeatElements implements AudioReflectable, WindowReflectable {
   readonly children: (AudioReflectable & WindowReflectable)[];
-  readonly beat_bars: SvgCollection;
+  readonly beat_bars: ReflectableTimeAndMVCControllerCollection;
   constructor(
     beat_info: BeatInfo,
     melodies: IMelodyModel[],

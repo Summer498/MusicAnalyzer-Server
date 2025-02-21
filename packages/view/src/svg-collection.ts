@@ -13,7 +13,7 @@ export abstract class TimeAndMVCController extends MVCController {
   abstract readonly model: TimeAndMVCModel;
 }
 
-export abstract class SvgCollection implements AudioReflectable, WindowReflectable {
+export abstract class ReflectableTimeAndMVCControllerCollection implements AudioReflectable, WindowReflectable {
   readonly children: (TimeAndMVCController & WindowReflectable)[];
   readonly children_model: TimeAndMVCModel[];
   #show: TimeAndMVCController[];

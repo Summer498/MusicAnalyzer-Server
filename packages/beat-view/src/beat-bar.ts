@@ -1,10 +1,10 @@
-import { SvgCollection } from "@music-analyzer/view";
+import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { BeatBarController } from "./beat-bar-controller";
 import { BeatBarModel } from "./beat-bar-model";
 
-export class BeatBarsGroup extends SvgCollection {
+export class BeatBarsGroup extends ReflectableTimeAndMVCControllerCollection {
   constructor(
     beat_info: BeatInfo,
     melodies: IMelodyModel[]

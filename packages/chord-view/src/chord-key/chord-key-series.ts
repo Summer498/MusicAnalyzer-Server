@@ -1,9 +1,9 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-import { SvgCollection } from "@music-analyzer/view";
+import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
 import { ChordKeyController } from "./chord-key-controller";
 import { ChordKeyModel } from "./chord-key-model";
 
-export class ChordKeySeries extends SvgCollection{
+export class ChordKeySeries extends ReflectableTimeAndMVCControllerCollection{
   constructor(
     romans: TimeAndRomanAnalysis[]
   ){

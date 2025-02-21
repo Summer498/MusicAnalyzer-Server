@@ -1,11 +1,11 @@
 import { Checkbox } from "@music-analyzer/controllers";
 import { SwitcherMediator } from "./switcher-mediator";
-import { SvgCollection } from "@music-analyzer/view";
+import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
 
-export class DMelodyMediator extends SwitcherMediator<SvgCollection> {
+export class DMelodyMediator extends SwitcherMediator<ReflectableTimeAndMVCControllerCollection> {
   constructor(
     switcher: Checkbox,
-    d_melody_collection: SvgCollection
+    d_melody_collection: ReflectableTimeAndMVCControllerCollection
   ) {
     super(switcher, [d_melody_collection]);
   }

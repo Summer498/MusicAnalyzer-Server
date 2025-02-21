@@ -1,9 +1,9 @@
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { DMelodyController } from "./d-melody-controller";
-import { SvgCollection } from "@music-analyzer/view";
+import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
 import { DMelodyModel } from "./d-melody-model";
 
-export class DMelodyGroup extends SvgCollection {
+export class DMelodyGroup extends ReflectableTimeAndMVCControllerCollection {
   constructor(
     detected_melodies: IMelodyModel[],
   ) {
