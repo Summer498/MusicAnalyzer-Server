@@ -9,7 +9,7 @@ export const getTimeAndMelodyFromTS = (
   element: ReductionElement,
   duration_data: TimeSpan[][],
   musicxml: MusicXML
-): TimeAndMelody => {
+) => {
   const leftend = element.getLeftEnd();
   const rightend = element.getRightEnd();
   const note = musicxml["score-partwise"].part.measure.find(e => e.number === element.measure)!.note;
@@ -22,5 +22,5 @@ export const getTimeAndMelodyFromTS = (
       begin: duration_data[element.measure][element.note].leftend,
       end: duration_data[element.measure][element.note].rightend
     }
-  };
+  } as TimeAndMelody;
 };
