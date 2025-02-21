@@ -20,7 +20,7 @@ export const setupPianoRoll = (
   const analysis_view = new AnalysisView(beat, chord, melody);
 
   const piano_roll_view = new PianoRoll();
-audio_subscriber.register(analysis_view);
+  audio_subscriber.register(analysis_view);
   window_subscriber.register(octave_bgs);
   window_subscriber.register(octave_keys);
   window_subscriber.register(current_time);
