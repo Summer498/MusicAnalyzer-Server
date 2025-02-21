@@ -7,7 +7,6 @@ import { registerGravity } from "./register-gravity";
 const getArchetype = (prev?: number, curr?: number, next?: number) => {
   const notes = [prev, curr, next].map(e => e ? _Note.fromMidi(e) : undefined);
   const archetype = new Archetype(notes[0], notes[1], notes[2]);
-  console.log(archetype);
   return archetype;
 };
 
