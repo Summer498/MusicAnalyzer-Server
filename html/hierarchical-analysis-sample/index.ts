@@ -25,17 +25,20 @@ const appendURLItem = (mode: string, song_id: string, song_data: ReturnType<type
   tunes.insertAdjacentElement("beforeend", item);
 };
 
-(async () => {
-  const gttm_examples: string[] = await (await fetch("/MusicAnalyzer-server/api/gttm-example/")).json();
-  const srt_gttm_examples = gttm_examples.sort((a, b) => a.localeCompare(b, [], { numeric: true }));  //  Natural sort order
+const main = () => {
+  fetch("/MusicAnalyzer-server/api/gttm-example/")
+    .then(e => e.json() as Promise<string[]>)
+    .then(gttm_examples => {
+      const srt_gttm_examples = gttm_examples.sort((a, b) => a.localeCompare(b, [], { numeric: true }));  //  Natural sort order
 
-  srt_gttm_examples.forEach(song_id => {
-    const song_data = songData(song_id);
-    appendURLItem("TSR", song_id, song_data);
-    if (song_data?.pr) {
-      appendURLItem("PR", song_id, song_data);
-    }
-
-  });
-  console.log(srt_gttm_examples);
-})();
+      srt_gttm_examples.forEach(song_id => {
+        const song_data = songData(song_id);
+        appendURLItem("TSR", song_id, song_data);
+        if (song_data?.pr) {
+          appendURLItem("PR", song_id, song_data);
+        }
+      });
+      console.log(srt_gttm_examples);
+    });
+};
+main();

@@ -1,12 +1,12 @@
 import { xml_parser } from "./XMLParser";
 
 export const keyLength = (obj: object) => Object.keys(obj).length;
-export const getJSON = async <T extends object>(url: string) => {
+export const getJSON = <T extends object>(url: string) => {
   return fetch(url)
     .then(res => res.json() as T)
     .catch(e => { console.error(e); return undefined; });
 };
-export const getJSONfromXML = async <T extends object>(url: string) => {
+export const getJSONfromXML = <T extends object>(url: string) => {
   return fetch(url)
     .then(res => res.text())
     .then(e => {
