@@ -5,50 +5,55 @@ import { getHierarchicalMelody } from "./HierarchicalMelody";
 import { getJSON, getJSONfromXML } from "./DataFetcher";
 import { AnalyzedMusicData } from "./MusicAnalyzerWindow";
 
-export const loadMusicAnalysis = async (
+const justLoad = (tune_name: string) => {
+  return [
+    getJSON<TimeAndRomanAnalysis[]>(`/MusicAnalyzer-server/resources/${tune_name}/analyzed/chord/roman.json`)
+      .then(res => res || []),
+    getJSON<IMelodyModel[]>(`/MusicAnalyzer-server/resources/${tune_name}/analyzed/melody/crepe/manalyze.json`)
+      .then(res => res?.map(e => ({ ...e, head: { begin: e.begin, end: e.end } })) as IMelodyModel[]),
+    getJSONfromXML<MusicXML>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/MSC-${tune_name}.xml`),
+    getJSONfromXML<GroupingStructure>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/GPR-${tune_name}.xml`),
+    getJSONfromXML<MetricalStructure>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/MPR-${tune_name}.xml`),
+    getJSONfromXML<ITimeSpanReduction>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/TS-${tune_name}.xml`),
+    getJSONfromXML<IProlongationalReduction>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/PR-${tune_name}.xml`),
+  ] as [
+      Promise<TimeAndRomanAnalysis[]>,
+      Promise<IMelodyModel[]>,
+      Promise<MusicXML>,
+      Promise<GroupingStructure>,
+      Promise<MetricalStructure>,
+      Promise<ITimeSpanReduction>,
+      Promise<IProlongationalReduction>,
+    ];
+};
+
+export const loadMusicAnalysis = (
   tune_id: string,
   mode: "TSR" | "PR" | ""
-): Promise<AnalyzedMusicData> => {
-  const tune_name = encodeURI(tune_id);
-  const roman = await getJSON<TimeAndRomanAnalysis[]>(`/MusicAnalyzer-server/resources/${tune_name}/analyzed/chord/roman.json`)
-    .then(res => res || []);
-  const read_melody = await getJSON<IMelodyModel[]>(`/MusicAnalyzer-server/resources/${tune_name}/analyzed/melody/crepe/manalyze.json`)
-    .then(res => res?.map(e => ({ ...e, head: { begin: e.begin, end: e.end } })) as IMelodyModel[]);
-  const musicxml = await getJSONfromXML<MusicXML>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/MSC-${tune_name}.xml`);
-  const grouping = await getJSONfromXML<GroupingStructure>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/GPR-${tune_name}.xml`);
-  const metric = await getJSONfromXML<MetricalStructure>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/MPR-${tune_name}.xml`);
-  const time_span = await getJSONfromXML<ITimeSpanReduction>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/TS-${tune_name}.xml`);
-  const prolongation = await getJSONfromXML<IProlongationalReduction>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/PR-${tune_name}.xml`);
+) => {
+  return Promise.all(justLoad(encodeURI(tune_id)))
+    .then(e => {
+      const [roman, read_melody, musicxml, grouping, metric, time_span, prolongation] = e;
 
-  const ts = time_span ? new TimeSpanReduction(time_span).tstree.ts : undefined;
-  const pr = prolongation ? new ProlongationalReduction(prolongation).prtree.pr : undefined;
+      const ts = time_span ? new TimeSpanReduction(time_span).tstree.ts : undefined;
+      const pr = prolongation ? new ProlongationalReduction(prolongation).prtree.pr : undefined;
 
-  const hierarchical_melody = (() => {
-    if (musicxml && ts) {
-      const matrix = ts.getMatrixOfLayer(ts.getDepthCount() - 1);
       const measure = tune_id === "doremi" ? 3.5 : 7;
-      if (mode === "PR") {
-        if (pr) { return getHierarchicalMelody(measure, pr, matrix, musicxml, roman); }
-        else { return []; }
-      }
-      else if (mode === "TSR") { return getHierarchicalMelody(measure, ts, matrix, musicxml, roman); }
-      else { return []; }
-    }
-    else {
-      return [read_melody];
-    }
-  })();
+      const reduction = mode === "PR" && pr || mode === "TSR" && ts;
+      const matrix = ts?.getMatrixOfLayer(ts.getDepthCount() - 1);
+      const hierarchical_melody = reduction && matrix && musicxml && getHierarchicalMelody(measure, reduction, matrix, musicxml, roman) || [read_melody];
 
-  const melody = hierarchical_melody[hierarchical_melody.length - 1];
-  return {
-    roman,
-    melody,
-    hierarchical_melody,
-    GTTM: {
-      grouping,
-      metric,
-      time_span,
-      prolongation,
-    },
-  };
+      const melody = hierarchical_melody[hierarchical_melody.length - 1];
+      return {
+        roman,
+        melody,
+        hierarchical_melody,
+        GTTM: {
+          grouping,
+          metric,
+          time_span,
+          prolongation,
+        },
+      } as AnalyzedMusicData;
+    });
 };
