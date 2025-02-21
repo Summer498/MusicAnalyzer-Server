@@ -46,7 +46,7 @@ export abstract class ReductionElement {
   id2number() {
     return this.measure * 1024 + this.note;
   }
-  getLeftEnd():ReductionElement {
+  getLeftEnd(): ReductionElement {
     const primary = this.primary_element;
     const secondary = this.secondary_element;
     if (!primary) { return secondary ? secondary.getLeftEnd() : this; }
@@ -59,7 +59,7 @@ export abstract class ReductionElement {
       else { throw new Error(`Reached unexpected code point`); }
     }
   }
-  getRightEnd():ReductionElement {
+  getRightEnd(): ReductionElement {
     const primary = this.primary_element;
     const secondary = this.secondary_element;
     if (!primary) { return secondary ? secondary.getRightEnd() : this; }
@@ -72,7 +72,7 @@ export abstract class ReductionElement {
       else { throw new Error(`Reached unexpected code point`); }
     }
   }
-  private _getArrayOfLayer(i: number, layer?: number): (ReductionElement[] | undefined) {
+  private _getArrayOfLayer(i: number, layer?: number): ReductionElement[] {
     if (layer !== undefined && i >= layer) { return [this]; }  // stop search
     if (this.primary_element === undefined && this.secondary_element === undefined) { return [this]; }  // arrival at leaf
 
@@ -80,7 +80,7 @@ export abstract class ReductionElement {
     const s_array = this.secondary_element?._getArrayOfLayer(i + 1, layer);
 
     // marge arrays
-    if (!p_array) { return s_array; }
+    if (!p_array) { return s_array || []; }
     else if (!s_array) { return p_array; }
     else {
       const p_id = p_array[0].id2number();
@@ -91,7 +91,7 @@ export abstract class ReductionElement {
       else { throw new Error(`Reached unexpected code point`); }
     }
   }
-  getArrayOfLayer(layer?: number): (ReductionElement[] | undefined) {
+  getArrayOfLayer(layer?: number) {
     return this._getArrayOfLayer(0, layer);
   }
 }

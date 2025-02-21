@@ -11,7 +11,7 @@ export const getHierarchicalMelody = (
   roman: TimeAndRomanAnalysis[]
 ) => {
   // 全階層分の IR 分析
-  const hierarchical_time_and_melodies = [...Array(reduction.getDepthCount())].map((_, i) => reduction.getArrayOfLayer(i)!.map(element => {
+  const hierarchical_time_and_melodies = [...Array(reduction.getDepthCount())].map((_, i) => reduction.getArrayOfLayer(i).map(element => {
     return {
       ...getTimeAndMelodyFromTS(element, matrix, musicxml),
       head: {
