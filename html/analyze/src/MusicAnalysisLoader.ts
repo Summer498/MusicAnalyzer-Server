@@ -3,12 +3,12 @@ import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { getHierarchicalMelody } from "./HierarchicalMelody";
 import { getJSON, getJSONfromXML } from "./DataFetcher";
-import { MusicAnalyzer } from "./MusicAnalyzerWindow";
+import { AnalyzedMusicData } from "./MusicAnalyzerWindow";
 
 export const loadMusicAnalysis = async (
   tune_id: string,
   mode: "TSR" | "PR" | ""
-): Promise<MusicAnalyzer> => {
+): Promise<AnalyzedMusicData> => {
   const tune_name = encodeURI(tune_id);
   const roman = await getJSON<TimeAndRomanAnalysis[]>(`/MusicAnalyzer-server/resources/${tune_name}/analyzed/chord/roman.json`)
     .then(res => res || []);

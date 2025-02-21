@@ -2,7 +2,7 @@ import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { IMelodyModel } from "@music-analyzer/melody-analyze";
 import { GroupingStructure, IProlongationalReduction, ITimeSpanReduction, MetricalStructure, MusicXML } from "@music-analyzer/gttm";
 
-export type MusicAnalyzer = {
+export type AnalyzedMusicData = {
   readonly roman: TimeAndRomanAnalysis[],
   readonly hierarchical_melody: IMelodyModel[][],
   readonly melody: IMelodyModel[],
@@ -16,5 +16,5 @@ export type MusicAnalyzer = {
 }
 
 export interface MusicAnalyzerWindow extends Window {
-  MusicAnalyzer: MusicAnalyzer
+  MusicAnalyzer: AnalyzedMusicData
 }
