@@ -1,38 +1,37 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-import { IMelodyModel, TimeAndMelody } from "./interfaces";
+import { IMelodyModel, MelodyAnalysis, TimeAndMelody } from "./interfaces";
 import { _Chord, _Note, _Scale } from "@music-analyzer/tonal-objects";
 import { Archetype } from "@music-analyzer/irm";
 import { registerGravity } from "./register-gravity";
+
+const getArchetype = (prev?: number, curr?: number, next?: number) => {
+  const notes = [prev, curr, next].map(e => e ? _Note.fromMidi(e) : undefined);
+  const archetype = new Archetype(notes[0], notes[1], notes[2]);
+  console.log(archetype);
+  return archetype;
+};
 
 export const analyzeMelody = (
   melodies: TimeAndMelody[],
   romans: TimeAndRomanAnalysis[],
 ): IMelodyModel[] => {
-  return melodies.map((melody, i) => {
-    const _roman = romans.find(roman => roman.begin <= melody.end && melody.begin < roman.end); // TODO: 治す. 現状はとりあえずコードとメロディを大きめに重ならせてみているだけ
-    const start = i > 1 ? i - 1 : 0;
-    const next = i + 1;
+//  const prev_prev = [undefined, undefined, ...melodies];
+  const prev = [undefined, ...melodies];
+  const curr = [...melodies];
+  const next = [...melodies.slice(1), undefined];
+  return curr.map((e, i) => {
+    const roman = romans.find(roman => roman.begin <= e.end && e.begin < roman.end); // TODO: 治す. 現状はとりあえずコードとメロディを大きめに重ならせてみているだけ
     return {
-      begin: melody.begin,
-      end: melody.end,
-      note: melody.note,
-      head: melody.head,
-      roman_name: _roman?.roman || "",
+      begin: e.begin,
+      end: e.end,
+      note: e.note,
+      head: e.head,
+      roman_name: roman?.roman || "",
       melody_analysis: {
-        scale_gravity: registerGravity(
-          _roman?.scale || "",
-          _Note.get(_Scale.get(_roman?.scale || "").tonic || "").chroma,
-          melodies,
-          i
-        ),
-        chord_gravity: registerGravity(
-          _roman?.chord || "",
-          _Note.get(_Chord.get(_roman?.chord || "").tonic || "").chroma,
-          melodies,
-          i
-        ),
-        implication_realization: new Archetype(melodies.slice(start, next + 1).map(e => !e.note ? undefined : _Note.fromMidi(e.note)))
-      },
-    };
+        scale_gravity: registerGravity(roman && _Scale.get(roman.scale), prev[i]?.note, curr[i]?.note),
+        chord_gravity: registerGravity(roman && _Chord.get(roman.chord), prev[i]?.note, curr[i]?.note),
+        implication_realization: getArchetype(prev[i]?.note, curr[i]?.note, next[i]?.note)
+      } as MelodyAnalysis
+    } as IMelodyModel;
   });
 };

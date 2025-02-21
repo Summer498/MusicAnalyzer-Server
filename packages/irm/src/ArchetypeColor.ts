@@ -1,4 +1,4 @@
-import { _Interval } from "@music-analyzer/tonal-objects";
+import { _Interval, NoteLiteral } from "@music-analyzer/tonal-objects";
 import { Archetype } from "./MelodicArchetype";
 import { hsv2rgb, rgbToString } from "@music-analyzer/color";
 
@@ -89,7 +89,7 @@ const get_grb_on_parametric_scale = (archetype: Archetype) => {
   }
 };
 
-const get_rgb_on_intervallic_angle = (notes: string[]) => {
+const get_rgb_on_intervallic_angle = (notes: NoteLiteral[]) => {
   const intervals = [
     _Interval.distance(notes[0], notes[1]),
     _Interval.distance(notes[1], notes[2])
@@ -100,4 +100,4 @@ const get_rgb_on_intervallic_angle = (notes: string[]) => {
 };
 
 export const get_color_on_parametric_scale = (archetype: Archetype) => rgbToString(get_grb_on_parametric_scale(archetype));
-export const get_color_on_intervallic_angle = (notes: (string | undefined)[]) => rgbToString(get_rgb_on_intervallic_angle(notes.map(e => e || "")));
+export const get_color_on_intervallic_angle = (notes: (NoteLiteral|undefined)[]) => rgbToString(get_rgb_on_intervallic_angle(notes.map(e => e || "")));
