@@ -1,4 +1,4 @@
-import { BeatPos } from "../common";
+export type BeatPos = `P${number}` | `P${number}-${number}-${number}`
 
 type HasID = {
   readonly id: BeatPos | `P${number}-I${number}`

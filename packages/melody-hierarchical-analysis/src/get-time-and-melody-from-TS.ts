@@ -1,5 +1,6 @@
-import { MusicXML, Pitch, ReductionElement, TimeSpan, } from "@music-analyzer/gttm";
+import { ReductionElement, TimeSpan, } from "@music-analyzer/gttm";
 import { TimeAndMelody } from "@music-analyzer/melody-analyze";
+import { MusicXML, Pitch } from "@music-analyzer/musicxml";
 import { getChroma } from "@music-analyzer/tonal-objects";
 
 const calcChroma = (pitch: Pitch) => 12 + pitch.octave * 12 + (pitch.alter || 0) + getChroma(pitch.step);

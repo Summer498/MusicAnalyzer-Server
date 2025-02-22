@@ -1,5 +1,6 @@
+import { BeatPos } from "@music-analyzer/musicxml";
+
 export type Path = "./" | "./.." | "./../.." | "./../../.." | "./../../../.." | "./../../../../.."
-export type BeatPos = `P${number}` | `P${number}-${number}-${number}`
 export type Note = {
   readonly id: BeatPos
 }

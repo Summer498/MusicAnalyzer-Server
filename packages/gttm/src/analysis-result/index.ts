@@ -1,4 +1,3 @@
-export { MusicXML, Pitch } from "./MusicXML";
 export { ReductionElement } from "./ReductionElement";
 
 export { GroupingStructure } from "./GRP";

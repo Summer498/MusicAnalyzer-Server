@@ -1,5 +1,5 @@
 {
-  "name": "@music-analyzer/melody-hierarchical-analysis",
+  "name": "@music-analyzer/musicxml",
   "version": "1.0.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -14,10 +14,5 @@
     "build:minify": "tsup index.ts --sourcemap --dts --format esm,cjs --minify"
   },
   "dependencies": {
-    "@music-analyzer/chord-analyze": "1.0.0",
-    "@music-analyzer/gttm": "1.0.0",
-    "@music-analyzer/melody-analyze": "1.0.0",
-    "@music-analyzer/musicxml": "1.0.0",
-    "@music-analyzer/tonal-objects": "1.0.0"
   }
 }
