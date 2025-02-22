@@ -1,0 +1,69 @@
+import { recurrentArray } from "@music-analyzer/stdlib";
+import { attribute } from "./attribute";
+import { svgElement } from "./svg-element";
+
+export class SVG {
+  static a(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("a", attributes, text, children); }
+  static animate(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("animate", attributes, text, children); }
+  static animateMotion(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("animateMotion", attributes, text, children); }
+  static animateTransform(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("animateTransform", attributes, text, children); }
+  static circle(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("circle", attributes, text, children); }
+  static clipPath(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("clipPath", attributes, text, children); }
+  static defs(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("defs", attributes, text, children); }
+  static desc(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("desc", attributes, text, children); }
+  static ellipse(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("ellipse", attributes, text, children); }
+  static feBlend(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feBlend", attributes, text, children); }
+  static feColorMatrix(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feColorMatrix", attributes, text, children); }
+  static feComponentTransfer(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feComponentTransfer", attributes, text, children); }
+  static feComposite(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feComposite", attributes, text, children); }
+  static feConvolveMatrix(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feConvolveMatrix", attributes, text, children); }
+  static feDiffuseLighting(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feDiffuseLighting", attributes, text, children); }
+  static feDisplacementMap(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feDisplacementMap", attributes, text, children); }
+  static feDistantLight(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feDistantLight", attributes, text, children); }
+  static feDropShadow(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feDropShadow", attributes, text, children); }
+  static feFlood(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feFlood", attributes, text, children); }
+  static feFuncA(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feFuncA", attributes, text, children); }
+  static feFuncB(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feFuncB", attributes, text, children); }
+  static feFuncG(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feFuncG", attributes, text, children); }
+  static feFuncR(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feFuncR", attributes, text, children); }
+  static feGaussianBlur(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feGaussianBlur", attributes, text, children); }
+  static feImage(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feImage", attributes, text, children); }
+  static feMerge(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feMerge", attributes, text, children); }
+  static feMergeNode(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feMergeNode", attributes, text, children); }
+  static feMorphology(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feMorphology", attributes, text, children); }
+  static feOffset(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feOffset", attributes, text, children); }
+  static fePointLight(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("fePointLight", attributes, text, children); }
+  static feSpecularLighting(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feSpecularLighting", attributes, text, children); }
+  static feSpotLight(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feSpotLight", attributes, text, children); }
+  static feTile(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feTile", attributes, text, children); }
+  static feTurbulence(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("feTurbulence", attributes, text, children); }
+  static filter(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("filter", attributes, text, children); }
+  static foreignObject(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("foreignObject", attributes, text, children); }
+  static g(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("g", attributes, text, children); }
+  static image(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("image", attributes, text, children); }
+  static line(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("line", attributes, text, children); }
+  static linearGradient(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("linearGradient", attributes, text, children); }
+  static marker(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("marker", attributes, text, children); }
+  static mask(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("mask", attributes, text, children); }
+  static metadata(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("metadata", attributes, text, children); }
+  static mpath(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("mpath", attributes, text, children); }
+  static path(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("path", attributes, text, children); }
+  static pattern(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("pattern", attributes, text, children); }
+  static polygon(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("polygon", attributes, text, children); }
+  static polyline(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("polyline", attributes, text, children); }
+  static radialGradient(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("radialGradient", attributes, text, children); }
+  static rect(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("rect", attributes, text, children); }
+  static script(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("script", attributes, text, children); }
+  static set(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("set", attributes, text, children); }
+  static stop(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("stop", attributes, text, children); }
+  static style(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("style", attributes, text, children); }
+  static svg(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("svg", attributes, text, children); }
+  static switch(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("switch", attributes, text, children); }
+  static symbol(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("symbol", attributes, text, children); }
+  static text(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("text", attributes, text, children); }
+  static textPath(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("textPath", attributes, text, children); }
+  static title(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("title", attributes, text, children); }
+  static tspan(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("tspan", attributes, text, children); }
+  static use(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("use", attributes, text, children); }
+  static view(attributes?: attribute, text?: string, children?: recurrentArray<Element>) { return svgElement("view", attributes, text, children); }
+}
