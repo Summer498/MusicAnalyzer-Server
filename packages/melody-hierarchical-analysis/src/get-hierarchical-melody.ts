@@ -1,7 +1,8 @@
 import { analyzeMelody, TimeAndAnalyzedMelody, TimeAndMelody } from "@music-analyzer/melody-analyze";
-import { MusicXML, ReductionElement, TimeSpan } from "@music-analyzer/gttm";
+import { ReductionElement, TimeSpan } from "@music-analyzer/gttm";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { getTimeAndMelody } from "./get-time-and-melody";
+import { MusicXML } from "@music-analyzer/musicxml";
 
 const scaleAndTranslate = (e: TimeAndMelody, w: number, b: number) => {
   return {

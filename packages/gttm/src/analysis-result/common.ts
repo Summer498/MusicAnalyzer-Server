@@ -1,4 +1,5 @@
 import { BeatPos } from "@music-analyzer/musicxml";
+export { BeatPos } from "@music-analyzer/musicxml";
 
 export type Path = "./" | "./.." | "./../.." | "./../../.." | "./../../../.." | "./../../../../.."
 export type Note = {

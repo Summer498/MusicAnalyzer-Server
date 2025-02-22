@@ -1,6 +1,7 @@
-import { MusicXML, ReductionElement, TimeSpan } from "@music-analyzer/gttm";
+import { ReductionElement, TimeSpan } from "@music-analyzer/gttm";
 import { getTimeAndMelodyFromTS } from "./get-time-and-melody-from-TS";
 import { TimeAndMelody } from "@music-analyzer/melody-analyze";
+import { MusicXML } from "@music-analyzer/musicxml";
 
 export const getTimeAndMelody = (
   element: ReductionElement,
