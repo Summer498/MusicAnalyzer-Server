@@ -27,6 +27,8 @@ export const setupUI = (
   if (FULL_VIEW) {
     CurrentTimeRatio.value = 0.025;
     audio_element.autoplay = false;
+  } else {
+    audio_element.autoplay = true;
   }
 
 
