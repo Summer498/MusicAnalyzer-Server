@@ -7,8 +7,11 @@ import { setupPianoRoll } from "./setup-piano-roll";
 import { AnalyzedDataContainer } from "../../analyzed-data-container";
 import { MediatorsContainer } from "../UIMediators";
 import { Controllers } from "./setup-controllers";
+import { getSaveButton } from "./get-save-button";
 
 export const setupUI = (
+  tune_id: string,
+  title: HTMLHeadElement,
   analyzed: AnalyzedDataContainer,
   place: HTMLDivElement,
   audio_element: HTMLAudioElement | HTMLVideoElement,
@@ -37,7 +40,7 @@ export const setupUI = (
   const chord = new ChordElements(romans);
   const melody = new MelodyElements(hierarchical_melody, d_melodies);
   const piano_roll_view = setupPianoRoll(beat, chord, melody, FULL_VIEW, audio_subscriber, window_subscriber);
-  
+
   const controllers = new Controllers(NO_CHORD);
   new MediatorsContainer(controllers.children, beat, chord, melody, audio_subscriber, window_subscriber);
 
@@ -47,11 +50,13 @@ export const setupUI = (
   ir_plot.style.width = melody.ir_plot.svg.style.width;
   ir_plot.style.height = melody.ir_plot.svg.style.height;
 
+  const save_button = getSaveButton(tune_id, title, piano_roll_view);
 
   const bottom = document.createElement("div");
   bottom.appendChild(controllers.div);
   bottom.appendChild(ir_plot);
   bottom.setAttribute("style", `column-count: ${2}`);
+  place.appendChild(save_button);
   place.appendChild(piano_roll_view.svg);
   place.appendChild(audio_element);
   place.appendChild(bottom);

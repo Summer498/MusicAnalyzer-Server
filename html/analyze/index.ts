@@ -1,7 +1,7 @@
 import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 import { setupUI } from "@music-analyzer/music-analyzer-application";
-import { MusicAnalyzerWindow } from "./src/MusicAnalyzerWindow"; 
-import { updateTitle } from "./src/UIManager"; 
+import { MusicAnalyzerWindow } from "./src/MusicAnalyzerWindow";
+import { updateTitle } from "./src/UIManager";
 import { initializeApplication } from "./src/initialize-application";
 import { EventLoop } from "./src/EventLoop";
 import { loadMusicAnalysis } from "./src/MusicAnalysisLoader";
@@ -23,7 +23,7 @@ const main = () => {
     .then(raw_analyzed_data => {
       window.MusicAnalyzer = raw_analyzed_data;
       const analyzed_data = initializeApplication(raw_analyzed_data);
-      setupUI(analyzed_data, piano_roll_place, audio_player, audio_subscriber, window_subscriber);
+      setupUI(`${mode}-${tune_id}`, title, analyzed_data, piano_roll_place, audio_player, audio_subscriber, window_subscriber);
       new EventLoop(audio_subscriber, audio_player).update();
       window.onresize = e => window_subscriber.onUpdate();
       window_subscriber.onUpdate();
