@@ -35,6 +35,5 @@ export class MelodyView extends MVCView {
   onWindowResized() {
     this.updateX();
     this.updateWidth();
-    this.updateHeight();
   }
 }
