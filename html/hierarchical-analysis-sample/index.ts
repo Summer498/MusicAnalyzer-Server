@@ -1,6 +1,4 @@
-import { song_list } from "./src/songlist";
-
-console.log("this is hierarchical analysis list");
+import { song_list } from "@music-analyzer/gttm";
 
 declare const tunes: HTMLUListElement;
 
