@@ -22,7 +22,7 @@ export const viterbi = <O, S>(
   emissionProbabilities: (state: S, observation: O) => number,
   observation_sequence: O[],
   compare = Compare.findMax,
-): ViterbiResult<S> => {
+) => {
   const log_viterbi = logViterbi(
     states,
     initial_probabilities.map(e => Math.log(e)),
@@ -34,5 +34,5 @@ export const viterbi = <O, S>(
   return {
     probability: Math.exp(log_viterbi.log_probability),
     trace: log_viterbi.trace,
-  };
+  } as ViterbiResult<S>;
 };

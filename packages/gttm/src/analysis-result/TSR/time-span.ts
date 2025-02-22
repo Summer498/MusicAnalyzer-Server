@@ -36,7 +36,7 @@ export class TimeSpan extends ReductionElement implements ITimeSpan {
     this.secondary = secondary;
   }
 
-  getMatrixOfLayer(layer?: number): TimeSpan[][] {
+  getMatrixOfLayer(layer?: number) {
     const array = this.getArrayOfLayer(layer) as TimeSpan[];
     const matrix: TimeSpan[][] = [[]];
     array?.forEach(e => {

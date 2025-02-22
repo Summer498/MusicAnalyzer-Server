@@ -3,7 +3,7 @@ import { Assertion } from "@music-analyzer/stdlib";
 import { getBodyAndRoot } from "./get-body-and-root";
 
 // ルート付きコードが入力されてもコードを得られるようにする.
-export const getChord = (chord_string: string): Chord => {
+export const getChord = (chord_string: string) => {
   const body_and_root = getBodyAndRoot(chord_string);
   const root = body_and_root.root;
   const chord = _Chord.get(body_and_root.body);
@@ -21,5 +21,5 @@ export const getChord = (chord_string: string): Chord => {
   }
   chord.root = root;
   chord.rootDegree = getIntervalDegree(chord.tonic!, chord.root);
-  return chord;
+  return chord as Chord;
 };

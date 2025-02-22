@@ -6,7 +6,7 @@ import { TimeAndChordSymbol } from "./time-and-chord";
 import { TimeAndRomanAnalysis } from "./time-and-roman-analysis";
 
 // Expected Input: "Am7 FM7 G7 CM7"
-export const calcChordProgression = (chords: TimeAndChordSymbol[]): TimeAndRomanAnalysis[] => {
+export const calcChordProgression = (chords: TimeAndChordSymbol[]) => {
   const tmp0 = splitArray(chords, chord => chord.chord === "N"); // ノンコードシンボルを除く     ["C", "F", "N", "N", "G","C"]       => [["C"],["F"], [], ["G"],["C"]]
   const time_and_chord_groups = remove_item(tmp0, item => item.length === 0); // 空配列を除く                 [["C"],["F"], [], ["G"],["C"]]      => [["C","F"], ["G","C"]]
 
@@ -25,7 +25,7 @@ export const calcChordProgression = (chords: TimeAndChordSymbol[]): TimeAndRoman
         roman: progression[i].roman,
         chord: progression[i].chord.name,
         scale: progression[i].scale.name,
-      };
+      } as TimeAndRomanAnalysis;
     });
   });
 };

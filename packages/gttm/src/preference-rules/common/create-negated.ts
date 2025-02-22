@@ -41,7 +41,7 @@ const negation_handler = {
   }
 };
 
-function createNegated<T extends object>(target: T): Negated<T> {
+function createNegated<T extends object>(target: T) {
   return new Proxy(target, negation_handler) as Negated<T>;
 }
 

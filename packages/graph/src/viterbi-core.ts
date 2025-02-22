@@ -13,7 +13,7 @@ export const viterbiCore = <O, S>(
   B: (state: S, observation: O) => number,
   Y: O[],
   compare: CompareFunc,
-): LogViterbiResult<S> => {
+) => {
   const states = [getStates(0)];  // 最後の trace で回収するためのメモ
   const T = Y.length;
   const T1 = [[0]];
@@ -46,6 +46,6 @@ export const viterbiCore = <O, S>(
   return {
     log_probability: terminal.val,
     trace: x,
-  };
+  } as LogViterbiResult<S>;
 };
 

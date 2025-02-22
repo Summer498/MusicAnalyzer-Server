@@ -13,7 +13,7 @@ const getArchetype = (prev?: number, curr?: number, next?: number) => {
 export const analyzeMelody = (
   melodies: TimeAndMelody[],
   romans: TimeAndRomanAnalysis[],
-): TimeAndAnalyzedMelody[] => {
+) => {
   //  const prev_prev = [undefined, undefined, ...melodies];
   const prev = [undefined, ...melodies];
   const curr = [...melodies];

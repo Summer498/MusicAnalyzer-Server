@@ -7,7 +7,7 @@ export type BeatInfo = {
   phase: number
 }
 
-export const calcTempo = (melodies: TimeAndAnalyzedMelody[], romans: TimeAndRomanAnalysis[]): BeatInfo => {
+export const calcTempo = (melodies: TimeAndAnalyzedMelody[], romans: TimeAndRomanAnalysis[]) => {
   const phase = 0;
   const melody_bpm: number[] = [];
   const bpm_range = 90;
@@ -81,5 +81,5 @@ export const calcTempo = (melodies: TimeAndAnalyzedMelody[], romans: TimeAndRoma
   console.log("roman_bpm");
   console.log(roman_bpm);
   */
-  return { phase, tempo: argmax(tps) };
+  return { phase, tempo: argmax(tps) } as BeatInfo;
 };
