@@ -1,13 +1,11 @@
-import { MusicXML, Pitch, } from "@music-analyzer/gttm";
-import { getChroma } from "@music-analyzer/tonal-objects";
+import { MusicXML, Pitch, ReductionElement, TimeSpan, } from "@music-analyzer/gttm";
 import { TimeAndMelody } from "@music-analyzer/melody-analyze";
-import { TimeSpan } from "@music-analyzer/gttm";
-import { ReductionElement } from "@music-analyzer/gttm";
+import { getChroma } from "@music-analyzer/tonal-objects";
 
 const calcChroma = (pitch: Pitch) => 12 + pitch.octave * 12 + (pitch.alter || 0) + getChroma(pitch.step);
 export const getTimeAndMelodyFromTS = (
   element: ReductionElement,
-  duration_data: TimeSpan[][],
+  matrix: TimeSpan[][],
   musicxml: MusicXML
 ) => {
   const leftend = element.getLeftEnd();
@@ -16,11 +14,11 @@ export const getTimeAndMelodyFromTS = (
   const pitch = Array.isArray(note) ? note[element.note - 1].pitch : note.pitch;
   return {
     note: pitch ? calcChroma(pitch) : NaN,
-    begin: duration_data[leftend.measure][leftend.note].leftend,
-    end: duration_data[rightend.measure][rightend.note].rightend,
+    begin: matrix[leftend.measure][leftend.note].leftend,
+    end: matrix[rightend.measure][rightend.note].rightend,
     head: {
-      begin: duration_data[element.measure][element.note].leftend,
-      end: duration_data[element.measure][element.note].rightend
+      begin: matrix[element.measure][element.note].leftend,
+      end: matrix[element.measure][element.note].rightend
     }
   } as TimeAndMelody;
 };

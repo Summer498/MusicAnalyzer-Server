@@ -1,23 +1,7 @@
 import { analyzeMelody, TimeAndAnalyzedMelody, TimeAndMelody } from "@music-analyzer/melody-analyze";
 import { MusicXML, ReductionElement, TimeSpan } from "@music-analyzer/gttm";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-import { getTimeAndMelodyFromTS } from "./TimeSpanMapping";
-
-const getTimeAndMelody = (
-  reduction_element: ReductionElement,
-  matrix: TimeSpan[][],
-  musicxml: MusicXML,
-) => {
-  const melody_notes = getTimeAndMelodyFromTS(reduction_element, matrix, musicxml);
-  const ret = {
-    ...melody_notes,
-    head: {
-      begin: matrix[reduction_element.measure][reduction_element.note].leftend,
-      end: matrix[reduction_element.measure][reduction_element.note].rightend,
-    },
-  } as TimeAndMelody;
-  return ret;
-};
+import { getTimeAndMelody } from "./get-time-and-melody";
 
 const scaleAndTranslate = (e: TimeAndMelody, w: number, b: number) => {
   return {

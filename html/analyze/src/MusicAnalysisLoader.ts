@@ -1,7 +1,7 @@
 import { GroupingStructure, IProlongationalReduction, ITimeSpanReduction, MetricalStructure, MusicXML, ProlongationalReduction, TimeSpanReduction } from "@music-analyzer/gttm";
+import { getHierarchicalMelody } from "@music-analyzer/melody-hierarchical-analysis";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { getHierarchicalMelody } from "./HierarchicalMelody";
 import { getJSON, getJSONfromXML } from "./DataFetcher";
 import { AnalyzedMusicData } from "./MusicAnalyzerWindow";
 
