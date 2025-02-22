@@ -1,4 +1,4 @@
-import { Archetype } from "../MelodicArchetype";
+import { Archetype } from "../Archetype";
 
 export const get_color_on_registral_scale = (archetype: Archetype)  => {
   switch (archetype._symbol) {

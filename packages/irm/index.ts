@@ -1,7 +1,7 @@
-import { Archetype } from "./src/MelodicArchetype";
+import { Archetype } from "./src/Archetype";
 
-export { _ArchetypeSymbol as ArchetypeSymbol } from "./src/MelodicArchetype";
-export { Archetype } from "./src/MelodicArchetype";
+export { _ArchetypeSymbol as ArchetypeSymbol } from "./src/Archetype";
+export { Archetype } from "./src/Archetype";
 export {
   get_color_of_Narmour_concept,
   get_color_on_digital_parametric_scale,
