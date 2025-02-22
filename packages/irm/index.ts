@@ -9,7 +9,7 @@ export {
   get_color_on_registral_scale,
   get_color_on_intervallic_angle,
   get_color_on_parametric_scale
-} from "./src/ArchetypeColor";
+} from "./src/colors.ts";
 
 const archetypes = [
   [new Archetype("F3", "F3", "F3")],

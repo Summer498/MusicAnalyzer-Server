@@ -4,7 +4,7 @@ import {
   NULL_REGISTRAL_RETURN_FORM,
   RegistralReturnForm,
 } from "./RegistralReturnForm";
-import { get_color_on_intervallic_angle } from "./ArchetypeColor";
+import { get_color_on_intervallic_angle } from "./colors.ts";
 
 export type TrigramProspectiveSymbol =
   | "P" | "IP" | "VP"
@@ -58,7 +58,7 @@ class Archetype3 {
       _Interval.distance(curr, next),
     ];
 
-    this.color = get_color_on_intervallic_angle(this.notes);
+    this.color = get_color_on_intervallic_angle(prev,curr,next);
     const initial = _Interval.get(this.intervals[0]);
     const follow = _Interval.get(this.intervals[1]);
     this.melody_motion = new MelodyMotion(initial, follow);
