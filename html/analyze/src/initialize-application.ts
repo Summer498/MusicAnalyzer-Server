@@ -8,7 +8,6 @@ import { AnalyzedMusicData } from "./MusicAnalyzerWindow";
 export const initializeApplication = (
   analyzed: AnalyzedMusicData,
 ) => {
-
   const d_romans: TimeAndRomanAnalysis[] = analyzed.roman.map(e => e);
   const d_melodies: TimeAndAnalyzedMelody[] = analyzed.melody.map(e => ({
     ...e,
