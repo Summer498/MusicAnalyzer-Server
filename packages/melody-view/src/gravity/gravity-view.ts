@@ -25,13 +25,13 @@ export class GravityView extends MVCView {
     this.triangle = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
     this.triangle.classList.add("triangle");
     this.triangle.id = "gravity-arrow";
-    this.triangle.style.stroke = "#000";
+    this.triangle.style.stroke = "rgb(0, 0, 0)";
     this.triangle.style.strokeWidth = String(5);
-    this.triangle.style.fill = "#000";
+    this.triangle.style.fill = "rgb(0, 0, 0)";
     this.line = document.createElementNS("http://www.w3.org/2000/svg", "line");
     this.line.id = "gravity-arrow";
     this.line.classList.add("line");
-    this.line.style.stroke = "#000";
+    this.line.style.stroke = "rgb(0, 0, 0)";
     this.line.style.strokeWidth = String(5);
 
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");

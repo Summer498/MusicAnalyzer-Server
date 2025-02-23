@@ -12,7 +12,7 @@ export class BeatBarView extends MVCView {
     this.model = model;
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "line");
     this.svg.id = "bar";
-    this.svg.style.stroke = "#000";
+    this.svg.style.stroke = "rgb(0, 0, 0)";
     this.svg.style.display = "none";  //NOTE: 一旦非表示にしている
     this.y1 = 0;
     this.y2 = PianoRollHeight.value;

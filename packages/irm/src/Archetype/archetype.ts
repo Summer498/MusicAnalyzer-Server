@@ -38,7 +38,7 @@ export class Archetype {
       this.registral_return_form = NULL_REGISTRAL_RETURN_FORM;
       this.intervals = ["", ""];
       this.melody_motion = no_motion;
-      this.color = "#000";
+      this.color = "rgb(0, 0, 0)";
       if (prev && curr) {
         this._symbol = "dyad";
         this.symbol = remove_minus(_Interval.distance(prev, curr));

@@ -32,8 +32,8 @@ export class IRPlotHierarchy implements AudioReflectable, WindowReflectable {
     this.y_axis.setAttribute("x2", String(w / 2));
     this.y_axis.setAttribute("y1", String(0));
     this.y_axis.setAttribute("y1", String(h));
-    this.x_axis.style.stroke = "#000";
-    this.y_axis.style.stroke = "#000";
+    this.x_axis.style.stroke = "rgb(0, 0, 0)";
+    this.y_axis.style.stroke = "rgb(0, 0, 0)";
     this._show = [];
     this.#visible_layer = N;
   }

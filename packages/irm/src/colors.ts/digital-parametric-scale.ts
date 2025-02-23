@@ -2,18 +2,18 @@ import { Archetype } from "../Archetype";
 
 export const get_color_on_digital_parametric_scale = (archetype: Archetype)  => {
   switch (archetype._symbol) {
-    case "VP": case "(VP)": return "#0af";
-    case "P": case "(P)": return "#00f";
-    case "D": case "(D)": return "#00f";
-    case "IR": case "(IR)": return "#a0f";
+    case "VP": case "(VP)": return "rgb(0, 160, 255)";
+    case "P": case "(P)": return "rgb(0, 0, 255)";
+    case "D": case "(D)": return "rgb(0, 0, 255)";
+    case "IR": case "(IR)": return "rgb(160, 0, 255)";
 
-    case "VR": case "(VR)": return "#0e0";
-    case "IP": case "(IP)": return "#fa0";
-    case "ID": case "(ID)": return "#fa0";
-    case "R": case "(R)": return "#f00";
+    case "VR": case "(VR)": return "rgb(0, 224, 0)";
+    case "IP": case "(IP)": return "rgb(255, 160, 0)";
+    case "ID": case "(ID)": return "rgb(255, 160, 0)";
+    case "R": case "(R)": return "rgb(255, 0, 0)";
 
     case "M":
-    case "dyad": return "#444";
-    default: return "#000";
+    case "dyad": return "rgb(64, 64, 64)";
+    default: return "rgb(0, 0, 0)";
   }
 };

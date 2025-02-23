@@ -17,7 +17,7 @@ export class ChordRomanView extends MVCView {
     this.svg.id = "roman-name";
     this.svg.style.fontFamily = "Times New Roman";
     this.svg.style.fontSize = `${chord_text_em}em`;
-    this.svg.style.fill = fifthToColor(this.model.tonic, 1, 0.75) || "#000";
+    this.svg.style.fill = fifthToColor(this.model.tonic, 1, 0.75) || "rgb(0, 0, 0)";
     this.y = PianoRollHeight.value + chord_text_size * 2 + chord_name_margin;
     this.updateX();
     this.updateY();

@@ -12,7 +12,7 @@ export class DMelodyView extends MVCView {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     this.svg.id = "melody-note";
     this.svg.style.fill = rgbToString(hsv2rgb(0, 0, 0.75));
-    this.svg.style.stroke = "#444";
+    this.svg.style.stroke = "rgb(64, 64, 64)";
     this.updateX();
     this.updateY();
     this.updateWidth();

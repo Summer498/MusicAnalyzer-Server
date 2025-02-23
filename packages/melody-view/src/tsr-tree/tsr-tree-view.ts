@@ -23,13 +23,13 @@ export class TSRView extends MVCView {
 
     this.bracket = document.createElementNS("http://www.w3.org/2000/svg", "path");
     this.bracket.id = "group";
-    this.bracket.style.stroke = "#004";
+    this.bracket.style.stroke = "rgb(0, 0, 64)";
     this.bracket.style.strokeWidth = String(3);
-    this.bracket.style.fill = "#eee";
+    this.bracket.style.fill = "rgb(242, 242, 242)";
     this.circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     this.circle.id = "head";
-    this.circle.style.stroke = "#c00";
-    this.circle.style.fill = "#c00";
+    this.circle.style.stroke = "rgb(192, 0, 0)";
+    this.circle.style.fill = "rgb(192, 0, 0)";
 
     this.ir_symbol = document.createElementNS("http://www.w3.org/2000/svg", "text");
     this.ir_symbol.textContent = implication_realization.symbol;
@@ -86,11 +86,11 @@ export class TSRView extends MVCView {
     this.ir_symbol.setAttribute("x", String(cx));
     this.ir_symbol.setAttribute("y", String(y));
     this.ir_symbol.style.fontSize = `${Math.min(w / h, bracket_hight)}em`;
-    this.ir_symbol.style.fill = get_color_on_digital_parametric_scale(this.archetype) || "#000";
+    this.ir_symbol.style.fill = get_color_on_digital_parametric_scale(this.archetype) || "rgb(0, 0, 0)";
     if (false) {
-      this.ir_symbol.style.fill = get_color_of_Narmour_concept(this.archetype) || "#000";
-      this.ir_symbol.style.fill = get_color_on_digital_intervallic_scale(this.archetype) || "#000";
-      this.ir_symbol.style.fill = this.archetype.color || "#000";
+      this.ir_symbol.style.fill = get_color_of_Narmour_concept(this.archetype) || "rgb(0, 0, 0)";
+      this.ir_symbol.style.fill = get_color_on_digital_intervallic_scale(this.archetype) || "rgb(0, 0, 0)";
+      this.ir_symbol.style.fill = this.archetype.color || "rgb(0, 0, 0)";
     }
   }
   get strong() { return this.#strong; }
