@@ -9,9 +9,9 @@ export class PianoRoll implements WindowReflectable {
     this.svg.id = "piano-roll";
   }
   onWindowResized() {
-    this.svg.style.x = String(0);
-    this.svg.style.y = String(0);
-    this.svg.style.width = String(PianoRollWidth.value);
-    this.svg.style.height = String(PianoRollHeight.value + chord_text_size * 2 + chord_name_margin);
+    this.svg.setAttribute("x", String(0));
+    this.svg.setAttribute("y", String(0));
+    this.svg.setAttribute("width", String(PianoRollWidth.value));
+    this.svg.setAttribute("height", String(PianoRollHeight.value + chord_text_size * 2 + chord_name_margin));
   }
 }

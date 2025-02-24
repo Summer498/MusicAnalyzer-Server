@@ -22,8 +22,8 @@ export class IRPlotHierarchy implements AudioReflectable, WindowReflectable {
     this.svg.replaceChildren(this.x_axis, this.y_axis, this.circles);
     const w = Math.max(...this.children.map(e => e.w));
     const h = Math.max(...this.children.map(e => e.h));
-    this.svg.style.width = String(w);
-    this.svg.style.height = String(h);
+    this.svg.setAttribute("width", String(w));
+    this.svg.setAttribute("height", String(h));
     this.x_axis.setAttribute("x1", String(0));
     this.x_axis.setAttribute("x2", String(w));
     this.x_axis.setAttribute("y1", String(h / 2));

@@ -23,8 +23,8 @@ export class IRPlotLayer {
     this.svg.appendChild(this.child.view.svg);
     this.w = this.child.view.w;
     this.h = this.child.view.h;
-    this.svg.style.width = String(this.w);
-    this.svg.style.height = String(this.h);
+    this.svg.setAttribute("width", String(this.w));
+    this.svg.setAttribute("height", String(this.h));
     this.layer = layer;
   }
   onAudioUpdate() {

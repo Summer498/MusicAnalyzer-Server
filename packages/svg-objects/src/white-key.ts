@@ -19,10 +19,10 @@ export class WhiteKeySVG implements WindowReflectable {
     this.height = WhiteKeyPrm.height;
   }
   onWindowResized() {
-    this.svg.style.x = String(0);
-    this.svg.style.y = String(this.y);
-    this.svg.style.width = String(this.width);
-    this.svg.style.height = String(this.height);
+    this.svg.setAttribute("x", String(0));
+    this.svg.setAttribute("y", String(this.y));
+    this.svg.setAttribute("width", String(this.width));
+    this.svg.setAttribute("height", String(this.height));
   }
 }
 

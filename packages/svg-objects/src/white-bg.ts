@@ -18,10 +18,10 @@ export class WhiteBG_SVG implements WindowReflectable {
     this.height = WhiteBGsPrm.height;
   }
   onWindowResized() {
-    this.svg.style.x = String(0);
-    this.svg.style.y = String(this.y);
-    this.svg.style.width = String(PianoRollWidth.value);
-    this.svg.style.height = String(this.height);
+    this.svg.setAttribute("x", String(0));
+    this.svg.setAttribute("y", String(this.y));
+    this.svg.setAttribute("width", String(PianoRollWidth.value));
+    this.svg.setAttribute("height", String(this.height));
   }
 }
 

@@ -79,8 +79,8 @@ export class GravityView extends MVCView {
     ];
     return { p, src, dst } as ({ readonly p: number[], readonly src: Vector2D, readonly dst: Vector2D });
   }
-  updateWidth() { this.svg.style.width = String(this.model.duration * NoteSize.value); }
-  updateHeight() { this.svg.style.height = String(BlackKeyPrm.height); }
+  updateWidth() { this.svg.setAttribute("width", String(this.model.duration * NoteSize.value)); }
+  updateHeight() { this.svg.setAttribute("height", String(BlackKeyPrm.height)); }
   onWindowResized() {
     this.updateWidth();
     this.updateHeight();
