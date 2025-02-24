@@ -1,14 +1,15 @@
 class ColorSelector<ID extends string> {
-  #id: ID;
   selector: HTMLInputElement;
   label: HTMLLabelElement;
   body: HTMLSpanElement;
-  constructor(id: ID, value: string, text: string) {
-    this.#id = id;
+  constructor(
+    private readonly id: ID,
+    text: string
+  ) {
     this.selector = document.createElement("input");
-    this.selector.id = id;
+    this.selector.id = this.id;
     this.selector.type = "radio";
-    this.selector.value = value;
+    this.selector.value = this.id;
 
     this.label = document.createElement("label");
     this.label.textContent = text;
@@ -35,13 +36,13 @@ export class MelodyColorSelector {
   readonly body: HTMLSpanElement;
   constructor() {
     const selectors: ColorSelector<MelodyColorIDs>[] = [
-      new ColorSelector("Narmour_concept", "Narmour", "Narmour concept color",),
-      new ColorSelector("implication_realization", "implication_realization", "implication realization",),
-      new ColorSelector("digital_parametric_scale", "digital_parametric_scale", "digital parametric scale color",),
-      new ColorSelector("digital_intervallic_scale", "digital_intervallic_scale", "digital intervallic scale color",),
-      new ColorSelector("registral_scale", "registral_scale", "registral scale color",),
-      new ColorSelector("intervallic_angle", "intervallic_angle", "intervallic angle color",),
-      new ColorSelector("analog_parametric_scale", "analog_parametric_scale", "analog parametric scale color",),
+      new ColorSelector("Narmour_concept", "Narmour concept color",),
+      new ColorSelector("implication_realization", "implication realization",),
+      new ColorSelector("digital_parametric_scale", "digital parametric scale color",),
+      new ColorSelector("digital_intervallic_scale", "digital intervallic scale color",),
+      new ColorSelector("registral_scale", "registral scale color",),
+      new ColorSelector("intervallic_angle", "intervallic angle color",),
+      new ColorSelector("analog_parametric_scale", "analog parametric scale color",),
     ];
     selectors.forEach(e => { e.selector.name = "melody-color-selector"; });
 
