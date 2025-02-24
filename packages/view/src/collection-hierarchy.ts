@@ -23,9 +23,9 @@ export abstract class CollectionHierarchy implements AudioReflectable, WindowRef
     this.setShow(visible_layer);
   }
   onAudioUpdate() {
-    this.show.forEach(e => e.onAudioUpdate());
+    this.children.forEach(e => e.onAudioUpdate());
   }
   onWindowResized() {
-      this.show.forEach(e=> e.onWindowResized());
+      this.children.forEach(e=> e.onWindowResized());
   }
 }

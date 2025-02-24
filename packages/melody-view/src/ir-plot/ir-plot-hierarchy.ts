@@ -10,6 +10,8 @@ export class IRPlotHierarchy implements AudioReflectable, WindowReflectable {
   #visible_layer: number;
   readonly children: IRPlotLayer[];
   private _show: IRPlotLayer[];
+  readonly width: number;
+  readonly height: number;
   get show() { return this._show; }
   constructor(hierarchical_melody: TimeAndAnalyzedMelody[][]) {
     const N = hierarchical_melody.length;
@@ -20,18 +22,18 @@ export class IRPlotHierarchy implements AudioReflectable, WindowReflectable {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.svg.id = "implication-realization plot";
     this.svg.replaceChildren(this.x_axis, this.y_axis, this.circles);
-    const w = Math.max(...this.children.map(e => e.w));
-    const h = Math.max(...this.children.map(e => e.h));
-    this.svg.setAttribute("width", String(w));
-    this.svg.setAttribute("height", String(h));
+    this.width = Math.max(...this.children.map(e => e.w));
+    this.height = Math.max(...this.children.map(e => e.h));
+    this.svg.setAttribute("width", String(this.width));
+    this.svg.setAttribute("height", String(this.height));
     this.x_axis.setAttribute("x1", String(0));
-    this.x_axis.setAttribute("x2", String(w));
-    this.x_axis.setAttribute("y1", String(h / 2));
-    this.x_axis.setAttribute("y2", String(h / 2));
-    this.y_axis.setAttribute("x1", String(w / 2));
-    this.y_axis.setAttribute("x2", String(w / 2));
+    this.x_axis.setAttribute("x2", String(this.width));
+    this.x_axis.setAttribute("y1", String(this.height / 2));
+    this.x_axis.setAttribute("y2", String(this.height / 2));
+    this.y_axis.setAttribute("x1", String(this.width / 2));
+    this.y_axis.setAttribute("x2", String(this.width / 2));
     this.y_axis.setAttribute("y1", String(0));
-    this.y_axis.setAttribute("y1", String(h));
+    this.y_axis.setAttribute("y1", String(this.height));
     this.x_axis.style.stroke = "rgb(0, 0, 0)";
     this.y_axis.style.stroke = "rgb(0, 0, 0)";
     this._show = [];
@@ -57,7 +59,7 @@ export class IRPlotHierarchy implements AudioReflectable, WindowReflectable {
   }
   onAudioUpdate() {
     this.updateLayer();
-    this.show.forEach(e => e.onAudioUpdate());
+    this.children.forEach(e => e.onAudioUpdate());
   }
   onWindowResized() {}
 }

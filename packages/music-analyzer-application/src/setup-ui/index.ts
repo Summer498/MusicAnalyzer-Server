@@ -47,8 +47,8 @@ export const setupUI = (
   const ir_plot = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   ir_plot.appendChild(melody.ir_plot.svg);
   ir_plot.id = "IR-plot";
-  ir_plot.setAttribute("width", melody.ir_plot.svg.style.width);
-  ir_plot.setAttribute("height", melody.ir_plot.svg.style.height);
+  ir_plot.setAttribute("width", String(melody.ir_plot.width));
+  ir_plot.setAttribute("height", String(melody.ir_plot.height));
 
   const save_button = getSaveButton(tune_id, title, piano_roll_view);
   const save_raw_button =  getRawSaveButton(tune_id, title, piano_roll_view);
