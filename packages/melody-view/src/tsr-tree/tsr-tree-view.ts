@@ -1,10 +1,10 @@
 import { Archetype, get_color_of_Narmour_concept, get_color_on_digital_intervallic_scale, get_color_on_digital_parametric_scale } from "@music-analyzer/irm";
 import { BlackKeyPrm, bracket_hight, NoteSize } from "@music-analyzer/view-parameters";
 import { MVCView } from "@music-analyzer/view";
-import { TSRModel } from "./tsr-tree-model";
+import { ReductionModel } from "./tsr-tree-model";
 import { get_color_of_implication_realization } from "@music-analyzer/irm/src/colors.ts";
 
-export class TSRView extends MVCView {
+export class ReductionView extends MVCView {
   readonly svg: SVGGElement;
   readonly bracket: SVGPathElement;
   readonly circle: SVGCircleElement;

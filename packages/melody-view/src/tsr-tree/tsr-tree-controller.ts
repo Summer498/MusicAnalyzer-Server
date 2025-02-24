@@ -1,16 +1,16 @@
 import { MVCController } from "@music-analyzer/view";
 import { Archetype } from "@music-analyzer/irm";
-import { TSRModel } from "./tsr-tree-model";
-import { TSRView } from "./tsr-tree-view";
+import { ReductionModel } from "./tsr-tree-model";
+import { ReductionView } from "./tsr-tree-view";
 
-export class TSRController extends MVCController {
-  readonly view: TSRView;
+export class ReductionController extends MVCController {
+  readonly view: ReductionView;
   constructor(
-    readonly model: TSRModel,
+    readonly model: ReductionModel,
     implication_realization: Archetype
   ) {
     super();
-    this.view = new TSRView(this.model, implication_realization);
+    this.view = new ReductionView(this.model, implication_realization);
   }
   renewStrong(strong: boolean) {
     this.view.strong = strong;
