@@ -79,10 +79,10 @@ export class IRPlotView extends MVCView {
   updateColor() {
     this.svg.style.stroke = "rgb(16, 16, 16)";
     this.svg.style.strokeWidth = String(6);
-    this.svg.style.fill = get_color_of_implication_realization(this.model.getCurrentNote().melody_analysis.implication_realization);
+    this.svg.style.fill = get_color_of_Narmour_concept(this.model.getCurrentNote().melody_analysis.implication_realization);
     if(false){
+      this.svg.style.fill = get_color_of_implication_realization(this.model.getCurrentNote().melody_analysis.implication_realization);
       this.svg.style.fill = get_color_on_digital_parametric_scale(this.model.getCurrentNote().melody_analysis.implication_realization);
-      this.svg.style.fill = get_color_of_Narmour_concept(this.model.getCurrentNote().melody_analysis.implication_realization);
       this.svg.style.fill = get_color_on_digital_intervallic_scale(this.model.getCurrentNote().melody_analysis.implication_realization);
     }
   }

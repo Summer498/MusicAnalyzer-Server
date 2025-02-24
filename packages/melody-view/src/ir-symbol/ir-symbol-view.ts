@@ -19,11 +19,11 @@ export class IRSymbolView extends MVCView {
     this.svg.style.fontFamily = "Times New Roman";
     this.svg.style.fontSize = `${ir_analysis_em}em`;
     this.svg.style.textAnchor = "middle";
-    this.svg.style.fill = get_color_of_implication_realization(this.model.archetype) || "rgb(0, 0, 0)";
+    this.svg.style.fill = get_color_of_Narmour_concept(this.model.archetype) || "rgb(0, 0, 0)";
     if (false) {
+      this.svg.style.fill = get_color_of_implication_realization(this.model.archetype) || "rgb(0, 0, 0)";
       this.svg.style.fill = get_color_on_digital_parametric_scale(this.model.archetype) || "rgb(0, 0, 0)";
       this.svg.style.fill = get_color_on_digital_intervallic_scale(this.model.archetype) || "rgb(0, 0, 0)";
-      this.svg.style.fill = get_color_of_Narmour_concept(this.model.archetype) || "rgb(0, 0, 0)";
       this.svg.style.fill = get_color_on_parametric_scale(this.model.archetype) || "rgb(0, 0, 0)";
       this.svg.style.fill = this.model.archetype.color || "rgb(0, 0, 0)";
     }

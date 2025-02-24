@@ -87,10 +87,10 @@ export class TSRView extends MVCView {
     this.ir_symbol.setAttribute("x", String(cx));
     this.ir_symbol.setAttribute("y", String(y));
     this.ir_symbol.style.fontSize = `${Math.min(w / h, bracket_hight)}em`;
-    this.ir_symbol.style.fill = get_color_of_implication_realization(this.archetype) || "rgb(0, 0, 0)";
+    this.ir_symbol.style.fill = get_color_of_Narmour_concept(this.archetype) || "rgb(0, 0, 0)";
     if (false) {
+      this.ir_symbol.style.fill = get_color_of_implication_realization(this.archetype) || "rgb(0, 0, 0)";
       this.ir_symbol.style.fill = get_color_on_digital_parametric_scale(this.archetype) || "rgb(0, 0, 0)";
-      this.ir_symbol.style.fill = get_color_of_Narmour_concept(this.archetype) || "rgb(0, 0, 0)";
       this.ir_symbol.style.fill = get_color_on_digital_intervallic_scale(this.archetype) || "rgb(0, 0, 0)";
       this.ir_symbol.style.fill = this.archetype.color || "rgb(0, 0, 0)";
     }
