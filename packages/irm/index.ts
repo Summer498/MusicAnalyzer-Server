@@ -4,6 +4,7 @@ export { _ArchetypeSymbol as ArchetypeSymbol } from "./src/Archetype";
 export { Archetype } from "./src/Archetype";
 export {
   get_color_of_Narmour_concept,
+  get_color_of_implication_realization,
   get_color_on_digital_parametric_scale,
   get_color_on_digital_intervallic_scale,
   get_color_on_registral_scale,
