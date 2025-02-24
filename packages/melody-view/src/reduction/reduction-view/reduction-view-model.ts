@@ -1,6 +1,6 @@
 import { BlackKeyPrm, bracket_hight, NoteSize } from "@music-analyzer/view-parameters";
 import { MVCModel } from "@music-analyzer/view";
-import { ReductionModel } from "../tsr-tree-model";
+import { ReductionModel } from "../reduction-model";
 
 export class ReductionViewModel extends MVCModel {
   #x: number;

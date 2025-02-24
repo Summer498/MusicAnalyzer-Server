@@ -1,7 +1,7 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { CollectionLayer } from "@music-analyzer/view";
-import { ReductionModel } from "./tsr-tree-model";
-import { ReductionController } from "./tsr-tree-controller";
+import { ReductionModel } from "./reduction-model";
+import { ReductionController } from "./reduction-controller";
 
 export class ReductionLayer extends CollectionLayer {
   constructor(

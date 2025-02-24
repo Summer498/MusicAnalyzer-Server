@@ -1,6 +1,6 @@
 import { CollectionHierarchy } from "@music-analyzer/view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { ReductionLayer } from "./tsr-tree-layer";
+import { ReductionLayer } from "./reduction-layer";
 
 export class ReductionHierarchy extends CollectionHierarchy {
   readonly svg: SVGGElement;

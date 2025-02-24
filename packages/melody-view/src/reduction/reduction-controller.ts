@@ -1,7 +1,7 @@
 import { MVCController } from "@music-analyzer/view";
 import { Archetype } from "@music-analyzer/irm";
-import { ReductionModel } from "./tsr-tree-model";
-import { ReductionView } from "./tsr-tree-view";
+import { ReductionModel } from "./reduction-model";
+import { ReductionView } from "./reduction-view";
 
 export class ReductionController extends MVCController {
   readonly view: ReductionView;

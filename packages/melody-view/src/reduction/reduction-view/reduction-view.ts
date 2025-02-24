@@ -1,6 +1,6 @@
 import { Archetype  } from "@music-analyzer/irm";
 import { MVCView } from "@music-analyzer/view";
-import { ReductionModel } from "../tsr-tree-model";
+import { ReductionModel } from "../reduction-model";
 import { ReductionViewModel } from "./reduction-view-model";
 import { ReductionBracket } from "./reduction-bracket";
 import { ReductionDot } from "./reduction-dot";
