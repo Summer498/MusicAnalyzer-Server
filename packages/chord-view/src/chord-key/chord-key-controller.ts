@@ -4,11 +4,11 @@ import { ChordKeyModel } from "./chord-key-model";
 import { ChordKeyView } from "./chord-key-view";
 
 export class ChordKeyController extends MVCController {
-  readonly model: ChordKeyModel;
   readonly view: ChordKeyView;
-  constructor(model: ChordKeyModel) {
+  constructor(
+    readonly model: ChordKeyModel
+  ) {
     super();
-    this.model = model;
     this.view = new ChordKeyView(this.model);
   }
 }

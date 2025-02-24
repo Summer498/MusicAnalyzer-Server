@@ -7,11 +7,11 @@ import { deleteMelody } from "../melody-editor-function";
 
 export class MelodyView extends MVCView {
   readonly svg: SVGRectElement;
-  protected readonly model: MelodyModel;
   sound_reserved: boolean;
-  constructor(model: MelodyModel) {
+  constructor(
+    protected readonly model: MelodyModel,
+  ) {
     super();
-    this.model = model;
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     this.svg.id = "melody-note";
     this.svg.style.fill = "rgb(0, 192, 0)";

@@ -4,16 +4,17 @@ import { WindowReflectable } from "@music-analyzer/view";
 
 export class WhiteKeySVG implements WindowReflectable {
   readonly svg: SVGRectElement;
-  readonly oct: number;
   readonly y: number;
   readonly width: number;
   readonly height: number;
-  constructor(oct: number, white_index: number) {
+  constructor(
+    readonly oct: number,
+    white_index: number
+  ) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     this.svg.id = "white-key";
     this.svg.style.fill = WhiteKeyPrm.fill;
     this.svg.style.stroke = WhiteKeyPrm.stroke;
-    this.oct = oct;
     this.y = OctaveHeight.value * oct + mod(WhiteKeyPrm.height * [0, 1, 2, 3, 4, 5, 6][white_index] + (1 + PianoRollBegin.value) * BlackKeyPrm.height, OctaveHeight.value);
     this.width = WhiteKeyPrm.width;
     this.height = WhiteKeyPrm.height;

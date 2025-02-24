@@ -11,17 +11,15 @@ type Vector2D = {
 }
 
 export class GravityView extends MVCView {
-  protected readonly model: GravityModel;
   readonly svg: SVGGElement;
   readonly triangle: SVGPolygonElement;
   readonly line: SVGLineElement;
   readonly src: Vector2D;
   readonly dst: Vector2D;
   constructor(
-    model: GravityModel,
+    protected readonly model: GravityModel,
   ) {
     super();
-    this.model = model;
     this.triangle = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
     this.triangle.classList.add("triangle");
     this.triangle.id = "gravity-arrow";

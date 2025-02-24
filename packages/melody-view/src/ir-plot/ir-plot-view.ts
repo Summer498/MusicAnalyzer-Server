@@ -4,7 +4,6 @@ import { IRPlotModel } from "./ir-plot-model";
 import { get_color_of_implication_realization } from "@music-analyzer/irm/src/colors.ts";
 
 export class IRPlotView extends MVCView {
-  readonly model: IRPlotModel;
   readonly svg: SVGCircleElement;
   readonly x0: number;
   readonly y0: number;
@@ -14,9 +13,10 @@ export class IRPlotView extends MVCView {
   #y: number;
   get x() { return this.#x; };
   get y() { return this.#y; };
-  constructor(model: IRPlotModel) {
+  constructor(
+    readonly model: IRPlotModel,
+  ) {
     super();
-    this.model = model;
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     this.#x = 0;
     this.#y = 0;

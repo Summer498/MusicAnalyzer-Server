@@ -7,9 +7,9 @@ export class OctaveBG implements WindowReflectable {
   readonly svg: SVGGElement;
   readonly white_BGs: OctaveWhiteBG;
   readonly black_BGs: OctaveBlackBG;
-  readonly oct: number;
-  constructor(oct: number) {
-    this.oct = oct;
+  constructor(
+    readonly oct: number,
+  ) {
     this.white_BGs = new OctaveWhiteBG(oct);
     this.black_BGs = new OctaveBlackBG(oct);
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");

@@ -2,18 +2,14 @@ import { AudioReflectableRegistry } from "@music-analyzer/view";
 import { NowAt } from "@music-analyzer/view-parameters";
 
 export class EventLoop {
-  readonly registry: AudioReflectableRegistry;
-  readonly audio_player: HTMLAudioElement | HTMLVideoElement;
   readonly fps_element: HTMLParagraphElement;
   private last_audio_time = Number.MIN_SAFE_INTEGER;
   private old_time: number;
   constructor(
-    registry: AudioReflectableRegistry,
-    audio_player: HTMLAudioElement | HTMLVideoElement
+    public readonly registry: AudioReflectableRegistry,
+    public readonly audio_player: HTMLAudioElement | HTMLVideoElement,
   ) {
     this.old_time = Date.now();
-    this.registry = registry;
-    this.audio_player = audio_player;
     this.fps_element = document.createElement("p");
     this.fps_element.id = "fps";
     this.fps_element.textContent = `fps:${0}`;

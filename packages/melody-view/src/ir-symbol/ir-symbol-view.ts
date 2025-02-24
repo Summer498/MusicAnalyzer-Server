@@ -7,12 +7,12 @@ import { get_color_of_implication_realization } from "@music-analyzer/irm/src/co
 const ir_analysis_em = Size.value;
 
 export class IRSymbolView extends MVCView {
-  protected readonly model: IRSymbolModel;
   readonly svg: SVGTextElement;
   readonly y: number;
-  constructor(model: IRSymbolModel) {
+  constructor(
+    protected readonly model: IRSymbolModel,
+  ) {
     super();
-    this.model = model;
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "text");
     this.svg.textContent = this.model.archetype.symbol;
     this.svg.id = "I-R Symbol";

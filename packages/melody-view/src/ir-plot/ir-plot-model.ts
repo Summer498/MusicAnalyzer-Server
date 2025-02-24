@@ -3,12 +3,12 @@ import { MVCModel } from "@music-analyzer/view";
 import { NowAt } from "@music-analyzer/view-parameters";
 
 export class IRPlotModel extends MVCModel {
-  readonly melody_series: TimeAndAnalyzedMelody[];
   #index: number;
   #cache: TimeAndAnalyzedMelody[];
-  constructor(melody_series: TimeAndAnalyzedMelody[]) {
+  constructor(
+    readonly melody_series: TimeAndAnalyzedMelody[],
+  ) {
     super();
-    this.melody_series = melody_series;
     this.#index = 0;
     this.#cache = [];
   }

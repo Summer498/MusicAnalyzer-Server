@@ -6,16 +6,11 @@ export abstract class ReductionElement {
   };
   readonly measure: number;
   readonly note: number;
-  readonly primary_element?: ReductionElement;
-  readonly secondary_element?: ReductionElement;
   constructor(
     id: BeatPos,
-    primary_element: ReductionElement | undefined,
-    secondary_element: ReductionElement | undefined
+    readonly primary_element: ReductionElement | undefined,
+    readonly secondary_element: ReductionElement | undefined,
   ) {
-    this.primary_element = primary_element;
-    this.secondary_element = secondary_element;
-
     const regexp = /P1-([0-9]+)-([0-9]+)/;
     const match = id.match(regexp);
     if (match) {

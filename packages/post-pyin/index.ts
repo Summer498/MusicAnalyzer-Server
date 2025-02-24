@@ -12,11 +12,12 @@ export const SAMPLING_RATE = 22050;
 class Freq2Phase {
   s;
   readonly s0;
-  readonly sampling_rate;
-  constructor(s0: number, sampling_rate = 44100) {
+  constructor(
+    s0: number,
+    readonly sampling_rate = 44100,
+  ) {
     this.s = 0;
     this.s0 = s0 || 0;
-    this.sampling_rate = sampling_rate;
   }
   calc(freq: number) {
     this.s += (freq || 0) / this.sampling_rate;
@@ -27,11 +28,11 @@ class Freq2Phase {
 class MedianFilter {
   i;
   buff: number[];
-  readonly window_size;
-  constructor(window_size: number) {
+  constructor(
+    readonly window_size: number,
+  ) {
     this.i = 0;
     this.buff = [];
-    this.window_size = window_size;
   }
   median(e: number | null) {
     // i が 1 ずつ上がる想定

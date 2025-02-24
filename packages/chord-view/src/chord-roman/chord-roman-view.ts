@@ -6,12 +6,12 @@ import { shorten_chord } from "../shorten";
 import { ChordRomanModel } from "./chord-roman-model";
 
 export class ChordRomanView extends MVCView {
-  protected readonly model: ChordRomanModel;
   readonly svg: SVGTextElement;
   readonly y: number;
-  constructor(model: ChordRomanModel){
+  constructor(
+    protected readonly model: ChordRomanModel,
+  ){
     super();
-    this.model = model;
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "text");
     this.svg.textContent = shorten_chord(this.model.roman);
     this.svg.id = "roman-name";

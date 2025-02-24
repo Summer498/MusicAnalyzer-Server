@@ -3,13 +3,13 @@ import { MVCView } from "@music-analyzer/view";
 import { BeatBarModel } from "./beat-bar-model";
 
 export class BeatBarView extends MVCView {
-  protected readonly model: BeatBarModel;
   readonly svg: SVGLineElement;
   readonly y1: number;
   readonly y2: number;
-  constructor(model: BeatBarModel) {
+  constructor(
+    protected readonly model: BeatBarModel
+  ) {
     super();
-    this.model = model;
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "line");
     this.svg.id = "bar";
     this.svg.style.stroke = "rgb(0, 0, 0)";

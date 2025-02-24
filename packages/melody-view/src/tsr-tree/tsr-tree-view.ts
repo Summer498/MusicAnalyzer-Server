@@ -5,12 +5,10 @@ import { TSRModel } from "./tsr-tree-model";
 import { get_color_of_implication_realization } from "@music-analyzer/irm/src/colors.ts";
 
 export class TSRView extends MVCView {
-  protected readonly model: TSRModel;
   readonly svg: SVGGElement;
   readonly bracket: SVGPathElement;
   readonly circle: SVGCircleElement;
   readonly ir_symbol: SVGTextElement;
-  readonly archetype: Archetype;
   #x: number;
   #w: number;
   #cx: number;
@@ -18,10 +16,11 @@ export class TSRView extends MVCView {
   readonly y: number;
   readonly h: number;
   #strong: boolean;
-  constructor(model: TSRModel, implication_realization: Archetype) {
+  constructor(
+    protected readonly model: TSRModel,
+    readonly archetype: Archetype,
+  ) {
     super();
-    this.model = model;
-
     this.bracket = document.createElementNS("http://www.w3.org/2000/svg", "path");
     this.bracket.id = "group";
     this.bracket.style.stroke = "rgb(0, 0, 64)";
@@ -33,12 +32,11 @@ export class TSRView extends MVCView {
     this.circle.style.fill = "rgb(192, 0, 0)";
 
     this.ir_symbol = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    this.ir_symbol.textContent = implication_realization.symbol;
+    this.ir_symbol.textContent = archetype.symbol;
     this.ir_symbol.id = "I-R Symbol";
     this.ir_symbol.style.fontFamily = "Times New Roman";
     this.ir_symbol.style.fontSize = `${bracket_hight}em`;
     this.ir_symbol.style.textAnchor = "middle";
-    this.archetype = implication_realization;
 
     this.#x = this.getViewX(this.model.begin);
     this.#w = this.getViewW(this.model.duration);

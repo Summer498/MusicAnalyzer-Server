@@ -14,13 +14,13 @@ export abstract class TimeAndMVCController extends MVCController {
 }
 
 export abstract class ReflectableTimeAndMVCControllerCollection implements AudioReflectable, WindowReflectable {
-  readonly children: (TimeAndMVCController & WindowReflectable)[];
   readonly children_model: TimeAndMVCModel[];
   #show: TimeAndMVCController[];
   get show() { return this.#show; };
   readonly svg: SVGGElement;
-  constructor(children: (TimeAndMVCController & WindowReflectable)[]) {
-    this.children = children;
+  constructor(
+    readonly children: (TimeAndMVCController & WindowReflectable)[],
+  ) {
     this.children_model = this.children.map(e => e.model);
     this.#show = children;
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");

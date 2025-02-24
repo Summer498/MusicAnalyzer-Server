@@ -4,11 +4,11 @@ import { DMelodyView } from "./d-melody-view";
 import { insertMelody } from "../melody-editor-function";
 
 export class DMelodyController extends MVCController {
-  readonly model: DMelodyModel;
   readonly view: DMelodyView;
-  constructor(model: DMelodyModel) {
+  constructor(
+    readonly model: DMelodyModel,
+  ) {
     super();
-    this.model = model;
     this.view = new DMelodyView(this.model);
     this.onAudioUpdate();
   }

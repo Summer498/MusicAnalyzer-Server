@@ -5,12 +5,12 @@ import { MVCView } from "@music-analyzer/view";
 import { ChordNoteModel } from "./chord-note-model";
 
 export class ChordNoteView extends MVCView {
-  protected readonly model: ChordNoteModel;
   readonly svg: SVGRectElement;
   readonly y: number;
-  constructor(model: ChordNoteModel) {
+  constructor(
+    protected readonly model: ChordNoteModel,
+  ) {
     super();
-    this.model = model;
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     this.svg.setAttribute("width", String(this.model.duration * NoteSize.value));
     this.svg.setAttribute("height", String(BlackKeyPrm.height));

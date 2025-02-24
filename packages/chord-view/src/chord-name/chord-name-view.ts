@@ -7,12 +7,12 @@ import { ChordNameModel } from "./chord-name-model";
 import { chord_text_em, chord_text_size } from "../chord-view-params";
 
 export class ChordNameView extends MVCView {
-  protected readonly model: ChordNameModel;
   readonly svg: SVGTextElement;
   readonly y: number;
-  constructor(model: ChordNameModel) {
+  constructor(
+    protected readonly model: ChordNameModel
+  ) {
     super();
-    this.model = model;
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "text");
     this.svg.textContent = shorten_chord(this.model.name);
     this.svg.id = "chord-name";

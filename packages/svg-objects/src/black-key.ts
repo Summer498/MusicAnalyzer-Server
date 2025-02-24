@@ -3,16 +3,18 @@ import { BlackKeyPrm, BlackPosition, OctaveHeight } from "@music-analyzer/view-p
 
 export class BlackKeySVG implements WindowReflectable {
   readonly svg: SVGRectElement;
-  readonly oct: number;
   readonly y: number;
   readonly width: number;
   readonly height: number;
-  constructor(oct: number, j: number) {
+  constructor(
+    readonly oct: number,
+    j: number
+  ) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     this.svg.id = "black-key";
     this.svg.style.fill = BlackKeyPrm.fill;
     this.svg.style.stroke = BlackKeyPrm.stroke;
-    this.oct = oct;
+    
     this.y = OctaveHeight.value * oct + BlackKeyPrm.height * BlackPosition.value[j];
     this.width = BlackKeyPrm.width;
     this.height = BlackKeyPrm.height;

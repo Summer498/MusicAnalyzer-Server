@@ -5,18 +5,15 @@ import { MelodyModel } from "./melody-model";
 import { MelodyView } from "./melody-view";
 
 export class MelodyController extends MVCController{
-  readonly model: MelodyModel;
   readonly view: MelodyView;
   #do_melody_beep: boolean;
   #beep_volume: number;
   get do_melody_beep() { return this.#do_melody_beep; }
   get beep_volume() { return this.#beep_volume; }
-
   constructor(
-    model: MelodyModel,
+    readonly model: MelodyModel,
   ) {
     super();
-    this.model = model;
     this.view = new MelodyView(this.model);
     this.#do_melody_beep = false;
     this.#beep_volume = 0;

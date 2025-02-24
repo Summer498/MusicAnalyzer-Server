@@ -6,16 +6,15 @@ export class TSRModel extends MVCModel {
   readonly end: number;
   readonly duration: number;
   readonly head: { readonly begin: number, readonly end: number, readonly duration: number };
-  readonly layer: number;
   constructor(
     melody: TimeAndAnalyzedMelody,
-    layer: number
+    readonly layer: number,
   ) {
     super();
     this.begin = melody.begin;
     this.end = melody.end;
     this.duration = melody.end - melody.begin;
-    this.layer = layer;
+    
     this.head = {
       ...melody.head,
       duration: melody.head.end - melody.head.begin

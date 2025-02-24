@@ -4,13 +4,12 @@ import { IRPlotModel } from "./ir-plot-model";
 
 export class IRPlotLayer {
   readonly svg: SVGGElement;
-  readonly layer: number;
   readonly child: IRPlotController;
   readonly w: number;
   readonly h: number;
   constructor(
     melody_series: TimeAndAnalyzedMelody[],
-    layer: number,
+    readonly layer: number,
     max: number
   ) {
     this.child = new IRPlotController(new IRPlotModel(melody_series));
@@ -24,8 +23,7 @@ export class IRPlotLayer {
     this.w = this.child.view.w;
     this.h = this.child.view.h;
     this.svg.setAttribute("width", String(this.w));
-    this.svg.setAttribute("height", String(this.h));
-    this.layer = layer;
+    this.svg.setAttribute("height", String(this.h));    
   }
   onAudioUpdate() {
     this.child.onAudioUpdate();

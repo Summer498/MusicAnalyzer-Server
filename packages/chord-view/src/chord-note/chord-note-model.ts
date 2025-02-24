@@ -9,12 +9,11 @@ export class ChordNoteModel extends MVCModel {
   readonly tonic: string;
   readonly type: string;
   readonly note: number;
-  readonly oct: number;
   constructor(
     e: TimeAndRomanAnalysis,
     chord: Chord,
     note: string,
-    oct: number
+    readonly oct: number,
   ) {
     super();
     this.begin = e.begin;
@@ -23,6 +22,5 @@ export class ChordNoteModel extends MVCModel {
     this.tonic = chord.tonic!;
     this.type = chord.type;
     this.note = _Note.chroma(note);
-    this.oct = oct;
   }
 }

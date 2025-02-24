@@ -3,16 +3,18 @@ import { OctaveHeight, PianoRollWidth, WhiteBGsPrm, WhitePosition } from "@music
 
 export class WhiteBG_SVG implements WindowReflectable {
   readonly svg: SVGRectElement;
-  readonly oct: number;
   readonly y: number;
   readonly width: number;
   readonly height: number;
-  constructor(oct: number, white_index: number) {
+  constructor(
+    readonly oct: number,
+    white_index: number
+  ) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     this.svg.id = "white-BG";
     this.svg.style.fill = WhiteBGsPrm.fill;
     this.svg.style.stroke = WhiteBGsPrm.stroke;
-    this.oct = oct;
+
     this.y = OctaveHeight.value * oct + WhiteBGsPrm.height * WhitePosition.value[white_index];
     this.width = WhiteBGsPrm.width;
     this.height = WhiteBGsPrm.height;

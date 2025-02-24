@@ -7,9 +7,9 @@ export class OctaveKey implements WindowReflectable {
   readonly svg: SVGGElement;
   readonly white_keys: OctaveWhiteKey;
   readonly black_keys: OctaveBlackKey;
-  readonly oct: number;
-  constructor(oct: number) {
-    this.oct = oct;
+  constructor(
+    readonly oct: number,
+  ) {
     this.white_keys = new OctaveWhiteKey(oct);
     this.black_keys = new OctaveBlackKey(oct);
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");

@@ -4,11 +4,11 @@ import { ChordNameModel } from "./chord-name-model";
 import { ChordNameView } from "./chord-name-view";
 
 export class ChordNameController extends MVCController{
-  readonly model: ChordNameModel;
   readonly view: ChordNameView;
-  constructor(model: ChordNameModel) {
+  constructor(
+    readonly model: ChordNameModel
+  ) {
     super();
-    this.model = model;
     this.view = new ChordNameView(this.model);
   }
 }

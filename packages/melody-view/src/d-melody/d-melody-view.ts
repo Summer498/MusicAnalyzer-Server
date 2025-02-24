@@ -5,10 +5,10 @@ import { DMelodyModel } from "./d-melody-model";
 
 export class DMelodyView extends MVCView {
   readonly svg: SVGRectElement;
-  protected readonly model: DMelodyModel;
-  constructor(model: DMelodyModel) {
+  constructor(
+    protected readonly model: DMelodyModel,
+  ) {
     super();
-    this.model = model;
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     this.svg.id = "melody-note";
     this.svg.style.fill = rgbToString(hsv2rgb(0, 0, 0.75));
