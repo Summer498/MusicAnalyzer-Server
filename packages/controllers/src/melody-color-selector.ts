@@ -1,31 +1,40 @@
+const getColorSelector = (id: string, value: string, text: string) => {
+  const selector = document.createElement("input");
+  selector.id = id;
+  selector.name = id;
+  selector.type = "radio";
+  selector.value = value;
+
+  const label = document.createElement("label");
+  label.textContent = text;
+  label.htmlFor = selector.id;
+  label.style.whiteSpace = "nowrap";  //     white-space: nowrap;
+
+  const span = document.createElement("span");
+  span.style.whiteSpace = "nowrap";   //     white-space: nowrap;
+  span.appendChild(selector);
+  span.appendChild(label);
+  return span;
+};
+
 export class MelodyColorSelector {
   readonly body: HTMLSpanElement;
   constructor() {
-    const key_color_selector = document.createElement("input");
-    key_color_selector.id = "key_color_selector";
-    key_color_selector.name = "key_color_selector";
-    key_color_selector.type = "radio";
-    key_color_selector.value = "key";
-    key_color_selector.checked = true;
-    key_color_selector.textContent = "key based color";
-    const chord_color_selector = document.createElement("input");
-    chord_color_selector.id = "chord_color_selector";
-    chord_color_selector.type = "radio";
-    chord_color_selector.name = "chord_color_selector";
-    chord_color_selector.value = "chord";
-    chord_color_selector.textContent = "chord based color";
-    const key_color_label = document.createElement("label");
-    key_color_label.textContent = "key based color";
-    key_color_label.htmlFor = key_color_selector.id;
-    const chord_color_label = document.createElement("label");
-    chord_color_label.textContent = "chord based color";
-    chord_color_label.htmlFor = chord_color_selector.id;
-    this.body = document.createElement("span");
+    const selectors = [
+      getColorSelector("Narmour_concept", "Narmour", "Narmour concept color",),
+      getColorSelector("digital_parametric_scale", "digital_parametric_scale", "digital parametric scale color",),
+      getColorSelector("digital_intervallic_scale", "digital_intervallic_scale", "digital intervallic scale color",),
+      getColorSelector("registral_scale", "registral_scale", "registral scale color",),
+      getColorSelector("intervallic_angle", "intervallic_angle", "intervallic angle color",),
+      getColorSelector("analog_parametric_scale", "analog_parametric_scale", "analog parametric scale color",),
+    ];
+
+    const default_item = selectors[0].getElementsByTagName("input").item(0);
+    default_item && (default_item.checked = true);
+
+    this.body = document.createElement("div");
     this.body.id = "melody_color_selector";
-    this.body.appendChild(key_color_label);
-    this.body.appendChild(key_color_selector);
-    this.body.appendChild(chord_color_label);
-    this.body.appendChild(chord_color_selector);
+    selectors.forEach(e => this.body.appendChild(e));
   }
 }
 
