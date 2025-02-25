@@ -1,7 +1,7 @@
 import { Archetype, get_color_of_Narmour_concept, get_color_on_digital_intervallic_scale, get_color_on_digital_parametric_scale } from "@music-analyzer/irm";
 import { bracket_hight } from "@music-analyzer/view-parameters";
 import { MVCView } from "@music-analyzer/view";
-import { get_color_of_implication_realization } from "@music-analyzer/irm/src/colors.ts";
+import { get_color_of_implication_realization, get_color_on_intervallic_angle, get_color_on_parametric_scale, get_color_on_registral_scale } from "@music-analyzer/irm/src/colors.ts";
 import { ReductionViewModel } from "./reduction-view-model";
 
 export class IRMSymbolOnReduction extends MVCView {
@@ -18,13 +18,19 @@ export class IRMSymbolOnReduction extends MVCView {
     this.svg.style.fontSize = `${bracket_hight}em`;
     this.svg.style.textAnchor = "middle";
   }
+  colorFunction(getColor: (archetype: Archetype) => string) {
+    this.svg.style.fill = getColor(this.archetype) || "rgb(0, 0, 0)";
+  }
   updateColor() {
-    this.svg.style.fill = get_color_of_Narmour_concept(this.archetype) || "rgb(0, 0, 0)";
+    this.colorFunction(get_color_of_Narmour_concept);
     if (false) {
-      this.svg.style.fill = get_color_of_implication_realization(this.archetype) || "rgb(0, 0, 0)";
-      this.svg.style.fill = get_color_on_digital_parametric_scale(this.archetype) || "rgb(0, 0, 0)";
-      this.svg.style.fill = get_color_on_digital_intervallic_scale(this.archetype) || "rgb(0, 0, 0)";
-      this.svg.style.fill = this.archetype.color || "rgb(0, 0, 0)";
+      this.colorFunction(get_color_on_parametric_scale);
+      this.colorFunction(get_color_of_implication_realization);
+      this.colorFunction(get_color_on_digital_parametric_scale);
+      this.colorFunction(get_color_on_digital_parametric_scale);
+      this.colorFunction(get_color_on_digital_intervallic_scale);
+      this.colorFunction(get_color_on_intervallic_angle);
+      this.colorFunction(get_color_on_registral_scale);
     }
   }
   update(cx: number, y: number, w: number, h: number) {

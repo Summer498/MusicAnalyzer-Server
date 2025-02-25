@@ -1,7 +1,7 @@
-import { get_color_of_Narmour_concept, get_color_on_digital_intervallic_scale, get_color_on_digital_parametric_scale } from "@music-analyzer/irm";
+import { Archetype, get_color_of_Narmour_concept, get_color_on_digital_intervallic_scale, get_color_on_digital_parametric_scale } from "@music-analyzer/irm";
 import { MVCView } from "@music-analyzer/view";
 import { IRPlotModel } from "./ir-plot-model";
-import { get_color_of_implication_realization } from "@music-analyzer/irm/src/colors.ts";
+import { get_color_of_implication_realization, get_color_on_intervallic_angle, get_color_on_parametric_scale, get_color_on_registral_scale } from "@music-analyzer/irm/src/colors.ts";
 
 export class IRPlotView extends MVCView {
   readonly svg: SVGCircleElement;
@@ -24,6 +24,7 @@ export class IRPlotView extends MVCView {
     this.h = 500;
     this.x0 = 250;
     this.y0 = 250;
+    this.updateColor();
   }
   updateRadius(r: number) {
     this.svg.style.r = String(r);
@@ -76,16 +77,22 @@ export class IRPlotView extends MVCView {
     this.updateY(compilation_radius * Math.sin(compilation_angle));
     */
   }
+  colorFunction(getColor: (archetype: Archetype) => string) {
+    this.svg.style.fill = getColor(this.model.getCurrentNote().melody_analysis.implication_realization) || "rgb(0, 0, 0)";
+  }
   updateColor() {
-    this.svg.style.stroke = "rgb(16, 16, 16)";
-    this.svg.style.strokeWidth = String(6);
-    this.svg.style.fill = get_color_of_Narmour_concept(this.model.getCurrentNote().melody_analysis.implication_realization);
-    if(false){
-      this.svg.style.fill = get_color_of_implication_realization(this.model.getCurrentNote().melody_analysis.implication_realization);
-      this.svg.style.fill = get_color_on_digital_parametric_scale(this.model.getCurrentNote().melody_analysis.implication_realization);
-      this.svg.style.fill = get_color_on_digital_intervallic_scale(this.model.getCurrentNote().melody_analysis.implication_realization);
+    this.colorFunction(get_color_of_Narmour_concept);
+    if (false) {
+      this.colorFunction(get_color_on_parametric_scale);
+      this.colorFunction(get_color_of_implication_realization);
+      this.colorFunction(get_color_on_digital_parametric_scale);
+      this.colorFunction(get_color_on_digital_parametric_scale);
+      this.colorFunction(get_color_on_digital_intervallic_scale);
+      this.colorFunction(get_color_on_intervallic_angle);
+      this.colorFunction(get_color_on_registral_scale);
     }
   }
+
   onWindowResized() {
   }
 }

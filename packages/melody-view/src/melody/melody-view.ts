@@ -1,6 +1,5 @@
 import { BlackKeyPrm,NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
-import { get_color_of_Narmour_concept, get_color_on_parametric_scale } from "@music-analyzer/irm";
-import { fifthChromaToColor } from "@music-analyzer/color";
+import { Archetype, get_color_of_implication_realization, get_color_of_Narmour_concept, get_color_on_digital_intervallic_scale, get_color_on_digital_parametric_scale, get_color_on_intervallic_angle, get_color_on_parametric_scale, get_color_on_registral_scale } from "@music-analyzer/irm";
 import { MVCView } from "@music-analyzer/view";
 import { MelodyModel } from "./melody-model"; 
 import { deleteMelody } from "../melody-editor-function";
@@ -14,12 +13,6 @@ export class MelodyView extends MVCView {
     super();
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     this.svg.id = "melody-note";
-    this.svg.style.fill = "rgb(0, 192, 0)";
-    if (false) {
-      this.svg.style.fill = get_color_on_parametric_scale(this.model.melody_analysis.implication_realization);
-      this.svg.style.fill = get_color_of_Narmour_concept(this.model.melody_analysis.implication_realization);
-      this.svg.style.fill = this.model.note ? fifthChromaToColor(this.model.note, 0.75, 0.9) : "rgb(0, 0, 0)";
-    }
     this.svg.style.stroke = "rgb(64, 64, 64)";
     this.svg.onclick = deleteMelody;
     this.sound_reserved = false;
@@ -27,6 +20,22 @@ export class MelodyView extends MVCView {
     this.updateY();
     this.updateWidth();
     this.updateHeight();
+    this.updateColor();
+    this.svg.style.fill = "rgb(0, 192, 0)";
+  }
+  colorFunction(getColor: (archetype: Archetype) => string) {
+    this.svg.style.fill = getColor(this.model.melody_analysis.implication_realization) || "rgb(0, 0, 0)";
+  }
+  updateColor() {
+    this.colorFunction(get_color_of_Narmour_concept);
+    if (false) {
+      this.colorFunction(get_color_on_parametric_scale);
+      this.colorFunction(get_color_of_implication_realization);
+      this.colorFunction(get_color_on_digital_parametric_scale);
+      this.colorFunction(get_color_on_digital_intervallic_scale);
+      this.colorFunction(get_color_on_intervallic_angle);
+      this.colorFunction(get_color_on_registral_scale);
+    }
   }
   updateX() { this.svg.setAttribute("x", String(this.model.begin * NoteSize.value)); }
   updateY() { this.svg.setAttribute("y", String(isNaN(this.model.note) ? -99 : (PianoRollBegin.value - this.model.note) * BlackKeyPrm.height)); }
