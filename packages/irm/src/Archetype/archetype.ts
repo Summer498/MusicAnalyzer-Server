@@ -19,7 +19,6 @@ export class Archetype {
   readonly notes: NoteLiteral[];
   readonly intervals: IntervalName[];
   readonly melody_motion: MelodyMotion;
-  readonly color: string;
 
   constructor(prev?: NoteLiteral, curr?: NoteLiteral, next?: NoteLiteral) {
     this.notes = [prev, curr, next].map(e => e || "");
@@ -31,14 +30,12 @@ export class Archetype {
       this.registral_return_form = e.registral_return_form;
       this.intervals = e.intervals;
       this.melody_motion = e.melody_motion;
-      this.color = e.color;
     }
     else {
       this.retrospective = false;
       this.registral_return_form = NULL_REGISTRAL_RETURN_FORM;
       this.intervals = ["", ""];
       this.melody_motion = no_motion;
-      this.color = "rgb(0, 0, 0)";
       if (prev && curr) {
         this._symbol = "dyad";
         this.symbol = remove_minus(_Interval.distance(prev, curr));

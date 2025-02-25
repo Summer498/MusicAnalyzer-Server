@@ -1,7 +1,6 @@
 import { _Interval, _Note, IntervalName, NoteLiteral } from "@music-analyzer/tonal-objects";
 import { MelodyMotion } from "../MelodyMotion";
 import { RegistralReturnForm, } from "../RegistralReturnForm";
-import { get_color_on_intervallic_angle } from "../colors.ts";
 import { _ArchetypeSymbol, ArchetypeSymbol } from "./types";
 import { retrospectiveSymbol } from "./get-retrospective-symbol";
 
@@ -13,7 +12,6 @@ export class Archetype3 {
   readonly notes: NoteLiteral[];
   readonly intervals: IntervalName[];
   readonly melody_motion: MelodyMotion;
-  readonly color: string;
   constructor(prev: NoteLiteral, curr: NoteLiteral, next: NoteLiteral) {
     this.notes = [prev, curr, next].map(e => e || "");
     this.intervals = [
@@ -21,7 +19,6 @@ export class Archetype3 {
       _Interval.distance(curr, next),
     ];
 
-    this.color = get_color_on_intervallic_angle(prev, curr, next);
     const initial = _Interval.get(this.intervals[0]);
     const follow = _Interval.get(this.intervals[1]);
     this.melody_motion = new MelodyMotion(initial, follow);
