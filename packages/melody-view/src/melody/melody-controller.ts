@@ -3,6 +3,7 @@ import { play } from "@music-analyzer/synth";
 import { NowAt, reservation_range } from "@music-analyzer/view-parameters";
 import { MelodyModel } from "./melody-model";
 import { MelodyView } from "./melody-view";
+import { Archetype } from "@music-analyzer/irm";
 
 export class MelodyController extends MVCController{
   readonly view: MelodyView;
@@ -33,7 +34,10 @@ export class MelodyController extends MVCController{
       }
     }
   };
-
+  setColor(getColor: (archetype: Archetype) => string) {
+    this.view.setColor(getColor);
+  }
+  updateColor() { this.view.updateColor(); }
   onMelodyBeepCheckChanged(do_melody_beep: boolean) { this.#do_melody_beep = do_melody_beep; }
   onMelodyVolumeBarChanged(beep_volume: number) { this.#beep_volume = beep_volume; }
   onAudioUpdate() {

@@ -1,6 +1,7 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { IRPlotController } from "./ir-plot-controller";
 import { IRPlotModel } from "./ir-plot-model";
+import { Archetype } from "@music-analyzer/irm";
 
 export class IRPlotLayer {
   readonly svg: SVGGElement;
@@ -28,5 +29,9 @@ export class IRPlotLayer {
   onAudioUpdate() {
     this.child.onAudioUpdate();
   }
+  setColor(getColor: (archetype: Archetype) => string) {
+    this.child.setColor(getColor);
+  }
+  updateColor() { this.child.updateColor(); }
 }
 

@@ -1,4 +1,4 @@
-import { Archetype  } from "@music-analyzer/irm";
+import { Archetype } from "@music-analyzer/irm";
 import { MVCView } from "@music-analyzer/view";
 import { ReductionModel } from "../reduction-model";
 import { ReductionViewModel } from "./reduction-view-model";
@@ -34,7 +34,10 @@ export class ReductionView extends MVCView {
     this.bracket.updateStrong();
     this.dot.updateStrong();
   }
-  updateColor() {
+  setColor(getColor: (archetype: Archetype) => string) {
+    this.ir_symbol.setColor(getColor);
+  }
+  updateColor(){
     this.ir_symbol.updateColor();
   }
   onWindowResized() {

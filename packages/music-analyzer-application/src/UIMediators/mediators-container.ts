@@ -8,6 +8,7 @@ import { MelodyBeepMediator } from "./melody-beep-mediator";
 import { MelodyVolumeMediator } from "./melody-volume-mediator";
 import { ScaleGravityMediator } from "./scale-gravity-mediator";
 import { TimeRangeMediator } from "./time-range-mediator";
+import { ColorChangeMediator } from "./color-change-mediator";
 
 export class MediatorsContainer {
   readonly d_melody: DMelodyMediator;
@@ -17,6 +18,7 @@ export class MediatorsContainer {
   readonly melody_beep: MelodyBeepMediator;
   readonly melody_volume: MelodyVolumeMediator;
   readonly time_range: TimeRangeMediator;
+  readonly color_change: ColorChangeMediator;
 
   constructor(
     controller_UIs: ControllerUIs,
@@ -33,5 +35,9 @@ export class MediatorsContainer {
     this.melody_beep = new MelodyBeepMediator(controller_UIs.melody_beep.checkbox, melody.melody_hierarchy);
     this.melody_volume = new MelodyVolumeMediator(controller_UIs.melody_beep.volume, melody.melody_hierarchy);
     this.time_range = new TimeRangeMediator(controller_UIs.time_range.slider, audio_subscriber, window_subscriber);
+    this.color_change = new ColorChangeMediator(
+      controller_UIs.melody_color.selector.children,
+      [melody.ir_hierarchy, melody.ir_plot, melody.melody_hierarchy, melody.time_span_tree]
+    );
   };
 }

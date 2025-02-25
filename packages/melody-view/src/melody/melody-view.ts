@@ -1,12 +1,13 @@
-import { BlackKeyPrm,NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
-import { Archetype, get_color_of_implication_realization, get_color_of_Narmour_concept, get_color_on_digital_intervallic_scale, get_color_on_digital_parametric_scale, get_color_on_intervallic_angle, get_color_on_parametric_scale, get_color_on_registral_scale } from "@music-analyzer/irm";
+import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
+import { Archetype, get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { MVCView } from "@music-analyzer/view";
-import { MelodyModel } from "./melody-model"; 
+import { MelodyModel } from "./melody-model";
 import { deleteMelody } from "../melody-editor-function";
 
 export class MelodyView extends MVCView {
   readonly svg: SVGRectElement;
   sound_reserved: boolean;
+  #getColor: (archetype: Archetype) => string;
   constructor(
     protected readonly model: MelodyModel,
   ) {
@@ -20,22 +21,15 @@ export class MelodyView extends MVCView {
     this.updateY();
     this.updateWidth();
     this.updateHeight();
-    this.updateColor();
     this.svg.style.fill = "rgb(0, 192, 0)";
+    this.#getColor = get_color_of_Narmour_concept;
   }
-  colorFunction(getColor: (archetype: Archetype) => string) {
-    this.svg.style.fill = getColor(this.model.melody_analysis.implication_realization) || "rgb(0, 0, 0)";
+  setColor(getColor: (archetype: Archetype) => string) {
+    this.#getColor = getColor;
+    this.svg.style.fill = this.#getColor(this.model.melody_analysis.implication_realization) || "rgb(0, 0, 0)";
   }
   updateColor() {
-    this.colorFunction(get_color_of_Narmour_concept);
-    if (false) {
-      this.colorFunction(get_color_on_parametric_scale);
-      this.colorFunction(get_color_of_implication_realization);
-      this.colorFunction(get_color_on_digital_parametric_scale);
-      this.colorFunction(get_color_on_digital_intervallic_scale);
-      this.colorFunction(get_color_on_intervallic_angle);
-      this.colorFunction(get_color_on_registral_scale);
-    }
+    this.#getColor(this.model.melody_analysis.implication_realization) || "rgb(0, 0, 0)";
   }
   updateX() { this.svg.setAttribute("x", String(this.model.begin * NoteSize.value)); }
   updateY() { this.svg.setAttribute("y", String(isNaN(this.model.note) ? -99 : (PianoRollBegin.value - this.model.note) * BlackKeyPrm.height)); }

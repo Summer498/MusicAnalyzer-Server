@@ -1,14 +1,14 @@
 import { BlackKeyPrm, NoteSize, PianoRollBegin, Size } from "@music-analyzer/view-parameters";
-import { Archetype, get_color_of_Narmour_concept, get_color_on_digital_intervallic_scale, get_color_on_digital_parametric_scale, get_color_on_parametric_scale } from "@music-analyzer/irm";
+import { Archetype, get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { MVCView } from "@music-analyzer/view";
 import { IRSymbolModel } from "./ir-symbol-model";
-import { get_color_of_implication_realization, get_color_on_intervallic_angle, get_color_on_registral_scale } from "@music-analyzer/irm/src/colors.ts";
 
 const ir_analysis_em = Size.value;
 
 export class IRSymbolView extends MVCView {
   readonly svg: SVGTextElement;
   readonly y: number;
+  #getColor: (archetype: Archetype) => string;
   constructor(
     protected readonly model: IRSymbolModel,
   ) {
@@ -22,22 +22,14 @@ export class IRSymbolView extends MVCView {
     this.y = isNaN(this.model.note) ? -99 : (PianoRollBegin.value - this.model.note) * BlackKeyPrm.height;
     this.updateX();
     this.updateY();
-    this.updateColor();
+    this.#getColor = get_color_of_Narmour_concept;
   }
-  colorFunction(getColor: (archetype: Archetype) => string) {
-    this.svg.style.fill = getColor(this.model.archetype) || "rgb(0, 0, 0)";
+  setColor(getColor: (archetype: Archetype) => string) {
+    this.#getColor = getColor;
+    this.svg.style.fill = this.#getColor(this.model.archetype) || "rgb(0, 0, 0)";
   }
-  updateColor() {
-    this.colorFunction(get_color_of_Narmour_concept);
-    if (false) {
-      this.colorFunction(get_color_on_parametric_scale);
-      this.colorFunction(get_color_of_implication_realization);
-      this.colorFunction(get_color_on_digital_parametric_scale);
-      this.colorFunction(get_color_on_digital_parametric_scale);
-      this.colorFunction(get_color_on_digital_intervallic_scale);
-      this.colorFunction(get_color_on_intervallic_angle);
-      this.colorFunction(get_color_on_registral_scale);
-    }
+  updateColor(){
+    this.#getColor(this.model.archetype) || "rgb(0, 0, 0)";
   }
   updateX() { this.svg.setAttribute("x", String(this.model.begin * NoteSize.value + this.model.duration / 2 * NoteSize.value)); }
   updateY() { this.svg.setAttribute("y", String(this.y)); }

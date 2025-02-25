@@ -15,4 +15,8 @@ export class ReductionController extends MVCController {
   renewStrong(strong: boolean) {
     this.view.strong = strong;
   }
+  setColor(getColor: (archetype: Archetype) => string) {
+    this.view.setColor(getColor);
+  }
+  updateColor() { this.view.updateColor(); }
 }
