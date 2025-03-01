@@ -8,5 +8,5 @@ export { BlackPosition, WhitePosition } from "./src/position";
 export { RectParameters } from "./src/rect-parameter";
 export { SongLength } from "./src/song-length";
 export { PianoRollBegin, PianoRollEnd, PianoRollHeight, PianoRollRatio, PianoRollTimeLength, PianoRollWidth, BlackBGsPrm, BlackKeyPrm, OctaveHeight, Size, WhiteBGsPrm, WhiteKeyPrm } from "./src/piano-roll";
-export const bracket_hight = 2;
+export const bracket_height = 2;
 export const reservation_range = 1 / 15;  // play range [second]

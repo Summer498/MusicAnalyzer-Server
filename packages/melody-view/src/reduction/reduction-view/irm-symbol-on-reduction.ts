@@ -1,5 +1,5 @@
 import { Archetype, get_color_of_Narmour_concept } from "@music-analyzer/irm";
-import { bracket_hight } from "@music-analyzer/view-parameters";
+import { bracket_height } from "@music-analyzer/view-parameters";
 import { MVCView } from "@music-analyzer/view";
 import { ReductionViewModel } from "./reduction-view-model";
 
@@ -15,7 +15,7 @@ export class IRMSymbolOnReduction extends MVCView {
     this.svg.textContent = archetype.symbol;
     this.svg.id = "I-R Symbol";
     this.svg.style.fontFamily = "Times New Roman";
-    this.svg.style.fontSize = `${bracket_hight}em`;
+    this.svg.style.fontSize = `${bracket_height}em`;
     this.svg.style.textAnchor = "middle";
     this.#getColor = get_color_of_Narmour_concept;
   }
@@ -29,7 +29,7 @@ export class IRMSymbolOnReduction extends MVCView {
   update(cx: number, y: number, w: number, h: number) {
     this.svg.setAttribute("x", String(cx));
     this.svg.setAttribute("y", String(y));
-    this.svg.style.fontSize = `${Math.min(w / h, bracket_hight)}em`;
+    this.svg.style.fontSize = `${Math.min(w / h, bracket_height)}em`;
   }
   onWindowResized() {
     this.update(this.model.cx, this.model.y, this.model.w, this.model.h);

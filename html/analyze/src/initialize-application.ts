@@ -1,7 +1,7 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { calcTempo } from "@music-analyzer/beat-estimation";
-import { bracket_hight, PianoRollBegin, PianoRollEnd } from "@music-analyzer/view-parameters";
+import { bracket_height, PianoRollBegin, PianoRollEnd } from "@music-analyzer/view-parameters";
 import { AnalyzedDataContainer } from "@music-analyzer/music-analyzer-application/analyzed-data-container";
 import { AnalyzedMusicData } from "./MusicAnalyzerWindow";
 
@@ -24,7 +24,7 @@ export const initializeApplication = (
   // SVG -->
   const highest_pitch = analyzed.melody.reduce((p, c) => isNaN(p.note) ? c : isNaN(c.note) ? p : p.note > c.note ? p : c).note || 0;
   const lowest_pitch = analyzed.melody.reduce((p, c) => isNaN(p.note) ? c : isNaN(c.note) ? p : p.note < c.note ? p : c).note || 0;
-  PianoRollBegin.value = highest_pitch + Math.floor(analyzed.hierarchical_melody.length * bracket_hight / 12) * 12 + 12;
+  PianoRollBegin.value = highest_pitch + Math.floor(analyzed.hierarchical_melody.length * bracket_height / 12) * 12 + 12;
   PianoRollEnd.value = lowest_pitch - 3;
   return new AnalyzedDataContainer(
     beat_info,
