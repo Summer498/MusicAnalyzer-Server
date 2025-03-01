@@ -1,3 +1,4 @@
+import { Complex, correlation } from "@music-analyzer/math";
 import { AudioReflectable } from "@music-analyzer/view";
 
 export class AudioAnalyzer {
@@ -49,6 +50,7 @@ export class AudioAnalyzer {
 
 export class WaveViewer implements AudioReflectable {
   private readonly path: SVGPathElement;
+  private old_wave: Complex<number>[];
   readonly svg: SVGSVGElement;
   constructor(
     private readonly analyser: AudioAnalyzer,
@@ -61,21 +63,42 @@ export class WaveViewer implements AudioReflectable {
     this.svg.id = "sound-wave";
     this.svg.setAttribute("width", String(800));
     this.svg.setAttribute("height", String(450));
+    this.old_wave = [... new Array(analyser.analyser.fftSize)].map(e => new Complex(0, 0));
+  }
+
+  private getDelay(copy:Complex<number>[]){
+    const col = correlation(this.old_wave, copy);
+
+    let delay = 0;
+    for (let i = 0; i < col.length / 2; i++) {
+      if (col[delay].re < col[i].re) {
+        delay = i;
+      }
+    }
+    for (let i = 0; i < copy.length; i++) {
+      this.old_wave[i] = copy[(i + delay) % copy.length];
+    }
+    return delay;    
   }
 
   onAudioUpdate() {
     const wave = this.analyser.getByteTimeDomainData();
     const width = this.svg.clientWidth;
     const height = this.svg.clientHeight;
-    let pathData = "";
+    let path_data = "";
 
-    for (let i = 0; i < wave.length; i++) {
-      const x = i / (wave.length - 1) * width;
-      // データは [0,255] なので、中心を height/2 として正規化
-      const y = wave[i] / 255 * height;
-      pathData += i === 0 ? `M ${x},${y}` : ` L ${x},${y}`;
+    const copy: Complex<number>[] = [];
+    wave.forEach(e => { copy.push(new Complex(e, 0)); });
+    const delay = this.getDelay(copy);
+
+    for (let i = 0; i < wave.length / 2; i++) {
+      if (isNaN(wave[i + delay] * 0)) { continue; }
+      const x = i * 2 / (wave.length - 1) * width;
+      // データは [0,255] なので, 中心を height/2 として正規化
+      const y = wave[i + delay] / 255 * height;
+      path_data += `L ${x},${y}`;
     }
-    this.path.setAttribute("d", pathData);
+    this.path.setAttribute("d", "M" + path_data.slice(1));
   }
 }
 
@@ -101,24 +124,15 @@ export class spectrogramViewer implements AudioReflectable {
     const width = this.svg.clientWidth;
     const height = this.svg.clientHeight;
     let pathData = "";
-    console.log("Math.min(...freqData)");
-    console.log(Math.min(...freqData));
-    console.log("Math.max(...freqData)");
-    console.log(Math.max(...freqData));
 
     for (let i = 0; i < fftSize; i++) {
-      if (isNaN(freqData[i] * 0)) {
-        if (i === 0) {
-          pathData += `M ${0},${0}`;
-        }
-        continue;
-      }
+      if (isNaN(freqData[i] * 0)) { continue; }
       const x = i / (fftSize - 1) * width;
       const y = (1 - freqData[i] / 255) * height;
       // const y = (1 - Math.log2(1 + freqData[i]) / 8) * height;
-      pathData += i === 0 ? `M ${x},${y}` : ` L ${x},${y}`;
+      pathData += `L ${x},${y}`;
     }
-    this.path.setAttribute("d", pathData);
+    this.path.setAttribute("d", "M" + pathData.slice(1));
   }
 }
 

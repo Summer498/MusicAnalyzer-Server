@@ -14,6 +14,7 @@
     "build:minify": "tsup index.ts --sourcemap --dts --format esm,cjs --minify"
   },
   "dependencies": {
+    "@music-analyzer/math": "1.0.0",
     "@music-analyzer/view": "1.0.0"
   }
 }
