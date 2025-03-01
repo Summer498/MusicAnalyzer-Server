@@ -23,7 +23,7 @@ const registerSong = (urls: string[], audio_player: HTMLAudioElement | HTMLVideo
 
 export const setAudioPlayer = (tune_name: string, audio_player: HTMLAudioElement | HTMLVideoElement) => {
   const filename = `/MusicAnalyzer-server/resources/${tune_name}/${tune_name}`;
-  const extensions = ["mp3", "mp4", "wav"];
+  const extensions = ["mp3", "mp4", "wav", "m4a"];
   registerSong(extensions.map(e => `${filename}.${e}`), audio_player);
 };
 
