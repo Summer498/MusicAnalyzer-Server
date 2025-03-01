@@ -34,7 +34,7 @@ export class MediatorsContainer {
     this.hierarchy_level = new HierarchyLevelMediator(controller_UIs.hierarchy.slider, melody.melody_hierarchy, melody.ir_hierarchy, melody.ir_plot, melody.time_span_tree, melody.scale_gravities, melody.chord_gravities);
     this.melody_beep = new MelodyBeepMediator(controller_UIs.melody_beep.checkbox, melody.melody_hierarchy);
     this.melody_volume = new MelodyVolumeMediator(controller_UIs.melody_beep.volume, melody.melody_hierarchy);
-    this.time_range = new TimeRangeMediator(controller_UIs.time_range.slider, audio_subscriber, window_subscriber);
+    this.time_range = new TimeRangeMediator(controller_UIs.time_range.slider, melody.melody_hierarchy, audio_subscriber, window_subscriber);
     this.color_change = new ColorChangeMediator(
       controller_UIs.melody_color.selector.children,
       [melody.ir_hierarchy, melody.ir_plot, melody.melody_hierarchy, melody.time_span_tree]
