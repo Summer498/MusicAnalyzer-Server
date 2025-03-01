@@ -43,7 +43,7 @@ export class Complex<T extends number> {
 };
 
 export class fftUtil {
-  private static readonly cache: Complex<number>[][];
+  private static readonly cache: Complex<number>[][] = [];
   static exponent(k: number, N: number) {
     const x = -2 * Math.PI * (k / N);
     this.cache[N] ||= [];

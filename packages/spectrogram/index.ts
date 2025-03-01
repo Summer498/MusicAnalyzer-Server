@@ -1,3 +1,5 @@
+import { AudioReflectable } from "@music-analyzer/view";
+
 export class AudioAnalyzer {
   private readonly audioCtx: AudioContext;
   private readonly source: MediaElementAudioSourceNode;
@@ -22,41 +24,49 @@ export class AudioAnalyzer {
     this.analyser = this.audioCtx.createAnalyser();
     this.analyser.fftSize = 2048;
 
-    this.analyser.connect(this.audioCtx.destination);
+    audioElement.addEventListener("play", () => {
+      this.audioCtx.state === 'suspended' ? this.audioCtx.resume() : undefined;
+    });
+
     this.source.connect(this.analyser);
+    this.analyser.connect(this.audioCtx.destination);
   }
 
   getByteTimeDomainData() {
     const buffer_length = this.analyser.fftSize;
-    const data_array = new Uint8Array(buffer_length);
-    this.analyser.getByteTimeDomainData(data_array);
-    return data_array;
+    const buffer = new Uint8Array(buffer_length);
+    this.analyser.getByteTimeDomainData(buffer);
+    return buffer;
   }
 
-  getFloatFrequencyData() {
-    const fft_size = this.analyser.frequencyBinCount;
-    const freq_data = new Float32Array(fft_size);
-    this.analyser.getFloatFrequencyData(freq_data);
-    return freq_data;
+  getByteFrequencyData() {
+    const frequency_bin_count = this.analyser.frequencyBinCount;
+    const buffer = new Uint8Array(frequency_bin_count);
+    this.analyser.getByteFrequencyData(buffer);
+    return buffer;
   }
 }
 
-export class WaveViewer {
-  private readonly waveformPath: SVGPathElement;
+export class WaveViewer implements AudioReflectable {
+  private readonly path: SVGPathElement;
+  readonly svg: SVGSVGElement;
   constructor(
     private readonly analyser: AudioAnalyzer,
-    private readonly waveformSVG: SVGSVGElement,
   ) {
-    this.waveformPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    this.waveformPath.setAttribute("stroke", "blue");
-    this.waveformPath.setAttribute("fill", "none");
-    this.waveformSVG.appendChild(this.waveformPath);
+    this.path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    this.path.setAttribute("stroke", "blue");
+    this.path.setAttribute("fill", "none");
+    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    this.svg.appendChild(this.path);
+    this.svg.id = "sound-wave";
+    this.svg.setAttribute("width", String(800));
+    this.svg.setAttribute("height", String(450));
   }
 
-  drawWaveform() {
+  onAudioUpdate() {
     const wave = this.analyser.getByteTimeDomainData();
-    const width = this.waveformSVG.clientWidth;
-    const height = this.waveformSVG.clientHeight;
+    const width = this.svg.clientWidth;
+    const height = this.svg.clientHeight;
     let pathData = "";
 
     for (let i = 0; i < wave.length; i++) {
@@ -65,56 +75,67 @@ export class WaveViewer {
       const y = wave[i] / 255 * height;
       pathData += i === 0 ? `M ${x},${y}` : ` L ${x},${y}`;
     }
-    this.waveformPath.setAttribute("d", pathData);
+    this.path.setAttribute("d", pathData);
   }
 }
 
-export class spectrogramViewer {
-  private readonly spectrogramPath: SVGPathElement;
+export class spectrogramViewer implements AudioReflectable {
+  private readonly path: SVGPathElement;
+  readonly svg: SVGSVGElement;
   constructor(
     private readonly analyser: AudioAnalyzer,
-    private readonly spectrogramSVG: SVGSVGElement,
   ) {
-    this.spectrogramPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    this.spectrogramPath.setAttribute("stroke", "red");
-    this.spectrogramPath.setAttribute("fill", "none");
-    this.spectrogramSVG.appendChild(this.spectrogramPath);
+    this.path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    this.path.setAttribute("stroke", "red");
+    this.path.setAttribute("fill", "none");
+    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    this.svg.appendChild(this.path);
+    this.svg.id = "spectrum";
+    this.svg.setAttribute("width", String(800));
+    this.svg.setAttribute("height", String(450));
   }
 
-  drawSpectrogram() {
-    const freqData = this.analyser.getFloatFrequencyData();
+  onAudioUpdate() {
+    const freqData = this.analyser.getByteFrequencyData();
     const fftSize = freqData.length;
-    const width = this.spectrogramSVG.clientWidth;
-    const height = this.spectrogramSVG.clientHeight;
+    const width = this.svg.clientWidth;
+    const height = this.svg.clientHeight;
     let pathData = "";
+    console.log("Math.min(...freqData)");
+    console.log(Math.min(...freqData));
+    console.log("Math.max(...freqData)");
+    console.log(Math.max(...freqData));
 
     for (let i = 0; i < fftSize; i++) {
+      if (isNaN(freqData[i] * 0)) {
+        if (i === 0) {
+          pathData += `M ${0},${0}`;
+        }
+        continue;
+      }
       const x = i / (fftSize - 1) * width;
-      const y = height - freqData[i] * height;
+      const y = (1 - freqData[i] / 255) * height;
+      // const y = (1 - Math.log2(1 + freqData[i]) / 8) * height;
       pathData += i === 0 ? `M ${x},${y}` : ` L ${x},${y}`;
     }
-    this.spectrogramPath.setAttribute("d", pathData);
+    this.path.setAttribute("d", pathData);
   }
 }
 
 // AudioAnalyzer.ts
-export class AudioViewer {
-  private readonly wave_viewer: WaveViewer;
-  private readonly spectrogram_viewer: spectrogramViewer;
+export class AudioViewer implements AudioReflectable {
+  readonly wave: WaveViewer;
+  readonly spectrogram: spectrogramViewer;
 
   constructor(
-    private readonly audioElement: HTMLMediaElement,
-    waveform_svg: SVGSVGElement,
-    spectrogram_svg: SVGSVGElement
+    private readonly audio_element: HTMLMediaElement,
   ) {
-    const analyser = new AudioAnalyzer(this.audioElement);
-    this.wave_viewer = new WaveViewer(analyser, waveform_svg);
-    this.spectrogram_viewer = new spectrogramViewer(analyser, spectrogram_svg);
-    this.animate();
+    const analyser = new AudioAnalyzer(this.audio_element);
+    this.wave = new WaveViewer(analyser);
+    this.spectrogram = new spectrogramViewer(analyser);
   }
-
-  animate () {
-    this.wave_viewer.drawWaveform();
-    this.spectrogram_viewer.drawSpectrogram();
-  };
+  onAudioUpdate() {
+    this.wave.onAudioUpdate();
+    this.spectrogram.onAudioUpdate();
+  }
 }

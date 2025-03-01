@@ -8,6 +8,16 @@ import { AnalyzedDataContainer } from "../../analyzed-data-container";
 import { MediatorsContainer } from "../UIMediators";
 import { Controllers } from "./setup-controllers";
 import { getRawSaveButton, getSaveButton } from "./get-save-button";
+import { AudioViewer } from "@music-analyzer/spectrogram";
+
+const getIRPlot = (melody: MelodyElements) => {
+  const ir_plot = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  ir_plot.appendChild(melody.ir_plot.svg);
+  ir_plot.id = "IR-plot";
+  ir_plot.setAttribute("width", String(melody.ir_plot.width));
+  ir_plot.setAttribute("height", String(melody.ir_plot.height));
+  return ir_plot;
+};
 
 export const setupUI = (
   tune_id: string,
@@ -39,24 +49,23 @@ export const setupUI = (
   const beat = new BeatElements(beat_info, last(hierarchical_melody));
   const chord = new ChordElements(romans);
   const melody = new MelodyElements(hierarchical_melody, d_melodies);
-  const piano_roll_view = setupPianoRoll(beat, chord, melody, FULL_VIEW, audio_subscriber, window_subscriber);
 
+  const audio_viewer = new AudioViewer(audio_element);
+  audio_subscriber.register(audio_viewer);
+
+  const piano_roll_view = setupPianoRoll(beat, chord, melody, FULL_VIEW, audio_subscriber, window_subscriber);
   const controllers = new Controllers(NO_CHORD);
   new MediatorsContainer(controllers.children, beat, chord, melody, audio_subscriber, window_subscriber);
-
-  const ir_plot = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  ir_plot.appendChild(melody.ir_plot.svg);
-  ir_plot.id = "IR-plot";
-  ir_plot.setAttribute("width", String(melody.ir_plot.width));
-  ir_plot.setAttribute("height", String(melody.ir_plot.height));
-
+  const ir_plot = getIRPlot(melody);
   const save_button = getSaveButton(tune_id, title, piano_roll_view);
-  const save_raw_button =  getRawSaveButton(tune_id, title, piano_roll_view);
+  const save_raw_button = getRawSaveButton(tune_id, title, piano_roll_view);
 
   const bottom = document.createElement("div");
   bottom.appendChild(controllers.div);
   bottom.appendChild(ir_plot);
   bottom.setAttribute("style", `column-count: ${2}`);
+  place.appendChild(audio_viewer.wave.svg);
+  place.appendChild(audio_viewer.spectrogram.svg);
   place.appendChild(save_button);
   place.appendChild(save_raw_button);
   place.appendChild(piano_roll_view.svg);
