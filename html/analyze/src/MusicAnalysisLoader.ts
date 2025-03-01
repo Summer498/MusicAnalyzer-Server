@@ -8,11 +8,17 @@ import { AnalyzedMusicData } from "./MusicAnalyzerWindow";
 
 const registerSong = (urls: string[], audio_player: HTMLAudioElement | HTMLVideoElement) => {
   const url = urls.pop();
-  console.log(url);
-  if (!url) { audio_player.src = "/MusicAnalyzer-server/resources/Hierarchical Analysis Sample/sample1.mp4"; return; }
-  audio_player.oncanplaythrough = () => { audio_player.muted = false; };
+  if (!url) {
+    audio_player.src = "/MusicAnalyzer-server/resources/Hierarchical Analysis Sample/sample1.mp4";
+    return;
+  }
+
+  audio_player.muted = false;
   audio_player.src = url;
-  audio_player.onerror = () => { registerSong(urls, audio_player); };
+  audio_player.onerror = () => {
+    audio_player.muted = true;
+    registerSong(urls, audio_player);
+  };
 };
 
 export const setAudioPlayer = (tune_name: string, audio_player: HTMLAudioElement | HTMLVideoElement) => {
