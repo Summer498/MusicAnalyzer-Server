@@ -1,4 +1,4 @@
-import { argmax, correlation, decimal, getRange, getZeros, mod, totalSum } from "@music-analyzer/math";
+import { argmax, Complex, correlation, decimal, getRange, getZeros, mod, totalSum } from "@music-analyzer/math";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 
@@ -59,7 +59,11 @@ export const calcTempo = (melodies: TimeAndAnalyzedMelody[], romans: TimeAndRoma
   console.log("onsets");
   console.log(onsets);
   */
-  const tps = correlation(onsets, onsets).map((e, tau) => w(tau) * e[0]);
+ const complex_onset = onsets.map(e => new Complex(e, 0));
+  const tps = correlation(
+    complex_onset,
+    complex_onset,
+  ).map((e, tau) => w(tau) * e.re);
   /*
   console.log("tempo period strength");
   console.log(tps);
