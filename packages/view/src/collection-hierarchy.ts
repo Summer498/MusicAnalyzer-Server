@@ -1,17 +1,22 @@
-import { CollectionLayer } from "./collection-layer";
+import { I_CollectionLayer } from "./collection-layer";
 import { AudioReflectable } from "./audio-reflectable";
 import { WindowReflectable } from "./window-reflectable";
 
-export abstract class CollectionHierarchy implements AudioReflectable, WindowReflectable {
+interface I_CollectionHierarchy extends AudioReflectable, WindowReflectable {
+  readonly svg: SVGGElement
+  readonly children: I_CollectionLayer[]
+}
+export abstract class CollectionHierarchy<L extends I_CollectionLayer>
+  implements I_CollectionHierarchy {
   readonly svg: SVGGElement;
-  abstract readonly children: CollectionLayer[];
-  protected _show: CollectionLayer[];
+  abstract readonly children: L[];
+  protected _show: L[];
   get show() { return this._show; }
   constructor() {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this._show = [];
   }
-  protected setShow(visible_layers: CollectionLayer[]) {
+  protected setShow(visible_layers: L[]) {
     this._show = visible_layers;
     this._show.forEach(e => e.onAudioUpdate());
     this.svg.replaceChildren(...this._show.map(e => e.svg));
@@ -26,6 +31,6 @@ export abstract class CollectionHierarchy implements AudioReflectable, WindowRef
     this.children.forEach(e => e.onAudioUpdate());
   }
   onWindowResized() {
-      this.children.forEach(e=> e.onWindowResized());
+    this.children.forEach(e => e.onWindowResized());
   }
 }

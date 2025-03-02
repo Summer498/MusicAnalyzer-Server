@@ -3,7 +3,7 @@ import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MelodyLayer } from "./melody-layer";
 import { Archetype } from "@music-analyzer/irm";
 
-export class MelodyHierarchy extends CollectionHierarchy {
+export class MelodyHierarchy extends CollectionHierarchy<MelodyLayer> {
   readonly children: MelodyLayer[];
   get show() { return this._show; }
   #volume: number;
@@ -13,9 +13,7 @@ export class MelodyHierarchy extends CollectionHierarchy {
     hierarchical_melodies: TimeAndAnalyzedMelody[][],
   ) {
     super();
-    this.children = hierarchical_melodies.map((melodies, layer) =>
-      new MelodyLayer(melodies, layer)
-    );
+    this.children = hierarchical_melodies.map((melodies, l) => new MelodyLayer(l, melodies));
     this.svg.id = "melody";
     this.children.forEach(e => this.svg.appendChild(e.svg));
     this.#check = false;
@@ -44,7 +42,7 @@ export class MelodyHierarchy extends CollectionHierarchy {
     this.onMelodyVolumeBarChanged(this.#volume);
   }
   setColor(getColor: (archetype: Archetype) => string) {
-    this.children.forEach(e=>e.setColor(getColor));
+    this.children.forEach(e => e.setColor(getColor));
   }
   updateColor() { this.children.forEach(e => e.updateColor()); }
 }

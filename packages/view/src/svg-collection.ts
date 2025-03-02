@@ -21,9 +21,10 @@ export abstract class TimeAndVM<
 
 export interface I_ReflectableTimeAndMVCControllerCollection
   extends AudioReflectable, WindowReflectable {
-  readonly children_model: TimeAndMVCModel[]
+  readonly svg: SVGGElement
   readonly show: I_TimeAndVM[];
   readonly children: I_TimeAndVM[];
+  readonly children_model: TimeAndMVCModel[]
 }
 export abstract class ReflectableTimeAndMVCControllerCollection<VM extends I_TimeAndVM> extends MVVM_Collection<VM>
   implements I_ReflectableTimeAndMVCControllerCollection {

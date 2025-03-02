@@ -36,7 +36,14 @@ export abstract class MVVM_ViewModel<
   }
 }
 
-export abstract class MVVM_Collection<VM extends I_MVVM_ViewModel> implements WindowReflectable {
+interface I_MVVM_Collection
+  extends WindowReflectable {
+  readonly svg: SVGGElement
+  readonly children: I_MVVM_ViewModel[];
+}
+
+export abstract class MVVM_Collection<VM extends I_MVVM_ViewModel>
+  implements I_MVVM_Collection {
   readonly svg: SVGGElement;
   constructor(
     readonly children: VM[],
