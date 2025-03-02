@@ -1,6 +1,6 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { CollectionLayer } from "@music-analyzer/view";
-import { MelodyVM } from "./melody-controller";
+import { MelodyVM } from "./melody-view-model";
 import { MelodyModel } from "./melody-model";
 import { Archetype } from "@music-analyzer/irm";
 

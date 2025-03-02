@@ -1,7 +1,7 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { CollectionLayer } from "@music-analyzer/view";
 import { ReductionModel } from "./reduction-model";
-import { ReductionVM } from "./reduction-controller";
+import { ReductionVM } from "./reduction-view-model";
 import { Archetype } from "@music-analyzer/irm";
 
 export class ReductionLayer extends CollectionLayer {

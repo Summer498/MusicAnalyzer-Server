@@ -1,6 +1,6 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { CollectionLayer } from "@music-analyzer/view";
-import { IRSymbolVM } from "./ir-symbol-controller";
+import { IRSymbolVM } from "./ir-symbol-view-model";
 import { IRSymbolModel } from "./ir-symbol-model";
 import { Archetype } from "@music-analyzer/irm";
 

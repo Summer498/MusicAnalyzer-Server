@@ -1,7 +1,7 @@
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
-import { BeatBarVM } from "./beat-bar-controller";
+import { BeatBarVM } from "./beat-bar-view-model";
 import { BeatBarModel } from "./beat-bar-model";
 
 export class BeatBarsGroup extends ReflectableTimeAndMVCControllerCollection {
