@@ -8,14 +8,13 @@ import { ChordNoteModel } from "./chord-note-model";
 
 export class ChordNotesSeries extends ReflectableTimeAndMVCControllerCollection<ChordNoteVM> {
   constructor(romans: TimeAndRomanAnalysis[]) {
-    const children = romans.map(roman => {
+    super("chords", romans.map(roman => {
       const chord = _Chord.get(roman.chord);
       return getRange(0, OctaveCount.value)
         .map(oct => chord.notes
           .map(note => new ChordNoteVM(new ChordNoteModel(roman, chord, note, oct))
           )
         );
-    }).flat(2);
-    super("chords", children);
+    }).flat(2));
   }
 }

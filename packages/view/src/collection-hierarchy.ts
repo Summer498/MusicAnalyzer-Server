@@ -7,10 +7,7 @@ export abstract class CollectionHierarchy<L extends I_CollectionLayer>
   implements I_MVVM_Collection, AudioReflectable {
   protected _show: L[];
   get show() { return this._show; }
-  constructor(
-    id: string,
-    readonly children: L[],    
-  ) {
+  constructor(id: string, readonly children: L[]) {
     super(id, children);
     this._show = [];
   }

@@ -10,11 +10,10 @@ export class GravityLayer extends CollectionLayer<GravityVM> {
     melodies: TimeAndAnalyzedMelody[],
   ) {
     const next = melodies.slice(1);
-    const children = next.map((n, i) => {
+    super(layer, next.map((n, i) => {
       const e = melodies[i];
       const gravity = e.melody_analysis[mode];
       return gravity && new GravityVM(new GravityModel(e, n, gravity, layer));
-    }).filter(e => e !== undefined);
-    super(layer, children);
+    }).filter(e => e !== undefined));
   }
 }
