@@ -9,20 +9,21 @@ import { HOME, HOME_DIR } from "../constants";
 export const sendRequestedFile = (req: Request, res: Response) => {
   req.url || _throw(TypeError(`requested URL is null`));
   const decoded_url = decodeURI(req.url);
-  const req_path = decodeURI(NN(url.parse(decoded_url, true, true).pathname).replace(HOME, ""));
-
+  const parsed = NN(url.parse(decoded_url, true, true).pathname);
+  const replaced = parsed.replace(`/${HOME}/`, "");
+  const req_path = decodeURI(replaced);
   // caution: order is important
   if (req_path.endsWith("/index.html")) { // /path/to/index.html
-    const dirname = path.dirname(req_path);
+    const dirname = path.dirname(`${req_path}`);
     send301Redirect(res, decoded_url.replace(`${dirname}/index.html`, `${dirname}/`));
   }
   else if (req_path.endsWith(`/`)) {  // /path/to/
-    sendFile(req, res, `${HOME_DIR}${req_path}index.html`);
+    sendFile(req, res, `${HOME_DIR}/${req_path}index.html`);
   }
   else if (path.extname(req_path) === "") { // /path/to
     send301Redirect(res, decoded_url.replace(req_path, `${req_path}/`));
   }
   else {  // /path/to/file.ext
-    sendFile(req, res, `${HOME_DIR}${req_path}`);
+    sendFile(req, res, `${HOME_DIR}/${req_path}`);
   }
 };
