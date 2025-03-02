@@ -14,7 +14,5 @@
   "scripts": {
     "build": "tsup index.ts --format esm,cjs",
     "build:minify": "tsup index.ts --sourcemap --dts --format esm,cjs --minify"
-  },
-  "dependencies": {
   }
 }
