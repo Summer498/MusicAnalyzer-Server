@@ -5,17 +5,13 @@ import { MelodyModel } from "./melody-model";
 import { MelodyView } from "./melody-view";
 import { Archetype } from "@music-analyzer/irm";
 
-export class MelodyVM extends MVVM_ViewModel{
-  readonly view: MelodyView;
+export class MelodyVM extends MVVM_ViewModel<MelodyModel, MelodyView> {
   #do_melody_beep: boolean;
   #beep_volume: number;
   get do_melody_beep() { return this.#do_melody_beep; }
   get beep_volume() { return this.#beep_volume; }
-  constructor(
-    readonly model: MelodyModel,
-  ) {
-    super();
-    this.view = new MelodyView(this.model);
+  constructor(model: MelodyModel) {
+    super(model, new MelodyView(model));
     this.#do_melody_beep = false;
     this.#beep_volume = 0;
   }

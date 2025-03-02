@@ -3,14 +3,12 @@ import { Archetype } from "@music-analyzer/irm";
 import { ReductionModel } from "./reduction-model";
 import { ReductionView } from "./reduction-view";
 
-export class ReductionVM extends MVVM_ViewModel {
-  readonly view: ReductionView;
+export class ReductionVM extends MVVM_ViewModel<ReductionModel, ReductionView> {
   constructor(
-    readonly model: ReductionModel,
+    model: ReductionModel,
     implication_realization: Archetype
   ) {
-    super();
-    this.view = new ReductionView(this.model, implication_realization);
+    super(model, new ReductionView(model, implication_realization));
   }
   renewStrong(strong: boolean) {
     this.view.strong = strong;

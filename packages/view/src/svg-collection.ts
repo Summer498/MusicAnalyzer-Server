@@ -1,6 +1,6 @@
 import { search_items_overlaps_range } from "@music-analyzer/time-and";
 import { PianoRollTranslateX } from "@music-analyzer/view-parameters";
-import { MVVM_Collection, MVVM_ViewModel, MVVM_Model } from "./mvc";
+import { MVVM_Collection, MVVM_ViewModel, MVVM_Model, MVVM_View, I_MVVM_ViewModel } from "./mvc";
 import { AudioReflectable } from "./audio-reflectable";
 import { WindowReflectable } from "./window-reflectable";
 
@@ -9,16 +9,29 @@ export abstract class TimeAndMVCModel extends MVVM_Model {
   abstract readonly end: number;
 }
 
-export abstract class TimeAndVM extends MVVM_ViewModel {
-  abstract readonly model: TimeAndMVCModel;
+export interface I_TimeAndVM extends I_MVVM_ViewModel {
+  model: TimeAndMVCModel;
+}
+export abstract class TimeAndVM<
+  M extends TimeAndMVCModel,
+  K extends keyof SVGElementTagNameMap
+> extends MVVM_ViewModel<M, MVVM_View<M, K>> {
+  abstract readonly model: M;
 }
 
-export abstract class ReflectableTimeAndMVCControllerCollection extends MVVM_Collection implements AudioReflectable, WindowReflectable {
+export interface I_ReflectableTimeAndMVCControllerCollection
+  extends AudioReflectable, WindowReflectable {
+  readonly children_model: TimeAndMVCModel[]
+  readonly show: I_TimeAndVM[];
+  readonly children: I_TimeAndVM[];
+}
+export abstract class ReflectableTimeAndMVCControllerCollection extends MVVM_Collection
+  implements I_ReflectableTimeAndMVCControllerCollection {
   readonly children_model: TimeAndMVCModel[];
-  #show: TimeAndVM[];
+  #show: I_TimeAndVM[];
   get show() { return this.#show; };
   constructor(
-    readonly children: TimeAndVM[],
+    readonly children: I_TimeAndVM[],
   ) {
     super(children);
     this.children_model = this.children.map(e => e.model);

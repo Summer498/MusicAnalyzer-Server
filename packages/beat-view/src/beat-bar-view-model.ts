@@ -4,14 +4,10 @@ import { NowAt, reservation_range } from "@music-analyzer/view-parameters";
 import { BeatBarModel } from "./beat-bar-model";
 import { BeatBarView } from "./beat-bar-view";
 
-export class BeatBarVM extends MVVM_ViewModel {
-  readonly view: BeatBarView;
+export class BeatBarVM extends MVVM_ViewModel<BeatBarModel, BeatBarView> {
   sound_reserved: boolean;
-  constructor(
-    readonly model: BeatBarModel
-  ) {
-    super();
-    this.view = new BeatBarView(this.model);
+  constructor(model: BeatBarModel) {
+    super(model, new BeatBarView(model));
     this.sound_reserved = false;
   }
   beepBeat() {

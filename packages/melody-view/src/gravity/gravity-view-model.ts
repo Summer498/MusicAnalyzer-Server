@@ -3,12 +3,8 @@ import { GravityModel } from "./gravity-model";
 import { GravityView } from "./gravity-view";
 
 
-export class GravityVM extends MVVM_ViewModel{
-  readonly view: GravityView;
-  constructor(
-    readonly model: GravityModel,
-  ) {
-    super();
-    this.view = new GravityView(this.model);
+export class GravityVM extends MVVM_ViewModel<GravityModel, GravityView> {
+  constructor(model: GravityModel) {
+    super(model, new GravityView(model));
   }
 }

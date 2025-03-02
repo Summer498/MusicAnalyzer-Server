@@ -16,9 +16,15 @@ export abstract class MVVM_View<M extends MVVM_Model, K extends keyof SVGElement
   abstract onWindowResized(): void;
 }
 
-export abstract class MVVM_ViewModel implements WindowReflectable {
-  readonly abstract model: MVVM_Model;
-  readonly abstract view: I_MVVM_View;
+export interface I_MVVM_ViewModel extends WindowReflectable {
+  readonly model: MVVM_Model,
+  readonly view: I_MVVM_View,
+}
+export abstract class MVVM_ViewModel<M extends MVVM_Model, V extends I_MVVM_View> implements I_MVVM_ViewModel {
+  constructor(
+    readonly model: M,
+    readonly view: V,
+  ) { }
   onWindowResized() {
     this.view.onWindowResized();
   }
@@ -27,7 +33,7 @@ export abstract class MVVM_ViewModel implements WindowReflectable {
 export abstract class MVVM_Collection implements WindowReflectable {
   readonly svg: SVGGElement;
   constructor(
-    readonly children: MVVM_ViewModel[],
+    readonly children: I_MVVM_ViewModel[],
   ) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.children.map(e => this.svg.appendChild(e.view.svg));

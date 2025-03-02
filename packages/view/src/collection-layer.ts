@@ -1,9 +1,9 @@
-import { ReflectableTimeAndMVCControllerCollection, TimeAndVM } from "./svg-collection";
+import { I_TimeAndVM, ReflectableTimeAndMVCControllerCollection } from "./svg-collection";
 import { WindowReflectable } from "./window-reflectable";
 
 export class CollectionLayer extends ReflectableTimeAndMVCControllerCollection {
   constructor(
-    children: (TimeAndVM & WindowReflectable)[],
+    children: (I_TimeAndVM & WindowReflectable)[],
     readonly layer: number,
   ) {
     super(children);
