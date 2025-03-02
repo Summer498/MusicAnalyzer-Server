@@ -3,12 +3,8 @@ import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view"
 import { ChordKeyVM } from "./chord-key-view-model";
 import { ChordKeyModel } from "./chord-key-model";
 
-export class ChordKeySeries extends ReflectableTimeAndMVCControllerCollection{
-  constructor(
-    romans: TimeAndRomanAnalysis[]
-  ){
-    const children = romans.map(e => new ChordKeyVM(new ChordKeyModel(e)));
-    super(children);
-    this.svg.id = "key-names";
+export class ChordKeySeries extends ReflectableTimeAndMVCControllerCollection<ChordKeyVM> {
+  constructor(romans: TimeAndRomanAnalysis[]) {
+    super("key-names", romans.map(e => new ChordKeyVM(new ChordKeyModel(e))));
   }
 }

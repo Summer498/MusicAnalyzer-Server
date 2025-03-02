@@ -6,10 +6,8 @@ import { OctaveCount } from "@music-analyzer/view-parameters";
 import { ChordNoteVM } from "./chord-note-view-model";
 import { ChordNoteModel } from "./chord-note-model";
 
-export class ChordNotesSeries extends ReflectableTimeAndMVCControllerCollection {
-  constructor(
-    romans: TimeAndRomanAnalysis[]
-  ) {
+export class ChordNotesSeries extends ReflectableTimeAndMVCControllerCollection<ChordNoteVM> {
+  constructor(romans: TimeAndRomanAnalysis[]) {
     const children = romans.map(roman => {
       const chord = _Chord.get(roman.chord);
       return getRange(0, OctaveCount.value)
@@ -18,7 +16,6 @@ export class ChordNotesSeries extends ReflectableTimeAndMVCControllerCollection 
           )
         );
     }).flat(2);
-    super(children);
-    this.svg.id = "chords";
+    super("chords", children);
   }
 }

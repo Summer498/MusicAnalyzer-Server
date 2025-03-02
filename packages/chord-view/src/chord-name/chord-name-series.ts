@@ -3,12 +3,8 @@ import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view"
 import { ChordNameVM } from "./chord-name-view-model";
 import { ChordNameModel } from "./chord-name-model";
 
-export class ChordNameSeries extends ReflectableTimeAndMVCControllerCollection {
-  constructor(
-    romans: TimeAndRomanAnalysis[]
-  ){
-    const children = romans.map(e => new ChordNameVM(new ChordNameModel(e)));
-    super(children);
-    this.svg.id = "chord-names";
+export class ChordNameSeries extends ReflectableTimeAndMVCControllerCollection<ChordNameVM> {
+  constructor(romans: TimeAndRomanAnalysis[]) {
+    super("chord-names", romans.map(e => new ChordNameVM(new ChordNameModel(e))));
   }
 }

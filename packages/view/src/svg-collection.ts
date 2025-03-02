@@ -25,15 +25,17 @@ export interface I_ReflectableTimeAndMVCControllerCollection
   readonly show: I_TimeAndVM[];
   readonly children: I_TimeAndVM[];
 }
-export abstract class ReflectableTimeAndMVCControllerCollection extends MVVM_Collection
+export abstract class ReflectableTimeAndMVCControllerCollection<VM extends I_TimeAndVM> extends MVVM_Collection<VM>
   implements I_ReflectableTimeAndMVCControllerCollection {
   readonly children_model: TimeAndMVCModel[];
-  #show: I_TimeAndVM[];
+  #show: VM[];
   get show() { return this.#show; };
   constructor(
-    readonly children: I_TimeAndVM[],
+    id: string,
+    readonly children: VM[],
   ) {
     super(children);
+    this.svg.id = id;
     this.children_model = this.children.map(e => e.model);
     this.#show = children;
     this.show.map(e => this.svg.appendChild(e.view.svg));

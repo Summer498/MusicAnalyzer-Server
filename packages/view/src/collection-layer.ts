@@ -1,13 +1,11 @@
 import { I_TimeAndVM, ReflectableTimeAndMVCControllerCollection } from "./svg-collection";
-import { WindowReflectable } from "./window-reflectable";
 
-export class CollectionLayer extends ReflectableTimeAndMVCControllerCollection {
+export class CollectionLayer extends ReflectableTimeAndMVCControllerCollection<I_TimeAndVM> {
   constructor(
-    children: (I_TimeAndVM & WindowReflectable)[],
+    children: I_TimeAndVM[],
     readonly layer: number,
   ) {
-    super(children);
-    this.svg.id = `layer-${layer}`;
+    super(`layer-${layer}`, children);
   }
   onAudioUpdate(): void {
     super.onAudioUpdate();

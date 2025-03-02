@@ -15,22 +15,19 @@ export class MelodyLayer extends CollectionLayer {
     this.children = children;
   }
   onMelodyBeepCheckChanged(do_melody_beep: boolean) {
-    this.children.forEach(e => {
-      (e as MelodyVM).onMelodyBeepCheckChanged(do_melody_beep);
-    }
-    );
+    this.children.forEach(e => e.onMelodyBeepCheckChanged(do_melody_beep));
   }
   onMelodyVolumeBarChanged(beep_volume: number) {
-    this.children.forEach(e =>
-      (e as MelodyVM).onMelodyVolumeBarChanged(beep_volume)
-    );
+    this.children.forEach(e => e.onMelodyVolumeBarChanged(beep_volume));
   }
   onAudioUpdate() {
     super.onAudioUpdate();
-    this.children.forEach(e=>(e as MelodyVM).onAudioUpdate());
+    this.children.forEach(e => e.onAudioUpdate());
   }
   setColor(getColor: (archetype: Archetype) => string) {
-    this.children.forEach(e=>e.setColor(getColor));
+    this.children.forEach(e => e.setColor(getColor));
   }
-  updateColor() { this.children.forEach(e => e.updateColor()); }
+  updateColor() {
+    this.children.forEach(e => e.updateColor());
+  }
 }

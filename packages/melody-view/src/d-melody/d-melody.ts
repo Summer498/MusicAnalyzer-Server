@@ -3,12 +3,8 @@ import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view"
 import { DMelodyVM } from "./d-melody-view-model";
 import { DMelodyModel } from "./d-melody-model";
 
-export class DMelodyGroup extends ReflectableTimeAndMVCControllerCollection {
-  constructor(
-    detected_melodies: TimeAndAnalyzedMelody[],
-  ) {
-    const children = detected_melodies.map(e => new DMelodyVM(new DMelodyModel(e)));
-    super(children);
-    this.svg.id = "detected-melody";
+export class DMelodyGroup extends ReflectableTimeAndMVCControllerCollection<DMelodyVM> {
+  constructor(detected_melodies: TimeAndAnalyzedMelody[]) {
+    super("detected-melody", detected_melodies.map(e => new DMelodyVM(new DMelodyModel(e))));
   }
 }
