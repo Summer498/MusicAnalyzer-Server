@@ -3,11 +3,11 @@ import { CollectionLayer } from "@music-analyzer/view";
 import { GravityVM } from "./gravity-view-model";
 import { GravityModel } from "./gravity-model";
 
-export class GravityLayer extends CollectionLayer {
+export class GravityLayer extends CollectionLayer<GravityVM> {
   constructor(
     mode: "chord_gravity" | "scale_gravity",
-    melodies: TimeAndAnalyzedMelody[],
     layer: number,
+    melodies: TimeAndAnalyzedMelody[],
   ) {
     const next = melodies.slice(1);
     const children = next.map((n, i) => {
@@ -15,7 +15,6 @@ export class GravityLayer extends CollectionLayer {
       const gravity = e.melody_analysis[mode];
       return gravity && new GravityVM(new GravityModel(e, n, gravity, layer));
     }).filter(e => e !== undefined);
-    super(children, layer);
-    this.svg.id = `layer-${layer}`;
+    super(layer, children);
   }
 }
