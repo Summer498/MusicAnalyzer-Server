@@ -1,15 +1,17 @@
 {
+  "repository": "https://github.com/Summer498/MusicAnalyzer-Server.git",
   "name": "music-analyzer-server",
   "version": "1.0.0",
+  "author": "Summer498 <subore02@gmail.com>",
   "description": "popular music analyzer",
-  "workspaces": [
-    "packages/*",
-    "html",
-    "html/analyze",
-    "html/hierarchical-analysis-sample",
-    "ServerProgram"
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
   ],
-  "main": "index.js",
   "scripts": {
     "build": "turbo run build",
     "build:minify": "turbo run build:minify",
@@ -21,10 +23,6 @@
     "test:ci": "yarn lint:fix && yarn build:minify:fc && yarn test --no-cache",
     "start": "node ServerProgram"
   },
-  "author": "Summer498 <subore02@gmail.com>",
-  "license": "MIT",
-  "repository": "https://github.com/Summer498/MusicAnalyzer-Server.git",
-  "private": true,
   "dependencies": {
     "@types/node": "^20.11.17",
     "packages": "link:./packages"
@@ -40,5 +38,12 @@
     "tsup": "^8.0.2",
     "turbo": "^1.12.3",
     "typescript": "5.1"
-  }
+  },
+  "workspaces": [
+    "packages/*",
+    "html",
+    "html/analyze",
+    "html/hierarchical-analysis-sample",
+    "ServerProgram"
+  ]
 }

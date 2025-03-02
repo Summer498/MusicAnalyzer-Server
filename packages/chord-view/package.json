@@ -1,14 +1,16 @@
 {
   "name": "@music-analyzer/chord-view",
   "version": "1.0.0",
+  "author": "Summer498 <subore02@gmail.com>",
+  "description": "",
+  "license": "UNLICENSED",
+  "private": true,
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "license": "MIT",
-  "private": true,
   "scripts": {
     "build": "tsup index.ts --format esm,cjs",
     "build:minify": "tsup index.ts --sourcemap --dts --format esm,cjs --minify"

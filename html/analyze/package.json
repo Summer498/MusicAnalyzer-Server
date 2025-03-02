@@ -1,6 +1,10 @@
 {
   "name": "analyze",
   "version": "1.0.0",
+  "author": "Summer498 <subore02@gmail.com>",
+  "description": "",
+  "license": "UNLICENSED",
+  "private": true,
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -11,7 +15,6 @@
     "build": "tsup index.ts --format esm,cjs,iife",
     "build:minify": "tsup index.ts --sourcemap --dts --format esm,cjs,iife --minify"
   },
-  "license": "MIT",
   "dependencies": {
     "@music-analyzer/beat-estimation": "1.0.0",
     "@music-analyzer/chord-analyze": "1.0.0",
