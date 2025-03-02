@@ -8,10 +8,23 @@ export abstract class MVCView implements WindowReflectable {
   abstract onWindowResized(): void;
 }
 
-export abstract class MVCController implements WindowReflectable{
+export abstract class MVCController implements WindowReflectable {
   readonly abstract model: MVCModel;
   readonly abstract view: MVCView
-  onWindowResized(){
+  onWindowResized() {
     this.view.onWindowResized();
+  }
+}
+
+export abstract class MVCCollection implements WindowReflectable {
+  readonly svg: SVGGElement;
+  constructor(
+    readonly children: MVCController[],
+  ) {
+    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    this.children.map(e => this.svg.appendChild(e.view.svg));
+  }
+  onWindowResized() {
+    this.children.forEach(e => e.onWindowResized());
   }
 }

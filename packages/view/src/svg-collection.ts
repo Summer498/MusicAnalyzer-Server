@@ -1,6 +1,6 @@
 import { search_items_overlaps_range } from "@music-analyzer/time-and";
 import { PianoRollTranslateX } from "@music-analyzer/view-parameters";
-import { MVCController, MVCModel } from "./mvc";
+import { MVCCollection, MVCController, MVCModel } from "./mvc";
 import { AudioReflectable } from "./audio-reflectable";
 import { WindowReflectable } from "./window-reflectable";
 
@@ -13,17 +13,16 @@ export abstract class TimeAndMVCController extends MVCController {
   abstract readonly model: TimeAndMVCModel;
 }
 
-export abstract class ReflectableTimeAndMVCControllerCollection implements AudioReflectable, WindowReflectable {
+export abstract class ReflectableTimeAndMVCControllerCollection extends MVCCollection implements AudioReflectable, WindowReflectable {
   readonly children_model: TimeAndMVCModel[];
   #show: TimeAndMVCController[];
   get show() { return this.#show; };
-  readonly svg: SVGGElement;
   constructor(
-    readonly children: (TimeAndMVCController & WindowReflectable)[],
+    readonly children: TimeAndMVCController[],
   ) {
+    super(children);
     this.children_model = this.children.map(e => e.model);
     this.#show = children;
-    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.show.map(e => this.svg.appendChild(e.view.svg));
   }
   private updateShow(begin: number, end: number) {
@@ -46,8 +45,5 @@ export abstract class ReflectableTimeAndMVCControllerCollection implements Audio
   }
   onAudioUpdate() {
     this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.value})`);
-  }
-  onWindowResized() {
-    this.children.forEach(e => e.onWindowResized());
   }
 }
