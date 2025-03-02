@@ -4,16 +4,10 @@ import { ReductionLayer } from "./reduction-layer";
 import { Archetype } from "@music-analyzer/irm";
 
 export class ReductionHierarchy extends CollectionHierarchy<ReductionLayer> {
-  readonly svg: SVGGElement;
-  readonly children: ReductionLayer[];
   constructor(
     hierarchical_melodies: TimeAndAnalyzedMelody[][]
   ) {
-    super();
-    this.children = hierarchical_melodies.map((melody, l) => new ReductionLayer(l, melody));
-    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    this.svg.id = "time-span-reduction";
-    this.children.forEach(e => this.svg.appendChild(e.svg));
+    super("time-span-reduction", hierarchical_melodies.map((melody, l) => new ReductionLayer(l, melody)));
   }
   onChangedLayer(value: number): void {
     const visible_layer = this.children.filter(
@@ -24,7 +18,9 @@ export class ReductionHierarchy extends CollectionHierarchy<ReductionLayer> {
     this.setShow(visible_layer);
   }
   setColor(getColor: (archetype: Archetype) => string) {
-    this.children.forEach(e=>e.setColor(getColor));
+    this.children.forEach(e => e.setColor(getColor));
   }
-  updateColor() { this.children.forEach(e => e.updateColor()); }
+  updateColor() {
+    this.children.forEach(e => e.updateColor());
+  }
 }

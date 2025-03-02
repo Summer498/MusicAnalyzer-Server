@@ -1,19 +1,17 @@
 import { I_CollectionLayer } from "./collection-layer";
 import { AudioReflectable } from "./audio-reflectable";
-import { WindowReflectable } from "./window-reflectable";
+import { I_MVVM_Collection, MVVM_Collection } from "./mvc";
 
-interface I_CollectionHierarchy extends AudioReflectable, WindowReflectable {
-  readonly svg: SVGGElement
-  readonly children: I_CollectionLayer[]
-}
 export abstract class CollectionHierarchy<L extends I_CollectionLayer>
-  implements I_CollectionHierarchy {
-  readonly svg: SVGGElement;
-  abstract readonly children: L[];
+  extends MVVM_Collection<L>
+  implements I_MVVM_Collection, AudioReflectable {
   protected _show: L[];
   get show() { return this._show; }
-  constructor() {
-    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  constructor(
+    id: string,
+    readonly children: L[],    
+  ) {
+    super(id, children);
     this._show = [];
   }
   protected setShow(visible_layers: L[]) {
