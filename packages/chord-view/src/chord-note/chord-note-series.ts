@@ -1,14 +1,24 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
+import { getRange } from "@music-analyzer/math";
+import { _Chord } from "@music-analyzer/tonal-objects";
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
-import { ChordRomanVM } from "../chord-roman/chord-roman-controller";
-import { ChordRomanModel } from "../chord-roman/chord-roman-model";
+import { OctaveCount } from "@music-analyzer/view-parameters";
+import { ChordNoteVM } from "./chord-note-controller";
+import { ChordNoteModel } from "./chord-note-model";
 
-export class ChordRomanSeries extends ReflectableTimeAndMVCControllerCollection {
+export class ChordNotesSeries extends ReflectableTimeAndMVCControllerCollection {
   constructor(
     romans: TimeAndRomanAnalysis[]
-  ){
-    const children = romans.map(e => new ChordRomanVM(new ChordRomanModel(e)));
+  ) {
+    const children = romans.map(roman => {
+      const chord = _Chord.get(roman.chord);
+      return getRange(0, OctaveCount.value)
+        .map(oct => chord.notes
+          .map(note => new ChordNoteVM(new ChordNoteModel(roman, chord, note, oct))
+          )
+        );
+    }).flat(2);
     super(children);
-    this.svg.id = "roman-names";
+    this.svg.id = "chords";
   }
-} 
+}
