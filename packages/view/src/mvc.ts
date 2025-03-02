@@ -12,44 +12,43 @@ export abstract class MVVM_View<
   readonly svg: SVGElementTagNameMap[K];
   constructor(
     protected readonly model: M,
-    svg_tagname: K
+    svg_tagname: K,
   ) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", svg_tagname);
   }
   abstract onWindowResized(): void;
 }
 
-export interface I_MVVM_ViewModel extends WindowReflectable {
-  readonly model: MVVM_Model,
-  readonly view: I_MVVM_View,
-}
 export abstract class MVVM_ViewModel<
   M extends MVVM_Model,
   V extends I_MVVM_View,
-> implements I_MVVM_ViewModel {
+> implements I_MVVM_View {
+  get svg() { return this.view.svg; }
   constructor(
     readonly model: M,
-    readonly view: V,
+    protected readonly view: V,
   ) { }
   onWindowResized() {
     this.view.onWindowResized();
   }
 }
 
-interface I_MVVM_Collection
-  extends WindowReflectable {
+export interface I_MVVM_Collection
+  extends I_MVVM_View {
   readonly svg: SVGGElement
-  readonly children: I_MVVM_ViewModel[];
+  readonly children: I_MVVM_View[];
 }
 
-export abstract class MVVM_Collection<VM extends I_MVVM_ViewModel>
+export abstract class MVVM_Collection<VM extends I_MVVM_View>
   implements I_MVVM_Collection {
   readonly svg: SVGGElement;
   constructor(
+    id: string,
     readonly children: VM[],
   ) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    this.children.map(e => this.svg.appendChild(e.view.svg));
+    this.svg.id = id;
+    this.children.forEach(e => this.svg.appendChild(e.svg));
   }
   onWindowResized() {
     this.children.forEach(e => e.onWindowResized());

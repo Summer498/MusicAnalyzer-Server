@@ -4,8 +4,11 @@ import { IRPlotView } from "./ir-plot-view";
 import { Archetype } from "@music-analyzer/irm";
 
 export class IRPlotVM extends MVVM_ViewModel<IRPlotModel, IRPlotView> {
+  readonly view: IRPlotView;
   constructor(model: IRPlotModel) {
-    super(model, new IRPlotView(model));
+    const view = new IRPlotView(model);
+    super(model, view);
+    this.view = view;
   }
   setColor(getColor: (archetype: Archetype) => string) {
     this.view.setColor(getColor);

@@ -1,15 +1,14 @@
 import { search_items_overlaps_range } from "@music-analyzer/time-and";
 import { PianoRollTranslateX } from "@music-analyzer/view-parameters";
-import { MVVM_Collection, MVVM_ViewModel, MVVM_Model, MVVM_View, I_MVVM_ViewModel } from "./mvc";
+import { MVVM_Collection, MVVM_ViewModel, MVVM_Model, MVVM_View, I_MVVM_Collection, I_MVVM_View } from "./mvc";
 import { AudioReflectable } from "./audio-reflectable";
-import { WindowReflectable } from "./window-reflectable";
 
 export abstract class TimeAndMVCModel extends MVVM_Model {
   abstract readonly begin: number;
   abstract readonly end: number;
 }
 
-export interface I_TimeAndVM extends I_MVVM_ViewModel {
+export interface I_TimeAndVM extends I_MVVM_View {
   model: TimeAndMVCModel;
 }
 export abstract class TimeAndVM<
@@ -20,13 +19,13 @@ export abstract class TimeAndVM<
 }
 
 export interface I_ReflectableTimeAndMVCControllerCollection
-  extends AudioReflectable, WindowReflectable {
-  readonly svg: SVGGElement
+  extends I_MVVM_Collection, AudioReflectable {
   readonly show: I_TimeAndVM[];
   readonly children: I_TimeAndVM[];
   readonly children_model: TimeAndMVCModel[]
 }
-export abstract class ReflectableTimeAndMVCControllerCollection<VM extends I_TimeAndVM> extends MVVM_Collection<VM>
+export abstract class ReflectableTimeAndMVCControllerCollection<VM extends I_TimeAndVM>
+  extends MVVM_Collection<VM>
   implements I_ReflectableTimeAndMVCControllerCollection {
   readonly children_model: TimeAndMVCModel[];
   #show: VM[];
@@ -35,11 +34,10 @@ export abstract class ReflectableTimeAndMVCControllerCollection<VM extends I_Tim
     id: string,
     readonly children: VM[],
   ) {
-    super(children);
-    this.svg.id = id;
+    super(id, children);
     this.children_model = this.children.map(e => e.model);
     this.#show = children;
-    this.show.map(e => this.svg.appendChild(e.view.svg));
+    this.show.map(e => this.svg.appendChild(e.svg));
   }
   private updateShow(begin: number, end: number) {
     /*
@@ -55,7 +53,7 @@ export abstract class ReflectableTimeAndMVCControllerCollection<VM extends I_Tim
     const fragment = document.createDocumentFragment();
     this.children.slice(append.begin_index, append.end_index).forEach(e => {
       this.show.push(e);
-      fragment.appendChild(e.view.svg);
+      fragment.appendChild(e.svg);
     });  // 必要分全部追加する
     this.svg.appendChild(fragment);
   }
