@@ -1,8 +1,8 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { _Note, Chord } from "@music-analyzer/tonal-objects";
-import { MVCModel } from "@music-analyzer/view";
+import { MVVM_Model } from "@music-analyzer/view";
 
-export class ChordNoteModel extends MVCModel {
+export class ChordNoteModel extends MVVM_Model {
   readonly begin: number;
   readonly end: number;
   readonly duration: number;

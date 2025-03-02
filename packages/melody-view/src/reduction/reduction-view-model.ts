@@ -1,9 +1,9 @@
-import { MVCController } from "@music-analyzer/view";
+import { MVVM_ViewModel } from "@music-analyzer/view";
 import { Archetype } from "@music-analyzer/irm";
 import { ReductionModel } from "./reduction-model";
 import { ReductionView } from "./reduction-view";
 
-export class ReductionVM extends MVCController {
+export class ReductionVM extends MVVM_ViewModel {
   readonly view: ReductionView;
   constructor(
     readonly model: ReductionModel,

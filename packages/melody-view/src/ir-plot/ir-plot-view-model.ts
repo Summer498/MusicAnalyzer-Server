@@ -1,9 +1,9 @@
-import { MVCController } from "@music-analyzer/view";
+import { MVVM_ViewModel } from "@music-analyzer/view";
 import { IRPlotModel } from "./ir-plot-model";
 import { IRPlotView } from "./ir-plot-view";
 import { Archetype } from "@music-analyzer/irm";
 
-export class IRPlotVM extends MVCController {
+export class IRPlotVM extends MVVM_ViewModel {
   readonly view: IRPlotView;
   constructor(
     readonly model: IRPlotModel,

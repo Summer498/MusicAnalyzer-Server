@@ -1,8 +1,8 @@
 import { NoteSize, PianoRollHeight } from "@music-analyzer/view-parameters";
-import { MVCView } from "@music-analyzer/view";
+import { MVVM_View } from "@music-analyzer/view";
 import { BeatBarModel } from "./beat-bar-model";
 
-export class BeatBarView extends MVCView {
+export class BeatBarView extends MVVM_View {
   readonly svg: SVGLineElement;
   readonly y1: number;
   readonly y2: number;

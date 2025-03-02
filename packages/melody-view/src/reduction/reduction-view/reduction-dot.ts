@@ -1,8 +1,8 @@
-import { MVCView } from "@music-analyzer/view";
+import { MVVM_View } from "@music-analyzer/view";
 import { ReductionViewModel } from "./reduction-view-model";
 
 
-export class ReductionDot extends MVCView {
+export class ReductionDot extends MVVM_View {
   readonly svg: SVGCircleElement;
   constructor(
     readonly model: ReductionViewModel,

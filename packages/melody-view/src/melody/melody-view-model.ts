@@ -1,11 +1,11 @@
-import { MVCController } from "@music-analyzer/view";
+import { MVVM_ViewModel } from "@music-analyzer/view";
 import { play } from "@music-analyzer/synth";
 import { NowAt, reservation_range } from "@music-analyzer/view-parameters";
 import { MelodyModel } from "./melody-model";
 import { MelodyView } from "./melody-view";
 import { Archetype } from "@music-analyzer/irm";
 
-export class MelodyVM extends MVCController{
+export class MelodyVM extends MVVM_ViewModel{
   readonly view: MelodyView;
   #do_melody_beep: boolean;
   #beep_volume: number;

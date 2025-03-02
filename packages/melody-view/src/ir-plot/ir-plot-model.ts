@@ -1,8 +1,8 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { MVCModel } from "@music-analyzer/view";
+import { MVVM_Model } from "@music-analyzer/view";
 import { NowAt } from "@music-analyzer/view-parameters";
 
-export class IRPlotModel extends MVCModel {
+export class IRPlotModel extends MVVM_Model {
   #index: number;
   #cache: TimeAndAnalyzedMelody[];
   constructor(

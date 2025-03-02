@@ -1,9 +1,9 @@
 import { Archetype, get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { bracket_height } from "@music-analyzer/view-parameters";
-import { MVCView } from "@music-analyzer/view";
+import { MVVM_View } from "@music-analyzer/view";
 import { ReductionViewModel } from "./reduction-view-model";
 
-export class IRMSymbolOnReduction extends MVCView {
+export class IRMSymbolOnReduction extends MVVM_View {
   readonly svg: SVGTextElement;
   #getColor: (archetype: Archetype) => string;
   constructor(

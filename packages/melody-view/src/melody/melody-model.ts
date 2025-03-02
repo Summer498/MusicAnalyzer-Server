@@ -1,7 +1,7 @@
 import { MelodyAnalysis, TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { MVCModel } from "@music-analyzer/view";
+import { MVVM_Model } from "@music-analyzer/view";
 
-export class MelodyModel extends MVCModel implements TimeAndAnalyzedMelody {
+export class MelodyModel extends MVVM_Model implements TimeAndAnalyzedMelody {
   readonly begin: number;
   readonly end: number;
   readonly duration: number;

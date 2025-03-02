@@ -1,5 +1,5 @@
 import { NoteSize, BlackKeyPrm, PianoRollBegin } from "@music-analyzer/view-parameters";
-import { MVCView } from "@music-analyzer/view";
+import { MVVM_View } from "@music-analyzer/view";
 import { GravityModel } from "./gravity-model";
 
 const triangle_width = 5;
@@ -10,7 +10,7 @@ type Vector2D = {
   readonly y: number;
 }
 
-export class GravityView extends MVCView {
+export class GravityView extends MVVM_View {
   readonly svg: SVGGElement;
   readonly triangle: SVGPolygonElement;
   readonly line: SVGLineElement;

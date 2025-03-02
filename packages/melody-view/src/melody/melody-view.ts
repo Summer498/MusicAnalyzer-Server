@@ -1,10 +1,10 @@
 import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
 import { Archetype, get_color_of_Narmour_concept } from "@music-analyzer/irm";
-import { MVCView } from "@music-analyzer/view";
+import { MVVM_View } from "@music-analyzer/view";
 import { MelodyModel } from "./melody-model";
 import { deleteMelody } from "../melody-editor-function";
 
-export class MelodyView extends MVCView {
+export class MelodyView extends MVVM_View {
   readonly svg: SVGRectElement;
   sound_reserved: boolean;
   #getColor: (archetype: Archetype) => string;

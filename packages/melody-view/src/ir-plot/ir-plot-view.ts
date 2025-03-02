@@ -1,8 +1,8 @@
 import { Archetype, get_color_of_Narmour_concept } from "@music-analyzer/irm";
-import { MVCView } from "@music-analyzer/view";
+import { MVVM_View } from "@music-analyzer/view";
 import { IRPlotModel } from "./ir-plot-model";
 
-export class IRPlotView extends MVCView {
+export class IRPlotView extends MVVM_View {
   readonly svg: SVGCircleElement;
   #getColor: (archetype: Archetype)=>string;
   readonly x0: number;

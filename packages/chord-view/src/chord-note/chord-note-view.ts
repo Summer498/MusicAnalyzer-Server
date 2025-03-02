@@ -1,10 +1,10 @@
 import { mod } from "@music-analyzer/math";
 import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
 import { fifthToColor } from "@music-analyzer/color";
-import { MVCView } from "@music-analyzer/view";
+import { MVVM_View } from "@music-analyzer/view";
 import { ChordNoteModel } from "./chord-note-model";
 
-export class ChordNoteView extends MVCView {
+export class ChordNoteView extends MVVM_View {
   readonly svg: SVGRectElement;
   readonly y: number;
   constructor(

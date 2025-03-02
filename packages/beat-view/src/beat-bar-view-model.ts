@@ -1,10 +1,10 @@
-import { MVCController } from "@music-analyzer/view";
+import { MVVM_ViewModel } from "@music-analyzer/view";
 import { play } from "@music-analyzer/synth";
 import { NowAt, reservation_range } from "@music-analyzer/view-parameters";
 import { BeatBarModel } from "./beat-bar-model";
 import { BeatBarView } from "./beat-bar-view";
 
-export class BeatBarVM extends MVCController {
+export class BeatBarVM extends MVVM_ViewModel {
   readonly view: BeatBarView;
   sound_reserved: boolean;
   constructor(

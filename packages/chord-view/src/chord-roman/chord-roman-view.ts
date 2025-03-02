@@ -1,11 +1,11 @@
 import { fifthToColor } from "@music-analyzer/color";
 import { NoteSize, PianoRollHeight } from "@music-analyzer/view-parameters";
-import { MVCView } from "@music-analyzer/view";
+import { MVVM_View } from "@music-analyzer/view";
 import { chord_name_margin, chord_text_em, chord_text_size } from "../chord-view-params"; 
 import { shorten_chord } from "../shorten";
 import { ChordRomanModel } from "./chord-roman-model";
 
-export class ChordRomanView extends MVCView {
+export class ChordRomanView extends MVVM_View {
   readonly svg: SVGTextElement;
   readonly y: number;
   constructor(

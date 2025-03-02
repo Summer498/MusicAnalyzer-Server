@@ -1,11 +1,11 @@
 import { BlackKeyPrm, NoteSize, PianoRollBegin, Size } from "@music-analyzer/view-parameters";
 import { Archetype, get_color_of_Narmour_concept } from "@music-analyzer/irm";
-import { MVCView } from "@music-analyzer/view";
+import { MVVM_View } from "@music-analyzer/view";
 import { IRSymbolModel } from "./ir-symbol-model";
 
 const ir_analysis_em = Size.value;
 
-export class IRSymbolView extends MVCView {
+export class IRSymbolView extends MVVM_View {
   readonly svg: SVGTextElement;
   readonly y: number;
   #getColor: (archetype: Archetype) => string;

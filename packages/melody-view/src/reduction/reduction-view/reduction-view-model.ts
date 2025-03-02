@@ -1,8 +1,8 @@
 import { BlackKeyPrm, bracket_height, NoteSize } from "@music-analyzer/view-parameters";
-import { MVCModel } from "@music-analyzer/view";
+import { MVVM_Model } from "@music-analyzer/view";
 import { ReductionModel } from "../reduction-model";
 
-export class ReductionViewModel extends MVCModel {
+export class ReductionViewModel extends MVVM_Model {
   #x: number;
   #w: number;
   #cx: number;

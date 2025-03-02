@@ -1,7 +1,7 @@
 import { Gravity, TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { MVCModel } from "@music-analyzer/view";
+import { MVVM_Model } from "@music-analyzer/view";
 
-export class GravityModel extends MVCModel {
+export class GravityModel extends MVVM_Model {
   readonly begin: number;
   readonly end: number;
   readonly duration: number;

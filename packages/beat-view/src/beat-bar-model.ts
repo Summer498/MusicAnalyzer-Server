@@ -1,7 +1,7 @@
 import { BeatInfo } from "@music-analyzer/beat-estimation";
-import { MVCModel } from "@music-analyzer/view";
+import { MVVM_Model } from "@music-analyzer/view";
 
-export class BeatBarModel extends MVCModel {
+export class BeatBarModel extends MVVM_Model {
   readonly begin: number;
   readonly end: number;
   constructor(beat_info: BeatInfo, i: number) {
