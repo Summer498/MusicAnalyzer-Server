@@ -6,13 +6,41 @@ import { existsSync, default as fs } from "fs";
 import { app, HOME_DIR, HOME } from "./src/constants";
 import { execSync } from "child_process";
 import { default as url } from "url";
-import { basename } from "path";
+import { basename, dirname } from "path";
 
 const PORT = 3000;
 const POST_DATA_PATH = `${HOME_DIR}/posted`;
 
 const upload = multer({ dest: POST_DATA_PATH });  // multer が POST_DATA_PATH にファイルを作成
 
+const detectFile = (dst: string) => {
+  if (!existsSync(dst)) {
+    console.error(`file ${dst} not exist`)
+  }
+}
+const makeNewDir = (
+  dst_dir: string
+) => {
+  if(! dirname(dst_dir)){
+    fs.mkdirSync(dst_dir);
+    fs.chmodSync(dst_dir,0o775);
+  }
+}
+const runProcessWithCache = (
+  force: boolean,
+  dst: string,
+  process: string
+) => {
+  if (force === false && existsSync(dst)) {
+    console.log(`${dst} already exist`);
+  }
+  else {
+    makeNewDir(dirname(dst));
+    console.log(process);
+    execSync(process);
+    fs.chmodSync(dst, 0o775)
+  }
+}
 const main = (argv: string[]) => {
   // URLの部分が一致するもののうち一番上にある関数の処理をする
   app.get("*/analyzed/chord/roman.json", (req: Request, res: Response) => {
@@ -21,18 +49,28 @@ const main = (argv: string[]) => {
     const req_path = decodeURI(NN(url.parse(decoded_url, true, true).pathname).replace(`/${HOME}/`, ""));
     const song_dir = req_path.replace("/analyzed/chord/roman.json", "");
     const song_name = basename(song_dir);
-    if (!fs.existsSync(`${HOME_DIR}/${req_path}`)) {
-      const extensions: ("wav" | "mp3" | "mp4" | "m4a")[]
-        = ["wav", "mp3", "mp4", "m4a"];
-      const ext = extensions.find(e => {
-        return existsSync(`${HOME_DIR}/${song_dir}/${song_name}.${e}`);
-      });
-      console.log(ext);
-      if (ext) {
-        console.log(`./ranalyze.sh -q ${HOME_DIR}/${song_dir}/${song_name}.${ext}`);
-        const res = execSync(`./ranalyze.sh -q ${HOME_DIR}/${song_dir}/${song_name}.${ext}`);
-        console.log(res);
-      }
+    // if (fs.existsSync(`${HOME_DIR}/${req_path}`)) { sendFile(req, res, `${HOME_DIR}/${req_path}`); return }
+
+
+    const extensions: ("wav" | "mp3" | "mp4" | "m4a")[]
+      = ["wav", "mp3", "mp4", "m4a"];
+    const ext = extensions.find(e => {
+      return existsSync(`${HOME_DIR}/${song_dir}/${song_name}.${e}`);
+    });
+    if (ext) {
+      const force_reanalyze = false;
+      const filepath = ""
+      const chord_ext_src = filepath
+      const chord_ext_dst = `./resources/${song_name}/analyzed/chord/chords.json`
+      detectFile(`${chord_ext_src}`)
+      runProcessWithCache(false, chord_ext_dst, `python -m chordExtract \"${chord_ext_src}\" \"${chord_ext_dst}\"`)
+
+      const chord_to_roman_src = chord_ext_dst
+      const chord_to_roman_dst = `./resources/${song_name}/analyzed/chord/roman.json`
+      detectFile(`${chord_to_roman_src}`)
+      runProcessWithCache(true, chord_to_roman_dst, `node ./packages/chord-analyze-cli < \"${chord_to_roman_src}\" > \"${chord_to_roman_dst}\"`)
+
+      // execSync(`./ranalyze.sh -q ${HOME_DIR}/${song_dir}/${song_name}.${ext}`);
     }
     sendFile(req, res, `${HOME_DIR}/${req_path}`);
   });
