@@ -3,7 +3,7 @@ import { IRPlotModel } from "./ir-plot-model";
 import { IRPlotView } from "./ir-plot-view";
 import { Archetype } from "@music-analyzer/irm";
 
-export class IRPlotController extends MVCController {
+export class IRPlotVM extends MVCController {
   readonly view: IRPlotView;
   constructor(
     readonly model: IRPlotModel,

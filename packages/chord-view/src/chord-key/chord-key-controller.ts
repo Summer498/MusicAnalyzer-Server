@@ -3,7 +3,7 @@ import { MVCController } from "@music-analyzer/view";
 import { ChordKeyModel } from "./chord-key-model";
 import { ChordKeyView } from "./chord-key-view";
 
-export class ChordKeyController extends MVCController {
+export class ChordKeyVM extends MVCController {
   readonly view: ChordKeyView;
   constructor(
     readonly model: ChordKeyModel

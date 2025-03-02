@@ -1,16 +1,16 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { CollectionLayer } from "@music-analyzer/view";
-import { IRSymbolController } from "./ir-symbol-controller";
+import { IRSymbolVM } from "./ir-symbol-controller";
 import { IRSymbolModel } from "./ir-symbol-model";
 import { Archetype } from "@music-analyzer/irm";
 
 export class IRSymbolLayer extends CollectionLayer {
-  readonly children: IRSymbolController[];
+  readonly children: IRSymbolVM[];
   constructor(
     melodies: TimeAndAnalyzedMelody[],
     layer: number
   ) {
-    const children = melodies.map(e => new IRSymbolController(new IRSymbolModel(e, layer)));
+    const children = melodies.map(e => new IRSymbolVM(new IRSymbolModel(e, layer)));
     super(children, layer);
     this.children = children;
   }

@@ -3,7 +3,7 @@ import { IRSymbolModel } from "./ir-symbol-model";
 import { IRSymbolView } from "./ir-symbol-view";
 import { Archetype } from "@music-analyzer/irm";
 
-export class IRSymbolController extends MVCController {
+export class IRSymbolVM extends MVCController {
   readonly view: IRSymbolView;
   constructor(
     readonly model: IRSymbolModel,

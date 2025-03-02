@@ -4,7 +4,7 @@ import { NowAt, reservation_range } from "@music-analyzer/view-parameters";
 import { BeatBarModel } from "./beat-bar-model";
 import { BeatBarView } from "./beat-bar-view";
 
-export class BeatBarController extends MVCController {
+export class BeatBarVM extends MVCController {
   readonly view: BeatBarView;
   sound_reserved: boolean;
   constructor(

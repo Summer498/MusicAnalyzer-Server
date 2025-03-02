@@ -1,11 +1,11 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { IRPlotController } from "./ir-plot-controller";
+import { IRPlotVM } from "./ir-plot-controller";
 import { IRPlotModel } from "./ir-plot-model";
 import { Archetype } from "@music-analyzer/irm";
 
 export class IRPlotLayer {
   readonly svg: SVGGElement;
-  readonly child: IRPlotController;
+  readonly child: IRPlotVM;
   readonly w: number;
   readonly h: number;
   constructor(
@@ -13,7 +13,7 @@ export class IRPlotLayer {
     readonly layer: number,
     max: number
   ) {
-    this.child = new IRPlotController(new IRPlotModel(melody_series));
+    this.child = new IRPlotVM(new IRPlotModel(melody_series));
     const base = Math.log(Math.min(this.child.view.w, this.child.view.h) / 10) / Math.log(max);
     this.child.view.updateRadius(Math.pow(base, max - layer / 2));
     // const base = Math.min(this.child.view.w, this.child.view.h) / 10 / max;

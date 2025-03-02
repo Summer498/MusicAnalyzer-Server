@@ -3,7 +3,7 @@ import { MVCController } from "@music-analyzer/view";
 import { ChordNameModel } from "./chord-name-model";
 import { ChordNameView } from "./chord-name-view";
 
-export class ChordNameController extends MVCController{
+export class ChordNameVM extends MVCController{
   readonly view: ChordNameView;
   constructor(
     readonly model: ChordNameModel

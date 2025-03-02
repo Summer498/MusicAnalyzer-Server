@@ -5,7 +5,7 @@ import { MelodyModel } from "./melody-model";
 import { MelodyView } from "./melody-view";
 import { Archetype } from "@music-analyzer/irm";
 
-export class MelodyController extends MVCController{
+export class MelodyVM extends MVCController{
   readonly view: MelodyView;
   #do_melody_beep: boolean;
   #beep_volume: number;

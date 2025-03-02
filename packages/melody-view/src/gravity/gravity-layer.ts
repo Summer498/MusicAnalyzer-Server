@@ -1,6 +1,6 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { CollectionLayer } from "@music-analyzer/view";
-import { GravityController } from "./gravity-controller";
+import { GravityVM } from "./gravity-controller";
 import { GravityModel } from "./gravity-model";
 
 export class GravityLayer extends CollectionLayer {
@@ -13,7 +13,7 @@ export class GravityLayer extends CollectionLayer {
     const children = next.map((n, i) => {
       const e = melodies[i];
       const gravity = e.melody_analysis[mode];
-      return gravity && new GravityController(new GravityModel(e, n, gravity, layer));
+      return gravity && new GravityVM(new GravityModel(e, n, gravity, layer));
     }).filter(e => e !== undefined);
     super(children, layer);
     this.svg.id = `layer-${layer}`;

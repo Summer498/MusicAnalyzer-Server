@@ -1,24 +1,24 @@
 import { search_items_overlaps_range } from "@music-analyzer/time-and";
 import { PianoRollTranslateX } from "@music-analyzer/view-parameters";
-import { MVCCollection, MVCController, MVCModel } from "./mvc";
+import { MVVM_Collection, MVVM_ViewModel, MVVM_Model } from "./mvc";
 import { AudioReflectable } from "./audio-reflectable";
 import { WindowReflectable } from "./window-reflectable";
 
-export abstract class TimeAndMVCModel extends MVCModel {
+export abstract class TimeAndMVCModel extends MVVM_Model {
   abstract readonly begin: number;
   abstract readonly end: number;
 }
 
-export abstract class TimeAndMVCController extends MVCController {
+export abstract class TimeAndVM extends MVVM_ViewModel {
   abstract readonly model: TimeAndMVCModel;
 }
 
-export abstract class ReflectableTimeAndMVCControllerCollection extends MVCCollection implements AudioReflectable, WindowReflectable {
+export abstract class ReflectableTimeAndMVCControllerCollection extends MVVM_Collection implements AudioReflectable, WindowReflectable {
   readonly children_model: TimeAndMVCModel[];
-  #show: TimeAndMVCController[];
+  #show: TimeAndVM[];
   get show() { return this.#show; };
   constructor(
-    readonly children: TimeAndMVCController[],
+    readonly children: TimeAndVM[],
   ) {
     super(children);
     this.children_model = this.children.map(e => e.model);

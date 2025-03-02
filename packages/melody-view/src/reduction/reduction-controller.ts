@@ -3,7 +3,7 @@ import { Archetype } from "@music-analyzer/irm";
 import { ReductionModel } from "./reduction-model";
 import { ReductionView } from "./reduction-view";
 
-export class ReductionController extends MVCController {
+export class ReductionVM extends MVCController {
   readonly view: ReductionView;
   constructor(
     readonly model: ReductionModel,

@@ -3,7 +3,7 @@ import { MVCController } from "@music-analyzer/view";
 import { ChordRomanModel } from "./chord-roman-model";
 import { ChordRomanView } from "./chord-roman-view";
 
-export class ChordRomanController extends MVCController {
+export class ChordRomanVM extends MVCController {
   readonly view: ChordRomanView;
   constructor(
     readonly model: ChordRomanModel,

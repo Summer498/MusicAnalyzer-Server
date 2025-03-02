@@ -1,6 +1,6 @@
 export { CollectionLayer } from "./src/collection-layer";
 export { CollectionHierarchy } from "./src/collection-hierarchy";
-export { MVCController, MVCModel, MVCView } from "./src/mvc";
+export { MVVM_ViewModel as MVCController, MVVM_Model as MVCModel, MVVM_View as MVCView } from "./src/mvc";
 export { ReflectableTimeAndMVCControllerCollection } from "./src/svg-collection";
 export { AudioReflectable } from "./src/audio-reflectable";
 export { AudioReflectableRegistry } from "./src/audio-reflectable-registry";

@@ -3,7 +3,7 @@ import { DMelodyModel } from "./d-melody-model";
 import { DMelodyView } from "./d-melody-view";
 import { insertMelody } from "../melody-editor-function";
 
-export class DMelodyController extends MVCController {
+export class DMelodyVM extends MVCController {
   readonly view: DMelodyView;
   constructor(
     readonly model: DMelodyModel,

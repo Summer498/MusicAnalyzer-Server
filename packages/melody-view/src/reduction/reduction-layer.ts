@@ -1,16 +1,16 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { CollectionLayer } from "@music-analyzer/view";
 import { ReductionModel } from "./reduction-model";
-import { ReductionController } from "./reduction-controller";
+import { ReductionVM } from "./reduction-controller";
 import { Archetype } from "@music-analyzer/irm";
 
 export class ReductionLayer extends CollectionLayer {
-  readonly children: ReductionController[];
+  readonly children: ReductionVM[];
   constructor(
     melodies: TimeAndAnalyzedMelody[],
     layer: number,
   ) {
-    const children = melodies.map(e => new ReductionController(
+    const children = melodies.map(e => new ReductionVM(
       new ReductionModel(e, layer),
       e.melody_analysis.implication_realization
     ));
@@ -22,6 +22,6 @@ export class ReductionLayer extends CollectionLayer {
   }
   updateColor() { this.children.forEach(e => e.updateColor()); }
   renewStrong(layer: number) {
-    this.children.forEach((e) => (e as ReductionController).renewStrong(layer === this.layer));
+    this.children.forEach((e) => (e as ReductionVM).renewStrong(layer === this.layer));
   }
 }
