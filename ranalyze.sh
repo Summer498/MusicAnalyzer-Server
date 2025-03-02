@@ -84,7 +84,7 @@ runProcessWithCache(){
     local -r force=$1    #force を個別に操作できるようにする
     local -r dst="$2"
     local -r process="$3"
-    if [ $force_reanalyze -eq 0 ] && [ -e "$dst" ]; then debug_log ${green}$dst already exist$def_col;
+    if [ $force -eq 0 ] && [ -e "$dst" ]; then debug_log ${green}$dst already exist$def_col;
     else
         # 本処理
         makeNewDir "$(dirname "$dst")"
