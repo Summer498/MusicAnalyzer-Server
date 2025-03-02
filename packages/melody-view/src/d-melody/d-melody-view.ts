@@ -3,13 +3,9 @@ import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-para
 import { MVVM_View } from "@music-analyzer/view";
 import { DMelodyModel } from "./d-melody-model";
 
-export class DMelodyView extends MVVM_View {
-  readonly svg: SVGRectElement;
-  constructor(
-    protected readonly model: DMelodyModel,
-  ) {
-    super();
-    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+export class DMelodyView extends MVVM_View<DMelodyModel, "rect"> {
+  constructor(model: DMelodyModel) {
+    super(model, "rect");
     this.svg.id = "melody-note";
     this.svg.style.fill = rgbToString(hsv2rgb(0, 0, 0.75));
     this.svg.style.stroke = "rgb(64, 64, 64)";

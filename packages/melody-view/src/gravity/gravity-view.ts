@@ -10,16 +10,13 @@ type Vector2D = {
   readonly y: number;
 }
 
-export class GravityView extends MVVM_View {
-  readonly svg: SVGGElement;
+export class GravityView extends MVVM_View<GravityModel, "g"> {
   readonly triangle: SVGPolygonElement;
   readonly line: SVGLineElement;
   readonly src: Vector2D;
   readonly dst: Vector2D;
-  constructor(
-    protected readonly model: GravityModel,
-  ) {
-    super();
+  constructor(model: GravityModel) {
+    super(model, "g");
     this.triangle = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
     this.triangle.classList.add("triangle");
     this.triangle.id = "gravity-arrow";
@@ -32,7 +29,6 @@ export class GravityView extends MVVM_View {
     this.line.style.stroke = "rgb(0, 0, 0)";
     this.line.style.strokeWidth = String(5);
 
-    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.svg.id = "gravity";
     this.svg.appendChild(this.triangle);
     this.svg.appendChild(this.line);

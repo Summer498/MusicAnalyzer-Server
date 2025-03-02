@@ -4,15 +4,11 @@ import { MVVM_View } from "@music-analyzer/view";
 import { MelodyModel } from "./melody-model";
 import { deleteMelody } from "../melody-editor-function";
 
-export class MelodyView extends MVVM_View {
-  readonly svg: SVGRectElement;
+export class MelodyView extends MVVM_View<MelodyModel, "rect"> {
   sound_reserved: boolean;
   #getColor: (archetype: Archetype) => string;
-  constructor(
-    protected readonly model: MelodyModel,
-  ) {
-    super();
-    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  constructor(model: MelodyModel) {
+    super(model, "rect");
     this.svg.id = "melody-note";
     this.svg.style.stroke = "rgb(64, 64, 64)";
     this.svg.onclick = deleteMelody;

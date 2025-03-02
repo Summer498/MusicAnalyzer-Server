@@ -4,14 +4,10 @@ import { fifthToColor } from "@music-analyzer/color";
 import { MVVM_View } from "@music-analyzer/view";
 import { ChordNoteModel } from "./chord-note-model";
 
-export class ChordNoteView extends MVVM_View {
-  readonly svg: SVGRectElement;
+export class ChordNoteView extends MVVM_View<ChordNoteModel, "rect"> {
   readonly y: number;
-  constructor(
-    protected readonly model: ChordNoteModel,
-  ) {
-    super();
-    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  constructor(model: ChordNoteModel) {
+    super(model, "rect");
     this.svg.setAttribute("width", String(this.model.duration * NoteSize.value));
     this.svg.setAttribute("height", String(BlackKeyPrm.height));
     this.svg.style.stroke = "rgb(64, 64, 64)";

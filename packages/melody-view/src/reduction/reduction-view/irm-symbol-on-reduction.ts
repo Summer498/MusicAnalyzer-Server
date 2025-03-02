@@ -3,15 +3,13 @@ import { bracket_height } from "@music-analyzer/view-parameters";
 import { MVVM_View } from "@music-analyzer/view";
 import { ReductionViewModel } from "./reduction-view-model";
 
-export class IRMSymbolOnReduction extends MVVM_View {
-  readonly svg: SVGTextElement;
+export class IRMSymbolOnReduction extends MVVM_View<ReductionViewModel, "text"> {
   #getColor: (archetype: Archetype) => string;
   constructor(
-    readonly model: ReductionViewModel,
+    model: ReductionViewModel,
     readonly archetype: Archetype,
   ) {
-    super();
-    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    super(model, "text");
     this.svg.textContent = archetype.symbol;
     this.svg.id = "I-R Symbol";
     this.svg.style.fontFamily = "Times New Roman";

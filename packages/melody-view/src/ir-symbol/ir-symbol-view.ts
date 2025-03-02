@@ -5,15 +5,11 @@ import { IRSymbolModel } from "./ir-symbol-model";
 
 const ir_analysis_em = Size.value;
 
-export class IRSymbolView extends MVVM_View {
-  readonly svg: SVGTextElement;
+export class IRSymbolView extends MVVM_View<IRSymbolModel, "text"> {
   readonly y: number;
   #getColor: (archetype: Archetype) => string;
-  constructor(
-    protected readonly model: IRSymbolModel,
-  ) {
-    super();
-    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  constructor(model: IRSymbolModel) {
+    super(model, "text");
     this.svg.textContent = this.model.archetype.symbol;
     this.svg.id = "I-R Symbol";
     this.svg.style.fontFamily = "Times New Roman";
@@ -28,7 +24,7 @@ export class IRSymbolView extends MVVM_View {
     this.#getColor = getColor;
     this.svg.style.fill = this.#getColor(this.model.archetype) || "rgb(0, 0, 0)";
   }
-  updateColor(){
+  updateColor() {
     this.#getColor(this.model.archetype) || "rgb(0, 0, 0)";
   }
   updateX() { this.svg.setAttribute("x", String(this.model.begin * NoteSize.value + this.model.duration / 2 * NoteSize.value)); }

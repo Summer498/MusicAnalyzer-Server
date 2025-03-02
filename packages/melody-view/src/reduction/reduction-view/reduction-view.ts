@@ -6,9 +6,8 @@ import { ReductionBracket } from "./reduction-bracket";
 import { ReductionDot } from "./reduction-dot";
 import { IRMSymbolOnReduction } from "./irm-symbol-on-reduction";
 
-export class ReductionView extends MVVM_View {
+export class ReductionView extends MVVM_View<ReductionViewModel, "g"> {
   readonly svg: SVGGElement;
-  readonly model: ReductionViewModel;
   readonly bracket: ReductionBracket;
   readonly dot: ReductionDot;
   readonly ir_symbol: IRMSymbolOnReduction;
@@ -16,8 +15,7 @@ export class ReductionView extends MVVM_View {
     model: ReductionModel,
     readonly archetype: Archetype,
   ) {
-    super();
-    this.model = new ReductionViewModel(model);
+    super(new ReductionViewModel(model), "g");
     this.bracket = new ReductionBracket(this.model);
     this.dot = new ReductionDot(this.model);
     this.ir_symbol = new IRMSymbolOnReduction(this.model, archetype);
@@ -37,7 +35,7 @@ export class ReductionView extends MVVM_View {
   setColor(getColor: (archetype: Archetype) => string) {
     this.ir_symbol.setColor(getColor);
   }
-  updateColor(){
+  updateColor() {
     this.ir_symbol.updateColor();
   }
   onWindowResized() {

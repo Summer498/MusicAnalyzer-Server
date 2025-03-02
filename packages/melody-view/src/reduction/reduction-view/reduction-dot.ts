@@ -2,13 +2,11 @@ import { MVVM_View } from "@music-analyzer/view";
 import { ReductionViewModel } from "./reduction-view-model";
 
 
-export class ReductionDot extends MVVM_View {
-  readonly svg: SVGCircleElement;
+export class ReductionDot extends MVVM_View<ReductionViewModel, "circle"> {
   constructor(
     readonly model: ReductionViewModel,
   ) {
-    super();
-    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    super(model, "circle");
     this.svg.id = "head";
     this.svg.style.stroke = "rgb(192, 0, 0)";
     this.svg.style.fill = "rgb(192, 0, 0)";

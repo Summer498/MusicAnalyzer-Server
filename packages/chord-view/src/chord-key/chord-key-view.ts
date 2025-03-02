@@ -2,18 +2,14 @@ import { _Scale } from "@music-analyzer/tonal-objects";
 import { NoteSize, PianoRollHeight } from "@music-analyzer/view-parameters";
 import { fifthToColor } from "@music-analyzer/color";
 import { MVVM_View } from "@music-analyzer/view";
-import { shorten_key } from "../shorten";  
-import { ChordKeyModel } from "./chord-key-model"; 
+import { shorten_key } from "../shorten";
+import { ChordKeyModel } from "./chord-key-model";
 import { chord_name_margin, chord_text_em, chord_text_size } from "../chord-view-params";
 
-export class ChordKeyView extends MVVM_View {
-  readonly svg: SVGTextElement;
+export class ChordKeyView extends MVVM_View<ChordKeyModel, "text"> {
   readonly y: number;
-  constructor(
-    protected readonly model: ChordKeyModel
-  ) {
-    super();
-    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  constructor(model: ChordKeyModel,) {
+    super(model, "text");
     this.svg.textContent = shorten_key(_Scale.get(this.model.scale)) + ': ';
     this.svg.id = "key-name";
     this.svg.style.fontFamily = "Times New Roman";
