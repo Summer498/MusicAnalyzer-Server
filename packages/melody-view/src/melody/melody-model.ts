@@ -8,14 +8,14 @@ export class MelodyModel extends MVVM_Model implements TimeAndAnalyzedMelody {
   readonly note: number;
   readonly head: { begin: number, end: number };
   readonly melody_analysis: MelodyAnalysis;
-  constructor(melody: TimeAndAnalyzedMelody) {
+  constructor(e: TimeAndAnalyzedMelody) {
     super();
-    this.begin = melody.begin;
-    this.end = melody.end;
-    this.duration = melody.end - melody.begin;
-    this.note = melody.note;
-    this.head = melody.head;
-    this.melody_analysis = melody.melody_analysis;
+    this.begin = e.begin;
+    this.end = e.end;
+    this.duration = e.end - e.begin;
+    this.note = e.note;
+    this.head = e.head;
+    this.melody_analysis = e.melody_analysis;
   }
 }
 

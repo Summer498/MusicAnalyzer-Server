@@ -9,13 +9,13 @@ export class IRSymbolModel extends MVVM_Model {
   readonly note: number;
   readonly archetype: Archetype;
   readonly layer: number;
-  constructor(melody: TimeAndAnalyzedMelody, layer: number) {
+  constructor(e: TimeAndAnalyzedMelody, layer: number) {
     super();
-    this.begin = melody.begin;
-    this.end = melody.end;
-    this.note = melody.note;
-    this.duration = melody.end - melody.begin;
-    this.archetype = melody.melody_analysis.implication_realization;
+    this.begin = e.begin;
+    this.end = e.end;
+    this.note = e.note;
+    this.duration = e.end - e.begin;
+    this.archetype = e.melody_analysis.implication_realization;
     this.layer = layer || 0;
   }
 }
