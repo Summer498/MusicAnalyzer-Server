@@ -15,7 +15,7 @@ export class AnalysisView implements AudioReflectable, WindowReflectable {
       melody
     ];
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    this.svg.appendChild(beat.beat_bars.svg);
+    // this.svg.appendChild(beat.beat_bars.svg);
     this.svg.appendChild(chord.chord_notes.svg);
     this.svg.appendChild(chord.chord_names.svg);
     this.svg.appendChild(chord.chord_romans.svg);
@@ -28,9 +28,9 @@ export class AnalysisView implements AudioReflectable, WindowReflectable {
     this.svg.appendChild(melody.time_span_tree.svg);
   }
   onAudioUpdate() {
-    this.children.forEach(e=>e.onAudioUpdate());
+    this.children.forEach(e => e.onAudioUpdate());
   }
   onWindowResized() {
-    this.children.forEach(e=>e.onWindowResized());
+    this.children.forEach(e => e.onWindowResized());
   }
 }
