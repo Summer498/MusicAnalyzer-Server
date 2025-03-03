@@ -1,9 +1,9 @@
 import { TimeAndChordSymbol } from "@music-analyzer/chord-analyze";
 import { _Chord } from "@music-analyzer/tonal-objects";
-import { ITimeAndChord } from "./interfaces";
+import { TimeAndChord } from "./interfaces";
 
 const _getTimeAndChord = (chords: TimeAndChordSymbol[]) => {
   return chords
-    .map(e => ({ begin: e.begin, end: e.end, chord: _Chord.get(e.chord) } as ITimeAndChord))
+    .map(e => new TimeAndChord(e.begin, e.end, _Chord.get(e.chord)))
     .filter(e => e.chord.empty === false);
 };

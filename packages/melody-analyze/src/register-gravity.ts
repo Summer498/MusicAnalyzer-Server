@@ -11,8 +11,8 @@ export const registerGravity = (pitch_class_set: Scale | Chord | undefined, curr
   const chroma = mod(curr - tonic - (name.includes("major") ? 0 : 3), 12);
   const destination = chroma === 11 ? curr + 1 : chroma === 5 ? curr - 1 : undefined;
   if (destination === undefined) { return undefined; }
-  return {
+  return new Gravity(
     destination,
-    resolved: destination && next === destination || undefined
-  } as Gravity;
+    destination && next === destination || undefined
+  );
 };

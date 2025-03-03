@@ -4,6 +4,6 @@ export {
   Gravity,
   TimeAndAnalyzedMelody,
   MelodyAnalysis,
-  ITimeAndChord,
+  TimeAndChord,
   TimeAndMelody
 } from "./src/interfaces";
