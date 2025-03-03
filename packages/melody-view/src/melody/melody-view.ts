@@ -23,6 +23,7 @@ export class MelodyView extends MVVM_View<MelodyModel, "rect"> {
   setColor(getColor: (archetype: Archetype) => string) {
     this.#getColor = getColor;
     this.svg.style.fill = this.#getColor(this.model.melody_analysis.implication_realization) || "rgb(0, 0, 0)";
+    this.svg.style.fill = "rgb(0, 192, 0)";
   }
   updateColor() {
     this.#getColor(this.model.melody_analysis.implication_realization) || "rgb(0, 0, 0)";
