@@ -5,7 +5,7 @@ import { IRSymbolModel } from "./ir-symbol-model";
 import { Archetype } from "@music-analyzer/irm";
 
 export class IRSymbolLayer extends CollectionLayer<IRSymbolVM> {
-  constructor(layer: number, melodies: TimeAndAnalyzedMelody[]) {
+  constructor(melodies: TimeAndAnalyzedMelody[], layer: number) {
     super(layer, melodies.map(e => new IRSymbolVM(new IRSymbolModel(e, layer))));
   }
   setColor(getColor: (archetype: Archetype) => string) {

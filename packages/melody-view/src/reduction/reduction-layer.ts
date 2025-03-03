@@ -5,7 +5,7 @@ import { ReductionVM } from "./reduction-view-model";
 import { Archetype } from "@music-analyzer/irm";
 
 export class ReductionLayer extends CollectionLayer<ReductionVM> {
-  constructor(layer: number, melodies: TimeAndAnalyzedMelody[]) {
+  constructor(melody: TimeAndAnalyzedMelody[], layer: number) {
     super(layer, melodies.map(e => new ReductionVM(new ReductionModel(e, layer), e.melody_analysis.implication_realization)));
   }
   setColor(getColor: (archetype: Archetype) => string) {

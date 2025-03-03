@@ -4,10 +4,8 @@ import { ReductionLayer } from "./reduction-layer";
 import { Archetype } from "@music-analyzer/irm";
 
 export class ReductionHierarchy extends CollectionHierarchy<ReductionLayer> {
-  constructor(
-    hierarchical_melodies: TimeAndAnalyzedMelody[][]
-  ) {
-    super("time-span-reduction", hierarchical_melodies.map((melody, l) => new ReductionLayer(l, melody)));
+  constructor(hierarchical_melodies: TimeAndAnalyzedMelody[][]) {
+    super("time-span-reduction", hierarchical_melodies.map((e, l) => new ReductionLayer(e, l)));
   }
   onChangedLayer(value: number): void {
     const visible_layer = this.children.filter(

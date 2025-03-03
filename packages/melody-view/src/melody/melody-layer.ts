@@ -5,7 +5,7 @@ import { MelodyModel } from "./melody-model";
 import { Archetype } from "@music-analyzer/irm";
 
 export class MelodyLayer extends CollectionLayer<MelodyVM> {
-  constructor(layer: number, melodies: TimeAndAnalyzedMelody[]) {
+  constructor(melodies: TimeAndAnalyzedMelody[], layer: number) {
     super(layer, melodies.map(e => new MelodyVM(new MelodyModel(e))));
   }
   onMelodyBeepCheckChanged(do_melody_beep: boolean) {

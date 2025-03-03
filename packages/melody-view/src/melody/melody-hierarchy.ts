@@ -8,10 +8,8 @@ export class MelodyHierarchy extends CollectionHierarchy<MelodyLayer> {
   #volume: number;
   #check: boolean;
   #active_layer: number;
-  constructor(
-    hierarchical_melodies: TimeAndAnalyzedMelody[][],
-  ) {
-    super("melody", hierarchical_melodies.map((melodies, l) => new MelodyLayer(l, melodies)));
+  constructor(hierarchical_melodies: TimeAndAnalyzedMelody[][]) {
+    super("melody", hierarchical_melodies.map((e, l) => new MelodyLayer(e, l)));
     this.#check = false;
     this.#volume = 0;
     this.#active_layer = hierarchical_melodies.length;

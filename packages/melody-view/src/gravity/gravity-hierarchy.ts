@@ -7,6 +7,6 @@ export class GravityHierarchy extends CollectionHierarchy<GravityLayer> {
     mode: "chord_gravity" | "scale_gravity",
     hierarchical_melodies: TimeAndAnalyzedMelody[][],
   ) {
-    super(mode, hierarchical_melodies.map((melodies, l) => new GravityLayer(mode, l, melodies)));
+    super(mode, hierarchical_melodies.map((e, l) => new GravityLayer(mode, e, l)));
   }
 }

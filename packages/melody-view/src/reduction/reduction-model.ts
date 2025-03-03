@@ -9,8 +9,8 @@ export class ReductionModel extends MVVM_Model {
   readonly head: { readonly begin: number, readonly end: number, readonly duration: number };
   readonly archetype: Archetype;
   constructor(
-    readonly layer: number,
     e: TimeAndAnalyzedMelody,
+    readonly layer: number,
   ) {
     super();
     this.begin = e.begin;

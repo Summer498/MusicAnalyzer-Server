@@ -6,8 +6,8 @@ import { GravityModel } from "./gravity-model";
 export class GravityLayer extends CollectionLayer<GravityVM> {
   constructor(
     mode: "chord_gravity" | "scale_gravity",
-    layer: number,
     melodies: TimeAndAnalyzedMelody[],
+    layer: number,
   ) {
     const next = melodies.slice(1);
     super(layer, next.map((n, i) => {

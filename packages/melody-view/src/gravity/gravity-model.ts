@@ -10,9 +10,9 @@ export class GravityModel extends MVVM_Model {
   readonly layer: number;
   constructor(
     melody: TimeAndAnalyzedMelody,
+    layer: number,
     readonly next: TimeAndAnalyzedMelody,
     readonly gravity: Gravity,
-    layer?: number
   ) {
     super();
     this.begin = melody.begin;
