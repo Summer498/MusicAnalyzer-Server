@@ -37,7 +37,6 @@ export abstract class ReflectableTimeAndMVCControllerCollection<VM extends I_Tim
     super(id, children);
     this.children_model = this.children.map(e => e.model);
     this.#show = children;
-    this.show.map(e => this.svg.appendChild(e.svg));
   }
   private updateShow(begin: number, end: number) {
     /*
