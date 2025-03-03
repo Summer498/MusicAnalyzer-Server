@@ -4,7 +4,7 @@ import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MusicXML } from "@music-analyzer/musicxml";
 import { getJSON, getJSONfromXML } from "./DataFetcher";
-import { AnalyzedMusicData } from "./MusicAnalyzerWindow";
+import { AnalyzedMusicData, GTTMData } from "./MusicAnalyzerWindow";
 
 const registerSong = (urls: string[], audio_player: HTMLAudioElement | HTMLVideoElement) => {
   const url = urls.pop();
@@ -66,16 +66,16 @@ export const loadMusicAnalysis = (
       const hierarchical_melody = reduction && matrix && musicxml && getHierarchicalMelody(measure, reduction, matrix, musicxml, roman) || [read_melody];
 
       const melody = hierarchical_melody[hierarchical_melody.length - 1];
-      return {
+      return new AnalyzedMusicData(
         roman,
         melody,
         hierarchical_melody,
-        GTTM: {
+        new GTTMData(
           grouping,
           metric,
           time_span,
           prolongation,
-        },
-      } as AnalyzedMusicData;
+        )
+      );
     });
 };
