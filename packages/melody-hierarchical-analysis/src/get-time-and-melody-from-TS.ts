@@ -13,13 +13,13 @@ export const getTimeAndMelodyFromTS = (
   const rightend = element.getRightEnd();
   const note = musicxml["score-partwise"].part.measure.find(e => e.number === element.measure)!.note;
   const pitch = Array.isArray(note) ? note[element.note - 1].pitch : note.pitch;
-  return {
-    note: pitch ? calcChroma(pitch) : NaN,
-    begin: matrix[leftend.measure][leftend.note].leftend,
-    end: matrix[rightend.measure][rightend.note].rightend,
-    head: {
+  return new TimeAndMelody(
+    matrix[leftend.measure][leftend.note].leftend,
+    matrix[rightend.measure][rightend.note].rightend,
+    pitch ? calcChroma(pitch) : NaN,
+    {
       begin: matrix[element.measure][element.note].leftend,
       end: matrix[element.measure][element.note].rightend
     }
-  } as TimeAndMelody;
+  ) as TimeAndMelody;
 };

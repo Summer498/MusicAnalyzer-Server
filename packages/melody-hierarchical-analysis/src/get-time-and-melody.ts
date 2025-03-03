@@ -9,12 +9,14 @@ export const getTimeAndMelody = (
   musicxml: MusicXML,
 ) => {
   const melody_notes = getTimeAndMelodyFromTS(element, matrix, musicxml);
-  const ret = {
-    ...melody_notes,
-    head: {
+  const ret = new TimeAndMelody(
+    melody_notes.begin,
+    melody_notes.end,
+    melody_notes.note,
+    {
       begin: matrix[element.measure][element.note].leftend,
       end: matrix[element.measure][element.note].rightend,
     },
-  } as TimeAndMelody;
+  );
   return ret;
 };

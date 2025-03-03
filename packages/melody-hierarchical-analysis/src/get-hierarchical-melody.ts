@@ -5,22 +5,32 @@ import { getTimeAndMelody } from "./get-time-and-melody";
 import { MusicXML } from "@music-analyzer/musicxml";
 
 const scaleAndTranslate = (e: TimeAndMelody, w: number, b: number) => {
-  return {
-    begin: e.begin * w + b,
-    end: e.end * w + b,
-    head: {
+  return new TimeAndMelody(
+    e.begin * w + b,
+    e.end * w + b,
+    e.note,
+    {
       begin: e.head.begin * w + b,
       end: e.head.end * w + b,
     },
-    note: e.note,
-  } as TimeAndMelody;
+  );
 };
 
+class TimeAndAnalyzedMelodyAndIR
+  extends TimeAndAnalyzedMelody {
+  constructor(
+    e: TimeAndAnalyzedMelody,
+    readonly IR: string,
+  ) {
+    super({ ...e }, e.melody_analysis);
+  }
+}
+
 const appendIR = (e: TimeAndAnalyzedMelody) => {
-  return {
-    ...e,
-    IR: e.melody_analysis.implication_realization.symbol,
-  } as TimeAndAnalyzedMelody & { IR: string };
+  return new TimeAndAnalyzedMelodyAndIR(
+    e,
+    e.melody_analysis.implication_realization.symbol,
+  );
 };
 
 export const getHierarchicalMelody = (
