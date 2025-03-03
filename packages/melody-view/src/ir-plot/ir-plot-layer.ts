@@ -1,6 +1,5 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { IRPlotVM } from "./ir-plot-view-model";
-import { IRPlotModel } from "./ir-plot-model";
 import { Archetype } from "@music-analyzer/irm";
 
 export class IRPlotLayer {
@@ -13,7 +12,7 @@ export class IRPlotLayer {
     readonly layer: number,
     max: number
   ) {
-    this.child = new IRPlotVM(new IRPlotModel(melody_series));
+    this.child = new IRPlotVM(melody_series);
     const base = Math.log(Math.min(this.child.view.w, this.child.view.h) / 10) / Math.log(max);
     this.child.view.updateRadius(Math.pow(base, max - layer / 2));
     // const base = Math.min(this.child.view.w, this.child.view.h) / 10 / max;

@@ -4,13 +4,15 @@ import { NowAt, reservation_range } from "@music-analyzer/view-parameters";
 import { MelodyModel } from "./melody-model";
 import { MelodyView } from "./melody-view";
 import { Archetype } from "@music-analyzer/irm";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 
 export class MelodyVM extends MVVM_ViewModel<MelodyModel, MelodyView> {
   #do_melody_beep: boolean;
   #beep_volume: number;
   get do_melody_beep() { return this.#do_melody_beep; }
   get beep_volume() { return this.#beep_volume; }
-  constructor(model: MelodyModel) {
+  constructor(melody: TimeAndAnalyzedMelody) {
+    const model = new MelodyModel(melody);
     super(model, new MelodyView(model));
     this.#do_melody_beep = false;
     this.#beep_volume = 0;

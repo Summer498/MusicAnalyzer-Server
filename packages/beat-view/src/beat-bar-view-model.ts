@@ -3,10 +3,12 @@ import { play } from "@music-analyzer/synth";
 import { NowAt, reservation_range } from "@music-analyzer/view-parameters";
 import { BeatBarModel } from "./beat-bar-model";
 import { BeatBarView } from "./beat-bar-view";
+import { BeatInfo } from "@music-analyzer/beat-estimation";
 
 export class BeatBarVM extends MVVM_ViewModel<BeatBarModel, BeatBarView> {
   sound_reserved: boolean;
-  constructor(model: BeatBarModel) {
+  constructor(beat_info: BeatInfo, i: number) {
+    const model = new BeatBarModel(beat_info, i);
     super(model, new BeatBarView(model));
     this.sound_reserved = false;
   }

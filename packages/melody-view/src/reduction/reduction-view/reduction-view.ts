@@ -11,10 +11,8 @@ export class ReductionView extends MVVM_View<ReductionViewModel, "g"> {
   readonly bracket: ReductionBracket;
   readonly dot: ReductionDot;
   readonly ir_symbol: IRMSymbolOnReduction;
-  constructor(
-    model: ReductionModel,
-    readonly archetype: Archetype,
-  ) {
+  constructor(model: ReductionModel) {
+    const archetype = model.archetype;
     super(new ReductionViewModel(model), "g");
     this.bracket = new ReductionBracket(this.model);
     this.dot = new ReductionDot(this.model);

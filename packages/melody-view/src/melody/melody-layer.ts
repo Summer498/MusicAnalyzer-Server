@@ -1,12 +1,11 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { CollectionLayer } from "@music-analyzer/view";
 import { MelodyVM } from "./melody-view-model";
-import { MelodyModel } from "./melody-model";
 import { Archetype } from "@music-analyzer/irm";
 
 export class MelodyLayer extends CollectionLayer<MelodyVM> {
   constructor(melodies: TimeAndAnalyzedMelody[], layer: number) {
-    super(layer, melodies.map(e => new MelodyVM(new MelodyModel(e))));
+    super(layer, melodies.map(e => new MelodyVM(e)));
   }
   onMelodyBeepCheckChanged(do_melody_beep: boolean) {
     this.children.forEach(e => e.onMelodyBeepCheckChanged(do_melody_beep));

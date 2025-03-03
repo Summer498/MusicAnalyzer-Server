@@ -2,10 +2,12 @@ import { MVVM_ViewModel } from "@music-analyzer/view";
 import { IRPlotModel } from "./ir-plot-model";
 import { IRPlotView } from "./ir-plot-view";
 import { Archetype } from "@music-analyzer/irm";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 
 export class IRPlotVM extends MVVM_ViewModel<IRPlotModel, IRPlotView> {
   readonly view: IRPlotView;
-  constructor(model: IRPlotModel) {
+  constructor(e: TimeAndAnalyzedMelody[]) {
+    const model = new IRPlotModel(e);
     const view = new IRPlotView(model);
     super(model, view);
     this.view = view;
