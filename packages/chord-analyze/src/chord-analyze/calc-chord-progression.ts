@@ -18,14 +18,13 @@ export const calcChordProgression = (chords: TimeAndChordSymbol[]) => {
     const progression = select_suitable_progression(
       new ChordProgression(time_and_chords.map(chord => chord.chord)).getMinimumPath(),
     );
-    return time_and_chords.map((_, i) => {
-      return {
-        begin: time[i].begin,
-        end: time[i].end,
-        roman: progression[i].roman,
-        chord: progression[i].chord.name,
-        scale: progression[i].scale.name,
-      } as TimeAndRomanAnalysis;
-    });
+    return time_and_chords.map((_, i) => new TimeAndRomanAnalysis(
+      time[i].begin,
+      time[i].end,
+      progression[i].roman,
+      progression[i].chord.name,
+      progression[i].scale.name,
+    ));
   });
 };
+
