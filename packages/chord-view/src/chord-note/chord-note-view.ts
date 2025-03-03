@@ -1,6 +1,6 @@
 import { mod } from "@music-analyzer/math";
 import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
-import { fifthToColor } from "@music-analyzer/color";
+import { fifthToColor, thirdToColor } from "@music-analyzer/color";
 import { MVVM_View } from "@music-analyzer/view";
 import { ChordNoteModel } from "./chord-note-model";
 
@@ -11,7 +11,15 @@ export class ChordNoteView extends MVVM_View<ChordNoteModel, "rect"> {
     this.svg.setAttribute("width", String(this.model.duration * NoteSize.value));
     this.svg.setAttribute("height", String(BlackKeyPrm.height));
     this.svg.style.stroke = "rgb(64, 64, 64)";
-    this.svg.style.fill = fifthToColor(this.model.tonic, 0.25, this.model.type === "major" ? 1 : 0.9);
+    this.svg.style.fill = thirdToColor(
+      this.model.note_name,
+      this.model.tonic,
+      0.25,
+      1
+    );
+    if (false) {
+      this.svg.style.fill = fifthToColor(this.model.tonic, 0.25, this.model.type === "major" ? 1 : 0.9);
+    }
     this.y = (
       mod(PianoRollBegin.value - this.model.note, 12)
       + 12 * this.model.oct
