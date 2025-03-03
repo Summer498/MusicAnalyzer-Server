@@ -1,3 +1,4 @@
+import { Archetype } from "@music-analyzer/irm";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MVVM_Model } from "@music-analyzer/view";
 
@@ -7,17 +8,17 @@ export class ReductionModel extends MVVM_Model {
   readonly duration: number;
   readonly head: { readonly begin: number, readonly end: number, readonly duration: number };
   constructor(
-    melody: TimeAndAnalyzedMelody,
     readonly layer: number,
+    e: TimeAndAnalyzedMelody,
   ) {
     super();
-    this.begin = melody.begin;
-    this.end = melody.end;
-    this.duration = melody.end - melody.begin;
+    this.begin = e.begin;
+    this.end = e.end;
+    this.duration = e.end - e.begin;
     
     this.head = {
-      ...melody.head,
-      duration: melody.head.end - melody.head.begin
+      ...e.head,
+      duration: e.head.end - e.head.begin
     };
   }
 }
