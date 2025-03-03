@@ -1,9 +1,11 @@
 import { unique } from "@music-analyzer/stdlib";
 import { argsMinMax, CompareFunc } from "@music-analyzer/math";
 
-type LogViterbiResult<S> = {
-  log_probability: number;
-  trace: S[][];
+class LogViterbiResult<S> {
+  constructor(
+    readonly log_probability: number,
+    readonly trace: S[][],
+  ) { }
 }
 
 export const viterbiCore = <O, S>(
@@ -43,9 +45,9 @@ export const viterbiCore = <O, S>(
   for (let j = T - 1; j > 0; j--) {
     x[j - 1] = unique(x[j].map(x_j => states[j].indexOf(x_j)).map(i => T2[j][i]).flat()); // 最大/最小は基本1つ取れる
   }
-  return {
-    log_probability: terminal.val,
-    trace: x,
-  } as LogViterbiResult<S>;
+  return new LogViterbiResult(
+    terminal.val,
+    x,
+  );
 };
 

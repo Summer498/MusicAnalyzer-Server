@@ -1,9 +1,11 @@
 import { Compare } from "@music-analyzer/math";
 import { logViterbi } from "./log-viterbi";
 
-type ViterbiResult<S> = {
-  probability: number;
-  trace: S[][];
+class ViterbiResult<S> {
+  constructor(
+    readonly probability: number,
+    readonly trace: S[][],
+  ) { }
 }
 
 
@@ -31,8 +33,8 @@ export const viterbi = <O, S>(
     observation_sequence,
     compare,
   );
-  return {
-    probability: Math.exp(log_viterbi.log_probability),
-    trace: log_viterbi.trace,
-  } as ViterbiResult<S>;
+  return new ViterbiResult(
+    Math.exp(log_viterbi.log_probability),
+    log_viterbi.trace,
+  );
 };
