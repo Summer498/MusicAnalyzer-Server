@@ -21,9 +21,9 @@ export const calcChordProgression = (chords: TimeAndChordSymbol[]) => {
     return time_and_chords.map((_, i) => new TimeAndRomanAnalysis(
       time[i].begin,
       time[i].end,
-      progression[i].roman,
       progression[i].chord.name,
       progression[i].scale.name,
+      progression[i].roman,
     ));
   });
 };
