@@ -9,11 +9,7 @@ export const initializeApplication = (
   analyzed: AnalyzedMusicData,
 ) => {
   const d_romans: TimeAndRomanAnalysis[] = analyzed.roman.map(e => e);
-  const d_melodies: TimeAndAnalyzedMelody[] = analyzed.melody.map(e => ({
-    ...e,
-    begin: e.begin,  // ズレ補正
-    end: e.end,
-  }));
+  const d_melodies: TimeAndAnalyzedMelody[] = analyzed.melody.map(e => e);
   const romans = d_romans.map(e => e);
   const melodies = d_melodies.map(e => e)
     .filter((e, i) => i + 1 >= d_melodies.length || 60 / (d_melodies[i + 1].begin - d_melodies[i].begin) < 300 * 4);

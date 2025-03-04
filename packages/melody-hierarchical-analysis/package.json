@@ -20,6 +20,7 @@
     "@music-analyzer/gttm": "1.0.0",
     "@music-analyzer/melody-analyze": "1.0.0",
     "@music-analyzer/musicxml": "1.0.0",
+    "@music-analyzer/time-and": "1.0.0",
     "@music-analyzer/tonal-objects": "1.0.0"
   }
 }

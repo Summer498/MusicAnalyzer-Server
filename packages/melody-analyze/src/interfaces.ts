@@ -14,12 +14,6 @@ export class MelodyAnalysis {
     readonly implication_realization: Archetype,
   ) { }
 };
-export class Time {
-  constructor(
-    readonly begin: number,
-    readonly end: number,
-  ) { }
-}
 export class TimeAndMelody {
   constructor(
     readonly begin: number,

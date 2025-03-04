@@ -5,6 +5,7 @@ import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MusicXML } from "@music-analyzer/musicxml";
 import { getJSON, getJSONfromXML } from "./DataFetcher";
 import { AnalyzedMusicData, GTTMData } from "./MusicAnalyzerWindow";
+import { Time } from "@music-analyzer/time-and";
 
 const registerSong = (urls: string[], audio_player: HTMLAudioElement | HTMLVideoElement) => {
   const url = urls.pop();
@@ -32,7 +33,7 @@ const justLoad = (tune_name: string) => {
     getJSON<TimeAndRomanAnalysis[]>(`/MusicAnalyzer-server/resources/${tune_name}/analyzed/chord/roman.json`)
       .then(res => res || []),
     getJSON<TimeAndAnalyzedMelody[]>(`/MusicAnalyzer-server/resources/${tune_name}/analyzed/melody/crepe/manalyze.json`)
-      .then(res => res?.map(e => ({ ...e, head: { begin: e.begin, end: e.end } })) as TimeAndAnalyzedMelody[]),
+      .then(res => res?.map(e => ({ ...e, head: new Time(e.begin, e.end) })) as TimeAndAnalyzedMelody[]),
     getJSONfromXML<MusicXML>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/MSC-${tune_name}.xml`),
     getJSONfromXML<GroupingStructure>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/GPR-${tune_name}.xml`),
     getJSONfromXML<MetricalStructure>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/MPR-${tune_name}.xml`),
