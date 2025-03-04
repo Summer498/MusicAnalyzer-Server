@@ -28,6 +28,16 @@ export const setAudioPlayer = (tune_name: string, audio_player: HTMLAudioElement
   registerSong(extensions.map(e => `${filename}.${e}`), audio_player);
 };
 
+type DataPromises = [
+  Promise<TimeAndRomanAnalysis[]>,
+  Promise<TimeAndAnalyzedMelody[]>,
+  Promise<MusicXML | undefined>,
+  Promise<GroupingStructure | undefined>,
+  Promise<MetricalStructure | undefined>,
+  Promise<ITimeSpanReduction | undefined>,
+  Promise<IProlongationalReduction | undefined>,
+];
+
 const justLoad = (tune_name: string) => {
   return [
     getJSON<TimeAndRomanAnalysis[]>(`/MusicAnalyzer-server/resources/${tune_name}/analyzed/chord/roman.json`)
@@ -39,44 +49,39 @@ const justLoad = (tune_name: string) => {
     getJSONfromXML<MetricalStructure>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/MPR-${tune_name}.xml`),
     getJSONfromXML<ITimeSpanReduction>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/TS-${tune_name}.xml`),
     getJSONfromXML<IProlongationalReduction>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/PR-${tune_name}.xml`),
-  ] as [
-      Promise<TimeAndRomanAnalysis[]>,
-      Promise<TimeAndAnalyzedMelody[]>,
-      Promise<MusicXML | undefined>,
-      Promise<GroupingStructure | undefined>,
-      Promise<MetricalStructure | undefined>,
-      Promise<ITimeSpanReduction | undefined>,
-      Promise<IProlongationalReduction | undefined>,
-    ];
+  ] as DataPromises;
 };
 
-export const loadMusicAnalysis = (
-  tune_id: string,
-  mode: "TSR" | "PR" | ""
-) => {
-  return Promise.all(justLoad(encodeURI(tune_id)))
-    .then(e => {
-      const [roman, read_melody, musicxml, grouping, metric, time_span, prolongation] = e;
+type DataContainer = [
+  TimeAndRomanAnalysis[],
+  TimeAndAnalyzedMelody[],
+  MusicXML | undefined,
+  GroupingStructure | undefined,
+  MetricalStructure | undefined,
+  ITimeSpanReduction | undefined,
+  IProlongationalReduction | undefined,
+]
 
-      const ts = time_span ? new TimeSpanReduction(time_span).tstree.ts : undefined;
-      const pr = prolongation ? new ProlongationalReduction(prolongation).prtree.pr : undefined;
+const compoundMusicData = (tune_id: string, mode: "TSR" | "PR" | "") => (e: DataContainer) => {
+  const [roman, read_melody, musicxml, grouping, metric, time_span, prolongation] = e;
 
-      const measure = tune_id === "doremi" ? 3.5 : 7;
-      const reduction = mode === "PR" && pr || mode === "TSR" && ts;
-      const matrix = ts?.getMatrixOfLayer(ts.getDepthCount() - 1);
-      const hierarchical_melody = reduction && matrix && musicxml && getHierarchicalMelody(measure, reduction, matrix, musicxml, roman) || [read_melody];
+  const ts = time_span ? new TimeSpanReduction(time_span).tstree.ts : undefined;
+  const pr = prolongation ? new ProlongationalReduction(prolongation).prtree.pr : undefined;
 
-      const melody = hierarchical_melody[hierarchical_melody.length - 1];
-      return new AnalyzedMusicData(
-        roman,
-        melody,
-        hierarchical_melody,
-        new GTTMData(
-          grouping,
-          metric,
-          time_span,
-          prolongation,
-        )
-      );
-    });
+  const measure = tune_id === "doremi" ? 3.5 : 7;
+  const reduction = mode === "PR" && pr || mode === "TSR" && ts;
+  const matrix = ts?.getMatrixOfLayer(ts.getDepthCount() - 1);
+  const hierarchical_melody = reduction && matrix && musicxml && getHierarchicalMelody(measure, reduction, matrix, musicxml, roman) || [read_melody];
+
+  const melody = hierarchical_melody[hierarchical_melody.length - 1];
+  return new AnalyzedMusicData(
+    roman,
+    melody,
+    hierarchical_melody,
+    new GTTMData(grouping, metric, time_span, prolongation,)
+  );
 };
+
+export const loadMusicAnalysis = (tune_id: string, mode: "TSR" | "PR" | "") =>
+  Promise.all(justLoad(encodeURI(tune_id)))
+    .then(compoundMusicData(tune_id, mode));
