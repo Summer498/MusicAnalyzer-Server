@@ -15,9 +15,9 @@ const upload = multer({ dest: POST_DATA_PATH });  // multer が POST_DATA_PATH �
 
 const detectFile = (dst: string) => {
   if (!existsSync(dst)) {
-    console.error(`file ${dst} not exist`)
+    console.error(`file ${dst} not exist`);
   }
-}
+};
 const makeNewDir = (
   dst_dir: string
 ) => {
@@ -25,7 +25,7 @@ const makeNewDir = (
     fs.mkdirSync(dst_dir);
     fs.chmodSync(dst_dir,0o775);
   }
-}
+};
 const runProcessWithCache = (
   force: boolean,
   dst: string,
@@ -38,9 +38,9 @@ const runProcessWithCache = (
     makeNewDir(dirname(dst));
     console.log(process);
     execSync(process);
-    fs.chmodSync(dst, 0o775)
+    fs.chmodSync(dst, 0o775);
   }
-}
+};
 const main = (argv: string[]) => {
   // URLの部分が一致するもののうち一番上にある関数の処理をする
   app.get("*/analyzed/chord/roman.json", (req: Request, res: Response) => {
@@ -59,16 +59,16 @@ const main = (argv: string[]) => {
     });
     if (ext) {
       const force_reanalyze = false;
-      const filepath = ""
-      const chord_ext_src = filepath
-      const chord_ext_dst = `./resources/${song_name}/analyzed/chord/chords.json`
-      detectFile(`${chord_ext_src}`)
-      runProcessWithCache(false, chord_ext_dst, `python -m chordExtract \"${chord_ext_src}\" \"${chord_ext_dst}\"`)
+      const filepath = "";
+      const chord_ext_src = filepath;
+      const chord_ext_dst = `./resources/${song_name}/analyzed/chord/chords.json`;
+      detectFile(`${chord_ext_src}`);
+      runProcessWithCache(false, chord_ext_dst, `python -m chordExtract \"${chord_ext_src}\" \"${chord_ext_dst}\"`);
 
-      const chord_to_roman_src = chord_ext_dst
-      const chord_to_roman_dst = `./resources/${song_name}/analyzed/chord/roman.json`
-      detectFile(`${chord_to_roman_src}`)
-      runProcessWithCache(true, chord_to_roman_dst, `node ./packages/chord-analyze-cli < \"${chord_to_roman_src}\" > \"${chord_to_roman_dst}\"`)
+      const chord_to_roman_src = chord_ext_dst;
+      const chord_to_roman_dst = `./resources/${song_name}/analyzed/chord/roman.json`;
+      detectFile(`${chord_to_roman_src}`);
+      runProcessWithCache(true, chord_to_roman_dst, `node ./packages/chord-analyze-cli < \"${chord_to_roman_src}\" > \"${chord_to_roman_dst}\"`);
 
       // execSync(`./ranalyze.sh -q ${HOME_DIR}/${song_dir}/${song_name}.${ext}`);
     }
