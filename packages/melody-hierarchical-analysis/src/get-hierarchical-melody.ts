@@ -5,14 +5,15 @@ import { getTimeAndMelody } from "./get-time-and-melody";
 import { MusicXML } from "@music-analyzer/musicxml";
 
 const scaleAndTranslate = (e: TimeAndMelody, w: number, b: number) => {
+  const time = {
+    begin: e.begin * w + b,
+    end: e.end * w + b
+  };
   return new TimeAndMelody(
-    e.begin * w + b,
-    e.end * w + b,
+    time.begin,
+    time.end,
     e.note,
-    {
-      begin: e.head.begin * w + b,
-      end: e.head.end * w + b,
-    },
+    time,
   );
 };
 
@@ -33,6 +34,22 @@ const appendIR = (e: TimeAndAnalyzedMelody) => {
   );
 };
 
+
+const analyzeAndScaleMelody = (measure: number, matrix: TimeSpan[][], musicxml: MusicXML) => (element: ReductionElement) => {
+  const w = measure / 8;  // NOTE: 1 measure = 3.5
+  const b = 0;
+  const melody = getTimeAndMelody(element, matrix, musicxml);
+  const scaled_melody = scaleAndTranslate(melody, w, b);
+  return scaled_melody;
+};
+
+const getMapOntToHierarchicalMelodyFromLayer = (measure: number, reduction: ReductionElement, matrix: TimeSpan[][], musicxml: MusicXML, roman: TimeAndRomanAnalysis[]) => (_: unknown, layer: number) => {
+  const melodies = reduction.getArrayOfLayer(layer)
+    .map(analyzeAndScaleMelody(measure, matrix, musicxml));
+  return analyzeMelody(melodies, roman)
+    .map(e => appendIR(e));
+};
+
 export const getHierarchicalMelody = (
   measure: number,
   reduction: ReductionElement,
@@ -41,17 +58,5 @@ export const getHierarchicalMelody = (
   roman: TimeAndRomanAnalysis[]
 ) => {
   return [...Array(reduction.getDepthCount())]
-    .map((_, layer) => {
-      return analyzeMelody(
-        reduction.getArrayOfLayer(layer)
-          .map(element => {
-            const w = measure / 8;  // NOTE: 1 measure = 3.5
-            const b = 0;
-            const melody = getTimeAndMelody(element, matrix, musicxml);
-            const scaled_melody = scaleAndTranslate(melody, w, b);
-            return scaled_melody;
-          }),
-        roman)
-        .map(e => appendIR(e));
-    });
+    .map(getMapOntToHierarchicalMelodyFromLayer(measure, reduction, matrix, musicxml, roman));
 };
