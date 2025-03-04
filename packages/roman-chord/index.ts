@@ -21,8 +21,8 @@ const convertToTrueTonic = (chord: Chord, scale: Scale) => {
       return _Chord.get(chord.name.replace(tonic, true_tonic));
     }
   }
-  return chord
-}
+  return chord;
+};
 
 export class RomanChord {
   readonly roman: string;
