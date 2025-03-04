@@ -18,18 +18,19 @@ export class MelodyVM extends MVVM_ViewModel<MelodyModel, MelodyView> {
     this.#beep_volume = 0;
   }
 
+  #beepMelody = () => {
+    const volume = this.beep_volume / 400;
+    const pitch = [440 * Math.pow(2, (this.model.note - 69) / 12)];
+    const begin_sec = this.model.begin - NowAt.value;
+    const length_sec = this.model.end - this.model.begin;
+    play(pitch, begin_sec, length_sec, volume);
+    this.view.sound_reserved = true;
+    setTimeout(() => { this.view.sound_reserved = false; }, reservation_range * 1000);
+  };
   beepMelody = () => {
     if (!this.model.note) { return; }
     if (NowAt.value <= this.model.begin && this.model.begin < NowAt.value + reservation_range) {
-      if (this.view.sound_reserved === false) {
-        const volume = this.beep_volume / 400;
-        const pitch = [440 * Math.pow(2, (this.model.note - 69) / 12)];
-        const begin_sec = this.model.begin - NowAt.value;
-        const length_sec = this.model.end - this.model.begin;
-        play(pitch, begin_sec, length_sec, volume);
-        this.view.sound_reserved = true;
-        setTimeout(() => { this.view.sound_reserved = false; }, reservation_range * 1000);
-      }
+      if (this.view.sound_reserved === false) { this.#beepMelody(); }
     }
   };
   setColor(getColor: (archetype: Archetype) => string) {
