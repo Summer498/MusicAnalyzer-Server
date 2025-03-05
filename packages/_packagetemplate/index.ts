@@ -1,1 +1,1 @@
-console.error("Unexpected package imported");
+console.error("未実装です");
