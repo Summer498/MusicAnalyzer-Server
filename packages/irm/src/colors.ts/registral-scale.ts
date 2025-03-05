@@ -1,7 +1,7 @@
 import { Archetype } from "../Archetype";
 
 export const get_color_on_registral_scale = (archetype: Archetype)  => {
-  switch (archetype._symbol) {
+  switch (archetype.symbol) {
     case "VP": case "(VP)": return "rgb(0, 0, 255)";
     case "P": case "(P)": return "rgb(0, 0, 255)";
     case "D": case "(D)": return "rgb(0, 0, 255)";

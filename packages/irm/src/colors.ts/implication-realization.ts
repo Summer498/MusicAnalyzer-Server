@@ -1,7 +1,7 @@
 import { Archetype } from "../Archetype";
 
 export const get_color_of_implication_realization = (archetype: Archetype) => {
-  switch (archetype._symbol) {
+  switch (archetype.symbol) {
     case "D": return "rgb(0,240,0)";
     case "ID": return "rgb(0, 0, 255)";
 
