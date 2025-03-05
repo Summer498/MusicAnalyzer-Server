@@ -7,70 +7,108 @@ import { Request, Response } from "express";
 import { HOME_DIR, HOME } from "../constants";
 import { detectFile } from "./detect-file";
 import { runProcessWithCache } from "./run-process-with-cache";
-import { DataDirectories } from "./data-directories";
+import { DataDirectories, Directories } from "./data-directories";
 
 const rename = (src: string, dst: string) => {
   if (fs.existsSync(dst)) { fs.rmdirSync(dst); }
   fs.renameSync(src, dst);
 };
 
+const chordExtract = (force: boolean, directories: Directories) => {
+  const e = directories;
+  detectFile(e.src);
+  runProcessWithCache(force, e.dst, `python -m chordExtract "${e.src}" "${e.dst}"`);
+};
+
+const chordToRoman = (force: boolean, directories: Directories) => {
+  const e = directories;
+  detectFile(e.src);
+  runProcessWithCache(true, e.dst, `node ./packages/chord-analyze-cli < "${e.src}" > "${e.dst}"`);
+};
+
+const crepe = (force: boolean, directories: Directories, tmp: string) => {
+  const e = directories;
+  detectFile(e.src);
+  runProcessWithCache(force, e.dst, `"python -m crepe "${e.src}" >&2"`);
+  rename(e.dst, tmp);
+};
+
+const postCrepe = (force: boolean, directories: Directories) => {
+  const e = directories;
+  detectFile("$post_crepe.src");
+  runProcessWithCache(force, e.dst, `python -m post-crepe "${e.src}" -o "${e.dst}"`);
+};
+
+const analyzeMelodyFromCrepeF0 = (force: boolean, directories: Directories, chord_src: string) => {
+  const e = directories;
+  detectFile(e.src);
+  detectFile(chord_src);
+  runProcessWithCache(force, e.dst, `node ./packages/melody-analyze-cli -m "${e.src}" -r "${chord_src}" -o "${e.dst}" --sampling_rate 100`);
+};
+
 const _loadRomanAnalysis = (song_name: string, file_path: string) => {
   const force_reanalyze = false;
   const e = new DataDirectories(song_name, file_path);
-  detectFile(e.chord_ext_src);
-  runProcessWithCache(force_reanalyze, e.chord_ext_dst, `python -m chordExtract "${e.chord_ext_src}" "${e.chord_ext_dst}"`);
 
-  detectFile(e.chord_to_roman_src);
-  runProcessWithCache(true, e.chord_to_roman_dst, `node ./packages/chord-analyze-cli < "${e.chord_to_roman_src}" > "${e.chord_to_roman_dst}"`);
-
-  // execSync(`./ranalyze.sh -q ${HOME_DIR}/${song_dir}/${song_name}.${ext}`);
+  chordExtract(force_reanalyze, e.chord_ext);
+  chordToRoman(force_reanalyze, e.chord_to_roman);
 };
 
-const _loadAnalysisFromCREPE = (song_name: string, file_path: string) => {
+const loadAnalysisFromCREPE = (song_name: string, file_path: string) => {
   const force_reanalyze = false;
   const e = new DataDirectories(song_name, file_path);
-  detectFile(e.crepe_src);
-  rename(e.separate_dir, e.demucs_dst);
-  runProcessWithCache(force_reanalyze, e.crepe_dst, `"python -m crepe "${e.crepe_src}" >&2"`);
-  rename(e.crepe_dst, e.tmp_dst);
-
-  detectFile("$post_crepe_src");
-  runProcessWithCache(force_reanalyze, e.post_crepe_dst, `python -m post-crepe "$post_crepe_src" -o "${e.post_crepe_dst}"`);
-
-  detectFile(e.melody_analyze_crepe_src);
-  detectFile(e.melody_analyze_chord_src);
-  runProcessWithCache(force_reanalyze, e.melody_analyze_dst, `node ./packages/melody-analyze-cli -m "${e.melody_analyze_crepe_src}" -r "${e.melody_analyze_chord_src}" -o "${e.melody_analyze_dst}" --sampling_rate 100`);
+  crepe(force_reanalyze, e.crepe, e.crepe_tmp);
+  postCrepe(force_reanalyze, e.post_crepe);
+  analyzeMelodyFromCrepeF0(force_reanalyze, e.melody_analyze_crepe, e.chord_to_roman.dst);
 };
 
-const _loadAnalysisFromPYIN = (song_name: string, file_path: string) => {
-  const force_reanalyze = false;
-  const e = new DataDirectories(song_name, file_path);
-  detectFile(e.pyin_src);
-  runProcessWithCache(force_reanalyze, e.pyin_dst, `python -m pyin "${e.pyin_src}" --fmin 128 --fmax 1024 -o "${e.pyin_dst}"`);
-  runProcessWithCache(force_reanalyze, e.img_dst, `python -m pyin2img "${e.img_src}" --audio_file "${e.pyin_src}" -o "${e.img_dst}"`);
+const pyin = (force: boolean, directories: Directories, img_dir: Directories) => {
+  const e = directories;
+  detectFile(e.src);
+  runProcessWithCache(force, e.dst, `python -m pyin "${e.src}" --fmin 128 --fmax 1024 -o "${e.dst}"`);
+  runProcessWithCache(force, img_dir.dst, `python -m pyin2img "${img_dir.src}" --audio_file "${e.src}" -o "${img_dir.dst}"`);
 
-  detectFile(e.post_pyin_src);
-  runProcessWithCache(force_reanalyze, e.post_pyin_dst, `node ./packages/post-pyin "${e.post_pyin_src}" "$(dirname "${e.post_pyin_dst}")"`);
+};
 
-  detectFile(e.melody_analyze_pyin_src);
-  detectFile(e.melody_analyze_chord_src);
+const postPYIN = (force: boolean, directories: Directories, post_pyin_dir: string) => {
+  const e = directories;
+  detectFile(e.src);
+  runProcessWithCache(force, e.dst, `node ./packages/post-pyin "${e.src}" "${post_pyin_dir}"`);
+};
+
+const analyzeMelodyFromPYINf0 = (force: boolean, directories: Directories, chord_src: string) => {
+  const e = directories;
+  detectFile(e.src);
+  detectFile(chord_src);
   const sr = 22050 / 1024;
-  runProcessWithCache(force_reanalyze, e.melody_analyze_dst, `node ./packages/melody-analyze-cli -m "${e.melody_analyze_pyin_src}" -r "${e.melody_analyze_chord_src}" -o "${e.melody_analyze_dst}" --sampling_rate ${sr}`);
+  runProcessWithCache(force, e.dst, `node ./packages/melody-analyze-cli -m "${e.src}" -r "${chord_src}" -o "${e.dst}" --sampling_rate ${sr}`);
+};
+
+const loadAnalysisFromPYIN = (song_name: string, file_path: string) => {
+  const force_reanalyze = false;
+  const e = new DataDirectories(song_name, file_path);
+  pyin(force_reanalyze, e.pyin, e.pyin_img);
+  postPYIN(force_reanalyze, e.post_pyin, e.post_pyin_dir);
+  analyzeMelodyFromPYINf0(force_reanalyze, e.melody_analyze_pyin, e.chord_to_roman.dst);
+};
+
+const demucs = (force_reanalyze: boolean, directories: Directories, separate_dir: string) => {
+  const e = directories;
+  detectFile(e.src);
+  runProcessWithCache(false, separate_dir, `python -m demucs -d cuda "${e.src}" >&2"`);
+  rename(separate_dir, e.dst);
 };
 
 type F0AnalysisMode = "pYIN" | "CREPE"
 const _loadMelodyAnalysis = (mode: F0AnalysisMode, song_name: string, file_path: string) => {
+  const force_reanalyze = false;
   const e = new DataDirectories(song_name, file_path);
   _loadRomanAnalysis(song_name, file_path);
-  detectFile(e.demucs_src);
-  runProcessWithCache(false, e.separate_dir, `python -m demucs -d cuda "${e.demucs_src}" >&2"`);
-  rename(e.separate_dir, e.demucs_dst);
 
-  if (mode === "CREPE") { _loadAnalysisFromCREPE(song_name, file_path); }
-  else if (mode === "pYIN") { _loadAnalysisFromPYIN(song_name, file_path); }
-  else {
-    throw new Error(`Invalid mode reserved (${mode})`);
-  }
+  demucs(force_reanalyze, e.demucs, e.separate_dir);
+  if (mode === "CREPE") { loadAnalysisFromCREPE(song_name, file_path); }
+  else if (mode === "pYIN") { loadAnalysisFromPYIN(song_name, file_path); }
+  else { throw new Error(`Invalid mode reserved (${mode})`); }
 };
 
 export const loadRomanAnalysis = (req: Request, res: Response) => {
