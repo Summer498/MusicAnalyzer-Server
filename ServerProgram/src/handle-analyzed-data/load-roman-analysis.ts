@@ -112,7 +112,7 @@ const _loadMelodyAnalysis = (mode: F0AnalysisMode, song_name: string, file_path:
 };
 
 export const loadRomanAnalysis = (req: Request, res: Response) => {
-  console.log("*/analyzed/chord/roman.json");
+  console.log("/analyzed/chord/roman.json");
   const decoded_url = decodeURI(req.url);
   const req_path = decodeURI(NN(url.parse(decoded_url, true, true).pathname).replace(`/${HOME}/`, ""));
   const song_dir = req_path.replace("/analyzed/chord/roman.json", "");
@@ -127,7 +127,7 @@ export const loadRomanAnalysis = (req: Request, res: Response) => {
 };
 
 export const loadMelodyAnalysis = (mode: F0AnalysisMode, req: Request, res: Response) => {
-  console.log("*/analyzed/melody/pyin/manalyze.json");
+  console.log("/analyzed/melody/pyin/manalyze.json");
   const decoded_url = decodeURI(req.url);
   const req_path = decodeURI(NN(url.parse(decoded_url, true, true).pathname).replace(`/${HOME}/`, ""));
   const song_dir = req_path.replace("/analyzed/chord/roman.json", "");
