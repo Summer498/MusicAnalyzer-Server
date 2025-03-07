@@ -5,8 +5,14 @@ import { handlePostRequest, listUpGTTMExample, send404HTML, send404NotFound, sen
 import { loadAnalysisFromCrepe, loadAnalysisFromPYIN, loadRomanAnalysis, renameFile } from "./handle-analyzed-data";
 import { POST_DATA_PATH } from "./constants";
 import { _throw } from "./stdlib";
+import rateLimit from "express-rate-limit";
 
 export const registerURLHandlers = (app: ReturnType<typeof express>) => {
+  const limiter = RateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // max 100 requests per windowMs
+  });
+  app.use(limiter);
   const upload = multer({ dest: POST_DATA_PATH });  // multer が POST_DATA_PATH にファイルを作成
   const analyzed = `/MusicAnalyzer-server/resources/**/analyzed`;
 
@@ -25,7 +31,7 @@ export const registerURLHandlers = (app: ReturnType<typeof express>) => {
   app.get(`${analyzed}/melody/pyin/manalyze.json`, loadAnalysisFromPYIN);
   app.get("/MusicAnalyzer-server/api/gttm-example/", listUpGTTMExample);
   app.post("/*", upload.single("upload"), renameFile, handlePostRequest);
-  app.get("/*", sendRequestedFile);
+  app.get("/*", limiter, sendRequestedFile);
   app.post("*.html", send404HTML);
   app.get("*.html", send404HTML);
   app.post("*", send404NotFound);
