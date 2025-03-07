@@ -1,13 +1,17 @@
 {
+  "repository": "https://github.com/Summer498/MusicAnalyzer-Server.git",
   "name": "music-analyzer-server",
   "version": "1.0.0",
+  "author": "Summer498 <subore02@gmail.com>",
   "description": "popular music analyzer",
-  "workspaces": [
-    "packages/*",
-    "html/**",
-    "ServerProgram/*"
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
   ],
-  "main": "index.js",
   "scripts": {
     "build": "turbo run build",
     "build:minify": "turbo run build:minify",
@@ -16,26 +20,30 @@
     "lint": "eslint 'packages/**/*.ts' && eslint 'html/**/*.ts'",
     "lint:fix": "eslint 'packages/**/*.ts' --fix && eslint 'html/**/*.ts' --fix",
     "test": "jest --coverage",
-    "test:ci": "yarn lint:fix && yarn build:minify:fc && yarn test --no-cache"
+    "test:ci": "yarn lint:fix && yarn build:minify:fc && yarn test --no-cache",
+    "start": "node ServerProgram"
   },
-  "author": "Summer498 <subore02@gmail.com>",
-  "license": "MIT",
-  "repository": "https://github.com/Summer498/MusicAnalyzer-Server.git",
-  "private": true,
   "dependencies": {
-    "@types/node": "^20.11.17",
+    "@types/node": "^22.13.9",
     "packages": "link:./packages"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.12",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
-    "eslint": "^8.56.0",
-    "eslint-plugin-import": "^2.29.1",
+    "@types/jest": "^29.5.14",
+    "@typescript-eslint/eslint-plugin": "^8.26.0",
+    "@typescript-eslint/parser": "^8.26.0",
+    "eslint": "^9.21.0",
+    "eslint-plugin-import": "^2.31.0",
     "jest": "^29.7.0",
-    "ts-jest": "^29.1.2",
-    "tsup": "^8.0.2",
-    "turbo": "^1.12.3",
-    "typescript": "5.1"
-  }
+    "ts-jest": "^29.2.6",
+    "tsup": "^8.4.0",
+    "turbo": "^2.4.4",
+    "typescript": "5.8.2"
+  },
+  "workspaces": [
+    "packages/*",
+    "html",
+    "html/analyze",
+    "html/hierarchical-analysis-sample",
+    "ServerProgram"
+  ]
 }

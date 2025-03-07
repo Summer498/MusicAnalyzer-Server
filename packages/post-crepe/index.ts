@@ -9,13 +9,14 @@ const midi2freq = (midi: number) => 440 * Math.pow(2, (midi - 69) / 12);
 const roundOnMIDI = (freq: number) => midi2freq(Math.round(freq2midi(freq)));
 
 class MedianFilter {
-  buff;
-  array;
-  window_size;
-  constructor(initializer: number[], window_size: number) {
+  readonly buff;
+  readonly array;
+  constructor(
+    initializer: number[],
+    readonly window_size: number,
+  ) {
     this.buff = initializer.slice(0, window_size);
     this.array = initializer;
-    this.window_size = window_size;
   }
   median(i: number) {
     this.buff[i % this.window_size] = this.array[i];  // リングバッファに保存
@@ -25,12 +26,14 @@ class MedianFilter {
 
 class Freq2Phase {
   s;
-  s0;
-  sampling_rate;
-  constructor(s0: number, sampling_rate = 44100) {
+  readonly s0;
+  constructor(
+    s0: number,
+    readonly sampling_rate = 44100,
+  ) {
     this.s = 0;
     this.s0 = s0 || 0;
-    this.sampling_rate = sampling_rate;
+
   }
   calc(freq: number) {
     this.s += (freq || 0) / this.sampling_rate;

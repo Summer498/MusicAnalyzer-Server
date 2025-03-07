@@ -1,6 +1,8 @@
 .turbo
 .vscode
 
+yarn.lock
+
 *.tsbuildinfo
 *.pyc
 *.log
@@ -14,7 +16,6 @@ resources
 separated
 videos
 
-python2/
-toMIDI
-adapters
-chroma2chordNB
+posted
+
+sandbox

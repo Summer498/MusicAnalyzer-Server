@@ -1,8 +1,10 @@
 {
   "name": "@music-analyzer/melody-analyze",
   "version": "1.0.0",
+  "author": "Summer498 <subore02@gmail.com>",
   "description": "",
-  "type": "module",
+  "license": "UNLICENSED",
+  "private": true,
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -13,13 +15,12 @@
     "build": "tsup index.ts --format esm,cjs",
     "build:minify": "tsup index.ts --sourcemap --dts --format esm,cjs --minify"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "yargs": "17.7.2",
     "@music-analyzer/tonal-objects": "1.0.0",
     "@music-analyzer/time-and": "1.0.0",
-    "@music-analyzer/chord-to-roman": "1.0.0",
-    "@music-analyzer/irm": "1.0.0"
+    "@music-analyzer/chord-analyze": "1.0.0",
+    "@music-analyzer/irm": "1.0.0",
+    "@music-analyzer/math": "1.0.0"
   }
 }

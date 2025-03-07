@@ -1,0 +1,15 @@
+import { _ArchetypeSymbol, RetrospectiveSymbol, TrigramProspectiveSymbol } from "./types";
+
+export const retrospectiveSymbol = (symbol: TrigramProspectiveSymbol): RetrospectiveSymbol => {
+  switch (symbol) {
+    case "P": return "(P)";
+    case "IP": return "(IP)";
+    case "VP": return "(VP)";
+    case "R": return "(R)";
+    case "IR": return "(IR)";
+    case "VR": return "(VR)";
+    case "D": return "(D)";
+    case "ID": return "(ID)";
+    default: throw new Error(`Illegal symbol given.\nExpected symbol: P, IP, VP, R, IR, VR, D, ID\n Given symbol:${symbol}`);
+  }
+};
