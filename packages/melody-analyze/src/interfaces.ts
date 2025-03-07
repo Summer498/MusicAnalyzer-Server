@@ -45,3 +45,14 @@ export class TimeAndAnalyzedMelody extends TimeAndMelody {
     );
   }
 }
+
+const v = "25.03.07.10.55";
+export class MelodyAnalysisData {
+  readonly version = v;
+  constructor(
+    readonly body: TimeAndAnalyzedMelody[]
+  ) { }
+  static checkVersion(e: MelodyAnalysisData) {
+    return e.version === v;
+  }
+}

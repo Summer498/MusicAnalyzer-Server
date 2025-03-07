@@ -7,3 +7,15 @@ export class TimeAndRomanAnalysis {
     readonly roman: string,
   ) { }
 }
+
+const v = "25.03.07.10.50";
+export class RomanAnalysisData {
+  readonly version = v;
+  constructor(
+    readonly body: TimeAndRomanAnalysis[]
+  ) { }
+  static checkVersion(e: RomanAnalysisData) {
+    return e.version === v;
+  }
+}
+
