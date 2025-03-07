@@ -1,5 +1,5 @@
 // import { search_items_begins_in_range, search_items_overlaps_range } from ".";
-// import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
+// import { IMelodyModel } from "@music-analyzer/melody-analyze";
 
 
 describe("dummy", () => {
@@ -13,7 +13,7 @@ describe("dummy", () => {
 const note = 0;
 const roman_name = "I";
 const melody_analysis = { gravity: [] };
-const sample: TimeAndMelodyAnalysis[] = [
+const sample: IMelodyModel[] = [
   { begin: 2, end: 4, note, roman_name, melody_analysis: melody_analysis  },
   { begin: 6, end: 8, note, roman_name, melody_analysis: melody_analysis  },
   { begin: 10, end: 12, note, roman_name, melody_analysis: melody_analysis  },

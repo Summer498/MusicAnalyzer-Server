@@ -18,7 +18,7 @@ export class RegistralReturnForm {
     const dir2 = Math.sign(
       _Interval.semitones(_Interval.distance(notes[1], notes[2])),
     );
-    this.is_null = dir1 === dir2; // TODO: 0 のときに registral return と判定されるかどうか本を確認する 
+    this.is_null = dir1 === dir2;
   }
 }
 
