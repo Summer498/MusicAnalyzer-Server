@@ -8,6 +8,11 @@ import { _throw } from "./stdlib";
 import rateLimit from "express-rate-limit";
 
 export const registerURLHandlers = (app: ReturnType<typeof express>) => {
+  const limiter = RateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // max 100 requests per windowMs
+  });
+  app.use(limiter);
   const upload = multer({ dest: POST_DATA_PATH });  // multer が POST_DATA_PATH にファイルを作成
   const analyzed = `/MusicAnalyzer-server/resources/**/analyzed`;
 
