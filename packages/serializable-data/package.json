@@ -16,6 +16,6 @@
     "build:minify": "tsup index.ts --sourcemap --dts --format esm,cjs --minify"
   },
   "dependencies": {
-    "fast-xml-parser": "4.4.0"
+    "fast-xml-parser": "4.4.1"
   }
 }

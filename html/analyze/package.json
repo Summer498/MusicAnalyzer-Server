@@ -28,6 +28,6 @@
     "@music-analyzer/tonal-objects": "1.0.0",
     "@music-analyzer/view": "1.0.0",
     "@music-analyzer/view-parameters": "1.0.0",
-    "fast-xml-parser": "4.4.0"
+    "fast-xml-parser": "4.4.1"
   }
 }
