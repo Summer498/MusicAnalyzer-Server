@@ -1,10 +1,9 @@
-import { default as fs } from "fs";
 import { default as url } from "url";
+import { existsSync } from "fs";
 import { basename } from "path";
-import { _throw, assertNonNullable as NN } from "../../stdlib";
 import { sendFile } from "../../routing";
 import { Request, Response } from "express";
-import { HOME_DIR, HOME } from "../../constants";
+import { ROOT_DIR } from "../../constants";
 import { DataDirectories } from "../data-directories";
 import { analyzeMelodyFromCrepeF0, analyzeMelodyFromPYINf0, chordExtract, chordToRoman, crepe, demucs, postCrepe, postPYIN, pyin } from "./call-program";
 
@@ -39,17 +38,15 @@ const loadAnalysisFromPYIN = (song_name: string, file_path: string) => {
 };
 
 const loadAnalysis = (req: Request, res: Response, loader: (song_name: string, file_path: string) => void) => {
-  const decoded_url = decodeURI(req.url);
-  const req_path = decodeURI(NN(url.parse(decoded_url, true, true).pathname).replace(`/${HOME}/`, ""));
-  const song_dir = req_path.replace("/analyzed/chord/roman.json", "");
+  const pathname = url.parse(req.url, true, true).pathname;
+  if (pathname === null) { throw new Error(`pathname was null`); };
+  const song_dir = pathname.replace("/analyzed/chord/roman.json", "");
   const song_name = basename(song_dir);
-  // if (fs.existsSync(HOME_DIR}/${req_path}`)) { sendFile(req, res, `${HOME_DIR}/${req_path); return }
-
 
   const extensions: ["wav", "mp3", "mp4", "m4a"] = ["wav", "mp3", "mp4", "m4a"];
-  const ext = extensions.find(e => fs.existsSync(`${HOME_DIR}/${song_dir}/${song_name}.${e}`));
+  const ext = extensions.find(e => existsSync(decodeURI(`${ROOT_DIR}${song_dir}/${song_name}.${e}`)));
   if (ext) { loader(song_name, ""); }
-  sendFile(req, res, `${HOME_DIR}/${req_path}`);
+  sendFile(req, res, `${ROOT_DIR}${pathname}`);
 };
 
 export const loadRomanAnalysis = (req: Request, res: Response) => {
