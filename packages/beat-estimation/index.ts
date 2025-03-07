@@ -1,13 +1,13 @@
-import { argmax, correlation, decimal, getRange, getZeros, mod, totalSum } from "@music-analyzer/math";
-import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
-import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
+import { argmax, Complex, correlation, decimal, getRange, getZeros, mod, totalSum } from "@music-analyzer/math";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 
 export type BeatInfo = {
   tempo: number,
   phase: number
 }
 
-export const calcTempo = (melodies: TimeAndMelodyAnalysis[], romans: TimeAndRomanAnalysis[]): BeatInfo => {
+export const calcTempo = (melodies: TimeAndAnalyzedMelody[], romans: TimeAndRomanAnalysis[]) => {
   const phase = 0;
   const melody_bpm: number[] = [];
   const bpm_range = 90;
@@ -59,7 +59,11 @@ export const calcTempo = (melodies: TimeAndMelodyAnalysis[], romans: TimeAndRoma
   console.log("onsets");
   console.log(onsets);
   */
-  const tps = correlation(onsets, onsets).map((e, tau) => w(tau) * e[0]);
+ const complex_onset = onsets.map(e => new Complex(e, 0));
+  const tps = correlation(
+    complex_onset,
+    complex_onset,
+  ).map((e, tau) => w(tau) * e.re);
   /*
   console.log("tempo period strength");
   console.log(tps);
@@ -81,5 +85,5 @@ export const calcTempo = (melodies: TimeAndMelodyAnalysis[], romans: TimeAndRoma
   console.log("roman_bpm");
   console.log(roman_bpm);
   */
-  return { phase, tempo: argmax(tps) };
+  return { phase, tempo: argmax(tps) } as BeatInfo;
 };

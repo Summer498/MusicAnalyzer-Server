@@ -1,17 +1,11 @@
+import { default as express } from "express";
 import { _throw, assertNonNullable as NN } from "./src/stdlib";
-import { app, handlePostRequest, send404HTML, send404NotFound, sendRequestedFile, upload } from "./src/routing";
-
-const PORT = 3000;
+import { PORT } from "./src/constants";
+import { registerURLHandlers } from "./src/register-url-handlers";
 
 const main = (argv: string[]) => {
-  // URLの部分が一致するもののうち一番上にある関数の処理をする
-  app.post("/*", upload.single("upload"), handlePostRequest);
-  app.get("/*", sendRequestedFile);
-  app.post("*.html", send404HTML);
-  app.get("*.html", send404HTML);
-  app.post("*", send404NotFound);
-  app.get("*", send404NotFound);
-
+  const app = express();
+  registerURLHandlers(app);
   const server = app.listen(PORT, () => {
     server || _throw(TypeError("Error: Server is null"));
     const address = NN(server.address());

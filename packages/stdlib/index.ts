@@ -13,8 +13,8 @@ export const getCapitalCase = (str: string) => str[0].toUpperCase().concat(str.s
 
 
 export type recurrentArray<T> = T | recurrentArray<T>[];
-export function Arraying<T>(e: recurrentArray<T>): T[] {
-  const concat = function (arr: recurrentArray<T>[]): T[] {
+export function Arraying<T>(e: recurrentArray<T>) {
+  const concat = function (arr: recurrentArray<T>[]) {
     let res: T[] = [];
     for (const e of arr) {
       res = res.concat(Arraying(e));
