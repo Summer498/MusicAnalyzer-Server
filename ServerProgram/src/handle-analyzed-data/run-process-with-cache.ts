@@ -1,4 +1,5 @@
-import { execSync } from "child_process";
+import { execFileSync } from "child_process";
+import * as shellQuote from "shell-quote";
 import { dirname } from "path";
 import { _throw } from "../stdlib";
 import { makeNewDir } from "./make-new-dir";
@@ -11,7 +12,8 @@ const _runProcessWithCache = (
   try {
     makeNewDir(dirname(dst));
     console.log(decodeURI(process));
-    execSync(decodeURI(process));
+    const processArgs = shellQuote.parse(decodeURI(process));
+    execFileSync(processArgs[0], processArgs.slice(1));
     chmodSync(decodeURI(dst), 0o775);
   } catch (e) {
     console.trace(e);
