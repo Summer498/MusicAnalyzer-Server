@@ -37,5 +37,5 @@ export const analyzeMelody = (
       time_and_melody,
       melody_analysis,
     );
-  });
+  }).filter(e => isNaN(0 * e.note) === false);
 };
