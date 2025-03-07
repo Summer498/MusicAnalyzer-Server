@@ -26,7 +26,7 @@ export class DataDirectories {
   readonly melody_analyze_pyin: Directories;
 
   constructor(song_name: string, file_path: string) {
-    const resource = `./resources/${song_name}`;
+    const resource = `resources/${song_name}`;
     const home = `${resource}/analyzed`;
     const chord = `${home}/chord`;
     const melody = `${home}/melody`;
@@ -38,7 +38,7 @@ export class DataDirectories {
     this.chord_to_roman = new Directories(this.chord_ext.dst, `${chord}/roman.json`);
 
     this.separate_dir = `${demucs}`;
-    this.demucs = new Directories(file_path, `./separated/htdemucs/${song_name}`);
+    this.demucs = new Directories(file_path, `separated/htdemucs/${song_name}`);
     this.separate = new Directories("", `${demucs}/vocals.wav`);
 
     this.crepe = new Directories(this.separate.dst, `${crepe}/vocals.f0.csv`);
