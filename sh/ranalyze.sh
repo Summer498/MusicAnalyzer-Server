@@ -59,7 +59,7 @@ do
     elif [[ "$1" =~ .* ]]; then  # 引数
         readonly filepath="$1"
         readonly filename=$(basename "$1")  # 引数のファイル名
-        readonly songname=$(basename "$1" | sed -e 's/\.[^\.]*$//')  # 引数から拡張子を取り除く
+        readonly song_name=$(basename "$1" | sed -e 's/\.[^\.]*$//')  # 引数から拡張子を取り除く
     fi
     shift
 done
@@ -97,13 +97,13 @@ runProcessWithCache(){
 main(){
     # コード推定
     local -r chord_ext_src="$filepath"
-    local -r chord_ext_dst="./resources/$songname/analyzed/chord/chords.json"
+    local -r chord_ext_dst="./resources/$song_name/analyzed/chord/chords.json"
     detectFile "$chord_ext_src"
     runProcessWithCache $force_reanalyze "$chord_ext_dst" "python -m chordExtract \"$chord_ext_src\" \"$chord_ext_dst\""
 
     # コードをローマ数字変換
     local -r chord_to_roman_src=$chord_ext_dst
-    local -r chord_to_roman_dst="./resources/$songname/analyzed/chord/roman.json"
+    local -r chord_to_roman_dst="./resources/$song_name/analyzed/chord/roman.json"
     detectFile "$chord_to_roman_src"
     runProcessWithCache $force_reanalyze "$chord_to_roman_dst" "node ./packages/chord-analyze-cli < \"$chord_to_roman_src\" > \"$chord_to_roman_dst\""
     cat "$chord_to_roman_dst"
