@@ -1,9 +1,9 @@
 import { assertNonNullable as NN, castToNumber } from "@music-analyzer/stdlib";
 import { NoteLiteral as _NoteLiteral } from "tonal";
-import _Interval from "@tonaljs/interval";
-import _Note from "@tonaljs/note";
-import __Chord from "@tonaljs/chord";
-import __Scale from "@tonaljs/scale";
+import { default as _Interval } from "@tonaljs/interval";
+import { default as _Note } from "@tonaljs/note";
+import { default as __Chord } from "@tonaljs/chord";
+import { default as __Scale } from "@tonaljs/scale";
 
 
 export { type Chord } from '@tonaljs/chord';
@@ -15,6 +15,7 @@ export { default as _Note } from "@tonaljs/note";
 export { default as _Interval } from "@tonaljs/interval";
 export { default as _Key } from "@tonaljs/key";
 export { ChordDictionary as _ChordDictionary } from "tonal";
+export { type IntervalLiteral, type IntervalName } from '@tonaljs/pitch-interval';
 
 export type Note = ReturnType<typeof _Note.get>
 export type Interval = ReturnType<typeof _Interval.get>

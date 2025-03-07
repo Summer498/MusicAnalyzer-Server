@@ -1,4 +1,4 @@
-import { _Interval, } from "../../TonalObjects";
+import { _Interval, } from "@music-analyzer/tonal-objects";
 import { MelodyMotion } from "../src/MelodyMotion";
 
 describe("dummy", () => {

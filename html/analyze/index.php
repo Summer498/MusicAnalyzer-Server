@@ -44,10 +44,10 @@ shell_exec("mv \"$song_file_path\" \"$m_src\"");
   $m_opt = "controls autoplay playsinline loop crossorigin=\"use-credintials\""; // media option
   $m_type = (in_array($song_file_ext, ["mp4"], true)) ? "video" : "audio"; // media type
   echo ("<div class=\"".$m_type."_wrapper\" id=\"audio_area\">");
-  echo ("<$m_type src=\"$m_src\" $m_opt></$m_type>");
+  echo ("<$m_type src=\"$m_src\" id=\"audio_player\" $m_opt></$m_type>");
   echo ("</div>");
   ?>
-  <div id="piano-roll-place"></div>
+  <div id="piano_roll_place"></div>
 </body>
 
 </html>

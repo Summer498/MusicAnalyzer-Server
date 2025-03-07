@@ -88,7 +88,7 @@ describe("test hsv2rgb", () => {
 
 
 // Mocking the hsv2rgb function
-jest.mock("../TonalObjects", () => ({
+jest.mock("@music-analyzer/tonal-objects", () => ({
   _Note: {
     chroma: jest.fn((note) => {
       // Mock implementation of _Note.chroma
@@ -125,7 +125,7 @@ describe('noteToColor', () => {
     expect(noteToColor('C', 1, 1)).toBe('#00ff00'); // C
     expect(noteToColor('E', 1, 1)).toBe('#0000ff'); // E
     expect(noteToColor('Ab', 1, 1)).toBe('#ff0000'); // Ab
-    expect(noteToColor('', 1, 1)).toBe('#444'); // Default color for empty note
+    expect(noteToColor('', 1, 1)).toBe('rgb(64, 64, 64)'); // Default color for empty note
   });
 });
 
@@ -142,7 +142,7 @@ describe('fifthToColor', () => {
     expect(fifthToColor('C', 1, 1)).toBe('#00ff00'); // C
     expect(fifthToColor('E', 1, 1)).toBe('#0000ff'); // E
     expect(fifthToColor('Ab', 1, 1)).toBe('#ff0000'); // Ab
-    expect(fifthToColor('', 1, 1)).toBe('#444'); // Default color for empty note
+    expect(fifthToColor('', 1, 1)).toBe('rgb(64, 64, 64)'); // Default color for empty note
   });
 });
 

@@ -11,12 +11,13 @@ export const SAMPLING_RATE = 22050;
 
 class Freq2Phase {
   s;
-  s0;
-  sampling_rate;
-  constructor(s0: number, sampling_rate = 44100) {
+  readonly s0;
+  constructor(
+    s0: number,
+    readonly sampling_rate = 44100,
+  ) {
     this.s = 0;
     this.s0 = s0 || 0;
-    this.sampling_rate = sampling_rate;
   }
   calc(freq: number) {
     this.s += (freq || 0) / this.sampling_rate;
@@ -27,18 +28,18 @@ class Freq2Phase {
 class MedianFilter {
   i;
   buff: number[];
-  window_size;
-  constructor(window_size: number) {
+  constructor(
+    readonly window_size: number,
+  ) {
     this.i = 0;
-    this.buff = new Array<number>(0);
-    this.window_size = window_size;
+    this.buff = [];
   }
   median(e: number | null) {
     // i が 1 ずつ上がる想定
     if (e === null) {
       // バッファ初期化
       this.i = 0;
-      this.buff = new Array<number>(0);
+      this.buff = [];
       return null;
     }
 
@@ -82,10 +83,10 @@ const getWav = (src: number[]) => {
 };
 
 type Vocals = {
-  sampling_rate: number,
+  readonly sampling_rate: number,
   f0: (number | null)[],
-  voiced_flags: boolean[],
-  voiced_prob: number[]
+  readonly voiced_flags: boolean[],
+  readonly voiced_prob: number[]
 };
 
 const main = (argv: string[]) => {
