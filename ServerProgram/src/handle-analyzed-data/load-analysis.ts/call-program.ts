@@ -1,22 +1,31 @@
+import { execSync } from "child_process";
 import { Directories } from "../data-directories";
 import { detectFile } from "../detect-file";
 import { runProcessWithCache } from "../run-process-with-cache";
 import { rename } from "./util";
-const command = 'source ./MUSIC_ANALYZER/bin/activate && python -m demucs';
+
+const python = `MUSIC_ANALYZER/bin/python`;
+const activate = '. /MUSIC_ANALYZER/bin/activate';
 
 export const demucs = (force: boolean, directories: Directories, separate_dir: string) => {
   const e = directories;
   if (detectFile(e.src)) {
-    if (runProcessWithCache(false, separate_dir, `python -m demucs -d cuda "${e.src}" >&2"`)) {
-      rename(separate_dir, e.dst);
-    }
+    execSync(`./sh/callDemucs.sh ${e.src} ${e.dst}`);
+    /*
+      if (runProcessWithCache(false, separate_dir, `${activate} && ${python} -m demucs -d cuda "${e.src}" >&2"`)) {
+        rename(separate_dir, e.dst);
+      }
+    */
   }
 };
 
 export const chordExtract = (force: boolean, directories: Directories) => {
   const e = directories;
   if (detectFile(e.src)) {
-    runProcessWithCache(force, e.dst, `python -m chordExtract "${e.src}" "${e.dst}"`);
+    execSync(`./sh/callChordExtract.sh ${e.src} ${e.dst}`);
+    /*
+      runProcessWithCache(force, e.dst, `${activate} && ${python} -m chordExtract "${e.src}" "${e.dst}"`);
+    */
   }
 };
 
@@ -30,16 +39,22 @@ export const chordToRoman = (force: boolean, directories: Directories) => {
 export const crepe = (force: boolean, directories: Directories, tmp: string) => {
   const e = directories;
   if (detectFile(e.src)) {
-    if (runProcessWithCache(force, e.dst, `"python -m crepe "${e.src}" >&2"`)) {
-      rename(e.dst, tmp);
-    }
+    execSync(`./sh/callCrepe.sh ${e.src} ${e.dst}`);
+    /*
+      if (runProcessWithCache(force, e.dst, `"${activate} && ${python} -m crepe "${e.src}" >&2"`)) {
+        rename(e.dst, tmp);
+      }
+    */
   }
 };
 
 export const postCrepe = (force: boolean, directories: Directories) => {
   const e = directories;
   if (detectFile(e.src)) {
-    runProcessWithCache(force, e.dst, `python -m post-crepe "${e.src}" -o "${e.dst}"`);
+    execSync(`./sh/callPostCrepe.sh ${e.src} ${e.dst}`);
+    /*
+      runProcessWithCache(force, e.dst, `${activate} && ${python} -m post-crepe "${e.src}" -o "${e.dst}"`);
+    */
   }
 };
 
@@ -53,9 +68,13 @@ export const analyzeMelodyFromCrepeF0 = (force: boolean, directories: Directorie
 export const pyin = (force: boolean, directories: Directories, img_dir: Directories) => {
   const e = directories;
   if (detectFile(e.src)) {
-    if (runProcessWithCache(force, e.dst, `python -m pyin "${e.src}" --fmin 128 --fmax 1024 -o "${e.dst}"`)) {
-      runProcessWithCache(force, img_dir.dst, `python -m pyin2img "${img_dir.src}" --audio_file "${e.src}" -o "${img_dir.dst}"`);
-    }
+    execSync(`./sh/callPYIN.sh ${e.src} ${e.dst}`);
+    execSync(`./sh/callPYIN2img.sh ${img_dir.src} ${img_dir.dst}`);
+    /*
+      if (runProcessWithCache(force, e.dst, `${activate} && ${python} -m pyin "${e.src}" --fmin 128 --fmax 1024 -o "${e.dst}"`)) {
+        runProcessWithCache(force, img_dir.dst, `${activate} && ${python} -m pyin2img "${img_dir.src}" --audio_file "${e.src}" -o "${img_dir.dst}"`);
+      }
+    */
   }
 };
 
