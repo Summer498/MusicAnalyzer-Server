@@ -1,7 +1,6 @@
-import { _throw } from "../../stdlib";
+import { Directories } from "../data-directories";
 import { detectFile } from "../detect-file";
 import { runProcessWithCache } from "../run-process-with-cache";
-import { Directories } from "../data-directories";
 import { rename } from "./util";
 
 export const chordExtract = (force: boolean, directories: Directories) => {
