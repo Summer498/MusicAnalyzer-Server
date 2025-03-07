@@ -18,8 +18,8 @@ class Motion {
 }
 
 export class MelodyMotion {
-  registral: Motion;
-  intervallic: Motion;
+  readonly registral: Motion;
+  readonly intervallic: Motion;
 
   constructor(prev_interval: Interval, post_interval: Interval) {
     const prev = prev_interval.semitones;
@@ -45,7 +45,7 @@ export class MelodyMotion {
     this.intervallic =
       new Motion(
         new Direction(dir_map[i_sgn + 1], i_sgn),
-        new Magnitude(i_abs > C ? "AB" : "AA", i_abs)
+        new Magnitude(i_abs < C ? "AA" : "AB", i_abs)
       );
   }
 }

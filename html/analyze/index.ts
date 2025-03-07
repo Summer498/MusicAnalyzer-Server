@@ -1,111 +1,33 @@
-import { HTML } from "@music-analyzer/html";
-import { TimeAndRomanAnalysis } from "@music-analyzer/chord-to-roman";
-import { TimeAndMelodyAnalysis } from "@music-analyzer/melody-analyze";
-import { calcTempo } from "@music-analyzer/beat-estimation";
-import { WindowReflectableRegistry, UpdatableRegistry } from "@music-analyzer/view";
-import { SongManager } from "@music-analyzer/song-manager";
-import { getPianoRoll } from "@music-analyzer/svg-objects";
-import { controllers, hierarchy_level } from "@music-analyzer/melody-view";
-import { NowAt } from "@music-analyzer/view-parameters";
+import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
+import { setupUI } from "@music-analyzer/music-analyzer-application";
+import { MusicAnalyzerWindow } from "./src/MusicAnalyzerWindow";
+import { updateTitle } from "./src/UIManager";
+import { initializeApplication } from "./src/initialize-application";
+import { EventLoop } from "./src/EventLoop";
+import { loadMusicAnalysis, setAudioPlayer } from "./src/MusicAnalysisLoader";
 
-interface MusicAnalyzerWindow extends Window {
-  MusicAnalyzer: {
-    roman: TimeAndRomanAnalysis[],
-    melody: TimeAndMelodyAnalysis[]
-  }
-}
 declare const window: MusicAnalyzerWindow;
 declare const audio_player: HTMLAudioElement | HTMLVideoElement;
 declare const piano_roll_place: HTMLDivElement;
+declare const title: HTMLHeadingElement;
+type Mode = "TSR" | "PR" | "";
 
-/*
-TODO: 1. get song name from URL parameter, 2. fetch song↓
-const roman = (await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/chord/roman.json")).json()) as TimeAndRomanAnalysis[];
-const melody = (await (await fetch("../../resources/Hierarchical Analysis Sample/analyzed/melody/crepe/manalyze.json")).json()) as TimeAndMelodyAnalysis[];
-window.MusicAnalyzer={
-  roman,
-  melody,
-};
-*/
-
-const d_romans: TimeAndRomanAnalysis[] = window.MusicAnalyzer.roman.map(e => e);
-const d_melodies: TimeAndMelodyAnalysis[] = window.MusicAnalyzer.melody.map(e => ({
-  ...e,
-  begin: e.begin - 0.16,  // ズレ補正
-  end: e.end - 0.16,
-}));
-const romans = d_romans.map(e => e);
-const melodies = d_melodies.map(e => e).filter((e, i) => i + 1 >= d_melodies.length || 60 / (d_melodies[i + 1].begin - d_melodies[i].begin) < 300 * 4);
-hierarchy_level.setHierarchyLevelSliderValues(0);
-
-// テンポの計算
-const beat_info = calcTempo(melodies, romans);
-/*
-console.log("tempo");
-console.log(beat_info.tempo);
-console.log("duration");
-console.log(audio_player.duration);
-console.log("last melody");
-console.log(melodies[melodies.length - 1].end);
-*/
-
-
-// SVG -->
-const song_manager = new SongManager();
-song_manager.analysis_data = { beat_info, hierarchical_melody: [melodies], romans, d_melodies };
-piano_roll_place.appendChildren([
-  getPianoRoll(song_manager).svg,
-  controllers,
-]);
-// <-- SVG
-
-// メインループ -->
-
-let old_time = Date.now();
-const fps_element = HTML.p({ name: "fps" }, `fps:${0}`);
-
-let last_audio_time = Number.MIN_SAFE_INTEGER;
-const onUpdate = () => {
-  // fps 関連処理 -->
-  const now = Date.now();
-  const fps = Math.floor(1000 / (now - old_time));
-  fps_element.textContent = `fps:${(" " + fps).slice(-3)} ${fps < 60 ? '<' : '>'} 60`;
-  old_time = now;
-  // <-- fps 関連処理
-
-  // --> audio 関連処理
-  const now_at = audio_player.currentTime;
-  // TODO: 止めたときの挙動がおかしいので直す
-  // 大量の計算を行った後のアニメーションの挙動はちょっとおかしくなるらしい
-  if (audio_player.paused && now_at === last_audio_time) { return; }
-  last_audio_time = now_at;
-  // <-- audio 関連処理
-
-  NowAt.onUpdate(now_at);
-  UpdatableRegistry.instance.onUpdate();
-};
-
-
-// TODO: refresh を draw のときに呼び出すようにする
-// 多分値が最初の時刻を想定した値になっているので直す
-const onWindowResized = () => {
-  // 各 svg のパラメータを更新する
-  WindowReflectableRegistry.instance.onWindowResized();
-  onUpdate();
-};
-
-// ---------- main ---------- //
 const main = () => {
-  const update = () => {
-    onUpdate();
-    requestAnimationFrame(update);
-  };
-
-  window.onresize = e => onWindowResized();
-  onWindowResized();
-  update();
-
-  document.body.insertAdjacentElement("beforeend", fps_element);
-  0 && console.log(beat_info.tempo);
+  const urlParams = new URLSearchParams(window.location.search);
+  const tune_id = urlParams.get("tune") || "";
+  const mode: Mode = urlParams.has("pr") ? "PR" : urlParams.has("tsr") ? "TSR" : "";
+  const audio_subscriber = new AudioReflectableRegistry();
+  const window_subscriber = new WindowReflectableRegistry();
+  updateTitle(title, tune_id, mode);
+  setAudioPlayer(tune_id, audio_player);
+  loadMusicAnalysis(tune_id, mode)
+    .then(raw_analyzed_data => {
+      window.MusicAnalyzer = raw_analyzed_data;
+      const analyzed_data = initializeApplication(raw_analyzed_data);
+      setupUI(`${mode}-${tune_id}`, title, analyzed_data, piano_roll_place, audio_player, audio_subscriber, window_subscriber);
+      new EventLoop(audio_subscriber, audio_player).update();
+      window.onresize = e => window_subscriber.onUpdate();
+      window_subscriber.onUpdate();
+    });
 };
 main();
