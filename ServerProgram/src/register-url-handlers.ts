@@ -4,10 +4,20 @@ import { handlePostRequest, listUpGTTMExample, send404HTML, send404NotFound, sen
 import { loadAnalysisFromCrepe, loadAnalysisFromPYIN, loadRomanAnalysis, renameFile } from "./handle-analyzed-data";
 import { POST_DATA_PATH } from "./constants";
 import { _throw } from "./stdlib";
+import rateLimit from "express-rate-limit";
 
 export const registerURLHandlers = (app: ReturnType<typeof express>) => {
   const upload = multer({ dest: POST_DATA_PATH });  // multer が POST_DATA_PATH にファイルを作成
   const analyzed = `/MusicAnalyzer-server/resources/**/analyzed`;
+
+  // set up rate limiter: maximum of 100 requests per 15 minutes
+  const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // max 100 requests per windowMs
+  });
+
+  // apply rate limiter to all requests
+  app.use(limiter);
 
   // URLの部分が一致するもののうち一番上にある関数の処理をする
   app.get(`${analyzed}/chord/roman.json`, loadRomanAnalysis);
