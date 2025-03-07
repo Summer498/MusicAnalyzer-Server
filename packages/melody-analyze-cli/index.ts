@@ -3,6 +3,7 @@ import { default as yargs } from "yargs";
 import { hideBin } from "yargs/helpers";
 import { analyzeMelody, getTimeAndMelody } from "@music-analyzer/melody-analyze";
 import { RomanAnalysisData } from "@music-analyzer/chord-analyze";
+import { MelodyAnalysisData } from "@music-analyzer/melody-analyze/src/interfaces";
 
 interface CommandLineOptions {
   readonly melody_filename: string;
@@ -53,11 +54,16 @@ const main = (argv: string[]) => {
   const roman_txt = fs.readFileSync(args.roman_file, "utf-8");
   const melody_data: number[] = JSON.parse(melody_txt);
   const non_null_melody = getTimeAndMelody(melody_data, args.sampling_rate);
-  const time_and_roman = JSON.parse(roman_txt);
+  const time_and_roman = JSON.parse(roman_txt) as RomanAnalysisData;
 
   fs.writeFileSync(
     args.out_file,
-    JSON.stringify(analyzeMelody(non_null_melody, time_and_roman), undefined, "  ")
+    JSON.stringify(
+      new MelodyAnalysisData(
+        analyzeMelody(non_null_melody, time_and_roman.body)
+      ),
+      undefined, "  "
+    )
   );
 };
 main(process.argv);
