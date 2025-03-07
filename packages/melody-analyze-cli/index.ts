@@ -2,6 +2,7 @@ import { default as fs } from "fs";
 import { default as yargs } from "yargs";
 import { hideBin } from "yargs/helpers";
 import { analyzeMelody, getTimeAndMelody } from "@music-analyzer/melody-analyze";
+import { RomanAnalysisData } from "@music-analyzer/chord-analyze";
 
 interface CommandLineOptions {
   readonly melody_filename: string;

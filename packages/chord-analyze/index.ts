@@ -1,3 +1,5 @@
+export { RomanAnalysisData } from "./src/chord-analyze";
+
 export {
   calcChordProgression,
   remove_item,

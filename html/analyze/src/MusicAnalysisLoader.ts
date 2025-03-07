@@ -1,6 +1,6 @@
 import { GroupingStructure, IProlongationalReduction, ITimeSpanReduction, MetricalStructure, ProlongationalReduction, TimeSpanReduction } from "@music-analyzer/gttm";
 import { getHierarchicalMelody } from "@music-analyzer/melody-hierarchical-analysis";
-import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
+import { RomanAnalysisData, TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MusicXML } from "@music-analyzer/musicxml";
 import { getJSON, getJSONfromXML } from "./DataFetcher";
@@ -42,9 +42,15 @@ type DataPromises = [
 
 const justLoad = (tune_name: string) => {
   return [
-    getJSON<TimeAndRomanAnalysis[]>(`${resources}/${tune_name}/analyzed/chord/roman.json`)
-      .then(res => res || []),
-    getJSON<TimeAndAnalyzedMelody[]>(`${resources}/${tune_name}/analyzed/melody/crepe/manalyze.json`)
+    fetch(`${resources}/${tune_name}/analyzed/chord/roman.json`)
+      .then(res => res.json() as Promise<RomanAnalysisData>)
+      .then(res => res.body)
+      .catch(e => fetch(`${resources}/${tune_name}/analyzed/chord/roman.json?update`)
+        .then(res => res.json() as Promise<RomanAnalysisData>)
+        .then(res => res.body)
+        .catch(e => { console.error(e); return undefined; }),
+      ),
+    getJSON<TimeAndAnalyzedMelody[]>(`${resources}/${tune_name}/analyzed/melody/crepe/manalyze.json?update`)
       .then(res => res?.map(e => ({ ...e, head: new Time(e.begin, e.end) })) as TimeAndAnalyzedMelody[]),
     getJSONfromXML<MusicXML>(`${resources}/gttm-example/${tune_name}/MSC-${tune_name}.xml`),
     getJSONfromXML<GroupingStructure>(`${resources}/gttm-example/${tune_name}/GPR-${tune_name}.xml`),
