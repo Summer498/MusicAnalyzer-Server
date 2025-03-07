@@ -27,9 +27,9 @@ export class DataDirectories {
 
   constructor(song_name: string, file_path: string) {
     const resource = `resources/${song_name}`;
-    const home = `${resource}/analyzed`;
-    const chord = `${home}/chord`;
-    const melody = `${home}/melody`;
+    const analyzed = `${resource}/analyzed`;
+    const chord = `${analyzed}/chord`;
+    const melody = `${analyzed}/melody`;
     const demucs = `${resource}/demucs`;
     const crepe = `${melody}/crepe`;
     const pyin = `${melody}/pyin`;
@@ -43,12 +43,12 @@ export class DataDirectories {
 
     this.crepe = new Directories(this.separate.dst, `${crepe}/vocals.f0.csv`);
     this.crepe_tmp = `${this.separate_dir}/vocals.f0.csv`;
-    this.post_crepe = new Directories(this.crepe.dst, `${crepe}/vocals.json`);
+    this.post_crepe = new Directories(this.crepe.dst, `${crepe}/vocals.midi.json`);
     this.melody_analyze_crepe = new Directories(this.post_crepe.dst, `${crepe}/manalyze.json`);
 
     this.pyin = new Directories(this.separate.dst, `${pyin}/vocals.f0.json`);
     this.post_pyin_dir = pyin;
-    this.post_pyin = new Directories(this.pyin.dst, `${pyin}/vocals.json`);
+    this.post_pyin = new Directories(this.pyin.dst, `${pyin}/vocals.midi.json`);
     this.melody_analyze_pyin = new Directories(this.post_pyin.dst, `${pyin}/manalyze.json`);
     this.pyin_img = new Directories(this.pyin.dst, `${pyin}/vocals.f0.png`);
 
