@@ -53,14 +53,22 @@ def build_and_load_model(model_capacity):
     tf.get_logger().setLevel('INFO')
     tf.autograph.set_verbosity(0)
 
+    physical_devices = tf.config.experimental.list_physical_devices('GPU') # GPU 使用
+    if len(physical_devices) > 0:
+        for k in range(len(physical_devices)):
+            tf.config.experimental.set_memory_growth(physical_devices[k], True)  # GPU メモリ制限
+            print('memory growth:', tf.config.experimental.get_memory_growth(physical_devices[k]), file=sys.__stderr__)
+    else:
+        print("Not enough GPU hardware devices available", file=sys.__stderr__)
+
     import logging
     tf.get_logger().setLevel(logging.ERROR)
     # <<< silence tensorflow
 
 
-    from tensorflow.keras.layers import Input, Reshape, Conv2D, BatchNormalization
-    from tensorflow.keras.layers import MaxPool2D, Dropout, Permute, Flatten, Dense
-    from tensorflow.keras.models import Model
+    from keras.layers import Input, Reshape, Conv2D, BatchNormalization
+    from keras.layers import MaxPool2D, Dropout, Permute, Flatten, Dense
+    from keras.models import Model
 
 
     if models[model_capacity] is None:

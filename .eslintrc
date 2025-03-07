@@ -16,10 +16,16 @@
     "**/dist/*",
     "*.d.ts"
   ],
+  "plugins": ["import"],
   "rules": {
     "block-scoped-var": "warn",
     "curly": "warn",
     "init-declarations": ["off", "always"],
+    "import/no-extraneous-dependencies": ["error", {
+      "devDependencies": false,
+      "optionalDependencies": false,
+      "peerDependencies": false
+    }],
     "multiline-ternary": ["warn", "never"],
     "no-lone-blocks": "warn",
     "no-lonely-if": "warn",

@@ -10,4 +10,5 @@ module.exports = {
     // トランスフォームから除外するnode_modules内のファイル
   ],
   // その他の設定...
+  setupFilesAfterEnv: ["./jest-preload.js"],
 };

@@ -122,7 +122,7 @@ def main():
                         help='path to one ore more WAV file(s) to analyze OR '
                              'can be a directory')
     parser.add_argument('--output', '-o', default=None,
-                        help='directory to save the ouptut file(s), must '
+                        help='directory to save the output file(s), must '
                              'already exist; if not given, the output will be '
                              'saved to the same directory as the input WAV '
                              'file(s)')

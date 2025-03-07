@@ -5,6 +5,10 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
+    "build:minify": {
+      "dependsOn": ["^build:minify"],
+      "outputs": ["dist/**"]
+    },
     "test": {
       "outputs": []
     },

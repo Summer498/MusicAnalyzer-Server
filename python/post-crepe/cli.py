@@ -1,11 +1,14 @@
-import pandas as pd
-import numpy as np
+import argparse
+import json
 import math
+import numpy as np
+import os
+import pandas as pd
 import soundfile as sf
-import csv
-import sys
-import os.path as path
 from copy import deepcopy
+from typing import List, Optional, Union
+from numpy.typing import NDArray
+
 
 
 def band_pass(frequency: float, low: float, high: float):
@@ -56,11 +59,23 @@ class freqToPhase:
         self.s += freq / self.sampling_rate
         return self.s + self.s0
 
+def parse_arguments():
+    parser = argparse.ArgumentParser(description="post CREPE: data conversion to JSON")
+    parser.add_argument("csv_file_path", type=str, help="Path to the CSV file from CREPE")
+    parser.add_argument("--outfile", "-o", type=str, default="./out.json", help="File to output estimation result")
+    return parser.parse_args()
+
+def replace_nan_with_none(x: Union[float, int]) -> Optional[Union[float, int]]:
+    return None if np.isnan(x) else x
+
+def replace_nan_with_none_in_ndarray(arr: NDArray[Union[np.int64, np.float64]]) -> List[Optional[Union[float, int]]]:
+    return [replace_nan_with_none_in_ndarray(x) if isinstance(x, np.ndarray) else replace_nan_with_none(x) for x in arr]
 
 def main():
+    args=parse_arguments()
+
     # csv の中身は 1 サンプル = 0.01 秒になっている
-    #_csv_file_path = f"./separated/htdemucs/{filename}/vocals.f0.csv"
-    csv_file_path = sys.argv[1]
+    csv_file_path = args.csv_file_path
     dictionary_from_csv = pd.read_csv(csv_file_path, header=0, index_col=None)
     CSV_SAMPLING_RATE = 100
 
@@ -85,15 +100,17 @@ def main():
     frequency = [2 * np.pi * frequency_001_band_passed[int(i // N)] for i in range(size)]
 
     # Output
-    out_filename = f"{sys.argv[2]}/vocals"
-    # out_filename = f"{path.dirname(csv_file_path)}/vocals"
-    with open(f"{out_filename}.midi.csv", 'w') as file:
-        writer = csv.writer(file)
-        writer.writerow(np.round(hz_to_midi(frequency_001_band_passed)))
+    out_filename = args.outfile #f"{sys.argv[2]}/vocals"
+    out_root, out_ext = os.path.splitext(out_filename)
+    f0_list = replace_nan_with_none_in_ndarray(frequency_001_band_passed)
+    with open(f"{out_filename}", "w") as writefile:
+        print(json.dumps(f0_list, indent=2), file=writefile)
+    f0_midi_json = {
+        "note": replace_nan_with_none_in_ndarray(np.round(hz_to_midi(frequency_001_band_passed)))
+    }
+    with open(f"{out_root}.midi{out_ext}", "w") as writefile:
+        print(json.dumps(f0_midi_json, indent=2), file=writefile)
 
-    with open(f"{out_filename}.csv", 'w') as file:
-        writer = csv.writer(file)
-        writer.writerow(frequency_001_band_passed)
 
     # サイン波の音で確認するため, 瞬間周波数を積分して位相を求める
     freq_to_phase = freqToPhase(frequency[0], SAMPLING_RATE)
@@ -102,5 +119,5 @@ def main():
 
     # 音で確認する
     mini_sinoid = sinoid[17 * SAMPLING_RATE: 40 * SAMPLING_RATE]
-    sf.write(f"{out_filename}.f0.wav", sinoid, SAMPLING_RATE, subtype="PCM_16")
-    sf.write(f"{out_filename}mini.f0.wav", mini_sinoid, SAMPLING_RATE, subtype="PCM_16")
+    sf.write(f"{out_root}.f0.wav", sinoid, SAMPLING_RATE, subtype="PCM_16")
+    sf.write(f"{out_root}.mini.f0.wav", mini_sinoid, SAMPLING_RATE, subtype="PCM_16")
