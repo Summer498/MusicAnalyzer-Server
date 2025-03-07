@@ -7,10 +7,12 @@ import { getJSON, getJSONfromXML } from "./DataFetcher";
 import { AnalyzedMusicData, GTTMData } from "./MusicAnalyzerWindow";
 import { Time } from "@music-analyzer/time-and";
 
+const resources = `/MusicAnalyzer-server/resources`;
+
 const registerSong = (urls: string[], audio_player: HTMLAudioElement | HTMLVideoElement) => {
   const url = urls.pop();
   if (!url) {
-    audio_player.src = "/MusicAnalyzer-server/resources/Hierarchical Analysis Sample/sample1.mp4";
+    audio_player.src = `${resources}/Hierarchical Analysis Sample/sample1.mp4`;
     return;
   }
 
@@ -23,7 +25,7 @@ const registerSong = (urls: string[], audio_player: HTMLAudioElement | HTMLVideo
 };
 
 export const setAudioPlayer = (tune_name: string, audio_player: HTMLAudioElement | HTMLVideoElement) => {
-  const filename = `/MusicAnalyzer-server/resources/${tune_name}/${tune_name}`;
+  const filename = `${resources}/${tune_name}/${tune_name}`;
   const extensions = ["mp3", "mp4", "wav", "m4a"];
   registerSong(extensions.map(e => `${filename}.${e}`), audio_player);
 };
@@ -40,15 +42,15 @@ type DataPromises = [
 
 const justLoad = (tune_name: string) => {
   return [
-    getJSON<TimeAndRomanAnalysis[]>(`/MusicAnalyzer-server/resources/${tune_name}/analyzed/chord/roman.json`)
+    getJSON<TimeAndRomanAnalysis[]>(`${resources}/${tune_name}/analyzed/chord/roman.json`)
       .then(res => res || []),
-    getJSON<TimeAndAnalyzedMelody[]>(`/MusicAnalyzer-server/resources/${tune_name}/analyzed/melody/crepe/manalyze.json`)
+    getJSON<TimeAndAnalyzedMelody[]>(`${resources}/${tune_name}/analyzed/melody/crepe/manalyze.json`)
       .then(res => res?.map(e => ({ ...e, head: new Time(e.begin, e.end) })) as TimeAndAnalyzedMelody[]),
-    getJSONfromXML<MusicXML>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/MSC-${tune_name}.xml`),
-    getJSONfromXML<GroupingStructure>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/GPR-${tune_name}.xml`),
-    getJSONfromXML<MetricalStructure>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/MPR-${tune_name}.xml`),
-    getJSONfromXML<ITimeSpanReduction>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/TS-${tune_name}.xml`),
-    getJSONfromXML<IProlongationalReduction>(`/MusicAnalyzer-server/resources/gttm-example/${tune_name}/PR-${tune_name}.xml`),
+    getJSONfromXML<MusicXML>(`${resources}/gttm-example/${tune_name}/MSC-${tune_name}.xml`),
+    getJSONfromXML<GroupingStructure>(`${resources}/gttm-example/${tune_name}/GPR-${tune_name}.xml`),
+    getJSONfromXML<MetricalStructure>(`${resources}/gttm-example/${tune_name}/MPR-${tune_name}.xml`),
+    getJSONfromXML<ITimeSpanReduction>(`${resources}/gttm-example/${tune_name}/TS-${tune_name}.xml`),
+    getJSONfromXML<IProlongationalReduction>(`${resources}/gttm-example/${tune_name}/PR-${tune_name}.xml`),
   ] as DataPromises;
 };
 
