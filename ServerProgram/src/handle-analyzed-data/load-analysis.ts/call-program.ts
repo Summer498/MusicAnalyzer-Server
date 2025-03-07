@@ -2,6 +2,7 @@ import { Directories } from "../data-directories";
 import { detectFile } from "../detect-file";
 import { runProcessWithCache } from "../run-process-with-cache";
 import { rename } from "./util";
+const command = 'source ./MUSIC_ANALYZER/bin/activate && python -m demucs';
 
 export const demucs = (force: boolean, directories: Directories, separate_dir: string) => {
   const e = directories;
