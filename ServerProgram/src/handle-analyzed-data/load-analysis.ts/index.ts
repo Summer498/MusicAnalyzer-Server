@@ -44,7 +44,6 @@ export const loadRomanAnalysis = (req: Request, res: Response) => {
   const url = URL.parse(req.url, true, true);
   const search = new URLSearchParams(url.search || "");
   const update = search.has("update");
-  console.log(search);
   const pathname = url.pathname;
   if (pathname === null) { throw new Error(`pathname was null`); };
   const song_dir = pathname.replace("/analyzed/chord/roman.json", "");
@@ -61,7 +60,6 @@ export const loadAnalysisFromCrepe = (req: Request, res: Response) => {
   const url = URL.parse(req.url, true, true);
   const search = new URLSearchParams(url.search || "");
   const update = search.has("update");
-  console.log(search);
   const pathname = url.pathname;
   if (pathname === null) { throw new Error(`pathname was null`); };
   const song_dir = pathname.replace("/analyzed/melody/crepe/manalyze.json", "");
@@ -78,7 +76,6 @@ export const loadAnalysisFromPYIN = (req: Request, res: Response) => {
   const url = URL.parse(req.url, true, true);
   const search = new URLSearchParams(url.search || "");
   const update = search.has("update");
-  console.log(search);
   const pathname = url.pathname;
   if (pathname === null) { throw new Error(`pathname was null`); };
   const song_dir = pathname.replace("/analyzed/melody/pyin/manalyze.json", "");
