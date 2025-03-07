@@ -3,7 +3,7 @@ import { existsSync } from "fs";
 import { basename } from "path";
 import { sendFile } from "../../routing";
 import { Request, Response } from "express";
-import { ROOT_DIR } from "../../constants";
+import { ROOT } from "../../constants";
 import { DataDirectories } from "../data-directories";
 import { analyzeMelodyFromCrepeF0, analyzeMelodyFromPYINf0, chordExtract, chordToRoman, crepe, demucs, postCrepe, postPYIN, pyin } from "./call-program";
 
@@ -45,9 +45,9 @@ export const loadRomanAnalysis = (req: Request, res: Response) => {
   const song_name = basename(song_dir);
 
   const extensions: ["wav", "mp3", "mp4", "m4a"] = ["wav", "mp3", "mp4", "m4a"];
-  const ext = extensions.find(e => existsSync(decodeURI(`${ROOT_DIR}${song_dir}/${song_name}.${e}`)));
+  const ext = extensions.find(e => existsSync(decodeURI(`${ROOT}${song_dir}/${song_name}.${e}`)));
   if (ext) { _loadRomanAnalysis(song_name, ""); }
-  sendFile(req, res, `${ROOT_DIR}${pathname}`);
+  sendFile(req, res, `${ROOT}${pathname}`);
 };
 
 export const loadAnalysisFromCrepe = (req: Request, res: Response) => {
@@ -58,9 +58,9 @@ export const loadAnalysisFromCrepe = (req: Request, res: Response) => {
   const song_name = basename(song_dir);
 
   const extensions: ["wav", "mp3", "mp4", "m4a"] = ["wav", "mp3", "mp4", "m4a"];
-  const ext = extensions.find(e => existsSync(decodeURI(`${ROOT_DIR}${song_dir}/${song_name}.${e}`)));
+  const ext = extensions.find(e => existsSync(decodeURI(`${ROOT}${song_dir}/${song_name}.${e}`)));
   if (ext) { _loadAnalysisFromCREPE(song_name, ""); }
-  sendFile(req, res, `${ROOT_DIR}${pathname}`);
+  sendFile(req, res, `${ROOT}${pathname}`);
 };
 
 export const loadAnalysisFromPYIN = (req: Request, res: Response) => {
@@ -71,7 +71,7 @@ export const loadAnalysisFromPYIN = (req: Request, res: Response) => {
   const song_name = basename(song_dir);
 
   const extensions: ["wav", "mp3", "mp4", "m4a"] = ["wav", "mp3", "mp4", "m4a"];
-  const ext = extensions.find(e => existsSync(decodeURI(`${ROOT_DIR}${song_dir}/${song_name}.${e}`)));
+  const ext = extensions.find(e => existsSync(decodeURI(`${ROOT}${song_dir}/${song_name}.${e}`)));
   if (ext) { _loadAnalysisFromPYIN(song_name, ""); }
-  sendFile(req, res, `${ROOT_DIR}${pathname}`);
+  sendFile(req, res, `${ROOT}${pathname}`);
 };

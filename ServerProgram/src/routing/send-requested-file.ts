@@ -3,7 +3,7 @@ import { default as url } from "url";
 import { Request, Response } from "express";
 import { send301Redirect } from "./send-301-redirect";
 import { sendFile } from "./send-file";
-import { ROOT_DIR } from "../constants";
+import { ROOT } from "../constants";
 
 export const sendRequestedFile = (req: Request, res: Response) => {
   if (!req.url) { throw new TypeError(`requested URL is null`); };
@@ -15,12 +15,12 @@ export const sendRequestedFile = (req: Request, res: Response) => {
     send301Redirect(res, req.url.replace(`/index.html`, `/`));
   }
   else if (parsed.endsWith(`/`)) {  // /path/to/
-    sendFile(req, res, `${ROOT_DIR}${parsed}index.html`);
+    sendFile(req, res, `${ROOT}${parsed}index.html`);
   }
   else if (path.extname(parsed) === "") { // /path/to
     send301Redirect(res, req.url.replace(parsed, `${parsed}/`));
   }
   else {  // /path/to/file.ext
-    sendFile(req, res, `${ROOT_DIR}${parsed}`);
+    sendFile(req, res, `${ROOT}${parsed}`);
   }
 };
