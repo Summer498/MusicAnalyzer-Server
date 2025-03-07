@@ -1,11 +1,17 @@
 import { default as multer } from "multer";
 import { default as express } from "express";
+import RateLimit from "express-rate-limit";
 import { handlePostRequest, listUpGTTMExample, send404HTML, send404NotFound, sendRequestedFile } from "./routing";
 import { loadAnalysisFromCrepe, loadAnalysisFromPYIN, loadRomanAnalysis, renameFile } from "./handle-analyzed-data";
 import { POST_DATA_PATH } from "./constants";
 import { _throw } from "./stdlib";
 
 export const registerURLHandlers = (app: ReturnType<typeof express>) => {
+  const limiter = RateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // max 100 requests per windowMs
+  });
+  app.use(limiter);
   const upload = multer({ dest: POST_DATA_PATH });  // multer が POST_DATA_PATH にファイルを作成
   const analyzed = `/MusicAnalyzer-server/resources/**/analyzed`;
 
