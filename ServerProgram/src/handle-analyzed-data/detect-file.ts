@@ -1,6 +1,7 @@
 import { existsSync } from "fs";
 
 export const detectFile = (dst: string) => {
-  if (existsSync(decodeURI(dst))) { return; }
-  console.error(`file ${decodeURI(dst)} not exist`);
+  const exists = existsSync(decodeURI(dst));
+  if (!exists) { console.error(`file ${decodeURI(dst)} not exist`); }
+  return exists;
 };

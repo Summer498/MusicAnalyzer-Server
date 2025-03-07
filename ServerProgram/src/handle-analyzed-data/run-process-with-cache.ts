@@ -8,10 +8,16 @@ const _runProcessWithCache = (
   dst: string,
   process: string
 ) => {
-  makeNewDir(dirname(dst));
-  console.log(decodeURI(process));
-  execSync(decodeURI(process));
-  chmodSync(decodeURI(dst), 0o775);
+  try {
+    makeNewDir(dirname(dst));
+    console.log(decodeURI(process));
+    execSync(decodeURI(process));
+    chmodSync(decodeURI(dst), 0o775);
+  } catch (e) {
+    console.trace(e);
+    return false;
+  }
+  return true;
 };
 
 export const runProcessWithCache = (
@@ -21,6 +27,7 @@ export const runProcessWithCache = (
 ) => {
   if (force === false && existsSync(decodeURI(dst))) {
     console.log(`${decodeURI(dst)} already exist`);
+    return false;
   }
-  else { _runProcessWithCache(dst, process); }
+  else { return _runProcessWithCache(dst, process); }
 };
