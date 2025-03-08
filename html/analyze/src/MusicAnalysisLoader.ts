@@ -67,7 +67,7 @@ const justLoad = (tune_name: string) => {
         .catch(e => { console.error(e); return undefined; }),
       )
       .then(res => res?.body)
-      .then(res => res?.map(e => ({ ...e, head: new Time(e.begin, e.end) })) as TimeAndAnalyzedMelody[]),
+      .then(res => res?.map(e => ({ ...e, head: e.time })) as TimeAndAnalyzedMelody[]),
     getJSONfromXML<MusicXML>(`${resources}/gttm-example/${tune_name}/MSC-${tune_name}.xml`),
     getJSONfromXML<GroupingStructure>(`${resources}/gttm-example/${tune_name}/GPR-${tune_name}.xml`),
     getJSONfromXML<MetricalStructure>(`${resources}/gttm-example/${tune_name}/MPR-${tune_name}.xml`),

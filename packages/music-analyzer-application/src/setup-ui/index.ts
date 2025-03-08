@@ -32,7 +32,7 @@ export const setupUI = (
   new Assertion(hierarchical_melody.length > 0).onFailed(() => { throw new Error(`hierarchical melody length must be more than 0 but it is ${hierarchical_melody.length}`); });
   const melodies = hierarchical_melody[hierarchical_melody.length - 1];
   SongLength.value = Math.max(
-    ...melodies.map(e => e.end)
+    ...melodies.map(e => e.time.end)
   ) * 1.05; // ちょっとマージンを取っておく
 
   const NO_CHORD = false;  // コード関連のものを表示しない

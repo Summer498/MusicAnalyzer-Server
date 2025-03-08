@@ -10,7 +10,7 @@ class TimeAndAnalyzedMelodyAndIR
     e: TimeAndAnalyzedMelody,
     readonly IR: string,
   ) {
-    super(e.begin, e.end, e.time, e.head, e.note, e.melody_analysis);
+    super(e.time.begin, e.time.end, e.time, e.head, e.note, e.melody_analysis);
   }
 }
 

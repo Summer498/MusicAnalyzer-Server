@@ -25,10 +25,10 @@ export const calcTempo = (melodies: TimeAndAnalyzedMelody[], romans: TimeAndRoma
 
     // ビートを求める方法その2 (考え中)
     getRange(0, bpm_range).forEach(bpm => {
-      melody_phase[bpm][Math.floor(mod(e.begin, bpm + 90))]++;
+      melody_phase[bpm][Math.floor(mod(e.time.begin, bpm + 90))]++;
     });
     // ビートを求める方法その3 (採用中 & 考え中)
-    onsets[Math.floor(e.begin * 100)] = 1;
+    onsets[Math.floor(e.time.begin * 100)] = 1;
   });
   /*
   console.log("melody_bpm");
