@@ -17,8 +17,7 @@ export const calcChordProgression = (chords: TimeAndChordSymbol[]) => {
       new ChordProgression(chords.map(chord => chord.chord)).getMinimumPath(),
     );
     return chords.map((_, i) => new TimeAndRomanAnalysis(
-      time[i].begin,
-      time[i].end,
+      time[i],
       progression[i].chord.name,
       progression[i].scale.name,
       progression[i].roman,

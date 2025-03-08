@@ -1,6 +1,6 @@
 import { Time } from "@music-analyzer/time-and";
 
-type TimeAndRomanAnalysis_Arg = [Time, number, number, string, string, string];
+type TimeAndRomanAnalysis_Arg = [Time, string, string, string];
 const getArgsOfTimeAndRomanAnalysis = (
   args
     : TimeAndRomanAnalysis_Arg
@@ -8,23 +8,19 @@ const getArgsOfTimeAndRomanAnalysis = (
 ) => {
   if (args.length === 1) {
     const [e] = args;
-    return [e.time, e.begin, e.end, e.chord, e.scale, e.roman] as TimeAndRomanAnalysis_Arg
+    return [e.time, e.chord, e.scale, e.roman] as TimeAndRomanAnalysis_Arg
   }
   return args;
 }
 
 export class TimeAndRomanAnalysis {
   readonly time: Time;
-  readonly begin: number
-  readonly end: number
   readonly chord: string
   readonly scale: string
   readonly roman: string
   constructor(e: TimeAndRomanAnalysis);
   constructor(
     time: Time,
-    begin: number,
-    end: number,
     chord: string,
     scale: string,
     roman: string,
@@ -34,10 +30,8 @@ export class TimeAndRomanAnalysis {
       : TimeAndRomanAnalysis_Arg
       | [TimeAndRomanAnalysis]
   ) {
-    const [time, begin, end, chord, scale, roman] = getArgsOfTimeAndRomanAnalysis(args);
+    const [time, chord, scale, roman] = getArgsOfTimeAndRomanAnalysis(args);
     this.time = new Time(time);
-    this.begin = begin
-    this.end = end;
     this.chord = chord;
     this.scale = scale;
     this.roman = roman;

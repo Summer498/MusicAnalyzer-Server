@@ -9,7 +9,7 @@ export class ChordRomanModel extends MVVM_Model {
   readonly roman: string;
   constructor(e: TimeAndRomanAnalysis) {
     super();
-    this.time = new Time(e.begin, e.end);
+    this.time = e.time;
     this.roman = e.roman;
     this.tonic = _Chord.get(e.chord).tonic || "";
   }

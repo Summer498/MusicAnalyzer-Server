@@ -9,7 +9,7 @@ export class ChordKeyModel extends MVVM_Model {
   readonly scale: string;
   constructor(e: TimeAndRomanAnalysis) {
     super();
-    this.time = new Time(e.begin, e.end);
+    this.time = e.time;
     this.tonic = _Scale.get(e.scale).tonic!;
     this.scale = e.scale;
   }

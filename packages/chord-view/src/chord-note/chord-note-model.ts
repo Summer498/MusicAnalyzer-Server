@@ -17,7 +17,7 @@ export class ChordNoteModel extends MVVM_Model {
     readonly oct: number,
   ) {
     super();
-    this.time = new Time(e.begin, e.end)
+    this.time = e.time;
     this.tonic = chord.tonic!;
     this.type = chord.type;
     const _note = _Note.get(note);
