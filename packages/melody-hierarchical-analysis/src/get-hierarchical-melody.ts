@@ -21,7 +21,7 @@ class TimeAndAnalyzedMelodyAndIR
     e: TimeAndAnalyzedMelody,
     readonly IR: string,
   ) {
-    super({ ...e }, e.melody_analysis);
+    super(e.begin, e.end, e.note, e.head, e.melody_analysis);
   }
 }
 

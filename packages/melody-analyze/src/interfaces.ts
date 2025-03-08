@@ -115,7 +115,7 @@ export class TimeAndChord {
     readonly chord: Chord
   ) { }
 }
-type TimeAndAnalyzedMelody_Args = [TimeAndMelody, MelodyAnalysis]
+type TimeAndAnalyzedMelody_Args = [number, number, number, Time, MelodyAnalysis]
 const getArgsOfTimeAndAnalyzedMelody = (
   args
     : TimeAndAnalyzedMelody_Args
@@ -123,15 +123,22 @@ const getArgsOfTimeAndAnalyzedMelody = (
 ) => {
   if (args.length === 1) {
     const [e] = args;
-    return [new TimeAndMelody(e), new MelodyAnalysis(e.melody_analysis)] as TimeAndAnalyzedMelody_Args
+    return [e.begin, e.end, e.note, e.head, new MelodyAnalysis(e.melody_analysis)] as TimeAndAnalyzedMelody_Args
   }
   return args
 }
-export class TimeAndAnalyzedMelody extends TimeAndMelody {
+export class TimeAndAnalyzedMelody {
+  readonly begin: number
+  readonly end: number
+  readonly note: number
+  readonly head: Time
   readonly melody_analysis: MelodyAnalysis;
   constructor(e: TimeAndAnalyzedMelody);
   constructor(
-    e: TimeAndMelody,
+    begin: number,
+    end: number,
+    note: number,
+    head: Time,
     melody_analysis: MelodyAnalysis,
   );
   constructor(
@@ -139,13 +146,11 @@ export class TimeAndAnalyzedMelody extends TimeAndMelody {
       : TimeAndAnalyzedMelody_Args
       | [TimeAndAnalyzedMelody]
   ) {
-    const [e, melody_analysis] = getArgsOfTimeAndAnalyzedMelody(args);
-    super(
-      e.begin,
-      e.end,
-      e.note,
-      e.head,
-    );
+    const [begin, end, note, head, melody_analysis] = getArgsOfTimeAndAnalyzedMelody(args);
+    this.begin = begin
+    this.end = end
+    this.note = note
+    this.head = head
     this.melody_analysis = melody_analysis
   }
 

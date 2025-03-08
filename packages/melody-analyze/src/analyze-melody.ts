@@ -34,7 +34,10 @@ export const analyzeMelody = (
     );
 
     return new TimeAndAnalyzedMelody(
-      time_and_melody,
+      time_and_melody.begin,
+      time_and_melody.end,
+      time_and_melody.note,
+      time_and_melody.head,
       melody_analysis,
     );
   }).filter(e => isNaN(0 * e.note) === false);
