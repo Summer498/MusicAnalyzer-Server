@@ -32,6 +32,9 @@ export const demucs = (
       renameSync(e.tmp, e.dst_dir);
     }
   }
+  else {
+    console.log(`required file ${e.src} not exist`)
+  }
   return true;
 };
 
@@ -48,6 +51,9 @@ export const chordExtract = (
   else if (detectFile(e.src)) {
     makeNewDir(e.dst_dir);
     execSync(`./sh/callChordExtract.sh "${decodeURI(e.src)}" "${decodeURI(e.dst)}"`);
+  }
+  else {
+    console.log(`required file ${e.src} not exist`)
   }
   return true;
 };
@@ -66,6 +72,9 @@ export const chordToRoman = (
     makeNewDir(e.dst_dir);
     execSync(`node ./packages/chord-analyze-cli < "${e.src}" > "${e.dst}"`)
   }
+  else {
+    console.log(`required file ${e.src} not exist`)
+  }
   return true;
 };
 
@@ -82,6 +91,9 @@ export const f0ByCrepe = (
   else if (detectFile(e.src)) {
     makeNewDir(e.dst_dir);
     execSync(`./sh/callCrepe.sh "${song_name}"`);
+  }
+  else {
+    console.log(`required file ${e.src} not exist`)
   }
   return true;
 };
@@ -100,6 +112,9 @@ export const midiByCrepe = (
     makeNewDir(e.dst_dir);
     execSync(`./sh/callPostCrepe.sh "${song_name}"`);
   }
+  else {
+    console.log(`required file ${e.src} not exist`)
+  }
   return true;
 };
 
@@ -114,9 +129,19 @@ export const melodyByCrepe = (
     debug_log(`${decodeURI(e.dst)} already exist`);
     return false;
   }
-  else if (detectFile(e.src) && detectFile(chord_src)) {
-    makeNewDir(e.dst_dir);
-    execSync(`node ./packages/melody-analyze-cli -m "${e.src}" -r "${chord_src}" -o "${e.dst}" --sampling_rate 100`)
+  else {
+    const has_midi_src = detectFile(e.src);
+    const has_chord_src = detectFile(chord_src);
+    if (has_midi_src && has_chord_src) {
+      makeNewDir(e.dst_dir);
+      execSync(`node ./packages/melody-analyze-cli -m "${e.src}" -r "${chord_src}" -o "${e.dst}" --sampling_rate 100`)
+    }
+    else if (false === has_chord_src) {
+      console.log(`required file ${chord_src} not exist`)
+    }
+    else {
+      console.log(`required file ${e.src} not exist`)
+    }
   }
   return true;
 };
@@ -138,6 +163,9 @@ export const f0By_pYIN = (
     makeNewDir(img.dst_dir);
     execSync(`./sh/callPYIN2img.sh "${song_name}"`);
   }
+  else {
+    console.log(`required file ${e.src} not exist`)
+  }
   return true;
 };
 
@@ -154,6 +182,9 @@ export const midiBy_pYIN = (
   else if (detectFile(e.src)) {
     makeNewDir(e.dst_dir);
     execSync(`node ./packages/post-pyin "${e.src}" "${e.dst_dir}"`)
+  }
+  else {
+    console.log(`required file ${e.src} not exist`)
   }
   return true;
 };
@@ -173,6 +204,9 @@ export const melodyBy_pYIN = (
     const sr = 22050 / 1024;
     makeNewDir(e.dst_dir);
     execSync(`node ./packages/melody-analyze-cli -m "${e.src}" -r "${chord_src}" -o "${e.dst}" --sampling_rate ${sr}`)
+  }
+  else {
+    console.log(`required file ${e.src} not exist`)
   }
   return true;
 };
