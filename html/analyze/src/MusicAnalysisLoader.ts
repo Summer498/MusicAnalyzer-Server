@@ -51,9 +51,9 @@ const justLoad = (tune_name: string) => {
       .catch(e => fetch(`${resources}/${tune_name}/analyzed/chord/roman.json?update`)
         .then(res => res.json() as Promise<RomanAnalysisData>)
         .then(res => RomanAnalysisData.instantiate(res))
-        .catch(e => { console.error(e); return undefined; }),
       )
-      .then(res => res?.body),
+      .then(res => res?.body)
+      .catch(e => { console.error(e); return []; }),
     fetch(`${resources}/${tune_name}/analyzed/melody/crepe/manalyze.json`)
       .then(res => res.json() as Promise<MelodyAnalysisData>)
       .then(res => {
@@ -62,11 +62,11 @@ const justLoad = (tune_name: string) => {
       })
       .catch(e => fetch(`${resources}/${tune_name}/analyzed/melody/crepe/manalyze.json?update`)
         .then(res => res.json() as Promise<MelodyAnalysisData>)
-        .then(res => (console.log(res), MelodyAnalysisData.instantiate(res)))
-        .catch(e => { console.error(e); return undefined; }),
+        .then(res => MelodyAnalysisData.instantiate(res))
       )
       .then(res => res?.body)
-      .then(res => res?.map(e => ({ ...e, head: e.time })) as TimeAndAnalyzedMelody[]),
+      .then(res => res?.map(e => ({ ...e, head: e.time })) as TimeAndAnalyzedMelody[])
+      .catch(e => { console.error(e); return []; }),
     getJSONfromXML<MusicXML>(`${resources}/gttm-example/${tune_name}/MSC-${tune_name}.xml`),
     getJSONfromXML<GroupingStructure>(`${resources}/gttm-example/${tune_name}/GPR-${tune_name}.xml`),
     getJSONfromXML<MetricalStructure>(`${resources}/gttm-example/${tune_name}/MPR-${tune_name}.xml`),
