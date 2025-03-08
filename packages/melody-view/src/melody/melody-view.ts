@@ -28,9 +28,9 @@ export class MelodyView extends MVVM_View<MelodyModel, "rect"> {
   updateColor() {
     this.#getColor(this.model.melody_analysis.implication_realization) || "rgb(0, 0, 0)";
   }
-  updateX() { this.svg.setAttribute("x", String(this.model.begin * NoteSize.value)); }
+  updateX() { this.svg.setAttribute("x", String(this.model.time.begin * NoteSize.value)); }
   updateY() { this.svg.setAttribute("y", String(isNaN(this.model.note) ? -99 : (PianoRollBegin.value - this.model.note) * BlackKeyPrm.height)); }
-  updateWidth() { this.svg.setAttribute("width", String(31 / 32 * this.model.duration * NoteSize.value)); }
+  updateWidth() { this.svg.setAttribute("width", String(31 / 32 * this.model.time.duration * NoteSize.value)); }
   updateHeight() { this.svg.setAttribute("height", String(BlackKeyPrm.height)); }
   onWindowResized() {
     this.updateX();

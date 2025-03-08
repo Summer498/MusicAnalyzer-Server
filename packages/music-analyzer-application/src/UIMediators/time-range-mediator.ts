@@ -14,7 +14,7 @@ export class TimeRangeMediator extends SliderMediator<{ onUpdate: () => void }> 
     window_subscriber: WindowReflectableRegistry,
   ) {
     super(slider, [audio_subscriber, window_subscriber]);
-    const length = last(last(melody.children).children).model.end;
+    const length = last(last(melody.children).children).model.time.end;
     if (length > 30) {
       const window = 30;  // 秒のつもりだが, 秒になってない感じがする
       const ratio = window / length;
