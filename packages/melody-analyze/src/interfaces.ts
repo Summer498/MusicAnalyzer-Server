@@ -32,18 +32,40 @@ export class TimeAndChord {
     readonly chord: Chord
   ) { }
 }
+type TimeAndAnalyzedMelody_Args = [TimeAndMelody, MelodyAnalysis]
+const getArgsOfTimeAndAnalyzedMelody = (
+  args
+    : TimeAndAnalyzedMelody_Args
+    | [TimeAndAnalyzedMelody]
+) => {
+  if (args.length === 1) {
+    const [e] = args;
+    return [new TimeAndMelody(e.begin, e.end, e.note, e.head), e.melody_analysis] as TimeAndAnalyzedMelody_Args
+  }
+  return args
+}
 export class TimeAndAnalyzedMelody extends TimeAndMelody {
+  readonly melody_analysis: MelodyAnalysis;
+  constructor(e: TimeAndAnalyzedMelody);
   constructor(
     e: TimeAndMelody,
-    readonly melody_analysis: MelodyAnalysis,
+    melody_analysis: MelodyAnalysis,
+  );
+  constructor(
+    ...args
+      : TimeAndAnalyzedMelody_Args
+      | [TimeAndAnalyzedMelody]
   ) {
+    const [e, melody_analysis] = getArgsOfTimeAndAnalyzedMelody(args);
     super(
       e.begin,
       e.end,
       e.note,
       e.head,
     );
+    this.melody_analysis = melody_analysis
   }
+
 }
 
 const v = "25.03.07.10.55";
@@ -56,6 +78,6 @@ export class MelodyAnalysisData {
     return e.version === v;
   }
   static instantiate(e: MelodyAnalysisData) {
-    return new MelodyAnalysisData(e.body.map(e => new TimeAndAnalyzedMelody(new TimeAndMelody(e.begin, e.end, e.note, e.head), e.melody_analysis)))
+    return new MelodyAnalysisData(e.body.map(e => new TimeAndAnalyzedMelody(e)))
   }
 }
