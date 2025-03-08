@@ -1,29 +1,30 @@
-export class Directories {
+export class Directories<
+  S extends string | undefined,
+  T extends string | undefined,
+  DD extends string | undefined,
+  D extends string | undefined,
+> {
   constructor(
-    readonly src: string,
-    readonly dst: string,
+    readonly src: S,
+    readonly tmp: T,
+    readonly dst_dir: DD,
+    readonly dst: D,
   ) { }
 }
 export class DataDirectories {
-  readonly chord_ext: Directories;
-  readonly chord_to_roman: Directories;
+  readonly chord;
+  readonly roman;
 
-  readonly demucs: Directories;
-  readonly separate: Directories;
-  readonly demucs_dir: string;
+  readonly demucs;
 
-  readonly crepe: Directories;
-  readonly crepe_tmp: string;
+  readonly f0_crepe;
+  readonly midi_crepe;
+  readonly melody_crepe;
 
-  readonly post_crepe: Directories;
-
-  readonly pyin: Directories;
-  readonly post_pyin_dir: string;
-  readonly pyin_img: Directories;
-  readonly post_pyin: Directories;
-
-  readonly melody_analyze_crepe: Directories;
-  readonly melody_analyze_pyin: Directories;
+  readonly f0_pyin;
+  readonly pyin_img;
+  readonly midi_pyin;
+  readonly melody_pyin;
 
   constructor(song_name: string, file_path: string) {
     const resource = `./resources/${song_name}`;
@@ -34,23 +35,19 @@ export class DataDirectories {
     const crepe = `${melody}/crepe`;
     const pyin = `${melody}/pyin`;
 
-    this.chord_ext = new Directories(file_path, `${chord}/chords.json`);
-    this.chord_to_roman = new Directories(this.chord_ext.dst, `${chord}/roman.json`);
+    this.chord = new Directories(file_path, undefined, chord, `${chord}/chords.json`);
+    this.roman = new Directories(this.chord.dst, undefined, chord, `${chord}/roman.json`);
 
-    this.separate = new Directories(file_path, `separated/htdemucs/${song_name}`);
-    this.demucs_dir = `${demucs}`;
-    this.demucs = new Directories(file_path, `${demucs}/vocals.wav`);
+    this.demucs = new Directories(file_path, `separated/htdemucs/${song_name}`, demucs, `${demucs}/vocals.wav`);
 
-    this.crepe = new Directories(this.demucs.dst, `${crepe}/vocals.f0.csv`);
-    this.crepe_tmp = `${this.demucs_dir}/vocals.f0.csv`;
-    this.post_crepe = new Directories(this.crepe.dst, `${crepe}/vocals.midi.json`);
-    this.melody_analyze_crepe = new Directories(this.post_crepe.dst, `${crepe}/manalyze.json`);
+    this.f0_crepe = new Directories(this.demucs.dst, `${crepe}/vocals.f0.csv`, crepe, `${crepe}/vocals.f0.csv`);
+    this.midi_crepe = new Directories(this.f0_crepe.dst, undefined, crepe, `${crepe}/vocals.midi.json`);
+    this.melody_crepe = new Directories(this.midi_crepe.dst, undefined, crepe, `${crepe}/manalyze.json`);
 
-    this.pyin = new Directories(this.separate.dst, `${pyin}/vocals.f0.json`);
-    this.post_pyin_dir = pyin;
-    this.post_pyin = new Directories(this.pyin.dst, `${pyin}/vocals.midi.json`);
-    this.melody_analyze_pyin = new Directories(this.post_pyin.dst, `${pyin}/manalyze.json`);
-    this.pyin_img = new Directories(this.pyin.dst, `${pyin}/vocals.f0.png`);
+    this.f0_pyin = new Directories(this.demucs.dst, undefined, pyin, `${pyin}/vocals.f0.json`);
+    this.midi_pyin = new Directories(this.f0_pyin.dst, undefined, pyin, `${pyin}/vocals.midi.json`);
+    this.melody_pyin = new Directories(this.midi_pyin.dst, undefined, pyin, `${pyin}/manalyze.json`);
+    this.pyin_img = new Directories(this.f0_pyin.dst, undefined, pyin, `${pyin}/vocals.f0.png`);
 
   }
 }

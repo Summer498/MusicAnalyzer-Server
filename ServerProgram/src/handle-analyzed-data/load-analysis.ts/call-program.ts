@@ -1,100 +1,180 @@
 import { execSync } from "child_process";
 import { Directories } from "../data-directories";
 import { detectFile } from "../detect-file";
-import { runProcessWithCache } from "../run-process-with-cache";
-import { rename } from "./util";
+import { existsSync, renameSync, rmdirSync } from "fs";
+import { makeNewDir } from "../make-new-dir";
 
 const python = `MUSIC_ANALYZER/bin/python`;
 const activate = '. /MUSIC_ANALYZER/bin/activate';
 
-export const demucs = (force: boolean, directories: Directories, separate_dir: string) => {
+type DirectoriesWithTemp = Directories<string, string, string, string>;
+type DirectoriesWithoutTemp = Directories<string, undefined, string, string>;
+
+export const demucs = (
+  force: boolean,
+  directories: DirectoriesWithTemp,
+  song_name: string
+) => {
   const e = directories;
   console.log("demucs")
-  if (detectFile(e.src)) {
-    execSync(`./sh/callDemucs.sh "${decodeURI(e.src)}" "${decodeURI(e.dst)}"`);
-    /*
-      if (runProcessWithCache(false, separate_dir, `${activate} && ${python} -m demucs -d cuda "${e.src}" >&2"`)) {
-        rename(separate_dir, e.dst);
-      }
-    */
+  if (force === false && existsSync(decodeURI(e.dst))) {
+    console.log(`${decodeURI(e.dst)} already exist`);
+    return false;
   }
+  else if (detectFile(e.src)) {
+    makeNewDir(e.dst_dir);
+    execSync(`./sh/callDemucs.sh "${decodeURI(e.src)}" "${decodeURI(e.dst)}"`);
+    if (existsSync(e.tmp)) {
+      if (existsSync(e.dst)) { rmdirSync(e.dst_dir) }
+      renameSync(e.tmp, e.dst_dir);
+    }
+  }
+  return true;
 };
 
-export const chordExtract = (force: boolean, directories: Directories) => {
+export const chordExtract = (
+  force: boolean,
+  directories: DirectoriesWithoutTemp,
+  song_name: string
+) => {
   const e = directories;
   console.log("chordExtract")
-  if (detectFile(e.src)) {
-    execSync(`./sh/callChordExtract.sh "${decodeURI(e.src)}" "${decodeURI(e.dst)}"`);
-    /*
-      runProcessWithCache(force, e.dst, `${activate} && ${python} -m chordExtract "${e.src}" "${e.dst}"`);
-    */
+  if (force === false && existsSync(decodeURI(e.dst))) {
+    console.log(`${decodeURI(e.dst)} already exist`);
+    return false;
   }
+  else if (detectFile(e.src)) {
+    makeNewDir(e.dst_dir);
+    execSync(`./sh/callChordExtract.sh "${decodeURI(e.src)}" "${decodeURI(e.dst)}"`);
+  }
+  return true;
 };
 
-export const chordToRoman = (force: boolean, directories: Directories) => {
+export const chordToRoman = (
+  force: boolean,
+  directories: DirectoriesWithoutTemp,
+  song_name: string
+) => {
   const e = directories;
   console.log("chordToRoman")
-  if (detectFile(e.src)) {
-    runProcessWithCache(true, e.dst, `node ./packages/chord-analyze-cli < "${e.src}" > "${e.dst}"`);
+  if (force === false && existsSync(decodeURI(e.dst))) {
+    console.log(`${decodeURI(e.dst)} already exist`);
+    return false;
   }
+  else if (detectFile(e.src)) {
+    makeNewDir(e.dst_dir);
+    execSync(`node ./packages/chord-analyze-cli < "${e.src}" > "${e.dst}"`)
+  }
+  return true;
 };
 
-export const crepe = (force: boolean, directories: Directories, tmp: string) => {
+export const f0ByCrepe = (
+  force: boolean,
+  directories: DirectoriesWithTemp,
+  song_name: string
+) => {
   const e = directories;
   console.log("CREPE")
-  if (detectFile(e.src)) {
-    execSync(`./sh/callCrepe.sh "${decodeURI(e.src)}" "${decodeURI(e.dst)}"`);
-    /*
-      if (runProcessWithCache(force, e.dst, `"${activate} && ${python} -m crepe "${e.src}" >&2"`)) {
-        rename(e.dst, tmp);
-      }
-    */
+  if (force === false && existsSync(decodeURI(e.dst))) {
+    console.log(`${decodeURI(e.dst)} already exist`);
+    return false;
   }
+  else if (detectFile(e.src)) {
+    makeNewDir(e.dst_dir);
+    execSync(`./sh/callCrepe.sh "${song_name}"`);
+  }
+  return true;
 };
 
-export const postCrepe = (force: boolean, directories: Directories) => {
+export const midiByCrepe = (
+  force: boolean,
+  directories: DirectoriesWithoutTemp,
+  song_name: string
+) => {
   const e = directories;
   console.log("postCREPE")
-  if (detectFile(e.src)) {
-    execSync(`./sh/callPostCrepe.sh "${decodeURI(e.src)}" "${decodeURI(e.dst)}"`);
-    /*
-      runProcessWithCache(force, e.dst, `${activate} && ${python} -m post-crepe "${e.src}" -o "${e.dst}"`);
-    */
+  if (force === false && existsSync(decodeURI(e.dst))) {
+    console.log(`${decodeURI(e.dst)} already exist`);
+    return false;
   }
+  else if (detectFile(e.src)) {
+    makeNewDir(e.dst_dir);
+    execSync(`./sh/callPostCrepe.sh "${song_name}"`);
+  }
+  return true;
 };
 
-export const analyzeMelodyFromCrepeF0 = (force: boolean, directories: Directories, chord_src: string) => {
+export const melodyByCrepe = (
+  force: boolean,
+  directories: DirectoriesWithoutTemp,
+  chord_src: string,
+  song_name: string
+) => {
   const e = directories;
   console.log("analyzeMelodyFromCrepeF0")
-  if (detectFile(e.src) && detectFile(chord_src)) {
-    runProcessWithCache(force, e.dst, `node ./packages/melody-analyze-cli -m "${e.src}" -r "${chord_src}" -o "${e.dst}" --sampling_rate 100`);
+  if (force === false && existsSync(decodeURI(e.dst))) {
+    console.log(`${decodeURI(e.dst)} already exist`);
+    return false;
   }
+  else if (detectFile(e.src) && detectFile(chord_src)) {
+    makeNewDir(e.dst_dir);
+    execSync(`node ./packages/melody-analyze-cli -m "${e.src}" -r "${chord_src}" -o "${e.dst}" --sampling_rate 100`)
+  }
+  return true;
 };
 
-export const pyin = (force: boolean, directories: Directories, img_dir: Directories) => {
+export const f0By_pYIN = (
+  force: boolean,
+  directories: DirectoriesWithoutTemp,
+  img: DirectoriesWithoutTemp,
+  song_name: string
+) => {
   const e = directories;
-  if (detectFile(e.src)) {
-    execSync(`./sh/callPYIN.sh "${decodeURI(e.src)}" "${decodeURI(e.dst)}"`);
-    execSync(`./sh/callPYIN2img.sh ${img_dir.src} ${img_dir.dst}`);
-    /*
-      if (runProcessWithCache(force, e.dst, `${activate} && ${python} -m pyin "${e.src}" --fmin 128 --fmax 1024 -o "${e.dst}"`)) {
-        runProcessWithCache(force, img_dir.dst, `${activate} && ${python} -m pyin2img "${img_dir.src}" --audio_file "${e.src}" -o "${img_dir.dst}"`);
-      }
-    */
+  if (force === false && existsSync(decodeURI(e.dst))) {
+    console.log(`${decodeURI(e.dst)} already exist`);
+    return false;
   }
+  else if (detectFile(e.src)) {
+    makeNewDir(e.dst_dir);
+    execSync(`./sh/callPYIN.sh "${song_name}"`);
+    makeNewDir(img.dst_dir);
+    execSync(`./sh/callPYIN2img.sh "${song_name}"`);
+  }
+  return true;
 };
 
-export const postPYIN = (force: boolean, directories: Directories, post_pyin_dir: string) => {
+export const midiBy_pYIN = (
+  force: boolean,
+  directories: DirectoriesWithoutTemp,
+  song_name: string
+) => {
   const e = directories;
-  if (detectFile(e.src)) {
-    runProcessWithCache(force, e.dst, `node ./packages/post-pyin "${e.src}" "${post_pyin_dir}"`);
+  if (force === false && existsSync(decodeURI(e.dst))) {
+    console.log(`${decodeURI(e.dst)} already exist`);
+    return false;
   }
+  else if (detectFile(e.src)) {
+    makeNewDir(e.dst_dir);
+    execSync(`node ./packages/post-pyin "${e.src}" "${e.dst_dir}"`)
+  }
+  return true;
 };
 
-export const analyzeMelodyFromPYINf0 = (force: boolean, directories: Directories, chord_src: string) => {
+export const melodyBy_pYIN = (
+  force: boolean,
+  directories: DirectoriesWithoutTemp,
+  chord_src: string,
+  song_name: string
+) => {
   const e = directories;
-  if (detectFile(e.src) && detectFile(chord_src)) {
+  if (force === false && existsSync(decodeURI(e.dst))) {
+    console.log(`${decodeURI(e.dst)} already exist`);
+    return false;
+  }
+  else if (detectFile(e.src) && detectFile(chord_src)) {
     const sr = 22050 / 1024;
-    runProcessWithCache(force, e.dst, `node ./packages/melody-analyze-cli -m "${e.src}" -r "${chord_src}" -o "${e.dst}" --sampling_rate ${sr}`);
+    makeNewDir(e.dst_dir);
+    execSync(`node ./packages/melody-analyze-cli -m "${e.src}" -r "${chord_src}" -o "${e.dst}" --sampling_rate ${sr}`)
   }
+  return true;
 };
