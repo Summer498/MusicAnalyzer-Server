@@ -6,6 +6,7 @@ import { MusicXML } from "@music-analyzer/musicxml";
 import { getJSON, getJSONfromXML } from "./DataFetcher";
 import { AnalyzedMusicData, GTTMData } from "./MusicAnalyzerWindow";
 import { Time } from "@music-analyzer/time-and";
+import { MelodyAnalysisData } from "@music-analyzer/melody-analyze";
 
 const resources = `/MusicAnalyzer-server/resources`;
 
@@ -50,7 +51,14 @@ const justLoad = (tune_name: string) => {
         .then(res => res.body)
         .catch(e => { console.error(e); return undefined; }),
       ),
-    getJSON<TimeAndAnalyzedMelody[]>(`${resources}/${tune_name}/analyzed/melody/crepe/manalyze.json?update`)
+    fetch(`${resources}/${tune_name}/analyzed/melody/crepe/manalyze.json`)
+      .then(res => res.json() as Promise<MelodyAnalysisData>)
+      .then(res => { if (MelodyAnalysisData.checkVersion(res)) { return res.body } else { throw new Error(`Version check: fault in MelodyAnalysisData`) } })
+      .catch(e => fetch(`${resources}/${tune_name}/analyzed/melody/crepe/manalyze.json?update`)
+        .then(res => res.json() as Promise<MelodyAnalysisData>)
+        .then(res => (console.log(res), res.body))
+        .catch(e => { console.error(e); return undefined; }),
+      )
       .then(res => res?.map(e => ({ ...e, head: new Time(e.begin, e.end) })) as TimeAndAnalyzedMelody[]),
     getJSONfromXML<MusicXML>(`${resources}/gttm-example/${tune_name}/MSC-${tune_name}.xml`),
     getJSONfromXML<GroupingStructure>(`${resources}/gttm-example/${tune_name}/GPR-${tune_name}.xml`),

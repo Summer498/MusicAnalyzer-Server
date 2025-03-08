@@ -1,3 +1,5 @@
+export { MelodyAnalysisData } from "./src/interfaces";
+
 export { analyzeMelody } from "./src/analyze-melody";
 export { getTimeAndMelody } from "./src/get-time-and-melody";
 export {
