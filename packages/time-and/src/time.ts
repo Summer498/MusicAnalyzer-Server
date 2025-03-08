@@ -1,11 +1,12 @@
+type Time_Args = [number, number]
 const getArgs = (
-  ...args:
-    [Time]
-    | [number, number]
+  ...args
+    : Time_Args
+    | [Time]
 ) => {
   if (args.length === 1) {
     const [e] = args;
-    return [e.begin, e.end];
+    return [e.begin, e.end] as Time_Args;
   }
   else {
     return args
@@ -19,13 +20,13 @@ export class Time {
   constructor(time: Time);
   constructor(begin: number, end: number);
   constructor(
-    ...args:
-      [Time]
-      | [number, number]
+    ...args
+      : Time_Args
+      | [Time]
   ) {
-    const e = getArgs(...args);
-    this.begin = e[0];
-    this.end = e[1];
+    const [begin, end] = getArgs(...args);
+    this.begin = begin;
+    this.end = end;
   }
   map(func: (e: number) => number) {
     return new Time(func(this.begin), func(this.end));
