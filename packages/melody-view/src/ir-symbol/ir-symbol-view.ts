@@ -27,7 +27,7 @@ export class IRSymbolView extends MVVM_View<IRSymbolModel, "text"> {
   updateColor() {
     this.#getColor(this.model.archetype) || "rgb(0, 0, 0)";
   }
-  updateX() { this.svg.setAttribute("x", String(this.model.begin * NoteSize.value + this.model.duration / 2 * NoteSize.value)); }
+  updateX() { this.svg.setAttribute("x", String(this.model.time.begin * NoteSize.value + this.model.time.duration / 2 * NoteSize.value)); }
   updateY() { this.svg.setAttribute("y", String(this.y)); }
   onWindowResized() {
     this.updateX();
