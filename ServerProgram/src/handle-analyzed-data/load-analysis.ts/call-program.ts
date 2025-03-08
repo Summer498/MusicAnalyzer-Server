@@ -9,8 +9,9 @@ const activate = '. /MUSIC_ANALYZER/bin/activate';
 
 export const demucs = (force: boolean, directories: Directories, separate_dir: string) => {
   const e = directories;
+  console.log("demucs")
   if (detectFile(e.src)) {
-    execSync(`./sh/callDemucs.sh ${decodeURI(e.src)} ${decodeURI(e.dst)}`);
+    execSync(`./sh/callDemucs.sh "${decodeURI(e.src)}" "${decodeURI(e.dst)}"`);
     /*
       if (runProcessWithCache(false, separate_dir, `${activate} && ${python} -m demucs -d cuda "${e.src}" >&2"`)) {
         rename(separate_dir, e.dst);
@@ -21,8 +22,9 @@ export const demucs = (force: boolean, directories: Directories, separate_dir: s
 
 export const chordExtract = (force: boolean, directories: Directories) => {
   const e = directories;
+  console.log("chordExtract")
   if (detectFile(e.src)) {
-    execSync(`./sh/callChordExtract.sh ${decodeURI(e.src)} ${decodeURI(e.dst)}`);
+    execSync(`./sh/callChordExtract.sh "${decodeURI(e.src)}" "${decodeURI(e.dst)}"`);
     /*
       runProcessWithCache(force, e.dst, `${activate} && ${python} -m chordExtract "${e.src}" "${e.dst}"`);
     */
@@ -31,6 +33,7 @@ export const chordExtract = (force: boolean, directories: Directories) => {
 
 export const chordToRoman = (force: boolean, directories: Directories) => {
   const e = directories;
+  console.log("chordToRoman")
   if (detectFile(e.src)) {
     runProcessWithCache(true, e.dst, `node ./packages/chord-analyze-cli < "${e.src}" > "${e.dst}"`);
   }
@@ -38,8 +41,9 @@ export const chordToRoman = (force: boolean, directories: Directories) => {
 
 export const crepe = (force: boolean, directories: Directories, tmp: string) => {
   const e = directories;
+  console.log("CREPE")
   if (detectFile(e.src)) {
-    execSync(`./sh/callCrepe.sh ${decodeURI(e.src)} ${decodeURI(e.dst)}`);
+    execSync(`./sh/callCrepe.sh "${decodeURI(e.src)}" "${decodeURI(e.dst)}"`);
     /*
       if (runProcessWithCache(force, e.dst, `"${activate} && ${python} -m crepe "${e.src}" >&2"`)) {
         rename(e.dst, tmp);
@@ -50,8 +54,9 @@ export const crepe = (force: boolean, directories: Directories, tmp: string) => 
 
 export const postCrepe = (force: boolean, directories: Directories) => {
   const e = directories;
+  console.log("postCREPE")
   if (detectFile(e.src)) {
-    execSync(`./sh/callPostCrepe.sh ${decodeURI(e.src)} ${decodeURI(e.dst)}`);
+    execSync(`./sh/callPostCrepe.sh "${decodeURI(e.src)}" "${decodeURI(e.dst)}"`);
     /*
       runProcessWithCache(force, e.dst, `${activate} && ${python} -m post-crepe "${e.src}" -o "${e.dst}"`);
     */
@@ -60,6 +65,7 @@ export const postCrepe = (force: boolean, directories: Directories) => {
 
 export const analyzeMelodyFromCrepeF0 = (force: boolean, directories: Directories, chord_src: string) => {
   const e = directories;
+  console.log("analyzeMelodyFromCrepeF0")
   if (detectFile(e.src) && detectFile(chord_src)) {
     runProcessWithCache(force, e.dst, `node ./packages/melody-analyze-cli -m "${e.src}" -r "${chord_src}" -o "${e.dst}" --sampling_rate 100`);
   }
@@ -68,7 +74,7 @@ export const analyzeMelodyFromCrepeF0 = (force: boolean, directories: Directorie
 export const pyin = (force: boolean, directories: Directories, img_dir: Directories) => {
   const e = directories;
   if (detectFile(e.src)) {
-    execSync(`./sh/callPYIN.sh ${decodeURI(e.src)} ${decodeURI(e.dst)}`);
+    execSync(`./sh/callPYIN.sh "${decodeURI(e.src)}" "${decodeURI(e.dst)}"`);
     execSync(`./sh/callPYIN2img.sh ${img_dir.src} ${img_dir.dst}`);
     /*
       if (runProcessWithCache(force, e.dst, `${activate} && ${python} -m pyin "${e.src}" --fmin 128 --fmax 1024 -o "${e.dst}"`)) {
