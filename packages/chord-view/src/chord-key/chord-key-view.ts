@@ -20,7 +20,7 @@ export class ChordKeyView extends MVVM_View<ChordKeyModel, "text"> {
     this.updateX();
     this.updateY();
   }
-  updateX() { this.svg.setAttribute("x", String(this.model.begin * NoteSize.value)); }
+  updateX() { this.svg.setAttribute("x", String(this.model.time.begin * NoteSize.value)); }
   updateY() { this.svg.setAttribute("y", String(this.y)); }
   onWindowResized() {
     this.updateX();
