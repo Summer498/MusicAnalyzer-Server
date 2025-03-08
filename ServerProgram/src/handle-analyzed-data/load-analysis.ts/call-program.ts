@@ -10,15 +10,18 @@ const activate = '. /MUSIC_ANALYZER/bin/activate';
 type DirectoriesWithTemp = Directories<string, string, string, string>;
 type DirectoriesWithoutTemp = Directories<string, undefined, string, string>;
 
+const debug_log = (message: string) => {
+  if (false) { console.log(message) }
+}
+
 export const demucs = (
   force: boolean,
   directories: DirectoriesWithTemp,
-  song_name: string
+  song_name: string,
 ) => {
   const e = directories;
-  console.log("demucs")
   if (force === false && existsSync(decodeURI(e.dst))) {
-    console.log(`${decodeURI(e.dst)} already exist`);
+    debug_log(`${decodeURI(e.dst)} already exist`);
     return false;
   }
   else if (detectFile(e.src)) {
@@ -38,9 +41,8 @@ export const chordExtract = (
   song_name: string
 ) => {
   const e = directories;
-  console.log("chordExtract")
   if (force === false && existsSync(decodeURI(e.dst))) {
-    console.log(`${decodeURI(e.dst)} already exist`);
+    debug_log(`${decodeURI(e.dst)} already exist`);
     return false;
   }
   else if (detectFile(e.src)) {
@@ -56,9 +58,8 @@ export const chordToRoman = (
   song_name: string
 ) => {
   const e = directories;
-  console.log("chordToRoman")
   if (force === false && existsSync(decodeURI(e.dst))) {
-    console.log(`${decodeURI(e.dst)} already exist`);
+    debug_log(`${decodeURI(e.dst)} already exist`);
     return false;
   }
   else if (detectFile(e.src)) {
@@ -74,9 +75,8 @@ export const f0ByCrepe = (
   song_name: string
 ) => {
   const e = directories;
-  console.log("CREPE")
   if (force === false && existsSync(decodeURI(e.dst))) {
-    console.log(`${decodeURI(e.dst)} already exist`);
+    debug_log(`${decodeURI(e.dst)} already exist`);
     return false;
   }
   else if (detectFile(e.src)) {
@@ -92,9 +92,8 @@ export const midiByCrepe = (
   song_name: string
 ) => {
   const e = directories;
-  console.log("postCREPE")
   if (force === false && existsSync(decodeURI(e.dst))) {
-    console.log(`${decodeURI(e.dst)} already exist`);
+    debug_log(`${decodeURI(e.dst)} already exist`);
     return false;
   }
   else if (detectFile(e.src)) {
@@ -111,9 +110,8 @@ export const melodyByCrepe = (
   song_name: string
 ) => {
   const e = directories;
-  console.log("analyzeMelodyFromCrepeF0")
   if (force === false && existsSync(decodeURI(e.dst))) {
-    console.log(`${decodeURI(e.dst)} already exist`);
+    debug_log(`${decodeURI(e.dst)} already exist`);
     return false;
   }
   else if (detectFile(e.src) && detectFile(chord_src)) {
@@ -131,7 +129,7 @@ export const f0By_pYIN = (
 ) => {
   const e = directories;
   if (force === false && existsSync(decodeURI(e.dst))) {
-    console.log(`${decodeURI(e.dst)} already exist`);
+    debug_log(`${decodeURI(e.dst)} already exist`);
     return false;
   }
   else if (detectFile(e.src)) {
@@ -150,7 +148,7 @@ export const midiBy_pYIN = (
 ) => {
   const e = directories;
   if (force === false && existsSync(decodeURI(e.dst))) {
-    console.log(`${decodeURI(e.dst)} already exist`);
+    debug_log(`${decodeURI(e.dst)} already exist`);
     return false;
   }
   else if (detectFile(e.src)) {
@@ -168,7 +166,7 @@ export const melodyBy_pYIN = (
 ) => {
   const e = directories;
   if (force === false && existsSync(decodeURI(e.dst))) {
-    console.log(`${decodeURI(e.dst)} already exist`);
+    debug_log(`${decodeURI(e.dst)} already exist`);
     return false;
   }
   else if (detectFile(e.src) && detectFile(chord_src)) {
