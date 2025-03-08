@@ -11,7 +11,7 @@ const _loadRomanAnalysis = (update: boolean, song_name: string, file_path: strin
   const force = false;
   const e = new DataDirectories(song_name, file_path);
 
-  chordExtract(force, e.chord_ext);
+  chordExtract(false, e.chord_ext);
   chordToRoman(update, e.chord_to_roman);
 };
 
@@ -21,9 +21,9 @@ const _loadAnalysisFromCREPE = (update: boolean, song_name: string, file_path: s
   chordExtract(false, e.chord_ext);
   chordToRoman(false, e.chord_to_roman);
 
-  demucs(force, e.demucs, e.separate_dir);
-  crepe(force, e.crepe, e.crepe_tmp);
-  postCrepe(force, e.post_crepe);
+  demucs(false, e.demucs, e.demucs_dir);
+  crepe(false, e.crepe, e.crepe_tmp);
+  postCrepe(false, e.post_crepe);
   analyzeMelodyFromCrepeF0(update, e.melody_analyze_crepe, e.chord_to_roman.dst);
 };
 
@@ -33,9 +33,9 @@ const _loadAnalysisFromPYIN = (update: boolean, song_name: string, file_path: st
   chordExtract(false, e.chord_ext);
   chordToRoman(false, e.chord_to_roman);
 
-  demucs(force, e.demucs, e.separate_dir);
-  pyin(force, e.pyin, e.pyin_img);
-  postPYIN(force, e.post_pyin, e.post_pyin_dir);
+  demucs(false, e.demucs, e.demucs_dir);
+  pyin(false, e.pyin, e.pyin_img);
+  postPYIN(false, e.post_pyin, e.post_pyin_dir);
   analyzeMelodyFromPYINf0(update, e.melody_analyze_pyin, e.chord_to_roman.dst);
 };
 
