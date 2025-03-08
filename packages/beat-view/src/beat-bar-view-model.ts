@@ -13,9 +13,9 @@ export class BeatBarVM extends MVVM_ViewModel<BeatBarModel, BeatBarView> {
     this.sound_reserved = false;
   }
   beepBeat() {
-    if (NowAt.value <= this.model.begin && this.model.begin < NowAt.value + reservation_range) {
+    if (NowAt.value <= this.model.time.begin && this.model.time.begin < NowAt.value + reservation_range) {
       if (this.sound_reserved === false) {
-        play([220], this.model.begin - NowAt.value, 0.125);
+        play([220], this.model.time.begin - NowAt.value, 0.125);
         this.sound_reserved = true;
         setTimeout(() => { this.sound_reserved = false; }, reservation_range * 1000);
       }

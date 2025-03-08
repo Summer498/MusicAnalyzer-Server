@@ -16,8 +16,8 @@ export class BeatBarView extends MVVM_View<BeatBarModel, "line"> {
     this.updateY();
   }
   updateX() {
-    this.svg.setAttribute("x1", String(this.model.begin * NoteSize.value));
-    this.svg.setAttribute("x2", String(this.model.begin * NoteSize.value));
+    this.svg.setAttribute("x1", String(this.model.time.begin * NoteSize.value));
+    this.svg.setAttribute("x2", String(this.model.time.begin * NoteSize.value));
 
   }
   updateY() {
