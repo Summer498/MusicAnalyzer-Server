@@ -55,4 +55,7 @@ export class MelodyAnalysisData {
   static checkVersion(e: MelodyAnalysisData) {
     return e.version === v;
   }
+  static instantiate(e: MelodyAnalysisData) {
+    return new MelodyAnalysisData(e.body.map(e => new TimeAndAnalyzedMelody(new TimeAndMelody(e.begin, e.end, e.note, e.head), e.melody_analysis)))
+  }
 }

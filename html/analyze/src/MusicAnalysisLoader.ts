@@ -58,14 +58,15 @@ const justLoad = (tune_name: string) => {
     fetch(`${resources}/${tune_name}/analyzed/melody/crepe/manalyze.json`)
       .then(res => res.json() as Promise<MelodyAnalysisData>)
       .then(res => {
-        if (MelodyAnalysisData.checkVersion(res)) { return res.body }
+        if (MelodyAnalysisData.checkVersion(res)) { return MelodyAnalysisData.instantiate(res) }
         else { throw new Error(`Version check: fault in MelodyAnalysisData`) }
       })
       .catch(e => fetch(`${resources}/${tune_name}/analyzed/melody/crepe/manalyze.json?update`)
         .then(res => res.json() as Promise<MelodyAnalysisData>)
-        .then(res => (console.log(res), res.body))
+        .then(res => (console.log(res), MelodyAnalysisData.instantiate(res)))
         .catch(e => { console.error(e); return undefined; }),
       )
+      .then(res => res?.body)
       .then(res => res?.map(e => ({ ...e, head: new Time(e.begin, e.end) })) as TimeAndAnalyzedMelody[]),
     getJSONfromXML<MusicXML>(`${resources}/gttm-example/${tune_name}/MSC-${tune_name}.xml`),
     getJSONfromXML<GroupingStructure>(`${resources}/gttm-example/${tune_name}/GPR-${tune_name}.xml`),

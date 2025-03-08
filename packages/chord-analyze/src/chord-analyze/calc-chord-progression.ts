@@ -1,4 +1,3 @@
-import { Time } from "@music-analyzer/time-and";
 import { ChordProgression } from "../key-estimation";
 import { remove_item } from "./remove-item";
 import { select_suitable_progression } from "./select-suitable-progression";
