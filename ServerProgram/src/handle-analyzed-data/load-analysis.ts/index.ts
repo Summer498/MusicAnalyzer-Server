@@ -11,32 +11,32 @@ const _loadRomanAnalysis = (update: boolean, song_name: string, file_path: strin
   const force = false;
   const e = new DataDirectories(song_name, file_path);
 
-  chordExtract(false, e.chord, song_name);
-  chordToRoman(update, e.roman, song_name);
+  chordExtract(false, e.chord);
+  chordToRoman(update, e.roman);
 };
 
 const _loadAnalysisFromCREPE = (update: boolean, song_name: string, file_path: string) => {
   const force = false;
   const e = new DataDirectories(song_name, file_path);
-  chordExtract(false, e.chord, song_name);
-  chordToRoman(false, e.roman, song_name);
+  chordExtract(false, e.chord);
+  chordToRoman(false, e.roman);
 
-  demucs(false, e.demucs, song_name);
+  demucs(false, e.demucs);
   f0ByCrepe(false, e.f0_crepe, song_name);
   midiByCrepe(false, e.midi_crepe, song_name);
-  melodyByCrepe(update, e.melody_crepe, e.roman.dst, song_name);
+  melodyByCrepe(update, e.melody_crepe, e.roman.dst);
 };
 
 const _loadAnalysisFromPYIN = (update: boolean, song_name: string, file_path: string) => {
   const force = false;
   const e = new DataDirectories(song_name, file_path);
-  chordExtract(false, e.chord, song_name);
-  chordToRoman(false, e.roman, song_name);
+  chordExtract(false, e.chord);
+  chordToRoman(false, e.roman);
 
-  demucs(false, e.demucs, song_name);
+  demucs(false, e.demucs);
   f0By_pYIN(false, e.f0_pyin, e.pyin_img, song_name);
-  midiBy_pYIN(false, e.midi_pyin, song_name);
-  melodyBy_pYIN(update, e.melody_pyin, e.roman.dst, song_name);
+  midiBy_pYIN(false, e.midi_pyin);
+  melodyBy_pYIN(update, e.melody_pyin, e.roman.dst);
 };
 
 export const loadRomanAnalysis = (req: Request, res: Response) => {

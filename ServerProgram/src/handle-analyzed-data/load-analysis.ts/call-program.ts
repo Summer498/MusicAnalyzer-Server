@@ -17,7 +17,6 @@ const debug_log = (message: string) => {
 export const demucs = (
   force: boolean,
   directories: DirectoriesWithTemp,
-  song_name: string,
 ) => {
   const e = directories;
   if (force === false && existsSync(decodeURI(e.dst))) {
@@ -41,7 +40,6 @@ export const demucs = (
 export const chordExtract = (
   force: boolean,
   directories: DirectoriesWithoutTemp,
-  song_name: string
 ) => {
   const e = directories;
   if (force === false && existsSync(decodeURI(e.dst))) {
@@ -61,7 +59,6 @@ export const chordExtract = (
 export const chordToRoman = (
   force: boolean,
   directories: DirectoriesWithoutTemp,
-  song_name: string
 ) => {
   const e = directories;
   if (force === false && existsSync(decodeURI(e.dst))) {
@@ -81,7 +78,7 @@ export const chordToRoman = (
 export const f0ByCrepe = (
   force: boolean,
   directories: DirectoriesWithTemp,
-  song_name: string
+  song_name: string,
 ) => {
   const e = directories;
   if (force === false && existsSync(decodeURI(e.dst))) {
@@ -101,7 +98,7 @@ export const f0ByCrepe = (
 export const midiByCrepe = (
   force: boolean,
   directories: DirectoriesWithoutTemp,
-  song_name: string
+  song_name: string,
 ) => {
   const e = directories;
   if (force === false && existsSync(decodeURI(e.dst))) {
@@ -122,7 +119,6 @@ export const melodyByCrepe = (
   force: boolean,
   directories: DirectoriesWithoutTemp,
   chord_src: string,
-  song_name: string
 ) => {
   const e = directories;
   if (force === false && existsSync(decodeURI(e.dst))) {
@@ -150,7 +146,7 @@ export const f0By_pYIN = (
   force: boolean,
   directories: DirectoriesWithoutTemp,
   img: DirectoriesWithoutTemp,
-  song_name: string
+  song_name: string,
 ) => {
   const e = directories;
   if (force === false && existsSync(decodeURI(e.dst))) {
@@ -172,7 +168,6 @@ export const f0By_pYIN = (
 export const midiBy_pYIN = (
   force: boolean,
   directories: DirectoriesWithoutTemp,
-  song_name: string
 ) => {
   const e = directories;
   if (force === false && existsSync(decodeURI(e.dst))) {
@@ -193,7 +188,6 @@ export const melodyBy_pYIN = (
   force: boolean,
   directories: DirectoriesWithoutTemp,
   chord_src: string,
-  song_name: string
 ) => {
   const e = directories;
   if (force === false && existsSync(decodeURI(e.dst))) {
