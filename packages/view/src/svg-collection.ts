@@ -1,11 +1,10 @@
-import { search_items_overlaps_range } from "@music-analyzer/time-and";
+import { search_items_overlaps_range, Time } from "@music-analyzer/time-and";
 import { PianoRollTranslateX } from "@music-analyzer/view-parameters";
 import { MVVM_Collection, MVVM_ViewModel, MVVM_Model, MVVM_View, I_MVVM_Collection, I_MVVM_View } from "./mvc";
 import { AudioReflectable } from "./audio-reflectable";
 
 export abstract class TimeAndMVCModel extends MVVM_Model {
-  abstract readonly begin: number;
-  abstract readonly end: number;
+  abstract readonly time: Time;
 }
 
 export interface I_TimeAndVM extends I_MVVM_View {
@@ -48,7 +47,7 @@ export abstract class ReflectableTimeAndMVCControllerCollection<VM extends I_Tim
     this.#show = []; //.splice(0, this.show.length);  // 全部消す
     this.svg.textContent = "";  // 全部消す
 
-    const append = search_items_overlaps_range(this.children_model, begin - 5, end + 5);  // melodic gravity の矢印を隠すために ±5 のマージンを取る
+    const append = search_items_overlaps_range(this.children_model, new Time(begin - 5, end + 5));  // melodic gravity の矢印を隠すために ±5 のマージンを取る
     const fragment = document.createDocumentFragment();
     this.children.slice(append.begin_index, append.end_index).forEach(e => {
       this.show.push(e);
