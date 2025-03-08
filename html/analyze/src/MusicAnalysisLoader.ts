@@ -44,7 +44,7 @@ const justLoad = (tune_name: string) => {
   return [
     fetch(`${resources}/${tune_name}/analyzed/chord/roman.json`)
       .then(res => res.json() as Promise<RomanAnalysisData>)
-      .then(res => res.body)
+      .then(res => { if (RomanAnalysisData.checkVersion(res)) { return res.body } else { throw new Error(`Version check: fault in RomanAnalysisData`) } })
       .catch(e => fetch(`${resources}/${tune_name}/analyzed/chord/roman.json?update`)
         .then(res => res.json() as Promise<RomanAnalysisData>)
         .then(res => res.body)
