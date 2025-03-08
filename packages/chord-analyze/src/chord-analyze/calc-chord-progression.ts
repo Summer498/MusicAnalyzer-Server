@@ -12,7 +12,7 @@ export const calcChordProgression = (chords: TimeAndChordSymbol[]) => {
   const time_and_chord_groups = remove_item(tmp0, item => item.length === 0); // 空配列を除く                 [["C"],["F"], [], ["G"],["C"]]      => [["C","F"], ["G","C"]]
 
   return time_and_chord_groups.flatMap(chords => {
-    const time = chords.map(chord => new Time(chord.begin, chord.end).map(e => Math.floor(e * 1000) / 1000));
+    const time = chords.map(chord => chord.time.map(e => Math.floor(e * 1000) / 1000));
     const progression = select_suitable_progression(
       new ChordProgression(chords.map(chord => chord.chord)).getMinimumPath(),
     );

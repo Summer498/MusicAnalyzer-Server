@@ -1,12 +1,13 @@
 import { default as ReadLine } from "readline";
 import { calcChordProgression, TimeAndChordSymbol } from "@music-analyzer/chord-analyze";
 import { RomanAnalysisData } from "@music-analyzer/chord-analyze";
+import { Time } from "@music-analyzer/time-and";
 
 type TimeAndItem<T> = { 0: number, 1: number, 2: T }
 type TimeAndString = TimeAndItem<string>;
 
 const analyzeAndOutputProgression = (chords: TimeAndString[]) => {
-  const chords_with_time = chords.map(e => new TimeAndChordSymbol(e[0], e[1], e[2].replace(":", "")));
+  const chords_with_time = chords.map(e => new TimeAndChordSymbol(new Time(e[0], e[1]), e[2].replace(":", "")));
   const roman_chords = calcChordProgression(chords_with_time);
   console.log(JSON.stringify(
     new RomanAnalysisData(roman_chords),

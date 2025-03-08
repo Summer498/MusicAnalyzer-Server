@@ -1,7 +1,8 @@
+import { Time } from "@music-analyzer/time-and";
+
 export class TimeAndChordSymbol {
   constructor(
-    readonly begin: number,
-    readonly end: number,
+    readonly time: Time,
     readonly chord: string,
   ) {
   }

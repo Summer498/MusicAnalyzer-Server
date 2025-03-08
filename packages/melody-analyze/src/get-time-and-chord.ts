@@ -4,6 +4,6 @@ import { TimeAndChord } from "./interfaces";
 
 const _getTimeAndChord = (chords: TimeAndChordSymbol[]) => {
   return chords
-    .map(e => new TimeAndChord(e.begin, e.end, _Chord.get(e.chord)))
+    .map(e => new TimeAndChord(e.time.begin, e.time.end, _Chord.get(e.chord)))
     .filter(e => e.chord.empty === false);
 };
