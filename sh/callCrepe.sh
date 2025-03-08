@@ -2,8 +2,7 @@
   export PYTHONPATH="./python:"
   . ./MUSIC_ANALYZER/bin/activate
 
-  readonly filepath="$1"
-  readonly song_name="$(basename "$1" | sed -e 's/\.[^\.]*$//')"  # 引数から拡張子を取り除く
+  readonly song_name="$1"
 
   readonly crepe_src="./resources/$song_name/demucs/vocals.wav"
   readonly crepe_tmp="./resources/$song_name/demucs//vocals.f0.csv"
