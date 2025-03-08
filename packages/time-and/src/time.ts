@@ -31,4 +31,7 @@ export class Time {
   map(func: (e: number) => number) {
     return new Time(func(this.begin), func(this.end));
   }
+  has(medium: number) {
+    return this.begin <= medium && medium < this.end;
+  }
 }

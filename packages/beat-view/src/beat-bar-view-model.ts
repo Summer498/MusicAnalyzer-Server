@@ -4,6 +4,7 @@ import { NowAt, reservation_range } from "@music-analyzer/view-parameters";
 import { BeatBarModel } from "./beat-bar-model";
 import { BeatBarView } from "./beat-bar-view";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
+import { Time } from "@music-analyzer/time-and";
 
 export class BeatBarVM extends MVVM_ViewModel<BeatBarModel, BeatBarView> {
   sound_reserved: boolean;
@@ -13,7 +14,10 @@ export class BeatBarVM extends MVVM_ViewModel<BeatBarModel, BeatBarView> {
     this.sound_reserved = false;
   }
   beepBeat() {
-    if (NowAt.value <= this.model.time.begin && this.model.time.begin < NowAt.value + reservation_range) {
+    const model_is_in_range = new Time(0, reservation_range)
+      .map(e => e + NowAt.value)
+      .has(this.model.time.begin);
+    if (model_is_in_range) {
       if (this.sound_reserved === false) {
         play([220], this.model.time.begin - NowAt.value, 0.125);
         this.sound_reserved = true;

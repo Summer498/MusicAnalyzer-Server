@@ -5,6 +5,7 @@ import { MelodyModel } from "./melody-model";
 import { MelodyView } from "./melody-view";
 import { Archetype } from "@music-analyzer/irm";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { Time } from "@music-analyzer/time-and";
 
 export class MelodyVM extends MVVM_ViewModel<MelodyModel, MelodyView> {
   #do_melody_beep: boolean;
@@ -29,7 +30,11 @@ export class MelodyVM extends MVVM_ViewModel<MelodyModel, MelodyView> {
   };
   beepMelody = () => {
     if (!this.model.note) { return; }
-    if (NowAt.value <= this.model.time.begin && this.model.time.begin < NowAt.value + reservation_range) {
+    const model_is_in_range =
+      new Time(0, reservation_range)
+        .map(e => e + NowAt.value)
+        .has(this.model.time.begin)
+    if (model_is_in_range) {
       if (this.view.sound_reserved === false) { this.#beepMelody(); }
     }
   };

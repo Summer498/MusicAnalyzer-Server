@@ -13,13 +13,13 @@ export class IRPlotModel extends MVVM_Model {
     this.#cache = [];
   }
   private cacheHit() {
-    return this.#cache[1]?.time.begin <= NowAt.value && NowAt.value < this.#cache[1]?.time.end;
+    return this.#cache[1]?.time.has(NowAt.value);
   }
   private cacheUpdate() {
     if (this.cacheHit()) { return this.#cache; }
     else {
       this.#index = this.melody_series.findIndex((value) =>
-        value.time.begin <= NowAt.value && NowAt.value < value.time.end
+        value.time.has(NowAt.value)
       );
     }
     const i = this.#index;
