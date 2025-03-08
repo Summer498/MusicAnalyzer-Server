@@ -5,7 +5,6 @@ import { MVVM_Model } from "@music-analyzer/view";
 
 export class ChordNoteModel extends MVVM_Model {
   readonly time: Time;
-  readonly duration: number;
   readonly tonic: string;
   readonly type: string;
   readonly note: number;
@@ -19,7 +18,6 @@ export class ChordNoteModel extends MVVM_Model {
   ) {
     super();
     this.time = new Time(e.begin, e.end)
-    this.duration = e.end - e.begin;
     this.tonic = chord.tonic!;
     this.type = chord.type;
     const _note = _Note.get(note);

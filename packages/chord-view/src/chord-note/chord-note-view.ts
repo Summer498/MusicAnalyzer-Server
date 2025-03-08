@@ -8,7 +8,7 @@ export class ChordNoteView extends MVVM_View<ChordNoteModel, "rect"> {
   readonly y: number;
   constructor(model: ChordNoteModel) {
     super(model, "rect");
-    this.svg.setAttribute("width", String(this.model.duration * NoteSize.value));
+    this.svg.setAttribute("width", String(this.model.time.duration * NoteSize.value));
     this.svg.setAttribute("height", String(BlackKeyPrm.height));
     this.svg.style.stroke = "rgb(64, 64, 64)";
     this.svg.style.fill = thirdToColor(
@@ -29,7 +29,7 @@ export class ChordNoteView extends MVVM_View<ChordNoteModel, "rect"> {
   }
   updateX() { this.svg.setAttribute("x", String(this.model.time.begin * NoteSize.value)); }
   updateY() { this.svg.setAttribute("y", String(this.y)); }
-  updateWidth() { this.svg.setAttribute("width", String(this.model.duration * NoteSize.value)); }
+  updateWidth() { this.svg.setAttribute("width", String(this.model.time.duration * NoteSize.value)); }
   updateHeight() { this.svg.setAttribute("height", String(BlackKeyPrm.height)); }
   onWindowResized() {
     this.updateX();
