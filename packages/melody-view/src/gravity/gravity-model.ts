@@ -14,7 +14,7 @@ export class GravityModel extends MVVM_Model {
     readonly gravity: Gravity,
   ) {
     super();
-    this.time = new Time(e.begin, e.end);
+    this.time = e.time
     this.note = e.note;
     this.destination = gravity.destination;
     this.layer = layer || 0;

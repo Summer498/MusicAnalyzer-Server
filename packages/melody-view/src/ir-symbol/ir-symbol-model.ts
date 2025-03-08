@@ -10,7 +10,7 @@ export class IRSymbolModel extends MVVM_Model {
   readonly layer: number;
   constructor(e: TimeAndAnalyzedMelody, layer: number) {
     super();
-    this.time = new Time(e.begin,e.end); 
+    this.time = e.time
     this.note = e.note;
     this.archetype = e.melody_analysis.implication_realization;
     this.layer = layer || 0;

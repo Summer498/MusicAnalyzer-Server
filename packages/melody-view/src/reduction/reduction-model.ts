@@ -12,7 +12,7 @@ export class ReductionModel extends MVVM_Model {
     readonly layer: number,
   ) {
     super();
-    this.time = new Time(e.begin,e.end);
+    this.time = e.time
     this.head = e.head
     this.archetype = e.melody_analysis.implication_realization;
   }

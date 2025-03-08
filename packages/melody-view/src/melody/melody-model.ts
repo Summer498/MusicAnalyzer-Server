@@ -9,7 +9,7 @@ export class MelodyModel extends MVVM_Model {
   readonly melody_analysis: MelodyAnalysis;
   constructor(e: TimeAndAnalyzedMelody) {
     super();
-    this.time = new Time(e.begin, e.end);
+    this.time = e.time
     this.note = e.note;
     this.head = e.head;
     this.melody_analysis = e.melody_analysis;
