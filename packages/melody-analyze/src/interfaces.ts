@@ -7,13 +7,41 @@ export class Gravity {
     readonly resolved: true | undefined,
   ) { }
 }
+
+type MelodyAnalysis_Args = [Gravity | undefined, Gravity | undefined, Archetype];
+const getArgsOfMelodyAnalysis = (
+  args
+    : MelodyAnalysis_Args
+    | [MelodyAnalysis]
+) => {
+  if (args.length === 1) {
+    const [e] = args;
+    return [e.scale_gravity, e.chord_gravity, e.implication_realization] as MelodyAnalysis_Args
+  }
+  return args;
+}
 export class MelodyAnalysis {
+  readonly chord_gravity: Gravity | undefined
+  readonly scale_gravity: Gravity | undefined
+  readonly implication_realization: Archetype
+  constructor(e: MelodyAnalysis);
   constructor(
-    readonly scale_gravity: Gravity | undefined,
-    readonly chord_gravity: Gravity | undefined,
-    readonly implication_realization: Archetype,
-  ) { }
+    scale_gravity: Gravity | undefined,
+    chord_gravity: Gravity | undefined,
+    implication_realization: Archetype,
+  );
+  constructor(
+    ...args
+      : MelodyAnalysis_Args
+      | [MelodyAnalysis]
+  ) {
+    const [scale_gravity, chord_gravity, implication_realization] = getArgsOfMelodyAnalysis(args)
+    this.scale_gravity = scale_gravity;
+    this.chord_gravity = chord_gravity;
+    this.implication_realization = implication_realization;
+  }
 };
+
 
 type TimeAndMelody_Args = [number, number, number, { readonly begin: number, readonly end: number }]
 const getArgsOfTimeAndMelody = (
@@ -72,7 +100,7 @@ const getArgsOfTimeAndAnalyzedMelody = (
 ) => {
   if (args.length === 1) {
     const [e] = args;
-    return [new TimeAndMelody(e), e.melody_analysis] as TimeAndAnalyzedMelody_Args
+    return [new TimeAndMelody(e), new MelodyAnalysis(e.melody_analysis)] as TimeAndAnalyzedMelody_Args
   }
   return args
 }
