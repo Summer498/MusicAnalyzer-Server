@@ -11,5 +11,6 @@
   readonly separate_dst="./resources/$song_name/demucs/vocals.wav"
 
   python -m demucs -d cuda "$demucs_src" >&2
-  rename "$separate_dir" "$demucs_dst"
+  if [ -e "$demucs_dst" ]; then rmdir "$demucs_dst"; fi
+  mv "$separate_dir" "$demucs_dst"
 )
