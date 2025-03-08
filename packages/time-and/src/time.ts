@@ -1,5 +1,5 @@
-
 export class Time {
+  get duration() { return this.end - this.begin }
   constructor(
     readonly begin: number,
     readonly end: number,
