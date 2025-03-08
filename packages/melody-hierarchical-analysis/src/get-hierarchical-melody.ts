@@ -3,15 +3,13 @@ import { ReductionElement, TimeSpan } from "@music-analyzer/gttm";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { getTimeAndMelody } from "./get-time-and-melody";
 import { MusicXML } from "@music-analyzer/musicxml";
-import { Time } from "@music-analyzer/time-and";
 
 const scaleAndTranslate = (e: TimeAndMelody, w: number, b: number) => {
-  const time = new Time(e.begin, e.end).map(e => e * w + b);
+  const time = e.time.map(e => e * w + b);
   return new TimeAndMelody(
-    time.begin,
-    time.end,
-    e.note,
     time,
+    time,
+    e.note,
   );
 };
 

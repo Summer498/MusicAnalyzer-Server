@@ -19,12 +19,11 @@ export const analyzeMelody = (
   const curr = [...melodies];
   const next = [...melodies.slice(1), undefined];
   return curr.map((e, i) => {
-    const roman = romans.find(roman => roman.time.begin <= e.end && e.begin < roman.time.end); // TODO: 治す. 現状はとりあえずコードとメロディを大きめに重ならせてみているだけ
+    const roman = romans.find(roman => roman.time.begin <= e.time.end && e.time.begin < roman.time.end); // TODO: 治す. 現状はとりあえずコードとメロディを大きめに重ならせてみているだけ
     const time_and_melody = new TimeAndMelody(
-      e.begin,
-      e.end,
-      e.note,
+      e.time,
       e.head,
+      e.note,
     );
 
     const melody_analysis = new MelodyAnalysis(
@@ -34,8 +33,8 @@ export const analyzeMelody = (
     );
 
     return new TimeAndAnalyzedMelody(
-      time_and_melody.begin,
-      time_and_melody.end,
+      time_and_melody.time.begin,
+      time_and_melody.time.end,
       time_and_melody.note,
       time_and_melody.head,
       melody_analysis,

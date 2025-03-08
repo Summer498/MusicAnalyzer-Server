@@ -9,10 +9,9 @@ export const getTimeAndMelody = (melody_data: number[], sampling_rate: number) =
   const non_null_melody = comp_melody.map(e => {
     const time = e.time.map(e => e / sampling_rate);
     return new TimeAndMelody(
-      time.begin,
-      time.end,
+      time,
+      time,
       e.item,
-      time
     );
   }).filter(e => e.note);
   return non_null_melody;

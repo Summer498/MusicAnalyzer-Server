@@ -72,7 +72,7 @@ export class MelodyAnalysis {
 };
 
 
-type TimeAndMelody_Args = [number, number, number, Time]
+type TimeAndMelody_Args = [Time, Time, number]
 const getArgsOfTimeAndMelody = (
   args
     : TimeAndMelody_Args
@@ -80,32 +80,33 @@ const getArgsOfTimeAndMelody = (
 ) => {
   if (args.length === 1) {
     const [e] = args;
-    return [e.begin, e.end, e.note, new Time(e.head)] as TimeAndMelody_Args
+    return [
+      new Time(e.time),
+      new Time(e.head),
+      e.note
+    ] as TimeAndMelody_Args
   }
   return args
 }
 export class TimeAndMelody {
-  readonly begin: number
-  readonly end: number
-  readonly note: number
+  readonly time: Time
   readonly head: Time
+  readonly note: number
   constructor(e: TimeAndMelody);
   constructor(
-    begin: number,
-    end: number,
-    note: number,
+    time: Time,
     head: Time,
+    note: number,
   );
   constructor(
     ...args
       : TimeAndMelody_Args
       | [TimeAndMelody]
   ) {
-    const [begin, end, note, head] = getArgsOfTimeAndMelody(args);
-    this.begin = begin;
-    this.end = end;
-    this.note = note;
+    const [time, head, note] = getArgsOfTimeAndMelody(args);
+    this.time = time;
     this.head = head;
+    this.note = note;
   }
 }
 export class TimeAndChord {
