@@ -14,16 +14,48 @@ export class MelodyAnalysis {
     readonly implication_realization: Archetype,
   ) { }
 };
+
+type TimeAndMelody_Args = [number, number, number, { readonly begin: number, readonly end: number }]
+const getArgsOfTimeAndMelody = (
+  args
+    : TimeAndMelody_Args
+    | [TimeAndMelody]
+) => {
+  if (args.length === 1) {
+    const [e] = args;
+    return [e.begin, e.end, e.note, e.head] as TimeAndMelody_Args
+  }
+  return args
+}
 export class TimeAndMelody {
+  readonly begin: number
+  readonly end: number
+  readonly note: number
+  readonly head: {
+    readonly begin: number
+    readonly end: number
+  }
+  constructor(e: TimeAndMelody);
   constructor(
-    readonly begin: number,
-    readonly end: number,
-    readonly note: number,
-    readonly head: {
+    begin: number,
+    end: number,
+    note: number,
+    head: {
       readonly begin: number,
       readonly end: number,
     }
-  ) { }
+  );
+  constructor(
+    ...args
+      : TimeAndMelody_Args
+      | [TimeAndMelody]
+  ) {
+    const [begin, end, note, head] = getArgsOfTimeAndMelody(args);
+    this.begin = begin;
+    this.end = end;
+    this.note = note;
+    this.head = head;
+  }
 }
 export class TimeAndChord {
   constructor(
@@ -40,7 +72,7 @@ const getArgsOfTimeAndAnalyzedMelody = (
 ) => {
   if (args.length === 1) {
     const [e] = args;
-    return [new TimeAndMelody(e.begin, e.end, e.note, e.head), e.melody_analysis] as TimeAndAnalyzedMelody_Args
+    return [new TimeAndMelody(e), e.melody_analysis] as TimeAndAnalyzedMelody_Args
   }
   return args
 }
