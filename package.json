@@ -9,6 +9,7 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "packageManager": "yarn@1.22.22",
   "files": [
     "dist"
   ],
