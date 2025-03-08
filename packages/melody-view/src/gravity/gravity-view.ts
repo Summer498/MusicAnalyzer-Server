@@ -11,7 +11,7 @@ export class GravityView extends MVVM_View<GravityModel, "g"> {
   constructor(model: GravityModel) {
     super(model, "g");
     this.line_seed = {
-      x1: this.model.time.begin + this.model.duration / 2,
+      x1: this.model.time.begin + this.model.time.duration / 2,
       x2: this.model.next.begin,
       y1: isNaN(this.model.note) ? -99 : (PianoRollBegin.value + 0.5 - this.model.note) * BlackKeyPrm.height,
       y2: isNaN(this.model.note) ? -99 : (PianoRollBegin.value + 0.5 - this.model.gravity.destination!) * BlackKeyPrm.height,
@@ -32,7 +32,7 @@ export class GravityView extends MVVM_View<GravityModel, "g"> {
       y2: this.line_seed.y2,
     };
   }
-  updateWidth() { this.svg.setAttribute("width", String(this.model.duration * NoteSize.value)); }
+  updateWidth() { this.svg.setAttribute("width", String(this.model.time.duration * NoteSize.value)); }
   updateHeight() { this.svg.setAttribute("height", String(BlackKeyPrm.height)); }
   onWindowResized() {
     this.updateWidth();
