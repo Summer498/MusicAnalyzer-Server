@@ -33,8 +33,6 @@ export const analyzeMelody = (
     );
 
     return new TimeAndAnalyzedMelody(
-      time_and_melody.time.begin,
-      time_and_melody.time.end,
       time_and_melody.time,
       time_and_melody.head,
       time_and_melody.note,

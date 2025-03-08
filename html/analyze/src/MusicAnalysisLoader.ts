@@ -5,7 +5,6 @@ import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MusicXML } from "@music-analyzer/musicxml";
 import { getJSON, getJSONfromXML } from "./DataFetcher";
 import { AnalyzedMusicData, GTTMData } from "./MusicAnalyzerWindow";
-import { Time } from "@music-analyzer/time-and";
 import { MelodyAnalysisData } from "@music-analyzer/melody-analyze";
 
 const resources = `/MusicAnalyzer-server/resources`;

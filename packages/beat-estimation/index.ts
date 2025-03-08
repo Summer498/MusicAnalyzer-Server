@@ -11,12 +11,12 @@ export const calcTempo = (melodies: TimeAndAnalyzedMelody[], romans: TimeAndRoma
   const phase = 0;
   const melody_bpm: number[] = [];
   const bpm_range = 90;
-  const onsets = getZeros(Math.ceil(melodies[melodies.length - 1].end * 100));
+  const onsets = getZeros(Math.ceil(melodies[melodies.length - 1].time.end * 100));
   const melody_phase: number[][] = getRange(0, 90).map(i => getZeros(90 + i));  // [bpm][phase]
   const b = Math.log2(90);  // 90 ~ 180
   melodies.forEach((e, i) => {
     if (i + 1 >= melodies.length) { return; }
-    const term = melodies[i + 1].begin - melodies[i].begin + (Math.random() - 0.5) / 100;
+    const term = melodies[i + 1].time.begin - melodies[i].time.begin + (Math.random() - 0.5) / 100;
     if (60 / term > 300 * 4) { return; }
     const bpm2 = Math.round(Math.pow(2, decimal(Math.log2(60 / term) - b) + b));
     const bpm = Math.round(Math.pow(3, decimal(Math.log2(bpm2) / Math.log2(3) - b / Math.log2(3)) + b / Math.log2(3)));

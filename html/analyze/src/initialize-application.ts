@@ -12,7 +12,7 @@ export const initializeApplication = (
   const d_melodies: TimeAndAnalyzedMelody[] = analyzed.melody.map(e => e);
   const romans = d_romans.map(e => e);
   const melodies = d_melodies.map(e => e)
-    .filter((e, i) => i + 1 >= d_melodies.length || 60 / (d_melodies[i + 1].begin - d_melodies[i].begin) < 300 * 4);
+    .filter((e, i) => i + 1 >= d_melodies.length || 60 / (d_melodies[i + 1].time.begin - d_melodies[i].time.begin) < 300 * 4);
 
   // テンポの計算
   const beat_info = calcTempo(melodies, romans);

@@ -13,13 +13,13 @@ export class IRPlotModel extends MVVM_Model {
     this.#cache = [];
   }
   private cacheHit() {
-    return this.#cache[1]?.begin <= NowAt.value && NowAt.value < this.#cache[1]?.end;
+    return this.#cache[1]?.time.begin <= NowAt.value && NowAt.value < this.#cache[1]?.time.end;
   }
   private cacheUpdate() {
     if (this.cacheHit()) { return this.#cache; }
     else {
       this.#index = this.melody_series.findIndex((value) =>
-        value.begin <= NowAt.value && NowAt.value < value.end
+        value.time.begin <= NowAt.value && NowAt.value < value.time.end
       );
     }
     const i = this.#index;
@@ -46,7 +46,7 @@ export class IRPlotModel extends MVVM_Model {
   }
   getPositionRatio() {
     const melodies = this.getRangedMelody();
-    const t = [melodies[1].begin, melodies[2].begin];
+    const t = [melodies[1].time.begin, melodies[2].time.begin];
     return (NowAt.value - t[0]) / (t[1] - t[0]);
   }
   getInterval() {

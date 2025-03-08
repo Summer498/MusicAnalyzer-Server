@@ -8,7 +8,7 @@ export class BeatBarsGroup extends ReflectableTimeAndMVCControllerCollection<Bea
     beat_info: BeatInfo,
     melodies: TimeAndAnalyzedMelody[]
   ) {
-    const N = Math.ceil(beat_info.tempo * melodies[melodies.length - 1].end) + beat_info.phase;
+    const N = Math.ceil(beat_info.tempo * melodies[melodies.length - 1].time.end) + beat_info.phase;
     const seed = [...Array(N)];
     super("beat-bars", seed.map((_, i) => new BeatBarVM(beat_info, i)));
   }
