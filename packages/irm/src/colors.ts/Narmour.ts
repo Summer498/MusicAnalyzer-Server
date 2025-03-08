@@ -1,7 +1,6 @@
 import { Archetype } from "../Archetype";
 
 export const get_color_of_Narmour_concept = (archetype: Archetype) => {
-  console.log(archetype);
   switch (archetype.symbol) {
     case "VP": case "(VP)": return "rgb(0, 160, 255)";
     case "P": case "(P)": return "rgb(0, 0, 255)";
