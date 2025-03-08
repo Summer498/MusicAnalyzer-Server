@@ -1,4 +1,5 @@
 import { Archetype } from "@music-analyzer/irm";
+import { Time } from "@music-analyzer/time-and";
 import { Chord } from "@music-analyzer/tonal-objects";
 
 type Gravity_Args = [number, true | undefined];
@@ -71,7 +72,7 @@ export class MelodyAnalysis {
 };
 
 
-type TimeAndMelody_Args = [number, number, number, { readonly begin: number, readonly end: number }]
+type TimeAndMelody_Args = [number, number, number, Time]
 const getArgsOfTimeAndMelody = (
   args
     : TimeAndMelody_Args
@@ -79,7 +80,7 @@ const getArgsOfTimeAndMelody = (
 ) => {
   if (args.length === 1) {
     const [e] = args;
-    return [e.begin, e.end, e.note, e.head] as TimeAndMelody_Args
+    return [e.begin, e.end, e.note, new Time(e.head)] as TimeAndMelody_Args
   }
   return args
 }
@@ -87,19 +88,13 @@ export class TimeAndMelody {
   readonly begin: number
   readonly end: number
   readonly note: number
-  readonly head: {
-    readonly begin: number
-    readonly end: number
-  }
+  readonly head: Time
   constructor(e: TimeAndMelody);
   constructor(
     begin: number,
     end: number,
     note: number,
-    head: {
-      readonly begin: number,
-      readonly end: number,
-    }
+    head: Time,
   );
   constructor(
     ...args

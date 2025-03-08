@@ -13,7 +13,7 @@ export class ReductionModel extends MVVM_Model {
   ) {
     super();
     this.time = new Time(e.begin,e.end);
-    this.head = new Time(e.head.begin, e.head.end);
+    this.head = e.head
     this.archetype = e.melody_analysis.implication_realization;
   }
 }

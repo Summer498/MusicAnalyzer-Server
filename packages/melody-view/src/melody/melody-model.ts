@@ -11,7 +11,7 @@ export class MelodyModel extends MVVM_Model {
     super();
     this.time = new Time(e.begin, e.end);
     this.note = e.note;
-    this.head = new Time(e.head.begin, e.head.end);
+    this.head = e.head;
     this.melody_analysis = e.melody_analysis;
   }
 }

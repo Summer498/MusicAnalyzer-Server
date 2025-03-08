@@ -6,10 +6,10 @@ export class DMelodyModel {
   readonly head: Time;
   readonly melody_analysis: MelodyAnalysis;
   readonly note: number;
-  constructor(d_melody: TimeAndAnalyzedMelody) {
-    this.time = new Time(d_melody.begin, d_melody.end);
-    this.head = new Time(d_melody.head.begin, d_melody.head.end);
-    this.melody_analysis = d_melody.melody_analysis;
-    this.note = d_melody.note;
+  constructor(e: TimeAndAnalyzedMelody) {
+    this.time = new Time(e.begin, e.end);
+    this.head = e.head;
+    this.melody_analysis = e.melody_analysis;
+    this.note = e.note;
   }
 }
