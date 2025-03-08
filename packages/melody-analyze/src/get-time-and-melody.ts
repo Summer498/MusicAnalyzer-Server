@@ -7,7 +7,7 @@ export const getTimeAndMelody = (melody_data: number[], sampling_rate: number) =
   const melody = melody_data.map(e => e || Math.round(freqToMidi(e)));
   const comp_melody = compress(melody);
   const non_null_melody = comp_melody.map(e => {
-    const time = new Time(e.begin, e.end).map(e => e / sampling_rate);
+    const time = e.time.map(e => e / sampling_rate);
     return new TimeAndMelody(
       time.begin,
       time.end,
