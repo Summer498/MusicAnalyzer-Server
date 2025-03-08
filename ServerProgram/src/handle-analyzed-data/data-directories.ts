@@ -10,7 +10,7 @@ export class DataDirectories {
 
   readonly demucs: Directories;
   readonly separate: Directories;
-  readonly separate_dir: string;
+  readonly demucs_dir: string;
 
   readonly crepe: Directories;
   readonly crepe_tmp: string;
@@ -26,7 +26,7 @@ export class DataDirectories {
   readonly melody_analyze_pyin: Directories;
 
   constructor(song_name: string, file_path: string) {
-    const resource = `resources/${song_name}`;
+    const resource = `./resources/${song_name}`;
     const analyzed = `${resource}/analyzed`;
     const chord = `${analyzed}/chord`;
     const melody = `${analyzed}/melody`;
@@ -37,12 +37,12 @@ export class DataDirectories {
     this.chord_ext = new Directories(file_path, `${chord}/chords.json`);
     this.chord_to_roman = new Directories(this.chord_ext.dst, `${chord}/roman.json`);
 
-    this.separate_dir = `${demucs}`;
-    this.demucs = new Directories(file_path, `separated/htdemucs/${song_name}`);
-    this.separate = new Directories("", `${demucs}/vocals.wav`);
+    this.separate = new Directories(file_path, `separated/htdemucs/${song_name}`);
+    this.demucs_dir = `${demucs}`;
+    this.demucs = new Directories(file_path, `${demucs}/vocals.wav`);
 
-    this.crepe = new Directories(this.separate.dst, `${crepe}/vocals.f0.csv`);
-    this.crepe_tmp = `${this.separate_dir}/vocals.f0.csv`;
+    this.crepe = new Directories(this.demucs.dst, `${crepe}/vocals.f0.csv`);
+    this.crepe_tmp = `${this.demucs_dir}/vocals.f0.csv`;
     this.post_crepe = new Directories(this.crepe.dst, `${crepe}/vocals.midi.json`);
     this.melody_analyze_crepe = new Directories(this.post_crepe.dst, `${crepe}/manalyze.json`);
 
