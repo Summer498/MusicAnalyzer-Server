@@ -27,7 +27,7 @@ export class ChordNoteView extends MVVM_View<ChordNoteModel, "rect"> {
     this.updateX();
     this.updateY();
   }
-  updateX() { this.svg.setAttribute("x", String(this.model.begin * NoteSize.value)); }
+  updateX() { this.svg.setAttribute("x", String(this.model.time.begin * NoteSize.value)); }
   updateY() { this.svg.setAttribute("y", String(this.y)); }
   updateWidth() { this.svg.setAttribute("width", String(this.model.duration * NoteSize.value)); }
   updateHeight() { this.svg.setAttribute("height", String(BlackKeyPrm.height)); }
