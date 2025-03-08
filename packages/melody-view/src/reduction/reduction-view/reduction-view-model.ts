@@ -20,8 +20,8 @@ export class ReductionViewModel extends MVVM_Model {
     readonly model: ReductionModel,
   ) {
     super();
-    this.#x = this.getViewX(this.model.begin);
-    this.#w = this.getViewW(this.model.duration);
+    this.#x = this.getViewX(this.model.time.begin);
+    this.#w = this.getViewW(this.model.time.duration);
     this.#cw = this.getViewW(this.model.head.duration);
     this.#cx = this.getViewX(this.model.head.begin) + this.#cw / 2;
     this.y = (2 + this.model.layer) * BlackKeyPrm.height * bracket_height;
@@ -31,11 +31,11 @@ export class ReductionViewModel extends MVVM_Model {
   getViewX(x: number) { return x * NoteSize.value; }
   getViewW(w: number) { return w * NoteSize.value; }
   updateX() {
-    this.#x = this.getViewX(this.model.begin);
+    this.#x = this.getViewX(this.model.time.begin);
     this.#cx = this.getViewX(this.model.head.begin) + this.#cw / 2;
   }
   updateWidth() {
-    this.#w = this.getViewW(this.model.duration);
+    this.#w = this.getViewW(this.model.time.duration);
     this.#cw = this.getViewW(this.model.head.duration);
   }
   onWindowResized() {
