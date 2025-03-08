@@ -1,11 +1,35 @@
 import { Archetype } from "@music-analyzer/irm";
 import { Chord } from "@music-analyzer/tonal-objects";
 
+type Gravity_Args = [number, true | undefined];
+const getArgsOfGravity = (
+  args
+    : Gravity_Args
+    | [Gravity]
+) => {
+  if (args.length === 1) {
+    const [e] = args;
+    return [e.destination, e.resolved] as Gravity_Args;
+  }
+  return args;
+}
 export class Gravity {
+  readonly destination: number
+  readonly resolved: true | undefined
+  constructor(e: Gravity);
   constructor(
-    readonly destination: number,
-    readonly resolved: true | undefined,
-  ) { }
+    destination: number,
+    resolved: true | undefined,
+  );
+  constructor(
+    ...args
+      : Gravity_Args
+      | [Gravity]
+  ) {
+    const [destination, resolved] = getArgsOfGravity(args);
+    this.destination = destination;
+    this.resolved = resolved;
+  }
 }
 
 type MelodyAnalysis_Args = [Gravity | undefined, Gravity | undefined, Archetype];
@@ -16,7 +40,11 @@ const getArgsOfMelodyAnalysis = (
 ) => {
   if (args.length === 1) {
     const [e] = args;
-    return [e.scale_gravity, e.chord_gravity, e.implication_realization] as MelodyAnalysis_Args
+    return [
+      e.scale_gravity && new Gravity(e.scale_gravity),
+      e.chord_gravity && new Gravity(e.chord_gravity),
+      e.implication_realization
+    ] as MelodyAnalysis_Args
   }
   return args;
 }
