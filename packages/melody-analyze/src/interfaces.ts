@@ -110,8 +110,7 @@ export class TimeAndMelody {
 }
 export class TimeAndChord {
   constructor(
-    readonly begin: number,
-    readonly end: number,
+    readonly time: Time,
     readonly chord: Chord
   ) { }
 }
