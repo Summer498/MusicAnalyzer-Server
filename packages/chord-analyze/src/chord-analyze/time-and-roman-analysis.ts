@@ -17,5 +17,8 @@ export class RomanAnalysisData {
   static checkVersion(e: RomanAnalysisData) {
     return e.version === v;
   }
+  static instantiate(e: RomanAnalysisData) {
+    return new RomanAnalysisData(e.body.map(e => new TimeAndRomanAnalysis(e.begin, e.end, e.chord, e.scale, e.roman)))
+  }
 }
 

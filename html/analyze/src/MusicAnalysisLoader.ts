@@ -45,15 +45,22 @@ const justLoad = (tune_name: string) => {
   return [
     fetch(`${resources}/${tune_name}/analyzed/chord/roman.json`)
       .then(res => res.json() as Promise<RomanAnalysisData>)
-      .then(res => { if (RomanAnalysisData.checkVersion(res)) { return res.body } else { throw new Error(`Version check: fault in RomanAnalysisData`) } })
+      .then(res => {
+        if (RomanAnalysisData.checkVersion(res)) { return RomanAnalysisData.instantiate(res) }
+        else { throw new Error(`Version check: fault in RomanAnalysisData`) }
+      })
       .catch(e => fetch(`${resources}/${tune_name}/analyzed/chord/roman.json?update`)
         .then(res => res.json() as Promise<RomanAnalysisData>)
-        .then(res => res.body)
+        .then(res => RomanAnalysisData.instantiate(res))
         .catch(e => { console.error(e); return undefined; }),
-      ),
+      )
+      .then(res => res?.body),
     fetch(`${resources}/${tune_name}/analyzed/melody/crepe/manalyze.json`)
       .then(res => res.json() as Promise<MelodyAnalysisData>)
-      .then(res => { if (MelodyAnalysisData.checkVersion(res)) { return res.body } else { throw new Error(`Version check: fault in MelodyAnalysisData`) } })
+      .then(res => {
+        if (MelodyAnalysisData.checkVersion(res)) { return res.body }
+        else { throw new Error(`Version check: fault in MelodyAnalysisData`) }
+      })
       .catch(e => fetch(`${resources}/${tune_name}/analyzed/melody/crepe/manalyze.json?update`)
         .then(res => res.json() as Promise<MelodyAnalysisData>)
         .then(res => (console.log(res), res.body))
