@@ -3,47 +3,78 @@ import { AudioReflectable, WindowReflectable } from "@music-analyzer/view";
 import { IRPlotLayer } from "./ir-plot-layer";
 import { Archetype } from "@music-analyzer/irm";
 
-export class IRPlotHierarchy implements AudioReflectable, WindowReflectable {
+class IRPlotCircles {
   readonly svg: SVGGElement;
-  readonly circles: SVGGElement;
-  readonly x_axis: SVGLineElement;
-  readonly y_axis: SVGLineElement;
-  #visible_layer: number;
-  readonly children: IRPlotLayer[];
   private _show: IRPlotLayer[];
-  readonly width: number;
-  readonly height: number;
   get show() { return this._show; }
-  constructor(hierarchical_melody: TimeAndAnalyzedMelody[][]) {
-    const N = hierarchical_melody.length;
-    this.children = hierarchical_melody.map((e, l) => new IRPlotLayer(e, l, N));
-    this.circles = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    this.x_axis = document.createElementNS("http://www.w3.org/2000/svg", "line");
-    this.y_axis = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  constructor() {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    this.svg.id = "implication-realization plot";
-    this.svg.replaceChildren(this.x_axis, this.y_axis, this.circles);
-    this.width = Math.max(...this.children.map(e => e.w));
-    this.height = Math.max(...this.children.map(e => e.h));
-    this.svg.setAttribute("width", String(this.width));
-    this.svg.setAttribute("height", String(this.height));
-    this.x_axis.setAttribute("x1", String(0));
-    this.x_axis.setAttribute("x2", String(this.width));
-    this.x_axis.setAttribute("y1", String(this.height / 2));
-    this.x_axis.setAttribute("y2", String(this.height / 2));
-    this.y_axis.setAttribute("x1", String(this.width / 2));
-    this.y_axis.setAttribute("x2", String(this.width / 2));
-    this.y_axis.setAttribute("y1", String(0));
-    this.y_axis.setAttribute("y1", String(this.height));
-    this.x_axis.style.stroke = "rgb(0, 0, 0)";
-    this.y_axis.style.stroke = "rgb(0, 0, 0)";
     this._show = [];
-    this.#visible_layer = N;
   }
   setShow(visible_layers: IRPlotLayer[]) {
     this._show = visible_layers;
     this._show.forEach(e => e.onAudioUpdate());
-    this.circles.replaceChildren(...this._show.map(e => e.svg));
+    this.svg.replaceChildren(...this._show.map(e => e.svg));
+  }
+}
+
+class IRPlotXAxis {
+  readonly svg: SVGLineElement;
+  constructor(
+    readonly width: number,
+    readonly height: number,
+  ) {
+    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    this.svg.setAttribute("x1", String(0));
+    this.svg.setAttribute("x2", String(this.width));
+    this.svg.setAttribute("y1", String(this.height / 2));
+    this.svg.setAttribute("y2", String(this.height / 2));
+    this.svg.style.stroke = "rgb(0, 0, 0)";
+  }
+}
+
+class IRPlotYAxis {
+  readonly svg: SVGLineElement;
+  constructor(
+    readonly width: number,
+    readonly height: number,
+  ) {
+    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    this.svg.setAttribute("x1", String(this.width / 2));
+    this.svg.setAttribute("x2", String(this.width / 2));
+    this.svg.setAttribute("y1", String(0));
+    this.svg.setAttribute("y1", String(this.height));
+    this.svg.style.stroke = "rgb(0, 0, 0)";
+  }
+}
+
+class IRPlotAxis {
+}
+
+export class IRPlotHierarchy implements AudioReflectable, WindowReflectable {
+  readonly svg: SVGGElement;
+  readonly x_axis: IRPlotXAxis;
+  readonly y_axis: IRPlotYAxis;
+  readonly circles: IRPlotCircles;
+  #visible_layer: number;
+  readonly children: IRPlotLayer[];
+  readonly width: number;
+  readonly height: number;
+  get show() { return this.circles.show }
+  constructor(hierarchical_melody: TimeAndAnalyzedMelody[][]) {
+    const N = hierarchical_melody.length;
+    this.children = hierarchical_melody.map((e, l) => new IRPlotLayer(e, l, N));
+    this.width = Math.max(...this.children.map(e => e.w));
+    this.height = Math.max(...this.children.map(e => e.h));
+    this.x_axis = new IRPlotXAxis(this.width, this.height);
+    this.y_axis = new IRPlotYAxis(this.width, this.height);
+    this.circles = new IRPlotCircles();
+    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    this.svg.id = "implication-realization plot";
+    this.svg.replaceChildren(this.x_axis.svg, this.y_axis.svg, this.circles.svg);
+    this.svg.setAttribute("width", String(this.width));
+    this.svg.setAttribute("height", String(this.height));
+    this.#visible_layer = N;
   }
   updateLayer() {
     const visible_layer = this.children.filter(
@@ -52,7 +83,7 @@ export class IRPlotHierarchy implements AudioReflectable, WindowReflectable {
         return 1 < layer.layer && layer.layer <= this.#visible_layer;
       }
     );
-    this.setShow(visible_layer);
+    this.circles.setShow(visible_layer);
   }
   onChangedLayer(value: number) {
     this.#visible_layer = value;
