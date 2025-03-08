@@ -57,23 +57,6 @@ export class IRPlotView extends MVVM_View<IRPlotModel, "circle"> {
     const r = this.easeInOutCos(this.model.getPositionRatio());
     this.updateX(-((1 - r) * curr[0] + r * next[0]));
     this.updateY(-((1 - r) * curr[1] + r * next[1]));
-
-    /*
-    // 回転補間
-    const curr_radius = Math.sqrt(curr[0] * curr[0] + curr[1] * curr[1]);
-    const next_radius = Math.sqrt(next[0] * next[0] + next[1] * next[1]);
-    const curr_angle = Math.atan2(curr[1], curr[0]);
-    const n_angle = Math.atan2(next[1], next[0]);
-    const next_angle = ((curr_angle: number, n_angle: number) => {
-      if (n_angle < curr_angle - Math.PI) { return n_angle + 2 * Math.PI; }
-      else if (curr_angle + Math.PI < n_angle) { return n_angle - 2 * Math.PI; }
-      return n_angle;
-    })(curr_angle, n_angle);
-    const compilation_radius = (1 - r) * curr_radius + r * next_radius;
-    const compilation_angle = (1 - r) * curr_angle + r * next_angle;
-    this.updateX(compilation_radius * Math.cos(compilation_angle));
-    this.updateY(compilation_radius * Math.sin(compilation_angle));
-    */
   }
   setColor(getColor: (archetype: Archetype) => string) {
     this.#getColor = getColor;
