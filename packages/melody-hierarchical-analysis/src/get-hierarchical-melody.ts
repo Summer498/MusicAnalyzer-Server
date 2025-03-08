@@ -4,15 +4,6 @@ import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { getTimeAndMelody } from "./get-time-and-melody";
 import { MusicXML } from "@music-analyzer/musicxml";
 
-const scaleAndTranslate = (e: TimeAndMelody, w: number, b: number) => {
-  const time = e.time.map(e => e * w + b);
-  return new TimeAndMelody(
-    time,
-    time,
-    e.note,
-  );
-};
-
 class TimeAndAnalyzedMelodyAndIR
   extends TimeAndAnalyzedMelody {
   constructor(
@@ -30,13 +21,17 @@ const appendIR = (e: TimeAndAnalyzedMelody) => {
   );
 };
 
-
 const analyzeAndScaleMelody = (measure: number, matrix: TimeSpan[][], musicxml: MusicXML) => (element: ReductionElement) => {
   const w = measure / 8;  // NOTE: 1 measure = 3.5
   const b = 0;
-  const melody = getTimeAndMelody(element, matrix, musicxml);
-  const scaled_melody = scaleAndTranslate(melody, w, b);
-  return scaled_melody;
+  const e = getTimeAndMelody(element, matrix, musicxml);
+
+  const time = e.time.map(e => e * w + b);
+  return new TimeAndMelody(
+    time,
+    time,
+    e.note,
+  );
 };
 
 const getMapOntToHierarchicalMelodyFromLayer = (measure: number, reduction: ReductionElement, matrix: TimeSpan[][], musicxml: MusicXML, roman: TimeAndRomanAnalysis[]) => (_: unknown, layer: number) => {
