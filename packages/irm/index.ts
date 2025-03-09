@@ -1,4 +1,4 @@
-import { Archetype } from "./src/Archetype";
+import { Triad } from "./src/Archetype";
 
 export { _ArchetypeSymbol as ArchetypeSymbol } from "./src/Archetype";
 export { Archetype } from "./src/Archetype";
@@ -13,13 +13,13 @@ export {
 } from "./src/colors.ts";
 
 const archetypes = [
-  [new Archetype("F3", "F3", "F3")],
+  [new Triad("F3", "F3", "F3")],
   [
     "B4", "A4", "G4", "F4", "E4", "D4", "C4", "B3", "A3", "G3", "F3", "E3", "D3", "C3", "B2",
-  ].map(e=> new Archetype("F3", "B3", e)),
+  ].map(e=> new Triad("F3", "B3", e)),
   [ 
     "F5", "E5", "D5", "C5", "B4", "A4", "G4", "F4", "E4", "D4", "C4", "B3", "A3", "G3", "F3",
-  ].map(e=> new Archetype("B3", "F4", e))
+  ].map(e=> new Triad("B3", "F4", e))
 ];
 
 console.log("archetypes");
@@ -28,7 +28,7 @@ console.log(archetypes.map(e => e.map(e => e.symbol)));
 console.log("melody motions");
 console.log(archetypes.map(e => e.map(e => (
   {
-    I: `${e.intervallic.direction.name}/${e.intervallic.magnitude.name}`,
-    V: `${e.registral.direction.name}/${e.registral.magnitude.name}`
+    I: `${e.archetype.intervallic.direction.name}/${e.archetype.intervallic.magnitude.name}`,
+    V: `${e.archetype.registral.direction.name}/${e.archetype.registral.magnitude.name}`
   }
 ))));
