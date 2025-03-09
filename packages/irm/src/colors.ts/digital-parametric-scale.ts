@@ -12,8 +12,6 @@ export const get_color_on_digital_parametric_scale = (archetype: Archetype)  => 
     case "ID": case "(ID)": return "rgb(255, 160, 0)";
     case "R": case "(R)": return "rgb(255, 0, 0)";
 
-    case "M":
-    case "dyad": return "rgb(64, 64, 64)";
-    default: return "rgb(0, 0, 0)";
+    default: return "rgb(64, 64, 64)";
   }
 };

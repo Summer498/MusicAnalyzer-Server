@@ -26,8 +26,6 @@ export const get_color_of_implication_realization = (archetype: Archetype) => {
     case "(IR)": return "rgb(255, 0, 0)";
 
     
-    case "M": return "rgb(64, 64, 64)";
-    case "dyad": return "rgb(64, 64, 64)";
-    default: return "rgb(0, 0, 0)";
+    default: return "rgb(64, 64, 64)";
   }
 };

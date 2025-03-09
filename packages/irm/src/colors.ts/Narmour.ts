@@ -12,8 +12,7 @@ export const get_color_of_Narmour_concept = (archetype: Archetype) => {
 
     case "D": case "(D)": return "rgb(0, 242, 0)";
     case "ID": case "(ID)": return "rgb(0, 255, 160)";
-    case "M":
-    case "dyad": return "rgb(64, 64, 64)";
-    default: return "rgb(0, 0, 0)";
+
+    default: return "rgb(64, 64, 64)";
   }
 };
