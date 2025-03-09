@@ -1,6 +1,7 @@
 import { BlackKeyPrm, bracket_height, NoteSize } from "@music-analyzer/view-parameters";
 import { MVVM_Model } from "@music-analyzer/view";
 import { ReductionModel } from "../reduction-model";
+import { Archetype } from "@music-analyzer/irm";
 
 export class ReductionViewModel extends MVVM_Model {
   #x: number;
@@ -16,6 +17,7 @@ export class ReductionViewModel extends MVVM_Model {
   get cw() { return this.#cw; }
   get strong() { return this.#strong; }
   set strong(value: boolean) { this.#strong = value; }
+  readonly archetype: Archetype;
   constructor(
     readonly model: ReductionModel,
   ) {
@@ -27,6 +29,7 @@ export class ReductionViewModel extends MVVM_Model {
     this.y = (2 + this.model.layer) * BlackKeyPrm.height * bracket_height;
     this.h = BlackKeyPrm.height * bracket_height;
     this.#strong = false;
+    this.archetype = model.archetype
   }
   getViewX(x: number) { return x * NoteSize.value; }
   getViewW(w: number) { return w * NoteSize.value; }

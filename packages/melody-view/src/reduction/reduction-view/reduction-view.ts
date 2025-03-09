@@ -16,7 +16,7 @@ export class ReductionView extends MVVM_View<ReductionViewModel, "g"> {
     super(new ReductionViewModel(model), "g");
     this.bracket = new ReductionBracket(this.model);
     this.dot = new ReductionDot(this.model);
-    this.ir_symbol = new IRMSymbolOnReduction(this.model, archetype);
+    this.ir_symbol = new IRMSymbolOnReduction(this.model);
 
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.svg.id = "time-span-node";

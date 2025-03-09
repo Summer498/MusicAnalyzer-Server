@@ -60,10 +60,10 @@ export class IRPlotView extends MVVM_View<IRPlotModel, "circle"> {
   }
   setColor(getColor: (archetype: Archetype) => string) {
     this.#getColor = getColor;
-    this.svg.style.fill = this.#getColor(this.model.getCurrentNote().melody_analysis.implication_realization) || "rgb(0, 0, 0)";
+    this.svg.style.fill = this.#getColor(this.model.archetype) || "rgb(0, 0, 0)";
   }
   updateColor() {
-    this.svg.style.fill = this.#getColor(this.model.getCurrentNote().melody_analysis.implication_realization) || "rgb(0, 0, 0)";
+    this.svg.style.fill = this.#getColor(this.model.archetype) || "rgb(0, 0, 0)";
   }
 
   onWindowResized() {

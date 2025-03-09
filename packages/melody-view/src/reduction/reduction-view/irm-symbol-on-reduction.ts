@@ -7,10 +7,9 @@ export class IRMSymbolOnReduction extends MVVM_View<ReductionViewModel, "text"> 
   #getColor: (archetype: Archetype) => string;
   constructor(
     model: ReductionViewModel,
-    readonly archetype: Archetype,
   ) {
     super(model, "text");
-    this.svg.textContent = archetype.symbol;
+    this.svg.textContent = this.model.archetype.symbol;
     this.svg.id = "I-R Symbol";
     this.svg.style.fontFamily = "Times New Roman";
     this.svg.style.fontSize = `${bracket_height}em`;
@@ -19,10 +18,10 @@ export class IRMSymbolOnReduction extends MVVM_View<ReductionViewModel, "text"> 
   }
   setColor(getColor: (archetype: Archetype) => string) {
     this.#getColor = getColor;
-    this.svg.style.fill = this.#getColor(this.archetype) || "rgb(0, 0, 0)";
+    this.svg.style.fill = this.#getColor(this.model.archetype) || "rgb(0, 0, 0)";
   }
   updateColor(){
-    this.svg.style.fill = this.#getColor(this.archetype) || "rgb(0, 0, 0)";
+    this.svg.style.fill = this.#getColor(this.model.archetype) || "rgb(0, 0, 0)";
   }
   update(cx: number, y: number, w: number, h: number) {
     this.svg.setAttribute("x", String(cx));
