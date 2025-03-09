@@ -7,11 +7,11 @@ import { getTriadArchetypeSymbol } from "./get-triad-archetype-symbol";
 
 export class TriadArchetype {
   readonly symbol: ProspectiveTriadSymbol;
-  readonly registral_return_form: RegistralReturnForm;
   readonly notes: [NoteLiteral, NoteLiteral, NoteLiteral];
   readonly intervals: [IntervalName, IntervalName];
   readonly registral: RegistralMotion;
   readonly intervallic: IntervallicMotion;
+  readonly registral_return_form: RegistralReturnForm;
   constructor(prev: NoteLiteral, curr: NoteLiteral, next: NoteLiteral) {
     this.notes = [prev || "", curr || "", next || ""]
     this.intervals = [_Interval.distance(prev, curr), _Interval.distance(curr, next),];
