@@ -36,6 +36,7 @@ export function getArchetype(
   }
 }
 
+// Obsolete
 export class Archetype {
   readonly symbol: ArchetypeSymbol;
   readonly notes
