@@ -153,7 +153,7 @@ export class TimeAndAnalyzedMelody {
 
 }
 
-const v = "25.03.09.06.02";
+const v = "25.03.09.11.57";
 export class MelodyAnalysisData {
   readonly version = v;
   constructor(
