@@ -39,8 +39,8 @@ export class Archetype {
   readonly intervals: [IntervalName, IntervalName];
   readonly retrospective: boolean;
   readonly registral_return_form: RegistralReturnForm;
-  readonly registral_motion: RegistralMotion;
-  readonly intervallic_motion: IntervallicMotion;
+  readonly registral: RegistralMotion;
+  readonly intervallic: IntervallicMotion;
 
   constructor(prev?: NoteLiteral, curr?: NoteLiteral, next?: NoteLiteral) {
     if (prev && curr && next) {
@@ -50,16 +50,16 @@ export class Archetype {
       this.retrospective = retrospective;
       this.registral_return_form = archetype.registral_return_form;
       this.intervals = archetype.intervals;
-      this.registral_motion = archetype.registral_motion
-      this.intervallic_motion = archetype.intervallic_motion
+      this.registral = archetype.registral
+      this.intervallic = archetype.intervallic
     }
     else {
       this.retrospective = false;
       this.registral_return_form = NULL_REGISTRAL_RETURN_FORM;
       this.intervals = ["", ""];
       const P1 = _Interval.get("P1");
-      this.registral_motion = new RegistralMotion(P1, P1)
-      this.intervallic_motion = new RegistralMotion(P1, P1)
+      this.registral = new RegistralMotion(P1, P1)
+      this.intervallic = new RegistralMotion(P1, P1)
       if (prev && curr) {
         this.notes = [prev, curr]
         this.symbol = remove_minus(_Interval.distance(prev, curr));

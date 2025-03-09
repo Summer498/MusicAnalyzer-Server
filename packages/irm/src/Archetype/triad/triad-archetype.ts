@@ -10,20 +10,20 @@ export class TriadArchetype {
   readonly registral_return_form: RegistralReturnForm;
   readonly notes: [NoteLiteral, NoteLiteral, NoteLiteral];
   readonly intervals: [IntervalName, IntervalName];
-  readonly registral_motion: RegistralMotion;
-  readonly intervallic_motion: IntervallicMotion;
+  readonly registral: RegistralMotion;
+  readonly intervallic: IntervallicMotion;
   constructor(prev: NoteLiteral, curr: NoteLiteral, next: NoteLiteral) {
     this.notes = [prev || "", curr || "", next || ""]
     this.intervals = [_Interval.distance(prev, curr), _Interval.distance(curr, next),];
     const initial = _Interval.get(this.intervals[0]);
     const follow = _Interval.get(this.intervals[1]);
-    this.registral_motion = new RegistralMotion(initial, follow);
-    this.intervallic_motion = new IntervallicMotion(initial, follow);
+    this.registral = new RegistralMotion(initial, follow);
+    this.intervallic = new IntervallicMotion(initial, follow);
     this.registral_return_form = new RegistralReturnForm(this.notes);
     this.symbol = getTriadArchetypeSymbol(
-      this.intervallic_motion.direction.name,
-      this.intervallic_motion.magnitude.name,
-      this.registral_motion.direction.name,
+      this.intervallic.direction.name,
+      this.intervallic.magnitude.name,
+      this.registral.direction.name,
     );
   }
 }

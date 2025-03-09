@@ -28,7 +28,7 @@ console.log(archetypes.map(e => e.map(e => e.symbol)));
 console.log("melody motions");
 console.log(archetypes.map(e => e.map(e => (
   {
-    I: `${e.intervallic_motion.direction.name}/${e.intervallic_motion.magnitude.name}`,
-    V: `${e.registral_motion.direction.name}/${e.registral_motion.magnitude.name}`
+    I: `${e.intervallic.direction.name}/${e.intervallic.magnitude.name}`,
+    V: `${e.registral.direction.name}/${e.registral.magnitude.name}`
   }
 ))));
