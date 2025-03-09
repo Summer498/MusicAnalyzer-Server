@@ -5,7 +5,7 @@ import { sendFile } from "../../routing";
 import { Request, Response } from "express";
 import { ROOT } from "../../constants";
 import { DataDirectories } from "../data-directories";
-import { melodyByCrepe, melodyBy_pYIN, chordExtract, chordToRoman, f0ByCrepe, demucs, midiByCrepe, midiBy_pYIN, f0By_pYIN } from "./call-program";
+import { melodyAnalysisByCrepe, melodyAnalysisBy_pYIN, chordExtract, chordToRoman, f0ByCrepe, demucs, semitonesByCrepe, semitonesBy_pYIN, f0By_pYIN } from "./call-program";
 
 const _loadRomanAnalysis = (update: boolean, song_name: string, file_path: string) => {
   const force = false;
@@ -23,8 +23,8 @@ const _loadAnalysisFromCREPE = (update: boolean, song_name: string, file_path: s
 
   demucs(false, e.demucs);
   f0ByCrepe(false, e.f0_crepe, song_name);
-  midiByCrepe(false, e.midi_crepe, song_name);
-  melodyByCrepe(update, e.melody_crepe, e.roman.dst);
+  semitonesByCrepe(false, e.midi_crepe, song_name);
+  melodyAnalysisByCrepe(update, e.melody_crepe, e.roman.dst);
 };
 
 const _loadAnalysisFromPYIN = (update: boolean, song_name: string, file_path: string) => {
@@ -35,8 +35,8 @@ const _loadAnalysisFromPYIN = (update: boolean, song_name: string, file_path: st
 
   demucs(false, e.demucs);
   f0By_pYIN(false, e.f0_pyin, e.pyin_img, song_name);
-  midiBy_pYIN(false, e.midi_pyin);
-  melodyBy_pYIN(update, e.melody_pyin, e.roman.dst);
+  semitonesBy_pYIN(false, e.midi_pyin);
+  melodyAnalysisBy_pYIN(update, e.melody_pyin, e.roman.dst);
 };
 
 export const loadRomanAnalysis = (req: Request, res: Response) => {
