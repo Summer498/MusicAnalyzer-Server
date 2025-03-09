@@ -1,7 +1,7 @@
 import { ColorSelector, IRM_ColorNameIDs } from "@music-analyzer/controllers";
-import { Archetype, get_color_of_implication_realization, get_color_of_Narmour_concept, get_color_on_digital_intervallic_scale, get_color_on_digital_parametric_scale, get_color_on_intervallic_angle, get_color_on_parametric_scale, get_color_on_registral_scale, Triad } from "@music-analyzer/irm";
+import { Archetype, Dyad, get_color_of_implication_realization, get_color_of_Narmour_concept, get_color_on_digital_intervallic_scale, get_color_on_digital_parametric_scale, get_color_on_intervallic_angle, get_color_on_parametric_scale, get_color_on_registral_scale, Monad, Null_ad, Triad } from "@music-analyzer/irm";
 
-type hasArchetype = { archetype: Archetype | Triad }
+type hasArchetype = { archetype: Archetype | Triad | Dyad | Monad | Null_ad }
 type ColorChangeSubscriber = {
   setColor: (getColor: (e: hasArchetype) => string) => void
   updateColor: () => void

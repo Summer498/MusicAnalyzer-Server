@@ -1,5 +1,5 @@
 import { hsv2rgb, rgbToString } from "@music-analyzer/color";
-import { Archetype, Triad } from "../archetype";
+import { Archetype, Dyad, Monad, Null_ad, Triad } from "../archetype";
 
 const get_grb_on_parametric_scale = (archetype: Archetype | Triad) => {
   const s = archetype.intervallic?.direction.name === "mL" ? -1 : 0;
@@ -11,9 +11,14 @@ const get_grb_on_parametric_scale = (archetype: Archetype | Triad) => {
     case "mN": return hsv2rgb(0 + B, 1 + s * scale, 1 + v * scale);
     case "mR": return hsv2rgb(120 + B, 1 + s * scale, 1 + v * scale);
   }
-  return[64,64,64]
+  return [64, 64, 64]
 };
 
-export function get_color_on_parametric_scale(archetype: Archetype | Triad) {
+export function get_color_on_parametric_scale(archetype: Archetype | Triad | Dyad | Monad | Null_ad) {
+  if (
+    archetype instanceof Dyad
+    || archetype instanceof Monad
+    || archetype instanceof Null_ad
+  ) { return "rgb(64,64,64)" }
   return rgbToString(get_grb_on_parametric_scale(archetype))
 }

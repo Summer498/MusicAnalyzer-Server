@@ -1,7 +1,7 @@
-import { Archetype, Triad } from "@music-analyzer/irm";
+import { Archetype, Dyad, Monad, Null_ad, Triad } from "@music-analyzer/irm";
 import { Gravity } from "./gravity";
 
-type MelodyAnalysis_Args = [Gravity | undefined, Gravity | undefined, Archetype | Triad];
+type MelodyAnalysis_Args = [Gravity | undefined, Gravity | undefined, Archetype | Triad | Dyad | Monad | Null_ad];
 const getArgsOfMelodyAnalysis = (
   args
     : MelodyAnalysis_Args
@@ -20,12 +20,12 @@ const getArgsOfMelodyAnalysis = (
 export class MelodyAnalysis {
   readonly chord_gravity: Gravity | undefined
   readonly scale_gravity: Gravity | undefined
-  readonly implication_realization: Archetype | Triad
+  readonly implication_realization: Archetype | Triad | Dyad | Monad | Null_ad
   constructor(e: MelodyAnalysis);
   constructor(
     scale_gravity: Gravity | undefined,
     chord_gravity: Gravity | undefined,
-    implication_realization: Archetype | Triad,
+    implication_realization: Archetype | Triad | Dyad | Monad | Null_ad,
   );
   constructor(
     ...args
