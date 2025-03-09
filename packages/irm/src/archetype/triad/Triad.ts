@@ -21,6 +21,7 @@ const isRetrospective = (archetype: TriadArchetype) => {
 }
 
 export class Triad {
+  readonly length = 3;
   readonly symbol: TriadSymbol;
   readonly notes: [NoteLiteral, NoteLiteral, NoteLiteral];
   readonly intervals: [IntervalName, IntervalName];
