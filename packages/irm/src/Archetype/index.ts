@@ -3,4 +3,4 @@ export { Monad } from "./Monad";
 export { Triad } from "./triad/Triad";
 
 export { Archetype, getArchetype } from "./archetype";
-export { _ArchetypeSymbol } from "./types";
+export { ArchetypeSymbol } from "./types";

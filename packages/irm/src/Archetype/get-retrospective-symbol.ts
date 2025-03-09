@@ -1,4 +1,4 @@
-import { _ArchetypeSymbol, RetrospectiveTriadSymbol, ProspectiveTriadSymbol } from "./types";
+import { RetrospectiveTriadSymbol, ProspectiveTriadSymbol } from "./types";
 
 export const retrospectiveSymbol = (symbol: ProspectiveTriadSymbol): RetrospectiveTriadSymbol => {
   switch (symbol) {

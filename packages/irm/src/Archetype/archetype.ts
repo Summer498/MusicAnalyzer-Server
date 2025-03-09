@@ -1,6 +1,6 @@
 import { _Interval, _Note, IntervalName, NoteLiteral } from "@music-analyzer/tonal-objects";
 import { NULL_REGISTRAL_RETURN_FORM, RegistralReturnForm, } from "../RegistralReturnForm";
-import { _ArchetypeSymbol, ArchetypeSymbol } from "./types";
+import { ArchetypeSymbol } from "./types";
 import { Triad } from "./triad/Triad";
 import { Dyad } from "./Dyad";
 import { Monad } from "./Monad";
@@ -62,11 +62,13 @@ export class Archetype {
       this.intervallic = new RegistralMotion(P1, P1)
       if (prev && curr) {
         this.notes = [prev, curr]
-        this.symbol = remove_minus(_Interval.distance(prev, curr));
+        this.symbol = "dyad";
+//        this.symbol = remove_minus(_Interval.distance(prev, curr));
       }
       else if (curr && next) {
         this.notes = [curr, next]
-        this.symbol = remove_minus(_Interval.distance(curr, next));
+        this.symbol = "dyad";
+//        this.symbol = remove_minus(_Interval.distance(curr, next));
       }
       else {
         if (prev) {

@@ -1,6 +1,5 @@
 import { Interval } from "@music-analyzer/tonal-objects";
-import { _ArchetypeSymbol, ArchetypeDirectionalSymbol, RetrospectiveTriadSymbol, ProspectiveDirectionalTriadSymbol, ProspectiveTriadSymbol } from "./types";
-import { ArchetypeSymbol } from "../..";
+import { ArchetypeSymbol, RetrospectiveTriadSymbol, ProspectiveDirectionalTriadSymbol, ProspectiveTriadSymbol, ArchetypeDirectionalSymbol } from "./types";
 import { directionalRetrospectiveSymbol } from "./get-directional-retrospective-symbol";
 
 export const directionalProspectiveSymbol = (symbol: ProspectiveTriadSymbol, realization: Interval): ProspectiveDirectionalTriadSymbol => {
@@ -42,7 +41,6 @@ export const directionalSymbol = (
   symbol: ArchetypeSymbol,
   realization: Interval
 ): ArchetypeDirectionalSymbol => {
-  if (symbol === "M" || symbol === "dyad") { return symbol; }
   if (symbol.match(/\(..?\)/)) {
     return directionalRetrospectiveSymbol(symbol as RetrospectiveTriadSymbol, realization);
   }

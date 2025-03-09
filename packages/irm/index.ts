@@ -1,6 +1,6 @@
 import { Triad } from "./src/Archetype";
 
-export { _ArchetypeSymbol as ArchetypeSymbol } from "./src/Archetype";
+export { ArchetypeSymbol } from "./src/Archetype";
 export { Archetype } from "./src/Archetype";
 export {
   get_color_of_Narmour_concept,

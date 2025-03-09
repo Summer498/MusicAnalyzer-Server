@@ -23,12 +23,8 @@ export type RetrospectiveDirectionalTriadSymbol =
 export type TriadSymbol = ProspectiveTriadSymbol | RetrospectiveTriadSymbol;
 export type DirectionalTriadSymbol = ProspectiveDirectionalTriadSymbol | RetrospectiveDirectionalTriadSymbol;
 
-export type _ProspectiveSymbol = ProspectiveTriadSymbol | "M" | "dyad"
-export type ProspectiveSymbol = ProspectiveTriadSymbol | "M" | IntervalName
-export type _ProspectiveDirectionalSymbol = ProspectiveDirectionalTriadSymbol | "M" | "uDyad" | "dDyad"
-export type ProspectiveDirectionalSymbol = ProspectiveDirectionalTriadSymbol | "M" | IntervalName
+export type ProspectiveSymbol = ProspectiveTriadSymbol | "M" | "dyad"
+export type ProspectiveDirectionalSymbol = ProspectiveDirectionalTriadSymbol | "M" | "uDyad" | "dDyad"
 
-export type _ArchetypeSymbol = "" | _ProspectiveSymbol | RetrospectiveTriadSymbol
 export type ArchetypeSymbol = "" | ProspectiveSymbol | RetrospectiveTriadSymbol
-export type _ArchetypeDirectionalSymbol = "" | _ProspectiveDirectionalSymbol | RetrospectiveDirectionalTriadSymbol
 export type ArchetypeDirectionalSymbol = "" | ProspectiveDirectionalSymbol | RetrospectiveDirectionalTriadSymbol
