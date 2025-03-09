@@ -1,6 +1,6 @@
-import { _ArchetypeSymbol, RetrospectiveSymbol, TrigramProspectiveSymbol } from "./types";
+import { _ArchetypeSymbol, RetrospectiveTriadSymbol, ProspectiveTriadSymbol } from "./types";
 
-export const retrospectiveSymbol = (symbol: TrigramProspectiveSymbol): RetrospectiveSymbol => {
+export const retrospectiveSymbol = (symbol: ProspectiveTriadSymbol): RetrospectiveTriadSymbol => {
   switch (symbol) {
     case "P": return "(P)";
     case "IP": return "(IP)";

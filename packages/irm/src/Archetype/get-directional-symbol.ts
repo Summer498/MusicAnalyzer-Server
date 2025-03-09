@@ -1,9 +1,9 @@
 import { Interval } from "@music-analyzer/tonal-objects";
-import { _ArchetypeSymbol, ArchetypeDirectionalSymbol, RetrospectiveSymbol, TrigramProspectiveDirectionalSymbol, TrigramProspectiveSymbol } from "./types";
+import { _ArchetypeSymbol, ArchetypeDirectionalSymbol, RetrospectiveTriadSymbol, ProspectiveDirectionalTriadSymbol, ProspectiveTriadSymbol } from "./types";
 import { ArchetypeSymbol } from "../..";
 import { directionalRetrospectiveSymbol } from "./get-directional-retrospective-symbol";
 
-export const directionalProspectiveSymbol = (symbol: TrigramProspectiveSymbol, realization: Interval): TrigramProspectiveDirectionalSymbol => {
+export const directionalProspectiveSymbol = (symbol: ProspectiveTriadSymbol, realization: Interval): ProspectiveDirectionalTriadSymbol => {
   switch (symbol) {
     case "P":
       if (realization.semitones > 0) { return "uP"; }
@@ -44,9 +44,9 @@ export const directionalSymbol = (
 ): ArchetypeDirectionalSymbol => {
   if (symbol === "M" || symbol === "dyad") { return symbol; }
   if (symbol.match(/\(..?\)/)) {
-    return directionalRetrospectiveSymbol(symbol as RetrospectiveSymbol, realization);
+    return directionalRetrospectiveSymbol(symbol as RetrospectiveTriadSymbol, realization);
   }
   else {
-    return directionalProspectiveSymbol(symbol as TrigramProspectiveSymbol, realization);
+    return directionalProspectiveSymbol(symbol as ProspectiveTriadSymbol, realization);
   }
 };

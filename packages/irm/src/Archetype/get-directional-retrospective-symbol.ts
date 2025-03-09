@@ -1,7 +1,7 @@
 import { Interval } from "@music-analyzer/tonal-objects";
-import { RetrospectiveDirectionalSymbol, RetrospectiveSymbol } from "./types";
+import { RetrospectiveDirectionalTriadSymbol, RetrospectiveTriadSymbol } from "./types";
 
-export const directionalRetrospectiveSymbol = (symbol: RetrospectiveSymbol, realization: Interval): RetrospectiveDirectionalSymbol => {
+export const directionalRetrospectiveSymbol = (symbol: RetrospectiveTriadSymbol, realization: Interval): RetrospectiveDirectionalTriadSymbol => {
   switch (symbol) {
     case "(P)":
       if (realization.semitones > 0) { return "(uP)"; }
