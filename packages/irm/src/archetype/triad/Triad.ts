@@ -2,6 +2,9 @@ import { _Interval, _Note, IntervalName, NoteLiteral } from "@music-analyzer/ton
 import { TriadSymbol } from "../types";
 import { retrospectiveSymbol } from "../get-retrospective-symbol";
 import { TriadArchetype } from "./triad-archetype";
+import { RegistralMotion } from "../../MelodyMotion/RegistralMotion";
+import { IntervallicMotion } from "../../MelodyMotion/IntervallicMotion";
+import { RegistralReturnForm } from "../../RegistralReturnForm";
 
 
 const isRetrospective = (archetype: TriadArchetype) => {
@@ -21,12 +24,19 @@ export class Triad {
   readonly symbol: TriadSymbol;
   readonly notes: [NoteLiteral, NoteLiteral, NoteLiteral];
   readonly intervals: [IntervalName, IntervalName];
+  readonly registral: RegistralMotion;
+  readonly intervallic: IntervallicMotion;
+  readonly registral_return_form: RegistralReturnForm;
   readonly archetype: TriadArchetype;
   readonly retrospective: boolean;
   constructor(prev: NoteLiteral, curr: NoteLiteral, next: NoteLiteral) {
     this.notes = [prev || "", curr || "", next || ""]
     this.archetype = new TriadArchetype(prev, curr, next);
-    this.intervals = this.archetype.intervals
+    const { intervals, registral, intervallic, registral_return_form } = this.archetype;
+    this.intervals = intervals;
+    this.registral = registral;
+    this.intervallic = intervallic;
+    this.registral_return_form = registral_return_form;
     this.retrospective = isRetrospective(this.archetype);
     this.symbol = this.retrospective ? retrospectiveSymbol(this.archetype.symbol) : this.archetype.symbol
   }

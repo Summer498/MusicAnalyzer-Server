@@ -1,5 +1,5 @@
 import { _Interval, _Note, IntervalName, NoteLiteral } from "@music-analyzer/tonal-objects";
-import { NULL_REGISTRAL_RETURN_FORM, RegistralReturnForm, } from "../RegistralReturnForm";
+import { RegistralReturnForm, } from "../RegistralReturnForm";
 import { ArchetypeSymbol } from "./types";
 import { Triad } from "./triad/Triad";
 import { Dyad } from "./Dyad";
@@ -43,11 +43,11 @@ export class Archetype {
     | [NoteLiteral]
     | [NoteLiteral, NoteLiteral]
     | [NoteLiteral, NoteLiteral, NoteLiteral];
-  readonly intervals: [IntervalName, IntervalName];
-  readonly retrospective: boolean;
-  readonly registral_return_form: RegistralReturnForm;
-  readonly registral: RegistralMotion;
-  readonly intervallic: IntervallicMotion;
+  readonly intervals?: [IntervalName, IntervalName];
+  readonly retrospective?: boolean;
+  readonly registral_return_form?: RegistralReturnForm;
+  readonly registral?: RegistralMotion;
+  readonly intervallic?: IntervallicMotion;
 
   constructor(prev?: NoteLiteral, curr?: NoteLiteral, next?: NoteLiteral) {
     if (prev && curr && next) {
@@ -61,21 +61,13 @@ export class Archetype {
       this.intervallic = archetype.intervallic
     }
     else {
-      this.retrospective = false;
-      this.registral_return_form = NULL_REGISTRAL_RETURN_FORM;
-      this.intervals = ["", ""];
-      const P1 = _Interval.get("P1");
-      this.registral = new RegistralMotion(P1, P1)
-      this.intervallic = new RegistralMotion(P1, P1)
       if (prev && curr) {
         this.notes = [prev, curr]
         this.symbol = "dyad";
-        //        this.symbol = remove_minus(_Interval.distance(prev, curr));
       }
       else if (curr && next) {
         this.notes = [curr, next]
         this.symbol = "dyad";
-        //        this.symbol = remove_minus(_Interval.distance(curr, next));
       }
       else {
         if (prev) {
