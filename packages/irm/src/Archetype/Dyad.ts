@@ -1,0 +1,12 @@
+import { _Interval } from "@music-analyzer/tonal-objects";
+import { IntervalName, NoteLiteral } from "tonal";
+
+export class Dyad {
+  readonly symbol = "D";
+  readonly notes: [NoteLiteral,NoteLiteral];
+  readonly intervals: [IntervalName];
+  constructor(prev: NoteLiteral, curr: NoteLiteral) {
+    this.notes = [prev,curr];
+    this.intervals = [_Interval.distance(prev, curr)];
+  }
+}
