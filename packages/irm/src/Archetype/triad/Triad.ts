@@ -1,4 +1,4 @@
-import { _Interval, _Note, NoteLiteral } from "@music-analyzer/tonal-objects";
+import { _Interval, _Note, IntervalName, NoteLiteral } from "@music-analyzer/tonal-objects";
 import { TriadSymbol } from "../types";
 import { retrospectiveSymbol } from "../get-retrospective-symbol";
 import { TriadArchetype } from "./triad-archetype";
@@ -19,12 +19,14 @@ const isRetrospective = (archetype: TriadArchetype) => {
 
 export class Triad {
   readonly symbol: TriadSymbol;
+  readonly notes: [NoteLiteral, NoteLiteral, NoteLiteral];
+  readonly intervals: [IntervalName, IntervalName];
   readonly archetype: TriadArchetype;
   readonly retrospective: boolean;
-  readonly notes: [NoteLiteral, NoteLiteral, NoteLiteral];
   constructor(prev: NoteLiteral, curr: NoteLiteral, next: NoteLiteral) {
     this.notes = [prev || "", curr || "", next || ""]
     this.archetype = new TriadArchetype(prev, curr, next);
+    this.intervals = this.archetype.intervals
     this.retrospective = isRetrospective(this.archetype);
     this.symbol = this.retrospective ? retrospectiveSymbol(this.archetype.symbol) : this.archetype.symbol
   }
