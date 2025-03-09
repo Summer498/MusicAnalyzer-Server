@@ -1,6 +1,6 @@
 import { _Interval, NoteLiteral } from "@music-analyzer/tonal-objects";
 import { hsv2rgb, rgbToString } from "@music-analyzer/color";
-import { Archetype } from "../Archetype";
+import { Archetype } from "../archetype";
 
 const get_rgb_on_intervallic_angle = (
   n0: NoteLiteral,

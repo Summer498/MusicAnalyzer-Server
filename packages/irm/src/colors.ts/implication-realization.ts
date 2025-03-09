@@ -1,4 +1,4 @@
-import { Archetype } from "../Archetype";
+import { Archetype } from "../archetype";
 
 export const get_color_of_implication_realization = (archetype: Archetype) => {
   switch (archetype.symbol) {

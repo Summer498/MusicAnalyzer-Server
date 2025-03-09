@@ -1,5 +1,5 @@
 import { hsv2rgb, rgbToString } from "@music-analyzer/color";
-import { Archetype } from "../Archetype";
+import { Archetype } from "../archetype";
 
 const get_grb_on_parametric_scale = (archetype: Archetype) => {
   const s = archetype.intervallic.direction.name === "mL" ? -1 : 0;

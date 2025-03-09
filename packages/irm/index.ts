@@ -1,7 +1,7 @@
-import { Triad } from "./src/Archetype";
+import { Triad } from "./src/archetype";
 
-export { ArchetypeSymbol } from "./src/Archetype";
-export { Archetype } from "./src/Archetype";
+export { ArchetypeSymbol } from "./src/archetype";
+export { Archetype } from "./src/archetype";
 export {
   get_color_of_Narmour_concept,
   get_color_of_implication_realization,

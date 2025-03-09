@@ -1,4 +1,4 @@
-import { Archetype } from "../Archetype";
+import { Archetype } from "../archetype";
 
 export const get_color_on_registral_scale = (archetype: Archetype)  => {
   switch (archetype.symbol) {

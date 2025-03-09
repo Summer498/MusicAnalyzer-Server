@@ -1,4 +1,4 @@
-import { Archetype } from "../Archetype";
+import { Archetype } from "../archetype";
 
 export const get_color_of_Narmour_concept = (archetype: Archetype) => {
   switch (archetype.symbol) {
