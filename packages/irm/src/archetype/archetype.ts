@@ -14,12 +14,15 @@ const remove_minus = (src: string) => {
   return src;
 };
 
-export const getArchetype = (
+export function getArchetype(note: NoteLiteral): Monad;
+export function getArchetype(note1: NoteLiteral, note2: NoteLiteral): Dyad;
+export function getArchetype(note1: NoteLiteral, note2: NoteLiteral, note3: NoteLiteral): Triad;
+export function getArchetype(
   ...args
     : [NoteLiteral]
     | [NoteLiteral, NoteLiteral]
     | [NoteLiteral, NoteLiteral, NoteLiteral]
-) => {
+) {
   const e = args;
   switch (e.length) {
     case 1: return new Monad(e[0]);
@@ -63,12 +66,12 @@ export class Archetype {
       if (prev && curr) {
         this.notes = [prev, curr]
         this.symbol = "dyad";
-//        this.symbol = remove_minus(_Interval.distance(prev, curr));
+        //        this.symbol = remove_minus(_Interval.distance(prev, curr));
       }
       else if (curr && next) {
         this.notes = [curr, next]
         this.symbol = "dyad";
-//        this.symbol = remove_minus(_Interval.distance(curr, next));
+        //        this.symbol = remove_minus(_Interval.distance(curr, next));
       }
       else {
         if (prev) {
