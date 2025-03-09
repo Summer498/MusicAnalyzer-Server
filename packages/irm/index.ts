@@ -1,5 +1,6 @@
 import { Triad } from "./src/archetype";
 
+export { Dyad, Monad, Null_ad, Triad } from "./src/archetype";
 export { ArchetypeSymbol } from "./src/archetype";
 export { Archetype } from "./src/archetype";
 export {
