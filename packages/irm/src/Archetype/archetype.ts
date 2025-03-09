@@ -1,7 +1,7 @@
 import { _Interval, _Note, IntervalName, NoteLiteral } from "@music-analyzer/tonal-objects";
 import { NULL_REGISTRAL_RETURN_FORM, RegistralReturnForm, } from "../RegistralReturnForm";
 import { _ArchetypeSymbol, ArchetypeSymbol } from "./types";
-import { Triad } from "./Triad";
+import { Triad } from "./triad/Triad";
 import { Dyad } from "./Dyad";
 import { Monad } from "./Monad";
 import { RegistralMotion } from "../MelodyMotion/RegistralMotion";
@@ -21,14 +21,11 @@ const getArchetype = (
     | [NoteLiteral, NoteLiteral, NoteLiteral]
 ) => {
   const e = args;
-  if (e.length === 3) {
-    return new Triad(e[0], e[1], e[2]);
-  }
-  else if (e.length === 2) {
-    return new Dyad(e[0], e[1]);
-  }
-  else if (e.length === 1) {
-    return new Monad(e[0]);
+  switch (e.length) {
+    case 1: return new Monad(e[0]);
+    case 2: return new Dyad(e[0], e[1]);
+    case 3: return new Triad(e[0], e[1], e[2]);
+    default: throw new Error(`Invalid argument length: ${args.length}`)
   }
 }
 
@@ -57,8 +54,8 @@ export class Archetype {
       this.registral_return_form = NULL_REGISTRAL_RETURN_FORM;
       this.intervals = ["", ""];
       const P1 = _Interval.get("P1");
-      this.registral_motion = new RegistralMotion(P1,P1)
-      this.intervallic_motion = new RegistralMotion(P1,P1)
+      this.registral_motion = new RegistralMotion(P1, P1)
+      this.intervallic_motion = new RegistralMotion(P1, P1)
       if (prev && curr) {
         this.symbol = remove_minus(_Interval.distance(prev, curr));
       }
