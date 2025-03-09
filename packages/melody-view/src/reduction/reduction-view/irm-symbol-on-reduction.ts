@@ -4,7 +4,7 @@ import { MVVM_View } from "@music-analyzer/view";
 import { ReductionViewModel } from "./reduction-view-model";
 
 export class IRMSymbolOnReduction extends MVVM_View<ReductionViewModel, "text"> {
-  #getColor: (archetype: Archetype) => string;
+  #getColor: (e: ReductionViewModel) => string;
   constructor(
     model: ReductionViewModel,
   ) {
@@ -14,14 +14,14 @@ export class IRMSymbolOnReduction extends MVVM_View<ReductionViewModel, "text"> 
     this.svg.style.fontFamily = "Times New Roman";
     this.svg.style.fontSize = `${bracket_height}em`;
     this.svg.style.textAnchor = "middle";
-    this.#getColor = get_color_of_Narmour_concept;
+    this.#getColor = e=>get_color_of_Narmour_concept(e.archetype);
   }
-  setColor(getColor: (archetype: Archetype) => string) {
+  setColor(getColor: (e: ReductionViewModel) => string) {
     this.#getColor = getColor;
-    this.svg.style.fill = this.#getColor(this.model.archetype) || "rgb(0, 0, 0)";
+    this.svg.style.fill = this.#getColor(this.model) || "rgb(0, 0, 0)";
   }
   updateColor(){
-    this.svg.style.fill = this.#getColor(this.model.archetype) || "rgb(0, 0, 0)";
+    this.svg.style.fill = this.#getColor(this.model) || "rgb(0, 0, 0)";
   }
   update(cx: number, y: number, w: number, h: number) {
     this.svg.setAttribute("x", String(cx));

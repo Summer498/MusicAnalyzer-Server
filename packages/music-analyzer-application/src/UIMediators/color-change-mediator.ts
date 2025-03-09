@@ -1,8 +1,9 @@
 import { ColorSelector, IRM_ColorNameIDs } from "@music-analyzer/controllers";
 import { Archetype, get_color_of_implication_realization, get_color_of_Narmour_concept, get_color_on_digital_intervallic_scale, get_color_on_digital_parametric_scale, get_color_on_intervallic_angle, get_color_on_parametric_scale, get_color_on_registral_scale } from "@music-analyzer/irm";
 
+type hasArchetype = { archetype: Archetype }
 type ColorChangeSubscriber = {
-  setColor: (getColor: (archetype: Archetype) => string) => void
+  setColor: (getColor: (e: hasArchetype) => string) => void
   updateColor: () => void
 }
 export class ColorChangeMediator /*extends ControllerMediator<ColorChangeSubscriber>*/ {
@@ -13,8 +14,8 @@ export class ColorChangeMediator /*extends ControllerMediator<ColorChangeSubscri
     this.init(controllers);
   }
   protected init(controllers: ColorSelector<IRM_ColorNameIDs>[]) {
-    controllers.forEach(e => e.input.addEventListener("input", this.update.bind(this)(this.mapColor(e.id))));
-    this.update.bind(this)(this.mapColor("Narmour_concept"))();
+    controllers.forEach(s => s.input.addEventListener("input", this.update.bind(this)((e:hasArchetype)=>this.mapColor(s.id)(e.archetype))));
+    this.update.bind(this)((e:hasArchetype)=>this.mapColor("Narmour_concept")(e.archetype))();
   };
   mapColor(id: IRM_ColorNameIDs) {
     switch (id) {
@@ -27,7 +28,7 @@ export class ColorChangeMediator /*extends ControllerMediator<ColorChangeSubscri
       case "registral_scale": return get_color_on_registral_scale;
     }
   };
-  update(getColor: (archetype: Archetype) => string) {
+  update(getColor: (e: hasArchetype) => string) {
     return () => {
       this.subscribers.forEach(e => e.setColor(getColor));
     };

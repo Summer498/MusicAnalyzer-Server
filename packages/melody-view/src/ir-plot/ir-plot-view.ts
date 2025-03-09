@@ -1,9 +1,9 @@
-import { Archetype, get_color_of_Narmour_concept } from "@music-analyzer/irm";
+import { get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { MVVM_View } from "@music-analyzer/view";
 import { IRPlotModel } from "./ir-plot-model";
 
 export class IRPlotView extends MVVM_View<IRPlotModel, "circle"> {
-  #getColor: (archetype: Archetype) => string;
+  #getColor: (archetype: IRPlotModel) => string;
   readonly x0: number;
   readonly y0: number;
   readonly w: number;
@@ -22,7 +22,7 @@ export class IRPlotView extends MVVM_View<IRPlotModel, "circle"> {
     this.y0 = 250;
     this.svg.style.stroke = "rgb(16, 16, 16)";
     this.svg.style.strokeWidth = String(6);
-    this.#getColor = get_color_of_Narmour_concept;
+    this.#getColor = e => get_color_of_Narmour_concept(e.archetype);
   }
   updateRadius(r: number) {
     this.svg.style.r = String(r);
@@ -58,12 +58,12 @@ export class IRPlotView extends MVVM_View<IRPlotModel, "circle"> {
     this.updateX(-((1 - r) * curr[0] + r * next[0]));
     this.updateY(-((1 - r) * curr[1] + r * next[1]));
   }
-  setColor(getColor: (archetype: Archetype) => string) {
+  setColor(getColor: (e: IRPlotModel) => string) {
     this.#getColor = getColor;
-    this.svg.style.fill = this.#getColor(this.model.archetype) || "rgb(0, 0, 0)";
+    this.svg.style.fill = this.#getColor(this.model) || "rgb(0, 0, 0)";
   }
   updateColor() {
-    this.svg.style.fill = this.#getColor(this.model.archetype) || "rgb(0, 0, 0)";
+    this.svg.style.fill = this.#getColor(this.model) || "rgb(0, 0, 0)";
   }
 
   onWindowResized() {

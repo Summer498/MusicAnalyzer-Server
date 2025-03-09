@@ -1,12 +1,12 @@
 import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
-import { Archetype, get_color_of_Narmour_concept } from "@music-analyzer/irm";
+import { get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { MVVM_View } from "@music-analyzer/view";
 import { MelodyModel } from "./melody-model";
 import { deleteMelody } from "../melody-editor-function";
 
 export class MelodyView extends MVVM_View<MelodyModel, "rect"> {
   sound_reserved: boolean;
-  #getColor: (archetype: Archetype) => string;
+  #getColor: (e: MelodyModel) => string;
   constructor(model: MelodyModel) {
     super(model, "rect");
     this.svg.id = "melody-note";
@@ -18,15 +18,15 @@ export class MelodyView extends MVVM_View<MelodyModel, "rect"> {
     this.updateWidth();
     this.updateHeight();
     this.svg.style.fill = "rgb(0, 192, 0)";
-    this.#getColor = get_color_of_Narmour_concept;
+    this.#getColor = e=>get_color_of_Narmour_concept(e.archetype);
   }
-  setColor(getColor: (archetype: Archetype) => string) {
+  setColor(getColor: (e: MelodyModel) => string) {
     this.#getColor = getColor;
-    this.svg.style.fill = this.#getColor(this.model.archetype) || "rgb(0, 0, 0)";
+    this.svg.style.fill = this.#getColor(this.model) || "rgb(0, 0, 0)";
     this.svg.style.fill = "rgb(0, 192, 0)";
   }
   updateColor() {
-    this.#getColor(this.model.archetype) || "rgb(0, 0, 0)";
+    this.#getColor(this.model) || "rgb(0, 0, 0)";
   }
   updateX() { this.svg.setAttribute("x", String(this.model.time.begin * NoteSize.value)); }
   updateY() { this.svg.setAttribute("y", String(isNaN(this.model.note) ? -99 : (PianoRollBegin.value - this.model.note) * BlackKeyPrm.height)); }

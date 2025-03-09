@@ -1,7 +1,7 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { CollectionLayer } from "@music-analyzer/view";
 import { MelodyVM } from "./melody-view-model";
-import { Archetype } from "@music-analyzer/irm";
+import { MelodyModel } from "./melody-model";
 
 export class MelodyLayer extends CollectionLayer<MelodyVM> {
   constructor(melodies: TimeAndAnalyzedMelody[], layer: number) {
@@ -17,7 +17,7 @@ export class MelodyLayer extends CollectionLayer<MelodyVM> {
     super.onAudioUpdate();
     this.children.forEach(e => e.onAudioUpdate());
   }
-  setColor(getColor: (archetype: Archetype) => string) {
+  setColor(getColor: (e: MelodyModel) => string) {
     this.children.forEach(e => e.setColor(getColor));
   }
   updateColor() {

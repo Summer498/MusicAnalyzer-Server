@@ -1,12 +1,9 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { AudioReflectable, WindowReflectable } from "@music-analyzer/view";
 import { IRPlotLayer } from "../ir-plot-layer";
-import { Archetype } from "@music-analyzer/irm";
 import { IRPlotCircles } from "./ir-plot-circles";
 import { IRPlotAxis } from "./ir-plot-axis";
-
-
-
+import { IRPlotModel } from "../ir-plot-model";
 
 export class IRPlotHierarchy implements AudioReflectable, WindowReflectable {
   readonly svg: SVGGElement;
@@ -54,7 +51,7 @@ export class IRPlotHierarchy implements AudioReflectable, WindowReflectable {
     this.children.forEach(e => e.onAudioUpdate());
   }
   onWindowResized() { }
-  setColor(getColor: (archetype: Archetype) => string) {
+  setColor(getColor: (e: IRPlotModel) => string) {
     this.children.forEach(e => e.setColor(getColor));
   }
   updateColor() { this.children.forEach(e => e.updateColor()); }

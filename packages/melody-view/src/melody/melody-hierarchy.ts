@@ -1,7 +1,7 @@
 import { CollectionHierarchy } from "@music-analyzer/view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MelodyLayer } from "./melody-layer";
-import { Archetype } from "@music-analyzer/irm";
+import { MelodyModel } from "./melody-model";
 
 export class MelodyHierarchy extends CollectionHierarchy<MelodyLayer> {
   get show() { return this._show; }
@@ -35,7 +35,7 @@ export class MelodyHierarchy extends CollectionHierarchy<MelodyLayer> {
     this.onMelodyBeepCheckChanged(this.#check);
     this.onMelodyVolumeBarChanged(this.#volume);
   }
-  setColor(getColor: (archetype: Archetype) => string) {
+  setColor(getColor: (e: MelodyModel) => string) {
     this.children.forEach(e => e.setColor(getColor));
   }
   updateColor() {

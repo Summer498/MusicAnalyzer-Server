@@ -3,7 +3,6 @@ import { play } from "@music-analyzer/synth";
 import { NowAt, reservation_range } from "@music-analyzer/view-parameters";
 import { MelodyModel } from "./melody-model";
 import { MelodyView } from "./melody-view";
-import { Archetype } from "@music-analyzer/irm";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { Time } from "@music-analyzer/time-and";
 
@@ -38,7 +37,7 @@ export class MelodyVM extends MVVM_ViewModel<MelodyModel, MelodyView> {
       if (this.view.sound_reserved === false) { this.#beepMelody(); }
     }
   };
-  setColor(getColor: (archetype: Archetype) => string) {
+  setColor(getColor: (e: MelodyModel) => string) {
     this.view.setColor(getColor);
   }
   updateColor() { this.view.updateColor(); }
