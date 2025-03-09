@@ -1,6 +1,6 @@
-import { Archetype } from "../archetype";
+import { Archetype, Triad } from "../archetype";
 
-export const get_color_of_Narmour_concept = (archetype: Archetype) => {
+export const get_color_of_Narmour_concept = (archetype: Archetype | Triad) => {
   switch (archetype.symbol) {
     case "VP": case "(VP)": return "rgb(0, 160, 255)";
     case "P": case "(P)": return "rgb(0, 0, 255)";

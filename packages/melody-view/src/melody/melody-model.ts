@@ -1,4 +1,4 @@
-import { Archetype } from "@music-analyzer/irm";
+import { Archetype, Triad } from "@music-analyzer/irm";
 import { MelodyAnalysis, TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { Time } from "@music-analyzer/time-and";
 import { MVVM_Model } from "@music-analyzer/view";
@@ -8,7 +8,7 @@ export class MelodyModel extends MVVM_Model {
   readonly note: number;
   readonly head: Time;
   readonly melody_analysis: MelodyAnalysis;
-  readonly archetype: Archetype;
+  readonly archetype: Archetype | Triad;
   constructor(e: TimeAndAnalyzedMelody) {
     super();
     this.time = e.time

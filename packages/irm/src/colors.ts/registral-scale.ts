@@ -1,6 +1,6 @@
-import { Archetype } from "../archetype";
+import { Archetype, Triad } from "../archetype";
 
-export const get_color_on_registral_scale = (archetype: Archetype)  => {
+export const get_color_on_registral_scale = (archetype: Archetype | Triad)  => {
   switch (archetype.symbol) {
     case "VP": case "(VP)": return "rgb(0, 0, 255)";
     case "P": case "(P)": return "rgb(0, 0, 255)";
