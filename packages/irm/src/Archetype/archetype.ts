@@ -1,5 +1,5 @@
 import { _Interval, _Note, IntervalName, NoteLiteral } from "@music-analyzer/tonal-objects";
-import { MelodyMotion, no_motion } from "../MelodyMotion";
+import { MelodyMotion, no_motion } from "../MelodyMotion/MelodyMotion";
 import { NULL_REGISTRAL_RETURN_FORM, RegistralReturnForm, } from "../RegistralReturnForm";
 import { _ArchetypeSymbol, ArchetypeSymbol } from "./types";
 import { Archetype3 } from "./archetype3";

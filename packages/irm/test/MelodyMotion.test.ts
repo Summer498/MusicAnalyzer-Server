@@ -1,5 +1,5 @@
 import { _Interval, } from "@music-analyzer/tonal-objects";
-import { MelodyMotion } from "../src/MelodyMotion";
+import { MelodyMotion } from "../src/MelodyMotion/MelodyMotion";
 
 describe("dummy", () => {
   test("hoge", () => {
