@@ -14,7 +14,7 @@ const remove_minus = (src: string) => {
   return src;
 };
 
-const getArchetype = (
+export const getArchetype = (
   ...args
     : [NoteLiteral]
     | [NoteLiteral, NoteLiteral]
