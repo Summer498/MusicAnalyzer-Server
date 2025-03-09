@@ -1,4 +1,4 @@
-export const map2rgbByHue = (h: number, max: number, mid: number) => {
+export const map2rgbByHue = (h: number, max: number, mid: number):[number,number,number] => {
   // new Assertion(0 <= h && h < 6).onFailed(() => { throw new RangeError(`Unexpected value received. It should be in 0 <= h < 6, but h is ${h}`); });
 
   switch (Math.floor(h)) {

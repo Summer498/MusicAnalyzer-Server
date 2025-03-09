@@ -14,10 +14,12 @@ export const hsv2rgb = (h: number, s: number, v: number) => {
   const mid = v * s * Math.abs(mod(H + 1, 2) - 1);
   const m = v * (1 - s);
   const rgb = map2rgbByHue(H, max, mid);
-  return rgb.map(e => Math.floor((e + m) * 256)).map(e => e > 255 ? 255 : e);
+  const f = (e: number) => Math.floor((e + m) * 256);
+  const g = (e: number) => e > 255 ? 255 : e;
+  return [g(f(rgb[0])), g(f(rgb[1])), g(f(rgb[2]))] as [number,number,number]
 };
 
-export const rgbToString = (rgb: number[]) => '#' + rgb.map(e => ('0' + e.toString(16)).slice(-2)).join('');
+export const rgbToString = (rgb: [number, number, number]) => '#' + rgb.map(e => ('0' + e.toString(16)).slice(-2)).join('');
 
 const green_hue = 120; // 0:red, 120:green, 240:blue
 // C(green), Db, D, Eb, E(red), F, Gb, G, Ab(blue), A, Bb, B 
