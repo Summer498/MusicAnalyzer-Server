@@ -38,7 +38,7 @@ export class TimeAndRomanAnalysis {
   }
 }
 
-const v = "25.03.07.10.50";
+const v = "25.03.10.08.51";
 export class RomanAnalysisData {
   readonly version = v;
   constructor(

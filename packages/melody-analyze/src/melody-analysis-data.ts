@@ -1,7 +1,7 @@
 import { TimeAndAnalyzedMelody } from "./time-and-analyzed-melody";
 
 
-const v = "25.03.09.22.14";
+const v = "25.03.10.08.51";
 export class MelodyAnalysisData {
   readonly version = v;
   constructor(
