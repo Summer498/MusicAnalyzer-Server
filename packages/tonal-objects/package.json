@@ -16,14 +16,14 @@
     "build:minify": "tsup index.ts --sourcemap --dts --format esm,cjs --minify"
   },
   "dependencies": {
-    "tonal": "^6.0.0",
-    "@tonaljs/interval": "5.0.0",
-    "@tonaljs/note": "4.10.3",
+    "@music-analyzer/stdlib": "1.0.0",
     "@tonaljs/chord": "6.0.0",
-    "@tonaljs/scale": "4.12.6",
-    "@tonaljs/roman-numeral": "4.8.3",
-    "@tonaljs/key": "4.9.4",    
+    "@tonaljs/interval": "5.0.0",
+    "@tonaljs/key": "4.9.4",
+    "@tonaljs/note": "4.10.3",
     "@tonaljs/pitch-interval": "6.0.0",
-    "@music-analyzer/stdlib": "1.0.0"
+    "@tonaljs/roman-numeral": "4.8.3",
+    "@tonaljs/scale": "4.12.6",
+    "tonal": "^6.0.0"
   }
 }

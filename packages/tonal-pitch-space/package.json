@@ -17,8 +17,8 @@
   },
   "dependencies": {
     "@music-analyzer/math": "1.0.0",
-    "@music-analyzer/tonal-objects": "1.0.0",
+    "@music-analyzer/roman-chord": "1.0.0",
     "@music-analyzer/stdlib": "1.0.0",
-    "@music-analyzer/roman-chord": "1.0.0"
+    "@music-analyzer/tonal-objects": "1.0.0"
   }
 }
