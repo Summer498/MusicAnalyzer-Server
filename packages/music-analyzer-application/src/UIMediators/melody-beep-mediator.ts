@@ -4,14 +4,14 @@ import { SwitcherMediator } from "./switcher-mediator";
 
 export class MelodyBeepMediator extends SwitcherMediator<MelodyHierarchy> {
   constructor(
-    switcher: Checkbox,
-    melody_hierarchy: MelodyHierarchy,
+    switchers: Checkbox[],
+    melody_hierarchy: [MelodyHierarchy],
   ) {
-    switcher.input.checked = true;
-    super(switcher, [melody_hierarchy]);
+    switchers[0].input.checked = true;
+    super(switchers, melody_hierarchy);
   }
   override update() {
-    const visibility = this.controller.input.checked;
+    const visibility = this.controllers[0].input.checked;
     this.subscribers.forEach(e => e.onMelodyBeepCheckChanged(visibility));
   };
 }

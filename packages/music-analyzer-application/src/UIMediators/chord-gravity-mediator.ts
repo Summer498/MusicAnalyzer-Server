@@ -4,13 +4,13 @@ import { SwitcherMediator } from "./switcher-mediator";
 
 export class ChordGravityMediator extends SwitcherMediator<GravityHierarchy> {
   constructor(
-    switcher: Checkbox,
-    chord_gravities: GravityHierarchy
+    switchers: [Checkbox],
+    chord_gravities: [GravityHierarchy]
   ) {
-    super(switcher, [chord_gravities]);
+    super(switchers, chord_gravities);
   }
   override update() {
-    const visibility = this.controller.input.checked ? "visible" : "hidden";
+    const visibility = this.controllers[0].input.checked ? "visible" : "hidden";
     this.subscribers.forEach(e => e.svg.style.visibility = visibility);
   }
 }

@@ -1,21 +1,28 @@
 import { ColorSelector, IRM_ColorNameIDs } from "@music-analyzer/controllers";
 import { Archetype, Dyad, get_color_of_implication_realization, get_color_of_Narmour_concept, get_color_on_digital_intervallic_scale, get_color_on_digital_parametric_scale, get_color_on_intervallic_angle, get_color_on_parametric_scale, get_color_on_registral_scale, Monad, Null_ad, Triad } from "@music-analyzer/irm";
+import { ControllerMediator } from "./controller-mediator";
 
 type hasArchetype = { archetype: Archetype | Triad | Dyad | Monad | Null_ad }
 type ColorChangeSubscriber = {
   setColor: (getColor: (e: hasArchetype) => string) => void
   updateColor: () => void
 }
-export class ColorChangeMediator /*extends ControllerMediator<ColorChangeSubscriber>*/ {
+export class ColorChangeMediator extends ControllerMediator<ColorChangeSubscriber> {
   constructor(
-    readonly controllers: ColorSelector<IRM_ColorNameIDs>[],
-    readonly subscribers: ColorChangeSubscriber[]
+    controllers: ColorSelector<IRM_ColorNameIDs>[],
+    subscribers: ColorChangeSubscriber[]
   ) {
+    super(controllers, subscribers);
     this.init(controllers);
   }
   protected init(controllers: ColorSelector<IRM_ColorNameIDs>[]) {
-    controllers.forEach(s => s.input.addEventListener("input", this.update.bind(this)((e:hasArchetype)=>this.mapColor(s.id)(e.archetype))));
-    this.update.bind(this)((e:hasArchetype)=>this.mapColor("Narmour_concept")(e.archetype))();
+    controllers.forEach(s =>
+      s.input.addEventListener("input",
+        this._update.bind(this)((e: hasArchetype) => this.mapColor(s.id)(e.archetype)
+        )
+      )
+    );
+    this._update.bind(this)((e: hasArchetype) => this.mapColor("Narmour_concept")(e.archetype))();
   };
   mapColor(id: IRM_ColorNameIDs) {
     switch (id) {
@@ -28,9 +35,10 @@ export class ColorChangeMediator /*extends ControllerMediator<ColorChangeSubscri
       case "registral_scale": return get_color_on_registral_scale;
     }
   };
-  update(getColor: (e: hasArchetype) => string) {
+  _update(getColor: (e: hasArchetype) => string) {
     return () => {
       this.subscribers.forEach(e => e.setColor(getColor));
     };
   }
+  update() { }
 }

@@ -4,14 +4,14 @@ import { SliderMediator } from "./slider-mediator";
 
 export class MelodyVolumeMediator extends SliderMediator<MelodyHierarchy> {
   constructor(
-    slider: Slider,
-    melody_hierarchy: MelodyHierarchy,
+    sliders: Slider[],
+    melody_hierarchy: [MelodyHierarchy],
   ) {
-    super(slider, [melody_hierarchy]);
+    super(sliders, melody_hierarchy);
   }
 
   override update() {
-    const value = Number(this.controller.input.value);
+    const value = Number(this.controllers[0].input.value);
     this.subscribers.forEach(e => e.onMelodyVolumeBarChanged(value));
   }
 }

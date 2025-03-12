@@ -4,13 +4,13 @@ import { SwitcherMediator } from "./switcher-mediator";
 
 export class ScaleGravityMediator extends SwitcherMediator<GravityHierarchy> {
   constructor(
-    switcher: Checkbox,
-    scale_gravities: GravityHierarchy
+    switchers: [Checkbox],
+    scale_gravities: [GravityHierarchy]
   ) {
-    super(switcher, [scale_gravities]);
+    super(switchers, scale_gravities);
   }
   override update() {
-    const visibility = this.controller.input.checked ? "visible" : "hidden";
-    this.subscribers.forEach(e => e.svg.style.visibility = visibility);
+    const visibility = this.controllers[0].input.checked ? "visible" : "hidden";
+    this.subscribers.forEach(e => { e.svg.style.visibility = visibility });
   }
 }
