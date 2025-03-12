@@ -15,7 +15,7 @@ export const semitonesBy_pYIN = (
   }
   else if (detectFile(e.src)) {
     makeNewDir(e.dst_dir);
-    execSync(`node ./packages/post-pyin "${e.src}" "${e.dst_dir}"`)
+    execSync(`node ./packages/cli/post-pyin "${e.src}" "${e.dst_dir}"`)
   }
   else {
     console.log(`required file ${e.src} not exist`)
