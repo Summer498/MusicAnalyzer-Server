@@ -2,7 +2,7 @@ import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-anal
 import { setupUI } from "@music-analyzer/music-analyzer-application";
 import { MusicAnalyzerWindow } from "./src/MusicAnalyzerWindow";
 import { updateTitle } from "./src/UIManager";
-import { initializeApplication } from "./src/initialize-application";
+import { initializeApplication } from "@music-analyzer/music-analyzer-application/src/initialize-application";
 import { EventLoop } from "./src/EventLoop";
 import { loadMusicAnalysis, setAudioPlayer } from "./src/MusicAnalysisLoader";
 

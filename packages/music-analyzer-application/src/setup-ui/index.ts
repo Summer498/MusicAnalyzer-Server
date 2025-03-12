@@ -7,7 +7,7 @@ import { getRawSaveButton, getSaveButton } from "./get-save-button";
 import { setupPianoRoll } from "./setup-piano-roll";
 import { Controllers } from "./setup-controllers";
 import { BeatElements, ChordElements, MelodyElements } from "../piano-roll";
-import { AnalyzedDataContainer } from "../../analyzed-data-container";
+import { AnalyzedDataContainer } from "../analyzed-data-container";
 import { MediatorsContainer } from "../UIMediators";
 
 const getIRPlot = (melody: MelodyElements) => {

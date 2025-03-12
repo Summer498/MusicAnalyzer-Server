@@ -1,4 +1,4 @@
-export { AnalyzedDataContainer } from "./analyzed-data-container";
+export { AnalyzedDataContainer } from "./src/analyzed-data-container";
 
 export { setupUI } from "./src/setup-ui";
 
