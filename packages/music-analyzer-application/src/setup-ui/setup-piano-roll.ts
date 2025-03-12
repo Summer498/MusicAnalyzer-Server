@@ -1,6 +1,6 @@
 import { CurrentTimeLine, PianoRoll } from "@music-analyzer/svg-objects";
-import { OctaveBGs } from "@music-analyzer/svg-objects/src/octave-bg";
-import { OctaveKeys } from "@music-analyzer/svg-objects/src/octave-keys";
+import { OctaveBGs } from "@music-analyzer/svg-objects";
+import { OctaveKeys } from "@music-analyzer/svg-objects";
 import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 import { BeatElements, ChordElements, MelodyElements } from "../piano-roll";
 import { AnalysisView } from "./setup-analysis";

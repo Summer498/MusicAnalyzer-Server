@@ -3,7 +3,7 @@ import { _Chord, Chord } from "@music-analyzer/tonal-objects";
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
 import { OctaveCount } from "@music-analyzer/view-parameters";
 import { ChordNoteVM } from "./chord-note-view-model";
-import { MVVM_Collection } from "@music-analyzer/view/src/mvc";
+import { MVVM_Collection } from "@music-analyzer/view";
 
 export class ChordNotesInOctave extends MVVM_Collection<ChordNoteVM> {
   constructor(roman: TimeAndRomanAnalysis, chord: Chord, oct: number) {

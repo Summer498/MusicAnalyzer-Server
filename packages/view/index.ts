@@ -1,3 +1,4 @@
+export { MVVM_Collection } from "./src/mvc";
 export { CollectionLayer } from "./src/collection-layer";
 export { CollectionHierarchy } from "./src/collection-hierarchy";
 export { MVVM_ViewModel, MVVM_Model, MVVM_View } from "./src/mvc";
