@@ -4,7 +4,7 @@ import { RomanAnalysisData, TimeAndRomanAnalysis } from "@music-analyzer/chord-a
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MusicXML } from "@music-analyzer/musicxml";
 import { getJSON, getJSONfromXML } from "./DataFetcher";
-import { AnalyzedMusicData, GTTMData } from "./MusicAnalyzerWindow";
+import { AnalyzedMusicData, GTTMData } from "@music-analyzer/music-analyzer-application";
 import { MelodyAnalysisData } from "@music-analyzer/melody-analyze";
 
 const resources = `/MusicAnalyzer-server/resources`;
