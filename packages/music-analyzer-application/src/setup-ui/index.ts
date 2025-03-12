@@ -3,12 +3,12 @@ import { CurrentTimeRatio } from "@music-analyzer/view-parameters";
 import { SongLength } from "@music-analyzer/view-parameters";
 import { AudioViewer } from "@music-analyzer/spectrogram";
 import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
-import { BeatElements, ChordElements, MelodyElements } from "../piano-roll";
+import { getRawSaveButton, getSaveButton } from "./get-save-button";
 import { setupPianoRoll } from "./setup-piano-roll";
+import { Controllers } from "./setup-controllers";
+import { BeatElements, ChordElements, MelodyElements } from "../piano-roll";
 import { AnalyzedDataContainer } from "../../analyzed-data-container";
 import { MediatorsContainer } from "../UIMediators";
-import { Controllers } from "./setup-controllers";
-import { getRawSaveButton, getSaveButton } from "./get-save-button";
 
 const getIRPlot = (melody: MelodyElements) => {
   const ir_plot = document.createElementNS("http://www.w3.org/2000/svg", "svg");
