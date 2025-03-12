@@ -42,6 +42,7 @@
   },
   "workspaces": [
     "packages/*",
+    "packages/**/*",
     "html",
     "html/analyze",
     "html/hierarchical-analysis-sample",
