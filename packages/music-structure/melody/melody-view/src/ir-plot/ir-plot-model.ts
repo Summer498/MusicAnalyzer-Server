@@ -1,6 +1,6 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MVVM_Model } from "@music-analyzer/view";
-import { NowAt } from "@music-analyzer/view-parameters";
+import { NowAt } from "../../../../../application/view-parameters";
 
 export class IRPlotModel extends MVVM_Model {
   #index: number;

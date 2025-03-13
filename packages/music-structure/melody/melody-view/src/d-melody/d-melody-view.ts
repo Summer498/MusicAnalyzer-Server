@@ -1,5 +1,5 @@
 import { hsv2rgb, rgbToString } from "@music-analyzer/color";
-import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
+import { BlackKeyPrm, NoteSize, PianoRollBegin } from "../../../../../application/view-parameters";
 import { MVVM_View } from "@music-analyzer/view";
 import { DMelodyModel } from "./d-melody-model";
 

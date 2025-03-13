@@ -1,4 +1,4 @@
-import { NoteSize, BlackKeyPrm, PianoRollBegin } from "@music-analyzer/view-parameters";
+import { NoteSize, BlackKeyPrm, PianoRollBegin } from "../../../../../application/view-parameters";
 import { MVVM_View } from "@music-analyzer/view";
 import { GravityModel } from "./gravity-model";
 import { GravityViewTriangle } from "./gravity-triangle";

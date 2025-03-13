@@ -1,4 +1,4 @@
-import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
+import { BlackKeyPrm, NoteSize, PianoRollBegin } from "../../../../../application/view-parameters";
 import { get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { MVVM_View } from "@music-analyzer/view";
 import { MelodyModel } from "./melody-model";
