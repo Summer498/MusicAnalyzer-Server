@@ -8,12 +8,12 @@ export class OctaveCount {
   static get value() {
     if (
       this.#piano_roll_begin === PianoRollBegin.get()
-      && this.#piano_roll_end === PianoRollEnd.value
+      && this.#piano_roll_end === PianoRollEnd.get()
     ) { return this.#value; }
 
     this.#piano_roll_begin = PianoRollBegin.get();
-    this.#piano_roll_end = PianoRollEnd.value;
-    this.#value = Math.ceil(-(PianoRollEnd.value - PianoRollBegin.get()) / 12);
+    this.#piano_roll_end = PianoRollEnd.get();
+    this.#value = Math.ceil(-(PianoRollEnd.get() - PianoRollBegin.get()) / 12);
     return this.#value;
   }
 }
