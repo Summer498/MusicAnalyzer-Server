@@ -1,4 +1,4 @@
-import { dynamicLogViterbi, logViterbi, viterbi } from "./";
+import { dynamicLogViterbi, logViterbi, viterbi } from ".";
 
 // Viterbi アルゴリズム
 // test case from: https://en.wikipedia.org/wiki/Viterbi_algorithm
