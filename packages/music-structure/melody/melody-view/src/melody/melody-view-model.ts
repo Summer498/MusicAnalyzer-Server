@@ -1,6 +1,6 @@
 import { MVVM_ViewModel } from "@music-analyzer/view";
 import { play } from "@music-analyzer/synth";
-import { NowAt, reservation_range } from "../../../../../application/view-parameters";
+import { NowAt, reservation_range } from "@music-analyzer/view-parameters";
 import { MelodyModel } from "./melody-model";
 import { MelodyView } from "./melody-view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";

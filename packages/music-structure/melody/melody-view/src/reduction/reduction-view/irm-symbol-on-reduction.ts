@@ -1,5 +1,5 @@
 import { get_color_of_Narmour_concept } from "@music-analyzer/irm";
-import { bracket_height } from "../../../../../../application/view-parameters";
+import { bracket_height } from "@music-analyzer/view-parameters";
 import { MVVM_View } from "@music-analyzer/view";
 import { ReductionViewModel } from "./reduction-view-model";
 

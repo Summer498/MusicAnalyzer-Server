@@ -1,4 +1,4 @@
-import { BlackKeyPrm, bracket_height, NoteSize } from "../../../../../../application/view-parameters";
+import { BlackKeyPrm, bracket_height, NoteSize } from "@music-analyzer/view-parameters";
 import { MVVM_Model } from "@music-analyzer/view";
 import { ReductionModel } from "../reduction-model";
 import { Archetype, Dyad, Triad } from "@music-analyzer/irm";

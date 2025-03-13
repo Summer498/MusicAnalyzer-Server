@@ -1,6 +1,6 @@
 import { search_items_overlaps_range, Time } from "@music-analyzer/time-and";
 import { AudioReflectable } from "@music-analyzer/music-analyzer-application";
-import { PianoRollTranslateX } from "../../../application/view-parameters";
+import { PianoRollTranslateX } from "@music-analyzer/view-parameters";
 import { MVVM_Collection, MVVM_ViewModel, MVVM_Model, MVVM_View, I_MVVM_Collection, I_MVVM_View } from "./mvc";
 
 export abstract class TimeAndMVCModel extends MVVM_Model {
