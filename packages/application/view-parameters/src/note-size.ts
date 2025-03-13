@@ -8,12 +8,12 @@ export class NoteSize {
   static get value() {
     if (
       this.#piano_roll_width === PianoRollWidth.get()
-      && this.#piano_roll_time_length === PianoRollTimeLength.value
+      && this.#piano_roll_time_length === PianoRollTimeLength.get()
     ) { return this.#value; }
 
     this.#piano_roll_width = PianoRollWidth.get();
-    this.#piano_roll_time_length = PianoRollTimeLength.value;
-    this.#value = PianoRollWidth.get() / PianoRollTimeLength.value;
+    this.#piano_roll_time_length = PianoRollTimeLength.get();
+    this.#value = PianoRollWidth.get() / PianoRollTimeLength.get();
     return this.#value;
   }
 }

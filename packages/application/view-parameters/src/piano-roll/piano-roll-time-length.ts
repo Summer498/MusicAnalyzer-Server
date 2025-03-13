@@ -5,7 +5,7 @@ export class PianoRollTimeLength {
   static #song_length: number;
   static #piano_roll_ratio: number;
   static #value: number;
-  static get value() {
+  static get() {
     if (
       this.#song_length === SongLength.get()
       && this.#piano_roll_ratio === PianoRollRatio.get()
