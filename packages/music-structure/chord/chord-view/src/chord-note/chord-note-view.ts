@@ -21,7 +21,7 @@ export class ChordNoteView extends MVVM_View<ChordNoteModel, "rect"> {
       this.svg.style.fill = fifthToColor(this.model.tonic, 0.25, this.model.type === "major" ? 1 : 0.9);
     }
     this.y = (
-      mod(PianoRollBegin.value - this.model.note, 12)
+      mod(PianoRollBegin.get() - this.model.note, 12)
       + 12 * this.model.oct
     ) * BlackKeyPrm.height;
     this.updateX();

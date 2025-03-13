@@ -15,7 +15,7 @@ export class WhiteKeySVG implements WindowReflectable {
     this.svg.id = "white-key";
     this.svg.style.fill = WhiteKeyPrm.fill;
     this.svg.style.stroke = WhiteKeyPrm.stroke;
-    this.y = octave_height * oct + mod(WhiteKeyPrm.height * [0, 1, 2, 3, 4, 5, 6][white_index] + (1 + PianoRollBegin.value) * BlackKeyPrm.height, octave_height);
+    this.y = octave_height * oct + mod(WhiteKeyPrm.height * [0, 1, 2, 3, 4, 5, 6][white_index] + (1 + PianoRollBegin.get()) * BlackKeyPrm.height, octave_height);
     this.width = WhiteKeyPrm.width;
     this.height = WhiteKeyPrm.height;
   }

@@ -17,7 +17,7 @@ export class DMelodyView extends MVVM_View<DMelodyModel, "rect"> {
   set onclick(value: () => void) { this.svg.onclick = value; };
 
   updateX() { this.svg.setAttribute("x", String(this.model.time.begin * NoteSize.value)); }
-  updateY() { this.svg.setAttribute("y", String(isNaN(this.model.note) ? -99 : (PianoRollBegin.value - this.model.note) * BlackKeyPrm.height)); }
+  updateY() { this.svg.setAttribute("y", String(isNaN(this.model.note) ? -99 : (PianoRollBegin.get() - this.model.note) * BlackKeyPrm.height)); }
   updateWidth() { this.svg.setAttribute("width", String(this.model.time.duration * NoteSize.value)); }
   updateHeight() { this.svg.setAttribute("height", String(BlackKeyPrm.height)); }
   onWindowResized() {

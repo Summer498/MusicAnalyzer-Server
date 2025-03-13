@@ -7,10 +7,10 @@ export class BlackPosition {
   static #piano_roll_begin: number;
   static #value: number[];
   static get value() {
-    if (this.#piano_roll_begin === PianoRollBegin.value) { return this.#value; }
+    if (this.#piano_roll_begin === PianoRollBegin.get()) { return this.#value; }
 
-    this.#piano_roll_begin = PianoRollBegin.value;
-    this.#value = black_seed.map(e => mod(e + PianoRollBegin.value, 12));
+    this.#piano_roll_begin = PianoRollBegin.get();
+    this.#value = black_seed.map(e => mod(e + PianoRollBegin.get(), 12));
     return this.#value;
   }
 }
