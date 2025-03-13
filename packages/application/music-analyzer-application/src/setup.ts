@@ -1,13 +1,7 @@
-import { AnalyzedMusicData, MusicAnalyzerWindow } from "./MusicAnalyzerWindow";
+import { AnalyzedMusicData, getMusicAnalyzerWindow } from "./MusicAnalyzerWindow";
 import { initializeApplication } from "./initialize-application";
 import { setupUI } from "./setup-ui";
 import { EventLoop } from "./EventLoop";
-
-const getMusicAnalyzerWindow = (window: Window, raw_analyzed_data: AnalyzedMusicData) => {
-  const e = window as MusicAnalyzerWindow;
-  e.MusicAnalyzer = raw_analyzed_data;
-  return e;
-}
 
 export const setup = (
   window: Window,

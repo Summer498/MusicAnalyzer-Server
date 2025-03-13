@@ -1,3 +1,5 @@
+export { GTTMData } from "./gttm-data";
+
 export { ReductionElement } from "./ReductionElement";
 
 export { GroupingStructure } from "./GRP";
