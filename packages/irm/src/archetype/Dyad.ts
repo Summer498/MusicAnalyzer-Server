@@ -1,5 +1,5 @@
 import { _Interval } from "@music-analyzer/tonal-objects";
-import { IntervalName, NoteLiteral } from "tonal";
+import { IntervalName, NoteLiteral } from "@music-analyzer/tonal-objects";
 
 export class Dyad {
   readonly length = 2;

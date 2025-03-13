@@ -17,8 +17,6 @@
   },
   "dependencies": {
     "@music-analyzer/color": "1.0.0",
-    "@music-analyzer/controllers": "1.0.0",
-    "@music-analyzer/html": "1.0.0",
     "@music-analyzer/irm": "1.0.0",
     "@music-analyzer/melody-analyze": "1.0.0",
     "@music-analyzer/synth": "1.0.0",
