@@ -2,7 +2,7 @@ import { RomanAnalysisData } from "@music-analyzer/chord-analyze";
 import { GroupingStructure, IProlongationalReduction, ITimeSpanReduction, MetricalStructure } from "@music-analyzer/gttm";
 import { MelodyAnalysisData, TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MusicXML } from "@music-analyzer/musicxml";
-import { getJSONfromXML } from "../../../../html/analyze/src/DataFetcher";
+import { getJSONfromXML } from "./DataFetcher";
 import { DataPromises } from "./data-promises";
 
 export interface I_GTTM_URLs {
