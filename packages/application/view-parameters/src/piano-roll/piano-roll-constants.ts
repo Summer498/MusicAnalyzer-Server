@@ -20,12 +20,12 @@ export class BlackKeyPrm extends RectParameters {
 export class WhiteBGsPrm extends RectParameters {
   static readonly fill = "rgb(242, 242, 242)";
   static readonly stroke = "rgb(0, 0, 0)";
-  static readonly width = PianoRollWidth.value;
+  static readonly width = PianoRollWidth.get();
   static readonly height = octave_height / 12;
 }
 export class BlackBGsPrm extends RectParameters {
   static readonly fill = "rgb(192, 192, 192)";
   static readonly stroke = "rgb(0, 0, 0)";
-  static readonly width = PianoRollWidth.value;
+  static readonly width = PianoRollWidth.get();
   static readonly height = octave_height / 12;
 }

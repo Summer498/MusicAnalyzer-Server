@@ -7,13 +7,13 @@ export class CurrentTimeX {
   static #value: number;
   static get value() {
     if (
-      this.#piano_roll_width === PianoRollWidth.value
+      this.#piano_roll_width === PianoRollWidth.get()
       && this.#current_time_ratio === CurrentTimeRatio.value
     ) { return this.#value; }
 
-    this.#piano_roll_width = PianoRollWidth.value;
+    this.#piano_roll_width = PianoRollWidth.get();
     this.#current_time_ratio = CurrentTimeRatio.value;
-    this.#value = PianoRollWidth.value * CurrentTimeRatio.value;
+    this.#value = PianoRollWidth.get() * CurrentTimeRatio.value;
     return this.#value;
   }
 }

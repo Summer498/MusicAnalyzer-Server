@@ -21,7 +21,7 @@ export class BlackBG_SVG implements WindowReflectable{
   onWindowResized() {
     this.svg.setAttribute("x", String(0));
     this.svg.setAttribute("y", String(this.y));
-    this.svg.setAttribute("width", String(PianoRollWidth.value));
+    this.svg.setAttribute("width", String(PianoRollWidth.get()));
     this.svg.setAttribute("height", String(this.height));
   }
 }
