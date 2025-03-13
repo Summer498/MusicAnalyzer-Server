@@ -1,6 +1,6 @@
 import { initializeApplication, MusicAnalyzerWindow, setupUI } from "@music-analyzer/music-analyzer-application";
 import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
-import { loadMusicAnalysis, setAudioPlayer } from "./src/MusicAnalysisLoader";
+import { loadMusicAnalysis, setAudioPlayer } from "./src/data-loader/MusicAnalysisLoader";
 import { updateTitle } from "./src/UIManager";
 import { EventLoop } from "./src/EventLoop";
 
@@ -10,6 +10,9 @@ declare const piano_roll_place: HTMLDivElement;
 declare const title: HTMLHeadingElement;
 type Mode = "TSR" | "PR" | "";
 
+const resources = `/MusicAnalyzer-server/resources`;
+const audio_src = `${resources}/Hierarchical Analysis Sample/sample1.mp4`;
+
 const main = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const tune_id = urlParams.get("tune") || "";
@@ -17,7 +20,7 @@ const main = () => {
   const audio_subscriber = new AudioReflectableRegistry();
   const window_subscriber = new WindowReflectableRegistry();
   updateTitle(title, tune_id, mode);
-  setAudioPlayer(tune_id, audio_player);
+  setAudioPlayer(resources, tune_id, audio_src, audio_player);
   loadMusicAnalysis(tune_id, mode)
     .then(raw_analyzed_data => {
       window.MusicAnalyzer = raw_analyzed_data;
