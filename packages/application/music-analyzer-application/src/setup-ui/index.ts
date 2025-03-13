@@ -24,9 +24,10 @@ export const setupUI = (
   analyzed: AnalyzedDataContainer,
   place: HTMLDivElement,
   audio_element: HTMLAudioElement | HTMLVideoElement,
-  audio_subscriber: AudioReflectableRegistry,
-  window_subscriber: WindowReflectableRegistry,
 ) => {
+  const audio_subscriber = new AudioReflectableRegistry();
+  const window_subscriber = new WindowReflectableRegistry();
+
   const { beat_info, romans, hierarchical_melody, d_melodies } = analyzed;
   new Assertion(hierarchical_melody.length > 0).onFailed(() => { throw new Error(`hierarchical melody length must be more than 0 but it is ${hierarchical_melody.length}`); });
   const melodies = hierarchical_melody[hierarchical_melody.length - 1];
@@ -70,4 +71,6 @@ export const setupUI = (
   place.appendChild(piano_roll_view.svg);
   place.appendChild(audio_element);
   place.appendChild(bottom);
+
+  return { audio: audio_subscriber, window: window_subscriber } as { readonly audio: AudioReflectableRegistry, readonly window: WindowReflectableRegistry }
 };
