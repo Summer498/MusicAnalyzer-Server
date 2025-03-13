@@ -8,11 +8,11 @@ export class PianoRollTimeLength {
   static get value() {
     if (
       this.#song_length === SongLength.get()
-      && this.#piano_roll_ratio === PianoRollRatio.value
+      && this.#piano_roll_ratio === PianoRollRatio.get()
     ) { return this.#value; }
 
     this.#song_length = SongLength.get();
-    this.#piano_roll_ratio = PianoRollRatio.value;
+    this.#piano_roll_ratio = PianoRollRatio.get();
     this.#value = this.#piano_roll_ratio * this.#song_length;
     return this.#value;
   }
