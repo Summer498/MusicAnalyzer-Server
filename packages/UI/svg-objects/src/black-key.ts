@@ -15,7 +15,7 @@ export class BlackKeySVG implements WindowReflectable {
     this.svg.style.fill = BlackKeyPrm.fill;
     this.svg.style.stroke = BlackKeyPrm.stroke;
     
-    this.y = octave_height * oct + BlackKeyPrm.height * BlackPosition.value[j];
+    this.y = octave_height * oct + BlackKeyPrm.height * BlackPosition.get()[j];
     this.width = BlackKeyPrm.width;
     this.height = BlackKeyPrm.height;
   }

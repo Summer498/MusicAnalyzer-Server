@@ -6,7 +6,7 @@ const black_seed = [2, 4, 6, 9, 11];
 export class BlackPosition {
   static #piano_roll_begin: number;
   static #value: number[];
-  static get value() {
+  static get() {
     if (this.#piano_roll_begin === PianoRollBegin.get()) { return this.#value; }
 
     this.#piano_roll_begin = PianoRollBegin.get();
