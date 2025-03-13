@@ -7,6 +7,6 @@ export { default as _Key } from "@tonaljs/key";
 export { type Chord } from '@tonaljs/chord';
 export { type Scale } from '@tonaljs/scale';
 export { type IntervalLiteral, type IntervalName } from '@tonaljs/pitch-interval';
-export { NoteLiteral } from "@tonaljs/pitch-note";
+export { type NoteLiteral } from "@tonaljs/pitch-note";
 
 export { Note, Interval, ChordName, ScaleName, getIntervalDegree, getChroma } from  "./src"
