@@ -8,12 +8,12 @@ export class CurrentTimeX {
   static get value() {
     if (
       this.#piano_roll_width === PianoRollWidth.get()
-      && this.#current_time_ratio === CurrentTimeRatio.value
+      && this.#current_time_ratio === CurrentTimeRatio.get()
     ) { return this.#value; }
 
     this.#piano_roll_width = PianoRollWidth.get();
-    this.#current_time_ratio = CurrentTimeRatio.value;
-    this.#value = PianoRollWidth.get() * CurrentTimeRatio.value;
+    this.#current_time_ratio = CurrentTimeRatio.get();
+    this.#value = PianoRollWidth.get() * CurrentTimeRatio.get();
     return this.#value;
   }
 }
