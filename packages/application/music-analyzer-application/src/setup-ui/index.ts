@@ -6,7 +6,7 @@ import { setupPianoRoll } from "./setup-piano-roll";
 import { Controllers } from "./setup-controllers";
 import { BeatElements, ChordElements, MelodyElements, MusicStructureElements } from "../piano-roll";
 import { AnalyzedDataContainer } from "../analyzed-data-container";
-import { MediatorsContainer } from "../UIMediators";
+import { jointModelAndView } from "../UIMediators";
 import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 
 const getIRPlot = (melody: MelodyElements) => {
@@ -45,14 +45,12 @@ export const setupUI = (
     new MelodyElements(hierarchical_melody, d_melodies),
   )
 
-  const audio_subscriber = new AudioReflectableRegistry();
-  const window_subscriber = new WindowReflectableRegistry();
   const audio_viewer = new AudioViewer(audio_element);
-  audio_subscriber.register(audio_viewer);
-
+  
   const controllers = new Controllers(NO_CHORD);
-  new MediatorsContainer(controllers.children, music_structure, audio_subscriber, window_subscriber);
-  const piano_roll_view = setupPianoRoll(FULL_VIEW, music_structure, audio_subscriber, window_subscriber);
+  const subscribers = jointModelAndView(controllers.children, music_structure);
+  subscribers.audio.register(audio_viewer);
+  const piano_roll_view = setupPianoRoll(FULL_VIEW, music_structure, subscribers);
   const save_button = getSaveButton(tune_id, title, piano_roll_view);
   const save_raw_button = getRawSaveButton(tune_id, title, piano_roll_view);
 
@@ -70,5 +68,5 @@ export const setupUI = (
   place.appendChild(audio_element);
   place.appendChild(bottom);
 
-  return { audio: audio_subscriber, window: window_subscriber } as { readonly audio: AudioReflectableRegistry, readonly window: WindowReflectableRegistry }
+  return subscribers
 };
