@@ -1,6 +1,5 @@
-import { AudioReflectableRegistry, initializeApplication, loadMusicAnalysis, MusicAnalyzerWindow, setAudioPlayer, setupUI, WindowReflectableRegistry } from "@music-analyzer/music-analyzer-application";
+import { AudioReflectableRegistry, EventLoop, initializeApplication, loadMusicAnalysis, MusicAnalyzerWindow, setAudioPlayer, setupUI, WindowReflectableRegistry } from "@music-analyzer/music-analyzer-application";
 import { updateTitle } from "./src/update-title";
-import { EventLoop } from "./src/EventLoop";
 
 declare const window: MusicAnalyzerWindow;
 declare const audio_player: HTMLAudioElement | HTMLVideoElement;
