@@ -1,5 +1,5 @@
 import { assertNonNullable as NN, castToNumber } from "@music-analyzer/stdlib";
-import { NoteLiteral } from "tonal";
+import { NoteLiteral } from "@tonaljs/pitch-note";
 import { default as Interval } from "@tonaljs/interval";
 import { default as Note } from "@tonaljs/note";
 
