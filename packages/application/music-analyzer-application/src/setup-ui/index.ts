@@ -37,7 +37,7 @@ export const setupUI = (
   const NO_CHORD = false;  // コード関連のものを表示しない
   const FULL_VIEW = true;  // 横いっぱいに分析結果を表示
   if (FULL_VIEW) {
-    CurrentTimeRatio.value = 0.025;
+    CurrentTimeRatio.set(0.025);
     audio_element.autoplay = false;
   } else {
     audio_element.autoplay = true;
