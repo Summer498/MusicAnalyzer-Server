@@ -2,7 +2,7 @@ import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-anal
 import { Assertion, _throw } from "@music-analyzer/stdlib";
 import { AudioViewer } from "@music-analyzer/spectrogram";
 import { CurrentTimeRatio, SongLength } from "@music-analyzer/view-parameters";
-import { getRawSaveButton, getSaveButton } from "./get-save-button";
+import { getRawSaveButton, getSaveButton } from "./save-button";
 import { setupPianoRoll } from "./setup-piano-roll";
 import { Controllers } from "./setup-controllers";
 import { BeatElements, ChordElements, MelodyElements } from "../piano-roll";
