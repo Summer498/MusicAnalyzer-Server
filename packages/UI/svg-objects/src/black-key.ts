@@ -1,5 +1,5 @@
 import { WindowReflectable } from "@music-analyzer/view";
-import { BlackKeyPrm, BlackPosition, OctaveHeight } from "@music-analyzer/view-parameters";
+import { BlackKeyPrm, BlackPosition, octave_height } from "@music-analyzer/view-parameters";
 
 export class BlackKeySVG implements WindowReflectable {
   readonly svg: SVGRectElement;
@@ -15,7 +15,7 @@ export class BlackKeySVG implements WindowReflectable {
     this.svg.style.fill = BlackKeyPrm.fill;
     this.svg.style.stroke = BlackKeyPrm.stroke;
     
-    this.y = OctaveHeight.value * oct + BlackKeyPrm.height * BlackPosition.value[j];
+    this.y = octave_height * oct + BlackKeyPrm.height * BlackPosition.value[j];
     this.width = BlackKeyPrm.width;
     this.height = BlackKeyPrm.height;
   }

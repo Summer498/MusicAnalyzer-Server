@@ -1,5 +1,5 @@
 import { WindowReflectable } from "@music-analyzer/view";
-import { OctaveHeight, PianoRollWidth, WhiteBGsPrm, WhitePosition } from "@music-analyzer/view-parameters";
+import { octave_height, PianoRollWidth, WhiteBGsPrm, WhitePosition } from "@music-analyzer/view-parameters";
 
 export class WhiteBG_SVG implements WindowReflectable {
   readonly svg: SVGRectElement;
@@ -15,7 +15,7 @@ export class WhiteBG_SVG implements WindowReflectable {
     this.svg.style.fill = WhiteBGsPrm.fill;
     this.svg.style.stroke = WhiteBGsPrm.stroke;
 
-    this.y = OctaveHeight.value * oct + WhiteBGsPrm.height * WhitePosition.value[white_index];
+    this.y = octave_height * oct + WhiteBGsPrm.height * WhitePosition.value[white_index];
     this.width = WhiteBGsPrm.width;
     this.height = WhiteBGsPrm.height;
   }
