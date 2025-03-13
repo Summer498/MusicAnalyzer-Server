@@ -25,40 +25,36 @@ export const setupUI = (
   place: HTMLDivElement,
   audio_element: HTMLAudioElement | HTMLVideoElement,
 ) => {
-  const audio_subscriber = new AudioReflectableRegistry();
-  const window_subscriber = new WindowReflectableRegistry();
-
   const { beat_info, romans, hierarchical_melody, d_melodies } = analyzed;
   new Assertion(hierarchical_melody.length > 0).onFailed(() => { throw new Error(`hierarchical melody length must be more than 0 but it is ${hierarchical_melody.length}`); });
-  const melodies = hierarchical_melody[hierarchical_melody.length - 1];
-  SongLength.set(Math.max(
-    ...melodies.map(e => e.time.end)
-  ) * 1.05); // ちょっとマージンを取っておく
+  const last = <T>(arr: T[]) => arr[arr.length - 1];
+  const melodies = last(hierarchical_melody);
+  SongLength.set(Math.max(...melodies.map(e => e.time.end)) * 1.05); // ちょっとマージンを取っておく
 
   const NO_CHORD = false;  // コード関連のものを表示しない
   const FULL_VIEW = true;  // 横いっぱいに分析結果を表示
   if (FULL_VIEW) {
     CurrentTimeRatio.set(0.025);
     audio_element.autoplay = false;
-  } else {
-    audio_element.autoplay = true;
   }
+  else { audio_element.autoplay = true; }
 
-
-  const last = <T>(arr: T[]) => arr[arr.length - 1];
-  const beat = new BeatElements(beat_info, last(hierarchical_melody));
+  const beat = new BeatElements(beat_info, melodies);
   const chord = new ChordElements(romans);
   const melody = new MelodyElements(hierarchical_melody, d_melodies);
 
+  const audio_subscriber = new AudioReflectableRegistry();
+  const window_subscriber = new WindowReflectableRegistry();
   const audio_viewer = new AudioViewer(audio_element);
   audio_subscriber.register(audio_viewer);
 
-  const piano_roll_view = setupPianoRoll(beat, chord, melody, FULL_VIEW, audio_subscriber, window_subscriber);
   const controllers = new Controllers(NO_CHORD);
   new MediatorsContainer(controllers.children, beat, chord, melody, audio_subscriber, window_subscriber);
-  const ir_plot = getIRPlot(melody);
+  const piano_roll_view = setupPianoRoll(beat, chord, melody, FULL_VIEW, audio_subscriber, window_subscriber);
   const save_button = getSaveButton(tune_id, title, piano_roll_view);
   const save_raw_button = getRawSaveButton(tune_id, title, piano_roll_view);
+
+  const ir_plot = getIRPlot(melody);
 
   const bottom = document.createElement("div");
   bottom.appendChild(controllers.div);
