@@ -15,7 +15,7 @@ export class ChordNameView extends MVVM_View<ChordNameModel, "text"> {
     this.svg.style.fontFamily = "Times New Roman";
     this.svg.style.fontSize = `${chord_text_em}em`;
     this.svg.style.fill = fifthToColor(this.model.tonic, 1, 0.75) || "rgb(0, 0, 0)";
-    this.y = PianoRollHeight.value + chord_text_size;
+    this.y = PianoRollHeight.get() + chord_text_size;
     this.updateX();
     this.updateY();
   }

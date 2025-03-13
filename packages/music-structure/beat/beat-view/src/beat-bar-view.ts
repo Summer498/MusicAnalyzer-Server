@@ -11,7 +11,7 @@ export class BeatBarView extends MVVM_View<BeatBarModel, "line"> {
     this.svg.style.stroke = "rgb(0, 0, 0)";
     this.svg.style.display = "none";  //NOTE: 一旦非表示にしている
     this.y1 = 0;
-    this.y2 = PianoRollHeight.value;
+    this.y2 = PianoRollHeight.get();
     this.updateX();
     this.updateY();
   }

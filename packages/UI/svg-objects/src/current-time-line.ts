@@ -13,6 +13,6 @@ export class CurrentTimeLine implements WindowReflectable {
     this.svg.setAttribute("x1", `${CurrentTimeX.value}`);
     this.svg.setAttribute("x2", `${CurrentTimeX.value}`);
     this.svg.setAttribute("y1", "0");
-    this.svg.setAttribute("y2", `${PianoRollHeight.value}`);
+    this.svg.setAttribute("y2", `${PianoRollHeight.get()}`);
   }
 }
