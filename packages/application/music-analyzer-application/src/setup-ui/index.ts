@@ -4,7 +4,7 @@ import { CurrentTimeRatio, SongLength } from "@music-analyzer/view-parameters";
 import { getRawSaveButton, getSaveButton } from "./save-button";
 import { setupPianoRoll } from "./setup-piano-roll";
 import { Controllers } from "./setup-controllers";
-import { BeatElements, ChordElements, MelodyElements } from "../piano-roll";
+import { BeatElements, ChordElements, MelodyElements, MusicStructureElements } from "../piano-roll";
 import { AnalyzedDataContainer } from "../analyzed-data-container";
 import { MediatorsContainer } from "../UIMediators";
 import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
@@ -39,9 +39,11 @@ export const setupUI = (
   }
   else { audio_element.autoplay = true; }
 
-  const beat = new BeatElements(beat_info, melodies);
-  const chord = new ChordElements(romans);
-  const melody = new MelodyElements(hierarchical_melody, d_melodies);
+  const music_structure = new MusicStructureElements(
+    new BeatElements(beat_info, melodies),
+    new ChordElements(romans),
+    new MelodyElements(hierarchical_melody, d_melodies),
+  )
 
   const audio_subscriber = new AudioReflectableRegistry();
   const window_subscriber = new WindowReflectableRegistry();
@@ -49,12 +51,12 @@ export const setupUI = (
   audio_subscriber.register(audio_viewer);
 
   const controllers = new Controllers(NO_CHORD);
-  new MediatorsContainer(controllers.children, beat, chord, melody, audio_subscriber, window_subscriber);
-  const piano_roll_view = setupPianoRoll(beat, chord, melody, FULL_VIEW, audio_subscriber, window_subscriber);
+  new MediatorsContainer(controllers.children, music_structure, audio_subscriber, window_subscriber);
+  const piano_roll_view = setupPianoRoll(music_structure, FULL_VIEW, audio_subscriber, window_subscriber);
   const save_button = getSaveButton(tune_id, title, piano_roll_view);
   const save_raw_button = getRawSaveButton(tune_id, title, piano_roll_view);
 
-  const ir_plot = getIRPlot(melody);
+  const ir_plot = getIRPlot(music_structure.melody);
 
   const bottom = document.createElement("div");
   bottom.appendChild(controllers.div);

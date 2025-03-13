@@ -1,12 +1,10 @@
 import { CurrentTimeLine, OctaveBGs, OctaveKeys, PianoRoll } from "@music-analyzer/svg-objects";
-import { BeatElements, ChordElements, MelodyElements } from "../piano-roll";
+import { MusicStructureElements } from "../piano-roll";
 import { AnalysisView } from "./setup-analysis";
 import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 
 export const setupPianoRoll = (
-  beat: BeatElements,
-  chord: ChordElements,
-  melody: MelodyElements,
+  analysis_elements: MusicStructureElements,
   FULL_VIEW: boolean,
   audio_subscriber: AudioReflectableRegistry,
   window_subscriber: WindowReflectableRegistry,
@@ -15,7 +13,7 @@ export const setupPianoRoll = (
   const octave_keys = new OctaveKeys();
   const current_time = new CurrentTimeLine();
 
-  const analysis_view = new AnalysisView(beat, chord, melody);
+  const analysis_view = new AnalysisView(analysis_elements);
 
   const piano_roll_view = new PianoRoll();
   audio_subscriber.register(analysis_view);
