@@ -1,9 +1,9 @@
-import { BlackKeyPrm, NoteSize, PianoRollBegin, Size } from "@music-analyzer/view-parameters";
+import { BlackKeyPrm, NoteSize, PianoRollBegin, size } from "@music-analyzer/view-parameters";
 import { get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { MVVM_View } from "@music-analyzer/view";
 import { IRSymbolModel } from "./ir-symbol-model";
 
-const ir_analysis_em = Size.value;
+const ir_analysis_em = size;
 
 export class IRSymbolView extends MVVM_View<IRSymbolModel, "text"> {
   readonly y: number;

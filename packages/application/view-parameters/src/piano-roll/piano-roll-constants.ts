@@ -2,10 +2,9 @@ import { PianoRollWidth } from "./piano-roll-width";
 import { RectParameters } from "../rect-parameter";
 
 // --- ピアノロールの描画パラメータ
-export class Size {
-  static readonly value = 2;
-}
-export const octave_height = Size.value * 84;  // 7 白鍵と 12 半音をきれいに描画するには 7 * 12 の倍数が良い
+export const size = 2;
+
+export const octave_height = size * 84;  // 7 白鍵と 12 半音をきれいに描画するには 7 * 12 の倍数が良い
 
 export class WhiteKeyPrm extends RectParameters {
   static readonly fill = "rgb(255, 255, 255)";
