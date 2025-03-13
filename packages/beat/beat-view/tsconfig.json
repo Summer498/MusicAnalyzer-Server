@@ -11,5 +11,6 @@
     "sourceMap": true,
     "outDir": "**/dist"
   },
-  "exclude": ["**/dist/*"]
+  "exclude": ["**/dist/*"],
+  "include": ["**/*"]
 }
