@@ -29,7 +29,7 @@ export class OctaveKeys implements WindowReflectable {
   constructor() {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.svg.id = "octave-keys";
-    const octave_seed = [...Array(OctaveCount.value)];
+    const octave_seed = [...Array(OctaveCount.get())];
     this.children = octave_seed.map((_, oct) => new OctaveKey(oct));
     this.children.forEach(e => this.svg.appendChild(e.svg));
   }

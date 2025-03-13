@@ -7,7 +7,7 @@ export class PianoRollHeight {
   static get() {
     if (this.#octave_count) { return this.#value; }
 
-    this.#value = octave_height * OctaveCount.value;
+    this.#value = octave_height * OctaveCount.get();
     return this.#value;
   }
 }

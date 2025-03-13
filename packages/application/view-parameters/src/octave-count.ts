@@ -5,7 +5,7 @@ export class OctaveCount {
   static #piano_roll_begin: number;
   static #piano_roll_end: number;
   static #value = 4;
-  static get value() {
+  static get() {
     if (
       this.#piano_roll_begin === PianoRollBegin.get()
       && this.#piano_roll_end === PianoRollEnd.get()

@@ -14,7 +14,7 @@ export class ChordNotesInOctave extends MVVM_Collection<ChordNoteVM> {
 export class ChordNotes extends MVVM_Collection<ChordNotesInOctave> {
   constructor(readonly model: TimeAndRomanAnalysis) {
     const chord = _Chord.get(model.chord);
-    super(chord.name, [...Array(OctaveCount.value)].map((_, oct) => new ChordNotesInOctave(model, chord, oct)));
+    super(chord.name, [...Array(OctaveCount.get())].map((_, oct) => new ChordNotesInOctave(model, chord, oct)));
   }
 }
 
