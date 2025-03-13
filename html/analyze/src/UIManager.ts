@@ -1,4 +1,4 @@
-import { song_list } from "@music-analyzer/gttm";
+import { song_list } from "@music-analyzer/music-analyzer-application";
 
 export const updateTitle = (
   title: HTMLHeadingElement,

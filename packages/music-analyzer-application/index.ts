@@ -6,3 +6,5 @@ export { MusicAnalyzerWindow, GTTMData, AnalyzedMusicData } from "./src/MusicAna
 export { setupUI } from "./src/setup-ui";
 
 export { type AudioReflectable, AudioReflectableRegistry, type WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
+export { song_list } from "@music-analyzer/gttm";
+export { NowAt } from "@music-analyzer/view-parameters";
