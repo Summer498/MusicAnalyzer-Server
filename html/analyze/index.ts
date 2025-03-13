@@ -1,5 +1,5 @@
 import { AudioReflectableRegistry, initializeApplication, loadMusicAnalysis, MusicAnalyzerWindow, setAudioPlayer, setupUI, WindowReflectableRegistry } from "@music-analyzer/music-analyzer-application";
-import { updateTitle } from "./src/UIManager";
+import { updateTitle } from "./src/update-title";
 import { EventLoop } from "./src/EventLoop";
 
 declare const window: MusicAnalyzerWindow;
