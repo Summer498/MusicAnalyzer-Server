@@ -29,7 +29,7 @@ export class TimeRangeMediator extends SliderMediator<{ onUpdate: () => void }> 
     const value = Number(this.controllers[0].input.value);
     const max = Number(this.controllers[0].input.max);
     const ratio = Math.pow(2, value - max);
-    PianoRollRatio.value = ratio;
+    PianoRollRatio.set(ratio);
     this.subscribers.forEach(e => e.onUpdate());
   }
 }
