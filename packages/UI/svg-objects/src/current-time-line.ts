@@ -10,8 +10,8 @@ export class CurrentTimeLine implements WindowReflectable {
     this.svg.style.stroke = "rgb(0, 0, 0)";
   }
   onWindowResized() {
-    this.svg.setAttribute("x1", `${CurrentTimeX.value}`);
-    this.svg.setAttribute("x2", `${CurrentTimeX.value}`);
+    this.svg.setAttribute("x1", `${CurrentTimeX.get()}`);
+    this.svg.setAttribute("x2", `${CurrentTimeX.get()}`);
     this.svg.setAttribute("y1", "0");
     this.svg.setAttribute("y2", `${PianoRollHeight.get()}`);
   }

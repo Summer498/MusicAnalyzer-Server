@@ -5,7 +5,7 @@ export class CurrentTimeX {
   static #piano_roll_width: number;
   static #current_time_ratio: number;
   static #value: number;
-  static get value() {
+  static get() {
     if (
       this.#piano_roll_width === PianoRollWidth.get()
       && this.#current_time_ratio === CurrentTimeRatio.get()
