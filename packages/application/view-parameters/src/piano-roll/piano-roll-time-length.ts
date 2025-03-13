@@ -7,11 +7,11 @@ export class PianoRollTimeLength {
   static #value: number;
   static get value() {
     if (
-      this.#song_length === SongLength.value
+      this.#song_length === SongLength.get()
       && this.#piano_roll_ratio === PianoRollRatio.value
     ) { return this.#value; }
 
-    this.#song_length = SongLength.value;
+    this.#song_length = SongLength.get();
     this.#piano_roll_ratio = PianoRollRatio.value;
     this.#value = this.#piano_roll_ratio * this.#song_length;
     return this.#value;

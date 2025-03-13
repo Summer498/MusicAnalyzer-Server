@@ -30,9 +30,9 @@ export const setupUI = (
   const { beat_info, romans, hierarchical_melody, d_melodies } = analyzed;
   new Assertion(hierarchical_melody.length > 0).onFailed(() => { throw new Error(`hierarchical melody length must be more than 0 but it is ${hierarchical_melody.length}`); });
   const melodies = hierarchical_melody[hierarchical_melody.length - 1];
-  SongLength.value = Math.max(
+  SongLength.set(Math.max(
     ...melodies.map(e => e.time.end)
-  ) * 1.05; // ちょっとマージンを取っておく
+  ) * 1.05); // ちょっとマージンを取っておく
 
   const NO_CHORD = false;  // コード関連のものを表示しない
   const FULL_VIEW = true;  // 横いっぱいに分析結果を表示
