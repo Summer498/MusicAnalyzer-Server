@@ -1,4 +1,4 @@
-import { WindowReflectable } from "@music-analyzer/music-analyzer-application";
+import { WindowReflectable } from "./reflectable";
 
 export abstract class MVVM_Model { }
 

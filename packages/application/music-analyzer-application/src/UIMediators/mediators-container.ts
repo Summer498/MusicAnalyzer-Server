@@ -1,9 +1,9 @@
-import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/music-analyzer-application";
 import { ControllerUIs } from "../controller-uis";
 import { BeatElements, ChordElements, MelodyElements } from "../piano-roll";
 import { ColorChangeMediator } from "./color-change-mediator";
 import { ChordGravityMediator, DMelodyMediator, MelodyBeepMediator, ScaleGravityMediator } from "./switcher-mediator";
 import { HierarchyLevelMediator, MelodyVolumeMediator, TimeRangeMediator } from "./slider-mediator";
+import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 
 export class MediatorsContainer {
   readonly d_melody: DMelodyMediator;

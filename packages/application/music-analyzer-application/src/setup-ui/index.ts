@@ -1,4 +1,3 @@
-import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/music-analyzer-application";
 import { Assertion, _throw } from "@music-analyzer/stdlib";
 import { AudioViewer } from "@music-analyzer/spectrogram";
 import { CurrentTimeRatio, SongLength } from "@music-analyzer/view-parameters";
@@ -8,6 +7,7 @@ import { Controllers } from "./setup-controllers";
 import { BeatElements, ChordElements, MelodyElements } from "../piano-roll";
 import { AnalyzedDataContainer } from "../analyzed-data-container";
 import { MediatorsContainer } from "../UIMediators";
+import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 
 const getIRPlot = (melody: MelodyElements) => {
   const ir_plot = document.createElementNS("http://www.w3.org/2000/svg", "svg");

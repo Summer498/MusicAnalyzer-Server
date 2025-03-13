@@ -1,8 +1,8 @@
 import { TimeRangeSlider } from "@music-analyzer/controllers";
 import { MelodyHierarchy } from "@music-analyzer/melody-view";
-import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/music-analyzer-application";
 import { PianoRollRatio } from "@music-analyzer/view-parameters";
 import { SliderMediator } from "./slider-mediator";
+import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 
 const last = <T>(arr: T[]) => { return arr[arr.length - 1]; };
 
