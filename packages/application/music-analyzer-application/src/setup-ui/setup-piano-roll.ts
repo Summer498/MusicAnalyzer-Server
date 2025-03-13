@@ -1,7 +1,7 @@
-import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/music-analyzer-application";
 import { CurrentTimeLine, OctaveBGs, OctaveKeys, PianoRoll } from "@music-analyzer/svg-objects";
 import { BeatElements, ChordElements, MelodyElements } from "../piano-roll";
 import { AnalysisView } from "./setup-analysis";
+import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 
 export const setupPianoRoll = (
   beat: BeatElements,

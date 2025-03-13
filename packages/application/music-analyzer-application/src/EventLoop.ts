@@ -1,4 +1,4 @@
-import { AudioReflectableRegistry } from "@music-analyzer/music-analyzer-application";
+import { AudioReflectableRegistry } from "@music-analyzer/view";
 import { NowAt } from "@music-analyzer/view-parameters";
 
 export class EventLoop {
