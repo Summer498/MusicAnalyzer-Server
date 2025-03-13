@@ -1,4 +1,5 @@
-import { AudioReflectableRegistry, NowAt } from "@music-analyzer/music-analyzer-application";
+import { AudioReflectableRegistry } from "@music-analyzer/music-analyzer-application";
+import { NowAt } from "@music-analyzer/view-parameters";
 
 export class EventLoop {
   readonly fps_element: HTMLParagraphElement;

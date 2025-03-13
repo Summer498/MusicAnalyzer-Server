@@ -8,5 +8,3 @@ export { setupUI } from "./src/setup-ui";
 export { updateTitle } from "./src/update-title";
 
 export { type AudioReflectable, AudioReflectableRegistry, type WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
-export { song_list } from "@music-analyzer/gttm";
-export { NowAt } from "@music-analyzer/view-parameters";
