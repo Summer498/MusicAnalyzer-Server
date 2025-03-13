@@ -1,4 +1,4 @@
-import { Slider, TimeRangeSlider } from "@music-analyzer/controllers";
+import { TimeRangeSlider } from "@music-analyzer/controllers";
 import { MelodyHierarchy } from "@music-analyzer/melody-view";
 import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/music-analyzer-application";
 import { PianoRollRatio } from "@music-analyzer/view-parameters";
@@ -8,7 +8,7 @@ const last = <T>(arr: T[]) => { return arr[arr.length - 1]; };
 
 export class TimeRangeMediator extends SliderMediator<{ onUpdate: () => void }> {
   constructor(
-    sliders: [Slider],
+    sliders: [TimeRangeSlider],
     melody: [MelodyHierarchy],
     audio_subscriber: AudioReflectableRegistry,
     window_subscriber: WindowReflectableRegistry,
@@ -21,7 +21,7 @@ export class TimeRangeMediator extends SliderMediator<{ onUpdate: () => void }> 
       const max = sliders[0].input.max;
       const value = max + Math.log2(ratio);
       sliders[0].input.value = String(value);
-      (sliders[0] as TimeRangeSlider).updateDisplay();
+      sliders[0].updateDisplay();
       this.update();
     }
   }
