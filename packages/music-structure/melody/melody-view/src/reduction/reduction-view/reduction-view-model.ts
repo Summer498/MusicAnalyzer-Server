@@ -31,8 +31,8 @@ export class ReductionViewModel extends MVVM_Model {
     this.#strong = false;
     this.archetype = model.archetype
   }
-  getViewX(x: number) { return x * NoteSize.value; }
-  getViewW(w: number) { return w * NoteSize.value; }
+  getViewX(x: number) { return x * NoteSize.get(); }
+  getViewW(w: number) { return w * NoteSize.get(); }
   updateX() {
     this.#x = this.getViewX(this.model.time.begin);
     this.#cx = this.getViewX(this.model.head.begin) + this.#cw / 2;

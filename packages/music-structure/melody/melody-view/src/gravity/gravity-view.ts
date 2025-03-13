@@ -26,13 +26,13 @@ export class GravityView extends MVVM_View<GravityModel, "g"> {
   }
   getLinePos() {
     return {
-      x1: this.line_seed.x1 * NoteSize.value,
-      x2: this.line_seed.x2 * NoteSize.value,
+      x1: this.line_seed.x1 * NoteSize.get(),
+      x2: this.line_seed.x2 * NoteSize.get(),
       y1: this.line_seed.y1,
       y2: this.line_seed.y2,
     };
   }
-  updateWidth() { this.svg.setAttribute("width", String(this.model.time.duration * NoteSize.value)); }
+  updateWidth() { this.svg.setAttribute("width", String(this.model.time.duration * NoteSize.get())); }
   updateHeight() { this.svg.setAttribute("height", String(BlackKeyPrm.height)); }
   onWindowResized() {
     this.updateWidth();

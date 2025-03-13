@@ -5,7 +5,7 @@ export class NoteSize {
   static #piano_roll_width: number;
   static #piano_roll_time_length: number;
   static #value: number;
-  static get value() {
+  static get() {
     if (
       this.#piano_roll_width === PianoRollWidth.get()
       && this.#piano_roll_time_length === PianoRollTimeLength.get()

@@ -11,12 +11,12 @@ export class PianoRollTranslateX {
     if (
       this.#current_time === CurrentTimeX.get()
       && this.#now_at === NowAt.get()
-      && this.#note_size === NoteSize.value
+      && this.#note_size === NoteSize.get()
     ) { return this.#value; }
     this.#current_time = CurrentTimeX.get();
     this.#now_at = NowAt.get();
-    this.#note_size = NoteSize.value;
-    this.#value = CurrentTimeX.get() - NowAt.get() * NoteSize.value;
+    this.#note_size = NoteSize.get();
+    this.#value = CurrentTimeX.get() - NowAt.get() * NoteSize.get();
     return this.#value;
   }
 }
