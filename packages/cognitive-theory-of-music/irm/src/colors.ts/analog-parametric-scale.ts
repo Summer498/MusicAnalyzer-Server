@@ -1,7 +1,7 @@
 import { hsv2rgb, rgbToString } from "@music-analyzer/color";
 import { Archetype, Dyad, Monad, Null_ad, Triad } from "../archetype";
 
-const get_grb_on_parametric_scale = (archetype: Archetype | Triad) => {
+const get_grb_on_parametric_scale = (archetype: Archetype | Triad):[number,number,number] => {
   const s = archetype.intervallic?.direction.name === "mL" ? -1 : 0;
   const v = archetype.intervallic?.direction.name === "mR" ? -1 : 0;
   const scale = archetype.intervallic?.magnitude.name === "AA" ? 0.25 : 0.5;
