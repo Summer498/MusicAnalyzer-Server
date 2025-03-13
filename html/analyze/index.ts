@@ -1,5 +1,4 @@
-import { initializeApplication, MusicAnalyzerWindow, setupUI } from "@music-analyzer/music-analyzer-application";
-import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
+import { AudioReflectableRegistry, initializeApplication, MusicAnalyzerWindow, setupUI, WindowReflectableRegistry } from "@music-analyzer/music-analyzer-application";
 import { loadMusicAnalysis, setAudioPlayer } from "./src/data-loader";
 import { updateTitle } from "./src/UIManager";
 import { EventLoop } from "./src/EventLoop";

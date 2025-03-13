@@ -1,4 +1,4 @@
-import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
+import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/music-analyzer-application";
 import { ControllerUIs } from "../controller-uis";
 import { BeatElements, ChordElements, MelodyElements } from "../piano-roll";
 import { ChordGravityMediator } from "./switcher-mediator/chord-gravity-mediator";

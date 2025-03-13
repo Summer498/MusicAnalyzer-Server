@@ -1,8 +1,7 @@
+import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/music-analyzer-application";
 import { Assertion, _throw } from "@music-analyzer/stdlib";
-import { CurrentTimeRatio } from "@music-analyzer/view-parameters";
-import { SongLength } from "@music-analyzer/view-parameters";
 import { AudioViewer } from "@music-analyzer/spectrogram";
-import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
+import { CurrentTimeRatio, SongLength } from "@music-analyzer/view-parameters";
 import { getRawSaveButton, getSaveButton } from "./get-save-button";
 import { setupPianoRoll } from "./setup-piano-roll";
 import { Controllers } from "./setup-controllers";
