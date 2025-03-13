@@ -4,13 +4,8 @@ import { PianoRollBegin } from "../piano-roll/piano-roll-begin";
 const black_seed = [2, 4, 6, 9, 11];
 
 export class BlackPosition {
-  static #piano_roll_begin: number;
   static #value: number[];
   static get() {
-    if (this.#piano_roll_begin === PianoRollBegin.get()) { return this.#value; }
-
-    this.#piano_roll_begin = PianoRollBegin.get();
-    this.#value = black_seed.map(e => mod(e + PianoRollBegin.get(), 12));
-    return this.#value;
+    return black_seed.map(e => mod(e + PianoRollBegin.get(), 12));
   }
 }

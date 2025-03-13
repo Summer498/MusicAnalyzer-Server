@@ -1,11 +1,7 @@
-export class PianoRollWidth {
-  static #window_width: number;
-  static #value = window.innerWidth - 48;
-  static get() {
-    if (this.#window_width === window.innerWidth) { return this.#value; }
+import { WindowInnerWidth } from "./windowInnerWidth";
 
-    this.#window_width = window.innerWidth;
-    this.#value = window.innerWidth - 48;
-    return this.#value;
+export class PianoRollWidth {
+  static get() {
+    return WindowInnerWidth.get() - 48;
   }
 }
