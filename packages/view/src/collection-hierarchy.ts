@@ -1,5 +1,5 @@
 import { I_CollectionLayer } from "./collection-layer";
-import { AudioReflectable } from "./audio-reflectable";
+import { AudioReflectable } from "./reflectable";
 import { I_MVVM_Collection, MVVM_Collection } from "./mvc";
 
 export abstract class CollectionHierarchy<L extends I_CollectionLayer>

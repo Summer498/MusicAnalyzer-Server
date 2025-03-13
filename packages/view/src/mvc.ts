@@ -1,4 +1,4 @@
-import { WindowReflectable } from "./window-reflectable";
+import { WindowReflectable } from "./reflectable";
 
 export abstract class MVVM_Model { }
 
