@@ -7,7 +7,7 @@ const white_seed = [0, 1, 3, 5, 7, 8, 10];
 export class WhitePosition {
   static #piano_roll_begin: number;
   static #value: number[];
-  static get value() {
+  static get() {
     if (this.#piano_roll_begin === PianoRollBegin.get()) { return this.#value; }
 
     this.#piano_roll_begin = PianoRollBegin.get();

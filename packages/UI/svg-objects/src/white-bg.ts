@@ -15,7 +15,7 @@ export class WhiteBG_SVG implements WindowReflectable {
     this.svg.style.fill = WhiteBGsPrm.fill;
     this.svg.style.stroke = WhiteBGsPrm.stroke;
 
-    this.y = octave_height * oct + WhiteBGsPrm.height * WhitePosition.value[white_index];
+    this.y = octave_height * oct + WhiteBGsPrm.height * WhitePosition.get()[white_index];
     this.width = WhiteBGsPrm.width;
     this.height = WhiteBGsPrm.height;
   }
