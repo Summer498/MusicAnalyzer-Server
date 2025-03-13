@@ -21,7 +21,7 @@ export const initializeApplication = (
   const highest_pitch = analyzed.melody.reduce((p, c) => isNaN(p.note) ? c : isNaN(c.note) ? p : p.note > c.note ? p : c).note || 0;
   const lowest_pitch = analyzed.melody.reduce((p, c) => isNaN(p.note) ? c : isNaN(c.note) ? p : p.note < c.note ? p : c).note || 0;
   PianoRollBegin.set(highest_pitch + Math.floor(analyzed.hierarchical_melody.length * bracket_height / 12) * 12 + 12);
-  PianoRollEnd.value = lowest_pitch - 3;
+  PianoRollEnd.set(lowest_pitch - 3);
   return new AnalyzedDataContainer(
     beat_info,
     romans,
