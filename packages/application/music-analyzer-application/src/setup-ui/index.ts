@@ -52,7 +52,7 @@ export const setupUI = (
 
   const controllers = new Controllers(NO_CHORD);
   new MediatorsContainer(controllers.children, music_structure, audio_subscriber, window_subscriber);
-  const piano_roll_view = setupPianoRoll(music_structure, FULL_VIEW, audio_subscriber, window_subscriber);
+  const piano_roll_view = setupPianoRoll(FULL_VIEW, music_structure, audio_subscriber, window_subscriber);
   const save_button = getSaveButton(tune_id, title, piano_roll_view);
   const save_raw_button = getRawSaveButton(tune_id, title, piano_roll_view);
 

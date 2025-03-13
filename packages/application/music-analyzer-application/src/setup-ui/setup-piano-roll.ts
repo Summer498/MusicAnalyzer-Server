@@ -4,8 +4,8 @@ import { AnalysisView } from "./setup-analysis";
 import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 
 export const setupPianoRoll = (
-  analysis_elements: MusicStructureElements,
   FULL_VIEW: boolean,
+  analysis_elements: MusicStructureElements,
   audio_subscriber: AudioReflectableRegistry,
   window_subscriber: WindowReflectableRegistry,
 ) => {
