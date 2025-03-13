@@ -7,13 +7,13 @@ export class NoteSize {
   static #value: number;
   static get value() {
     if (
-      this.#piano_roll_width === PianoRollWidth.value
+      this.#piano_roll_width === PianoRollWidth.get()
       && this.#piano_roll_time_length === PianoRollTimeLength.value
     ) { return this.#value; }
 
-    this.#piano_roll_width = PianoRollWidth.value;
+    this.#piano_roll_width = PianoRollWidth.get();
     this.#piano_roll_time_length = PianoRollTimeLength.value;
-    this.#value = PianoRollWidth.value / PianoRollTimeLength.value;
+    this.#value = PianoRollWidth.get() / PianoRollTimeLength.value;
     return this.#value;
   }
 }
