@@ -56,6 +56,6 @@ export abstract class ReflectableTimeAndMVCControllerCollection<VM extends I_Tim
     this.svg.appendChild(fragment);
   }
   onAudioUpdate() {
-    this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.value})`);
+    this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`);
   }
 }

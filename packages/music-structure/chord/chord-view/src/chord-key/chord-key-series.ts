@@ -10,6 +10,6 @@ export class ChordKeySeries extends MVVM_Collection<ChordKeyVM> {
   }
 
   onAudioUpdate() {
-    this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.value})`);
+    this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`);
   }
 }

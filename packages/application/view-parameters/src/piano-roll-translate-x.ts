@@ -7,7 +7,7 @@ export class PianoRollTranslateX {
   static #now_at: number;
   static #note_size: number;
   static #value: number;
-  static get value() {
+  static get() {
     if (
       this.#current_time === CurrentTimeX.get()
       && this.#now_at === NowAt.get()
