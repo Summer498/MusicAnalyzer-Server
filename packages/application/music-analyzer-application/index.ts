@@ -7,4 +7,4 @@ export { MusicAnalyzerWindow, GTTMData, AnalyzedMusicData } from "./src/MusicAna
 export { setupUI } from "./src/setup-ui";
 export { updateTitle } from "./src/update-title";
 
-export { type AudioReflectable, AudioReflectableRegistry, type WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
+export { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
