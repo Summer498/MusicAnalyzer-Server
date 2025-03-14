@@ -6,6 +6,7 @@ import { TitleInfo } from "../containers/tune-info";
 import { HTMLsContainer } from "../containers/HTMLs-container";
 import { ApplicationManager } from "../application-manager";
 import { AnalysisView } from "./setup-analysis";
+import { asParent } from "./as-parent";
 
 export const setupUI = (
   title_info: TitleInfo,
@@ -41,13 +42,6 @@ export const setupUI = (
     ])
 };
 
-const asParent = (node: HTMLElement) => {
-  return {
-    setChildren: (children: (HTMLElement | SVGSVGElement)[]) => {
-      children.forEach(e => node.appendChild(e))
-    }
-  }
-}
 
 class ColumnHTML {
   readonly div: HTMLDivElement
