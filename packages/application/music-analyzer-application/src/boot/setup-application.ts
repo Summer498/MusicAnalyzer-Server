@@ -1,8 +1,7 @@
+import { HTMLsContainer, URLsContainer } from "../containers";
 import { loadMusicAnalysis, setAudioPlayer } from "../data-loader";
-import { HTMLsContainer } from "../containers/HTMLs-container";
 import { setup } from "./setup";
 import { updateTitle } from "./update-title";
-import { URLsContainer } from "../containers/URLs-container";
 
 export const setupApplication = (
   window: Window,
