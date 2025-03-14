@@ -9,17 +9,16 @@ export const setupPianoRoll = (
   manager: ApplicationManager
 ) => {
   const octave_bgs = new OctaveBGs();
+  const analysis_view = new AnalysisView(analysis_elements);
   const octave_keys = new OctaveKeys();
   const current_time = new CurrentTimeLine();
-
-  const analysis_view = new AnalysisView(analysis_elements);
-
   const piano_roll_view = new PianoRoll();
-  manager.audio_subscriber.register(analysis_view);
+
   manager.window_subscriber.register(octave_bgs);
+  manager.audio_subscriber.register(analysis_view);
+  manager.window_subscriber.register(analysis_view);
   manager.window_subscriber.register(octave_keys);
   manager.window_subscriber.register(current_time);
-  manager.window_subscriber.register(analysis_view);
   manager.window_subscriber.register(piano_roll_view);
 
   piano_roll_view.svg.appendChild(octave_bgs.svg);
