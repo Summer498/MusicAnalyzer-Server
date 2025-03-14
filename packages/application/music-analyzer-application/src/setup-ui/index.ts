@@ -1,4 +1,3 @@
-import { getIRPlot } from "@music-analyzer/melody-view";
 import { AudioViewer } from "@music-analyzer/spectrogram";
 import { CurrentTimeLine, OctaveBGs, OctaveKeys, PianoRoll } from "@music-analyzer/svg-objects";
 import { CurrentTimeRatio } from "@music-analyzer/view-parameters";
@@ -29,7 +28,7 @@ export const setupUI = (
     new CurrentTimeLine(!manager.FULL_VIEW, manager.window_size_mediator).svg,
   ]);
   const save_buttons = getSaveButtons(title_info, html, piano_roll_view);
-  const bottom = new ColumnHTML(manager.controller.div, getIRPlot(manager.analyzed.melody.ir_plot))
+  const bottom = new ColumnHTML(manager.controller.div, manager.analyzed.melody.ir_plot.svg)
 
   setChildren(
     html.piano_roll_place,
