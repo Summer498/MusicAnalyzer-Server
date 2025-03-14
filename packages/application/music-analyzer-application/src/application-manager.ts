@@ -1,10 +1,10 @@
-import { BeatElements, ChordElements, MelodyElements, MusicStructureElements } from "../piano-roll";
-import { ColorChangeMediator } from "./color-change-mediator";
-import { ChordGravityMediator, DMelodyMediator, MelodyBeepMediator, ScaleGravityMediator } from "./switcher-mediator";
-import { HierarchyLevelMediator, MelodyVolumeMediator, TimeRangeMediator } from "./slider-mediator";
+import { BeatElements, ChordElements, MelodyElements, MusicStructureElements } from "./piano-roll";
+import { ColorChangeMediator } from "./UIMediators/color-change-mediator";
+import { ChordGravityMediator, DMelodyMediator, MelodyBeepMediator, ScaleGravityMediator } from "./UIMediators/switcher-mediator";
+import { HierarchyLevelMediator, MelodyVolumeMediator, TimeRangeMediator } from "./UIMediators/slider-mediator";
 import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
-import { Controllers } from "../setup-ui/setup-controllers";
-import { AnalyzedDataContainer } from "../analyzed-data-container";
+import { Controllers } from "./setup-ui/setup-controllers";
+import { AnalyzedDataContainer } from "./analyzed-data-container";
 
 export class ApplicationManager {
   readonly analyzed: MusicStructureElements
