@@ -42,16 +42,11 @@ export const setupUI = (
     ])
 };
 
-const _setChildren = (
-  div: HTMLElement,
-  children: (HTMLElement | SVGSVGElement)[]
-) => {
-  children.forEach(e => div.appendChild(e))
-}
-
 const asParent = (node: HTMLElement) => {
   return {
-    setChildren: (children: (HTMLElement | SVGSVGElement)[]) => _setChildren(node, children)
+    setChildren: (children: (HTMLElement | SVGSVGElement)[]) => {
+      children.forEach(e => node.appendChild(e))
+    }
   }
 }
 
