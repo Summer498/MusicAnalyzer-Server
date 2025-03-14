@@ -1,6 +1,6 @@
-import { Dyad, Monad, Null_ad, Triad } from "../archetype";
+import { Triad } from "../archetype";
 
-export const get_color_on_digital_intervallic_scale = (archetype: Triad | Dyad | Monad | Null_ad)  => {
+export const get_color_on_digital_intervallic_scale = (archetype: Triad)  => {
   switch (archetype.symbol) {
     case "VP": case "(VP)": return "rgb(0, 0, 255)";
     case "P": case "(P)": return "rgb(0, 255, 0)";

@@ -1,6 +1,6 @@
-import { Dyad, Monad, Null_ad, Triad } from "../archetype";
+import { Triad } from "../archetype";
 
-export const get_color_of_implication_realization = (archetype: Triad | Dyad | Monad | Null_ad) => {
+export const get_color_of_implication_realization = (archetype: Triad) => {
   switch (archetype.symbol) {
     case "D": return "rgb(0,240,0)";
     case "ID": return "rgb(0, 0, 255)";
