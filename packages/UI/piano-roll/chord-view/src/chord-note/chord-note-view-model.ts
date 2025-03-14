@@ -1,10 +1,10 @@
-import { _Note, Chord } from "@music-analyzer/tonal-objects";
 import { AudioReflectable, MVVM_ViewModel } from "@music-analyzer/view";
 import { ChordNoteModel } from "./chord-note-model";
 import { ChordNoteView } from "./chord-note-view";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
 import { mod } from "@music-analyzer/math";
+import { Chord } from "@music-analyzer/tonal-objects";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();
