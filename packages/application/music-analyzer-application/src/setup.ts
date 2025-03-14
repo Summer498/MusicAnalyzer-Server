@@ -10,8 +10,8 @@ export const setup = (
   html: HTMLsContainer,
   title: TitleInfo,
 ) => (raw_analyzed_data: AnalyzedMusicData) => {
-  const e = setupUI(title, html, initializeApplication(raw_analyzed_data));
-  new EventLoop(e.audio, html.audio_player).update();
-  getMusicAnalyzerWindow(window, raw_analyzed_data).onresize = _ => e.window.onUpdate();
-  e.window.onUpdate();
+  const reflector = setupUI(title, html, initializeApplication(raw_analyzed_data));
+  new EventLoop(reflector.audio, html.audio_player).update();
+  getMusicAnalyzerWindow(window, raw_analyzed_data).onresize = _ => reflector.window.onUpdate();
+  reflector.window.onUpdate();
 }
