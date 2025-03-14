@@ -7,6 +7,7 @@ import { HTMLsContainer } from "../containers/HTMLs-container";
 import { ApplicationManager } from "../application-manager";
 import { AnalysisView } from "./setup-analysis";
 import { asParent } from "./as-parent";
+import { ColumnHTML } from "./column-html";
 
 export const setupUI = (
   title_info: TitleInfo,
@@ -41,13 +42,3 @@ export const setupUI = (
       ).div,
     ])
 };
-
-
-class ColumnHTML {
-  readonly div: HTMLDivElement
-  constructor(...children: (HTMLElement | SVGSVGElement)[]) {
-    this.div = document.createElement("div");
-    this.div.setAttribute("style", `column-count: ${children.length}`);
-    children.forEach(e => this.div.appendChild(e));
-  }
-}
