@@ -1,4 +1,4 @@
-import { AudioReflectable } from "@music-analyzer/view";
+import { AudioReflectable, AudioReflectableRegistry } from "@music-analyzer/view";
 import { WaveViewer } from "./wave-viewer";
 import { spectrogramViewer } from "./spectrogram-viewer";
 import { AudioAnalyzer } from "./audio-analyzer";
@@ -10,10 +10,12 @@ export class AudioViewer implements AudioReflectable {
 
   constructor(
     private readonly audio_element: HTMLMediaElement,
+    publisher: AudioReflectableRegistry
   ) {
     const analyser = new AudioAnalyzer(this.audio_element);
     this.wave = new WaveViewer(analyser);
     this.spectrogram = new spectrogramViewer(analyser);
+    publisher.register(this);
   }
   onAudioUpdate() {
     this.wave.onAudioUpdate();

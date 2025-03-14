@@ -1,2 +1,1 @@
 export { IRPlotHierarchy } from "./ir-plot-hierarchy";
-export { getIRPlot } from "./ir-plot";
