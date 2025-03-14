@@ -22,13 +22,15 @@ const getIRPlot = (melody: MelodyElements) => {
   return ir_plot;
 };
 
+
+
 export const setupUI = (
   title_info: TitleInfo,
   html: HTMLsContainer,
   analyzed: AnalyzedDataContainer,
 ) => {
+  new Assertion(analyzed.hierarchical_melody.length > 0).onFailed(() => { throw new Error(`hierarchical melody length must be more than 0 but it is ${analyzed.hierarchical_melody.length}`); });
   const { beat_info, romans, hierarchical_melody, d_melodies } = analyzed;
-  new Assertion(hierarchical_melody.length > 0).onFailed(() => { throw new Error(`hierarchical melody length must be more than 0 but it is ${hierarchical_melody.length}`); });
   const last = <T>(arr: T[]) => arr[arr.length - 1];
   const melodies = last(hierarchical_melody);
   SongLength.set(Math.max(...melodies.map(e => e.time.end)) * 1.05); // ちょっとマージンを取っておく
@@ -41,18 +43,12 @@ export const setupUI = (
   }
   else { html.audio_player.autoplay = true; }
 
-  const music_structure = new MusicStructureElements(
-    new BeatElements(beat_info, melodies),
-    new ChordElements(romans),
-    new MelodyElements(hierarchical_melody, d_melodies),
-  )
-
   const audio_viewer = new AudioViewer(html.audio_player);
-  const reflectors = new ApplicationManager(NO_CHORD, music_structure);
-  reflectors.audio.register(audio_viewer);
-  const piano_roll_view = setupPianoRoll(FULL_VIEW, music_structure, reflectors);
+  const app_manager = new ApplicationManager(NO_CHORD, analyzed);
+  app_manager.audio.register(audio_viewer);
+  const piano_roll_view = setupPianoRoll(FULL_VIEW, app_manager.music_structure, app_manager);
   const save_buttons = getSaveButtons(title_info, html, piano_roll_view);
-  const bottom = new ColumnHTML(reflectors.controller.div, getIRPlot(music_structure.melody))
+  const bottom = new ColumnHTML(app_manager.controller.div, getIRPlot(app_manager.music_structure.melody))
 
   setPianoRollPlace(
     html.piano_roll_place,
@@ -65,7 +61,7 @@ export const setupUI = (
     bottom.div,
   )
 
-  return reflectors
+  return app_manager
 };
 
 const setPianoRollPlace = (
