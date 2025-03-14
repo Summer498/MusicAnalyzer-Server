@@ -6,8 +6,8 @@ declare const title: HTMLHeadingElement;
 const main = () => {
   const html = new HTMLsContainer(
     audio_player,
-    piano_roll_place,
     title,
+    piano_roll_place,
   )
   const url = new URLsContainer(
     `/MusicAnalyzer-server/resources`,
