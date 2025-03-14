@@ -47,9 +47,9 @@ export const setupUI = (
   const audio_viewer = new AudioViewer(html.audio_player);
   const app_manager = new ApplicationManager(NO_CHORD, analyzed);
   app_manager.audio.register(audio_viewer);
-  const piano_roll_view = setupPianoRoll(FULL_VIEW, app_manager.music_structure, app_manager);
+  const piano_roll_view = setupPianoRoll(FULL_VIEW, app_manager.analyzed, app_manager);
   const save_buttons = getSaveButtons(title_info, html, piano_roll_view);
-  const bottom = new ColumnHTML(app_manager.controller.div, getIRPlot(app_manager.music_structure.melody))
+  const bottom = new ColumnHTML(app_manager.controller.div, getIRPlot(app_manager.analyzed.melody))
 
   setPianoRollPlace(
     html.piano_roll_place,

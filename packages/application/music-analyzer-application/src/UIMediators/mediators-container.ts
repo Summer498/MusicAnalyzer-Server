@@ -7,7 +7,7 @@ import { Controllers } from "../setup-ui/setup-controllers";
 import { AnalyzedDataContainer } from "../analyzed-data-container";
 
 export class ApplicationManager {
-  readonly music_structure: MusicStructureElements
+  readonly analyzed: MusicStructureElements
   readonly controller: Controllers
   readonly audio: AudioReflectableRegistry
   readonly window: WindowReflectableRegistry
@@ -18,7 +18,7 @@ export class ApplicationManager {
     const { beat_info, romans, hierarchical_melody, d_melodies } = analyzed;
     const last = <T>(arr: T[]) => arr[arr.length - 1];
     const melodies = last(hierarchical_melody);
-    this.music_structure = new MusicStructureElements(
+    this.analyzed = new MusicStructureElements(
       new BeatElements(beat_info, melodies),
       new ChordElements(romans),
       new MelodyElements(hierarchical_melody, d_melodies),
@@ -28,7 +28,7 @@ export class ApplicationManager {
     this.audio = new AudioReflectableRegistry();
     this.window = new WindowReflectableRegistry();
 
-    const e = this.music_structure;
+    const e = this.analyzed;
     new DMelodyMediator([this.controller.children.d_melody.checkbox], [e.melody.d_melody_collection]);
     new ScaleGravityMediator([this.controller.children.gravity.scale_checkbox], [e.melody.scale_gravities]);
     new ChordGravityMediator([this.controller.children.gravity.chord_checkbox], [e.melody.chord_gravities]);
