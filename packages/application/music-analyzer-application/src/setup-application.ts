@@ -1,22 +1,20 @@
 import { loadMusicAnalysis, setAudioPlayer } from "./data-loader";
+import { HTMLsContainer } from "./HTMLs-container";
 import { setup } from "./setup";
 import { updateTitle } from "./update-title";
+import { URLsContainer } from "./URLs-container";
 
 export const setupApplication = (
   window: Window,
-  urlParams: URLSearchParams,
-  audio_src: string,
-  audio_player: HTMLAudioElement | HTMLVideoElement,
-  piano_roll_place: HTMLDivElement,
-  title: HTMLHeadingElement,
-  resources: string,
+  html: HTMLsContainer,
+  url: URLsContainer,
 ) => {
   type Mode = "TSR" | "PR" | "";
-  const tune_id = urlParams.get("tune") || "";
-  const mode: Mode = urlParams.has("pr") ? "PR" : urlParams.has("tsr") ? "TSR" : "";
+  const tune_id = url.urlParams.get("tune") || "";
+  const mode: Mode = url.urlParams.has("pr") ? "PR" : url.urlParams.has("tsr") ? "TSR" : "";
 
-  updateTitle(title, tune_id, mode);
-  setAudioPlayer(resources, tune_id, audio_src, audio_player);
+  updateTitle(html.title, tune_id, mode);
+  setAudioPlayer(url.resources, tune_id, url.audio_src, html.audio_player);
   loadMusicAnalysis(tune_id, mode)
-    .then(setup(window, audio_player, piano_roll_place, title, mode, tune_id));
+    .then(setup(window, html.audio_player, html.piano_roll_place, html.title, mode, tune_id));
 }
