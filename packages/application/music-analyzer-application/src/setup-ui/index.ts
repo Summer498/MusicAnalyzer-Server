@@ -29,9 +29,8 @@ export const setupUI = (
   ]);
   const save_buttons = getSaveButtons(title_info, html, piano_roll_view);
 
-  setChildren(
-    html.piano_roll_place,
-    [
+  asParent(html.piano_roll_place)
+    .setChildren([
       audio_viewer.wave.svg,
       audio_viewer.spectrogram.svg,
       save_buttons.with_title,
@@ -42,15 +41,20 @@ export const setupUI = (
         manager.controller.div,
         manager.analyzed.melody.ir_plot.svg
       ).div,
-    ]
-  )
+    ])
 };
 
-const setChildren = (
-  div: HTMLDivElement,
+const _setChildren = (
+  div: HTMLElement,
   children: (HTMLElement | SVGSVGElement)[]
 ) => {
   children.forEach(e => div.appendChild(e))
+}
+
+const asParent = (node: HTMLElement) => {
+  return {
+    setChildren: (children: (HTMLElement | SVGSVGElement)[]) => _setChildren(node, children)
+  }
 }
 
 class SaveButtons {
