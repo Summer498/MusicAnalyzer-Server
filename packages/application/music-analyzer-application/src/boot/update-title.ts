@@ -1,5 +1,5 @@
 import { song_list } from "@music-analyzer/gttm";
-import { TitleInfo } from "./tune-info";
+import { TitleInfo } from "../containers/tune-info";
 
 export const updateTitle = (
   title: HTMLHeadingElement,

@@ -4,7 +4,7 @@ import { ChordGravityMediator, DMelodyMediator, MelodyBeepMediator, ScaleGravity
 import { HierarchyLevelMediator, MelodyVolumeMediator, TimeRangeMediator } from "./UIMediators/slider-mediator";
 import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 import { Controllers } from "./setup-ui/setup-controllers";
-import { AnalyzedDataContainer } from "./analyzed-data-container";
+import { AnalyzedDataContainer } from "./containers/analyzed-data-container";
 
 export class ApplicationManager {
   readonly NO_CHORD = false;  // コード関連のものを表示しない

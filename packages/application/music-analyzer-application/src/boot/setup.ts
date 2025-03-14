@@ -1,11 +1,11 @@
-import { AnalyzedMusicData, getMusicAnalyzerWindow } from "./MusicAnalyzerWindow";
-import { setupUI } from "./setup-ui";
-import { EventLoop } from "./EventLoop";
-import { HTMLsContainer } from "./HTMLs-container";
-import { TitleInfo } from "./tune-info";
-import { AnalyzedDataContainer } from "./analyzed-data-container";
+import { AnalyzedMusicData, getMusicAnalyzerWindow } from "../MusicAnalyzerWindow";
+import { setupUI } from "../setup-ui";
+import { EventLoop } from "../EventLoop";
+import { HTMLsContainer } from "../containers/HTMLs-container";
+import { TitleInfo } from "../containers/tune-info";
+import { AnalyzedDataContainer } from "../containers/analyzed-data-container";
 import { SongLength } from "@music-analyzer/view-parameters";
-import { ApplicationManager } from "./application-manager";
+import { ApplicationManager } from "../application-manager";
 
 const setSongLength = (
   analyzed: AnalyzedDataContainer,

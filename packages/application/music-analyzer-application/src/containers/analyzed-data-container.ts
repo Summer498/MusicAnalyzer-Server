@@ -1,6 +1,6 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { AnalyzedMusicData } from "./MusicAnalyzerWindow";
+import { AnalyzedMusicData } from "../MusicAnalyzerWindow";
 import { BeatInfo, calcTempo } from "@music-analyzer/beat-estimation";
 import { bracket_height, PianoRollBegin, PianoRollEnd } from "@music-analyzer/view-parameters";
 

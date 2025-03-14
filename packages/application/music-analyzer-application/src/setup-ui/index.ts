@@ -3,8 +3,8 @@ import { CurrentTimeRatio } from "@music-analyzer/view-parameters";
 import { getRawSaveButton, getSaveButton } from "./save-button";
 import { setupPianoRoll } from "./setup-piano-roll";
 import { MelodyElements } from "../piano-roll";
-import { TitleInfo } from "../tune-info";
-import { HTMLsContainer } from "../HTMLs-container";
+import { TitleInfo } from "../containers/tune-info";
+import { HTMLsContainer } from "../containers/HTMLs-container";
 import { PianoRoll } from "@music-analyzer/svg-objects";
 import { ApplicationManager } from "../application-manager";
 

@@ -2,7 +2,7 @@ import { GTTMData, ProlongationalReduction, TimeSpanReduction } from "@music-ana
 import { getHierarchicalMelody } from "@music-analyzer/melody-hierarchical-analysis";
 import { DataContainer } from "./data-container";
 import { AnalyzedMusicData } from "../MusicAnalyzerWindow";
-import { TitleInfo } from "../tune-info";
+import { TitleInfo } from "../containers/tune-info";
 
 export const compoundMusicData = (title:TitleInfo) => (e: DataContainer) => {
   const [roman, read_melody, musicxml, grouping, metric, time_span, prolongation] = e;
