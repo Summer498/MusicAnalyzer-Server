@@ -25,19 +25,17 @@ export const setupUI = (
   analyzed: AnalyzedDataContainer,
 ) => {
   new Assertion(analyzed.hierarchical_melody.length > 0).onFailed(() => { throw new Error(`hierarchical melody length must be more than 0 but it is ${analyzed.hierarchical_melody.length}`); });
+  const app_manager = new ApplicationManager(analyzed);
 
-  const NO_CHORD = false;  // コード関連のものを表示しない
-  const FULL_VIEW = true;  // 横いっぱいに分析結果を表示
-  if (FULL_VIEW) {
+  if (app_manager.FULL_VIEW) {
     CurrentTimeRatio.set(0.025);
     html.audio_player.autoplay = false;
   }
   else { html.audio_player.autoplay = true; }
 
   const audio_viewer = new AudioViewer(html.audio_player);
-  const app_manager = new ApplicationManager(NO_CHORD, analyzed);
   app_manager.audio_subscriber.register(audio_viewer);
-  const piano_roll_view = setupPianoRoll(FULL_VIEW, app_manager.analyzed, app_manager);
+  const piano_roll_view = setupPianoRoll(app_manager.FULL_VIEW, app_manager.analyzed, app_manager);
   const save_buttons = getSaveButtons(title_info, html, piano_roll_view);
   const bottom = new ColumnHTML(app_manager.controller.div, getIRPlot(app_manager.analyzed.melody))
 

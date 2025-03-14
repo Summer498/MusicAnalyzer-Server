@@ -7,12 +7,13 @@ import { Controllers } from "./setup-ui/setup-controllers";
 import { AnalyzedDataContainer } from "./analyzed-data-container";
 
 export class ApplicationManager {
+  readonly NO_CHORD = false;  // コード関連のものを表示しない
+  readonly FULL_VIEW = true;  // 横いっぱいに分析結果を表示
   readonly analyzed: MusicStructureElements
   readonly controller: Controllers
   readonly audio_subscriber: AudioReflectableRegistry
   readonly window_subscriber: WindowReflectableRegistry
   constructor(
-    NO_CHORD: boolean,
     analyzed: AnalyzedDataContainer
   ) {
     const { beat_info, romans, hierarchical_melody, d_melodies } = analyzed;
@@ -24,7 +25,7 @@ export class ApplicationManager {
       new MelodyElements(hierarchical_melody, d_melodies),
     )
 
-    this.controller = new Controllers(NO_CHORD);
+    this.controller = new Controllers(this.NO_CHORD);
     this.audio_subscriber = new AudioReflectableRegistry();
     this.window_subscriber = new WindowReflectableRegistry();
 
