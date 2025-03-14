@@ -2,7 +2,7 @@ export { ChordGravityMediator } from "./switcher-mediator/chord-gravity-mediator
 export { ControllerMediator } from "./controller-mediator";
 export { DMelodyMediator } from "./switcher-mediator/d-melody-mediator";
 export { HierarchyLevelMediator } from "./slider-mediator/hierarchy-level-mediator";
-export { jointModelAndView } from "./mediators-container";
+export { jointModelAndView } from "./application-manager";
 export { MelodyBeepMediator } from "./switcher-mediator/melody-beep-mediator";
 export { MelodyVolumeMediator } from "./slider-mediator/melody-volume-mediator";
 export { ScaleGravityMediator } from "./switcher-mediator/scale-gravity-mediator";

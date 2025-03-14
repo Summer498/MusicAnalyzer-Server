@@ -8,7 +8,7 @@ import { AnalyzedDataContainer } from "../analyzed-data-container";
 import { TitleInfo } from "../tune-info";
 import { HTMLsContainer } from "../HTMLs-container";
 import { PianoRoll } from "@music-analyzer/svg-objects";
-import { ApplicationManager } from "../UIMediators/mediators-container";
+import { ApplicationManager } from "../UIMediators/application-manager";
 
 const getIRPlot = (melody: MelodyElements) => {
   const ir_plot = document.createElementNS("http://www.w3.org/2000/svg", "svg");
