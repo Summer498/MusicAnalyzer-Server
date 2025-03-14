@@ -11,11 +11,9 @@ export const setup = (
   title: TitleInfo,
 ) => (raw_analyzed_data: AnalyzedMusicData) => {
   const e = setupUI(
-    `${title.mode}-${title.id}`,
-    html.title,
+    title,
+    html,
     initializeApplication(raw_analyzed_data),
-    html.piano_roll_place,
-    html.audio_player,
   );
   new EventLoop(e.audio, html.audio_player).update();
   getMusicAnalyzerWindow(window, raw_analyzed_data).onresize = _ => e.window.onUpdate();
