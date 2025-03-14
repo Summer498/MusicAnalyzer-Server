@@ -3,15 +3,15 @@ import { initializeApplication } from "./initialize-application";
 import { setupUI } from "./setup-ui";
 import { EventLoop } from "./EventLoop";
 import { HTMLsContainer } from "./HTMLs-container";
+import { TitleInfo } from "./tune-info";
 
 export const setup = (
   window: Window,
   html: HTMLsContainer,
-  mode: string,
-  tune_id: string,
+  title: TitleInfo,
 ) => (raw_analyzed_data: AnalyzedMusicData) => {
   const e = setupUI(
-    `${mode}-${tune_id}`,
+    `${title.mode}-${title.id}`,
     html.title,
     initializeApplication(raw_analyzed_data),
     html.piano_roll_place,

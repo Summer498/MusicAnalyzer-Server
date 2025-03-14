@@ -12,5 +12,5 @@ export const setupApplication = (
   updateTitle(html.title, url.title);
   setAudioPlayer(url, html.audio_player);
   loadMusicAnalysis(url)
-    .then(setup(window, html, url.title.mode, url.title.id));
+    .then(setup(window, html, url.title));
 }
