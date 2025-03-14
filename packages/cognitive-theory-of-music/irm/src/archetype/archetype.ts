@@ -1,5 +1,5 @@
 import { NoteLiteral } from "@music-analyzer/tonal-objects";
-import { Triad } from "./triad/Triad";
+import { Triad } from "./triad";
 import { Dyad } from "./Dyad";
 import { Monad } from "./Monad";
 import { Null_ad } from "./Null-ad";

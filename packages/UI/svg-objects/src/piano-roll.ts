@@ -3,7 +3,7 @@ import { WindowReflectable } from "@music-analyzer/view";
 import { PianoRollHeight, PianoRollWidth } from "@music-analyzer/view-parameters";
 import { ApplicationManager } from "@music-analyzer/music-analyzer-application"
 import { OctaveBGs } from "./octave-bg";
-import { AnalysisView } from "@music-analyzer/music-analyzer-application/src/setup-ui/setup-analysis";
+import { AnalysisView } from "@music-analyzer/music-analyzer-application";
 import { OctaveKeys } from "./octave-keys";
 import { CurrentTimeLine } from "./current-time-line";
 

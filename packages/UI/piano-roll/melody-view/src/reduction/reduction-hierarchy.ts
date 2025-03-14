@@ -1,7 +1,7 @@
 import { CollectionHierarchy } from "@music-analyzer/view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { ReductionLayer } from "./reduction-layer";
-import { ReductionViewModel } from "./reduction-view/reduction-view-model";
+import { ReductionViewModel } from "./reduction-view";
 
 export class ReductionHierarchy extends CollectionHierarchy<ReductionLayer> {
   constructor(hierarchical_melodies: TimeAndAnalyzedMelody[][]) {

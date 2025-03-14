@@ -1,7 +1,7 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { CollectionLayer } from "@music-analyzer/view";
 import { ReductionVM } from "./reduction-view-model";
-import { ReductionViewModel } from "./reduction-view/reduction-view-model";
+import { ReductionViewModel } from "./reduction-view";
 
 export class ReductionLayer extends CollectionLayer<ReductionVM> {
   constructor(melody: TimeAndAnalyzedMelody[], layer: number) {

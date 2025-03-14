@@ -1,10 +1,9 @@
 import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 import { BeatElements, ChordElements, MelodyElements, MusicStructureElements } from "./piano-roll";
-import { ColorChangeMediator } from "./UIMediators/color-change-mediator";
-import { ChordGravityMediator, DMelodyMediator, MelodyBeepMediator, ScaleGravityMediator } from "./UIMediators/switcher-mediator";
-import { HierarchyLevelMediator, MelodyVolumeMediator, TimeRangeMediator } from "./UIMediators/slider-mediator";
-import { Controllers } from "./setup-ui/setup-controllers";
+import { Controllers } from "./setup-ui";
 import { AnalyzedDataContainer } from "./containers";
+import { ChordGravityMediator, DMelodyMediator, HierarchyLevelMediator, MelodyBeepMediator, MelodyVolumeMediator, ScaleGravityMediator, TimeRangeMediator } from "./UIMediators";
+import { ColorChangeMediator } from "./UIMediators/color-change-mediator";
 
 export class ApplicationManager {
   readonly NO_CHORD = false;  // コード関連のものを表示しない

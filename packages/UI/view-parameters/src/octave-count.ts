@@ -1,5 +1,4 @@
-import { PianoRollBegin } from "./piano-roll/piano-roll-begin";
-import { PianoRollEnd } from "./piano-roll/piano-roll-end";
+import { PianoRollBegin, PianoRollEnd } from "./piano-roll";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 

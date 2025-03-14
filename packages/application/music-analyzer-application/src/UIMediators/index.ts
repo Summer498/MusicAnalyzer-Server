@@ -1,10 +1,3 @@
-export { ChordGravityMediator } from "./switcher-mediator/chord-gravity-mediator";
 export { ControllerMediator } from "./controller-mediator";
-export { DMelodyMediator } from "./switcher-mediator/d-melody-mediator";
-export { HierarchyLevelMediator } from "./slider-mediator/hierarchy-level-mediator";
-export { MelodyBeepMediator } from "./switcher-mediator/melody-beep-mediator";
-export { MelodyVolumeMediator } from "./slider-mediator/melody-volume-mediator";
-export { ScaleGravityMediator } from "./switcher-mediator/scale-gravity-mediator";
-export { SliderMediator } from "./slider-mediator/slider-mediator";
-export { SwitcherMediator } from "./switcher-mediator/switcher-mediator";
-export { TimeRangeMediator } from "./slider-mediator/time-range-mediator";
+export { HierarchyLevelMediator, MelodyVolumeMediator, SliderMediator, TimeRangeMediator } from "./slider-mediator";
+export { ChordGravityMediator, DMelodyMediator, MelodyBeepMediator, ScaleGravityMediator, SwitcherMediator } from "./switcher-mediator";
