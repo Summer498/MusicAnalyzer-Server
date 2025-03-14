@@ -44,8 +44,6 @@ export const setupUI = (
     html.audio_player,
     bottom.div,
   )
-
-  return manager
 };
 
 const setPianoRollPlace = (
