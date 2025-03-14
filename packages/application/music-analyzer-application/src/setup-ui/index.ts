@@ -10,6 +10,7 @@ import { jointModelAndView } from "../UIMediators";
 import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 import { TitleInfo } from "../tune-info";
 import { HTMLsContainer } from "../HTMLs-container";
+import { PianoRoll } from "@music-analyzer/svg-objects";
 
 const getIRPlot = (melody: MelodyElements) => {
   const ir_plot = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -46,29 +47,60 @@ export const setupUI = (
   )
 
   const audio_viewer = new AudioViewer(html.audio_player);
-  
   const controllers = new Controllers(NO_CHORD);
-  const subscribers = jointModelAndView(controllers.children, music_structure);
-  subscribers.audio.register(audio_viewer);
-  const piano_roll_view = setupPianoRoll(FULL_VIEW, music_structure, subscribers);
+  const reflectors = jointModelAndView(controllers.children, music_structure);
+  reflectors.audio.register(audio_viewer);
+  const piano_roll_view = setupPianoRoll(FULL_VIEW, music_structure, reflectors);
+  const save_buttons = getSaveButtons(title_info, html, piano_roll_view);
+  const bottom = createBottom(controllers, getIRPlot(music_structure.melody));
 
-  const tune_id = `${title_info.mode}-${title_info.id}`;
-  const save_button = getSaveButton(tune_id, html.title, piano_roll_view);
-  const save_raw_button = getRawSaveButton(tune_id, html.title, piano_roll_view);
+  setPianoRollPlace(
+    html.piano_roll_place,
+    audio_viewer.wave.svg,
+    audio_viewer.spectrogram.svg,
+    save_buttons.with_title,
+    save_buttons.raw,
+    piano_roll_view.svg,
+    html.audio_player,
+    bottom,
+  )
 
-  const ir_plot = getIRPlot(music_structure.melody);
+  return reflectors
+};
 
+const setPianoRollPlace = (
+  piano_roll_place: HTMLDivElement,
+  ...children: (HTMLElement | SVGSVGElement)[]
+) => {
+  children.forEach(e => piano_roll_place.appendChild(e))
+}
+
+class SaveButtons {
+  constructor(
+    readonly with_title: HTMLInputElement,
+    readonly raw: HTMLInputElement,
+  ) { }
+}
+
+const getSaveButtons = (
+  title: TitleInfo,
+  html: HTMLsContainer,
+  piano_roll_view: PianoRoll,
+) => {
+  const tune_id = `${title.mode}-${title.id}`;
+  return new SaveButtons(
+    getSaveButton(tune_id, html.title, piano_roll_view),
+    getRawSaveButton(tune_id, html.title, piano_roll_view),
+  )
+}
+
+const createBottom = (
+  controllers: Controllers,
+  ir_plot: SVGSVGElement,
+) => {
   const bottom = document.createElement("div");
+  bottom.setAttribute("style", `column-count: ${2}`);
   bottom.appendChild(controllers.div);
   bottom.appendChild(ir_plot);
-  bottom.setAttribute("style", `column-count: ${2}`);
-  html.piano_roll_place.appendChild(audio_viewer.wave.svg);
-  html.piano_roll_place.appendChild(audio_viewer.spectrogram.svg);
-  html.piano_roll_place.appendChild(save_button);
-  html.piano_roll_place.appendChild(save_raw_button);
-  html.piano_roll_place.appendChild(piano_roll_view.svg);
-  html.piano_roll_place.appendChild(html.audio_player);
-  html.piano_roll_place.appendChild(bottom);
-
-  return subscribers
-};
+  return bottom
+}
