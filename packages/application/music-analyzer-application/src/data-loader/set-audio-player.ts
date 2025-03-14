@@ -1,3 +1,5 @@
+import { URLsContainer } from "../URLs-container";
+
 const registerSong = (urls: string[], default_url: string, audio_player: HTMLAudioElement | HTMLVideoElement) => {
   const url = urls.pop();
   if (!url) {
@@ -13,8 +15,8 @@ const registerSong = (urls: string[], default_url: string, audio_player: HTMLAud
   };
 };
 
-export const setAudioPlayer = (resources: string, tune_name: string, default_url:string, audio_player: HTMLAudioElement | HTMLVideoElement) => {
-  const filename = `${resources}/${tune_name}/${tune_name}`;
+export const setAudioPlayer = (url:URLsContainer, audio_player: HTMLAudioElement | HTMLVideoElement) => {
+  const filename = `${url.resources}/${url.gttm_sample.id}/${url.gttm_sample.id}`;
   const extensions = ["mp3", "mp4", "wav", "m4a"];
-  registerSong(extensions.map(e => `${filename}.${e}`), default_url, audio_player);
+  registerSong(extensions.map(e => `${filename}.${e}`), url.audio_src, audio_player);
 };
