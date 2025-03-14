@@ -40,7 +40,7 @@ export class ApplicationManager {
     new HierarchyLevelMediator([this.controller.children.hierarchy.slider], [
       e.melody.melody_hierarchy,
       e.melody.ir_hierarchy,
-      e.melody.ir_plot,
+      e.melody.ir_plot.children[0],
       e.melody.time_span_tree,
       e.melody.scale_gravities,
       e.melody.chord_gravities
@@ -52,7 +52,7 @@ export class ApplicationManager {
       this.controller.children.melody_color.selector.children,
       [
         e.melody.ir_hierarchy,
-        e.melody.ir_plot,
+        e.melody.ir_plot.children[0],
         e.melody.melody_hierarchy,
         e.melody.time_span_tree
       ]
