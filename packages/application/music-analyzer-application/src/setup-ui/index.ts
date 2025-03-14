@@ -19,22 +19,12 @@ const getIRPlot = (melody: MelodyElements) => {
   return ir_plot;
 };
 
-const setSongLength = (
-  analyzed: AnalyzedDataContainer,
-) => {
-  const { hierarchical_melody } = analyzed;
-  const last = <T>(arr: T[]) => arr[arr.length - 1];
-  const melodies = last(hierarchical_melody);
-  SongLength.set(Math.max(...melodies.map(e => e.time.end)) * 1.05); // ちょっとマージンを取っておく
-}
-
 export const setupUI = (
   title_info: TitleInfo,
   html: HTMLsContainer,
   analyzed: AnalyzedDataContainer,
 ) => {
   new Assertion(analyzed.hierarchical_melody.length > 0).onFailed(() => { throw new Error(`hierarchical melody length must be more than 0 but it is ${analyzed.hierarchical_melody.length}`); });
-  setSongLength(analyzed);
 
   const NO_CHORD = false;  // コード関連のものを表示しない
   const FULL_VIEW = true;  // 横いっぱいに分析結果を表示
