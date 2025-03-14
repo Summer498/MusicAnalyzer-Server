@@ -9,7 +9,7 @@ export class IRPlot implements AudioReflectable, WindowReflectable {
     const g = new IRPlotHierarchy(hierarchical_melody)
     this.children = [g];
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    this.svg.appendChild(g.svg);
+    this.svg.appendChild(g.view.svg);
     this.svg.id = "IR-plot";
     this.svg.setAttribute("width", String(g.width));
     this.svg.setAttribute("height", String(g.height));
