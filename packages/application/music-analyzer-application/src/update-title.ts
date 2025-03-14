@@ -1,9 +1,9 @@
 import { song_list } from "@music-analyzer/gttm";
-import { GTTM_Sample } from "./tune-info";
+import { TitleInfo } from "./tune-info";
 
 export const updateTitle = (
   title: HTMLHeadingElement,
-  gttm: GTTM_Sample,
+  gttm: TitleInfo,
 ) => {
   title.textContent = gttm.mode ? `[${gttm.mode}] ${gttm.id}` : gttm.id;
   const tune_match = gttm.id.match(/([0-9]+)_[0-9]/);

@@ -1,6 +1,6 @@
 type Mode = "TSR" | "PR" | "";
 
-export class GTTM_Sample {
+export class TitleInfo {
   constructor(
     readonly id: string,
     readonly mode: Mode,
