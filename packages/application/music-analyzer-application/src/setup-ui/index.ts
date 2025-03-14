@@ -55,8 +55,6 @@ const asParent = (node: HTMLElement) => {
   }
 }
 
-
-
 class ColumnHTML {
   readonly div: HTMLDivElement
   constructor(...children: (HTMLElement | SVGSVGElement)[]) {
