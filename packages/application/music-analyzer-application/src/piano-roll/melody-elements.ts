@@ -1,6 +1,5 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { GravityHierarchy, DMelodyGroup, IRPlotHierarchy, IRSymbolHierarchy, MelodyHierarchy, ReductionHierarchy } from "@music-analyzer/melody-view";
-import { IRPlot } from "@music-analyzer/melody-view/src/ir-plot/ir-plot";
+import { GravityHierarchy, DMelodyGroup, IRSymbolHierarchy, MelodyHierarchy, ReductionHierarchy, IRPlot } from "@music-analyzer/melody-view";
 import { AudioReflectable, WindowReflectable } from "@music-analyzer/view";
 
 export class MelodyElements implements AudioReflectable, WindowReflectable {
