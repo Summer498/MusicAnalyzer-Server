@@ -1,11 +1,15 @@
-import { AudioReflectable, WindowReflectable } from "@music-analyzer/view";
+import { AudioReflectable, AudioReflectableRegistry, WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
 import { MusicStructureElements } from "../piano-roll";
 
 export class AnalysisView implements AudioReflectable, WindowReflectable {
   readonly svg: SVGGElement;
   readonly children: (AudioReflectable & WindowReflectable)[];
   constructor(
-    analysis: MusicStructureElements
+    analysis: MusicStructureElements,
+    publishers: [
+      WindowReflectableRegistry,
+      AudioReflectableRegistry,
+    ]
   ) {
     const e = analysis;
     this.children = [e.beat, e.chord, e.melody];
@@ -21,6 +25,7 @@ export class AnalysisView implements AudioReflectable, WindowReflectable {
     this.svg.appendChild(e.melody.chord_gravities.svg);
     this.svg.appendChild(e.melody.scale_gravities.svg);
     this.svg.appendChild(e.melody.time_span_tree.svg);
+    publishers.forEach(e => e.register(this));
   }
   onAudioUpdate() {
     this.children.forEach(e => e.onAudioUpdate());

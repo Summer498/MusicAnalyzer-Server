@@ -1,13 +1,16 @@
-import { WindowReflectable } from "@music-analyzer/view";
+import { WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
 import { CurrentTimeX, PianoRollHeight } from "@music-analyzer/view-parameters";
 
 export class CurrentTimeLine implements WindowReflectable {
   readonly svg: SVGLineElement;
-  constructor() {
+  constructor(
+    publisher: WindowReflectableRegistry
+  ) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "line");
     this.svg.id = "current_time";
     this.svg.style.strokeWidth= String(5);
     this.svg.style.stroke = "rgb(0, 0, 0)";
+    publisher.register(this)
   }
   onWindowResized() {
     this.svg.setAttribute("x1", `${CurrentTimeX.get()}`);
