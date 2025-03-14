@@ -2,8 +2,8 @@ import { song_list } from "@music-analyzer/gttm";
 
 export const updateTitle = (
   title: HTMLHeadingElement,
+  mode: "TSR" | "PR" | "",
   tune_id: string,
-  mode: string,
 ) => {
   title.textContent = mode ? `[${mode}] ${tune_id}` : tune_id;
   const tune_match = tune_id.match(/([0-9]+)_[0-9]/);

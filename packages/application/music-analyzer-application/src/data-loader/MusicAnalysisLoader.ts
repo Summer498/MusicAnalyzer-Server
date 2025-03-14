@@ -29,7 +29,7 @@ class AnalysisURLs {
   }
 }
 
-export const loadMusicAnalysis = (tune_id: string, mode: "TSR" | "PR" | "") => {
+export const loadMusicAnalysis = (mode: "TSR" | "PR" | "", tune_id: string) => {
   const tune_name = encodeURI(tune_id)
   return Promise.all(justLoad(new AnalysisURLs(tune_name), new GTTM_URLs(tune_name)))
     .then(compoundMusicData(tune_id, mode));

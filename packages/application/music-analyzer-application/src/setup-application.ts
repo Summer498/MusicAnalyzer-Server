@@ -13,8 +13,8 @@ export const setupApplication = (
   const tune_id = url.urlParams.get("tune") || "";
   const mode: Mode = url.urlParams.has("pr") ? "PR" : url.urlParams.has("tsr") ? "TSR" : "";
 
-  updateTitle(html.title, tune_id, mode);
+  updateTitle(html.title, mode, tune_id);
   setAudioPlayer(url.resources, tune_id, url.audio_src, html.audio_player);
-  loadMusicAnalysis(tune_id, mode)
+  loadMusicAnalysis(mode, tune_id)
     .then(setup(window, html, mode, tune_id));
 }
