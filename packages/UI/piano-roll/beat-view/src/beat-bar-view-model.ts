@@ -29,5 +29,8 @@ export class BeatBarVM extends MVVM_ViewModel<BeatBarModel, BeatBarView> {
     // NOTE: うるさいので停止中
     0 && this.beepBeat();
   }
+  onWindowResized() {
+    this.view.onWindowResized()
+  }
 }
 

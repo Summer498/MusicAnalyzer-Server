@@ -48,5 +48,8 @@ export class MelodyVM extends MVVM_ViewModel<MelodyModel, MelodyView> {
       this.beepMelody();
     }
   }
+  onWindowResized() {
+    this.view.onWindowResized()
+  }
 }
 

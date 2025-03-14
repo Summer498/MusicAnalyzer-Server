@@ -13,4 +13,7 @@ export class DMelodyVM extends MVVM_ViewModel<DMelodyModel, DMelodyView> {
   onAudioUpdate() {
     this.view.onclick = insertMelody;
   }
+  onWindowResized() {
+    this.view.onWindowResized()
+  }
 }

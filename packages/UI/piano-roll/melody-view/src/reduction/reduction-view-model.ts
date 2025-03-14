@@ -19,4 +19,7 @@ export class ReductionVM extends MVVM_ViewModel<ReductionModel, ReductionView> {
     this.view.setColor(getColor);
   }
   updateColor() { this.view.updateColor(); }
+  onWindowResized() {
+    this.view.onWindowResized()
+  }
 }

@@ -9,4 +9,7 @@ export class ChordKeyVM extends MVVM_ViewModel<ChordKeyModel, ChordKeyView> {
     const model = new ChordKeyModel(e);
     super(model, new ChordKeyView(model));
   }
+  onWindowResized() {
+    this.view.onWindowResized()
+  }
 }

@@ -15,4 +15,7 @@ export class IRSymbolVM extends MVVM_ViewModel<IRSymbolModel, IRSymbolView> {
     this.view.setColor(getColor);
   }
   updateColor() { this.view.updateColor(); }
+  onWindowResized() {
+    this.view.onWindowResized()
+  }
 }

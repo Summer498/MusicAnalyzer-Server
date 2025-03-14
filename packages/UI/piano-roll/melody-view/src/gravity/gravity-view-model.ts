@@ -14,4 +14,7 @@ export class GravityVM extends MVVM_ViewModel<GravityModel, GravityView> {
     const model = new GravityModel(e, layer, next, gravity);
     super(model, new GravityView(model));
   }
+  onWindowResized() {
+    this.view.onWindowResized()
+  }
 }

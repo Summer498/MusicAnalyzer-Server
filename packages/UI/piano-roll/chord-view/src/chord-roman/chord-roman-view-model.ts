@@ -9,4 +9,7 @@ export class ChordRomanVM extends MVVM_ViewModel<ChordRomanModel, ChordRomanView
     const model = new ChordRomanModel(e);
     super(model, new ChordRomanView(model));
   }
+  onWindowResized() {
+    this.view.onWindowResized()
+  }
 }

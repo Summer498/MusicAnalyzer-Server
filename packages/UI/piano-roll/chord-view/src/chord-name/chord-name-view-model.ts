@@ -9,4 +9,7 @@ export class ChordNameVM extends MVVM_ViewModel<ChordNameModel, ChordNameView> {
     const model = new ChordNameModel(e);
     super(model, new ChordNameView(model));
   }
+  onWindowResized() {
+    this.view.onWindowResized()
+  }
 }

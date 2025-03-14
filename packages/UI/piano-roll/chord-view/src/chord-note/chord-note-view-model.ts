@@ -19,4 +19,7 @@ export class ChordNoteVM
   onAudioUpdate() {
     this.view.onWindowResized();
   }
+  onWindowResized() {
+    this.view.onWindowResized()
+  }
 }
