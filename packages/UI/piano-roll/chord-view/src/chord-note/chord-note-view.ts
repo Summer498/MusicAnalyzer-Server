@@ -4,6 +4,8 @@ import { fifthToColor, thirdToColor } from "@music-analyzer/color";
 import { MVVM_View } from "@music-analyzer/view";
 import { ChordNoteModel } from "./chord-note-model";
 
+const getRelativeX = (e: number) => e - PianoRollBegin.get()
+
 export class ChordNoteView extends MVVM_View<ChordNoteModel, "rect"> {
   readonly y: number;
   constructor(model: ChordNoteModel) {
@@ -21,7 +23,7 @@ export class ChordNoteView extends MVVM_View<ChordNoteModel, "rect"> {
       this.svg.style.fill = fifthToColor(this.model.tonic, 0.25, this.model.type === "major" ? 1 : 0.9);
     }
     this.y = (
-      mod(PianoRollBegin.get() - this.model.note, 12)
+      mod(-getRelativeX(this.model.note), 12)
       + 12 * this.model.oct
     ) * BlackKeyPrm.height;
     this.updateX();

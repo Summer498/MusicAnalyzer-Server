@@ -3,6 +3,8 @@ import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-para
 import { MVVM_View } from "@music-analyzer/view";
 import { DMelodyModel } from "./d-melody-model";
 
+const getRelativeX = (e: number) => e - PianoRollBegin.get()
+
 export class DMelodyView extends MVVM_View<DMelodyModel, "rect"> {
   constructor(model: DMelodyModel) {
     super(model, "rect");
@@ -17,7 +19,7 @@ export class DMelodyView extends MVVM_View<DMelodyModel, "rect"> {
   set onclick(value: () => void) { this.svg.onclick = value; };
 
   updateX() { this.svg.setAttribute("x", String(this.model.time.begin * NoteSize.get())); }
-  updateY() { this.svg.setAttribute("y", String(isNaN(this.model.note) ? -99 : (PianoRollBegin.get() - this.model.note) * BlackKeyPrm.height)); }
+  updateY() { this.svg.setAttribute("y", String(isNaN(this.model.note) ? -99 : -getRelativeX(this.model.note) * BlackKeyPrm.height)); }
   updateWidth() { this.svg.setAttribute("width", String(this.model.time.duration * NoteSize.get())); }
   updateHeight() { this.svg.setAttribute("height", String(BlackKeyPrm.height)); }
   onWindowResized() {

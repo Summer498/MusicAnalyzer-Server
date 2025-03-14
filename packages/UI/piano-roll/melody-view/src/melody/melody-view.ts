@@ -4,6 +4,8 @@ import { MVVM_View } from "@music-analyzer/view";
 import { MelodyModel } from "./melody-model";
 import { deleteMelody } from "../melody-editor-function";
 
+const getRelativeX = (e: number) => e - PianoRollBegin.get()
+
 export class MelodyView extends MVVM_View<MelodyModel, "rect"> {
   sound_reserved: boolean;
   #getColor: (e: MelodyModel) => string;
@@ -29,7 +31,7 @@ export class MelodyView extends MVVM_View<MelodyModel, "rect"> {
     this.#getColor(this.model) || "rgb(0, 0, 0)";
   }
   updateX() { this.svg.setAttribute("x", String(this.model.time.begin * NoteSize.get())); }
-  updateY() { this.svg.setAttribute("y", String(isNaN(this.model.note) ? -99 : (PianoRollBegin.get() - this.model.note) * BlackKeyPrm.height)); }
+  updateY() { this.svg.setAttribute("y", String(isNaN(this.model.note) ? -99 : -getRelativeX(this.model.note) * BlackKeyPrm.height)); }
   updateWidth() { this.svg.setAttribute("width", String(31 / 32 * this.model.time.duration * NoteSize.get())); }
   updateHeight() { this.svg.setAttribute("height", String(BlackKeyPrm.height)); }
   onWindowResized() {

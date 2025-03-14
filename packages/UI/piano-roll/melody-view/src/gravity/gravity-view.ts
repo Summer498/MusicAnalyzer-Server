@@ -4,6 +4,8 @@ import { GravityModel } from "./gravity-model";
 import { GravityViewTriangle } from "./gravity-triangle";
 import { GravityViewLine } from "./gravity-line";
 
+const getRelativeX = (e: number) => e - PianoRollBegin.get()
+
 export class GravityView extends MVVM_View<GravityModel, "g"> {
   readonly triangle: GravityViewTriangle;
   readonly line: GravityViewLine;
@@ -13,8 +15,8 @@ export class GravityView extends MVVM_View<GravityModel, "g"> {
     this.line_seed = {
       x1: this.model.time.begin + this.model.time.duration / 2,
       x2: this.model.next.time.begin,
-      y1: isNaN(this.model.note) ? -99 : (PianoRollBegin.get() + 0.5 - this.model.note) * BlackKeyPrm.height,
-      y2: isNaN(this.model.note) ? -99 : (PianoRollBegin.get() + 0.5 - this.model.gravity.destination!) * BlackKeyPrm.height,
+      y1: isNaN(this.model.note) ? -99 : (0.5 - getRelativeX(this.model.note)) * BlackKeyPrm.height,
+      y2: isNaN(this.model.note) ? -99 : (0.5 - getRelativeX(this.model.gravity.destination!)) * BlackKeyPrm.height,
     };
 
     this.triangle = new GravityViewTriangle(model);
