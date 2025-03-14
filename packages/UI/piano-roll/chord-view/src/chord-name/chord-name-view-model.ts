@@ -13,9 +13,9 @@ export class ChordNameVM extends MVVM_ViewModel<ChordNameModel, ChordNameView> {
   constructor(e: TimeAndRomanAnalysis) {
     const model = new ChordNameModel(e);
     super(model, new ChordNameView(model));
+    this.#y = PianoRollHeight.get() + chord_text_size;
     this.updateX();
     this.updateY();
-    this.#y = PianoRollHeight.get() + chord_text_size;
   }
   updateX() { this.view.updateX(scaled(this.model.time.begin)) }
   updateY() { this.view.updateY(this.#y) }
