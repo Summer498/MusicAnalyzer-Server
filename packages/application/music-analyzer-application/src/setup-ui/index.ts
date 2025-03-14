@@ -24,7 +24,6 @@ export const setupUI = (
   html: HTMLsContainer,
   analyzed: AnalyzedDataContainer,
 ) => {
-  new Assertion(analyzed.hierarchical_melody.length > 0).onFailed(() => { throw new Error(`hierarchical melody length must be more than 0 but it is ${analyzed.hierarchical_melody.length}`); });
   const app_manager = new ApplicationManager(analyzed);
 
   if (app_manager.FULL_VIEW) {

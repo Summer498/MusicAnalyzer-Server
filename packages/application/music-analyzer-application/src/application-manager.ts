@@ -16,6 +16,10 @@ export class ApplicationManager {
   constructor(
     analyzed: AnalyzedDataContainer
   ) {
+    if (analyzed.hierarchical_melody.length <= 0) {
+      throw new Error(`hierarchical melody length must be more than 0 but it is ${analyzed.hierarchical_melody.length}`);
+    }
+
     const { beat_info, romans, hierarchical_melody, d_melodies } = analyzed;
     const last = <T>(arr: T[]) => arr[arr.length - 1];
     const melodies = last(hierarchical_melody);
