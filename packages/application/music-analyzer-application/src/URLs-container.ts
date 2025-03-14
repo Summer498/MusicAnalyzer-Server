@@ -1,13 +1,13 @@
-import { TuneInfo } from "./tune-info";
+import { GTTM_Sample } from "./tune-info";
 
 export class URLsContainer {
-  readonly tune_info: TuneInfo;
+  readonly gttm_sample: GTTM_Sample;
   constructor(
     readonly resources: `/${string}/${string}`,
     readonly audio_src: `/${string}/${string}.${string}`,
     readonly urlParams: URLSearchParams,
   ) {
-    this.tune_info = new TuneInfo(
+    this.gttm_sample = new GTTM_Sample(
       urlParams.get("tune") || "",
       urlParams.has("pr") ? "PR" : urlParams.has("tsr") ? "TSR" : "",
     )

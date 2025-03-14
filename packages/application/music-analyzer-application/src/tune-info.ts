@@ -1,8 +1,8 @@
 type Mode = "TSR" | "PR" | "";
 
-export class TuneInfo {
+export class GTTM_Sample {
   constructor(
-    readonly tune_id: string,
+    readonly id: string,
     readonly mode: Mode,
   ) { }
 }
