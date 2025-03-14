@@ -1,15 +1,11 @@
-import { BlackKeyPrm, NoteSize, PianoRollBegin, size } from "@music-analyzer/view-parameters";
+import { size } from "@music-analyzer/view-parameters";
 import { get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { MVVM_View } from "@music-analyzer/view";
 import { IRSymbolModel } from "./ir-symbol-model";
 
 const ir_analysis_em = size;
-const transposed = (e: number) => e - PianoRollBegin.get()
-const scaled = (e: number) => e * NoteSize.get();
-const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class IRSymbolView extends MVVM_View<IRSymbolModel, "text"> {
-  readonly y: number;
   #getColor: (e: IRSymbolModel) => string;
   constructor(model: IRSymbolModel) {
     super(model, "text");
@@ -18,21 +14,15 @@ export class IRSymbolView extends MVVM_View<IRSymbolModel, "text"> {
     this.svg.style.fontFamily = "Times New Roman";
     this.svg.style.fontSize = `${ir_analysis_em}em`;
     this.svg.style.textAnchor = "middle";
-    this.y = isNaN(this.model.note) ? -99 : -convertToCoordinate(transposed(this.model.note));
-    this.updateX();
-    this.updateY();
     this.#getColor = e => get_color_of_Narmour_concept(e.archetype);
   }
+  updateX(x: number) { this.svg.setAttribute("x", String(x)); }
+  updateY(y: number) { this.svg.setAttribute("y", String(y)); }
   setColor(getColor: (e: IRSymbolModel) => string) {
     this.#getColor = getColor;
     this.svg.style.fill = this.#getColor(this.model) || "rgb(0, 0, 0)";
   }
   updateColor() {
     this.#getColor(this.model) || "rgb(0, 0, 0)";
-  }
-  updateX() { this.svg.setAttribute("x", String(scaled(this.model.time.begin) + scaled(this.model.time.duration) / 2)); }
-  updateY() { this.svg.setAttribute("y", String(this.y)); }
-  onWindowResized() {
-    this.updateX();
   }
 }
