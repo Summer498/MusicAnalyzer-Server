@@ -3,7 +3,7 @@ import { MusicStructureElements } from "../piano-roll";
 import { AnalysisView } from "./setup-analysis";
 import { ApplicationManager } from "../application-manager";
 
-export const setupPianoRoll = (
+const setupPianoRoll = (
   FULL_VIEW: boolean,
   analysis_elements: MusicStructureElements,
   manager: ApplicationManager

@@ -1,12 +1,12 @@
 import { AudioViewer } from "@music-analyzer/spectrogram";
 import { CurrentTimeRatio } from "@music-analyzer/view-parameters";
 import { getRawSaveButton, getSaveButton } from "./save-button";
-import { setupPianoRoll } from "./setup-piano-roll";
 import { MelodyElements } from "../piano-roll";
 import { TitleInfo } from "../containers/tune-info";
 import { HTMLsContainer } from "../containers/HTMLs-container";
-import { PianoRoll } from "@music-analyzer/svg-objects";
+import { CurrentTimeLine, OctaveBGs, OctaveKeys, PianoRoll } from "@music-analyzer/svg-objects";
 import { ApplicationManager } from "../application-manager";
+import { AnalysisView } from "./setup-analysis";
 
 const getIRPlot = (melody: MelodyElements) => {
   const ir_plot = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -30,7 +30,13 @@ export const setupUI = (
 
   const audio_viewer = new AudioViewer(html.audio_player);
   manager.audio_time_mediator.register(audio_viewer);
-  const piano_roll_view = setupPianoRoll(manager.FULL_VIEW, manager.analyzed, manager);
+  const piano_roll_view = new PianoRoll(
+    manager.window_size_mediator, [
+    new OctaveBGs(manager.window_size_mediator).svg,
+    new AnalysisView(manager.analyzed, [manager.window_size_mediator, manager.audio_time_mediator]).svg,
+    new OctaveKeys(manager.window_size_mediator).svg,
+    new CurrentTimeLine(!manager.FULL_VIEW, manager.window_size_mediator).svg,
+  ]);
   const save_buttons = getSaveButtons(title_info, html, piano_roll_view);
   const bottom = new ColumnHTML(manager.controller.div, getIRPlot(manager.analyzed.melody))
 
