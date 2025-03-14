@@ -11,6 +11,7 @@ import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-anal
 import { TitleInfo } from "../tune-info";
 import { HTMLsContainer } from "../HTMLs-container";
 import { PianoRoll } from "@music-analyzer/svg-objects";
+import { ApplicationManager } from "../UIMediators/mediators-container";
 
 const getIRPlot = (melody: MelodyElements) => {
   const ir_plot = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -47,7 +48,7 @@ export const setupUI = (
   )
 
   const audio_viewer = new AudioViewer(html.audio_player);
-  const reflectors = jointModelAndView(NO_CHORD, music_structure);
+  const reflectors = new ApplicationManager(NO_CHORD, music_structure);
   reflectors.audio.register(audio_viewer);
   const piano_roll_view = setupPianoRoll(FULL_VIEW, music_structure, reflectors);
   const save_buttons = getSaveButtons(title_info, html, piano_roll_view);
