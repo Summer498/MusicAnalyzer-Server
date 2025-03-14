@@ -9,7 +9,7 @@ export const setupApplication = (
   html: HTMLsContainer,
   url: URLsContainer,
 ) => {
-  updateTitle(html.title, url.gttm_sample.mode, url.gttm_sample.id);
+  updateTitle(html.title, url.gttm_sample);
   setAudioPlayer(url.resources, url.gttm_sample.id, url.audio_src, html.audio_player);
   loadMusicAnalysis(url.gttm_sample.mode, url.gttm_sample.id)
     .then(setup(window, html, url.gttm_sample.mode, url.gttm_sample.id));

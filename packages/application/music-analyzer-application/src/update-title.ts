@@ -1,15 +1,15 @@
 import { song_list } from "@music-analyzer/gttm";
+import { GTTM_Sample } from "./tune-info";
 
 export const updateTitle = (
   title: HTMLHeadingElement,
-  mode: "TSR" | "PR" | "",
-  tune_id: string,
+  gttm: GTTM_Sample,
 ) => {
-  title.textContent = mode ? `[${mode}] ${tune_id}` : tune_id;
-  const tune_match = tune_id.match(/([0-9]+)_[0-9]/);
-  const tune_no = tune_match ? Number(tune_match[1]) : Number(tune_id);
+  title.textContent = gttm.mode ? `[${gttm.mode}] ${gttm.id}` : gttm.id;
+  const tune_match = gttm.id.match(/([0-9]+)_[0-9]/);
+  const tune_no = tune_match ? Number(tune_match[1]) : Number(gttm.id);
   if (tune_no) {
     const song_data = song_list[tune_no];
-    title.innerHTML = `[${mode || "???"}] ${tune_id}, ${song_data.author}, <i>"${song_data.title}"</i>`;
+    title.innerHTML = `[${gttm.mode || "???"}] ${gttm.id}, ${song_data.author}, <i>"${song_data.title}"</i>`;
   }
 };
