@@ -1,21 +1,12 @@
+import { getIRPlot } from "@music-analyzer/melody-view";
 import { AudioViewer } from "@music-analyzer/spectrogram";
+import { CurrentTimeLine, OctaveBGs, OctaveKeys, PianoRoll } from "@music-analyzer/svg-objects";
 import { CurrentTimeRatio } from "@music-analyzer/view-parameters";
 import { getRawSaveButton, getSaveButton } from "./save-button";
 import { TitleInfo } from "../containers/tune-info";
 import { HTMLsContainer } from "../containers/HTMLs-container";
-import { CurrentTimeLine, OctaveBGs, OctaveKeys, PianoRoll } from "@music-analyzer/svg-objects";
 import { ApplicationManager } from "../application-manager";
 import { AnalysisView } from "./setup-analysis";
-import { IRPlotHierarchy } from "@music-analyzer/melody-view";
-
-const getIRPlot = (g: IRPlotHierarchy) => {
-  const ir_plot = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  ir_plot.appendChild(g.svg);
-  ir_plot.id = "IR-plot";
-  ir_plot.setAttribute("width", String(g.width));
-  ir_plot.setAttribute("height", String(g.height));
-  return ir_plot;
-};
 
 export const setupUI = (
   title_info: TitleInfo,
