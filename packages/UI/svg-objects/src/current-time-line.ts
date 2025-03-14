@@ -9,9 +9,9 @@ export class CurrentTimeLine implements WindowReflectable {
   ) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "line");
     this.svg.id = "current_time";
-    this.svg.style.strokeWidth= String(5);
+    this.svg.style.strokeWidth = String(5);
     this.svg.style.stroke = "rgb(0, 0, 0)";
-    this.svg.style.visibility = String(visible);
+    this.svg.style.visibility = visible ? "visible" : "hidden";
     publisher.register(this)
   }
   onWindowResized() {
