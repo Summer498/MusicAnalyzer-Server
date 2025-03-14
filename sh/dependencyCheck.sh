@@ -1,6 +1,19 @@
 green=[32m
 defcol=[39m
 
+shopt -s globstar  # ** の有効化
+
+for dist in packages/**/package.json; do
+    if echo "$dist" | grep -q "node_modules"; then
+        : #
+    else
+        echo $(dirname $dist)
+        npx depcheck $(dirname $dist)
+        echo ""
+    fi
+done
+
+exit
 
 echo ./html
 npx depcheck ./html
@@ -13,12 +26,4 @@ echo ""
 echo ./html/hierarchical-analysis-sample
 npx depcheck ./html/hierarchical-analysis-sample
 echo ""
-
-if find packages/**/package.json -type f > /dev/null 2>&1; then
-    for dist in packages/**/package.json; do
-        echo $(dirname $dist)
-        npx depcheck $(dirname $dist)
-        echo ""
-    done
-fi
 
