@@ -1,7 +1,7 @@
 import { AudioViewer } from "@music-analyzer/spectrogram";
 import { CurrentTimeLine, OctaveBGs, OctaveKeys, PianoRoll } from "@music-analyzer/svg-objects";
 import { CurrentTimeRatio } from "@music-analyzer/view-parameters";
-import { getRawSaveButton, getSaveButton } from "./save-button";
+import { getSaveButtons } from "./save-button";
 import { TitleInfo } from "../containers/tune-info";
 import { HTMLsContainer } from "../containers/HTMLs-container";
 import { ApplicationManager } from "../application-manager";
@@ -27,14 +27,12 @@ export const setupUI = (
     new OctaveKeys(manager.window_size_mediator).svg,
     new CurrentTimeLine(!manager.FULL_VIEW, manager.window_size_mediator).svg,
   ]);
-  const save_buttons = getSaveButtons(title_info, html, piano_roll_view);
 
   asParent(html.piano_roll_place)
     .setChildren([
       audio_viewer.wave.svg,
       audio_viewer.spectrogram.svg,
-      save_buttons.with_title,
-      save_buttons.raw,
+      ...getSaveButtons(title_info, html, piano_roll_view),
       piano_roll_view.svg,
       html.audio_player,
       new ColumnHTML(
@@ -57,24 +55,7 @@ const asParent = (node: HTMLElement) => {
   }
 }
 
-class SaveButtons {
-  constructor(
-    readonly with_title: HTMLInputElement,
-    readonly raw: HTMLInputElement,
-  ) { }
-}
 
-const getSaveButtons = (
-  title: TitleInfo,
-  html: HTMLsContainer,
-  piano_roll_view: PianoRoll,
-) => {
-  const tune_id = `${title.mode}-${title.id}`;
-  return new SaveButtons(
-    getSaveButton(tune_id, html.title, piano_roll_view),
-    getRawSaveButton(tune_id, html.title, piano_roll_view),
-  )
-}
 
 class ColumnHTML {
   readonly div: HTMLDivElement
