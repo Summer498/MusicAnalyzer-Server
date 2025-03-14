@@ -52,7 +52,7 @@ export const setupUI = (
   reflectors.audio.register(audio_viewer);
   const piano_roll_view = setupPianoRoll(FULL_VIEW, music_structure, reflectors);
   const save_buttons = getSaveButtons(title_info, html, piano_roll_view);
-  const bottom = createBottom(controllers, getIRPlot(music_structure.melody));
+  const bottom = new ColumnHTML(controllers.div, getIRPlot(music_structure.melody))
 
   setPianoRollPlace(
     html.piano_roll_place,
@@ -62,7 +62,7 @@ export const setupUI = (
     save_buttons.raw,
     piano_roll_view.svg,
     html.audio_player,
-    bottom,
+    bottom.div,
   )
 
   return reflectors
@@ -94,13 +94,11 @@ const getSaveButtons = (
   )
 }
 
-const createBottom = (
-  controllers: Controllers,
-  ir_plot: SVGSVGElement,
-) => {
-  const bottom = document.createElement("div");
-  bottom.setAttribute("style", `column-count: ${2}`);
-  bottom.appendChild(controllers.div);
-  bottom.appendChild(ir_plot);
-  return bottom
+class ColumnHTML {
+  readonly div: HTMLDivElement
+  constructor(...children: (HTMLElement | SVGSVGElement)[]) {
+    this.div = document.createElement("div");
+    this.div.setAttribute("style", `column-count: ${children.length}`);
+    children.forEach(e => this.div.appendChild(e));
+  }
 }
