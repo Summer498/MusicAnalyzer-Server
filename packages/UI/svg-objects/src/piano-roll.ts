@@ -5,10 +5,12 @@ import { PianoRollHeight, PianoRollWidth } from "@music-analyzer/view-parameters
 export class PianoRoll implements WindowReflectable {
   readonly svg: SVGSVGElement;
   constructor(
-    publisher: WindowReflectableRegistry
+    publisher: WindowReflectableRegistry,
+    children: SVGElement[]
   ) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     this.svg.id = "piano-roll";
+    children.forEach(e=>this.svg.appendChild(e));
     publisher.register(this)
   }
   onWindowResized() {
