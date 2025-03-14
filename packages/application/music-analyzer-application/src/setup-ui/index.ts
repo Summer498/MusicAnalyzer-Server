@@ -29,7 +29,7 @@ export const setupUI = (
   else { html.audio_player.autoplay = true; }
 
   const audio_viewer = new AudioViewer(html.audio_player);
-  manager.audio_subscriber.register(audio_viewer);
+  manager.audio_time_mediator.register(audio_viewer);
   const piano_roll_view = setupPianoRoll(manager.FULL_VIEW, manager.analyzed, manager);
   const save_buttons = getSaveButtons(title_info, html, piano_roll_view);
   const bottom = new ColumnHTML(manager.controller.div, getIRPlot(manager.analyzed.melody))

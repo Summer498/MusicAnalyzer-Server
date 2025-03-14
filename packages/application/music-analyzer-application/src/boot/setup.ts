@@ -25,7 +25,7 @@ export const setup = (
   setSongLength(analyzed);
   const manager = new ApplicationManager(analyzed);
   setupUI(title, html, manager);
-  new EventLoop(manager.audio_subscriber, html.audio_player).update();
-  getMusicAnalyzerWindow(window, raw_analyzed_data).onresize = _ => manager.window_subscriber.onUpdate();
-  manager.window_subscriber.onUpdate();
+  new EventLoop(manager.audio_time_mediator, html.audio_player).update();
+  getMusicAnalyzerWindow(window, raw_analyzed_data).onresize = _ => manager.window_size_mediator.onUpdate();
+  manager.window_size_mediator.onUpdate();
 }

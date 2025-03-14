@@ -11,8 +11,8 @@ export class ApplicationManager {
   readonly FULL_VIEW = true;  // 横いっぱいに分析結果を表示
   readonly analyzed: MusicStructureElements
   readonly controller: Controllers
-  readonly audio_subscriber: AudioReflectableRegistry
-  readonly window_subscriber: WindowReflectableRegistry
+  readonly audio_time_mediator: AudioReflectableRegistry
+  readonly window_size_mediator: WindowReflectableRegistry
   constructor(
     analyzed: AnalyzedDataContainer
   ) {
@@ -30,8 +30,8 @@ export class ApplicationManager {
     )
 
     this.controller = new Controllers(this.NO_CHORD);
-    this.audio_subscriber = new AudioReflectableRegistry();
-    this.window_subscriber = new WindowReflectableRegistry();
+    this.audio_time_mediator = new AudioReflectableRegistry();
+    this.window_size_mediator = new WindowReflectableRegistry();
 
     const e = this.analyzed;
     new DMelodyMediator([this.controller.children.d_melody.checkbox], [e.melody.d_melody_collection]);
@@ -47,7 +47,7 @@ export class ApplicationManager {
     ]);
     new MelodyBeepMediator([this.controller.children.melody_beep.checkbox], [e.melody.melody_hierarchy]);
     new MelodyVolumeMediator([this.controller.children.melody_beep.volume], [e.melody.melody_hierarchy]);
-    new TimeRangeMediator([this.controller.children.time_range.slider], [e.melody.melody_hierarchy], this.audio_subscriber, this.window_subscriber);
+    new TimeRangeMediator([this.controller.children.time_range.slider], [e.melody.melody_hierarchy], this.audio_time_mediator, this.window_size_mediator);
     new ColorChangeMediator(
       this.controller.children.melody_color.selector.children,
       [
