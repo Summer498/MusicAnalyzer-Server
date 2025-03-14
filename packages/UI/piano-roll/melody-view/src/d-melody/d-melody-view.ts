@@ -1,11 +1,6 @@
 import { hsv2rgb, rgbToString } from "@music-analyzer/color";
-import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
 import { MVVM_View } from "@music-analyzer/view";
 import { DMelodyModel } from "./d-melody-model";
-
-const transposed = (e: number) => e - PianoRollBegin.get()
-const scaled = (e: number) => e * NoteSize.get()
-const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class DMelodyView extends MVVM_View<DMelodyModel, "rect"> {
   constructor(model: DMelodyModel) {
@@ -13,20 +8,10 @@ export class DMelodyView extends MVVM_View<DMelodyModel, "rect"> {
     this.svg.id = "melody-note";
     this.svg.style.fill = rgbToString(hsv2rgb(0, 0, 0.75));
     this.svg.style.stroke = "rgb(64, 64, 64)";
-    this.updateX();
-    this.updateY();
-    this.updateWidth();
-    this.updateHeight();
   }
   set onclick(value: () => void) { this.svg.onclick = value; };
-
-  updateX() { this.svg.setAttribute("x", String(scaled(this.model.time.begin))); }
-  updateY() { this.svg.setAttribute("y", String(isNaN(this.model.note) ? -99 : -convertToCoordinate(transposed(this.model.note)))); }
-  updateWidth() { this.svg.setAttribute("width", String(scaled(this.model.time.duration))); }
-  updateHeight() { this.svg.setAttribute("height", String(BlackKeyPrm.height)); }
-  onWindowResized() {
-    this.updateX();
-    this.updateWidth();
-    this.updateHeight();
-  }
+  updateX(x: number) { this.svg.setAttribute("x", String(x)); }
+  updateY(y: number) { this.svg.setAttribute("y", String(y)); }
+  updateWidth(w: number) { this.svg.setAttribute("width", String(w)); }
+  updateHeight(h: number) { this.svg.setAttribute("height", String(h)); }
 }
