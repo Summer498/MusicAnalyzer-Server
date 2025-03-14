@@ -6,6 +6,7 @@ import { deleteMelody } from "../melody-editor-function";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();
+const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class MelodyView extends MVVM_View<MelodyModel, "rect"> {
   sound_reserved: boolean;
@@ -32,7 +33,7 @@ export class MelodyView extends MVVM_View<MelodyModel, "rect"> {
     this.#getColor(this.model) || "rgb(0, 0, 0)";
   }
   updateX() { this.svg.setAttribute("x", String(scaled(this.model.time.begin))); }
-  updateY() { this.svg.setAttribute("y", String(isNaN(this.model.note) ? -99 : -transposed(this.model.note) * BlackKeyPrm.height)); }
+  updateY() { this.svg.setAttribute("y", String(isNaN(this.model.note) ? -99 : -convertToCoordinate(transposed(this.model.note)))); }
   updateWidth() { this.svg.setAttribute("width", String(31 / 32 * scaled(this.model.time.duration))); }
   updateHeight() { this.svg.setAttribute("height", String(BlackKeyPrm.height)); }
   onWindowResized() {

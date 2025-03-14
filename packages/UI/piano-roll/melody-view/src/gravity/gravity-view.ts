@@ -6,6 +6,7 @@ import { GravityViewLine } from "./gravity-line";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();
+const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class GravityView extends MVVM_View<GravityModel, "g"> {
   readonly triangle: GravityViewTriangle;
@@ -16,8 +17,8 @@ export class GravityView extends MVVM_View<GravityModel, "g"> {
     this.line_seed = {
       x1: this.model.time.begin + this.model.time.duration / 2,
       x2: this.model.next.time.begin,
-      y1: isNaN(this.model.note) ? -99 : (0.5 - transposed(this.model.note)) * BlackKeyPrm.height,
-      y2: isNaN(this.model.note) ? -99 : (0.5 - transposed(this.model.gravity.destination!)) * BlackKeyPrm.height,
+      y1: isNaN(this.model.note) ? -99 : (0.5 - convertToCoordinate(transposed(this.model.note))),
+      y2: isNaN(this.model.note) ? -99 : (0.5 - convertToCoordinate(transposed(this.model.gravity.destination!))),
     };
 
     this.triangle = new GravityViewTriangle(model);

@@ -3,6 +3,7 @@ import { mod } from "@music-analyzer/math";
 import { WindowReflectable } from "@music-analyzer/view";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
+const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class WhiteKeySVG implements WindowReflectable {
   readonly svg: SVGRectElement;
@@ -17,7 +18,7 @@ export class WhiteKeySVG implements WindowReflectable {
     this.svg.id = "white-key";
     this.svg.style.fill = WhiteKeyPrm.fill;
     this.svg.style.stroke = WhiteKeyPrm.stroke;
-    this.y = octave_height * oct + mod(WhiteKeyPrm.height * [0, 1, 2, 3, 4, 5, 6][white_index] - transposed(-1) * BlackKeyPrm.height, octave_height);
+    this.y = octave_height * oct + mod(WhiteKeyPrm.height * [0, 1, 2, 3, 4, 5, 6][white_index] - convertToCoordinate(transposed(-1)), octave_height);
     this.width = WhiteKeyPrm.width;
     this.height = WhiteKeyPrm.height;
   }

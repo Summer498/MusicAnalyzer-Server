@@ -6,6 +6,7 @@ import { ChordNoteModel } from "./chord-note-model";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();
+const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class ChordNoteView extends MVVM_View<ChordNoteModel, "rect"> {
   readonly y: number;
@@ -23,10 +24,9 @@ export class ChordNoteView extends MVVM_View<ChordNoteModel, "rect"> {
     if (false) {
       this.svg.style.fill = fifthToColor(this.model.tonic, 0.25, this.model.type === "major" ? 1 : 0.9);
     }
-    this.y = (
-      mod(-transposed(this.model.note), 12)
-      + 12 * this.model.oct
-    ) * BlackKeyPrm.height;
+    this.y =
+      convertToCoordinate(mod(-transposed(this.model.note), 12))
+      + convertToCoordinate(12 * this.model.oct);
     this.updateX();
     this.updateY();
   }

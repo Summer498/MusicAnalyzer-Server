@@ -4,6 +4,7 @@ import { ReductionModel } from "../reduction-model";
 import { Dyad, Monad, Null_ad, Triad } from "@music-analyzer/irm";
 
 const scaled = (e: number) => e * NoteSize.get();
+const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class ReductionViewModel extends MVVM_Model {
   #x: number;
@@ -28,7 +29,7 @@ export class ReductionViewModel extends MVVM_Model {
     this.#w = this.getViewW(this.model.time.duration);
     this.#cw = this.getViewW(this.model.head.duration);
     this.#cx = this.getViewX(this.model.head.begin) + this.#cw / 2;
-    this.y = (2 + this.model.layer) * BlackKeyPrm.height * bracket_height;
+    this.y = convertToCoordinate((2 + this.model.layer)) * bracket_height;
     this.h = BlackKeyPrm.height * bracket_height;
     this.#strong = false;
     this.archetype = model.archetype
