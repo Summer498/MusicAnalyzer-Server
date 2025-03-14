@@ -9,15 +9,15 @@ import { Time } from "@music-analyzer/time-and";
 const scaled = (e: number) => e * NoteSize.get();
 
 export class BeatBarVM extends MVVM_ViewModel<BeatBarModel, BeatBarView> {
-  readonly y1: number;
-  readonly y2: number;
+  #y1: number;
+  #y2: number;
   sound_reserved: boolean;
   constructor(beat_info: BeatInfo, i: number) {
     const model = new BeatBarModel(beat_info, i);
     super(model, new BeatBarView(model));
     this.sound_reserved = false;
-    this.y1 = 0;
-    this.y2 = PianoRollHeight.get();
+    this.#y1 = 0;
+    this.#y2 = PianoRollHeight.get();
     this.updateX();
     this.updateY();
   }
@@ -29,8 +29,8 @@ export class BeatBarVM extends MVVM_ViewModel<BeatBarModel, BeatBarView> {
   }
   updateY() {
     this.view.updateY(
-      this.y1,
-      this.y2,
+      this.#y1,
+      this.#y2,
     )
   }
   onWindowResized() {
