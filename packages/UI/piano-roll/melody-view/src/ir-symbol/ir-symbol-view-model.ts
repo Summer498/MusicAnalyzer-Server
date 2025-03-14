@@ -9,14 +9,14 @@ const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class IRSymbolVM extends MVVM_ViewModel<IRSymbolModel, IRSymbolView> {
-  readonly y: number;
+  #y: number;
   constructor(
     melody: TimeAndAnalyzedMelody,
     layer: number,
   ) {
     const model = new IRSymbolModel(melody, layer);
     super(model, new IRSymbolView(model));
-    this.y = isNaN(this.model.note) ? -99 : -convertToCoordinate(transposed(this.model.note));
+    this.#y = isNaN(this.model.note) ? -99 : -convertToCoordinate(transposed(this.model.note));
     this.updateX();
     this.updateY();
   }
@@ -30,7 +30,7 @@ export class IRSymbolVM extends MVVM_ViewModel<IRSymbolModel, IRSymbolView> {
       + scaled(this.model.time.duration) / 2
     )
   }
-  updateY() { this.view.updateY(this.y) }
+  updateY() { this.view.updateY(this.#y) }
   onWindowResized() {
     this.updateX();
   }

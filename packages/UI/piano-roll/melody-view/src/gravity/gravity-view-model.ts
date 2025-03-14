@@ -10,7 +10,7 @@ const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class GravityVM extends MVVM_ViewModel<GravityModel, GravityView> {
-  readonly line_seed: LinePos;
+  #line_seed: LinePos;
   constructor(
     e: TimeAndAnalyzedMelody,
     layer: number,
@@ -19,7 +19,7 @@ export class GravityVM extends MVVM_ViewModel<GravityModel, GravityView> {
   ) {
     const model = new GravityModel(e, layer, next, gravity);
     super(model, new GravityView(model));
-    this.line_seed = {
+    this.#line_seed = {
       x1: this.model.time.begin + this.model.time.duration / 2,
       x2: this.model.next.time.begin,
       y1: isNaN(this.model.note) ? -99 : (0.5 - convertToCoordinate(transposed(this.model.note))),
@@ -28,10 +28,10 @@ export class GravityVM extends MVVM_ViewModel<GravityModel, GravityView> {
   }
   getLinePos() {
     return {
-      x1: scaled(this.line_seed.x1),
-      x2: scaled(this.line_seed.x2),
-      y1: this.line_seed.y1,
-      y2: this.line_seed.y2,
+      x1: scaled(this.#line_seed.x1),
+      x2: scaled(this.#line_seed.x2),
+      y1: this.#line_seed.y1,
+      y2: this.#line_seed.y2,
     };
   }
   updateWidth() { this.view.updateWidth(scaled(this.model.time.duration)) }
