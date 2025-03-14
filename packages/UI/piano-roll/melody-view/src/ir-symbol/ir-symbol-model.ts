@@ -1,4 +1,4 @@
-import { Archetype, Dyad, Monad, Null_ad, Triad } from "@music-analyzer/irm";
+import { Dyad, Monad, Null_ad, Triad } from "@music-analyzer/irm";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { Time } from "@music-analyzer/time-and";
 import { MVVM_Model } from "@music-analyzer/view";
@@ -6,7 +6,7 @@ import { MVVM_Model } from "@music-analyzer/view";
 export class IRSymbolModel extends MVVM_Model {
   readonly time: Time;
   readonly note: number;
-  readonly archetype: Archetype | Triad | Dyad | Monad | Null_ad;
+  readonly archetype: Triad | Dyad | Monad | Null_ad;
   readonly layer: number;
   constructor(e: TimeAndAnalyzedMelody, layer: number) {
     super();

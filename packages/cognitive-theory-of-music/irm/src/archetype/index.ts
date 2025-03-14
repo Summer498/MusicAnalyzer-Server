@@ -3,5 +3,5 @@ export { Monad } from "./Monad";
 export { Null_ad } from "./Null-ad";
 export { Triad } from "./triad/Triad";
 
-export { Archetype, getArchetype } from "./archetype";
+export { getArchetype } from "./archetype";
 export { ArchetypeSymbol } from "./types";

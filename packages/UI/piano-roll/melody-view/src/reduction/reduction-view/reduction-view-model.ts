@@ -1,7 +1,7 @@
 import { BlackKeyPrm, bracket_height, NoteSize } from "@music-analyzer/view-parameters";
 import { MVVM_Model } from "@music-analyzer/view";
 import { ReductionModel } from "../reduction-model";
-import { Archetype, Dyad, Monad, Null_ad, Triad } from "@music-analyzer/irm";
+import { Dyad, Monad, Null_ad, Triad } from "@music-analyzer/irm";
 
 export class ReductionViewModel extends MVVM_Model {
   #x: number;
@@ -17,7 +17,7 @@ export class ReductionViewModel extends MVVM_Model {
   get cw() { return this.#cw; }
   get strong() { return this.#strong; }
   set strong(value: boolean) { this.#strong = value; }
-  readonly archetype: Archetype | Triad | Dyad | Monad | Null_ad;
+  readonly archetype: Triad | Dyad | Monad | Null_ad;
   constructor(
     readonly model: ReductionModel,
   ) {

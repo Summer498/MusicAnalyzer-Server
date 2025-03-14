@@ -1,6 +1,6 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { _Chord, _Note, _Scale } from "@music-analyzer/tonal-objects";
-import { Archetype, Null_ad, Dyad, Monad, Triad } from "@music-analyzer/irm";
+import { Null_ad, Dyad, Monad, Triad } from "@music-analyzer/irm";
 import { TimeAndAnalyzedMelody, MelodyAnalysis, TimeAndMelody } from "./interfaces";
 import { registerGravity } from "./register-gravity";
 
@@ -18,13 +18,6 @@ const getSome_ad = (prev?: number, curr?: number, next?: number) => {
   else if (n !== undefined) { return new Monad(n); }
   else { return new Null_ad(); }
 }
-
-const _getArchetype = (prev?: number, curr?: number, next?: number) => {
-  const notes = [prev, curr, next].map(e => e ? _Note.fromMidi(e) : undefined);
-  const archetype = new Archetype(notes[0], notes[1], notes[2]);
-
-  return archetype;
-};
 
 export const analyzeMelody = (
   melodies: TimeAndMelody[],
@@ -45,7 +38,7 @@ export const analyzeMelody = (
     const melody_analysis = new MelodyAnalysis(
       registerGravity(roman && _Scale.get(roman.scale), prev[i]?.note, curr[i]?.note),
       registerGravity(roman && _Chord.get(roman.chord), prev[i]?.note, curr[i]?.note),
-      _getArchetype(prev[i]?.note, curr[i]?.note, next[i]?.note)
+      getSome_ad(prev[i]?.note, curr[i]?.note, next[i]?.note)
     );
 
     return new TimeAndAnalyzedMelody(

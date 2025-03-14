@@ -2,7 +2,6 @@ import { Triad } from "./src/archetype";
 
 export { Dyad, Monad, Null_ad, Triad } from "./src/archetype";
 export { ArchetypeSymbol } from "./src/archetype";
-export { Archetype } from "./src/archetype";
 export {
   get_color_of_Narmour_concept,
   get_color_of_implication_realization,

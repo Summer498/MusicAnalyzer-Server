@@ -1,6 +1,6 @@
-import { Archetype, Dyad, Monad, Null_ad, Triad } from "../archetype";
+import { Dyad, Monad, Null_ad, Triad } from "../archetype";
 
-export const get_color_on_registral_scale = (archetype: Archetype | Triad | Dyad | Monad | Null_ad)  => {
+export const get_color_on_registral_scale = (archetype: Triad | Dyad | Monad | Null_ad)  => {
   switch (archetype.symbol) {
     case "VP": case "(VP)": return "rgb(0, 0, 255)";
     case "P": case "(P)": return "rgb(0, 0, 255)";
