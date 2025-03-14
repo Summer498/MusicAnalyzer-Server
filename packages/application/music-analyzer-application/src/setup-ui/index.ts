@@ -18,8 +18,7 @@ export const setupUI = (
   }
   else { html.audio_player.autoplay = true; }
 
-  const audio_viewer = new AudioViewer(html.audio_player);
-  manager.audio_time_mediator.register(audio_viewer);
+  const audio_viewer = new AudioViewer(html.audio_player, manager.audio_time_mediator);
   const piano_roll_view = new PianoRoll(
     manager.window_size_mediator, [
     new OctaveBGs(manager.window_size_mediator).svg,
