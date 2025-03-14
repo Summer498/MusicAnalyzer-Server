@@ -1,9 +1,7 @@
 export { setAudioPlayer } from "./set-audio-player";
 import { I_GTTM_URLs, justLoad } from "./just-load";
 import { compoundMusicData } from "./compound-music-data";
-
-const resources = `/MusicAnalyzer-server/resources`;
-const audio_src = `${resources}/Hierarchical Analysis Sample/sample1.mp4`;
+import { URLsContainer } from "../URLs-container";
 
 class GTTM_URLs implements I_GTTM_URLs {
   readonly msc: string
@@ -11,26 +9,26 @@ class GTTM_URLs implements I_GTTM_URLs {
   readonly mtr: string
   readonly tsr: string
   readonly pr: string
-  constructor(tune_name: string) {
-    this.msc = `${resources}/gttm-example/${tune_name}/MSC-${tune_name}.xml`
-    this.grp = `${resources}/gttm-example/${tune_name}/GPR-${tune_name}.xml`
-    this.mtr = `${resources}/gttm-example/${tune_name}/MPR-${tune_name}.xml`
-    this.tsr = `${resources}/gttm-example/${tune_name}/TS-${tune_name}.xml`
-    this.pr = `${resources}/gttm-example/${tune_name}/PR-${tune_name}.xml`
+  constructor(url: URLsContainer) {
+    this.msc = `${url.resources}/gttm-example/${url.title.id}/MSC-${url.title.id}.xml`
+    this.grp = `${url.resources}/gttm-example/${url.title.id}/GPR-${url.title.id}.xml`
+    this.mtr = `${url.resources}/gttm-example/${url.title.id}/MPR-${url.title.id}.xml`
+    this.tsr = `${url.resources}/gttm-example/${url.title.id}/TS-${url.title.id}.xml`
+    this.pr = `${url.resources}/gttm-example/${url.title.id}/PR-${url.title.id}.xml`
   }
 }
 
 class AnalysisURLs {
   readonly melody: string
   readonly roman: string
-  constructor(tune_name: string) {
-    this.melody = `${resources}/${tune_name}/analyzed/melody/crepe/manalyze.json`
-    this.roman = `${resources}/${tune_name}/analyzed/chord/roman.json`
+  constructor(url: URLsContainer) {
+    this.melody = `${url.resources}/${url.title.id}/analyzed/melody/crepe/manalyze.json`
+    this.roman = `${url.resources}/${url.title.id}/analyzed/chord/roman.json`
   }
 }
 
-export const loadMusicAnalysis = (mode: "TSR" | "PR" | "", tune_id: string) => {
-  const tune_name = encodeURI(tune_id)
-  return Promise.all(justLoad(new AnalysisURLs(tune_name), new GTTM_URLs(tune_name)))
-    .then(compoundMusicData(tune_id, mode));
+export const loadMusicAnalysis = (url: URLsContainer) => {
+  const tune_name = encodeURI(url.title.id)
+  return Promise.all(justLoad(new AnalysisURLs(url), new GTTM_URLs(url)))
+    .then(compoundMusicData(url.title));
 }
