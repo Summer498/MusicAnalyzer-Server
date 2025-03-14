@@ -1,6 +1,6 @@
 import { Assertion, _throw } from "@music-analyzer/stdlib";
 import { AudioViewer } from "@music-analyzer/spectrogram";
-import { CurrentTimeRatio, SongLength } from "@music-analyzer/view-parameters";
+import { CurrentTimeRatio } from "@music-analyzer/view-parameters";
 import { getRawSaveButton, getSaveButton } from "./save-button";
 import { setupPianoRoll } from "./setup-piano-roll";
 import { MelodyElements } from "../piano-roll";
