@@ -21,16 +21,16 @@ export const setupUI = (
   else { html.audio_player.autoplay = true; }
 
   const audio_viewer = new AudioViewer(html.audio_player, manager.audio_time_mediator);
-  const piano_roll_view = new PianoRoll(
-    manager.window_size_mediator, [
-    new OctaveBGs(manager.window_size_mediator).svg,
-    new AnalysisView(manager.analyzed, [manager.window_size_mediator, manager.audio_time_mediator]).svg,
-    new OctaveKeys(manager.window_size_mediator).svg,
-    new CurrentTimeLine(!manager.FULL_VIEW, manager.window_size_mediator).svg,
-  ]);
+  const piano_roll_view = new PianoRoll(manager.window_size_mediator)
+    .appendChildren(
+      new OctaveBGs(manager.window_size_mediator).svg,
+      new AnalysisView(manager.analyzed, [manager.window_size_mediator, manager.audio_time_mediator]).svg,
+      new OctaveKeys(manager.window_size_mediator).svg,
+      new CurrentTimeLine(!manager.FULL_VIEW, manager.window_size_mediator).svg,
+    );
 
   asParent(html.piano_roll_place)
-    .setChildren([
+    .appendChildren(
       audio_viewer.wave.svg,
       audio_viewer.spectrogram.svg,
       ...getSaveButtons(title_info, html, piano_roll_view),
@@ -40,5 +40,5 @@ export const setupUI = (
         manager.controller.div,
         manager.analyzed.melody.ir_plot.svg
       ).div,
-    ])
+    )
 };
