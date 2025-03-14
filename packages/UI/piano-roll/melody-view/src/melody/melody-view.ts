@@ -5,6 +5,7 @@ import { MelodyModel } from "./melody-model";
 import { deleteMelody } from "../melody-editor-function";
 
 const getRelativeX = (e: number) => e - PianoRollBegin.get()
+const scaled = (e: number) => e * NoteSize.get();
 
 export class MelodyView extends MVVM_View<MelodyModel, "rect"> {
   sound_reserved: boolean;
@@ -20,7 +21,7 @@ export class MelodyView extends MVVM_View<MelodyModel, "rect"> {
     this.updateWidth();
     this.updateHeight();
     this.svg.style.fill = "rgb(0, 192, 0)";
-    this.#getColor = e=>get_color_of_Narmour_concept(e.archetype);
+    this.#getColor = e => get_color_of_Narmour_concept(e.archetype);
   }
   setColor(getColor: (e: MelodyModel) => string) {
     this.#getColor = getColor;
@@ -30,9 +31,9 @@ export class MelodyView extends MVVM_View<MelodyModel, "rect"> {
   updateColor() {
     this.#getColor(this.model) || "rgb(0, 0, 0)";
   }
-  updateX() { this.svg.setAttribute("x", String(this.model.time.begin * NoteSize.get())); }
+  updateX() { this.svg.setAttribute("x", String(scaled(this.model.time.begin))); }
   updateY() { this.svg.setAttribute("y", String(isNaN(this.model.note) ? -99 : -getRelativeX(this.model.note) * BlackKeyPrm.height)); }
-  updateWidth() { this.svg.setAttribute("width", String(31 / 32 * this.model.time.duration * NoteSize.get())); }
+  updateWidth() { this.svg.setAttribute("width", String(31 / 32 * scaled(this.model.time.duration))); }
   updateHeight() { this.svg.setAttribute("height", String(BlackKeyPrm.height)); }
   onWindowResized() {
     this.updateX();

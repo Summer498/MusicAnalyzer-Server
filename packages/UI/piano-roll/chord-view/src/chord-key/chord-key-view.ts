@@ -6,6 +6,8 @@ import { oneLetterKey } from "../shorten";
 import { ChordKeyModel } from "./chord-key-model";
 import { chord_name_margin, chord_text_em, chord_text_size } from "../chord-view-params";
 
+const scaled = (e: number) => e * NoteSize.get();
+
 export class ChordKeyView extends MVVM_View<ChordKeyModel, "text"> {
   readonly y: number;
   constructor(model: ChordKeyModel,) {
@@ -20,7 +22,7 @@ export class ChordKeyView extends MVVM_View<ChordKeyModel, "text"> {
     this.updateX();
     this.updateY();
   }
-  updateX() { this.svg.setAttribute("x", String(this.model.time.begin * NoteSize.get())); }
+  updateX() { this.svg.setAttribute("x", String(scaled(this.model.time.begin))); }
   updateY() { this.svg.setAttribute("y", String(this.y)); }
   onWindowResized() {
     this.updateX();

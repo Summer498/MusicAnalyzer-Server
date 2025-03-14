@@ -2,6 +2,8 @@ import { NoteSize, PianoRollHeight } from "@music-analyzer/view-parameters";
 import { MVVM_View } from "@music-analyzer/view";
 import { BeatBarModel } from "./beat-bar-model";
 
+const scaled = (e: number) => e * NoteSize.get();
+
 export class BeatBarView extends MVVM_View<BeatBarModel, "line"> {
   readonly y1: number;
   readonly y2: number;
@@ -16,8 +18,8 @@ export class BeatBarView extends MVVM_View<BeatBarModel, "line"> {
     this.updateY();
   }
   updateX() {
-    this.svg.setAttribute("x1", String(this.model.time.begin * NoteSize.get()));
-    this.svg.setAttribute("x2", String(this.model.time.begin * NoteSize.get()));
+    this.svg.setAttribute("x1", String(scaled(this.model.time.begin)));
+    this.svg.setAttribute("x2", String(scaled(this.model.time.begin)));
 
   }
   updateY() {

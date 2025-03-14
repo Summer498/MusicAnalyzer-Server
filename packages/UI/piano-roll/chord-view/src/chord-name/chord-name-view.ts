@@ -6,6 +6,8 @@ import { shortenChord } from "../shorten";
 import { ChordNameModel } from "./chord-name-model";
 import { chord_text_em, chord_text_size } from "../chord-view-params";
 
+const scaled = (e: number) => e * NoteSize.get();
+
 export class ChordNameView extends MVVM_View<ChordNameModel, "text"> {
   readonly y: number;
   constructor(model: ChordNameModel) {
@@ -19,7 +21,7 @@ export class ChordNameView extends MVVM_View<ChordNameModel, "text"> {
     this.updateX();
     this.updateY();
   }
-  updateX() { this.svg.setAttribute("x", String(this.model.time.begin * NoteSize.get())); }
+  updateX() { this.svg.setAttribute("x", String(scaled(this.model.time.begin))); }
   updateY() { this.svg.setAttribute("y", String(this.y)); }
   onWindowResized() {
     this.updateX();

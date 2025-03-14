@@ -5,12 +5,13 @@ import { MVVM_View } from "@music-analyzer/view";
 import { ChordNoteModel } from "./chord-note-model";
 
 const getRelativeX = (e: number) => e - PianoRollBegin.get()
+const scaled = (e: number) => e * NoteSize.get();
 
 export class ChordNoteView extends MVVM_View<ChordNoteModel, "rect"> {
   readonly y: number;
   constructor(model: ChordNoteModel) {
     super(model, "rect");
-    this.svg.setAttribute("width", String(this.model.time.duration * NoteSize.get()));
+    this.svg.setAttribute("width", String(scaled(this.model.time.duration)));
     this.svg.setAttribute("height", String(BlackKeyPrm.height));
     this.svg.style.stroke = "rgb(64, 64, 64)";
     this.svg.style.fill = thirdToColor(
@@ -29,9 +30,9 @@ export class ChordNoteView extends MVVM_View<ChordNoteModel, "rect"> {
     this.updateX();
     this.updateY();
   }
-  updateX() { this.svg.setAttribute("x", String(this.model.time.begin * NoteSize.get())); }
+  updateX() { this.svg.setAttribute("x", String(scaled(this.model.time.begin))); }
   updateY() { this.svg.setAttribute("y", String(this.y)); }
-  updateWidth() { this.svg.setAttribute("width", String(this.model.time.duration * NoteSize.get())); }
+  updateWidth() { this.svg.setAttribute("width", String(scaled(this.model.time.duration))); }
   updateHeight() { this.svg.setAttribute("height", String(BlackKeyPrm.height)); }
   onWindowResized() {
     this.updateX();

@@ -5,6 +5,7 @@ import { IRSymbolModel } from "./ir-symbol-model";
 
 const ir_analysis_em = size;
 const getRelativeX = (e: number) => e - PianoRollBegin.get()
+const scaled = (e: number) => e * NoteSize.get();
 
 export class IRSymbolView extends MVVM_View<IRSymbolModel, "text"> {
   readonly y: number;
@@ -28,7 +29,7 @@ export class IRSymbolView extends MVVM_View<IRSymbolModel, "text"> {
   updateColor() {
     this.#getColor(this.model) || "rgb(0, 0, 0)";
   }
-  updateX() { this.svg.setAttribute("x", String(this.model.time.begin * NoteSize.get() + this.model.time.duration / 2 * NoteSize.get())); }
+  updateX() { this.svg.setAttribute("x", String(scaled(this.model.time.begin) + scaled(this.model.time.duration) / 2)); }
   updateY() { this.svg.setAttribute("y", String(this.y)); }
   onWindowResized() {
     this.updateX();

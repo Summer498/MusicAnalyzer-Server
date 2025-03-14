@@ -5,6 +5,7 @@ import { GravityViewTriangle } from "./gravity-triangle";
 import { GravityViewLine } from "./gravity-line";
 
 const getRelativeX = (e: number) => e - PianoRollBegin.get()
+const scaled = (e: number) => e * NoteSize.get();
 
 export class GravityView extends MVVM_View<GravityModel, "g"> {
   readonly triangle: GravityViewTriangle;
@@ -28,13 +29,13 @@ export class GravityView extends MVVM_View<GravityModel, "g"> {
   }
   getLinePos() {
     return {
-      x1: this.line_seed.x1 * NoteSize.get(),
-      x2: this.line_seed.x2 * NoteSize.get(),
+      x1: scaled(this.line_seed.x1),
+      x2: scaled(this.line_seed.x2),
       y1: this.line_seed.y1,
       y2: this.line_seed.y2,
     };
   }
-  updateWidth() { this.svg.setAttribute("width", String(this.model.time.duration * NoteSize.get())); }
+  updateWidth() { this.svg.setAttribute("width", String(scaled(this.model.time.duration))); }
   updateHeight() { this.svg.setAttribute("height", String(BlackKeyPrm.height)); }
   onWindowResized() {
     this.updateWidth();

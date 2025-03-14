@@ -3,6 +3,8 @@ import { MVVM_Model } from "@music-analyzer/view";
 import { ReductionModel } from "../reduction-model";
 import { Dyad, Monad, Null_ad, Triad } from "@music-analyzer/irm";
 
+const scaled = (e: number) => e * NoteSize.get();
+
 export class ReductionViewModel extends MVVM_Model {
   #x: number;
   #w: number;
@@ -31,8 +33,8 @@ export class ReductionViewModel extends MVVM_Model {
     this.#strong = false;
     this.archetype = model.archetype
   }
-  getViewX(x: number) { return x * NoteSize.get(); }
-  getViewW(w: number) { return w * NoteSize.get(); }
+  getViewX(x: number) { return scaled(x); }
+  getViewW(w: number) { return scaled(w); }
   updateX() {
     this.#x = this.getViewX(this.model.time.begin);
     this.#cx = this.getViewX(this.model.head.begin) + this.#cw / 2;
