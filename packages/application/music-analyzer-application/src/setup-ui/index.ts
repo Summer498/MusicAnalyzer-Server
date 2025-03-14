@@ -1,13 +1,12 @@
 import { AudioViewer } from "@music-analyzer/spectrogram";
-import { CurrentTimeLine, OctaveBGs, OctaveKeys, PianoRoll } from "@music-analyzer/svg-objects";
 import { CurrentTimeRatio } from "@music-analyzer/view-parameters";
 import { getSaveButtons } from "./save-button";
 import { TitleInfo } from "../containers/tune-info";
 import { HTMLsContainer } from "../containers/HTMLs-container";
 import { ApplicationManager } from "../application-manager";
-import { AnalysisView } from "./setup-analysis";
 import { asParent } from "./as-parent";
 import { ColumnHTML } from "./column-html";
+import { PianoRoll } from "@music-analyzer/svg-objects";
 
 export const setupUI = (
   title_info: TitleInfo,
@@ -21,14 +20,7 @@ export const setupUI = (
   else { html.audio_player.autoplay = true; }
 
   const audio_viewer = new AudioViewer(html.audio_player, manager.audio_time_mediator);
-  const piano_roll_view = new PianoRoll(manager.window_size_mediator)
-    .appendChildren(
-      new OctaveBGs(manager.window_size_mediator).svg,
-      new AnalysisView(manager.analyzed, [manager.window_size_mediator, manager.audio_time_mediator]).svg,
-      new OctaveKeys(manager.window_size_mediator).svg,
-      new CurrentTimeLine(!manager.FULL_VIEW, manager.window_size_mediator).svg,
-    );
-
+  const piano_roll_view = new PianoRoll(manager)
   asParent(html.piano_roll_place)
     .appendChildren(
       audio_viewer.wave.svg,
