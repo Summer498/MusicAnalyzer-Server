@@ -1,10 +1,8 @@
-import { Assertion, _throw } from "@music-analyzer/stdlib";
 import { AudioViewer } from "@music-analyzer/spectrogram";
 import { CurrentTimeRatio } from "@music-analyzer/view-parameters";
 import { getRawSaveButton, getSaveButton } from "./save-button";
 import { setupPianoRoll } from "./setup-piano-roll";
 import { MelodyElements } from "../piano-roll";
-import { AnalyzedDataContainer } from "../analyzed-data-container";
 import { TitleInfo } from "../tune-info";
 import { HTMLsContainer } from "../HTMLs-container";
 import { PianoRoll } from "@music-analyzer/svg-objects";
@@ -22,21 +20,19 @@ const getIRPlot = (melody: MelodyElements) => {
 export const setupUI = (
   title_info: TitleInfo,
   html: HTMLsContainer,
-  analyzed: AnalyzedDataContainer,
+  manager: ApplicationManager,
 ) => {
-  const app_manager = new ApplicationManager(analyzed);
-
-  if (app_manager.FULL_VIEW) {
+  if (manager.FULL_VIEW) {
     CurrentTimeRatio.set(0.025);
     html.audio_player.autoplay = false;
   }
   else { html.audio_player.autoplay = true; }
 
   const audio_viewer = new AudioViewer(html.audio_player);
-  app_manager.audio_subscriber.register(audio_viewer);
-  const piano_roll_view = setupPianoRoll(app_manager.FULL_VIEW, app_manager.analyzed, app_manager);
+  manager.audio_subscriber.register(audio_viewer);
+  const piano_roll_view = setupPianoRoll(manager.FULL_VIEW, manager.analyzed, manager);
   const save_buttons = getSaveButtons(title_info, html, piano_roll_view);
-  const bottom = new ColumnHTML(app_manager.controller.div, getIRPlot(app_manager.analyzed.melody))
+  const bottom = new ColumnHTML(manager.controller.div, getIRPlot(manager.analyzed.melody))
 
   setPianoRollPlace(
     html.piano_roll_place,
@@ -49,7 +45,7 @@ export const setupUI = (
     bottom.div,
   )
 
-  return app_manager
+  return manager
 };
 
 const setPianoRollPlace = (
