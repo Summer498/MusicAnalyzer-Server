@@ -47,12 +47,11 @@ export const setupUI = (
   )
 
   const audio_viewer = new AudioViewer(html.audio_player);
-  const controllers = new Controllers(NO_CHORD);
-  const reflectors = jointModelAndView(controllers.children, music_structure);
+  const reflectors = jointModelAndView(NO_CHORD, music_structure);
   reflectors.audio.register(audio_viewer);
   const piano_roll_view = setupPianoRoll(FULL_VIEW, music_structure, reflectors);
   const save_buttons = getSaveButtons(title_info, html, piano_roll_view);
-  const bottom = new ColumnHTML(controllers.div, getIRPlot(music_structure.melody))
+  const bottom = new ColumnHTML(reflectors.controller.div, getIRPlot(music_structure.melody))
 
   setPianoRollPlace(
     html.piano_roll_place,
