@@ -11,7 +11,7 @@ export const setup = (
   title: TitleInfo,
 ) => (raw_analyzed_data: AnalyzedMusicData) => {
   const app_manager = setupUI(title, html, new AnalyzedDataContainer(raw_analyzed_data));
-  new EventLoop(app_manager.audio, html.audio_player).update();
-  getMusicAnalyzerWindow(window, raw_analyzed_data).onresize = _ => app_manager.window.onUpdate();
-  app_manager.window.onUpdate();
+  new EventLoop(app_manager.audio_subscriber, html.audio_player).update();
+  getMusicAnalyzerWindow(window, raw_analyzed_data).onresize = _ => app_manager.window_subscriber.onUpdate();
+  app_manager.window_subscriber.onUpdate();
 }

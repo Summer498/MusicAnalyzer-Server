@@ -9,8 +9,8 @@ import { AnalyzedDataContainer } from "./analyzed-data-container";
 export class ApplicationManager {
   readonly analyzed: MusicStructureElements
   readonly controller: Controllers
-  readonly audio: AudioReflectableRegistry
-  readonly window: WindowReflectableRegistry
+  readonly audio_subscriber: AudioReflectableRegistry
+  readonly window_subscriber: WindowReflectableRegistry
   constructor(
     NO_CHORD: boolean,
     analyzed: AnalyzedDataContainer
@@ -25,8 +25,8 @@ export class ApplicationManager {
     )
 
     this.controller = new Controllers(NO_CHORD);
-    this.audio = new AudioReflectableRegistry();
-    this.window = new WindowReflectableRegistry();
+    this.audio_subscriber = new AudioReflectableRegistry();
+    this.window_subscriber = new WindowReflectableRegistry();
 
     const e = this.analyzed;
     new DMelodyMediator([this.controller.children.d_melody.checkbox], [e.melody.d_melody_collection]);
@@ -42,7 +42,7 @@ export class ApplicationManager {
     ]);
     new MelodyBeepMediator([this.controller.children.melody_beep.checkbox], [e.melody.melody_hierarchy]);
     new MelodyVolumeMediator([this.controller.children.melody_beep.volume], [e.melody.melody_hierarchy]);
-    new TimeRangeMediator([this.controller.children.time_range.slider], [e.melody.melody_hierarchy], this.audio, this.window);
+    new TimeRangeMediator([this.controller.children.time_range.slider], [e.melody.melody_hierarchy], this.audio_subscriber, this.window_subscriber);
     new ColorChangeMediator(
       this.controller.children.melody_color.selector.children,
       [
