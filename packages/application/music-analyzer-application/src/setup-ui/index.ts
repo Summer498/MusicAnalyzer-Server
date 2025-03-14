@@ -40,23 +40,25 @@ export const setupUI = (
   const save_buttons = getSaveButtons(title_info, html, piano_roll_view);
   const bottom = new ColumnHTML(manager.controller.div, getIRPlot(manager.analyzed.melody))
 
-  setPianoRollPlace(
+  setChildren(
     html.piano_roll_place,
-    audio_viewer.wave.svg,
-    audio_viewer.spectrogram.svg,
-    save_buttons.with_title,
-    save_buttons.raw,
-    piano_roll_view.svg,
-    html.audio_player,
-    bottom.div,
+    [
+      audio_viewer.wave.svg,
+      audio_viewer.spectrogram.svg,
+      save_buttons.with_title,
+      save_buttons.raw,
+      piano_roll_view.svg,
+      html.audio_player,
+      bottom.div,
+    ]
   )
 };
 
-const setPianoRollPlace = (
-  piano_roll_place: HTMLDivElement,
-  ...children: (HTMLElement | SVGSVGElement)[]
+const setChildren = (
+  div: HTMLDivElement,
+  children: (HTMLElement | SVGSVGElement)[]
 ) => {
-  children.forEach(e => piano_roll_place.appendChild(e))
+  children.forEach(e => div.appendChild(e))
 }
 
 class SaveButtons {
