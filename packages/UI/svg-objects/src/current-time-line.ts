@@ -4,12 +4,14 @@ import { CurrentTimeX, PianoRollHeight } from "@music-analyzer/view-parameters";
 export class CurrentTimeLine implements WindowReflectable {
   readonly svg: SVGLineElement;
   constructor(
+    visible: boolean,
     publisher: WindowReflectableRegistry
   ) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "line");
     this.svg.id = "current_time";
     this.svg.style.strokeWidth= String(5);
     this.svg.style.stroke = "rgb(0, 0, 0)";
+    this.svg.style.visibility = String(visible);
     publisher.register(this)
   }
   onWindowResized() {
