@@ -28,7 +28,6 @@ export const setupUI = (
     new CurrentTimeLine(!manager.FULL_VIEW, manager.window_size_mediator).svg,
   ]);
   const save_buttons = getSaveButtons(title_info, html, piano_roll_view);
-  const bottom = new ColumnHTML(manager.controller.div, manager.analyzed.melody.ir_plot.svg)
 
   setChildren(
     html.piano_roll_place,
@@ -39,7 +38,10 @@ export const setupUI = (
       save_buttons.raw,
       piano_roll_view.svg,
       html.audio_player,
-      bottom.div,
+      new ColumnHTML(
+        manager.controller.div,
+        manager.analyzed.melody.ir_plot.svg
+      ).div,
     ]
   )
 };
