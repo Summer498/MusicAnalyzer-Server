@@ -15,7 +15,7 @@ export class ChordKeyView extends MVVM_View<ChordKeyModel, "text"> {
     this.svg.style.textAnchor = "end";
     this.svg.style.fill = fifthToColor(this.model.tonic, 1, 0.75) || "rgb(0, 0, 0)";
   }
-  updateX(x:number) { this.svg.setAttribute("x", String(x)); }
-  updateY(y:number) { this.svg.setAttribute("y", String(y)); }
+  updateX(x: number) { this.svg.setAttribute("x", String(x)); }
+  updateY(y: number) { this.svg.setAttribute("y", String(y)); }
 }
 
