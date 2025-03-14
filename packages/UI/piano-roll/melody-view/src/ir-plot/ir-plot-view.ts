@@ -65,7 +65,4 @@ export class IRPlotView extends MVVM_View<IRPlotModel, "circle"> {
   updateColor() {
     this.svg.style.fill = this.#getColor(this.model) || "rgb(0, 0, 0)";
   }
-
-  onWindowResized() {
-  }
 }

@@ -22,6 +22,5 @@ export class IRPlotVM extends MVVM_ViewModel<IRPlotModel, IRPlotView> {
     this.view.updateColor();
   }
   onWindowResized() {
-    this.view.onWindowResized()
   }
 }
