@@ -1,19 +1,19 @@
 import { AudioViewer } from "@music-analyzer/spectrogram";
 import { CurrentTimeRatio } from "@music-analyzer/view-parameters";
 import { getRawSaveButton, getSaveButton } from "./save-button";
-import { MelodyElements } from "../piano-roll";
 import { TitleInfo } from "../containers/tune-info";
 import { HTMLsContainer } from "../containers/HTMLs-container";
 import { CurrentTimeLine, OctaveBGs, OctaveKeys, PianoRoll } from "@music-analyzer/svg-objects";
 import { ApplicationManager } from "../application-manager";
 import { AnalysisView } from "./setup-analysis";
+import { IRPlotHierarchy } from "@music-analyzer/melody-view";
 
-const getIRPlot = (melody: MelodyElements) => {
+const getIRPlot = (g: IRPlotHierarchy) => {
   const ir_plot = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  ir_plot.appendChild(melody.ir_plot.svg);
+  ir_plot.appendChild(g.svg);
   ir_plot.id = "IR-plot";
-  ir_plot.setAttribute("width", String(melody.ir_plot.width));
-  ir_plot.setAttribute("height", String(melody.ir_plot.height));
+  ir_plot.setAttribute("width", String(g.width));
+  ir_plot.setAttribute("height", String(g.height));
   return ir_plot;
 };
 
@@ -38,7 +38,7 @@ export const setupUI = (
     new CurrentTimeLine(!manager.FULL_VIEW, manager.window_size_mediator).svg,
   ]);
   const save_buttons = getSaveButtons(title_info, html, piano_roll_view);
-  const bottom = new ColumnHTML(manager.controller.div, getIRPlot(manager.analyzed.melody))
+  const bottom = new ColumnHTML(manager.controller.div, getIRPlot(manager.analyzed.melody.ir_plot))
 
   setChildren(
     html.piano_roll_place,
