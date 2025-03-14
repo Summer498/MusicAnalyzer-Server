@@ -4,7 +4,7 @@ import { MVVM_View } from "@music-analyzer/view";
 import { IRSymbolModel } from "./ir-symbol-model";
 
 const ir_analysis_em = size;
-const getRelativeX = (e: number) => e - PianoRollBegin.get()
+const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();
 
 export class IRSymbolView extends MVVM_View<IRSymbolModel, "text"> {
@@ -17,7 +17,7 @@ export class IRSymbolView extends MVVM_View<IRSymbolModel, "text"> {
     this.svg.style.fontFamily = "Times New Roman";
     this.svg.style.fontSize = `${ir_analysis_em}em`;
     this.svg.style.textAnchor = "middle";
-    this.y = isNaN(this.model.note) ? -99 : -getRelativeX(this.model.note) * BlackKeyPrm.height;
+    this.y = isNaN(this.model.note) ? -99 : -transposed(this.model.note) * BlackKeyPrm.height;
     this.updateX();
     this.updateY();
     this.#getColor = e => get_color_of_Narmour_concept(e.archetype);
