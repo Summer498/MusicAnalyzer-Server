@@ -1,12 +1,7 @@
-import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
 import { get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { MVVM_View } from "@music-analyzer/view";
 import { MelodyModel } from "./melody-model";
 import { deleteMelody } from "../melody-editor-function";
-
-const transposed = (e: number) => e - PianoRollBegin.get()
-const scaled = (e: number) => e * NoteSize.get();
-const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class MelodyView extends MVVM_View<MelodyModel, "rect"> {
   sound_reserved: boolean;
@@ -17,10 +12,6 @@ export class MelodyView extends MVVM_View<MelodyModel, "rect"> {
     this.svg.style.stroke = "rgb(64, 64, 64)";
     this.svg.onclick = deleteMelody;
     this.sound_reserved = false;
-    this.updateX();
-    this.updateY();
-    this.updateWidth();
-    this.updateHeight();
     this.svg.style.fill = "rgb(0, 192, 0)";
     this.#getColor = e => get_color_of_Narmour_concept(e.archetype);
   }
@@ -32,12 +23,8 @@ export class MelodyView extends MVVM_View<MelodyModel, "rect"> {
   updateColor() {
     this.#getColor(this.model) || "rgb(0, 0, 0)";
   }
-  updateX() { this.svg.setAttribute("x", String(scaled(this.model.time.begin))); }
-  updateY() { this.svg.setAttribute("y", String(isNaN(this.model.note) ? -99 : -convertToCoordinate(transposed(this.model.note)))); }
-  updateWidth() { this.svg.setAttribute("width", String(31 / 32 * scaled(this.model.time.duration))); }
-  updateHeight() { this.svg.setAttribute("height", String(BlackKeyPrm.height)); }
-  onWindowResized() {
-    this.updateX();
-    this.updateWidth();
-  }
+  updateX(x:number) { this.svg.setAttribute("x", String(x)); }
+  updateY(y:number) { this.svg.setAttribute("y", String(y)); }
+  updateWidth(w:number) { this.svg.setAttribute("width", String(w)); }
+  updateHeight(h:number) { this.svg.setAttribute("height", String(h)); }
 }

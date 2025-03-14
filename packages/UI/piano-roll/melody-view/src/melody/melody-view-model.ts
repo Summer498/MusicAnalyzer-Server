@@ -1,3 +1,4 @@
+import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
 import { MVVM_ViewModel } from "@music-analyzer/view";
 import { play } from "@music-analyzer/synth";
 import { NowAt, reservation_range } from "@music-analyzer/view-parameters";
@@ -5,6 +6,10 @@ import { MelodyModel } from "./melody-model";
 import { MelodyView } from "./melody-view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { Time } from "@music-analyzer/time-and";
+
+const transposed = (e: number) => e - PianoRollBegin.get()
+const scaled = (e: number) => e * NoteSize.get();
+const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class MelodyVM extends MVVM_ViewModel<MelodyModel, MelodyView> {
   #do_melody_beep: boolean;
@@ -16,8 +21,19 @@ export class MelodyVM extends MVVM_ViewModel<MelodyModel, MelodyView> {
     super(model, new MelodyView(model));
     this.#do_melody_beep = false;
     this.#beep_volume = 0;
+    this.updateX();
+    this.updateY();
+    this.updateWidth();
+    this.updateHeight();
   }
-
+  updateX() { this.view.updateX(scaled(this.model.time.begin)) }
+  updateY() { this.view.updateY(isNaN(this.model.note) ? -99 : -convertToCoordinate(transposed(this.model.note))) }
+  updateWidth() { this.view.updateWidth(31 / 32 * scaled(this.model.time.duration)) }
+  updateHeight() { this.view.updateHeight(BlackKeyPrm.height) }
+  onWindowResized() {
+    this.updateX();
+    this.updateWidth();
+  }
   #beepMelody = () => {
     const volume = this.beep_volume / 400;
     const pitch = [440 * Math.pow(2, (this.model.note - 69) / 12)];
@@ -47,9 +63,6 @@ export class MelodyVM extends MVVM_ViewModel<MelodyModel, MelodyView> {
     if (this.do_melody_beep) {
       this.beepMelody();
     }
-  }
-  onWindowResized() {
-    this.view.onWindowResized()
   }
 }
 
