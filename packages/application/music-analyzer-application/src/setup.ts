@@ -2,23 +2,22 @@ import { AnalyzedMusicData, getMusicAnalyzerWindow } from "./MusicAnalyzerWindow
 import { initializeApplication } from "./initialize-application";
 import { setupUI } from "./setup-ui";
 import { EventLoop } from "./EventLoop";
+import { HTMLsContainer } from "./HTMLs-container";
 
 export const setup = (
   window: Window,
-  audio_player: HTMLAudioElement | HTMLVideoElement,
-  piano_roll_place: HTMLDivElement,
-  title: HTMLHeadingElement,
+  html: HTMLsContainer,
   mode: string,
   tune_id: string,
 ) => (raw_analyzed_data: AnalyzedMusicData) => {
   const e = setupUI(
     `${mode}-${tune_id}`,
-    title,
+    html.title,
     initializeApplication(raw_analyzed_data),
-    piano_roll_place,
-    audio_player,
+    html.piano_roll_place,
+    html.audio_player,
   );
-  new EventLoop(e.audio, audio_player).update();
+  new EventLoop(e.audio, html.audio_player).update();
   getMusicAnalyzerWindow(window, raw_analyzed_data).onresize = _ => e.window.onUpdate();
   e.window.onUpdate();
 }
