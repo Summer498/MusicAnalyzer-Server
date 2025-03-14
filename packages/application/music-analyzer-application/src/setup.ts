@@ -22,8 +22,8 @@ export const setup = (
   title: TitleInfo,
 ) => (raw_analyzed_data: AnalyzedMusicData) => {
   const analyzed = new AnalyzedDataContainer(raw_analyzed_data)
-  const manager = new ApplicationManager(analyzed);
   setSongLength(analyzed);
+  const manager = new ApplicationManager(analyzed);
   setupUI(title, html, manager);
   new EventLoop(manager.audio_subscriber, html.audio_player).update();
   getMusicAnalyzerWindow(window, raw_analyzed_data).onresize = _ => manager.window_subscriber.onUpdate();
