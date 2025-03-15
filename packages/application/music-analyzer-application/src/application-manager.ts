@@ -22,6 +22,15 @@ class Controllers {
   constructor(
     NO_CHORD: boolean
   ) {
+    this.children = {
+      d_melody: new DMelodyController(),
+      hierarchy: new HierarchyLevelController(),
+      time_range: new TimeRangeController(),
+      gravity: new GravityController(),
+      melody_beep: new MelodyBeepController(),
+      melody_color: new MelodyColorController(),
+    }
+
     const {
       d_melody,
       hierarchy,
@@ -37,15 +46,6 @@ class Controllers {
       new MelodyBeepController(),
       new MelodyColorController(),
     );
-
-    this.children = {
-      d_melody: new DMelodyController(),
-      hierarchy: new HierarchyLevelController(),
-      time_range: new TimeRangeController(),
-      gravity: new GravityController(),
-      melody_beep: new MelodyBeepController(),
-      melody_color: new MelodyColorController(),
-    }
 
     this.div = document.createElement("div");
     this.div.id = "controllers";
