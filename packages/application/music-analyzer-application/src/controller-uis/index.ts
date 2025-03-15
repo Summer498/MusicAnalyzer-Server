@@ -1,6 +1,6 @@
 import { MelodyColorController, DMelodyController, GravityController, HierarchyLevelController, MelodyBeepController, TimeRangeController } from "@music-analyzer/controllers";
 
-export class ControllerUIs {
+class ControllerUIs {
   readonly gravity: GravityController;
   readonly d_melody: DMelodyController;
   readonly melody_beep: MelodyBeepController;
