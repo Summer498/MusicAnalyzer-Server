@@ -73,6 +73,24 @@ export class ApplicationManager {
       new MelodyElements(hierarchical_melody, d_melodies),
     )
 
+
+    const {
+      d_melody,
+      hierarchy,
+      time_range,
+      gravity,
+      melody_beep,
+      melody_color
+    } = {
+      d_melody: new DMelodyController(),
+      hierarchy: new HierarchyLevelController(),
+      time_range: new TimeRangeController(),
+      gravity: new GravityController(),
+      melody_beep: new MelodyBeepController(),
+      melody_color: new MelodyColorController(),
+    }
+    
+
     this.controller = new Controllers(this.NO_CHORD);
     this.audio_time_mediator = new AudioReflectableRegistry();
     this.window_size_mediator = new WindowReflectableRegistry();
