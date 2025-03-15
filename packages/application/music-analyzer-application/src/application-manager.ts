@@ -22,7 +22,14 @@ class Controllers {
   constructor(
     NO_CHORD: boolean
   ) {
-    this.children = new ControllerUIs(
+    const {
+      d_melody,
+      hierarchy,
+      time_range,
+      gravity,
+      melody_beep,
+      melody_color
+    } =  new ControllerUIs(
       new GravityController(),
       new DMelodyController(),
       new MelodyBeepController(),
@@ -31,14 +38,14 @@ class Controllers {
       new TimeRangeController(),
     );
 
-    const {
+    this.children = {
       d_melody,
       hierarchy,
       time_range,
       gravity,
       melody_beep,
       melody_color
-    } = this.children;
+    }
 
     this.div = document.createElement("div");
     this.div.id = "controllers";
