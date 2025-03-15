@@ -18,8 +18,8 @@ export class spectrogramViewer implements AudioReflectable {
   }
 
   onAudioUpdate() {
-    const freqData = this.analyser.getByteFrequencyData();
-    const fftSize = freqData.length;
+    const freqData = this.analyser.getFloatFrequencyData();
+    const fftSize = freqData.length/2;
     const width = this.svg.clientWidth;
     const height = this.svg.clientHeight;
     let pathData = "";
@@ -27,8 +27,7 @@ export class spectrogramViewer implements AudioReflectable {
     for (let i = 0; i < fftSize; i++) {
       if (isNaN(freqData[i] * 0)) { continue; }
       const x = i / (fftSize - 1) * width;
-      const y = -(freqData[i] / 255 - 1) * height;
-      // const y = (1 - Math.log2(1 + freqData[i]) / 8) * height;
+      const y = -(freqData[i] / 128) * height;
       pathData += `L ${x},${y}`;
     }
     this.path.setAttribute("d", "M" + pathData.slice(1));
