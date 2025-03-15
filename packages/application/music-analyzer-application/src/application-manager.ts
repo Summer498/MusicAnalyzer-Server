@@ -67,7 +67,7 @@ export class ApplicationManager {
       d_melody: new DMelodyController(),
       hierarchy: new HierarchyLevelController(),
       time_range: new TimeRangeController(),
-      gravity: new GravityController(),
+      gravity: new GravityController(!this.NO_CHORD),
       melody_beep: new MelodyBeepController(),
       melody_color: new MelodyColorController(),
     }
