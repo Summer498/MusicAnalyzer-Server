@@ -20,6 +20,6 @@ export class AudioAnalyzer {
   }
 
   getByteTimeDomainData() { return getByteTimeDomainData(this.analyser); }
-  getFFT() { return getFFT(this.analyser); }
   getByteFrequencyData() { return getByteFrequencyData(this.analyser); }
+  getFFT() { return getFFT(this.analyser); }
 }
