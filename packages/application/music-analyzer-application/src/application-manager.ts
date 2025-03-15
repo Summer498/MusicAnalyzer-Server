@@ -13,7 +13,7 @@ class ControllerUIs {
     readonly gravity: GravityController,
     readonly melody_beep: MelodyBeepController,
     readonly melody_color: MelodyColorController,
-  ) {  }
+  ) { }
 }
 
 class Controllers {
@@ -29,7 +29,7 @@ class Controllers {
       gravity,
       melody_beep,
       melody_color
-    } =  new ControllerUIs(
+    } = new ControllerUIs(
       new DMelodyController(),
       new HierarchyLevelController(),
       new TimeRangeController(),
@@ -39,12 +39,12 @@ class Controllers {
     );
 
     this.children = {
-      d_melody,
-      hierarchy,
-      time_range,
-      gravity,
-      melody_beep,
-      melody_color
+      d_melody: new DMelodyController(),
+      hierarchy: new HierarchyLevelController(),
+      time_range: new TimeRangeController(),
+      gravity: new GravityController(),
+      melody_beep: new MelodyBeepController(),
+      melody_color: new MelodyColorController(),
     }
 
     this.div = document.createElement("div");
