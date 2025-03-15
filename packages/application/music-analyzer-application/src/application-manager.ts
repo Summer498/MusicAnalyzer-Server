@@ -8,7 +8,6 @@ import { MelodyColorController, DMelodyController, GravityController, HierarchyL
 class Controllers {
   readonly div: HTMLDivElement;
   constructor(
-    NO_CHORD: boolean,
     readonly children: [
       DMelodyController,
       HierarchyLevelController,
@@ -24,9 +23,7 @@ class Controllers {
     this.div.appendChild(this.children[0].view);
     this.div.appendChild(this.children[1].view);
     this.div.appendChild(this.children[2].view);
-    if (!NO_CHORD) {
-      this.div.appendChild(this.children[3].view);
-    }
+    this.div.appendChild(this.children[3].view);
     this.div.appendChild(this.children[4].view);
     this.div.appendChild(this.children[5].view);  // NOTE: 色選択は未実装なので消しておく
   }
@@ -72,7 +69,7 @@ export class ApplicationManager {
       melody_color: new MelodyColorController(),
     }
 
-    this.controller = new Controllers(this.NO_CHORD, [d_melody, hierarchy, time_range, gravity, melody_beep, melody_color]);
+    this.controller = new Controllers([d_melody, hierarchy, time_range, gravity, melody_beep, melody_color]);
     this.audio_time_mediator = new AudioReflectableRegistry();
     this.window_size_mediator = new WindowReflectableRegistry();
 
