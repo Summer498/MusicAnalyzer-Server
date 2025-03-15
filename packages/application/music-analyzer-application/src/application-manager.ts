@@ -9,26 +9,26 @@ class Controllers {
   readonly div: HTMLDivElement;
   constructor(
     NO_CHORD: boolean,
-    readonly children: {
-      readonly d_melody: DMelodyController,
-      readonly hierarchy: HierarchyLevelController,
-      readonly time_range: TimeRangeController,
-      readonly gravity: GravityController,
-      readonly melody_beep: MelodyBeepController,
-      readonly melody_color: MelodyColorController,
-    }
+    readonly children: [
+      DMelodyController,
+      HierarchyLevelController,
+      TimeRangeController,
+      GravityController,
+      MelodyBeepController,
+      MelodyColorController,
+    ]
   ) {
     this.div = document.createElement("div");
     this.div.id = "controllers";
     this.div.style = "margin-top:20px";
-    this.div.appendChild(this.children.d_melody.view);
-    this.div.appendChild(this.children.hierarchy.view);
-    this.div.appendChild(this.children.time_range.view);
+    this.div.appendChild(this.children[0].view);
+    this.div.appendChild(this.children[1].view);
+    this.div.appendChild(this.children[2].view);
     if (!NO_CHORD) {
-      this.div.appendChild(this.children.gravity.view);
+      this.div.appendChild(this.children[3].view);
     }
-    this.div.appendChild(this.children.melody_beep.view);
-    this.div.appendChild(this.children.melody_color.view);  // NOTE: 色選択は未実装なので消しておく
+    this.div.appendChild(this.children[4].view);
+    this.div.appendChild(this.children[5].view);  // NOTE: 色選択は未実装なので消しておく
   }
 }
 
@@ -72,8 +72,7 @@ export class ApplicationManager {
       melody_color: new MelodyColorController(),
     }
 
-
-    this.controller = new Controllers(this.NO_CHORD, { d_melody, hierarchy, time_range, gravity, melody_beep, melody_color });
+    this.controller = new Controllers(this.NO_CHORD, [d_melody, hierarchy, time_range, gravity, melody_beep, melody_color]);
     this.audio_time_mediator = new AudioReflectableRegistry();
     this.window_size_mediator = new WindowReflectableRegistry();
 
