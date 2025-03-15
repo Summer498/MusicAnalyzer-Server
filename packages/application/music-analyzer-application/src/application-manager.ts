@@ -7,12 +7,12 @@ import { MelodyColorController, DMelodyController, GravityController, HierarchyL
 
 class ControllerUIs {
   constructor(
-    readonly gravity: GravityController,
     readonly d_melody: DMelodyController,
-    readonly melody_beep: MelodyBeepController,
-    readonly melody_color: MelodyColorController,
     readonly hierarchy: HierarchyLevelController,
     readonly time_range: TimeRangeController,
+    readonly gravity: GravityController,
+    readonly melody_beep: MelodyBeepController,
+    readonly melody_color: MelodyColorController,
   ) {  }
 }
 
@@ -30,12 +30,12 @@ class Controllers {
       melody_beep,
       melody_color
     } =  new ControllerUIs(
-      new GravityController(),
       new DMelodyController(),
-      new MelodyBeepController(),
-      new MelodyColorController(),
       new HierarchyLevelController(),
       new TimeRangeController(),
+      new GravityController(),
+      new MelodyBeepController(),
+      new MelodyColorController(),
     );
 
     this.children = {
