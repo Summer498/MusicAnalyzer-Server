@@ -7,9 +7,11 @@ import { MelodyColorController, DMelodyController, GravityController, HierarchyL
 
 class Controllers {
   readonly div: HTMLDivElement;
+  readonly children: { view: HTMLElement }[]
   constructor(
-    readonly children: { view: HTMLElement }[]
+    ...children: { view: HTMLElement }[]
   ) {
+    this.children = children
     this.div = document.createElement("div");
     this.div.id = "controllers";
     this.div.style = "margin-top:20px";
@@ -57,7 +59,7 @@ export class ApplicationManager {
       melody_color: new MelodyColorController(),
     }
 
-    this.controller = new Controllers([d_melody, hierarchy, time_range, gravity, melody_beep, melody_color]);
+    this.controller = new Controllers(d_melody, hierarchy, time_range, gravity, melody_beep, melody_color);
     this.audio_time_mediator = new AudioReflectableRegistry();
     this.window_size_mediator = new WindowReflectableRegistry();
 
