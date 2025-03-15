@@ -1,6 +1,5 @@
 import { connect } from "./connect";
-import { getByteFrequencyData } from "./get-byte-frequency-domain-data";
-import { getByteTimeDomainData } from "./get-data-on-buffer";
+import { getByteFrequencyData, getByteTimeDomainData } from "./get-data-on-buffer";
 import { getFFT } from "./get-fft";
 
 const resumeAudioCtx = (audioCtx: AudioContext) => () => { audioCtx.state === 'suspended' && audioCtx.resume(); }
