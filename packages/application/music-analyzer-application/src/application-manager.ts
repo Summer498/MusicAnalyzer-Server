@@ -38,14 +38,7 @@ class Controllers {
       gravity,
       melody_beep,
       melody_color
-    } = new ControllerUIs(
-      new DMelodyController(),
-      new HierarchyLevelController(),
-      new TimeRangeController(),
-      new GravityController(),
-      new MelodyBeepController(),
-      new MelodyColorController(),
-    );
+    } = this.children
 
     this.div = document.createElement("div");
     this.div.id = "controllers";
