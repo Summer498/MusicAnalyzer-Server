@@ -78,10 +78,10 @@ export class ApplicationManager {
     this.window_size_mediator = new WindowReflectableRegistry();
 
     const e = this.analyzed;
-    new DMelodyMediator([this.controller.children.d_melody.checkbox], [e.melody.d_melody_collection]);
-    new ScaleGravityMediator([this.controller.children.gravity.scale_checkbox], [e.melody.scale_gravities]);
-    new ChordGravityMediator([this.controller.children.gravity.chord_checkbox], [e.melody.chord_gravities]);
-    new HierarchyLevelMediator([this.controller.children.hierarchy.slider], [
+    new DMelodyMediator([d_melody.checkbox], [e.melody.d_melody_collection]);
+    new ScaleGravityMediator([gravity.scale_checkbox], [e.melody.scale_gravities]);
+    new ChordGravityMediator([gravity.chord_checkbox], [e.melody.chord_gravities]);
+    new HierarchyLevelMediator([hierarchy.slider], [
       e.melody.melody_hierarchy,
       e.melody.ir_hierarchy,
       e.melody.ir_plot.children[0],
@@ -89,11 +89,11 @@ export class ApplicationManager {
       e.melody.scale_gravities,
       e.melody.chord_gravities
     ]);
-    new MelodyBeepMediator([this.controller.children.melody_beep.checkbox], [e.melody.melody_hierarchy]);
-    new MelodyVolumeMediator([this.controller.children.melody_beep.volume], [e.melody.melody_hierarchy]);
-    new TimeRangeMediator([this.controller.children.time_range.slider], [e.melody.melody_hierarchy], this.audio_time_mediator, this.window_size_mediator);
+    new MelodyBeepMediator([melody_beep.checkbox], [e.melody.melody_hierarchy]);
+    new MelodyVolumeMediator([melody_beep.volume], [e.melody.melody_hierarchy]);
+    new TimeRangeMediator([time_range.slider], [e.melody.melody_hierarchy], this.audio_time_mediator, this.window_size_mediator);
     new ColorChangeMediator(
-      this.controller.children.melody_color.selector.children,
+      melody_color.selector.children,
       [
         e.melody.ir_hierarchy,
         e.melody.ir_plot.children[0],
