@@ -7,15 +7,13 @@ import { MelodyColorController, DMelodyController, GravityController, HierarchyL
 
 class Controllers {
   readonly div: HTMLDivElement;
-  readonly children: { view: HTMLElement }[]
   constructor(
     ...children: { view: HTMLElement }[]
   ) {
-    this.children = children
     this.div = document.createElement("div");
     this.div.id = "controllers";
     this.div.style = "margin-top:20px";
-    this.children.forEach(e => this.div.appendChild(e.view))
+    children.forEach(e => this.div.appendChild(e.view))
   }
 }
 
