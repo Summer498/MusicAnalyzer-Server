@@ -8,14 +8,7 @@ import { MelodyColorController, DMelodyController, GravityController, HierarchyL
 class Controllers {
   readonly div: HTMLDivElement;
   constructor(
-    readonly children: [
-      DMelodyController,
-      HierarchyLevelController,
-      TimeRangeController,
-      GravityController,
-      MelodyBeepController,
-      MelodyColorController,
-    ]
+    readonly children: { view: HTMLElement }[]
   ) {
     this.div = document.createElement("div");
     this.div.id = "controllers";
