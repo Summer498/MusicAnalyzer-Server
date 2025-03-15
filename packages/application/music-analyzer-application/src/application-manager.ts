@@ -5,17 +5,6 @@ import { ChordGravityMediator, DMelodyMediator, HierarchyLevelMediator, MelodyBe
 import { ColorChangeMediator } from "./UIMediators/color-change-mediator";
 import { MelodyColorController, DMelodyController, GravityController, HierarchyLevelController, MelodyBeepController, TimeRangeController } from "@music-analyzer/controllers";
 
-class ControllerUIs {
-  constructor(
-    readonly d_melody: DMelodyController,
-    readonly hierarchy: HierarchyLevelController,
-    readonly time_range: TimeRangeController,
-    readonly gravity: GravityController,
-    readonly melody_beep: MelodyBeepController,
-    readonly melody_color: MelodyColorController,
-  ) { }
-}
-
 class Controllers {
   readonly div: HTMLDivElement;
   readonly children: {
