@@ -18,7 +18,14 @@ class ControllerUIs {
 
 class Controllers {
   readonly div: HTMLDivElement;
-  readonly children: ControllerUIs;
+  readonly children: {
+    readonly d_melody: DMelodyController,
+    readonly hierarchy: HierarchyLevelController,
+    readonly time_range: TimeRangeController,
+    readonly gravity: GravityController,
+    readonly melody_beep: MelodyBeepController,
+    readonly melody_color: MelodyColorController,
+  };
   constructor(
     NO_CHORD: boolean
   ) {
