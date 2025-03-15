@@ -7,26 +7,17 @@ import { MelodyColorController, DMelodyController, GravityController, HierarchyL
 
 class Controllers {
   readonly div: HTMLDivElement;
-  readonly children: {
-    readonly d_melody: DMelodyController,
-    readonly hierarchy: HierarchyLevelController,
-    readonly time_range: TimeRangeController,
-    readonly gravity: GravityController,
-    readonly melody_beep: MelodyBeepController,
-    readonly melody_color: MelodyColorController,
-  };
   constructor(
-    NO_CHORD: boolean
-  ) {
-    this.children = {
-      d_melody: new DMelodyController(),
-      hierarchy: new HierarchyLevelController(),
-      time_range: new TimeRangeController(),
-      gravity: new GravityController(),
-      melody_beep: new MelodyBeepController(),
-      melody_color: new MelodyColorController(),
+    NO_CHORD: boolean,
+    readonly children: {
+      readonly d_melody: DMelodyController,
+      readonly hierarchy: HierarchyLevelController,
+      readonly time_range: TimeRangeController,
+      readonly gravity: GravityController,
+      readonly melody_beep: MelodyBeepController,
+      readonly melody_color: MelodyColorController,
     }
-
+  ) {
     const {
       d_melody,
       hierarchy,
@@ -89,9 +80,9 @@ export class ApplicationManager {
       melody_beep: new MelodyBeepController(),
       melody_color: new MelodyColorController(),
     }
-    
 
-    this.controller = new Controllers(this.NO_CHORD);
+
+    this.controller = new Controllers(this.NO_CHORD, { d_melody, hierarchy, time_range, gravity, melody_beep, melody_color });
     this.audio_time_mediator = new AudioReflectableRegistry();
     this.window_size_mediator = new WindowReflectableRegistry();
 
