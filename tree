@@ -1,0 +1,812 @@
+packages/
+├── UI
+│   ├── controllers
+│   │   ├── dist
+│   │   │   ├── index.js
+│   │   │   └── index.mjs
+│   │   ├── index.ts
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── color-selector.ts
+│   │   │   │   ├── IRM-color-names.ts
+│   │   │   │   ├── color-selector.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── melody-color-controller.ts
+│   │   │   │   └── melody-color-selector.ts
+│   │   │   ├── controller.ts
+│   │   │   ├── melody-beep-view-model.ts
+│   │   │   ├── slider
+│   │   │   │   ├── abstract-slider.ts
+│   │   │   │   ├── hierarchy-level.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── melody-beep-volume.ts
+│   │   │   │   └── time-range-slider.ts
+│   │   │   ├── subscriber
+│   │   │   └── switcher
+│   │   │       ├── abstract-switcher.ts
+│   │   │       ├── d-melody-switcher.ts
+│   │   │       ├── gravity-switcher.ts
+│   │   │       ├── index.ts
+│   │   │       └── melody-beep-switcher.ts
+│   │   └── tsconfig.json
+│   ├── piano-roll
+│   │   ├── beat-view
+│   │   │   ├── dist
+│   │   │   │   ├── index.js
+│   │   │   │   └── index.mjs
+│   │   │   ├── index.test.ts
+│   │   │   ├── index.ts
+│   │   │   ├── package.json
+│   │   │   ├── src
+│   │   │   │   ├── beat-bar-model.ts
+│   │   │   │   ├── beat-bar-view-model.ts
+│   │   │   │   ├── beat-bar-view.ts
+│   │   │   │   └── beat-bar.ts
+│   │   │   └── tsconfig.json
+│   │   ├── chord-view
+│   │   │   ├── dist
+│   │   │   │   ├── index.js
+│   │   │   │   └── index.mjs
+│   │   │   ├── index.test.ts
+│   │   │   ├── index.ts
+│   │   │   ├── package.json
+│   │   │   ├── src
+│   │   │   │   ├── chord-key
+│   │   │   │   │   ├── chord-key-model.ts
+│   │   │   │   │   ├── chord-key-series.ts
+│   │   │   │   │   ├── chord-key-view-model.ts
+│   │   │   │   │   └── chord-key-view.ts
+│   │   │   │   ├── chord-name
+│   │   │   │   │   ├── chord-name-model.ts
+│   │   │   │   │   ├── chord-name-series.ts
+│   │   │   │   │   ├── chord-name-view-model.ts
+│   │   │   │   │   └── chord-name-view.ts
+│   │   │   │   ├── chord-note
+│   │   │   │   │   ├── chord-note-model.ts
+│   │   │   │   │   ├── chord-note-series.ts
+│   │   │   │   │   ├── chord-note-view-model.ts
+│   │   │   │   │   └── chord-note-view.ts
+│   │   │   │   ├── chord-roman
+│   │   │   │   │   ├── chord-roman-model.ts
+│   │   │   │   │   ├── chord-roman-series.ts
+│   │   │   │   │   ├── chord-roman-view-model.ts
+│   │   │   │   │   └── chord-roman-view.ts
+│   │   │   │   ├── chord-view-params.ts
+│   │   │   │   ├── roman-to-color.ts
+│   │   │   │   └── shorten.ts
+│   │   │   └── tsconfig.json
+│   │   └── melody-view
+│   │       ├── dist
+│   │       │   ├── index.js
+│   │       │   └── index.mjs
+│   │       ├── index.test.ts
+│   │       ├── index.ts
+│   │       ├── package.json
+│   │       ├── src
+│   │       │   ├── d-melody
+│   │       │   │   ├── d-melody-model.ts
+│   │       │   │   ├── d-melody-view-model.ts
+│   │       │   │   ├── d-melody-view.ts
+│   │       │   │   ├── d-melody.ts
+│   │       │   │   └── index.ts
+│   │       │   ├── gravity
+│   │       │   │   ├── gravity-hierarchy.ts
+│   │       │   │   ├── gravity-layer.ts
+│   │       │   │   ├── gravity-line.ts
+│   │       │   │   ├── gravity-model.ts
+│   │       │   │   ├── gravity-triangle.ts
+│   │       │   │   ├── gravity-view-model.ts
+│   │       │   │   ├── gravity-view.ts
+│   │       │   │   ├── index.ts
+│   │       │   │   └── line-pos.ts
+│   │       │   ├── ir-plot
+│   │       │   │   ├── index.ts
+│   │       │   │   ├── ir-plot-hierarchy
+│   │       │   │   │   ├── index.ts
+│   │       │   │   │   ├── ir-plot-axis.ts
+│   │       │   │   │   ├── ir-plot-circles.ts
+│   │       │   │   │   ├── ir-plot-hierarchy-view.ts
+│   │       │   │   │   └── ir-plot-hierarchy.ts
+│   │       │   │   ├── ir-plot-layer
+│   │       │   │   │   ├── index.ts
+│   │       │   │   │   ├── ir-plot-layer-view.ts
+│   │       │   │   │   └── ir-plot-layer.ts
+│   │       │   │   ├── ir-plot-model.ts
+│   │       │   │   ├── ir-plot-view-model.ts
+│   │       │   │   ├── ir-plot-view.ts
+│   │       │   │   └── ir-plot.ts
+│   │       │   ├── ir-symbol
+│   │       │   │   ├── index.ts
+│   │       │   │   ├── ir-symbol-hierarchy.ts
+│   │       │   │   ├── ir-symbol-layer.ts
+│   │       │   │   ├── ir-symbol-model.ts
+│   │       │   │   ├── ir-symbol-view-model.ts
+│   │       │   │   └── ir-symbol-view.ts
+│   │       │   ├── melody
+│   │       │   │   ├── index.ts
+│   │       │   │   ├── melody-hierarchy.ts
+│   │       │   │   ├── melody-layer.ts
+│   │       │   │   ├── melody-model.ts
+│   │       │   │   ├── melody-view-model.ts
+│   │       │   │   └── melody-view.ts
+│   │       │   ├── melody-editor-function.ts
+│   │       │   └── reduction
+│   │       │       ├── index.ts
+│   │       │       ├── reduction-hierarchy.ts
+│   │       │       ├── reduction-layer.ts
+│   │       │       ├── reduction-model.ts
+│   │       │       ├── reduction-view
+│   │       │       │   ├── index.ts
+│   │       │       │   ├── irm-symbol-on-reduction.ts
+│   │       │       │   ├── reduction-bracket.ts
+│   │       │       │   ├── reduction-dot.ts
+│   │       │       │   ├── reduction-view-model.ts
+│   │       │       │   └── reduction-view.ts
+│   │       │       └── reduction-view-model.ts
+│   │       └── tsconfig.json
+│   ├── spectrogram
+│   │   ├── dist
+│   │   │   ├── index.js
+│   │   │   └── index.mjs
+│   │   ├── index.ts
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── audio-analyzer.ts
+│   │   │   ├── audio-viewer.ts
+│   │   │   ├── fft-viewer.ts
+│   │   │   ├── spectrogram-viewer.ts
+│   │   │   └── wave-viewer.ts
+│   │   └── tsconfig.json
+│   ├── svg-objects
+│   │   ├── dist
+│   │   │   ├── index.js
+│   │   │   └── index.mjs
+│   │   ├── index.test.ts
+│   │   ├── index.ts
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── black-bg.ts
+│   │   │   ├── black-key.ts
+│   │   │   ├── components
+│   │   │   ├── current-time-line.ts
+│   │   │   ├── octave-bg.ts
+│   │   │   ├── octave-keys.ts
+│   │   │   ├── piano-roll.ts
+│   │   │   ├── white-bg.ts
+│   │   │   └── white-key.ts
+│   │   └── tsconfig.json
+│   ├── synth
+│   │   ├── dist
+│   │   │   ├── index.js
+│   │   │   └── index.mjs
+│   │   ├── index.test.ts
+│   │   ├── index.ts
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   ├── view
+│   │   ├── dist
+│   │   │   ├── index.js
+│   │   │   └── index.mjs
+│   │   ├── index.ts
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── collection-hierarchy.ts
+│   │   │   ├── collection-layer.ts
+│   │   │   ├── mvc.ts
+│   │   │   ├── reflectable
+│   │   │   │   ├── audio-reflectable-registry.ts
+│   │   │   │   ├── audio-reflectable.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── window-reflectable-registry.ts
+│   │   │   │   └── window-reflectable.ts
+│   │   │   └── svg-collection.ts
+│   │   └── tsconfig.json
+│   └── view-parameters
+│       ├── dist
+│       │   ├── index.js
+│       │   └── index.mjs
+│       ├── index.ts
+│       ├── package.json
+│       ├── src
+│       │   ├── current-time-ratio.ts
+│       │   ├── current-time-x.ts
+│       │   ├── note-size.ts
+│       │   ├── now-at.ts
+│       │   ├── octave-count.ts
+│       │   ├── piano-roll
+│       │   │   ├── index.ts
+│       │   │   ├── piano-roll-begin.ts
+│       │   │   ├── piano-roll-constants.ts
+│       │   │   ├── piano-roll-end.ts
+│       │   │   ├── piano-roll-height.ts
+│       │   │   ├── piano-roll-ratio.ts
+│       │   │   ├── piano-roll-time-length.ts
+│       │   │   ├── piano-roll-width.ts
+│       │   │   └── windowInnerWidth.ts
+│       │   ├── piano-roll-translate-x.ts
+│       │   ├── position
+│       │   │   ├── black-position.ts
+│       │   │   ├── index.ts
+│       │   │   └── white-position.ts
+│       │   ├── rect-parameter.ts
+│       │   └── song-length.ts
+│       └── tsconfig.json
+├── _packagetemplate
+│   ├── dist
+│   │   ├── index.js
+│   │   └── index.mjs
+│   ├── index.ts
+│   ├── package.json
+│   └── tsconfig.json
+├── application
+│   └── music-analyzer-application
+│       ├── dist
+│       │   ├── index.js
+│       │   └── index.mjs
+│       ├── index.ts
+│       ├── package.json
+│       ├── src
+│       │   ├── EventLoop.ts
+│       │   ├── MusicAnalyzerWindow.ts
+│       │   ├── UIMediators
+│       │   │   ├── color-change-mediator.ts
+│       │   │   ├── controller-mediator.ts
+│       │   │   ├── index.ts
+│       │   │   ├── slider-mediator
+│       │   │   │   ├── hierarchy-level-mediator.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── melody-volume-mediator.ts
+│       │   │   │   ├── slider-mediator.ts
+│       │   │   │   └── time-range-mediator.ts
+│       │   │   └── switcher-mediator
+│       │   │       ├── chord-gravity-mediator.ts
+│       │   │       ├── d-melody-mediator.ts
+│       │   │       ├── index.ts
+│       │   │       ├── melody-beep-mediator.ts
+│       │   │       ├── scale-gravity-mediator.ts
+│       │   │       └── switcher-mediator.ts
+│       │   ├── application-manager.ts
+│       │   ├── boot
+│       │   │   ├── setup-application.ts
+│       │   │   ├── setup.ts
+│       │   │   └── update-title.ts
+│       │   ├── containers
+│       │   │   ├── HTMLs-container.ts
+│       │   │   ├── URLs-container.ts
+│       │   │   ├── analyzed-data-container.ts
+│       │   │   ├── index.ts
+│       │   │   └── tune-info.ts
+│       │   ├── controller-uis
+│       │   │   └── index.ts
+│       │   ├── data-loader
+│       │   │   ├── DataFetcher.ts
+│       │   │   ├── MusicAnalysisLoader.ts
+│       │   │   ├── compound-music-data.ts
+│       │   │   ├── data-container.ts
+│       │   │   ├── data-promises.ts
+│       │   │   ├── index.ts
+│       │   │   ├── just-load.ts
+│       │   │   └── set-audio-player.ts
+│       │   ├── handle-gttm-example-IDs.ts
+│       │   ├── piano-roll
+│       │   │   ├── beat-elements.ts
+│       │   │   ├── chord-elements.ts
+│       │   │   ├── index.ts
+│       │   │   ├── melody-elements.ts
+│       │   │   └── music-structure-elements.ts
+│       │   └── setup-ui
+│       │       ├── as-parent.ts
+│       │       ├── column-html.ts
+│       │       ├── index.ts
+│       │       ├── save-button
+│       │       │   ├── get-div.ts
+│       │       │   ├── get-foreign-object.ts
+│       │       │   ├── get-g.ts
+│       │       │   ├── get-h1.ts
+│       │       │   ├── get-html.ts
+│       │       │   ├── get-raw-save-button.ts
+│       │       │   ├── get-save-button.ts
+│       │       │   ├── get-save-buttons.ts
+│       │       │   ├── get-svg-with-title.ts
+│       │       │   ├── get-svg-without-title.ts
+│       │       │   ├── get-svg.ts
+│       │       │   └── index.ts
+│       │       ├── setup-analysis.ts
+│       │       ├── setup-controllers.ts
+│       │       └── setup-ui.ts
+│       └── tsconfig.json
+├── cli
+│   ├── chord-analyze-cli
+│   │   ├── dist
+│   │   │   ├── index.js
+│   │   │   └── index.mjs
+│   │   ├── index.ts
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   ├── melody-analyze-cli
+│   │   ├── dist
+│   │   │   ├── index.js
+│   │   │   └── index.mjs
+│   │   ├── index.ts
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   ├── post-crepe
+│   │   ├── dist
+│   │   │   ├── index.js
+│   │   │   └── index.mjs
+│   │   ├── hogehoge
+│   │   │   ├── vocals.f0.wav
+│   │   │   ├── vocals.json
+│   │   │   ├── vocals.midi.json
+│   │   │   └── vocalsmini.f0.wav
+│   │   ├── index.test.ts
+│   │   ├── index.ts
+│   │   ├── node_modules
+│   │   ├── package.json
+│   │   ├── tsconfig.json
+│   │   ├── vocals.csv
+│   │   ├── vocals.f0.csv
+│   │   └── vocals.midi.csv
+│   └── post-pyin
+│       ├── dist
+│       │   ├── index.js
+│       │   └── index.mjs
+│       ├── index.test.ts
+│       ├── index.ts
+│       ├── node_modules
+│       ├── out.json
+│       └── package.json
+├── cognitive-theory-of-music
+│   ├── gttm
+│   │   ├── dist
+│   │   │   ├── index.js
+│   │   │   └── index.mjs
+│   │   ├── index.test.ts
+│   │   ├── index.ts
+│   │   ├── node_modules
+│   │   │   └── fast-xml-parser
+│   │   │       ├── CHANGELOG.md
+│   │   │       ├── LICENSE
+│   │   │       ├── README.md
+│   │   │       ├── package.json
+│   │   │       └── src
+│   │   │           ├── cli
+│   │   │           │   ├── cli.js
+│   │   │           │   ├── man.js
+│   │   │           │   └── read.js
+│   │   │           ├── fxp.d.ts
+│   │   │           ├── fxp.js
+│   │   │           ├── ignoreAttributes.js
+│   │   │           ├── util.js
+│   │   │           ├── v5
+│   │   │           │   ├── CharsSymbol.js
+│   │   │           │   ├── EntitiesParser.js
+│   │   │           │   ├── OptionsBuilder.js
+│   │   │           │   ├── OutputBuilders
+│   │   │           │   │   ├── BaseOutputBuilder.js
+│   │   │           │   │   ├── JsArrBuilder.js
+│   │   │           │   │   ├── JsMinArrBuilder.js
+│   │   │           │   │   ├── JsObjBuilder.js
+│   │   │           │   │   └── ParserOptionsBuilder.js
+│   │   │           │   ├── Report.js
+│   │   │           │   ├── TagPath.js
+│   │   │           │   ├── TagPathMatcher.js
+│   │   │           │   ├── XMLParser.js
+│   │   │           │   ├── Xml2JsParser.js
+│   │   │           │   ├── XmlPartReader.js
+│   │   │           │   ├── XmlSpecialTagsReader.js
+│   │   │           │   ├── inputSource
+│   │   │           │   │   ├── BufferSource.js
+│   │   │           │   │   └── StringSource.js
+│   │   │           │   └── valueParsers
+│   │   │           │       ├── EntitiesParser.js
+│   │   │           │       ├── booleanParser.js
+│   │   │           │       ├── booleanParserExt.js
+│   │   │           │       ├── currency.js
+│   │   │           │       ├── join.js
+│   │   │           │       ├── number.js
+│   │   │           │       └── trim.js
+│   │   │           ├── v6
+│   │   │           │   ├── CharsSymbol.js
+│   │   │           │   ├── EntitiesParser.js
+│   │   │           │   ├── OptionsBuilder.js
+│   │   │           │   ├── OutputBuilders
+│   │   │           │   │   ├── BaseOutputBuilder.js
+│   │   │           │   │   ├── JsArrBuilder.js
+│   │   │           │   │   ├── JsMinArrBuilder.js
+│   │   │           │   │   ├── JsObjBuilder.js
+│   │   │           │   │   └── ParserOptionsBuilder.js
+│   │   │           │   ├── Report.js
+│   │   │           │   ├── TagPath.js
+│   │   │           │   ├── TagPathMatcher.js
+│   │   │           │   ├── XMLParser.js
+│   │   │           │   ├── Xml2JsParser.js
+│   │   │           │   ├── XmlPartReader.js
+│   │   │           │   ├── XmlSpecialTagsReader.js
+│   │   │           │   ├── inputSource
+│   │   │           │   │   ├── BufferSource.js
+│   │   │           │   │   └── StringSource.js
+│   │   │           │   └── valueParsers
+│   │   │           │       ├── EntitiesParser.js
+│   │   │           │       ├── booleanParser.js
+│   │   │           │       ├── booleanParserExt.js
+│   │   │           │       ├── currency.js
+│   │   │           │       ├── join.js
+│   │   │           │       ├── number.js
+│   │   │           │       └── trim.js
+│   │   │           ├── validator.js
+│   │   │           ├── xmlbuilder
+│   │   │           │   ├── json2xml.js
+│   │   │           │   ├── orderedJs2Xml.js
+│   │   │           │   └── prettifyJs2Xml.js
+│   │   │           └── xmlparser
+│   │   │               ├── DocTypeReader.js
+│   │   │               ├── OptionsBuilder.js
+│   │   │               ├── OrderedObjParser.js
+│   │   │               ├── XMLParser.js
+│   │   │               ├── node2json.js
+│   │   │               └── xmlNode.js
+│   │   ├── package.json
+│   │   ├── sample
+│   │   │   ├── sample.grp.ts
+│   │   │   ├── sample.grp.xml.ts
+│   │   │   ├── sample.mtr.ts
+│   │   │   ├── sample.mtr.xml.ts
+│   │   │   ├── sample.pr.ts
+│   │   │   ├── sample.pr.xml.ts
+│   │   │   ├── sample.tsr.ts
+│   │   │   ├── sample.tsr.xml.ts
+│   │   │   └── song-list.ts
+│   │   ├── sandbox.ts
+│   │   ├── src
+│   │   │   ├── analysis-result
+│   │   │   │   ├── GRP
+│   │   │   │   │   ├── group.ts
+│   │   │   │   │   ├── grouping-preference-rule.ts
+│   │   │   │   │   ├── grouping-preference.ts
+│   │   │   │   │   ├── grouping-structure.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── MTR
+│   │   │   │   │   ├── applied.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── metric-preference-rule.ts
+│   │   │   │   │   ├── metric-preference.ts
+│   │   │   │   │   ├── metric-structure.ts
+│   │   │   │   │   └── metric.ts
+│   │   │   │   ├── PR
+│   │   │   │   │   ├── head.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── prolongation-reduction.ts
+│   │   │   │   │   ├── prolongation-tree.ts
+│   │   │   │   │   └── prolongational-region.ts
+│   │   │   │   ├── ReductionElement.ts
+│   │   │   │   ├── TSR
+│   │   │   │   │   ├── Chord.ts
+│   │   │   │   │   ├── at.ts
+│   │   │   │   │   ├── common.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── temp.ts
+│   │   │   │   │   ├── time-span-reduction.ts
+│   │   │   │   │   ├── time-span-tree.ts
+│   │   │   │   │   └── time-span.ts
+│   │   │   │   ├── common.ts
+│   │   │   │   ├── gttm-data.ts
+│   │   │   │   └── index.ts
+│   │   │   └── preference-rules
+│   │   │       ├── GPR
+│   │   │       │   ├── gpr1.ts
+│   │   │       │   ├── gpr2a.ts
+│   │   │       │   ├── gpr2b.ts
+│   │   │       │   └── gpr3.ts
+│   │   │       ├── MPR
+│   │   │       ├── PRPR
+│   │   │       ├── TSPR
+│   │   │       └── common
+│   │   │           ├── Interval.ts
+│   │   │           ├── Note.ts
+│   │   │           ├── Pair.ts
+│   │   │           ├── Transition.ts
+│   │   │           └── create-negated.ts
+│   │   └── tsconfig.json
+│   ├── irm
+│   │   ├── dist
+│   │   │   ├── index.js
+│   │   │   └── index.mjs
+│   │   ├── index.test.ts
+│   │   ├── index.ts
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── Direction.ts
+│   │   │   ├── Magnitude.ts
+│   │   │   ├── MelodyMotion
+│   │   │   │   ├── IntervallicMotion.ts
+│   │   │   │   ├── Motion.ts
+│   │   │   │   └── RegistralMotion.ts
+│   │   │   ├── RegistralReturnForm.ts
+│   │   │   ├── archetype
+│   │   │   │   ├── Dyad.ts
+│   │   │   │   ├── Monad.ts
+│   │   │   │   ├── Null-ad.ts
+│   │   │   │   ├── archetype.ts
+│   │   │   │   ├── get-directional-retrospective-symbol.ts
+│   │   │   │   ├── get-directional-symbol.ts
+│   │   │   │   ├── get-retrospective-symbol.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── triad
+│   │   │   │   │   ├── Triad.ts
+│   │   │   │   │   ├── get-triad-archetype-symbol.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── triad-archetype.ts
+│   │   │   │   └── types.ts
+│   │   │   └── colors.ts
+│   │   │       ├── Narmour.ts
+│   │   │       ├── analog-parametric-scale.ts
+│   │   │       ├── digital-intervallic-scale.ts
+│   │   │       ├── digital-parametric-scale.ts
+│   │   │       ├── implication-realization.ts
+│   │   │       ├── index.ts
+│   │   │       ├── intervallic-angle.ts
+│   │   │       └── registral-scale.ts
+│   │   ├── test
+│   │   │   ├── MelodicArchetype.test.ts
+│   │   │   └── MelodyMotion.test.ts
+│   │   └── tsconfig.json
+│   └── tonal-pitch-space
+│       ├── dist
+│       │   ├── index.js
+│       │   └── index.mjs
+│       ├── index.test.ts
+│       ├── index.ts
+│       ├── package.json
+│       ├── plan.md
+│       ├── src
+│       │   ├── basic-space-distance.ts
+│       │   ├── does-key-include-the-chord.ts
+│       │   ├── get-basic-space.ts
+│       │   ├── get-chord-chroma.ts
+│       │   ├── get-distance.ts
+│       │   ├── get-keys-include-the-chord.ts
+│       │   ├── get-power-chroma.ts
+│       │   ├── get-scale-chroma.ts
+│       │   ├── get-tonic-chroma.ts
+│       │   ├── region-distance.ts
+│       │   └── tonic-distance.ts
+│       └── tsconfig.json
+├── data-type
+│   ├── music-xml
+│   │   ├── dist
+│   │   │   ├── index.js
+│   │   │   └── index.mjs
+│   │   ├── index.ts
+│   │   ├── package.json
+│   │   ├── sample
+│   │   │   └── sample.muxicxml.ts
+│   │   ├── src
+│   │   │   ├── attribute
+│   │   │   │   ├── attribute.ts
+│   │   │   │   ├── clef.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── key.ts
+│   │   │   │   └── time.ts
+│   │   │   ├── credit
+│   │   │   │   ├── credit-words.ts
+│   │   │   │   ├── credit.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── defaults
+│   │   │   │   ├── defaults.ts
+│   │   │   │   ├── font.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── page-layout.ts
+│   │   │   │   ├── page-margins.ts
+│   │   │   │   └── scaling.ts
+│   │   │   ├── identification
+│   │   │   │   ├── creator.ts
+│   │   │   │   ├── encoding.ts
+│   │   │   │   ├── identification.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── support.ts
+│   │   │   ├── index.ts
+│   │   │   ├── measure
+│   │   │   │   ├── barline.ts
+│   │   │   │   ├── extended-measure.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── measure.ts
+│   │   │   │   └── note.ts
+│   │   │   ├── music-xml.ts
+│   │   │   ├── part
+│   │   │   │   ├── beam.ts
+│   │   │   │   ├── beat-pos.ts
+│   │   │   │   ├── has-id.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── part.ts
+│   │   │   │   └── pitch.ts
+│   │   │   ├── part-list
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── midi-device.ts
+│   │   │   │   ├── midi-instrument.ts
+│   │   │   │   ├── part-list.ts
+│   │   │   │   ├── score-instrument.ts
+│   │   │   │   └── score-part.ts
+│   │   │   ├── print
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── print.ts
+│   │   │   │   ├── system-layout.ts
+│   │   │   │   └── system-margins.ts
+│   │   │   └── score-partwise
+│   │   │       ├── index.ts
+│   │   │       ├── score-partwise.ts
+│   │   │       └── work.ts
+│   │   └── tsconfig.json
+│   └── serializable-data
+│       ├── dist
+│       │   ├── index.js
+│       │   └── index.mjs
+│       ├── index.ts
+│       ├── node_modules
+│       ├── package.json
+│       ├── src
+│       │   └── XMLParser.ts
+│       └── tsconfig.json
+├── music-structure
+│   ├── beat
+│   │   └── beat-estimation
+│   │       ├── dist
+│   │       │   ├── index.js
+│   │       │   └── index.mjs
+│   │       ├── index.test.ts
+│   │       ├── index.ts
+│   │       ├── package.json
+│   │       └── tsconfig.json
+│   ├── chord
+│   │   ├── chord-analyze
+│   │   │   ├── CFGC.json
+│   │   │   ├── dist
+│   │   │   │   ├── index.js
+│   │   │   │   └── index.mjs
+│   │   │   ├── index.ts
+│   │   │   ├── package.json
+│   │   │   ├── src
+│   │   │   │   ├── chord-analyze
+│   │   │   │   │   ├── calc-chord-progression.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── remove-item.ts
+│   │   │   │   │   ├── select-suitable-progression.ts
+│   │   │   │   │   ├── split-array.ts
+│   │   │   │   │   ├── time-and-chord.ts
+│   │   │   │   │   └── time-and-roman-analysis.ts
+│   │   │   │   └── key-estimation
+│   │   │   │       ├── chord-progression.ts
+│   │   │   │       ├── get-body-and-root.ts
+│   │   │   │       ├── get-chord.ts
+│   │   │   │       └── index.ts
+│   │   │   ├── test
+│   │   │   │   ├── index.test.ts
+│   │   │   │   └── key-estimation.test.ts
+│   │   │   └── tsconfig.json
+│   │   └── roman-chord
+│   │       ├── dist
+│   │       │   ├── index.js
+│   │       │   └── index.mjs
+│   │       ├── index.ts
+│   │       └── package.json
+│   └── melody
+│       ├── melody-analyze
+│       │   ├── dist
+│       │   │   ├── index.js
+│       │   │   └── index.mjs
+│       │   ├── index.test.ts
+│       │   ├── index.ts
+│       │   ├── package.json
+│       │   ├── src
+│       │   │   ├── analyze-melody.ts
+│       │   │   ├── get-time-and-chord.ts
+│       │   │   ├── get-time-and-melody.ts
+│       │   │   ├── gravity.ts
+│       │   │   ├── interfaces.ts
+│       │   │   ├── melody-analysis-data.ts
+│       │   │   ├── melody-analysis.ts
+│       │   │   ├── register-gravity.ts
+│       │   │   ├── time-and-analyzed-melody.ts
+│       │   │   ├── time-and-chord.ts
+│       │   │   └── time-and-melody.ts
+│       │   └── tsconfig.json
+│       └── melody-hierarchical-analysis
+│           ├── dist
+│           │   ├── index.js
+│           │   └── index.mjs
+│           ├── index.ts
+│           ├── package.json
+│           ├── src
+│           │   ├── get-hierarchical-melody.ts
+│           │   └── get-time-and-melody.ts
+│           └── tsconfig.json
+├── tonal-objects
+│   ├── dist
+│   │   ├── index.js
+│   │   └── index.mjs
+│   ├── index.test.ts
+│   ├── index.ts
+│   ├── node_modules
+│   │   └── @tonaljs
+│   │       └── pitch-note
+│   │           ├── LICENSE
+│   │           ├── README.md
+│   │           └── package.json
+│   ├── package.json
+│   ├── src
+│   │   └── index.ts
+│   └── tsconfig.json
+└── util
+    ├── color
+    │   ├── dist
+    │   │   ├── index.js
+    │   │   └── index.mjs
+    │   ├── index.test.ts
+    │   ├── index.ts
+    │   ├── package.json
+    │   ├── src
+    │   │   └── util.ts
+    │   └── tsconfig.json
+    ├── graph
+    │   ├── dist
+    │   │   ├── index.js
+    │   │   └── index.mjs
+    │   ├── index.test.ts
+    │   ├── index.ts
+    │   ├── package.json
+    │   ├── src
+    │   │   ├── dynamic-log-viterbi.ts
+    │   │   ├── hmm-log-viterbi.ts
+    │   │   ├── log-viterbi.ts
+    │   │   ├── viterbi-core.ts
+    │   │   └── viterbi.ts
+    │   └── tsconfig.json
+    ├── html
+    │   ├── dist
+    │   │   ├── index.js
+    │   │   └── index.mjs
+    │   ├── index.test.ts
+    │   ├── index.ts
+    │   ├── package.json
+    │   ├── src
+    │   │   ├── attribute.ts
+    │   │   ├── html-element.ts
+    │   │   ├── html.ts
+    │   │   ├── index.ts
+    │   │   ├── set-components-to-element.ts
+    │   │   ├── svg-element.ts
+    │   │   └── svg.ts
+    │   └── tsconfig.json
+    ├── math
+    │   ├── dist
+    │   │   ├── index.js
+    │   │   └── index.mjs
+    │   ├── fft
+    │   │   └── index.ts
+    │   ├── index.test.ts
+    │   ├── index.ts
+    │   ├── package.json
+    │   └── tsconfig.json
+    ├── stdlib
+    │   ├── dist
+    │   │   ├── index.js
+    │   │   └── index.mjs
+    │   ├── index.test.ts
+    │   ├── index.ts
+    │   ├── package.json
+    │   └── tsconfig.json
+    └── time-and
+        ├── dist
+        │   ├── index.js
+        │   └── index.mjs
+        ├── index.ts
+        ├── intex.test.ts
+        ├── package.json
+        ├── src
+        │   ├── compress.ts
+        │   ├── search-items-in-range.ts
+        │   ├── search-items-overlaps-range.ts
+        │   └── time.ts
+        └── tsconfig.json
+
+180 directories, 629 files

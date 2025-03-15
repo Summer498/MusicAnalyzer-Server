@@ -22,8 +22,11 @@ export const setupUI = (
   const piano_roll_view = new PianoRoll(manager)
   asParent(html.piano_roll_place)
     .appendChildren(
-      audio_viewer.wave.svg,
-      audio_viewer.spectrogram.svg,
+      new ColumnHTML(
+        audio_viewer.wave.svg,
+        audio_viewer.spectrogram.svg,
+        audio_viewer.fft.svg,
+      ).div,
       ...getSaveButtons(title_info, html, piano_roll_view),
       piano_roll_view.svg,
       html.audio_player,
