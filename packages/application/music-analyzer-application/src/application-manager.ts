@@ -20,12 +20,7 @@ class Controllers {
     this.div = document.createElement("div");
     this.div.id = "controllers";
     this.div.style = "margin-top:20px";
-    this.div.appendChild(this.children[0].view);
-    this.div.appendChild(this.children[1].view);
-    this.div.appendChild(this.children[2].view);
-    this.div.appendChild(this.children[3].view);
-    this.div.appendChild(this.children[4].view);
-    this.div.appendChild(this.children[5].view);  // NOTE: 色選択は未実装なので消しておく
+    this.children.forEach(e => this.div.appendChild(e.view))
   }
 }
 
