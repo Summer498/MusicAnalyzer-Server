@@ -7,7 +7,7 @@ export class DMelodySwitcher extends Checkbox {
   }
 }
 
-interface DMelodyControllerSubscriber {
+export interface DMelodyControllerSubscriber {
   svg: { style: { visibility: string } }
 }
 

@@ -14,7 +14,7 @@ export class HierarchyLevel extends Slider {
   };
 };
 
-interface HierarchyLevelSubscriber {
+export interface HierarchyLevelSubscriber {
   children: { length: number }
   onChangedLayer(value: number): void
 }

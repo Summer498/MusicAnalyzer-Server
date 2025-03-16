@@ -1,6 +1,6 @@
 import { Checkbox } from "./abstract-switcher";
 
-interface GravitySwitcherSubscriber {
+export interface GravitySwitcherSubscriber {
   svg: { style: { visibility: string } }
 }
 

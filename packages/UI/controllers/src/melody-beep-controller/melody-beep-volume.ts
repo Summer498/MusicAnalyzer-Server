@@ -1,6 +1,6 @@
 import { Slider } from "../slider";
 
-interface MelodyBeepVolumeSubscriber {
+export interface MelodyBeepVolumeSubscriber {
   onMelodyVolumeBarChanged: (value: number) => void
 }
 

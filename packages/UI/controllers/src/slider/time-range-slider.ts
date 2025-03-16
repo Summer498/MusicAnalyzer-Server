@@ -10,7 +10,7 @@ export class TimeRangeSlider extends Slider {
   }
 }
 
-interface TimeRangeSubscriber { onUpdate: () => void }
+export interface TimeRangeSubscriber { onUpdate: () => void }
 
 export class TimeRangeController {
   readonly view: HTMLDivElement;
