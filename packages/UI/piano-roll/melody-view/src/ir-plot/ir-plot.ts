@@ -1,9 +1,10 @@
 import { AudioReflectable, WindowReflectable } from "@music-analyzer/view";
 import { IRPlotHierarchy } from "./ir-plot-hierarchy";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { HierarchyLevelSubscriber } from "@music-analyzer/controllers";
+import { ColorChangeSubscriber, HierarchyLevelSubscriber } from "@music-analyzer/controllers";
+import { hasArchetype } from "@music-analyzer/controllers/src/color-selector.ts/melody-color-controller";
 
-export class IRPlot implements AudioReflectable, WindowReflectable, HierarchyLevelSubscriber {
+export class IRPlot implements AudioReflectable, WindowReflectable, HierarchyLevelSubscriber, ColorChangeSubscriber {
   readonly svg: SVGSVGElement;
   readonly children: [IRPlotHierarchy];
   constructor(hierarchical_melody: TimeAndAnalyzedMelody[][]) {
@@ -23,5 +24,11 @@ export class IRPlot implements AudioReflectable, WindowReflectable, HierarchyLev
   }
   onChangedLayer(value: number) {
     this.children[0].onChangedLayer(value)
+  }
+  setColor (getColor: (e: hasArchetype) => string){
+    this.children[0].setColor(getColor);
+  }
+  updateColor (){
+    this.children[0].updateColor();
   }
 }

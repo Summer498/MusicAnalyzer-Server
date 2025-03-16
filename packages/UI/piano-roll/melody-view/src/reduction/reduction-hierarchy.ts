@@ -2,9 +2,9 @@ import { CollectionHierarchy } from "@music-analyzer/view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { ReductionLayer } from "./reduction-layer";
 import { ReductionViewModel } from "./reduction-view";
-import { HierarchyLevelSubscriber } from "@music-analyzer/controllers";
+import { ColorChangeSubscriber, HierarchyLevelSubscriber } from "@music-analyzer/controllers";
 
-export class ReductionHierarchy extends CollectionHierarchy<ReductionLayer> implements HierarchyLevelSubscriber {
+export class ReductionHierarchy extends CollectionHierarchy<ReductionLayer> implements HierarchyLevelSubscriber, ColorChangeSubscriber {
   constructor(hierarchical_melodies: TimeAndAnalyzedMelody[][]) {
     super("time-span-reduction", hierarchical_melodies.map((e, l) => new ReductionLayer(e, l)));
   }

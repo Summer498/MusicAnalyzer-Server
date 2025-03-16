@@ -2,9 +2,9 @@ import { CollectionHierarchy } from "@music-analyzer/view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MelodyLayer } from "./melody-layer";
 import { MelodyModel } from "./melody-model";
-import { HierarchyLevelSubscriber, MelodyBeepSwitcherSubscriber, MelodyBeepVolumeSubscriber } from "@music-analyzer/controllers";
+import { ColorChangeSubscriber, HierarchyLevelSubscriber, MelodyBeepSwitcherSubscriber, MelodyBeepVolumeSubscriber } from "@music-analyzer/controllers";
 
-export class MelodyHierarchy extends CollectionHierarchy<MelodyLayer> implements HierarchyLevelSubscriber, MelodyBeepSwitcherSubscriber, MelodyBeepVolumeSubscriber{
+export class MelodyHierarchy extends CollectionHierarchy<MelodyLayer> implements HierarchyLevelSubscriber, MelodyBeepSwitcherSubscriber, MelodyBeepVolumeSubscriber, ColorChangeSubscriber{
   get show() { return this._show; }
   #volume: number;
   #check: boolean;
