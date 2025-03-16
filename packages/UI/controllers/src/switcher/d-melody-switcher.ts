@@ -1,6 +1,6 @@
 import { Checkbox } from "./abstract-switcher";
 
-export class DMelodySwitcher extends Checkbox {
+class DMelodySwitcher extends Checkbox {
   constructor(id: string, label: string) {
     super(id, label);
   }

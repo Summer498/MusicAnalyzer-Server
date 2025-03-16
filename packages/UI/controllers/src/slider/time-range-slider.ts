@@ -1,7 +1,7 @@
 import { PianoRollRatio } from "@music-analyzer/view-parameters";
 import { Slider } from "./abstract-slider";
 
-export class TimeRangeSlider extends Slider {
+class TimeRangeSlider extends Slider {
   constructor() {
     super("time_range_slider", "Time Range", 1, 10, 0.1, 10);
     this.init()

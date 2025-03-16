@@ -1,6 +1,6 @@
 import { Slider } from "./abstract-slider";
 
-export class HierarchyLevel extends Slider {
+class HierarchyLevel extends Slider {
   constructor() {
     super("hierarchy_level_slider", "Melody Hierarchy Level", 0, 1, 1);
     this.init()
