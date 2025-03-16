@@ -55,7 +55,7 @@ export class ApplicationManager {
       hierarchy: new HierarchyLevelController(layer_count),
       melody_beep: new MelodyBeepController(),
       melody_color: new MelodyColorController(),
-      time_range: new TimeRangeController(),
+      time_range: new TimeRangeController(length),
     }
 
     this.controller = new Controllers(d_melody, hierarchy, time_range, gravity, melody_beep, melody_color);
