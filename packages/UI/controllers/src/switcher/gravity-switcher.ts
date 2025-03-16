@@ -1,13 +1,17 @@
+import { GravityHierarchy } from "@music-analyzer/melody-view";
 import { Checkbox } from "./abstract-switcher";
-import { ChordGravityMediator } from "@music-analyzer/music-analyzer-application";
 
 export class GravitySwitcher extends Checkbox {
   constructor(id: string, label: string) {
     super(id, label);
   };
-  readonly subscribers: ChordGravityMediator[] = [];
-  register(...subscribers: ChordGravityMediator[]) {
+  readonly subscribers: GravityHierarchy[] = [];
+  register(...subscribers: GravityHierarchy[]) {
     this.subscribers.push(...subscribers);
+  }
+  update() {
+    const visibility = this.input.checked ? "visible" : "hidden";
+    this.subscribers.forEach(e => e.svg.style.visibility = visibility);
   }
 }
 
