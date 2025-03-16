@@ -1,8 +1,6 @@
 import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 import { BeatElements, ChordElements, MelodyElements, MusicStructureElements } from "./piano-roll";
 import { AnalyzedDataContainer } from "./containers";
-import { ChordGravityMediator, DMelodyMediator, HierarchyLevelMediator, MelodyBeepMediator, MelodyVolumeMediator, ScaleGravityMediator, TimeRangeMediator } from "./UIMediators";
-import { ColorChangeMediator } from "./UIMediators/color-change-mediator";
 import { MelodyColorController, DMelodyController, GravityController, HierarchyLevelController, MelodyBeepController, TimeRangeController } from "@music-analyzer/controllers";
 
 class Controllers {
@@ -71,25 +69,5 @@ export class ApplicationManager {
     melody_beep.volume.register(...e.melody.melody_hierarchy.children.flatMap(e=>e.children.flatMap(e=>e)));
     melody_color.register(e.melody.ir_hierarchy, e.melody.ir_plot.children[0], e.melody.melody_hierarchy, e.melody.time_span_tree)
     time_range.register(this.audio_time_mediator, this.window_size_mediator);
-    
-    /*
-    const d_melody_mediator = new DMelodyMediator([d_melody.checkbox])
-    const chord_gravity_mediator = new ChordGravityMediator([gravity.chord_checkbox])
-    const scale_gravity_mediator = new ScaleGravityMediator([gravity.scale_checkbox])
-    const hierarchy_level_mediator = new HierarchyLevelMediator([hierarchy.slider], max)
-    const melody_beep_mediator = new MelodyBeepMediator([melody_beep.checkbox])
-    const melody_volume_mediator = new MelodyVolumeMediator([melody_beep.volume])
-    const color_change_mediator = new ColorChangeMediator(melody_color.selector.children)
-    const time_range_mediator = new TimeRangeMediator([time_range.slider], length)
-
-    d_melody_mediator.register(e.melody.d_melody_collection);
-    chord_gravity_mediator.register(e.melody.chord_gravities);
-    scale_gravity_mediator.register(e.melody.scale_gravities);
-    hierarchy_level_mediator.register(e.melody.melody_hierarchy, e.melody.ir_hierarchy, e.melody.ir_plot.children[0], e.melody.time_span_tree, e.melody.scale_gravities, e.melody.chord_gravities);
-    melody_beep_mediator.register(e.melody.melody_hierarchy);
-    melody_volume_mediator.register(e.melody.melody_hierarchy);
-    color_change_mediator.register(e.melody.ir_hierarchy, e.melody.ir_plot.children[0], e.melody.melody_hierarchy, e.melody.time_span_tree);
-    time_range_mediator.register(this.audio_time_mediator, this.window_size_mediator);
-    */
   }
 }
