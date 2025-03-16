@@ -21,6 +21,7 @@ export class DMelodyController {
   readonly subscribers: DMelodyGroup[] = [];
   register(...subscribers: DMelodyGroup[]) {
     this.subscribers.push(...subscribers);
+    this.update()
   }
   update() {
     const visibility = this.checkbox.input.checked ? "visible" : "hidden";

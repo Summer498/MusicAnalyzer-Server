@@ -32,6 +32,7 @@ export class HierarchyLevelController {
   readonly subscribers: HierarchyLevelSubscriber[] = [];
   register(...subscribers: HierarchyLevelSubscriber[]) {
     this.subscribers.push(...subscribers);
+    this.update()
   }
   update() {
     const value = Number(this.slider.input.value);

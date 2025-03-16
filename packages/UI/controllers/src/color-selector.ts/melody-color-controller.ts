@@ -22,6 +22,7 @@ export class MelodyColorController {
   readonly subscribers: ColorChangeSubscriber[] = [];
   register(...subscribers: ColorChangeSubscriber[]) {
     this.subscribers.push(...subscribers);
+    this.update(e=>get_color_of_Narmour_concept(e.archetype))
   }
   update(getColor: (e: hasArchetype) => string) {
     return () => {

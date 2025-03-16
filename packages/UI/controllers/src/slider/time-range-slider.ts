@@ -27,6 +27,7 @@ export class TimeRangeController {
   readonly subscribers: TimeRangeSubscriber[] = [];
   register(...subscribers: TimeRangeSubscriber[]) {
     this.subscribers.push(...subscribers);
+    this.update()
   }
   update() {
     const value = Number(this.slider.input.value);

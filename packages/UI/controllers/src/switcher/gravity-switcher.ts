@@ -9,6 +9,7 @@ export class GravitySwitcher extends Checkbox {
   readonly subscribers: GravityHierarchy[] = [];
   register(...subscribers: GravityHierarchy[]) {
     this.subscribers.push(...subscribers);
+    this.update()
   }
   update() {
     const visibility = this.input.checked ? "visible" : "hidden";

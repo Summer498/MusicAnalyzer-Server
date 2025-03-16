@@ -9,6 +9,7 @@ export class MelodyBeepSwitcher extends Checkbox {
   readonly subscribers: MelodyVM[] = [];
   register(...subscribers: MelodyVM[]) {
     this.subscribers.push(...subscribers);
+    this.update()
   }
   update() {
     const visibility = this.input.checked;

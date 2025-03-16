@@ -12,6 +12,7 @@ export class MelodyBeepVolume extends Slider {
   readonly subscribers: MelodyVM[] = [];
   register(...subscribers: MelodyVM[]) {
     this.subscribers.push(...subscribers);
+    this.update()
   }
   update() {
     const value = Number(this.input.value);
