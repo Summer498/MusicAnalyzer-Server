@@ -1,6 +1,5 @@
 import { PianoRollRatio } from "@music-analyzer/view-parameters";
 import { Slider } from "./abstract-slider";
-import { TimeRangeMediator } from "@music-analyzer/music-analyzer-application";
 
 export class TimeRangeSlider extends Slider {
   constructor() {
