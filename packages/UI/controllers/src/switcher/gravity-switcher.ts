@@ -13,6 +13,10 @@ export class GravitySwitcher extends Checkbox {
     const visibility = this.input.checked ? "visible" : "hidden";
     this.subscribers.forEach(e => e.svg.style.visibility = visibility);
   }
+  init() {
+    this.input.addEventListener("input", this.update.bind(this));
+    this.update.bind(this)();
+  }
 }
 
 export class GravityController {
