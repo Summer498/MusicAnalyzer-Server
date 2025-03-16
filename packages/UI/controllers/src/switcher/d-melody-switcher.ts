@@ -7,6 +7,10 @@ export class DMelodySwitcher extends Checkbox {
   }
 }
 
+interface DMelodyControllerSubscriber {
+  svg: { style: { visibility: string } }
+}
+
 export class DMelodyController {
   readonly view: HTMLDivElement;
   readonly checkbox: DMelodySwitcher;
@@ -18,8 +22,8 @@ export class DMelodyController {
     this.checkbox = d_melody_switcher;
     this.init();
   };
-  readonly subscribers: DMelodyGroup[] = [];
-  register(...subscribers: DMelodyGroup[]) {
+  readonly subscribers: DMelodyControllerSubscriber[] = [];
+  register(...subscribers: DMelodyControllerSubscriber[]) {
     this.subscribers.push(...subscribers);
     this.update()
   }
