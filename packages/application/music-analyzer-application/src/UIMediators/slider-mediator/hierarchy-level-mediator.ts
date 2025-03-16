@@ -7,15 +7,15 @@ interface HierarchyLevelSubscriber {
 }
 export class HierarchyLevelMediator extends ControllerMediator<HierarchyLevelSubscriber> {
   constructor(
-    sliders: HierarchyLevel[],
+    publisher: HierarchyLevel[],
     subscribers: HierarchyLevelSubscriber[]
   ) {
     const max = Math.max(...subscribers.map(e => e.children.length - 1));
-    sliders[0].setHierarchyLevelSliderValues(max);
-    super(sliders, subscribers);
+    publisher[0].setHierarchyLevelSliderValues(max);
+    super(publisher, subscribers);
   }
   override update() {
-    const value = Number(this.controllers[0].input.value);
+    const value = Number(this.publisher[0].input.value);
     this.subscribers.forEach(e => e.onChangedLayer(value));
   }
 }

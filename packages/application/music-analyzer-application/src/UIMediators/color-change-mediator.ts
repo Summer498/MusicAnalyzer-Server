@@ -9,11 +9,11 @@ type ColorChangeSubscriber = {
 }
 export class ColorChangeMediator extends ControllerMediator<ColorChangeSubscriber> {
   constructor(
-    controllers: ColorSelector<IRM_ColorNameIDs>[],
+    publisher: ColorSelector<IRM_ColorNameIDs>[],
     subscribers: ColorChangeSubscriber[]
   ) {
-    super(controllers, subscribers);
-    this.init(controllers);
+    super(publisher, subscribers);
+    this.init(publisher);
   }
   protected init(controllers: ColorSelector<IRM_ColorNameIDs>[]) {
     controllers.forEach(s =>

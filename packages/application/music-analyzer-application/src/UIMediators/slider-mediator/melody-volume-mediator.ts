@@ -4,14 +4,14 @@ import { ControllerMediator } from "../controller-mediator";
 
 export class MelodyVolumeMediator extends ControllerMediator<MelodyHierarchy> {
   constructor(
-    sliders: Slider[],
+    publisher: Slider[],
     melody_hierarchy: [MelodyHierarchy],
   ) {
-    super(sliders, melody_hierarchy);
+    super(publisher, melody_hierarchy);
   }
 
   override update() {
-    const value = Number(this.controllers[0].input.value);
+    const value = Number(this.publisher[0].input.value);
     this.subscribers.forEach(e => e.onMelodyVolumeBarChanged(value));
   }
 }

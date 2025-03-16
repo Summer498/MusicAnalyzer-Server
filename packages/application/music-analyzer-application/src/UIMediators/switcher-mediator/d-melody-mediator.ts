@@ -4,13 +4,13 @@ import { ControllerMediator } from "../controller-mediator";
 
 export class DMelodyMediator extends ControllerMediator<DMelodyGroup> {
   constructor(
-    switchers: Checkbox[],
-    d_melody_collection: [DMelodyGroup]
+    publisher: Checkbox[],
+    subscribers: [DMelodyGroup]
   ) {
-    super(switchers, d_melody_collection);
+    super(publisher, subscribers);
   }
   override update() {
-    const visibility = this.controllers[0].input.checked ? "visible" : "hidden";
+    const visibility = this.publisher[0].input.checked ? "visible" : "hidden";
     this.subscribers.forEach(e => e.svg.style.visibility = visibility);
   }
 }

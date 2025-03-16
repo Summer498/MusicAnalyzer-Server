@@ -1,4 +1,6 @@
-export class ColorSelector<ID extends string> {
+import { Controller } from "../controller";
+
+export class ColorSelector<ID extends string> extends Controller {
   input: HTMLInputElement;
   label: HTMLLabelElement;
   body: HTMLSpanElement;
@@ -6,6 +8,7 @@ export class ColorSelector<ID extends string> {
     readonly id: ID,
     text: string
   ) {
+    super("radio", "color-selector", "color-selector")
     this.input = document.createElement("input");
     this.input.id = this.id;
     this.input.type = "radio";

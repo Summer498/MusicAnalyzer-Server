@@ -2,10 +2,10 @@ import { Controller } from "@music-analyzer/controllers";
 
 export abstract class ControllerMediator<Subscriber> {
   constructor(
-    protected readonly controllers: Controller[],
+    protected readonly publisher: Controller[],
     protected readonly subscribers: Subscriber[]
   ) {
-    this.init(controllers);
+    this.init(publisher);
   }
   abstract update(): void
   protected init(controllers: Controller[]) {
