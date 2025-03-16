@@ -1,5 +1,5 @@
-import { MelodyBeepVolume } from "../slider";
-import { MelodyBeepSwitcher } from "../switcher";
+import { MelodyBeepSwitcher } from "./melody-beep-switcher";
+import { MelodyBeepVolume } from "./melody-beep-volume";
 
 export class MelodyBeepController {
   readonly view: HTMLDivElement;

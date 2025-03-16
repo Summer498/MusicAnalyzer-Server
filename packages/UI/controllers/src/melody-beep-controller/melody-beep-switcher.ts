@@ -1,4 +1,4 @@
-import { Checkbox } from "../switcher/abstract-switcher";
+import { Checkbox } from "../switcher";
 
 export class MelodyBeepSwitcher extends Checkbox {
   constructor(id: string, label: string) {

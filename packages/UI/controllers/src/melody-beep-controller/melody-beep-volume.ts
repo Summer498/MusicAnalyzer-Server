@@ -1,4 +1,4 @@
-import { Slider } from "./abstract-slider";
+import { Slider } from "../slider";
 
 export class MelodyBeepVolume extends Slider {
   constructor() {
