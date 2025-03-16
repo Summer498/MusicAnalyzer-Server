@@ -7,7 +7,7 @@ export class DMelodySwitcher extends Checkbox {
 }
 
 export interface DMelodyControllerSubscriber {
-  svg: { style: { visibility: string } }
+  onDMelodyVisibilityChanged(visible: boolean): void
 }
 
 export class DMelodyController {
@@ -27,8 +27,7 @@ export class DMelodyController {
     this.update()
   }
   update() {
-    const visibility = this.checkbox.input.checked ? "visible" : "hidden";
-    this.subscribers.forEach(e => e.svg.style.visibility = visibility);
+    this.subscribers.forEach(e => e.onDMelodyVisibilityChanged(this.checkbox.input.checked));
   }
   init() {
     this.checkbox.input.addEventListener("input", this.update.bind(this));
