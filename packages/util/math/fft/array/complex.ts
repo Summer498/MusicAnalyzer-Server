@@ -10,8 +10,8 @@ export const subV2R = <V extends TypedArray>(...x: [V, R]) => x[0].map(e => e - 
 export const mltV2R = <V extends TypedArray>(...x: [V, R]) => x[0].map(e => e * x[1]) as V
 
 export const addV2VR = <V extends TypedArray>(...x: [V, V]) => x[0].map((e, i) => e + x[1][i]) as V
-export const subV2VR = <V extends TypedArray>(...x: [V, V]) => x[0].map((e, i) => e + x[1][i]) as V
-export const mltV2VR = <V extends TypedArray>(...x: [V, V]) => x[0].map((e, i) => e + x[1][i]) as V
+export const subV2VR = <V extends TypedArray>(...x: [V, V]) => x[0].map((e, i) => e - x[1][i]) as V
+export const mltV2VR = <V extends TypedArray>(...x: [V, V]) => x[0].map((e, i) => e * x[1][i]) as V
 
 export const sclV2R = <V extends TypedArray>(...x: [[V, V], R]) => [mltV2R(x[0][0], x[1]), mltV2R(x[0][1], x[1])] as [V, V]
 
