@@ -1,3 +1,4 @@
+import { MelodyVolumeMediator } from "@music-analyzer/music-analyzer-application";
 import { Slider } from "../slider";
 
 export class MelodyBeepVolume extends Slider {
@@ -6,5 +7,9 @@ export class MelodyBeepVolume extends Slider {
   };
   override updateDisplay() {
     this.display.textContent = `volume: ${this.input.value}`;
+  }
+  readonly subscribers: MelodyVolumeMediator[] = [];
+  register(...subscribers: MelodyVolumeMediator[]) {
+    this.subscribers.push(...subscribers);
   }
 }

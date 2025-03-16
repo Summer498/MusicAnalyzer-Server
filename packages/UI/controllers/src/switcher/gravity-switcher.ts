@@ -5,6 +5,10 @@ export class GravitySwitcher extends Checkbox {
   constructor(id: string, label: string) {
     super(id, label);
   };
+  readonly subscribers: ChordGravityMediator[] = [];
+  register(...subscribers: ChordGravityMediator[]) {
+    this.subscribers.push(...subscribers);
+  }
 }
 
 export class GravityController {
@@ -25,8 +29,4 @@ export class GravityController {
     this.chord_checkbox = chord_gravity_switcher;
     this.scale_checkbox = scale_gravity_switcher;
   };
-  readonly subscribers: ChordGravityMediator[] = [];
-  register(...subscribers: ChordGravityMediator[]) {
-    this.subscribers.push(...subscribers);
-  }
 }
