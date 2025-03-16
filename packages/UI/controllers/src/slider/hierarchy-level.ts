@@ -1,6 +1,6 @@
 import { Slider } from "./abstract-slider";
 
-class HierarchyLevel extends Slider {
+class HierarchyLevel extends Slider<HierarchyLevelSubscriber> {
   constructor() {
     super("hierarchy_level_slider", "Melody Hierarchy Level", 0, 1, 1);
     this.init()
@@ -13,19 +13,10 @@ class HierarchyLevel extends Slider {
     this.input.value = String(max);
     this.updateDisplay();
   };
-  readonly subscribers: HierarchyLevelSubscriber[] = [];
-  register(...subscribers: HierarchyLevelSubscriber[]) {
-    this.subscribers.push(...subscribers);
-    this.update()
-  }
   update() {
     const value = Number(this.input.value);
     this.subscribers.forEach(e => e.onChangedLayer(value));
   }
-  init() {
-    this.input.addEventListener("input", this.update.bind(this));
-    this.update.bind(this)();
-  };
 };
 
 export interface HierarchyLevelSubscriber {
