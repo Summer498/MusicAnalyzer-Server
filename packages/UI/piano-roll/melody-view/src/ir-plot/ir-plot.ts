@@ -1,8 +1,9 @@
 import { AudioReflectable, WindowReflectable } from "@music-analyzer/view";
 import { IRPlotHierarchy } from "./ir-plot-hierarchy";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { HierarchyLevelSubscriber } from "@music-analyzer/controllers";
 
-export class IRPlot implements AudioReflectable, WindowReflectable {
+export class IRPlot implements AudioReflectable, WindowReflectable, HierarchyLevelSubscriber {
   readonly svg: SVGSVGElement;
   readonly children: [IRPlotHierarchy];
   constructor(hierarchical_melody: TimeAndAnalyzedMelody[][]) {
@@ -19,5 +20,8 @@ export class IRPlot implements AudioReflectable, WindowReflectable {
   }
   onWindowResized() {
     this.children.forEach(e => e.onWindowResized());
+  }
+  onChangedLayer(value: number) {
+    this.children[0].onChangedLayer(value)
   }
 }

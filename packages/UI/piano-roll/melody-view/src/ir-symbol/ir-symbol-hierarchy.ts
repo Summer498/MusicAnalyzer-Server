@@ -2,8 +2,9 @@ import { CollectionHierarchy } from "@music-analyzer/view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { IRSymbolLayer } from "./ir-symbol-layer";
 import { IRSymbolModel } from "./ir-symbol-model";
+import { HierarchyLevelSubscriber } from "@music-analyzer/controllers";
 
-export class IRSymbolHierarchy extends CollectionHierarchy<IRSymbolLayer> {
+export class IRSymbolHierarchy extends CollectionHierarchy<IRSymbolLayer> implements HierarchyLevelSubscriber{
   constructor(hierarchical_melodies: TimeAndAnalyzedMelody[][]) {
     super("implication-realization archetype", hierarchical_melodies.map((e, l) => new IRSymbolLayer(e, l)));
   }

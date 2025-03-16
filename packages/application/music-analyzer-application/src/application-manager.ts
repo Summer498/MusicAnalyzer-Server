@@ -55,7 +55,7 @@ export class ApplicationManager {
     d_melody.register(e.melody.d_melody_collection);
     gravity.chord_checkbox.register(e.melody.chord_gravities);
     gravity.scale_checkbox.register(e.melody.scale_gravities);
-    hierarchy.register(e.melody.melody_hierarchy, e.melody.ir_hierarchy, e.melody.ir_plot.children[0], e.melody.time_span_tree, e.melody.scale_gravities, e.melody.chord_gravities);
+    hierarchy.register(e.melody.melody_hierarchy, e.melody.ir_hierarchy, e.melody.ir_plot, e.melody.time_span_tree, e.melody.scale_gravities, e.melody.chord_gravities);
     melody_beep.checkbox.register(...e.melody.melody_hierarchy.children.flatMap(e => e.children.flatMap(e => e)));
     melody_beep.volume.register(...e.melody.melody_hierarchy.children.flatMap(e => e.children.flatMap(e => e)));
     melody_color.register(e.melody.ir_hierarchy, e.melody.ir_plot.children[0], e.melody.melody_hierarchy, e.melody.time_span_tree)

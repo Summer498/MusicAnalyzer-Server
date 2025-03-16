@@ -2,8 +2,9 @@ import { CollectionHierarchy } from "@music-analyzer/view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MelodyLayer } from "./melody-layer";
 import { MelodyModel } from "./melody-model";
+import { HierarchyLevelSubscriber } from "@music-analyzer/controllers";
 
-export class MelodyHierarchy extends CollectionHierarchy<MelodyLayer> {
+export class MelodyHierarchy extends CollectionHierarchy<MelodyLayer> implements HierarchyLevelSubscriber{
   get show() { return this._show; }
   #volume: number;
   #check: boolean;
