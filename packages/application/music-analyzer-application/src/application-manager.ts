@@ -43,18 +43,18 @@ export class ApplicationManager {
 
     const {
       d_melody,
-      hierarchy,
-      time_range,
       gravity,
+      hierarchy,
       melody_beep,
-      melody_color
+      melody_color,
+      time_range,
     } = {
       d_melody: new DMelodyController(),
-      hierarchy: new HierarchyLevelController(),
-      time_range: new TimeRangeController(),
       gravity: new GravityController(!this.NO_CHORD),
+      hierarchy: new HierarchyLevelController(),
       melody_beep: new MelodyBeepController(),
       melody_color: new MelodyColorController(),
+      time_range: new TimeRangeController(),
     }
 
     this.controller = new Controllers(d_melody, hierarchy, time_range, gravity, melody_beep, melody_color);
@@ -66,20 +66,28 @@ export class ApplicationManager {
 
     const e = this.analyzed;
     const d_melody_mediator = new DMelodyMediator([d_melody.checkbox])
-    const scale_gravity_mediator = new ScaleGravityMediator([gravity.scale_checkbox])
     const chord_gravity_mediator = new ChordGravityMediator([gravity.chord_checkbox])
+    const scale_gravity_mediator = new ScaleGravityMediator([gravity.scale_checkbox])
     const hierarchy_level_mediator = new HierarchyLevelMediator([hierarchy.slider], max)
     const melody_beep_mediator = new MelodyBeepMediator([melody_beep.checkbox])
     const melody_volume_mediator = new MelodyVolumeMediator([melody_beep.volume])
-    const time_range_mediator = new TimeRangeMediator([time_range.slider], length)
     const color_change_mediator = new ColorChangeMediator(melody_color.selector.children)
+    const time_range_mediator = new TimeRangeMediator([time_range.slider], length)
+    d_melody.register(d_melody_mediator);
+    gravity.register(chord_gravity_mediator);
+    gravity.register(scale_gravity_mediator);
+    hierarchy.register(hierarchy_level_mediator);
+    melody_beep.register(melody_beep_mediator);
+    melody_beep.register(melody_volume_mediator);
+    melody_color.register(color_change_mediator)
+    time_range.register(time_range_mediator);
     d_melody_mediator.register(e.melody.d_melody_collection);
-    scale_gravity_mediator.register(e.melody.scale_gravities);
     chord_gravity_mediator.register(e.melody.chord_gravities);
+    scale_gravity_mediator.register(e.melody.scale_gravities);
     hierarchy_level_mediator.register(e.melody.melody_hierarchy, e.melody.ir_hierarchy, e.melody.ir_plot.children[0], e.melody.time_span_tree, e.melody.scale_gravities, e.melody.chord_gravities);
     melody_beep_mediator.register(e.melody.melody_hierarchy);
     melody_volume_mediator.register(e.melody.melody_hierarchy);
-    time_range_mediator.register(this.audio_time_mediator, this.window_size_mediator);
     color_change_mediator.register(e.melody.ir_hierarchy, e.melody.ir_plot.children[0], e.melody.melody_hierarchy, e.melody.time_span_tree);
+    time_range_mediator.register(this.audio_time_mediator, this.window_size_mediator);
   }
 }
