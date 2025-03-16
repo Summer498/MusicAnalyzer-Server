@@ -1,5 +1,11 @@
+import { Dyad, Monad, Null_ad, Triad } from "@music-analyzer/irm";
 import { MelodyColorSelector } from "./melody-color-selector";
-import { ColorChangeMediator } from "@music-analyzer/music-analyzer-application";
+
+type hasArchetype = { archetype: Triad | Dyad | Monad | Null_ad }
+type ColorChangeSubscriber = {
+  setColor: (getColor: (e: hasArchetype) => string) => void
+  updateColor: () => void
+}
 
 export class MelodyColorController {
   readonly view: HTMLDivElement;
@@ -11,8 +17,13 @@ export class MelodyColorController {
     this.view.style.display = "inline";
     this.view.appendChild(this.selector.body);
   }
-  readonly subscribers: ColorChangeMediator[] = [];
-  register(...subscribers: ColorChangeMediator[]) {
+  readonly subscribers: ColorChangeSubscriber[] = [];
+  register(...subscribers: ColorChangeSubscriber[]) {
     this.subscribers.push(...subscribers);
+  }
+  _update(getColor: (e: hasArchetype) => string) {
+    return () => {
+      this.subscribers.forEach(e => e.setColor(getColor));
+    };
   }
 }
