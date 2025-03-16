@@ -1,5 +1,5 @@
+import { DMelodyGroup } from "@music-analyzer/melody-view";
 import { Checkbox } from "./abstract-switcher";
-import { DMelodyMediator } from "@music-analyzer/music-analyzer-application";
 
 export class DMelodySwitcher extends Checkbox {
   constructor(id: string, label: string) {
@@ -17,8 +17,13 @@ export class DMelodyController {
     this.view.appendChild(d_melody_switcher.body);
     this.checkbox = d_melody_switcher;
   };
-  readonly subscribers: DMelodyMediator[] = [];
-  register(...subscribers: DMelodyMediator[]) {
+
+  update() {
+    const visibility = this.checkbox.input.checked ? "visible" : "hidden";
+    this.subscribers.forEach(e => e.svg.style.visibility = visibility);
+  }
+  readonly subscribers: DMelodyGroup[] = [];
+  register(...subscribers: DMelodyGroup[]) {
     this.subscribers.push(...subscribers);
   }
 }

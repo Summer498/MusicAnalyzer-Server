@@ -73,7 +73,7 @@ export class ApplicationManager {
     const melody_volume_mediator = new MelodyVolumeMediator([melody_beep.volume])
     const color_change_mediator = new ColorChangeMediator(melody_color.selector.children)
     const time_range_mediator = new TimeRangeMediator([time_range.slider], length)
-    d_melody.register(d_melody_mediator);
+    d_melody.register(this.analyzed.melody.d_melody_collection);
     gravity.chord_checkbox.register(chord_gravity_mediator);
     gravity.scale_checkbox.register(scale_gravity_mediator);
     hierarchy.register(hierarchy_level_mediator);
