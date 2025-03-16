@@ -34,4 +34,8 @@ export class TimeRangeController {
     PianoRollRatio.set(ratio);
     this.subscribers.forEach(e => e.onUpdate());
   }
+  init() {
+    this.slider.input.addEventListener("input", this.update.bind(this));
+    this.update.bind(this)();
+  };
 }
