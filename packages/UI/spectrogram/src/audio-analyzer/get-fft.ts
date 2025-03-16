@@ -1,4 +1,5 @@
-import { Complex, fft } from "@music-analyzer/math";
+// import { Complex, fft } from "@music-analyzer/math";
+import { fft as fft } from "@music-analyzer/math/fft/array";
 import { getByteTimeDomainData, getFloatTimeDomainData } from "./get-data-on-buffer";
 
 const blackManWindow = (x: Float32Array<ArrayBuffer>) => {
@@ -19,5 +20,6 @@ export const getFFT = (analyser: AnalyserNode) => {
     amplitude.push(buff[i])
   }
 
-  return fft(amplitude.map(e => new Complex(e, 0)))
+//  return fft(amplitude.map(e => new Complex(e, 0)))
+  return fft(buff, buff.map(e => 0))
 }
