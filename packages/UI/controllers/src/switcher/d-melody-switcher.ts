@@ -16,14 +16,18 @@ export class DMelodyController {
     this.view.id = "d-melody";
     this.view.appendChild(d_melody_switcher.body);
     this.checkbox = d_melody_switcher;
+    this.init();
   };
-
-  update() {
-    const visibility = this.checkbox.input.checked ? "visible" : "hidden";
-    this.subscribers.forEach(e => e.svg.style.visibility = visibility);
-  }
   readonly subscribers: DMelodyGroup[] = [];
   register(...subscribers: DMelodyGroup[]) {
     this.subscribers.push(...subscribers);
   }
+  update() {
+    const visibility = this.checkbox.input.checked ? "visible" : "hidden";
+    this.subscribers.forEach(e => e.svg.style.visibility = visibility);
+  }
+  init() {
+    this.checkbox.input.addEventListener("input", this.update.bind(this));
+    this.update.bind(this)();
+  };
 }
