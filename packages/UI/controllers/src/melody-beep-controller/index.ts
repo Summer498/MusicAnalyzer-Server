@@ -1,3 +1,3 @@
 export { MelodyBeepController } from "./melody-beep-view-model";
-export { MelodyBeepSwitcher } from "./melody-beep-switcher";
-export { MelodyBeepVolume } from "./melody-beep-volume";
+export { MelodyBeepSwitcher, MelodyBeepSwitcherSubscriber } from "./melody-beep-switcher";
+export { MelodyBeepVolume, MelodyBeepVolumeSubscriber } from "./melody-beep-volume";

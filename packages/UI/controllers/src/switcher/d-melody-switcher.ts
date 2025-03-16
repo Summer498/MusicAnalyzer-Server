@@ -1,4 +1,3 @@
-import { DMelodyGroup } from "@music-analyzer/melody-view";
 import { Checkbox } from "./abstract-switcher";
 
 export class DMelodySwitcher extends Checkbox {
