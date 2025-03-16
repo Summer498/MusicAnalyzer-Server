@@ -7,7 +7,6 @@ export interface GravitySwitcherSubscriber {
 class GravitySwitcher extends Checkbox<GravitySwitcherSubscriber> {
   constructor(id: string, label: string) {
     super(id, label);
-    this.init()
   };
   update() {
     this.subscribers.forEach(e => e.onUpdateGravityVisibility(this.input.checked));

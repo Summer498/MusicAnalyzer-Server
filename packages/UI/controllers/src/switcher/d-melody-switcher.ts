@@ -3,7 +3,6 @@ import { Checkbox } from "./abstract-switcher";
 class DMelodySwitcher extends Checkbox<DMelodyControllerSubscriber> {
   constructor(id: string, label: string) {
     super(id, label);
-    this.init();
   }
   update() {
     this.subscribers.forEach(e => e.onDMelodyVisibilityChanged(this.input.checked));

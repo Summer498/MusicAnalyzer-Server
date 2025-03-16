@@ -7,7 +7,6 @@ export interface MelodyBeepVolumeSubscriber {
 export class MelodyBeepVolume extends Slider<MelodyBeepVolumeSubscriber> {
   constructor() {
     super("melody_beep_volume", "", 0, 100, 1);
-    this.init()
   };
   override updateDisplay() {
     this.display.textContent = `volume: ${this.input.value}`;

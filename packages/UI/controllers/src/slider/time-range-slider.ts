@@ -4,12 +4,10 @@ import { Slider } from "./abstract-slider";
 class TimeRangeSlider extends Slider<TimeRangeSubscriber> {
   constructor() {
     super("time_range_slider", "Time Range", 1, 10, 0.1, 10);
-    this.init()
   };
   override updateDisplay() {
     this.display.textContent = `${Math.floor(Math.pow(2, Number(this.input.value) - Number(this.input.max)) * 100)} %`;
   }
-
   update() {
     const value = Number(this.input.value);
     const max = Number(this.input.max);

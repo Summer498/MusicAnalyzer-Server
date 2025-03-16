@@ -1,6 +1,6 @@
 import { Controller } from "../controller";
 
-export abstract class Slider<T> extends Controller {
+export abstract class Slider<T> extends Controller<T> {
   readonly display: HTMLSpanElement;
   constructor(id: string, label: string, min: number, max: number, step: number, value?: number) {
     super ("range", id, label);
@@ -16,14 +16,4 @@ export abstract class Slider<T> extends Controller {
     this.input.addEventListener("input", this.updateDisplay.bind(this));
   }
   abstract updateDisplay(): void;
-  readonly subscribers: T[] = [];
-  register(...subscribers: T[]) {
-    this.subscribers.push(...subscribers);
-    this.update()
-  }
-  abstract update(): void;
-  init() {
-    this.input.addEventListener("input", this.update.bind(this));
-    this.update.bind(this)();
-  };
 }
