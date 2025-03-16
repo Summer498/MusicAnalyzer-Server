@@ -9,8 +9,5 @@ export abstract class ControllerMediator<Subscriber> {
   }
   register(...e: Subscriber[]) { this.subscribers.push(...e) }
   abstract update(): void
-  protected init(controllers: Controller[]) {
-    controllers.forEach(e => e.input.addEventListener("input", this.update.bind(this)));
-    this.update.bind(this)();
-  };
+  abstract init(controllers: Controller[]): void;
 }

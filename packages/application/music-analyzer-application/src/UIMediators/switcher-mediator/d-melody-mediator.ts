@@ -1,4 +1,4 @@
-import { Checkbox } from "@music-analyzer/controllers";
+import { Checkbox, Controller } from "@music-analyzer/controllers";
 import { DMelodyGroup } from "@music-analyzer/melody-view";
 import { ControllerMediator } from "../controller-mediator";
 
@@ -12,4 +12,8 @@ export class DMelodyMediator extends ControllerMediator<DMelodyGroup> {
     const visibility = this.publisher[0].input.checked ? "visible" : "hidden";
     this.subscribers.forEach(e => e.svg.style.visibility = visibility);
   }
+  override init(controllers: Controller[]) {
+    controllers.forEach(e => e.input.addEventListener("input", this.update.bind(this)));
+    this.update.bind(this)();
+  };
 }

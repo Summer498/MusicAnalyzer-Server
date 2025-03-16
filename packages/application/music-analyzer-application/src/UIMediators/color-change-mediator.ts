@@ -1,4 +1,4 @@
-import { ColorSelector, IRM_ColorNameIDs } from "@music-analyzer/controllers";
+import { ColorSelector, Controller, IRM_ColorNameIDs } from "@music-analyzer/controllers";
 import { get_color_of_implication_realization, get_color_of_Narmour_concept, get_color_on_digital_intervallic_scale, get_color_on_digital_parametric_scale, get_color_on_intervallic_angle, get_color_on_parametric_scale, get_color_on_registral_scale, Triad } from "@music-analyzer/irm";
 import { ControllerMediator } from "./controller-mediator";
 
@@ -14,15 +14,6 @@ export class ColorChangeMediator extends ControllerMediator<ColorChangeSubscribe
     super(publisher);
     this.init(publisher);
   }
-  protected init(controllers: ColorSelector<IRM_ColorNameIDs>[]) {
-    controllers.forEach(s =>
-      s.input.addEventListener("input",
-        this._update.bind(this)((e: hasArchetype) => this.mapColor(s.id)(e.archetype)
-        )
-      )
-    );
-    this._update.bind(this)((e: hasArchetype) => this.mapColor("Narmour_concept")(e.archetype))();
-  };
   mapColor(id: IRM_ColorNameIDs) {
     switch (id) {
       case "Narmour_concept": return get_color_of_Narmour_concept;
@@ -39,5 +30,14 @@ export class ColorChangeMediator extends ControllerMediator<ColorChangeSubscribe
       this.subscribers.forEach(e => e.setColor(getColor));
     };
   }
-  update() { }
+  override update() { }
+  override init(controllers: ColorSelector<IRM_ColorNameIDs>[]) {
+    controllers.forEach(s =>
+      s.input.addEventListener("input",
+        this._update.bind(this)((e: hasArchetype) => this.mapColor(s.id)(e.archetype)
+        )
+      )
+    );
+    this._update.bind(this)((e: hasArchetype) => this.mapColor("Narmour_concept")(e.archetype))();
+  };
 }

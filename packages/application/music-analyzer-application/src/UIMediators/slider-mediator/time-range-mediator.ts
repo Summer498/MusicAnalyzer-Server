@@ -1,4 +1,4 @@
-import { TimeRangeSlider } from "@music-analyzer/controllers";
+import { Controller, TimeRangeSlider } from "@music-analyzer/controllers";
 import { PianoRollRatio } from "@music-analyzer/view-parameters";
 import { ControllerMediator } from "../controller-mediator";
 
@@ -25,4 +25,8 @@ export class TimeRangeMediator extends ControllerMediator<{ onUpdate: () => void
     PianoRollRatio.set(ratio);
     this.subscribers.forEach(e => e.onUpdate());
   }
+  override init(controllers: Controller[]) {
+    controllers.forEach(e => e.input.addEventListener("input", this.update.bind(this)));
+    this.update.bind(this)();
+  };
 }

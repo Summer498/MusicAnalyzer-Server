@@ -1,4 +1,4 @@
-import { HierarchyLevel } from "@music-analyzer/controllers";
+import { Controller, HierarchyLevel } from "@music-analyzer/controllers";
 import { ControllerMediator } from "../controller-mediator";
 
 interface HierarchyLevelSubscriber {
@@ -17,4 +17,8 @@ export class HierarchyLevelMediator extends ControllerMediator<HierarchyLevelSub
     const value = Number(this.publisher[0].input.value);
     this.subscribers.forEach(e => e.onChangedLayer(value));
   }
+  override init(controllers: Controller[]) {
+    controllers.forEach(e => e.input.addEventListener("input", this.update.bind(this)));
+    this.update.bind(this)();
+  };
 }
