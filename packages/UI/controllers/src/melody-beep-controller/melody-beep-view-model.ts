@@ -1,6 +1,5 @@
 import { MelodyBeepSwitcher } from "./melody-beep-switcher";
 import { MelodyBeepVolume } from "./melody-beep-volume";
-import { MelodyBeepMediator } from "@music-analyzer/music-analyzer-application";
 
 export class MelodyBeepController {
   readonly view: HTMLDivElement;
