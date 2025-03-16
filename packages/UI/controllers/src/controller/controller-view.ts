@@ -14,10 +14,14 @@ export class ControllerView {
     this.input.type = type;
     this.input.id = id;
     this.input.name = id;
+
     this.label = document.createElement("label");
     this.label.textContent = label;
     this.label.htmlFor = this.input.id;
+    this.label.style.whiteSpace = "nowrap";
+
     this.body = document.createElement("span");
+    this.body.style.whiteSpace = "nowrap";
     this.body.appendChild(this.label);
     this.body.appendChild(this.input);
   }
