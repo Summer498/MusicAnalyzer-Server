@@ -1,13 +1,16 @@
-import { MelodyVM } from "@music-analyzer/melody-view/src/melody/melody-view-model";
 import { Checkbox } from "../switcher";
+
+interface MelodyBeepSwitcherSubscriber {
+  onMelodyBeepCheckChanged: (visible:boolean)=>void
+}
 
 export class MelodyBeepSwitcher extends Checkbox {
   constructor(id: string, label: string) {
     super(id, label);
     this.init()
   }
-  readonly subscribers: MelodyVM[] = [];
-  register(...subscribers: MelodyVM[]) {
+  readonly subscribers: MelodyBeepSwitcherSubscriber[] = [];
+  register(...subscribers: MelodyBeepSwitcherSubscriber[]) {
     this.subscribers.push(...subscribers);
     this.update()
   }
