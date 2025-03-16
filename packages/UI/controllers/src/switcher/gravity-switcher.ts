@@ -1,4 +1,5 @@
 import { Checkbox } from "./abstract-switcher";
+import {} from "@music-analyzer/music-analyzer-application";
 
 export class GravitySwitcher extends Checkbox {
   constructor(id: string, label: string) {

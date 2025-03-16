@@ -1,4 +1,5 @@
 import { Checkbox } from "./abstract-switcher";
+import { DMelodyMediator } from "@music-analyzer/music-analyzer-application";
 
 export class DMelodySwitcher extends Checkbox {
   constructor(id: string, label: string) {
@@ -16,8 +17,8 @@ export class DMelodyController {
     this.view.appendChild(d_melody_switcher.body);
     this.checkbox = d_melody_switcher;
   };
-  readonly subscribers: never[] = [];
-  register(...subscribers: never[]) {
+  readonly subscribers: DMelodyMediator[] = [];
+  register(...subscribers: DMelodyMediator[]) {
     this.subscribers.push(...subscribers);
   }
 }

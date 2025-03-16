@@ -1,4 +1,5 @@
 import { MelodyColorSelector } from "./melody-color-selector";
+import { ColorChangeMediator } from "@music-analyzer/music-analyzer-application";
 
 export class MelodyColorController {
   readonly view: HTMLDivElement;
@@ -10,8 +11,8 @@ export class MelodyColorController {
     this.view.style.display = "inline";
     this.view.appendChild(this.selector.body);
   }
-  readonly subscribers: never[] = [];
-  register(...subscribers: never[]) {
+  readonly subscribers: ColorChangeMediator[] = [];
+  register(...subscribers: ColorChangeMediator[]) {
     this.subscribers.push(...subscribers);
   }
 }

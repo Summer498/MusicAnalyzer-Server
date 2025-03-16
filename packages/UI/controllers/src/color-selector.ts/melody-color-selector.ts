@@ -24,7 +24,4 @@ export class MelodyColorSelector {
     this.children.forEach(e => this.body.appendChild(e.body));
   }
   readonly subscribers: never[] = [];
-  register(...subscribers: never[]) {
-    this.subscribers.push(...subscribers);
-  }
 }

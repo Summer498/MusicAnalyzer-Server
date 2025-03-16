@@ -1,4 +1,5 @@
 import { Slider } from "./abstract-slider";
+import { HierarchyLevelMediator } from "@music-analyzer/music-analyzer-application";
 
 export class HierarchyLevel extends Slider {
   constructor() {
@@ -24,8 +25,8 @@ export class HierarchyLevelController {
     this.view.appendChild(hierarchy_level.body);
     this.slider = hierarchy_level;
   }
-  readonly subscribers: never[] = [];
-  register(...subscribers: never[]) {
+  readonly subscribers: HierarchyLevelMediator[] = [];
+  register(...subscribers: HierarchyLevelMediator[]) {
     this.subscribers.push(...subscribers);
   }
 }

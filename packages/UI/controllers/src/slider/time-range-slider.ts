@@ -1,4 +1,5 @@
 import { Slider } from "./abstract-slider";
+import { TimeRangeMediator } from "@music-analyzer/music-analyzer-application";
 
 export class TimeRangeSlider extends Slider {
   constructor() {
@@ -19,8 +20,8 @@ export class TimeRangeController {
     this.view.appendChild(time_range_slider.body);
     this. slider = time_range_slider;
   }
-  readonly subscribers: never[] = [];
-  register(...subscribers: never[]) {
+  readonly subscribers: TimeRangeMediator[] = [];
+  register(...subscribers: TimeRangeMediator[]) {
     this.subscribers.push(...subscribers);
   }
 }

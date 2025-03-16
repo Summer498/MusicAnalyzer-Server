@@ -21,8 +21,4 @@ export class ColorSelector<ID extends string> {
     this.body.appendChild(this.input);
     this.body.appendChild(this.label);
   };
-  readonly subscribers: never[] = [];
-  register(...subscribers: never[]) {
-    this.subscribers.push(...subscribers);
-  }
 }

@@ -1,5 +1,6 @@
 import { MelodyBeepSwitcher } from "./melody-beep-switcher";
 import { MelodyBeepVolume } from "./melody-beep-volume";
+import { MelodyBeepMediator } from "@music-analyzer/music-analyzer-application";
 
 export class MelodyBeepController {
   readonly view: HTMLDivElement;
@@ -15,8 +16,8 @@ export class MelodyBeepController {
     this.checkbox = melody_beep_switcher;
     this.volume = melody_beep_volume;
   };
-  readonly subscribers: never[] = [];
-  register(...subscribers: never[]) {
+  readonly subscribers: MelodyBeepMediator[] = [];
+  register(...subscribers: MelodyBeepMediator[]) {
     this.subscribers.push(...subscribers);
   }
 }
