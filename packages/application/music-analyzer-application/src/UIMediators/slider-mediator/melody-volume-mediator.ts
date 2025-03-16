@@ -1,8 +1,8 @@
 import { MelodyHierarchy } from "@music-analyzer/melody-view";
 import { Slider } from "@music-analyzer/controllers";
-import { SliderMediator } from "./slider-mediator";
+import { ControllerMediator } from "../controller-mediator";
 
-export class MelodyVolumeMediator extends SliderMediator<MelodyHierarchy> {
+export class MelodyVolumeMediator extends ControllerMediator<MelodyHierarchy> {
   constructor(
     sliders: Slider[],
     melody_hierarchy: [MelodyHierarchy],

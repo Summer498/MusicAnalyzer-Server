@@ -1,8 +1,8 @@
 import { Checkbox } from "@music-analyzer/controllers";
-import { SwitcherMediator } from "./switcher-mediator";
 import { DMelodyGroup } from "@music-analyzer/melody-view";
+import { ControllerMediator } from "../controller-mediator";
 
-export class DMelodyMediator extends SwitcherMediator<DMelodyGroup> {
+export class DMelodyMediator extends ControllerMediator<DMelodyGroup> {
   constructor(
     switchers: Checkbox[],
     d_melody_collection: [DMelodyGroup]

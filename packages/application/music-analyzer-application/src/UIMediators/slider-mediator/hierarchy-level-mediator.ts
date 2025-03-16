@@ -1,11 +1,11 @@
 import { HierarchyLevel } from "@music-analyzer/controllers";
-import { SliderMediator } from "./slider-mediator";
+import { ControllerMediator } from "../controller-mediator";
 
 interface HierarchyLevelSubscriber {
   children: { length: number }
   onChangedLayer(value: number): void
 }
-export class HierarchyLevelMediator extends SliderMediator<HierarchyLevelSubscriber> {
+export class HierarchyLevelMediator extends ControllerMediator<HierarchyLevelSubscriber> {
   constructor(
     sliders: HierarchyLevel[],
     subscribers: HierarchyLevelSubscriber[]

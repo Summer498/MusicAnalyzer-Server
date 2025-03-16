@@ -1,8 +1,8 @@
 import { Checkbox } from "@music-analyzer/controllers";
 import { GravityHierarchy } from "@music-analyzer/melody-view";
-import { SwitcherMediator } from "./switcher-mediator";
+import { ControllerMediator } from "../controller-mediator";
 
-export class ChordGravityMediator extends SwitcherMediator<GravityHierarchy> {
+export class ChordGravityMediator extends ControllerMediator<GravityHierarchy> {
   constructor(
     switchers: [Checkbox],
     chord_gravities: [GravityHierarchy]
