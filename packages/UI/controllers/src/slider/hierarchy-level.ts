@@ -21,12 +21,13 @@ interface HierarchyLevelSubscriber {
 export class HierarchyLevelController {
   readonly view: HTMLDivElement;
   readonly slider: HierarchyLevel;
-  constructor() {
+  constructor(layer_count: number) {
     const hierarchy_level = new HierarchyLevel();
     this.view = document.createElement("div");
     this.view.id = "hierarchy-level";
     this.view.appendChild(hierarchy_level.body);
     this.slider = hierarchy_level;
+    this.slider.setHierarchyLevelSliderValues(layer_count)
     this.init()
   }
   readonly subscribers: HierarchyLevelSubscriber[] = [];
@@ -39,7 +40,7 @@ export class HierarchyLevelController {
     this.subscribers.forEach(e => e.onChangedLayer(value));
   }
   init() {
-      this.slider.input.addEventListener("input", this.update.bind(this));
-      this.update.bind(this)();
-    };
+    this.slider.input.addEventListener("input", this.update.bind(this));
+    this.update.bind(this)();
+  };
 }
