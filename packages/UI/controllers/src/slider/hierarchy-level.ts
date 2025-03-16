@@ -1,5 +1,4 @@
 import { Slider } from "./abstract-slider";
-import { HierarchyLevelMediator } from "@music-analyzer/music-analyzer-application";
 
 export class HierarchyLevel extends Slider {
   constructor() {
@@ -15,6 +14,10 @@ export class HierarchyLevel extends Slider {
   };
 };
 
+interface HierarchyLevelSubscriber {
+  children: { length: number }
+  onChangedLayer(value: number): void
+}
 export class HierarchyLevelController {
   readonly view: HTMLDivElement;
   readonly slider: HierarchyLevel;
@@ -25,8 +28,12 @@ export class HierarchyLevelController {
     this.view.appendChild(hierarchy_level.body);
     this.slider = hierarchy_level;
   }
-  readonly subscribers: HierarchyLevelMediator[] = [];
-  register(...subscribers: HierarchyLevelMediator[]) {
+  readonly subscribers: HierarchyLevelSubscriber[] = [];
+  register(...subscribers: HierarchyLevelSubscriber[]) {
     this.subscribers.push(...subscribers);
+  }
+  update() {
+    const value = Number(this.slider.input.value);
+    this.subscribers.forEach(e => e.onChangedLayer(value));
   }
 }

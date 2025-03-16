@@ -76,7 +76,7 @@ export class ApplicationManager {
     d_melody.register(this.analyzed.melody.d_melody_collection);
     gravity.chord_checkbox.register(this.analyzed.melody.chord_gravities);
     gravity.scale_checkbox.register(this.analyzed.melody.scale_gravities);
-    hierarchy.register(hierarchy_level_mediator);
+    hierarchy.register(e.melody.melody_hierarchy, e.melody.ir_hierarchy, e.melody.ir_plot.children[0], e.melody.time_span_tree, e.melody.scale_gravities, e.melody.chord_gravities);
     melody_beep.checkbox.register(melody_beep_mediator);
     melody_beep.volume.register(melody_volume_mediator);
     melody_color.register(color_change_mediator)
