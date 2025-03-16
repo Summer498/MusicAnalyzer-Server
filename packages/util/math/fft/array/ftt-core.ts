@@ -13,7 +13,7 @@ export const fft_core = (
   ...seq: [F32V, F32V]
 ): [F32V, F32V] => {
   const N = seq[0].length;
-  if (N == 1) { return seq; }
+  if (N <= 1) { return seq; }
 
   const E = fft_core(...[
     seq[0].filter((_, i) => i % 2 === 0),
