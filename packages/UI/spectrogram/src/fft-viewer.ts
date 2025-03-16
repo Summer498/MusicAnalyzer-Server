@@ -31,7 +31,7 @@ export class FFTViewer implements AudioReflectable {
     for (let i = 0; i < N; i++) {
       if (isNaN(freqData[i].re * 0)) { continue; }
       const x = i / (N - 1) * width;
-      const y = (0.5 - Math.log2(abs(freqData[i])) / 16) * height;
+      const y = (1 - Math.log2(1 + abs(freqData[i])) / 8) * height;
       // const y = (1 - Math.log2(1 + freqData[i]) / 8) * height;
       pathData += `L ${x},${y}`;
     }
