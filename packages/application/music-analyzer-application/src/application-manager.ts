@@ -73,7 +73,8 @@ export class ApplicationManager {
 
     const max = analyzed.hierarchical_melody.length - 1;
     const length = melodies.length
-
+    
+    /*
     const d_melody_mediator = new DMelodyMediator([d_melody.checkbox])
     const chord_gravity_mediator = new ChordGravityMediator([gravity.chord_checkbox])
     const scale_gravity_mediator = new ScaleGravityMediator([gravity.scale_checkbox])
@@ -83,7 +84,6 @@ export class ApplicationManager {
     const color_change_mediator = new ColorChangeMediator(melody_color.selector.children)
     const time_range_mediator = new TimeRangeMediator([time_range.slider], length)
 
-    /*
     d_melody_mediator.register(e.melody.d_melody_collection);
     chord_gravity_mediator.register(e.melody.chord_gravities);
     scale_gravity_mediator.register(e.melody.scale_gravities);
