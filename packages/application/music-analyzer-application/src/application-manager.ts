@@ -32,11 +32,6 @@ export class ApplicationManager {
     const { beat_info, romans, hierarchical_melody, d_melodies } = analyzed;
     const last = <T>(arr: T[]) => arr[arr.length - 1];
     const melodies = last(hierarchical_melody);
-    this.analyzed = new MusicStructureElements(
-      new BeatElements(beat_info, melodies),
-      new ChordElements(romans),
-      new MelodyElements(hierarchical_melody, d_melodies),
-    )
 
     const layer_count = analyzed.hierarchical_melody.length - 1;
     const length = melodies.length
@@ -50,6 +45,12 @@ export class ApplicationManager {
     this.controller = new Controllers(d_melody, hierarchy, time_range, gravity, melody_beep, melody_color);
     this.audio_time_mediator = new AudioReflectableRegistry();
     this.window_size_mediator = new WindowReflectableRegistry();
+
+    this.analyzed = new MusicStructureElements(
+      new BeatElements(beat_info, melodies),
+      new ChordElements(romans),
+      new MelodyElements(hierarchical_melody, d_melodies),
+    )
 
     const e = this.analyzed;
     d_melody.register(e.melody.d_melody_collection);
