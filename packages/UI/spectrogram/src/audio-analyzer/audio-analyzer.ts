@@ -15,7 +15,7 @@ export class AudioAnalyzer {
     this.analyser = this.audioCtx.createAnalyser();
 
     audioElement.addEventListener("play", resumeAudioCtx(this.audioCtx));
-    this.analyser.fftSize = 2048;
+    this.analyser.fftSize = 1024;
     connect(this.source, this.analyser, this.audioCtx.destination);
   }
 
