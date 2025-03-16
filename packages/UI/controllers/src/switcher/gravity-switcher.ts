@@ -1,7 +1,7 @@
 import { Checkbox } from "./abstract-switcher";
 
 export interface GravitySwitcherSubscriber {
-  svg: { style: { visibility: string } }
+  onUpdateGravityVisibility(visible: boolean): void
 }
 
 export class GravitySwitcher extends Checkbox {
@@ -15,8 +15,7 @@ export class GravitySwitcher extends Checkbox {
     this.update()
   }
   update() {
-    const visibility = this.input.checked ? "visible" : "hidden";
-    this.subscribers.forEach(e => e.svg.style.visibility = visibility);
+    this.subscribers.forEach(e => e.onUpdateGravityVisibility(this.input.checked));
   }
   init() {
     this.input.addEventListener("input", this.update.bind(this));
