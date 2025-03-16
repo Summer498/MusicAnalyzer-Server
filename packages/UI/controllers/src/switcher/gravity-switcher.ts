@@ -1,13 +1,16 @@
-import { GravityHierarchy } from "@music-analyzer/melody-view";
 import { Checkbox } from "./abstract-switcher";
+
+interface GravitySwitcherSubscriber {
+  svg: { style: { visibility: string } }
+}
 
 export class GravitySwitcher extends Checkbox {
   constructor(id: string, label: string) {
     super(id, label);
     this.init()
   };
-  readonly subscribers: GravityHierarchy[] = [];
-  register(...subscribers: GravityHierarchy[]) {
+  readonly subscribers: GravitySwitcherSubscriber[] = [];
+  register(...subscribers: GravitySwitcherSubscriber[]) {
     this.subscribers.push(...subscribers);
     this.update()
   }
