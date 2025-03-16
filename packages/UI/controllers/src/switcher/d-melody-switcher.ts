@@ -3,7 +3,20 @@ import { Checkbox } from "./abstract-switcher";
 class DMelodySwitcher extends Checkbox {
   constructor(id: string, label: string) {
     super(id, label);
+    this.init();
   }
+  readonly subscribers: DMelodyControllerSubscriber[] = [];
+  register(...subscribers: DMelodyControllerSubscriber[]) {
+    this.subscribers.push(...subscribers);
+    this.update()
+  }
+  update() {
+    this.subscribers.forEach(e => e.onDMelodyVisibilityChanged(this.input.checked));
+  }
+  init() {
+    this.input.addEventListener("input", this.update.bind(this));
+    this.update.bind(this)();
+  };
 }
 
 export interface DMelodyControllerSubscriber {
@@ -19,18 +32,6 @@ export class DMelodyController {
     this.view.id = "d-melody";
     this.view.appendChild(d_melody_switcher.body);
     this.checkbox = d_melody_switcher;
-    this.init();
   };
-  readonly subscribers: DMelodyControllerSubscriber[] = [];
-  register(...subscribers: DMelodyControllerSubscriber[]) {
-    this.subscribers.push(...subscribers);
-    this.update()
-  }
-  update() {
-    this.subscribers.forEach(e => e.onDMelodyVisibilityChanged(this.checkbox.input.checked));
-  }
-  init() {
-    this.checkbox.input.addEventListener("input", this.update.bind(this));
-    this.update.bind(this)();
-  };
+  register(...subscribers: DMelodyControllerSubscriber[]) { this.checkbox.register(...subscribers) }
 }
