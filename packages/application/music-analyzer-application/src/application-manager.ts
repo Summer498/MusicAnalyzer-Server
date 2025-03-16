@@ -65,25 +65,11 @@ export class ApplicationManager {
     new DMelodyMediator([d_melody.checkbox], [e.melody.d_melody_collection]);
     new ScaleGravityMediator([gravity.scale_checkbox], [e.melody.scale_gravities]);
     new ChordGravityMediator([gravity.chord_checkbox], [e.melody.chord_gravities]);
-    new HierarchyLevelMediator([hierarchy.slider], [
-      e.melody.melody_hierarchy,
-      e.melody.ir_hierarchy,
-      e.melody.ir_plot.children[0],
-      e.melody.time_span_tree,
-      e.melody.scale_gravities,
-      e.melody.chord_gravities
-    ]);
+    new HierarchyLevelMediator([hierarchy.slider], [e.melody.melody_hierarchy, e.melody.ir_hierarchy, e.melody.ir_plot.children[0], e.melody.time_span_tree, e.melody.scale_gravities, e.melody.chord_gravities]);
     new MelodyBeepMediator([melody_beep.checkbox], [e.melody.melody_hierarchy]);
     new MelodyVolumeMediator([melody_beep.volume], [e.melody.melody_hierarchy]);
     new TimeRangeMediator([time_range.slider], [e.melody.melody_hierarchy], this.audio_time_mediator, this.window_size_mediator);
-    new ColorChangeMediator(
-      melody_color.selector.children,
-      [
-        e.melody.ir_hierarchy,
-        e.melody.ir_plot.children[0],
-        e.melody.melody_hierarchy,
-        e.melody.time_span_tree
-      ]
+    new ColorChangeMediator(melody_color.selector.children, [e.melody.ir_hierarchy, e.melody.ir_plot.children[0], e.melody.melody_hierarchy, e.melody.time_span_tree]
     );
   }
 }
