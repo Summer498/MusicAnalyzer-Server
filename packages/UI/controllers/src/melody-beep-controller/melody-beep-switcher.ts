@@ -13,5 +13,9 @@ export class MelodyBeepSwitcher extends Checkbox {
     const visibility = this.input.checked;
     this.subscribers.forEach(e => e.onMelodyBeepCheckChanged(visibility));
   };
+  init() {
+    this.input.addEventListener("input", this.update.bind(this));
+    this.update.bind(this)();
+  };
 };
 
