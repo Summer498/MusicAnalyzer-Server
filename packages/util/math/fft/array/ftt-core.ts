@@ -3,7 +3,7 @@ import { addV2VC, mltV2VC, subV2VC } from "./complex";
 
 const root_of_unity = new RootOfUnity();
 
-type F32V = Float32Array<ArrayBuffer>
+export type F32V = Float32Array<ArrayBuffer>
 
 const addAndSub = <T extends TypedArray>(x: [T, T], y: [T, T]) => [
   addV2VC(x, y),
