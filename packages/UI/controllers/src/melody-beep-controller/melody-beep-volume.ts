@@ -1,5 +1,8 @@
 import { Slider } from "../slider";
-import { MelodyVM } from "@music-analyzer/melody-view/src/melody/melody-view-model";
+
+interface MelodyBeepVolumeSubscriber {
+  onMelodyVolumeBarChanged: (value: number) => void
+}
 
 export class MelodyBeepVolume extends Slider {
   constructor() {
@@ -9,8 +12,8 @@ export class MelodyBeepVolume extends Slider {
   override updateDisplay() {
     this.display.textContent = `volume: ${this.input.value}`;
   }
-  readonly subscribers: MelodyVM[] = [];
-  register(...subscribers: MelodyVM[]) {
+  readonly subscribers: MelodyBeepVolumeSubscriber[] = [];
+  register(...subscribers: MelodyBeepVolumeSubscriber[]) {
     this.subscribers.push(...subscribers);
     this.update()
   }
