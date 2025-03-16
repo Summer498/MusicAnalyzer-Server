@@ -16,4 +16,8 @@ export class MelodyBeepVolume extends Slider {
     const value = Number(this.input.value);
     this.subscribers.forEach(e => e.onMelodyVolumeBarChanged(value));
   }
+  init() {
+    this.input.addEventListener("input", this.update.bind(this));
+    this.update.bind(this)();
+  };
 }
