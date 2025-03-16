@@ -23,6 +23,6 @@ export abstract class Controller<T> {
   abstract update(): void;
   init() {
     this.input.addEventListener("input", this.update.bind(this));
-    this.update.bind(this)();
+    this.update();
   };
 }
