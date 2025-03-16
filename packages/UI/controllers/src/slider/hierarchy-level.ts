@@ -36,4 +36,8 @@ export class HierarchyLevelController {
     const value = Number(this.slider.input.value);
     this.subscribers.forEach(e => e.onChangedLayer(value));
   }
+  init() {
+      this.slider.input.addEventListener("input", this.update.bind(this));
+      this.update.bind(this)();
+    };
 }
