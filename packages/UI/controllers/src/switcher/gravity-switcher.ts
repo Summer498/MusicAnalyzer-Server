@@ -1,5 +1,5 @@
 import { Checkbox } from "./abstract-switcher";
-import {} from "@music-analyzer/music-analyzer-application";
+import { ChordGravityMediator } from "@music-analyzer/music-analyzer-application";
 
 export class GravitySwitcher extends Checkbox {
   constructor(id: string, label: string) {
@@ -25,8 +25,8 @@ export class GravityController {
     this.chord_checkbox = chord_gravity_switcher;
     this.scale_checkbox = scale_gravity_switcher;
   };
-  readonly subscribers: never[] = [];
-  register(...subscribers: never[]) {
+  readonly subscribers: ChordGravityMediator[] = [];
+  register(...subscribers: ChordGravityMediator[]) {
     this.subscribers.push(...subscribers);
   }
 }
