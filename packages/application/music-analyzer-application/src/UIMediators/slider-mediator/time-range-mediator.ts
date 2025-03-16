@@ -1,21 +1,13 @@
 import { TimeRangeSlider } from "@music-analyzer/controllers";
-import { MelodyHierarchy } from "@music-analyzer/melody-view";
 import { PianoRollRatio } from "@music-analyzer/view-parameters";
-import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 import { ControllerMediator } from "../controller-mediator";
-
-const last = <T>(arr: T[]) => { return arr[arr.length - 1]; };
 
 export class TimeRangeMediator extends ControllerMediator<{ onUpdate: () => void }> {
   constructor(
     publisher: [TimeRangeSlider],
-    melody: [MelodyHierarchy],
-    ...subscribers: [AudioReflectableRegistry,
-     WindowReflectableRegistry]
+    length: number,
   ) {
     super(publisher);
-    this.register(...subscribers);
-    const length = last(last(melody[0].children).children).model.time.end;
     if (length > 30) {
       const window = 30;  // 秒のつもりだが, 秒になってない感じがする
       const ratio = window / length;

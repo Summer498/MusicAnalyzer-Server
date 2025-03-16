@@ -5,10 +5,8 @@ import { ControllerMediator } from "../controller-mediator";
 export class MelodyBeepMediator extends ControllerMediator<MelodyHierarchy> {
   constructor(
     publisher: Checkbox[],
-    subscribers: [MelodyHierarchy],
   ) {
     super(publisher);
-    this.register(...subscribers);
   }
   override update() {
     const visibility = this.publisher[0].input.checked;

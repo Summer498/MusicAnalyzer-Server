@@ -8,12 +8,10 @@ interface HierarchyLevelSubscriber {
 export class HierarchyLevelMediator extends ControllerMediator<HierarchyLevelSubscriber> {
   constructor(
     publisher: HierarchyLevel[],
-    subscribers: HierarchyLevelSubscriber[]
+    layer_count: number,
   ) {
-    const max = Math.max(...subscribers.map(e => e.children.length - 1));
-    publisher[0].setHierarchyLevelSliderValues(max);
+    publisher[0].setHierarchyLevelSliderValues(layer_count);
     super(publisher);
-    this.register(...subscribers);
   }
   override update() {
     const value = Number(this.publisher[0].input.value);
