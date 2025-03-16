@@ -1,3 +1,4 @@
+import { PianoRollRatio } from "@music-analyzer/view-parameters";
 import { Slider } from "./abstract-slider";
 import { TimeRangeMediator } from "@music-analyzer/music-analyzer-application";
 
@@ -10,6 +11,8 @@ export class TimeRangeSlider extends Slider {
   }
 }
 
+interface TimeRangeSubscriber { onUpdate: () => void }
+
 export class TimeRangeController {
   readonly view: HTMLDivElement;
   readonly slider: TimeRangeSlider;
@@ -18,10 +21,17 @@ export class TimeRangeController {
     this.view = document.createElement("div");
     this.view.id = "time-length";
     this.view.appendChild(time_range_slider.body);
-    this. slider = time_range_slider;
+    this.slider = time_range_slider;
   }
-  readonly subscribers: TimeRangeMediator[] = [];
-  register(...subscribers: TimeRangeMediator[]) {
+  readonly subscribers: TimeRangeSubscriber[] = [];
+  register(...subscribers: TimeRangeSubscriber[]) {
     this.subscribers.push(...subscribers);
+  }
+  update() {
+    const value = Number(this.slider.input.value);
+    const max = Number(this.slider.input.max);
+    const ratio = Math.pow(2, value - max);
+    PianoRollRatio.set(ratio);
+    this.subscribers.forEach(e => e.onUpdate());
   }
 }

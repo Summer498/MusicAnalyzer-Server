@@ -80,7 +80,7 @@ export class ApplicationManager {
     melody_beep.checkbox.register(...e.melody.melody_hierarchy.children.flatMap(e=>e.children.flatMap(e=>e)));
     melody_beep.volume.register(...e.melody.melody_hierarchy.children.flatMap(e=>e.children.flatMap(e=>e)));
     melody_color.register(e.melody.ir_hierarchy, e.melody.ir_plot.children[0], e.melody.melody_hierarchy, e.melody.time_span_tree)
-    time_range.register(time_range_mediator);
+    time_range.register(this.audio_time_mediator, this.window_size_mediator);
     d_melody_mediator.register(e.melody.d_melody_collection);
     chord_gravity_mediator.register(e.melody.chord_gravities);
     scale_gravity_mediator.register(e.melody.scale_gravities);
