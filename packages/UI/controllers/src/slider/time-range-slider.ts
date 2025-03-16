@@ -22,6 +22,7 @@ export class TimeRangeController {
     this.view.id = "time-length";
     this.view.appendChild(time_range_slider.body);
     this.slider = time_range_slider;
+    this.init()
   }
   readonly subscribers: TimeRangeSubscriber[] = [];
   register(...subscribers: TimeRangeSubscriber[]) {

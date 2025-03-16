@@ -27,6 +27,7 @@ export class HierarchyLevelController {
     this.view.id = "hierarchy-level";
     this.view.appendChild(hierarchy_level.body);
     this.slider = hierarchy_level;
+    this.init()
   }
   readonly subscribers: HierarchyLevelSubscriber[] = [];
   register(...subscribers: HierarchyLevelSubscriber[]) {

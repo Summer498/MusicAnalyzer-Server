@@ -17,6 +17,7 @@ export class MelodyColorController {
     this.view.id = "melody-color-selector";
     this.view.style.display = "inline";
     this.view.appendChild(this.selector.body);
+    this.init()
   }
   readonly subscribers: ColorChangeSubscriber[] = [];
   register(...subscribers: ColorChangeSubscriber[]) {

@@ -4,6 +4,7 @@ import { Checkbox } from "./abstract-switcher";
 export class GravitySwitcher extends Checkbox {
   constructor(id: string, label: string) {
     super(id, label);
+    this.init()
   };
   readonly subscribers: GravityHierarchy[] = [];
   register(...subscribers: GravityHierarchy[]) {

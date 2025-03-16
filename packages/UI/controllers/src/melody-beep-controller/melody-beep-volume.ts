@@ -4,6 +4,7 @@ import { MelodyVM } from "@music-analyzer/melody-view/src/melody/melody-view-mod
 export class MelodyBeepVolume extends Slider {
   constructor() {
     super("melody_beep_volume", "", 0, 100, 1);
+    this.init()
   };
   override updateDisplay() {
     this.display.textContent = `volume: ${this.input.value}`;
