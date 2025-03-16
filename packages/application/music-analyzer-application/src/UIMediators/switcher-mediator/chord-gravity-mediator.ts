@@ -7,7 +7,8 @@ export class ChordGravityMediator extends ControllerMediator<GravityHierarchy> {
     publisher: [Checkbox],
     subscribers: [GravityHierarchy]
   ) {
-    super(publisher, subscribers);
+    super(publisher);
+    this.register(...subscribers);
   }
   override update() {
     const visibility = this.publisher[0].input.checked ? "visible" : "hidden";

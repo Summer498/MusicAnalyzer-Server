@@ -7,7 +7,8 @@ export class DMelodyMediator extends ControllerMediator<DMelodyGroup> {
     publisher: Checkbox[],
     subscribers: [DMelodyGroup]
   ) {
-    super(publisher, subscribers);
+    super(publisher);
+    this.register(...subscribers);
   }
   override update() {
     const visibility = this.publisher[0].input.checked ? "visible" : "hidden";

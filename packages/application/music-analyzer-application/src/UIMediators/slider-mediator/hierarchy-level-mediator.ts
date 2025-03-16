@@ -12,7 +12,8 @@ export class HierarchyLevelMediator extends ControllerMediator<HierarchyLevelSub
   ) {
     const max = Math.max(...subscribers.map(e => e.children.length - 1));
     publisher[0].setHierarchyLevelSliderValues(max);
-    super(publisher, subscribers);
+    super(publisher);
+    this.register(...subscribers);
   }
   override update() {
     const value = Number(this.publisher[0].input.value);

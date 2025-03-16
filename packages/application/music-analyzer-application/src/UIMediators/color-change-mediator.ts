@@ -12,7 +12,8 @@ export class ColorChangeMediator extends ControllerMediator<ColorChangeSubscribe
     publisher: ColorSelector<IRM_ColorNameIDs>[],
     subscribers: ColorChangeSubscriber[]
   ) {
-    super(publisher, subscribers);
+    super(publisher);
+    this.register(...subscribers);
     this.init(publisher);
   }
   protected init(controllers: ColorSelector<IRM_ColorNameIDs>[]) {

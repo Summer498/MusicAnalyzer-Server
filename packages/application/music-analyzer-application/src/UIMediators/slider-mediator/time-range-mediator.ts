@@ -10,10 +10,11 @@ export class TimeRangeMediator extends ControllerMediator<{ onUpdate: () => void
   constructor(
     publisher: [TimeRangeSlider],
     melody: [MelodyHierarchy],
-    audio_subscriber: AudioReflectableRegistry,
-    window_subscriber: WindowReflectableRegistry,
+    ...subscribers: [AudioReflectableRegistry,
+     WindowReflectableRegistry]
   ) {
-    super(publisher, [audio_subscriber, window_subscriber]);
+    super(publisher);
+    this.register(...subscribers);
     const length = last(last(melody[0].children).children).model.time.end;
     if (length > 30) {
       const window = 30;  // 秒のつもりだが, 秒になってない感じがする

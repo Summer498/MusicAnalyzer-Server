@@ -5,9 +5,10 @@ import { ControllerMediator } from "../controller-mediator";
 export class MelodyVolumeMediator extends ControllerMediator<MelodyHierarchy> {
   constructor(
     publisher: Slider[],
-    melody_hierarchy: [MelodyHierarchy],
+    subscribers: [MelodyHierarchy],
   ) {
-    super(publisher, melody_hierarchy);
+    super(publisher);
+    this.register(...subscribers);
   }
 
   override update() {
