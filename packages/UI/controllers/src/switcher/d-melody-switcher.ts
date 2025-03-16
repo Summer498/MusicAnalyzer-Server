@@ -16,4 +16,8 @@ export class DMelodyController {
     this.view.appendChild(d_melody_switcher.body);
     this.checkbox = d_melody_switcher;
   };
+  readonly subscribers: never[] = [];
+  register(...subscribers: never[]) {
+    this.subscribers.push(...subscribers);
+  }
 }

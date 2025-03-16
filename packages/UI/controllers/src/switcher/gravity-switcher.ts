@@ -24,4 +24,8 @@ export class GravityController {
     this.chord_checkbox = chord_gravity_switcher;
     this.scale_checkbox = scale_gravity_switcher;
   };
+  readonly subscribers: never[] = [];
+  register(...subscribers: never[]) {
+    this.subscribers.push(...subscribers);
+  }
 }

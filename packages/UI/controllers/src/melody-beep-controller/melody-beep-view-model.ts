@@ -15,4 +15,8 @@ export class MelodyBeepController {
     this.checkbox = melody_beep_switcher;
     this.volume = melody_beep_volume;
   };
+  readonly subscribers: never[] = [];
+  register(...subscribers: never[]) {
+    this.subscribers.push(...subscribers);
+  }
 }

@@ -10,4 +10,8 @@ export class MelodyColorController {
     this.view.style.display = "inline";
     this.view.appendChild(this.selector.body);
   }
+  readonly subscribers: never[] = [];
+  register(...subscribers: never[]) {
+    this.subscribers.push(...subscribers);
+  }
 }

@@ -5,7 +5,6 @@ type HTMLInputElementType = "button" | "checkbox" | "color" | "date" | "datetime
 export abstract class Controller {
   readonly body: HTMLSpanElement;
   readonly input: HTMLInputElement;
-  readonly subscribers: never[]
   constructor(
     type: HTMLInputElementType,
     id: string,
@@ -14,9 +13,5 @@ export abstract class Controller {
     const e = new ControllerView(type, id, label);
     this.body = e.body;
     this.input = e.input
-    this.subscribers = [];
-  }
-  register(...subscribers: never[]) {
-    this.subscribers.push(...subscribers);
   }
 }

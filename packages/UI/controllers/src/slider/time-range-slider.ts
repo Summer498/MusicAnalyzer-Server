@@ -19,4 +19,8 @@ export class TimeRangeController {
     this.view.appendChild(time_range_slider.body);
     this. slider = time_range_slider;
   }
+  readonly subscribers: never[] = [];
+  register(...subscribers: never[]) {
+    this.subscribers.push(...subscribers);
+  }
 }
