@@ -14,7 +14,7 @@ const get_grb_on_parametric_scale = (archetype: Triad): [number, number, number]
   return [64, 64, 64]
 };
 
-export function get_color_on_parametric_scale(archetype: Triad | Dyad | Monad | Null_ad) {
+export function get_color_on_parametric_scale(archetype: Triad) {
   if (
     archetype instanceof Dyad
     || archetype instanceof Monad

@@ -1,7 +1,7 @@
 import { BlackKeyPrm, bracket_height, NoteSize } from "@music-analyzer/view-parameters";
 import { MVVM_Model } from "@music-analyzer/view";
 import { ReductionModel } from "../reduction-model";
-import { Dyad, Monad, Null_ad, Triad } from "@music-analyzer/irm";
+import { Triad } from "@music-analyzer/irm";
 
 const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
@@ -20,7 +20,7 @@ export class ReductionViewModel extends MVVM_Model {
   get cw() { return this.#cw; }
   get strong() { return this.#strong; }
   set strong(value: boolean) { this.#strong = value; }
-  readonly archetype: Triad | Dyad | Monad | Null_ad;
+  readonly archetype: Triad;
   constructor(
     readonly model: ReductionModel,
   ) {
@@ -32,7 +32,7 @@ export class ReductionViewModel extends MVVM_Model {
     this.y = convertToCoordinate((2 + this.model.layer)) * bracket_height;
     this.h = BlackKeyPrm.height * bracket_height;
     this.#strong = false;
-    this.archetype = model.archetype
+    this.archetype = model.archetype as Triad
   }
   getViewX(x: number) { return scaled(x); }
   getViewW(w: number) { return scaled(w); }

@@ -1,4 +1,4 @@
-import { Dyad, Monad, Null_ad, Triad } from "@music-analyzer/irm";
+import { Triad } from "@music-analyzer/irm";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { Time } from "@music-analyzer/time-and";
 import { MVVM_Model } from "@music-analyzer/view";
@@ -6,7 +6,7 @@ import { MVVM_Model } from "@music-analyzer/view";
 export class ReductionModel extends MVVM_Model {
   readonly time: Time;
   readonly head: Time;
-  readonly archetype: Triad | Dyad | Monad | Null_ad;
+  readonly archetype: Triad;
   constructor(
     e: TimeAndAnalyzedMelody,
     readonly layer: number,
@@ -14,6 +14,6 @@ export class ReductionModel extends MVVM_Model {
     super();
     this.time = e.time
     this.head = e.head
-    this.archetype = e.melody_analysis.implication_realization;
+    this.archetype = e.melody_analysis.implication_realization as Triad;
   }
 }
