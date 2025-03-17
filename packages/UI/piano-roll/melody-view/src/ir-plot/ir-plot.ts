@@ -1,8 +1,7 @@
 import { AudioReflectable, WindowReflectable } from "@music-analyzer/view";
 import { IRPlotHierarchy } from "./ir-plot-hierarchy";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { ColorChangeSubscriber, HierarchyLevelSubscriber } from "@music-analyzer/controllers";
-import { hasArchetype } from "@music-analyzer/controllers/src/color-selector.ts/melody-color-controller";
+import { hasArchetype, ColorChangeSubscriber, HierarchyLevelSubscriber } from "@music-analyzer/controllers";
 
 export class IRPlot implements AudioReflectable, WindowReflectable, HierarchyLevelSubscriber, ColorChangeSubscriber {
   readonly svg: SVGSVGElement;
