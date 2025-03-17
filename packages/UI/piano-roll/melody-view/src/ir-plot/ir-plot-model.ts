@@ -1,3 +1,4 @@
+import { Triad } from "@music-analyzer/irm";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MVVM_Model } from "@music-analyzer/view";
 import { NowAt } from "@music-analyzer/view-parameters";
@@ -5,7 +6,7 @@ import { NowAt } from "@music-analyzer/view-parameters";
 export class IRPlotModel extends MVVM_Model {
   #index: number;
   #cache: TimeAndAnalyzedMelody[];
-  get archetype() { return this.getCurrentNote().melody_analysis.implication_realization; }
+  get archetype() { return this.getCurrentNote().melody_analysis.implication_realization as Triad; }
   constructor(
     readonly melody_series: TimeAndAnalyzedMelody[],
   ) {
