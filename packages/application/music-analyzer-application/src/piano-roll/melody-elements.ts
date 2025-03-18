@@ -1,7 +1,7 @@
-import { DMelodyController } from "@music-analyzer/controllers";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { GravityHierarchy, DMelodyGroup, IRSymbolHierarchy, MelodyHierarchy, ReductionHierarchy, IRPlot } from "@music-analyzer/melody-view";
 import { AudioReflectable, WindowReflectable } from "@music-analyzer/view";
+import { Controllers } from "../controllers";
 
 export class MelodyElements implements AudioReflectable, WindowReflectable {
   readonly children: (AudioReflectable & WindowReflectable)[];
@@ -14,9 +14,12 @@ export class MelodyElements implements AudioReflectable, WindowReflectable {
   readonly time_span_tree: ReductionHierarchy;
   constructor(
     hierarchical_melody: TimeAndAnalyzedMelody[][],
-    d_melodies: TimeAndAnalyzedMelody[]
+    d_melodies: TimeAndAnalyzedMelody[],
+    controllers: Controllers,
   ) {
-    this.d_melody_collection = new DMelodyGroup(d_melodies, [new DMelodyController()]);
+    const { d_melody, hierarchy, time_range, gravity, melody_color, melody_beep } = controllers;
+    
+    this.d_melody_collection = new DMelodyGroup(d_melodies, [d_melody]);
     this.melody_hierarchy = new MelodyHierarchy(hierarchical_melody);
     this.ir_hierarchy = new IRSymbolHierarchy(hierarchical_melody);
     this.ir_plot = new IRPlot(hierarchical_melody);

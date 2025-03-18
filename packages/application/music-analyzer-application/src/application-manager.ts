@@ -32,7 +32,7 @@ export class ApplicationManager {
     this.analyzed = new MusicStructureElements(
       new BeatElements(beat_info, melodies),
       new ChordElements(romans),
-      new MelodyElements(hierarchical_melody, d_melodies),
+      new MelodyElements(hierarchical_melody, d_melodies, this.controller),
     )
     const e = this.analyzed;
 
