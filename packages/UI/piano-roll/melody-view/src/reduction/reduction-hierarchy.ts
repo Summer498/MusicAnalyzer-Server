@@ -9,9 +9,9 @@ export class ReductionHierarchy extends CollectionHierarchy<ReductionLayer> impl
     super("time-span-reduction", hierarchical_melodies.map((e, l) => new ReductionLayer(e, l)));
   }
   onChangedLayer(value: number) {
-    const visible_layer = this.children.filter(layer => value >= layer.layer);
-    this.show.forEach(layer => (layer as ReductionLayer).renewStrong(value));
-    visible_layer.forEach(layer => (layer as ReductionLayer).renewStrong(value));
+    const visible_layer = this.children.filter(e => value >= e.layer);
+    this.show.forEach(e => e.renewStrong(value));
+    visible_layer.forEach(e => e.renewStrong(value));
     this.setShow(visible_layer);
   }
   setColor(getColor: (e: ReductionViewModel) => string) {
