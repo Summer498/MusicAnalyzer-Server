@@ -24,16 +24,17 @@ export class ApplicationManager {
     const layer_count = analyzed.hierarchical_melody.length - 1;
     const length = melodies.length
 
+    this.controller = new Controllers(layer_count, length, !this.NO_CHORD);
+    const { d_melody, hierarchy, time_range, gravity, melody_color, melody_beep } = this.controller;
+    this.audio_time_mediator = new AudioReflectableRegistry();
+    this.window_size_mediator = new WindowReflectableRegistry();
+
     this.analyzed = new MusicStructureElements(
       new BeatElements(beat_info, melodies),
       new ChordElements(romans),
       new MelodyElements(hierarchical_melody, d_melodies),
     )
     const e = this.analyzed;
-    this.controller = new Controllers(layer_count, length, !this.NO_CHORD);
-    const { d_melody, hierarchy, time_range, gravity, melody_color, melody_beep } = this.controller;
-    this.audio_time_mediator = new AudioReflectableRegistry();
-    this.window_size_mediator = new WindowReflectableRegistry();
 
     // d_melody.register(e.melody.d_melody_collection);
     gravity.chord_checkbox.register(e.melody.chord_gravities);
