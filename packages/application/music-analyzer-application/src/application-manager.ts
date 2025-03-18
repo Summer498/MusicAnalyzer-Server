@@ -35,12 +35,12 @@ export class ApplicationManager {
 
     const layer_count = analyzed.hierarchical_melody.length - 1;
     const length = melodies.length
-    // const d_melody = new DMelodyController()
-    const gravity = new GravityController(!this.NO_CHORD)
+    const d_melody = new DMelodyController()
     const hierarchy = new HierarchyLevelController(layer_count)
+    const time_range = new TimeRangeController(length)
+    const gravity = new GravityController(!this.NO_CHORD)
     const melody_beep = new MelodyBeepController()
     const melody_color = new MelodyColorController()
-    const time_range = new TimeRangeController(length)
 
     this.analyzed = new MusicStructureElements(
       new BeatElements(beat_info, melodies),
