@@ -35,25 +35,31 @@ export class ApplicationManager {
 
     const layer_count = analyzed.hierarchical_melody.length - 1;
     const length = melodies.length
-    const d_melody = new DMelodyController()
+    // const d_melody = new DMelodyController()
     const gravity = new GravityController(!this.NO_CHORD)
     const hierarchy = new HierarchyLevelController(layer_count)
     const melody_beep = new MelodyBeepController()
     const melody_color = new MelodyColorController()
     const time_range = new TimeRangeController(length)
 
-    this.controller = new Controllers(d_melody, hierarchy, time_range, gravity, melody_beep, melody_color);
-    this.audio_time_mediator = new AudioReflectableRegistry();
-    this.window_size_mediator = new WindowReflectableRegistry();
-
     this.analyzed = new MusicStructureElements(
       new BeatElements(beat_info, melodies),
       new ChordElements(romans),
       new MelodyElements(hierarchical_melody, d_melodies),
     )
-
     const e = this.analyzed;
-    d_melody.register(e.melody.d_melody_collection);
+    this.controller = new Controllers(
+      e.melody.d_melody_collection.controller[0],
+      hierarchy,
+      time_range,
+      gravity,
+      melody_beep,
+      melody_color
+    );
+    this.audio_time_mediator = new AudioReflectableRegistry();
+    this.window_size_mediator = new WindowReflectableRegistry();
+
+    // d_melody.register(e.melody.d_melody_collection);
     gravity.chord_checkbox.register(e.melody.chord_gravities);
     gravity.scale_checkbox.register(e.melody.scale_gravities);
     hierarchy.register(e.melody.melody_hierarchy, e.melody.ir_hierarchy, e.melody.ir_plot, e.melody.time_span_tree, e.melody.scale_gravities, e.melody.chord_gravities);
