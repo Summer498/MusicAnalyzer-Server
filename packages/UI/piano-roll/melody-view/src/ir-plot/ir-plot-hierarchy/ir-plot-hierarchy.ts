@@ -24,8 +24,8 @@ export class IRPlotHierarchy implements AudioReflectable, WindowReflectable {
   }
   updateLayer() {
     const visible_layer = this.children
-      .filter(layer => layer.child.model.is_visible)
-      .filter(layer => 1 < layer.layer && layer.layer <= this.#visible_layer);
+      .filter(e => e.child.model.is_visible)
+      .filter(e => 1 < e.layer && e.layer <= this.#visible_layer);
     this.view.updateCircleVisibility(visible_layer)
   }
   onChangedLayer(value: number) {
