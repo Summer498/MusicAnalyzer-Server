@@ -4,25 +4,38 @@ import { AnalyzedDataContainer } from "./containers";
 import { BeatElements, ChordElements, MelodyElements, MusicStructureElements } from "./piano-roll";
 
 class Controllers {
-  readonly div: HTMLDivElement;
+  readonly div: HTMLDivElement
+  readonly d_melody: DMelodyController
+  readonly hierarchy: HierarchyLevelController
+  readonly time_range: TimeRangeController
+  readonly gravity: GravityController
+  readonly melody_beep: MelodyBeepController
+  readonly melody_color: MelodyColorController
+
   constructor(
-    readonly d_melody: DMelodyController,
-    readonly hierarchy: HierarchyLevelController,
-    readonly time_range: TimeRangeController,
-    readonly gravity: GravityController,
-    readonly melody_beep: MelodyBeepController,
-    readonly melody_color: MelodyColorController,
+    layer_count: number,
+    length: number,
+    gravity_visible: boolean,
   ) {
     this.div = document.createElement("div");
     this.div.id = "controllers";
     this.div.style = "margin-top:20px";
+
+    this.d_melody = new DMelodyController();
+    this.hierarchy = new HierarchyLevelController(layer_count);
+    this.time_range = new TimeRangeController(length);
+    this.gravity = new GravityController(gravity_visible);
+    this.melody_beep = new MelodyBeepController();
+    this.melody_color = new MelodyColorController();
+
+
     [
-      d_melody,
-      hierarchy,
-      time_range,
-      gravity,
-      melody_beep,
-      melody_color,
+      this.d_melody,
+      this.hierarchy,
+      this.time_range,
+      this.gravity,
+      this.melody_beep,
+      this.melody_color,
     ].forEach(e => this.div.appendChild(e.view))
   }
 }
@@ -47,12 +60,6 @@ export class ApplicationManager {
 
     const layer_count = analyzed.hierarchical_melody.length - 1;
     const length = melodies.length
-    const d_melody = new DMelodyController()
-    const hierarchy = new HierarchyLevelController(layer_count)
-    const time_range = new TimeRangeController(length)
-    const gravity = new GravityController(!this.NO_CHORD)
-    const melody_beep = new MelodyBeepController()
-    const melody_color = new MelodyColorController()
 
     this.analyzed = new MusicStructureElements(
       new BeatElements(beat_info, melodies),
@@ -60,14 +67,8 @@ export class ApplicationManager {
       new MelodyElements(hierarchical_melody, d_melodies),
     )
     const e = this.analyzed;
-    this.controller = new Controllers(
-      d_melody,
-      hierarchy,
-      time_range,
-      gravity,
-      melody_beep,
-      melody_color
-    );
+    this.controller = new Controllers(layer_count, length, !this.NO_CHORD);
+    const { d_melody, hierarchy, time_range, gravity, melody_color, melody_beep } = this.controller;
     this.audio_time_mediator = new AudioReflectableRegistry();
     this.window_size_mediator = new WindowReflectableRegistry();
 
