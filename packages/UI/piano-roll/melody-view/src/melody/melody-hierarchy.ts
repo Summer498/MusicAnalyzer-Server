@@ -4,7 +4,7 @@ import { MelodyLayer } from "./melody-layer";
 import { MelodyModel } from "./melody-model";
 import { ColorChangeSubscriber, HierarchyLevelSubscriber, MelodyBeepSwitcherSubscriber, MelodyBeepVolumeSubscriber } from "@music-analyzer/controllers";
 
-export class MelodyHierarchy extends CollectionHierarchy<MelodyLayer> implements HierarchyLevelSubscriber, MelodyBeepSwitcherSubscriber, MelodyBeepVolumeSubscriber, ColorChangeSubscriber{
+export class MelodyHierarchy extends CollectionHierarchy<MelodyLayer> implements HierarchyLevelSubscriber, MelodyBeepSwitcherSubscriber, MelodyBeepVolumeSubscriber, ColorChangeSubscriber {
   get show() { return this._show; }
   #volume: number;
   #check: boolean;
@@ -17,17 +17,11 @@ export class MelodyHierarchy extends CollectionHierarchy<MelodyLayer> implements
   }
   onMelodyBeepCheckChanged(do_melody_beep: boolean) {
     this.#check = do_melody_beep;
-    this.show.forEach(layer => {
-      const e = layer as MelodyLayer;
-      e.onMelodyBeepCheckChanged(e.layer === this.#active_layer && do_melody_beep);
-    });
+    this.show.forEach(e => e.onMelodyBeepCheckChanged(e.layer === this.#active_layer && do_melody_beep));
   }
   onMelodyVolumeBarChanged(beep_volume: number) {
     this.#volume = beep_volume;
-    this.show.forEach(layer => {
-      const e = (layer as MelodyLayer);
-      e.onMelodyVolumeBarChanged(e.layer === this.#active_layer && beep_volume || 0);
-    });
+    this.show.forEach(e => e.onMelodyVolumeBarChanged(e.layer === this.#active_layer && beep_volume || 0));
   }
   onChangedLayer(layer: number) {
     super.onChangedLayer(layer);
