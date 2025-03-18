@@ -17,9 +17,7 @@ export abstract class CollectionHierarchy<L extends I_CollectionLayer & WindowRe
     this.svg.replaceChildren(...this._show.map(e => e.svg));
   }
   onChangedLayer(value: number) {
-    const visible_layer = this.children.filter(
-      layer => value === layer.layer
-    );
+    const visible_layer = this.children.filter(layer => value === layer.layer);
     this.setShow(visible_layer);
   }
   onAudioUpdate() {

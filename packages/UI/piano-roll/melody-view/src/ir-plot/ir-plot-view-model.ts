@@ -14,9 +14,7 @@ export class IRPlotVM extends MVVM_ViewModel<IRPlotModel, IRPlotView> {
   setColor(getColor: (e: IRPlotModel) => string) {
     this.view.setColor(getColor);
   }
-  updateColor() {
-    this.view.updateColor();
-  }
+  updateColor() { this.view.updateColor(); }
   onAudioUpdate() {
     this.view.updatePosition();
     this.view.updateColor();

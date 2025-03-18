@@ -8,10 +8,8 @@ export class ReductionHierarchy extends CollectionHierarchy<ReductionLayer> impl
   constructor(hierarchical_melodies: TimeAndAnalyzedMelody[][]) {
     super("time-span-reduction", hierarchical_melodies.map((e, l) => new ReductionLayer(e, l)));
   }
-  onChangedLayer(value: number): void {
-    const visible_layer = this.children.filter(
-      layer => value >= layer.layer
-    );
+  onChangedLayer(value: number) {
+    const visible_layer = this.children.filter(layer => value >= layer.layer);
     this.show.forEach(layer => (layer as ReductionLayer).renewStrong(value));
     visible_layer.forEach(layer => (layer as ReductionLayer).renewStrong(value));
     this.setShow(visible_layer);
