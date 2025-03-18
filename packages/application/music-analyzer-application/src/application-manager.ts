@@ -1,7 +1,7 @@
-import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
-import { BeatElements, ChordElements, MelodyElements, MusicStructureElements } from "./piano-roll";
-import { AnalyzedDataContainer } from "./containers";
 import { MelodyColorController, DMelodyController, GravityController, HierarchyLevelController, MelodyBeepController, TimeRangeController } from "@music-analyzer/controllers";
+import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
+import { AnalyzedDataContainer } from "./containers";
+import { BeatElements, ChordElements, MelodyElements, MusicStructureElements } from "./piano-roll";
 
 class Controllers {
   readonly div: HTMLDivElement;
