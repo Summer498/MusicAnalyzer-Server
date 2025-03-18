@@ -49,7 +49,7 @@ export class ApplicationManager {
     )
     const e = this.analyzed;
     this.controller = new Controllers(
-      e.melody.d_melody_collection.controller[0],
+      d_melody,
       hierarchy,
       time_range,
       gravity,
