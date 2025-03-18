@@ -19,26 +19,18 @@ export class GravityVM extends MVVM_ViewModel<GravityModel, GravityView> {
   ) {
     const model = new GravityModel(e, layer, next, gravity);
     super(model, new GravityView(model));
-    this.#line_seed = {
-      x1: this.model.time.begin + this.model.time.duration / 2,
-      x2: this.model.next.time.begin,
-      y1: isNaN(this.model.note) ? -99 : (0.5 - convertToCoordinate(transposed(this.model.note))),
-      y2: isNaN(this.model.note) ? -99 : (0.5 - convertToCoordinate(transposed(this.model.gravity.destination!))),
-    };
-  }
-  getLinePos() {
-    return {
-      x1: scaled(this.#line_seed.x1),
-      x2: scaled(this.#line_seed.x2),
-      y1: this.#line_seed.y1,
-      y2: this.#line_seed.y2,
-    };
+    this.#line_seed = new LinePos(
+      this.model.time.begin + this.model.time.duration / 2,
+      this.model.next.time.begin,
+      isNaN(this.model.note) ? -99 : (0.5 - convertToCoordinate(transposed(this.model.note))),
+      isNaN(this.model.note) ? -99 : (0.5 - convertToCoordinate(transposed(this.model.gravity.destination!))),
+    )
   }
   updateWidth() { this.view.updateWidth(scaled(this.model.time.duration)) }
   updateHeight() { this.view.updateHeight(BlackKeyPrm.height) }
   onWindowResized() {
     this.updateWidth();
     this.updateHeight();
-    this.view.onWindowResized(this.getLinePos())
+    this.view.onWindowResized(this.#line_seed.scaled(NoteSize.get(), 1))
   }
 }
