@@ -6,12 +6,24 @@ import { BeatElements, ChordElements, MelodyElements, MusicStructureElements } f
 class Controllers {
   readonly div: HTMLDivElement;
   constructor(
-    ...children: { view: HTMLElement }[]
+    readonly d_melody: DMelodyController,
+    readonly hierarchy: HierarchyLevelController,
+    readonly time_range: TimeRangeController,
+    readonly gravity: GravityController,
+    readonly melody_beep: MelodyBeepController,
+    readonly melody_color: MelodyColorController,
   ) {
     this.div = document.createElement("div");
     this.div.id = "controllers";
     this.div.style = "margin-top:20px";
-    children.forEach(e => this.div.appendChild(e.view))
+    [
+      d_melody,
+      hierarchy,
+      time_range,
+      gravity,
+      melody_beep,
+      melody_color,
+    ].forEach(e => this.div.appendChild(e.view))
   }
 }
 
