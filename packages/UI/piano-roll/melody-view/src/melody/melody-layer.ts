@@ -4,7 +4,7 @@ import { MelodyVM } from "./melody-view-model";
 import { MelodyModel } from "./melody-model";
 
 export class MelodyLayer 
-extends CollectionLayer<MelodyVM> {
+  extends CollectionLayer<MelodyVM> {
   constructor(melodies: TimeAndAnalyzedMelody[], layer: number) {
     super(layer, melodies.map(e => new MelodyVM(e)));
   }

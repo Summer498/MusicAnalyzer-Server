@@ -4,7 +4,7 @@ import { MelodyModel } from "./melody-model";
 import { deleteMelody } from "../melody-editor-function";
 
 export class MelodyView 
-extends MVVM_View<MelodyModel, "rect"> {
+  extends MVVM_View<MelodyModel, "rect"> {
   sound_reserved: boolean;
   #getColor: (e: MelodyModel) => string;
   constructor(model: MelodyModel) {
