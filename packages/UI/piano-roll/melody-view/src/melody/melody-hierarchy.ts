@@ -4,7 +4,13 @@ import { MelodyLayer } from "./melody-layer";
 import { MelodyModel } from "./melody-model";
 import { ColorChangeSubscriber, HierarchyLevelSubscriber, MelodyBeepSwitcherSubscriber, MelodyBeepVolumeSubscriber } from "@music-analyzer/controllers";
 
-export class MelodyHierarchy extends CollectionHierarchy<MelodyLayer> implements HierarchyLevelSubscriber, MelodyBeepSwitcherSubscriber, MelodyBeepVolumeSubscriber, ColorChangeSubscriber {
+export class MelodyHierarchy
+  extends CollectionHierarchy<MelodyLayer>
+  implements
+  HierarchyLevelSubscriber,
+  MelodyBeepSwitcherSubscriber,
+  MelodyBeepVolumeSubscriber,
+  ColorChangeSubscriber {
   get show() { return this._show; }
   #volume: number;
   #check: boolean;
