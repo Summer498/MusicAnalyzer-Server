@@ -4,7 +4,8 @@ export interface MelodyBeepSwitcherSubscriber {
   onMelodyBeepCheckChanged: (hearable:boolean)=>void
 }
 
-export class MelodyBeepSwitcher extends Checkbox<MelodyBeepSwitcherSubscriber> {
+export class MelodyBeepSwitcher 
+extends Checkbox<MelodyBeepSwitcherSubscriber> {
   constructor(id: string, label: string) {
     super(id, label);
   }
