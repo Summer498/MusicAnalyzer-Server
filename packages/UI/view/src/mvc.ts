@@ -22,7 +22,8 @@ export interface I_MVVM_ModelView extends I_MVVM_View, WindowReflectable {}
 export abstract class MVVM_ViewModel<
   M extends MVVM_Model,
   V extends I_MVVM_View,
-> implements I_MVVM_ModelView {
+> 
+implements I_MVVM_ModelView {
   get svg() { return this.view.svg; }
   constructor(
     readonly model: M,
@@ -38,7 +39,8 @@ export interface I_MVVM_Collection
 }
 
 export abstract class MVVM_Collection<VM extends I_MVVM_ModelView>
-  implements I_MVVM_Collection {
+  
+implements I_MVVM_Collection {
   readonly svg: SVGGElement;
   constructor(
     id: string,
