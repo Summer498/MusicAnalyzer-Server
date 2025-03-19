@@ -10,7 +10,7 @@ const _sgn = (x: number) => x < 0 ? -1 : x && 1
 const _abs = (x: number) => x < 0 ? -x : x
 
 export class IntervallicMotion 
-extends Motion {
+  extends Motion {
   constructor(prev: Interval, curr: Interval) {
     const dir_map: ["mL", "mN", "mR"] = ["mL", "mN", "mR"];
 

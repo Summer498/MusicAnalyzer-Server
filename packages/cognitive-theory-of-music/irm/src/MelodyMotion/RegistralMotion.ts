@@ -7,7 +7,7 @@ const _sgn = (x: number) => x < 0 ? -1 : x && 1
 const _abs = (x: number) => x < 0 ? -x : x
 
 export class RegistralMotion 
-extends Motion {
+  extends Motion {
   constructor(prev: Interval, curr: Interval) {
     const dir_map: ["mL", "mN", "mR"] = ["mL", "mN", "mR"];
     const mgn_map: ["AB", "AA", "AA"] = ["AB", "AA", "AA"];
