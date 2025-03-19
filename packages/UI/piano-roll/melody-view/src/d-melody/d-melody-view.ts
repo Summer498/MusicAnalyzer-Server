@@ -3,7 +3,7 @@ import { MVVM_View } from "@music-analyzer/view";
 import { DMelodyModel } from "./d-melody-model";
 
 export class DMelodyView 
-extends MVVM_View<DMelodyModel, "rect"> {
+  extends MVVM_View<DMelodyModel, "rect"> {
   constructor(model: DMelodyModel) {
     super(model, "rect");
     this.svg.id = "melody-note";

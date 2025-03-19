@@ -10,7 +10,7 @@ const scaled = (e: number) => e * NoteSize.get()
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class DMelodyVM 
-extends MVVM_ViewModel<DMelodyModel, DMelodyView> {
+  extends MVVM_ViewModel<DMelodyModel, DMelodyView> {
   constructor(e: TimeAndAnalyzedMelody) {
     const model = new DMelodyModel(e);
     super(model, new DMelodyView(model));
