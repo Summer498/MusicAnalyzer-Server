@@ -41,7 +41,7 @@ export const hasSameValue = (o1: any, o2: any) => {
 };
 
 export class NotImplementedError 
-extends Error { constructor(message = "") { super(message); } }
+  extends Error { constructor(message = "") { super(message); } }
 export class Assertion {
   #assertion: boolean;
   constructor(assertion: boolean) {
