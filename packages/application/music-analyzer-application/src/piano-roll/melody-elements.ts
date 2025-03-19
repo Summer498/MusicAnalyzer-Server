@@ -18,10 +18,10 @@ export class MelodyElements implements AudioReflectable, WindowReflectable {
     controllers: Controllers,
   ) {
     const { d_melody, hierarchy, time_range, gravity, melody_color, melody_beep } = controllers;
-    
+
     this.d_melody_collection = new DMelodyGroup(d_melodies, [d_melody]);
     this.melody_hierarchy = new MelodyHierarchy(hierarchical_melody, [hierarchy, melody_beep, melody_color]);
-    this.ir_hierarchy = new IRSymbolHierarchy(hierarchical_melody);
+    this.ir_hierarchy = new IRSymbolHierarchy(hierarchical_melody, [hierarchy, melody_color]);
     this.ir_plot = new IRPlot(hierarchical_melody);
     this.chord_gravities = new GravityHierarchy("chord_gravity", hierarchical_melody);
     this.scale_gravities = new GravityHierarchy("scale_gravity", hierarchical_melody);
