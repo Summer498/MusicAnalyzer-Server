@@ -1,8 +1,12 @@
 export class Directories<
-  S extends string | undefined,
-  T extends string | undefined,
-  DD extends string | undefined,
-  D extends string | undefined,
+  S 
+extends string | undefined,
+  T 
+extends string | undefined,
+  DD 
+extends string | undefined,
+  D 
+extends string | undefined,
 > {
   constructor(
     readonly src: S,
