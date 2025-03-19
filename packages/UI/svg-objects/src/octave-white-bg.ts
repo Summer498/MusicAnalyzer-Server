@@ -1,5 +1,5 @@
 import { WindowReflectable } from "@music-analyzer/view";
-import { WhiteBG_SVG } from "./white-bg";
+import { WhiteBG_SVG } from "./components.ts/white-bg";
 
 export class OctaveWhiteBG 
   implements WindowReflectable {
