@@ -2,7 +2,8 @@ import { get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { MVVM_View } from "@music-analyzer/view";
 import { IRPlotModel } from "./ir-plot-model";
 
-export class IRPlotView extends MVVM_View<IRPlotModel, "circle"> {
+export class IRPlotView 
+extends MVVM_View<IRPlotModel, "circle"> {
   #getColor: (archetype: IRPlotModel) => string;
   readonly x0: number;
   readonly y0: number;
