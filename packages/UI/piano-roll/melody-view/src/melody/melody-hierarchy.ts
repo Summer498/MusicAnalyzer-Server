@@ -2,7 +2,7 @@ import { CollectionHierarchy } from "@music-analyzer/view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MelodyLayer } from "./melody-layer";
 import { MelodyModel } from "./melody-model";
-import { ColorChangeSubscriber, HierarchyLevelSubscriber, MelodyBeepSwitcherSubscriber, MelodyBeepVolumeSubscriber } from "@music-analyzer/controllers";
+import { ColorChangeSubscriber, HierarchyLevelController, HierarchyLevelSubscriber, MelodyBeepController, MelodyBeepSwitcherSubscriber, MelodyBeepVolumeSubscriber, MelodyColorController } from "@music-analyzer/controllers";
 
 export class MelodyHierarchy
   extends CollectionHierarchy<MelodyLayer>
@@ -15,11 +15,19 @@ export class MelodyHierarchy
   #volume: number;
   #check: boolean;
   #active_layer: number;
-  constructor(hierarchical_melodies: TimeAndAnalyzedMelody[][]) {
+  constructor(
+    hierarchical_melodies: TimeAndAnalyzedMelody[][],
+    controllers: [
+      HierarchyLevelController,
+      MelodyBeepController,
+      MelodyColorController,
+    ]
+  ) {
     super("melody", hierarchical_melodies.map((e, l) => new MelodyLayer(e, l)));
     this.#check = false;
     this.#volume = 0;
     this.#active_layer = hierarchical_melodies.length;
+    controllers.forEach(e=>e.register(this));
   }
   onMelodyBeepCheckChanged(do_melody_beep: boolean) {
     this.#check = do_melody_beep;
