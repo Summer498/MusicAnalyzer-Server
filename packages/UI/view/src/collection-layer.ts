@@ -2,13 +2,13 @@ import { I_ReflectableTimeAndMVCControllerCollection, I_TimeAndVM, ReflectableTi
 
 export interface I_CollectionLayer
   
-extends I_ReflectableTimeAndMVCControllerCollection {
+  extends I_ReflectableTimeAndMVCControllerCollection {
   readonly layer: number
 }
 
 export class CollectionLayer<VM extends I_TimeAndVM>
   
-extends ReflectableTimeAndMVCControllerCollection<VM>
+  extends ReflectableTimeAndMVCControllerCollection<VM>
   
   implements I_CollectionLayer {
   constructor(

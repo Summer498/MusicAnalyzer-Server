@@ -7,9 +7,9 @@ export interface I_MVVM_View {
 }
 export abstract class MVVM_View<
   M 
-extends MVVM_Model,
+  extends MVVM_Model,
   K 
-extends keyof SVGElementTagNameMap,
+  extends keyof SVGElementTagNameMap,
 > {
   readonly svg: SVGElementTagNameMap[K];
   constructor(
@@ -21,12 +21,12 @@ extends keyof SVGElementTagNameMap,
 }
 
 export interface I_MVVM_ModelView 
-extends I_MVVM_View, WindowReflectable {}
+  extends I_MVVM_View, WindowReflectable {}
 export abstract class MVVM_ViewModel<
   M 
-extends MVVM_Model,
+  extends MVVM_Model,
   V 
-extends I_MVVM_View,
+  extends I_MVVM_View,
 > 
   implements I_MVVM_ModelView {
   get svg() { return this.view.svg; }
@@ -39,7 +39,7 @@ extends I_MVVM_View,
 
 export interface I_MVVM_Collection
   
-extends I_MVVM_View {
+  extends I_MVVM_View {
   readonly svg: SVGGElement
   readonly children: I_MVVM_ModelView[];
 }

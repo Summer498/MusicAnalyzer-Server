@@ -4,34 +4,34 @@ import { MVVM_Collection, MVVM_ViewModel, MVVM_Model, MVVM_View, I_MVVM_Collecti
 import { AudioReflectable } from "./reflectable";
 
 export abstract class TimeAndMVCModel 
-extends MVVM_Model {
+  extends MVVM_Model {
   abstract readonly time: Time;
 }
 
 export interface I_TimeAndVM 
-extends I_MVVM_ModelView {
+  extends I_MVVM_ModelView {
   model: TimeAndMVCModel;
 }
 export abstract class TimeAndVM<
   M 
-extends TimeAndMVCModel,
+  extends TimeAndMVCModel,
   K 
-extends keyof SVGElementTagNameMap
+  extends keyof SVGElementTagNameMap
 > 
-extends MVVM_ViewModel<M, MVVM_View<M, K>> {
+  extends MVVM_ViewModel<M, MVVM_View<M, K>> {
   abstract readonly model: M;
 }
 
 export interface I_ReflectableTimeAndMVCControllerCollection
   
-extends I_MVVM_Collection, AudioReflectable {
+  extends I_MVVM_Collection, AudioReflectable {
   readonly show: I_TimeAndVM[];
   readonly children: I_TimeAndVM[];
   readonly children_model: TimeAndMVCModel[]
 }
 export abstract class ReflectableTimeAndMVCControllerCollection<VM extends I_TimeAndVM>
   
-extends MVVM_Collection<VM>
+  extends MVVM_Collection<VM>
   
   implements I_ReflectableTimeAndMVCControllerCollection {
   readonly children_model: TimeAndMVCModel[];
