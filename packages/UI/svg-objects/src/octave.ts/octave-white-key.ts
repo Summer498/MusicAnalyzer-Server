@@ -1,15 +1,15 @@
 import { WindowReflectable } from "@music-analyzer/view";
-import { BlackKeySVG } from "./components/black-key";
+import { WhiteKeySVG } from "../components/white-key";
 
-export class OctaveBlackKey 
+export class OctaveWhiteKey 
   implements WindowReflectable {
   readonly svg: SVGGElement;
-  readonly children: BlackKeySVG[];
+  readonly children: WhiteKeySVG[];
   constructor(oct: number) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    this.svg.id = `octave-black-keys-${oct}`;
-    const black_key_seed = [...Array(5)];
-    this.children = black_key_seed.map((_, j) => new BlackKeySVG(oct, j));
+    this.svg.id = `octave-white-keys-${oct}`;
+    const white_seed = [...Array(7)];
+    this.children = white_seed.map((_, white_index) => new WhiteKeySVG(oct, white_index));
     this.children.map(e => this.svg.appendChild(e.svg));
   }
   onWindowResized() {
