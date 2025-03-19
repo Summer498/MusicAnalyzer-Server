@@ -4,7 +4,8 @@ export interface GravitySwitcherSubscriber {
   onUpdateGravityVisibility(visible: boolean): void
 }
 
-export class GravitySwitcher extends Checkbox<GravitySwitcherSubscriber> {
+export class GravitySwitcher 
+extends Checkbox<GravitySwitcherSubscriber> {
   constructor(id: string, label: string) {
     super(id, label);
   };
