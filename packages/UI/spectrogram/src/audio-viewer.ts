@@ -6,7 +6,7 @@ import { FFTViewer } from "./fft-viewer";
 
 // AudioAnalyzer.ts
 export class AudioViewer 
-implements AudioReflectable {
+  implements AudioReflectable {
   readonly wave: WaveViewer;
   readonly spectrogram: spectrogramViewer;
   readonly fft: FFTViewer;

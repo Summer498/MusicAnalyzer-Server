@@ -2,7 +2,7 @@ import { AudioReflectable } from "@music-analyzer/view";
 import { AudioAnalyzer } from "./audio-analyzer";
 
 export class spectrogramViewer 
-implements AudioReflectable {
+  implements AudioReflectable {
   private readonly path: SVGPathElement;
   readonly svg: SVGSVGElement;
   constructor(

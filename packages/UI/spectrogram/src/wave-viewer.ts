@@ -3,7 +3,7 @@ import { AudioReflectable } from "@music-analyzer/view";
 import { AudioAnalyzer } from "./audio-analyzer";
 
 export class WaveViewer 
-implements AudioReflectable {
+  implements AudioReflectable {
   private readonly path: SVGPathElement;
   private old_wave: Complex<number>[];
   readonly svg: SVGSVGElement;
