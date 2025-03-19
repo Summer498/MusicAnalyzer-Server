@@ -9,14 +9,14 @@ export class BlackKeySVG
   readonly height: number;
   constructor(
     readonly oct: number,
-    j: number
+    black_index: number
   ) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     this.svg.id = "black-key";
     this.svg.style.fill = BlackKeyPrm.fill;
     this.svg.style.stroke = BlackKeyPrm.stroke;
     
-    this.y = octave_height * oct + BlackKeyPrm.height * BlackPosition.get()[j];
+    this.y = octave_height * oct + BlackKeyPrm.height * BlackPosition.get()[black_index];
     this.width = BlackKeyPrm.width;
     this.height = BlackKeyPrm.height;
   }
