@@ -8,7 +8,8 @@ export interface IProlongationalRegion {
   readonly secondary?: IProlongationTree,
 }
 
-export class ProlongationalRegion extends ReductionElement 
+export class ProlongationalRegion 
+extends ReductionElement 
 implements IProlongationalRegion {
   override readonly head: Head;
   readonly primary?: IProlongationTree;
