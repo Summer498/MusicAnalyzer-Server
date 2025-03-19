@@ -5,7 +5,8 @@ import { ReductionViewModel } from "./reduction-view";
 import { ColorChangeSubscriber, HierarchyLevelController, HierarchyLevelSubscriber, MelodyColorController } from "@music-analyzer/controllers";
 
 export class ReductionHierarchy
-  extends CollectionHierarchy<ReductionLayer>
+  
+extends CollectionHierarchy<ReductionLayer>
   
 implements
   HierarchyLevelSubscriber,
