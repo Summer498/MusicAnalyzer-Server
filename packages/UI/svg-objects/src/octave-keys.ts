@@ -1,6 +1,6 @@
 import { OctaveCount } from "@music-analyzer/view-parameters";
 import { WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
-import { OctaveBlackKey } from "./black-key";
+import { OctaveBlackKey } from "./octave-black-key";
 import { OctaveWhiteKey } from "./white-key";
 
 export class OctaveKey 
