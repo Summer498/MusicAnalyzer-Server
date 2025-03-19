@@ -5,7 +5,8 @@ import { LinePos } from "./line-pos";
 const triangle_width = 4;
 const triangle_height = 5;
 
-export class GravityViewTriangle extends MVVM_View<GravityModel, "polygon"> {
+export class GravityViewTriangle 
+extends MVVM_View<GravityModel, "polygon"> {
   constructor(model: GravityModel) {
     super(model, "polygon");
     this.svg.classList.add("triangle");

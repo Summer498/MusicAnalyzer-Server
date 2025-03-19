@@ -2,7 +2,8 @@ import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { CollectionLayer } from "@music-analyzer/view";
 import { GravityVM } from "./gravity-view-model";
 
-export class GravityLayer extends CollectionLayer<GravityVM> {
+export class GravityLayer 
+extends CollectionLayer<GravityVM> {
   constructor(
     mode: "chord_gravity" | "scale_gravity",
     melodies: TimeAndAnalyzedMelody[],
