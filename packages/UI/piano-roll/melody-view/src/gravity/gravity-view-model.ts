@@ -10,7 +10,7 @@ const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class GravityVM 
-extends MVVM_ViewModel<GravityModel, GravityView> {
+  extends MVVM_ViewModel<GravityModel, GravityView> {
   #line_seed: LinePos;
   constructor(
     e: TimeAndAnalyzedMelody,

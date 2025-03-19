@@ -3,7 +3,7 @@ import { Time } from "@music-analyzer/time-and";
 import { MVVM_Model } from "@music-analyzer/view";
 
 export class GravityModel 
-extends MVVM_Model {
+  extends MVVM_Model {
   readonly time: Time;
   readonly note: number;
   readonly destination?: number;

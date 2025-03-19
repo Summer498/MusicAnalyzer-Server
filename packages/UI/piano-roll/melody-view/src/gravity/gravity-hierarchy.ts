@@ -5,7 +5,7 @@ import { GravitySwitcherSubscriber, HierarchyLevelController, HierarchyLevelSubs
 import { GravitySwitcher } from "@music-analyzer/controllers/src/switcher/gravity-switcher";
 
 export class GravityHierarchy
-extends CollectionHierarchy<GravityLayer>
+  extends CollectionHierarchy<GravityLayer>
 implements
   GravitySwitcherSubscriber,
   HierarchyLevelSubscriber {

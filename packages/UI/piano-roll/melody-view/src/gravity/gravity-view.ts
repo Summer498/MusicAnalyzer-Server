@@ -5,7 +5,7 @@ import { GravityViewLine } from "./gravity-line";
 import { LinePos } from "./line-pos";
 
 export class GravityView 
-extends MVVM_View<GravityModel, "g"> {
+  extends MVVM_View<GravityModel, "g"> {
   readonly triangle: GravityViewTriangle;
   readonly line: GravityViewLine;
   constructor(model: GravityModel) {
