@@ -8,7 +8,8 @@ export interface ITemp {
   readonly succ: Succ
 }
 
-export class Temp implements ITemp {
+export class Temp 
+implements ITemp {
   readonly difference: number;
   readonly stable: 0 | "unknown" | Path;
   readonly pred: Pred;
