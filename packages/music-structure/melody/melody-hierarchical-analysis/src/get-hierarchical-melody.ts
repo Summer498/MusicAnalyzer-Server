@@ -5,7 +5,7 @@ import { getTimeAndMelody } from "./get-time-and-melody";
 import { MusicXML } from "@music-analyzer/musicxml";
 
 class TimeAndAnalyzedMelodyAndIR
-  extends TimeAndAnalyzedMelody {
+extends TimeAndAnalyzedMelody {
   constructor(
     e: TimeAndAnalyzedMelody,
     readonly IR: string,
