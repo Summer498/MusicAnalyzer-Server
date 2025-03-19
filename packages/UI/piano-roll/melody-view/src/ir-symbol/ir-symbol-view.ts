@@ -5,7 +5,8 @@ import { IRSymbolModel } from "./ir-symbol-model";
 
 const ir_analysis_em = size;
 
-export class IRSymbolView extends MVVM_View<IRSymbolModel, "text"> {
+export class IRSymbolView 
+extends MVVM_View<IRSymbolModel, "text"> {
   #getColor: (e: IRSymbolModel) => string;
   constructor(model: IRSymbolModel) {
     super(model, "text");

@@ -3,7 +3,8 @@ import { CollectionLayer } from "@music-analyzer/view";
 import { IRSymbolVM } from "./ir-symbol-view-model";
 import { IRSymbolModel } from "./ir-symbol-model";
 
-export class IRSymbolLayer extends CollectionLayer<IRSymbolVM> {
+export class IRSymbolLayer 
+extends CollectionLayer<IRSymbolVM> {
   constructor(melodies: TimeAndAnalyzedMelody[], layer: number) {
     super(layer, melodies.map(e => new IRSymbolVM(e, layer)));
   }

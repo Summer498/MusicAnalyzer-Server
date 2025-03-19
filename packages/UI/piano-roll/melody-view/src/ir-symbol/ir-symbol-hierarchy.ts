@@ -5,7 +5,7 @@ import { IRSymbolModel } from "./ir-symbol-model";
 import { ColorChangeSubscriber, HierarchyLevelController, HierarchyLevelSubscriber, MelodyColorController } from "@music-analyzer/controllers";
 
 export class IRSymbolHierarchy
-  extends CollectionHierarchy<IRSymbolLayer>
+extends CollectionHierarchy<IRSymbolLayer>
   
 implements
   HierarchyLevelSubscriber,

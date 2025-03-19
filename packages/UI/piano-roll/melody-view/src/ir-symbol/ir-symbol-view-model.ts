@@ -8,7 +8,8 @@ const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
-export class IRSymbolVM extends MVVM_ViewModel<IRSymbolModel, IRSymbolView> {
+export class IRSymbolVM 
+extends MVVM_ViewModel<IRSymbolModel, IRSymbolView> {
   #y: number;
   constructor(
     melody: TimeAndAnalyzedMelody,
