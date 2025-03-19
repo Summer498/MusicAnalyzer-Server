@@ -3,7 +3,8 @@ import { Time } from "@music-analyzer/time-and";
 import { _Scale } from "@music-analyzer/tonal-objects";
 import { MVVM_Model } from "@music-analyzer/view";
 
-export class ChordKeyModel extends MVVM_Model {
+export class ChordKeyModel 
+extends MVVM_Model {
   readonly time: Time;
   readonly tonic: string;
   readonly scale: string;
