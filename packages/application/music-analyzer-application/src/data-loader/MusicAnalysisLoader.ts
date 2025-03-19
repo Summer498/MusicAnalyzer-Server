@@ -4,7 +4,7 @@ import { compoundMusicData } from "./compound-music-data";
 import { URLsContainer } from "../containers";
 
 class GTTM_URLs
-implements I_GTTM_URLs {
+  implements I_GTTM_URLs {
   readonly msc: string
   readonly grp: string
   readonly mtr: string
