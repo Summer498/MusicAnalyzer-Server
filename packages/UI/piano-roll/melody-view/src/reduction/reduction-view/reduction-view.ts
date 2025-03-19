@@ -5,7 +5,8 @@ import { ReductionBracket } from "./reduction-bracket";
 import { ReductionDot } from "./reduction-dot";
 import { IRMSymbolOnReduction } from "./irm-symbol-on-reduction";
 
-export class ReductionView extends MVVM_View<ReductionViewModel, "g"> {
+export class ReductionView 
+extends MVVM_View<ReductionViewModel, "g"> {
   readonly svg: SVGGElement;
   readonly bracket: ReductionBracket;
   readonly dot: ReductionDot;

@@ -6,7 +6,8 @@ import { Triad } from "@music-analyzer/irm";
 const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
-export class ReductionViewModel extends MVVM_Model {
+export class ReductionViewModel 
+extends MVVM_Model {
   #x: number;
   #w: number;
   #cx: number;
