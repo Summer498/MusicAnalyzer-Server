@@ -1,7 +1,8 @@
 import { MVVM_View } from "@music-analyzer/view";
 import { BeatBarModel } from "./beat-bar-model";
 
-export class BeatBarView extends MVVM_View<BeatBarModel, "line"> {
+export class BeatBarView 
+extends MVVM_View<BeatBarModel, "line"> {
   constructor(model: BeatBarModel) {
     super(model, "line");
     this.svg.id = "bar";

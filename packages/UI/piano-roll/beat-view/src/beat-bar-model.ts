@@ -2,7 +2,8 @@ import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { Time } from "@music-analyzer/time-and";
 import { MVVM_Model } from "@music-analyzer/view";
 
-export class BeatBarModel extends MVVM_Model {
+export class BeatBarModel 
+extends MVVM_Model {
   readonly time: Time;
   constructor(beat_info: BeatInfo, i: number) {
     super();
