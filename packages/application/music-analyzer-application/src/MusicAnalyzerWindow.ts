@@ -12,7 +12,7 @@ export class AnalyzedMusicData {
 }
 
 export interface MusicAnalyzerWindow 
-extends Window {
+  extends Window {
   MusicAnalyzer: AnalyzedMusicData
 }
 
