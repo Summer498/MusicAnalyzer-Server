@@ -9,7 +9,8 @@ const m3 = _Interval.get("m3");
 const _sgn = (x: number) => x < 0 ? -1 : x && 1
 const _abs = (x: number) => x < 0 ? -x : x
 
-export class IntervallicMotion extends Motion {
+export class IntervallicMotion 
+extends Motion {
   constructor(prev: Interval, curr: Interval) {
     const dir_map: ["mL", "mN", "mR"] = ["mL", "mN", "mR"];
 
