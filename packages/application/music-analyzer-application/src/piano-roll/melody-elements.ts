@@ -23,8 +23,8 @@ export class MelodyElements implements AudioReflectable, WindowReflectable {
     this.melody_hierarchy = new MelodyHierarchy(hierarchical_melody, [hierarchy, melody_beep, melody_color]);
     this.ir_hierarchy = new IRSymbolHierarchy(hierarchical_melody, [hierarchy, melody_color]);
     this.ir_plot = new IRPlot(hierarchical_melody, [hierarchy, melody_color]);
-    this.chord_gravities = new GravityHierarchy("chord_gravity", hierarchical_melody);
-    this.scale_gravities = new GravityHierarchy("scale_gravity", hierarchical_melody);
+    this.chord_gravities = new GravityHierarchy("chord_gravity", hierarchical_melody, [gravity.chord_checkbox, hierarchy]);
+    this.scale_gravities = new GravityHierarchy("scale_gravity", hierarchical_melody, [gravity.scale_checkbox, hierarchy]);
     this.time_span_tree = new ReductionHierarchy(hierarchical_melody);
     this.children = [
       this.d_melody_collection,
