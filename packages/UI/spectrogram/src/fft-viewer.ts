@@ -2,7 +2,8 @@ import { Complex } from "@music-analyzer/math";
 import { AudioReflectable } from "@music-analyzer/view";
 import { AudioAnalyzer } from "./audio-analyzer";
 
-export class FFTViewer implements AudioReflectable {
+export class FFTViewer 
+implements AudioReflectable {
   private readonly path: SVGPathElement;
   readonly svg: SVGSVGElement;
   constructor(
