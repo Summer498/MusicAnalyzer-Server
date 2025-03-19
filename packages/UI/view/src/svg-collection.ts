@@ -33,7 +33,7 @@ export abstract class ReflectableTimeAndMVCControllerCollection<VM extends I_Tim
   
 extends MVVM_Collection<VM>
   
-implements I_ReflectableTimeAndMVCControllerCollection {
+  implements I_ReflectableTimeAndMVCControllerCollection {
   readonly children_model: TimeAndMVCModel[];
   #show: VM[];
   get show() { return this.#show; };

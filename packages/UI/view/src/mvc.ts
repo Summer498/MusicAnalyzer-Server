@@ -28,7 +28,7 @@ extends MVVM_Model,
   V 
 extends I_MVVM_View,
 > 
-implements I_MVVM_ModelView {
+  implements I_MVVM_ModelView {
   get svg() { return this.view.svg; }
   constructor(
     readonly model: M,
@@ -46,7 +46,7 @@ extends I_MVVM_View {
 
 export abstract class MVVM_Collection<VM extends I_MVVM_ModelView>
   
-implements I_MVVM_Collection {
+  implements I_MVVM_Collection {
   readonly svg: SVGGElement;
   constructor(
     id: string,
