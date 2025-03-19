@@ -1,6 +1,7 @@
 import { Slider } from "./abstract-slider";
 
-class HierarchyLevel extends Slider<HierarchyLevelSubscriber> {
+class HierarchyLevel 
+extends Slider<HierarchyLevelSubscriber> {
   constructor() {
     super("hierarchy_level_slider", "Melody Hierarchy Level", 0, 1, 1);
   };
