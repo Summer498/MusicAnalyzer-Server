@@ -1,5 +1,5 @@
 import { WindowReflectable } from "@music-analyzer/view";
-import { WhiteKeySVG } from "./components.ts/white-key";
+import { WhiteKeySVG } from "./components/white-key";
 
 export class OctaveWhiteKey 
   implements WindowReflectable {
