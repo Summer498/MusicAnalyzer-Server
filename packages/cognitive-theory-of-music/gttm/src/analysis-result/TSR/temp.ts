@@ -9,7 +9,7 @@ export interface ITemp {
 }
 
 export class Temp 
-implements ITemp {
+  implements ITemp {
   readonly difference: number;
   readonly stable: 0 | "unknown" | Path;
   readonly pred: Pred;

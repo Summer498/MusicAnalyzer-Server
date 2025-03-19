@@ -5,7 +5,7 @@ export interface ITimeSpanReduction {
 }
 
 export class TimeSpanReduction 
-implements ITimeSpanReduction {
+  implements ITimeSpanReduction {
   readonly tstree: TimeSpanTree;
   constructor(tsr: ITimeSpanReduction) {
     this.tstree = new TimeSpanTree(tsr.tstree);

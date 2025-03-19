@@ -17,7 +17,7 @@ export interface ITimeSpan {
 
 export class TimeSpan 
 extends ReductionElement 
-implements ITimeSpan {
+  implements ITimeSpan {
   readonly timespan: number;
   readonly leftend: number;
   readonly rightend: number;

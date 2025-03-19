@@ -5,7 +5,7 @@ export interface ITimeSpanTree {
 }
 
 export class TimeSpanTree 
-implements ITimeSpanTree {
+  implements ITimeSpanTree {
   readonly ts: TimeSpan;
   constructor(ts_tree: ITimeSpanTree) {
     this.ts = new TimeSpan(ts_tree.ts);

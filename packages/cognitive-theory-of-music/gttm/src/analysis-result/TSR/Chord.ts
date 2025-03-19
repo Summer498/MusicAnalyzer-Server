@@ -7,7 +7,7 @@ extends _Chord {
 }
 
 export class Chord 
-implements IChord {
+  implements IChord {
   readonly duration: number;
   readonly velocity: number;
   readonly note: Note;
