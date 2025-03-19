@@ -5,7 +5,7 @@ export interface GravitySwitcherSubscriber {
 }
 
 export class GravitySwitcher 
-extends Checkbox<GravitySwitcherSubscriber> {
+  extends Checkbox<GravitySwitcherSubscriber> {
   constructor(id: string, label: string) {
     super(id, label);
   };
