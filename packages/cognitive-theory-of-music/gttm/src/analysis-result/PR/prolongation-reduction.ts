@@ -4,7 +4,8 @@ export interface IProlongationalReduction {
   readonly prtree: IProlongationTree
 }
 
-export class ProlongationalReduction implements IProlongationalReduction {
+export class ProlongationalReduction 
+implements IProlongationalReduction {
   readonly prtree: ProlongationTree;
   constructor(pr: IProlongationalReduction){
     this.prtree = new ProlongationTree(pr.prtree);
