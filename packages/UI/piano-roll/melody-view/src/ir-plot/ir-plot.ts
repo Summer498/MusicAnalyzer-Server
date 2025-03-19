@@ -1,12 +1,23 @@
 import { AudioReflectable, WindowReflectable } from "@music-analyzer/view";
 import { IRPlotHierarchy } from "./ir-plot-hierarchy";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { hasArchetype, ColorChangeSubscriber, HierarchyLevelSubscriber } from "@music-analyzer/controllers";
+import { hasArchetype, ColorChangeSubscriber, HierarchyLevelSubscriber, HierarchyLevelController, MelodyColorController } from "@music-analyzer/controllers";
 
-export class IRPlot implements AudioReflectable, WindowReflectable, HierarchyLevelSubscriber, ColorChangeSubscriber {
+export class IRPlot
+  implements
+  AudioReflectable,
+  WindowReflectable,
+  HierarchyLevelSubscriber,
+  ColorChangeSubscriber {
   readonly svg: SVGSVGElement;
   readonly children: [IRPlotHierarchy];
-  constructor(hierarchical_melody: TimeAndAnalyzedMelody[][]) {
+  constructor(
+    hierarchical_melody: TimeAndAnalyzedMelody[][],
+    controllers: [
+      HierarchyLevelController,
+      MelodyColorController,
+    ]
+  ) {
     const g = new IRPlotHierarchy(hierarchical_melody)
     this.children = [g];
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -14,6 +25,7 @@ export class IRPlot implements AudioReflectable, WindowReflectable, HierarchyLev
     this.svg.id = "IR-plot";
     this.svg.setAttribute("width", String(g.width));
     this.svg.setAttribute("height", String(g.height));
+    controllers.forEach(e=>e.register(this));
   }
   onAudioUpdate() {
     this.children.forEach(e => e.onAudioUpdate());
@@ -24,10 +36,10 @@ export class IRPlot implements AudioReflectable, WindowReflectable, HierarchyLev
   onChangedLayer(value: number) {
     this.children[0].onChangedLayer(value)
   }
-  setColor (getColor: (e: hasArchetype) => string){
+  setColor(getColor: (e: hasArchetype) => string) {
     this.children[0].setColor(getColor);
   }
-  updateColor (){
+  updateColor() {
     this.children[0].updateColor();
   }
 }
