@@ -1,7 +1,7 @@
 import { OctaveCount } from "@music-analyzer/view-parameters";
 import { WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
 import { OctaveBlackBG } from "./octave-black-bg";
-import { OctaveWhiteBG } from "./white-bg";
+import { OctaveWhiteBG } from "./octave-white-bg";
 
 export class OctaveBG 
   implements WindowReflectable {
