@@ -2,7 +2,7 @@ import { AudioReflectable, AudioReflectableRegistry, WindowReflectable, WindowRe
 import { MusicStructureElements } from "../piano-roll";
 
 export class AnalysisView 
-implements AudioReflectable, WindowReflectable {
+  implements AudioReflectable, WindowReflectable {
   readonly svg: SVGGElement;
   readonly children: (AudioReflectable & WindowReflectable)[];
   constructor(
