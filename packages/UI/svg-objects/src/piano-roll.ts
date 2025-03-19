@@ -8,7 +8,7 @@ import { OctaveKeys } from "./octave-keys";
 import { CurrentTimeLine } from "./current-time-line";
 
 export class PianoRoll 
-implements WindowReflectable {
+  implements WindowReflectable {
   readonly svg: SVGSVGElement;
   constructor(
     manager: ApplicationManager

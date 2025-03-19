@@ -4,7 +4,7 @@ import { OctaveBlackBG } from "./black-bg";
 import { OctaveWhiteBG } from "./white-bg";
 
 export class OctaveBG 
-implements WindowReflectable {
+  implements WindowReflectable {
   readonly svg: SVGGElement;
   readonly white_BGs: OctaveWhiteBG;
   readonly black_BGs: OctaveBlackBG;
@@ -25,7 +25,7 @@ implements WindowReflectable {
 }
 
 export class OctaveBGs 
-implements WindowReflectable {
+  implements WindowReflectable {
   readonly svg: SVGGElement;
   readonly children: OctaveBG[];
   constructor(publisher: WindowReflectableRegistry) {

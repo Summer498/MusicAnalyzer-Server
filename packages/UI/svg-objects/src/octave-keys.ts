@@ -4,7 +4,7 @@ import { OctaveBlackKey } from "./black-key";
 import { OctaveWhiteKey } from "./white-key";
 
 export class OctaveKey 
-implements WindowReflectable {
+  implements WindowReflectable {
   readonly svg: SVGGElement;
   readonly white_keys: OctaveWhiteKey;
   readonly black_keys: OctaveBlackKey;
@@ -25,7 +25,7 @@ implements WindowReflectable {
 }
 
 export class OctaveKeys 
-implements WindowReflectable {
+  implements WindowReflectable {
   readonly svg: SVGGElement;
   readonly children: OctaveKey[];
   constructor(
