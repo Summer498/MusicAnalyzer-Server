@@ -4,8 +4,7 @@ import { DMelodyVM } from "./d-melody-view-model";
 import { DMelodyController, DMelodyControllerSubscriber } from "@music-analyzer/controllers";
 
 export class DMelodyGroup
-  extends ReflectableTimeAndMVCControllerCollection<DMelodyVM>
-  
+extends ReflectableTimeAndMVCControllerCollection<DMelodyVM>
 implements DMelodyControllerSubscriber {
   constructor(
     detected_melodies: TimeAndAnalyzedMelody[],
