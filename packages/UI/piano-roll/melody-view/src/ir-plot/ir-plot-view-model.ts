@@ -4,7 +4,7 @@ import { IRPlotView } from "./ir-plot-view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 
 export class IRPlotVM 
-extends MVVM_ViewModel<IRPlotModel, IRPlotView> {
+  extends MVVM_ViewModel<IRPlotModel, IRPlotView> {
   readonly view: IRPlotView;
   constructor(e: TimeAndAnalyzedMelody[]) {
     const model = new IRPlotModel(e);

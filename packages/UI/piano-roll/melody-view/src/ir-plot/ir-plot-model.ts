@@ -4,7 +4,7 @@ import { MVVM_Model } from "@music-analyzer/view";
 import { NowAt } from "@music-analyzer/view-parameters";
 
 export class IRPlotModel 
-extends MVVM_Model {
+  extends MVVM_Model {
   #index: number;
   #cache: TimeAndAnalyzedMelody[];
   get archetype() { return this.getCurrentNote().melody_analysis.implication_realization as Triad; }
