@@ -4,7 +4,7 @@ import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { ReductionView, ReductionViewModel } from "./reduction-view";
 
 export class ReductionVM 
-extends MVVM_ViewModel<ReductionModel, ReductionView> {
+  extends MVVM_ViewModel<ReductionModel, ReductionView> {
   constructor(
     melody: TimeAndAnalyzedMelody,
     layer: number,

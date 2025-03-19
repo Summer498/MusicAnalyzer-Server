@@ -4,7 +4,7 @@ import { Time } from "@music-analyzer/time-and";
 import { MVVM_Model } from "@music-analyzer/view";
 
 export class ReductionModel 
-extends MVVM_Model {
+  extends MVVM_Model {
   readonly time: Time;
   readonly head: Time;
   readonly archetype: Triad;
