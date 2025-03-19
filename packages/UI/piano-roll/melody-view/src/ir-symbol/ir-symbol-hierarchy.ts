@@ -6,7 +6,8 @@ import { ColorChangeSubscriber, HierarchyLevelController, HierarchyLevelSubscrib
 
 export class IRSymbolHierarchy
   extends CollectionHierarchy<IRSymbolLayer>
-  implements
+  
+implements
   HierarchyLevelSubscriber,
   ColorChangeSubscriber {
   constructor(
