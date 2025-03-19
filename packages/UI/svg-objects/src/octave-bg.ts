@@ -3,7 +3,8 @@ import { WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/vi
 import { OctaveBlackBG } from "./black-bg";
 import { OctaveWhiteBG } from "./white-bg";
 
-export class OctaveBG implements WindowReflectable {
+export class OctaveBG 
+implements WindowReflectable {
   readonly svg: SVGGElement;
   readonly white_BGs: OctaveWhiteBG;
   readonly black_BGs: OctaveBlackBG;
@@ -23,7 +24,8 @@ export class OctaveBG implements WindowReflectable {
   }
 }
 
-export class OctaveBGs implements WindowReflectable {
+export class OctaveBGs 
+implements WindowReflectable {
   readonly svg: SVGGElement;
   readonly children: OctaveBG[];
   constructor(publisher: WindowReflectableRegistry) {
