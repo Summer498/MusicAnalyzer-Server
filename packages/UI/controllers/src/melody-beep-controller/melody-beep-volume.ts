@@ -4,7 +4,8 @@ export interface MelodyBeepVolumeSubscriber {
   onMelodyVolumeBarChanged: (value: number) => void
 }
 
-export class MelodyBeepVolume extends Slider<MelodyBeepVolumeSubscriber> {
+export class MelodyBeepVolume 
+extends Slider<MelodyBeepVolumeSubscriber> {
   constructor() {
     super("melody_beep_volume", "", 0, 100, 1);
   };
