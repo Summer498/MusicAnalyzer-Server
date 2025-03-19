@@ -3,7 +3,8 @@ import { WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/vi
 import { OctaveBlackKey } from "./black-key";
 import { OctaveWhiteKey } from "./white-key";
 
-export class OctaveKey implements WindowReflectable {
+export class OctaveKey 
+implements WindowReflectable {
   readonly svg: SVGGElement;
   readonly white_keys: OctaveWhiteKey;
   readonly black_keys: OctaveBlackKey;
@@ -23,7 +24,8 @@ export class OctaveKey implements WindowReflectable {
   }
 }
 
-export class OctaveKeys implements WindowReflectable {
+export class OctaveKeys 
+implements WindowReflectable {
   readonly svg: SVGGElement;
   readonly children: OctaveKey[];
   constructor(
