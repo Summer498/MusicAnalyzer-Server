@@ -3,7 +3,7 @@ import { ColorSelector } from "./color-selector";
 import { ColorChangeSubscriber } from "./melody-color-selector";
 
 export class IRM_ColorSelector 
-extends ColorSelector<ColorChangeSubscriber> {
+  extends ColorSelector<ColorChangeSubscriber> {
   getColor: (e:Triad)=>string;
   constructor(
     id:string,
