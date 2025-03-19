@@ -2,7 +2,8 @@ import { Triad } from "@music-analyzer/irm";
 import { ColorSelector } from "./color-selector";
 import { ColorChangeSubscriber } from "./melody-color-selector";
 
-export class IRM_ColorSelector extends ColorSelector<ColorChangeSubscriber> {
+export class IRM_ColorSelector 
+extends ColorSelector<ColorChangeSubscriber> {
   getColor: (e:Triad)=>string;
   constructor(
     id:string,
