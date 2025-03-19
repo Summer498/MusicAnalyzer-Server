@@ -6,7 +6,8 @@ import { GravitySwitcher } from "@music-analyzer/controllers/src/switcher/gravit
 
 export class GravityHierarchy
   extends CollectionHierarchy<GravityLayer>
-  implements
+  
+implements
   GravitySwitcherSubscriber,
   HierarchyLevelSubscriber {
   constructor(
