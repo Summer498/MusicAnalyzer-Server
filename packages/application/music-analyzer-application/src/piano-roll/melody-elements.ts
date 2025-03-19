@@ -4,7 +4,7 @@ import { AudioReflectable, WindowReflectable } from "@music-analyzer/view";
 import { Controllers } from "../controllers";
 
 export class MelodyElements 
-implements AudioReflectable, WindowReflectable {
+  implements AudioReflectable, WindowReflectable {
   readonly children: (AudioReflectable & WindowReflectable)[];
   readonly d_melody_collection: DMelodyGroup;
   readonly melody_hierarchy: MelodyHierarchy;

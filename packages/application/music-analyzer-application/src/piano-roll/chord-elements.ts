@@ -3,7 +3,7 @@ import { ChordKeySeries, ChordNameSeries, ChordNotesSeries, ChordRomanSeries } f
 import { AudioReflectable, WindowReflectable } from "@music-analyzer/view";
 
 export class ChordElements 
-implements AudioReflectable, WindowReflectable {
+  implements AudioReflectable, WindowReflectable {
   readonly children: (AudioReflectable & WindowReflectable)[];
   readonly chord_keys: ChordKeySeries;
   readonly chord_names: ChordNameSeries;
