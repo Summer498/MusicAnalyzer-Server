@@ -1,7 +1,8 @@
 import { WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
 import { CurrentTimeX, PianoRollHeight } from "@music-analyzer/view-parameters";
 
-export class CurrentTimeLine implements WindowReflectable {
+export class CurrentTimeLine 
+implements WindowReflectable {
   readonly svg: SVGLineElement;
   constructor(
     visible: boolean,
