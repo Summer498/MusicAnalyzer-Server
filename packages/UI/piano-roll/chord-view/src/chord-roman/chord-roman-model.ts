@@ -3,7 +3,8 @@ import { Time } from "@music-analyzer/time-and";
 import { _Chord } from "@music-analyzer/tonal-objects";
 import { MVVM_Model } from "@music-analyzer/view";
 
-export class ChordRomanModel extends MVVM_Model {
+export class ChordRomanModel 
+extends MVVM_Model {
   readonly time: Time;
   readonly tonic: string;
   readonly roman: string;
