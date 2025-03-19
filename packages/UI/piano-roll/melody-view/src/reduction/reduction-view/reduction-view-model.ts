@@ -7,7 +7,7 @@ const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class ReductionViewModel 
-extends MVVM_Model {
+  extends MVVM_Model {
   #x: number;
   #w: number;
   #cx: number;

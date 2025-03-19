@@ -4,7 +4,7 @@ import { MVVM_View } from "@music-analyzer/view";
 import { ReductionViewModel } from "./reduction-view-model";
 
 export class IRMSymbolOnReduction 
-extends MVVM_View<ReductionViewModel, "text"> {
+  extends MVVM_View<ReductionViewModel, "text"> {
   #getColor: (e: ReductionViewModel) => string;
   constructor(
     model: ReductionViewModel,

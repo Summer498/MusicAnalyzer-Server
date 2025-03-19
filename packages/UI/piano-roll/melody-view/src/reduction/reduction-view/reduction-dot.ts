@@ -3,7 +3,7 @@ import { ReductionViewModel } from "./reduction-view-model";
 
 
 export class ReductionDot 
-extends MVVM_View<ReductionViewModel, "circle"> {
+  extends MVVM_View<ReductionViewModel, "circle"> {
   constructor(
     readonly model: ReductionViewModel,
   ) {
