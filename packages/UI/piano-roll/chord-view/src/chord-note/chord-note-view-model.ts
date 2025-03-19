@@ -12,7 +12,8 @@ const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class ChordNoteVM
   extends MVVM_ViewModel<ChordNoteModel, ChordNoteView>
-  implements AudioReflectable {
+  
+implements AudioReflectable {
   #y: number;
   constructor(
     e: TimeAndRomanAnalysis,
