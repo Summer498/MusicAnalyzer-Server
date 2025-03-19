@@ -3,7 +3,8 @@ import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { BeatBarsGroup } from "@music-analyzer/beat-view";
 
-export class BeatElements implements AudioReflectable, WindowReflectable {
+export class BeatElements
+implements AudioReflectable, WindowReflectable {
   readonly children: (AudioReflectable & WindowReflectable)[];
   readonly beat_bars: BeatBarsGroup;
   constructor(
