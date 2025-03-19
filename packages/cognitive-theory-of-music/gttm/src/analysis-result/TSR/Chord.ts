@@ -1,7 +1,7 @@
 import { Chord as _Chord, Note } from "../common";
 
 export interface IChord 
-extends _Chord {
+  extends _Chord {
   readonly duration: number,
   readonly velocity: number,
 }
