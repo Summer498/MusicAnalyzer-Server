@@ -9,7 +9,8 @@ const not = (proposition: boolean) => proposition === false;
 const negate = <T>(value: T) => {
   return typeof value === "boolean" ? not(value) : value;
 };
-const negateResult = <T, _, A extends _[], R, F extends (...args: A) => R>(
+const negateResult = <T, _, A extends _[], R, F 
+extends (...args: A) => R>(
   func: F,
   target: T,
   args: A
