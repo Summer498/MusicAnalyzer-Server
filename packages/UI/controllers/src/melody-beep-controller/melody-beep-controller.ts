@@ -1,5 +1,5 @@
-import { MelodyBeepSwitcher } from "./melody-beep-switcher";
-import { MelodyBeepVolume } from "./melody-beep-volume";
+import { MelodyBeepSwitcher, MelodyBeepSwitcherSubscriber } from "./melody-beep-switcher";
+import { MelodyBeepVolume, MelodyBeepVolumeSubscriber } from "./melody-beep-volume";
 
 export class MelodyBeepController {
   readonly view: HTMLDivElement;
@@ -15,4 +15,11 @@ export class MelodyBeepController {
     this.checkbox = melody_beep_switcher;
     this.volume = melody_beep_volume;
   };
+  register(...subscribers: (
+    MelodyBeepSwitcherSubscriber
+    & MelodyBeepVolumeSubscriber
+  )[]) {
+    this.checkbox.register(...subscribers);
+    this.volume.register(...subscribers)
+  }
 }
