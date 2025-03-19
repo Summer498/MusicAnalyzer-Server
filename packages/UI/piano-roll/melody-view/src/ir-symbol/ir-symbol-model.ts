@@ -4,7 +4,7 @@ import { Time } from "@music-analyzer/time-and";
 import { MVVM_Model } from "@music-analyzer/view";
 
 export class IRSymbolModel 
-extends MVVM_Model {
+  extends MVVM_Model {
   readonly time: Time;
   readonly note: number;
   readonly archetype: Triad;
