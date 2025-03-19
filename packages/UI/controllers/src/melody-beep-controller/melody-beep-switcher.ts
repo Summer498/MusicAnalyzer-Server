@@ -5,7 +5,7 @@ export interface MelodyBeepSwitcherSubscriber {
 }
 
 export class MelodyBeepSwitcher 
-extends Checkbox<MelodyBeepSwitcherSubscriber> {
+  extends Checkbox<MelodyBeepSwitcherSubscriber> {
   constructor(id: string, label: string) {
     super(id, label);
   }
