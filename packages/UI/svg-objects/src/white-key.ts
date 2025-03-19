@@ -5,7 +5,8 @@ import { WindowReflectable } from "@music-analyzer/view";
 const transposed = (e: number) => e - PianoRollBegin.get()
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
-export class WhiteKeySVG implements WindowReflectable {
+export class WhiteKeySVG 
+implements WindowReflectable {
   readonly svg: SVGRectElement;
   readonly y: number;
   readonly width: number;
@@ -30,7 +31,8 @@ export class WhiteKeySVG implements WindowReflectable {
   }
 }
 
-export class OctaveWhiteKey implements WindowReflectable {
+export class OctaveWhiteKey 
+implements WindowReflectable {
   readonly svg: SVGGElement;
   readonly children: WhiteKeySVG[];
   constructor(oct: number) {

@@ -7,7 +7,8 @@ import { AnalysisView } from "@music-analyzer/music-analyzer-application";
 import { OctaveKeys } from "./octave-keys";
 import { CurrentTimeLine } from "./current-time-line";
 
-export class PianoRoll implements WindowReflectable {
+export class PianoRoll 
+implements WindowReflectable {
   readonly svg: SVGSVGElement;
   constructor(
     manager: ApplicationManager
