@@ -4,7 +4,7 @@ import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { BeatBarVM } from "./beat-bar-view-model";
 
 export class BeatBarsGroup 
-extends ReflectableTimeAndMVCControllerCollection<BeatBarVM> {
+  extends ReflectableTimeAndMVCControllerCollection<BeatBarVM> {
   constructor(
     beat_info: BeatInfo,
     melodies: TimeAndAnalyzedMelody[]

@@ -9,7 +9,7 @@ import { Time } from "@music-analyzer/time-and";
 const scaled = (e: number) => e * NoteSize.get();
 
 export class BeatBarVM 
-extends MVVM_ViewModel<BeatBarModel, BeatBarView> {
+  extends MVVM_ViewModel<BeatBarModel, BeatBarView> {
   #y1: number;
   #y2: number;
   sound_reserved: boolean;
