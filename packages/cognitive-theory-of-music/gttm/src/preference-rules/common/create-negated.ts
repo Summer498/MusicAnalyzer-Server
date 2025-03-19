@@ -10,7 +10,7 @@ const negate = <T>(value: T) => {
   return typeof value === "boolean" ? not(value) : value;
 };
 const negateResult = <T, _, A extends _[], R, F 
-extends (...args: A) => R>(
+  extends (...args: A) => R>(
   func: F,
   target: T,
   args: A
