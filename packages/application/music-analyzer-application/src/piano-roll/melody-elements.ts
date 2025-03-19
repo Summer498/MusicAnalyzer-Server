@@ -25,7 +25,7 @@ export class MelodyElements implements AudioReflectable, WindowReflectable {
     this.ir_plot = new IRPlot(hierarchical_melody, [hierarchy, melody_color]);
     this.chord_gravities = new GravityHierarchy("chord_gravity", hierarchical_melody, [gravity.chord_checkbox, hierarchy]);
     this.scale_gravities = new GravityHierarchy("scale_gravity", hierarchical_melody, [gravity.scale_checkbox, hierarchy]);
-    this.time_span_tree = new ReductionHierarchy(hierarchical_melody);
+    this.time_span_tree = new ReductionHierarchy(hierarchical_melody, [hierarchy, melody_color]);
     this.children = [
       this.d_melody_collection,
       this.melody_hierarchy,
