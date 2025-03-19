@@ -6,7 +6,8 @@ import { ColorChangeSubscriber, HierarchyLevelController, HierarchyLevelSubscrib
 
 export class ReductionHierarchy
   extends CollectionHierarchy<ReductionLayer>
-  implements
+  
+implements
   HierarchyLevelSubscriber,
   ColorChangeSubscriber {
   constructor(
