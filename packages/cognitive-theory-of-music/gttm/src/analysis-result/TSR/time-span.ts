@@ -15,7 +15,8 @@ export interface ITimeSpan {
   readonly secondary?: ITimeSpanTree
 }
 
-export class TimeSpan extends ReductionElement 
+export class TimeSpan 
+extends ReductionElement 
 implements ITimeSpan {
   readonly timespan: number;
   readonly leftend: number;
