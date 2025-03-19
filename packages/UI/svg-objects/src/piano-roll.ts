@@ -1,11 +1,10 @@
 import { chord_name_margin, chord_text_size } from "@music-analyzer/chord-view";
 import { WindowReflectable } from "@music-analyzer/view";
 import { PianoRollHeight, PianoRollWidth } from "@music-analyzer/view-parameters";
-import { ApplicationManager } from "@music-analyzer/music-analyzer-application"
-import { OctaveBGs } from "./octave-bg";
-import { AnalysisView } from "@music-analyzer/music-analyzer-application";
-import { OctaveKeys } from "./octave-keys";
+import { AnalysisView, ApplicationManager } from "@music-analyzer/music-analyzer-application"
 import { CurrentTimeLine } from "./current-time-line";
+import { OctaveBGs } from "./octave-bgs";
+import { OctaveKeys } from "./octave-keys";
 
 export class PianoRoll 
   implements WindowReflectable {
