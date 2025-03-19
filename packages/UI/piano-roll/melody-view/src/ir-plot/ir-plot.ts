@@ -4,7 +4,8 @@ import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { hasArchetype, ColorChangeSubscriber, HierarchyLevelSubscriber, HierarchyLevelController, MelodyColorController } from "@music-analyzer/controllers";
 
 export class IRPlot
-  implements
+  
+implements
   AudioReflectable,
   WindowReflectable,
   HierarchyLevelSubscriber,
