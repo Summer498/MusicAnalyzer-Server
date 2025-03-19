@@ -3,8 +3,8 @@ import { WindowReflectable } from "@music-analyzer/view";
 import { PianoRollHeight, PianoRollWidth } from "@music-analyzer/view-parameters";
 import { AnalysisView, ApplicationManager } from "@music-analyzer/music-analyzer-application"
 import { CurrentTimeLine } from "./current-time-line";
-import { OctaveBGs } from "./octave.ts/octave-bgs";
-import { OctaveKeys } from "./octave.ts/octave-keys";
+import { OctaveBGs } from "./octave/octave-bgs";
+import { OctaveKeys } from "./octave/octave-keys";
 
 export class PianoRoll 
   implements WindowReflectable {
