@@ -9,7 +9,7 @@ export interface IProlongationalRegion {
 }
 
 export class ProlongationalRegion 
-extends ReductionElement 
+  extends ReductionElement 
   implements IProlongationalRegion {
   override readonly head: Head;
   readonly primary?: IProlongationTree;
