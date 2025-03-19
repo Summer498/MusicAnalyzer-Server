@@ -1,6 +1,6 @@
 import { HasID } from "../part/has-id";
 
 export interface MidiDevice 
-extends HasID {
+  extends HasID {
   readonly port: number
 }
