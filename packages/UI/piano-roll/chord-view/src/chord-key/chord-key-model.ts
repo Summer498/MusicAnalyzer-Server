@@ -4,7 +4,7 @@ import { _Scale } from "@music-analyzer/tonal-objects";
 import { MVVM_Model } from "@music-analyzer/view";
 
 export class ChordKeyModel 
-extends MVVM_Model {
+  extends MVVM_Model {
   readonly time: Time;
   readonly tonic: string;
   readonly scale: string;
