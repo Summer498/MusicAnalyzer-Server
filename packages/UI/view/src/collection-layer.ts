@@ -7,7 +7,8 @@ export interface I_CollectionLayer
 
 export class CollectionLayer<VM extends I_TimeAndVM>
   extends ReflectableTimeAndMVCControllerCollection<VM>
-  implements I_CollectionLayer {
+  
+implements I_CollectionLayer {
   constructor(
     readonly layer: number,
     children: VM[],
