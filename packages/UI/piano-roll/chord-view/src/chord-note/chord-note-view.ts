@@ -3,7 +3,8 @@ import { MVVM_View } from "@music-analyzer/view";
 import { ChordNoteModel } from "./chord-note-model";
 
 
-export class ChordNoteView extends MVVM_View<ChordNoteModel, "rect"> {
+export class ChordNoteView 
+extends MVVM_View<ChordNoteModel, "rect"> {
   constructor(model: ChordNoteModel) {
     super(model, "rect");
     this.svg.style.stroke = "rgb(64, 64, 64)";
