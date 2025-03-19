@@ -5,7 +5,8 @@ export interface IChord extends _Chord {
   readonly velocity: number,
 }
 
-export class Chord implements IChord {
+export class Chord 
+implements IChord {
   readonly duration: number;
   readonly velocity: number;
   readonly note: Note;
