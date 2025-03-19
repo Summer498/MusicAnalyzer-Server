@@ -3,7 +3,8 @@ import { MelodyAnalysis, TimeAndAnalyzedMelody } from "@music-analyzer/melody-an
 import { Time } from "@music-analyzer/time-and";
 import { MVVM_Model } from "@music-analyzer/view";
 
-export class MelodyModel extends MVVM_Model {
+export class MelodyModel 
+extends MVVM_Model {
   readonly time: Time;
   readonly note: number;
   readonly head: Time;

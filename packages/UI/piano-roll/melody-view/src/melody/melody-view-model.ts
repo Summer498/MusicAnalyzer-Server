@@ -11,7 +11,8 @@ const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
-export class MelodyVM extends MVVM_ViewModel<MelodyModel, MelodyView> {
+export class MelodyVM 
+extends MVVM_ViewModel<MelodyModel, MelodyView> {
   #do_melody_beep: boolean;
   #beep_volume: number;
   get do_melody_beep() { return this.#do_melody_beep; }

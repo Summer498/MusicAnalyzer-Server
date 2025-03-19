@@ -5,7 +5,8 @@ import { MelodyModel } from "./melody-model";
 import { ColorChangeSubscriber, HierarchyLevelController, HierarchyLevelSubscriber, MelodyBeepController, MelodyBeepSwitcherSubscriber, MelodyBeepVolumeSubscriber, MelodyColorController } from "@music-analyzer/controllers";
 
 export class MelodyHierarchy
-  extends CollectionHierarchy<MelodyLayer>
+  
+extends CollectionHierarchy<MelodyLayer>
   
 implements
   HierarchyLevelSubscriber,
