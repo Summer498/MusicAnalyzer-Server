@@ -4,7 +4,8 @@ import { IRPlotLayer } from "../ir-plot-layer";
 import { IRPlotModel } from "../ir-plot-model";
 import { IRPlotHierarchyView } from "./ir-plot-hierarchy-view"
 
-export class IRPlotHierarchy implements AudioReflectable, WindowReflectable {
+export class IRPlotHierarchy 
+implements AudioReflectable, WindowReflectable {
   readonly view: IRPlotHierarchyView
   readonly width: number;
   readonly height: number;
