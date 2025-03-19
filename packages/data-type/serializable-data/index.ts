@@ -15,7 +15,7 @@ interface ISerializable<T extends ISerializable<T>> {
 
 // eslint-disable-next-line no-use-before-define
 export abstract class Serializable<T extends Serializable<T>> 
-implements ISerializable<T> {
+  implements ISerializable<T> {
   toJSON() { return this; }
   serialize() { return JSON.stringify(this.toJSON()); }
   fromJSON<J>(json: J): Serializable<T> {
