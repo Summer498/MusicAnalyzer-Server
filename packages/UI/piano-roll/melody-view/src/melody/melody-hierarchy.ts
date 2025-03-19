@@ -6,7 +6,8 @@ import { ColorChangeSubscriber, HierarchyLevelController, HierarchyLevelSubscrib
 
 export class MelodyHierarchy
   extends CollectionHierarchy<MelodyLayer>
-  implements
+  
+implements
   HierarchyLevelSubscriber,
   MelodyBeepSwitcherSubscriber,
   MelodyBeepVolumeSubscriber,
