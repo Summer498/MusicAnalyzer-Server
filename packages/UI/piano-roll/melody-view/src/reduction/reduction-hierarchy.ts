@@ -2,7 +2,7 @@ import { ColorChangeSubscriber, HierarchyLevelController, HierarchyLevelSubscrib
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { CollectionHierarchy } from "@music-analyzer/view";
 import { ReductionLayer } from "./reduction-layer";
-import { ReductionViewModel } from "./reduction";
+import { ReductionViewModel } from "./reduction-view";
 
 export class ReductionHierarchy
 
