@@ -1,13 +1,17 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { PianoRollTranslateX } from "@music-analyzer/view-parameters";
-import { MVVM_Collection } from "@music-analyzer/view";
+import { AudioReflectableRegistry, MVVM_Collection, WindowReflectableRegistry } from "@music-analyzer/view";
 import { ChordKey } from "./chord-key";
 
 export class ChordKeySeries 
   extends MVVM_Collection<ChordKey> {
   readonly remaining: ChordKey | undefined;
-  constructor(romans: TimeAndRomanAnalysis[]) {
+  constructor(
+    romans: TimeAndRomanAnalysis[],
+    publisher: [AudioReflectableRegistry, WindowReflectableRegistry]
+  ) {
     super("key-names", romans.map(e => new ChordKey(e)));
+    publisher.forEach(e=>e.register(this));
   }
 
   onAudioUpdate() {
