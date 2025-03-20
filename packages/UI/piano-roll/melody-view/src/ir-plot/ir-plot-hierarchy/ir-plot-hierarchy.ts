@@ -1,8 +1,8 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { AudioReflectable, WindowReflectable } from "@music-analyzer/view";
 import { IRPlotLayer } from "../ir-plot-layer";
-import { IRPlotModel } from "../ir-plot-model";
 import { IRPlotHierarchyView } from "./ir-plot-hierarchy-view"
+import { IRPlotModel } from "../ir-plot";
 
 export class IRPlotHierarchy
   implements AudioReflectable, WindowReflectable {
