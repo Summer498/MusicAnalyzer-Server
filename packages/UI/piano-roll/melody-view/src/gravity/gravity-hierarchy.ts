@@ -6,7 +6,7 @@ import { GravitySwitcher } from "@music-analyzer/controllers/src/switcher/gravit
 
 export class GravityHierarchy
   extends CollectionHierarchy<GravityLayer>
-implements
+  implements
   GravitySwitcherSubscriber,
   HierarchyLevelSubscriber {
   constructor(
@@ -18,10 +18,7 @@ implements
     ]
   ) {
     super(mode, hierarchical_melodies.map((e, l) => new GravityLayer(mode, e, l)));
-    controllers.forEach(e=>e.register(this))
+    controllers.forEach(e => e.register(this))
   }
-  onUpdateGravityVisibility(visible: boolean) {
-    const visibility = visible ? "visible" : "hidden";
-    this.svg.style.visibility = visibility;
-  }
+  onUpdateGravityVisibility(visible: boolean) { this.svg.style.visibility = visible ? "visible" : "hidden"; }
 }
