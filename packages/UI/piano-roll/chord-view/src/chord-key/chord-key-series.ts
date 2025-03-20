@@ -3,19 +3,15 @@ import { PianoRollTranslateX } from "@music-analyzer/view-parameters";
 import { AudioReflectableRegistry, MVVM_Collection, WindowReflectableRegistry } from "@music-analyzer/view";
 import { ChordKey } from "./chord-key";
 
-export class ChordKeySeries 
+export class ChordKeySeries
   extends MVVM_Collection<ChordKey> {
   readonly remaining: ChordKey | undefined;
   constructor(
     romans: TimeAndRomanAnalysis[],
     publisher: [AudioReflectableRegistry, WindowReflectableRegistry]
   ) {
-    super("key-names", romans.map(e => new ChordKey(e)));
-    publisher.forEach(e=>e.register(this));
+    super("key-names", romans.map(e => new ChordKey(e, [publisher[1]])));
+    publisher[0].register(this);
   }
-
-  onAudioUpdate() {
-    this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`);
-  }
-  onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
+  onAudioUpdate() { this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
 }
