@@ -14,6 +14,6 @@ export class IRM_ColorSelector
     this.getColor = getColor
   }
   update() {
-    this.subscribers.forEach(e => e.setColor(e => this.getColor(e.archetype)));
+    this.subscribers.forEach(e => e.setColor(triad => this.getColor(triad)));
   }
 }
