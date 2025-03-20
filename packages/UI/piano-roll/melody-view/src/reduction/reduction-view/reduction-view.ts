@@ -16,7 +16,6 @@ export class ReductionView
     model: ReductionModel,
     controllers: [MelodyColorController, AudioReflectableRegistry, WindowReflectableRegistry],
   ) {
-    const archetype = model.archetype;
     super(new ReductionViewModel(model), "g");
     this.bracket = new Bracket(this.model);
     this.dot = new Dot(this.model);
