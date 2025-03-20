@@ -1,10 +1,11 @@
 import { get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { MVVM_View } from "@music-analyzer/view";
 import { IRPlotModel } from "./ir-plot-model";
+import { hasArchetype } from "@music-analyzer/controllers";
 
 export class IRPlotView 
   extends MVVM_View<IRPlotModel, "circle"> {
-  #getColor: (archetype: IRPlotModel) => string;
+  #getColor: (archetype: hasArchetype) => string;
   readonly x0: number;
   readonly y0: number;
   readonly w: number;
@@ -59,7 +60,7 @@ export class IRPlotView
     this.updateX(-((1 - r) * curr[0] + r * next[0]));
     this.updateY(-((1 - r) * curr[1] + r * next[1]));
   }
-  setColor(getColor: (e: IRPlotModel) => string) {
+  setColor(getColor: (e: hasArchetype) => string) {
     this.#getColor = getColor;
     this.svg.style.fill = this.#getColor(this.model) || "rgb(0, 0, 0)";
   }
