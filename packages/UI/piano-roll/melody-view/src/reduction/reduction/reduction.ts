@@ -12,14 +12,8 @@ export class Reduction
     const model = new ReductionModel(melody, layer);
     super(model, new ReductionView(model));
   }
-  renewStrong(strong: boolean) {
-    this.view.strong = strong;
-  }
-  setColor(getColor: (e: ReductionViewModel) => string) {
-    this.view.setColor(getColor);
-  }
+  renewStrong(strong: boolean) { this.view.strong = strong; }
+  setColor(getColor: (e: ReductionViewModel) => string) { this.view.setColor(getColor); }
   updateColor() { this.view.updateColor(); }
-  onWindowResized() {
-    this.view.onWindowResized()
-  }
+  onWindowResized() { this.view.onWindowResized() }
 }
