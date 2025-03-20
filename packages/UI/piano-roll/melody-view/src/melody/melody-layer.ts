@@ -1,12 +1,12 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { CollectionLayer } from "@music-analyzer/view";
-import { MelodyVM } from "./melody-view-model";
+import { Melody } from "./melody-view-model";
 import { MelodyModel } from "./melody-model";
 
 export class MelodyLayer
-  extends CollectionLayer<MelodyVM> {
+  extends CollectionLayer<Melody> {
   constructor(melodies: TimeAndAnalyzedMelody[], layer: number) {
-    super(layer, melodies.map(e => new MelodyVM(e)));
+    super(layer, melodies.map(e => new Melody(e)));
   }
   onAudioUpdate() {
     super.onAudioUpdate();
