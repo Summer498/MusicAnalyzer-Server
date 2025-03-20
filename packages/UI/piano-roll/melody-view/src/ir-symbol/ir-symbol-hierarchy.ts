@@ -9,7 +9,7 @@ export class IRSymbolHierarchy
     hierarchical_melodies: TimeAndAnalyzedMelody[][],
     controllers: [HierarchyLevelController, MelodyColorController, AudioReflectableRegistry, WindowReflectableRegistry]
   ) {
-    super("implication-realization archetype", hierarchical_melodies.map((e, l) => new IRSymbolLayer(e, l, [controllers[1],controllers[2],controllers[3]])));
+    super("implication-realization archetype", hierarchical_melodies.map((e, l) => new IRSymbolLayer(e, l, [controllers[1], controllers[2], controllers[3]])));
     controllers[0].register(this);
   }
 }
