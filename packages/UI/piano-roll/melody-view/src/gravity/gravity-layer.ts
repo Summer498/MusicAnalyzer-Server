@@ -5,7 +5,7 @@ import { RequiredByGravity } from "./gravity/gravity";
 
 export interface RequiredByGravityLayer
   extends RequiredByGravity {
-  audio: AudioReflectableRegistry
+  readonly audio: AudioReflectableRegistry
 }
 
 export class GravityLayer

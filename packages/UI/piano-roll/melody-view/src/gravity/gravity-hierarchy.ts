@@ -6,8 +6,8 @@ import { CollectionHierarchy } from "@music-analyzer/view";
 
 interface RequiredByGravityHierarchy
   extends RequiredByGravityLayer {
-  switcher: GravitySwitcher,
-  hierarchy: HierarchyLevelController,
+  readonly switcher: GravitySwitcher,
+  readonly hierarchy: HierarchyLevelController,
 }
 
 export class GravityHierarchy

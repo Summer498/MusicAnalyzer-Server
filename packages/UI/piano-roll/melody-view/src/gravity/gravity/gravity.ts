@@ -11,12 +11,11 @@ const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export interface RequiredByGravity {
-  window: WindowReflectableRegistry
+  readonly window: WindowReflectableRegistry
 }
-export class Gravity 
+export class Gravity
   extends MVVM_ViewModel<GravityModel, GravityView>
-  implements TimeRangeSubscriber
-  {
+  implements TimeRangeSubscriber {
   #line_seed: LinePos;
   constructor(
     e: TimeAndAnalyzedMelody,
