@@ -4,7 +4,7 @@ import { ReductionViewModel } from "./reduction-view-model";
 import { IRMSymbol } from "./irm-symbol";
 import { Bracket } from "./bracket";
 import { Dot } from "./dot";
-import { hasArchetype } from "@music-analyzer/controllers";
+import { hasArchetype, MelodyColorController } from "@music-analyzer/controllers";
 
 export class ReductionView
   extends MVVM_View<ReductionViewModel, "g"> {
@@ -12,7 +12,10 @@ export class ReductionView
   readonly bracket: Bracket;
   readonly dot: Dot;
   readonly ir_symbol: IRMSymbol;
-  constructor(model: ReductionModel) {
+  constructor(
+    model: ReductionModel,
+    controllers: [MelodyColorController],
+  ) {
     const archetype = model.archetype;
     super(new ReductionViewModel(model), "g");
     this.bracket = new Bracket(this.model);
@@ -24,6 +27,7 @@ export class ReductionView
     this.svg.appendChild(this.bracket.svg);
     if (false) { this.svg.appendChild(this.dot.svg); }
     this.svg.appendChild(this.ir_symbol.svg);
+    controllers[0].register(this);
   }
   get strong() { return this.model.strong; }
   set strong(value: boolean) {
