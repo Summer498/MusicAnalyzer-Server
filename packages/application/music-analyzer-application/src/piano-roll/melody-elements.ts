@@ -21,7 +21,7 @@ export class MelodyElements
     const { d_melody, hierarchy, time_range, gravity, melody_color, melody_beep } = controllers;
 
     this.d_melody_collection = new DMelodySeries(d_melodies, [d_melody]);
-    this.melody_hierarchy = new MelodyHierarchy(hierarchical_melody, [hierarchy, melody_beep, melody_color]);
+    this.melody_hierarchy = new MelodyHierarchy(hierarchical_melody, [hierarchy, melody_color, melody_beep]);
     this.ir_hierarchy = new IRSymbolHierarchy(hierarchical_melody, [hierarchy, melody_color]);
     this.ir_plot = new IRPlot(hierarchical_melody, [hierarchy, melody_color]);
     this.chord_gravities = new GravityHierarchy("chord_gravity", hierarchical_melody, [gravity.chord_checkbox, hierarchy]);
