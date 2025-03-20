@@ -1,12 +1,21 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { CollectionLayer } from "@music-analyzer/view";
 import { Melody } from "./melody";
-import { hasArchetype } from "@music-analyzer/controllers";
+import { ColorChangeSubscriber, hasArchetype, MelodyBeepController, MelodyBeepSwitcherSubscriber, MelodyBeepVolumeSubscriber, MelodyColorController } from "@music-analyzer/controllers";
 
 export class MelodyLayer
-  extends CollectionLayer<Melody> {
-  constructor(melodies: TimeAndAnalyzedMelody[], layer: number) {
+  extends CollectionLayer<Melody>
+  implements
+  MelodyBeepSwitcherSubscriber,
+  MelodyBeepVolumeSubscriber,
+  ColorChangeSubscriber {
+  constructor(
+    melodies: TimeAndAnalyzedMelody[],
+    layer: number,
+    controllers: [MelodyBeepController, MelodyColorController]
+  ) {
     super(layer, melodies.map(e => new Melody(e)));
+    controllers.forEach(e => e.register(this));
   }
   onAudioUpdate() {
     super.onAudioUpdate();
