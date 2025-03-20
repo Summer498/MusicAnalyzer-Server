@@ -6,6 +6,7 @@ import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { Time } from "@music-analyzer/time-and";
 import { MelodyModel } from "./melody-model";
 import { MelodyView } from "./melody-view";
+import { hasArchetype } from "@music-analyzer/controllers";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();
@@ -54,7 +55,7 @@ export class Melody
       if (this.view.sound_reserved === false) { this.#beepMelody(); }
     }
   };
-  setColor(getColor: (e: MelodyModel) => string) {
+  setColor(getColor: (e: hasArchetype) => string) {
     this.view.setColor(getColor);
   }
   updateColor() { this.view.updateColor(); }
