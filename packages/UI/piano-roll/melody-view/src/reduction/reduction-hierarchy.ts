@@ -4,9 +4,7 @@ import { CollectionHierarchy } from "@music-analyzer/view";
 import { ReductionLayer } from "./reduction-layer";
 
 export class ReductionHierarchy
-
   extends CollectionHierarchy<ReductionLayer>
-
   implements
   HierarchyLevelSubscriber,
   ColorChangeSubscriber {
