@@ -3,8 +3,7 @@ import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { BeatBarsSeries } from "@music-analyzer/beat-view";
 
-export class BeatElements
-  implements AudioReflectable, WindowReflectable {
+export class BeatElements {
   readonly children: (AudioReflectable & WindowReflectable)[];
   readonly beat_bars: BeatBarsSeries;
   constructor(
@@ -15,6 +14,4 @@ export class BeatElements
     this.beat_bars = new BeatBarsSeries(beat_info, melodies, publisher);
     this.children = [this.beat_bars];
   }
-  onAudioUpdate() { this.children.forEach(e => e.onAudioUpdate()); }
-  onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
 }
