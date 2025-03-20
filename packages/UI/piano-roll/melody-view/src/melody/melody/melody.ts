@@ -33,7 +33,7 @@ export class Melody
     this.updateX();
     this.updateWidth();
   }
-  onAudioUpdate() {
+  beep() {
     this.#beeper.beepMelody();
   }
 }

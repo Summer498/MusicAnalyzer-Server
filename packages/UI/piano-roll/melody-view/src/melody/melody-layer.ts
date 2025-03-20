@@ -12,8 +12,7 @@ export class MelodyLayer
   ) {
     super(layer, melodies.map(e => new Melody(e, controllers)));
   }
-  onAudioUpdate() {
-    super.onAudioUpdate();
-    this.children.forEach(e => e.onAudioUpdate());
+  beep() {
+    this.children.forEach(e => e.beep());
   }
 }
