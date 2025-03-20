@@ -1,5 +1,5 @@
 import { MVVM_View } from "@music-analyzer/view";
-import { ReductionViewModel } from "./reduction-view-model";
+import { ReductionViewModel } from "../reduction";
 
 
 export class ReductionDot 

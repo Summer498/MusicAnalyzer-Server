@@ -1,7 +1,7 @@
 import { Triad } from "@music-analyzer/irm";
 import { MVVM_Model } from "@music-analyzer/view";
 import { BlackKeyPrm, bracket_height, NoteSize } from "@music-analyzer/view-parameters";
-import { ReductionModel } from "../reduction";
+import { ReductionModel } from ".";
 
 const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
