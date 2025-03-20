@@ -1,6 +1,6 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { ChordKeySeries, ChordNameSeries, ChordNotesSeries, ChordRomanSeries } from "@music-analyzer/chord-view";
-import { AudioReflectable, WindowReflectable } from "@music-analyzer/view";
+import { AudioReflectable, AudioReflectableRegistry, WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
 
 export class ChordElements
   implements AudioReflectable, WindowReflectable {
@@ -11,6 +11,7 @@ export class ChordElements
   readonly chord_romans: ChordRomanSeries;
   constructor(
     romans: TimeAndRomanAnalysis[],
+    publisher: [AudioReflectableRegistry, WindowReflectableRegistry]
   ) {
     this.chord_keys = new ChordKeySeries(romans);
     this.chord_names = new ChordNameSeries(romans);

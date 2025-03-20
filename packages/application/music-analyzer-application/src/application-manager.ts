@@ -31,7 +31,7 @@ export class ApplicationManager {
 
     this.analyzed = new MusicStructureElements(
       new BeatElements(beat_info, melodies, [this.audio_time_mediator, this.window_size_mediator]),
-      new ChordElements(romans),
+      new ChordElements(romans, [this.audio_time_mediator, this.window_size_mediator]),
       new MelodyElements(hierarchical_melody, d_melodies, this.controller, [this.audio_time_mediator, this.window_size_mediator]),
     )
 
