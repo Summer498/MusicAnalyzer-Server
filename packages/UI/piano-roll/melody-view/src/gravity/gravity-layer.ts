@@ -1,6 +1,6 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { CollectionLayer } from "@music-analyzer/view";
-import { Gravity } from "./gravity-view-model";
+import { Gravity } from "./gravity";
 
 export class GravityLayer 
   extends CollectionLayer<Gravity> {
