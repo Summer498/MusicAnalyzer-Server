@@ -8,7 +8,7 @@ import { chord_text_size } from "../chord-view-params";
 
 const scaled = (e: number) => e * NoteSize.get();
 
-export class ChordNameVM 
+export class ChordName 
   extends MVVM_ViewModel<ChordNameModel, ChordNameView> {
   #y: number;
   constructor(e: TimeAndRomanAnalysis) {
