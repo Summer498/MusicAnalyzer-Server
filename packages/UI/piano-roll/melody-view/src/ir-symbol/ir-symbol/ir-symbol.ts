@@ -3,14 +3,16 @@ import { MVVM_ViewModel, WindowReflectableRegistry } from "@music-analyzer/view"
 import { IRSymbolModel } from "./ir-symbol-model";
 import { IRSymbolView } from "./ir-symbol-view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { MelodyColorController } from "@music-analyzer/controllers";
+import { MelodyColorController, TimeRangeSubscriber } from "@music-analyzer/controllers";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class IRSymbol
-  extends MVVM_ViewModel<IRSymbolModel, IRSymbolView> {
+  extends MVVM_ViewModel<IRSymbolModel, IRSymbolView>
+  implements TimeRangeSubscriber
+  {
   #y: number;
   constructor(
     melody: TimeAndAnalyzedMelody,
@@ -34,4 +36,5 @@ export class IRSymbol
   onWindowResized() {
     this.updateX();
   }
+  onTimeRangeChanged = this.onWindowResized
 }
