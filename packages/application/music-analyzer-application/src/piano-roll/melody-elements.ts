@@ -1,10 +1,10 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { GravityHierarchy, DMelodySeries, IRSymbolHierarchy, MelodyHierarchy, ReductionHierarchy, IRPlot } from "@music-analyzer/melody-view";
-import { AudioReflectable, AudioReflectableRegistry, WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
+import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 import { Controllers } from "../controllers";
 
 export class MelodyElements {
-  readonly children: (AudioReflectable & WindowReflectable)[];
+  readonly children: unknown[];
   readonly d_melody_collection: DMelodySeries;
   readonly melody_hierarchy: MelodyHierarchy;
   readonly ir_hierarchy: IRSymbolHierarchy;

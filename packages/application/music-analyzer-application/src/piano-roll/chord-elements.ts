@@ -1,9 +1,9 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { ChordKeySeries, ChordNameSeries, ChordNotesSeries, ChordRomanSeries } from "@music-analyzer/chord-view";
-import { AudioReflectable, AudioReflectableRegistry, WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
+import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 
 export class ChordElements {
-  readonly children: (AudioReflectable & WindowReflectable)[];
+  readonly children: unknown[];
   readonly chord_keys: ChordKeySeries;
   readonly chord_names: ChordNameSeries;
   readonly chord_notes: ChordNotesSeries;
