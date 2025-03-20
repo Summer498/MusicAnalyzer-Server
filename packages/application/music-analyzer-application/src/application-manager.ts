@@ -30,7 +30,7 @@ export class ApplicationManager {
     this.window_size_mediator = new WindowReflectableRegistry();
 
     this.analyzed = new MusicStructureElements(
-      new BeatElements(beat_info, melodies),
+      new BeatElements(beat_info, melodies, [this.audio_time_mediator, this.window_size_mediator]),
       new ChordElements(romans),
       new MelodyElements(hierarchical_melody, d_melodies, this.controller, [this.audio_time_mediator, this.window_size_mediator]),
     )
