@@ -2,12 +2,15 @@ import { Triad } from "@music-analyzer/irm";
 import { MVVM_Model } from "@music-analyzer/view";
 import { BlackKeyPrm, bracket_height, NoteSize } from "@music-analyzer/view-parameters";
 import { ReductionModel } from "../reduction";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 
 const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class ReductionViewModel 
-  extends MVVM_Model {
+  extends MVVM_Model
+  implements TimeRangeSubscriber
+  {
   #x: number;
   #w: number;
   #cx: number;
@@ -49,4 +52,5 @@ export class ReductionViewModel
     this.updateX();
     this.updateWidth();
   }
+  onTimeRangeChanged = this.onWindowResized;
 }
