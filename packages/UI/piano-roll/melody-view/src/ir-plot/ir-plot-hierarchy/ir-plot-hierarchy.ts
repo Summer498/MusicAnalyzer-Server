@@ -1,20 +1,22 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { AudioReflectable, WindowReflectable } from "@music-analyzer/view";
+import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 import { IRPlotLayer } from "../ir-plot-layer";
 import { IRPlotHierarchyView } from "./ir-plot-hierarchy-view"
-import { hasArchetype } from "@music-analyzer/controllers";
+import { HierarchyLevelController, MelodyColorController } from "@music-analyzer/controllers";
 
-export class IRPlotHierarchy
-  implements AudioReflectable, WindowReflectable {
+export class IRPlotHierarchy {
   readonly view: IRPlotHierarchyView
   readonly width: number;
   readonly height: number;
   #visible_layer: number;
   readonly children: IRPlotLayer[];
   get show() { return this.view.circles.show }
-  constructor(hierarchical_melody: TimeAndAnalyzedMelody[][]) {
+  constructor(
+    hierarchical_melody: TimeAndAnalyzedMelody[][],
+    controllers: [HierarchyLevelController, MelodyColorController, AudioReflectableRegistry, WindowReflectableRegistry],
+  ) {
     const N = hierarchical_melody.length;
-    this.children = hierarchical_melody.map((e, l) => new IRPlotLayer(e, l, N));
+    this.children = hierarchical_melody.map((e, l) => new IRPlotLayer(e, l, N, [controllers[1], controllers[2]]));
     const w = Math.max(...this.children.map(e => e.w));
     const h = Math.max(...this.children.map(e => e.h));
     this.width = w;
@@ -22,6 +24,7 @@ export class IRPlotHierarchy
 
     this.#visible_layer = N;
     this.view = new IRPlotHierarchyView(w, h)
+    controllers[0].register(this);
   }
   updateLayer() {
     const visible_layer = this.children
@@ -33,11 +36,4 @@ export class IRPlotHierarchy
     this.#visible_layer = value;
     this.updateLayer();
   }
-  onAudioUpdate() {
-    this.updateLayer();
-    this.children.forEach(e => e.onAudioUpdate());
-  }
-  onWindowResized() { }
-  setColor(getColor: (e: hasArchetype) => string) { this.children.forEach(e => e.setColor(getColor)); }
-  updateColor() { this.children.forEach(e => e.updateColor()); }
 }

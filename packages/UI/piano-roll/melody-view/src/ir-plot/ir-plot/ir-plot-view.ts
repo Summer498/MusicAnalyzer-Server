@@ -1,7 +1,7 @@
 import { get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { MVVM_View } from "@music-analyzer/view";
 import { IRPlotModel } from "./ir-plot-model";
-import { hasArchetype } from "@music-analyzer/controllers";
+import { hasArchetype, MelodyColorController } from "@music-analyzer/controllers";
 
 export class IRPlotView 
   extends MVVM_View<IRPlotModel, "circle"> {
@@ -14,7 +14,10 @@ export class IRPlotView
   #y: number;
   get x() { return this.#x; };
   get y() { return this.#y; };
-  constructor(model: IRPlotModel) {
+  constructor(
+    model: IRPlotModel,
+    controllers: [MelodyColorController],
+  ) {
     super(model, "circle");
     this.#x = 0;
     this.#y = 0;
@@ -25,6 +28,7 @@ export class IRPlotView
     this.svg.style.stroke = "rgb(16, 16, 16)";
     this.svg.style.strokeWidth = String(6);
     this.#getColor = e => get_color_of_Narmour_concept(e.archetype);
+    controllers[0].register(this);
   }
   updateRadius(r: number) {
     this.svg.style.r = String(r);

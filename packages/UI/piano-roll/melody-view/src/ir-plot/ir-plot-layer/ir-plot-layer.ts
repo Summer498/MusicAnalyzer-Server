@@ -1,7 +1,8 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { IRPlotLayerView } from "./ir-plot-layer-view";
 import { IRPlot } from "../ir-plot";
-import { hasArchetype } from "@music-analyzer/controllers";
+import { MelodyColorController } from "@music-analyzer/controllers";
+import { AudioReflectableRegistry } from "@music-analyzer/view";
 
 export class IRPlotLayer {
   readonly view: IRPlotLayerView
@@ -11,17 +12,14 @@ export class IRPlotLayer {
   constructor(
     melody_series: TimeAndAnalyzedMelody[],
     readonly layer: number,
-    max: number
+    max: number,
+    controllers: [MelodyColorController, AudioReflectableRegistry],
   ) {
-    this.child = new IRPlot(melody_series);
+    this.child = new IRPlot(melody_series, controllers);
     this.view = new IRPlotLayerView(this.child, layer, max);
     this.w = this.child.view.w;
     this.h = this.child.view.h;
     this.view.updateWidth(this.w);
     this.view.updateHeight(this.h);
   }
-  onAudioUpdate() { this.child.onAudioUpdate(); }
-  setColor(getColor: (e: hasArchetype) => string) { this.child.setColor(getColor); }
-  updateColor() { this.child.updateColor(); }
 }
-
