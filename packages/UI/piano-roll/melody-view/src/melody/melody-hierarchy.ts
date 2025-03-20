@@ -4,7 +4,6 @@ import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MelodyLayer } from "./melody-layer";
 
 export class MelodyHierarchy
-
   extends CollectionHierarchy<MelodyLayer>
 
   implements
