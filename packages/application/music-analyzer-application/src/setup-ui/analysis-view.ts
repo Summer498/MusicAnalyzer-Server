@@ -7,10 +7,6 @@ export class AnalysisView
   readonly children: (AudioReflectable & WindowReflectable)[];
   constructor(
     analysis: MusicStructureElements,
-    publishers: [
-      WindowReflectableRegistry,
-      AudioReflectableRegistry,
-    ]
   ) {
     const e = analysis;
     this.children = [e.beat, e.chord, e.melody];
@@ -26,7 +22,6 @@ export class AnalysisView
     this.svg.appendChild(e.melody.chord_gravities.svg);
     this.svg.appendChild(e.melody.scale_gravities.svg);
     this.svg.appendChild(e.melody.time_span_tree.svg);
-    publishers.forEach(e => e.register(this));
   }
   onAudioUpdate() { this.children.forEach(e => e.onAudioUpdate()); }
   onWindowResized() { this.children.forEach(e => e.onWindowResized()); }

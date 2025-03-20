@@ -17,7 +17,7 @@ export class PianoRoll
     manager.window_size_mediator.register(this)
     this.appendChildren(
       new OctaveBGs(manager.window_size_mediator).svg,
-      new AnalysisView(manager.analyzed, [manager.window_size_mediator, manager.audio_time_mediator]).svg,
+      new AnalysisView(manager.analyzed).svg,
       new OctaveKeys(manager.window_size_mediator).svg,
       new CurrentTimeLine(!manager.FULL_VIEW, manager.window_size_mediator).svg,
     );
