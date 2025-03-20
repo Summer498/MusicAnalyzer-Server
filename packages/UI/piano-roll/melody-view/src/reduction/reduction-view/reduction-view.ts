@@ -5,7 +5,7 @@ import { ReductionDot } from "./reduction-dot";
 import { ReductionModel } from "../reduction";
 import { ReductionViewModel } from "./reduction-view-model";
 
-export class ReductionView 
+export class ReductionView
   extends MVVM_View<ReductionViewModel, "g"> {
   readonly svg: SVGGElement;
   readonly bracket: ReductionBracket;
@@ -30,12 +30,8 @@ export class ReductionView
     this.bracket.updateStrong();
     this.dot.updateStrong();
   }
-  setColor(getColor: (e: ReductionViewModel) => string) {
-    this.ir_symbol.setColor(getColor);
-  }
-  updateColor() {
-    this.ir_symbol.updateColor();
-  }
+  setColor(getColor: (e: ReductionViewModel) => string) { this.ir_symbol.setColor(getColor); }
+  updateColor() { this.ir_symbol.updateColor(); }
   onWindowResized() {
     this.model.onWindowResized();
     this.bracket.onWindowResized();
