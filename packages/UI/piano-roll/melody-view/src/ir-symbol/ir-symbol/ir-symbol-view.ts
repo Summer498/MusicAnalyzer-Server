@@ -2,12 +2,13 @@ import { size } from "@music-analyzer/view-parameters";
 import { get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { MVVM_View } from "@music-analyzer/view";
 import { IRSymbolModel } from "./ir-symbol-model";
+import { hasArchetype } from "@music-analyzer/controllers";
 
 const ir_analysis_em = size;
 
 export class IRSymbolView 
   extends MVVM_View<IRSymbolModel, "text"> {
-  #getColor: (e: IRSymbolModel) => string;
+  #getColor: (e: hasArchetype) => string;
   constructor(model: IRSymbolModel) {
     super(model, "text");
     this.svg.textContent = this.model.archetype.symbol;
@@ -19,7 +20,7 @@ export class IRSymbolView
   }
   updateX(x: number) { this.svg.setAttribute("x", String(x)); }
   updateY(y: number) { this.svg.setAttribute("y", String(y)); }
-  setColor(getColor: (e: IRSymbolModel) => string) {
+  setColor(getColor: (e: hasArchetype) => string) {
     this.#getColor = getColor;
     this.svg.style.fill = this.#getColor(this.model) || "rgb(0, 0, 0)";
   }
