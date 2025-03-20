@@ -3,12 +3,13 @@ import { I_CollectionLayer } from "./collection-layer";
 import { I_MVVM_Collection, MVVM_Collection } from "./mvc";
 import { AudioReflectable, WindowReflectable } from "./reflectable";
 
-export abstract class CollectionHierarchy<L extends I_CollectionLayer & WindowReflectable>
+export abstract class CollectionHierarchy<L extends I_CollectionLayer>
   extends MVVM_Collection<L>
   implements
   I_MVVM_Collection,
+  HierarchyLevelSubscriber,
   AudioReflectable,
-  HierarchyLevelSubscriber
+  WindowReflectable
   {
   protected _show: L[];
   get show() { return this._show; }
