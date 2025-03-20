@@ -16,11 +16,7 @@ export class MelodyHierarchy
   #active_layer: number;
   constructor(
     hierarchical_melodies: TimeAndAnalyzedMelody[][],
-    controllers: [
-      HierarchyLevelController,
-      MelodyBeepController,
-      MelodyColorController,
-    ]
+    controllers: [HierarchyLevelController, MelodyBeepController, MelodyColorController]
   ) {
     super("melody", hierarchical_melodies.map((e, l) => new MelodyLayer(e, l)));
     this.#check = false;
