@@ -1,4 +1,4 @@
-import { MVVM_ViewModel } from "@music-analyzer/view";
+import { AudioReflectableRegistry, MVVM_ViewModel, WindowReflectableRegistry } from "@music-analyzer/view";
 import { play } from "@music-analyzer/synth";
 import { NoteSize, NowAt, PianoRollHeight, reservation_range } from "@music-analyzer/view-parameters";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
@@ -13,7 +13,11 @@ export class BeatBar
   #y1: number;
   #y2: number;
   sound_reserved: boolean;
-  constructor(beat_info: BeatInfo, i: number) {
+  constructor(
+    beat_info: BeatInfo,
+    i: number,
+    controllers: [AudioReflectableRegistry, WindowReflectableRegistry],
+  ) {
     const model = new BeatBarModel(beat_info, i);
     super(model, new BeatBarView(model));
     this.sound_reserved = false;
