@@ -6,7 +6,7 @@ import { CurrentTimeLine } from "./current-time-line";
 import { OctaveBGs } from "./octave/octave-bgs";
 import { OctaveKeys } from "./octave/octave-keys";
 
-export class PianoRoll 
+export class PianoRoll
   implements WindowReflectable {
   readonly svg: SVGSVGElement;
   constructor(
@@ -21,7 +21,7 @@ export class PianoRoll
       new OctaveKeys(manager.window_size_mediator).svg,
       new CurrentTimeLine(!manager.FULL_VIEW, manager.window_size_mediator).svg,
     );
-
+    manager.window_size_mediator.register(this)
   }
   appendChildren(...children: SVGElement[]) {
     children.forEach(e => this.svg.appendChild(e));
