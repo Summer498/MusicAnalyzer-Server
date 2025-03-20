@@ -4,9 +4,7 @@ import { Melody } from "./melody";
 import { RequiredByMelody } from "./melody/melody";
 
 export interface RequiredByMelodyLayer
-  extends RequiredByMelody {
-
-}
+  extends RequiredByMelody { }
 
 export class MelodyLayer
   extends CollectionLayer<Melody> {

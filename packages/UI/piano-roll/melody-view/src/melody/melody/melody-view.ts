@@ -5,7 +5,7 @@ import { deleteMelody } from "../../melody-editor-function";
 import { MelodyModel } from "./melody-model";
 
 export interface RequiredByMelodyView {
-  melody_color: MelodyColorController
+  readonly melody_color: MelodyColorController
 }
 export class MelodyView
   extends MVVM_View<MelodyModel, "rect">

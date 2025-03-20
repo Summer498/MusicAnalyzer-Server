@@ -5,8 +5,8 @@ import { MelodyLayer, RequiredByMelodyLayer } from "./melody-layer";
 
 export interface RequiredByMelodyHierarchy
   extends RequiredByMelodyLayer {
-  hierarchy: HierarchyLevelController
-  audio: AudioReflectableRegistry
+  readonly hierarchy: HierarchyLevelController
+  readonly audio: AudioReflectableRegistry
 }
 
 export class MelodyHierarchy

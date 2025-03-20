@@ -5,7 +5,7 @@ import { MelodyModel } from "./melody-model";
 import { MelodyBeepController, MelodyBeepSwitcherSubscriber, MelodyBeepVolumeSubscriber } from "@music-analyzer/controllers";
 
 export interface RequiredByMelodyBeep {
-  melody_beep: MelodyBeepController,
+  readonly melody_beep: MelodyBeepController,
 }
 export class MelodyBeep
   implements

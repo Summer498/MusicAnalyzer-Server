@@ -12,7 +12,7 @@ const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export interface RequiredByMelody
   extends RequiredByMelodyBeep, RequiredByMelodyView {
-  window: WindowReflectableRegistry,
+  readonly window: WindowReflectableRegistry,
 }
 
 export class Melody
