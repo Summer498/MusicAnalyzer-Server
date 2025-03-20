@@ -1,4 +1,4 @@
-import { MVVM_ViewModel } from "@music-analyzer/view";
+import { MVVM_ViewModel, WindowReflectableRegistry } from "@music-analyzer/view";
 import { GravityModel } from "./gravity-model";
 import { GravityView } from "./gravity-view";
 import { Gravity as GravityAnalysis, TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
@@ -17,6 +17,7 @@ export class Gravity
     layer: number,
     readonly next: TimeAndAnalyzedMelody,
     readonly gravity: GravityAnalysis,
+    controllers: [WindowReflectableRegistry]
   ) {
     const model = new GravityModel(e, layer, next, gravity);
     super(model, new GravityView(model));
@@ -26,6 +27,7 @@ export class Gravity
       isNaN(this.model.note) ? -99 : (0.5 - convertToCoordinate(transposed(this.model.note))),
       isNaN(this.model.note) ? -99 : (0.5 - convertToCoordinate(transposed(this.model.gravity.destination!))),
     )
+    controllers[0].register(this);
   }
   updateWidth() { this.view.updateWidth(scaled(this.model.time.duration)) }
   updateHeight() { this.view.updateHeight(BlackKeyPrm.height) }
