@@ -11,10 +11,7 @@ export class GravityHierarchy
   constructor(
     mode: "chord_gravity" | "scale_gravity",
     hierarchical_melodies: TimeAndAnalyzedMelody[][],
-    controllers: [
-      GravitySwitcher,
-      HierarchyLevelController,
-    ]
+    controllers: [GravitySwitcher, HierarchyLevelController]
   ) {
     super(mode, hierarchical_melodies.map((e, l) => new GravityLayer(mode, e, l)));
     controllers.forEach(e => e.register(this))
