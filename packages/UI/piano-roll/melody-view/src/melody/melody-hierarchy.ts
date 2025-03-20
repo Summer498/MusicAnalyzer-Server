@@ -14,6 +14,8 @@ export class MelodyHierarchy
   ) {
     super("melody", hierarchical_melodies.map((e, l) => new MelodyLayer(e, l, [controllers[1], controllers[2]])));
     controllers[0].register(this);
+    controllers[3].register(this);
+    controllers[4].register(this);
   }
   onAudioUpdate() {
     super.onAudioUpdate();
