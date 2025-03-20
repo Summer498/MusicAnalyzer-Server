@@ -1,7 +1,7 @@
 import { search_items_overlaps_range, Time } from "@music-analyzer/time-and";
 import { PianoRollTranslateX } from "@music-analyzer/view-parameters";
 import { MVVM_Collection, MVVM_ViewModel, MVVM_Model, MVVM_View, I_MVVM_Collection, I_MVVM_ModelView } from "./mvc";
-import { AudioReflectable, WindowReflectable } from "./reflectable";
+import { AudioReflectable } from "./reflectable";
 
 export abstract class TimeAndMVCModel
   extends MVVM_Model {
@@ -9,7 +9,7 @@ export abstract class TimeAndMVCModel
 }
 
 export interface I_TimeAndVM
-  extends I_MVVM_ModelView, WindowReflectable {
+  extends I_MVVM_ModelView {
   model: TimeAndMVCModel;
 }
 export abstract class TimeAndVM<
@@ -61,5 +61,4 @@ export abstract class ReflectableTimeAndMVCControllerCollection<VM extends I_Tim
   onAudioUpdate() {
     this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`);
   }
-  onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
 }
