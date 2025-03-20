@@ -9,5 +9,5 @@ export class ReductionLayer
   }
   setColor(getColor: (e: ReductionViewModel) => string) { this.children.forEach(e => e.setColor(getColor)); }
   updateColor() { this.children.forEach(e => e.updateColor()); }
-  renewStrong(layer: number) { this.children.forEach((e) => (e as Reduction).renewStrong(layer === this.layer)); }
+  renewStrong(layer: number) { this.children.forEach(e => e.renewStrong(layer === this.layer)); }
 }
