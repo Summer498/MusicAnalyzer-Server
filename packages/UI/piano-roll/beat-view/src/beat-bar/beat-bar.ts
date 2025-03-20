@@ -5,11 +5,14 @@ import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { Time } from "@music-analyzer/time-and";
 import { BeatBarModel } from "./beat-bar-model";
 import { BeatBarView } from "./beat-bar-view";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 
 const scaled = (e: number) => e * NoteSize.get();
 
 export class BeatBar 
-  extends MVVM_ViewModel<BeatBarModel, BeatBarView> {
+  extends MVVM_ViewModel<BeatBarModel, BeatBarView>
+  implements TimeRangeSubscriber
+  {
   #y1: number;
   #y2: number;
   sound_reserved: boolean;
@@ -42,6 +45,7 @@ export class BeatBar
   onWindowResized() {
     this.updateX();
   }
+  onTimeRangeChanged = this.onWindowResized
 
   beepBeat() {
     const model_is_in_range = new Time(0, reservation_range)
