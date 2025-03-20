@@ -12,13 +12,8 @@ export class BeatElements
     melodies: TimeAndAnalyzedMelody[],
     publisher: [AudioReflectableRegistry, WindowReflectableRegistry]
   ) {
-    this.beat_bars = new BeatBarsSeries(
-      beat_info,
-      melodies
-    );
-    this.children = [
-      this.beat_bars
-    ];
+    this.beat_bars = new BeatBarsSeries(beat_info, melodies, publisher);
+    this.children = [this.beat_bars];
   }
   onAudioUpdate() { this.children.forEach(e => e.onAudioUpdate()); }
   onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
