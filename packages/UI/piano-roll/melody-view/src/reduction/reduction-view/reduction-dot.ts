@@ -2,7 +2,7 @@ import { MVVM_View } from "@music-analyzer/view";
 import { ReductionViewModel } from "./reduction-view-model";
 
 
-export class ReductionDot 
+export class Dot 
   extends MVVM_View<ReductionViewModel, "circle"> {
   constructor(
     readonly model: ReductionViewModel,
