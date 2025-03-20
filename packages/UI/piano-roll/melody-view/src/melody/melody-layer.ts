@@ -1,6 +1,6 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { CollectionLayer } from "@music-analyzer/view";
-import { Melody } from "./melody-view-model";
+import { Melody } from "./melody";
 import { MelodyModel } from "./melody-model";
 
 export class MelodyLayer
