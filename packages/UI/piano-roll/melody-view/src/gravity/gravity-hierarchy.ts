@@ -1,8 +1,14 @@
-import { AudioReflectableRegistry, CollectionHierarchy, WindowReflectableRegistry } from "@music-analyzer/view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { GravityLayer } from "./gravity-layer";
+import { GravityLayer, RequiredByGravityLayer } from "./gravity-layer";
 import { GravitySwitcherSubscriber, HierarchyLevelController } from "@music-analyzer/controllers";
 import { GravitySwitcher } from "@music-analyzer/controllers/src/switcher/gravity-switcher";
+import { CollectionHierarchy } from "@music-analyzer/view";
+
+interface RequiredByGravityHierarchy
+  extends RequiredByGravityLayer {
+  switcher: GravitySwitcher,
+  hierarchy: HierarchyLevelController,
+}
 
 export class GravityHierarchy
   extends CollectionHierarchy<GravityLayer>
@@ -11,11 +17,11 @@ export class GravityHierarchy
   constructor(
     mode: "chord_gravity" | "scale_gravity",
     hierarchical_melodies: TimeAndAnalyzedMelody[][],
-    controllers: [GravitySwitcher, HierarchyLevelController, AudioReflectableRegistry, WindowReflectableRegistry]
+    controllers: RequiredByGravityHierarchy,
   ) {
-    super(mode, hierarchical_melodies.map((e, l) => new GravityLayer(mode, e, l, [controllers[2], controllers[3]])));
-    controllers[0].register(this);
-    controllers[1].register(this);
+    super(mode, hierarchical_melodies.map((e, l) => new GravityLayer(mode, e, l, controllers)));
+    controllers.switcher.register(this);
+    controllers.hierarchy.register(this);
   }
   onUpdateGravityVisibility(visible: boolean) { this.svg.style.visibility = visible ? "visible" : "hidden"; }
 }

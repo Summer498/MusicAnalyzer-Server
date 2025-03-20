@@ -10,6 +10,9 @@ const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
+export interface RequiredByGravity {
+  window: WindowReflectableRegistry
+}
 export class Gravity 
   extends MVVM_ViewModel<GravityModel, GravityView>
   implements TimeRangeSubscriber
@@ -20,7 +23,7 @@ export class Gravity
     layer: number,
     readonly next: TimeAndAnalyzedMelody,
     readonly gravity: GravityAnalysis,
-    controllers: [WindowReflectableRegistry]
+    controllers: RequiredByGravity,
   ) {
     const model = new GravityModel(e, layer, next, gravity);
     super(model, new GravityView(model));
@@ -30,7 +33,7 @@ export class Gravity
       isNaN(this.model.note) ? -99 : (0.5 - convertToCoordinate(transposed(this.model.note))),
       isNaN(this.model.note) ? -99 : (0.5 - convertToCoordinate(transposed(this.model.gravity.destination!))),
     )
-    controllers[0].register(this);
+    controllers.window.register(this);
   }
   updateWidth() { this.view.updateWidth(scaled(this.model.time.duration)) }
   updateHeight() { this.view.updateHeight(BlackKeyPrm.height) }
