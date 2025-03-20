@@ -1,5 +1,5 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { CollectionLayer } from "@music-analyzer/view";
+import { AudioReflectableRegistry, CollectionLayer, WindowReflectableRegistry } from "@music-analyzer/view";
 import { Reduction } from "./reduction";
 import { MelodyColorController } from "@music-analyzer/controllers";
 
@@ -8,7 +8,7 @@ export class ReductionLayer
   constructor(
     melody: TimeAndAnalyzedMelody[],
     layer: number,
-    controllers: [MelodyColorController]
+    controllers: [MelodyColorController, AudioReflectableRegistry, WindowReflectableRegistry]
   ) {
     super(layer, melody.map(e => new Reduction(e, layer, controllers)));
   }

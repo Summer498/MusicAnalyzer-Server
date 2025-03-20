@@ -11,7 +11,7 @@ export class ReductionHierarchy
     hierarchical_melodies: TimeAndAnalyzedMelody[][],
     controllers: [HierarchyLevelController, MelodyColorController, AudioReflectableRegistry, WindowReflectableRegistry]
   ) {
-    super("time-span-reduction", hierarchical_melodies.map((e, l) => new ReductionLayer(e, l, [controllers[1]])));
+    super("time-span-reduction", hierarchical_melodies.map((e, l) => new ReductionLayer(e, l, [controllers[1], controllers[2], controllers[3]])));
     controllers[0].register(this);
     controllers[2].register(this);
     controllers[3].register(this);
