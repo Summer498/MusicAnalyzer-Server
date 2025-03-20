@@ -1,5 +1,5 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-import { ChordKey } from "./chord-key-view-model";
+import { ChordKey } from "./chord-key";
 import { PianoRollTranslateX } from "@music-analyzer/view-parameters";
 import { MVVM_Collection } from "@music-analyzer/view";
 
