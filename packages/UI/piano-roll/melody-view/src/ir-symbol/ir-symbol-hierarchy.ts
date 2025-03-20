@@ -5,7 +5,6 @@ import { IRSymbolLayer } from "./ir-symbol-layer";
 
 export class IRSymbolHierarchy
   extends CollectionHierarchy<IRSymbolLayer>
-
   implements
   HierarchyLevelSubscriber,
   ColorChangeSubscriber {
