@@ -12,7 +12,7 @@ export class OctaveKey
     publisher: WindowReflectableRegistry
   ) {
     this.white_keys = new OctaveWhiteKey(oct, publisher);
-    this.black_keys = new OctaveBlackKey(oct);
+    this.black_keys = new OctaveBlackKey(oct, publisher);
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.svg.id = `octave-key-${oct}`;
     this.svg.appendChild(this.white_keys.svg);
