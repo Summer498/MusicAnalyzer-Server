@@ -4,9 +4,7 @@ import { CollectionHierarchy } from "@music-analyzer/view";
 import { IRSymbolLayer } from "./ir-symbol-layer";
 
 export class IRSymbolHierarchy
-  extends CollectionHierarchy<IRSymbolLayer>
-  implements
-  HierarchyLevelSubscriber {
+  extends CollectionHierarchy<IRSymbolLayer> {
   constructor(
     hierarchical_melodies: TimeAndAnalyzedMelody[][],
     controllers: [
