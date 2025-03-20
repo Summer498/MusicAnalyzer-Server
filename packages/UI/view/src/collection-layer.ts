@@ -1,7 +1,10 @@
+import { WindowReflectable } from "./reflectable";
 import { I_ReflectableTimeAndMVCControllerCollection, I_TimeAndVM, ReflectableTimeAndMVCControllerCollection } from "./svg-collection";
 
 export interface I_CollectionLayer
-  extends I_ReflectableTimeAndMVCControllerCollection {
+  extends
+  I_ReflectableTimeAndMVCControllerCollection,
+  WindowReflectable {
   readonly layer: number
 }
 
