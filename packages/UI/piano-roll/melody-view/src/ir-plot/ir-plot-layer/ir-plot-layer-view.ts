@@ -1,4 +1,4 @@
-import { IRPlot } from "../ir-plot-view-model";
+import { IRPlot } from "../ir-plot";
 
 export class IRPlotLayerView {
   readonly svg: SVGGElement;

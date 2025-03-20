@@ -1,5 +1,5 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { IRPlot } from "../ir-plot-view-model";
+import { IRPlot } from "../ir-plot";
 import { IRPlotModel } from "../ir-plot-model";
 import { IRPlotLayerView } from "./ir-plot-layer-view";
 
