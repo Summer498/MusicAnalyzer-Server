@@ -1,4 +1,3 @@
-import { AudioReflectable, AudioReflectableRegistry, WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
 import { MusicStructureElements } from "../piano-roll";
 
 export class AnalysisView {
