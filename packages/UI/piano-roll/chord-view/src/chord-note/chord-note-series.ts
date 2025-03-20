@@ -1,6 +1,6 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { _Chord, Chord } from "@music-analyzer/tonal-objects";
-import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
+import { AudioReflectableRegistry, ReflectableTimeAndMVCControllerCollection, WindowReflectableRegistry } from "@music-analyzer/view";
 import { OctaveCount } from "@music-analyzer/view-parameters";
 import { MVVM_Collection } from "@music-analyzer/view";
 import { ChordNote } from "./chord-note";
@@ -22,7 +22,11 @@ export class ChordNotes
 
 export class ChordNotesSeries 
   extends ReflectableTimeAndMVCControllerCollection<ChordNotes> {
-  constructor(romans: TimeAndRomanAnalysis[]) {
+  constructor(
+    romans: TimeAndRomanAnalysis[],
+    publisher: [AudioReflectableRegistry, WindowReflectableRegistry]
+  ) {
     super("chords", romans.map(roman => new ChordNotes(roman)));
+    publisher.forEach(e=>e.register(this));
   }
 }
