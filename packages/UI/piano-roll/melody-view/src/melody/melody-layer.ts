@@ -1,6 +1,7 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { CollectionLayer } from "@music-analyzer/view";
-import { MelodyModel, Melody } from "./melody";
+import { Melody } from "./melody";
+import { hasArchetype } from "@music-analyzer/controllers";
 
 export class MelodyLayer
   extends CollectionLayer<Melody> {
@@ -13,6 +14,6 @@ export class MelodyLayer
   }
   onMelodyBeepCheckChanged(do_melody_beep: boolean) { this.children.forEach(e => e.onMelodyBeepCheckChanged(do_melody_beep)); }
   onMelodyVolumeBarChanged(beep_volume: number) { this.children.forEach(e => e.onMelodyVolumeBarChanged(beep_volume)); }
-  setColor(getColor: (e: MelodyModel) => string) { this.children.forEach(e => e.setColor(getColor)); }
+  setColor(getColor: (e: hasArchetype) => string) { this.children.forEach(e => e.setColor(getColor)); }
   updateColor() { this.children.forEach(e => e.updateColor()); }
 }
