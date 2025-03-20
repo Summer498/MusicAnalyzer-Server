@@ -1,7 +1,8 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MVVM_ViewModel } from "@music-analyzer/view";
 import { ReductionModel } from "./reduction-model";
-import { ReductionViewModel, ReductionView } from "../reduction-view";
+import { ReductionView } from "../reduction-view";
+import { hasArchetype } from "@music-analyzer/controllers";
 
 export class Reduction
   extends MVVM_ViewModel<ReductionModel, ReductionView> {
@@ -13,7 +14,7 @@ export class Reduction
     super(model, new ReductionView(model));
   }
   renewStrong(strong: boolean) { this.view.strong = strong; }
-  setColor(getColor: (e: ReductionViewModel) => string) { this.view.setColor(getColor); }
+  setColor(getColor: (e: hasArchetype) => string) { this.view.setColor(getColor); }
   updateColor() { this.view.updateColor(); }
   onWindowResized() { this.view.onWindowResized() }
 }
