@@ -6,7 +6,7 @@ import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { Time } from "@music-analyzer/time-and";
 import { MelodyModel } from "./melody-model";
 import { MelodyView } from "./melody-view";
-import { ColorChangeSubscriber, hasArchetype, MelodyBeepController, MelodyBeepSwitcherSubscriber, MelodyBeepVolumeSubscriber, MelodyColorController } from "@music-analyzer/controllers";
+import { MelodyBeepController, MelodyBeepSwitcherSubscriber, MelodyBeepVolumeSubscriber, MelodyColorController } from "@music-analyzer/controllers";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();
@@ -53,22 +53,19 @@ class MelodyBeep
 }
 
 export class Melody
-  extends MVVM_ViewModel<MelodyModel, MelodyView>
-  implements
-  ColorChangeSubscriber {
+  extends MVVM_ViewModel<MelodyModel, MelodyView> {
   #beeper: MelodyBeep
   constructor(
     melody: TimeAndAnalyzedMelody,
     controllers: [MelodyColorController, MelodyBeepController]
   ) {
     const model = new MelodyModel(melody);
-    super(model, new MelodyView(model));
+    super(model, new MelodyView(model, [controllers[0]]));
+    this.#beeper = new MelodyBeep(model, [controllers[1]]);
     this.updateX();
     this.updateY();
     this.updateWidth();
     this.updateHeight();
-    controllers[0].register(this);
-    this.#beeper = new MelodyBeep(model, [controllers[1]]);
   }
   updateX() { this.view.updateX(scaled(this.model.time.begin)) }
   updateY() { this.view.updateY(isNaN(this.model.note) ? -99 : -convertToCoordinate(transposed(this.model.note))) }
@@ -78,10 +75,6 @@ export class Melody
     this.updateX();
     this.updateWidth();
   }
-  setColor(getColor: (e: hasArchetype) => string) {
-    this.view.setColor(getColor);
-  }
-  updateColor() { this.view.updateColor(); }
   onAudioUpdate() {
     this.#beeper.beepMelody();
   }
