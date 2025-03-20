@@ -11,7 +11,7 @@ export class OctaveKey
     readonly oct: number,
     publisher: WindowReflectableRegistry
   ) {
-    this.white_keys = new OctaveWhiteKey(oct);
+    this.white_keys = new OctaveWhiteKey(oct, publisher);
     this.black_keys = new OctaveBlackKey(oct);
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.svg.id = `octave-key-${oct}`;
