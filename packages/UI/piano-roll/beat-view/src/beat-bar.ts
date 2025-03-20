@@ -3,7 +3,7 @@ import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { BeatBar } from "./beat-bar-view-model";
 
-export class BeatBarsGroup 
+export class BeatBarsSeries 
   extends ReflectableTimeAndMVCControllerCollection<BeatBar> {
   constructor(
     beat_info: BeatInfo,
