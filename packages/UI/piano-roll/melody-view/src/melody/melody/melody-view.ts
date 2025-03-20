@@ -2,11 +2,12 @@ import { get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { MVVM_View } from "@music-analyzer/view";
 import { deleteMelody } from "../../melody-editor-function";
 import { MelodyModel } from "./melody-model";
+import { hasArchetype } from "@music-analyzer/controllers";
 
 export class MelodyView 
   extends MVVM_View<MelodyModel, "rect"> {
   sound_reserved: boolean;
-  #getColor: (e: MelodyModel) => string;
+  #getColor: (e: hasArchetype) => string;
   constructor(model: MelodyModel) {
     super(model, "rect");
     this.svg.id = "melody-note";
@@ -16,7 +17,7 @@ export class MelodyView
     this.svg.style.fill = "rgb(0, 192, 0)";
     this.#getColor = e => get_color_of_Narmour_concept(e.archetype);
   }
-  setColor(getColor: (e: MelodyModel) => string) {
+  setColor(getColor: (e: hasArchetype) => string) {
     this.#getColor = getColor;
     this.svg.style.fill = this.#getColor(this.model) || "rgb(0, 0, 0)";
     this.svg.style.fill = "rgb(0, 192, 0)";
