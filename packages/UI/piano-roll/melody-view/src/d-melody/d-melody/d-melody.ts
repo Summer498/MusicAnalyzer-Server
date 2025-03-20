@@ -1,4 +1,4 @@
-import { MVVM_ViewModel } from "@music-analyzer/view";
+import { MVVM_ViewModel, WindowReflectableRegistry } from "@music-analyzer/view";
 import { DMelodyModel } from "./d-melody-model";
 import { DMelodyView } from "./d-melody-view";
 import { insertMelody } from "../../melody-editor-function";
@@ -11,7 +11,10 @@ const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class DMelody 
   extends MVVM_ViewModel<DMelodyModel, DMelodyView> {
-  constructor(e: TimeAndAnalyzedMelody) {
+  constructor(
+    e: TimeAndAnalyzedMelody,
+    controllers: [WindowReflectableRegistry],
+  ) {
     const model = new DMelodyModel(e);
     super(model, new DMelodyView(model));
     this.onAudioUpdate();
@@ -19,6 +22,7 @@ export class DMelody
     this.updateY();
     this.updateWidth();
     this.updateHeight();
+    controllers[0].register(this)
   }
   updateX() { this.view.updateX(scaled(this.model.time.begin)) }
   updateY() { this.view.updateY(isNaN(this.model.note) ? -99 : -convertToCoordinate(transposed(this.model.note))) }

@@ -8,12 +8,11 @@ export class DMelodySeries
   implements DMelodyControllerSubscriber {
   constructor(
     detected_melodies: TimeAndAnalyzedMelody[],
-    readonly controllers: [DMelodyController, AudioReflectableRegistry, WindowReflectableRegistry],
+    controllers: [DMelodyController, AudioReflectableRegistry, WindowReflectableRegistry],
   ) {
-    super("detected-melody", detected_melodies.map(e => new DMelody(e)));
-    controllers.forEach(e => e.register(this));
+    super("detected-melody", detected_melodies.map(e => new DMelody(e, [controllers[2]])));
+    controllers[0].register(this);
     controllers[1].register(this);
-    controllers[2].register(this);
   }
   onDMelodyVisibilityChanged(visible: boolean) {
     const visibility = visible ? "visible" : "hidden";
