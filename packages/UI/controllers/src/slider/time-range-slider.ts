@@ -14,11 +14,13 @@ class TimeRangeSlider
     const max = Number(this.input.max);
     const ratio = Math.pow(2, value - max);
     PianoRollRatio.set(ratio);
-    this.subscribers.forEach(e => e.onUpdate());
+    this.subscribers.forEach(e => e.onTimeRangeChanged());
   }
 }
 
-export interface TimeRangeSubscriber { onUpdate: () => void }
+export interface TimeRangeSubscriber {
+  onTimeRangeChanged: () => void
+}
 
 export class TimeRangeController {
   readonly view: HTMLDivElement;

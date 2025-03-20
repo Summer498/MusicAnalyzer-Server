@@ -36,6 +36,6 @@ export class ApplicationManager {
       new MelodyElements(hierarchical_melody, d_melodies, this.controller, registries),
     )
 
-    time_range.register(this.audio_time_mediator, this.window_size_mediator);
+//    time_range.register(this.audio_time_mediator, this.window_size_mediator);
   }
 }
