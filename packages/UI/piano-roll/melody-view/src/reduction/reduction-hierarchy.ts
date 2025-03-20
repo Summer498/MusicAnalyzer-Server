@@ -10,10 +10,7 @@ export class ReductionHierarchy
   ColorChangeSubscriber {
   constructor(
     hierarchical_melodies: TimeAndAnalyzedMelody[][],
-    controllers: [
-      HierarchyLevelController,
-      MelodyColorController,
-    ]
+    controllers: [HierarchyLevelController, MelodyColorController]
   ) {
     super("time-span-reduction", hierarchical_melodies.map((e, l) => new ReductionLayer(e, l)));
     controllers.forEach(e => e.register(this));
