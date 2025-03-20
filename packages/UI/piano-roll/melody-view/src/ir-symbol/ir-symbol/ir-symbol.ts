@@ -3,6 +3,7 @@ import { MVVM_ViewModel } from "@music-analyzer/view";
 import { IRSymbolModel } from "./ir-symbol-model";
 import { IRSymbolView } from "./ir-symbol-view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { hasArchetype } from "@music-analyzer/controllers";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();
@@ -21,7 +22,7 @@ export class IRSymbol
     this.updateX();
     this.updateY();
   }
-  setColor(getColor: (e: IRSymbolModel) => string) {
+  setColor(getColor: (e: hasArchetype) => string) {
     this.view.setColor(getColor);
   }
   updateColor() { this.view.updateColor(); }
