@@ -15,5 +15,4 @@ export class Reduction
     super(model, new ReductionView(model, controllers));
   }
   renewStrong(strong: boolean) { this.view.strong = strong; }
-  onWindowResized() { this.view.onWindowResized() }
 }
