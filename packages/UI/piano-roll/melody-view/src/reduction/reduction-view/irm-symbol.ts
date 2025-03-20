@@ -1,12 +1,12 @@
-import { get_color_of_Narmour_concept } from "@music-analyzer/irm";
+import { get_color_of_Narmour_concept, Triad } from "@music-analyzer/irm";
 import { bracket_height } from "@music-analyzer/view-parameters";
 import { MVVM_View } from "@music-analyzer/view";
 import { ReductionViewModel } from "./reduction-view-model";
-import { hasArchetype, MelodyColorController } from "@music-analyzer/controllers";
+import { MelodyColorController } from "@music-analyzer/controllers";
 
 export class IRMSymbol 
   extends MVVM_View<ReductionViewModel, "text"> {
-  #getColor: (e: hasArchetype) => string;
+  #getColor: (e: Triad) => string;
   constructor(
     model: ReductionViewModel,
     controllers: [MelodyColorController],
@@ -17,15 +17,15 @@ export class IRMSymbol
     this.svg.style.fontFamily = "Times New Roman";
     this.svg.style.fontSize = `${bracket_height}em`;
     this.svg.style.textAnchor = "middle";
-    this.#getColor = e=>get_color_of_Narmour_concept(e.archetype);
+    this.#getColor = get_color_of_Narmour_concept;
     controllers[0].register(this);
   }
-  setColor(getColor: (e: hasArchetype) => string) {
+  setColor(getColor: (e: Triad) => string) {
     this.#getColor = getColor;
-    this.svg.style.fill = this.#getColor(this.model) || "rgb(0, 0, 0)";
+    this.svg.style.fill = this.#getColor(this.model.archetype) || "rgb(0, 0, 0)";
   }
   updateColor(){
-    this.svg.style.fill = this.#getColor(this.model) || "rgb(0, 0, 0)";
+    this.svg.style.fill = this.#getColor(this.model.archetype) || "rgb(0, 0, 0)";
   }
   update(cx: number, y: number, w: number, h: number) {
     this.svg.setAttribute("x", String(cx));
