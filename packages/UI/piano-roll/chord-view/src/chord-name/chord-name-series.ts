@@ -1,10 +1,14 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
+import { AudioReflectableRegistry, ReflectableTimeAndMVCControllerCollection, WindowReflectableRegistry } from "@music-analyzer/view";
 import { ChordName } from "./chord-name";
 
 export class ChordNameSeries 
   extends ReflectableTimeAndMVCControllerCollection<ChordName> {
-  constructor(romans: TimeAndRomanAnalysis[]) {
+  constructor(
+    romans: TimeAndRomanAnalysis[],
+    publisher: [AudioReflectableRegistry, WindowReflectableRegistry]
+  ) {
     super("chord-names", romans.map(e => new ChordName(e)));
+    publisher.forEach(e=>e.register(this));
   }
 }
