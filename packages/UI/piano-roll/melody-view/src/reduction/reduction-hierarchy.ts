@@ -1,8 +1,7 @@
-import { ColorChangeSubscriber, HierarchyLevelController, HierarchyLevelSubscriber, MelodyColorController } from "@music-analyzer/controllers";
+import { ColorChangeSubscriber, hasArchetype, HierarchyLevelController, HierarchyLevelSubscriber, MelodyColorController } from "@music-analyzer/controllers";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { CollectionHierarchy } from "@music-analyzer/view";
 import { ReductionLayer } from "./reduction-layer";
-import { ReductionViewModel } from "./reduction-view";
 
 export class ReductionHierarchy
 
@@ -27,6 +26,6 @@ export class ReductionHierarchy
     visible_layer.forEach(e => e.renewStrong(value));
     this.setShow(visible_layer);
   }
-  setColor(getColor: (e: ReductionViewModel) => string) { this.children.forEach(e => e.setColor(getColor)); }
+  setColor(getColor: (e: hasArchetype) => string) { this.children.forEach(e => e.setColor(getColor)); }
   updateColor() { this.children.forEach(e => e.updateColor()); }
 }
