@@ -1,4 +1,4 @@
-import { AudioReflectable, MVVM_ViewModel } from "@music-analyzer/view";
+import { AudioReflectable, AudioReflectableRegistry, MVVM_ViewModel, WindowReflectableRegistry } from "@music-analyzer/view";
 import { ChordNoteModel } from "./chord-note-model";
 import { ChordNoteView } from "./chord-note-view";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
@@ -19,6 +19,7 @@ export class ChordNote
     chord: Chord,
     note: string,
     oct: number,
+    controllers: [AudioReflectableRegistry, WindowReflectableRegistry]
   ) {
     const model = new ChordNoteModel(e, chord, note, oct);
     super(model, new ChordNoteView(model));
@@ -29,6 +30,7 @@ export class ChordNote
     this.updateY();
     this.updateWidth();
     this.updateHeight();
+    controllers.forEach(e=>e.register(this));
   }
   updateX() { this.view.updateX(scaled(this.model.time.begin)) }
   updateY() { this.view.updateY(this.#y) }

@@ -5,30 +5,36 @@ import { OctaveCount } from "@music-analyzer/view-parameters";
 import { MVVM_Collection } from "@music-analyzer/view";
 import { ChordNote } from "./chord-note";
 
-export class ChordNotesInOctave 
+export class ChordNotesInOctave
   extends MVVM_Collection<ChordNote> {
-  constructor(roman: TimeAndRomanAnalysis, chord: Chord, oct: number) {
-    super(`${chord.name}-${oct}`, chord.notes.map(note => new ChordNote(roman, chord, note, oct)));
+  constructor(
+    roman: TimeAndRomanAnalysis,
+    chord: Chord,
+    oct: number,
+    controllers: [AudioReflectableRegistry, WindowReflectableRegistry],
+  ) {
+    super(`${chord.name}-${oct}`, chord.notes.map(note => new ChordNote(roman, chord, note, oct, controllers)));
   }
-  onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
 }
 
-export class ChordNotes 
+export class ChordNotes
   extends MVVM_Collection<ChordNotesInOctave> {
-  constructor(readonly model: TimeAndRomanAnalysis) {
+  constructor(
+    readonly model: TimeAndRomanAnalysis,
+    controllers: [AudioReflectableRegistry, WindowReflectableRegistry]
+  ) {
     const chord = _Chord.get(model.chord);
-    super(chord.name, [...Array(OctaveCount.get())].map((_, oct) => new ChordNotesInOctave(model, chord, oct)));
+    super(chord.name, [...Array(OctaveCount.get())].map((_, oct) => new ChordNotesInOctave(model, chord, oct, controllers)));
   }
-  onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
+  onWindowResized() { }
 }
 
-export class ChordNotesSeries 
+export class ChordNotesSeries
   extends ReflectableTimeAndMVCControllerCollection<ChordNotes> {
   constructor(
     romans: TimeAndRomanAnalysis[],
-    publisher: [AudioReflectableRegistry, WindowReflectableRegistry]
+    controllers: [AudioReflectableRegistry, WindowReflectableRegistry]
   ) {
-    super("chords", romans.map(roman => new ChordNotes(roman)));
-    publisher.forEach(e=>e.register(this));
+    super("chords", romans.map(roman => new ChordNotes(roman, controllers)));
   }
 }
