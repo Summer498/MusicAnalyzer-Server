@@ -1,4 +1,4 @@
-import { ColorChangeSubscriber, hasArchetype, HierarchyLevelController, HierarchyLevelSubscriber, MelodyColorController } from "@music-analyzer/controllers";
+import { HierarchyLevelController, HierarchyLevelSubscriber, MelodyColorController } from "@music-analyzer/controllers";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { CollectionHierarchy } from "@music-analyzer/view";
 import { ReductionLayer } from "./reduction-layer";
@@ -6,15 +6,13 @@ import { ReductionLayer } from "./reduction-layer";
 export class ReductionHierarchy
   extends CollectionHierarchy<ReductionLayer>
   implements
-  HierarchyLevelSubscriber,
-  ColorChangeSubscriber {
+  HierarchyLevelSubscriber {
   constructor(
     hierarchical_melodies: TimeAndAnalyzedMelody[][],
     controllers: [HierarchyLevelController, MelodyColorController]
   ) {
-    super("time-span-reduction", hierarchical_melodies.map((e, l) => new ReductionLayer(e, l)));
+    super("time-span-reduction", hierarchical_melodies.map((e, l) => new ReductionLayer(e, l, [controllers[1]])));
     controllers[0].register(this);
-    controllers[1].register(this);
   }
   onChangedLayer(value: number) {
     const visible_layer = this.children.filter(e => value >= e.layer);
@@ -22,6 +20,4 @@ export class ReductionHierarchy
     visible_layer.forEach(e => e.renewStrong(value));
     this.setShow(visible_layer);
   }
-  setColor(getColor: (e: hasArchetype) => string) { this.children.forEach(e => e.setColor(getColor)); }
-  updateColor() { this.children.forEach(e => e.updateColor()); }
 }
