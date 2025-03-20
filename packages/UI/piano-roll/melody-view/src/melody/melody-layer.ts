@@ -8,7 +8,7 @@ export class MelodyLayer
   constructor(
     melodies: TimeAndAnalyzedMelody[],
     layer: number,
-    controllers: [MelodyBeepController, MelodyColorController]
+    controllers: [MelodyColorController, MelodyBeepController]
   ) {
     super(layer, melodies.map(e => new Melody(e, controllers)));
   }

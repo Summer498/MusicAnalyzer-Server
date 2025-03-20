@@ -24,7 +24,7 @@ export class Melody
   get beep_volume() { return this.#beep_volume; }
   constructor(
     melody: TimeAndAnalyzedMelody,
-    controllers: [MelodyBeepController, MelodyColorController]
+    controllers: [MelodyColorController, MelodyBeepController]
   ) {
     const model = new MelodyModel(melody);
     super(model, new MelodyView(model));

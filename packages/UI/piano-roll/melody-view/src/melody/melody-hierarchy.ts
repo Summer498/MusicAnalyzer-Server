@@ -10,7 +10,7 @@ export class MelodyHierarchy
   get show() { return this._show; }
   constructor(
     hierarchical_melodies: TimeAndAnalyzedMelody[][],
-    controllers: [HierarchyLevelController, MelodyBeepController, MelodyColorController]
+    controllers: [HierarchyLevelController, MelodyColorController, MelodyBeepController]
   ) {
     super("melody", hierarchical_melodies.map((e, l) => new MelodyLayer(e, l, [controllers[1], controllers[2]])));
     controllers[0].register(this);
