@@ -1,10 +1,15 @@
+import { HierarchyLevelSubscriber } from "@music-analyzer/controllers"
 import { I_CollectionLayer } from "./collection-layer";
 import { I_MVVM_Collection, MVVM_Collection } from "./mvc";
 import { AudioReflectable, WindowReflectable } from "./reflectable";
 
 export abstract class CollectionHierarchy<L extends I_CollectionLayer & WindowReflectable>
   extends MVVM_Collection<L>
-  implements I_MVVM_Collection, AudioReflectable {
+  implements
+  I_MVVM_Collection,
+  AudioReflectable,
+  HierarchyLevelSubscriber
+  {
   protected _show: L[];
   get show() { return this._show; }
   constructor(id: string, readonly children: L[]) {
