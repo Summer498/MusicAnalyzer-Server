@@ -2,8 +2,7 @@ import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { ChordKeySeries, ChordNameSeries, ChordNotesSeries, ChordRomanSeries } from "@music-analyzer/chord-view";
 import { AudioReflectable, AudioReflectableRegistry, WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
 
-export class ChordElements
-  implements AudioReflectable, WindowReflectable {
+export class ChordElements {
   readonly children: (AudioReflectable & WindowReflectable)[];
   readonly chord_keys: ChordKeySeries;
   readonly chord_names: ChordNameSeries;
@@ -24,6 +23,4 @@ export class ChordElements
       this.chord_romans,
     ];
   }
-  onAudioUpdate() { this.children.forEach(e => e.onAudioUpdate()); }
-  onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
 }
