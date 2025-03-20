@@ -1,5 +1,5 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { CollectionLayer } from "@music-analyzer/view";
+import { CollectionLayer, WindowReflectableRegistry } from "@music-analyzer/view";
 import { Melody } from "./melody";
 import { MelodyBeepController, MelodyColorController } from "@music-analyzer/controllers";
 
@@ -8,7 +8,7 @@ export class MelodyLayer
   constructor(
     melodies: TimeAndAnalyzedMelody[],
     layer: number,
-    controllers: [MelodyColorController, MelodyBeepController]
+    controllers: [MelodyColorController, MelodyBeepController, WindowReflectableRegistry]
   ) {
     super(layer, melodies.map(e => new Melody(e, controllers)));
   }

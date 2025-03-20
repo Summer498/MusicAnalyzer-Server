@@ -1,7 +1,7 @@
 import { MelodyBeepController, MelodyColorController } from "@music-analyzer/controllers";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
-import { MVVM_ViewModel } from "@music-analyzer/view";
+import { MVVM_ViewModel, WindowReflectableRegistry } from "@music-analyzer/view";
 import { MelodyModel } from "./melody-model";
 import { MelodyView } from "./melody-view";
 import { MelodyBeep } from "./melody-beep";
@@ -15,7 +15,7 @@ export class Melody
   #beeper: MelodyBeep
   constructor(
     melody: TimeAndAnalyzedMelody,
-    controllers: [MelodyColorController, MelodyBeepController]
+    controllers: [MelodyColorController, MelodyBeepController, WindowReflectableRegistry]
   ) {
     const model = new MelodyModel(melody);
     super(model, new MelodyView(model, [controllers[0]]));
@@ -24,6 +24,7 @@ export class Melody
     this.updateY();
     this.updateWidth();
     this.updateHeight();
+    controllers[2].register(this)
   }
   updateX() { this.view.updateX(scaled(this.model.time.begin)) }
   updateY() { this.view.updateY(isNaN(this.model.note) ? -99 : -convertToCoordinate(transposed(this.model.note))) }
