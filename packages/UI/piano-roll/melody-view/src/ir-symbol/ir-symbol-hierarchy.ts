@@ -11,5 +11,7 @@ export class IRSymbolHierarchy
   ) {
     super("implication-realization archetype", hierarchical_melodies.map((e, l) => new IRSymbolLayer(e, l, [controllers[1]])));
     controllers[0].register(this);
+    controllers[2].register(this);
+    controllers[3].register(this);
   }
 }
