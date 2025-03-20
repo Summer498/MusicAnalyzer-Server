@@ -5,6 +5,7 @@ import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
 import { mod } from "@music-analyzer/math";
 import { Chord } from "@music-analyzer/tonal-objects";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();
@@ -12,7 +13,7 @@ const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class ChordNote
   extends MVVM_ViewModel<ChordNoteModel, ChordNoteView>
-  implements AudioReflectable {
+  implements AudioReflectable, TimeRangeSubscriber {
   #y: number;
   constructor(
     e: TimeAndRomanAnalysis,
@@ -30,7 +31,7 @@ export class ChordNote
     this.updateY();
     this.updateWidth();
     this.updateHeight();
-    controllers.forEach(e=>e.register(this));
+    controllers.forEach(e => e.register(this));
   }
   updateX() { this.view.updateX(scaled(this.model.time.begin)) }
   updateY() { this.view.updateY(this.#y) }
@@ -41,7 +42,6 @@ export class ChordNote
     this.updateWidth();
     this.updateHeight();
   }
-  onAudioUpdate() {
-    this.onWindowResized();
-  }
+  onAudioUpdate = this.onWindowResized;
+  onTimeRangeChanged = this.onWindowResized
 }
