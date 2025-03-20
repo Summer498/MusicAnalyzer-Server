@@ -4,13 +4,16 @@ import { DMelodyView } from "./d-melody-view";
 import { insertMelody } from "../../melody-editor-function";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get()
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class DMelody 
-  extends MVVM_ViewModel<DMelodyModel, DMelodyView> {
+  extends MVVM_ViewModel<DMelodyModel, DMelodyView>
+  implements TimeRangeSubscriber
+  {
   constructor(
     e: TimeAndAnalyzedMelody,
     controllers: [WindowReflectableRegistry],
@@ -36,4 +39,5 @@ export class DMelody
   onAudioUpdate() {
     this.view.onclick = insertMelody;
   }
+  onTimeRangeChanged = this.onWindowResized
 }
