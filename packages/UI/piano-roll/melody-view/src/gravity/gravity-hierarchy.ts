@@ -1,4 +1,4 @@
-import { CollectionHierarchy } from "@music-analyzer/view";
+import { AudioReflectableRegistry, CollectionHierarchy, WindowReflectableRegistry } from "@music-analyzer/view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { GravityLayer } from "./gravity-layer";
 import { GravitySwitcherSubscriber, HierarchyLevelController } from "@music-analyzer/controllers";
@@ -11,7 +11,7 @@ export class GravityHierarchy
   constructor(
     mode: "chord_gravity" | "scale_gravity",
     hierarchical_melodies: TimeAndAnalyzedMelody[][],
-    controllers: [GravitySwitcher, HierarchyLevelController]
+    controllers: [GravitySwitcher, HierarchyLevelController, AudioReflectableRegistry, WindowReflectableRegistry]
   ) {
     super(mode, hierarchical_melodies.map((e, l) => new GravityLayer(mode, e, l)));
     controllers.forEach(e => e.register(this))
