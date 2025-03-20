@@ -9,7 +9,7 @@ const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get()
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
-export class DMelodyVM 
+export class DMelody 
   extends MVVM_ViewModel<DMelodyModel, DMelodyView> {
   constructor(e: TimeAndAnalyzedMelody) {
     const model = new DMelodyModel(e);

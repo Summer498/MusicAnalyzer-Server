@@ -1,16 +1,16 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
-import { DMelodyVM } from "./d-melody-view-model";
+import { DMelody } from "./d-melody-view-model";
 import { DMelodyController, DMelodyControllerSubscriber } from "@music-analyzer/controllers";
 
 export class DMelodySeries
-  extends ReflectableTimeAndMVCControllerCollection<DMelodyVM>
+  extends ReflectableTimeAndMVCControllerCollection<DMelody>
   implements DMelodyControllerSubscriber {
   constructor(
     detected_melodies: TimeAndAnalyzedMelody[],
     readonly controllers: [DMelodyController],
   ) {
-    super("detected-melody", detected_melodies.map(e => new DMelodyVM(e)));
+    super("detected-melody", detected_melodies.map(e => new DMelody(e)));
     controllers.forEach(e => e.register(this));
   }
   onDMelodyVisibilityChanged(visible: boolean) {
