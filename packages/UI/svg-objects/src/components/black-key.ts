@@ -1,4 +1,4 @@
-import { WindowReflectable } from "@music-analyzer/view";
+import { WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
 import { BlackKeyPrm, BlackPosition, octave_height } from "@music-analyzer/view-parameters";
 
 export class BlackKeySVG 
@@ -9,7 +9,8 @@ export class BlackKeySVG
   readonly height: number;
   constructor(
     readonly oct: number,
-    black_index: number
+    black_index: number,
+    publisher: WindowReflectableRegistry
   ) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     this.svg.id = "black-key";
@@ -19,6 +20,7 @@ export class BlackKeySVG
     this.y = octave_height * oct + BlackKeyPrm.height * BlackPosition.get()[black_index];
     this.width = BlackKeyPrm.width;
     this.height = BlackKeyPrm.height;
+    publisher.register(this);
   }
   onWindowResized() {
     this.svg.setAttribute("x", String(0));
