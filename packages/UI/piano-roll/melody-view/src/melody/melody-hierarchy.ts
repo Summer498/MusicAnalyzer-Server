@@ -5,7 +5,6 @@ import { MelodyLayer } from "./melody-layer";
 
 export class MelodyHierarchy
   extends CollectionHierarchy<MelodyLayer>
-
   implements
   HierarchyLevelSubscriber,
   MelodyBeepSwitcherSubscriber,
