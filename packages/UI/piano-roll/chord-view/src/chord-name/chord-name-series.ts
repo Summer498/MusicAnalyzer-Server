@@ -8,7 +8,7 @@ export class ChordNameSeries
     romans: TimeAndRomanAnalysis[],
     publisher: [AudioReflectableRegistry, WindowReflectableRegistry]
   ) {
-    super("chord-names", romans.map(e => new ChordName(e)));
-    publisher.forEach(e=>e.register(this));
+    super("chord-names", romans.map(e => new ChordName(e, [publisher[1]])));
+    publisher[0].register(this);
   }
 }
