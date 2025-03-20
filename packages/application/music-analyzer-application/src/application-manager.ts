@@ -25,7 +25,6 @@ export class ApplicationManager {
     const length = melodies.length
 
     this.controller = new Controllers(layer_count, length, !this.NO_CHORD);
-    // const { d_melody, hierarchy, time_range, gravity, melody_color, melody_beep } = this.controller;
     const { time_range } = this.controller;
     this.audio_time_mediator = new AudioReflectableRegistry();
     this.window_size_mediator = new WindowReflectableRegistry();
@@ -36,16 +35,6 @@ export class ApplicationManager {
       new MelodyElements(hierarchical_melody, d_melodies, this.controller),
     )
     
-    /*
-    const e = this.analyzed;
-    d_melody.register(e.melody.d_melody_collection);
-    gravity.chord_checkbox.register(e.melody.chord_gravities);
-    gravity.scale_checkbox.register(e.melody.scale_gravities);
-    hierarchy.register(e.melody.melody_hierarchy, e.melody.ir_hierarchy, e.melody.ir_plot, e.melody.time_span_tree, e.melody.scale_gravities, e.melody.chord_gravities);
-    melody_beep.checkbox.register(e.melody.melody_hierarchy);
-    melody_beep.volume.register(e.melody.melody_hierarchy);
-    melody_color.register(e.melody.ir_hierarchy, e.melody.ir_plot, e.melody.melody_hierarchy, e.melody.time_span_tree)
-    */
     time_range.register(this.audio_time_mediator, this.window_size_mediator);
   }
 }
