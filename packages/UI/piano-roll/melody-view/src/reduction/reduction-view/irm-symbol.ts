@@ -2,10 +2,11 @@ import { get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { bracket_height } from "@music-analyzer/view-parameters";
 import { MVVM_View } from "@music-analyzer/view";
 import { ReductionViewModel } from "./reduction-view-model";
+import { hasArchetype } from "@music-analyzer/controllers";
 
 export class IRMSymbol 
   extends MVVM_View<ReductionViewModel, "text"> {
-  #getColor: (e: ReductionViewModel) => string;
+  #getColor: (e: hasArchetype) => string;
   constructor(
     model: ReductionViewModel,
   ) {
@@ -17,7 +18,7 @@ export class IRMSymbol
     this.svg.style.textAnchor = "middle";
     this.#getColor = e=>get_color_of_Narmour_concept(e.archetype);
   }
-  setColor(getColor: (e: ReductionViewModel) => string) {
+  setColor(getColor: (e: hasArchetype) => string) {
     this.#getColor = getColor;
     this.svg.style.fill = this.#getColor(this.model) || "rgb(0, 0, 0)";
   }
