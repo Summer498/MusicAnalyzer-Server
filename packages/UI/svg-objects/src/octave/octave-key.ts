@@ -1,9 +1,8 @@
-import { WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
+import { WindowReflectableRegistry } from "@music-analyzer/view";
 import { OctaveBlackKey } from "./octave-black-key";
 import { OctaveWhiteKey } from "./octave-white-key";
 
-export class OctaveKey 
-  implements WindowReflectable {
+export class OctaveKey {
   readonly svg: SVGGElement;
   readonly white_keys: OctaveWhiteKey;
   readonly black_keys: OctaveBlackKey;
@@ -17,9 +16,5 @@ export class OctaveKey
     this.svg.id = `octave-key-${oct}`;
     this.svg.appendChild(this.white_keys.svg);
     this.svg.appendChild(this.black_keys.svg);
-    publisher.register(this);
-  }
-  onWindowResized() {
-    this.black_keys.onWindowResized();
   }
 }
