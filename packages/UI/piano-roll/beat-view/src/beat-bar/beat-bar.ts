@@ -1,10 +1,10 @@
 import { MVVM_ViewModel } from "@music-analyzer/view";
 import { play } from "@music-analyzer/synth";
 import { NoteSize, NowAt, PianoRollHeight, reservation_range } from "@music-analyzer/view-parameters";
-import { BeatBarModel } from "./beat-bar-model";
-import { BeatBarView } from "./beat-bar-view";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { Time } from "@music-analyzer/time-and";
+import { BeatBarModel } from "./beat-bar-model";
+import { BeatBarView } from "./beat-bar-view";
 
 const scaled = (e: number) => e * NoteSize.get();
 
