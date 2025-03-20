@@ -13,7 +13,8 @@ export class ReductionHierarchy
     controllers: [HierarchyLevelController, MelodyColorController]
   ) {
     super("time-span-reduction", hierarchical_melodies.map((e, l) => new ReductionLayer(e, l)));
-    controllers.forEach(e => e.register(this));
+    controllers[0].register(this);
+    controllers[1].register(this);
   }
   onChangedLayer(value: number) {
     const visible_layer = this.children.filter(e => value >= e.layer);
