@@ -1,6 +1,6 @@
 import { MVVM_View } from "@music-analyzer/view";
 import { IRMSymbol } from "./irm-symbol";
-import { ReductionBracket } from "./reduction-bracket";
+import { Bracket } from "./reduction-bracket";
 import { ReductionDot } from "./reduction-dot";
 import { ReductionModel } from "../reduction";
 import { ReductionViewModel } from "./reduction-view-model";
@@ -8,13 +8,13 @@ import { ReductionViewModel } from "./reduction-view-model";
 export class ReductionView
   extends MVVM_View<ReductionViewModel, "g"> {
   readonly svg: SVGGElement;
-  readonly bracket: ReductionBracket;
+  readonly bracket: Bracket;
   readonly dot: ReductionDot;
   readonly ir_symbol: IRMSymbol;
   constructor(model: ReductionModel) {
     const archetype = model.archetype;
     super(new ReductionViewModel(model), "g");
-    this.bracket = new ReductionBracket(this.model);
+    this.bracket = new Bracket(this.model);
     this.dot = new ReductionDot(this.model);
     this.ir_symbol = new IRMSymbol(this.model);
 
