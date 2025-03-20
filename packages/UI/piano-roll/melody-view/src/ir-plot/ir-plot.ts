@@ -3,8 +3,7 @@ import { IRPlotHierarchy } from "./ir-plot-hierarchy";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { hasArchetype, ColorChangeSubscriber, HierarchyLevelSubscriber, HierarchyLevelController, MelodyColorController } from "@music-analyzer/controllers";
 
-export class IRPlot
-
+export class IRPlotSVG
   implements
   AudioReflectable,
   WindowReflectable,
