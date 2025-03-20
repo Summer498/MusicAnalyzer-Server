@@ -6,14 +6,12 @@ import { hasArchetype } from "@music-analyzer/controllers";
 
 export class MelodyView 
   extends MVVM_View<MelodyModel, "rect"> {
-  sound_reserved: boolean;
   #getColor: (e: hasArchetype) => string;
   constructor(model: MelodyModel) {
     super(model, "rect");
     this.svg.id = "melody-note";
     this.svg.style.stroke = "rgb(64, 64, 64)";
     this.svg.onclick = deleteMelody;
-    this.sound_reserved = false;
     this.svg.style.fill = "rgb(0, 192, 0)";
     this.#getColor = e => get_color_of_Narmour_concept(e.archetype);
   }
