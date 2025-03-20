@@ -5,11 +5,14 @@ import { ChordRomanView } from "./chord-roman-view";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { NoteSize, PianoRollHeight } from "@music-analyzer/view-parameters";
 import { chord_name_margin, chord_text_size } from "../../chord-view-params";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 
 const scaled = (e: number) => e * NoteSize.get();
 
 export class ChordRoman 
-  extends MVVM_ViewModel<ChordRomanModel, ChordRomanView> {
+  extends MVVM_ViewModel<ChordRomanModel, ChordRomanView>
+  implements TimeRangeSubscriber
+  {
   #y: number;
   constructor(
     e: TimeAndRomanAnalysis,
@@ -27,4 +30,5 @@ export class ChordRoman
   onWindowResized() {
     this.updateX();
   }
+  onTimeRangeChanged = this.onWindowResized
 }
