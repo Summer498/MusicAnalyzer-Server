@@ -20,7 +20,6 @@ export class OctaveKey
     publisher.register(this);
   }
   onWindowResized() {
-    this.white_keys.onWindowResized();
     this.black_keys.onWindowResized();
   }
 }

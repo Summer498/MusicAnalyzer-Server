@@ -1,8 +1,7 @@
-import { WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
+import { WindowReflectableRegistry } from "@music-analyzer/view";
 import { WhiteKeySVG } from "../components/white-key";
 
-export class OctaveWhiteKey
-  implements WindowReflectable {
+export class OctaveWhiteKey {
   readonly svg: SVGGElement;
   readonly children: WhiteKeySVG[];
   constructor(
@@ -15,5 +14,4 @@ export class OctaveWhiteKey
     this.children = white_seed.map((_, white_index) => new WhiteKeySVG(oct, white_index, publisher));
     this.children.map(e => this.svg.appendChild(e.svg));
   }
-  onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
 }
