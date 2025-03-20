@@ -13,10 +13,10 @@ export class ChordElements
     romans: TimeAndRomanAnalysis[],
     publisher: [AudioReflectableRegistry, WindowReflectableRegistry]
   ) {
-    this.chord_keys = new ChordKeySeries(romans);
-    this.chord_names = new ChordNameSeries(romans);
-    this.chord_notes = new ChordNotesSeries(romans);
-    this.chord_romans = new ChordRomanSeries(romans);
+    this.chord_keys = new ChordKeySeries(romans, publisher);
+    this.chord_names = new ChordNameSeries(romans, publisher);
+    this.chord_notes = new ChordNotesSeries(romans, publisher);
+    this.chord_romans = new ChordRomanSeries(romans, publisher);
     this.children = [
       this.chord_keys,
       this.chord_names,
