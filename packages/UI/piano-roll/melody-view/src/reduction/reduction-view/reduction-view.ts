@@ -1,5 +1,5 @@
 import { MVVM_View } from "@music-analyzer/view";
-import { IRMSymbolOnReduction } from "./irm-symbol-on-reduction";
+import { IRMSymbol } from "./irm-symbol-on-reduction";
 import { ReductionBracket } from "./reduction-bracket";
 import { ReductionDot } from "./reduction-dot";
 import { ReductionModel } from "../reduction";
@@ -10,13 +10,13 @@ export class ReductionView
   readonly svg: SVGGElement;
   readonly bracket: ReductionBracket;
   readonly dot: ReductionDot;
-  readonly ir_symbol: IRMSymbolOnReduction;
+  readonly ir_symbol: IRMSymbol;
   constructor(model: ReductionModel) {
     const archetype = model.archetype;
     super(new ReductionViewModel(model), "g");
     this.bracket = new ReductionBracket(this.model);
     this.dot = new ReductionDot(this.model);
-    this.ir_symbol = new IRMSymbolOnReduction(this.model);
+    this.ir_symbol = new IRMSymbol(this.model);
 
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.svg.id = "time-span-node";

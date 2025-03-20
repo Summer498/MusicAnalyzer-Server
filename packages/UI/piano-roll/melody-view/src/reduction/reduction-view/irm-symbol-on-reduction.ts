@@ -3,7 +3,7 @@ import { bracket_height } from "@music-analyzer/view-parameters";
 import { MVVM_View } from "@music-analyzer/view";
 import { ReductionViewModel } from "./reduction-view-model";
 
-export class IRMSymbolOnReduction 
+export class IRMSymbol 
   extends MVVM_View<ReductionViewModel, "text"> {
   #getColor: (e: ReductionViewModel) => string;
   constructor(
