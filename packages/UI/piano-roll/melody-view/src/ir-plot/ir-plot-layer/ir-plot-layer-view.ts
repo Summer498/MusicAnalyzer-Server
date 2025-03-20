@@ -1,9 +1,9 @@
-import { IRPlotVM } from "../ir-plot-view-model";
+import { IRPlot } from "../ir-plot-view-model";
 
 export class IRPlotLayerView {
   readonly svg: SVGGElement;
   constructor(
-    child: IRPlotVM,
+    child: IRPlot,
     readonly layer: number,
     max: number
   ) {
