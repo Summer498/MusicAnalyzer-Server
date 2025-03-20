@@ -32,9 +32,9 @@ export class ApplicationManager {
     this.analyzed = new MusicStructureElements(
       new BeatElements(beat_info, melodies),
       new ChordElements(romans),
-      new MelodyElements(hierarchical_melody, d_melodies, this.controller),
+      new MelodyElements(hierarchical_melody, d_melodies, this.controller, [this.audio_time_mediator, this.window_size_mediator]),
     )
-    
+
     time_range.register(this.audio_time_mediator, this.window_size_mediator);
   }
 }
