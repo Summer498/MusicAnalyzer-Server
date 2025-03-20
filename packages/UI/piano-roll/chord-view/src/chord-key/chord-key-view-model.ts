@@ -8,7 +8,7 @@ import { chord_name_margin, chord_text_size } from "../chord-view-params";
 
 const scaled = (e: number) => e * NoteSize.get();
 
-export class ChordKeyVM 
+export class ChordKey 
   extends MVVM_ViewModel<ChordKeyModel, ChordKeyView> {
   #y: number;
   constructor(e: TimeAndRomanAnalysis) {
