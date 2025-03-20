@@ -8,7 +8,8 @@ import { ColorChangeSubscriber, hasArchetype, MelodyColorController } from "@mus
 
 export class ReductionView
   extends MVVM_View<ReductionViewModel, "g">
-  implements ColorChangeSubscriber {
+  implements
+  ColorChangeSubscriber {
   readonly svg: SVGGElement;
   readonly bracket: Bracket;
   readonly dot: Dot;
