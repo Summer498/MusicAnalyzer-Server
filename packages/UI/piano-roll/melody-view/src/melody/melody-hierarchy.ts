@@ -5,10 +5,10 @@ import { MelodyModel } from "./melody-model";
 import { ColorChangeSubscriber, HierarchyLevelController, HierarchyLevelSubscriber, MelodyBeepController, MelodyBeepSwitcherSubscriber, MelodyBeepVolumeSubscriber, MelodyColorController } from "@music-analyzer/controllers";
 
 export class MelodyHierarchy
-  
+
   extends CollectionHierarchy<MelodyLayer>
-  
-implements
+
+  implements
   HierarchyLevelSubscriber,
   MelodyBeepSwitcherSubscriber,
   MelodyBeepVolumeSubscriber,
@@ -29,7 +29,7 @@ implements
     this.#check = false;
     this.#volume = 0;
     this.#active_layer = hierarchical_melodies.length;
-    controllers.forEach(e=>e.register(this));
+    controllers.forEach(e => e.register(this));
   }
   onMelodyBeepCheckChanged(do_melody_beep: boolean) {
     this.#check = do_melody_beep;
@@ -46,10 +46,6 @@ implements
     this.onMelodyBeepCheckChanged(this.#check);
     this.onMelodyVolumeBarChanged(this.#volume);
   }
-  setColor(getColor: (e: MelodyModel) => string) {
-    this.children.forEach(e => e.setColor(getColor));
-  }
-  updateColor() {
-    this.children.forEach(e => e.updateColor());
-  }
+  setColor(getColor: (e: MelodyModel) => string) { this.children.forEach(e => e.setColor(getColor)); }
+  updateColor() { this.children.forEach(e => e.updateColor()); }
 }

@@ -1,7 +1,7 @@
 import { WindowReflectable } from "@music-analyzer/view";
 import { BlackKeySVG } from "../components/black-key";
 
-export class OctaveBlackKey 
+export class OctaveBlackKey
   implements WindowReflectable {
   readonly svg: SVGGElement;
   readonly children: BlackKeySVG[];
@@ -12,7 +12,5 @@ export class OctaveBlackKey
     this.children = black_key_seed.map((_, j) => new BlackKeySVG(oct, j));
     this.children.map(e => this.svg.appendChild(e.svg));
   }
-  onWindowResized() {
-    this.children.forEach(e => e.onWindowResized());
-  }
+  onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
 }

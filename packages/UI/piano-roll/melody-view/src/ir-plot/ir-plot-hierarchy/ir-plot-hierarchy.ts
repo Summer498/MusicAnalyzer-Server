@@ -4,7 +4,7 @@ import { IRPlotLayer } from "../ir-plot-layer";
 import { IRPlotModel } from "../ir-plot-model";
 import { IRPlotHierarchyView } from "./ir-plot-hierarchy-view"
 
-export class IRPlotHierarchy 
+export class IRPlotHierarchy
   implements AudioReflectable, WindowReflectable {
   readonly view: IRPlotHierarchyView
   readonly width: number;
@@ -38,8 +38,6 @@ export class IRPlotHierarchy
     this.children.forEach(e => e.onAudioUpdate());
   }
   onWindowResized() { }
-  setColor(getColor: (e: IRPlotModel) => string) {
-    this.children.forEach(e => e.setColor(getColor));
-  }
+  setColor(getColor: (e: IRPlotModel) => string) { this.children.forEach(e => e.setColor(getColor)); }
   updateColor() { this.children.forEach(e => e.updateColor()); }
 }

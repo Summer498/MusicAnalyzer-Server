@@ -6,8 +6,8 @@ import { ColorChangeSubscriber, HierarchyLevelController, HierarchyLevelSubscrib
 
 export class IRSymbolHierarchy
   extends CollectionHierarchy<IRSymbolLayer>
-  
-implements
+
+  implements
   HierarchyLevelSubscriber,
   ColorChangeSubscriber {
   constructor(
@@ -18,12 +18,8 @@ implements
     ]
   ) {
     super("implication-realization archetype", hierarchical_melodies.map((e, l) => new IRSymbolLayer(e, l)));
-    controllers.forEach(e=>e.register(this))
+    controllers.forEach(e => e.register(this))
   }
-  setColor(getColor: (e: IRSymbolModel) => string) {
-    this.children.forEach(e => e.setColor(getColor));
-  }
-  updateColor() {
-    this.children.forEach(e => e.updateColor());
-  }
+  setColor(getColor: (e: IRSymbolModel) => string) { this.children.forEach(e => e.setColor(getColor)); }
+  updateColor() { this.children.forEach(e => e.updateColor()); }
 }

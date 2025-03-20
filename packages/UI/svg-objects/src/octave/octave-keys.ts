@@ -2,7 +2,7 @@ import { OctaveCount } from "@music-analyzer/view-parameters";
 import { WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
 import { OctaveKey } from "./octave-key";
 
-export class OctaveKeys 
+export class OctaveKeys
   implements WindowReflectable {
   readonly svg: SVGGElement;
   readonly children: OctaveKey[];
@@ -16,7 +16,5 @@ export class OctaveKeys
     this.children.forEach(e => this.svg.appendChild(e.svg));
     publisher.register(this);
   }
-  onWindowResized() {
-    this.children.forEach(e => e.onWindowResized());
-  }
+  onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
 }

@@ -1,7 +1,7 @@
 import { WindowReflectable } from "@music-analyzer/view";
 import { WhiteBG_SVG } from "../components/white-bg";
 
-export class OctaveWhiteBG 
+export class OctaveWhiteBG
   implements WindowReflectable {
   readonly svg: SVGGElement;
   readonly children: WhiteBG_SVG[];
@@ -12,7 +12,5 @@ export class OctaveWhiteBG
     this.children = white_key_seed.map((_, white_index) => new WhiteBG_SVG(oct, white_index));
     this.children.map(e => this.svg.appendChild(e.svg));
   }
-  onWindowResized() {
-    this.children.forEach(e => e.onWindowResized());
-  }
+  onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
 }

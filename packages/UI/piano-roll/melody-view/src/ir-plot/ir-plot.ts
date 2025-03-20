@@ -4,8 +4,8 @@ import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { hasArchetype, ColorChangeSubscriber, HierarchyLevelSubscriber, HierarchyLevelController, MelodyColorController } from "@music-analyzer/controllers";
 
 export class IRPlot
-  
-implements
+
+  implements
   AudioReflectable,
   WindowReflectable,
   HierarchyLevelSubscriber,
@@ -26,21 +26,11 @@ implements
     this.svg.id = "IR-plot";
     this.svg.setAttribute("width", String(g.width));
     this.svg.setAttribute("height", String(g.height));
-    controllers.forEach(e=>e.register(this));
+    controllers.forEach(e => e.register(this));
   }
-  onAudioUpdate() {
-    this.children.forEach(e => e.onAudioUpdate());
-  }
-  onWindowResized() {
-    this.children.forEach(e => e.onWindowResized());
-  }
-  onChangedLayer(value: number) {
-    this.children[0].onChangedLayer(value)
-  }
-  setColor(getColor: (e: hasArchetype) => string) {
-    this.children[0].setColor(getColor);
-  }
-  updateColor() {
-    this.children[0].updateColor();
-  }
+  onAudioUpdate() { this.children.forEach(e => e.onAudioUpdate()); }
+  onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
+  onChangedLayer(value: number) { this.children.forEach(e => e.onChangedLayer(value)); }
+  setColor(getColor: (e: hasArchetype) => string) { this.children.forEach(e => e.setColor(getColor)); }
+  updateColor() { this.children.forEach(e => e.updateColor()); }
 }

@@ -3,7 +3,7 @@ import { GravityHierarchy, DMelodyGroup, IRSymbolHierarchy, MelodyHierarchy, Red
 import { AudioReflectable, WindowReflectable } from "@music-analyzer/view";
 import { Controllers } from "../controllers";
 
-export class MelodyElements 
+export class MelodyElements
   implements AudioReflectable, WindowReflectable {
   readonly children: (AudioReflectable & WindowReflectable)[];
   readonly d_melody_collection: DMelodyGroup;
@@ -37,10 +37,6 @@ export class MelodyElements
       this.time_span_tree,
     ];
   }
-  onAudioUpdate() {
-    this.children.forEach(e => e.onAudioUpdate());
-  }
-  onWindowResized() {
-    this.children.forEach(e => e.onWindowResized());
-  }
+  onAudioUpdate() { this.children.forEach(e => e.onAudioUpdate()); }
+  onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
 }

@@ -19,10 +19,6 @@ export class BeatElements
       this.beat_bars
     ];
   }
-  onAudioUpdate() {
-    this.children.forEach(e => e.onAudioUpdate());
-  }
-  onWindowResized() {
-    this.children.forEach(e => e.onWindowResized());
-  }
+  onAudioUpdate() { this.children.forEach(e => e.onAudioUpdate()); }
+  onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
 }

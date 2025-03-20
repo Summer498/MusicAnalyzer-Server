@@ -1,8 +1,8 @@
 import { WindowReflectable } from "@music-analyzer/view";
 import { BlackBG_SVG } from "../components/black-bg";
 
-export class OctaveBlackBG  
-  implements WindowReflectable{
+export class OctaveBlackBG
+  implements WindowReflectable {
   readonly svg: SVGGElement;
   readonly children: BlackBG_SVG[];
   constructor(oct: number) {
@@ -12,7 +12,5 @@ export class OctaveBlackBG
     this.children = black_key_seed.map((_, black_index) => new BlackBG_SVG(oct, black_index));
     this.children.map(e => this.svg.appendChild(e.svg));
   }
-  onWindowResized() {
-    this.children.forEach(e => e.onWindowResized());
-  }
+  onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
 }
