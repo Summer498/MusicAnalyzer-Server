@@ -1,4 +1,4 @@
-import { IRPlotLayer } from "../ir-plot-layer/ir-plot-layer";
+import { IRPlotLayer } from "../ir-plot-layer";
 
 export class IRPlotCircles {
   readonly svg: SVGGElement;
@@ -11,6 +11,6 @@ export class IRPlotCircles {
   setShow(visible_layers: IRPlotLayer[]) {
     this._show = visible_layers;
     this._show.forEach(e => e.onAudioUpdate());
-    this.svg.replaceChildren(...this._show.map(e => e.svg));
+    this.svg.replaceChildren(...this._show.map(e => e.view.svg));
   }
 }
