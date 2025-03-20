@@ -3,7 +3,7 @@ import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view"
 import { DMelodyVM } from "./d-melody-view-model";
 import { DMelodyController, DMelodyControllerSubscriber } from "@music-analyzer/controllers";
 
-export class DMelodyGroup
+export class DMelodySeries
   extends ReflectableTimeAndMVCControllerCollection<DMelodyVM>
   implements DMelodyControllerSubscriber {
   constructor(
