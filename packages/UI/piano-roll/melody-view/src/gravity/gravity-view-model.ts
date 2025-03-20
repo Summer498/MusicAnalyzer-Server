@@ -1,7 +1,7 @@
 import { MVVM_ViewModel } from "@music-analyzer/view";
 import { GravityModel } from "./gravity-model";
 import { GravityView } from "./gravity-view";
-import { Gravity, TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { Gravity as GravityAnalysis, TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
 import { LinePos } from "./line-pos";
 
@@ -9,14 +9,14 @@ const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
-export class GravityVM 
+export class Gravity 
   extends MVVM_ViewModel<GravityModel, GravityView> {
   #line_seed: LinePos;
   constructor(
     e: TimeAndAnalyzedMelody,
     layer: number,
     readonly next: TimeAndAnalyzedMelody,
-    readonly gravity: Gravity,
+    readonly gravity: GravityAnalysis,
   ) {
     const model = new GravityModel(e, layer, next, gravity);
     super(model, new GravityView(model));
