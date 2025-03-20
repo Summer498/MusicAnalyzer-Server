@@ -1,8 +1,7 @@
-import { ColorChangeSubscriber, HierarchyLevelController, HierarchyLevelSubscriber, MelodyBeepController, MelodyBeepSwitcherSubscriber, MelodyBeepVolumeSubscriber, MelodyColorController } from "@music-analyzer/controllers";
+import { ColorChangeSubscriber, hasArchetype, HierarchyLevelController, HierarchyLevelSubscriber, MelodyBeepController, MelodyBeepSwitcherSubscriber, MelodyBeepVolumeSubscriber, MelodyColorController } from "@music-analyzer/controllers";
 import { CollectionHierarchy } from "@music-analyzer/view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MelodyLayer } from "./melody-layer";
-import { MelodyModel } from "./melody";
 
 export class MelodyHierarchy
 
@@ -46,6 +45,6 @@ export class MelodyHierarchy
     this.onMelodyBeepCheckChanged(this.#check);
     this.onMelodyVolumeBarChanged(this.#volume);
   }
-  setColor(getColor: (e: MelodyModel) => string) { this.children.forEach(e => e.setColor(getColor)); }
+  setColor(getColor: (e: hasArchetype) => string) { this.children.forEach(e => e.setColor(getColor)); }
   updateColor() { this.children.forEach(e => e.updateColor()); }
 }
