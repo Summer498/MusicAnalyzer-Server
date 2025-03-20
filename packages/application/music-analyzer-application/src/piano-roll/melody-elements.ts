@@ -22,7 +22,7 @@ export class MelodyElements {
     const [audio, window] = publisher;
 
     this.d_melody_collection = new DMelodySeries(d_melodies, [d_melody, audio, window]);
-    this.melody_hierarchy = new MelodyHierarchy(hierarchical_melody, [hierarchy, melody_color, melody_beep, audio, window]);
+    this.melody_hierarchy = new MelodyHierarchy(hierarchical_melody, { hierarchy, melody_color, melody_beep, audio, window });
     this.ir_hierarchy = new IRSymbolHierarchy(hierarchical_melody, [hierarchy, melody_color, audio, window]);
     this.ir_plot = new IRPlot(hierarchical_melody, [hierarchy, melody_color, audio, window]);
     this.chord_gravities = new GravityHierarchy("chord_gravity", hierarchical_melody, [gravity.chord_checkbox, hierarchy, audio, window]);

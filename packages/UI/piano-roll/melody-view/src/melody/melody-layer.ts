@@ -1,14 +1,19 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { CollectionLayer, WindowReflectableRegistry } from "@music-analyzer/view";
+import { CollectionLayer } from "@music-analyzer/view";
 import { Melody } from "./melody";
-import { MelodyBeepController, MelodyColorController } from "@music-analyzer/controllers";
+import { RequiredByMelody } from "./melody/melody";
+
+export interface RequiredByMelodyLayer
+  extends RequiredByMelody {
+
+}
 
 export class MelodyLayer
   extends CollectionLayer<Melody> {
   constructor(
     melodies: TimeAndAnalyzedMelody[],
     layer: number,
-    controllers: [MelodyColorController, MelodyBeepController, WindowReflectableRegistry]
+    controllers: RequiredByMelodyLayer
   ) {
     super(layer, melodies.map(e => new Melody(e, controllers)));
   }

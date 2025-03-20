@@ -4,6 +4,9 @@ import { Time } from "@music-analyzer/time-and";
 import { MelodyModel } from "./melody-model";
 import { MelodyBeepController, MelodyBeepSwitcherSubscriber, MelodyBeepVolumeSubscriber } from "@music-analyzer/controllers";
 
+export interface RequiredByMelodyBeep {
+  melody_beep: MelodyBeepController,
+}
 export class MelodyBeep
   implements
   MelodyBeepSwitcherSubscriber,
@@ -13,12 +16,12 @@ export class MelodyBeep
   #sound_reserved: boolean;
   constructor(
     private readonly model: MelodyModel,
-    controllers: [MelodyBeepController]
+    controllers: RequiredByMelodyBeep
   ) {
     this.#beep_volume = 0;
     this.#do_melody_beep = false;
     this.#sound_reserved = false;
-    controllers[0].register(this);
+    controllers.melody_beep.register(this);
   }
   #beepMelody = () => {
     const volume = this.#beep_volume / 400;

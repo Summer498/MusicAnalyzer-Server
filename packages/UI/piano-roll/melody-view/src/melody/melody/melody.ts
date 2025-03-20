@@ -1,32 +1,36 @@
-import { MelodyBeepController, MelodyColorController, TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
 import { MVVM_ViewModel, WindowReflectableRegistry } from "@music-analyzer/view";
 import { MelodyModel } from "./melody-model";
-import { MelodyView } from "./melody-view";
-import { MelodyBeep } from "./melody-beep";
+import { MelodyView, RequiredByMelodyView } from "./melody-view";
+import { MelodyBeep, RequiredByMelodyBeep } from "./melody-beep";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
+export interface RequiredByMelody
+  extends RequiredByMelodyBeep, RequiredByMelodyView {
+  window: WindowReflectableRegistry,
+}
+
 export class Melody
   extends MVVM_ViewModel<MelodyModel, MelodyView>
-  implements TimeRangeSubscriber
-  {
+  implements TimeRangeSubscriber {
   #beeper: MelodyBeep
   constructor(
     melody: TimeAndAnalyzedMelody,
-    controllers: [MelodyColorController, MelodyBeepController, WindowReflectableRegistry]
+    controllers: RequiredByMelody
   ) {
     const model = new MelodyModel(melody);
-    super(model, new MelodyView(model, [controllers[0]]));
-    this.#beeper = new MelodyBeep(model, [controllers[1]]);
+    super(model, new MelodyView(model, controllers));
+    this.#beeper = new MelodyBeep(model, controllers);
     this.updateX();
     this.updateY();
     this.updateWidth();
     this.updateHeight();
-    controllers[2].register(this)
+    controllers.window.register(this)
   }
   updateX() { this.view.updateX(scaled(this.model.time.begin)) }
   updateY() { this.view.updateY(isNaN(this.model.note) ? -99 : -convertToCoordinate(transposed(this.model.note))) }
