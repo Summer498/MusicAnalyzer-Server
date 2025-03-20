@@ -4,6 +4,7 @@ import { ReductionViewModel } from "./reduction-view-model";
 import { IRMSymbol } from "./irm-symbol";
 import { Bracket } from "./bracket";
 import { Dot } from "./dot";
+import { hasArchetype } from "@music-analyzer/controllers";
 
 export class ReductionView
   extends MVVM_View<ReductionViewModel, "g"> {
@@ -30,7 +31,7 @@ export class ReductionView
     this.bracket.updateStrong();
     this.dot.updateStrong();
   }
-  setColor(getColor: (e: ReductionViewModel) => string) { this.ir_symbol.setColor(getColor); }
+  setColor(getColor: (e: hasArchetype) => string) { this.ir_symbol.setColor(getColor); }
   updateColor() { this.ir_symbol.updateColor(); }
   onWindowResized() {
     this.model.onWindowResized();
