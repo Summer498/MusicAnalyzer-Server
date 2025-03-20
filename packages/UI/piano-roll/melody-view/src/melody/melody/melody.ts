@@ -1,4 +1,4 @@
-import { MelodyBeepController, MelodyColorController } from "@music-analyzer/controllers";
+import { MelodyBeepController, MelodyColorController, TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
 import { MVVM_ViewModel, WindowReflectableRegistry } from "@music-analyzer/view";
@@ -11,7 +11,9 @@ const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class Melody
-  extends MVVM_ViewModel<MelodyModel, MelodyView> {
+  extends MVVM_ViewModel<MelodyModel, MelodyView>
+  implements TimeRangeSubscriber
+  {
   #beeper: MelodyBeep
   constructor(
     melody: TimeAndAnalyzedMelody,
@@ -34,6 +36,7 @@ export class Melody
     this.updateX();
     this.updateWidth();
   }
+  onTimeRangeChanged = this.onWindowResized;
   beep() {
     this.#beeper.beepMelody();
   }
