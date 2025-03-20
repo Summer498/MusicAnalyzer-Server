@@ -11,6 +11,7 @@ export class ReductionLayer
     controllers: [MelodyColorController, AudioReflectableRegistry, WindowReflectableRegistry]
   ) {
     super(layer, melody.map(e => new Reduction(e, layer, controllers)));
+    controllers[1].register(this);
   }
   renewStrong(layer: number) { this.children.forEach(e => e.renewStrong(layer === this.layer)); }
 }
