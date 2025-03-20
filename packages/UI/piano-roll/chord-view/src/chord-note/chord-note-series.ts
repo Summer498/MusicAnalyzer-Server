@@ -2,8 +2,8 @@ import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { _Chord, Chord } from "@music-analyzer/tonal-objects";
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
 import { OctaveCount } from "@music-analyzer/view-parameters";
-import { ChordNote } from "./chord-note";
 import { MVVM_Collection } from "@music-analyzer/view";
+import { ChordNote } from "./chord-note";
 
 export class ChordNotesInOctave 
   extends MVVM_Collection<ChordNote> {
