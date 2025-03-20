@@ -1,1 +1,1 @@
-export { DMelodySeries as DMelodyGroup } from "./d-melody";
+export { DMelodySeries } from "./d-melody-series";

@@ -1,4 +1,4 @@
-export { DMelodyGroup } from "./src/d-melody";
+export {  DMelodySeries } from "./src/d-melody";
 export { ReductionHierarchy } from "./src/reduction";
 export { IRSymbolHierarchy } from "./src/ir-symbol";
 export { IRPlot } from "./src/ir-plot";
