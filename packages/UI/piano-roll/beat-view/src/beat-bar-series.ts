@@ -12,7 +12,6 @@ export class BeatBarsSeries
   ) {
     const N = Math.ceil(beat_info.tempo * melodies[melodies.length - 1].time.end) + beat_info.phase;
     const seed = [...Array(N)];
-    super("beat-bars", seed.map((_, i) => new BeatBar(beat_info, i)));
-    controllers.forEach(e=>e.register(this))
+    super("beat-bars", seed.map((_, i) => new BeatBar(beat_info, i, controllers)));
   }
 }
