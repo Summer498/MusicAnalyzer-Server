@@ -1,6 +1,6 @@
 import { MVVM_View } from "@music-analyzer/view";
-import { GravityModel } from "./gravity-model";
-import { LinePos } from "./line-pos";
+import { LinePos } from "../line-pos";
+import { GravityModel } from "../gravity";
 
 export class GravityViewLine 
   extends MVVM_View<GravityModel, "line"> {

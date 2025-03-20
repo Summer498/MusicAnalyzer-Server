@@ -3,7 +3,7 @@ import { GravityModel } from "./gravity-model";
 import { GravityView } from "./gravity-view";
 import { Gravity as GravityAnalysis, TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
-import { LinePos } from "./line-pos";
+import { LinePos } from "../line-pos";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();
