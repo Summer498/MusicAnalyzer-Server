@@ -1,9 +1,9 @@
+import { MelodyBeepController, MelodyColorController } from "@music-analyzer/controllers";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
 import { MVVM_ViewModel } from "@music-analyzer/view";
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MelodyModel } from "./melody-model";
 import { MelodyView } from "./melody-view";
-import { MelodyBeepController, MelodyColorController } from "@music-analyzer/controllers";
 import { MelodyBeep } from "./melody-beep";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
