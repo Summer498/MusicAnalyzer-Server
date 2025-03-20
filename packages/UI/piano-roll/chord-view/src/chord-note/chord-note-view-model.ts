@@ -10,7 +10,7 @@ const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
-export class ChordNoteVM
+export class ChordNote
   extends MVVM_ViewModel<ChordNoteModel, ChordNoteView>
   implements AudioReflectable {
   #y: number;

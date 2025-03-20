@@ -2,13 +2,13 @@ import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { _Chord, Chord } from "@music-analyzer/tonal-objects";
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
 import { OctaveCount } from "@music-analyzer/view-parameters";
-import { ChordNoteVM } from "./chord-note-view-model";
+import { ChordNote } from "./chord-note-view-model";
 import { MVVM_Collection } from "@music-analyzer/view";
 
 export class ChordNotesInOctave 
-  extends MVVM_Collection<ChordNoteVM> {
+  extends MVVM_Collection<ChordNote> {
   constructor(roman: TimeAndRomanAnalysis, chord: Chord, oct: number) {
-    super(`${chord.name}-${oct}`, chord.notes.map(note => new ChordNoteVM(roman, chord, note, oct)));
+    super(`${chord.name}-${oct}`, chord.notes.map(note => new ChordNote(roman, chord, note, oct)));
   }
 }
 
