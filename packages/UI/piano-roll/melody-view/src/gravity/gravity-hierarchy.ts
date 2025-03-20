@@ -15,6 +15,8 @@ export class GravityHierarchy
   ) {
     super(mode, hierarchical_melodies.map((e, l) => new GravityLayer(mode, e, l)));
     controllers.forEach(e => e.register(this))
+    controllers[2].register(this);
+    controllers[3].register(this);
   }
   onUpdateGravityVisibility(visible: boolean) { this.svg.style.visibility = visible ? "visible" : "hidden"; }
 }
