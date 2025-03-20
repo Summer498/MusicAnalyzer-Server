@@ -1,9 +1,9 @@
 import { MVVM_View } from "@music-analyzer/view";
+import { ReductionModel } from "../reduction";
+import { ReductionViewModel } from "./reduction-view-model";
 import { IRMSymbol } from "./irm-symbol";
 import { Bracket } from "./bracket";
 import { Dot } from "./dot";
-import { ReductionModel } from "../reduction";
-import { ReductionViewModel } from "./reduction-view-model";
 
 export class ReductionView
   extends MVVM_View<ReductionViewModel, "g"> {
