@@ -1,5 +1,5 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { CollectionLayer } from "@music-analyzer/view";
+import { AudioReflectableRegistry, CollectionLayer, WindowReflectableRegistry } from "@music-analyzer/view";
 import { IRSymbol } from "./ir-symbol";
 import { MelodyColorController } from "@music-analyzer/controllers";
 
@@ -8,8 +8,9 @@ export class IRSymbolLayer
   constructor(
     melodies: TimeAndAnalyzedMelody[],
     layer: number,
-    controllers: [MelodyColorController]
+    controllers: [MelodyColorController, AudioReflectableRegistry, WindowReflectableRegistry]
   ) {
-    super(layer, melodies.map(e => new IRSymbol(e, layer, controllers)));
+    super(layer, melodies.map(e => new IRSymbol(e, layer, [controllers[0], controllers[2]])));
+    controllers[1].register(this);
   }
 }

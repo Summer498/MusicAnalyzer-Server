@@ -1,5 +1,5 @@
 import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
-import { MVVM_ViewModel } from "@music-analyzer/view";
+import { AudioReflectableRegistry, MVVM_ViewModel, WindowReflectableRegistry } from "@music-analyzer/view";
 import { IRSymbolModel } from "./ir-symbol-model";
 import { IRSymbolView } from "./ir-symbol-view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
@@ -15,10 +15,10 @@ export class IRSymbol
   constructor(
     melody: TimeAndAnalyzedMelody,
     layer: number,
-    controllers: [MelodyColorController]
+    controllers: [MelodyColorController, WindowReflectableRegistry]
   ) {
     const model = new IRSymbolModel(melody, layer);
-    super(model, new IRSymbolView(model, controllers));
+    super(model, new IRSymbolView(model, [controllers[0]]));
     this.#y = isNaN(this.model.note) ? -99 : -convertToCoordinate(transposed(this.model.note));
     this.updateX();
     this.updateY();

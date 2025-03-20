@@ -1,6 +1,6 @@
 import { size } from "@music-analyzer/view-parameters";
 import { get_color_of_Narmour_concept } from "@music-analyzer/irm";
-import { MVVM_View } from "@music-analyzer/view";
+import { AudioReflectableRegistry, MVVM_View } from "@music-analyzer/view";
 import { IRSymbolModel } from "./ir-symbol-model";
 import { ColorChangeSubscriber, hasArchetype, MelodyColorController } from "@music-analyzer/controllers";
 
