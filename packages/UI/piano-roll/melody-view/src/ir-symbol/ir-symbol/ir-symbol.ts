@@ -3,16 +3,14 @@ import { MVVM_ViewModel } from "@music-analyzer/view";
 import { IRSymbolModel } from "./ir-symbol-model";
 import { IRSymbolView } from "./ir-symbol-view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { ColorChangeSubscriber, hasArchetype, MelodyColorController } from "@music-analyzer/controllers";
+import { MelodyColorController } from "@music-analyzer/controllers";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
-export class IRSymbol 
-  extends MVVM_ViewModel<IRSymbolModel, IRSymbolView>
-  implements
-  ColorChangeSubscriber {
+export class IRSymbol
+  extends MVVM_ViewModel<IRSymbolModel, IRSymbolView> {
   #y: number;
   constructor(
     melody: TimeAndAnalyzedMelody,
@@ -20,16 +18,11 @@ export class IRSymbol
     controllers: [MelodyColorController]
   ) {
     const model = new IRSymbolModel(melody, layer);
-    super(model, new IRSymbolView(model));
+    super(model, new IRSymbolView(model, controllers));
     this.#y = isNaN(this.model.note) ? -99 : -convertToCoordinate(transposed(this.model.note));
     this.updateX();
     this.updateY();
-    controllers[0].register(this)
   }
-  setColor(getColor: (e: hasArchetype) => string) {
-    this.view.setColor(getColor);
-  }
-  updateColor() { this.view.updateColor(); }
   updateX() {
     this.view.updateX(
       scaled(this.model.time.begin)
