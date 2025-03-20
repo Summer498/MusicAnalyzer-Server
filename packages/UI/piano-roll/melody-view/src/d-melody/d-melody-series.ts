@@ -12,6 +12,8 @@ export class DMelodySeries
   ) {
     super("detected-melody", detected_melodies.map(e => new DMelody(e)));
     controllers.forEach(e => e.register(this));
+    controllers[1].register(this);
+    controllers[2].register(this);
   }
   onDMelodyVisibilityChanged(visible: boolean) {
     const visibility = visible ? "visible" : "hidden";
