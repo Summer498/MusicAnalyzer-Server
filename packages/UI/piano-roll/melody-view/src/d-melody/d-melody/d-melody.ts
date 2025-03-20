@@ -10,13 +10,16 @@ const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get()
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
-export class DMelody 
+export interface RequiredByDMelody {
+  readonly window: WindowReflectableRegistry
+}
+
+export class DMelody
   extends MVVM_ViewModel<DMelodyModel, DMelodyView>
-  implements TimeRangeSubscriber
-  {
+  implements TimeRangeSubscriber {
   constructor(
     e: TimeAndAnalyzedMelody,
-    controllers: [WindowReflectableRegistry],
+    controllers: RequiredByDMelody,
   ) {
     const model = new DMelodyModel(e);
     super(model, new DMelodyView(model));
@@ -25,7 +28,7 @@ export class DMelody
     this.updateY();
     this.updateWidth();
     this.updateHeight();
-    controllers[0].register(this)
+    controllers.window.register(this)
   }
   updateX() { this.view.updateX(scaled(this.model.time.begin)) }
   updateY() { this.view.updateY(isNaN(this.model.note) ? -99 : -convertToCoordinate(transposed(this.model.note))) }
