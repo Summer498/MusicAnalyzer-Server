@@ -2,6 +2,7 @@ import { MVVM_ViewModel } from "@music-analyzer/view";
 import { IRPlotModel } from "./ir-plot-model";
 import { IRPlotView } from "./ir-plot-view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { hasArchetype } from "@music-analyzer/controllers";
 
 export class IRPlot
   extends MVVM_ViewModel<IRPlotModel, IRPlotView> {
@@ -12,14 +13,11 @@ export class IRPlot
     super(model, view);
     this.view = view;
   }
-  setColor(getColor: (e: IRPlotModel) => string) {
-    this.view.setColor(getColor);
-  }
-  updateColor() { this.view.updateColor(); }
   onAudioUpdate() {
     this.view.updatePosition();
     this.view.updateColor();
   }
-  onWindowResized() {
-  }
+  setColor(getColor: (e: hasArchetype) => string) { this.view.setColor(getColor); }
+  updateColor() { this.view.updateColor(); }
+  onWindowResized() { }
 }
