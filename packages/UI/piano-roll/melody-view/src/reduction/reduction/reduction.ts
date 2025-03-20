@@ -1,7 +1,8 @@
 import { MVVM_ViewModel } from "@music-analyzer/view";
 import { ReductionModel } from "./reduction-model";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { ReductionView, ReductionViewModel } from "../reduction-view";
+import { ReductionView } from "../reduction-view";
+import { ReductionViewModel } from "./reduction-view-model";
 
 export class Reduction
   extends MVVM_ViewModel<ReductionModel, ReductionView> {
