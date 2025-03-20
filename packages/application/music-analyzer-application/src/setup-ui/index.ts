@@ -1,2 +1,2 @@
-export { AnalysisView } from "./setup-analysis";
+export { AnalysisView } from "./analysis-view";
 export { setupUI } from "./setup-ui";
