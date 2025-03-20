@@ -10,6 +10,7 @@ export class ChordNotesInOctave
   constructor(roman: TimeAndRomanAnalysis, chord: Chord, oct: number) {
     super(`${chord.name}-${oct}`, chord.notes.map(note => new ChordNote(roman, chord, note, oct)));
   }
+  onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
 }
 
 export class ChordNotes 
@@ -18,6 +19,7 @@ export class ChordNotes
     const chord = _Chord.get(model.chord);
     super(chord.name, [...Array(OctaveCount.get())].map((_, oct) => new ChordNotesInOctave(model, chord, oct)));
   }
+  onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
 }
 
 export class ChordNotesSeries 

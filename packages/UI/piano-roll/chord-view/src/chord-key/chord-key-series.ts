@@ -17,4 +17,5 @@ export class ChordKeySeries
   onAudioUpdate() {
     this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`);
   }
+  onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
 }

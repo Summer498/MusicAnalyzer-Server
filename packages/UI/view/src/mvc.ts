@@ -1,5 +1,3 @@
-import { WindowReflectable } from "./reflectable";
-
 export abstract class MVVM_Model { }
 
 export interface I_MVVM_View {
@@ -19,7 +17,7 @@ export abstract class MVVM_View<
 }
 
 export interface I_MVVM_ModelView
-  extends I_MVVM_View, WindowReflectable { }
+  extends I_MVVM_View { }
 export abstract class MVVM_ViewModel<
   M extends MVVM_Model,
   V extends I_MVVM_View,
@@ -30,7 +28,6 @@ export abstract class MVVM_ViewModel<
     readonly model: M,
     protected readonly view: V,
   ) { }
-  abstract onWindowResized(): void;
 }
 
 export interface I_MVVM_Collection
@@ -50,5 +47,4 @@ export abstract class MVVM_Collection<VM extends I_MVVM_ModelView>
     this.svg.id = id;
     this.children.forEach(e => this.svg.appendChild(e.svg));
   }
-  onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
 }
