@@ -1,7 +1,7 @@
 import { get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { MVVM_View } from "@music-analyzer/view";
+import { deleteMelody } from "../../melody-editor-function";
 import { MelodyModel } from "./melody-model";
-import { deleteMelody } from "../melody-editor-function";
 
 export class MelodyView 
   extends MVVM_View<MelodyModel, "rect"> {

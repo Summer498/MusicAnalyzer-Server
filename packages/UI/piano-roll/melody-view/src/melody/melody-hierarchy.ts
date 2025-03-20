@@ -1,8 +1,8 @@
+import { ColorChangeSubscriber, HierarchyLevelController, HierarchyLevelSubscriber, MelodyBeepController, MelodyBeepSwitcherSubscriber, MelodyBeepVolumeSubscriber, MelodyColorController } from "@music-analyzer/controllers";
 import { CollectionHierarchy } from "@music-analyzer/view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MelodyLayer } from "./melody-layer";
-import { MelodyModel } from "./melody-model";
-import { ColorChangeSubscriber, HierarchyLevelController, HierarchyLevelSubscriber, MelodyBeepController, MelodyBeepSwitcherSubscriber, MelodyBeepVolumeSubscriber, MelodyColorController } from "@music-analyzer/controllers";
+import { MelodyModel } from "./melody";
 
 export class MelodyHierarchy
 
