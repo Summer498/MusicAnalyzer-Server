@@ -4,13 +4,16 @@ import { GravityView } from "./gravity-view";
 import { Gravity as GravityAnalysis, TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
 import { LinePos } from "../line-pos";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class Gravity 
-  extends MVVM_ViewModel<GravityModel, GravityView> {
+  extends MVVM_ViewModel<GravityModel, GravityView>
+  implements TimeRangeSubscriber
+  {
   #line_seed: LinePos;
   constructor(
     e: TimeAndAnalyzedMelody,
@@ -36,4 +39,5 @@ export class Gravity
     this.updateHeight();
     this.view.onWindowResized(this.#line_seed.scaled(NoteSize.get(), 1))
   }
+  onTimeRangeChanged = this.onWindowResized
 }
