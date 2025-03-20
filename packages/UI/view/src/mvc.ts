@@ -44,7 +44,6 @@ export interface I_MVVM_Collection
 }
 
 export abstract class MVVM_Collection<VM extends I_MVVM_ModelView>
-
   implements I_MVVM_Collection {
   readonly svg: SVGGElement;
   constructor(
