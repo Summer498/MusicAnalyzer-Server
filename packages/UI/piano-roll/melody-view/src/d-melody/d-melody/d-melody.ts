@@ -1,7 +1,7 @@
 import { MVVM_ViewModel } from "@music-analyzer/view";
 import { DMelodyModel } from "./d-melody-model";
 import { DMelodyView } from "./d-melody-view";
-import { insertMelody } from "../melody-editor-function";
+import { insertMelody } from "../../melody-editor-function";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
 
