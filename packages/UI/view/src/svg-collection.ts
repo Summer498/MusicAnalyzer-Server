@@ -3,21 +3,19 @@ import { PianoRollTranslateX } from "@music-analyzer/view-parameters";
 import { MVVM_Collection, MVVM_ViewModel, MVVM_Model, MVVM_View, I_MVVM_Collection, I_MVVM_ModelView } from "./mvc";
 import { AudioReflectable } from "./reflectable";
 
-export abstract class TimeAndMVCModel 
+export abstract class TimeAndMVCModel
   extends MVVM_Model {
   abstract readonly time: Time;
 }
 
-export interface I_TimeAndVM 
+export interface I_TimeAndVM
   extends I_MVVM_ModelView {
   model: TimeAndMVCModel;
 }
 export abstract class TimeAndVM<
-  M 
-  extends TimeAndMVCModel,
-  K 
-  extends keyof SVGElementTagNameMap
-> 
+  M extends TimeAndMVCModel,
+  K extends keyof SVGElementTagNameMap
+>
   extends MVVM_ViewModel<M, MVVM_View<M, K>> {
   abstract readonly model: M;
 }
