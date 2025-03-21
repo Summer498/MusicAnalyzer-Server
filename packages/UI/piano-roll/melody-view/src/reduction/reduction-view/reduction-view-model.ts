@@ -2,11 +2,14 @@ import { Triad } from "@music-analyzer/irm";
 import { MVVM_Model } from "@music-analyzer/view";
 import { BlackKeyPrm, bracket_height, NoteSize } from "@music-analyzer/view-parameters";
 import { ReductionModel } from "../reduction";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { TimeRangeController, TimeRangeSubscriber } from "@music-analyzer/controllers";
 
 const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
+export interface RequiredByReductionViewModel {
+  readonly time_range: TimeRangeController
+}
 export class ReductionViewModel 
   extends MVVM_Model
   implements TimeRangeSubscriber
@@ -27,6 +30,7 @@ export class ReductionViewModel
   readonly archetype: Triad;
   constructor(
     readonly model: ReductionModel,
+    controllers: RequiredByReductionViewModel,
   ) {
     super();
     this.#x = this.getViewX(this.model.time.begin);
@@ -37,6 +41,7 @@ export class ReductionViewModel
     this.h = BlackKeyPrm.height * bracket_height;
     this.#strong = false;
     this.archetype = model.archetype as Triad
+    controllers.time_range.register(this);
   }
   getViewX(x: number) { return scaled(x); }
   getViewW(w: number) { return scaled(w); }
