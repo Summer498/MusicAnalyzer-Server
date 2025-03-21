@@ -1,7 +1,6 @@
 import { default as fs } from "fs";
 import { getBandpassFrequency, getFreqFromPhase, getFrequency, getWav } from "@music-analyzer/post-f0-util"
-import { freq2midi, getMedianFrequency, roundOnMIDI, SAMPLING_RATE, Vocals } from "./src";
-
+import { freq2midi, getMedianFrequency, roundOnMIDI, Vocals } from "./src";
 
 const main = (argv: string[]) => {
   const csv_file_path = argv[2];
@@ -9,6 +8,7 @@ const main = (argv: string[]) => {
   const input_data = fs.readFileSync(csv_file_path, "utf8");
   const parsed_data = (JSON.parse(input_data) as Vocals).f0;
 
+  const SAMPLING_RATE = 22050;
   // 瞬間周波数 [Hz/s]
   const freq_row = parsed_data.map(freq => freq === null ? null : freq * 2);  // pYIN の推定結果が 1 オクターブ低く出るので 1 オクターブ上げる
   const freq_rounded = freq_row.map(freq => freq && roundOnMIDI(freq));
