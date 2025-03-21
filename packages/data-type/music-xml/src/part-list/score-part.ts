@@ -1,4 +1,4 @@
-import { HasID } from "../part/has-id"
+import { HasID } from "../part"
 import { MidiDevice } from "./midi-device"
 import { MidiInstrument } from "./midi-instrument"
 import { ScoreInstrument } from "./score-instrument"

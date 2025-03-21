@@ -1,4 +1,4 @@
-import { HasID } from "../part/has-id";
+import { HasID } from "../part";
 
 export interface ScoreInstrument 
   extends HasID {
