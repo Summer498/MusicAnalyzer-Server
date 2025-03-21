@@ -5,13 +5,14 @@ import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { Time } from "@music-analyzer/time-and";
 import { BeatBarModel } from "./beat-bar-model";
 import { BeatBarView } from "./beat-bar-view";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { TimeRangeController, TimeRangeSubscriber } from "@music-analyzer/controllers";
 
 const scaled = (e: number) => e * NoteSize.get();
 
 export interface RequiredByBeatBar {
   readonly audio: AudioReflectableRegistry,
   readonly window: WindowReflectableRegistry,
+  readonly time_range: TimeRangeController,
 }
 export class BeatBar
   extends MVVM_ViewModel<BeatBarModel, BeatBarView>
@@ -33,6 +34,7 @@ export class BeatBar
     this.updateY();
     controllers.audio.register(this);
     controllers.window.register(this);
+    controllers.time_range.register(this);
   }
   updateX() {
     this.view.updateX(
