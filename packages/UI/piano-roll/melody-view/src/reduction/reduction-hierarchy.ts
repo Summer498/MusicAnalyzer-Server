@@ -1,18 +1,22 @@
-import { HierarchyLevelController, HierarchyLevelSubscriber, MelodyColorController } from "@music-analyzer/controllers";
+import { HierarchyLevelController, HierarchyLevelSubscriber } from "@music-analyzer/controllers";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { AudioReflectableRegistry, CollectionHierarchy, WindowReflectableRegistry } from "@music-analyzer/view";
-import { ReductionLayer } from "./reduction-layer";
+import { CollectionHierarchy } from "@music-analyzer/view";
+import { ReductionLayer, RequiredByReductionLayer } from "./reduction-layer";
 
+export interface RequiredByReductionHierarchy
+  extends RequiredByReductionLayer {
+  readonly hierarchy: HierarchyLevelController
+}
 export class ReductionHierarchy
   extends CollectionHierarchy<ReductionLayer>
   implements
   HierarchyLevelSubscriber {
   constructor(
     hierarchical_melodies: TimeAndAnalyzedMelody[][],
-    controllers: [HierarchyLevelController, MelodyColorController, AudioReflectableRegistry, WindowReflectableRegistry]
+    controllers: RequiredByReductionHierarchy
   ) {
-    super("time-span-reduction", hierarchical_melodies.map((e, l) => new ReductionLayer(e, l, [controllers[1], controllers[2], controllers[3]])));
-    controllers[0].register(this);
+    super("time-span-reduction", hierarchical_melodies.map((e, l) => new ReductionLayer(e, l, controllers)));
+    controllers.hierarchy.register(this);
   }
   onChangedLayer(value: number) {
     const visible_layer = this.children.filter(e => value >= e.layer);

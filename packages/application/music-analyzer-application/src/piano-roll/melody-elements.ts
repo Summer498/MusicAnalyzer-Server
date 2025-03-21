@@ -27,7 +27,7 @@ export class MelodyElements {
     this.ir_plot = new IRPlot(hierarchical_melody, { hierarchy, melody_color, audio, window });
     this.chord_gravities = new GravityHierarchy("chord_gravity", hierarchical_melody, { switcher: gravity.chord_checkbox, hierarchy, audio, window });
     this.scale_gravities = new GravityHierarchy("scale_gravity", hierarchical_melody, { switcher: gravity.scale_checkbox, hierarchy, audio, window });
-    this.time_span_tree = new ReductionHierarchy(hierarchical_melody, [hierarchy, melody_color, audio, window]);
+    this.time_span_tree = new ReductionHierarchy(hierarchical_melody, { hierarchy, melody_color, audio, window });
     this.children = [
       this.d_melody_collection,
       this.melody_hierarchy,

@@ -1,15 +1,17 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { AudioReflectableRegistry, MVVM_ViewModel, WindowReflectableRegistry } from "@music-analyzer/view";
 import { ReductionModel } from "./reduction-model";
 import { ReductionView } from "../reduction-view";
-import { MelodyColorController } from "@music-analyzer/controllers";
+import { RequiredByReductionView } from "../reduction-view/reduction-view";
+import { MVVM_ViewModel } from "@music-analyzer/view";
 
+export interface RequiredByReduction
+  extends RequiredByReductionView { }
 export class Reduction
   extends MVVM_ViewModel<ReductionModel, ReductionView> {
   constructor(
     melody: TimeAndAnalyzedMelody,
     layer: number,
-    controllers: [MelodyColorController, AudioReflectableRegistry, WindowReflectableRegistry]
+    controllers: RequiredByReduction
   ) {
     const model = new ReductionModel(melody, layer);
     super(model, new ReductionView(model, controllers));

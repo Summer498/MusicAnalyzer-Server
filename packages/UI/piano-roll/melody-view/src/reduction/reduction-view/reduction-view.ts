@@ -1,11 +1,14 @@
-import { AudioReflectableRegistry, MVVM_View, WindowReflectableRegistry } from "@music-analyzer/view";
+import { MVVM_View, WindowReflectableRegistry } from "@music-analyzer/view";
 import { ReductionModel } from "../reduction";
 import { ReductionViewModel } from "./reduction-view-model";
-import { IRMSymbol } from "./irm-symbol";
+import { IRMSymbol, RequiredByIRMSymbol } from "./irm-symbol";
 import { Bracket } from "./bracket";
 import { Dot } from "./dot";
-import { MelodyColorController } from "@music-analyzer/controllers";
 
+export interface RequiredByReductionView
+  extends RequiredByIRMSymbol {
+  readonly window: WindowReflectableRegistry,
+}
 export class ReductionView
   extends MVVM_View<ReductionViewModel, "g"> {
   readonly svg: SVGGElement;
@@ -14,19 +17,19 @@ export class ReductionView
   readonly ir_symbol: IRMSymbol;
   constructor(
     model: ReductionModel,
-    controllers: [MelodyColorController, AudioReflectableRegistry, WindowReflectableRegistry],
+    controllers: RequiredByReductionView,
   ) {
     super(new ReductionViewModel(model), "g");
     this.bracket = new Bracket(this.model);
     this.dot = new Dot(this.model);
-    this.ir_symbol = new IRMSymbol(this.model, [controllers[0]]);
+    this.ir_symbol = new IRMSymbol(this.model, controllers);
 
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.svg.id = "time-span-node";
     this.svg.appendChild(this.bracket.svg);
     if (false) { this.svg.appendChild(this.dot.svg); }
     this.svg.appendChild(this.ir_symbol.svg);
-    controllers[2].register(this);
+    controllers.window.register(this);
   }
   get strong() { return this.model.strong; }
   set strong(value: boolean) {
