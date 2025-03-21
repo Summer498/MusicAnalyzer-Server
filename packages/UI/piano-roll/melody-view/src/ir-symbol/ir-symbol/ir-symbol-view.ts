@@ -19,7 +19,7 @@ export class IRSymbolView
     model: IRSymbolModel,
     controllers: RequiredByIRSymbolView,
   ) {
-    super(model, "text");
+    super("text", model);
     this.svg.textContent = this.model.archetype.symbol;
     this.svg.id = "I-R Symbol";
     this.svg.style.fontFamily = "Times New Roman";
