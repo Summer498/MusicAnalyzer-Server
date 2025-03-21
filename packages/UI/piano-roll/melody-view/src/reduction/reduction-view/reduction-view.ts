@@ -10,7 +10,7 @@ export interface RequiredByReductionView
   readonly window: WindowReflectableRegistry,
 }
 export class ReductionView
-  extends MVVM_View<ReductionViewModel, "g"> {
+  extends MVVM_View<"g", ReductionViewModel> {
   readonly svg: SVGGElement;
   readonly bracket: Bracket;
   readonly dot: Dot;
