@@ -1,7 +1,10 @@
 import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 import { AnalyzedDataContainer } from "./containers";
-import { BeatElements, ChordElements, MelodyElements, MusicStructureElements } from "@music-analyzer/piano-roll";
+import { MusicStructureElements } from "@music-analyzer/piano-roll";
 import { Controllers } from "./controllers";
+import { BeatElements } from "@music-analyzer/beat-view";
+import { ChordElements } from "@music-analyzer/chord-view";
+import { MelodyElements } from "@music-analyzer/melody-view";
 
 export class ApplicationManager {
   readonly NO_CHORD = false;  // コード関連のものを表示しない
