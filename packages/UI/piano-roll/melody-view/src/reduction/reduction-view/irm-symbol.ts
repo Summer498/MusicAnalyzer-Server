@@ -14,7 +14,7 @@ export class IRMSymbol
     model: ReductionViewModel,
     controllers: RequiredByIRMSymbol,
   ) {
-    super(model, "text");
+    super("text", model);
     this.svg.textContent = this.model.archetype.symbol;
     this.svg.id = "I-R Symbol";
     this.svg.style.fontFamily = "Times New Roman";
