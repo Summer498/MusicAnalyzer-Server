@@ -1,27 +1,28 @@
 import { chord_name_margin, chord_text_size } from "@music-analyzer/chord-view";
-import { WindowReflectable } from "@music-analyzer/view";
+import { WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
 import { PianoRollHeight, PianoRollWidth } from "@music-analyzer/view-parameters";
-import { AnalysisView, ApplicationManager } from "@music-analyzer/music-analyzer-application"
-import { CurrentTimeLine } from "./current-time-line";
-import { OctaveBGs } from "./octave/octave-bgs";
-import { OctaveKeys } from "./octave/octave-keys";
+import { CurrentTimeLine, OctaveBGs, OctaveKeys } from "@music-analyzer/svg-objects";
+import { AnalysisView } from "./analysis-view";
+import { MusicStructureElements } from "./music-structure-elements";
 
 export class PianoRoll
   implements WindowReflectable {
   readonly svg: SVGSVGElement;
   constructor(
-    manager: ApplicationManager
+    analyzed: MusicStructureElements,
+    window: WindowReflectableRegistry,
+    show_current_time_line: boolean
   ) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     this.svg.id = "piano-roll";
-    manager.window_size_mediator.register(this)
+    window.register(this)
     this.appendChildren(
-      new OctaveBGs(manager.window_size_mediator).svg,
-      new AnalysisView(manager.analyzed).svg,
-      new OctaveKeys(manager.window_size_mediator).svg,
-      new CurrentTimeLine(!manager.FULL_VIEW, manager.window_size_mediator).svg,
+      new OctaveBGs(window).svg,
+      new AnalysisView(analyzed).svg,
+      new OctaveKeys(window).svg,
+      new CurrentTimeLine(show_current_time_line, window).svg,
     );
-    manager.window_size_mediator.register(this)
+    window.register(this)
   }
   appendChildren(...children: SVGElement[]) {
     children.forEach(e => this.svg.appendChild(e));

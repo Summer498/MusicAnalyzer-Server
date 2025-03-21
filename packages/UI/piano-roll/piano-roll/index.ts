@@ -1,1 +1,1 @@
-export { BeatElements, ChordElements, MelodyElements, MusicStructureElements, AnalysisView } from "./src"
+export { BeatElements, ChordElements, MelodyElements, MusicStructureElements, AnalysisView, PianoRoll } from "./src"

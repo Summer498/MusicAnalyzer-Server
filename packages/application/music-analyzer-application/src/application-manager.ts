@@ -1,6 +1,6 @@
 import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 import { AnalyzedDataContainer } from "./containers";
-import { BeatElements, ChordElements, MelodyElements, MusicStructureElements } from "./piano-roll";
+import { BeatElements, ChordElements, MelodyElements, MusicStructureElements } from "@music-analyzer/piano-roll";
 import { Controllers } from "./controllers";
 
 export class ApplicationManager {

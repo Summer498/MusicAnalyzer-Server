@@ -1,5 +1,5 @@
 import { AudioViewer } from "@music-analyzer/spectrogram";
-import { PianoRoll } from "@music-analyzer/svg-objects";
+import { PianoRoll } from "@music-analyzer/piano-roll";
 import { CurrentTimeRatio } from "@music-analyzer/view-parameters";
 import { ApplicationManager } from "../application-manager";
 import { HTMLsContainer, TitleInfo } from "../containers";
@@ -19,7 +19,7 @@ export const setupUI = (
   else { html.audio_player.autoplay = true; }
 
   const audio_viewer = new AudioViewer(html.audio_player, manager.audio_time_mediator);
-  const piano_roll_view = new PianoRoll(manager)
+  const piano_roll_view = new PianoRoll(manager.analyzed, manager.window_size_mediator, !manager.FULL_VIEW)
   asParent(html.piano_roll_place)
     .appendChildren(
       new ColumnHTML(
