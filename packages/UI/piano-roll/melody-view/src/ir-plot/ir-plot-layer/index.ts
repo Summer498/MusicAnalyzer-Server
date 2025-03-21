@@ -1,1 +1,1 @@
-export { IRPlotLayer } from "./ir-plot-layer";
+export { IRPlotLayer, RequiredByIRPlotLayer } from "./ir-plot-layer";

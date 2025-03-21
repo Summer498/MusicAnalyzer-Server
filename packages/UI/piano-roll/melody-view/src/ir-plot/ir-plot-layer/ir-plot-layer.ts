@@ -1,7 +1,6 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { IRPlotLayerView } from "./ir-plot-layer-view";
-import { IRPlot } from "../ir-plot";
-import { RequiredByIRPlot } from "../ir-plot/ir-plot";
+import { IRPlot, RequiredByIRPlot } from "../ir-plot";
 
 export interface RequiredByIRPlotLayer
   extends RequiredByIRPlot { }
