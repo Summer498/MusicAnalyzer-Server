@@ -1,8 +1,10 @@
-import { AudioReflectable, AudioReflectableRegistry, WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
+import { AudioReflectable, WindowReflectable } from "@music-analyzer/view";
 import { IRPlotHierarchy } from "./ir-plot-hierarchy";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { HierarchyLevelController, MelodyColorController } from "@music-analyzer/controllers";
+import { RequiredByIRPlotHierarchy } from "./ir-plot-hierarchy/ir-plot-hierarchy";
 
+export interface RequiredByIRPlotSVG
+  extends RequiredByIRPlotHierarchy { }
 export class IRPlotSVG
   implements
   AudioReflectable,
@@ -11,7 +13,7 @@ export class IRPlotSVG
   readonly children: [IRPlotHierarchy];
   constructor(
     hierarchical_melody: TimeAndAnalyzedMelody[][],
-    controllers: [HierarchyLevelController, MelodyColorController, AudioReflectableRegistry, WindowReflectableRegistry]
+    controllers: RequiredByIRPlotSVG,
   ) {
     const g = new IRPlotHierarchy(hierarchical_melody, controllers)
     this.children = [g];

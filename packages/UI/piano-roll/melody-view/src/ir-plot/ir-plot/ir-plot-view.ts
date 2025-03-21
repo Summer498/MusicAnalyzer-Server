@@ -3,10 +3,12 @@ import { MVVM_View } from "@music-analyzer/view";
 import { IRPlotModel } from "./ir-plot-model";
 import { ColorChangeSubscriber, MelodyColorController } from "@music-analyzer/controllers";
 
-export class IRPlotView 
+export interface RequiredByIRPlotView {
+  readonly melody_color: MelodyColorController
+}
+export class IRPlotView
   extends MVVM_View<IRPlotModel, "circle">
-  implements ColorChangeSubscriber
-  {
+  implements ColorChangeSubscriber {
   #getColor: (archetype: Triad) => string;
   readonly x0: number;
   readonly y0: number;
@@ -18,7 +20,7 @@ export class IRPlotView
   get y() { return this.#y; };
   constructor(
     model: IRPlotModel,
-    controllers: [MelodyColorController],
+    controllers: RequiredByIRPlotView,
   ) {
     super(model, "circle");
     this.#x = 0;
@@ -30,7 +32,7 @@ export class IRPlotView
     this.svg.style.stroke = "rgb(16, 16, 16)";
     this.svg.style.strokeWidth = String(6);
     this.#getColor = get_color_of_Narmour_concept;
-    controllers[0].register(this);
+    controllers.melody_color.register(this);
   }
   updateRadius(r: number) {
     this.svg.style.r = String(r);

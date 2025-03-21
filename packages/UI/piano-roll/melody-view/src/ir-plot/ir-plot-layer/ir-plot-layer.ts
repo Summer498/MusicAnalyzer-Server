@@ -1,9 +1,10 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { IRPlotLayerView } from "./ir-plot-layer-view";
 import { IRPlot } from "../ir-plot";
-import { MelodyColorController } from "@music-analyzer/controllers";
-import { AudioReflectableRegistry } from "@music-analyzer/view";
+import { RequiredByIRPlot } from "../ir-plot/ir-plot";
 
+export interface RequiredByIRPlotLayer
+  extends RequiredByIRPlot { }
 export class IRPlotLayer {
   readonly view: IRPlotLayerView
   readonly child: IRPlot;
@@ -13,7 +14,7 @@ export class IRPlotLayer {
     melody_series: TimeAndAnalyzedMelody[],
     readonly layer: number,
     max: number,
-    controllers: [MelodyColorController, AudioReflectableRegistry],
+    controllers: RequiredByIRPlotLayer,
   ) {
     this.child = new IRPlot(melody_series, controllers);
     this.view = new IRPlotLayerView(this.child, layer, max);

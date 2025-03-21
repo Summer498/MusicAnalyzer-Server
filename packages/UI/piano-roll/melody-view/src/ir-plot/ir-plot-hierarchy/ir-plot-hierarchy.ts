@@ -1,9 +1,13 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 import { IRPlotLayer } from "../ir-plot-layer";
 import { IRPlotHierarchyView } from "./ir-plot-hierarchy-view"
-import { HierarchyLevelController, MelodyColorController } from "@music-analyzer/controllers";
+import { HierarchyLevelController } from "@music-analyzer/controllers";
+import { RequiredByIRPlotLayer } from "../ir-plot-layer/ir-plot-layer";
 
+export interface RequiredByIRPlotHierarchy
+  extends RequiredByIRPlotLayer {
+  readonly hierarchy: HierarchyLevelController,
+}
 export class IRPlotHierarchy {
   readonly view: IRPlotHierarchyView
   readonly width: number;
@@ -13,10 +17,10 @@ export class IRPlotHierarchy {
   get show() { return this.view.circles.show }
   constructor(
     hierarchical_melody: TimeAndAnalyzedMelody[][],
-    controllers: [HierarchyLevelController, MelodyColorController, AudioReflectableRegistry, WindowReflectableRegistry],
+    controllers: RequiredByIRPlotHierarchy,
   ) {
     const N = hierarchical_melody.length;
-    this.children = hierarchical_melody.map((e, l) => new IRPlotLayer(e, l, N, [controllers[1], controllers[2]]));
+    this.children = hierarchical_melody.map((e, l) => new IRPlotLayer(e, l, N, controllers));
     const w = Math.max(...this.children.map(e => e.w));
     const h = Math.max(...this.children.map(e => e.h));
     this.width = w;
@@ -24,7 +28,7 @@ export class IRPlotHierarchy {
 
     this.#visible_layer = N;
     this.view = new IRPlotHierarchyView(w, h)
-    controllers[0].register(this);
+    controllers.hierarchy.register(this);
   }
   updateLayer() {
     const visible_layer = this.children
