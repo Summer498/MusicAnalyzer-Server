@@ -1,4 +1,4 @@
-import { IProlongationalReduction } from "../src/analysis-result/PR";
+import { IProlongationalReduction } from "../src/analysis-result";
 
 export const chopin_op18_pr_raw: IProlongationalReduction = {
   prtree:
