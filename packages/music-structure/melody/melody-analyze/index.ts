@@ -1,11 +1,10 @@
-export { MelodyAnalysisData } from "./src/interfaces";
-
-export { analyzeMelody } from "./src/analyze-melody";
-export { getTimeAndMelody } from "./src/get-time-and-melody";
 export {
+  analyzeMelody,
+  getTimeAndMelody,
   Gravity,
   TimeAndAnalyzedMelody,
   MelodyAnalysis,
   TimeAndChord,
-  TimeAndMelody
-} from "./src/interfaces";
+  TimeAndMelody,
+  MelodyAnalysisData
+} from "./src";
