@@ -1,4 +1,4 @@
-import { PianoRoll } from "@music-analyzer/svg-objects";
+import { PianoRoll } from "@music-analyzer/piano-roll";
 import { getHTML } from "./get-html";
 import { getDiv } from "./get-div";
 import { getH1 } from "./get-h1";

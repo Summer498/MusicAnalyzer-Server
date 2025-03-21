@@ -1,4 +1,4 @@
-import { PianoRoll } from "@music-analyzer/svg-objects";
+import { PianoRoll } from "@music-analyzer/piano-roll";
 import { getSVGwithoutTitle } from "./get-svg-without-title";
 
 export const getRawSaveButton = (tune_id: string, title: HTMLHeadElement, piano_roll_view: PianoRoll) => {
