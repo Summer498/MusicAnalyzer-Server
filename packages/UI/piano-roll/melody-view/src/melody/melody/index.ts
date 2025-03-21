@@ -1,1 +1,1 @@
-export { Melody } from "./melody";
+export { Melody, RequiredByMelody } from "./melody";
