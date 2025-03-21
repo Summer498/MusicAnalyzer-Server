@@ -22,7 +22,7 @@ export class IRPlotView
     model: IRPlotModel,
     controllers: RequiredByIRPlotView,
   ) {
-    super(model, "circle");
+    super("circle", model);
     this.#x = 0;
     this.#y = 0;
     this.w = 500;
