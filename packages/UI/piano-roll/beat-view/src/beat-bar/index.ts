@@ -1,1 +1,1 @@
-export { BeatBar } from "./beat-bar";
+export { BeatBar, RequiredByBeatBar } from "./beat-bar";
