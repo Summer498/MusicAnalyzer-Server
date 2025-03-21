@@ -6,7 +6,7 @@ import { ChordNoteModel } from "./chord-note-model";
 export class ChordNoteView 
   extends MVVM_View<ChordNoteModel, "rect"> {
   constructor(model: ChordNoteModel) {
-    super(model, "rect");
+    super("rect", model);
     this.svg.style.stroke = "rgb(64, 64, 64)";
     this.svg.style.fill = thirdToColor(
       this.model.note_name,
