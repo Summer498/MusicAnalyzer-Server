@@ -19,7 +19,7 @@ export class ReductionView
     model: ReductionModel,
     controllers: RequiredByReductionView,
   ) {
-    super(new ReductionViewModel(model, controllers), "g");
+    super("g", new ReductionViewModel(model, controllers));
     this.bracket = new Bracket(this.model);
     this.dot = new Dot(this.model);
     this.ir_symbol = new IRMSymbol(this.model, controllers);
