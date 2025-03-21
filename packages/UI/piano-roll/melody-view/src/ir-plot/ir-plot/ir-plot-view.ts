@@ -7,7 +7,7 @@ export interface RequiredByIRPlotView {
   readonly melody_color: MelodyColorController
 }
 export class IRPlotView
-  extends MVVM_View<IRPlotModel, "circle">
+  extends MVVM_View<"circle", IRPlotModel>
   implements ColorChangeSubscriber {
   #getColor: (archetype: Triad) => string;
   readonly x0: number;
