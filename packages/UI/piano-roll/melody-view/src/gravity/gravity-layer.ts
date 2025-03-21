@@ -1,7 +1,6 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { AudioReflectableRegistry, CollectionLayer } from "@music-analyzer/view";
-import { Gravity } from "./gravity";
-import { RequiredByGravity } from "./gravity/gravity";
+import { Gravity, RequiredByGravity } from "./gravity";
 
 export interface RequiredByGravityLayer
   extends RequiredByGravity {
