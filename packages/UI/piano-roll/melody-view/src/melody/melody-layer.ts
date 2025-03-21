@@ -1,7 +1,6 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { CollectionLayer } from "@music-analyzer/view";
-import { Melody } from "./melody";
-import { RequiredByMelody } from "./melody/melody";
+import { Melody, RequiredByMelody } from "./melody";
 
 export interface RequiredByMelodyLayer
   extends RequiredByMelody { }
