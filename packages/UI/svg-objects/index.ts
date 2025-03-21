@@ -1,4 +1,2 @@
-export { OctaveBGs } from "./src/octave/octave-bgs";
-export { OctaveKeys } from "./src/octave/octave-keys";
-
+export { OctaveBGs, OctaveKeys } from "./src/octave";
 export { CurrentTimeLine } from "./src/current-time-line";
