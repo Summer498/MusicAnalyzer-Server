@@ -10,7 +10,7 @@ const main = (argv: string[]) => {
 
   const SAMPLING_RATE = 22050;
   // 瞬間周波数 [Hz/s]
-  const freq_row = parsed_data.map(freq => freq === null ? null : freq * 2);  // pYIN の推定結果が 1 オクターブ低く出るので 1 オクターブ上げる
+  const freq_row = parsed_data.map(freq => freq && freq * 2);  // pYIN の推定結果が 1 オクターブ低く出るので 1 オクターブ上げる
   const freq_rounded = freq_row.map(freq => freq && roundOnMIDI(freq));
   const freq_median_filtered = getMedianFrequency(freq_rounded).map(e => e === null ? NaN : e);
   const freq_band_passed = getBandpassFrequency(freq_median_filtered);
