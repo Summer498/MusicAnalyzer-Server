@@ -1,4 +1,4 @@
-import { MusicStructureElements } from "../piano-roll";
+import { MusicStructureElements } from "./music-structure-elements";
 
 export class AnalysisView {
   readonly svg: SVGGElement;

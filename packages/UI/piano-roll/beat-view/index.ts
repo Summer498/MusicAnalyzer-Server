@@ -1,1 +1,1 @@
-export { BeatBarsSeries } from "./src/beat-bar-series";
+export { BeatBarsSeries, RequiredByBeatBarsSeries } from "./src/beat-bar-series";

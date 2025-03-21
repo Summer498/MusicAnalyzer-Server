@@ -1,6 +1,6 @@
-export {  DMelodySeries } from "./src/d-melody";
-export { ReductionHierarchy } from "./src/reduction";
-export { IRSymbolHierarchy } from "./src/ir-symbol";
-export { IRPlot } from "./src/ir-plot";
-export { MelodyHierarchy } from "./src/melody";
-export { GravityHierarchy } from "./src/gravity";
+export { DMelodySeries, RequiredByDMelodySeries } from "./src/d-melody";
+export { ReductionHierarchy, RequiredByReductionHierarchy } from "./src/reduction";
+export { IRSymbolHierarchy, RequiredByIRSymbolHierarchy } from "./src/ir-symbol";
+export { IRPlot, RequiredByIRPlot } from "./src/ir-plot";
+export { MelodyHierarchy, RequiredByMelodyHierarchy } from "./src/melody";
+export { GravityHierarchy, RequiredByGravityHierarchy } from "./src/gravity";
