@@ -3,7 +3,7 @@ import { LinePos } from "../line-pos";
 import { GravityModel } from "../gravity";
 
 export class GravityViewLine 
-  extends MVVM_View<GravityModel, "line"> {
+  extends MVVM_View<"line", GravityModel> {
   constructor(model: GravityModel) {
     super("line", model);
     this.svg.id = "gravity-arrow";
