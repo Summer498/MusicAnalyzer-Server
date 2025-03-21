@@ -1,6 +1,7 @@
-export { GravitySwitcher } from "./src/switcher";
-export { Controller } from "./src/controller";
-export { DMelodyController, DMelodyControllerSubscriber, GravityController, GravitySwitcherSubscriber } from "./src/switcher";
-export { MelodyColorController, ColorChangeSubscriber } from "./src/color-selector.ts";
-export { HierarchyLevelController, TimeRangeController, TimeRangeSubscriber, HierarchyLevelSubscriber } from "./src/slider";
-export { MelodyBeepController, MelodyBeepSwitcher, MelodyBeepVolume, MelodyBeepVolumeSubscriber, MelodyBeepSwitcherSubscriber } from "./src/melody-beep-controller";
+export {
+  Controller,
+  DMelodyController, DMelodyControllerSubscriber, GravityController, GravitySwitcher, GravitySwitcherSubscriber,
+  MelodyColorController, ColorChangeSubscriber,
+  HierarchyLevelController, TimeRangeController, TimeRangeSubscriber, HierarchyLevelSubscriber,
+  MelodyBeepController, MelodyBeepSwitcher, MelodyBeepVolume, MelodyBeepVolumeSubscriber, MelodyBeepSwitcherSubscriber,
+} from "./src";
