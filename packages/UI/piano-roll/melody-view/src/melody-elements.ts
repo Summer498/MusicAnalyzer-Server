@@ -2,7 +2,7 @@ import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 import { GravityController } from "@music-analyzer/controllers";
 import { DMelodySeries, RequiredByDMelodySeries } from "./d-melody";
-import { MelodyHierarchy, RequiredByMelodyHierarchy } from "./melody/melody-hierarchy";
+import { MelodyHierarchy, RequiredByMelodyHierarchy } from "./melody";
 import { IRSymbolHierarchy, RequiredByIRSymbolHierarchy } from "./ir-symbol";
 import { IRPlot, RequiredByIRPlot } from "./ir-plot";
 import { ReductionHierarchy, RequiredByReductionHierarchy } from "./reduction";
