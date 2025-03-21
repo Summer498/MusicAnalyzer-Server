@@ -1,7 +1,6 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { ReductionModel } from "./reduction-model";
-import { ReductionView } from "../reduction-view";
-import { RequiredByReductionView } from "../reduction-view/reduction-view";
+import { ReductionView, RequiredByReductionView } from "../reduction-view";
 import { MVVM_ViewModel } from "@music-analyzer/view";
 
 export interface RequiredByReduction
