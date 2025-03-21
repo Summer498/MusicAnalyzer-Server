@@ -11,6 +11,10 @@ const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
+export interface RequiredByChordNote {
+  readonly audio: AudioReflectableRegistry,
+  readonly window: WindowReflectableRegistry,
+}
 export class ChordNote
   extends MVVM_ViewModel<ChordNoteModel, ChordNoteView>
   implements AudioReflectable, TimeRangeSubscriber {
@@ -20,7 +24,7 @@ export class ChordNote
     chord: Chord,
     note: string,
     oct: number,
-    controllers: [AudioReflectableRegistry, WindowReflectableRegistry]
+    controllers: RequiredByChordNote
   ) {
     const model = new ChordNoteModel(e, chord, note, oct);
     super(model, new ChordNoteView(model));
@@ -31,7 +35,8 @@ export class ChordNote
     this.updateY();
     this.updateWidth();
     this.updateHeight();
-    controllers.forEach(e => e.register(this));
+    controllers.audio.register(this);
+    controllers.window.register(this);
   }
   updateX() { this.view.updateX(scaled(this.model.time.begin)) }
   updateY() { this.view.updateY(this.#y) }
