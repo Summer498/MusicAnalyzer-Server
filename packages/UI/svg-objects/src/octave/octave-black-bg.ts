@@ -1,5 +1,5 @@
 import { WindowReflectable } from "@music-analyzer/view";
-import { BlackBG_SVG } from "../components/black-bg";
+import { BlackBG_SVG } from "../components";
 
 export class OctaveBlackBG
   implements WindowReflectable {

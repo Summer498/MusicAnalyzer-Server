@@ -1,5 +1,5 @@
 import { WindowReflectableRegistry } from "@music-analyzer/view";
-import { BlackKeySVG } from "../components/black-key";
+import { BlackKeySVG } from "../components";
 
 export class OctaveBlackKey {
   readonly svg: SVGGElement;
