@@ -1,6 +1,6 @@
 import { default as fs } from "fs";
-import { getBandpassFrequency } from "@music-analyzer/post-f0-util"
-import { freq2midi, getFreqFromPhase, getFrequency, getMedianFrequency, getWav, roundOnMIDI, SAMPLING_RATE, Vocals } from "./src";
+import { getBandpassFrequency, getWav } from "@music-analyzer/post-f0-util"
+import { freq2midi, getFreqFromPhase, getFrequency, getMedianFrequency, roundOnMIDI, SAMPLING_RATE, Vocals } from "./src";
 
 
 const main = (argv: string[]) => {
@@ -30,8 +30,8 @@ const main = (argv: string[]) => {
       .map(e => e / SAMPLING_RATE)
       .map(e => Math.sin(e) * 0.8 * 32767)
       .map(e => Math.floor(e));
-  fs.writeFileSync(`${out_filename}.f0.wav`, getWav(sinoid));
-  fs.writeFileSync(`${out_filename}mini.f0.wav`, getWav(sinoid.slice(17 * SAMPLING_RATE, 40 * SAMPLING_RATE)));
+  fs.writeFileSync(`${out_filename}.f0.wav`, getWav(sinoid, SAMPLING_RATE));
+  fs.writeFileSync(`${out_filename}mini.f0.wav`, getWav(sinoid.slice(17 * SAMPLING_RATE, 40 * SAMPLING_RATE), SAMPLING_RATE));
 };
 
 main(process.argv);
