@@ -11,7 +11,7 @@ export interface RequiredByIRSymbolView {
 }
 
 export class IRSymbolView
-  extends MVVM_View<IRSymbolModel, "text">
+  extends MVVM_View<"text", IRSymbolModel>
   implements
   ColorChangeSubscriber {
   #getColor: (e: Triad) => string;
