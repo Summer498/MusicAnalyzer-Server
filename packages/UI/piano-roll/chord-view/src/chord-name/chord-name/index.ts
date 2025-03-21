@@ -1,1 +1,1 @@
-export { ChordName } from "./chord-name";
+export { ChordName, RequiredByChordName } from "./chord-name";
