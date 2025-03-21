@@ -1,4 +1,4 @@
-import { MetricalStructure } from "../src/analysis-result";
+import { MetricalStructure } from "../src";
 
 export const do_re_mi_mtr_raw: MetricalStructure = {
   MPR: {
