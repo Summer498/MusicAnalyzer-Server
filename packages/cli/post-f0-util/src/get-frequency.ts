@@ -3,7 +3,9 @@ export const getFrequency = (
   freq: number[],
   N: number
 ) => {
-  return new Array(Math.floor(freq.length * N))
+  return [freq.length * N]
+    .map(e => Math.floor(e))
+    .flatMap(e => new Array(e))
     .map((e, i) => i / N)
     .map(e => Math.floor(e))
     .map(e => freq[e])
