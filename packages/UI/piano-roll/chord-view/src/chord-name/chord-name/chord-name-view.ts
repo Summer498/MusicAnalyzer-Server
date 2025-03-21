@@ -7,7 +7,7 @@ import { chord_text_em } from "../../chord-view-params";
 export class ChordNameView 
   extends MVVM_View<ChordNameModel, "text"> {
   constructor(model: ChordNameModel) {
-    super(model, "text");
+    super("text", model);
     this.svg.textContent = shortenChord(this.model.name);
     this.svg.id = "chord-name";
     this.svg.style.fontFamily = "Times New Roman";
