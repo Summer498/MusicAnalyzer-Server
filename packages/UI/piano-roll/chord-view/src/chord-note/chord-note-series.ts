@@ -3,8 +3,7 @@ import { _Chord, Chord } from "@music-analyzer/tonal-objects";
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
 import { OctaveCount } from "@music-analyzer/view-parameters";
 import { MVVM_Collection } from "@music-analyzer/view";
-import { ChordNote } from "./chord-note";
-import { RequiredByChordNote } from "./chord-note/chord-note";
+import { ChordNote, RequiredByChordNote } from "./chord-note";
 
 export interface RequiredByChordNotesInOctave
   extends RequiredByChordNote { }
