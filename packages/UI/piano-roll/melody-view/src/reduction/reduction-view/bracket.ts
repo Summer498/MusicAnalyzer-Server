@@ -5,7 +5,7 @@ export class Bracket
   extends MVVM_View<ReductionViewModel, "path"> {
   readonly svg: SVGPathElement;
   constructor(model: ReductionViewModel) {
-    super(model, "path");
+    super("path", model);
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "path");
     this.svg.id = "group";
     this.svg.style.stroke = "rgb(0, 0, 64)";
