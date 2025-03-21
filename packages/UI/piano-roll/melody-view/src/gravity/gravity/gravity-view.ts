@@ -4,7 +4,7 @@ import { LinePos } from "../line-pos";
 import { GravityViewLine, GravityViewTriangle } from "../gravity-parts";
 
 export class GravityView 
-  extends MVVM_View<GravityModel, "g"> {
+  extends MVVM_View<"g", GravityModel> {
   readonly triangle: GravityViewTriangle;
   readonly line: GravityViewLine;
   constructor(model: GravityModel) {
