@@ -1,7 +1,7 @@
 import { Assertion } from "@music-analyzer/stdlib";
 import { mod } from "@music-analyzer/math";
 import { _Interval, _Note } from "@music-analyzer/tonal-objects";
-import { map2rgbByHue } from "./src/util";
+import { map2rgbByHue } from "./src";
 
 // 0 <= h < 360; 0 <= s <= 1; 0 <= b <= 1
 // h |-> [red, yellow, green, cyan, blue, magenta]
