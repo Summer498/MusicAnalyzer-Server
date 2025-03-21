@@ -1,5 +1,5 @@
 export { Attribute, Clef, Key, Time } from "./attribute"
-export { CreditWords } from "./credit/credit-words"
+export { CreditWords } from "./credit"
 export { Font, PageLayout, PageMargins, Scaling } from "./defaults"
 export { Creator, Encoding, Support } from "./identification"
 export { Barline, ExtendedMeasure, Measure, Note } from "./measure"
