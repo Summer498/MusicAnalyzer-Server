@@ -8,7 +8,7 @@ const triangle_height = 5;
 export class GravityViewTriangle 
   extends MVVM_View<GravityModel, "polygon"> {
   constructor(model: GravityModel) {
-    super(model, "polygon");
+    super("polygon", model);
     this.svg.classList.add("triangle");
     this.svg.id = "gravity-arrow";
     this.svg.style.stroke = "rgb(0, 0, 0)";
