@@ -3,27 +3,25 @@ defcol=[39m
 
 shopt -s globstar  # ** の有効化
 
+depCheck(){
+    local -r dist="$1"
+    local -r res="$(npx depcheck $(dirname $dist))"
+
+    echo -e "$(dirname $dist)\r\n$res\r\n\r\n"
+}
+
+
 for dist in packages/**/package.json; do
     if echo "$dist" | grep -q "node_modules"; then
         : #
     else
-        echo $(dirname $dist)
-        npx depcheck $(dirname $dist)
-        echo ""
+        depCheck $dist &
     fi
 done
 
 exit
 
-echo ./html
-npx depcheck ./html
-echo ""
-
-echo ./html/analyze
-npx depcheck ./html/analyze
-echo ""
-
-echo ./html/hierarchical-analysis-sample
-npx depcheck ./html/hierarchical-analysis-sample
-echo ""
+depCheck ./html &
+depCheck ./html/analyze &
+depCheck ./html/hierarchical-analysis-sample &
 
