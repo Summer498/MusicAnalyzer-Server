@@ -5,7 +5,7 @@ import { ChordRomanModel } from "./chord-roman-model";
 import { chord_text_em } from "../../chord-view-params";
 
 export class ChordRomanView 
-  extends MVVM_View<ChordRomanModel, "text"> {
+  extends MVVM_View<"text", ChordRomanModel> {
   constructor(model: ChordRomanModel) {
     super("text", model);
     this.svg.textContent = shortenChord(this.model.roman);
