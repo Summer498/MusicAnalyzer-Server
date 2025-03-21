@@ -8,4 +8,4 @@ export {
   get_color_on_registral_scale,
   get_color_on_intervallic_angle,
   get_color_on_parametric_scale
-} from "./colors.ts";
+} from "./colors";
