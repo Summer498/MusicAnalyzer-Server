@@ -4,7 +4,7 @@ import { BeatBarModel } from "./beat-bar-model";
 export class BeatBarView 
   extends MVVM_View<BeatBarModel, "line"> {
   constructor(model: BeatBarModel) {
-    super(model, "line");
+    super("line", model);
     this.svg.id = "bar";
     this.svg.style.stroke = "rgb(0, 0, 0)";
     this.svg.style.display = "none";  //NOTE: 一旦非表示にしている
