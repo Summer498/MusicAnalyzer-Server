@@ -7,7 +7,7 @@ export class Dot
   constructor(
     readonly model: ReductionViewModel,
   ) {
-    super(model, "circle");
+    super("circle", model);
     this.svg.id = "head";
     this.svg.style.stroke = "rgb(192, 0, 0)";
     this.svg.style.fill = "rgb(192, 0, 0)";
