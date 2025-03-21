@@ -2,6 +2,7 @@ import { get_color_of_Narmour_concept, Triad } from "@music-analyzer/irm";
 import { MVVM_View } from "@music-analyzer/view";
 import { IRPlotModel } from "./ir-plot-model";
 import { ColorChangeSubscriber, MelodyColorController } from "@music-analyzer/controllers";
+import { IRPlotViewModel } from "./ir-plot-view-model";
 
 const get_pos = (_x: number, _y: number) => {
   const a = 1 / 3;
@@ -24,40 +25,26 @@ export class IRPlotView
   extends MVVM_View<"circle", IRPlotModel>
   implements ColorChangeSubscriber {
   #getColor: (archetype: Triad) => string;
-  readonly x0: number;
-  readonly y0: number;
-  readonly w: number;
-  readonly h: number;
-  #x: number;
-  #y: number;
-  get x() { return this.#x; };
-  get y() { return this.#y; };
+  readonly view_model: IRPlotViewModel
   constructor(
     model: IRPlotModel,
     controllers: RequiredByIRPlotView,
   ) {
     super("circle", model);
-    this.#x = 0;
-    this.#y = 0;
-    this.w = 500;
-    this.h = 500;
-    this.x0 = 250;
-    this.y0 = 250;
     this.svg.style.stroke = "rgb(16, 16, 16)";
     this.svg.style.strokeWidth = String(6);
     this.#getColor = get_color_of_Narmour_concept;
     controllers.melody_color.register(this);
+    this.view_model = new IRPlotViewModel()
   }
   updateRadius(r: number) {
     this.svg.style.r = String(r);
   }
   private updateX(x: number) {
-    this.#x = x;
-    this.svg.setAttribute("cx", String(x * this.w / 2 + this.x0))
+    this.svg.setAttribute("cx", String(this.view_model.getTranslatedX(x)))
   }
   private updateY(y: number) {
-    this.#y = y;
-    this.svg.setAttribute("cy", String(y * this.h / 2 + this.y0))
+    this.svg.setAttribute("cy", String(this.view_model.getTranslatedY(y)))
   }
   private easeInOutCos(t: number): number {
     return (1 - Math.cos(t * Math.PI)) / 2;
