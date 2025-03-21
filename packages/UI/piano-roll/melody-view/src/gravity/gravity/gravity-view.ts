@@ -8,7 +8,7 @@ export class GravityView
   readonly triangle: GravityViewTriangle;
   readonly line: GravityViewLine;
   constructor(model: GravityModel) {
-    super(model, "g");
+    super("g", model);
 
     this.triangle = new GravityViewTriangle(model);
     this.line = new GravityViewLine(model);
