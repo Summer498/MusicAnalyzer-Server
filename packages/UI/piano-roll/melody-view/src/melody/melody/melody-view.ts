@@ -16,7 +16,7 @@ export class MelodyView
     model: MelodyModel,
     controllers: RequiredByMelodyView
   ) {
-    super(model, "rect");
+    super("rect", model);
     this.svg.id = "melody-note";
     this.svg.style.stroke = "rgb(64, 64, 64)";
     this.svg.onclick = deleteMelody;
