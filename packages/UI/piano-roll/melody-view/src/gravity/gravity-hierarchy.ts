@@ -4,7 +4,7 @@ import { GravitySwitcherSubscriber, HierarchyLevelController } from "@music-anal
 import { GravitySwitcher } from "@music-analyzer/controllers/src/switcher/gravity-switcher";
 import { CollectionHierarchy } from "@music-analyzer/view";
 
-interface RequiredByGravityHierarchy
+export interface RequiredByGravityHierarchy
   extends RequiredByGravityLayer {
   readonly switcher: GravitySwitcher,
   readonly hierarchy: HierarchyLevelController,
