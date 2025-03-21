@@ -6,7 +6,7 @@ import { chord_text_em } from "../../chord-view-params";
 import { ChordKeyModel } from "./chord-key-model";
 
 export class ChordKeyView 
-  extends MVVM_View<ChordKeyModel, "text"> {
+  extends MVVM_View<"text", ChordKeyModel> {
   constructor(model: ChordKeyModel,) {
     super("text", model);
     this.svg.textContent = oneLetterKey(_Scale.get(this.model.scale)) + ': ';
