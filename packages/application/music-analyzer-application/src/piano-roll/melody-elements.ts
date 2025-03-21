@@ -15,19 +15,17 @@ export class MelodyElements {
   constructor(
     hierarchical_melody: TimeAndAnalyzedMelody[][],
     d_melodies: TimeAndAnalyzedMelody[],
-    controllers: Controllers,
-    publisher: [AudioReflectableRegistry, WindowReflectableRegistry]
+    controllers: Controllers & { audio: AudioReflectableRegistry, window: WindowReflectableRegistry },
   ) {
-    const { gravity } = controllers;
-    const [audio, window] = publisher;
-    const publishers = { ...controllers, audio, window }
+    const { chord_checkbox, scale_checkbox } = controllers.gravity;
+    const publishers = { ...controllers }
 
     this.d_melody_collection = new DMelodySeries(d_melodies, publishers);
     this.melody_hierarchy = new MelodyHierarchy(hierarchical_melody, publishers);
     this.ir_hierarchy = new IRSymbolHierarchy(hierarchical_melody, publishers);
     this.ir_plot = new IRPlot(hierarchical_melody, publishers);
-    this.chord_gravities = new GravityHierarchy("chord_gravity", hierarchical_melody, { ...publishers, switcher: gravity.chord_checkbox });
-    this.scale_gravities = new GravityHierarchy("scale_gravity", hierarchical_melody, { ...publishers, switcher: gravity.scale_checkbox });
+    this.chord_gravities = new GravityHierarchy("chord_gravity", hierarchical_melody, { ...publishers, switcher: chord_checkbox });
+    this.scale_gravities = new GravityHierarchy("scale_gravity", hierarchical_melody, { ...publishers, switcher: scale_checkbox });
     this.time_span_tree = new ReductionHierarchy(hierarchical_melody, publishers);
     this.children = [
       this.d_melody_collection,
