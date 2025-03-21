@@ -1,7 +1,17 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { GravityHierarchy, DMelodySeries, IRSymbolHierarchy, MelodyHierarchy, ReductionHierarchy, IRPlot } from "@music-analyzer/melody-view";
+import { GravityHierarchy, DMelodySeries, IRSymbolHierarchy, MelodyHierarchy, ReductionHierarchy, IRPlot, RequiredByDMelodySeries, RequiredByMelodyHierarchy, RequiredByIRSymbolHierarchy, RequiredByIRPlot, RequiredByReductionHierarchy } from "@music-analyzer/melody-view";
 import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
-import { Controllers } from "../controllers";
+import { GravityController } from "@music-analyzer/controllers";
+
+export interface RequiredByMelodyElements
+  extends
+  RequiredByDMelodySeries,
+  RequiredByMelodyHierarchy,
+  RequiredByIRSymbolHierarchy,
+  RequiredByIRPlot,
+  RequiredByReductionHierarchy {
+    readonly gravity: GravityController
+  }
 
 export class MelodyElements {
   readonly children: unknown[];
@@ -15,7 +25,7 @@ export class MelodyElements {
   constructor(
     hierarchical_melody: TimeAndAnalyzedMelody[][],
     d_melodies: TimeAndAnalyzedMelody[],
-    controllers: Controllers & { audio: AudioReflectableRegistry, window: WindowReflectableRegistry },
+    controllers: RequiredByMelodyElements & { audio: AudioReflectableRegistry, window: WindowReflectableRegistry },
   ) {
     const { chord_checkbox, scale_checkbox } = controllers.gravity;
     const publishers = { ...controllers }
