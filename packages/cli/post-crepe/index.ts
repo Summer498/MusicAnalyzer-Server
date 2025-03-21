@@ -21,8 +21,8 @@ const main = (argv: string[]) => {
   const out_dir = `${argv[3]}`;
   if (!fs.existsSync(out_dir)) { fs.mkdirSync(out_dir); }
   const out_filename = out_dir + "/vocals";
-  fs.writeFileSync(`${out_filename}.midi.json`, JSON.stringify(freq_band_passed.map(e => Math.round(freq2midi(e)))/*, undefined, "  "*/));
-  fs.writeFileSync(`${out_filename}.json`, JSON.stringify(freq_band_passed/*, undefined, " "*/));
+  fs.writeFileSync(`${out_filename}.midi.json`, JSON.stringify(freq_band_passed.map(e => Math.round(freq2midi(e)))));
+  fs.writeFileSync(`${out_filename}.json`, JSON.stringify(freq_band_passed));
 
   // サイン波の音で確認するため, 瞬間周波数を積分して位相を求める
   const sinoid =
