@@ -1,6 +1,6 @@
-import { BeatElements } from "./beat-elements";
-import { ChordElements } from "./chord-elements";
-import { MelodyElements } from "./melody-elements";
+import { BeatElements } from "@music-analyzer/beat-view";
+import { ChordElements } from "@music-analyzer/chord-view";
+import { MelodyElements } from "@music-analyzer/melody-view";
 
 export class MusicStructureElements {
   constructor(
