@@ -5,17 +5,17 @@ import { getMedianFrequency, Vocals } from "./src";
 const main = (argv: string[]) => {
   const csv_file_path = argv[2];
 
-  const input_data = fs.readFileSync(csv_file_path, "utf8");
-  const parsed_data = (JSON.parse(input_data) as Vocals).f0;
+  const input = fs.readFileSync(csv_file_path, "utf8");
+  const parsed = (JSON.parse(input) as Vocals).f0;
 
   const SAMPLING_RATE = 22050;
   // 瞬間周波数 [Hz/s]
-  const freq_row = parsed_data.map(freq => freq && freq * 2);  // pYIN の推定結果が 1 オクターブ低く出るので 1 オクターブ上げる
-  const freq_rounded = freq_row.map(freq => freq && roundOnMIDI(freq));
-  const freq_median_filtered = getMedianFrequency(freq_rounded).map(e => e === null ? NaN : e);
-  const freq_band_passed = getBandpassFrequency(freq_median_filtered);
-  const frequency = getFrequency(freq_band_passed, SAMPLING_RATE, Math.floor(44100 / 512));
-  return postProcess(argv[3], SAMPLING_RATE, freq_band_passed, frequency)
+  const raw = parsed.map(freq => freq && freq * 2);  // pYIN の推定結果が 1 オクターブ低く出るので 1 オクターブ上げる
+  const round = raw.map(freq => freq && roundOnMIDI(freq));
+  const median = getMedianFrequency(round).map(e => e === null ? NaN : e);
+  const bandpass = getBandpassFrequency(median);
+  const frequency = getFrequency(bandpass, SAMPLING_RATE, Math.floor(44100 / 512));
+  return postProcess(argv[3], SAMPLING_RATE, bandpass, frequency)
 };
 
 const postProcess = (

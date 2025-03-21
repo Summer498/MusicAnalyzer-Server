@@ -6,30 +6,30 @@ import { getMedianFrequency, VocalsF0CSV } from "./src";
 const main = (argv: string[]) => {
   const csv_file_path = argv[2];
 
-  const input_data = fs.readFileSync(csv_file_path);
-  const parsed_data: VocalsF0CSV[] = parse(input_data, { columns: true, cast: true, delimiter: ',' });
+  const input = fs.readFileSync(csv_file_path);
+  const parsed: VocalsF0CSV[] = parse(input, { columns: true, cast: true, delimiter: ',' });
 
   const SAMPLING_RATE = 22050;
   // 瞬間周波数 [Hz/s]
-  const freq_row = parsed_data.map(e => e.frequency);
-  const freq_rounded = freq_row.map(freq => roundOnMIDI(freq));
-  const freq_median_filtered = getMedianFrequency(freq_rounded);
-  const freq_band_passed = getBandpassFrequency(freq_median_filtered);
-  const frequency = getFrequency(freq_band_passed, SAMPLING_RATE, 100);
-  return postProcess(argv[3], SAMPLING_RATE, freq_band_passed, frequency)
+  const raw = parsed.map(e => e.frequency);
+  const round = raw.map(freq => roundOnMIDI(freq));
+  const median = getMedianFrequency(round);
+  const bandpass = getBandpassFrequency(median);
+  const frequency = getFrequency(bandpass, SAMPLING_RATE, 100);
+  return postProcess(argv[3], SAMPLING_RATE, bandpass, frequency)
 };
 
 const postProcess = (
   dir: string,
   SAMPLING_RATE: number,
-  freq_band_passed: number[],
+  bandpass: number[],
   frequency: number[],
 ) => {
   // output
   if (!fs.existsSync(dir)) { fs.mkdirSync(dir); }
   const out = `${dir}/vocals`;
-  fs.writeFileSync(`${out}.midi.json`, JSON.stringify(freq_band_passed.map(e => Math.round(freq2midi(e)))));
-  fs.writeFileSync(`${out}.json`, JSON.stringify(freq_band_passed));
+  fs.writeFileSync(`${out}.midi.json`, JSON.stringify(bandpass.map(e => Math.round(freq2midi(e)))));
+  fs.writeFileSync(`${out}.json`, JSON.stringify(bandpass));
 
   // サイン波の音で確認するため, 瞬間周波数を積分して位相を求める
   const sinoid =
