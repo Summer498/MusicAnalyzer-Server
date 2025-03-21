@@ -1,4 +1,4 @@
-import { TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { TimeRangeController, TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
 import { MVVM_ViewModel, WindowReflectableRegistry } from "@music-analyzer/view";
@@ -13,6 +13,7 @@ const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 export interface RequiredByMelody
   extends RequiredByMelodyBeep, RequiredByMelodyView {
   readonly window: WindowReflectableRegistry,
+  readonly time_range: TimeRangeController
 }
 
 export class Melody
@@ -31,6 +32,7 @@ export class Melody
     this.updateWidth();
     this.updateHeight();
     controllers.window.register(this)
+    controllers.time_range.register(this);
   }
   updateX() { this.view.updateX(scaled(this.model.time.begin)) }
   updateY() { this.view.updateY(isNaN(this.model.note) ? -99 : -convertToCoordinate(transposed(this.model.note))) }
