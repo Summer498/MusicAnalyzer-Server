@@ -1,1 +1,1 @@
-export { AudioViewer } from "./src/audio-viewer";
+export { AudioViewer } from "./src";
