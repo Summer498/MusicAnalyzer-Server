@@ -4,7 +4,8 @@ import { BeatBarsSeries, RequiredByBeatBarsSeries } from "@music-analyzer/beat-v
 
 export interface RequiredByBeatElements
   extends RequiredByBeatBarsSeries { }
-export class BeatElements {
+
+  export class BeatElements {
   readonly children: unknown[];
   readonly beat_bars: BeatBarsSeries;
   constructor(
