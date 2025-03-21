@@ -6,9 +6,9 @@ export class ChordNameSeries
   extends ReflectableTimeAndMVCControllerCollection<ChordName> {
   constructor(
     romans: TimeAndRomanAnalysis[],
-    publisher: [AudioReflectableRegistry, WindowReflectableRegistry]
+    controllers: [AudioReflectableRegistry, WindowReflectableRegistry]
   ) {
-    super("chord-names", romans.map(e => new ChordName(e, [publisher[1]])));
-    publisher[0].register(this);
+    super("chord-names", romans.map(e => new ChordName(e, [controllers[1]])));
+    controllers[0].register(this);
   }
 }

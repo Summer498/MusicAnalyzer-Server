@@ -16,14 +16,14 @@ export class ChordKey
   #y: number;
   constructor(
     e: TimeAndRomanAnalysis,
-    publisher: [WindowReflectableRegistry]
+    controllers: [WindowReflectableRegistry]
   ) {
     const model = new ChordKeyModel(e);
     super(model, new ChordKeyView(model));
     this.#y = PianoRollHeight.get() + chord_text_size * 2 + chord_name_margin;
     this.updateX();
     this.updateY();
-    publisher[0].register(this);
+    controllers[0].register(this);
   }
   updateX() { this.view.updateX(scaled(this.model.time.begin)) }
   updateY() { this.view.updateY(this.#y) }

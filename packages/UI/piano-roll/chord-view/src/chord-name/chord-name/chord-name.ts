@@ -15,14 +15,14 @@ export class ChordName
   #y: number;
   constructor(
     e: TimeAndRomanAnalysis,
-    publisher: [WindowReflectableRegistry]
+    controllers: [WindowReflectableRegistry]
   ) {
     const model = new ChordNameModel(e);
     super(model, new ChordNameView(model));
     this.#y = PianoRollHeight.get() + chord_text_size;
     this.updateX();
     this.updateY();
-    publisher.forEach(e => e.register(this));
+    controllers.forEach(e => e.register(this));
   }
   updateX() { this.view.updateX(scaled(this.model.time.begin)) }
   updateY() { this.view.updateY(this.#y) }

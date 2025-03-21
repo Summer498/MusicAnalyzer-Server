@@ -10,12 +10,12 @@ export class ChordElements {
   readonly chord_romans: ChordRomanSeries;
   constructor(
     romans: TimeAndRomanAnalysis[],
-    publisher: [AudioReflectableRegistry, WindowReflectableRegistry]
+    controllers: [AudioReflectableRegistry, WindowReflectableRegistry]
   ) {
-    this.chord_keys = new ChordKeySeries(romans, publisher);
-    this.chord_names = new ChordNameSeries(romans, publisher);
-    this.chord_notes = new ChordNotesSeries(romans, publisher);
-    this.chord_romans = new ChordRomanSeries(romans, publisher);
+    this.chord_keys = new ChordKeySeries(romans, controllers);
+    this.chord_names = new ChordNameSeries(romans, controllers);
+    this.chord_notes = new ChordNotesSeries(romans, controllers);
+    this.chord_romans = new ChordRomanSeries(romans, controllers);
     this.children = [
       this.chord_keys,
       this.chord_names,

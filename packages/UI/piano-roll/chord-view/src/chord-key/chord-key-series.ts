@@ -8,10 +8,10 @@ export class ChordKeySeries
   readonly remaining: ChordKey | undefined;
   constructor(
     romans: TimeAndRomanAnalysis[],
-    publisher: [AudioReflectableRegistry, WindowReflectableRegistry]
+    controllers: [AudioReflectableRegistry, WindowReflectableRegistry]
   ) {
-    super("key-names", romans.map(e => new ChordKey(e, [publisher[1]])));
-    publisher[0].register(this);
+    super("key-names", romans.map(e => new ChordKey(e, [controllers[1]])));
+    controllers[0].register(this);
   }
   onAudioUpdate() { this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
 }
