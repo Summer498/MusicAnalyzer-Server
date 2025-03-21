@@ -16,7 +16,7 @@ export class ChordElements {
     controllers: RequiredByChordElements
   ) {
     this.chord_keys = new ChordKeySeries(romans, controllers);
-    this.chord_names = new ChordNameSeries(romans, [controllers.audio,controllers.window]);
+    this.chord_names = new ChordNameSeries(romans, controllers);
     this.chord_notes = new ChordNotesSeries(romans, [controllers.audio,controllers.window]);
     this.chord_romans = new ChordRomanSeries(romans, [controllers.audio,controllers.window]);
     this.children = [

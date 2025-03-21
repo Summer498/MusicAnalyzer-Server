@@ -9,20 +9,23 @@ import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 
 const scaled = (e: number) => e * NoteSize.get();
 
+export interface RequiredByChordName {
+  readonly window: WindowReflectableRegistry
+}
 export class ChordName
   extends MVVM_ViewModel<ChordNameModel, ChordNameView>
   implements TimeRangeSubscriber {
   #y: number;
   constructor(
     e: TimeAndRomanAnalysis,
-    controllers: [WindowReflectableRegistry]
+    controllers: RequiredByChordName
   ) {
     const model = new ChordNameModel(e);
     super(model, new ChordNameView(model));
     this.#y = PianoRollHeight.get() + chord_text_size;
     this.updateX();
     this.updateY();
-    controllers.forEach(e => e.register(this));
+    controllers.window.register(this);
   }
   updateX() { this.view.updateX(scaled(this.model.time.begin)) }
   updateY() { this.view.updateY(this.#y) }
