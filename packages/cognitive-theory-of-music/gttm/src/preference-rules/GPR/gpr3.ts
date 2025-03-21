@@ -1,6 +1,4 @@
-import { Note } from "../common/Note";
-import { Pair } from "../common/Pair";
-import { IntervallicDistance, Transition } from "../common/Transition";
+import { IntervallicDistance, Note, Pair, Transition } from "../common";
 
 export class GPR3a<T> {
   readonly is_fulfilled: boolean;

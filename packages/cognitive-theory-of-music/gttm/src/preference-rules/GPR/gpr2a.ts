@@ -1,5 +1,4 @@
-import { IntervalOfTime } from "../common/Interval";
-import { Note } from "../common/Note";
+import { IntervalOfTime, Note } from "../common";
 
 export class GPR2a<T> {
   readonly is_fulfilled: boolean;
