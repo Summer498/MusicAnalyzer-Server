@@ -1,12 +1,9 @@
 import { BeatInfo } from "@music-analyzer/beat-estimation";
-import { BeatElements } from "@music-analyzer/beat-view";
-import { RequiredByBeatElements } from "@music-analyzer/beat-view/src/beat-elements";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-import { ChordElements } from "@music-analyzer/chord-view";
-import { RequiredByChordElements } from "@music-analyzer/chord-view/src/chord-elements";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { MelodyElements } from "@music-analyzer/melody-view";
-import { RequiredByMelodyElements } from "@music-analyzer/melody-view/src/melody-elements";
+import { BeatElements, RequiredByBeatElements } from "@music-analyzer/beat-view";
+import { ChordElements, RequiredByChordElements } from "@music-analyzer/chord-view";
+import { MelodyElements, RequiredByMelodyElements } from "@music-analyzer/melody-view";
 
 export class MusicStructureElements {
   readonly beat: BeatElements
