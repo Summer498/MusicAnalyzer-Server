@@ -1,6 +1,6 @@
 import { default as fs } from "fs";
-import { getBandpassFrequency, getWav } from "@music-analyzer/post-f0-util"
-import { freq2midi, getFreqFromPhase, getFrequency, getMedianFrequency, roundOnMIDI, SAMPLING_RATE, Vocals } from "./src";
+import { getBandpassFrequency, getFreqFromPhase, getWav } from "@music-analyzer/post-f0-util"
+import { freq2midi, getFrequency, getMedianFrequency, roundOnMIDI, SAMPLING_RATE, Vocals } from "./src";
 
 
 const main = (argv: string[]) => {
