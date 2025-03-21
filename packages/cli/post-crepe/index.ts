@@ -1,6 +1,6 @@
 import { default as fs } from "fs";
 import { parse } from "csv-parse/sync";
-import { freq2midi, Freq2Phase, getBandpassEdFrequency, getFrequency, getMedianFrequency, getWav, roundOnMIDI, VocalsF0CSV } from "./src";
+import { freq2midi, getBandpassEdFrequency, getFreqFromPhase, getFrequency, getMedianFrequency, getWav, roundOnMIDI, VocalsF0CSV } from "./src";
 
 const main = (argv: string[]) => {
   const csv_file_path = argv[2];
@@ -24,9 +24,11 @@ const main = (argv: string[]) => {
   fs.writeFileSync(`${out_filename}.json`, JSON.stringify(freq_band_passed/*, undefined, " "*/));
 
   // サイン波の音で確認するため, 瞬間周波数を積分して位相を求める
-  const freq2phase = new Freq2Phase(frequency[0], SAMPLING_RATE);
-  const phase = frequency.map(freq => freq2phase.calc(freq));
-  const sinoid = phase.map(e => Math.floor(Math.sin(e) * 0.8 * 32767));
+  const sinoid =
+    getFreqFromPhase(frequency)
+      .map(e => e / SAMPLING_RATE)
+      .map(e => Math.sin(e) * 0.8 * 32767)
+      .map(e => Math.floor(e));
   fs.writeFileSync(
     `${out_filename}.f0.wav`,
     getWav(sinoid, SAMPLING_RATE)

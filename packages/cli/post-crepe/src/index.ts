@@ -22,22 +22,15 @@ class MedianFilter {
   }
 }
 
-export class Freq2Phase {
-  s;
-  readonly s0;
-  constructor(
-    s0: number,
-    readonly sampling_rate = 44100,
-  ) {
-    this.s = 0;
-    this.s0 = s0 || 0;
-
-  }
-  calc(freq: number) {
-    this.s += (freq || 0) / this.sampling_rate;
-    return this.s + this.s0;
-  }
+export const getFreqFromPhase = (frequency: number[]) => {
+  const phase = [...frequency];
+  frequency.reduce((p, c, i) => {
+    phase[i] = p;
+    return p + c;
+  })
+  return phase
 }
+
 
 export type VocalsF0CSV = { time: number, frequency: number, confidence: number }
 
