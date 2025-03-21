@@ -28,14 +28,18 @@ export class ApplicationManager {
     const { time_range } = this.controller;
     this.audio_time_mediator = new AudioReflectableRegistry();
     this.window_size_mediator = new WindowReflectableRegistry();
-    const registries = [this.audio_time_mediator, this.window_size_mediator] as [AudioReflectableRegistry, WindowReflectableRegistry];
+    const _r = [this.audio_time_mediator, this.window_size_mediator] as [AudioReflectableRegistry, WindowReflectableRegistry];
+    const registries = {
+      audio: this.audio_time_mediator,
+      window: this.window_size_mediator,
+    }
 
     this.analyzed = new MusicStructureElements(
-      new BeatElements(beat_info, melodies, registries),
+      new BeatElements(beat_info, melodies, _r),
       new ChordElements(romans, registries),
-      new MelodyElements(hierarchical_melody, d_melodies, this.controller, registries),
+      new MelodyElements(hierarchical_melody, d_melodies, this.controller, _r),
     )
 
-//    time_range.register(this.audio_time_mediator, this.window_size_mediator);
+    //    time_range.register(this.audio_time_mediator, this.window_size_mediator);
   }
 }
