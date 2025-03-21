@@ -1,3 +1,4 @@
+export { GravitySwitcher } from "./src/switcher";
 export { Controller } from "./src/controller";
 export { DMelodyController, DMelodyControllerSubscriber, GravityController, GravitySwitcherSubscriber } from "./src/switcher";
 export { MelodyColorController, ColorChangeSubscriber } from "./src/color-selector.ts";
