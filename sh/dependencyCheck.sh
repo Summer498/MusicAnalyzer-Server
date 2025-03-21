@@ -19,8 +19,8 @@ for dist in packages/**/package.json; do
     fi
 done
 
-depCheck ./html &
-depCheck ./html/analyze &
-depCheck ./html/hierarchical-analysis-sample &
+depCheck ./html/package.json &
+depCheck ./html/analyze/package.json &
+depCheck ./html/hierarchical-analysis-sample/package.json &
 
 exit
