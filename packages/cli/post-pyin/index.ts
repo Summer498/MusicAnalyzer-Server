@@ -14,7 +14,7 @@ const main = (argv: string[]) => {
   const round = raw.map(freq => freq && roundOnMIDI(freq));
   const median = getMedianFrequency(round).map(e => e === null ? NaN : e);
   const bandpass = getBandpassFrequency(median);
-  const frequency = getFrequency(bandpass, SAMPLING_RATE, Math.floor(44100 / 512));
+  const frequency = getFrequency(bandpass, SAMPLING_RATE / Math.floor(44100 / 512));
   return postProcess(argv[3], SAMPLING_RATE, bandpass, frequency)
 };
 
