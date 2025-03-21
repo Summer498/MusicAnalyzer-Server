@@ -1,15 +1,20 @@
-import { HierarchyLevelController, MelodyColorController } from "@music-analyzer/controllers";
+import { HierarchyLevelController } from "@music-analyzer/controllers";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { AudioReflectableRegistry, CollectionHierarchy, WindowReflectableRegistry } from "@music-analyzer/view";
-import { IRSymbolLayer } from "./ir-symbol-layer";
+import { CollectionHierarchy } from "@music-analyzer/view";
+import { IRSymbolLayer, RequiredByIRSymbolLayer } from "./ir-symbol-layer";
+
+export interface RequiredByIRSymbolHierarchy
+  extends RequiredByIRSymbolLayer {
+  readonly hierarchy: HierarchyLevelController
+}
 
 export class IRSymbolHierarchy
   extends CollectionHierarchy<IRSymbolLayer> {
   constructor(
     hierarchical_melodies: TimeAndAnalyzedMelody[][],
-    controllers: [HierarchyLevelController, MelodyColorController, AudioReflectableRegistry, WindowReflectableRegistry]
+    controllers: RequiredByIRSymbolHierarchy
   ) {
-    super("implication-realization archetype", hierarchical_melodies.map((e, l) => new IRSymbolLayer(e, l, [controllers[1], controllers[2], controllers[3]])));
-    controllers[0].register(this);
+    super("implication-realization archetype", hierarchical_melodies.map((e, l) => new IRSymbolLayer(e, l,controllers)));
+    controllers.hierarchy.register(this);
   }
 }

@@ -6,14 +6,18 @@ import { ColorChangeSubscriber, MelodyColorController } from "@music-analyzer/co
 
 const ir_analysis_em = size;
 
-export class IRSymbolView 
-  extends MVVM_View<IRSymbolModel, "text"> 
+export interface RequiredByIRSymbolView {
+  readonly melody_color: MelodyColorController
+}
+
+export class IRSymbolView
+  extends MVVM_View<IRSymbolModel, "text">
   implements
   ColorChangeSubscriber {
   #getColor: (e: Triad) => string;
   constructor(
     model: IRSymbolModel,
-    controllers: [MelodyColorController]
+    controllers: RequiredByIRSymbolView,
   ) {
     super(model, "text");
     this.svg.textContent = this.model.archetype.symbol;
@@ -22,7 +26,7 @@ export class IRSymbolView
     this.svg.style.fontSize = `${ir_analysis_em}em`;
     this.svg.style.textAnchor = "middle";
     this.#getColor = get_color_of_Narmour_concept;
-    controllers[0].register(this)
+    controllers.melody_color.register(this)
   }
   updateX(x: number) { this.svg.setAttribute("x", String(x)); }
   updateY(y: number) { this.svg.setAttribute("y", String(y)); }

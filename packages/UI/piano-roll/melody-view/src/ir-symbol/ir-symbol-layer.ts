@@ -1,16 +1,20 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { AudioReflectableRegistry, CollectionLayer, WindowReflectableRegistry } from "@music-analyzer/view";
+import { AudioReflectableRegistry, CollectionLayer } from "@music-analyzer/view";
 import { IRSymbol } from "./ir-symbol";
-import { MelodyColorController } from "@music-analyzer/controllers";
+import { RequiredByIRSymbol } from "./ir-symbol/ir-symbol";
 
+export interface RequiredByIRSymbolLayer
+  extends RequiredByIRSymbol {
+  readonly audio: AudioReflectableRegistry
+}
 export class IRSymbolLayer
   extends CollectionLayer<IRSymbol> {
   constructor(
     melodies: TimeAndAnalyzedMelody[],
     layer: number,
-    controllers: [MelodyColorController, AudioReflectableRegistry, WindowReflectableRegistry]
+    controllers: RequiredByIRSymbolLayer
   ) {
-    super(layer, melodies.map(e => new IRSymbol(e, layer, [controllers[0], controllers[2]])));
-    controllers[1].register(this);
+    super(layer, melodies.map(e => new IRSymbol(e, layer, controllers)));
+    controllers.audio.register(this);
   }
 }
