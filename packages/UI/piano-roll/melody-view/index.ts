@@ -4,3 +4,4 @@ export { IRSymbolHierarchy, RequiredByIRSymbolHierarchy } from "./src/ir-symbol"
 export { IRPlot, RequiredByIRPlot } from "./src/ir-plot";
 export { MelodyHierarchy, RequiredByMelodyHierarchy } from "./src/melody";
 export { GravityHierarchy, RequiredByGravityHierarchy } from "./src/gravity";
+export { MelodyElements } from "./src/melody-elements";
