@@ -1,7 +1,6 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { AudioReflectableRegistry, CollectionLayer } from "@music-analyzer/view";
-import { IRSymbol } from "./ir-symbol";
-import { RequiredByIRSymbol } from "./ir-symbol/ir-symbol";
+import { IRSymbol, RequiredByIRSymbol } from "./ir-symbol";
 
 export interface RequiredByIRSymbolLayer
   extends RequiredByIRSymbol {
