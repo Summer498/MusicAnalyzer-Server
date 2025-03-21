@@ -1,7 +1,6 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-import { AudioReflectableRegistry, ReflectableTimeAndMVCControllerCollection, WindowReflectableRegistry } from "@music-analyzer/view";
-import { ChordRoman } from "./chord-roman";
-import { RequiredByChordRoman } from "./chord-roman/chord-roman";
+import { AudioReflectableRegistry, ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
+import { ChordRoman, RequiredByChordRoman } from "./chord-roman";
 
 export interface RequiredByChordRomanSeries
 extends RequiredByChordRoman{
