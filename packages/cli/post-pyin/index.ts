@@ -29,14 +29,8 @@ const main = (argv: string[]) => {
       .map(e => e / SAMPLING_RATE)
       .map(e => Math.sin(e) * 0.8 * 32767)
       .map(e => Math.floor(e));
-  fs.writeFileSync(
-    `${out_filename}.f0.wav`,
-    getWav(sinoid)
-  );
-  fs.writeFileSync(
-    `${out_filename}mini.f0.wav`,
-    getWav(sinoid.slice(17 * SAMPLING_RATE, 40 * SAMPLING_RATE))
-  );
+  fs.writeFileSync(`${out_filename}.f0.wav`, getWav(sinoid));
+  fs.writeFileSync(`${out_filename}mini.f0.wav`, getWav(sinoid.slice(17 * SAMPLING_RATE, 40 * SAMPLING_RATE)));
 };
 
 main(process.argv);
