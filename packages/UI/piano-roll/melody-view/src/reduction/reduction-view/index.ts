@@ -1,1 +1,1 @@
-export { ReductionView } from "./reduction-view";
+export { ReductionView, RequiredByReductionView } from "./reduction-view";
