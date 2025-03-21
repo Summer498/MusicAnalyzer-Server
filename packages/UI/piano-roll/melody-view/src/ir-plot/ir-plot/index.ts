@@ -1,1 +1,1 @@
-export { IRPlot } from "./ir-plot";
+export { IRPlot, RequiredByIRPlot } from "./ir-plot";
