@@ -14,7 +14,7 @@ const main = (argv: string[]) => {
   const freq_rounded = freq_row.map(freq => freq && roundOnMIDI(freq));
   const freq_median_filtered = getMedianFrequency(freq_rounded).map(e => e === null ? NaN : e);
   const freq_band_passed = getBandpassFrequency(freq_median_filtered);
-  const frequency = getFrequency(freq_band_passed);
+  const frequency = getFrequency(freq_band_passed, SAMPLING_RATE, Math.floor(44100 / 512));
 
   // output
   const out_dir = `${argv[3]}`;
