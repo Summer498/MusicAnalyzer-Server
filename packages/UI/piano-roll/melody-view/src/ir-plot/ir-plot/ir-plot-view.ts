@@ -3,6 +3,20 @@ import { MVVM_View } from "@music-analyzer/view";
 import { IRPlotModel } from "./ir-plot-model";
 import { ColorChangeSubscriber, MelodyColorController } from "@music-analyzer/controllers";
 
+const get_pos = (_x: number, _y: number) => {
+  const a = 1 / 3;
+  const x = a * _x;
+  const y = a * _y;
+  const double_angle_x = x * x - y * y;
+  const double_angle_y = 2 * x * y;
+  const r2 = 1 + x * x + y * y;
+  return [
+    double_angle_x / r2,
+    double_angle_y / r2
+  ];
+};
+
+
 export interface RequiredByIRPlotView {
   readonly melody_color: MelodyColorController
 }
@@ -39,29 +53,17 @@ export class IRPlotView
   }
   private updateX(x: number) {
     this.#x = x;
-    this.svg.style.cx = String(x * this.w / 2 + this.x0);
+    this.svg.setAttribute("cx", String(x * this.w / 2 + this.x0))
   }
   private updateY(y: number) {
     this.#y = y;
-    this.svg.style.cy = String(y * this.h / 2 + this.y0);
+    this.svg.setAttribute("cy", String(y * this.h / 2 + this.y0))
   }
   private easeInOutCos(t: number): number {
     return (1 - Math.cos(t * Math.PI)) / 2;
   }
   updatePosition() {
     const interval = this.model.getInterval();
-    const get_pos = (_x: number, _y: number) => {
-      const a = 1 / 3;
-      const x = a * _x;
-      const y = a * _y;
-      const double_angle_x = x * x - y * y;
-      const double_angle_y = 2 * x * y;
-      const r2 = 1 + x * x + y * y;
-      return [
-        double_angle_x / r2,
-        double_angle_y / r2
-      ];
-    };
     const curr = get_pos(interval[0], interval[1]);
     const next = get_pos(interval[1], interval[2]);
     const r = this.easeInOutCos(this.model.getPositionRatio());
