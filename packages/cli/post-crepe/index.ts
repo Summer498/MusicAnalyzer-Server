@@ -20,25 +20,25 @@ const main = (argv: string[]) => {
 };
 
 const postProcess = (
-  out_dir: string,
+  dir: string,
   SAMPLING_RATE: number,
   freq_band_passed: number[],
   frequency: number[],
 ) => {
   // output
-  if (!fs.existsSync(out_dir)) { fs.mkdirSync(out_dir); }
-  const out_filename = out_dir + "/vocals";
-  fs.writeFileSync(`${out_filename}.midi.json`, JSON.stringify(freq_band_passed.map(e => Math.round(freq2midi(e)))));
-  fs.writeFileSync(`${out_filename}.json`, JSON.stringify(freq_band_passed));
+  if (!fs.existsSync(dir)) { fs.mkdirSync(dir); }
+  const out = `${dir}/vocals`;
+  fs.writeFileSync(`${out}.midi.json`, JSON.stringify(freq_band_passed.map(e => Math.round(freq2midi(e)))));
+  fs.writeFileSync(`${out}.json`, JSON.stringify(freq_band_passed));
 
   // サイン波の音で確認するため, 瞬間周波数を積分して位相を求める
   const sinoid =
     getFreqFromPhase(frequency)
       .map(e => e / SAMPLING_RATE)
-      .map(e => Math.sin(e) * 0.8 * 32767)
+      .map(e => Math.sin(e) * 0.8 * 32768)
       .map(e => Math.floor(e));
-  fs.writeFileSync(`${out_filename}.f0.wav`, getWav(sinoid, SAMPLING_RATE));
-  fs.writeFileSync(`${out_filename}mini.f0.wav`, getWav(sinoid.slice(17 * SAMPLING_RATE, 40 * SAMPLING_RATE), SAMPLING_RATE));
+  fs.writeFileSync(`${out}.f0.wav`, getWav(sinoid, SAMPLING_RATE));
+  fs.writeFileSync(`${out}mini.f0.wav`, getWav(sinoid.slice(17 * SAMPLING_RATE, 40 * SAMPLING_RATE), SAMPLING_RATE));
 };
 
 main(process.argv);
