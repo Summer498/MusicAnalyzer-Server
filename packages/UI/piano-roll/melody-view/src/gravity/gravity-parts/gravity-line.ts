@@ -5,7 +5,7 @@ import { GravityModel } from "../gravity";
 export class GravityViewLine 
   extends MVVM_View<GravityModel, "line"> {
   constructor(model: GravityModel) {
-    super(model, "line");
+    super("line", model);
     this.svg.id = "gravity-arrow";
     this.svg.classList.add("line");
     this.svg.style.stroke = "rgb(0, 0, 0)";
