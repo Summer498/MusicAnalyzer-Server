@@ -8,7 +8,7 @@ import { ChordKeyModel } from "./chord-key-model";
 export class ChordKeyView 
   extends MVVM_View<ChordKeyModel, "text"> {
   constructor(model: ChordKeyModel,) {
-    super(model, "text");
+    super("text", model);
     this.svg.textContent = oneLetterKey(_Scale.get(this.model.scale)) + ': ';
     this.svg.id = "key-name";
     this.svg.style.fontFamily = "Times New Roman";
