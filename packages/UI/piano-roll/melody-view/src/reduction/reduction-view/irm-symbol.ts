@@ -8,7 +8,7 @@ export interface RequiredByIRMSymbol {
   readonly melody_color: MelodyColorController
 }
 export class IRMSymbol
-  extends MVVM_View<ReductionViewModel, "text"> {
+  extends MVVM_View<"text", ReductionViewModel> {
   #getColor: (e: Triad) => string;
   constructor(
     model: ReductionViewModel,
