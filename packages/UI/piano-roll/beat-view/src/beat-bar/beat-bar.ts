@@ -9,17 +9,20 @@ import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 
 const scaled = (e: number) => e * NoteSize.get();
 
-export class BeatBar 
+export interface RequiredByBeatBar {
+  readonly audio: AudioReflectableRegistry,
+  readonly window: WindowReflectableRegistry,
+}
+export class BeatBar
   extends MVVM_ViewModel<BeatBarModel, BeatBarView>
-  implements TimeRangeSubscriber
-  {
+  implements TimeRangeSubscriber {
   #y1: number;
   #y2: number;
   sound_reserved: boolean;
   constructor(
     beat_info: BeatInfo,
     i: number,
-    controllers: [AudioReflectableRegistry, WindowReflectableRegistry],
+    controllers: RequiredByBeatBar,
   ) {
     const model = new BeatBarModel(beat_info, i);
     super(model, new BeatBarView(model));
@@ -28,7 +31,8 @@ export class BeatBar
     this.#y2 = PianoRollHeight.get();
     this.updateX();
     this.updateY();
-    controllers.forEach(e=>e.register(this));
+    controllers.audio.register(this);
+    controllers.window.register(this);
   }
   updateX() {
     this.view.updateX(
