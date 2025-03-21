@@ -5,12 +5,13 @@ import { ChordNameView } from "./chord-name-view";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { NoteSize, PianoRollHeight } from "@music-analyzer/view-parameters";
 import { chord_text_size } from "../../chord-view-params";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { TimeRangeController, TimeRangeSubscriber } from "@music-analyzer/controllers";
 
 const scaled = (e: number) => e * NoteSize.get();
 
 export interface RequiredByChordName {
   readonly window: WindowReflectableRegistry
+  readonly time_range: TimeRangeController,
 }
 export class ChordName
   extends MVVM_ViewModel<ChordNameModel, ChordNameView>
@@ -26,6 +27,7 @@ export class ChordName
     this.updateX();
     this.updateY();
     controllers.window.register(this);
+    controllers.time_range.register(this);
   }
   updateX() { this.view.updateX(scaled(this.model.time.begin)) }
   updateY() { this.view.updateY(this.#y) }
