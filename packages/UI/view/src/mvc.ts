@@ -4,8 +4,8 @@ export interface I_MVVM_View {
   readonly svg: SVGElement
 }
 export abstract class MVVM_View<
-  M extends MVVM_Model,
   K extends keyof SVGElementTagNameMap,
+  M extends MVVM_Model,
 > {
   readonly svg: SVGElementTagNameMap[K];
   constructor(
