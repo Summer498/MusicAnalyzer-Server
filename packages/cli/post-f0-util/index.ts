@@ -1,0 +1,1 @@
+export { getBandpassFrequency } from "./src";
