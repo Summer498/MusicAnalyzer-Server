@@ -1,5 +1,5 @@
-import { xml_parser } from "./src/XMLParser";
-export { xml_parser } from "./src/XMLParser";
+import { xml_parser } from "./src";
+export { xml_parser } from "./src";
 
 export const keyLength = (obj: object) => Object.keys(obj).length;
 
