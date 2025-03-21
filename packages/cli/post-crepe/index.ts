@@ -1,6 +1,6 @@
 import { default as fs } from "fs";
 import { parse } from "csv-parse/sync";
-import { freq2midi, getBandpassEdFrequency, getFreqFromPhase, getFrequency, getMedianFrequency, getWav, roundOnMIDI, VocalsF0CSV } from "./src";
+import { freq2midi, getBandpassFrequency, getFreqFromPhase, getFrequency, getMedianFrequency, getWav, roundOnMIDI, VocalsF0CSV } from "./src";
 
 const main = (argv: string[]) => {
   const csv_file_path = argv[2];
@@ -13,7 +13,7 @@ const main = (argv: string[]) => {
   const freq_row = parsed_data.map(e => e.frequency);
   const freq_rounded = freq_row.map(freq => roundOnMIDI(freq));
   const freq_median_filtered = getMedianFrequency(freq_rounded);
-  const freq_band_passed = getBandpassEdFrequency(freq_median_filtered);
+  const freq_band_passed = getBandpassFrequency(freq_median_filtered);
   const frequency = getFrequency(freq_band_passed, SAMPLING_RATE);
 
   // output
