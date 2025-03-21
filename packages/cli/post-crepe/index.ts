@@ -16,9 +16,16 @@ const main = (argv: string[]) => {
   const freq_median_filtered = getMedianFrequency(freq_rounded);
   const freq_band_passed = getBandpassFrequency(freq_median_filtered);
   const frequency = getFrequency(freq_band_passed, SAMPLING_RATE, 100);
+  return postProcess(argv[3], SAMPLING_RATE, freq_band_passed, frequency)
+};
 
+const postProcess = (
+  out_dir: string,
+  SAMPLING_RATE: number,
+  freq_band_passed: number[],
+  frequency: number[],
+) => {
   // output
-  const out_dir = `${argv[3]}`;
   if (!fs.existsSync(out_dir)) { fs.mkdirSync(out_dir); }
   const out_filename = out_dir + "/vocals";
   fs.writeFileSync(`${out_filename}.midi.json`, JSON.stringify(freq_band_passed.map(e => Math.round(freq2midi(e)))));
@@ -31,8 +38,7 @@ const main = (argv: string[]) => {
       .map(e => Math.sin(e) * 0.8 * 32767)
       .map(e => Math.floor(e));
   fs.writeFileSync(`${out_filename}.f0.wav`, getWav(sinoid, SAMPLING_RATE));
-  fs.writeFileSync(`${out_filename}mini.f0.wav`, getWav(sinoid.slice(17 * SAMPLING_RATE, 40 * SAMPLING_RATE), SAMPLING_RATE)
-  );
+  fs.writeFileSync(`${out_filename}mini.f0.wav`, getWav(sinoid.slice(17 * SAMPLING_RATE, 40 * SAMPLING_RATE), SAMPLING_RATE));
 };
 
 main(process.argv);

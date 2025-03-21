@@ -15,9 +15,16 @@ const main = (argv: string[]) => {
   const freq_median_filtered = getMedianFrequency(freq_rounded).map(e => e === null ? NaN : e);
   const freq_band_passed = getBandpassFrequency(freq_median_filtered);
   const frequency = getFrequency(freq_band_passed, SAMPLING_RATE, Math.floor(44100 / 512));
+  return postProcess(argv[3], SAMPLING_RATE, freq_band_passed, frequency)
+};
 
+const postProcess = (
+  out_dir: string,
+  SAMPLING_RATE: number,
+  freq_band_passed: number[],
+  frequency: number[],
+) => {
   // output
-  const out_dir = `${argv[3]}`;
   if (!fs.existsSync(out_dir)) { fs.mkdirSync(out_dir); }
   const out_filename = out_dir + "/vocals";
   fs.writeFileSync(`${out_filename}.midi.json`, JSON.stringify(freq_band_passed.map(e => Math.round(freq2midi(e)))));
