@@ -1,8 +1,7 @@
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
-import { BeatBar } from "./beat-bar";
-import { RequiredByBeatBar } from "./beat-bar/beat-bar";
+import { BeatBar, RequiredByBeatBar } from "./beat-bar";
 
 export interface RequiredByBeatBarsSeries
   extends RequiredByBeatBar { }
