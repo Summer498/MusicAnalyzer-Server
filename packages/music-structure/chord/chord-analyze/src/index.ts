@@ -5,9 +5,10 @@ export {
   splitArray,
   TimeAndChordSymbol,
   TimeAndRomanAnalysis,
-  RomanAnalysisData,
+  RomanAnalysisData 
+} from "./chord-analyze";
+export {
   ChordProgression,
   getBodyAndRoot,
   getChord
-} from "./src";
-
+} from "./key-estimation";
