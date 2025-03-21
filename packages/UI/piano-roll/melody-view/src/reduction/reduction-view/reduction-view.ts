@@ -1,12 +1,12 @@
 import { MVVM_View, WindowReflectableRegistry } from "@music-analyzer/view";
 import { ReductionModel } from "../reduction";
-import { ReductionViewModel } from "./reduction-view-model";
+import { ReductionViewModel, RequiredByReductionViewModel } from "./reduction-view-model";
 import { IRMSymbol, RequiredByIRMSymbol } from "./irm-symbol";
 import { Bracket } from "./bracket";
 import { Dot } from "./dot";
 
 export interface RequiredByReductionView
-  extends RequiredByIRMSymbol {
+  extends RequiredByIRMSymbol, RequiredByReductionViewModel {
   readonly window: WindowReflectableRegistry,
 }
 export class ReductionView
@@ -19,7 +19,7 @@ export class ReductionView
     model: ReductionModel,
     controllers: RequiredByReductionView,
   ) {
-    super(new ReductionViewModel(model), "g");
+    super(new ReductionViewModel(model, controllers), "g");
     this.bracket = new Bracket(this.model);
     this.dot = new Dot(this.model);
     this.ir_symbol = new IRMSymbol(this.model, controllers);
