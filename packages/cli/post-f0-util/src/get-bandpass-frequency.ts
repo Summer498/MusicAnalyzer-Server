@@ -1,4 +1,4 @@
-import { bandpass } from "../../post-crepe/src/util";
+import { bandpass } from "./util";
 
 export const getBandpassFrequency = (freq_median_filtered: number[]) => {
   const LOW = 220; // hz
