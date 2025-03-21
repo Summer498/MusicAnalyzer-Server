@@ -1,1 +1,1 @@
-export { IRPlotHierarchy } from "./ir-plot-hierarchy";
+export { IRPlotHierarchy, RequiredByIRPlotHierarchy } from "./ir-plot-hierarchy";
