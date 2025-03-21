@@ -1,7 +1,6 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { AudioReflectableRegistry, CollectionLayer } from "@music-analyzer/view";
-import { Reduction } from "./reduction";
-import { RequiredByReduction } from "./reduction/reduction";
+import { Reduction, RequiredByReduction } from "./reduction";
 
 export interface RequiredByReductionLayer
   extends RequiredByReduction {
