@@ -4,13 +4,14 @@ import { ChordNameSeries, RequiredByChordNameSeries } from "./chord-name";
 import { ChordNotesSeries, RequiredByChordNotesSeries } from "./chord-note";
 import { ChordRomanSeries, RequiredByChordRomanSeries } from "./chord-roman";
 
-interface RequiredByChordElements
+export interface RequiredByChordElements
   extends
   RequiredByChordKeySeries,
   RequiredByChordNameSeries,
   RequiredByChordNotesSeries,
   RequiredByChordRomanSeries { }
-export class ChordElements {
+
+  export class ChordElements {
   readonly children: unknown[];
   readonly chord_keys: ChordKeySeries;
   readonly chord_names: ChordNameSeries;

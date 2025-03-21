@@ -1,10 +1,11 @@
+import { AnalyzedDataContainer } from "@music-analyzer/analyzed-data-container"
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { SongLength } from "@music-analyzer/view-parameters";
 import { AnalyzedMusicData, getMusicAnalyzerWindow } from "../MusicAnalyzerWindow";
 import { setupUI } from "../setup-ui";
 import { EventLoop } from "../EventLoop";
 import { ApplicationManager } from "../application-manager";
-import { AnalyzedDataContainer, HTMLsContainer, TitleInfo } from "../containers";
+import { HTMLsContainer, TitleInfo } from "../containers";
 
 const setSongLength = (
   hierarchical_melody: TimeAndAnalyzedMelody[][],
@@ -19,9 +20,10 @@ export const setup = (
   html: HTMLsContainer,
   title: TitleInfo,
 ) => (raw_analyzed_data: AnalyzedMusicData) => {
-  const { beat_info, romans, hierarchical_melody, melodies, d_melodies } = new AnalyzedDataContainer(raw_analyzed_data)
+  const { roman, hierarchical_melody, melody, } = raw_analyzed_data;
+  const { beat_info, d_melodies } = new AnalyzedDataContainer(roman, melody, hierarchical_melody)
   setSongLength(hierarchical_melody);
-  const manager = new ApplicationManager(beat_info, romans, hierarchical_melody, melodies, d_melodies);
+  const manager = new ApplicationManager(beat_info, roman, hierarchical_melody, melody, d_melodies);
   setupUI(title, html, manager);
   new EventLoop(manager.audio_time_mediator, html.audio_player).update();
   getMusicAnalyzerWindow(window, raw_analyzed_data).onresize = _ => manager.window_size_mediator.onUpdate();

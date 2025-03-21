@@ -11,7 +11,7 @@ export class AnalyzedMusicData {
   ) { }
 }
 
-export interface MusicAnalyzerWindow 
+export interface MusicAnalyzerWindow
   extends Window {
   MusicAnalyzer: AnalyzedMusicData
 }

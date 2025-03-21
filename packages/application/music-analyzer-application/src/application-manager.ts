@@ -1,9 +1,6 @@
 import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 import { MusicStructureElements } from "@music-analyzer/piano-roll";
 import { Controllers } from "./controllers";
-import { BeatElements } from "@music-analyzer/beat-view";
-import { ChordElements } from "@music-analyzer/chord-view";
-import { MelodyElements } from "@music-analyzer/melody-view";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
@@ -32,17 +29,13 @@ export class ApplicationManager {
     this.controller = new Controllers(layer_count, length, !this.NO_CHORD);
     this.audio_time_mediator = new AudioReflectableRegistry();
     this.window_size_mediator = new WindowReflectableRegistry();
-    const registries = {
+    const controllers = {
       ...this.controller,
       audio: this.audio_time_mediator,
       window: this.window_size_mediator,
     }
 
-    this.analyzed = new MusicStructureElements(
-      new BeatElements(beat_info, melodies, registries),
-      new ChordElements(romans, registries),
-      new MelodyElements(hierarchical_melody, d_melodies, registries),
-    )
+    this.analyzed = new MusicStructureElements(beat_info, romans, hierarchical_melody, melodies, d_melodies, controllers)
 
     // time_range.register(this.audio_time_mediator, this.window_size_mediator);
   }
