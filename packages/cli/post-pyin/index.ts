@@ -1,5 +1,6 @@
 import { default as fs } from "fs";
-import { freq2midi, getBandpassEdFrequency, getFreqFromPhase, getFrequency, getMedianFrequency, getWav, roundOnMIDI, SAMPLING_RATE, Vocals } from "./src";
+import { getBandpassFrequency } from "@music-analyzer/post-f0-util"
+import { freq2midi, getFreqFromPhase, getFrequency, getMedianFrequency, getWav, roundOnMIDI, SAMPLING_RATE, Vocals } from "./src";
 
 
 const main = (argv: string[]) => {
@@ -12,7 +13,7 @@ const main = (argv: string[]) => {
   const freq_row = parsed_data.map(freq => freq === null ? null : freq * 2);  // pYIN の推定結果が 1 オクターブ低く出るので 1 オクターブ上げる
   const freq_rounded = freq_row.map(freq => freq && roundOnMIDI(freq));
   const freq_median_filtered = getMedianFrequency(freq_rounded).map(e => e === null ? NaN : e);
-  const freq_band_passed = getBandpassEdFrequency(freq_median_filtered);
+  const freq_band_passed = getBandpassFrequency(freq_median_filtered);
   const frequency = getFrequency(freq_band_passed);
 
   // output

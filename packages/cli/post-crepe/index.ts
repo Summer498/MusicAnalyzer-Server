@@ -1,6 +1,7 @@
 import { default as fs } from "fs";
 import { parse } from "csv-parse/sync";
-import { freq2midi, getBandpassFrequency, getFreqFromPhase, getFrequency, getMedianFrequency, getWav, roundOnMIDI, VocalsF0CSV } from "./src";
+import { getBandpassFrequency } from "@music-analyzer/post-f0-util"
+import { freq2midi, getFreqFromPhase, getFrequency, getMedianFrequency, getWav, roundOnMIDI, VocalsF0CSV } from "./src";
 
 const main = (argv: string[]) => {
   const csv_file_path = argv[2];
