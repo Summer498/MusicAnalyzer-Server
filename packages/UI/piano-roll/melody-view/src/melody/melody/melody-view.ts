@@ -8,7 +8,7 @@ export interface RequiredByMelodyView {
   readonly melody_color: MelodyColorController
 }
 export class MelodyView
-  extends MVVM_View<MelodyModel, "rect">
+  extends MVVM_View<"rect", MelodyModel>
   implements
   ColorChangeSubscriber {
   #getColor: (e: Triad) => string;
