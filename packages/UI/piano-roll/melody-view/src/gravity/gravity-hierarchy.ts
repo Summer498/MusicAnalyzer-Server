@@ -1,7 +1,6 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { GravityLayer, RequiredByGravityLayer } from "./gravity-layer";
-import { GravitySwitcherSubscriber, HierarchyLevelController } from "@music-analyzer/controllers";
-import { GravitySwitcher } from "@music-analyzer/controllers/src/switcher/gravity-switcher";
+import { GravitySwitcher, GravitySwitcherSubscriber, HierarchyLevelController } from "@music-analyzer/controllers";
 import { CollectionHierarchy } from "@music-analyzer/view";
 
 export interface RequiredByGravityHierarchy
