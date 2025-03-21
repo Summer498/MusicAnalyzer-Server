@@ -1,7 +1,10 @@
 import { default as express } from "express";
-import { _throw, assertNonNullable as NN } from "./src/stdlib";
-import { PORT } from "./src/constants";
-import { registerURLHandlers } from "./src/register-url-handlers";
+import { 
+  _throw, 
+  assertNonNullable as NN,
+  PORT,
+  registerURLHandlers,
+} from "./src";
 
 const main = (argv: string[]) => {
   const app = express();
