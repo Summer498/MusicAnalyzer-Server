@@ -1,1 +1,1 @@
-export { ChordNote } from "./chord-note";
+export { ChordNote, RequiredByChordNote } from "./chord-note";
