@@ -1,10 +1,12 @@
 import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
-import { AnalyzedDataContainer } from "./containers";
 import { MusicStructureElements } from "@music-analyzer/piano-roll";
 import { Controllers } from "./controllers";
 import { BeatElements } from "@music-analyzer/beat-view";
 import { ChordElements } from "@music-analyzer/chord-view";
 import { MelodyElements } from "@music-analyzer/melody-view";
+import { BeatInfo } from "@music-analyzer/beat-estimation";
+import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 
 export class ApplicationManager {
   readonly NO_CHORD = false;  // コード関連のものを表示しない
@@ -14,17 +16,17 @@ export class ApplicationManager {
   readonly audio_time_mediator: AudioReflectableRegistry
   readonly window_size_mediator: WindowReflectableRegistry
   constructor(
-    analyzed: AnalyzedDataContainer
+    beat_info: BeatInfo,
+    romans: TimeAndRomanAnalysis[],
+    hierarchical_melody: TimeAndAnalyzedMelody[][],
+    melodies: TimeAndAnalyzedMelody[],
+    d_melodies: TimeAndAnalyzedMelody[],
   ) {
-    if (analyzed.hierarchical_melody.length <= 0) {
-      throw new Error(`hierarchical melody length must be more than 0 but it is ${analyzed.hierarchical_melody.length}`);
+    if (hierarchical_melody.length <= 0) {
+      throw new Error(`hierarchical melody length must be more than 0 but it is ${hierarchical_melody.length}`);
     }
 
-    const { beat_info, romans, hierarchical_melody, d_melodies } = analyzed;
-    const last = <T>(arr: T[]) => arr[arr.length - 1];
-    const melodies = last(hierarchical_melody);
-
-    const layer_count = analyzed.hierarchical_melody.length - 1;
+    const layer_count = hierarchical_melody.length - 1;
     const length = melodies.length
 
     this.controller = new Controllers(layer_count, length, !this.NO_CHORD);
