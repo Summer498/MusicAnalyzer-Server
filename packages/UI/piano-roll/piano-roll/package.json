@@ -16,12 +16,8 @@
     "build:minify": "tsup index.ts --sourcemap --dts --format esm,cjs --minify"
   },
   "dependencies": {
-    "@music-analyzer/beat-estimation": "1.0.0",
     "@music-analyzer/beat-view": "1.0.0",
-    "@music-analyzer/chord-analyze": "1.0.0",
     "@music-analyzer/chord-view": "1.0.0",
-    "@music-analyzer/controllers": "1.0.0",
-    "@music-analyzer/melody-analyze": "1.0.0",
     "@music-analyzer/melody-view": "1.0.0",
     "@music-analyzer/svg-objects": "1.0.0",
     "@music-analyzer/view": "1.0.0",
