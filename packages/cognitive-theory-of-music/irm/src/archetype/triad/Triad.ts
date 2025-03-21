@@ -2,8 +2,7 @@ import { _Interval, _Note, IntervalName, NoteLiteral } from "@music-analyzer/ton
 import { TriadSymbol } from "../types";
 import { retrospectiveSymbol } from "../get-retrospective-symbol";
 import { TriadArchetype } from "./triad-archetype";
-import { RegistralMotion } from "../../MelodyMotion/RegistralMotion";
-import { IntervallicMotion } from "../../MelodyMotion/IntervallicMotion";
+import { IntervallicMotion, RegistralMotion } from "../../MelodyMotion";
 import { RegistralReturnForm } from "../../RegistralReturnForm";
 
 

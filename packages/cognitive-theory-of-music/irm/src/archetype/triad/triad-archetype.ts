@@ -1,8 +1,7 @@
 import { _Interval, IntervalName, NoteLiteral } from "@music-analyzer/tonal-objects";
 import { RegistralReturnForm, } from "../../RegistralReturnForm";
 import { ProspectiveTriadSymbol } from "../types";
-import { RegistralMotion } from "../../MelodyMotion/RegistralMotion";
-import { IntervallicMotion } from "../../MelodyMotion/IntervallicMotion";
+import { IntervallicMotion, RegistralMotion } from "../../MelodyMotion";
 import { getTriadArchetypeSymbol } from "./get-triad-archetype-symbol";
 
 export class TriadArchetype {
