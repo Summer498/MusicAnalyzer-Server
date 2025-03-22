@@ -75,8 +75,8 @@
 <!-- packages/UI/view&#45;parameters/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/index.ts -->
 <g id="edge1" class="edge">
 <title>packages/UI/view&#45;parameters/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M86.1,-133C89.12,-133 92.23,-133 95.33,-133"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="101.64,-135.1 95.64,-133 101.64,-130.9 101.64,-135.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M86.1,-133C89.44,-133 92.89,-133 96.31,-133"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="101.64,-134.75 96.64,-133 101.64,-131.25 101.64,-134.75"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/current&#45;time&#45;ratio.ts -->
 <g id="node3" class="node">
@@ -90,8 +90,8 @@
 <!-- packages/UI/view&#45;parameters/src/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/current&#45;time&#45;ratio.ts -->
 <g id="edge4" class="edge">
 <title>packages/UI/view&#45;parameters/src/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/current&#45;time&#45;ratio.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M132.33,-123.58C136.65,-108.37 147.49,-78.8 169,-66 207.37,-43.17 330.31,-50.04 404.82,-56.75"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="410.8,-59.41 405.01,-56.77 411.18,-55.23 410.8,-59.41"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M136.44,-123.92C147.52,-108.3 169,-78 169,-78 169,-78 303,-62 303,-62 303,-62 403,-62 403,-62 403,-62 403.99,-62.02 405.72,-62.04"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="410.95,-63.88 405.98,-62.05 411,-60.38 410.95,-63.88"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/current&#45;time&#45;x.ts -->
 <g id="node4" class="node">
@@ -105,8 +105,8 @@
 <!-- packages/UI/view&#45;parameters/src/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/current&#45;time&#45;x.ts -->
 <g id="edge5" class="edge">
 <title>packages/UI/view&#45;parameters/src/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/current&#45;time&#45;x.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M135.2,-123.65C141.62,-113.14 153.6,-96.55 169,-89 208.63,-69.56 259.21,-67.92 296.57,-70.36"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="302.76,-72.92 296.93,-70.39 303.07,-68.73 302.76,-72.92"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M138.27,-123.67C149.72,-110.75 169,-89 169,-89 169,-89 244.6,-83.95 297.68,-80.4"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="302.86,-81.81 297.75,-80.39 302.62,-78.31 302.86,-81.81"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll/index.ts -->
 <g id="node5" class="node">
@@ -120,8 +120,8 @@
 <!-- packages/UI/view&#45;parameters/src/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/index.ts -->
 <g id="edge8" class="edge">
 <title>packages/UI/view&#45;parameters/src/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M156,-136.42C160.34,-136.97 164.8,-137.51 169,-138 228.48,-144.92 243.21,-148.7 303,-152 347.48,-154.46 398.98,-154.24 431.52,-153.73"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="437.8,-155.72 431.76,-153.73 437.73,-151.52 437.8,-155.72"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M156.23,-136.36C163.28,-137.27 169,-138 169,-138 169,-138 303,-152 303,-152 303,-152 385.66,-152.51 432.52,-152.8"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="437.76,-154.59 432.77,-152.81 437.79,-151.09 437.76,-154.59"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/note&#45;size.ts -->
 <g id="node6" class="node">
@@ -135,8 +135,8 @@
 <!-- packages/UI/view&#45;parameters/src/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/note&#45;size.ts -->
 <g id="edge6" class="edge">
 <title>packages/UI/view&#45;parameters/src/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/note&#45;size.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M156.16,-131.64C187.93,-129.77 243.09,-125.84 290,-119 296.16,-118.1 302.64,-116.97 308.96,-115.75"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="315.61,-116.58 309.32,-115.68 314.8,-112.46 315.61,-116.58"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M156.06,-130.72C201.4,-126.75 290,-119 290,-119 290,-119 299.36,-117.08 310.58,-114.78"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="315.84,-115.49 310.59,-114.78 315.14,-112.06 315.84,-115.49"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/now&#45;at.ts -->
 <g id="node7" class="node">
@@ -150,8 +150,8 @@
 <!-- packages/UI/view&#45;parameters/src/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/now&#45;at.ts -->
 <g id="edge7" class="edge">
 <title>packages/UI/view&#45;parameters/src/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/now&#45;at.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M156.36,-133.48C195.74,-134.2 269.97,-135.56 313.74,-136.36"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="319.94,-138.58 313.97,-136.37 320.01,-134.38 319.94,-138.58"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M156.36,-133.48C196.06,-134.21 271.19,-135.58 314.81,-136.38"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="319.94,-138.23 314.97,-136.39 320.01,-134.73 319.94,-138.23"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll&#45;translate&#45;x.ts -->
 <g id="node8" class="node">
@@ -165,8 +165,8 @@
 <!-- packages/UI/view&#45;parameters/src/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll&#45;translate&#45;x.ts -->
 <g id="edge9" class="edge">
 <title>packages/UI/view&#45;parameters/src/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll&#45;translate&#45;x.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M156.14,-125.3C167.01,-122.1 179.82,-118.33 191.63,-114.86"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="198.28,-115.09 191.93,-114.77 197.1,-111.06 198.28,-115.09"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M156.14,-125.3C167.31,-122.02 180.53,-118.12 192.6,-114.57"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="198.18,-114.75 192.89,-114.48 197.19,-111.39 198.18,-114.75"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll/octave&#45;count.ts -->
 <g id="node9" class="node">
@@ -180,8 +180,8 @@
 <!-- packages/UI/view&#45;parameters/src/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/octave&#45;count.ts -->
 <g id="edge10" class="edge">
 <title>packages/UI/view&#45;parameters/src/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/octave&#45;count.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M131.02,-123.98C133.62,-105.78 142.29,-64.86 169,-47 235.36,-2.64 268.68,-41 348.5,-41 348.5,-41 348.5,-41 466,-41 555.46,-41 656.47,-79.7 702.38,-99.55"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="707.13,-103.92 702.47,-99.59 708.81,-100.07 707.13,-103.92"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M134.94,-123.75C145.43,-104.11 169,-60 169,-60 169,-60 348.5,-41 348.5,-41 348.5,-41 348.5,-41 466,-41 466,-41 519,-48 519,-48 519,-48 633.45,-82.58 692.76,-100.5"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="697.12,-103.65 692.84,-100.53 698.13,-100.3 697.12,-103.65"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/position/index.ts -->
 <g id="node10" class="node">
@@ -195,8 +195,8 @@
 <!-- packages/UI/view&#45;parameters/src/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/position/index.ts -->
 <g id="edge11" class="edge">
 <title>packages/UI/view&#45;parameters/src/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/position/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M134.1,-142.09C140.03,-154.11 152.14,-175.05 169,-186 177.08,-191.24 186.93,-194.4 196.28,-196.29"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="201.97,-199.43 196.42,-196.32 202.7,-195.3 201.97,-199.43"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M136.79,-142.23C147.97,-157.42 169,-186 169,-186 169,-186 182.71,-189 196.98,-192.11"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="201.86,-194.97 197.34,-192.19 202.6,-191.55 201.86,-194.97"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/rect&#45;parameter.ts -->
 <g id="node11" class="node">
@@ -210,8 +210,8 @@
 <!-- packages/UI/view&#45;parameters/src/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/rect&#45;parameter.ts -->
 <g id="edge12" class="edge">
 <title>packages/UI/view&#45;parameters/src/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/rect&#45;parameter.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M129.4,-142.11C128.33,-166.94 129.2,-236.08 169,-267 232.03,-315.97 268.68,-273 348.5,-273 348.5,-273 348.5,-273 595.5,-273 680.67,-273 702.13,-273.1 787,-266 789.63,-265.78 792.33,-265.53 795.05,-265.25"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="801.65,-266.65 795.46,-265.21 801.2,-262.48 801.65,-266.65"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M132.68,-142.21C141.49,-172.48 169,-267 169,-267 169,-267 348.5,-273 348.5,-273 348.5,-273 348.5,-273 595.5,-273 595.5,-273 787,-266 787,-266 787,-266 790.73,-265.51 796.34,-264.78"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="801.68,-265.84 796.5,-264.75 801.23,-262.37 801.68,-265.84"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/song&#45;length.ts -->
 <g id="node12" class="node">
@@ -225,20 +225,20 @@
 <!-- packages/UI/view&#45;parameters/src/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/song&#45;length.ts -->
 <g id="edge13" class="edge">
 <title>packages/UI/view&#45;parameters/src/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/song&#45;length.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M150.76,-142.02C156.57,-144.26 162.95,-146.46 169,-148 194.42,-154.47 384.41,-160.5 403,-179 421.45,-197.35 391.77,-219.47 411,-237 449.31,-271.91 602.73,-263.01 681.02,-255.88"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="687.64,-257.38 681.47,-255.84 687.25,-253.19 687.64,-257.38"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M153.59,-142.07C161.8,-145.23 169,-148 169,-148 169,-148 403,-179 403,-179 403,-179 411,-237 411,-237 411,-237 594.85,-245.13 682.31,-249"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="687.34,-250.98 682.42,-249.01 687.49,-247.48 687.34,-250.98"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/current&#45;time&#45;x.ts&#45;&gt;packages/UI/view&#45;parameters/src/current&#45;time&#45;ratio.ts -->
 <g id="edge2" class="edge">
 <title>packages/UI/view&#45;parameters/src/current&#45;time&#45;x.ts&#45;&gt;packages/UI/view&#45;parameters/src/current&#45;time&#45;ratio.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M396.01,-71.39C398.87,-71.03 401.76,-70.68 404.67,-70.32"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="404.94,-72.4 410.63,-69.58 404.42,-68.23 404.94,-72.4"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M396.01,-71.39C399.17,-71 402.37,-70.6 405.59,-70.21"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="410.63,-69.58 405.95,-72.43 408.15,-69.89 405.67,-70.19 405.67,-70.19 405.67,-70.19 408.15,-69.89 405.4,-67.96 410.63,-69.58 410.63,-69.58"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/current&#45;time&#45;x.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/index.ts -->
 <g id="edge3" class="edge">
 <title>packages/UI/view&#45;parameters/src/current&#45;time&#45;x.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M396.1,-86.16C398.64,-87.81 400.98,-89.74 403,-92 417.4,-108.13 396.29,-124.14 411,-140 416.44,-145.87 424.06,-149.28 431.83,-151.22"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="431.47,-153.28 437.77,-152.43 432.31,-149.17 431.47,-153.28"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M382.25,-86.07C393.31,-89.23 403,-92 403,-92 403,-92 411,-140 411,-140 411,-140 421.3,-142.53 432.82,-145.35"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="437.81,-146.58 432.42,-147.57 435.38,-145.98 432.95,-145.38 432.95,-145.38 432.95,-145.38 435.38,-145.98 433.49,-143.2 437.81,-146.58 437.81,-146.58"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;begin.ts -->
 <g id="node13" class="node">
@@ -252,8 +252,8 @@
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;begin.ts -->
 <g id="edge18" class="edge">
 <title>packages/UI/view&#45;parameters/src/piano&#45;roll/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;begin.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M492.05,-151.94C501.59,-150.29 511.8,-146.87 519,-140 533.75,-125.92 515.67,-108.21 532,-96 618.26,-31.54 757.98,-68.27 818.5,-88.92"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="823.76,-92.97 818.78,-89.02 825.14,-89 823.76,-92.97"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M492.19,-146.58C505.54,-143.3 519,-140 519,-140 519,-140 532,-96 532,-96 532,-96 787,-96 787,-96 787,-96 790.02,-96.2 794.73,-96.51"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="799.82,-98.59 794.95,-96.52 800.05,-95.1 799.82,-98.59"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;constants.ts -->
 <g id="node14" class="node">
@@ -267,8 +267,8 @@
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;constants.ts -->
 <g id="edge19" class="edge">
 <title>packages/UI/view&#45;parameters/src/piano&#45;roll/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;constants.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M492.03,-154.59C531.71,-157.02 608.53,-161.72 663.64,-165.09"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="669.79,-167.57 663.93,-165.11 670.04,-163.38 669.79,-167.57"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M492.03,-154.59C531.95,-157.04 609.47,-161.78 664.65,-165.15"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="669.81,-167.22 664.92,-165.17 670.02,-163.73 669.81,-167.22"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;end.ts -->
 <g id="node15" class="node">
@@ -282,8 +282,8 @@
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;end.ts -->
 <g id="edge20" class="edge">
 <title>packages/UI/view&#45;parameters/src/piano&#45;roll/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;end.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M492.27,-148.84C504.34,-147.07 518.87,-145.16 532,-144 625.59,-135.71 735.26,-132.7 797.69,-131.61"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="803.99,-133.6 797.95,-131.6 803.92,-129.4 803.99,-133.6"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M492.26,-151.49C555.43,-147.85 716.72,-138.56 798.65,-133.84"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="804.03,-135.29 798.93,-133.83 803.83,-131.79 804.03,-135.29"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;height.ts -->
 <g id="node16" class="node">
@@ -297,8 +297,8 @@
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;height.ts -->
 <g id="edge21" class="edge">
 <title>packages/UI/view&#45;parameters/src/piano&#45;roll/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;height.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M492.19,-149.08C501.02,-147.11 510.73,-144.22 519,-140 525.74,-136.56 525.33,-132.59 532,-129 536.89,-126.37 542.22,-124.08 547.62,-122.1"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="554.18,-122.05 547.82,-122.03 552.81,-118.08 554.18,-122.05"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M492.19,-146.58C505.54,-143.3 519,-140 519,-140 519,-140 532,-129 532,-129 532,-129 544.01,-125.49 557.41,-121.56"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="562.88,-121.79 557.59,-121.51 561.9,-118.43 562.88,-121.79"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;ratio.ts -->
 <g id="node17" class="node">
@@ -312,8 +312,8 @@
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;ratio.ts -->
 <g id="edge22" class="edge">
 <title>packages/UI/view&#45;parameters/src/piano&#45;roll/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;ratio.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M492.01,-157.38C504.16,-159.41 518.82,-161.85 532,-164 587.53,-173.07 601.69,-173.7 657,-184 664.74,-185.44 672.94,-187.08 680.9,-188.74"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="686.5,-192.06 681.06,-188.77 687.37,-187.94 686.5,-192.06"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M492.08,-157.35C510.53,-160.42 532,-164 532,-164 532,-164 657,-184 657,-184 657,-184 667.14,-186.16 679.74,-188.84"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="684.5,-191.64 679.97,-188.89 685.23,-188.22 684.5,-191.64"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;time&#45;length.ts -->
 <g id="node18" class="node">
@@ -327,8 +327,8 @@
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;time&#45;length.ts -->
 <g id="edge23" class="edge">
 <title>packages/UI/view&#45;parameters/src/piano&#45;roll/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;time&#45;length.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M492.05,-156.09C501.06,-157.99 510.92,-161.06 519,-166 526.53,-170.6 524.58,-176.23 532,-181 536.02,-183.58 540.41,-185.8 544.95,-187.71"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="549.99,-191.92 545.16,-187.79 551.51,-188 549.99,-191.92"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M492.19,-159.42C505.54,-162.7 519,-166 519,-166 519,-166 532,-181 532,-181 532,-181 544.01,-184.51 557.41,-188.44"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="561.9,-191.57 557.59,-188.49 562.88,-188.21 561.9,-191.57"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;width.ts -->
 <g id="node19" class="node">
@@ -342,44 +342,44 @@
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;width.ts -->
 <g id="edge24" class="edge">
 <title>packages/UI/view&#45;parameters/src/piano&#45;roll/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;width.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M492.29,-151.53C547.18,-148.8 677.94,-144.07 787,-154 790.28,-154.3 793.65,-154.68 797.04,-155.13"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="802.86,-158.07 797.21,-155.15 803.44,-153.91 802.86,-158.07"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M492.27,-153.08C568.93,-153.32 787,-154 787,-154 787,-154 790.02,-154.55 794.73,-155.39"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="799.63,-158.06 795.02,-155.45 800.25,-154.61 799.63,-158.06"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/note&#45;size.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/index.ts -->
 <g id="edge14" class="edge">
 <title>packages/UI/view&#45;parameters/src/note&#45;size.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M383.53,-111.72C390.55,-113.95 397.49,-117.21 403,-122 409.61,-127.74 404.28,-134.38 411,-140 416.85,-144.89 424.26,-147.99 431.67,-149.94"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="431.54,-152.07 437.86,-151.33 432.46,-147.97 431.54,-152.07"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M382.25,-116.07C393.31,-119.23 403,-122 403,-122 403,-122 411,-140 411,-140 411,-140 421.3,-142.53 432.82,-145.35"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="437.81,-146.58 432.42,-147.57 435.38,-145.98 432.95,-145.38 432.95,-145.38 432.95,-145.38 435.38,-145.98 433.49,-143.2 437.81,-146.58 437.81,-146.58"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll&#45;translate&#45;x.ts&#45;&gt;packages/UI/view&#45;parameters/src/current&#45;time&#45;x.ts -->
 <g id="edge15" class="edge">
 <title>packages/UI/view&#45;parameters/src/piano&#45;roll&#45;translate&#45;x.ts&#45;&gt;packages/UI/view&#45;parameters/src/current&#45;time&#45;x.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M270.12,-94.93C280.63,-92.53 292.06,-89.91 302.86,-87.44"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="303.4,-89.47 308.78,-86.09 302.47,-85.38 303.4,-89.47"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M270.12,-94.93C280.92,-92.46 292.69,-89.77 303.76,-87.24"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="308.78,-86.09 304.41,-89.4 306.35,-86.65 303.91,-87.2 303.91,-87.2 303.91,-87.2 306.35,-86.65 303.41,-85.01 308.78,-86.09 308.78,-86.09"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll&#45;translate&#45;x.ts&#45;&gt;packages/UI/view&#45;parameters/src/note&#45;size.ts -->
 <g id="edge16" class="edge">
 <title>packages/UI/view&#45;parameters/src/piano&#45;roll&#45;translate&#45;x.ts&#45;&gt;packages/UI/view&#45;parameters/src/note&#45;size.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M290.19,-105.52C296.71,-105.68 303.21,-105.85 309.39,-106.01"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="309.39,-108.11 315.44,-106.16 309.5,-103.91 309.39,-108.11"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M290.19,-105.52C296.98,-105.69 303.76,-105.86 310.16,-106.03"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="315.44,-106.16 310.39,-108.28 312.94,-106.1 310.45,-106.03 310.45,-106.03 310.45,-106.03 312.94,-106.1 310.5,-103.78 315.44,-106.16 315.44,-106.16"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll&#45;translate&#45;x.ts&#45;&gt;packages/UI/view&#45;parameters/src/now&#45;at.ts -->
 <g id="edge17" class="edge">
 <title>packages/UI/view&#45;parameters/src/piano&#45;roll&#45;translate&#45;x.ts&#45;&gt;packages/UI/view&#45;parameters/src/now&#45;at.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M262.74,-113.02C278.67,-117.47 297.89,-122.85 314.09,-127.38"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="313.57,-129.41 319.92,-129.01 314.7,-125.37 313.57,-129.41"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M262.74,-113.02C278.95,-117.55 298.56,-123.03 314.94,-127.62"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="319.92,-129.01 314.5,-129.83 317.51,-128.33 315.1,-127.66 315.1,-127.66 315.1,-127.66 317.51,-128.33 315.71,-125.49 319.92,-129.01 319.92,-129.01"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll/octave&#45;count.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;begin.ts -->
 <g id="edge25" class="edge">
 <title>packages/UI/view&#45;parameters/src/piano&#45;roll/octave&#45;count.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;begin.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M772.28,-107.03C779.22,-106.38 786.49,-105.71 793.66,-105.04"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="793.87,-107.13 799.65,-104.49 793.48,-102.95 793.87,-107.13"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M772.28,-107.03C779.5,-106.36 787.07,-105.66 794.52,-104.96"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="799.65,-104.49 794.88,-107.19 797.16,-104.72 794.67,-104.95 794.67,-104.95 794.67,-104.95 797.16,-104.72 794.47,-102.71 799.65,-104.49 799.65,-104.49"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll/octave&#45;count.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;end.ts -->
 <g id="edge26" class="edge">
 <title>packages/UI/view&#45;parameters/src/piano&#45;roll/octave&#45;count.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;end.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M772.28,-118.22C780.42,-119.59 789,-121.04 797.35,-122.45"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="797.42,-124.59 803.69,-123.52 798.12,-120.45 797.42,-124.59"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M772.28,-118.22C780.74,-119.65 789.68,-121.16 798.34,-122.62"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="803.69,-123.52 798.38,-124.91 801.22,-123.1 798.76,-122.69 798.76,-122.69 798.76,-122.69 801.22,-123.1 799.13,-120.47 803.69,-123.52 803.69,-123.52"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/position/black&#45;position.ts -->
 <g id="node21" class="node">
@@ -393,8 +393,8 @@
 <!-- packages/UI/view&#45;parameters/src/position/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/position/black&#45;position.ts -->
 <g id="edge36" class="edge">
 <title>packages/UI/view&#45;parameters/src/position/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/position/black&#45;position.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M256.69,-199C268.93,-199 283.93,-199 298.23,-199"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="304.3,-201.1 298.3,-199 304.3,-196.9 304.3,-201.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M256.69,-199C269.15,-199 284.46,-199 298.99,-199"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="304.3,-200.75 299.3,-199 304.3,-197.25 304.3,-200.75"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/position/white&#45;position.ts -->
 <g id="node23" class="node">
@@ -408,44 +408,44 @@
 <!-- packages/UI/view&#45;parameters/src/position/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/position/white&#45;position.ts -->
 <g id="edge37" class="edge">
 <title>packages/UI/view&#45;parameters/src/position/index.ts&#45;&gt;packages/UI/view&#45;parameters/src/position/white&#45;position.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M256.66,-204.31C267.07,-206.53 279.14,-209.24 290,-212 297.37,-213.87 305.21,-216.03 312.68,-218.17"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="318.26,-221.98 313.08,-218.29 319.43,-217.94 318.26,-221.98"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M256.77,-204.74C272.71,-208.22 290,-212 290,-212 290,-212 300.35,-215.01 312.35,-218.5"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="316.71,-221.58 312.39,-218.51 317.68,-218.22 316.71,-221.58"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;constants.ts&#45;&gt;packages/UI/view&#45;parameters/src/rect&#45;parameter.ts -->
 <g id="edge27" class="edge">
 <title>packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;constants.ts&#45;&gt;packages/UI/view&#45;parameters/src/rect&#45;parameter.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M779.47,-178.11C782.21,-179.78 784.76,-181.72 787,-184 804.02,-201.28 784.39,-218.44 800,-237 802.9,-240.45 806.47,-243.34 810.35,-245.78"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="809.53,-247.72 815.79,-248.82 811.57,-244.06 809.53,-247.72"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M764.27,-178.07C776.38,-181.23 787,-184 787,-184 787,-184 800,-237 800,-237 800,-237 811.19,-241.89 822.76,-246.96"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="827.37,-248.97 821.88,-249.03 825.07,-247.97 822.78,-246.97 822.78,-246.97 822.78,-246.97 825.07,-247.97 823.69,-244.91 827.37,-248.97 827.37,-248.97"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;constants.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;width.ts -->
 <g id="edge28" class="edge">
 <title>packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;constants.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;width.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M787.01,-167.06C789.14,-166.99 791.26,-166.92 793.38,-166.84"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="793.77,-168.93 799.7,-166.63 793.63,-164.73 793.77,-168.93"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M787.01,-167.06C789.54,-166.97 792.06,-166.89 794.57,-166.8"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="799.7,-166.63 794.78,-169.05 797.2,-166.71 794.7,-166.8 794.7,-166.8 794.7,-166.8 797.2,-166.71 794.63,-164.55 799.7,-166.63 799.7,-166.63"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;height.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/octave&#45;count.ts -->
 <g id="edge29" class="edge">
 <title>packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;height.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/octave&#45;count.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M645.78,-111C656.5,-111 667.81,-111 678.48,-111"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="678.68,-113.1 684.68,-111 678.68,-108.9 678.68,-113.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M645.78,-111C656.9,-111 668.65,-111 679.67,-111"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="684.68,-111 679.68,-113.25 682.18,-111 679.68,-111 679.68,-111 679.68,-111 682.18,-111 679.68,-108.75 684.68,-111 684.68,-111"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;height.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;constants.ts -->
 <g id="edge30" class="edge">
 <title>packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;height.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;constants.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M616.12,-120.06C638.95,-130.09 675.8,-146.28 700.81,-157.27"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="700.25,-159.32 706.58,-159.81 701.94,-155.47 700.25,-159.32"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M616.12,-120.06C639.24,-130.22 676.74,-146.7 701.76,-157.69"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="706.58,-159.81 701.1,-159.86 704.3,-158.8 702.01,-157.8 702.01,-157.8 702.01,-157.8 704.3,-158.8 702.91,-155.74 706.58,-159.81 706.58,-159.81"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;time&#45;length.ts&#45;&gt;packages/UI/view&#45;parameters/src/song&#45;length.ts -->
 <g id="edge31" class="edge">
 <title>packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;time&#45;length.ts&#45;&gt;packages/UI/view&#45;parameters/src/song&#45;length.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M650.92,-208.09C653.05,-209.25 655.09,-210.55 657,-212 666.97,-219.58 660.15,-229.27 670,-237 673.5,-239.75 677.46,-241.96 681.63,-243.75"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="681.06,-245.78 687.42,-245.94 682.55,-241.85 681.06,-245.78"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M638.21,-208.03C648.71,-210.25 657,-212 657,-212 657,-212 670,-237 670,-237 670,-237 676.63,-238.61 685.38,-240.74"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="690.43,-241.98 685.04,-242.98 688.01,-241.38 685.58,-240.79 685.58,-240.79 685.58,-240.79 688.01,-241.38 686.11,-238.61 690.43,-241.98 690.43,-241.98"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;time&#45;length.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;ratio.ts -->
 <g id="edge32" class="edge">
 <title>packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;time&#45;length.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;ratio.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M657.25,-199C663.49,-199 669.78,-199 675.9,-199"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="675.95,-201.1 681.95,-199 675.95,-196.9 675.95,-201.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M657.25,-199C663.75,-199 670.3,-199 676.66,-199"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="681.95,-199 676.95,-201.25 679.45,-199 676.95,-199 676.95,-199 676.95,-199 679.45,-199 676.95,-196.75 681.95,-199 681.95,-199"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll/windowInnerWidth.ts -->
 <g id="node20" class="node">
@@ -459,14 +459,14 @@
 <!-- packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;width.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/windowInnerWidth.ts -->
 <g id="edge33" class="edge">
 <title>packages/UI/view&#45;parameters/src/piano&#45;roll/piano&#45;roll&#45;width.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/windowInnerWidth.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M898.06,-165C900.32,-165 902.61,-165 904.9,-165"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="904.97,-167.1 910.97,-165 904.97,-162.9 904.97,-167.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M898.06,-165C900.59,-165 903.15,-165 905.71,-165"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="910.97,-165 905.97,-167.25 908.47,-165 905.97,-165 905.97,-165 905.97,-165 908.47,-165 905.97,-162.75 910.97,-165 910.97,-165"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/position/black&#45;position.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/index.ts -->
 <g id="edge34" class="edge">
 <title>packages/UI/view&#45;parameters/src/position/black&#45;position.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M394.53,-191.62C397.58,-190.07 400.45,-188.22 403,-186 410.22,-179.71 403.77,-172.28 411,-166 416.75,-161 424.13,-157.86 431.53,-155.9"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="432.33,-157.88 437.73,-154.52 431.42,-153.78 432.33,-157.88"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M386.96,-189.97C395.92,-187.75 403,-186 403,-186 403,-186 411,-166 411,-166 411,-166 421.3,-163.47 432.82,-160.65"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="437.81,-159.42 433.49,-162.8 435.38,-160.02 432.95,-160.62 432.95,-160.62 432.95,-160.62 435.38,-160.02 432.42,-158.43 437.81,-159.42 437.81,-159.42"/>
 </g>
 <!-- packages/util/math/dist/index.js -->
 <g id="node22" class="node">
@@ -480,20 +480,20 @@
 <!-- packages/UI/view&#45;parameters/src/position/black&#45;position.ts&#45;&gt;packages/util/math/dist/index.js -->
 <g id="edge35" class="edge">
 <title>packages/UI/view&#45;parameters/src/position/black&#45;position.ts&#45;&gt;packages/util/math/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M394.88,-207.07C397.93,-208.94 400.7,-211.22 403,-214 415.66,-229.3 404.92,-284.09 411,-303 420.35,-332.1 440.37,-361.9 452.95,-378.86"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="451.3,-380.17 456.59,-383.7 454.66,-377.64 451.3,-380.17"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M382.25,-208.07C393.31,-211.23 403,-214 403,-214 403,-214 411,-303 411,-303 411,-303 441.12,-354.15 455.95,-379.33"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="458.53,-383.71 454.05,-380.54 457.26,-381.55 455.99,-379.4 455.99,-379.4 455.99,-379.4 457.26,-381.55 457.93,-378.26 458.53,-383.71 458.53,-383.71"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/position/white&#45;position.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/index.ts -->
 <g id="edge38" class="edge">
 <title>packages/UI/view&#45;parameters/src/position/white&#45;position.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M395.14,-220.45C398.06,-218.67 400.73,-216.55 403,-214 417.4,-197.87 396.29,-181.86 411,-166 416.44,-160.13 424.06,-156.72 431.83,-154.78"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="432.31,-156.83 437.77,-153.57 431.47,-152.72 432.31,-156.83"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M382.25,-219.93C393.31,-216.77 403,-214 403,-214 403,-214 411,-166 411,-166 411,-166 421.3,-163.47 432.82,-160.65"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="437.81,-159.42 433.49,-162.8 435.38,-160.02 432.95,-160.62 432.95,-160.62 432.95,-160.62 435.38,-160.02 432.42,-158.43 437.81,-159.42 437.81,-159.42"/>
 </g>
 <!-- packages/UI/view&#45;parameters/src/position/white&#45;position.ts&#45;&gt;packages/util/math/dist/index.js -->
 <g id="edge39" class="edge">
 <title>packages/UI/view&#45;parameters/src/position/white&#45;position.ts&#45;&gt;packages/util/math/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M356.93,-238.29C375.81,-265.57 431.23,-345.65 454.03,-378.59"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="452.5,-380.08 457.64,-383.81 455.96,-377.69 452.5,-380.08"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M356.93,-238.29C375.97,-265.8 432.15,-346.97 454.59,-379.4"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="457.64,-383.81 452.95,-380.98 456.22,-381.76 454.8,-379.7 454.8,-379.7 454.8,-379.7 456.22,-381.76 456.65,-378.42 457.64,-383.81 457.64,-383.81"/>
 </g>
 </g>
 </svg>

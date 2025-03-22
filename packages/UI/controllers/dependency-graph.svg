@@ -100,8 +100,8 @@
 <!-- packages/UI/controllers/index.ts&#45;&gt;packages/UI/controllers/src/index.ts -->
 <g id="edge1" class="edge">
 <title>packages/UI/controllers/index.ts&#45;&gt;packages/UI/controllers/src/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M86.1,-132C89.12,-132 92.23,-132 95.33,-132"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="101.64,-134.1 95.64,-132 101.64,-129.9 101.64,-134.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M86.1,-132C89.44,-132 92.89,-132 96.31,-132"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="101.64,-133.75 96.64,-132 101.64,-130.25 101.64,-133.75"/>
 </g>
 <!-- packages/UI/controllers/src/controller/index.ts -->
 <g id="node4" class="node">
@@ -115,8 +115,8 @@
 <!-- packages/UI/controllers/src/index.ts&#45;&gt;packages/UI/controllers/src/controller/index.ts -->
 <g id="edge14" class="edge">
 <title>packages/UI/controllers/src/index.ts&#45;&gt;packages/UI/controllers/src/controller/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M133.87,-122.82C139.08,-111.55 149.41,-92.63 164,-82 216.23,-43.94 238.88,-41 303.5,-41 303.5,-41 303.5,-41 718.5,-41 824.31,-41 865.33,6.71 956.5,-47 987.13,-65.05 1003.02,-106.47 1009.65,-128.91"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1009.32,-135.52 1009.72,-129.18 1013.36,-134.39 1009.32,-135.52"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M138.23,-122.8C148.29,-111.56 164,-94 164,-94 164,-94 303.5,-41 303.5,-41 303.5,-41 303.5,-41 718.5,-41 718.5,-41 956.5,-47 956.5,-47 956.5,-47 989.8,-103.67 1005.5,-130.38"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1006.53,-135.59 1005.5,-130.39 1009.54,-133.81 1006.53,-135.59"/>
 </g>
 <!-- packages/UI/controllers/src/color&#45;selector.ts/index.ts -->
 <g id="node5" class="node">
@@ -130,8 +130,8 @@
 <!-- packages/UI/controllers/src/index.ts&#45;&gt;packages/UI/controllers/src/color&#45;selector.ts/index.ts -->
 <g id="edge13" class="edge">
 <title>packages/UI/controllers/src/index.ts&#45;&gt;packages/UI/controllers/src/color&#45;selector.ts/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M133.78,-141.1C139.32,-153.87 150.48,-177.49 164,-195 191.86,-231.09 198.45,-244.15 239,-265 248.85,-270.06 260.49,-273.16 271.16,-275.05"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="276.97,-278.1 271.38,-275.08 277.63,-273.95 276.97,-278.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M134.87,-141.03C144.27,-158.45 164,-195 164,-195 164,-195 239,-265 239,-265 239,-265 255.76,-268.38 272.19,-271.69"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="276.92,-274.43 272.36,-271.72 277.61,-271 276.92,-274.43"/>
 </g>
 <!-- packages/UI/controllers/src/melody&#45;beep&#45;controller/index.ts -->
 <g id="node12" class="node">
@@ -145,8 +145,8 @@
 <!-- packages/UI/controllers/src/index.ts&#45;&gt;packages/UI/controllers/src/melody&#45;beep&#45;controller/index.ts -->
 <g id="edge15" class="edge">
 <title>packages/UI/controllers/src/index.ts&#45;&gt;packages/UI/controllers/src/melody&#45;beep&#45;controller/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M156.1,-132C159.12,-132 162.23,-132 165.33,-132"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="171.64,-134.1 165.64,-132 171.64,-129.9 171.64,-134.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M156.1,-132C159.44,-132 162.89,-132 166.31,-132"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="171.64,-133.75 166.64,-132 171.64,-130.25 171.64,-133.75"/>
 </g>
 <!-- packages/UI/controllers/src/slider/index.ts -->
 <g id="node13" class="node">
@@ -160,8 +160,8 @@
 <!-- packages/UI/controllers/src/index.ts&#45;&gt;packages/UI/controllers/src/slider/index.ts -->
 <g id="edge16" class="edge">
 <title>packages/UI/controllers/src/index.ts&#45;&gt;packages/UI/controllers/src/slider/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M132.79,-141.16C137.16,-153.69 146.93,-175.67 164,-185 197.94,-203.55 462.19,-191.61 555.23,-186.76"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="561.47,-188.54 555.37,-186.76 561.25,-184.35 561.47,-188.54"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M135.92,-141.23C145.66,-156.42 164,-185 164,-185 164,-185 458.37,-185 556.26,-185"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="561.33,-186.75 556.33,-185 561.33,-183.25 561.33,-186.75"/>
 </g>
 <!-- packages/UI/controllers/src/switcher/index.ts -->
 <g id="node14" class="node">
@@ -175,8 +175,8 @@
 <!-- packages/UI/controllers/src/index.ts&#45;&gt;packages/UI/controllers/src/switcher/index.ts -->
 <g id="edge17" class="edge">
 <title>packages/UI/controllers/src/index.ts&#45;&gt;packages/UI/controllers/src/switcher/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M135.71,-122.83C141.61,-114.32 151.67,-102.21 164,-97 234.28,-67.29 468.98,-85.76 555.29,-93.81"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="561.29,-96.48 555.52,-93.83 561.69,-92.3 561.29,-96.48"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M138.93,-122.8C149.01,-112.43 164,-97 164,-97 164,-97 458.37,-97 556.26,-97"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="561.33,-98.75 556.33,-97 561.33,-95.25 561.33,-98.75"/>
 </g>
 <!-- packages/UI/controllers/src/color&#45;selector.ts/color&#45;selector.ts -->
 <g id="node3" class="node">
@@ -190,8 +190,8 @@
 <!-- packages/UI/controllers/src/color&#45;selector.ts/color&#45;selector.ts&#45;&gt;packages/UI/controllers/src/controller/index.ts -->
 <g id="edge2" class="edge">
 <title>packages/UI/controllers/src/color&#45;selector.ts/color&#45;selector.ts&#45;&gt;packages/UI/controllers/src/controller/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M924.52,-268.7C935.81,-265.44 947.4,-260.5 956.5,-253 986.79,-228.06 1002.96,-182.77 1009.68,-159.19"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1011.77,-159.49 1011.33,-153.15 1007.72,-158.39 1011.77,-159.49"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M913.03,-265.92C933.41,-259.86 956.5,-253 956.5,-253 956.5,-253 990.78,-187.46 1006.17,-158.02"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1008.64,-153.29 1008.32,-158.77 1007.48,-155.51 1006.32,-157.72 1006.32,-157.72 1006.32,-157.72 1007.48,-155.51 1004.33,-156.68 1008.64,-153.29 1008.64,-153.29"/>
 </g>
 <!-- packages/UI/controllers/src/controller/controller.ts -->
 <g id="node11" class="node">
@@ -205,14 +205,14 @@
 <!-- packages/UI/controllers/src/controller/index.ts&#45;&gt;packages/UI/controllers/src/controller/controller.ts -->
 <g id="edge12" class="edge">
 <title>packages/UI/controllers/src/controller/index.ts&#45;&gt;packages/UI/controllers/src/controller/controller.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1041.85,-144C1043.9,-144 1045.98,-144 1048.09,-144"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1054.43,-146.1 1048.43,-144 1054.43,-141.9 1054.43,-146.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1041.85,-144C1044.28,-144 1046.77,-144 1049.28,-144"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1054.43,-145.75 1049.43,-144 1054.43,-142.25 1054.43,-145.75"/>
 </g>
 <!-- packages/UI/controllers/src/color&#45;selector.ts/index.ts&#45;&gt;packages/UI/controllers/src/color&#45;selector.ts/color&#45;selector.ts -->
 <g id="edge3" class="edge">
 <title>packages/UI/controllers/src/color&#45;selector.ts/index.ts&#45;&gt;packages/UI/controllers/src/color&#45;selector.ts/color&#45;selector.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M331.68,-277.17C346.7,-276.73 365.91,-276.24 383,-276 547.67,-273.71 743.03,-274.28 832.02,-274.71"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="838.23,-276.85 832.24,-274.72 838.25,-272.65 838.23,-276.85"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M331.7,-277.86C421.43,-277.4 717.23,-275.85 833.23,-275.25"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="838.29,-276.97 833.28,-275.25 838.27,-273.47 838.29,-276.97"/>
 </g>
 <!-- packages/UI/controllers/src/color&#45;selector.ts/irm&#45;color&#45;selector.ts -->
 <g id="node6" class="node">
@@ -226,8 +226,8 @@
 <!-- packages/UI/controllers/src/color&#45;selector.ts/index.ts&#45;&gt;packages/UI/controllers/src/color&#45;selector.ts/irm&#45;color&#45;selector.ts -->
 <g id="edge4" class="edge">
 <title>packages/UI/controllers/src/color&#45;selector.ts/index.ts&#45;&gt;packages/UI/controllers/src/color&#45;selector.ts/irm&#45;color&#45;selector.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M331.87,-277.96C389.55,-278.05 531.23,-279.24 649.5,-288 652.71,-288.24 656.01,-288.52 659.33,-288.83"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="665.13,-291.5 659.36,-288.83 665.54,-287.32 665.13,-291.5"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M331.64,-278.76C411.92,-281.09 649.5,-288 649.5,-288 649.5,-288 653.76,-288.51 660.13,-289.27"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="665.17,-291.63 660.41,-289.3 665.59,-288.16 665.17,-291.63"/>
 </g>
 <!-- packages/UI/controllers/src/color&#45;selector.ts/melody&#45;color&#45;controller.ts -->
 <g id="node7" class="node">
@@ -241,14 +241,14 @@
 <!-- packages/UI/controllers/src/color&#45;selector.ts/index.ts&#45;&gt;packages/UI/controllers/src/color&#45;selector.ts/melody&#45;color&#45;controller.ts -->
 <g id="edge5" class="edge">
 <title>packages/UI/controllers/src/color&#45;selector.ts/index.ts&#45;&gt;packages/UI/controllers/src/color&#45;selector.ts/melody&#45;color&#45;controller.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M331.78,-282.64C348.15,-285.54 369.86,-289.37 390.01,-292.93"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="395.56,-296.05 390.02,-292.93 396.3,-291.91 395.56,-296.05"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M331.78,-282.64C348.36,-285.57 370.42,-289.47 390.79,-293.07"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="395.63,-295.7 391.01,-293.11 396.23,-292.25 395.63,-295.7"/>
 </g>
 <!-- packages/UI/controllers/src/color&#45;selector.ts/irm&#45;color&#45;selector.ts&#45;&gt;packages/UI/controllers/src/color&#45;selector.ts/color&#45;selector.ts -->
 <g id="edge6" class="edge">
 <title>packages/UI/controllers/src/color&#45;selector.ts/irm&#45;color&#45;selector.ts&#45;&gt;packages/UI/controllers/src/color&#45;selector.ts/color&#45;selector.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M769.76,-289.36C789.75,-286.76 812.55,-283.81 832.25,-281.25"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="832.57,-283.33 838.25,-280.48 832.03,-279.17 832.57,-283.33"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M769.76,-289.36C790.1,-286.72 813.34,-283.71 833.26,-281.12"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="838.25,-280.48 833.58,-283.35 835.77,-280.8 833.3,-281.12 833.3,-281.12 833.3,-281.12 835.77,-280.8 833.01,-278.89 838.25,-280.48 838.25,-280.48"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/irm/dist/index.js -->
 <g id="node8" class="node">
@@ -262,8 +262,8 @@
 <!-- packages/UI/controllers/src/color&#45;selector.ts/irm&#45;color&#45;selector.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/irm/dist/index.js -->
 <g id="edge7" class="edge">
 <title>packages/UI/controllers/src/color&#45;selector.ts/irm&#45;color&#45;selector.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/irm/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M722.75,-305.29C734.66,-330.95 769.94,-404.67 807.5,-461 826.52,-489.52 852.55,-519.94 867.85,-537.1"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="866.66,-538.92 872.23,-541.98 869.78,-536.12 866.66,-538.92"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M723.54,-305.34C742.37,-340.25 807.5,-461 807.5,-461 807.5,-461 849.33,-512.57 869.66,-537.64"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="872.96,-541.71 868.07,-539.24 871.39,-539.77 869.81,-537.82 869.81,-537.82 869.81,-537.82 871.39,-539.77 871.56,-536.41 872.96,-541.71 872.96,-541.71"/>
 </g>
 <!-- packages/UI/controllers/src/color&#45;selector.ts/melody&#45;color&#45;selector.ts -->
 <g id="node9" class="node">
@@ -277,20 +277,20 @@
 <!-- packages/UI/controllers/src/color&#45;selector.ts/melody&#45;color&#45;controller.ts&#45;&gt;packages/UI/controllers/src/color&#45;selector.ts/melody&#45;color&#45;selector.ts -->
 <g id="edge8" class="edge">
 <title>packages/UI/controllers/src/color&#45;selector.ts/melody&#45;color&#45;controller.ts&#45;&gt;packages/UI/controllers/src/color&#45;selector.ts/melody&#45;color&#45;selector.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M513.38,-303C516.01,-303 518.64,-303 521.27,-303"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="521.38,-305.1 527.38,-303 521.37,-300.9 521.38,-305.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M513.38,-303C516.3,-303 519.22,-303 522.14,-303"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="527.38,-303 522.38,-305.25 524.88,-303 522.38,-303 522.38,-303 522.38,-303 524.88,-303 522.37,-300.75 527.38,-303 527.38,-303"/>
 </g>
 <!-- packages/UI/controllers/src/color&#45;selector.ts/melody&#45;color&#45;selector.ts&#45;&gt;packages/UI/controllers/src/color&#45;selector.ts/irm&#45;color&#45;selector.ts -->
 <g id="edge9" class="edge">
 <title>packages/UI/controllers/src/color&#45;selector.ts/melody&#45;color&#45;selector.ts&#45;&gt;packages/UI/controllers/src/color&#45;selector.ts/irm&#45;color&#45;selector.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M649.65,-299.68C652.77,-299.51 655.91,-299.34 659.02,-299.17"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="659.5,-301.25 665.37,-298.82 659.27,-297.05 659.5,-301.25"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M649.65,-299.68C653.1,-299.49 656.57,-299.3 660,-299.11"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="665.37,-298.82 660.5,-301.34 662.88,-298.96 660.38,-299.09 660.38,-299.09 660.38,-299.09 662.88,-298.96 660.26,-296.85 665.37,-298.82 665.37,-298.82"/>
 </g>
 <!-- packages/UI/controllers/src/color&#45;selector.ts/melody&#45;color&#45;selector.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/irm/dist/index.js -->
 <g id="edge10" class="edge">
 <title>packages/UI/controllers/src/color&#45;selector.ts/melody&#45;color&#45;selector.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/irm/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M600.2,-312.12C644.41,-349.79 812.88,-493.38 865.03,-537.81"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="863.77,-539.5 869.7,-541.8 866.5,-536.31 863.77,-539.5"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M600.2,-312.12C644.58,-349.94 814.24,-494.54 865.65,-538.35"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="869.7,-541.8 864.44,-540.27 867.8,-540.17 865.9,-538.55 865.9,-538.55 865.9,-538.55 867.8,-540.17 867.35,-536.84 869.7,-541.8 869.7,-541.8"/>
 </g>
 <!-- packages/UI/controllers/src/controller/controller&#45;view.ts -->
 <g id="node10" class="node">
@@ -304,8 +304,8 @@
 <!-- packages/UI/controllers/src/controller/controller.ts&#45;&gt;packages/UI/controllers/src/controller/controller&#45;view.ts -->
 <g id="edge11" class="edge">
 <title>packages/UI/controllers/src/controller/controller.ts&#45;&gt;packages/UI/controllers/src/controller/controller&#45;view.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1124.76,-144C1126.8,-144 1128.88,-144 1130.97,-144"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1131.27,-146.1 1137.27,-144 1131.27,-141.9 1131.27,-146.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1124.76,-144C1127.18,-144 1129.66,-144 1132.15,-144"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1137.27,-144 1132.27,-146.25 1134.77,-144 1132.27,-144 1132.27,-144 1132.27,-144 1134.77,-144 1132.27,-141.75 1137.27,-144 1137.27,-144"/>
 </g>
 <!-- packages/UI/controllers/src/melody&#45;beep&#45;controller/melody&#45;beep&#45;controller.ts -->
 <g id="node15" class="node">
@@ -319,8 +319,8 @@
 <!-- packages/UI/controllers/src/melody&#45;beep&#45;controller/index.ts&#45;&gt;packages/UI/controllers/src/melody&#45;beep&#45;controller/melody&#45;beep&#45;controller.ts -->
 <g id="edge18" class="edge">
 <title>packages/UI/controllers/src/melody&#45;beep&#45;controller/index.ts&#45;&gt;packages/UI/controllers/src/melody&#45;beep&#45;controller/melody&#45;beep&#45;controller.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M226.12,-132C228.22,-132 230.39,-132 232.62,-132"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="238.64,-134.1 232.64,-132 238.64,-129.9 238.64,-134.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M226.12,-132C228.46,-132 230.9,-132 233.41,-132"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="238.64,-133.75 233.64,-132 238.64,-130.25 238.64,-133.75"/>
 </g>
 <!-- packages/UI/controllers/src/melody&#45;beep&#45;controller/melody&#45;beep&#45;switcher.ts -->
 <g id="node16" class="node">
@@ -334,8 +334,8 @@
 <!-- packages/UI/controllers/src/melody&#45;beep&#45;controller/index.ts&#45;&gt;packages/UI/controllers/src/melody&#45;beep&#45;controller/melody&#45;beep&#45;switcher.ts -->
 <g id="edge19" class="edge">
 <title>packages/UI/controllers/src/melody&#45;beep&#45;controller/index.ts&#45;&gt;packages/UI/controllers/src/melody&#45;beep&#45;controller/melody&#45;beep&#45;switcher.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M219.43,-122.92C225.56,-120.5 232.44,-118.22 239,-117 284.76,-108.5 337.16,-108.56 377.92,-110.72"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="383.99,-113.16 378.12,-110.73 384.22,-108.97 383.99,-113.16"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M223.59,-122.93C231.8,-119.77 239,-117 239,-117 239,-117 318.53,-117 379.24,-117"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="384.31,-118.75 379.31,-117 384.31,-115.25 384.31,-118.75"/>
 </g>
 <!-- packages/UI/controllers/src/melody&#45;beep&#45;controller/melody&#45;beep&#45;volume.ts -->
 <g id="node17" class="node">
@@ -349,8 +349,8 @@
 <!-- packages/UI/controllers/src/melody&#45;beep&#45;controller/index.ts&#45;&gt;packages/UI/controllers/src/melody&#45;beep&#45;controller/melody&#45;beep&#45;volume.ts -->
 <g id="edge20" class="edge">
 <title>packages/UI/controllers/src/melody&#45;beep&#45;controller/index.ts&#45;&gt;packages/UI/controllers/src/melody&#45;beep&#45;controller/melody&#45;beep&#45;volume.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M219.43,-141.08C225.56,-143.5 232.44,-145.78 239,-147 285.77,-155.68 339.49,-155.43 380.61,-153.14"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="386.97,-154.87 380.86,-153.12 386.72,-150.67 386.97,-154.87"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M223.59,-141.07C231.8,-144.23 239,-147 239,-147 239,-147 320.75,-147 381.74,-147"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="386.84,-148.75 381.84,-147 386.84,-145.25 386.84,-148.75"/>
 </g>
 <!-- packages/UI/controllers/src/slider/abstract&#45;slider.ts -->
 <g id="node18" class="node">
@@ -364,8 +364,8 @@
 <!-- packages/UI/controllers/src/slider/index.ts&#45;&gt;packages/UI/controllers/src/slider/abstract&#45;slider.ts -->
 <g id="edge27" class="edge">
 <title>packages/UI/controllers/src/slider/index.ts&#45;&gt;packages/UI/controllers/src/slider/abstract&#45;slider.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M615.66,-178.29C629.48,-175.08 646.8,-171.6 662.5,-170 719.36,-164.22 784.93,-168.03 829.19,-172.14"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="835.09,-174.81 829.32,-172.15 835.49,-170.63 835.09,-174.81"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M615.85,-179.58C636.76,-175.29 662.5,-170 662.5,-170 662.5,-170 772.5,-170 772.5,-170 772.5,-170 801.95,-172.18 830.09,-174.27"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="835.19,-176.4 830.34,-174.28 835.45,-172.91 835.19,-176.4"/>
 </g>
 <!-- packages/UI/controllers/src/slider/hierarchy&#45;level.ts -->
 <g id="node19" class="node">
@@ -379,8 +379,8 @@
 <!-- packages/UI/controllers/src/slider/index.ts&#45;&gt;packages/UI/controllers/src/slider/hierarchy&#45;level.ts -->
 <g id="edge28" class="edge">
 <title>packages/UI/controllers/src/slider/index.ts&#45;&gt;packages/UI/controllers/src/slider/hierarchy&#45;level.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M615.51,-185C629.6,-185 647.52,-185 664.35,-185"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="670.49,-187.1 664.49,-185 670.49,-182.9 670.49,-187.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M615.51,-185C629.84,-185 648.15,-185 665.24,-185"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="670.49,-186.75 665.49,-185 670.49,-183.25 670.49,-186.75"/>
 </g>
 <!-- packages/UI/controllers/src/slider/time&#45;range&#45;slider.ts -->
 <g id="node20" class="node">
@@ -394,8 +394,8 @@
 <!-- packages/UI/controllers/src/slider/index.ts&#45;&gt;packages/UI/controllers/src/slider/time&#45;range&#45;slider.ts -->
 <g id="edge29" class="edge">
 <title>packages/UI/controllers/src/slider/index.ts&#45;&gt;packages/UI/controllers/src/slider/time&#45;range&#45;slider.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M615.51,-191.14C631.68,-194.96 652.9,-199.98 671.71,-204.42"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="677.51,-207.95 672.15,-204.52 678.47,-203.86 677.51,-207.95"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M615.51,-191.14C631.96,-195.03 653.64,-200.15 672.69,-204.65"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="677.59,-207.61 673.13,-204.75 678.39,-204.2 677.59,-207.61"/>
 </g>
 <!-- packages/UI/controllers/src/switcher/abstract&#45;switcher.ts -->
 <g id="node22" class="node">
@@ -409,8 +409,8 @@
 <!-- packages/UI/controllers/src/switcher/index.ts&#45;&gt;packages/UI/controllers/src/switcher/abstract&#45;switcher.ts -->
 <g id="edge35" class="edge">
 <title>packages/UI/controllers/src/switcher/index.ts&#45;&gt;packages/UI/controllers/src/switcher/abstract&#45;switcher.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M615.66,-103.71C629.48,-106.92 646.8,-110.4 662.5,-112 716.48,-117.49 778.31,-114.33 822.31,-110.48"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="828.58,-112.03 822.42,-110.47 828.21,-107.84 828.58,-112.03"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M615.85,-102.42C636.76,-106.71 662.5,-112 662.5,-112 662.5,-112 772.5,-112 772.5,-112 772.5,-112 797.36,-110.16 823.22,-108.24"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="828.53,-109.6 823.41,-108.23 828.27,-106.11 828.53,-109.6"/>
 </g>
 <!-- packages/UI/controllers/src/switcher/d&#45;melody&#45;switcher.ts -->
 <g id="node23" class="node">
@@ -424,8 +424,8 @@
 <!-- packages/UI/controllers/src/switcher/index.ts&#45;&gt;packages/UI/controllers/src/switcher/d&#45;melody&#45;switcher.ts -->
 <g id="edge36" class="edge">
 <title>packages/UI/controllers/src/switcher/index.ts&#45;&gt;packages/UI/controllers/src/switcher/d&#45;melody&#45;switcher.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M615.53,-91.57C626.1,-89.31 638.4,-86.61 649.5,-84 658.04,-81.99 667.17,-79.74 675.85,-77.56"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="682.3,-78.09 675.97,-77.53 681.27,-74.02 682.3,-78.09"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M615.64,-91.34C631.81,-87.83 649.5,-84 649.5,-84 649.5,-84 661.57,-80.94 675.46,-77.41"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="681.08,-77.79 675.8,-77.33 680.22,-74.4 681.08,-77.79"/>
 </g>
 <!-- packages/UI/controllers/src/switcher/gravity&#45;switcher.ts -->
 <g id="node24" class="node">
@@ -439,50 +439,50 @@
 <!-- packages/UI/controllers/src/switcher/index.ts&#45;&gt;packages/UI/controllers/src/switcher/gravity&#45;switcher.ts -->
 <g id="edge37" class="edge">
 <title>packages/UI/controllers/src/switcher/index.ts&#45;&gt;packages/UI/controllers/src/switcher/gravity&#45;switcher.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M615.51,-97C628.7,-97 645.27,-97 661.14,-97"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="667.42,-99.1 661.42,-97 667.42,-94.9 667.42,-99.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M615.51,-97C629.05,-97 646.15,-97 662.4,-97"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="667.42,-98.75 662.42,-97 667.42,-95.25 667.42,-98.75"/>
 </g>
 <!-- packages/UI/controllers/src/melody&#45;beep&#45;controller/melody&#45;beep&#45;controller.ts&#45;&gt;packages/UI/controllers/src/melody&#45;beep&#45;controller/melody&#45;beep&#45;switcher.ts -->
 <g id="edge21" class="edge">
 <title>packages/UI/controllers/src/melody&#45;beep&#45;controller/melody&#45;beep&#45;controller.ts&#45;&gt;packages/UI/controllers/src/melody&#45;beep&#45;controller/melody&#45;beep&#45;switcher.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M370.04,-125.16C372.74,-124.87 375.46,-124.58 378.18,-124.3"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="378.75,-126.35 384.5,-123.63 378.31,-122.17 378.75,-126.35"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M370.04,-125.16C373.05,-124.84 376.07,-124.52 379.08,-124.2"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="384.5,-123.63 379.76,-126.39 382.01,-123.89 379.52,-124.15 379.52,-124.15 379.52,-124.15 382.01,-123.89 379.29,-121.92 384.5,-123.63 384.5,-123.63"/>
 </g>
 <!-- packages/UI/controllers/src/melody&#45;beep&#45;controller/melody&#45;beep&#45;controller.ts&#45;&gt;packages/UI/controllers/src/melody&#45;beep&#45;controller/melody&#45;beep&#45;volume.ts -->
 <g id="edge22" class="edge">
 <title>packages/UI/controllers/src/melody&#45;beep&#45;controller/melody&#45;beep&#45;controller.ts&#45;&gt;packages/UI/controllers/src/melody&#45;beep&#45;controller/melody&#45;beep&#45;volume.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M370.04,-138.84C373.5,-139.21 376.98,-139.58 380.45,-139.95"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="380.49,-142.06 386.67,-140.61 380.93,-137.88 380.49,-142.06"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M370.04,-138.84C373.85,-139.25 377.68,-139.65 381.49,-140.06"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="386.67,-140.61 381.46,-142.32 384.19,-140.34 381.7,-140.08 381.7,-140.08 381.7,-140.08 384.19,-140.34 381.94,-137.84 386.67,-140.61 386.67,-140.61"/>
 </g>
 <!-- packages/UI/controllers/src/melody&#45;beep&#45;controller/melody&#45;beep&#45;switcher.ts&#45;&gt;packages/UI/controllers/src/switcher/index.ts -->
 <g id="edge23" class="edge">
 <title>packages/UI/controllers/src/melody&#45;beep&#45;controller/melody&#45;beep&#45;switcher.ts&#45;&gt;packages/UI/controllers/src/switcher/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M511.36,-107.99C526.42,-105.82 541.91,-103.58 554.96,-101.7"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="555.52,-103.74 561.16,-100.8 554.92,-99.58 555.52,-103.74"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M511.36,-107.99C526.83,-105.76 542.76,-103.46 556.02,-101.55"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="561.16,-100.8 556.53,-103.75 558.68,-101.16 556.21,-101.52 556.21,-101.52 556.21,-101.52 558.68,-101.16 555.89,-99.29 561.16,-100.8 561.16,-100.8"/>
 </g>
 <!-- packages/UI/controllers/src/melody&#45;beep&#45;controller/melody&#45;beep&#45;volume.ts&#45;&gt;packages/UI/controllers/src/slider/index.ts -->
 <g id="edge24" class="edge">
 <title>packages/UI/controllers/src/melody&#45;beep&#45;controller/melody&#45;beep&#45;volume.ts&#45;&gt;packages/UI/controllers/src/slider/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M503.1,-156C508.67,-157.22 514.22,-158.55 519.5,-160 533.05,-163.71 547.73,-168.95 559.96,-173.67"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="559.41,-175.7 565.76,-175.93 560.94,-171.79 559.41,-175.7"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M497.96,-156.03C509.99,-158.25 519.5,-160 519.5,-160 519.5,-160 539.53,-167.36 557.85,-174.1"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="562.95,-175.97 557.48,-176.36 560.6,-175.11 558.26,-174.25 558.26,-174.25 558.26,-174.25 560.6,-175.11 559.03,-172.14 562.95,-175.97 562.95,-175.97"/>
 </g>
 <!-- packages/UI/controllers/src/slider/abstract&#45;slider.ts&#45;&gt;packages/UI/controllers/src/controller/index.ts -->
 <g id="edge25" class="edge">
 <title>packages/UI/controllers/src/slider/abstract&#45;slider.ts&#45;&gt;packages/UI/controllers/src/controller/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M917.26,-168.98C937.18,-163.81 962.01,-157.36 981.46,-152.32"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="982.03,-154.34 987.31,-150.8 980.97,-150.27 982.03,-154.34"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M917.26,-168.98C937.53,-163.72 962.87,-157.14 982.46,-152.06"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="987.31,-150.8 983.03,-154.23 984.89,-151.43 982.47,-152.05 982.47,-152.05 982.47,-152.05 984.89,-151.43 981.9,-149.88 987.31,-150.8 987.31,-150.8"/>
 </g>
 <!-- packages/UI/controllers/src/slider/hierarchy&#45;level.ts&#45;&gt;packages/UI/controllers/src/slider/abstract&#45;slider.ts -->
 <g id="edge26" class="edge">
 <title>packages/UI/controllers/src/slider/hierarchy&#45;level.ts&#45;&gt;packages/UI/controllers/src/slider/abstract&#45;slider.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M764.92,-182.99C785.09,-182.12 808.78,-181.1 829.44,-180.21"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="829.56,-182.3 835.47,-179.95 829.38,-178.11 829.56,-182.3"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M764.92,-182.99C785.35,-182.11 809.39,-181.07 830.24,-180.17"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="835.47,-179.95 830.57,-182.41 832.97,-180.05 830.47,-180.16 830.47,-180.16 830.47,-180.16 832.97,-180.05 830.37,-177.91 835.47,-179.95 835.47,-179.95"/>
 </g>
 <!-- packages/UI/controllers/src/slider/time&#45;range&#45;slider.ts&#45;&gt;packages/UI/controllers/src/slider/abstract&#45;slider.ts -->
 <g id="edge30" class="edge">
 <title>packages/UI/controllers/src/slider/time&#45;range&#45;slider.ts&#45;&gt;packages/UI/controllers/src/slider/abstract&#45;slider.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M758.13,-205.95C781.36,-200.64 810.79,-193.92 834.97,-188.4"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="835.62,-190.41 841,-187.02 834.68,-186.31 835.62,-190.41"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M758.13,-205.95C781.65,-200.58 811.54,-193.75 835.89,-188.19"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="841,-187.02 836.63,-190.33 838.56,-187.58 836.12,-188.14 836.12,-188.14 836.12,-188.14 838.56,-187.58 835.62,-185.94 841,-187.02 841,-187.02"/>
 </g>
 <!-- packages/UI/view&#45;parameters/dist/index.js -->
 <g id="node21" class="node">
@@ -496,26 +496,26 @@
 <!-- packages/UI/controllers/src/slider/time&#45;range&#45;slider.ts&#45;&gt;packages/UI/view&#45;parameters/dist/index.js -->
 <g id="edge31" class="edge">
 <title>packages/UI/controllers/src/slider/time&#45;range&#45;slider.ts&#45;&gt;packages/UI/view&#45;parameters/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M735.3,-224.1C747.06,-231.19 762.42,-242 772.5,-255 797.8,-287.6 785.69,-305.97 807.5,-341 824.12,-367.69 849.63,-394.02 865.67,-409.38"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="864.52,-411.19 870.32,-413.79 867.41,-408.14 864.52,-411.19"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M730.75,-224.08C746.69,-235.88 772.5,-255 772.5,-255 772.5,-255 807.5,-341 807.5,-341 807.5,-341 848.52,-387.08 869.06,-410.15"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="872.41,-413.91 867.4,-411.67 870.75,-412.04 869.08,-410.18 869.08,-410.18 869.08,-410.18 870.75,-412.04 870.76,-408.68 872.41,-413.91 872.41,-413.91"/>
 </g>
 <!-- packages/UI/controllers/src/switcher/abstract&#45;switcher.ts&#45;&gt;packages/UI/controllers/src/controller/index.ts -->
 <g id="edge32" class="edge">
 <title>packages/UI/controllers/src/switcher/abstract&#45;switcher.ts&#45;&gt;packages/UI/controllers/src/controller/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M912.23,-113.08C932.93,-119.4 960.5,-127.82 981.65,-134.28"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="981.09,-136.3 987.44,-136.04 982.31,-132.28 981.09,-136.3"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M912.23,-113.08C933.19,-119.48 961.21,-128.03 982.46,-134.52"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="987.44,-136.04 982,-136.73 985.05,-135.31 982.66,-134.58 982.66,-134.58 982.66,-134.58 985.05,-135.31 983.31,-132.43 987.44,-136.04 987.44,-136.04"/>
 </g>
 <!-- packages/UI/controllers/src/switcher/d&#45;melody&#45;switcher.ts&#45;&gt;packages/UI/controllers/src/switcher/abstract&#45;switcher.ts -->
 <g id="edge33" class="edge">
 <title>packages/UI/controllers/src/switcher/d&#45;melody&#45;switcher.ts&#45;&gt;packages/UI/controllers/src/switcher/abstract&#45;switcher.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M750.93,-76.06C771.7,-81.81 796.72,-88.59 807.5,-91 812.18,-92.05 817.05,-93.06 821.94,-94.04"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="821.86,-96.16 828.15,-95.25 822.66,-92.04 821.86,-96.16"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M751.89,-76C777.15,-82.82 807.5,-91 807.5,-91 807.5,-91 814.77,-92.29 824.72,-94.07"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="829.8,-94.97 824.48,-96.31 827.34,-94.53 824.88,-94.09 824.88,-94.09 824.88,-94.09 827.34,-94.53 825.27,-91.88 829.8,-94.97 829.8,-94.97"/>
 </g>
 <!-- packages/UI/controllers/src/switcher/gravity&#45;switcher.ts&#45;&gt;packages/UI/controllers/src/switcher/abstract&#45;switcher.ts -->
 <g id="edge34" class="edge">
 <title>packages/UI/controllers/src/switcher/gravity&#45;switcher.ts&#45;&gt;packages/UI/controllers/src/switcher/abstract&#45;switcher.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M767.54,-99.12C784.78,-99.86 804.32,-100.71 822.23,-101.48"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="822.16,-103.58 828.24,-101.74 822.34,-99.38 822.16,-103.58"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M767.54,-99.12C785.08,-99.88 805,-100.74 823.17,-101.52"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="828.24,-101.74 823.15,-103.77 825.75,-101.63 823.25,-101.53 823.25,-101.53 823.25,-101.53 825.75,-101.63 823.35,-99.28 828.24,-101.74 828.24,-101.74"/>
 </g>
 </g>
 </svg>

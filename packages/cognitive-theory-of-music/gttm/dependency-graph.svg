@@ -161,8 +161,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/index.ts -->
 <g id="edge1" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M70.48,-282C73.2,-261.42 82.78,-210.67 113,-184 119.68,-178.1 128.44,-174.49 137.05,-172.29"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="143.4,-173.03 137.09,-172.28 142.49,-168.93 143.4,-173.03"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M73.21,-281.88C83.73,-256 113,-184 113,-184 113,-184 124.96,-180.8 137.82,-177.35"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="143.42,-177.66 138.14,-177.27 142.51,-174.28 143.42,-177.66"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/index.ts -->
 <g id="node5" class="node">
@@ -176,8 +176,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/index.ts -->
 <g id="edge2" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M71.05,-300.15C74.77,-319.17 85.94,-363.19 113,-387 150.47,-419.98 209.45,-430.35 245.81,-433.58"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="251.71,-436.17 245.9,-433.59 252.05,-431.98 251.71,-436.17"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M73.67,-300.2C84.56,-324.23 113,-387 113,-387 113,-387 227,-422 227,-422 227,-422 236.29,-424.37 246.94,-427.08"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="251.47,-430.04 247.06,-427.11 252.33,-426.65 251.47,-430.04"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/song&#45;list.ts -->
 <g id="node6" class="node">
@@ -191,8 +191,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/song&#45;list.ts -->
 <g id="edge3" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/song&#45;list.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M197.18,-169C210.17,-169 226.1,-169 240.37,-169"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="246.38,-171.1 240.38,-169 246.38,-166.9 246.38,-171.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M197.18,-169C210.4,-169 226.67,-169 241.14,-169"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="246.38,-170.75 241.38,-169 246.38,-167.25 246.38,-170.75"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/index.ts -->
 <g id="node57" class="node">
@@ -206,8 +206,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/index.ts -->
 <g id="edge94" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M284.02,-444.09C298.98,-477.88 351.48,-596.48 369.98,-638.28"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="370.54,-644.72 370.03,-638.39 374.38,-643.02 370.54,-644.72"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M284.02,-444.09C299.11,-478.16 352.34,-598.43 370.43,-639.29"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="370.86,-644.58 370.44,-639.3 374.06,-643.16 370.86,-644.58"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.grp.ts -->
 <g id="node7" class="node">
@@ -221,8 +221,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.grp.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/index.ts -->
 <g id="edge4" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.grp.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M209.89,-296.36C213.37,-298.34 216.51,-300.85 219,-304 235.28,-324.64 210.18,-401.8 227,-422 231.75,-427.7 238.62,-431.1 245.79,-433.07"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="245.53,-435.16 251.84,-434.42 246.44,-431.06 245.53,-435.16"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M200.03,-298.07C210.14,-301.23 219,-304 219,-304 219,-304 227,-422 227,-422 227,-422 236.29,-424.37 246.94,-427.08"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="251.9,-428.35 246.5,-429.29 249.48,-427.73 247.06,-427.11 247.06,-427.11 247.06,-427.11 249.48,-427.73 247.61,-424.93 251.9,-428.35 251.9,-428.35"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.grp.xml.ts -->
 <g id="node8" class="node">
@@ -236,8 +236,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.grp.xml.ts&#45;&gt;node_modules/fast&#45;xml&#45;parser -->
 <g id="edge6" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.grp.xml.ts&#45;&gt;node_modules/fast&#45;xml&#45;parser</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M211.51,-129.74C214.24,-128.12 216.78,-126.23 219,-124 227.53,-115.43 218.93,-107 227,-98 256.89,-64.64 279.5,-78.14 319.5,-58 332.02,-51.69 345.63,-43.86 356.4,-37.4"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="357.71,-39.07 361.76,-34.17 355.54,-35.47 357.71,-39.07"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M200.03,-129.93C210.14,-126.77 219,-124 219,-124 219,-124 227,-98 227,-98 227,-98 319.5,-61 319.5,-61 319.5,-61 341,-47.42 357.59,-36.94"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="362.12,-34.08 359.09,-38.66 360,-35.42 357.89,-36.75 357.89,-36.75 357.89,-36.75 360,-35.42 356.69,-34.85 362.12,-34.08 362.12,-34.08"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/sandbox.ts -->
 <g id="node9" class="node">
@@ -251,14 +251,14 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.grp.xml.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/sandbox.ts -->
 <g id="edge5" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.grp.xml.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/sandbox.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M213.05,-148.25C215.29,-149.88 217.31,-151.78 219,-154 234.7,-174.6 210.94,-366.67 227,-387 230.43,-391.34 235.06,-394.41 240.15,-396.57"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="239.46,-398.55 245.81,-398.58 240.86,-394.59 239.46,-398.55"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M200.03,-148.07C210.14,-151.23 219,-154 219,-154 219,-154 227,-387 227,-387 227,-387 233,-388.65 240.88,-390.81"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="245.99,-392.21 240.57,-393.06 243.58,-391.55 241.17,-390.89 241.17,-390.89 241.17,-390.89 243.58,-391.55 241.76,-388.72 245.99,-392.21 245.99,-392.21"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/sandbox.ts&#45;&gt;node_modules/fast&#45;xml&#45;parser -->
 <g id="edge16" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/sandbox.ts&#45;&gt;node_modules/fast&#45;xml&#45;parser</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M312.19,-393.16C314.95,-391.49 317.45,-389.46 319.5,-387 364.51,-332.82 374.3,-101.53 376.12,-40.06"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="378.22,-40.09 376.29,-34.03 374.03,-39.97 378.22,-40.09"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M305.68,-391.9C313.23,-389.22 319.5,-387 319.5,-387 319.5,-387 363.6,-106.94 374.22,-39.49"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="375.03,-34.31 376.48,-39.6 374.64,-36.78 374.26,-39.25 374.26,-39.25 374.26,-39.25 374.64,-36.78 372.03,-38.9 375.03,-34.31 375.03,-34.31"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.mtr.ts -->
 <g id="node10" class="node">
@@ -272,8 +272,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.mtr.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/index.ts -->
 <g id="edge7" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.mtr.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M209.93,-266.32C213.41,-268.31 216.53,-270.83 219,-274 239.22,-300 206.1,-396.55 227,-422 231.71,-427.74 238.57,-431.14 245.74,-433.12"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="245.48,-435.21 251.79,-434.46 246.39,-431.11 245.48,-435.21"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M200.03,-268.07C210.14,-271.23 219,-274 219,-274 219,-274 227,-422 227,-422 227,-422 236.29,-424.37 246.94,-427.08"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="251.9,-428.35 246.5,-429.29 249.48,-427.73 247.06,-427.11 247.06,-427.11 247.06,-427.11 249.48,-427.73 247.61,-424.93 251.9,-428.35 251.9,-428.35"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.mtr.xml.ts -->
 <g id="node11" class="node">
@@ -287,14 +287,14 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.mtr.xml.ts&#45;&gt;node_modules/fast&#45;xml&#45;parser -->
 <g id="edge9" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.mtr.xml.ts&#45;&gt;node_modules/fast&#45;xml&#45;parser</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M179.62,-99.81C189.92,-89.37 208.14,-72.54 227,-63 259.26,-46.68 299.07,-37.01 329.5,-31.51"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="329.91,-33.57 335.45,-30.46 329.18,-29.43 329.91,-33.57"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M182.06,-99.91C198.38,-86.51 227,-63 227,-63 227,-63 291.77,-46.54 336.05,-35.28"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="341.07,-34.01 336.78,-37.42 338.65,-34.62 336.22,-35.24 336.22,-35.24 336.22,-35.24 338.65,-34.62 335.67,-33.06 341.07,-34.01 341.07,-34.01"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.mtr.xml.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/sandbox.ts -->
 <g id="edge8" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.mtr.xml.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/sandbox.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M213.06,-118.24C215.29,-119.87 217.31,-121.77 219,-124 236.67,-147.29 208.92,-364.02 227,-387 230.42,-391.35 235.05,-394.42 240.14,-396.58"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="239.44,-398.57 245.8,-398.59 240.84,-394.61 239.44,-398.57"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M200.03,-118.07C210.14,-121.23 219,-124 219,-124 219,-124 227,-387 227,-387 227,-387 233,-388.65 240.88,-390.81"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="245.99,-392.21 240.57,-393.06 243.58,-391.55 241.17,-390.89 241.17,-390.89 241.17,-390.89 243.58,-391.55 241.76,-388.72 245.99,-392.21 245.99,-392.21"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.pr.ts -->
 <g id="node12" class="node">
@@ -308,8 +308,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.pr.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/index.ts -->
 <g id="edge10" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.pr.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M206.32,-353.34C211.14,-355.32 215.59,-358.1 219,-362 236.73,-382.24 209.12,-401.9 227,-422 231.89,-427.49 238.74,-430.82 245.84,-432.8"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="245.51,-434.87 251.83,-434.16 246.44,-430.78 245.51,-434.87"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M204.34,-358.03C212.53,-360.25 219,-362 219,-362 219,-362 227,-422 227,-422 227,-422 236.29,-424.37 246.94,-427.08"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="251.9,-428.35 246.5,-429.29 249.48,-427.73 247.06,-427.11 247.06,-427.11 247.06,-427.11 249.48,-427.73 247.61,-424.93 251.9,-428.35 251.9,-428.35"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.pr.xml.ts -->
 <g id="node13" class="node">
@@ -323,14 +323,14 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.pr.xml.ts&#45;&gt;node_modules/fast&#45;xml&#45;parser -->
 <g id="edge12" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.pr.xml.ts&#45;&gt;node_modules/fast&#45;xml&#45;parser</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M212.37,-219.84C214.84,-218.2 217.09,-216.27 219,-214 236.34,-193.43 210.38,-175.15 227,-154 254.26,-119.32 285.65,-146.29 319.5,-118 345.31,-96.43 362.75,-60.02 371,-39.75"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="373.02,-40.36 373.27,-34.01 369.11,-38.82 373.02,-40.36"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M200.03,-219.93C210.14,-216.77 219,-214 219,-214 219,-214 227,-154 227,-154 227,-154 319.5,-119 319.5,-119 319.5,-119 352.53,-64.53 368.3,-38.52"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="371.03,-34.01 370.37,-39.46 369.74,-36.15 368.44,-38.29 368.44,-38.29 368.44,-38.29 369.74,-36.15 366.52,-37.12 371.03,-34.01 371.03,-34.01"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.pr.xml.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/sandbox.ts -->
 <g id="edge11" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.pr.xml.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/sandbox.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M212.99,-238.29C215.25,-239.91 217.28,-241.8 219,-244 238.56,-269.11 207,-362.24 227,-387 230.47,-391.3 235.14,-394.35 240.23,-396.51"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="239.55,-398.49 245.9,-398.51 240.94,-394.53 239.55,-398.49"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M200.03,-238.07C210.14,-241.23 219,-244 219,-244 219,-244 227,-387 227,-387 227,-387 233,-388.65 240.88,-390.81"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="245.99,-392.21 240.57,-393.06 243.58,-391.55 241.17,-390.89 241.17,-390.89 241.17,-390.89 243.58,-391.55 241.76,-388.72 245.99,-392.21 245.99,-392.21"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.tsr.ts -->
 <g id="node14" class="node">
@@ -344,8 +344,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.tsr.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/index.ts -->
 <g id="edge13" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.tsr.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M207.02,-324.97C211.62,-327.14 215.82,-330.06 219,-334 231.34,-349.28 214.26,-407.06 227,-422 231.82,-427.65 238.71,-431.02 245.88,-433"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="245.62,-435.09 251.93,-434.34 246.53,-430.99 245.62,-435.09"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M200.03,-328.07C210.14,-331.23 219,-334 219,-334 219,-334 227,-422 227,-422 227,-422 236.29,-424.37 246.94,-427.08"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="251.9,-428.35 246.5,-429.29 249.48,-427.73 247.06,-427.11 247.06,-427.11 247.06,-427.11 249.48,-427.73 247.61,-424.93 251.9,-428.35 251.9,-428.35"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.tsr.xml.ts -->
 <g id="node15" class="node">
@@ -359,14 +359,14 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.tsr.xml.ts&#45;&gt;node_modules/fast&#45;xml&#45;parser -->
 <g id="edge15" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.tsr.xml.ts&#45;&gt;node_modules/fast&#45;xml&#45;parser</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M212.34,-189.82C214.81,-188.18 217.07,-186.26 219,-184 235.03,-165.21 212.07,-148.68 227,-129 254.18,-93.17 283.07,-114.36 319.5,-88 338.49,-74.26 355.87,-53.3 366.32,-39.38"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="368.23,-40.32 370.1,-34.25 364.85,-37.83 368.23,-40.32"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M200.03,-189.93C210.14,-186.77 219,-184 219,-184 219,-184 227,-129 227,-129 227,-129 319.5,-89 319.5,-89 319.5,-89 348.08,-56.9 364.77,-38.17"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="368.33,-34.17 366.69,-39.4 366.67,-36.04 365.01,-37.9 365.01,-37.9 365.01,-37.9 366.67,-36.04 363.33,-36.41 368.33,-34.17 368.33,-34.17"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.tsr.xml.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/sandbox.ts -->
 <g id="edge14" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/sample/sample.tsr.xml.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/sandbox.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M213.02,-208.27C215.26,-209.89 217.29,-211.79 219,-214 230.75,-229.24 214.98,-371.97 227,-387 230.45,-391.32 235.1,-394.38 240.2,-396.54"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="239.51,-398.52 245.86,-398.54 240.91,-394.56 239.51,-398.52"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M200.03,-208.07C210.14,-211.23 219,-214 219,-214 219,-214 227,-387 227,-387 227,-387 233,-388.65 240.88,-390.81"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="245.99,-392.21 240.57,-393.06 243.58,-391.55 241.17,-390.89 241.17,-390.89 241.17,-390.89 243.58,-391.55 241.76,-388.72 245.99,-392.21 245.99,-392.21"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/group.ts -->
 <g id="node16" class="node">
@@ -389,8 +389,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/group.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts -->
 <g id="edge17" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/group.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1031.88,-929.55C1083.75,-941.46 1194.91,-963.21 1221.5,-938 1233.69,-926.44 1223.69,-802.77 1229.5,-787 1256.25,-714.4 1322.94,-647.11 1352.95,-619.37"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1354.43,-620.86 1357.44,-615.26 1351.59,-617.76 1354.43,-620.86"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1031.68,-928.93C1050.55,-933.12 1072.5,-938 1072.5,-938 1072.5,-938 1221.5,-938 1221.5,-938 1221.5,-938 1229.5,-787 1229.5,-787 1229.5,-787 1325.98,-660.92 1357.89,-619.21"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1360.94,-615.22 1359.69,-620.56 1359.42,-617.21 1357.9,-619.2 1357.9,-619.2 1357.9,-619.2 1359.42,-617.21 1356.12,-617.83 1360.94,-615.22 1360.94,-615.22"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/grouping&#45;preference&#45;rule.ts -->
 <g id="node18" class="node">
@@ -404,8 +404,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/group.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/grouping&#45;preference&#45;rule.ts -->
 <g id="edge18" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/group.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/grouping&#45;preference&#45;rule.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1031.74,-923C1041.85,-923 1053.91,-923 1066.29,-923"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1066.39,-925.1 1072.39,-923 1066.39,-920.9 1066.39,-925.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1031.74,-923C1042.12,-923 1054.57,-923 1067.31,-923"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1072.39,-923 1067.39,-925.25 1069.89,-923 1067.39,-923 1067.39,-923 1067.39,-923 1069.89,-923 1067.39,-920.75 1072.39,-923 1072.39,-923"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/applied.ts -->
 <g id="node48" class="node">
@@ -419,8 +419,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/applied.ts -->
 <g id="edge75" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/applied.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1379.31,-596.66C1393.68,-582.49 1422.45,-555.07 1449.5,-535 1452.15,-533.03 1455.02,-531.08 1457.9,-529.23"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1464.15,-527.8 1457.95,-529.2 1461.93,-524.24 1464.15,-527.8"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1380.39,-596.72C1401.94,-577.47 1449.5,-535 1449.5,-535 1449.5,-535 1454.04,-532.23 1459.55,-528.87"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1464.82,-527.7 1459.64,-528.82 1462.99,-524.72 1464.82,-527.7"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/chord.ts -->
 <g id="node49" class="node">
@@ -434,8 +434,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/chord.ts -->
 <g id="edge76" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/chord.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1396.12,-603.58C1441.89,-599.35 1536.43,-590.6 1586.22,-585.99"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1592.55,-587.51 1586.38,-585.97 1592.16,-583.33 1592.55,-587.51"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1396.12,-603.58C1442.17,-599.32 1537.59,-590.49 1587.13,-585.9"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1592.51,-587.16 1587.37,-585.88 1592.19,-583.68 1592.51,-587.16"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/note.ts -->
 <g id="node50" class="node">
@@ -449,8 +449,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/note.ts -->
 <g id="edge79" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/note.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1379.84,-596.76C1394,-584.12 1421.49,-561.87 1449.5,-552 1532.35,-522.81 1563.75,-538.52 1646.5,-568 1649.83,-569.19 1653.3,-570.46 1656.74,-571.75"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1661.73,-575.89 1656.86,-571.8 1663.22,-571.96 1661.73,-575.89"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1384.95,-596.78C1407.98,-582.59 1449.5,-557 1449.5,-557 1449.5,-557 1523.5,-546 1523.5,-546 1523.5,-546 1579.5,-546 1579.5,-546 1579.5,-546 1646.5,-568 1646.5,-568 1646.5,-568 1651.07,-569.76 1657.09,-572.07"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1661.29,-575.56 1657.25,-572.13 1662.54,-572.3 1661.29,-575.56"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/head.ts -->
 <g id="node51" class="node">
@@ -464,8 +464,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/head.ts -->
 <g id="edge77" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/head.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1396.11,-598.57C1411.37,-594.24 1430.74,-588.72 1446.92,-584.12"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1453.3,-584.49 1446.96,-584.11 1452.15,-580.45 1453.3,-584.49"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1396.11,-598.57C1411.63,-594.16 1431.42,-588.53 1447.77,-583.88"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1453.21,-584.16 1447.92,-583.84 1452.25,-580.79 1453.21,-584.16"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/i&#45;head.ts -->
 <g id="node52" class="node">
@@ -479,8 +479,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/i&#45;head.ts -->
 <g id="edge78" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/i&#45;head.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1381.25,-596.88C1395.92,-585.65 1422.86,-567.15 1449.5,-560 1471.6,-554.07 1497.42,-554.44 1517.41,-556.24"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1523.22,-558.92 1517.45,-556.24 1523.63,-554.74 1523.22,-558.92"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1385.71,-596.91C1408.88,-583.51 1449.5,-560 1449.5,-560 1449.5,-560 1510.5,-560 1510.5,-560 1510.5,-560 1513.53,-560.08 1517.93,-560.19"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1523.11,-562.07 1518.16,-560.19 1523.2,-558.57 1523.11,-562.07"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/part.ts -->
 <g id="node53" class="node">
@@ -494,8 +494,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/part.ts -->
 <g id="edge80" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/part.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1396.11,-609.11C1411.23,-610.92 1430.4,-613.2 1446.5,-615.12"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1452.48,-617.95 1446.77,-615.16 1452.98,-613.78 1452.48,-617.95"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1396.11,-609.11C1411.5,-610.95 1431.08,-613.29 1447.35,-615.23"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1452.52,-617.6 1447.76,-615.27 1452.93,-614.13 1452.52,-617.6"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/path.ts -->
 <g id="node54" class="node">
@@ -509,8 +509,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/path.ts -->
 <g id="edge81" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/path.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1392.85,-615.01C1409.56,-621.61 1432.35,-630.6 1450.3,-637.68"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1455.41,-641.95 1450.6,-637.8 1456.95,-638.04 1455.41,-641.95"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1392.85,-615.01C1409.85,-621.72 1433.15,-630.91 1451.23,-638.04"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1455.54,-641.63 1451.53,-638.16 1456.82,-638.37 1455.54,-641.63"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/grouping&#45;preference.ts -->
 <g id="node19" class="node">
@@ -524,14 +524,14 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/grouping&#45;preference.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/group.ts -->
 <g id="edge20" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/grouping&#45;preference.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/group.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M927.61,-923C942.3,-923 957.49,-923 970.36,-923"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="970.47,-925.1 976.47,-923 970.47,-920.9 970.47,-925.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M927.61,-923C942.7,-923 958.32,-923 971.4,-923"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="976.47,-923 971.47,-925.25 973.97,-923 971.47,-923 971.47,-923 971.47,-923 973.97,-923 971.47,-920.75 976.47,-923 976.47,-923"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/grouping&#45;preference.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts -->
 <g id="edge19" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/grouping&#45;preference.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M893.61,-932.09C953.53,-951.83 1106.51,-993.26 1221.5,-947 1264.37,-929.75 1277.47,-917.11 1296.5,-875 1313.54,-837.3 1290.39,-727.89 1304.5,-689 1314.71,-660.87 1338.12,-634.53 1353.49,-619.36"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1355.12,-620.7 1357.97,-615.02 1352.2,-617.68 1355.12,-620.7"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M916.68,-932.07C933.64,-935.23 948.5,-938 948.5,-938 948.5,-938 1072.5,-942 1072.5,-942 1072.5,-942 1221.5,-942 1221.5,-942 1221.5,-942 1296.5,-875 1296.5,-875 1296.5,-875 1304.5,-689 1304.5,-689 1304.5,-689 1339.89,-642.75 1357.83,-619.3"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1360.96,-615.2 1359.71,-620.54 1359.44,-617.19 1357.92,-619.17 1357.92,-619.17 1357.92,-619.17 1359.44,-617.19 1356.14,-617.8 1360.96,-615.2 1360.96,-615.2"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/grouping&#45;structure.ts -->
 <g id="node20" class="node">
@@ -545,8 +545,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/grouping&#45;structure.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/grouping&#45;preference.ts -->
 <g id="edge21" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/grouping&#45;structure.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/grouping&#45;preference.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M774.37,-923C782.79,-923 791.53,-923 800.11,-923"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="800.34,-925.1 806.34,-923 800.34,-920.9 800.34,-925.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M774.37,-923C783.03,-923 792.03,-923 800.86,-923"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="806.34,-923 801.34,-925.25 803.84,-923 801.34,-923 801.34,-923 801.34,-923 803.84,-923 801.34,-920.75 806.34,-923 806.34,-923"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/index.ts -->
 <g id="node21" class="node">
@@ -560,8 +560,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/grouping&#45;structure.ts -->
 <g id="edge22" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/grouping&#45;structure.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M598.08,-923C613.72,-923 634.33,-923 653.94,-923"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="659.99,-925.1 653.99,-923 659.99,-920.9 659.99,-925.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M598.08,-923C613.99,-923 635.04,-923 654.95,-923"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="659.99,-924.75 654.99,-923 659.99,-921.25 659.99,-924.75"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/applied.ts -->
 <g id="node22" class="node">
@@ -575,8 +575,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/applied.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts -->
 <g id="edge23" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/applied.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1284.82,-460.05C1289.1,-462.47 1293.23,-465.43 1296.5,-469 1302.96,-476.06 1300.43,-480.33 1304.5,-489 1322.26,-526.83 1346.62,-569.6 1359.39,-591.45"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1357.67,-592.68 1362.52,-596.79 1361.29,-590.55 1357.67,-592.68"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1279.17,-460.21C1287.9,-464.64 1296.5,-469 1296.5,-469 1296.5,-469 1304.5,-489 1304.5,-489 1304.5,-489 1343.74,-561.3 1360.53,-592.23"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1363.02,-596.82 1358.65,-593.5 1361.82,-594.62 1360.63,-592.42 1360.63,-592.42 1360.63,-592.42 1361.82,-594.62 1362.61,-591.35 1363.02,-596.82 1363.02,-596.82"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/metric&#45;preference&#45;rule.ts -->
 <g id="node23" class="node">
@@ -590,8 +590,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/applied.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/metric&#45;preference&#45;rule.ts -->
 <g id="edge24" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/applied.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/metric&#45;preference&#45;rule.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1290.52,-451C1292.96,-451 1295.48,-451 1298.05,-451"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1298.15,-453.1 1304.15,-451 1298.15,-448.9 1298.15,-453.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1290.52,-451C1293.23,-451 1296.04,-451 1298.91,-451"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1304.15,-451 1299.15,-453.25 1301.65,-451 1299.15,-451 1299.15,-451 1299.15,-451 1301.65,-451 1299.15,-448.75 1304.15,-451 1304.15,-451"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/index.ts -->
 <g id="node24" class="node">
@@ -614,8 +614,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/metric&#45;structure.ts -->
 <g id="edge25" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/metric&#45;structure.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M744.12,-451C762.25,-451 787.1,-451 809.63,-451"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="815.91,-453.1 809.91,-451 815.91,-448.9 815.91,-453.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M744.12,-451C762.56,-451 787.95,-451 810.78,-451"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="815.91,-452.75 810.91,-451 815.91,-449.25 815.91,-452.75"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/metric&#45;preference.ts -->
 <g id="node26" class="node">
@@ -629,14 +629,14 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/metric&#45;structure.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/metric&#45;preference.ts -->
 <g id="edge28" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/metric&#45;structure.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/metric&#45;preference.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M918.27,-451C926.27,-451 934.63,-451 942.83,-451"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="943.07,-453.1 949.07,-451 943.07,-448.9 943.07,-453.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M918.27,-451C926.59,-451 935.28,-451 943.8,-451"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="949.07,-451 944.07,-453.25 946.57,-451 944.07,-451 944.07,-451 944.07,-451 946.57,-451 944.07,-448.75 949.07,-451 949.07,-451"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/metric&#45;preference.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts -->
 <g id="edge26" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/metric&#45;preference.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1041.07,-460.09C1097.69,-475.19 1209.93,-508.58 1296.5,-556 1316.38,-566.89 1337.44,-582.13 1351.52,-592.91"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1350.34,-594.66 1356.37,-596.67 1352.91,-591.34 1350.34,-594.66"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1030.26,-460.1C1087.37,-480.68 1221.5,-529 1221.5,-529 1221.5,-529 1296.5,-558 1296.5,-558 1296.5,-558 1329.05,-579.85 1350.22,-594.06"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1354.55,-596.97 1349.15,-596.05 1352.48,-595.58 1350.4,-594.18 1350.4,-594.18 1350.4,-594.18 1352.48,-595.58 1351.65,-592.32 1354.55,-596.97 1354.55,-596.97"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/metric.ts -->
 <g id="node27" class="node">
@@ -650,20 +650,20 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/metric&#45;preference.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/metric.ts -->
 <g id="edge27" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/metric&#45;preference.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/metric.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1058.75,-451C1075.41,-451 1093.3,-451 1108.2,-451"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1108.39,-453.1 1114.39,-451 1108.39,-448.9 1108.39,-453.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1058.75,-451C1075.86,-451 1094.25,-451 1109.39,-451"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1114.39,-451 1109.39,-453.25 1111.89,-451 1109.39,-451 1109.39,-451 1109.39,-451 1111.89,-451 1109.39,-448.75 1114.39,-451 1114.39,-451"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/metric.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts -->
 <g id="edge29" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/metric.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1171.51,-456.17C1214.05,-464.26 1291.43,-479.34 1296.5,-483 1334.5,-510.45 1355.45,-564.8 1363.75,-591.08"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1361.75,-591.7 1365.5,-596.83 1365.76,-590.48 1361.75,-591.7"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1171.62,-456.79C1215.56,-466.02 1296.5,-483 1296.5,-483 1296.5,-483 1341.47,-560.35 1360.08,-592.37"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1362.63,-596.76 1358.17,-593.56 1361.37,-594.59 1360.11,-592.43 1360.11,-592.43 1360.11,-592.43 1361.37,-594.59 1362.06,-591.3 1362.63,-596.76 1362.63,-596.76"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/metric.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/applied.ts -->
 <g id="edge30" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/metric.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/applied.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1171.55,-451C1187.05,-451 1206.59,-451 1223.26,-451"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1223.26,-453.1 1229.26,-451 1223.26,-448.9 1223.26,-453.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1171.55,-451C1187.32,-451 1207.27,-451 1224.14,-451"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1229.26,-451 1224.26,-453.25 1226.76,-451 1224.26,-451 1224.26,-451 1224.26,-451 1226.76,-451 1224.26,-448.75 1229.26,-451 1229.26,-451"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/has&#45;interface/head.ts -->
 <g id="node28" class="node">
@@ -677,8 +677,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/has&#45;interface/head.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts -->
 <g id="edge31" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/has&#45;interface/head.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1031.24,-522.18C1082.93,-528.88 1201.18,-546.42 1296.5,-577 1312.01,-581.98 1328.92,-588.77 1342.4,-594.53"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1341.62,-596.48 1347.96,-596.93 1343.28,-592.62 1341.62,-596.48"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1031.11,-523.82C1088.7,-534.46 1221.5,-559 1221.5,-559 1221.5,-559 1296.5,-580 1296.5,-580 1296.5,-580 1318.49,-588 1338.08,-595.12"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1342.99,-596.91 1337.52,-597.31 1340.64,-596.05 1338.29,-595.2 1338.29,-595.2 1338.29,-595.2 1340.64,-596.05 1339.06,-593.08 1342.99,-596.91 1342.99,-596.91"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/interface/i&#45;head.ts -->
 <g id="node29" class="node">
@@ -692,14 +692,14 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/has&#45;interface/head.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/interface/i&#45;head.ts -->
 <g id="edge32" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/has&#45;interface/head.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/interface/i&#45;head.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1025.81,-528.11C1049.89,-538.66 1089.57,-556.04 1115.75,-567.5"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1115.11,-569.51 1121.45,-570 1116.79,-565.67 1115.11,-569.51"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1025.81,-528.11C1050.19,-538.79 1090.58,-556.48 1116.73,-567.93"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1121.45,-570 1115.96,-570.05 1119.16,-569 1116.87,-567.99 1116.87,-567.99 1116.87,-567.99 1119.16,-569 1117.77,-565.93 1121.45,-570 1121.45,-570"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/interface/i&#45;head.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts -->
 <g id="edge40" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/interface/i&#45;head.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1171.17,-578.73C1201.81,-578.83 1253.02,-580.16 1296.5,-587 1309.58,-589.06 1323.73,-592.54 1335.96,-595.97"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1335.45,-598.01 1341.79,-597.64 1336.6,-593.97 1335.45,-598.01"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1171.26,-580.43C1215.13,-582.73 1296.5,-587 1296.5,-587 1296.5,-587 1317.64,-592.62 1336.93,-597.74"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1341.78,-599.03 1336.37,-599.92 1339.37,-598.39 1336.95,-597.75 1336.95,-597.75 1336.95,-597.75 1339.37,-598.39 1337.53,-595.57 1341.78,-599.03 1341.78,-599.03"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/has&#45;interface/prolongation&#45;reduction.ts -->
 <g id="node30" class="node">
@@ -722,8 +722,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/has&#45;interface/prolongation&#45;reduction.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/interface/i&#45;prolongation&#45;reduction.ts -->
 <g id="edge33" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/has&#45;interface/prolongation&#45;reduction.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/interface/i&#45;prolongation&#45;reduction.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M777.33,-528.07C779.15,-529.25 780.88,-530.55 782.5,-532 791.19,-539.78 782.14,-548.86 790.5,-557 794.83,-561.22 799.91,-564.63 805.37,-567.4"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="804.6,-569.36 810.93,-569.95 806.36,-565.54 804.6,-569.36"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M762.8,-528.03C773.8,-530.25 782.5,-532 782.5,-532 782.5,-532 790.5,-557 790.5,-557 790.5,-557 810.52,-562.83 829.94,-568.49"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="834.86,-569.92 829.43,-570.69 832.46,-569.23 830.06,-568.53 830.06,-568.53 830.06,-568.53 832.46,-569.23 830.68,-566.37 834.86,-569.92 834.86,-569.92"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/has&#45;interface/prolongational&#45;tree.ts -->
 <g id="node32" class="node">
@@ -737,8 +737,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/has&#45;interface/prolongation&#45;reduction.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/has&#45;interface/prolongational&#45;tree.ts -->
 <g id="edge34" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/has&#45;interface/prolongation&#45;reduction.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/has&#45;interface/prolongational&#45;tree.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M782.91,-519C789.93,-519 797.06,-519 804.04,-519"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="804.4,-521.1 810.4,-519 804.4,-516.9 804.4,-521.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M782.91,-519C790.36,-519 797.93,-519 805.32,-519"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="810.4,-519 805.4,-521.25 807.9,-519 805.4,-519 805.4,-519 805.4,-519 807.9,-519 805.4,-516.75 810.4,-519 810.4,-519"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/interface/i&#45;prolongation&#45;tree.ts -->
 <g id="node34" class="node">
@@ -752,14 +752,14 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/interface/i&#45;prolongation&#45;reduction.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/interface/i&#45;prolongation&#45;tree.ts -->
 <g id="edge41" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/interface/i&#45;prolongation&#45;reduction.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/interface/i&#45;prolongation&#45;tree.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M935.9,-579C938,-579 940.1,-579 942.19,-579"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="942.43,-581.1 948.43,-579 942.43,-576.9 942.43,-581.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M935.9,-579C938.39,-579 940.88,-579 943.36,-579"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="948.43,-579 943.43,-581.25 945.93,-579 943.43,-579 943.43,-579 943.43,-579 945.93,-579 943.43,-576.75 948.43,-579 948.43,-579"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/has&#45;interface/prolongational&#45;tree.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/has&#45;interface/head.ts -->
 <g id="edge37" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/has&#45;interface/prolongational&#45;tree.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/has&#45;interface/head.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M923.69,-519C939.69,-519 956.6,-519 970.68,-519"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="970.93,-521.1 976.93,-519 970.93,-516.9 970.93,-521.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M923.69,-519C940.12,-519 957.51,-519 971.81,-519"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="976.93,-519 971.93,-521.25 974.43,-519 971.93,-519 971.93,-519 971.93,-519 974.43,-519 971.93,-516.75 976.93,-519 976.93,-519"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/ReductionElement.ts -->
 <g id="node33" class="node">
@@ -773,26 +773,26 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/has&#45;interface/prolongational&#45;tree.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/ReductionElement.ts -->
 <g id="edge35" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/has&#45;interface/prolongational&#45;tree.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/ReductionElement.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M893.4,-528.12C907.85,-534.58 925.09,-544.67 935.5,-559 951.02,-580.37 934.04,-594.89 948.5,-617 956.12,-628.65 968.37,-638.09 979.34,-644.87"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="978.35,-646.73 984.59,-647.98 980.49,-643.11 978.35,-646.73"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M883.32,-528.08C903.23,-539.88 935.5,-559 935.5,-559 935.5,-559 948.5,-617 948.5,-617 948.5,-617 970.27,-632.98 986.29,-644.74"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="990.63,-647.92 985.27,-646.78 988.62,-646.44 986.6,-644.96 986.6,-644.96 986.6,-644.96 988.62,-646.44 987.93,-643.15 990.63,-647.92 990.63,-647.92"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/has&#45;interface/prolongational&#45;tree.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/interface/i&#45;prolongation&#45;tree.ts -->
 <g id="edge36" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/has&#45;interface/prolongational&#45;tree.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/interface/i&#45;prolongation&#45;tree.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M886.41,-528.06C902.63,-535.95 926.98,-547.59 948.5,-557 956.78,-560.62 965.85,-564.37 974.18,-567.72"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="973.46,-569.7 979.81,-569.98 975.02,-565.8 973.46,-569.7"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M887.08,-528.01C910.88,-539.24 948.5,-557 948.5,-557 948.5,-557 961.99,-562.45 975.55,-567.92"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="980.52,-569.92 975.04,-570.14 978.2,-568.99 975.88,-568.05 975.88,-568.05 975.88,-568.05 978.2,-568.99 976.72,-565.97 980.52,-569.92 980.52,-569.92"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/ReductionElement.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts -->
 <g id="edge43" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/ReductionElement.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1059.51,-655.83C1105.15,-652.83 1170.75,-643.68 1221.5,-617 1225.95,-614.66 1224.88,-610.97 1229.5,-609 1263.57,-594.45 1306.79,-596.33 1335.81,-600.13"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1335.54,-602.21 1341.77,-600.96 1336.12,-598.05 1335.54,-602.21"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1053.86,-647.97C1117.71,-636.18 1221.5,-617 1221.5,-617 1221.5,-617 1229.5,-609 1229.5,-609 1229.5,-609 1295.75,-607.57 1336.61,-606.68"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1341.95,-606.56 1337,-608.92 1339.45,-606.62 1336.95,-606.67 1336.95,-606.67 1336.95,-606.67 1339.45,-606.62 1336.9,-604.42 1341.95,-606.56 1341.95,-606.56"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/interface/i&#45;prolongation&#45;tree.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/interface/i&#45;head.ts -->
 <g id="edge42" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/interface/i&#45;prolongation&#45;tree.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/interface/i&#45;head.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1059.54,-579C1076.12,-579 1093.85,-579 1108.6,-579"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1108.72,-581.1 1114.72,-579 1108.72,-576.9 1108.72,-581.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1059.54,-579C1076.42,-579 1094.48,-579 1109.38,-579"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1114.72,-579 1109.72,-581.25 1112.22,-579 1109.72,-579 1109.72,-579 1109.72,-579 1112.22,-579 1109.72,-576.75 1114.72,-579 1114.72,-579"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/index.ts -->
 <g id="node35" class="node">
@@ -806,14 +806,14 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/has&#45;interface/prolongation&#45;reduction.ts -->
 <g id="edge38" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/has&#45;interface/prolongation&#45;reduction.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M598.14,-593.15C611.09,-592.28 625.96,-588.87 635.5,-579 650.23,-563.77 628.58,-547.05 643.5,-532 644.38,-531.11 645.29,-530.28 646.24,-529.49"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="652.48,-527.62 646.38,-529.39 650.04,-524.2 652.48,-527.62"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M598.19,-586.64C615.69,-583.06 635.5,-579 635.5,-579 635.5,-579 643.5,-532 643.5,-532 643.5,-532 650.72,-530.71 660.6,-528.93"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="665.96,-529.75 660.72,-528.91 665.34,-526.31 665.96,-529.75"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/interface/i&#45;prolongation&#45;reduction.ts -->
 <g id="edge39" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/interface/i&#45;prolongation&#45;reduction.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M598.09,-590.85C641.25,-588.94 729.01,-585.06 792.35,-582.26"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="798.5,-584.09 792.41,-582.25 798.31,-579.89 798.5,-584.09"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M598.09,-590.85C641.42,-588.93 729.72,-585.03 793.12,-582.22"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="798.48,-583.74 793.41,-582.21 798.33,-580.24 798.48,-583.74"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/common.ts -->
 <g id="node36" class="node">
@@ -827,8 +827,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/common.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts -->
 <g id="edge44" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/common.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1369,-737.98C1369,-699.1 1369,-660.21 1369,-621.33"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1371.1,-621.09 1369,-615.09 1366.9,-621.09 1371.1,-621.09"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1369,-737.94C1369,-724.28 1369,-700 1369,-700 1369,-700 1369,-653 1369,-653 1369,-653 1369,-634.08 1369,-620.25"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1369,-615.06 1371.25,-620.06 1369,-617.56 1369,-620.06 1369,-620.06 1369,-620.06 1369,-617.56 1366.75,-620.06 1369,-615.06 1369,-615.06"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/at.ts -->
 <g id="node37" class="node">
@@ -851,8 +851,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/at.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;at.ts -->
 <g id="edge45" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/at.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;at.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1031.06,-754.17C1041.24,-758.19 1052.2,-764.21 1059.5,-773 1073.89,-790.34 1056.2,-806.44 1072.5,-822 1082.32,-831.37 1096.54,-835.46 1109.55,-837.08"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1109.65,-839.19 1115.82,-837.68 1110.05,-835.01 1109.65,-839.19"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1024.06,-756.09C1039.78,-763.59 1059.5,-773 1059.5,-773 1059.5,-773 1072.5,-822 1072.5,-822 1072.5,-822 1092.17,-826.25 1110.58,-830.22"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1115.73,-831.33 1110.36,-832.47 1113.28,-830.8 1110.84,-830.27 1110.84,-830.27 1110.84,-830.27 1113.28,-830.8 1111.31,-828.07 1115.73,-831.33 1115.73,-831.33"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/temp.ts -->
 <g id="node39" class="node">
@@ -866,8 +866,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/at.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/temp.ts -->
 <g id="edge46" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/at.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/temp.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1031.09,-747C1053.33,-747 1085.39,-747 1109.33,-747"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1109.54,-749.1 1115.54,-747 1109.54,-744.9 1109.54,-749.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1031.09,-747C1053.61,-747 1086.21,-747 1110.24,-747"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1115.54,-747 1110.54,-749.25 1113.04,-747 1110.54,-747 1110.54,-747 1110.54,-747 1113.04,-747 1110.54,-744.75 1115.54,-747 1115.54,-747"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;temp.ts -->
 <g id="node42" class="node">
@@ -881,26 +881,26 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;at.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;temp.ts -->
 <g id="edge63" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;at.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;temp.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1170.13,-833.21C1185.29,-830.7 1204.67,-826.95 1221.5,-822 1225.12,-820.94 1228.88,-819.66 1232.55,-818.3"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1233.37,-820.23 1238.22,-816.12 1231.87,-816.31 1233.37,-820.23"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1170.24,-831.92C1192.72,-827.57 1221.5,-822 1221.5,-822 1221.5,-822 1225.73,-820.31 1231.34,-818.06"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1236.32,-816.07 1232.51,-820.02 1234,-817 1231.68,-817.93 1231.68,-817.93 1231.68,-817.93 1234,-817 1230.84,-815.84 1236.32,-816.07 1236.32,-816.07"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/temp.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts -->
 <g id="edge49" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/temp.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1165.24,-737.98C1182.87,-729.42 1207.28,-714.91 1221.5,-695 1229.52,-683.77 1219.89,-674.9 1229.5,-665 1251.15,-642.7 1267.81,-656.95 1296.5,-645 1314.59,-637.46 1334.05,-626.66 1348.1,-618.33"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1349.32,-620.04 1353.39,-615.16 1347.16,-616.44 1349.32,-620.04"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1157.5,-737.94C1179.7,-723.04 1221.5,-695 1221.5,-695 1221.5,-695 1229.5,-665 1229.5,-665 1229.5,-665 1296.5,-645 1296.5,-645 1296.5,-645 1325.71,-629.07 1346.79,-617.57"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1351.42,-615.05 1348.1,-619.41 1349.22,-616.24 1347.03,-617.44 1347.03,-617.44 1347.03,-617.44 1349.22,-616.24 1345.95,-615.46 1351.42,-615.05 1351.42,-615.05"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/temp.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/common.ts -->
 <g id="edge50" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/temp.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/common.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1170.13,-747C1209.15,-747 1282.92,-747 1328.53,-747"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1328.77,-749.1 1334.77,-747 1328.77,-744.9 1328.77,-749.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1170.13,-747C1209.47,-747 1284.13,-747 1329.64,-747"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1334.77,-747 1329.77,-749.25 1332.27,-747 1329.77,-747 1329.77,-747 1329.77,-747 1332.27,-747 1329.77,-744.75 1334.77,-747 1334.77,-747"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/temp.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;temp.ts -->
 <g id="edge51" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/temp.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;temp.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1164.84,-756.07C1180.9,-763.45 1203.35,-774.65 1221.5,-787 1225.41,-789.66 1225.51,-791.46 1229.5,-794 1229.91,-794.26 1230.32,-794.52 1230.74,-794.77"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1230.13,-796.83 1236.4,-797.9 1232.16,-793.16 1230.13,-796.83"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1161.59,-756.08C1184.45,-767.88 1221.5,-787 1221.5,-787 1221.5,-787 1229.5,-794 1229.5,-794 1229.5,-794 1231.21,-794.75 1233.81,-795.9"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1238.51,-797.97 1233.03,-798.01 1236.22,-796.96 1233.94,-795.95 1233.94,-795.95 1233.94,-795.95 1236.22,-796.96 1234.84,-793.9 1238.51,-797.97 1238.51,-797.97"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/chord.ts -->
 <g id="node40" class="node">
@@ -914,8 +914,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/chord.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts -->
 <g id="edge47" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/chord.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1021.7,-707.97C1035.06,-701.14 1054.48,-692.1 1072.5,-687 1104.65,-677.9 1196.42,-689.07 1221.5,-667 1231.86,-657.88 1219.55,-646.56 1229.5,-637 1237.18,-629.63 1297.56,-618.09 1336.03,-611.36"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1336.45,-613.42 1342,-610.33 1335.73,-609.28 1336.45,-613.42"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1025.25,-708C1045.13,-699.16 1072.5,-687 1072.5,-687 1072.5,-687 1221.5,-667 1221.5,-667 1221.5,-667 1229.5,-637 1229.5,-637 1229.5,-637 1295.75,-622.17 1336.61,-613.03"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1341.95,-611.83 1337.56,-615.12 1339.51,-612.38 1337.07,-612.92 1337.07,-612.92 1337.07,-612.92 1339.51,-612.38 1336.58,-610.73 1341.95,-611.83 1341.95,-611.83"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;chord.ts -->
 <g id="node41" class="node">
@@ -929,26 +929,26 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/chord.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;chord.ts -->
 <g id="edge48" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/chord.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;chord.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1031.18,-718.62C1041.26,-720.54 1052.11,-724.4 1059.5,-732 1076.41,-749.39 1055.93,-767.29 1072.5,-785 1081.57,-794.69 1094.87,-800.13 1107.41,-803.18"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1107.17,-805.28 1113.48,-804.49 1108.06,-801.17 1107.17,-805.28"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1031.29,-724.24C1045.23,-728.07 1059.5,-732 1059.5,-732 1059.5,-732 1072.5,-785 1072.5,-785 1072.5,-785 1090.62,-790.74 1108.35,-796.35"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1113.33,-797.92 1107.88,-798.56 1110.95,-797.17 1108.56,-796.42 1108.56,-796.42 1108.56,-796.42 1110.95,-797.17 1109.24,-794.27 1113.33,-797.92 1113.33,-797.92"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;chord.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts -->
 <g id="edge64" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;chord.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1172.72,-806.58C1189.58,-804.7 1209.82,-799.3 1221.5,-785 1236.44,-766.7 1214.68,-697.4 1229.5,-679 1248.99,-654.8 1268.71,-672.91 1296.5,-659 1317.91,-648.28 1339.6,-631.12 1353.39,-619.24"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1354.96,-620.66 1358.09,-615.13 1352.19,-617.5 1354.96,-620.66"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1172.86,-798.81C1194.89,-792.55 1221.5,-785 1221.5,-785 1221.5,-785 1229.5,-679 1229.5,-679 1229.5,-679 1296.5,-659 1296.5,-659 1296.5,-659 1330.39,-633.88 1351.51,-618.23"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1355.55,-615.23 1352.87,-620.02 1353.54,-616.72 1351.53,-618.21 1351.53,-618.21 1351.53,-618.21 1353.54,-616.72 1350.19,-616.4 1355.55,-615.23 1355.55,-615.23"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;temp.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts -->
 <g id="edge65" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;temp.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1263.39,-797.72C1268.89,-777.25 1283.55,-727.06 1304.5,-689 1319.09,-662.5 1341.61,-635.3 1355.55,-619.57"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1357.14,-620.93 1359.58,-615.06 1354.01,-618.13 1357.14,-620.93"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1264.41,-797.74C1274.67,-769.92 1304.5,-689 1304.5,-689 1304.5,-689 1339.89,-642.75 1357.83,-619.3"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1360.96,-615.2 1359.71,-620.54 1359.44,-617.19 1357.92,-619.17 1357.92,-619.17 1357.92,-619.17 1359.44,-617.19 1356.14,-617.8 1360.96,-615.2 1360.96,-615.2"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;temp.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/common.ts -->
 <g id="edge66" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;temp.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/common.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1288.03,-797.85C1290.93,-796.65 1293.8,-795.36 1296.5,-794 1316.24,-784.07 1337.17,-769.81 1351.26,-759.61"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1352.52,-761.29 1356.12,-756.05 1350.04,-757.9 1352.52,-761.29"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1285.66,-797.97C1291.71,-795.75 1296.5,-794 1296.5,-794 1296.5,-794 1328.69,-772.84 1349.88,-758.91"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1354.21,-756.06 1351.27,-760.69 1352.13,-757.44 1350.04,-758.81 1350.04,-758.81 1350.04,-758.81 1352.13,-757.44 1348.8,-756.93 1354.21,-756.06 1354.21,-756.06"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/time&#45;span&#45;tree.ts -->
 <g id="node43" class="node">
@@ -971,8 +971,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/time&#45;span&#45;tree.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;time&#45;span&#45;tree.ts -->
 <g id="edge52" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/time&#45;span&#45;tree.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;time&#45;span&#45;tree.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M764.19,-741.62C770.98,-743.8 777.4,-747.09 782.5,-752 793.38,-762.46 780.08,-774.09 790.5,-785 796.21,-790.98 803.45,-795.36 811.16,-798.56"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="810.79,-800.67 817.14,-800.79 812.25,-796.73 810.79,-800.67"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M762.8,-748.03C773.8,-750.25 782.5,-752 782.5,-752 782.5,-752 790.5,-785 790.5,-785 790.5,-785 810.52,-790.83 829.94,-796.49"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="834.86,-797.92 829.43,-798.69 832.46,-797.23 830.06,-796.53 830.06,-796.53 830.06,-796.53 832.46,-797.23 830.68,-794.37 834.86,-797.92 834.86,-797.92"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/time&#45;span.ts -->
 <g id="node45" class="node">
@@ -986,8 +986,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/time&#45;span&#45;tree.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/time&#45;span.ts -->
 <g id="edge53" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/time&#45;span&#45;tree.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/time&#45;span.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M764.02,-735.58C783.23,-734.15 805.39,-732.5 824.14,-731.11"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="824.53,-733.19 830.36,-730.65 824.22,-729 824.53,-733.19"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M764.02,-735.58C783.56,-734.13 806.16,-732.45 825.11,-731.04"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="830.36,-730.65 825.54,-733.26 827.86,-730.83 825.37,-731.02 825.37,-731.02 825.37,-731.02 827.86,-730.83 825.2,-728.78 830.36,-730.65 830.36,-730.65"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;time&#45;span.ts -->
 <g id="node46" class="node">
@@ -1001,62 +1001,62 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;time&#45;span&#45;tree.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;time&#45;span.ts -->
 <g id="edge67" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;time&#45;span&#45;tree.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;time&#45;span.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M916.74,-807C930.49,-807 945.37,-807 958.84,-807"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="958.92,-809.1 964.92,-807 958.92,-804.9 958.92,-809.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M916.74,-807C930.74,-807 945.91,-807 959.57,-807"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="964.92,-807 959.92,-809.25 962.42,-807 959.92,-807 959.92,-807 959.92,-807 962.42,-807 959.92,-804.75 964.92,-807 964.92,-807"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/time&#45;span.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts -->
 <g id="edge54" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/time&#45;span.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M903.67,-725.17C914.36,-723.27 925.8,-720.15 935.5,-715 942.72,-711.17 941.39,-706.03 948.5,-702 992.75,-676.89 1011.53,-690.96 1059.5,-674 1065.5,-671.88 1066.33,-669.57 1072.5,-668 1088.58,-663.9 1209.03,-668.94 1221.5,-658 1235.13,-646.04 1215.99,-630.09 1229.5,-618 1237.21,-611.1 1296.8,-608.06 1335.26,-606.8"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1335.78,-608.89 1341.71,-606.6 1335.65,-604.69 1335.78,-608.89"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M903.73,-721.12C919.92,-718 935.5,-715 935.5,-715 935.5,-715 948.5,-702 948.5,-702 948.5,-702 1059.5,-674 1059.5,-674 1059.5,-674 1072.5,-668 1072.5,-668 1072.5,-668 1221.5,-658 1221.5,-658 1221.5,-658 1229.5,-619 1229.5,-619 1229.5,-619 1295.75,-612.78 1336.61,-608.95"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1341.95,-608.45 1337.18,-611.15 1339.46,-608.68 1336.97,-608.91 1336.97,-608.91 1336.97,-608.91 1339.46,-608.68 1336.76,-606.67 1341.95,-608.45 1341.95,-608.45"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/time&#45;span.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/ReductionElement.ts -->
 <g id="edge55" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/time&#45;span.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/ReductionElement.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M903.73,-728.05C915.03,-726.38 926.82,-722.66 935.5,-715 949.51,-702.63 935.31,-688.25 948.5,-675 950.67,-672.82 953.11,-670.9 955.72,-669.22"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="957.1,-670.85 961.3,-666.08 955.04,-667.19 957.1,-670.85"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M903.73,-721.12C919.92,-718 935.5,-715 935.5,-715 935.5,-715 948.5,-675 948.5,-675 948.5,-675 958.77,-671.61 970.39,-667.77"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="975.43,-666.11 971.39,-669.81 973.06,-666.89 970.68,-667.67 970.68,-667.67 970.68,-667.67 973.06,-666.89 969.98,-665.54 975.43,-666.11 975.43,-666.11"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/time&#45;span.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/at.ts -->
 <g id="edge58" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/time&#45;span.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/at.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M903.82,-733.04C924.64,-735.97 950.64,-739.63 970.81,-742.47"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="970.63,-744.56 976.86,-743.32 971.21,-740.41 970.63,-744.56"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M903.82,-733.04C924.99,-736.02 951.54,-739.76 971.84,-742.61"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="976.86,-743.32 971.6,-744.85 974.39,-742.97 971.91,-742.62 971.91,-742.62 971.91,-742.62 974.39,-742.97 972.22,-740.4 976.86,-743.32 976.86,-743.32"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/time&#45;span.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;at.ts -->
 <g id="edge56" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/time&#45;span.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;at.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M887.56,-737.14C903.68,-744.47 927.27,-754.69 948.5,-762 996.82,-778.65 1020.84,-758.58 1059.5,-792 1070.49,-801.5 1061.27,-812.78 1072.5,-822 1082.83,-830.48 1096.86,-834.47 1109.6,-836.25"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1109.54,-838.36 1115.74,-836.96 1110.02,-834.18 1109.54,-838.36"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M889.57,-737.11C913.42,-747.18 948.5,-762 948.5,-762 948.5,-762 1059.5,-792 1059.5,-792 1059.5,-792 1072.5,-822 1072.5,-822 1072.5,-822 1092.17,-826.25 1110.58,-830.22"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1115.73,-831.33 1110.36,-832.47 1113.28,-830.8 1110.84,-830.27 1110.84,-830.27 1110.84,-830.27 1113.28,-830.8 1111.31,-828.07 1115.73,-831.33 1115.73,-831.33"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/time&#45;span.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/chord.ts -->
 <g id="edge59" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/time&#45;span.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/chord.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M903.82,-725.08C924.64,-723.39 950.64,-721.27 970.81,-719.62"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="971.05,-721.71 976.86,-719.13 970.71,-717.52 971.05,-721.71"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M903.82,-725.08C924.99,-723.36 951.54,-721.19 971.84,-719.54"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="976.86,-719.13 972.06,-721.78 974.37,-719.33 971.88,-719.54 971.88,-719.54 971.88,-719.54 974.37,-719.33 971.7,-717.29 976.86,-719.13 976.86,-719.13"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/time&#45;span.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;time&#45;span.ts -->
 <g id="edge57" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/time&#45;span.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;time&#45;span.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M879.18,-737.19C894.24,-749.27 922.2,-770.64 948.5,-785 955.64,-788.9 963.61,-792.5 971.21,-795.61"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="970.58,-797.62 976.93,-797.9 972.13,-793.72 970.58,-797.62"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M880.93,-737.16C903.69,-753.27 948.5,-785 948.5,-785 948.5,-785 961.99,-790.45 975.55,-795.92"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="980.52,-797.92 975.04,-798.14 978.2,-796.99 975.88,-796.05 975.88,-796.05 975.88,-796.05 978.2,-796.99 976.72,-793.97 980.52,-797.92 980.52,-797.92"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;time&#45;span.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts -->
 <g id="edge68" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;time&#45;span.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1042.51,-797.92C1049.01,-794.8 1055.08,-790.61 1059.5,-785 1083.95,-753.94 1043.99,-724.4 1072.5,-697 1120.52,-650.85 1171.72,-725.24 1221.5,-681 1233.43,-670.4 1218.11,-657.18 1229.5,-646 1251.21,-624.69 1267.24,-640.33 1296.5,-632 1311.04,-627.86 1326.87,-622.22 1339.94,-617.26"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1340.88,-619.14 1345.73,-615.03 1339.37,-615.22 1340.88,-619.14"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1027.48,-797.92C1042.49,-791.86 1059.5,-785 1059.5,-785 1059.5,-785 1072.5,-697 1072.5,-697 1072.5,-697 1221.5,-681 1221.5,-681 1221.5,-681 1229.5,-646 1229.5,-646 1229.5,-646 1296.5,-633 1296.5,-633 1296.5,-633 1319.26,-624.41 1339.09,-616.92"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1343.79,-615.14 1339.91,-619.01 1341.45,-616.02 1339.12,-616.91 1339.12,-616.91 1339.12,-616.91 1341.45,-616.02 1338.32,-614.8 1343.79,-615.14 1343.79,-615.14"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;time&#45;span.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;at.ts -->
 <g id="edge69" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;time&#45;span.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;at.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1043.19,-815.53C1052.76,-817.65 1063,-819.92 1072.5,-822 1084.72,-824.68 1098.15,-827.58 1109.93,-830.12"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1109.61,-832.2 1115.92,-831.41 1110.5,-828.09 1109.61,-832.2"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1043.09,-815.46C1058.4,-818.87 1072.5,-822 1072.5,-822 1072.5,-822 1092.17,-826.25 1110.58,-830.22"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1115.73,-831.33 1110.36,-832.47 1113.28,-830.8 1110.84,-830.27 1110.84,-830.27 1110.84,-830.27 1113.28,-830.8 1111.31,-828.07 1115.73,-831.33 1115.73,-831.33"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;time&#45;span.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;chord.ts -->
 <g id="edge70" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;time&#45;span.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;chord.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1043.16,-807C1063.17,-807 1087.5,-807 1107.01,-807"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1107.17,-809.1 1113.17,-807 1107.17,-804.9 1107.17,-809.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1043.16,-807C1063.51,-807 1088.34,-807 1108.02,-807"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1113.17,-807 1108.17,-809.25 1110.67,-807 1108.17,-807 1108.17,-807 1108.17,-807 1110.67,-807 1108.17,-804.75 1113.17,-807 1113.17,-807"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/index.ts -->
 <g id="node47" class="node">
@@ -1070,26 +1070,26 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/time&#45;span&#45;tree.ts -->
 <g id="edge61" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/time&#45;span&#45;tree.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M598.08,-720.98C616.3,-723.77 641.26,-727.58 663.53,-730.98"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="669.41,-734.01 663.8,-731.02 670.05,-729.86 669.41,-734.01"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M598.08,-720.98C616.61,-723.82 642.12,-727.71 664.67,-731.16"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="669.47,-733.66 664.79,-731.18 669.99,-730.2 669.47,-733.66"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;time&#45;span&#45;tree.ts -->
 <g id="edge62" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/interface/i&#45;time&#45;span&#45;tree.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M578.26,-726.01C589.38,-741.2 614.22,-771.59 643.5,-785 696.7,-809.36 764.39,-812.66 811.06,-811.26"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="817.29,-813.14 811.22,-811.25 817.14,-808.94 817.29,-813.14"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M581.64,-726.17C601.16,-744.73 643.5,-785 643.5,-785 643.5,-785 746.54,-795.19 812.38,-801.7"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="817.27,-803.94 812.47,-801.71 817.62,-800.46 817.27,-803.94"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/time&#45;span.ts -->
 <g id="edge60" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/has&#45;interface/time&#45;span.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M598.26,-717.75C638.09,-718.92 716.19,-721.31 782.5,-724 796.08,-724.55 810.9,-725.23 824.24,-725.88"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="830.15,-728.27 824.25,-725.88 830.35,-724.07 830.15,-728.27"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M598.23,-717.87C654.66,-719.75 782.5,-724 782.5,-724 782.5,-724 803.9,-725.03 825.04,-726.04"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="830.02,-728.03 825.11,-726.04 830.19,-724.53 830.02,-728.03"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/chord.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/note.ts -->
 <g id="edge71" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/chord.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/note.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1646.56,-583C1648.82,-583 1651.11,-583 1653.4,-583"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1653.43,-585.1 1659.43,-583 1653.43,-580.9 1653.43,-585.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1646.56,-583C1649.08,-583 1651.65,-583 1654.21,-583"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1659.43,-583 1654.43,-585.25 1656.93,-583 1654.43,-583 1654.43,-583 1654.43,-583 1656.93,-583 1654.43,-580.75 1659.43,-583 1659.43,-583"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/dist/index.js -->
 <g id="node55" class="node">
@@ -1103,32 +1103,32 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/note.ts&#45;&gt;packages/data&#45;type/music&#45;xml/dist/index.js -->
 <g id="edge82" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/note.ts&#45;&gt;packages/data&#45;type/music&#45;xml/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1713.8,-586.39C1732.87,-588.85 1758.77,-592.2 1779.12,-594.82"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1779.02,-596.93 1785.24,-595.61 1779.56,-592.76 1779.02,-596.93"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1713.8,-586.39C1733.2,-588.9 1759.67,-592.31 1780.17,-594.96"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1785.24,-595.61 1779.99,-597.2 1782.76,-595.29 1780.28,-594.97 1780.28,-594.97 1780.28,-594.97 1782.76,-595.29 1780.57,-592.74 1785.24,-595.61 1785.24,-595.61"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/head.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/chord.ts -->
 <g id="edge72" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/head.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/chord.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1507.19,-576.52C1529.65,-577.83 1562.1,-579.72 1586.17,-581.12"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1586.3,-583.23 1592.41,-581.48 1586.54,-579.04 1586.3,-583.23"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1507.19,-576.52C1530.03,-577.85 1563.2,-579.78 1587.39,-581.19"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1592.41,-581.48 1587.29,-583.44 1589.92,-581.34 1587.42,-581.19 1587.42,-581.19 1587.42,-581.19 1589.92,-581.34 1587.55,-578.95 1592.41,-581.48 1592.41,-581.48"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/head.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/i&#45;head.ts -->
 <g id="edge73" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/head.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/i&#45;head.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1507.27,-569.71C1510.54,-569.05 1513.92,-568.37 1517.27,-567.69"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1517.8,-569.73 1523.26,-566.49 1516.97,-565.61 1517.8,-569.73"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1507.27,-569.71C1510.87,-568.98 1514.59,-568.23 1518.28,-567.49"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1523.26,-566.49 1518.81,-569.68 1520.81,-566.98 1518.36,-567.47 1518.36,-567.47 1518.36,-567.47 1520.81,-566.98 1517.92,-565.27 1523.26,-566.49 1523.26,-566.49"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/i&#45;head.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/chord.ts -->
 <g id="edge74" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/i&#45;head.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/chord.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1579.73,-570.08C1581.91,-570.8 1584.14,-571.55 1586.36,-572.29"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1585.83,-574.32 1592.19,-574.23 1587.16,-570.34 1585.83,-574.32"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1579.73,-570.08C1582.17,-570.89 1584.66,-571.72 1587.14,-572.55"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1592.19,-574.23 1586.73,-574.78 1589.82,-573.44 1587.44,-572.65 1587.44,-572.65 1587.44,-572.65 1589.82,-573.44 1588.15,-570.51 1592.19,-574.23 1592.19,-574.23"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/part.ts&#45;&gt;packages/data&#45;type/music&#45;xml/dist/index.js -->
 <g id="edge83" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/common/part.ts&#45;&gt;packages/data&#45;type/music&#45;xml/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1507.21,-617.41C1567.11,-613.79 1713.89,-604.91 1779.22,-600.95"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1779.43,-603.04 1785.29,-600.59 1779.17,-598.85 1779.43,-603.04"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1507.21,-617.41C1567.35,-613.77 1715.08,-604.84 1780.01,-600.91"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1785.29,-600.59 1780.43,-603.13 1782.79,-600.74 1780.3,-600.89 1780.3,-600.89 1780.3,-600.89 1782.79,-600.74 1780.16,-598.64 1785.29,-600.59 1785.29,-600.59"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/gttm&#45;data.ts -->
 <g id="node56" class="node">
@@ -1142,62 +1142,62 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/gttm&#45;data.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/index.ts -->
 <g id="edge84" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/gttm&#45;data.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M476.05,-684.03C482.37,-706.63 499,-767.49 509.5,-819 516.87,-855.16 500.25,-871.56 522.5,-901 526.53,-906.33 532.16,-910.41 538.14,-913.52"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="537.37,-915.48 543.69,-916.12 539.15,-911.68 537.37,-915.48"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M475.75,-684.01C483.63,-715.53 509.5,-819 509.5,-819 509.5,-819 522.5,-901 522.5,-901 522.5,-901 534.05,-906.35 545.76,-911.77"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="550.41,-913.92 544.92,-913.86 548.14,-912.87 545.87,-911.82 545.87,-911.82 545.87,-911.82 548.14,-912.87 546.81,-909.78 550.41,-913.92 550.41,-913.92"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/gttm&#45;data.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/index.ts -->
 <g id="edge85" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/gttm&#45;data.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M474.69,-665.68C479.19,-631.78 496.31,-515.75 522.5,-491 534.15,-479.99 631.93,-463.74 683.86,-455.76"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="684.35,-457.81 689.96,-454.83 683.71,-453.66 684.35,-457.81"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M475.93,-665.88C485.82,-628.75 522.5,-491 522.5,-491 522.5,-491 630.04,-468.77 684.78,-457.45"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="689.9,-456.39 685.46,-459.61 687.46,-456.9 685.01,-457.41 685.01,-457.41 685.01,-457.41 687.46,-456.9 684.55,-455.2 689.9,-456.39 689.9,-456.39"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/gttm&#45;data.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/index.ts -->
 <g id="edge86" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/gttm&#45;data.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M484.2,-665.8C501.3,-651.09 534.87,-622.22 554.57,-605.28"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="556.08,-606.75 559.26,-601.24 553.34,-603.56 556.08,-606.75"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M484.2,-665.8C501.44,-650.97 535.44,-621.73 555.06,-604.85"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="559.26,-601.24 556.93,-606.21 557.36,-602.87 555.47,-604.5 555.47,-604.5 555.47,-604.5 557.36,-602.87 554,-602.8 559.26,-601.24 559.26,-601.24"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/gttm&#45;data.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/index.ts -->
 <g id="edge87" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/gttm&#45;data.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M486.72,-684.14C496.3,-690.43 509.76,-698.6 522.5,-704 527.37,-706.06 532.65,-707.89 537.87,-709.47"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="537.59,-711.57 543.94,-711.21 538.75,-707.53 537.59,-711.57"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M488.74,-684.02C503.12,-692.53 522.5,-704 522.5,-704 522.5,-704 529.81,-706 538.69,-708.43"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="543.75,-709.82 538.33,-710.67 541.34,-709.16 538.93,-708.5 538.93,-708.5 538.93,-708.5 541.34,-709.16 539.52,-706.33 543.75,-709.82 543.75,-709.82"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/index.ts -->
 <g id="edge88" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/GRP/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M381.61,-662.44C393.83,-698.27 441.93,-827.54 522.5,-901 527.03,-905.13 532.48,-908.62 538.04,-911.5"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="542.7,-916.09 538.21,-911.59 544.52,-912.31 542.7,-916.09"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M383.8,-662.12C409.78,-706.86 522.5,-901 522.5,-901 522.5,-901 534.05,-906.35 545.76,-911.77"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="549.67,-915.51 545.87,-911.82 551.14,-912.34 549.67,-915.51"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/index.ts -->
 <g id="edge90" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/MTR/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M381.95,-643.95C394.72,-611.91 442.7,-503.51 522.5,-461 573.51,-433.83 643.21,-438.62 683.53,-444.72"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="689.41,-447.78 683.82,-444.76 690.07,-443.63 689.41,-447.78"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M385.45,-643.93C414.21,-606.38 522.5,-465 522.5,-465 522.5,-465 630.04,-457.22 684.78,-453.26"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="690.03,-454.63 684.92,-453.25 689.78,-451.14 690.03,-454.63"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/ReductionElement.ts -->
 <g id="edge92" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/ReductionElement.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M404.52,-653C441.36,-653 510.82,-653 570,-653 570,-653 570,-653 718,-653 795.35,-653 884.49,-654.49 942.19,-655.65"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="948.32,-657.88 942.37,-655.66 948.41,-653.68 948.32,-657.88"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M404.73,-653C457.17,-653 570,-653 570,-653 570,-653 570,-653 718,-653 718,-653 859.36,-654.98 942.96,-656.16"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="948.36,-657.98 943.39,-656.16 948.41,-654.48 948.36,-657.98"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/index.ts -->
 <g id="edge91" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/PR/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M404.12,-643.99C432.81,-634.01 480.76,-617.66 522.5,-605 527.44,-603.5 532.69,-601.99 537.83,-600.55"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="544.35,-600.92 538.01,-600.5 543.23,-596.87 544.35,-600.92"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M404.58,-644.31C446.07,-630.48 522.5,-605 522.5,-605 522.5,-605 529.81,-603 538.69,-600.57"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="544.21,-600.87 538.93,-600.5 543.29,-597.5 544.21,-600.87"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/index.ts -->
 <g id="edge93" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/TSR/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M389.57,-662.02C400.57,-670.52 418.24,-682.97 435.5,-690 468.92,-703.62 509.91,-710.58 537.79,-713.98"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="543.63,-716.78 537.92,-714 544.12,-712.61 543.63,-716.78"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M392.59,-662.15C409.47,-673.1 435.5,-690 435.5,-690 435.5,-690 498.79,-702.71 538.54,-710.69"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="543.4,-713.45 538.85,-710.75 544.09,-710.01 543.4,-713.45"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/gttm&#45;data.ts -->
 <g id="edge89" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/analysis&#45;result/gttm&#45;data.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M404.9,-659.25C412.43,-661.03 420.84,-663.01 429.07,-664.96"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="434.83,-668.48 429.47,-665.06 435.79,-664.4 434.83,-668.48"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M404.9,-659.25C412.73,-661.1 421.5,-663.17 430.03,-665.19"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="434.91,-668.14 430.45,-665.29 435.71,-664.74 434.91,-668.14"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/GPR/gpr1.ts -->
 <g id="node58" class="node">
@@ -1229,8 +1229,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/GPR/gpr2a.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/index.ts -->
 <g id="edge95" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/GPR/gpr2a.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M306.62,-1070.72C318.32,-1067.09 332.16,-1062.78 344.42,-1058.97"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="345.19,-1060.93 350.3,-1057.15 343.94,-1056.92 345.19,-1060.93"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M306.62,-1070.72C318.64,-1066.99 332.92,-1062.55 345.42,-1058.66"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="350.3,-1057.15 346.19,-1060.78 347.91,-1057.89 345.52,-1058.63 345.52,-1058.63 345.52,-1058.63 347.91,-1057.89 344.85,-1056.48 350.3,-1057.15 350.3,-1057.15"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/Interval.ts -->
 <g id="node63" class="node">
@@ -1244,8 +1244,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/Interval.ts -->
 <g id="edge101" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/Interval.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M404.9,-1057.52C415.05,-1060.79 426.78,-1064.57 437.54,-1068.05"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="442.76,-1071.94 437.7,-1068.1 444.05,-1067.94 442.76,-1071.94"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M404.9,-1057.52C415.33,-1060.88 427.44,-1064.79 438.44,-1068.34"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="442.87,-1071.6 438.65,-1068.4 443.94,-1068.27 442.87,-1071.6"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/Note.ts -->
 <g id="node64" class="node">
@@ -1259,8 +1259,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/Note.ts -->
 <g id="edge102" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/Note.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M386.27,-1058.06C396.33,-1069.02 415.01,-1086.89 435.5,-1094 469.99,-1105.97 512.12,-1097.54 539.93,-1089.05"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="546.62,-1089.13 540.27,-1088.94 545.35,-1085.12 546.62,-1089.13"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M390.03,-1058.11C406.69,-1071.26 435.5,-1094 435.5,-1094 435.5,-1094 509.5,-1094 509.5,-1094 509.5,-1094 524.11,-1090.14 538.96,-1086.21"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="544.44,-1086.57 539.16,-1086.16 543.54,-1083.19 544.44,-1086.57"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/Pair.ts -->
 <g id="node65" class="node">
@@ -1274,8 +1274,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/Pair.ts -->
 <g id="edge103" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/Pair.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M404.9,-1040.48C415.69,-1037 428.27,-1032.94 439.58,-1029.3"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="446,-1029.43 439.64,-1029.28 444.71,-1025.44 446,-1029.43"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M404.9,-1040.48C415.99,-1036.91 428.97,-1032.72 440.51,-1029"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="445.89,-1029.1 440.6,-1028.97 444.82,-1025.77 445.89,-1029.1"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/Transition.ts -->
 <g id="node67" class="node">
@@ -1289,8 +1289,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/Transition.ts -->
 <g id="edge104" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/index.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/Transition.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M404.9,-1049C412.85,-1049 421.77,-1049 430.44,-1049"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="436.69,-1051.1 430.69,-1049 436.69,-1046.9 436.69,-1051.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M404.9,-1049C413.16,-1049 422.47,-1049 431.45,-1049"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="436.69,-1050.75 431.69,-1049 436.69,-1047.25 436.69,-1050.75"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/GPR/gpr2b.ts -->
 <g id="node61" class="node">
@@ -1304,8 +1304,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/GPR/gpr2b.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/index.ts -->
 <g id="edge96" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/GPR/gpr2b.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M307.14,-1049C318.63,-1049 332.1,-1049 344.11,-1049"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="344.23,-1051.1 350.23,-1049 344.23,-1046.9 344.23,-1051.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M307.14,-1049C318.94,-1049 332.85,-1049 345.09,-1049"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="350.23,-1049 345.23,-1051.25 347.73,-1049 345.23,-1049 345.23,-1049 345.23,-1049 347.73,-1049 345.23,-1046.75 350.23,-1049 350.23,-1049"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/GPR/gpr3.ts -->
 <g id="node62" class="node">
@@ -1319,8 +1319,8 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/GPR/gpr3.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/index.ts -->
 <g id="edge97" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/GPR/gpr3.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M306.11,-1027.12C317.91,-1030.79 331.97,-1035.16 344.41,-1039.02"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="344.01,-1041.1 350.36,-1040.88 345.26,-1037.09 344.01,-1041.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M306.11,-1027.12C318.24,-1030.89 332.74,-1035.4 345.42,-1039.34"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="350.36,-1040.88 344.92,-1041.54 347.98,-1040.13 345.59,-1039.39 345.59,-1039.39 345.59,-1039.39 347.98,-1040.13 346.26,-1037.24 350.36,-1040.88 350.36,-1040.88"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/create&#45;negated.ts -->
 <g id="node66" class="node">
@@ -1334,20 +1334,20 @@
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/Pair.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/create&#45;negated.ts -->
 <g id="edge98" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/Pair.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/create&#45;negated.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M499.61,-1023.06C504.78,-1023.86 510.38,-1024.73 516.08,-1025.62"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="516.05,-1027.74 522.3,-1026.58 516.69,-1023.59 516.05,-1027.74"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M499.61,-1023.06C505.11,-1023.91 511.09,-1024.84 517.17,-1025.79"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="522.3,-1026.58 517.01,-1028.04 519.83,-1026.2 517.36,-1025.82 517.36,-1025.82 517.36,-1025.82 519.83,-1026.2 517.7,-1023.59 522.3,-1026.58 522.3,-1026.58"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/Transition.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/Note.ts -->
 <g id="edge100" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/Transition.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/Note.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M503.5,-1058.02C514.43,-1061.3 526.82,-1065.02 537.91,-1068.36"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="537.58,-1070.45 543.93,-1070.16 538.79,-1066.43 537.58,-1070.45"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M503.5,-1058.02C514.73,-1061.39 527.5,-1065.23 538.83,-1068.63"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="543.93,-1070.16 538.49,-1070.88 541.53,-1069.45 539.14,-1068.73 539.14,-1068.73 539.14,-1068.73 541.53,-1069.45 539.79,-1066.57 543.93,-1070.16 543.93,-1070.16"/>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/Transition.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/create&#45;negated.ts -->
 <g id="edge99" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/Transition.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/src/preference&#45;rules/common/create&#45;negated.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M508.07,-1043.63C510.68,-1043.22 513.36,-1042.8 516.06,-1042.39"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="516.77,-1044.4 522.38,-1041.4 516.13,-1040.25 516.77,-1044.4"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M508.07,-1043.63C511.12,-1043.15 514.25,-1042.67 517.41,-1042.18"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="522.38,-1041.4 517.79,-1044.39 519.91,-1041.79 517.44,-1042.17 517.44,-1042.17 517.44,-1042.17 519.91,-1041.79 517.09,-1039.95 522.38,-1041.4 522.38,-1041.4"/>
 </g>
 </g>
 </svg>

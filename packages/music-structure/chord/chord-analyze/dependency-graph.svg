@@ -159,8 +159,8 @@
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/index.ts -->
 <g id="edge1" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M94.1,-406C97.12,-406 100.23,-406 103.33,-406"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="109.64,-408.1 103.64,-406 109.64,-403.9 109.64,-408.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M94.1,-406C97.44,-406 100.89,-406 104.31,-406"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="109.64,-407.75 104.64,-406 109.64,-404.25 109.64,-407.75"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/index.ts -->
 <g id="node5" class="node">
@@ -174,8 +174,8 @@
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/index.ts -->
 <g id="edge18" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M145.38,-396.88C151.68,-389.75 161.39,-380.21 172,-375 258.97,-332.33 375.93,-324.84 431.74,-323.86"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="437.95,-325.87 431.92,-323.86 437.89,-321.67 437.95,-325.87"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M148.02,-396.87C158.05,-387.72 172,-375 172,-375 172,-375 357.16,-342.66 432.59,-329.49"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="438.13,-330.29 432.9,-329.43 437.53,-326.85 438.13,-330.29"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/index.ts -->
 <g id="node11" class="node">
@@ -189,8 +189,8 @@
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/index.ts -->
 <g id="edge17" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M154.06,-415.01C159.66,-418.02 166.04,-421.29 172,-424 173.22,-424.55 174.46,-425.1 175.73,-425.64"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="180.53,-429.92 175.8,-425.67 182.15,-426.04 180.53,-429.92"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M155.4,-415.21C163.76,-419.64 172,-424 172,-424 172,-424 174.17,-424.83 177.41,-426.07"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="181.76,-429.61 177.72,-426.19 183.01,-426.34 181.76,-429.61"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/calc&#45;chord&#45;progression.ts -->
 <g id="node4" class="node">
@@ -204,8 +204,8 @@
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/calc&#45;chord&#45;progression.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/index.ts -->
 <g id="edge2" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/calc&#45;chord&#45;progression.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M373.21,-427.84C374.9,-426.68 376.5,-425.41 378,-424 394.41,-408.56 378.09,-393.47 391,-375 402.91,-357.96 422.46,-344.75 438.32,-336.05"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="439.67,-337.71 443.98,-333.05 437.7,-334 439.67,-337.71"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M358.3,-427.97C369.3,-425.75 378,-424 378,-424 378,-424 391,-375 391,-375 391,-375 425.23,-351.08 446.82,-336.01"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="450.95,-333.12 448.14,-337.83 448.9,-334.55 446.85,-335.98 446.85,-335.98 446.85,-335.98 448.9,-334.55 445.56,-334.14 450.95,-333.12 450.95,-333.12"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/remove&#45;item.ts -->
 <g id="node6" class="node">
@@ -219,8 +219,8 @@
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/calc&#45;chord&#45;progression.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/remove&#45;item.ts -->
 <g id="edge3" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/calc&#45;chord&#45;progression.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/remove&#45;item.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M336.99,-427.91C352.22,-422.23 372.59,-415.07 391,-410 399.21,-407.74 408.02,-405.65 416.59,-403.79"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="417.03,-405.84 422.46,-402.54 416.16,-401.73 417.03,-405.84"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M339.74,-427.86C362.22,-420.03 391,-410 391,-410 391,-410 403.1,-407.51 417.44,-404.57"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="422.38,-403.55 417.94,-406.76 419.93,-404.05 417.48,-404.56 417.48,-404.56 417.48,-404.56 419.93,-404.05 417.03,-402.35 422.38,-403.55 422.38,-403.55"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/select&#45;suitable&#45;progression.ts -->
 <g id="node7" class="node">
@@ -234,8 +234,8 @@
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/calc&#45;chord&#45;progression.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/select&#45;suitable&#45;progression.ts -->
 <g id="edge4" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/calc&#45;chord&#45;progression.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/select&#45;suitable&#45;progression.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M378.2,-431.84C380.27,-431.68 382.35,-431.51 384.44,-431.34"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="384.89,-433.41 390.71,-430.84 384.56,-429.23 384.89,-433.41"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M378.2,-431.84C380.66,-431.65 383.13,-431.45 385.61,-431.25"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="390.71,-430.84 385.9,-433.48 388.21,-431.04 385.72,-431.24 385.72,-431.24 385.72,-431.24 388.21,-431.04 385.54,-429 390.71,-430.84 390.71,-430.84"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/split&#45;array.ts -->
 <g id="node8" class="node">
@@ -249,8 +249,8 @@
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/calc&#45;chord&#45;progression.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/split&#45;array.ts -->
 <g id="edge5" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/calc&#45;chord&#45;progression.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/split&#45;array.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M378.2,-444.74C393.4,-446.56 409.18,-448.44 423.01,-450.1"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="423.01,-452.21 429.21,-450.84 423.5,-448.04 423.01,-452.21"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M378.2,-444.74C393.81,-446.61 410.04,-448.55 424.12,-450.23"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="429.21,-450.84 423.98,-452.48 426.73,-450.54 424.25,-450.25 424.25,-450.25 424.25,-450.25 426.73,-450.54 424.51,-448.01 429.21,-450.84 429.21,-450.84"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/time&#45;and&#45;chord.ts -->
 <g id="node9" class="node">
@@ -264,8 +264,8 @@
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/calc&#45;chord&#45;progression.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/time&#45;and&#45;chord.ts -->
 <g id="edge6" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/calc&#45;chord&#45;progression.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/time&#45;and&#45;chord.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M331.9,-446.07C347.36,-453.39 370.2,-463.51 391,-470 397.05,-471.89 403.46,-473.6 409.87,-475.14"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="409.43,-477.2 415.74,-476.51 410.38,-473.11 409.43,-477.2"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M334.68,-446.02C357.62,-455.79 391,-470 391,-470 391,-470 401.69,-472.2 414.89,-474.91"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="419.85,-475.93 414.5,-477.13 417.4,-475.43 414.95,-474.92 414.95,-474.92 414.95,-474.92 417.4,-475.43 415.41,-472.72 419.85,-475.93 419.85,-475.93"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/time&#45;and&#45;roman&#45;analysis.ts -->
 <g id="node10" class="node">
@@ -279,8 +279,8 @@
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/calc&#45;chord&#45;progression.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/time&#45;and&#45;roman&#45;analysis.ts -->
 <g id="edge7" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/calc&#45;chord&#45;progression.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/time&#45;and&#45;roman&#45;analysis.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M322.03,-446.36C335.34,-460.34 362.48,-486.48 391,-500 394.07,-501.45 397.28,-502.77 400.56,-503.96"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="400.19,-506.05 406.54,-505.96 401.52,-502.06 400.19,-506.05"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M324.6,-446.03C346.03,-463.45 391,-500 391,-500 391,-500 401.69,-502.2 414.89,-504.91"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="419.85,-505.93 414.5,-507.13 417.4,-505.43 414.95,-504.92 414.95,-504.92 414.95,-504.92 417.4,-505.43 415.41,-502.72 419.85,-505.93 419.85,-505.93"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/chord&#45;progression.ts -->
 <g id="node14" class="node">
@@ -294,8 +294,8 @@
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/chord&#45;progression.ts -->
 <g id="edge28" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/chord&#45;progression.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M492.23,-326.02C508.08,-327.24 528.99,-328.85 548.72,-330.36"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="554.64,-332.92 548.82,-330.37 554.96,-328.74 554.64,-332.92"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M492.23,-326.02C508.36,-327.26 529.71,-328.9 549.74,-330.44"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="554.67,-332.58 549.82,-330.45 554.94,-329.09 554.67,-332.58"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/get&#45;chord.ts -->
 <g id="node15" class="node">
@@ -309,8 +309,8 @@
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/get&#45;chord.ts -->
 <g id="edge30" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/get&#45;chord.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M492.08,-322.52C509.82,-321.59 533.82,-320.48 555,-320 615.47,-318.64 685.52,-319.4 728.8,-320.15"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="734.95,-322.35 728.99,-320.15 735.03,-318.16 734.95,-322.35"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M492.22,-322.82C518.47,-321.64 555,-320 555,-320 555,-320 665,-320 665,-320 665,-320 700.07,-320.33 729.67,-320.62"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="734.73,-322.41 729.74,-320.62 734.76,-318.91 734.73,-322.41"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/get&#45;body&#45;and&#45;root.ts -->
 <g id="node19" class="node">
@@ -324,8 +324,8 @@
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/get&#45;body&#45;and&#45;root.ts -->
 <g id="edge29" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/get&#45;body&#45;and&#45;root.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M492.08,-321.52C509.81,-319.87 533.81,-317.7 555,-316 684,-305.66 716.73,-300 846,-306 854.4,-306.39 863.24,-306.99 871.93,-307.7"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="877.74,-310.29 871.94,-307.7 878.1,-306.11 877.74,-310.29"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M492.22,-321.94C518.47,-319.87 555,-317 555,-317 555,-317 697,-306 697,-306 697,-306 846,-306 846,-306 846,-306 857.68,-307.09 872.43,-308.46"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="877.37,-310.68 872.56,-308.47 877.7,-307.19 877.37,-310.68"/>
 </g>
 <!-- packages/music&#45;structure/chord/roman&#45;chord/dist/index.js -->
 <g id="node12" class="node">
@@ -339,8 +339,8 @@
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/select&#45;suitable&#45;progression.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/dist/index.js -->
 <g id="edge14" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/select&#45;suitable&#45;progression.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M531.96,-434.09C537.16,-435.74 542.24,-437.69 547,-440 642.3,-486.13 728.54,-584.18 758.66,-620.81"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="757.27,-622.43 762.69,-625.75 760.53,-619.77 757.27,-622.43"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M514.99,-434.07C532.04,-437.23 547,-440 547,-440 547,-440 706.37,-579.36 755.65,-622.46"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="759.54,-625.86 754.3,-624.26 757.66,-624.21 755.78,-622.56 755.78,-622.56 755.78,-622.56 757.66,-624.21 757.26,-620.87 759.54,-625.86 759.54,-625.86"/>
 </g>
 <!-- packages/util/time&#45;and/dist/index.js -->
 <g id="node13" class="node">
@@ -354,68 +354,68 @@
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/time&#45;and&#45;chord.ts&#45;&gt;packages/util/time&#45;and/dist/index.js -->
 <g id="edge15" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/time&#45;and&#45;chord.ts&#45;&gt;packages/util/time&#45;and/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M514.19,-486.24C525.88,-488.51 537.67,-492.66 547,-500 675.23,-600.85 604.6,-700.56 697,-835 764.03,-932.53 874.1,-1024.97 915.54,-1058.11"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="914.24,-1059.76 920.24,-1061.85 916.85,-1056.47 914.24,-1059.76"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M514.05,-493.9C531.5,-497.13 547,-500 547,-500 547,-500 697,-818 697,-818 697,-818 878,-1015 878,-1015 878,-1015 903.28,-1041.22 919.25,-1057.77"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="923.08,-1061.75 917.99,-1059.72 921.35,-1059.95 919.61,-1058.15 919.61,-1058.15 919.61,-1058.15 921.35,-1059.95 921.23,-1056.59 923.08,-1061.75 923.08,-1061.75"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/time&#45;and&#45;roman&#45;analysis.ts&#45;&gt;packages/util/time&#45;and/dist/index.js -->
 <g id="edge16" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/time&#45;and&#45;roman&#45;analysis.ts&#45;&gt;packages/util/time&#45;and/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M466.4,-524.01C469.21,-583.14 487.87,-915.33 555,-985 648.37,-1081.9 826.66,-1079.78 899.64,-1074.3"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="900.14,-1076.36 905.95,-1073.79 899.81,-1072.18 900.14,-1076.36"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M467.78,-524.39C480.32,-590.63 555,-985 555,-985 555,-985 810.54,-1043.29 900.85,-1063.89"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="905.79,-1065.02 900.41,-1066.1 903.35,-1064.46 900.91,-1063.91 900.91,-1063.91 900.91,-1063.91 903.35,-1064.46 901.42,-1061.72 905.79,-1065.02 905.79,-1065.02"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/calc&#45;chord&#45;progression.ts -->
 <g id="edge8" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/calc&#45;chord&#45;progression.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M234.12,-437C236.22,-437 238.39,-437 240.62,-437"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="246.64,-439.1 240.64,-437 246.64,-434.9 246.64,-439.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M234.12,-437C236.46,-437 238.9,-437 241.41,-437"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="246.64,-438.75 241.64,-437 246.64,-435.25 246.64,-438.75"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/remove&#45;item.ts -->
 <g id="edge9" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/remove&#45;item.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M227.98,-427.85C230.07,-426.65 232.12,-425.36 234,-424 240.63,-419.22 239.57,-414.4 247,-411 276.02,-397.71 361.28,-394.99 415.89,-394.68"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="422.07,-396.76 416.06,-394.68 422.05,-392.56 422.07,-396.76"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M227.96,-427.79C237.55,-423.36 247,-419 247,-419 247,-419 353.34,-407.24 417.14,-400.18"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="422.61,-401.34 417.45,-400.15 422.22,-397.86 422.61,-401.34"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/select&#45;suitable&#45;progression.ts -->
 <g id="edge10" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/select&#45;suitable&#45;progression.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M227.43,-427.92C233.56,-425.5 240.44,-423.22 247,-422 292.02,-413.64 343.19,-413.89 384.54,-416.47"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="390.43,-418.96 384.58,-416.47 390.7,-414.77 390.43,-418.96"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M231.59,-427.93C239.8,-424.77 247,-422 247,-422 247,-422 378,-422 378,-422 378,-422 380.84,-422.1 385.48,-422.26"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="390.63,-424.19 385.69,-422.27 390.75,-420.69 390.63,-424.19"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/split&#45;array.ts -->
 <g id="edge11" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/split&#45;array.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M227.44,-446.02C233.57,-448.44 240.45,-450.74 247,-452 307.6,-463.69 379.49,-461.65 423.41,-458.66"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="429.57,-460.33 423.43,-458.66 429.27,-456.14 429.57,-460.33"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M231.59,-446.07C239.8,-449.23 247,-452 247,-452 247,-452 361.28,-453.58 423.97,-454.45"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="429.11,-456.27 424.14,-454.45 429.16,-452.77 429.11,-456.27"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/time&#45;and&#45;chord.ts -->
 <g id="edge12" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/time&#45;and&#45;chord.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M220.35,-446.1C227.71,-451.05 237.46,-456.8 247,-460 300.39,-477.92 364.87,-483.46 409.6,-484.96"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="415.71,-487.24 409.78,-484.96 415.84,-483.04 415.71,-487.24"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M226.59,-446.05C236.63,-450.95 247,-456 247,-456 247,-456 346.25,-469.26 410.51,-477.85"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="415.61,-480.3 410.88,-477.9 416.07,-476.83 415.61,-480.3"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/time&#45;and&#45;roman&#45;analysis.ts -->
 <g id="edge13" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/time&#45;and&#45;roman&#45;analysis.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M214.67,-446.09C221.69,-454.94 233.57,-468.05 247,-475 290.87,-497.69 345.6,-507.67 389.11,-511.99"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="394.98,-514.65 389.2,-512 395.38,-510.47 394.98,-514.65"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M219.49,-446.13C230.99,-455.28 247,-468 247,-468 247,-468 391,-500 391,-500 391,-500 401.69,-502.2 414.89,-504.91"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="419.5,-507.64 414.95,-504.92 420.2,-504.21 419.5,-507.64"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/chord&#45;progression.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/tonal&#45;pitch&#45;space/dist/index.js -->
 <g id="edge24" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/chord&#45;progression.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/tonal&#45;pitch&#45;space/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M616.47,-325.98C639.93,-287.33 732.08,-135.48 761.16,-87.56"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="763.07,-88.47 764.39,-82.25 759.48,-86.29 763.07,-88.47"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M616.47,-325.98C640.07,-287.1 733.21,-133.62 761.69,-86.7"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="764.39,-82.25 763.71,-87.69 763.09,-84.39 761.79,-86.53 761.79,-86.53 761.79,-86.53 763.09,-84.39 759.87,-85.36 764.39,-82.25 764.39,-82.25"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/chord&#45;progression.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/dist/index.js -->
 <g id="edge22" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/chord&#45;progression.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M615.93,-344.31C638.75,-387.35 734.1,-567.27 762.19,-620.26"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="760.46,-621.48 765.12,-625.8 764.17,-619.52 760.46,-621.48"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M615.93,-344.31C638.88,-387.61 735.26,-569.46 762.69,-621.21"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="765.12,-625.8 760.8,-622.44 763.95,-623.59 762.78,-621.38 762.78,-621.38 762.78,-621.38 763.95,-623.59 764.77,-620.33 765.12,-625.8 765.12,-625.8"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/chord&#45;progression.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/get&#45;chord.ts -->
 <g id="edge19" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/chord&#45;progression.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/get&#45;chord.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M665.27,-330.22C686.06,-328.39 709.4,-326.34 728.77,-324.63"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="729.12,-326.71 734.91,-324.09 728.75,-322.52 729.12,-326.71"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M665.27,-330.22C686.33,-328.37 710.01,-326.28 729.52,-324.56"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="734.91,-324.09 730.13,-326.77 732.42,-324.31 729.93,-324.53 729.93,-324.53 729.93,-324.53 732.42,-324.31 729.73,-322.29 734.91,-324.09 734.91,-324.09"/>
 </g>
 <!-- packages/util/graph/dist/index.js -->
 <g id="node16" class="node">
@@ -429,8 +429,8 @@
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/chord&#45;progression.ts&#45;&gt;packages/util/graph/dist/index.js -->
 <g id="edge20" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/chord&#45;progression.ts&#45;&gt;packages/util/graph/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M611.4,-344.09C613.57,-385.23 626.65,-557.04 697,-673 753.73,-766.5 865.13,-842.01 911.25,-870.63"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="910.33,-872.53 916.54,-873.88 912.53,-868.95 910.33,-872.53"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M613.3,-344.04C626.98,-397.79 697,-673 697,-673 697,-673 867.22,-825.11 917.92,-870.41"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="921.9,-873.98 916.67,-872.32 920.04,-872.31 918.17,-870.64 918.17,-870.64 918.17,-870.64 920.04,-872.31 919.67,-868.97 921.9,-873.98 921.9,-873.98"/>
 </g>
 <!-- packages/util/math/dist/index.js -->
 <g id="node17" class="node">
@@ -444,8 +444,8 @@
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/chord&#45;progression.ts&#45;&gt;packages/util/math/dist/index.js -->
 <g id="edge21" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/chord&#45;progression.ts&#45;&gt;packages/util/math/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M610.95,-344.16C611.05,-390.71 616.09,-604.44 697,-751 752.2,-851 866.4,-933.78 912.28,-964.34"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="911.36,-966.26 917.53,-967.81 913.68,-962.75 911.36,-966.26"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M612.96,-344.24C625.76,-404.68 697,-741 697,-741 697,-741 870.2,-914.93 919.21,-964.16"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="922.79,-967.75 917.67,-965.79 921.02,-965.98 919.26,-964.21 919.26,-964.21 919.26,-964.21 921.02,-965.98 920.85,-962.62 922.79,-967.75 922.79,-967.75"/>
 </g>
 <!-- packages/tonal&#45;objects/dist/index.js -->
 <g id="node18" class="node">
@@ -459,20 +459,20 @@
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/chord&#45;progression.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js -->
 <g id="edge23" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/chord&#45;progression.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M612.39,-325.76C619.29,-281.12 651.41,-88.59 697,-53 727.62,-29.09 842.43,-34.08 899.45,-38.23"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="899.63,-40.35 905.78,-38.7 899.95,-36.16 899.63,-40.35"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M613.76,-325.94C628.48,-277.67 697,-53 697,-53 697,-53 836.8,-45.86 900.74,-42.6"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="905.95,-42.33 901.07,-44.83 903.46,-42.46 900.96,-42.59 900.96,-42.59 900.96,-42.59 903.46,-42.46 900.84,-40.34 905.95,-42.33 905.95,-42.33"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/get&#45;chord.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js -->
 <g id="edge27" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/get&#45;chord.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M777.32,-311.68C800.82,-270.57 895.33,-105.18 923.83,-55.31"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="925.66,-56.32 926.82,-50.07 922.02,-54.24 925.66,-56.32"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M777.32,-311.68C800.91,-270.4 896.09,-103.83 924.17,-54.7"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="926.82,-50.07 926.29,-55.53 925.58,-52.24 924.34,-54.41 924.34,-54.41 924.34,-54.41 925.58,-52.24 922.38,-53.29 926.82,-50.07 926.82,-50.07"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/get&#45;chord.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/get&#45;body&#45;and&#45;root.ts -->
 <g id="edge25" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/get&#45;chord.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/get&#45;body&#45;and&#45;root.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M807.11,-319.46C826.03,-318.64 849.9,-317.59 871.69,-316.64"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="871.88,-318.73 877.78,-316.37 871.69,-314.54 871.88,-318.73"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M807.11,-319.46C826.27,-318.63 850.52,-317.56 872.53,-316.6"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="877.78,-316.37 872.88,-318.84 875.28,-316.48 872.78,-316.59 872.78,-316.59 872.78,-316.59 875.28,-316.48 872.69,-314.34 877.78,-316.37 877.78,-316.37"/>
 </g>
 <!-- packages/util/stdlib/dist/index.js -->
 <g id="node20" class="node">
@@ -486,8 +486,8 @@
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/get&#45;chord.ts&#45;&gt;packages/util/stdlib/dist/index.js -->
 <g id="edge26" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/get&#45;chord.ts&#45;&gt;packages/util/stdlib/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M775.2,-330.35C795.08,-388.5 901.77,-700.59 926.76,-773.68"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="924.87,-774.63 928.8,-779.63 928.84,-773.27 924.87,-774.63"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M775.2,-330.35C795.16,-388.73 902.63,-703.1 927.06,-774.55"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="928.8,-779.63 925.05,-775.63 927.99,-777.26 927.18,-774.9 927.18,-774.9 927.18,-774.9 927.99,-777.26 929.31,-774.17 928.8,-779.63 928.8,-779.63"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/test/index.test.ts -->
 <g id="node21" class="node">
@@ -510,14 +510,14 @@
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/test/key&#45;estimation.test.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/index.ts -->
 <g id="edge31" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/test/key&#45;estimation.test.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M365.7,-218.06C370,-219.71 374.16,-221.68 378,-224 413.78,-245.67 442.29,-287.33 455.68,-309.42"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="454.03,-310.76 458.91,-314.85 457.65,-308.61 454.03,-310.76"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M352.51,-218.07C366.09,-221.23 378,-224 378,-224 378,-224 429.15,-283.48 452.56,-310.69"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="456.06,-314.77 451.1,-312.45 454.43,-312.88 452.8,-310.98 452.8,-310.98 452.8,-310.98 454.43,-312.88 454.51,-309.51 456.06,-314.77 456.06,-314.77"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/test/key&#45;estimation.test.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js -->
 <g id="edge32" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/test/key&#45;estimation.test.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M327.32,-199.82C375.6,-168.4 542.18,-65.18 697,-31 768.03,-15.32 853.98,-26.3 899.71,-34.43"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="899.61,-36.55 905.89,-35.56 900.36,-32.42 899.61,-36.55"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M334.39,-199.9C414.42,-165.05 697,-42 697,-42 697,-42 836.8,-41.41 900.74,-41.13"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="905.95,-41.11 900.96,-43.38 903.45,-41.12 900.95,-41.13 900.95,-41.13 900.95,-41.13 903.45,-41.12 900.94,-38.88 905.95,-41.11 905.95,-41.11"/>
 </g>
 </g>
 </svg>

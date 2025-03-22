@@ -50,8 +50,8 @@
 <!-- packages/util/time&#45;and/index.ts&#45;&gt;packages/util/time&#45;and/src/index.ts -->
 <g id="edge1" class="edge">
 <title>packages/util/time&#45;and/index.ts&#45;&gt;packages/util/time&#45;and/src/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M94.83,-87C100.54,-87 106.65,-87 112.56,-87"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="118.88,-89.1 112.88,-87 118.88,-84.9 118.88,-89.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M94.83,-87C100.9,-87 107.43,-87 113.7,-87"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="118.88,-88.75 113.88,-87 118.88,-85.25 118.88,-88.75"/>
 </g>
 <!-- packages/util/time&#45;and/src/compress.ts -->
 <g id="node4" class="node">
@@ -65,8 +65,8 @@
 <!-- packages/util/time&#45;and/src/index.ts&#45;&gt;packages/util/time&#45;and/src/compress.ts -->
 <g id="edge3" class="edge">
 <title>packages/util/time&#45;and/src/index.ts&#45;&gt;packages/util/time&#45;and/src/compress.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M162.54,-77.92C169.53,-74.13 178,-69.94 186,-67 197.52,-62.77 210.39,-59.3 222.26,-56.57"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="228.82,-57.27 222.5,-56.52 227.9,-53.17 228.82,-57.27"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M164.67,-77.94C174.99,-72.64 186,-67 186,-67 186,-67 204.16,-62.76 222.84,-58.39"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="228.5,-58.86 223.24,-58.3 227.71,-55.45 228.5,-58.86"/>
 </g>
 <!-- packages/util/time&#45;and/src/time.ts -->
 <g id="node5" class="node">
@@ -80,8 +80,8 @@
 <!-- packages/util/time&#45;and/src/index.ts&#45;&gt;packages/util/time&#45;and/src/time.ts -->
 <g id="edge6" class="edge">
 <title>packages/util/time&#45;and/src/index.ts&#45;&gt;packages/util/time&#45;and/src/time.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M173.29,-80.08C177.51,-79.22 181.86,-78.47 186,-78 254.89,-70.15 272.76,-74.46 342,-78 344.04,-78.1 346.14,-78.24 348.25,-78.4"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="354.42,-81.02 348.62,-78.43 354.77,-76.83 354.42,-81.02"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M173.23,-80.95C180.28,-79.32 186,-78 186,-78 186,-78 342,-78 342,-78 342,-78 345.08,-78.32 349.51,-78.77"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="354.59,-81.05 349.8,-78.8 354.95,-77.57 354.59,-81.05"/>
 </g>
 <!-- packages/util/time&#45;and/src/search&#45;items&#45;in&#45;range.ts -->
 <g id="node6" class="node">
@@ -95,8 +95,8 @@
 <!-- packages/util/time&#45;and/src/index.ts&#45;&gt;packages/util/time&#45;and/src/search&#45;items&#45;in&#45;range.ts -->
 <g id="edge4" class="edge">
 <title>packages/util/time&#45;and/src/index.ts&#45;&gt;packages/util/time&#45;and/src/search&#45;items&#45;in&#45;range.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M173.03,-88.35C179.5,-88.68 186.75,-89.06 194.24,-89.44"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="200.47,-91.87 194.59,-89.46 200.69,-87.67 200.47,-91.87"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M173.03,-88.35C179.76,-88.69 187.33,-89.09 195.14,-89.49"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="200.49,-91.52 195.58,-89.51 200.67,-88.02 200.49,-91.52"/>
 </g>
 <!-- packages/util/time&#45;and/src/search&#45;items&#45;overlaps&#45;range.ts -->
 <g id="node7" class="node">
@@ -110,8 +110,8 @@
 <!-- packages/util/time&#45;and/src/index.ts&#45;&gt;packages/util/time&#45;and/src/search&#45;items&#45;overlaps&#45;range.ts -->
 <g id="edge5" class="edge">
 <title>packages/util/time&#45;and/src/index.ts&#45;&gt;packages/util/time&#45;and/src/search&#45;items&#45;overlaps&#45;range.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M161.33,-96.07C168.5,-100.25 177.45,-104.95 186,-108 190.51,-109.61 195.23,-111.06 200.02,-112.37"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="205.6,-115.98 200.31,-112.44 206.65,-111.91 205.6,-115.98"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M163.77,-96.03C174.34,-101.72 186,-108 186,-108 186,-108 197.28,-110.2 211.2,-112.91"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="216.1,-115.65 211.52,-112.97 216.77,-112.21 216.1,-115.65"/>
 </g>
 <!-- packages/util/time&#45;and/intex.test.ts -->
 <g id="node3" class="node">
@@ -125,20 +125,20 @@
 <!-- packages/util/time&#45;and/src/compress.ts&#45;&gt;packages/util/time&#45;and/src/time.ts -->
 <g id="edge2" class="edge">
 <title>packages/util/time&#45;and/src/compress.ts&#45;&gt;packages/util/time&#45;and/src/time.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M299.77,-56.06C313.09,-59.04 328.35,-62.8 342,-67 345.64,-68.12 349.43,-69.41 353.15,-70.76"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="352.56,-72.78 358.91,-72.9 354.02,-68.84 352.56,-72.78"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M299.9,-57.16C320.27,-61.92 342,-67 342,-67 342,-67 346.57,-68.76 352.59,-71.07"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="357.41,-72.93 351.94,-73.23 355.08,-72.03 352.75,-71.13 352.75,-71.13 352.75,-71.13 355.08,-72.03 353.55,-69.03 357.41,-72.93 357.41,-72.93"/>
 </g>
 <!-- packages/util/time&#45;and/src/search&#45;items&#45;in&#45;range.ts&#45;&gt;packages/util/time&#45;and/src/time.ts -->
 <g id="edge7" class="edge">
 <title>packages/util/time&#45;and/src/search&#45;items&#45;in&#45;range.ts&#45;&gt;packages/util/time&#45;and/src/time.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M327.08,-87.11C334.58,-86.4 342,-85.7 348.81,-85.05"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="349.12,-87.13 354.89,-84.48 348.72,-82.95 349.12,-87.13"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M327.08,-87.11C334.89,-86.37 342.6,-85.64 349.64,-84.97"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="354.89,-84.48 350.13,-87.19 352.4,-84.71 349.91,-84.95 349.91,-84.95 349.91,-84.95 352.4,-84.71 349.7,-82.71 354.89,-84.48 354.89,-84.48"/>
 </g>
 <!-- packages/util/time&#45;and/src/search&#45;items&#45;overlaps&#45;range.ts&#45;&gt;packages/util/time&#45;and/src/time.ts -->
 <g id="edge8" class="edge">
 <title>packages/util/time&#45;and/src/search&#45;items&#45;overlaps&#45;range.ts&#45;&gt;packages/util/time&#45;and/src/time.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M324.15,-113.98C330.28,-112.31 336.33,-110.33 342,-108 350.16,-104.65 358.4,-99.47 365.19,-94.62"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="366.5,-96.26 370.07,-91.01 364,-92.89 366.5,-96.26"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M311.57,-113.93C327.78,-110.77 342,-108 342,-108 342,-108 352.81,-100.8 363.04,-93.97"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="367.36,-91.09 364.45,-95.74 365.28,-92.48 363.2,-93.87 363.2,-93.87 363.2,-93.87 365.28,-92.48 361.95,-91.99 367.36,-91.09 367.36,-91.09"/>
 </g>
 </g>
 </svg>

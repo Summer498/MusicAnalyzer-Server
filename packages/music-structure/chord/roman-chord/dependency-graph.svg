@@ -60,8 +60,8 @@
 <!-- packages/music&#45;structure/chord/roman&#45;chord/index.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js -->
 <g id="edge1" class="edge">
 <title>packages/music&#45;structure/chord/roman&#45;chord/index.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M94.1,-49C110.74,-49 132.45,-49 150.25,-49"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="150.61,-51.1 156.61,-49 150.61,-46.9 150.61,-51.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M94.1,-49C111.03,-49 133.21,-49 151.18,-49"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="156.61,-49 151.61,-51.25 154.11,-49 151.61,-49 151.61,-49 151.61,-49 154.11,-49 151.61,-46.75 156.61,-49 156.61,-49"/>
 </g>
 </g>
 </svg>

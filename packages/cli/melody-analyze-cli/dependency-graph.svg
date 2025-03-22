@@ -68,7 +68,7 @@
 <g id="node1" class="node">
 <title>fs</title>
 <g id="a_node1"><a xlink:href="https://nodejs.org/api/fs.html" xlink:title="fs">
-<path fill="#ffffcc" stroke="grey" d="M254,-86C254,-86 212,-86 212,-86 209,-86 206,-83 206,-80 206,-80 206,-74 206,-74 206,-71 209,-68 212,-68 212,-68 254,-68 254,-68 257,-68 260,-71 260,-74 260,-74 260,-80 260,-80 260,-83 257,-86 254,-86"/>
+<path fill="#ffffcc" stroke="white" d="M254,-86C254,-86 212,-86 212,-86 209,-86 206,-83 206,-80 206,-80 206,-74 206,-74 206,-71 209,-68 212,-68 212,-68 254,-68 254,-68 257,-68 260,-71 260,-74 260,-74 260,-80 260,-80 260,-83 257,-86 254,-86"/>
 <text text-anchor="middle" x="233" y="-74.8" font-family="Helvetica,sans-Serif" font-size="9.00" fill="grey">fs</text>
 </a>
 </g>
@@ -97,14 +97,14 @@
 <!-- packages/cli/melody&#45;analyze&#45;cli/index.ts&#45;&gt;fs -->
 <g id="edge3" class="edge">
 <title>packages/cli/melody&#45;analyze&#45;cli/index.ts&#45;&gt;fs</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" stroke-opacity="0.200000" d="M97.84,-125.94C125.77,-115.75 171.12,-99.21 201.25,-88.22"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="202.15,-90.12 207.07,-86.09 200.71,-86.18 202.15,-90.12"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" stroke-opacity="0.200000" d="M97.84,-125.94C126,-115.67 171.88,-98.93 202.01,-87.94"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="207.07,-86.09 203.14,-89.92 204.72,-86.95 202.37,-87.81 202.37,-87.81 202.37,-87.81 204.72,-86.95 201.6,-85.69 207.07,-86.09 207.07,-86.09"/>
 </g>
 <!-- packages/cli/melody&#45;analyze&#45;cli/index.ts&#45;&gt;node_modules/yargs -->
 <g id="edge4" class="edge">
 <title>packages/cli/melody&#45;analyze&#45;cli/index.ts&#45;&gt;node_modules/yargs</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M84.2,-125.78C101.79,-111.47 137.17,-83.34 169,-62 182.25,-53.12 197.68,-44.04 209.96,-37.09"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="211.15,-38.83 215.35,-34.06 209.09,-35.17 211.15,-38.83"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M85.16,-125.75C110.99,-106.11 169,-62 169,-62 169,-62 193.45,-47.64 211.89,-36.81"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="216.43,-34.15 213.25,-38.62 214.27,-35.41 212.12,-36.68 212.12,-36.68 212.12,-36.68 214.27,-35.41 210.98,-34.74 216.43,-34.15 216.43,-34.15"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js -->
 <g id="node4" class="node">
@@ -118,8 +118,8 @@
 <!-- packages/cli/melody&#45;analyze&#45;cli/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js -->
 <g id="edge1" class="edge">
 <title>packages/cli/melody&#45;analyze&#45;cli/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M83.68,-144.13C111.17,-167.65 184.48,-230.36 216.58,-257.81"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="215.44,-259.6 221.37,-261.91 218.17,-256.41 215.44,-259.6"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M83.68,-144.13C111.4,-167.85 185.69,-231.39 217.37,-258.48"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="221.37,-261.91 216.1,-260.37 219.47,-260.28 217.57,-258.66 217.57,-258.66 217.57,-258.66 219.47,-260.28 219.03,-256.95 221.37,-261.91 221.37,-261.91"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/dist/index.js -->
 <g id="node5" class="node">
@@ -133,8 +133,8 @@
 <!-- packages/cli/melody&#45;analyze&#45;cli/index.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/dist/index.js -->
 <g id="edge2" class="edge">
 <title>packages/cli/melody&#45;analyze&#45;cli/index.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M99.26,-136.32C126.84,-137.71 170.26,-139.89 199.87,-141.38"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="199.87,-143.49 205.97,-141.69 200.08,-139.29 199.87,-143.49"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M99.26,-136.32C127.07,-137.72 170.99,-139.93 200.61,-141.42"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="205.97,-141.69 200.86,-143.69 203.47,-141.56 200.98,-141.44 200.98,-141.44 200.98,-141.44 203.47,-141.56 201.09,-139.19 205.97,-141.69 205.97,-141.69"/>
 </g>
 </g>
 </svg>

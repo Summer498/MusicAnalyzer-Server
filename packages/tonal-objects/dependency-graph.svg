@@ -166,50 +166,50 @@
 <!-- packages/tonal&#45;objects/index.ts&#45;&gt;node_modules/@tonaljs/chord -->
 <g id="edge2" class="edge">
 <title>packages/tonal&#45;objects/index.ts&#45;&gt;node_modules/@tonaljs/chord</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M62.37,-327.58C65.73,-293.32 78.96,-176.07 105,-151 134.58,-122.51 184.03,-118.8 216.58,-119.96"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="222.76,-122.35 216.86,-119.97 222.95,-118.15 222.76,-122.35"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M63.84,-327.91C72.87,-292.81 105,-168 105,-168 105,-168 191,-138 191,-138 191,-138 203.98,-134.64 217.67,-131.1"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="223.15,-131.49 217.87,-131.05 222.28,-128.1 223.15,-131.49"/>
 </g>
 <!-- packages/tonal&#45;objects/index.ts&#45;&gt;node_modules/@tonaljs/interval -->
 <g id="edge3" class="edge">
 <title>packages/tonal&#45;objects/index.ts&#45;&gt;node_modules/@tonaljs/interval</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M79.48,-327.99C113.41,-310.98 186.9,-274.13 225,-255.03"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="231.74,-254 225.44,-254.81 229.86,-250.25 231.74,-254"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M79.48,-327.99C113.69,-310.84 188.11,-273.53 225.93,-254.56"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="231.58,-253.69 226.33,-254.36 230.02,-250.56 231.58,-253.69"/>
 </g>
 <!-- packages/tonal&#45;objects/index.ts&#45;&gt;node_modules/@tonaljs/key -->
 <g id="edge4" class="edge">
 <title>packages/tonal&#45;objects/index.ts&#45;&gt;node_modules/@tonaljs/key</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M62,-327.82C64.21,-290.27 74.5,-148.95 105,-119 134.23,-90.3 183.77,-87.44 216.44,-89.25"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="222.59,-91.77 216.75,-89.27 222.87,-87.58 222.59,-91.77"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M63.48,-327.93C71.99,-289 105,-138 105,-138 105,-138 191,-108 191,-108 191,-108 203.98,-104.64 217.67,-101.1"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="223.15,-101.49 217.87,-101.05 222.28,-98.1 223.15,-101.49"/>
 </g>
 <!-- packages/tonal&#45;objects/index.ts&#45;&gt;node_modules/@tonaljs/note -->
 <g id="edge5" class="edge">
 <title>packages/tonal&#45;objects/index.ts&#45;&gt;node_modules/@tonaljs/note</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M65.95,-327.68C72.78,-314.19 86.95,-289.09 105,-273 137.22,-244.28 185.14,-228.07 216.71,-219.92"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="223.31,-220.43 216.98,-219.85 222.29,-216.36 223.31,-220.43"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M67.73,-327.83C79.76,-310.13 105,-273 105,-273 105,-273 191,-228 191,-228 191,-228 203.98,-224.64 217.67,-221.1"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="223.15,-221.49 217.87,-221.05 222.28,-218.1 223.15,-221.49"/>
 </g>
 <!-- packages/tonal&#45;objects/index.ts&#45;&gt;node_modules/@tonaljs/pitch&#45;interval -->
 <g id="edge6" class="edge">
 <title>packages/tonal&#45;objects/index.ts&#45;&gt;node_modules/@tonaljs/pitch&#45;interval</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M61.73,-327.89C62.94,-287.1 69.99,-121.77 105,-87 130.8,-61.39 172.89,-56.94 204.92,-57.98"/>
-<polygon fill="none" stroke="#000000" stroke-opacity="0.200000" points="205.1,-60.09 211.19,-58.26 205.29,-55.9 205.1,-60.09"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M63.26,-327.78C71.4,-285.12 105,-109 105,-109 105,-109 191,-78 191,-78 191,-78 198.91,-75.95 208.89,-73.37"/>
+<polygon fill="none" stroke="#000000" stroke-opacity="0.200000" points="209.52,-75.02 213.92,-72.07 208.64,-71.63 209.52,-75.02"/>
 </g>
 <!-- packages/tonal&#45;objects/index.ts&#45;&gt;node_modules/@tonaljs/pitch&#45;note -->
 <g id="edge7" class="edge">
 <title>packages/tonal&#45;objects/index.ts&#45;&gt;node_modules/@tonaljs/pitch&#45;note</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M62.52,-327.89C65.32,-307.03 75.07,-255.43 105,-227 134.05,-199.4 179.94,-189.08 212.09,-185.24"/>
-<polygon fill="none" stroke="#000000" stroke-opacity="0.200000" points="212.59,-187.3 218.32,-184.55 212.13,-183.12 212.59,-187.3"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M65.21,-327.79C75.73,-301.67 105,-229 105,-229 105,-229 191,-198 191,-198 191,-198 201.44,-195.3 213.45,-192.19"/>
+<polygon fill="none" stroke="#000000" stroke-opacity="0.200000" points="213.9,-193.89 218.3,-190.94 213.02,-190.5 213.9,-193.89"/>
 </g>
 <!-- packages/tonal&#45;objects/index.ts&#45;&gt;node_modules/@tonaljs/roman&#45;numeral -->
 <g id="edge8" class="edge">
 <title>packages/tonal&#45;objects/index.ts&#45;&gt;node_modules/@tonaljs/roman&#45;numeral</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M61.53,-327.96C61.88,-284.27 65.65,-95.54 105,-56 129.53,-31.35 169.19,-26.53 200.68,-27.36"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="206.78,-29.69 200.87,-27.37 206.94,-25.5 206.78,-29.69"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M63.05,-327.82C70.8,-281.86 105,-79 105,-79 105,-79 191,-48 191,-48 191,-48 198.91,-45.95 208.89,-43.37"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="214.36,-43.77 209.08,-43.32 213.48,-40.38 214.36,-43.77"/>
 </g>
 <!-- packages/tonal&#45;objects/index.ts&#45;&gt;node_modules/@tonaljs/scale -->
 <g id="edge9" class="edge">
 <title>packages/tonal&#45;objects/index.ts&#45;&gt;node_modules/@tonaljs/scale</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M61.21,-327.64C60.93,-301.32 63.93,-226.05 105,-187 134.93,-158.54 184.07,-152.42 216.48,-151.8"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="222.74,-153.85 216.73,-151.8 222.71,-149.65 222.74,-153.85"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M64.35,-327.88C74.03,-296.96 105,-198 105,-198 105,-198 191,-168 191,-168 191,-168 203.98,-164.64 217.67,-161.1"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="223.15,-161.49 217.87,-161.05 222.28,-158.1 223.15,-161.49"/>
 </g>
 <!-- packages/tonal&#45;objects/src/index.ts -->
 <g id="node11" class="node">
@@ -223,26 +223,26 @@
 <!-- packages/tonal&#45;objects/index.ts&#45;&gt;packages/tonal&#45;objects/src/index.ts -->
 <g id="edge1" class="edge">
 <title>packages/tonal&#45;objects/index.ts&#45;&gt;packages/tonal&#45;objects/src/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M87.74,-339.71C93.8,-340.33 100.32,-341.01 106.6,-341.66"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="112.57,-344.38 106.82,-341.68 113,-340.21 112.57,-344.38"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M87.74,-339.71C94.18,-340.37 101.13,-341.09 107.78,-341.78"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="112.61,-344.04 107.82,-341.78 112.97,-340.55 112.61,-344.04"/>
 </g>
 <!-- packages/tonal&#45;objects/src/index.ts&#45;&gt;node_modules/@tonaljs/interval -->
 <g id="edge11" class="edge">
 <title>packages/tonal&#45;objects/src/index.ts&#45;&gt;node_modules/@tonaljs/interval</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M150.58,-335.95C169.67,-317.92 212.51,-277.47 234.84,-256.37"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="236.36,-257.82 239.28,-252.18 233.48,-254.77 236.36,-257.82"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M150.58,-335.95C169.83,-317.77 213.22,-276.79 235.4,-255.85"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="239.28,-252.18 237.19,-257.25 237.46,-253.89 235.65,-255.61 235.65,-255.61 235.65,-255.61 237.46,-253.89 234.1,-253.98 239.28,-252.18 239.28,-252.18"/>
 </g>
 <!-- packages/tonal&#45;objects/src/index.ts&#45;&gt;node_modules/@tonaljs/note -->
 <g id="edge12" class="edge">
 <title>packages/tonal&#45;objects/src/index.ts&#45;&gt;node_modules/@tonaljs/note</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M144.68,-335.78C155.48,-308.82 186.58,-231.8 191,-228 198.25,-221.77 207.76,-218.08 216.98,-215.91"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="217.52,-217.95 222.98,-214.69 216.68,-213.83 217.52,-217.95"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M144.92,-335.82C156.71,-308.24 191,-228 191,-228 191,-228 203.98,-224.64 217.67,-221.1"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="222.72,-219.8 218.44,-223.23 220.29,-220.42 217.87,-221.05 217.87,-221.05 217.87,-221.05 220.29,-220.42 217.31,-218.87 222.72,-219.8 222.72,-219.8"/>
 </g>
 <!-- packages/tonal&#45;objects/src/index.ts&#45;&gt;node_modules/@tonaljs/pitch&#45;note -->
 <g id="edge13" class="edge">
 <title>packages/tonal&#45;objects/src/index.ts&#45;&gt;node_modules/@tonaljs/pitch&#45;note</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M141.26,-335.83C142.51,-310.05 149.7,-236.32 191,-198 196.89,-192.53 204.52,-189 212.29,-186.73"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="212.93,-188.73 218.23,-185.23 211.9,-184.66 212.93,-188.73"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M144.13,-335.8C155.07,-303.62 191,-198 191,-198 191,-198 201.44,-195.3 213.45,-192.19"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="218.3,-190.94 214.02,-194.37 215.88,-191.57 213.46,-192.19 213.46,-192.19 213.46,-192.19 215.88,-191.57 212.9,-190.01 218.3,-190.94 218.3,-190.94"/>
 </g>
 <!-- packages/util/stdlib/dist/index.js -->
 <g id="node12" class="node">
@@ -256,8 +256,8 @@
 <!-- packages/tonal&#45;objects/src/index.ts&#45;&gt;packages/util/stdlib/dist/index.js -->
 <g id="edge10" class="edge">
 <title>packages/tonal&#45;objects/src/index.ts&#45;&gt;packages/util/stdlib/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M167.14,-346.94C182.02,-348.04 200.79,-349.43 216.6,-350.6"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="216.58,-352.7 222.72,-351.05 216.89,-348.52 216.58,-352.7"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M167.14,-346.94C182.29,-348.06 201.46,-349.48 217.44,-350.66"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="222.72,-351.05 217.57,-352.93 220.23,-350.87 217.74,-350.68 217.74,-350.68 217.74,-350.68 220.23,-350.87 217.9,-348.44 222.72,-351.05 222.72,-351.05"/>
 </g>
 </g>
 </svg>

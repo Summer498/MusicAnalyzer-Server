@@ -108,8 +108,8 @@
 <!-- packages/UI/view/index.ts&#45;&gt;packages/UI/view/src/index.ts -->
 <g id="edge1" class="edge">
 <title>packages/UI/view/index.ts&#45;&gt;packages/UI/view/src/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M86.1,-131C89.12,-131 92.23,-131 95.33,-131"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="101.64,-133.1 95.64,-131 101.64,-128.9 101.64,-133.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M86.1,-131C89.44,-131 92.89,-131 96.31,-131"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="101.64,-132.75 96.64,-131 101.64,-129.25 101.64,-132.75"/>
 </g>
 <!-- packages/UI/view/src/collection&#45;hierarchy.ts -->
 <g id="node5" class="node">
@@ -123,8 +123,8 @@
 <!-- packages/UI/view/src/index.ts&#45;&gt;packages/UI/view/src/collection&#45;hierarchy.ts -->
 <g id="edge6" class="edge">
 <title>packages/UI/view/src/index.ts&#45;&gt;packages/UI/view/src/collection&#45;hierarchy.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M148.44,-140.08C154.88,-143.1 162.19,-146.35 169,-149 175.32,-151.45 182.12,-153.84 188.75,-156.02"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="194.12,-159.97 189.05,-156.12 195.41,-155.97 194.12,-159.97"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M149.96,-140.21C159.55,-144.64 169,-149 169,-149 169,-149 179.84,-152.45 192.02,-156.33"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="196.39,-159.56 192.15,-156.38 197.45,-156.23 196.39,-159.56"/>
 </g>
 <!-- packages/UI/view/src/collection&#45;layer.ts -->
 <g id="node6" class="node">
@@ -138,8 +138,8 @@
 <!-- packages/UI/view/src/index.ts&#45;&gt;packages/UI/view/src/collection&#45;layer.ts -->
 <g id="edge7" class="edge">
 <title>packages/UI/view/src/index.ts&#45;&gt;packages/UI/view/src/collection&#45;layer.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M156.18,-133.7C189.5,-137.13 247.87,-143.15 290.62,-147.55"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="296.6,-150.28 290.84,-147.57 297.03,-146.1 296.6,-150.28"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M156.18,-133.7C189.78,-137.16 248.83,-143.24 291.67,-147.66"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="296.63,-149.93 291.84,-147.68 296.99,-146.45 296.63,-149.93"/>
 </g>
 <!-- packages/UI/view/src/mvc.ts -->
 <g id="node7" class="node">
@@ -153,8 +153,8 @@
 <!-- packages/UI/view/src/index.ts&#45;&gt;packages/UI/view/src/mvc.ts -->
 <g id="edge8" class="edge">
 <title>packages/UI/view/src/index.ts&#45;&gt;packages/UI/view/src/mvc.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M156.13,-126.08C217.32,-115.69 373.84,-95.78 494,-138 505.87,-142.17 506.49,-147.92 518,-153 523.63,-155.49 529.81,-157.64 535.85,-159.46"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="541.23,-163.2 536.05,-159.52 542.39,-159.16 541.23,-163.2"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M156.23,-129.65C163.28,-129.29 169,-129 169,-129 169,-129 284,-129 284,-129 284,-129 392,-132 392,-132 392,-132 494,-138 494,-138 494,-138 518,-153 518,-153 518,-153 526.66,-155.43 536.78,-158.26"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="541.36,-161.36 537.01,-158.32 542.3,-157.99 541.36,-161.36"/>
 </g>
 <!-- packages/UI/view/src/svg&#45;collection.ts -->
 <g id="node8" class="node">
@@ -168,8 +168,8 @@
 <!-- packages/UI/view/src/index.ts&#45;&gt;packages/UI/view/src/svg&#45;collection.ts -->
 <g id="edge10" class="edge">
 <title>packages/UI/view/src/index.ts&#45;&gt;packages/UI/view/src/svg&#45;collection.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M156.2,-129.7C203.56,-127.79 306.43,-125.67 392,-138 399.14,-139.03 406.67,-140.64 413.83,-142.44"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="419.2,-146.01 413.93,-142.46 420.26,-141.95 419.2,-146.01"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M156.08,-131.7C222.35,-133.47 392,-138 392,-138 392,-138 399.7,-140.05 409.42,-142.63"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="413.88,-145.62 409.5,-142.65 414.78,-142.24 413.88,-145.62"/>
 </g>
 <!-- packages/UI/view/src/reflectable/index.ts -->
 <g id="node9" class="node">
@@ -183,50 +183,50 @@
 <!-- packages/UI/view/src/index.ts&#45;&gt;packages/UI/view/src/reflectable/index.ts -->
 <g id="edge9" class="edge">
 <title>packages/UI/view/src/index.ts&#45;&gt;packages/UI/view/src/reflectable/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M145.81,-122C152.71,-118.52 161.03,-114.93 169,-113 301.85,-80.84 466.71,-88.13 535.49,-93.18"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="541.68,-95.76 535.86,-93.21 542,-91.57 541.68,-95.76"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M149.96,-121.79C159.55,-117.36 169,-113 169,-113 169,-113 442.61,-101.34 536.68,-97.33"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="541.9,-98.86 536.83,-97.33 541.75,-95.37 541.9,-98.86"/>
 </g>
 <!-- packages/UI/view/src/collection&#45;hierarchy.ts&#45;&gt;packages/UI/controllers/dist/index.js -->
 <g id="edge4" class="edge">
 <title>packages/UI/view/src/collection&#45;hierarchy.ts&#45;&gt;packages/UI/controllers/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M238.62,-176.01C259.27,-192.74 303.59,-228.66 327.47,-248.01"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="326.26,-249.73 332.24,-251.88 328.9,-246.47 326.26,-249.73"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M238.62,-176.01C259.44,-192.88 304.33,-229.26 328.07,-248.49"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="332.24,-251.88 326.94,-250.48 330.3,-250.3 328.36,-248.73 328.36,-248.73 328.36,-248.73 330.3,-250.3 329.77,-246.98 332.24,-251.88 332.24,-251.88"/>
 </g>
 <!-- packages/UI/view/src/collection&#45;hierarchy.ts&#45;&gt;packages/UI/view/src/collection&#45;layer.ts -->
 <g id="edge2" class="edge">
 <title>packages/UI/view/src/collection&#45;hierarchy.ts&#45;&gt;packages/UI/view/src/collection&#45;layer.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M284.14,-160.16C286.27,-159.91 288.4,-159.65 290.52,-159.39"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="291.14,-161.43 296.85,-158.63 290.64,-157.26 291.14,-161.43"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M284.14,-160.16C286.67,-159.86 289.2,-159.55 291.71,-159.25"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="296.85,-158.63 292.15,-161.46 294.36,-158.93 291.88,-159.23 291.88,-159.23 291.88,-159.23 294.36,-158.93 291.61,-157 296.85,-158.63 296.85,-158.63"/>
 </g>
 <!-- packages/UI/view/src/collection&#45;hierarchy.ts&#45;&gt;packages/UI/view/src/mvc.ts -->
 <g id="edge3" class="edge">
 <title>packages/UI/view/src/collection&#45;hierarchy.ts&#45;&gt;packages/UI/view/src/mvc.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M284.02,-167.88C288.41,-167.93 292.78,-167.97 297,-168 384.55,-168.63 406.45,-168.59 494,-168 507.69,-167.91 522.81,-167.72 535.79,-167.53"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="536.01,-169.63 541.97,-167.44 535.94,-165.43 536.01,-169.63"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M284.25,-167.82C291.8,-167.93 297,-168 297,-168 297,-168 494,-168 494,-168 494,-168 516.46,-167.7 536.64,-167.42"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="541.7,-167.36 536.73,-169.67 539.2,-167.39 536.7,-167.42 536.7,-167.42 536.7,-167.42 539.2,-167.39 536.67,-165.17 541.7,-167.36 541.7,-167.36"/>
 </g>
 <!-- packages/UI/view/src/collection&#45;layer.ts&#45;&gt;packages/UI/view/src/svg&#45;collection.ts -->
 <g id="edge5" class="edge">
 <title>packages/UI/view/src/collection&#45;layer.ts&#45;&gt;packages/UI/view/src/svg&#45;collection.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M392.18,-153C394.31,-153 396.45,-153 398.58,-153"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="398.97,-155.1 404.97,-153 398.97,-150.9 398.97,-155.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M392.18,-153C394.71,-153 397.25,-153 399.79,-153"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="404.97,-153 399.97,-155.25 402.47,-153 399.97,-153 399.97,-153 399.97,-153 402.47,-153 399.97,-150.75 404.97,-153 404.97,-153"/>
 </g>
 <!-- packages/UI/view/src/svg&#45;collection.ts&#45;&gt;packages/UI/view&#45;parameters/dist/index.js -->
 <g id="edge20" class="edge">
 <title>packages/UI/view/src/svg&#45;collection.ts&#45;&gt;packages/UI/view&#45;parameters/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M460.52,-162.21C481.33,-181.34 529.31,-225.44 553.5,-247.67"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="552.17,-249.3 558.01,-251.82 555.01,-246.21 552.17,-249.3"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M460.52,-162.21C481.5,-181.5 530.11,-226.18 554.1,-248.23"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="558.01,-251.82 552.8,-250.09 556.17,-250.12 554.33,-248.43 554.33,-248.43 554.33,-248.43 556.17,-250.12 555.85,-246.78 558.01,-251.82 558.01,-251.82"/>
 </g>
 <!-- packages/UI/view/src/svg&#45;collection.ts&#45;&gt;packages/UI/view/src/mvc.ts -->
 <g id="edge17" class="edge">
 <title>packages/UI/view/src/svg&#45;collection.ts&#45;&gt;packages/UI/view/src/mvc.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M494.25,-158.21C508.05,-159.86 523.02,-161.64 535.85,-163.17"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="535.76,-165.27 541.96,-163.9 536.25,-161.1 535.76,-165.27"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M494.25,-158.21C508.42,-159.9 523.84,-161.74 536.9,-163.29"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="541.96,-163.9 536.73,-165.54 539.48,-163.6 537,-163.31 537,-163.31 537,-163.31 539.48,-163.6 537.27,-161.07 541.96,-163.9 541.96,-163.9"/>
 </g>
 <!-- packages/UI/view/src/svg&#45;collection.ts&#45;&gt;packages/UI/view/src/reflectable/index.ts -->
 <g id="edge18" class="edge">
 <title>packages/UI/view/src/svg&#45;collection.ts&#45;&gt;packages/UI/view/src/reflectable/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M461.79,-143.99C474.68,-134.1 496.76,-118.38 518,-109 523.6,-106.53 529.77,-104.45 535.8,-102.73"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="536.52,-104.71 541.77,-101.13 535.43,-100.66 536.52,-104.71"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M464.49,-143.88C484.26,-131 518,-109 518,-109 518,-109 526.66,-106.75 536.78,-104.12"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="541.83,-102.8 537.56,-106.24 539.41,-103.43 536.99,-104.06 536.99,-104.06 536.99,-104.06 539.41,-103.43 536.42,-101.89 541.83,-102.8 541.83,-102.8"/>
 </g>
 <!-- packages/util/time&#45;and/dist/index.js -->
 <g id="node14" class="node">
@@ -240,8 +240,8 @@
 <!-- packages/UI/view/src/svg&#45;collection.ts&#45;&gt;packages/util/time&#45;and/dist/index.js -->
 <g id="edge19" class="edge">
 <title>packages/UI/view/src/svg&#45;collection.ts&#45;&gt;packages/util/time&#45;and/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M454.53,-162.34C464.65,-185.66 492.2,-248.21 518,-299 531.75,-326.06 549.26,-356.82 559.49,-374.46"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="557.83,-375.79 562.66,-379.92 561.46,-373.68 557.83,-375.79"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M454.72,-162.13C469.5,-194.1 518,-299 518,-299 518,-299 546.42,-350.15 560.4,-375.33"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="562.84,-379.71 558.44,-376.43 561.62,-377.52 560.41,-375.34 560.41,-375.34 560.41,-375.34 561.62,-377.52 562.38,-374.24 562.84,-379.71 562.84,-379.71"/>
 </g>
 <!-- packages/UI/view/src/reflectable/audio&#45;reflectable&#45;registry.ts -->
 <g id="node10" class="node">
@@ -255,8 +255,8 @@
 <!-- packages/UI/view/src/reflectable/index.ts&#45;&gt;packages/UI/view/src/reflectable/audio&#45;reflectable&#45;registry.ts -->
 <g id="edge13" class="edge">
 <title>packages/UI/view/src/reflectable/index.ts&#45;&gt;packages/UI/view/src/reflectable/audio&#45;reflectable&#45;registry.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M596.32,-88.4C610.68,-84.32 628.78,-79.26 645,-75 654.58,-72.49 664.88,-69.89 674.66,-67.49"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="681.17,-68.05 674.84,-67.44 680.17,-63.97 681.17,-68.05"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M596.23,-88.66C617.86,-82.6 645,-75 645,-75 645,-75 659.86,-71.36 676.21,-67.36"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="681.74,-67.81 676.46,-67.29 680.9,-64.41 681.74,-67.81"/>
 </g>
 <!-- packages/UI/view/src/reflectable/audio&#45;reflectable.ts -->
 <g id="node11" class="node">
@@ -270,8 +270,8 @@
 <!-- packages/UI/view/src/reflectable/index.ts&#45;&gt;packages/UI/view/src/reflectable/audio&#45;reflectable.ts -->
 <g id="edge12" class="edge">
 <title>packages/UI/view/src/reflectable/index.ts&#45;&gt;packages/UI/view/src/reflectable/audio&#45;reflectable.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M596.21,-93.58C643.08,-89.25 742.23,-80.1 805.43,-74.27"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="811.63,-75.81 805.46,-74.27 811.24,-71.62 811.63,-75.81"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M596.21,-93.58C643.27,-89.24 743.03,-80.03 806.19,-74.2"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="811.59,-75.46 806.45,-74.17 811.27,-71.97 811.59,-75.46"/>
 </g>
 <!-- packages/UI/view/src/reflectable/window&#45;reflectable.ts -->
 <g id="node12" class="node">
@@ -285,8 +285,8 @@
 <!-- packages/UI/view/src/reflectable/index.ts&#45;&gt;packages/UI/view/src/reflectable/window&#45;reflectable.ts -->
 <g id="edge14" class="edge">
 <title>packages/UI/view/src/reflectable/index.ts&#45;&gt;packages/UI/view/src/reflectable/window&#45;reflectable.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M596.21,-96.37C638.04,-96.99 722.45,-98.32 794,-100 796.21,-100.05 798.46,-100.11 800.74,-100.16"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="806.74,-102.42 800.8,-100.17 806.85,-98.22 806.74,-102.42"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M596.13,-96.47C655.22,-97.52 794,-100 794,-100 794,-100 796.96,-100.09 801.66,-100.22"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="806.83,-102.13 801.89,-100.23 806.94,-98.63 806.83,-102.13"/>
 </g>
 <!-- packages/UI/view/src/reflectable/window&#45;reflectable&#45;registry.ts -->
 <g id="node13" class="node">
@@ -300,20 +300,20 @@
 <!-- packages/UI/view/src/reflectable/index.ts&#45;&gt;packages/UI/view/src/reflectable/window&#45;reflectable&#45;registry.ts -->
 <g id="edge15" class="edge">
 <title>packages/UI/view/src/reflectable/index.ts&#45;&gt;packages/UI/view/src/reflectable/window&#45;reflectable&#45;registry.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M596.21,-99.35C609.11,-101 625.41,-103.09 641.86,-105.19"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="647.65,-108.05 641.97,-105.21 648.19,-103.89 647.65,-108.05"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M596.21,-99.35C609.34,-101.03 625.98,-103.16 642.72,-105.3"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="647.7,-107.71 642.96,-105.34 648.14,-104.23 647.7,-107.71"/>
 </g>
 <!-- packages/UI/view/src/reflectable/audio&#45;reflectable&#45;registry.ts&#45;&gt;packages/UI/view/src/reflectable/audio&#45;reflectable.ts -->
 <g id="edge11" class="edge">
 <title>packages/UI/view/src/reflectable/audio&#45;reflectable&#45;registry.ts&#45;&gt;packages/UI/view/src/reflectable/audio&#45;reflectable.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M789.84,-62.86C794.89,-63.29 799.95,-63.71 804.91,-64.13"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="805,-66.25 811.15,-64.66 805.35,-62.06 805,-66.25"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M789.84,-62.86C795.22,-63.31 800.62,-63.77 805.91,-64.22"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="811.15,-64.66 805.98,-66.48 808.66,-64.45 806.17,-64.24 806.17,-64.24 806.17,-64.24 808.66,-64.45 806.36,-62 811.15,-64.66 811.15,-64.66"/>
 </g>
 <!-- packages/UI/view/src/reflectable/window&#45;reflectable&#45;registry.ts&#45;&gt;packages/UI/view/src/reflectable/window&#45;reflectable.ts -->
 <g id="edge16" class="edge">
 <title>packages/UI/view/src/reflectable/window&#45;reflectable&#45;registry.ts&#45;&gt;packages/UI/view/src/reflectable/window&#45;reflectable.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M794.41,-108.23C796.5,-108.04 798.59,-107.85 800.66,-107.66"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="801.06,-109.73 806.85,-107.09 800.68,-105.55 801.06,-109.73"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M794.41,-108.23C796.89,-108.01 799.37,-107.78 801.83,-107.55"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="806.85,-107.09 802.07,-109.79 804.36,-107.32 801.87,-107.55 801.87,-107.55 801.87,-107.55 804.36,-107.32 801.66,-105.31 806.85,-107.09 806.85,-107.09"/>
 </g>
 </g>
 </svg>

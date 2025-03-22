@@ -104,8 +104,8 @@
 <!-- packages/music&#45;structure/beat/beat&#45;estimation/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js -->
 <g id="edge1" class="edge">
 <title>packages/music&#45;structure/beat/beat&#45;estimation/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M89.82,-171.88C119.22,-150.12 193.58,-95.06 227.57,-69.9"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="229.09,-71.39 232.67,-66.13 226.59,-68.01 229.09,-71.39"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M89.82,-171.88C119.46,-149.94 194.81,-94.15 228.4,-69.29"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="232.67,-66.13 229.99,-70.91 230.66,-67.62 228.65,-69.11 228.65,-69.11 228.65,-69.11 230.66,-67.62 227.31,-67.3 232.67,-66.13 232.67,-66.13"/>
 </g>
 <!-- packages/util/math/dist/index.js -->
 <g id="node4" class="node">
@@ -119,8 +119,8 @@
 <!-- packages/music&#45;structure/beat/beat&#45;estimation/index.ts&#45;&gt;packages/util/math/dist/index.js -->
 <g id="edge2" class="edge">
 <title>packages/music&#45;structure/beat/beat&#45;estimation/index.ts&#45;&gt;packages/util/math/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M103.72,-184.3C113.8,-186.47 125.03,-190.06 134,-196 185.12,-229.87 222.8,-295.18 237.83,-324.33"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="236.1,-325.57 240.69,-329.98 239.85,-323.68 236.1,-325.57"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M103.77,-187.97C118.52,-191.89 134,-196 134,-196 134,-196 206.97,-290.01 234.58,-325.58"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="237.72,-329.62 232.87,-327.05 236.18,-327.64 234.65,-325.67 234.65,-325.67 234.65,-325.67 236.18,-327.64 236.43,-324.29 237.72,-329.62 237.72,-329.62"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/dist/index.js -->
 <g id="node5" class="node">
@@ -134,8 +134,8 @@
 <!-- packages/music&#45;structure/beat/beat&#45;estimation/index.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/dist/index.js -->
 <g id="edge3" class="edge">
 <title>packages/music&#45;structure/beat/beat&#45;estimation/index.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M103.67,-181.62C133.09,-182.33 180.87,-183.47 212.61,-184.23"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="212.69,-186.33 218.74,-184.37 212.79,-182.13 212.69,-186.33"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M103.67,-181.62C133.33,-182.33 181.66,-183.49 213.4,-184.25"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="218.74,-184.37 213.68,-186.5 216.24,-184.31 213.74,-184.25 213.74,-184.25 213.74,-184.25 216.24,-184.31 213.79,-182 218.74,-184.37 218.74,-184.37"/>
 </g>
 </g>
 </svg>

@@ -105,8 +105,8 @@
 <!-- packages/music&#45;structure/analyzed&#45;data&#45;container/index.ts&#45;&gt;packages/UI/view&#45;parameters/dist/index.js -->
 <g id="edge4" class="edge">
 <title>packages/music&#45;structure/analyzed&#45;data&#45;container/index.ts&#45;&gt;packages/UI/view&#45;parameters/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M96.17,-258.09C126.81,-292.16 234.93,-412.43 271.68,-453.29"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="270.22,-454.81 275.79,-457.87 273.34,-452.01 270.22,-454.81"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M96.17,-258.09C126.93,-292.3 235.81,-413.41 272.12,-453.79"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="275.79,-457.87 270.78,-455.66 274.12,-456.01 272.45,-454.15 272.45,-454.15 272.45,-454.15 274.12,-456.01 274.12,-452.65 275.79,-457.87 275.79,-457.87"/>
 </g>
 <!-- packages/music&#45;structure/beat/beat&#45;estimation/dist/index.js -->
 <g id="node3" class="node">
@@ -120,8 +120,8 @@
 <!-- packages/music&#45;structure/analyzed&#45;data&#45;container/index.ts&#45;&gt;packages/music&#45;structure/beat/beat&#45;estimation/dist/index.js -->
 <g id="edge1" class="edge">
 <title>packages/music&#45;structure/analyzed&#45;data&#45;container/index.ts&#45;&gt;packages/music&#45;structure/beat/beat&#45;estimation/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M97.19,-240C128.63,-209.2 232,-107.94 269.9,-70.81"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="271.78,-71.91 274.6,-66.21 268.85,-68.91 271.78,-71.91"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M97.19,-240C128.88,-208.95 233.69,-106.28 270.82,-69.91"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="274.6,-66.21 272.6,-71.31 272.82,-67.96 271.03,-69.71 271.03,-69.71 271.03,-69.71 272.82,-67.96 269.45,-68.1 274.6,-66.21 274.6,-66.21"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js -->
 <g id="node4" class="node">
@@ -135,8 +135,8 @@
 <!-- packages/music&#45;structure/analyzed&#45;data&#45;container/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js -->
 <g id="edge2" class="edge">
 <title>packages/music&#45;structure/analyzed&#45;data&#45;container/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M114.03,-240.5C149.61,-228.88 213.41,-208.05 251.91,-195.48"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="252.81,-197.39 257.87,-193.53 251.51,-193.4 252.81,-197.39"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M114.03,-240.5C149.9,-228.79 214.46,-207.71 252.86,-195.17"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="257.87,-193.53 253.81,-197.22 255.49,-194.31 253.11,-195.09 253.11,-195.09 253.11,-195.09 255.49,-194.31 252.41,-192.95 257.87,-193.53 257.87,-193.53"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/dist/index.js -->
 <g id="node5" class="node">
@@ -150,8 +150,8 @@
 <!-- packages/music&#45;structure/analyzed&#45;data&#45;container/index.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/dist/index.js -->
 <g id="edge3" class="edge">
 <title>packages/music&#45;structure/analyzed&#45;data&#45;container/index.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M114.03,-257.5C149.61,-269.12 213.41,-289.95 251.91,-302.52"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="251.51,-304.6 257.87,-304.47 252.81,-300.61 251.51,-304.6"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M114.03,-257.5C149.9,-269.21 214.46,-290.29 252.86,-302.83"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="257.87,-304.47 252.41,-305.05 255.49,-303.69 253.11,-302.91 253.11,-302.91 253.11,-302.91 255.49,-303.69 253.81,-300.78 257.87,-304.47 257.87,-304.47"/>
 </g>
 </g>
 </svg>
