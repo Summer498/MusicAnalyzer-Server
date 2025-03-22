@@ -1,3 +1,3 @@
 export interface AudioReflectable {
-  onAudioUpdate(): void
+  onAudioUpdate: () => void
 }

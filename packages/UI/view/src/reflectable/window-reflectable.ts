@@ -1,3 +1,3 @@
 export interface WindowReflectable {
-  onWindowResized(): void
+  onWindowResized: () => void
 }

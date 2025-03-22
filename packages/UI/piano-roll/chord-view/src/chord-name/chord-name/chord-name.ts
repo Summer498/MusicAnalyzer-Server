@@ -19,15 +19,12 @@ export class ChordName
   #y: number;
   constructor(
     e: TimeAndRomanAnalysis,
-    controllers: RequiredByChordName
   ) {
     const model = new ChordNameModel(e);
     super(model, new ChordNameView(model));
     this.#y = PianoRollHeight.get() + chord_text_size;
     this.updateX();
     this.updateY();
-    controllers.window.register(this);
-    controllers.time_range.register(this);
   }
   updateX() { this.view.updateX(scaled(this.model.time.begin)) }
   updateY() { this.view.updateY(this.#y) }
