@@ -3,7 +3,7 @@ export { CurrentTimeX } from "./current-time-x";
 export { NoteSize } from "./note-size";
 export { NowAt } from "./now-at";
 export { PianoRollTranslateX } from "./piano-roll-translate-x";
-export { OctaveCount } from "./octave-count";
+export { OctaveCount } from "./piano-roll/octave-count";
 export { BlackPosition, WhitePosition } from "./position";
 export { RectParameters } from "./rect-parameter";
 export { SongLength } from "./song-length";

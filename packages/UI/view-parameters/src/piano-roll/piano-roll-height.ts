@@ -1,4 +1,4 @@
-import { OctaveCount } from "../octave-count";
+import { OctaveCount } from "./octave-count";
 import { octave_height } from "./piano-roll-constants";
 
 export class PianoRollHeight {
