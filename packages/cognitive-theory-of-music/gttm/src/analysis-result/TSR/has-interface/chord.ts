@@ -1,10 +1,5 @@
-import { Chord as _Chord, Note } from "../common";
-
-export interface IChord 
-  extends _Chord {
-  readonly duration: number,
-  readonly velocity: number,
-}
+import { Note } from "../../common";
+import { IChord } from "../interface/i-chord";
 
 export class Chord 
   implements IChord {

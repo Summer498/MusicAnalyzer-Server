@@ -1,9 +1,5 @@
-import { ITimeSpanTree } from "./i-time-span";
+import { ITimeSpanReduction } from "../interface/i-time-span-reduction";
 import { TimeSpanTree } from "./time-span";
-
-export interface ITimeSpanReduction {
-  readonly tstree: ITimeSpanTree;
-}
 
 export class TimeSpanReduction 
   implements ITimeSpanReduction {

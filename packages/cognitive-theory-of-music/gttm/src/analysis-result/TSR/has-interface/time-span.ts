@@ -1,9 +1,9 @@
-import { Head } from "../common";
-import { ReductionElement } from "../ReductionElement";
+import { Head } from "../../common";
+import { ReductionElement } from "../../ReductionElement";
+import { IAt } from "../interface/i-at";
+import { Chord } from "./chord";
+import { ITimeSpan, ITimeSpanTree } from "../interface/i-time-span";
 import { At } from "./at";
-import { Chord } from "./Chord";
-import { Temp } from "./temp";
-import { ITimeSpan, ITimeSpanTree } from "./i-time-span";
 
 
 export class TimeSpanTree 
@@ -21,7 +21,7 @@ export class TimeSpan
   readonly leftend: number;
   readonly rightend: number;
   readonly head: Head<Chord>;
-  readonly at: At;
+  readonly at: IAt;
   readonly primary?: TimeSpanTree;
   readonly secondary?: TimeSpanTree;
   constructor(ts: ITimeSpan) {
@@ -31,8 +31,8 @@ export class TimeSpan
     this.timespan = ts.timespan;
     this.leftend = ts.leftend;
     this.rightend = ts.rightend;
-    this.head = { chord: new Chord(ts.head.chord) };
-    this.at = { temp: new Temp(ts.at.temp) };
+    this.head = new Head(ts.head);
+    this.at = new At(ts.at);
     this.primary = primary;
     this.secondary = secondary;
   }

@@ -1,4 +1,4 @@
-import { Chord, Head as _Head } from "../common";
+import { Chord, IHead as _Head } from "../common";
 
 export interface Head 
   extends _Head<Chord> {
