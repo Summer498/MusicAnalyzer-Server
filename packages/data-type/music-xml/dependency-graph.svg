@@ -25,96 +25,73 @@
 <text text-anchor="middle" x="791" y="-640.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">music&#45;xml</text>
 </g>
 <g id="clust4" class="cluster">
-<title>cluster_packages/data&#45;type/music&#45;xml/dist</title>
-<path fill="#ffffff" stroke="black" stroke-width="2" d="M67.5,-470C67.5,-470 119.5,-470 119.5,-470 125.5,-470 131.5,-476 131.5,-482 131.5,-482 131.5,-540 131.5,-540 131.5,-546 125.5,-552 119.5,-552 119.5,-552 67.5,-552 67.5,-552 61.5,-552 55.5,-546 55.5,-540 55.5,-540 55.5,-482 55.5,-482 55.5,-476 61.5,-470 67.5,-470"/>
-<text text-anchor="middle" x="93.5" y="-540.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">dist</text>
-</g>
-<g id="clust5" class="cluster">
 <title>cluster_packages/data&#45;type/music&#45;xml/sample</title>
 <path fill="#ffffff" stroke="black" stroke-width="2" d="M44,-300C44,-300 143,-300 143,-300 149,-300 155,-306 155,-312 155,-312 155,-340 155,-340 155,-346 149,-352 143,-352 143,-352 44,-352 44,-352 38,-352 32,-346 32,-340 32,-340 32,-312 32,-312 32,-306 38,-300 44,-300"/>
 <text text-anchor="middle" x="93.5" y="-340.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">sample</text>
 </g>
-<g id="clust6" class="cluster">
+<g id="clust5" class="cluster">
 <title>cluster_packages/data&#45;type/music&#45;xml/src</title>
 <path fill="#ffffff" stroke="black" stroke-width="2" d="M175,-32C175,-32 1538,-32 1538,-32 1544,-32 1550,-38 1550,-44 1550,-44 1550,-614 1550,-614 1550,-620 1544,-626 1538,-626 1538,-626 175,-626 175,-626 169,-626 163,-620 163,-614 163,-614 163,-44 163,-44 163,-38 169,-32 175,-32"/>
 <text text-anchor="middle" x="856.5" y="-614.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">src</text>
 </g>
-<g id="clust7" class="cluster">
+<g id="clust6" class="cluster">
 <title>cluster_packages/data&#45;type/music&#45;xml/src/attribute</title>
 <path fill="#ffffff" stroke="black" stroke-width="2" d="M1176.5,-59C1176.5,-59 1398.5,-59 1398.5,-59 1404.5,-59 1410.5,-65 1410.5,-71 1410.5,-71 1410.5,-159 1410.5,-159 1410.5,-165 1404.5,-171 1398.5,-171 1398.5,-171 1176.5,-171 1176.5,-171 1170.5,-171 1164.5,-165 1164.5,-159 1164.5,-159 1164.5,-71 1164.5,-71 1164.5,-65 1170.5,-59 1176.5,-59"/>
 <text text-anchor="middle" x="1287.5" y="-159.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">attribute</text>
 </g>
-<g id="clust8" class="cluster">
+<g id="clust7" class="cluster">
 <title>cluster_packages/data&#45;type/music&#45;xml/src/credit</title>
 <path fill="#ffffff" stroke="black" stroke-width="2" d="M508,-524C508,-524 754,-524 754,-524 760,-524 766,-530 766,-536 766,-536 766,-578 766,-578 766,-584 760,-590 754,-590 754,-590 508,-590 508,-590 502,-590 496,-584 496,-578 496,-578 496,-536 496,-536 496,-530 502,-524 508,-524"/>
 <text text-anchor="middle" x="631" y="-578.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">credit</text>
 </g>
-<g id="clust9" class="cluster">
+<g id="clust8" class="cluster">
 <title>cluster_packages/data&#45;type/music&#45;xml/src/defaults</title>
 <path fill="#ffffff" stroke="black" stroke-width="2" d="M508,-196C508,-196 867.5,-196 867.5,-196 873.5,-196 879.5,-202 879.5,-208 879.5,-208 879.5,-310 879.5,-310 879.5,-316 873.5,-322 867.5,-322 867.5,-322 508,-322 508,-322 502,-322 496,-316 496,-310 496,-310 496,-208 496,-208 496,-202 502,-196 508,-196"/>
 <text text-anchor="middle" x="687.75" y="-310.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">defaults</text>
 </g>
-<g id="clust10" class="cluster">
+<g id="clust9" class="cluster">
 <title>cluster_packages/data&#45;type/music&#45;xml/src/identification</title>
 <path fill="#ffffff" stroke="black" stroke-width="2" d="M508,-92C508,-92 854,-92 854,-92 860,-92 866,-98 866,-104 866,-104 866,-176 866,-176 866,-182 860,-188 854,-188 854,-188 508,-188 508,-188 502,-188 496,-182 496,-176 496,-176 496,-104 496,-104 496,-98 502,-92 508,-92"/>
 <text text-anchor="middle" x="681" y="-176.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">identification</text>
 </g>
-<g id="clust11" class="cluster">
+<g id="clust10" class="cluster">
 <title>cluster_packages/data&#45;type/music&#45;xml/src/measure</title>
 <path fill="#ffffff" stroke="black" stroke-width="2" d="M977,-198C977,-198 1225,-198 1225,-198 1231,-198 1237,-204 1237,-210 1237,-210 1237,-296 1237,-296 1237,-302 1231,-308 1225,-308 1225,-308 977,-308 977,-308 971,-308 965,-302 965,-296 965,-296 965,-210 965,-210 965,-204 971,-198 977,-198"/>
 <text text-anchor="middle" x="1101" y="-296.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">measure</text>
 </g>
-<g id="clust12" class="cluster">
+<g id="clust11" class="cluster">
 <title>cluster_packages/data&#45;type/music&#45;xml/src/part&#45;list</title>
 <path fill="#ffffff" stroke="black" stroke-width="2" d="M508,-404C508,-404 875,-404 875,-404 881,-404 887,-410 887,-416 887,-416 887,-504 887,-504 887,-510 881,-516 875,-516 875,-516 508,-516 508,-516 502,-516 496,-510 496,-504 496,-504 496,-416 496,-416 496,-410 502,-404 508,-404"/>
 <text text-anchor="middle" x="691.5" y="-504.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">part&#45;list</text>
 </g>
-<g id="clust13" class="cluster">
+<g id="clust12" class="cluster">
 <title>cluster_packages/data&#45;type/music&#45;xml/src/part</title>
 <path fill="#ffffff" stroke="black" stroke-width="2" d="M907,-404C907,-404 1229,-404 1229,-404 1235,-404 1241,-410 1241,-416 1241,-416 1241,-532 1241,-532 1241,-538 1235,-544 1229,-544 1229,-544 907,-544 907,-544 901,-544 895,-538 895,-532 895,-532 895,-416 895,-416 895,-410 901,-404 907,-404"/>
 <text text-anchor="middle" x="1068" y="-532.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">part</text>
 </g>
-<g id="clust14" class="cluster">
+<g id="clust13" class="cluster">
 <title>cluster_packages/data&#45;type/music&#45;xml/src/print</title>
 <path fill="#ffffff" stroke="black" stroke-width="2" d="M1176.5,-316C1176.5,-316 1530,-316 1530,-316 1536,-316 1542,-322 1542,-328 1542,-328 1542,-384 1542,-384 1542,-390 1536,-396 1530,-396 1530,-396 1176.5,-396 1176.5,-396 1170.5,-396 1164.5,-390 1164.5,-384 1164.5,-384 1164.5,-328 1164.5,-328 1164.5,-322 1170.5,-316 1176.5,-316"/>
 <text text-anchor="middle" x="1353.25" y="-384.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">print</text>
 </g>
-<g id="clust15" class="cluster">
+<g id="clust14" class="cluster">
 <title>cluster_packages/data&#45;type/music&#45;xml/src/score&#45;partwise</title>
 <path fill="#ffffff" stroke="black" stroke-width="2" d="M332,-330C332,-330 554,-330 554,-330 560,-330 566,-336 566,-342 566,-342 566,-384 566,-384 566,-390 560,-396 554,-396 554,-396 332,-396 332,-396 326,-396 320,-390 320,-384 320,-384 320,-342 320,-342 320,-336 326,-330 332,-330"/>
 <text text-anchor="middle" x="443" y="-384.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">score&#45;partwise</text>
 </g>
-<!-- packages/data&#45;type/music&#45;xml/dist/index.js -->
-<g id="node1" class="node">
-<title>packages/data&#45;type/music&#45;xml/dist/index.js</title>
-<g id="a_node1"><a xlink:href="packages/data-type/music-xml/dist/index.js" xlink:title="no&#45;orphans">
-<path fill="#ccffcc" stroke="orange" d="M114.5,-526C114.5,-526 72.5,-526 72.5,-526 69.5,-526 66.5,-523 66.5,-520 66.5,-520 66.5,-514 66.5,-514 66.5,-511 69.5,-508 72.5,-508 72.5,-508 114.5,-508 114.5,-508 117.5,-508 120.5,-511 120.5,-514 120.5,-514 120.5,-520 120.5,-520 120.5,-523 117.5,-526 114.5,-526"/>
-<text text-anchor="start" x="76" y="-514.8" font-family="Helvetica,sans-Serif" font-size="9.00" fill="orange">index.js</text>
-</a>
-</g>
-</g>
-<!-- packages/data&#45;type/music&#45;xml/dist/index.mjs -->
-<g id="node2" class="node">
-<title>packages/data&#45;type/music&#45;xml/dist/index.mjs</title>
-<g id="a_node2"><a xlink:href="packages/data-type/music-xml/dist/index.mjs" xlink:title="no&#45;orphans">
-<path fill="#ccffcc" stroke="orange" d="M117.5,-496C117.5,-496 69.5,-496 69.5,-496 66.5,-496 63.5,-493 63.5,-490 63.5,-490 63.5,-484 63.5,-484 63.5,-481 66.5,-478 69.5,-478 69.5,-478 117.5,-478 117.5,-478 120.5,-478 123.5,-481 123.5,-484 123.5,-484 123.5,-490 123.5,-490 123.5,-493 120.5,-496 117.5,-496"/>
-<text text-anchor="start" x="71.5" y="-484.8" font-family="Helvetica,sans-Serif" font-size="9.00" fill="orange">index.mjs</text>
-</a>
-</g>
-</g>
 <!-- packages/data&#45;type/music&#45;xml/index.ts -->
-<g id="node3" class="node">
+<g id="node1" class="node">
 <title>packages/data&#45;type/music&#45;xml/index.ts</title>
-<g id="a_node3"><a xlink:href="packages/data-type/music-xml/index.ts" xlink:title="index.ts">
+<g id="a_node1"><a xlink:href="packages/data-type/music-xml/index.ts" xlink:title="index.ts">
 <path fill="#ddfeff" stroke="black" d="M114.5,-292C114.5,-292 72.5,-292 72.5,-292 69.5,-292 66.5,-289 66.5,-286 66.5,-286 66.5,-280 66.5,-280 66.5,-277 69.5,-274 72.5,-274 72.5,-274 114.5,-274 114.5,-274 117.5,-274 120.5,-277 120.5,-280 120.5,-280 120.5,-286 120.5,-286 120.5,-289 117.5,-292 114.5,-292"/>
 <text text-anchor="start" x="75" y="-280.8" font-family="Helvetica,sans-Serif" font-size="9.00">index.ts</text>
 </a>
 </g>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/index.ts -->
-<g id="node4" class="node">
+<g id="node2" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/index.ts</title>
-<g id="a_node4"><a xlink:href="packages/data-type/music-xml/src/index.ts" xlink:title="index.ts">
+<g id="a_node2"><a xlink:href="packages/data-type/music-xml/src/index.ts" xlink:title="index.ts">
 <path fill="#ddfeff" stroke="black" d="M219,-309C219,-309 177,-309 177,-309 174,-309 171,-306 171,-303 171,-303 171,-297 171,-297 171,-294 174,-291 177,-291 177,-291 219,-291 219,-291 222,-291 225,-294 225,-297 225,-297 225,-303 225,-303 225,-306 222,-309 219,-309"/>
 <text text-anchor="start" x="179.5" y="-297.8" font-family="Helvetica,sans-Serif" font-size="9.00">index.ts</text>
 </a>
@@ -127,9 +104,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="170.57,-297.75 165,-294.69 171.26,-293.6 170.57,-297.75"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/attribute/index.ts -->
-<g id="node10" class="node">
+<g id="node8" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/attribute/index.ts</title>
-<g id="a_node10"><a xlink:href="packages/data-type/music-xml/src/attribute/index.ts" xlink:title="index.ts">
+<g id="a_node8"><a xlink:href="packages/data-type/music-xml/src/attribute/index.ts" xlink:title="index.ts">
 <path fill="#ddfeff" stroke="black" d="M1220.5,-119C1220.5,-119 1178.5,-119 1178.5,-119 1175.5,-119 1172.5,-116 1172.5,-113 1172.5,-113 1172.5,-107 1172.5,-107 1172.5,-104 1175.5,-101 1178.5,-101 1178.5,-101 1220.5,-101 1220.5,-101 1223.5,-101 1226.5,-104 1226.5,-107 1226.5,-107 1226.5,-113 1226.5,-113 1226.5,-116 1223.5,-119 1220.5,-119"/>
 <text text-anchor="start" x="1181" y="-107.8" font-family="Helvetica,sans-Serif" font-size="9.00">index.ts</text>
 </a>
@@ -142,9 +119,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1182.71,-102.8 1178.56,-97.98 1184.8,-99.16 1182.71,-102.8"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/credit/index.ts -->
-<g id="node13" class="node">
+<g id="node11" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/credit/index.ts</title>
-<g id="a_node13"><a xlink:href="packages/data-type/music-xml/src/credit/index.ts" xlink:title="index.ts">
+<g id="a_node11"><a xlink:href="packages/data-type/music-xml/src/credit/index.ts" xlink:title="index.ts">
 <path fill="#ddfeff" stroke="black" d="M552,-550C552,-550 510,-550 510,-550 507,-550 504,-547 504,-544 504,-544 504,-538 504,-538 504,-535 507,-532 510,-532 510,-532 552,-532 552,-532 555,-532 558,-535 558,-538 558,-538 558,-544 558,-544 558,-547 555,-550 552,-550"/>
 <text text-anchor="start" x="512.5" y="-538.8" font-family="Helvetica,sans-Serif" font-size="9.00">index.ts</text>
 </a>
@@ -157,9 +134,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="503.91,-533.96 499.04,-529.87 505.4,-530.03 503.91,-533.96"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/defaults/index.ts -->
-<g id="node18" class="node">
+<g id="node16" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/defaults/index.ts</title>
-<g id="a_node18"><a xlink:href="packages/data-type/music-xml/src/defaults/index.ts" xlink:title="index.ts">
+<g id="a_node16"><a xlink:href="packages/data-type/music-xml/src/defaults/index.ts" xlink:title="index.ts">
 <path fill="#ddfeff" stroke="black" d="M552,-292C552,-292 510,-292 510,-292 507,-292 504,-289 504,-286 504,-286 504,-280 504,-280 504,-277 507,-274 510,-274 510,-274 552,-274 552,-274 555,-274 558,-277 558,-280 558,-280 558,-286 558,-286 558,-289 555,-292 552,-292"/>
 <text text-anchor="start" x="512.5" y="-280.8" font-family="Helvetica,sans-Serif" font-size="9.00">index.ts</text>
 </a>
@@ -172,9 +149,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="503.86,-286.45 497.76,-284.66 503.64,-282.25 503.86,-286.45"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/identification/index.ts -->
-<g id="node24" class="node">
+<g id="node22" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/identification/index.ts</title>
-<g id="a_node24"><a xlink:href="packages/data-type/music-xml/src/identification/index.ts" xlink:title="index.ts">
+<g id="a_node22"><a xlink:href="packages/data-type/music-xml/src/identification/index.ts" xlink:title="index.ts">
 <path fill="#ddfeff" stroke="black" d="M552,-156C552,-156 510,-156 510,-156 507,-156 504,-153 504,-150 504,-150 504,-144 504,-144 504,-141 507,-138 510,-138 510,-138 552,-138 552,-138 555,-138 558,-141 558,-144 558,-144 558,-150 558,-150 558,-153 555,-156 552,-156"/>
 <text text-anchor="start" x="512.5" y="-144.8" font-family="Helvetica,sans-Serif" font-size="9.00">index.ts</text>
 </a>
@@ -187,9 +164,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="511.27,-157.97 504.94,-158.58 509.51,-154.16 511.27,-157.97"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/measure/index.ts -->
-<g id="node25" class="node">
+<g id="node23" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/measure/index.ts</title>
-<g id="a_node25"><a xlink:href="packages/data-type/music-xml/src/measure/index.ts" xlink:title="index.ts">
+<g id="a_node23"><a xlink:href="packages/data-type/music-xml/src/measure/index.ts" xlink:title="index.ts">
 <path fill="#ddfeff" stroke="black" d="M1021,-257C1021,-257 979,-257 979,-257 976,-257 973,-254 973,-251 973,-251 973,-245 973,-245 973,-242 976,-239 979,-239 979,-239 1021,-239 1021,-239 1024,-239 1027,-242 1027,-245 1027,-245 1027,-251 1027,-251 1027,-254 1024,-257 1021,-257"/>
 <text text-anchor="start" x="981.5" y="-245.8" font-family="Helvetica,sans-Serif" font-size="9.00">index.ts</text>
 </a>
@@ -202,9 +179,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="971.72,-242.29 967.76,-237.32 973.96,-238.74 971.72,-242.29"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/music&#45;xml.ts -->
-<g id="node26" class="node">
+<g id="node24" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/music&#45;xml.ts</title>
-<g id="a_node26"><a xlink:href="packages/data-type/music-xml/src/music-xml.ts" xlink:title="music&#45;xml.ts">
+<g id="a_node24"><a xlink:href="packages/data-type/music-xml/src/music-xml.ts" xlink:title="music&#45;xml.ts">
 <path fill="#ddfeff" stroke="black" d="M306,-326C306,-326 244,-326 244,-326 241,-326 238,-323 238,-320 238,-320 238,-314 238,-314 238,-311 241,-308 244,-308 244,-308 306,-308 306,-308 309,-308 312,-311 312,-314 312,-314 312,-320 312,-320 312,-323 309,-326 306,-326"/>
 <text text-anchor="start" x="246" y="-314.8" font-family="Helvetica,sans-Serif" font-size="9.00">music&#45;xml.ts</text>
 </a>
@@ -217,9 +194,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="237.3,-310.83 231.91,-307.46 238.23,-306.74 237.3,-310.83"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part/index.ts -->
-<g id="node27" class="node">
+<g id="node25" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/part/index.ts</title>
-<g id="a_node27"><a xlink:href="packages/data-type/music-xml/src/part/index.ts" xlink:title="index.ts">
+<g id="a_node25"><a xlink:href="packages/data-type/music-xml/src/part/index.ts" xlink:title="index.ts">
 <path fill="#ddfeff" stroke="black" d="M951,-430C951,-430 909,-430 909,-430 906,-430 903,-427 903,-424 903,-424 903,-418 903,-418 903,-415 906,-412 909,-412 909,-412 951,-412 951,-412 954,-412 957,-415 957,-418 957,-418 957,-424 957,-424 957,-427 954,-430 951,-430"/>
 <text text-anchor="start" x="911.5" y="-418.8" font-family="Helvetica,sans-Serif" font-size="9.00">index.ts</text>
 </a>
@@ -232,9 +209,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="901.67,-416.58 898.07,-411.34 904.15,-413.19 901.67,-416.58"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part&#45;list/index.ts -->
-<g id="node28" class="node">
+<g id="node26" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/part&#45;list/index.ts</title>
-<g id="a_node28"><a xlink:href="packages/data-type/music-xml/src/part-list/index.ts" xlink:title="index.ts">
+<g id="a_node26"><a xlink:href="packages/data-type/music-xml/src/part-list/index.ts" xlink:title="index.ts">
 <path fill="#ddfeff" stroke="black" d="M552,-433C552,-433 510,-433 510,-433 507,-433 504,-430 504,-427 504,-427 504,-421 504,-421 504,-418 507,-415 510,-415 510,-415 552,-415 552,-415 555,-415 558,-418 558,-421 558,-421 558,-427 558,-427 558,-430 555,-433 552,-433"/>
 <text text-anchor="start" x="512.5" y="-421.8" font-family="Helvetica,sans-Serif" font-size="9.00">index.ts</text>
 </a>
@@ -247,9 +224,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="503.87,-426.92 497.86,-424.85 503.84,-422.72 503.87,-426.92"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/print/index.ts -->
-<g id="node29" class="node">
+<g id="node27" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/print/index.ts</title>
-<g id="a_node29"><a xlink:href="packages/data-type/music-xml/src/print/index.ts" xlink:title="index.ts">
+<g id="a_node27"><a xlink:href="packages/data-type/music-xml/src/print/index.ts" xlink:title="index.ts">
 <path fill="#ddfeff" stroke="black" d="M1220.5,-364C1220.5,-364 1178.5,-364 1178.5,-364 1175.5,-364 1172.5,-361 1172.5,-358 1172.5,-358 1172.5,-352 1172.5,-352 1172.5,-349 1175.5,-346 1178.5,-346 1178.5,-346 1220.5,-346 1220.5,-346 1223.5,-346 1226.5,-349 1226.5,-352 1226.5,-352 1226.5,-358 1226.5,-358 1226.5,-361 1223.5,-364 1220.5,-364"/>
 <text text-anchor="start" x="1181" y="-352.8" font-family="Helvetica,sans-Serif" font-size="9.00">index.ts</text>
 </a>
@@ -262,9 +239,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1171.73,-351.53 1166.18,-348.43 1172.46,-347.4 1171.73,-351.53"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/score&#45;partwise/index.ts -->
-<g id="node30" class="node">
+<g id="node28" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/score&#45;partwise/index.ts</title>
-<g id="a_node30"><a xlink:href="packages/data-type/music-xml/src/score-partwise/index.ts" xlink:title="index.ts">
+<g id="a_node28"><a xlink:href="packages/data-type/music-xml/src/score-partwise/index.ts" xlink:title="index.ts">
 <path fill="#ddfeff" stroke="black" d="M376,-356C376,-356 334,-356 334,-356 331,-356 328,-353 328,-350 328,-350 328,-344 328,-344 328,-341 331,-338 334,-338 334,-338 376,-338 376,-338 379,-338 382,-341 382,-344 382,-344 382,-350 382,-350 382,-353 379,-356 376,-356"/>
 <text text-anchor="start" x="336.5" y="-344.8" font-family="Helvetica,sans-Serif" font-size="9.00">index.ts</text>
 </a>
@@ -277,9 +254,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="327.53,-349.77 321.57,-347.54 327.62,-345.57 327.53,-349.77"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/sample/sample.muxicxml.ts -->
-<g id="node5" class="node">
+<g id="node3" class="node">
 <title>packages/data&#45;type/music&#45;xml/sample/sample.muxicxml.ts</title>
-<g id="a_node5"><a xlink:href="packages/data-type/music-xml/sample/sample.muxicxml.ts" xlink:title="sample.muxicxml.ts">
+<g id="a_node3"><a xlink:href="packages/data-type/music-xml/sample/sample.muxicxml.ts" xlink:title="sample.muxicxml.ts">
 <path fill="#ddfeff" stroke="black" d="M141,-326C141,-326 46,-326 46,-326 43,-326 40,-323 40,-320 40,-320 40,-314 40,-314 40,-311 43,-308 46,-308 46,-308 141,-308 141,-308 144,-308 147,-311 147,-314 147,-314 147,-320 147,-320 147,-323 144,-326 141,-326"/>
 <text text-anchor="start" x="48" y="-314.8" font-family="Helvetica,sans-Serif" font-size="9.00">sample.muxicxml.ts</text>
 </a>
@@ -292,18 +269,18 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="165.39,-307.37 170.97,-304.32 164.7,-303.23 165.39,-307.37"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/attribute/attribute.ts -->
-<g id="node6" class="node">
+<g id="node4" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/attribute/attribute.ts</title>
-<g id="a_node6"><a xlink:href="packages/data-type/music-xml/src/attribute/attribute.ts" xlink:title="attribute.ts">
+<g id="a_node4"><a xlink:href="packages/data-type/music-xml/src/attribute/attribute.ts" xlink:title="attribute.ts">
 <path fill="#ddfeff" stroke="black" d="M1311,-108C1311,-108 1255,-108 1255,-108 1252,-108 1249,-105 1249,-102 1249,-102 1249,-96 1249,-96 1249,-93 1252,-90 1255,-90 1255,-90 1311,-90 1311,-90 1314,-90 1317,-93 1317,-96 1317,-96 1317,-102 1317,-102 1317,-105 1314,-108 1311,-108"/>
 <text text-anchor="start" x="1257" y="-96.8" font-family="Helvetica,sans-Serif" font-size="9.00">attribute.ts</text>
 </a>
 </g>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/attribute/clef.ts -->
-<g id="node7" class="node">
+<g id="node5" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/attribute/clef.ts</title>
-<g id="a_node7"><a xlink:href="packages/data-type/music-xml/src/attribute/clef.ts" xlink:title="clef.ts">
+<g id="a_node5"><a xlink:href="packages/data-type/music-xml/src/attribute/clef.ts" xlink:title="clef.ts">
 <path fill="#ddfeff" stroke="black" d="M1396.5,-145C1396.5,-145 1354.5,-145 1354.5,-145 1351.5,-145 1348.5,-142 1348.5,-139 1348.5,-139 1348.5,-133 1348.5,-133 1348.5,-130 1351.5,-127 1354.5,-127 1354.5,-127 1396.5,-127 1396.5,-127 1399.5,-127 1402.5,-130 1402.5,-133 1402.5,-133 1402.5,-139 1402.5,-139 1402.5,-142 1399.5,-145 1396.5,-145"/>
 <text text-anchor="start" x="1362" y="-133.8" font-family="Helvetica,sans-Serif" font-size="9.00">clef.ts</text>
 </a>
@@ -316,9 +293,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1342.07,-127.81 1348.42,-127.8 1343.45,-123.84 1342.07,-127.81"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/attribute/key.ts -->
-<g id="node8" class="node">
+<g id="node6" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/attribute/key.ts</title>
-<g id="a_node8"><a xlink:href="packages/data-type/music-xml/src/attribute/key.ts" xlink:title="key.ts">
+<g id="a_node6"><a xlink:href="packages/data-type/music-xml/src/attribute/key.ts" xlink:title="key.ts">
 <path fill="#ddfeff" stroke="black" d="M1396.5,-85C1396.5,-85 1354.5,-85 1354.5,-85 1351.5,-85 1348.5,-82 1348.5,-79 1348.5,-79 1348.5,-73 1348.5,-73 1348.5,-70 1351.5,-67 1354.5,-67 1354.5,-67 1396.5,-67 1396.5,-67 1399.5,-67 1402.5,-70 1402.5,-73 1402.5,-73 1402.5,-79 1402.5,-79 1402.5,-82 1399.5,-85 1396.5,-85"/>
 <text text-anchor="start" x="1362.5" y="-73.8" font-family="Helvetica,sans-Serif" font-size="9.00">key.ts</text>
 </a>
@@ -331,9 +308,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1343.11,-86.15 1348.4,-82.63 1342.07,-82.07 1343.11,-86.15"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/attribute/time.ts -->
-<g id="node9" class="node">
+<g id="node7" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/attribute/time.ts</title>
-<g id="a_node9"><a xlink:href="packages/data-type/music-xml/src/attribute/time.ts" xlink:title="time.ts">
+<g id="a_node7"><a xlink:href="packages/data-type/music-xml/src/attribute/time.ts" xlink:title="time.ts">
 <path fill="#ddfeff" stroke="black" d="M1396.5,-115C1396.5,-115 1354.5,-115 1354.5,-115 1351.5,-115 1348.5,-112 1348.5,-109 1348.5,-109 1348.5,-103 1348.5,-103 1348.5,-100 1351.5,-97 1354.5,-97 1354.5,-97 1396.5,-97 1396.5,-97 1399.5,-97 1402.5,-100 1402.5,-103 1402.5,-103 1402.5,-109 1402.5,-109 1402.5,-112 1399.5,-115 1396.5,-115"/>
 <text text-anchor="start" x="1359.5" y="-103.8" font-family="Helvetica,sans-Serif" font-size="9.00">time.ts</text>
 </a>
@@ -370,18 +347,18 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1348.54,-112.51 1342.3,-111.28 1347.95,-108.35 1348.54,-112.51"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/credit/credit&#45;words.ts -->
-<g id="node11" class="node">
+<g id="node9" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/credit/credit&#45;words.ts</title>
-<g id="a_node11"><a xlink:href="packages/data-type/music-xml/src/credit/credit-words.ts" xlink:title="credit&#45;words.ts">
+<g id="a_node9"><a xlink:href="packages/data-type/music-xml/src/credit/credit-words.ts" xlink:title="credit&#45;words.ts">
 <path fill="#ddfeff" stroke="black" d="M752,-557C752,-557 680,-557 680,-557 677,-557 674,-554 674,-551 674,-551 674,-545 674,-545 674,-542 677,-539 680,-539 680,-539 752,-539 752,-539 755,-539 758,-542 758,-545 758,-545 758,-551 758,-551 758,-554 755,-557 752,-557"/>
 <text text-anchor="start" x="682" y="-545.8" font-family="Helvetica,sans-Serif" font-size="9.00">credit&#45;words.ts</text>
 </a>
 </g>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/credit/credit.ts -->
-<g id="node12" class="node">
+<g id="node10" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/credit/credit.ts</title>
-<g id="a_node12"><a xlink:href="packages/data-type/music-xml/src/credit/credit.ts" xlink:title="credit.ts">
+<g id="a_node10"><a xlink:href="packages/data-type/music-xml/src/credit/credit.ts" xlink:title="credit.ts">
 <path fill="#ddfeff" stroke="black" d="M638.5,-564C638.5,-564 596.5,-564 596.5,-564 593.5,-564 590.5,-561 590.5,-558 590.5,-558 590.5,-552 590.5,-552 590.5,-549 593.5,-546 596.5,-546 596.5,-546 638.5,-546 638.5,-546 641.5,-546 644.5,-549 644.5,-552 644.5,-552 644.5,-558 644.5,-558 644.5,-561 641.5,-564 638.5,-564"/>
 <text text-anchor="start" x="598.5" y="-552.8" font-family="Helvetica,sans-Serif" font-size="9.00">credit.ts</text>
 </a>
@@ -406,18 +383,18 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="589.9,-552.72 584.32,-549.67 590.59,-548.58 589.9,-552.72"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/defaults/defaults.ts -->
-<g id="node14" class="node">
+<g id="node12" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/defaults/defaults.ts</title>
-<g id="a_node14"><a xlink:href="packages/data-type/music-xml/src/defaults/defaults.ts" xlink:title="defaults.ts">
+<g id="a_node12"><a xlink:href="packages/data-type/music-xml/src/defaults/defaults.ts" xlink:title="defaults.ts">
 <path fill="#ddfeff" stroke="black" d="M643.5,-252C643.5,-252 591.5,-252 591.5,-252 588.5,-252 585.5,-249 585.5,-246 585.5,-246 585.5,-240 585.5,-240 585.5,-237 588.5,-234 591.5,-234 591.5,-234 643.5,-234 643.5,-234 646.5,-234 649.5,-237 649.5,-240 649.5,-240 649.5,-246 649.5,-246 649.5,-249 646.5,-252 643.5,-252"/>
 <text text-anchor="start" x="593.5" y="-240.8" font-family="Helvetica,sans-Serif" font-size="9.00">defaults.ts</text>
 </a>
 </g>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/defaults/font.ts -->
-<g id="node15" class="node">
+<g id="node13" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/defaults/font.ts</title>
-<g id="a_node15"><a xlink:href="packages/data-type/music-xml/src/defaults/font.ts" xlink:title="font.ts">
+<g id="a_node13"><a xlink:href="packages/data-type/music-xml/src/defaults/font.ts" xlink:title="font.ts">
 <path fill="#ddfeff" stroke="black" d="M737,-252C737,-252 695,-252 695,-252 692,-252 689,-249 689,-246 689,-246 689,-240 689,-240 689,-237 692,-234 695,-234 695,-234 737,-234 737,-234 740,-234 743,-237 743,-240 743,-240 743,-246 743,-246 743,-249 740,-252 737,-252"/>
 <text text-anchor="start" x="701" y="-240.8" font-family="Helvetica,sans-Serif" font-size="9.00">font.ts</text>
 </a>
@@ -430,9 +407,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="682.85,-245.1 688.85,-243 682.85,-240.9 682.85,-245.1"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/defaults/page&#45;layout.ts -->
-<g id="node16" class="node">
+<g id="node14" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/defaults/page&#45;layout.ts</title>
-<g id="a_node16"><a xlink:href="packages/data-type/music-xml/src/defaults/page-layout.ts" xlink:title="page&#45;layout.ts">
+<g id="a_node14"><a xlink:href="packages/data-type/music-xml/src/defaults/page-layout.ts" xlink:title="page&#45;layout.ts">
 <path fill="#ddfeff" stroke="black" d="M750.5,-282C750.5,-282 681.5,-282 681.5,-282 678.5,-282 675.5,-279 675.5,-276 675.5,-276 675.5,-270 675.5,-270 675.5,-267 678.5,-264 681.5,-264 681.5,-264 750.5,-264 750.5,-264 753.5,-264 756.5,-267 756.5,-270 756.5,-270 756.5,-276 756.5,-276 756.5,-279 753.5,-282 750.5,-282"/>
 <text text-anchor="start" x="683.5" y="-270.8" font-family="Helvetica,sans-Serif" font-size="9.00">page&#45;layout.ts</text>
 </a>
@@ -445,9 +422,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="679.38,-264.13 685.73,-263.9 680.63,-260.12 679.38,-264.13"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/defaults/scaling.ts -->
-<g id="node17" class="node">
+<g id="node15" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/defaults/scaling.ts</title>
-<g id="a_node17"><a xlink:href="packages/data-type/music-xml/src/defaults/scaling.ts" xlink:title="scaling.ts">
+<g id="a_node15"><a xlink:href="packages/data-type/music-xml/src/defaults/scaling.ts" xlink:title="scaling.ts">
 <path fill="#ddfeff" stroke="black" d="M739.5,-222C739.5,-222 692.5,-222 692.5,-222 689.5,-222 686.5,-219 686.5,-216 686.5,-216 686.5,-210 686.5,-210 686.5,-207 689.5,-204 692.5,-204 692.5,-204 739.5,-204 739.5,-204 742.5,-204 745.5,-207 745.5,-210 745.5,-210 745.5,-216 745.5,-216 745.5,-219 742.5,-222 739.5,-222"/>
 <text text-anchor="start" x="694.5" y="-210.8" font-family="Helvetica,sans-Serif" font-size="9.00">scaling.ts</text>
 </a>
@@ -460,9 +437,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="681.29,-225.68 686.4,-221.89 680.05,-221.67 681.29,-225.68"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/defaults/page&#45;margins.ts -->
-<g id="node19" class="node">
+<g id="node17" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/defaults/page&#45;margins.ts</title>
-<g id="a_node19"><a xlink:href="packages/data-type/music-xml/src/defaults/page-margins.ts" xlink:title="page&#45;margins.ts">
+<g id="a_node17"><a xlink:href="packages/data-type/music-xml/src/defaults/page-margins.ts" xlink:title="page&#45;margins.ts">
 <path fill="#ddfeff" stroke="black" d="M865.5,-289C865.5,-289 787.5,-289 787.5,-289 784.5,-289 781.5,-286 781.5,-283 781.5,-283 781.5,-277 781.5,-277 781.5,-274 784.5,-271 787.5,-271 787.5,-271 865.5,-271 865.5,-271 868.5,-271 871.5,-274 871.5,-277 871.5,-277 871.5,-283 871.5,-283 871.5,-286 868.5,-289 865.5,-289"/>
 <text text-anchor="start" x="789.5" y="-277.8" font-family="Helvetica,sans-Serif" font-size="9.00">page&#45;margins.ts</text>
 </a>
@@ -505,27 +482,27 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="781.59,-288.69 775.41,-287.22 781.16,-284.51 781.59,-288.69"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/identification/creator.ts -->
-<g id="node20" class="node">
+<g id="node18" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/identification/creator.ts</title>
-<g id="a_node20"><a xlink:href="packages/data-type/music-xml/src/identification/creator.ts" xlink:title="creator.ts">
+<g id="a_node18"><a xlink:href="packages/data-type/music-xml/src/identification/creator.ts" xlink:title="creator.ts">
 <path fill="#ddfeff" stroke="black" d="M739.5,-118C739.5,-118 692.5,-118 692.5,-118 689.5,-118 686.5,-115 686.5,-112 686.5,-112 686.5,-106 686.5,-106 686.5,-103 689.5,-100 692.5,-100 692.5,-100 739.5,-100 739.5,-100 742.5,-100 745.5,-103 745.5,-106 745.5,-106 745.5,-112 745.5,-112 745.5,-115 742.5,-118 739.5,-118"/>
 <text text-anchor="start" x="694.5" y="-106.8" font-family="Helvetica,sans-Serif" font-size="9.00">creator.ts</text>
 </a>
 </g>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/identification/encoding.ts -->
-<g id="node21" class="node">
+<g id="node19" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/identification/encoding.ts</title>
-<g id="a_node21"><a xlink:href="packages/data-type/music-xml/src/identification/encoding.ts" xlink:title="encoding.ts">
+<g id="a_node19"><a xlink:href="packages/data-type/music-xml/src/identification/encoding.ts" xlink:title="encoding.ts">
 <path fill="#ddfeff" stroke="black" d="M745,-148C745,-148 687,-148 687,-148 684,-148 681,-145 681,-142 681,-142 681,-136 681,-136 681,-133 684,-130 687,-130 687,-130 745,-130 745,-130 748,-130 751,-133 751,-136 751,-136 751,-142 751,-142 751,-145 748,-148 745,-148"/>
 <text text-anchor="start" x="689" y="-136.8" font-family="Helvetica,sans-Serif" font-size="9.00">encoding.ts</text>
 </a>
 </g>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/identification/support.ts -->
-<g id="node22" class="node">
+<g id="node20" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/identification/support.ts</title>
-<g id="a_node22"><a xlink:href="packages/data-type/music-xml/src/identification/support.ts" xlink:title="support.ts">
+<g id="a_node20"><a xlink:href="packages/data-type/music-xml/src/identification/support.ts" xlink:title="support.ts">
 <path fill="#ddfeff" stroke="black" d="M852,-155C852,-155 801,-155 801,-155 798,-155 795,-152 795,-149 795,-149 795,-143 795,-143 795,-140 798,-137 801,-137 801,-137 852,-137 852,-137 855,-137 858,-140 858,-143 858,-143 858,-149 858,-149 858,-152 855,-155 852,-155"/>
 <text text-anchor="start" x="803" y="-143.8" font-family="Helvetica,sans-Serif" font-size="9.00">support.ts</text>
 </a>
@@ -538,9 +515,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="788.78,-145.73 794.9,-144.03 789.05,-141.54 788.78,-145.73"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/identification/identification.ts -->
-<g id="node23" class="node">
+<g id="node21" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/identification/identification.ts</title>
-<g id="a_node23"><a xlink:href="packages/data-type/music-xml/src/identification/identification.ts" xlink:title="identification.ts">
+<g id="a_node21"><a xlink:href="packages/data-type/music-xml/src/identification/identification.ts" xlink:title="identification.ts">
 <path fill="#ddfeff" stroke="black" d="M655,-134C655,-134 580,-134 580,-134 577,-134 574,-131 574,-128 574,-128 574,-122 574,-122 574,-119 577,-116 580,-116 580,-116 655,-116 655,-116 658,-116 661,-119 661,-122 661,-122 661,-128 661,-128 661,-131 658,-134 655,-134"/>
 <text text-anchor="start" x="582" y="-122.8" font-family="Helvetica,sans-Serif" font-size="9.00">identification.ts</text>
 </a>
@@ -583,9 +560,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="582.38,-136.05 576.04,-135.53 581.32,-131.99 582.38,-136.05"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/measure/barline.ts -->
-<g id="node31" class="node">
+<g id="node29" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/measure/barline.ts</title>
-<g id="a_node31"><a xlink:href="packages/data-type/music-xml/src/measure/barline.ts" xlink:title="barline.ts">
+<g id="a_node29"><a xlink:href="packages/data-type/music-xml/src/measure/barline.ts" xlink:title="barline.ts">
 <path fill="#ddfeff" stroke="black" d="M1223,-235C1223,-235 1176,-235 1176,-235 1173,-235 1170,-232 1170,-229 1170,-229 1170,-223 1170,-223 1170,-220 1173,-217 1176,-217 1176,-217 1223,-217 1223,-217 1226,-217 1229,-220 1229,-223 1229,-223 1229,-229 1229,-229 1229,-232 1226,-235 1223,-235"/>
 <text text-anchor="start" x="1178" y="-223.8" font-family="Helvetica,sans-Serif" font-size="9.00">barline.ts</text>
 </a>
@@ -598,9 +575,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1170.16,-231.27 1163.96,-229.85 1169.69,-227.1 1170.16,-231.27"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/measure/extended&#45;measure.ts -->
-<g id="node32" class="node">
+<g id="node30" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/measure/extended&#45;measure.ts</title>
-<g id="a_node32"><a xlink:href="packages/data-type/music-xml/src/measure/extended-measure.ts" xlink:title="extended&#45;measure.ts">
+<g id="a_node30"><a xlink:href="packages/data-type/music-xml/src/measure/extended-measure.ts" xlink:title="extended&#45;measure.ts">
 <path fill="#ddfeff" stroke="black" d="M1147,-224C1147,-224 1046,-224 1046,-224 1043,-224 1040,-221 1040,-218 1040,-218 1040,-212 1040,-212 1040,-209 1043,-206 1046,-206 1046,-206 1147,-206 1147,-206 1150,-206 1153,-209 1153,-212 1153,-212 1153,-218 1153,-218 1153,-221 1150,-224 1147,-224"/>
 <text text-anchor="start" x="1048" y="-212.8" font-family="Helvetica,sans-Serif" font-size="9.00">extended&#45;measure.ts</text>
 </a>
@@ -619,9 +596,9 @@
 <text text-anchor="middle" x="1005.07" y="-223.73" font-family="Helvetica,sans-Serif" font-size="9.00" fill="orange">no&#45;circular</text>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/measure/measure.ts -->
-<g id="node33" class="node">
+<g id="node31" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/measure/measure.ts</title>
-<g id="a_node33"><a xlink:href="packages/data-type/music-xml/src/measure/measure.ts" xlink:title="measure.ts">
+<g id="a_node31"><a xlink:href="packages/data-type/music-xml/src/measure/measure.ts" xlink:title="measure.ts">
 <path fill="#ddfeff" stroke="black" d="M1124,-268C1124,-268 1069,-268 1069,-268 1066,-268 1063,-265 1063,-262 1063,-262 1063,-256 1063,-256 1063,-253 1066,-250 1069,-250 1069,-250 1124,-250 1124,-250 1127,-250 1130,-253 1130,-256 1130,-256 1130,-262 1130,-262 1130,-265 1127,-268 1124,-268"/>
 <text text-anchor="start" x="1071" y="-256.8" font-family="Helvetica,sans-Serif" font-size="9.00">measure.ts</text>
 </a>
@@ -640,9 +617,9 @@
 <text text-anchor="middle" x="1069.58" y="-245.93" font-family="Helvetica,sans-Serif" font-size="9.00" fill="orange">no&#45;circular</text>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/measure/note.ts -->
-<g id="node34" class="node">
+<g id="node32" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/measure/note.ts</title>
-<g id="a_node34"><a xlink:href="packages/data-type/music-xml/src/measure/note.ts" xlink:title="note.ts">
+<g id="a_node32"><a xlink:href="packages/data-type/music-xml/src/measure/note.ts" xlink:title="note.ts">
 <path fill="#ddfeff" stroke="black" d="M1220.5,-282C1220.5,-282 1178.5,-282 1178.5,-282 1175.5,-282 1172.5,-279 1172.5,-276 1172.5,-276 1172.5,-270 1172.5,-270 1172.5,-267 1175.5,-264 1178.5,-264 1178.5,-264 1220.5,-264 1220.5,-264 1223.5,-264 1226.5,-267 1226.5,-270 1226.5,-270 1226.5,-276 1226.5,-276 1226.5,-279 1223.5,-282 1220.5,-282"/>
 <text text-anchor="start" x="1183.5" y="-270.8" font-family="Helvetica,sans-Serif" font-size="9.00">note.ts</text>
 </a>
@@ -679,9 +656,9 @@
 <text text-anchor="middle" x="958.01" y="-329.12" font-family="Helvetica,sans-Serif" font-size="9.00" fill="orange">no&#45;circular</text>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part/beam.ts -->
-<g id="node40" class="node">
+<g id="node38" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/part/beam.ts</title>
-<g id="a_node40"><a xlink:href="packages/data-type/music-xml/src/part/beam.ts" xlink:title="beam.ts">
+<g id="a_node38"><a xlink:href="packages/data-type/music-xml/src/part/beam.ts" xlink:title="beam.ts">
 <path fill="#ddfeff" stroke="black" d="M1021,-474C1021,-474 979,-474 979,-474 976,-474 973,-471 973,-468 973,-468 973,-462 973,-462 973,-459 976,-456 979,-456 979,-456 1021,-456 1021,-456 1024,-456 1027,-459 1027,-462 1027,-462 1027,-468 1027,-468 1027,-471 1024,-474 1021,-474"/>
 <text text-anchor="start" x="981.5" y="-462.8" font-family="Helvetica,sans-Serif" font-size="9.00">beam.ts</text>
 </a>
@@ -694,9 +671,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="974.91,-457.75 970.5,-453.17 976.8,-454 974.91,-457.75"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part/beat&#45;pos.ts -->
-<g id="node41" class="node">
+<g id="node39" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/part/beat&#45;pos.ts</title>
-<g id="a_node41"><a xlink:href="packages/data-type/music-xml/src/part/beat-pos.ts" xlink:title="beat&#45;pos.ts">
+<g id="a_node39"><a xlink:href="packages/data-type/music-xml/src/part/beat-pos.ts" xlink:title="beat&#45;pos.ts">
 <path fill="#ddfeff" stroke="black" d="M1227,-463C1227,-463 1172,-463 1172,-463 1169,-463 1166,-460 1166,-457 1166,-457 1166,-451 1166,-451 1166,-448 1169,-445 1172,-445 1172,-445 1227,-445 1227,-445 1230,-445 1233,-448 1233,-451 1233,-451 1233,-457 1233,-457 1233,-460 1230,-463 1227,-463"/>
 <text text-anchor="start" x="1174" y="-451.8" font-family="Helvetica,sans-Serif" font-size="9.00">beat&#45;pos.ts</text>
 </a>
@@ -709,9 +686,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1165.41,-447.6 1160.08,-444.14 1166.4,-443.52 1165.41,-447.6"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part/has&#45;id.ts -->
-<g id="node42" class="node">
+<g id="node40" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/part/has&#45;id.ts</title>
-<g id="a_node42"><a xlink:href="packages/data-type/music-xml/src/part/has-id.ts" xlink:title="has&#45;id.ts">
+<g id="a_node40"><a xlink:href="packages/data-type/music-xml/src/part/has-id.ts" xlink:title="has&#45;id.ts">
 <path fill="#ddfeff" stroke="black" d="M1118,-496C1118,-496 1075,-496 1075,-496 1072,-496 1069,-493 1069,-490 1069,-490 1069,-484 1069,-484 1069,-481 1072,-478 1075,-478 1075,-478 1118,-478 1118,-478 1121,-478 1124,-481 1124,-484 1124,-484 1124,-490 1124,-490 1124,-493 1121,-496 1118,-496"/>
 <text text-anchor="start" x="1077" y="-484.8" font-family="Helvetica,sans-Serif" font-size="9.00">has&#45;id.ts</text>
 </a>
@@ -724,9 +701,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1068.88,-490.6 1062.81,-488.72 1068.72,-486.4 1068.88,-490.6"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part/part.ts -->
-<g id="node43" class="node">
+<g id="node41" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/part/part.ts</title>
-<g id="a_node43"><a xlink:href="packages/data-type/music-xml/src/part/part.ts" xlink:title="part.ts">
+<g id="a_node41"><a xlink:href="packages/data-type/music-xml/src/part/part.ts" xlink:title="part.ts">
 <path fill="#ddfeff" stroke="black" d="M1021,-518C1021,-518 979,-518 979,-518 976,-518 973,-515 973,-512 973,-512 973,-506 973,-506 973,-503 976,-500 979,-500 979,-500 1021,-500 1021,-500 1024,-500 1027,-503 1027,-506 1027,-506 1027,-512 1027,-512 1027,-515 1024,-518 1021,-518"/>
 <text text-anchor="start" x="984.5" y="-506.8" font-family="Helvetica,sans-Serif" font-size="9.00">part.ts</text>
 </a>
@@ -745,9 +722,9 @@
 <text text-anchor="middle" x="924.34" y="-461.07" font-family="Helvetica,sans-Serif" font-size="9.00" fill="orange">no&#45;circular</text>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part/pitch.ts -->
-<g id="node44" class="node">
+<g id="node42" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/part/pitch.ts</title>
-<g id="a_node44"><a xlink:href="packages/data-type/music-xml/src/part/pitch.ts" xlink:title="pitch.ts">
+<g id="a_node42"><a xlink:href="packages/data-type/music-xml/src/part/pitch.ts" xlink:title="pitch.ts">
 <path fill="#ddfeff" stroke="black" d="M1021,-444C1021,-444 979,-444 979,-444 976,-444 973,-441 973,-438 973,-438 973,-432 973,-432 973,-429 976,-426 979,-426 979,-426 1021,-426 1021,-426 1024,-426 1027,-429 1027,-432 1027,-432 1027,-438 1027,-438 1027,-441 1024,-444 1021,-444"/>
 <text text-anchor="start" x="982.5" y="-432.8" font-family="Helvetica,sans-Serif" font-size="9.00">pitch.ts</text>
 </a>
@@ -760,9 +737,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="972.21,-431.63 966.76,-428.36 973.06,-427.52 972.21,-431.63"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part&#45;list/midi&#45;device.ts -->
-<g id="node35" class="node">
+<g id="node33" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/part&#45;list/midi&#45;device.ts</title>
-<g id="a_node35"><a xlink:href="packages/data-type/music-xml/src/part-list/midi-device.ts" xlink:title="midi&#45;device.ts">
+<g id="a_node33"><a xlink:href="packages/data-type/music-xml/src/part-list/midi-device.ts" xlink:title="midi&#45;device.ts">
 <path fill="#ddfeff" stroke="black" d="M860.5,-430C860.5,-430 792.5,-430 792.5,-430 789.5,-430 786.5,-427 786.5,-424 786.5,-424 786.5,-418 786.5,-418 786.5,-415 789.5,-412 792.5,-412 792.5,-412 860.5,-412 860.5,-412 863.5,-412 866.5,-415 866.5,-418 866.5,-418 866.5,-424 866.5,-424 866.5,-427 863.5,-430 860.5,-430"/>
 <text text-anchor="start" x="794.5" y="-418.8" font-family="Helvetica,sans-Serif" font-size="9.00">midi&#45;device.ts</text>
 </a>
@@ -775,9 +752,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="786.3,-423.22 780.29,-421.14 786.28,-419.02 786.3,-423.22"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part&#45;list/midi&#45;instrument.ts -->
-<g id="node36" class="node">
+<g id="node34" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/part&#45;list/midi&#45;instrument.ts</title>
-<g id="a_node36"><a xlink:href="packages/data-type/music-xml/src/part-list/midi-instrument.ts" xlink:title="midi&#45;instrument.ts">
+<g id="a_node34"><a xlink:href="packages/data-type/music-xml/src/part-list/midi-instrument.ts" xlink:title="midi&#45;instrument.ts">
 <path fill="#ddfeff" stroke="black" d="M871,-460C871,-460 782,-460 782,-460 779,-460 776,-457 776,-454 776,-454 776,-448 776,-448 776,-445 779,-442 782,-442 782,-442 871,-442 871,-442 874,-442 877,-445 877,-448 877,-448 877,-454 877,-454 877,-457 874,-460 871,-460"/>
 <text text-anchor="start" x="784" y="-448.8" font-family="Helvetica,sans-Serif" font-size="9.00">midi&#45;instrument.ts</text>
 </a>
@@ -790,9 +767,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="797.25,-462.08 790.91,-461.64 796.14,-458.03 797.25,-462.08"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part&#45;list/part&#45;list.ts -->
-<g id="node37" class="node">
+<g id="node35" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/part&#45;list/part&#45;list.ts</title>
-<g id="a_node37"><a xlink:href="packages/data-type/music-xml/src/part-list/part-list.ts" xlink:title="part&#45;list.ts">
+<g id="a_node35"><a xlink:href="packages/data-type/music-xml/src/part-list/part-list.ts" xlink:title="part&#45;list.ts">
 <path fill="#ddfeff" stroke="black" d="M642.5,-458C642.5,-458 592.5,-458 592.5,-458 589.5,-458 586.5,-455 586.5,-452 586.5,-452 586.5,-446 586.5,-446 586.5,-443 589.5,-440 592.5,-440 592.5,-440 642.5,-440 642.5,-440 645.5,-440 648.5,-443 648.5,-446 648.5,-446 648.5,-452 648.5,-452 648.5,-455 645.5,-458 642.5,-458"/>
 <text text-anchor="start" x="594.5" y="-446.8" font-family="Helvetica,sans-Serif" font-size="9.00">part&#45;list.ts</text>
 </a>
@@ -805,9 +782,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="585.81,-442.11 580.65,-438.39 587,-438.08 585.81,-442.11"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part&#45;list/score&#45;instrument.ts -->
-<g id="node38" class="node">
+<g id="node36" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/part&#45;list/score&#45;instrument.ts</title>
-<g id="a_node38"><a xlink:href="packages/data-type/music-xml/src/part-list/score-instrument.ts" xlink:title="score&#45;instrument.ts">
+<g id="a_node36"><a xlink:href="packages/data-type/music-xml/src/part-list/score-instrument.ts" xlink:title="score&#45;instrument.ts">
 <path fill="#ddfeff" stroke="black" d="M873,-490C873,-490 780,-490 780,-490 777,-490 774,-487 774,-484 774,-484 774,-478 774,-478 774,-475 777,-472 780,-472 780,-472 873,-472 873,-472 876,-472 879,-475 879,-478 879,-478 879,-484 879,-484 879,-487 876,-490 873,-490"/>
 <text text-anchor="start" x="782" y="-478.8" font-family="Helvetica,sans-Serif" font-size="9.00">score&#45;instrument.ts</text>
 </a>
@@ -820,9 +797,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="784.66,-492.09 778.39,-491.04 783.95,-487.95 784.66,-492.09"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part&#45;list/score&#45;part.ts -->
-<g id="node39" class="node">
+<g id="node37" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/part&#45;list/score&#45;part.ts</title>
-<g id="a_node39"><a xlink:href="packages/data-type/music-xml/src/part-list/score-part.ts" xlink:title="score&#45;part.ts">
+<g id="a_node37"><a xlink:href="packages/data-type/music-xml/src/part-list/score-part.ts" xlink:title="score&#45;part.ts">
 <path fill="#ddfeff" stroke="black" d="M747,-451C747,-451 685,-451 685,-451 682,-451 679,-448 679,-445 679,-445 679,-439 679,-439 679,-436 682,-433 685,-433 685,-433 747,-433 747,-433 750,-433 753,-436 753,-439 753,-439 753,-445 753,-445 753,-448 750,-451 747,-451"/>
 <text text-anchor="start" x="687" y="-439.8" font-family="Helvetica,sans-Serif" font-size="9.00">score&#45;part.ts</text>
 </a>
@@ -835,9 +812,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="678.45,-438.35 672.79,-435.46 679.02,-434.19 678.45,-438.35"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/print/print.ts -->
-<g id="node45" class="node">
+<g id="node43" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/print/print.ts</title>
-<g id="a_node45"><a xlink:href="packages/data-type/music-xml/src/print/print.ts" xlink:title="print.ts">
+<g id="a_node43"><a xlink:href="packages/data-type/music-xml/src/print/print.ts" xlink:title="print.ts">
 <path fill="#ddfeff" stroke="black" d="M1304,-342C1304,-342 1262,-342 1262,-342 1259,-342 1256,-339 1256,-336 1256,-336 1256,-330 1256,-330 1256,-327 1259,-324 1262,-324 1262,-324 1304,-324 1304,-324 1307,-324 1310,-327 1310,-330 1310,-330 1310,-336 1310,-336 1310,-339 1307,-342 1304,-342"/>
 <text text-anchor="start" x="1266" y="-330.8" font-family="Helvetica,sans-Serif" font-size="9.00">print.ts</text>
 </a>
@@ -850,9 +827,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1256.36,-342.1 1250.02,-341.63 1255.27,-338.04 1256.36,-342.1"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/print/system&#45;layout.ts -->
-<g id="node46" class="node">
+<g id="node44" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/print/system&#45;layout.ts</title>
-<g id="a_node46"><a xlink:href="packages/data-type/music-xml/src/print/system-layout.ts" xlink:title="system&#45;layout.ts">
+<g id="a_node44"><a xlink:href="packages/data-type/music-xml/src/print/system-layout.ts" xlink:title="system&#45;layout.ts">
 <path fill="#ddfeff" stroke="black" d="M1415,-356C1415,-356 1336,-356 1336,-356 1333,-356 1330,-353 1330,-350 1330,-350 1330,-344 1330,-344 1330,-341 1333,-338 1336,-338 1336,-338 1415,-338 1415,-338 1418,-338 1421,-341 1421,-344 1421,-344 1421,-350 1421,-350 1421,-353 1418,-356 1415,-356"/>
 <text text-anchor="start" x="1338" y="-344.8" font-family="Helvetica,sans-Serif" font-size="9.00">system&#45;layout.ts</text>
 </a>
@@ -865,9 +842,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1329.76,-351.16 1323.67,-349.34 1329.56,-346.96 1329.76,-351.16"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/print/system&#45;margins.ts -->
-<g id="node47" class="node">
+<g id="node45" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/print/system&#45;margins.ts</title>
-<g id="a_node47"><a xlink:href="packages/data-type/music-xml/src/print/system-margins.ts" xlink:title="system&#45;margins.ts">
+<g id="a_node45"><a xlink:href="packages/data-type/music-xml/src/print/system-margins.ts" xlink:title="system&#45;margins.ts">
 <path fill="#ddfeff" stroke="black" d="M1528,-363C1528,-363 1440,-363 1440,-363 1437,-363 1434,-360 1434,-357 1434,-357 1434,-351 1434,-351 1434,-348 1437,-345 1440,-345 1440,-345 1528,-345 1528,-345 1531,-345 1534,-348 1534,-351 1534,-351 1534,-357 1534,-357 1534,-360 1531,-363 1528,-363"/>
 <text text-anchor="start" x="1442" y="-351.8" font-family="Helvetica,sans-Serif" font-size="9.00">system&#45;margins.ts</text>
 </a>
@@ -910,9 +887,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="515.01,-416.6 510.96,-411.69 517.18,-413 515.01,-416.6"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/score&#45;partwise/score&#45;partwise.ts -->
-<g id="node48" class="node">
+<g id="node46" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/score&#45;partwise/score&#45;partwise.ts</title>
-<g id="a_node48"><a xlink:href="packages/data-type/music-xml/src/score-partwise/score-partwise.ts" xlink:title="score&#45;partwise.ts">
+<g id="a_node46"><a xlink:href="packages/data-type/music-xml/src/score-partwise/score-partwise.ts" xlink:title="score&#45;partwise.ts">
 <path fill="#ddfeff" stroke="black" d="M482,-370C482,-370 401,-370 401,-370 398,-370 395,-367 395,-364 395,-364 395,-358 395,-358 395,-355 398,-352 401,-352 401,-352 482,-352 482,-352 485,-352 488,-355 488,-358 488,-358 488,-364 488,-364 488,-367 485,-370 482,-370"/>
 <text text-anchor="start" x="403" y="-358.8" font-family="Helvetica,sans-Serif" font-size="9.00">score&#45;partwise.ts</text>
 </a>
@@ -925,9 +902,9 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="394.65,-355.53 389.07,-352.48 395.34,-351.39 394.65,-355.53"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/score&#45;partwise/work.ts -->
-<g id="node49" class="node">
+<g id="node47" class="node">
 <title>packages/data&#45;type/music&#45;xml/src/score&#45;partwise/work.ts</title>
-<g id="a_node49"><a xlink:href="packages/data-type/music-xml/src/score-partwise/work.ts" xlink:title="work.ts">
+<g id="a_node47"><a xlink:href="packages/data-type/music-xml/src/score-partwise/work.ts" xlink:title="work.ts">
 <path fill="#ddfeff" stroke="black" d="M552,-363C552,-363 510,-363 510,-363 507,-363 504,-360 504,-357 504,-357 504,-351 504,-351 504,-348 507,-345 510,-345 510,-345 552,-345 552,-345 555,-345 558,-348 558,-351 558,-351 558,-357 558,-357 558,-360 555,-363 552,-363"/>
 <text text-anchor="start" x="514" y="-351.8" font-family="Helvetica,sans-Serif" font-size="9.00">work.ts</text>
 </a>
