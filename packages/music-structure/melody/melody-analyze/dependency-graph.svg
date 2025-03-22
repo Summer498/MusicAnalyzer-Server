@@ -147,8 +147,8 @@
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/index.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/index.ts -->
 <g id="edge1" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/index.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M103.74,-315C110.18,-315 117.13,-315 123.78,-315"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="128.79,-316.75 123.79,-315 128.79,-313.25 128.79,-316.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M103.74,-315C109.8,-315 116.32,-315 122.6,-315"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="128.79,-317.1 122.79,-315 128.79,-312.9 128.79,-317.1"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/analyze&#45;melody.ts -->
 <g id="node6" class="node">
@@ -162,8 +162,8 @@
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/index.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/analyze&#45;melody.ts -->
 <g id="edge12" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/index.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/analyze&#45;melody.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M173.27,-324.08C190.09,-333.48 216.42,-348.18 234.74,-358.41"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="238.36,-362.43 234.85,-358.47 240.06,-359.38 238.36,-362.43"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M173.27,-324.08C189.8,-333.32 215.53,-347.68 233.8,-357.88"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="238.19,-362.74 233.97,-357.98 240.23,-359.07 238.19,-362.74"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/interfaces.ts -->
 <g id="node7" class="node">
@@ -177,8 +177,8 @@
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/index.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/interfaces.ts -->
 <g id="edge14" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/index.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/interfaces.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M183.16,-315.63C254.3,-317.36 446,-322 446,-322 446,-322 462.91,-325.38 480.68,-328.94"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="485.35,-331.66 480.79,-328.96 486.04,-328.22 485.35,-331.66"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M183.21,-316.64C246.46,-320.44 403.74,-329.89 479.67,-334.46"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="485.75,-336.92 479.89,-334.47 486,-332.73 485.75,-336.92"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/get&#45;time&#45;and&#45;melody.ts -->
 <g id="node11" class="node">
@@ -192,26 +192,26 @@
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/index.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/get&#45;time&#45;and&#45;melody.ts -->
 <g id="edge13" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/index.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/get&#45;time&#45;and&#45;melody.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M183.14,-309.16C191.41,-307.31 200.81,-305.22 210.02,-303.16"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="215.5,-303.73 210.24,-303.11 214.74,-300.31 215.5,-303.73"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M183.14,-309.16C191.18,-307.37 200.28,-305.33 209.26,-303.33"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="215.58,-304.07 209.26,-303.33 214.66,-299.97 215.58,-304.07"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/analyze&#45;melody.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/irm/dist/index.js -->
 <g id="edge5" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/analyze&#45;melody.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/irm/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M261.61,-379.12C276.94,-413.18 330,-531 330,-531 330,-531 521,-725 521,-725 521,-725 521,-725 808,-725 808,-725 979.16,-686.34 1051.17,-670.08"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1056.18,-668.94 1051.8,-672.24 1053.74,-669.5 1051.3,-670.05 1051.3,-670.05 1051.3,-670.05 1053.74,-669.5 1050.81,-667.85 1056.18,-668.94 1056.18,-668.94"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M282.16,-379.09C403.45,-422.06 918.98,-604.71 1052.06,-651.86"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1051.38,-653.85 1057.73,-653.87 1052.78,-649.89 1051.38,-653.85"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/analyze&#45;melody.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js -->
 <g id="edge4" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/analyze&#45;melody.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M274.79,-379.12C321.04,-403.52 447.58,-470.27 498.92,-497.35"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="503.65,-499.85 498.18,-499.5 501.44,-498.68 499.22,-497.51 499.22,-497.51 499.22,-497.51 501.44,-498.68 500.27,-495.52 503.65,-499.85 503.65,-499.85"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M273.92,-379.12C320.34,-403.42 447,-469.73 499.12,-497.02"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="498.23,-498.92 504.52,-499.85 500.17,-495.2 498.23,-498.92"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/analyze&#45;melody.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/interfaces.ts -->
 <g id="edge2" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/analyze&#45;melody.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/interfaces.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M304.58,-365.5C360.41,-360.17 446,-352 446,-352 446,-352 462.91,-348.62 480.68,-345.06"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="485.7,-344.06 481.23,-347.25 483.24,-344.55 480.79,-345.04 480.79,-345.04 480.79,-345.04 483.24,-344.55 480.35,-342.84 485.7,-344.06 485.7,-344.06"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M304.58,-364.02C354.49,-357.82 431.81,-348.21 479.54,-342.28"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="480.08,-344.33 485.78,-341.5 479.57,-340.16 480.08,-344.33"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/register&#45;gravity.ts -->
 <g id="node8" class="node">
@@ -225,8 +225,8 @@
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/analyze&#45;melody.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/register&#45;gravity.ts -->
 <g id="edge3" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/analyze&#45;melody.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/register&#45;gravity.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M292.89,-360.98C309.45,-356.76 329.26,-351.71 346.42,-347.34"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="351.66,-346.01 347.37,-349.42 349.23,-346.62 346.81,-347.24 346.81,-347.24 346.81,-347.24 349.23,-346.62 346.26,-345.06 351.66,-346.01 351.66,-346.01"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M292.89,-360.98C309.16,-356.84 328.57,-351.89 345.53,-347.57"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="346.36,-349.52 351.66,-346.01 345.32,-345.45 346.36,-349.52"/>
 </g>
 <!-- packages/tonal&#45;objects/dist/index.js -->
 <g id="node9" class="node">
@@ -240,8 +240,8 @@
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/analyze&#45;melody.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js -->
 <g id="edge6" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/analyze&#45;melody.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M265.06,-379.04C302.92,-424.29 470,-624 470,-624 470,-624 599,-640 599,-640 599,-640 716.86,-648.54 774.71,-652.73"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="779.78,-653.1 774.63,-654.98 777.29,-652.92 774.8,-652.74 774.8,-652.74 774.8,-652.74 777.29,-652.92 774.96,-650.49 779.78,-653.1 779.78,-653.1"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M273.88,-379C354.62,-420.8 692.9,-595.93 784.21,-643.2"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="783.32,-645.1 789.61,-646 785.25,-641.37 783.32,-645.1"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/gravity.ts -->
 <g id="node13" class="node">
@@ -255,8 +255,8 @@
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/interfaces.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/gravity.ts -->
 <g id="edge15" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/interfaces.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/gravity.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M545.39,-346.13C567.81,-355.28 599,-368 599,-368 599,-368 721,-368 721,-368 721,-368 891.5,-366 891.5,-366 891.5,-366 993.5,-366 993.5,-366 993.5,-366 1023.8,-367.36 1049.04,-368.5"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1054.26,-370.48 1049.34,-368.51 1054.42,-366.99 1054.26,-370.48"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M558.41,-339.14C660.41,-345.13 948.04,-362.04 1048.41,-367.94"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1054.34,-370.39 1048.48,-367.94 1054.59,-366.2 1054.34,-370.39"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/melody&#45;analysis.ts -->
 <g id="node14" class="node">
@@ -270,8 +270,8 @@
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/interfaces.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/melody&#45;analysis.ts -->
 <g id="edge16" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/interfaces.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/melody&#45;analysis.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M539.49,-346.11C561.84,-358.47 599,-379 599,-379 599,-379 791.29,-380.12 887.71,-380.69"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="892.78,-382.47 887.79,-380.69 892.8,-378.97 892.78,-382.47"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M558.22,-340.79C631.75,-348.48 799.01,-365.99 886.62,-375.15"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="892.57,-377.89 886.82,-375.17 893,-373.71 892.57,-377.89"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/melody&#45;analysis&#45;data.ts -->
 <g id="node15" class="node">
@@ -285,8 +285,8 @@
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/interfaces.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/melody&#45;analysis&#45;data.ts -->
 <g id="edge17" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/interfaces.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/melody&#45;analysis&#45;data.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M558.02,-341.12C568.9,-342.4 581.27,-343.86 593.53,-345.3"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="598.57,-347.65 593.8,-345.33 598.97,-344.18 598.57,-347.65"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M558.02,-341.12C568.61,-342.37 580.61,-343.78 592.54,-345.18"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="598.52,-348 592.81,-345.21 599.02,-343.83 598.52,-348"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/time&#45;and&#45;analyzed&#45;melody.ts -->
 <g id="node16" class="node">
@@ -300,8 +300,8 @@
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/interfaces.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/time&#45;and&#45;analyzed&#45;melody.ts -->
 <g id="edge18" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/interfaces.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/time&#45;and&#45;analyzed&#45;melody.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M546.63,-327.98C568.94,-319.47 599,-308 599,-308 599,-308 721,-308 721,-308 721,-308 733.89,-310.27 749.63,-313.05"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="754.29,-315.65 749.67,-313.06 754.9,-312.21 754.29,-315.65"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M558.1,-335.23C600.51,-333.14 672.15,-329.62 727.71,-326.89"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="733.82,-328.7 727.72,-326.89 733.61,-324.5 733.82,-328.7"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/time&#45;and&#45;chord.ts -->
 <g id="node17" class="node">
@@ -315,8 +315,8 @@
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/interfaces.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/time&#45;and&#45;chord.ts -->
 <g id="edge19" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/interfaces.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/time&#45;and&#45;chord.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M558.02,-333.39C572.45,-331.91 589.49,-330.16 605.42,-328.52"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="610.95,-329.71 605.8,-328.48 610.59,-326.22 610.95,-329.71"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M558.02,-333.39C572.2,-331.94 588.89,-330.22 604.58,-328.6"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="610.99,-330.05 604.8,-328.58 610.56,-325.88 610.99,-330.05"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/time&#45;and&#45;melody.ts -->
 <g id="node18" class="node">
@@ -330,20 +330,20 @@
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/interfaces.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/time&#45;and&#45;melody.ts -->
 <g id="edge20" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/interfaces.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/time&#45;and&#45;melody.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M540.25,-327.92C562.67,-316.12 599,-297 599,-297 599,-297 610.71,-293.49 623.79,-289.56"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="629.15,-289.78 623.86,-289.54 628.15,-286.43 629.15,-289.78"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M544.25,-327.94C567.86,-317.87 606.06,-301.58 631.83,-290.59"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="638.27,-290.12 631.93,-290.54 636.63,-286.26 638.27,-290.12"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/register&#45;gravity.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/interfaces.ts -->
 <g id="edge24" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/register&#45;gravity.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/interfaces.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M435.54,-337C450.21,-337 466.3,-337 480.52,-337"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="485.67,-337 480.67,-339.25 483.17,-337 480.67,-337 480.67,-337 480.67,-337 483.17,-337 480.67,-334.75 485.67,-337 485.67,-337"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M435.54,-337C449.83,-337 465.45,-337 479.39,-337"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="479.67,-339.1 485.67,-337 479.67,-334.9 479.67,-339.1"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/register&#45;gravity.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js -->
 <g id="edge26" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/register&#45;gravity.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M406.72,-346.02C423.46,-354.53 446,-366 446,-366 446,-366 470,-547 470,-547 470,-547 721,-627 721,-627 721,-627 750.55,-636.73 774.8,-644.72"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="779.57,-646.29 774.12,-646.87 777.2,-645.51 774.82,-644.73 774.82,-644.73 774.82,-644.73 777.2,-645.51 775.53,-642.59 779.57,-646.29 779.57,-646.29"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M400.09,-346.17C459.46,-391.23 720.11,-589.06 789.81,-641.95"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="788.81,-643.83 794.86,-645.79 791.35,-640.49 788.81,-643.83"/>
 </g>
 <!-- packages/util/math/dist/index.js -->
 <g id="node19" class="node">
@@ -357,8 +357,8 @@
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/register&#45;gravity.ts&#45;&gt;packages/util/math/dist/index.js -->
 <g id="edge25" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/register&#45;gravity.ts&#45;&gt;packages/util/math/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M406.45,-327.91C487.72,-285.54 829.02,-107.63 919.44,-60.5"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="924.05,-58.1 920.65,-62.4 921.83,-59.25 919.61,-60.41 919.61,-60.41 919.61,-60.41 921.83,-59.25 918.57,-58.41 924.05,-58.1 924.05,-58.1"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M405.51,-327.91C486.83,-285.67 827.57,-108.69 919.54,-60.93"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="920.63,-62.73 924.98,-58.1 918.69,-59 920.63,-62.73"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/get&#45;time&#45;and&#45;chord.ts -->
 <g id="node10" class="node">
@@ -372,26 +372,26 @@
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/get&#45;time&#45;and&#45;chord.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js -->
 <g id="edge8" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/get&#45;time&#45;and&#45;chord.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M398.49,-390.21C421.71,-412.72 481.38,-470.58 507.92,-496.32"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="511.59,-499.88 506.44,-498.01 509.8,-498.14 508,-496.4 508,-496.4 508,-496.4 509.8,-498.14 509.57,-494.78 511.59,-499.88 511.59,-499.88"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M398.49,-390.21C421.52,-412.53 480.4,-469.63 507.26,-495.68"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="505.82,-497.21 511.59,-499.88 508.75,-494.19 505.82,-497.21"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/get&#45;time&#45;and&#45;chord.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/interfaces.ts -->
 <g id="edge7" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/get&#45;time&#45;and&#45;chord.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/interfaces.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M417.83,-371.89C431.97,-367.43 446,-363 446,-363 446,-363 469.26,-354.94 489.88,-347.79"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="494.77,-346.09 490.78,-349.86 492.41,-346.91 490.04,-347.73 490.04,-347.73 490.04,-347.73 492.41,-346.91 489.31,-345.61 494.77,-346.09 494.77,-346.09"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M416.03,-371.99C436.8,-365.07 465.6,-355.47 487.78,-348.07"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="488.52,-350.04 493.55,-346.15 487.2,-346.05 488.52,-350.04"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/get&#45;time&#45;and&#45;chord.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js -->
 <g id="edge9" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/get&#45;time&#45;and&#45;chord.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M392.18,-390.13C407.15,-433.21 470,-614 470,-614 470,-614 691.15,-640.99 774.62,-651.17"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="779.91,-651.82 774.68,-653.44 777.43,-651.51 774.95,-651.21 774.95,-651.21 774.95,-651.21 777.43,-651.51 775.22,-648.98 779.91,-651.82 779.91,-651.82"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M401.94,-390.12C464.08,-430.75 715.89,-595.42 787.76,-642.42"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="786.84,-644.32 793.01,-645.85 789.13,-640.81 786.84,-644.32"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/get&#45;time&#45;and&#45;melody.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/interfaces.ts -->
 <g id="edge10" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/get&#45;time&#45;and&#45;melody.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/interfaces.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M317.14,-298.7C372.37,-303.97 446,-311 446,-311 446,-311 469.26,-319.06 489.88,-326.21"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="494.77,-327.91 489.31,-328.39 492.41,-327.09 490.04,-326.27 490.04,-326.27 490.04,-326.27 492.41,-327.09 490.78,-324.14 494.77,-327.91 494.77,-327.91"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M310.87,-302.01C360.96,-310.31 434.25,-322.46 479.98,-330.04"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="479.71,-332.12 485.97,-331.03 480.4,-327.98 479.71,-332.12"/>
 </g>
 <!-- packages/util/time&#45;and/dist/index.js -->
 <g id="node12" class="node">
@@ -405,56 +405,56 @@
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/get&#45;time&#45;and&#45;melody.ts&#45;&gt;packages/util/time&#45;and/dist/index.js -->
 <g id="edge11" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/get&#45;time&#45;and&#45;melody.ts&#45;&gt;packages/util/time&#45;and/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M275.61,-283.86C335.14,-253.81 521,-160 521,-160 521,-160 521,-160 661,-160 661,-160 837.17,-149.32 910.28,-144.89"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="915.36,-144.58 910.51,-147.13 912.87,-144.74 910.37,-144.89 910.37,-144.89 910.37,-144.89 912.87,-144.74 910.24,-142.64 915.36,-144.58 915.36,-144.58"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M297.87,-283.95C422.96,-256.6 795.61,-175.12 909.24,-150.27"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="909.99,-152.26 915.4,-148.92 909.09,-148.16 909.99,-152.26"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/melody&#45;analysis.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/irm/dist/index.js -->
 <g id="edge23" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/melody&#45;analysis.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/irm/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M947.97,-390.06C968.18,-431.08 1051.18,-599.46 1075.67,-649.14"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1077.98,-653.83 1073.75,-650.34 1076.87,-651.59 1075.77,-649.34 1075.77,-649.34 1075.77,-649.34 1076.87,-651.59 1077.79,-648.35 1077.98,-653.83 1077.98,-653.83"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M947.97,-390.06C968.06,-430.83 1050.18,-597.42 1075.22,-648.22"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1073.44,-649.38 1077.98,-653.83 1077.21,-647.52 1073.44,-649.38"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/melody&#45;analysis.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/gravity.ts -->
 <g id="edge22" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/melody&#45;analysis.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/gravity.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M992.12,-377.15C1010.99,-375.66 1032.13,-373.99 1049.21,-372.63"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1054.38,-372.23 1049.57,-374.86 1051.88,-372.42 1049.39,-372.62 1049.39,-372.62 1049.39,-372.62 1051.88,-372.42 1049.21,-370.38 1054.38,-372.23 1054.38,-372.23"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M992.12,-377.15C1010.66,-375.68 1031.4,-374.04 1048.32,-372.7"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1048.56,-374.79 1054.38,-372.23 1048.23,-370.61 1048.56,-374.79"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/melody&#45;analysis&#45;data.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/time&#45;and&#45;analyzed&#45;melody.ts -->
 <g id="edge21" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/melody&#45;analysis&#45;data.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/time&#45;and&#45;analyzed&#45;melody.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M704.5,-344C721.06,-340.57 740.03,-336.65 757.06,-333.13"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="762.28,-332.05 757.84,-335.26 759.83,-332.55 757.38,-333.06 757.38,-333.06 757.38,-333.06 759.83,-332.55 756.92,-330.86 762.28,-332.05 762.28,-332.05"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M704.5,-344C720.78,-340.63 739.38,-336.78 756.18,-333.31"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="756.83,-335.32 762.28,-332.05 755.97,-331.21 756.83,-335.32"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/time&#45;and&#45;analyzed&#45;melody.ts&#45;&gt;packages/util/time&#45;and/dist/index.js -->
 <g id="edge28" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/time&#45;and&#45;analyzed&#45;melody.ts&#45;&gt;packages/util/time&#45;and/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M826.54,-313.99C847.87,-303.62 880,-288 880,-288 880,-288 891.5,-259 891.5,-259 891.5,-259 922.14,-187.91 935.45,-157.04"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="937.58,-152.1 937.66,-157.58 936.59,-154.4 935.6,-156.69 935.6,-156.69 935.6,-156.69 936.59,-154.4 933.53,-155.8 937.58,-152.1 937.58,-152.1"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M814.8,-313.83C836.49,-284.58 904.12,-193.4 930.66,-157.62"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="932.66,-158.44 934.55,-152.37 929.29,-155.94 932.66,-158.44"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/time&#45;and&#45;analyzed&#45;melody.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/melody&#45;analysis.ts -->
 <g id="edge27" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/time&#45;and&#45;analyzed&#45;melody.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/src/melody&#45;analysis.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M828.86,-332.06C852.23,-342.22 890.16,-358.7 915.46,-369.69"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="920.35,-371.81 914.86,-371.88 918.05,-370.81 915.76,-369.82 915.76,-369.82 915.76,-369.82 918.05,-370.81 916.66,-367.75 920.35,-371.81 920.35,-371.81"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M828.86,-332.06C852.04,-342.13 889.53,-358.42 914.83,-369.41"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="914.01,-371.34 920.35,-371.81 915.68,-367.49 914.01,-371.34"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/time&#45;and&#45;chord.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js -->
 <g id="edge30" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/time&#45;and&#45;chord.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M697.29,-332.07C709.92,-335.23 721,-338 721,-338 721,-338 734,-419 734,-419 734,-419 786.22,-590.16 801.71,-640.95"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="803.18,-645.75 799.57,-641.62 802.45,-643.36 801.72,-640.97 801.72,-640.97 801.72,-640.97 802.45,-643.36 803.87,-640.31 803.18,-645.75 803.18,-645.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M665.03,-332.23C685.15,-378.3 774.79,-583.53 799.61,-640.37"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="797.73,-641.32 802.06,-645.97 801.58,-639.64 797.73,-641.32"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/time&#45;and&#45;chord.ts&#45;&gt;packages/util/time&#45;and/dist/index.js -->
 <g id="edge29" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/time&#45;and&#45;chord.ts&#45;&gt;packages/util/time&#45;and/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M686.98,-313.98C744.99,-293.85 880,-247 880,-247 880,-247 916.63,-185.06 933.35,-156.78"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="936.04,-152.23 935.43,-157.68 934.77,-154.38 933.5,-156.53 933.5,-156.53 933.5,-156.53 934.77,-154.38 931.56,-155.39 936.04,-152.23 936.04,-152.23"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M674.4,-313.83C721.25,-283.97 869.42,-189.57 922.96,-155.45"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="924.2,-157.15 928.13,-152.16 921.94,-153.61 924.2,-157.15"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/src/time&#45;and&#45;melody.ts&#45;&gt;packages/util/time&#45;and/dist/index.js -->
 <g id="edge31" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;analyze/src/time&#45;and&#45;melody.ts&#45;&gt;packages/util/time&#45;and/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M697.66,-269.96C760,-254.59 880,-225 880,-225 880,-225 914.27,-179.3 931.65,-156.14"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="934.68,-152.09 933.48,-157.44 933.18,-154.09 931.68,-156.09 931.68,-156.09 931.68,-156.09 933.18,-154.09 929.88,-154.74 934.68,-152.09 934.68,-152.09"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M678.97,-269.87C728.73,-245.91 862.92,-181.31 918.2,-154.7"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="919.11,-156.59 923.61,-152.09 917.29,-152.81 919.11,-156.59"/>
 </g>
 </g>
 </svg>

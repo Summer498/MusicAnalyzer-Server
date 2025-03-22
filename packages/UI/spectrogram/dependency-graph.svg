@@ -90,8 +90,8 @@
 <!-- packages/UI/spectrogram/index.ts&#45;&gt;packages/UI/spectrogram/src/index.ts -->
 <g id="edge1" class="edge">
 <title>packages/UI/spectrogram/index.ts&#45;&gt;packages/UI/spectrogram/src/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M86.1,-97C89.44,-97 92.89,-97 96.31,-97"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="101.64,-98.75 96.64,-97 101.64,-95.25 101.64,-98.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M86.1,-97C89.12,-97 92.23,-97 95.33,-97"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="101.64,-99.1 95.64,-97 101.64,-94.9 101.64,-99.1"/>
 </g>
 <!-- packages/UI/spectrogram/src/audio&#45;viewer.ts -->
 <g id="node10" class="node">
@@ -105,8 +105,8 @@
 <!-- packages/UI/spectrogram/src/index.ts&#45;&gt;packages/UI/spectrogram/src/audio&#45;viewer.ts -->
 <g id="edge16" class="edge">
 <title>packages/UI/spectrogram/src/index.ts&#45;&gt;packages/UI/spectrogram/src/audio&#45;viewer.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M156.36,-97C158.75,-97 161.23,-97 163.73,-97"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="168.91,-98.75 163.91,-97 168.91,-95.25 168.91,-98.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M156.36,-97C158.38,-97 160.45,-97 162.55,-97"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="168.91,-99.1 162.91,-97 168.91,-94.9 168.91,-99.1"/>
 </g>
 <!-- packages/UI/spectrogram/src/audio&#45;analyzer/audio&#45;analyzer.ts -->
 <g id="node3" class="node">
@@ -129,8 +129,8 @@
 <!-- packages/UI/spectrogram/src/audio&#45;analyzer/audio&#45;analyzer.ts&#45;&gt;packages/UI/spectrogram/src/audio&#45;analyzer/connect.ts -->
 <g id="edge2" class="edge">
 <title>packages/UI/spectrogram/src/audio&#45;analyzer/audio&#45;analyzer.ts&#45;&gt;packages/UI/spectrogram/src/audio&#45;analyzer/connect.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M580.5,-80C590.2,-83.23 601.24,-86.91 611.33,-90.28"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="616.21,-91.9 610.75,-92.46 613.83,-91.11 611.46,-90.32 611.46,-90.32 611.46,-90.32 613.83,-91.11 612.17,-88.19 616.21,-91.9 616.21,-91.9"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M580.5,-80C589.94,-83.15 600.64,-86.71 610.51,-90"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="609.85,-92 616.21,-91.9 611.18,-88.01 609.85,-92"/>
 </g>
 <!-- packages/UI/spectrogram/src/audio&#45;analyzer/get&#45;data&#45;on&#45;buffer.ts -->
 <g id="node5" class="node">
@@ -144,8 +144,8 @@
 <!-- packages/UI/spectrogram/src/audio&#45;analyzer/audio&#45;analyzer.ts&#45;&gt;packages/UI/spectrogram/src/audio&#45;analyzer/get&#45;data&#45;on&#45;buffer.ts -->
 <g id="edge3" class="edge">
 <title>packages/UI/spectrogram/src/audio&#45;analyzer/audio&#45;analyzer.ts&#45;&gt;packages/UI/spectrogram/src/audio&#45;analyzer/get&#45;data&#45;on&#45;buffer.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M588.88,-61.93C601.2,-58.77 612,-56 612,-56 612,-56 677,-56 677,-56 677,-56 679.98,-56.36 684.69,-56.92"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="689.92,-57.54 684.69,-59.18 687.44,-57.25 684.95,-56.95 684.95,-56.95 684.95,-56.95 687.44,-57.25 685.22,-54.72 689.92,-57.54 689.92,-57.54"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M599.1,-69.31C624.55,-68.38 656.37,-67.22 683.8,-66.23"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="684.02,-68.32 689.94,-66 683.87,-64.12 684.02,-68.32"/>
 </g>
 <!-- packages/UI/spectrogram/src/audio&#45;analyzer/get&#45;fft.ts -->
 <g id="node6" class="node">
@@ -159,14 +159,14 @@
 <!-- packages/UI/spectrogram/src/audio&#45;analyzer/audio&#45;analyzer.ts&#45;&gt;packages/UI/spectrogram/src/audio&#45;analyzer/get&#45;fft.ts -->
 <g id="edge4" class="edge">
 <title>packages/UI/spectrogram/src/audio&#45;analyzer/audio&#45;analyzer.ts&#45;&gt;packages/UI/spectrogram/src/audio&#45;analyzer/get&#45;fft.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M599.03,-71C603.1,-71 607.17,-71 611.11,-71"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="616.37,-71 611.37,-73.25 613.87,-71 611.37,-71 611.37,-71 611.37,-71 613.87,-71 611.37,-68.75 616.37,-71 616.37,-71"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M599.03,-71C602.83,-71 606.62,-71 610.3,-71"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="610.37,-73.1 616.37,-71 610.37,-68.9 610.37,-73.1"/>
 </g>
 <!-- packages/UI/spectrogram/src/audio&#45;analyzer/get&#45;fft.ts&#45;&gt;packages/UI/spectrogram/src/audio&#45;analyzer/get&#45;data&#45;on&#45;buffer.ts -->
 <g id="edge5" class="edge">
 <title>packages/UI/spectrogram/src/audio&#45;analyzer/get&#45;fft.ts&#45;&gt;packages/UI/spectrogram/src/audio&#45;analyzer/get&#45;data&#45;on&#45;buffer.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M672.68,-69.07C676.44,-68.8 680.42,-68.52 684.5,-68.23"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="689.71,-67.86 684.88,-70.46 687.22,-68.04 684.72,-68.21 684.72,-68.21 684.72,-68.21 687.22,-68.04 684.56,-65.97 689.71,-67.86 689.71,-67.86"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M672.68,-69.07C676.19,-68.82 679.89,-68.56 683.68,-68.29"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="683.87,-70.38 689.71,-67.86 683.58,-66.19 683.87,-70.38"/>
 </g>
 <!-- packages/util/math/fft/array/index.ts -->
 <g id="node8" class="node">
@@ -180,8 +180,8 @@
 <!-- packages/UI/spectrogram/src/audio&#45;analyzer/get&#45;fft.ts&#45;&gt;packages/util/math/fft/array/index.ts -->
 <g id="edge6" class="edge">
 <title>packages/UI/spectrogram/src/audio&#45;analyzer/get&#45;fft.ts&#45;&gt;packages/util/math/fft/array/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M664.55,-80.07C671.18,-83.23 677,-86 677,-86 677,-86 686,-139 686,-139 686,-139 727.36,-294.44 740.22,-342.81"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="741.58,-347.91 738.12,-343.66 740.94,-345.49 740.3,-343.08 740.3,-343.08 740.3,-343.08 740.94,-345.49 742.47,-342.5 741.58,-347.91 741.58,-347.91"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M648.67,-80.19C662.91,-121.54 721.12,-290.56 738.85,-342.04"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="736.96,-343 740.9,-347.99 740.93,-341.63 736.96,-343"/>
 </g>
 <!-- packages/UI/spectrogram/src/audio&#45;analyzer/cosine&#45;window.ts -->
 <g id="node7" class="node">
@@ -204,8 +204,8 @@
 <!-- packages/util/math/fft/array/index.ts&#45;&gt;packages/util/math/fft/array/complex.ts -->
 <g id="edge24" class="edge">
 <title>packages/util/math/fft/array/index.ts&#45;&gt;packages/util/math/fft/array/complex.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M772.41,-357C808.98,-357 875.24,-357 916.95,-357"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="922.16,-357 917.16,-359.25 919.66,-357 917.16,-357 917.16,-357 917.16,-357 919.66,-357 917.16,-354.75 922.16,-357 922.16,-357"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M772.09,-357C808.71,-357 874.25,-357 916.26,-357"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="916.28,-359.1 922.28,-357 916.28,-354.9 916.28,-359.1"/>
 </g>
 <!-- packages/util/math/fft/array/ftt&#45;core.ts -->
 <g id="node17" class="node">
@@ -219,8 +219,8 @@
 <!-- packages/util/math/fft/array/index.ts&#45;&gt;packages/util/math/fft/array/ftt&#45;core.ts -->
 <g id="edge25" class="edge">
 <title>packages/util/math/fft/array/index.ts&#45;&gt;packages/util/math/fft/array/ftt&#45;core.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M772.19,-361.67C790.47,-364.92 815.05,-369.3 834.93,-372.84"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="839.88,-373.72 834.56,-375.06 837.42,-373.28 834.96,-372.85 834.96,-372.85 834.96,-372.85 837.42,-373.28 835.35,-370.63 839.88,-373.72 839.88,-373.72"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M772.19,-361.67C790.16,-364.87 814.22,-369.15 833.92,-372.66"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="833.6,-374.74 839.88,-373.72 834.34,-370.6 833.6,-374.74"/>
 </g>
 <!-- packages/UI/spectrogram/src/audio&#45;analyzer/index.ts -->
 <g id="node9" class="node">
@@ -234,14 +234,14 @@
 <!-- packages/UI/spectrogram/src/audio&#45;analyzer/index.ts&#45;&gt;packages/UI/spectrogram/src/audio&#45;analyzer/audio&#45;analyzer.ts -->
 <g id="edge7" class="edge">
 <title>packages/UI/spectrogram/src/audio&#45;analyzer/index.ts&#45;&gt;packages/UI/spectrogram/src/audio&#45;analyzer/audio&#45;analyzer.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M473.74,-71C481.97,-71 491.34,-71 500.67,-71"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="505.84,-72.75 500.84,-71 505.84,-69.25 505.84,-72.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M473.74,-71C481.66,-71 490.65,-71 499.63,-71"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="505.84,-73.1 499.84,-71 505.84,-68.9 505.84,-73.1"/>
 </g>
 <!-- packages/UI/spectrogram/src/audio&#45;viewer.ts&#45;&gt;packages/UI/spectrogram/src/audio&#45;analyzer/index.ts -->
 <g id="edge8" class="edge">
 <title>packages/UI/spectrogram/src/audio&#45;viewer.ts&#45;&gt;packages/UI/spectrogram/src/audio&#45;analyzer/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M223.53,-87.89C239.45,-74.74 267,-52 267,-52 267,-52 384,-52 384,-52 384,-52 399.06,-56.65 414.27,-61.35"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="419.42,-62.94 413.98,-63.62 417.03,-62.2 414.64,-61.47 414.64,-61.47 414.64,-61.47 417.03,-62.2 415.31,-59.32 419.42,-62.94 419.42,-62.94"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M254.06,-92.29C299.73,-87.24 371.32,-79.32 413.1,-74.7"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="413.56,-76.76 419.29,-74.01 413.1,-72.58 413.56,-76.76"/>
 </g>
 <!-- packages/UI/spectrogram/src/fft&#45;viewer.ts -->
 <g id="node11" class="node">
@@ -255,8 +255,8 @@
 <!-- packages/UI/spectrogram/src/audio&#45;viewer.ts&#45;&gt;packages/UI/spectrogram/src/fft&#45;viewer.ts -->
 <g id="edge9" class="edge">
 <title>packages/UI/spectrogram/src/audio&#45;viewer.ts&#45;&gt;packages/UI/spectrogram/src/fft&#45;viewer.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M254.2,-97C264.48,-97 275.44,-97 285.58,-97"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="290.8,-97 285.8,-99.25 288.3,-97 285.8,-97 285.8,-97 285.8,-97 288.3,-97 285.8,-94.75 290.8,-97 290.8,-97"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M254.2,-97C264.2,-97 274.84,-97 284.74,-97"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="284.8,-99.1 290.8,-97 284.8,-94.9 284.8,-99.1"/>
 </g>
 <!-- packages/UI/spectrogram/src/spectrogram&#45;viewer.ts -->
 <g id="node12" class="node">
@@ -270,8 +270,8 @@
 <!-- packages/UI/spectrogram/src/audio&#45;viewer.ts&#45;&gt;packages/UI/spectrogram/src/spectrogram&#45;viewer.ts -->
 <g id="edge10" class="edge">
 <title>packages/UI/spectrogram/src/audio&#45;viewer.ts&#45;&gt;packages/UI/spectrogram/src/spectrogram&#45;viewer.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M245.46,-87.93C256.94,-84.77 267,-82 267,-82 267,-82 274.84,-79.95 284.73,-77.37"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="289.73,-76.07 285.46,-79.51 287.31,-76.7 284.89,-77.33 284.89,-77.33 284.89,-77.33 287.31,-76.7 284.32,-75.16 289.73,-76.07 289.73,-76.07"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M246.1,-88C258.18,-84.77 271.91,-81.09 284.47,-77.72"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="285.28,-79.68 290.53,-76.1 284.19,-75.62 285.28,-79.68"/>
 </g>
 <!-- packages/UI/spectrogram/src/wave&#45;viewer.ts -->
 <g id="node13" class="node">
@@ -285,8 +285,8 @@
 <!-- packages/UI/spectrogram/src/audio&#45;viewer.ts&#45;&gt;packages/UI/spectrogram/src/wave&#45;viewer.ts -->
 <g id="edge11" class="edge">
 <title>packages/UI/spectrogram/src/audio&#45;viewer.ts&#45;&gt;packages/UI/spectrogram/src/wave&#45;viewer.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M245.46,-106.07C256.94,-109.23 267,-112 267,-112 267,-112 274.84,-114.05 284.73,-116.63"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="289.73,-117.93 284.32,-118.84 287.31,-117.3 284.89,-116.67 284.89,-116.67 284.89,-116.67 287.31,-117.3 285.46,-114.49 289.73,-117.93 289.73,-117.93"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M246.1,-106C258.18,-109.23 271.91,-112.91 284.47,-116.28"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="284.19,-118.38 290.53,-117.9 285.28,-114.32 284.19,-118.38"/>
 </g>
 <!-- packages/UI/view/dist/index.js -->
 <g id="node14" class="node">
@@ -300,20 +300,20 @@
 <!-- packages/UI/spectrogram/src/audio&#45;viewer.ts&#45;&gt;packages/UI/view/dist/index.js -->
 <g id="edge12" class="edge">
 <title>packages/UI/spectrogram/src/audio&#45;viewer.ts&#45;&gt;packages/UI/view/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M223.53,-106.11C239.45,-119.26 267,-142 267,-142 267,-142 371.3,-188.16 420.45,-209.91"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="425.02,-211.94 419.54,-211.97 422.74,-210.93 420.45,-209.91 420.45,-209.91 420.45,-209.91 422.74,-210.93 421.36,-207.86 425.02,-211.94 425.02,-211.94"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M228.78,-106.12C270.54,-128.15 376.95,-184.3 423.79,-209.02"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="422.91,-210.93 429.19,-211.87 424.87,-207.21 422.91,-210.93"/>
 </g>
 <!-- packages/UI/spectrogram/src/fft&#45;viewer.ts&#45;&gt;packages/UI/spectrogram/src/audio&#45;analyzer/index.ts -->
 <g id="edge13" class="edge">
 <title>packages/UI/spectrogram/src/fft&#45;viewer.ts&#45;&gt;packages/UI/spectrogram/src/audio&#45;analyzer/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M360.28,-89.62C377.22,-85.92 397.6,-81.47 414.18,-77.84"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="419.2,-76.75 414.8,-80.01 416.76,-77.28 414.32,-77.81 414.32,-77.81 414.32,-77.81 416.76,-77.28 413.84,-75.62 419.2,-76.75 419.2,-76.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M360.28,-89.62C376.93,-85.98 396.9,-81.62 413.32,-78.03"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="413.79,-80.08 419.2,-76.75 412.89,-75.98 413.79,-80.08"/>
 </g>
 <!-- packages/UI/spectrogram/src/fft&#45;viewer.ts&#45;&gt;packages/UI/view/dist/index.js -->
 <g id="edge15" class="edge">
 <title>packages/UI/spectrogram/src/fft&#45;viewer.ts&#45;&gt;packages/UI/view/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M360.28,-105.81C372.8,-109.08 384,-112 384,-112 384,-112 392,-139 392,-139 392,-139 421.57,-184.32 436.74,-207.57"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="439.57,-211.91 434.95,-208.95 438.2,-209.82 436.84,-207.72 436.84,-207.72 436.84,-207.72 438.2,-209.82 438.72,-206.49 439.57,-211.91 439.57,-211.91"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M335.44,-106.32C356.31,-128.06 408.26,-182.2 432.57,-207.53"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="431.11,-209.03 436.78,-211.91 434.14,-206.13 431.11,-209.03"/>
 </g>
 <!-- packages/util/math/dist/index.js -->
 <g id="node15" class="node">
@@ -327,44 +327,44 @@
 <!-- packages/UI/spectrogram/src/fft&#45;viewer.ts&#45;&gt;packages/util/math/dist/index.js -->
 <g id="edge14" class="edge">
 <title>packages/UI/spectrogram/src/fft&#45;viewer.ts&#45;&gt;packages/util/math/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M360.28,-105.81C372.8,-109.08 384,-112 384,-112 384,-112 392,-259 392,-259 392,-259 677,-419 677,-419 677,-419 708.83,-444.65 728.61,-460.6"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="732.63,-463.84 727.33,-462.45 730.69,-462.27 728.74,-460.7 728.74,-460.7 728.74,-460.7 730.69,-462.27 730.15,-458.95 732.63,-463.84 732.63,-463.84"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M335.87,-106.29C392.31,-156.88 662.45,-399.01 729.78,-459.35"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="728.75,-461.25 734.62,-463.69 731.55,-458.13 728.75,-461.25"/>
 </g>
 <!-- packages/UI/spectrogram/src/spectrogram&#45;viewer.ts&#45;&gt;packages/UI/spectrogram/src/audio&#45;analyzer/index.ts -->
 <g id="edge17" class="edge">
 <title>packages/UI/spectrogram/src/spectrogram&#45;viewer.ts&#45;&gt;packages/UI/spectrogram/src/audio&#45;analyzer/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M384.26,-68.94C394.65,-69.29 405.11,-69.64 414.38,-69.95"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="419.39,-70.12 414.32,-72.2 416.9,-70.04 414.4,-69.95 414.4,-69.95 414.4,-69.95 416.9,-70.04 414.47,-67.71 419.39,-70.12 419.39,-70.12"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M384.26,-68.94C394.26,-69.28 404.34,-69.62 413.34,-69.92"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="413.33,-72.02 419.39,-70.12 413.47,-67.82 413.33,-72.02"/>
 </g>
 <!-- packages/UI/spectrogram/src/spectrogram&#45;viewer.ts&#45;&gt;packages/UI/view/dist/index.js -->
 <g id="edge18" class="edge">
 <title>packages/UI/spectrogram/src/spectrogram&#45;viewer.ts&#45;&gt;packages/UI/view/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M361.27,-76.07C373.38,-79.23 384,-82 384,-82 384,-82 392,-139 392,-139 392,-139 421.57,-184.32 436.74,-207.57"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="439.57,-211.91 434.95,-208.95 438.2,-209.82 436.84,-207.72 436.84,-207.72 436.84,-207.72 438.2,-209.82 438.72,-206.49 439.57,-211.91 439.57,-211.91"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M333.59,-76.17C353.55,-102 410.34,-175.5 434.46,-206.71"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="432.97,-208.22 438.3,-211.68 436.29,-205.65 432.97,-208.22"/>
 </g>
 <!-- packages/UI/spectrogram/src/wave&#45;viewer.ts&#45;&gt;packages/UI/spectrogram/src/audio&#45;analyzer/index.ts -->
 <g id="edge19" class="edge">
 <title>packages/UI/spectrogram/src/wave&#45;viewer.ts&#45;&gt;packages/UI/spectrogram/src/audio&#45;analyzer/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M361.27,-117.93C373.38,-114.77 384,-112 384,-112 384,-112 392,-86 392,-86 392,-86 402.56,-83.04 414.3,-79.75"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="419.38,-78.32 415.17,-81.84 416.97,-79 414.56,-79.67 414.56,-79.67 414.56,-79.67 416.97,-79 413.96,-77.51 419.38,-78.32 419.38,-78.32"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M345.88,-117.88C366.2,-108.32 398.19,-93.26 420.41,-82.8"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="421.59,-84.57 426.12,-80.12 419.8,-80.77 421.59,-84.57"/>
 </g>
 <!-- packages/UI/spectrogram/src/wave&#45;viewer.ts&#45;&gt;packages/UI/view/dist/index.js -->
 <g id="edge21" class="edge">
 <title>packages/UI/spectrogram/src/wave&#45;viewer.ts&#45;&gt;packages/UI/view/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M337.91,-136.01C359.36,-152.95 405.7,-189.56 429.97,-208.73"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="433.95,-211.88 428.63,-210.54 431.99,-210.33 430.03,-208.78 430.03,-208.78 430.03,-208.78 431.99,-210.33 431.42,-207.01 433.95,-211.88 433.95,-211.88"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M337.91,-136.01C359.09,-152.74 404.56,-188.66 429.06,-208.01"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="427.94,-209.8 433.95,-211.88 430.54,-206.51 427.94,-209.8"/>
 </g>
 <!-- packages/UI/spectrogram/src/wave&#45;viewer.ts&#45;&gt;packages/util/math/dist/index.js -->
 <g id="edge20" class="edge">
 <title>packages/UI/spectrogram/src/wave&#45;viewer.ts&#45;&gt;packages/util/math/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M329.31,-136.02C341.85,-176.22 392,-337 392,-337 392,-337 632.34,-429.86 715.83,-462.12"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="720.63,-463.97 715.16,-464.27 718.3,-463.07 715.97,-462.17 715.97,-462.17 715.97,-462.17 718.3,-463.07 716.78,-460.07 720.63,-463.97 720.63,-463.97"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M336.72,-136.25C394.75,-184.12 660.79,-403.54 729.02,-459.82"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="727.97,-461.68 733.94,-463.88 730.65,-458.44 727.97,-461.68"/>
 </g>
 <!-- packages/util/math/fft/array/ftt&#45;core.ts&#45;&gt;packages/util/math/fft/array/complex.ts -->
 <g id="edge22" class="edge">
 <title>packages/util/math/fft/array/ftt&#45;core.ts&#45;&gt;packages/util/math/fft/array/complex.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M901.46,-371.06C906.66,-369.68 912.11,-368.24 917.46,-366.82"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="922.34,-365.53 918.08,-368.98 919.92,-366.17 917.5,-366.81 917.5,-366.81 917.5,-366.81 919.92,-366.17 916.93,-364.63 922.34,-365.53 922.34,-365.53"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M901.46,-371.06C906.34,-369.77 911.44,-368.41 916.48,-367.08"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="917.07,-369.09 922.34,-365.53 916,-365.03 917.07,-369.09"/>
 </g>
 <!-- packages/util/math/fft/array/root&#45;of&#45;unity.ts -->
 <g id="node18" class="node">
@@ -378,8 +378,8 @@
 <!-- packages/util/math/fft/array/ftt&#45;core.ts&#45;&gt;packages/util/math/fft/array/root&#45;of&#45;unity.ts -->
 <g id="edge23" class="edge">
 <title>packages/util/math/fft/array/ftt&#45;core.ts&#45;&gt;packages/util/math/fft/array/root&#45;of&#45;unity.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M901.46,-381.89C903.84,-382.12 906.26,-382.35 908.71,-382.59"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="913.74,-383.07 908.55,-384.83 911.26,-382.83 908.77,-382.59 908.77,-382.59 908.77,-382.59 911.26,-382.83 908.98,-380.35 913.74,-383.07 913.74,-383.07"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M901.46,-381.89C903.46,-382.08 905.5,-382.28 907.55,-382.47"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="907.57,-384.59 913.74,-383.07 907.97,-380.41 907.57,-384.59"/>
 </g>
 </g>
 </svg>

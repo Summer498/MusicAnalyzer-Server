@@ -75,8 +75,8 @@
 <!-- packages/util/graph/index.test.ts&#45;&gt;packages/util/graph/dist/index.js -->
 <g id="edge1" class="edge">
 <title>packages/util/graph/index.test.ts&#45;&gt;packages/util/graph/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M105.22,-143C116.17,-143 128.14,-143 138.77,-143"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="143.88,-143 138.88,-145.25 141.38,-143 138.88,-143 138.88,-143 138.88,-143 141.38,-143 138.88,-140.75 143.88,-143 143.88,-143"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M105.22,-143C115.77,-143 127.27,-143 137.61,-143"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="137.88,-145.1 143.88,-143 137.88,-140.9 137.88,-145.1"/>
 </g>
 <!-- packages/util/graph/index.ts -->
 <g id="node3" class="node">
@@ -99,8 +99,8 @@
 <!-- packages/util/graph/index.ts&#45;&gt;packages/util/graph/src/index.ts -->
 <g id="edge2" class="edge">
 <title>packages/util/graph/index.ts&#45;&gt;packages/util/graph/src/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M95.64,-83C108.9,-83 125.1,-83 138.99,-83"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="143.99,-84.75 138.99,-83 143.99,-81.25 143.99,-84.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M95.64,-83C108.55,-83 124.25,-83 137.88,-83"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="143.99,-85.1 137.99,-83 143.99,-80.9 143.99,-85.1"/>
 </g>
 <!-- packages/util/graph/src/dynamic&#45;log&#45;viterbi.ts -->
 <g id="node5" class="node">
@@ -114,8 +114,8 @@
 <!-- packages/util/graph/src/index.ts&#45;&gt;packages/util/graph/src/dynamic&#45;log&#45;viterbi.ts -->
 <g id="edge5" class="edge">
 <title>packages/util/graph/src/index.ts&#45;&gt;packages/util/graph/src/dynamic&#45;log&#45;viterbi.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M198.29,-75.37C215.19,-70.46 234,-65 234,-65 234,-65 290,-65 290,-65 290,-65 376,-68 376,-68 376,-68 386,-70.16 398.41,-72.84"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="403.1,-75.64 398.58,-72.87 403.84,-72.22 403.1,-75.64"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M198.17,-83C240.74,-83 324.31,-83 382.7,-83"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="388.97,-85.1 382.97,-83 388.97,-80.9 388.97,-85.1"/>
 </g>
 <!-- packages/util/graph/src/log&#45;viterbi.ts -->
 <g id="node9" class="node">
@@ -129,8 +129,8 @@
 <!-- packages/util/graph/src/index.ts&#45;&gt;packages/util/graph/src/log&#45;viterbi.ts -->
 <g id="edge6" class="edge">
 <title>packages/util/graph/src/index.ts&#45;&gt;packages/util/graph/src/log&#45;viterbi.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M198.29,-76.64C215.19,-72.55 234,-68 234,-68 234,-68 290,-68 290,-68 290,-68 296.14,-69.9 304.05,-72.35"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="308.65,-75.6 304.39,-72.45 309.69,-72.26 308.65,-75.6"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M198.07,-83C224.67,-83 265.67,-83 296.69,-83"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="302.75,-85.1 296.75,-83 302.75,-80.9 302.75,-85.1"/>
 </g>
 <!-- packages/util/graph/src/viterbi.ts -->
 <g id="node10" class="node">
@@ -144,8 +144,8 @@
 <!-- packages/util/graph/src/index.ts&#45;&gt;packages/util/graph/src/viterbi.ts -->
 <g id="edge7" class="edge">
 <title>packages/util/graph/src/index.ts&#45;&gt;packages/util/graph/src/viterbi.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M198.22,-83C207.74,-83 218.61,-83 228.6,-83"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="233.73,-84.75 228.73,-83 233.73,-81.25 233.73,-84.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M198.22,-83C207.39,-83 217.81,-83 227.5,-83"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="233.73,-85.1 227.73,-83 233.73,-80.9 233.73,-85.1"/>
 </g>
 <!-- packages/util/graph/src/viterbi&#45;core.ts -->
 <g id="node6" class="node">
@@ -159,8 +159,8 @@
 <!-- packages/util/graph/src/dynamic&#45;log&#45;viterbi.ts&#45;&gt;packages/util/graph/src/viterbi&#45;core.ts -->
 <g id="edge3" class="edge">
 <title>packages/util/graph/src/dynamic&#45;log&#45;viterbi.ts&#45;&gt;packages/util/graph/src/viterbi&#45;core.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M504.03,-83C506.58,-83 509.11,-83 511.62,-83"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="516.72,-83 511.72,-85.25 514.22,-83 511.72,-83 511.72,-83 511.72,-83 514.22,-83 511.72,-80.75 516.72,-83 516.72,-83"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M504.03,-83C506.17,-83 508.31,-83 510.43,-83"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="510.72,-85.1 516.72,-83 510.72,-80.9 510.72,-85.1"/>
 </g>
 <!-- packages/util/math/dist/index.js -->
 <g id="node7" class="node">
@@ -174,14 +174,14 @@
 <!-- packages/util/graph/src/dynamic&#45;log&#45;viterbi.ts&#45;&gt;packages/util/math/dist/index.js -->
 <g id="edge4" class="edge">
 <title>packages/util/graph/src/dynamic&#45;log&#45;viterbi.ts&#45;&gt;packages/util/math/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M485.65,-92.05C534.25,-103.57 612,-122 612,-122 612,-122 623.65,-126.89 635.71,-131.96"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="640.51,-133.97 635.02,-134.11 638.2,-133 635.9,-132.04 635.9,-132.04 635.9,-132.04 638.2,-133 636.77,-129.96 640.51,-133.97 640.51,-133.97"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M479.38,-92.11C520.2,-103.42 589.39,-122.6 630.18,-133.9"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="629.64,-135.93 635.98,-135.51 630.76,-131.89 629.64,-135.93"/>
 </g>
 <!-- packages/util/graph/src/viterbi&#45;core.ts&#45;&gt;packages/util/math/dist/index.js -->
 <g id="edge10" class="edge">
 <title>packages/util/graph/src/viterbi&#45;core.ts&#45;&gt;packages/util/math/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M579.04,-92.09C594.27,-98.52 612,-106 612,-106 612,-106 630.75,-119.88 645.29,-130.63"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="649.64,-133.85 644.28,-132.69 647.63,-132.37 645.62,-130.88 645.62,-130.88 645.62,-130.88 647.63,-132.37 646.96,-129.07 649.64,-133.85 649.64,-133.85"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M573.37,-92.11C591.43,-102.48 621,-119.46 640.96,-130.92"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="640.07,-132.83 646.32,-134 642.16,-129.19 640.07,-132.83"/>
 </g>
 <!-- packages/util/stdlib/dist/index.js -->
 <g id="node11" class="node">
@@ -195,8 +195,8 @@
 <!-- packages/util/graph/src/viterbi&#45;core.ts&#45;&gt;packages/util/stdlib/dist/index.js -->
 <g id="edge11" class="edge">
 <title>packages/util/graph/src/viterbi&#45;core.ts&#45;&gt;packages/util/stdlib/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M585.23,-73.98C599.35,-69.38 616.57,-63.78 631.12,-59.05"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="635.94,-57.48 631.88,-61.17 633.56,-58.25 631.19,-59.03 631.19,-59.03 631.19,-59.03 633.56,-58.25 630.49,-56.89 635.94,-57.48 635.94,-57.48"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M585.23,-73.98C598.99,-69.5 615.67,-64.07 629.97,-59.42"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="630.88,-61.33 635.94,-57.48 629.58,-57.34 630.88,-61.33"/>
 </g>
 <!-- packages/util/graph/src/hmm&#45;log&#45;viterbi.ts -->
 <g id="node8" class="node">
@@ -210,26 +210,26 @@
 <!-- packages/util/graph/src/log&#45;viterbi.ts&#45;&gt;packages/util/graph/src/dynamic&#45;log&#45;viterbi.ts -->
 <g id="edge8" class="edge">
 <title>packages/util/graph/src/log&#45;viterbi.ts&#45;&gt;packages/util/graph/src/dynamic&#45;log&#45;viterbi.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M376.05,-83C378.52,-83 381.05,-83 383.61,-83"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="388.9,-83 383.9,-85.25 386.4,-83 383.9,-83 383.9,-83 383.9,-83 386.4,-83 383.9,-80.75 388.9,-83 388.9,-83"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M376.05,-83C378.26,-83 380.52,-83 382.8,-83"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="382.9,-85.1 388.9,-83 382.9,-80.9 382.9,-85.1"/>
 </g>
 <!-- packages/util/graph/src/log&#45;viterbi.ts&#45;&gt;packages/util/math/dist/index.js -->
 <g id="edge9" class="edge">
 <title>packages/util/graph/src/log&#45;viterbi.ts&#45;&gt;packages/util/math/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M369.83,-92.07C380.05,-95.23 389,-98 389,-98 389,-98 559.23,-126.06 630.84,-137.86"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="635.82,-138.69 630.52,-140.09 633.36,-138.28 630.89,-137.87 630.89,-137.87 630.89,-137.87 633.36,-138.28 631.26,-135.65 635.82,-138.69 635.82,-138.69"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M376.29,-89.82C439.7,-101.58 568.59,-125.49 629.58,-136.8"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="629.33,-138.89 635.62,-137.92 630.1,-134.76 629.33,-138.89"/>
 </g>
 <!-- packages/util/graph/src/viterbi.ts&#45;&gt;packages/util/math/dist/index.js -->
 <g id="edge13" class="edge">
 <title>packages/util/graph/src/viterbi.ts&#45;&gt;packages/util/math/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M287.19,-92.07C295.61,-95.23 303,-98 303,-98 303,-98 389,-111 389,-111 389,-111 517,-130 517,-130 517,-130 588.06,-136.37 630.69,-140.19"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="635.74,-140.65 630.56,-142.44 633.25,-140.42 630.76,-140.2 630.76,-140.2 630.76,-140.2 633.25,-140.42 630.96,-137.96 635.74,-140.65 635.74,-140.65"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M290.2,-87.22C362.16,-97.99 552.37,-126.45 629.65,-138.01"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="629.65,-140.13 635.89,-138.94 630.27,-135.98 629.65,-140.13"/>
 </g>
 <!-- packages/util/graph/src/viterbi.ts&#45;&gt;packages/util/graph/src/log&#45;viterbi.ts -->
 <g id="edge12" class="edge">
 <title>packages/util/graph/src/viterbi.ts&#45;&gt;packages/util/graph/src/log&#45;viterbi.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M290.26,-83C292.66,-83 295.13,-83 297.62,-83"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="302.74,-83 297.74,-85.25 300.24,-83 297.74,-83 297.74,-83 297.74,-83 300.24,-83 297.74,-80.75 302.74,-83 302.74,-83"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M290.26,-83C292.28,-83 294.36,-83 296.45,-83"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="296.74,-85.1 302.74,-83 296.74,-80.9 296.74,-85.1"/>
 </g>
 </g>
 </svg>

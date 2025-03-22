@@ -168,8 +168,8 @@
 <!-- packages/UI/piano&#45;roll/beat&#45;view/index.ts&#45;&gt;packages/UI/piano&#45;roll/beat&#45;view/src/index.ts -->
 <g id="edge1" class="edge">
 <title>packages/UI/piano&#45;roll/beat&#45;view/index.ts&#45;&gt;packages/UI/piano&#45;roll/beat&#45;view/src/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M103.74,-413C110.18,-413 117.13,-413 123.78,-413"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="128.79,-414.75 123.79,-413 128.79,-411.25 128.79,-414.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M103.74,-413C109.8,-413 116.32,-413 122.6,-413"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="128.79,-415.1 122.79,-413 128.79,-410.9 128.79,-415.1"/>
 </g>
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar&#45;series.ts -->
 <g id="node5" class="node">
@@ -183,8 +183,8 @@
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/index.ts&#45;&gt;packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar&#45;series.ts -->
 <g id="edge23" class="edge">
 <title>packages/UI/piano&#45;roll/beat&#45;view/src/index.ts&#45;&gt;packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar&#45;series.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M183.19,-413.6C221.42,-414.48 288,-416 288,-416 288,-416 296.19,-418.08 306.47,-420.7"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="310.89,-423.62 306.47,-420.7 311.75,-420.23 310.89,-423.62"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M183.1,-415.54C211.93,-418.24 258.27,-422.59 294.5,-425.98"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="300.48,-428.65 294.71,-426 300.87,-424.47 300.48,-428.65"/>
 </g>
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;elements.ts -->
 <g id="node16" class="node">
@@ -198,8 +198,8 @@
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/index.ts&#45;&gt;packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;elements.ts -->
 <g id="edge24" class="edge">
 <title>packages/UI/piano&#45;roll/beat&#45;view/src/index.ts&#45;&gt;packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;elements.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M183.12,-418.6C186.56,-419.33 190.17,-420.11 193.84,-420.89"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="198.49,-423.68 193.96,-420.92 199.22,-420.26 198.49,-423.68"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M183.12,-418.6C186.25,-419.27 189.52,-419.97 192.84,-420.68"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="198.41,-424.02 192.99,-420.71 199.29,-419.92 198.41,-424.02"/>
 </g>
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/index.ts -->
 <g id="node6" class="node">
@@ -213,8 +213,8 @@
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar&#45;series.ts&#45;&gt;packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/index.ts -->
 <g id="edge2" class="edge">
 <title>packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar&#45;series.ts&#45;&gt;packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M373.05,-421.98C383.91,-417.91 396.84,-413.06 408.21,-408.8"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="412.98,-407.01 409.09,-410.87 410.64,-407.88 408.3,-408.76 408.3,-408.76 408.3,-408.76 410.64,-407.88 407.51,-406.66 412.98,-407.01 412.98,-407.01"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M373.05,-421.98C383.62,-418.02 396.14,-413.32 407.29,-409.14"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="408.1,-411.08 412.98,-407.01 406.63,-407.15 408.1,-411.08"/>
 </g>
 <!-- packages/music&#45;structure/beat/beat&#45;estimation/dist/index.js -->
 <g id="node7" class="node">
@@ -228,8 +228,8 @@
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar&#45;series.ts&#45;&gt;packages/music&#45;structure/beat/beat&#45;estimation/dist/index.js -->
 <g id="edge3" class="edge">
 <title>packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar&#45;series.ts&#45;&gt;packages/music&#45;structure/beat/beat&#45;estimation/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M353.79,-440.23C367.01,-465.68 403,-535 403,-535 403,-535 509.5,-656 509.5,-656 509.5,-656 509.5,-656 624,-656 624,-656 832,-667 832,-667 832,-667 866.66,-678.18 893.66,-686.89"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="898.6,-688.48 893.15,-689.09 896.22,-687.72 893.84,-686.95 893.84,-686.95 893.84,-686.95 896.22,-687.72 894.53,-684.81 898.6,-688.48 898.6,-688.48"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M367.56,-440C454.28,-479.91 803.97,-640.84 900.95,-685.47"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="900.11,-687.4 906.44,-688 901.87,-683.58 900.11,-687.4"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/dist/index.js -->
 <g id="node8" class="node">
@@ -243,8 +243,8 @@
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar&#45;series.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/dist/index.js -->
 <g id="edge4" class="edge">
 <title>packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar&#45;series.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M352.54,-440.25C364.56,-471.62 403,-572 403,-572 403,-572 478,-642 478,-642 478,-642 509.5,-671 509.5,-671 509.5,-671 509.5,-671 624,-671 624,-671 832,-772 832,-772 832,-772 876.82,-797.54 904.23,-813.16"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="908.8,-815.77 903.34,-815.25 906.63,-814.53 904.46,-813.29 904.46,-813.29 904.46,-813.29 906.63,-814.53 905.57,-811.34 908.8,-815.77 908.8,-815.77"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M361.44,-440.16C437.97,-492.33 818.62,-751.81 907.45,-812.35"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="906.5,-814.25 912.64,-815.89 908.86,-810.78 906.5,-814.25"/>
 </g>
 <!-- packages/UI/view/dist/index.js -->
 <g id="node9" class="node">
@@ -258,8 +258,8 @@
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar&#45;series.ts&#45;&gt;packages/UI/view/dist/index.js -->
 <g id="edge5" class="edge">
 <title>packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar&#45;series.ts&#45;&gt;packages/UI/view/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M356.74,-440.16C388.8,-478.12 509.5,-621 509.5,-621 509.5,-621 509.5,-621 624,-621 624,-621 675,-589 675,-589 675,-589 853.58,-455.42 908.88,-414.06"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="912.94,-411.02 910.29,-415.82 910.94,-412.52 908.94,-414.01 908.94,-414.01 908.94,-414.01 910.94,-412.52 907.59,-412.21 912.94,-411.02 912.94,-411.02"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M395.3,-428.63C508.88,-422.93 794.81,-408.58 892.6,-403.68"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="892.88,-405.76 898.76,-403.37 892.67,-401.57 892.88,-405.76"/>
 </g>
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar.ts -->
 <g id="node13" class="node">
@@ -273,8 +273,8 @@
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/index.ts&#45;&gt;packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar.ts -->
 <g id="edge19" class="edge">
 <title>packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/index.ts&#45;&gt;packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M465.25,-395.39C467.67,-395.15 470.15,-394.91 472.64,-394.66"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="477.92,-395.89 472.77,-394.65 477.57,-392.41 477.92,-395.89"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M465.25,-395.39C467.29,-395.19 469.37,-394.98 471.46,-394.78"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="477.95,-396.24 471.77,-394.75 477.54,-392.06 477.95,-396.24"/>
 </g>
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar&#45;model.ts -->
 <g id="node10" class="node">
@@ -288,14 +288,14 @@
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar&#45;model.ts&#45;&gt;packages/music&#45;structure/beat/beat&#45;estimation/dist/index.js -->
 <g id="edge6" class="edge">
 <title>packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar&#45;model.ts&#45;&gt;packages/music&#45;structure/beat/beat&#45;estimation/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M758.15,-400.16C782.68,-443.8 887.74,-630.7 917.26,-683.22"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="919.87,-687.88 915.46,-684.62 918.65,-685.7 917.42,-683.52 917.42,-683.52 917.42,-683.52 918.65,-685.7 919.38,-682.42 919.87,-687.88 919.87,-687.88"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M758.15,-400.16C782.58,-443.62 886.89,-629.2 916.9,-682.58"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="915.1,-683.68 919.87,-687.88 918.76,-681.62 915.1,-683.68"/>
 </g>
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar&#45;model.ts&#45;&gt;packages/UI/view/dist/index.js -->
 <g id="edge8" class="edge">
 <title>packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar&#45;model.ts&#45;&gt;packages/UI/view/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M800.46,-394.03C830.1,-395.93 867.45,-398.32 893.48,-399.98"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="898.53,-400.31 893.39,-402.23 896.03,-400.15 893.54,-399.99 893.54,-399.99 893.54,-399.99 896.03,-400.15 893.68,-397.74 898.53,-400.31 898.53,-400.31"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M800.46,-394.03C829.73,-395.91 866.52,-398.26 892.5,-399.92"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="892.41,-402.02 898.53,-400.31 892.67,-397.83 892.41,-402.02"/>
 </g>
 <!-- packages/util/time&#45;and/dist/index.js -->
 <g id="node11" class="node">
@@ -309,8 +309,8 @@
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar&#45;model.ts&#45;&gt;packages/util/time&#45;and/dist/index.js -->
 <g id="edge7" class="edge">
 <title>packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar&#45;model.ts&#45;&gt;packages/util/time&#45;and/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M757.6,-381.85C781.3,-334.73 889.6,-119.39 918.11,-62.71"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="920.47,-58.02 920.23,-63.49 919.34,-60.25 918.22,-62.48 918.22,-62.48 918.22,-62.48 919.34,-60.25 916.21,-61.47 920.47,-58.02 920.47,-58.02"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M757.6,-381.85C781.2,-334.92 888.73,-121.12 917.76,-63.4"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="919.65,-64.32 920.47,-58.02 915.89,-62.43 919.65,-64.32"/>
 </g>
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar&#45;view.ts -->
 <g id="node12" class="node">
@@ -324,50 +324,50 @@
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar&#45;view.ts&#45;&gt;packages/UI/view/dist/index.js -->
 <g id="edge10" class="edge">
 <title>packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar&#45;view.ts&#45;&gt;packages/UI/view/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M667.28,-405.54C686.13,-405.78 704,-406 704,-406 704,-406 832,-406 832,-406 832,-406 866.37,-404.52 893.32,-403.36"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="898.6,-403.14 893.7,-405.6 896.1,-403.24 893.6,-403.35 893.6,-403.35 893.6,-403.35 896.1,-403.24 893.51,-401.1 898.6,-403.14 898.6,-403.14"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M667.06,-404.56C728.38,-403.96 838.08,-402.87 892.91,-402.33"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="893.02,-404.43 899,-402.27 892.98,-400.23 893.02,-404.43"/>
 </g>
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar&#45;view.ts&#45;&gt;packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar&#45;model.ts -->
 <g id="edge9" class="edge">
 <title>packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar&#45;view.ts&#45;&gt;packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar&#45;model.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M667.35,-400.22C677.48,-399.1 688.37,-397.9 698.83,-396.75"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="703.93,-396.19 699.21,-398.97 701.45,-396.46 698.96,-396.74 698.96,-396.74 698.96,-396.74 701.45,-396.46 698.72,-394.5 703.93,-396.19 703.93,-396.19"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M667.35,-400.22C677.11,-399.15 687.58,-397.99 697.69,-396.88"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="698.2,-398.93 703.93,-396.19 697.74,-394.76 698.2,-398.93"/>
 </g>
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar.ts&#45;&gt;packages/UI/controllers/dist/index.js -->
 <g id="edge14" class="edge">
 <title>packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar.ts&#45;&gt;packages/UI/controllers/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M517.76,-400.06C536.21,-426.78 590.48,-505.35 612.52,-537.28"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="615.54,-541.64 610.84,-538.8 614.12,-539.58 612.69,-537.53 612.69,-537.53 612.69,-537.53 614.12,-539.58 614.55,-536.25 615.54,-541.64 615.54,-541.64"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M517.76,-400.06C536.06,-426.56 589.59,-504.07 611.98,-536.49"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="610.4,-537.9 615.54,-541.64 613.85,-535.51 610.4,-537.9"/>
 </g>
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar.ts&#45;&gt;packages/music&#45;structure/beat/beat&#45;estimation/dist/index.js -->
 <g id="edge13" class="edge">
 <title>packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar.ts&#45;&gt;packages/music&#45;structure/beat/beat&#45;estimation/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M514.26,-400.02C526.09,-438.76 572,-589 572,-589 572,-589 832,-652 832,-652 832,-652 874,-672.32 901.55,-685.66"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="906.18,-687.89 900.7,-687.74 903.93,-686.8 901.68,-685.72 901.68,-685.72 901.68,-685.72 903.93,-686.8 902.66,-683.69 906.18,-687.89 906.18,-687.89"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M522.94,-400.16C582.55,-444.06 839.06,-632.97 908.57,-684.16"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="907.54,-686.01 913.61,-687.88 910.03,-682.63 907.54,-686.01"/>
 </g>
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar.ts&#45;&gt;packages/UI/view/dist/index.js -->
 <g id="edge17" class="edge">
 <title>packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar.ts&#45;&gt;packages/UI/view/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M513.95,-381.94C525.27,-340.03 572,-167 572,-167 572,-167 675,-167 675,-167 675,-167 859.25,-340.2 911.4,-389.21"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="915.2,-392.79 910.02,-391 913.38,-391.08 911.56,-389.36 911.56,-389.36 911.56,-389.36 913.38,-391.08 913.1,-387.72 915.2,-392.79 915.2,-392.79"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M543.1,-391.86C620.42,-393.91 814.24,-399.04 892.47,-401.11"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="892.74,-403.22 898.79,-401.28 892.85,-399.02 892.74,-403.22"/>
 </g>
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar.ts&#45;&gt;packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar&#45;model.ts -->
 <g id="edge11" class="edge">
 <title>packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar.ts&#45;&gt;packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar&#45;model.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M543.17,-390.48C557.81,-390.23 572,-390 572,-390 572,-390 675,-390 675,-390 675,-390 685.35,-390.14 698.41,-390.31"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="703.73,-390.38 698.7,-392.56 701.23,-390.35 698.73,-390.31 698.73,-390.31 698.73,-390.31 701.23,-390.35 698.76,-388.06 703.73,-390.38 703.73,-390.38"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M543.07,-391C582.62,-391 649.93,-391 697.44,-391"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="697.72,-393.1 703.72,-391 697.72,-388.9 697.72,-393.1"/>
 </g>
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar.ts&#45;&gt;packages/util/time&#45;and/dist/index.js -->
 <g id="edge16" class="edge">
 <title>packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar.ts&#45;&gt;packages/util/time&#45;and/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M513.95,-381.82C525.27,-339.35 572,-164 572,-164 572,-164 807.47,-87.29 893.78,-59.17"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="898.76,-57.55 894.7,-61.24 896.38,-58.32 894,-59.1 894,-59.1 894,-59.1 896.38,-58.32 893.3,-56.96 898.76,-57.55 898.76,-57.55"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M521.61,-381.85C579.09,-334.54 842.59,-117.66 910.17,-62.03"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="911.75,-63.45 915.05,-58.02 909.08,-60.21 911.75,-63.45"/>
 </g>
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar.ts&#45;&gt;packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar&#45;view.ts -->
 <g id="edge12" class="edge">
 <title>packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar.ts&#45;&gt;packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar&#45;view.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M543.16,-395.01C552.7,-396.22 563.39,-397.57 573.75,-398.89"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="578.8,-399.53 573.56,-401.13 576.32,-399.21 573.84,-398.9 573.84,-398.9 573.84,-398.9 576.32,-399.21 574.12,-396.67 578.8,-399.53 578.8,-399.53"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M543.16,-395.01C552.35,-396.18 562.62,-397.48 572.62,-398.74"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="572.58,-400.86 578.8,-399.53 573.11,-396.69 572.58,-400.86"/>
 </g>
 <!-- packages/UI/synth/dist/index.js -->
 <g id="node14" class="node">
@@ -381,8 +381,8 @@
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar.ts&#45;&gt;packages/UI/synth/dist/index.js -->
 <g id="edge15" class="edge">
 <title>packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar.ts&#45;&gt;packages/UI/synth/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M515.85,-381.65C529.72,-351.84 572,-261 572,-261 572,-261 598.6,-221.63 613,-200.33"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="615.87,-196.07 614.93,-201.48 614.47,-198.15 613.07,-200.22 613.07,-200.22 613.07,-200.22 614.47,-198.15 611.21,-198.96 615.87,-196.07 615.87,-196.07"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M516.39,-381.97C533.75,-349.93 592.5,-241.46 614.02,-201.73"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="615.9,-202.67 616.91,-196.39 612.21,-200.67 615.9,-202.67"/>
 </g>
 <!-- packages/UI/view&#45;parameters/dist/index.js -->
 <g id="node15" class="node">
@@ -396,26 +396,26 @@
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar.ts&#45;&gt;packages/UI/view&#45;parameters/dist/index.js -->
 <g id="edge18" class="edge">
 <title>packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar.ts&#45;&gt;packages/UI/view&#45;parameters/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M520.54,-382C540.13,-362.5 586.53,-316.31 609.15,-293.79"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="612.83,-290.13 610.88,-295.25 611.06,-291.89 609.29,-293.65 609.29,-293.65 609.29,-293.65 611.06,-291.89 607.7,-292.06 612.83,-290.13 612.83,-290.13"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M520.54,-382C539.89,-362.74 585.39,-317.45 608.3,-294.64"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="610.06,-295.85 612.83,-290.13 607.1,-292.87 610.06,-295.85"/>
 </g>
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;elements.ts&#45;&gt;packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar&#45;series.ts -->
 <g id="edge20" class="edge">
 <title>packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;elements.ts&#45;&gt;packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar&#45;series.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M288.01,-431C290.55,-431 293.12,-431 295.68,-431"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="300.93,-431 295.93,-433.25 298.43,-431 295.93,-431 295.93,-431 295.93,-431 298.43,-431 295.93,-428.75 300.93,-431 300.93,-431"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M288.01,-431C290.29,-431 292.58,-431 294.87,-431"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="294.93,-433.1 300.93,-431 294.93,-428.9 294.93,-433.1"/>
 </g>
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;elements.ts&#45;&gt;packages/music&#45;structure/beat/beat&#45;estimation/dist/index.js -->
 <g id="edge21" class="edge">
 <title>packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;elements.ts&#45;&gt;packages/music&#45;structure/beat/beat&#45;estimation/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M249.68,-440.09C283.79,-486.51 437,-695 437,-695 437,-695 437,-695 624,-695 624,-695 816.24,-696.28 893.46,-696.79"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="898.81,-696.83 893.8,-699.04 896.31,-696.81 893.81,-696.79 893.81,-696.79 893.81,-696.79 896.31,-696.81 893.83,-694.54 898.81,-696.83 898.81,-696.83"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M265.15,-440C367.97,-479.99 783.24,-641.48 897.04,-685.74"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="896.5,-687.78 902.86,-688 898.03,-683.87 896.5,-687.78"/>
 </g>
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;elements.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/dist/index.js -->
 <g id="edge22" class="edge">
 <title>packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;elements.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M246.63,-440.13C259.33,-472.1 301,-577 301,-577 301,-577 437,-776 437,-776 437,-776 437,-776 624,-776 624,-776 816.24,-807.3 893.46,-819.87"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="898.81,-820.74 893.52,-822.15 896.35,-820.34 893.88,-819.93 893.88,-819.93 893.88,-819.93 896.35,-820.34 894.24,-817.71 898.81,-820.74 898.81,-820.74"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M257.9,-440.16C348.75,-492.49 801.63,-753.36 904.98,-812.89"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="903.94,-814.72 910.19,-815.89 906.04,-811.08 903.94,-814.72"/>
 </g>
 </g>
 </svg>

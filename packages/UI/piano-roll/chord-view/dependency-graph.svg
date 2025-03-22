@@ -218,8 +218,8 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/index.ts -->
 <g id="edge1" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M103.63,-631C115.98,-631 130.82,-631 143.76,-631"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="148.8,-632.75 143.8,-631 148.8,-629.25 148.8,-632.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M103.63,-631C115.65,-631 130.03,-631 142.72,-631"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="148.8,-633.1 142.8,-631 148.8,-628.9 148.8,-633.1"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;elements.ts -->
 <g id="node5" class="node">
@@ -233,8 +233,8 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;elements.ts -->
 <g id="edge98" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;elements.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M203.18,-628.31C211.6,-627.44 221.27,-626.45 230.92,-625.46"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="236.14,-626.68 230.98,-625.45 235.78,-623.2 236.14,-626.68"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M203.18,-628.31C211.3,-627.47 220.56,-626.52 229.86,-625.57"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="236.17,-627.03 229.99,-625.55 235.74,-622.85 236.17,-627.03"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/index.ts -->
 <g id="node6" class="node">
@@ -248,8 +248,8 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/index.ts -->
 <g id="edge99" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M184.8,-621.91C215.58,-586.02 328.65,-454.2 364.81,-412.05"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="369.58,-409.17 365,-411.83 366.92,-406.89 369.58,-409.17"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M183.88,-621.91C214.78,-586.24 327.8,-455.79 365.02,-412.83"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="370.76,-409.41 365.25,-412.57 367.59,-406.66 370.76,-409.41"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/index.ts -->
 <g id="node7" class="node">
@@ -263,8 +263,8 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/index.ts -->
 <g id="edge100" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M197.64,-621.91C214.65,-614.41 236,-605 236,-605 236,-605 303.88,-584.64 345.11,-572.27"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="350.5,-572.48 345.21,-572.24 349.49,-569.13 350.5,-572.48"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M202.69,-621.97C239.18,-609.62 304.61,-587.49 344.09,-574.13"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="350.87,-574.06 344.51,-573.99 349.53,-570.08 350.87,-574.06"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/index.ts -->
 <g id="node8" class="node">
@@ -278,8 +278,8 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/index.ts -->
 <g id="edge101" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M183.09,-640.09C198.17,-662.57 236,-719 236,-719 236,-719 303.6,-729.62 344.85,-736.11"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="349.72,-738.64 345.06,-736.14 350.27,-735.18 349.72,-738.64"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M192.45,-640C228.37,-659.66 313.88,-706.46 354.65,-728.77"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="359.32,-733.72 355.06,-728.99 361.33,-730.03 359.32,-733.72"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/index.ts -->
 <g id="node9" class="node">
@@ -293,8 +293,8 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/index.ts -->
 <g id="edge102" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M203.05,-632.77C218.86,-633.84 236,-635 236,-635 236,-635 334,-635 334,-635 334,-635 338.4,-634.58 344.34,-634.02"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="349.81,-635.25 344.66,-633.98 349.47,-631.77 349.81,-635.25"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M203.11,-631C239.52,-631 304.2,-631 343.58,-631"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="349.68,-633.1 343.68,-631 349.68,-628.9 349.68,-633.1"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;view&#45;params.ts -->
 <g id="node19" class="node">
@@ -308,32 +308,32 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;view&#45;params.ts -->
 <g id="edge103" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;view&#45;params.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M196.25,-640.1C239.78,-660.68 342,-709 342,-709 342,-709 376,-715 376,-715 376,-715 376,-715 576,-715 576,-715 701,-683 701,-683 701,-683 714,-503 714,-503 714,-503 823,-479 823,-479 823,-479 836,-466 836,-466 836,-466 843.84,-463.95 853.73,-461.37"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="859.17,-461.76 853.89,-461.33 858.28,-458.38 859.17,-461.76"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M203.29,-624.16C312.67,-596.76 719.87,-494.75 852.47,-461.53"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="859.08,-462.04 852.75,-461.46 858.06,-457.96 859.08,-462.04"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;elements.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/index.ts -->
 <g id="edge2" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;elements.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M289.75,-610.79C303.82,-576.25 353.47,-454.32 370.34,-412.9"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="372.23,-408.25 372.43,-413.73 371.29,-410.57 370.35,-412.88 370.35,-412.88 370.35,-412.88 371.29,-410.57 368.26,-412.04 372.23,-408.25 372.23,-408.25"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M289.75,-610.79C303.7,-576.53 352.66,-456.3 369.92,-413.92"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="371.91,-414.6 372.23,-408.25 368.02,-413.02 371.91,-414.6"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;elements.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/index.ts -->
 <g id="edge3" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;elements.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M300.4,-611C314.54,-602.16 334,-590 334,-590 334,-590 346.16,-582.19 357.39,-574.97"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="361.78,-572.14 358.79,-576.74 359.68,-573.49 357.57,-574.84 357.57,-574.84 357.57,-574.84 359.68,-573.49 356.36,-572.95 361.78,-572.14 361.78,-572.14"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M300.46,-610.84C315.55,-601.29 339.31,-586.24 356.15,-575.57"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="357.63,-577.12 361.58,-572.14 355.38,-573.57 357.63,-577.12"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;elements.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/index.ts -->
 <g id="edge4" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;elements.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M291.78,-629.19C306.09,-651.93 342,-709 342,-709 342,-709 353.14,-719.49 362.67,-728.45"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="366.35,-731.92 361.16,-730.13 364.53,-730.2 362.71,-728.49 362.71,-728.49 362.71,-728.49 364.53,-730.2 364.25,-726.85 366.35,-731.92 366.35,-731.92"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M292.76,-629.09C308.34,-650.03 346.81,-701.75 365.49,-726.87"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="363.89,-728.24 369.16,-731.8 367.26,-725.73 363.89,-728.24"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;elements.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/index.ts -->
 <g id="edge5" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;elements.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M334.16,-625.89C337.67,-626.32 341.16,-626.74 344.53,-627.15"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="349.73,-627.79 344.49,-629.42 347.24,-627.49 344.76,-627.18 344.76,-627.18 344.76,-627.18 347.24,-627.49 345.04,-624.95 349.73,-627.79 349.73,-627.79"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M334.16,-625.89C337.34,-626.27 340.49,-626.66 343.56,-627.04"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="343.52,-629.15 349.73,-627.79 344.03,-624.98 343.52,-629.15"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js -->
 <g id="node10" class="node">
@@ -347,8 +347,8 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;elements.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js -->
 <g id="edge6" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;elements.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M288.48,-629.16C299.32,-669.22 342,-827 342,-827 342,-827 473.5,-1142 473.5,-1142 473.5,-1142 473.5,-1142 659,-1142 659,-1142 985.4,-1407.35 1060.65,-1468.52"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1064.85,-1471.93 1059.55,-1470.52 1062.91,-1470.36 1060.97,-1468.78 1060.97,-1468.78 1060.97,-1468.78 1062.91,-1470.36 1062.39,-1467.03 1064.85,-1471.93 1064.85,-1471.93"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M293.36,-629.09C371.31,-713.83 970.3,-1365 1064.54,-1467.45"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1063.03,-1468.92 1068.64,-1471.91 1066.12,-1466.07 1063.03,-1468.92"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key&#45;series.ts -->
 <g id="node11" class="node">
@@ -362,8 +362,8 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key&#45;series.ts -->
 <g id="edge30" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key&#45;series.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M404.1,-389.98C415.99,-385.87 430.16,-380.98 442.59,-376.68"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="448.01,-376.66 442.71,-376.64 446.86,-373.35 448.01,-376.66"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M404.1,-389.98C415.68,-385.98 429.41,-381.23 441.6,-377.02"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="448.12,-376.99 441.76,-376.97 446.75,-373.02 448.12,-376.99"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name&#45;series.ts -->
 <g id="node23" class="node">
@@ -377,8 +377,8 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name&#45;series.ts -->
 <g id="edge52" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name&#45;series.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M404.1,-558.63C407.44,-558.07 410.96,-557.48 414.57,-556.87"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="419.83,-557.77 414.61,-556.87 419.25,-554.31 419.83,-557.77"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M404.1,-558.63C407.13,-558.12 410.32,-557.59 413.59,-557.04"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="419.89,-558.11 413.62,-557.03 419.19,-553.97 419.89,-558.11"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note&#45;series.ts -->
 <g id="node28" class="node">
@@ -392,8 +392,8 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note&#45;series.ts -->
 <g id="edge74" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note&#45;series.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M404.1,-742.09C407.99,-742.26 412.12,-742.43 416.35,-742.61"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="421.29,-744.56 416.37,-742.61 421.44,-741.07 421.29,-744.56"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M404.1,-742.09C407.65,-742.24 411.4,-742.4 415.25,-742.56"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="421.28,-744.91 415.37,-742.57 421.45,-740.72 421.28,-744.91"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman&#45;series.ts -->
 <g id="node34" class="node">
@@ -407,14 +407,14 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman&#45;series.ts -->
 <g id="edge96" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman&#45;series.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M404.1,-631C406.52,-631 409.04,-631 411.63,-631"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="417,-632.75 412,-631 417,-629.25 417,-632.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M404.1,-631C406.27,-631 408.51,-631 410.81,-631"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="417,-633.1 411,-631 417,-628.9 417,-633.1"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key&#45;series.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js -->
 <g id="edge8" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key&#45;series.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M479.56,-375.28C492.52,-404.86 532,-495 532,-495 532,-495 540,-801 540,-801 540,-801 657,-1047 657,-1047 657,-1047 657,-1047 769.5,-1047 769.5,-1047 993,-1073 993,-1073 993,-1073 1017,-1409 1017,-1409 1017,-1409 1048.33,-1447.24 1065.33,-1467.98"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1068.53,-1471.88 1063.62,-1469.44 1066.94,-1469.95 1065.36,-1468.01 1065.36,-1468.01 1065.36,-1468.01 1066.94,-1469.95 1067.1,-1466.59 1068.53,-1471.88 1068.53,-1471.88"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M479.53,-375.3C533.35,-474.9 1002.43,-1343 1069.12,-1466.43"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1067.29,-1467.45 1071.99,-1471.73 1070.99,-1465.46 1067.29,-1467.45"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/index.ts -->
 <g id="node12" class="node">
@@ -428,8 +428,8 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key&#45;series.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/index.ts -->
 <g id="edge7" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key&#45;series.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M525.04,-366C531.05,-366 537.06,-366 542.71,-366"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="547.78,-366 542.78,-368.25 545.28,-366 542.78,-366 542.78,-366 542.78,-366 545.28,-366 542.78,-363.75 547.78,-366 547.78,-366"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M525.04,-366C530.69,-366 536.33,-366 541.67,-366"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="541.78,-368.1 547.78,-366 541.78,-363.9 541.78,-368.1"/>
 </g>
 <!-- packages/UI/view/dist/index.js -->
 <g id="node13" class="node">
@@ -443,8 +443,8 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key&#45;series.ts&#45;&gt;packages/UI/view/dist/index.js -->
 <g id="edge9" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key&#45;series.ts&#45;&gt;packages/UI/view/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M477.36,-356.85C487.94,-304.88 540,-49 540,-49 540,-49 657,-39 657,-39 657,-39 657,-39 769.5,-39 769.5,-39 993,-49 993,-49 993,-49 1017,-175 1017,-175 1017,-175 1047.76,-211.5 1064.86,-231.78"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1068.29,-235.85 1063.34,-233.48 1066.68,-233.94 1065.06,-232.03 1065.06,-232.03 1065.06,-232.03 1066.68,-233.94 1066.78,-230.58 1068.29,-235.85 1068.29,-235.85"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M519.79,-356.91C635.85,-333.6 941.98,-272.12 1043.65,-251.7"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1044.29,-253.71 1049.76,-250.47 1043.46,-249.59 1044.29,-253.71"/>
 </g>
 <!-- packages/UI/view&#45;parameters/dist/index.js -->
 <g id="node14" class="node">
@@ -458,8 +458,8 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key&#45;series.ts&#45;&gt;packages/UI/view&#45;parameters/dist/index.js -->
 <g id="edge10" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key&#45;series.ts&#45;&gt;packages/UI/view&#45;parameters/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M477.29,-356.97C487.71,-304.48 540,-41 540,-41 540,-41 657,-25 657,-25 657,-25 657,-25 769.5,-25 769.5,-25 993,-40 993,-40 993,-40 1041.9,-97.14 1064.63,-123.71"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1068.04,-127.7 1063.08,-125.36 1066.42,-125.8 1064.79,-123.9 1064.79,-123.9 1064.79,-123.9 1066.42,-125.8 1066.5,-122.44 1068.04,-127.7 1068.04,-127.7"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M498.49,-356.88C593.54,-320.75 943.57,-187.71 1047.63,-148.16"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1048.41,-150.11 1053.27,-146.02 1046.91,-146.19 1048.41,-150.11"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key.ts -->
 <g id="node22" class="node">
@@ -473,8 +473,8 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key.ts -->
 <g id="edge29" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M602.07,-366C606.93,-366 612.11,-366 617.26,-366"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="622.4,-367.75 617.4,-366 622.4,-364.25 622.4,-367.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M602.07,-366C606.63,-366 611.46,-366 616.3,-366"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="622.4,-368.1 616.4,-366 622.4,-363.9 622.4,-368.1"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;model.ts -->
 <g id="node15" class="node">
@@ -488,14 +488,14 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;model.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js -->
 <g id="edge11" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;model.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M946.53,-379.8C970.12,-382.95 993,-386 993,-386 993,-386 1017,-1409 1017,-1409 1017,-1409 1048.33,-1447.24 1065.33,-1467.98"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1068.53,-1471.88 1063.62,-1469.44 1066.94,-1469.95 1065.36,-1468.01 1065.36,-1468.01 1065.36,-1468.01 1066.94,-1469.95 1067.1,-1466.59 1068.53,-1471.88 1068.53,-1471.88"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M897.01,-382.25C913.1,-481.02 1053.1,-1340.45 1073.52,-1465.78"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1071.46,-1466.21 1074.5,-1471.79 1075.61,-1465.53 1071.46,-1466.21"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;model.ts&#45;&gt;packages/UI/view/dist/index.js -->
 <g id="edge14" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;model.ts&#45;&gt;packages/UI/view/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M914.3,-363.94C942.63,-350.28 993,-326 993,-326 993,-326 1039.18,-280.93 1062.65,-258.03"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1066.48,-254.29 1064.47,-259.39 1064.69,-256.04 1062.9,-257.78 1062.9,-257.78 1062.9,-257.78 1064.69,-256.04 1061.33,-256.17 1066.48,-254.29 1066.48,-254.29"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M908.19,-364C939.7,-341.65 1021.59,-283.58 1058.04,-257.73"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1059.4,-259.35 1063.08,-254.16 1056.97,-255.92 1059.4,-259.35"/>
 </g>
 <!-- packages/util/time&#45;and/dist/index.js -->
 <g id="node16" class="node">
@@ -509,8 +509,8 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;model.ts&#45;&gt;packages/util/time&#45;and/dist/index.js -->
 <g id="edge12" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;model.ts&#45;&gt;packages/util/time&#45;and/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M946.53,-379.8C970.12,-382.95 993,-386 993,-386 993,-386 1017,-1007 1017,-1007 1017,-1007 1045.09,-1033.66 1062.51,-1050.19"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1066.26,-1053.75 1061.08,-1051.94 1064.44,-1052.03 1062.63,-1050.31 1062.63,-1050.31 1062.63,-1050.31 1064.44,-1052.03 1064.18,-1048.68 1066.26,-1053.75 1066.26,-1053.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M897.92,-382.23C917.3,-456.33 1047.45,-953.86 1072.01,-1047.74"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1069.98,-1048.29 1073.53,-1053.56 1074.04,-1047.22 1069.98,-1048.29"/>
 </g>
 <!-- packages/tonal&#45;objects/dist/index.js -->
 <g id="node17" class="node">
@@ -524,8 +524,8 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;model.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js -->
 <g id="edge13" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;model.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M946.53,-379.8C970.12,-382.95 993,-386 993,-386 993,-386 1017,-1289 1017,-1289 1017,-1289 1049.61,-1334.32 1066.34,-1357.57"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1069.46,-1361.91 1064.71,-1359.17 1068,-1359.88 1066.54,-1357.85 1066.54,-1357.85 1066.54,-1357.85 1068,-1359.88 1068.37,-1356.54 1069.46,-1361.91 1069.46,-1361.91"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M897.17,-382.24C913.97,-475.1 1052.1,-1238.86 1073.28,-1355.96"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1071.22,-1356.37 1074.35,-1361.9 1075.35,-1355.62 1071.22,-1356.37"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;view.ts -->
 <g id="node18" class="node">
@@ -539,26 +539,26 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;view.ts&#45;&gt;packages/UI/view/dist/index.js -->
 <g id="edge20" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;view.ts&#45;&gt;packages/UI/view/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M776.12,-363.84C792.94,-340.57 836,-281 836,-281 836,-281 979.48,-259.48 1044.56,-249.72"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1049.86,-248.92 1045.25,-251.89 1047.39,-249.29 1044.91,-249.66 1044.91,-249.66 1044.91,-249.66 1047.39,-249.29 1044.58,-247.44 1049.86,-248.92 1049.86,-248.92"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M790.19,-364C844.93,-341.29 988.62,-281.67 1049.31,-256.49"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1050.18,-258.4 1054.92,-254.16 1048.57,-254.52 1050.18,-258.4"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;view.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;model.ts -->
 <g id="edge17" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;view.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;model.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M816.03,-373C822.82,-373 829.87,-373 836.84,-373"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="842.14,-373 837.14,-375.25 839.64,-373 837.14,-373 837.14,-373 837.14,-373 839.64,-373 837.14,-370.75 842.14,-373 842.14,-373"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M816.03,-373C822.55,-373 829.32,-373 836.02,-373"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="836.14,-375.1 842.14,-373 836.14,-370.9 836.14,-375.1"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;view.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js -->
 <g id="edge19" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;view.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M773.35,-382.35C785.61,-412.16 823,-503 823,-503 823,-503 836,-823 836,-823 836,-823 993,-899 993,-899 993,-899 1017,-1289 1017,-1289 1017,-1289 1049.61,-1334.32 1066.34,-1357.57"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1069.46,-1361.91 1064.71,-1359.17 1068,-1359.88 1066.54,-1357.85 1066.54,-1357.85 1066.54,-1357.85 1068,-1359.88 1068.37,-1356.54 1069.46,-1361.91 1069.46,-1361.91"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M771.36,-382.24C800.06,-475.1 1036.15,-1238.86 1072.35,-1355.96"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1070.41,-1356.79 1074.19,-1361.9 1074.42,-1355.55 1070.41,-1356.79"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;view.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;view&#45;params.ts -->
 <g id="edge15" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;view.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;view&#45;params.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M806.66,-382.03C815.79,-384.25 823,-386 823,-386 823,-386 836,-411 836,-411 836,-411 859.36,-427.25 876.3,-439.04"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="880.45,-441.92 875.06,-440.92 878.4,-440.5 876.35,-439.07 876.35,-439.07 876.35,-439.07 878.4,-440.5 877.63,-437.22 880.45,-441.92 880.45,-441.92"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M784.21,-382.25C806.52,-396.29 848.93,-422.96 873.85,-438.64"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="872.99,-440.58 879.19,-442 875.23,-437.03 872.99,-440.58"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/shorten.ts -->
 <g id="node20" class="node">
@@ -572,8 +572,8 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;view.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/shorten.ts -->
 <g id="edge16" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;view.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/shorten.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M776.12,-382.26C792.94,-405.78 836,-466 836,-466 836,-466 846.51,-468.74 858.55,-471.88"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="863.4,-473.15 858,-474.06 860.98,-472.52 858.56,-471.89 858.56,-471.89 858.56,-471.89 860.98,-472.52 859.13,-469.71 863.4,-473.15 863.4,-473.15"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M780.07,-382.21C802.04,-401.34 852.67,-445.44 878.2,-467.67"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="877.05,-469.46 882.95,-471.82 879.81,-466.29 877.05,-469.46"/>
 </g>
 <!-- packages/util/color/dist/index.js -->
 <g id="node21" class="node">
@@ -587,20 +587,20 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;view.ts&#45;&gt;packages/util/color/dist/index.js -->
 <g id="edge18" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;view.ts&#45;&gt;packages/util/color/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M773.35,-382.35C785.61,-412.16 823,-503 823,-503 823,-503 836,-801 836,-801 836,-801 993,-838 993,-838 993,-838 1017,-1101 1017,-1101 1017,-1101 1045.09,-1127.66 1062.51,-1144.19"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1066.26,-1147.75 1061.08,-1145.94 1064.44,-1146.03 1062.63,-1144.31 1062.63,-1144.31 1062.63,-1144.31 1064.44,-1146.03 1064.18,-1142.68 1066.26,-1147.75 1066.26,-1147.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M772.07,-382.08C803.42,-461.74 1031.47,-1041.31 1071.13,-1142.08"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1069.22,-1142.96 1073.37,-1147.77 1073.13,-1141.42 1069.22,-1142.96"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;view&#45;params.ts&#45;&gt;packages/UI/view&#45;parameters/dist/index.js -->
 <g id="edge97" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;view&#45;params.ts&#45;&gt;packages/UI/view&#45;parameters/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M917.62,-441.92C946.39,-430.12 993,-411 993,-411 993,-411 1017,-225 1017,-225 1017,-225 1050.53,-174.99 1067.04,-150.37"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1069.91,-146.09 1068.99,-151.49 1068.52,-148.16 1067.12,-150.24 1067.12,-150.24 1067.12,-150.24 1068.52,-148.16 1065.25,-148.99 1069.91,-146.09 1069.91,-146.09"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M900.71,-441.94C926.03,-397.89 1036.33,-206.01 1067.67,-151.49"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1069.6,-152.34 1070.77,-146.1 1065.96,-150.25 1069.6,-152.34"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/shorten.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js -->
 <g id="edge106" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/shorten.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M925.55,-487.78C954.2,-494.24 993,-503 993,-503 993,-503 1017,-1289 1017,-1289 1017,-1289 1049.61,-1334.32 1066.34,-1357.57"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1069.46,-1361.91 1064.71,-1359.17 1068,-1359.88 1066.54,-1357.85 1066.54,-1357.85 1066.54,-1357.85 1068,-1359.88 1068.37,-1356.54 1069.46,-1361.91 1069.46,-1361.91"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M897.35,-490.1C914.79,-576.12 1050.56,-1245.58 1072.9,-1355.69"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1070.9,-1356.4 1074.15,-1361.86 1075.01,-1355.57 1070.9,-1356.4"/>
 </g>
 <!-- packages/util/stdlib/dist/index.js -->
 <g id="node40" class="node">
@@ -614,68 +614,68 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/shorten.ts&#45;&gt;packages/util/stdlib/dist/index.js -->
 <g id="edge105" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/shorten.ts&#45;&gt;packages/util/stdlib/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M925.55,-487.78C954.2,-494.24 993,-503 993,-503 993,-503 1059.42,-875.9 1073.43,-954.55"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1074.34,-959.69 1071.25,-955.16 1073.9,-957.23 1073.47,-954.77 1073.47,-954.77 1073.47,-954.77 1073.9,-957.23 1075.68,-954.37 1074.34,-959.69 1074.34,-959.69"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M898.94,-490.31C921.04,-550.05 1042.8,-879.25 1070.43,-953.93"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1068.61,-955.08 1072.66,-959.98 1072.55,-953.63 1068.61,-955.08"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key.ts&#45;&gt;packages/UI/controllers/dist/index.js -->
 <g id="edge25" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key.ts&#45;&gt;packages/UI/controllers/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M667.16,-356.6C686.34,-334.51 734.33,-279.21 756.26,-253.95"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="759.55,-250.16 757.97,-255.42 757.91,-252.05 756.27,-253.94 756.27,-253.94 756.27,-253.94 757.91,-252.05 754.57,-252.47 759.55,-250.16 759.55,-250.16"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M667.16,-356.6C686.1,-334.78 733.15,-280.57 755.43,-254.9"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="757.2,-256.07 759.55,-250.16 754.03,-253.32 757.2,-256.07"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js -->
 <g id="edge24" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M661.89,-375.42C671.38,-406.37 701,-503 701,-503 701,-503 714,-833 714,-833 714,-833 836,-898 836,-898 836,-898 993,-954 993,-954 993,-954 1017,-1409 1017,-1409 1017,-1409 1048.33,-1447.24 1065.33,-1467.98"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1068.53,-1471.88 1063.62,-1469.44 1066.94,-1469.95 1065.36,-1468.01 1065.36,-1468.01 1065.36,-1468.01 1066.94,-1469.95 1067.1,-1466.59 1068.53,-1471.88 1068.53,-1471.88"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M661.5,-375.3C698.89,-474.8 1024.5,-1341.28 1071.38,-1466.06"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1069.44,-1466.86 1073.52,-1471.73 1073.37,-1465.38 1069.44,-1466.86"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key.ts&#45;&gt;packages/UI/view/dist/index.js -->
 <g id="edge27" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key.ts&#45;&gt;packages/UI/view/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M661.29,-356.87C671.7,-315.42 714,-147 714,-147 714,-147 823,-147 823,-147 823,-147 993,-175 993,-175 993,-175 1037.37,-212.42 1061.23,-232.54"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1065.15,-235.85 1059.88,-234.35 1063.24,-234.24 1061.33,-232.63 1061.33,-232.63 1061.33,-232.63 1063.24,-234.24 1062.78,-230.91 1065.15,-235.85 1065.15,-235.85"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M689.49,-356.91C766.75,-334.6 965.08,-277.32 1043.94,-254.55"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1044.68,-256.52 1049.86,-252.84 1043.51,-252.49 1044.68,-256.52"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key.ts&#45;&gt;packages/UI/view&#45;parameters/dist/index.js -->
 <g id="edge28" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key.ts&#45;&gt;packages/UI/view&#45;parameters/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M661.29,-356.74C671.7,-314.73 714,-144 714,-144 714,-144 836,-133 836,-133 836,-133 993,-133 993,-133 993,-133 1021.02,-134.35 1044.5,-135.48"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1049.74,-135.73 1044.64,-137.74 1047.24,-135.61 1044.74,-135.49 1044.74,-135.49 1044.74,-135.49 1047.24,-135.61 1044.85,-133.25 1049.74,-135.73 1049.74,-135.73"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M674.68,-356.88C740.25,-321.05 980.28,-189.86 1054.79,-149.14"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1056.01,-150.86 1060.27,-146.14 1054,-147.18 1056.01,-150.86"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;model.ts -->
 <g id="edge22" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;model.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M693.52,-360.98C704.57,-359.37 714,-358 714,-358 714,-358 823,-358 823,-358 823,-358 833.14,-360.16 845.74,-362.84"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="850.86,-363.93 845.5,-365.09 848.42,-363.41 845.97,-362.89 845.97,-362.89 845.97,-362.89 848.42,-363.41 846.44,-360.69 850.86,-363.93 850.86,-363.93"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M693.66,-367.06C731.37,-368.17 791.47,-369.95 836.11,-371.27"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="836.24,-373.38 842.3,-371.46 836.37,-369.18 836.24,-373.38"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js -->
 <g id="edge26" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M661.89,-375.42C671.38,-406.37 701,-503 701,-503 701,-503 714,-801 714,-801 714,-801 836,-865 836,-865 836,-865 993,-923 993,-923 993,-923 1017,-1289 1017,-1289 1017,-1289 1049.61,-1334.32 1066.34,-1357.57"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1069.46,-1361.91 1064.71,-1359.17 1068,-1359.88 1066.54,-1357.85 1066.54,-1357.85 1066.54,-1357.85 1068,-1359.88 1068.37,-1356.54 1069.46,-1361.91 1069.46,-1361.91"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M661.88,-375.31C700.91,-468.91 1022.16,-1239.47 1070.83,-1356.2"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1068.93,-1357.11 1073.18,-1361.84 1072.81,-1355.49 1068.93,-1357.11"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;view.ts -->
 <g id="edge23" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key&#45;view.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M693.63,-368.23C700.68,-368.69 708.25,-369.18 715.75,-369.66"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="720.93,-370 715.79,-371.92 718.43,-369.83 715.94,-369.67 715.94,-369.67 715.94,-369.67 718.43,-369.83 716.08,-367.43 720.93,-370 720.93,-370"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M693.63,-368.23C700.41,-368.67 707.67,-369.14 714.89,-369.61"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="714.81,-371.7 720.93,-370 715.08,-367.51 714.81,-371.7"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;view&#45;params.ts -->
 <g id="edge21" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;key/chord&#45;key/chord&#45;key.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;view&#45;params.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M681.69,-375.08C696.84,-381.14 714,-388 714,-388 714,-388 811.74,-422.3 862.97,-440.29"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="867.78,-441.97 862.32,-442.44 865.42,-441.15 863.06,-440.32 863.06,-440.32 863.06,-440.32 865.42,-441.15 863.81,-438.19 867.78,-441.97 867.78,-441.97"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M683.31,-375.1C726.96,-390.79 816.26,-422.88 863.54,-439.87"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="863.02,-441.92 869.37,-441.97 864.44,-437.96 863.02,-441.92"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name&#45;series.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js -->
 <g id="edge32" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name&#45;series.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M484.83,-556.25C500.88,-572.15 532,-603 532,-603 532,-603 540,-1051 540,-1051 540,-1051 657,-1063 657,-1063 657,-1063 657,-1063 769.5,-1063 769.5,-1063 993,-1106 993,-1106 993,-1106 1017,-1409 1017,-1409 1017,-1409 1048.33,-1447.24 1065.33,-1467.98"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1068.53,-1471.88 1063.62,-1469.44 1066.94,-1469.95 1065.36,-1468.01 1065.36,-1468.01 1065.36,-1468.01 1066.94,-1469.95 1067.1,-1466.59 1068.53,-1471.88 1068.53,-1471.88"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M480.46,-556.24C538.15,-645.68 996.55,-1356.29 1067.73,-1466.62"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1066.15,-1468.06 1071.17,-1471.96 1069.68,-1465.78 1066.15,-1468.06"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name&#45;series.ts&#45;&gt;packages/UI/view/dist/index.js -->
 <g id="edge33" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name&#45;series.ts&#45;&gt;packages/UI/view/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M480.12,-538C493.62,-511.73 532,-437 532,-437 532,-437 540,-63 540,-63 540,-63 657,-53 657,-53 657,-53 657,-53 769.5,-53 769.5,-53 993,-91 993,-91 993,-91 1017,-175 1017,-175 1017,-175 1047.76,-211.5 1064.86,-231.78"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1068.29,-235.85 1063.34,-233.48 1066.68,-233.94 1065.06,-232.03 1065.06,-232.03 1065.06,-232.03 1066.68,-233.94 1066.78,-230.58 1068.29,-235.85 1068.29,-235.85"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M492.53,-537.96C579.5,-494.37 955.41,-305.95 1053.51,-256.77"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1054.62,-258.57 1059.04,-254 1052.73,-254.81 1054.62,-258.57"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/index.ts -->
 <g id="node24" class="node">
@@ -689,8 +689,8 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name&#45;series.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/index.ts -->
 <g id="edge31" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name&#45;series.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M527.92,-537.95C532.92,-537.09 537.87,-536.24 542.57,-535.43"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="547.56,-534.56 543.01,-537.63 545.09,-534.99 542.63,-535.41 542.63,-535.41 542.63,-535.41 545.09,-534.99 542.25,-533.2 547.56,-534.56 547.56,-534.56"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M527.92,-537.95C532.49,-537.16 537.02,-536.38 541.36,-535.63"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="542,-537.65 547.56,-534.56 541.29,-533.51 542,-537.65"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name.ts -->
 <g id="node27" class="node">
@@ -704,8 +704,8 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name.ts -->
 <g id="edge51" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M602.07,-527.75C604.91,-527.5 607.85,-527.25 610.83,-526.99"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="616.38,-528.27 611.25,-526.95 616.08,-524.78 616.38,-528.27"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M602.07,-527.75C604.62,-527.53 607.26,-527.3 609.94,-527.07"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="616.41,-528.62 610.25,-527.04 616.05,-524.43 616.41,-528.62"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name&#45;model.ts -->
 <g id="node25" class="node">
@@ -719,26 +719,26 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name&#45;model.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js -->
 <g id="edge34" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name&#45;model.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M907.46,-546.07C933.49,-565.83 993,-611 993,-611 993,-611 1017,-1409 1017,-1409 1017,-1409 1048.33,-1447.24 1065.33,-1467.98"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1068.53,-1471.88 1063.62,-1469.44 1066.94,-1469.95 1065.36,-1468.01 1065.36,-1468.01 1065.36,-1468.01 1066.94,-1469.95 1067.1,-1466.59 1068.53,-1471.88 1068.53,-1471.88"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M897.23,-546.04C914.23,-634.93 1051.3,-1351.84 1073.09,-1465.77"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1071.06,-1466.35 1074.25,-1471.85 1075.19,-1465.56 1071.06,-1466.35"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name&#45;model.ts&#45;&gt;packages/UI/view/dist/index.js -->
 <g id="edge37" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name&#45;model.ts&#45;&gt;packages/UI/view/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M951.09,-529.59C972.98,-526.67 993,-524 993,-524 993,-524 1054.79,-316.31 1071.74,-259.32"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1073.24,-254.28 1073.97,-259.72 1072.53,-256.68 1071.81,-259.08 1071.81,-259.08 1071.81,-259.08 1072.53,-256.68 1069.66,-258.43 1073.24,-254.28 1073.24,-254.28"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M901.1,-527.94C926.99,-486.05 1035.21,-310.99 1067.11,-259.38"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1068.92,-260.45 1070.29,-254.24 1065.35,-258.24 1068.92,-260.45"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name&#45;model.ts&#45;&gt;packages/util/time&#45;and/dist/index.js -->
 <g id="edge35" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name&#45;model.ts&#45;&gt;packages/util/time&#45;and/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M907.46,-546.07C933.49,-565.83 993,-611 993,-611 993,-611 1017,-1007 1017,-1007 1017,-1007 1045.09,-1033.66 1062.51,-1050.19"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1066.26,-1053.75 1061.08,-1051.94 1064.44,-1052.03 1062.63,-1050.31 1062.63,-1050.31 1062.63,-1050.31 1064.44,-1052.03 1064.18,-1048.68 1066.26,-1053.75 1066.26,-1053.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M898.63,-546.13C919.94,-608.23 1043.56,-968.46 1070.72,-1047.62"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1068.85,-1048.63 1072.78,-1053.62 1072.82,-1047.26 1068.85,-1048.63"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name&#45;model.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js -->
 <g id="edge36" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name&#45;model.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M907.46,-546.07C933.49,-565.83 993,-611 993,-611 993,-611 1017,-1289 1017,-1289 1017,-1289 1049.61,-1334.32 1066.34,-1357.57"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1069.46,-1361.91 1064.71,-1359.17 1068,-1359.88 1066.54,-1357.85 1066.54,-1357.85 1066.54,-1357.85 1068,-1359.88 1068.37,-1356.54 1069.46,-1361.91 1069.46,-1361.91"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M897.47,-546.08C915.37,-628.82 1050.1,-1251.33 1072.77,-1356.06"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1070.72,-1356.53 1074.04,-1361.95 1074.83,-1355.64 1070.72,-1356.53"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name&#45;view.ts -->
 <g id="node26" class="node">
@@ -752,104 +752,104 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name&#45;view.ts&#45;&gt;packages/UI/view/dist/index.js -->
 <g id="edge42" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name&#45;view.ts&#45;&gt;packages/UI/view/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M773.88,-513.83C786.66,-487.09 823,-411 823,-411 823,-411 836,-301 836,-301 836,-301 993,-274 993,-274 993,-274 1021.61,-264 1045.24,-255.75"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1050.19,-254.02 1046.22,-257.79 1047.83,-254.84 1045.47,-255.67 1045.47,-255.67 1045.47,-255.67 1047.83,-254.84 1044.73,-253.54 1050.19,-254.02 1050.19,-254.02"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M778.76,-513.75C824.43,-472.6 1009.26,-306.05 1062.55,-258.02"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1063.96,-259.58 1067.01,-254 1061.15,-256.46 1063.96,-259.58"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name&#45;view.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;view&#45;params.ts -->
 <g id="edge38" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name&#45;view.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;view&#45;params.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M806.66,-513.97C815.79,-511.75 823,-510 823,-510 823,-510 836,-466 836,-466 836,-466 843.84,-463.95 853.73,-461.37"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="858.73,-460.07 854.46,-463.51 856.31,-460.7 853.89,-461.33 853.89,-461.33 853.89,-461.33 856.31,-460.7 853.32,-459.16 858.73,-460.07 858.73,-460.07"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M785.2,-513.88C807.38,-501.01 847.91,-477.47 872.61,-463.13"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="873.79,-464.87 877.92,-460.04 871.68,-461.24 873.79,-464.87"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name&#45;view.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/shorten.ts -->
 <g id="edge39" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name&#45;view.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/shorten.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M806.66,-513.97C815.79,-511.75 823,-510 823,-510 823,-510 836,-503 836,-503 836,-503 850.48,-497.46 864.91,-491.94"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="869.78,-490.08 865.91,-493.96 867.45,-490.97 865.11,-491.86 865.11,-491.86 865.11,-491.86 867.45,-490.97 864.31,-489.76 869.78,-490.08 869.78,-490.08"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M796.1,-513.99C815.01,-507.58 840.54,-498.94 860.71,-492.11"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="861.51,-494.05 866.52,-490.14 860.16,-490.08 861.51,-494.05"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name&#45;view.ts&#45;&gt;packages/util/color/dist/index.js -->
 <g id="edge41" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name&#45;view.ts&#45;&gt;packages/util/color/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M775.02,-532.09C788.69,-554.57 823,-611 823,-611 823,-611 836,-837 836,-837 836,-837 993,-852 993,-852 993,-852 1017,-1101 1017,-1101 1017,-1101 1045.09,-1127.66 1062.51,-1144.19"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1066.26,-1147.75 1061.08,-1145.94 1064.44,-1146.03 1062.63,-1144.31 1062.63,-1144.31 1062.63,-1144.31 1064.44,-1146.03 1064.18,-1142.68 1066.26,-1147.75 1066.26,-1147.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M772.98,-532.21C807.24,-602.62 1027.56,-1055.41 1069.95,-1142.51"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1068.07,-1143.45 1072.59,-1147.93 1071.85,-1141.62 1068.07,-1143.45"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name&#45;view.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name&#45;model.ts -->
 <g id="edge40" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name&#45;view.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name&#45;model.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M821.01,-528.82C824.94,-529.26 828.93,-529.71 832.91,-530.16"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="837.94,-530.73 832.72,-532.4 835.46,-530.45 832.97,-530.17 832.97,-530.17 832.97,-530.17 835.46,-530.45 833.22,-527.93 837.94,-530.73 837.94,-530.73"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M821.01,-528.82C824.59,-529.22 828.22,-529.63 831.85,-530.04"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="831.74,-532.14 837.94,-530.73 832.21,-527.97 831.74,-532.14"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name.ts&#45;&gt;packages/UI/controllers/dist/index.js -->
 <g id="edge47" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name.ts&#45;&gt;packages/UI/controllers/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M662.44,-513.83C672.47,-487.09 701,-411 701,-411 701,-411 714,-339 714,-339 714,-339 745.3,-281.66 760.02,-254.7"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="762.56,-250.04 762.14,-255.51 761.36,-252.24 760.17,-254.43 760.17,-254.43 760.17,-254.43 761.36,-252.24 758.19,-253.35 762.56,-250.04 762.56,-250.04"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M662.49,-513.94C678.17,-473.17 742.27,-306.58 761.81,-255.78"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="763.78,-256.53 763.97,-250.17 759.86,-255.02 763.78,-256.53"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js -->
 <g id="edge46" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M663.34,-532.09C674.07,-554.57 701,-611 701,-611 701,-611 714,-918 714,-918 714,-918 836,-953 836,-953 836,-953 993,-982 993,-982 993,-982 1017,-1409 1017,-1409 1017,-1409 1048.33,-1447.24 1065.33,-1467.98"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1068.53,-1471.88 1063.62,-1469.44 1066.94,-1469.95 1065.36,-1468.01 1065.36,-1468.01 1065.36,-1468.01 1066.94,-1469.95 1067.1,-1466.59 1068.53,-1471.88 1068.53,-1471.88"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M662.01,-532.17C701.55,-622.57 1020.97,-1352.89 1070.54,-1466.24"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1068.73,-1467.34 1073.06,-1472 1072.58,-1465.66 1068.73,-1467.34"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name.ts&#45;&gt;packages/UI/view/dist/index.js -->
 <g id="edge49" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name.ts&#45;&gt;packages/UI/view/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M662.44,-513.83C672.47,-487.09 701,-411 701,-411 701,-411 714,-175 714,-175 714,-175 823,-175 823,-175 823,-175 993,-203 993,-203 993,-203 1028.67,-221.05 1053.24,-233.48"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1057.99,-235.89 1052.51,-235.64 1055.76,-234.76 1053.53,-233.63 1053.53,-233.63 1053.53,-233.63 1055.76,-234.76 1054.54,-231.62 1057.99,-235.89 1057.99,-235.89"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M671.94,-513.75C734.22,-472.43 987.01,-304.7 1058.24,-257.45"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1059.59,-259.07 1063.43,-254 1057.27,-255.57 1059.59,-259.07"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name.ts&#45;&gt;packages/UI/view&#45;parameters/dist/index.js -->
 <g id="edge50" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name.ts&#45;&gt;packages/UI/view&#45;parameters/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M662.44,-513.83C672.47,-487.09 701,-411 701,-411 701,-411 714,-172 714,-172 714,-172 957.18,-148.49 1044.91,-140.01"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1049.97,-139.52 1045.21,-142.24 1047.48,-139.76 1044.99,-140 1044.99,-140 1044.99,-140 1047.48,-139.76 1044.77,-137.76 1049.97,-139.52 1049.97,-139.52"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M667.94,-513.84C723.5,-462.66 995.4,-212.18 1062.17,-150.66"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1063.97,-151.86 1066.96,-146.25 1061.13,-148.77 1063.97,-151.86"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js -->
 <g id="edge48" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M663.34,-532.09C674.07,-554.57 701,-611 701,-611 701,-611 714,-907 714,-907 714,-907 993,-949 993,-949 993,-949 1017,-1289 1017,-1289 1017,-1289 1049.61,-1334.32 1066.34,-1357.57"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1069.46,-1361.91 1064.71,-1359.17 1068,-1359.88 1066.54,-1357.85 1066.54,-1357.85 1066.54,-1357.85 1068,-1359.88 1068.37,-1356.54 1069.46,-1361.91 1069.46,-1361.91"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M662.56,-532.23C704.17,-616.44 1017.5,-1250.59 1069.65,-1356.13"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1067.91,-1357.35 1072.45,-1361.8 1071.68,-1355.49 1067.91,-1357.35"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;view&#45;params.ts -->
 <g id="edge43" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;view&#45;params.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M667.84,-513.84C683.38,-497.73 714,-466 714,-466 714,-466 780.22,-460.47 832.21,-456.12"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="837.2,-455.7 832.4,-458.36 834.71,-455.91 832.21,-456.12 832.21,-456.12 832.21,-456.12 834.71,-455.91 832.03,-453.88 837.2,-455.7 837.2,-455.7"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M687.95,-513.88C731.58,-500.6 812.46,-475.98 859.01,-461.8"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="859.66,-463.8 864.79,-460.04 858.44,-459.78 859.66,-463.8"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name&#45;model.ts -->
 <g id="edge44" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name&#45;model.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M692.26,-532.07C703.85,-535.23 714,-538 714,-538 714,-538 823,-538 823,-538 823,-538 826.79,-537.95 832.62,-537.86"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="837.95,-537.79 832.98,-540.11 835.45,-537.82 832.95,-537.86 832.95,-537.86 832.95,-537.86 835.45,-537.82 832.92,-535.61 837.95,-537.79 837.95,-537.79"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M699.74,-525.47C736.26,-527.63 789.86,-530.81 831.59,-533.28"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="831.54,-535.38 837.65,-533.63 831.79,-531.18 831.54,-535.38"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name&#45;view.ts -->
 <g id="edge45" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;name/chord&#45;name/chord&#45;name&#45;view.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M699.71,-523C703.35,-523 707.07,-523 710.81,-523"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="715.92,-523 710.92,-525.25 713.42,-523 710.92,-523 710.92,-523 710.92,-523 713.42,-523 710.92,-520.75 715.92,-523 715.92,-523"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M699.71,-523C703.02,-523 706.4,-523 709.79,-523"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="709.92,-525.1 715.92,-523 709.92,-520.9 709.92,-525.1"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note&#45;series.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js -->
 <g id="edge54" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note&#45;series.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M477.23,-754.17C487.48,-808.72 540,-1088 540,-1088 540,-1088 657,-1120 657,-1120 657,-1120 657,-1120 769.5,-1120 769.5,-1120 993,-1166 993,-1166 993,-1166 1017,-1409 1017,-1409 1017,-1409 1048.33,-1447.24 1065.33,-1467.98"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1068.53,-1471.88 1063.62,-1469.44 1066.94,-1469.95 1065.36,-1468.01 1065.36,-1468.01 1065.36,-1468.01 1066.94,-1469.95 1067.1,-1466.59 1068.53,-1471.88 1068.53,-1471.88"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M481.9,-754.04C544.73,-830.8 988.35,-1372.71 1065.56,-1467.02"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1064.11,-1468.57 1069.54,-1471.88 1067.36,-1465.91 1064.11,-1468.57"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note&#45;series.ts&#45;&gt;packages/UI/view/dist/index.js -->
 <g id="edge56" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note&#45;series.ts&#45;&gt;packages/UI/view/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M489.76,-735.92C506.49,-725.25 532,-709 532,-709 532,-709 540,-339 540,-339 540,-339 714,-144 714,-144 714,-144 823,-144 823,-144 823,-144 993,-147 993,-147 993,-147 1042.37,-205.29 1064.96,-231.96"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1068.34,-235.96 1063.39,-233.59 1066.72,-234.05 1065.11,-232.14 1065.11,-232.14 1065.11,-232.14 1066.72,-234.05 1066.83,-230.69 1068.34,-235.96 1068.34,-235.96"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M485.47,-735.89C558.5,-675.29 973.99,-330.48 1061.02,-258.26"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1062.54,-259.72 1065.82,-254.28 1059.86,-256.49 1062.54,-259.72"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note&#45;series.ts&#45;&gt;packages/UI/view&#45;parameters/dist/index.js -->
 <g id="edge57" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note&#45;series.ts&#45;&gt;packages/UI/view&#45;parameters/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M489.76,-735.92C506.49,-725.25 532,-709 532,-709 532,-709 540,-268 540,-268 540,-268 657,-81 657,-81 657,-81 657,-81 769.5,-81 769.5,-81 966.98,-117.08 1044.91,-131.32"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1049.87,-132.23 1044.54,-133.54 1047.41,-131.78 1044.95,-131.33 1044.95,-131.33 1044.95,-131.33 1047.41,-131.78 1045.35,-129.11 1049.87,-132.23 1049.87,-132.23"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M483.48,-735.93C551.23,-667.57 981.4,-233.47 1063.48,-150.64"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1065.23,-151.86 1067.96,-146.12 1062.25,-148.9 1065.23,-151.86"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note&#45;series.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js -->
 <g id="edge55" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note&#45;series.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M477.23,-754.01C487.48,-807.61 540,-1082 540,-1082 540,-1082 657,-1092 657,-1092 657,-1092 657,-1092 769.5,-1092 769.5,-1092 993,-1116 993,-1116 993,-1116 1017,-1289 1017,-1289 1017,-1289 1049.61,-1334.32 1066.34,-1357.57"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1069.46,-1361.91 1064.71,-1359.17 1068,-1359.88 1066.54,-1357.85 1066.54,-1357.85 1066.54,-1357.85 1068,-1359.88 1068.37,-1356.54 1069.46,-1361.91 1069.46,-1361.91"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M483.48,-754.34C551.3,-824.79 982.26,-1272.56 1063.72,-1357.2"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1062.29,-1358.74 1067.96,-1361.61 1065.32,-1355.83 1062.29,-1358.74"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/index.ts -->
 <g id="node29" class="node">
@@ -863,8 +863,8 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note&#45;series.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/index.ts -->
 <g id="edge53" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note&#45;series.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M527.63,-747.12C532.79,-747.33 537.89,-747.53 542.73,-747.73"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="547.87,-747.94 542.78,-749.98 545.37,-747.84 542.87,-747.74 542.87,-747.74 542.87,-747.74 545.37,-747.84 542.97,-745.49 547.87,-747.94 547.87,-747.94"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M527.63,-747.12C532.46,-747.31 537.24,-747.51 541.8,-747.69"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="541.79,-749.79 547.87,-747.94 541.96,-745.6 541.79,-749.79"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note.ts -->
 <g id="node32" class="node">
@@ -878,8 +878,8 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note.ts -->
 <g id="edge73" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M602.07,-749C605.98,-749 610.08,-749 614.22,-749"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="619.47,-750.75 614.47,-749 619.47,-747.25 619.47,-750.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M602.07,-749C605.72,-749 609.54,-749 613.4,-749"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="619.47,-751.1 613.47,-749 619.47,-746.9 619.47,-751.1"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note&#45;model.ts -->
 <g id="node30" class="node">
@@ -893,26 +893,26 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note&#45;model.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js -->
 <g id="edge58" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note&#45;model.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M900.47,-772.28C920.34,-809.36 993,-945 993,-945 993,-945 1017,-1409 1017,-1409 1017,-1409 1048.33,-1447.24 1065.33,-1467.98"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1068.53,-1471.88 1063.62,-1469.44 1066.94,-1469.95 1065.36,-1468.01 1065.36,-1468.01 1065.36,-1468.01 1066.94,-1469.95 1067.1,-1466.59 1068.53,-1471.88 1068.53,-1471.88"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M897.78,-772.08C916.75,-847.53 1048.16,-1370.27 1072.22,-1465.97"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1070.21,-1466.58 1073.71,-1471.88 1074.28,-1465.55 1070.21,-1466.58"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note&#45;model.ts&#45;&gt;packages/UI/view/dist/index.js -->
 <g id="edge61" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note&#45;model.ts&#45;&gt;packages/UI/view/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M906.68,-753.82C932.29,-732.81 993,-683 993,-683 993,-683 1059.13,-334 1073.34,-259.06"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1074.27,-254.15 1075.55,-259.48 1073.8,-256.6 1073.34,-259.06 1073.34,-259.06 1073.34,-259.06 1073.8,-256.6 1071.12,-258.64 1074.27,-254.15 1074.27,-254.15"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M898.79,-753.57C920.54,-691.15 1043.69,-337.73 1070.74,-260.08"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1072.8,-260.56 1072.79,-254.2 1068.84,-259.18 1072.8,-260.56"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note&#45;model.ts&#45;&gt;packages/util/time&#45;and/dist/index.js -->
 <g id="edge59" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note&#45;model.ts&#45;&gt;packages/util/time&#45;and/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M909.06,-772.18C935.85,-790.31 993,-829 993,-829 993,-829 1017,-1007 1017,-1007 1017,-1007 1045.09,-1033.66 1062.51,-1050.19"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1066.26,-1053.75 1061.08,-1051.94 1064.44,-1052.03 1062.63,-1050.31 1062.63,-1050.31 1062.63,-1050.31 1064.44,-1052.03 1064.18,-1048.68 1066.26,-1053.75 1066.26,-1053.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M901.1,-772.31C927.05,-815.44 1035.69,-996 1067.32,-1048.58"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1065.57,-1049.74 1070.47,-1053.8 1069.17,-1047.58 1065.57,-1049.74"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note&#45;model.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js -->
 <g id="edge60" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note&#45;model.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M902.83,-772.17C925.5,-800.54 993,-885 993,-885 993,-885 1017,-1289 1017,-1289 1017,-1289 1049.61,-1334.32 1066.34,-1357.57"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1069.46,-1361.91 1064.71,-1359.17 1068,-1359.88 1066.54,-1357.85 1066.54,-1357.85 1066.54,-1357.85 1068,-1359.88 1068.37,-1356.54 1069.46,-1361.91 1069.46,-1361.91"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M898.19,-772.07C918.39,-840.09 1046.08,-1270.21 1071.57,-1356.09"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1069.57,-1356.73 1073.29,-1361.88 1073.6,-1355.53 1069.57,-1356.73"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note&#45;view.ts -->
 <g id="node31" class="node">
@@ -926,62 +926,62 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note&#45;view.ts&#45;&gt;packages/UI/view/dist/index.js -->
 <g id="edge64" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note&#45;view.ts&#45;&gt;packages/UI/view/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M776.94,-739.82C791.64,-721.69 823,-683 823,-683 823,-683 836,-339 836,-339 836,-339 993,-309 993,-309 993,-309 1036.03,-275.82 1060.13,-257.24"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1064.11,-254.17 1061.52,-259 1062.13,-255.7 1060.15,-257.22 1060.15,-257.22 1060.15,-257.22 1062.13,-255.7 1058.77,-255.44 1064.11,-254.17 1064.11,-254.17"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M774.12,-739.82C811.29,-679.1 1021.72,-335.31 1068,-259.7"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1069.93,-260.57 1071.28,-254.35 1066.35,-258.37 1069.93,-260.57"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note&#45;view.ts&#45;&gt;packages/util/color/dist/index.js -->
 <g id="edge63" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note&#45;view.ts&#45;&gt;packages/util/color/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M774.72,-758.1C790.39,-785.45 836,-865 836,-865 836,-865 993,-899 993,-899 993,-899 1017,-1101 1017,-1101 1017,-1101 1045.09,-1127.66 1062.51,-1144.19"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1066.26,-1147.75 1061.08,-1145.94 1064.44,-1146.03 1062.63,-1144.31 1062.63,-1144.31 1062.63,-1144.31 1064.44,-1146.03 1064.18,-1142.68 1066.26,-1147.75 1066.26,-1147.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M775.52,-758.29C815.83,-811.59 1017.61,-1078.46 1066.38,-1142.95"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1064.83,-1144.38 1070.12,-1147.9 1068.18,-1141.85 1064.83,-1144.38"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note&#45;view.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note&#45;model.ts -->
 <g id="edge62" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note&#45;view.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note&#45;model.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M818.51,-754.53C824,-755.15 829.64,-755.79 835.23,-756.42"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="840.36,-757 835.14,-758.67 837.87,-756.72 835.39,-756.44 835.39,-756.44 835.39,-756.44 837.87,-756.72 835.64,-754.2 840.36,-757 840.36,-757"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M818.51,-754.53C823.67,-755.12 828.95,-755.71 834.21,-756.31"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="834.16,-758.41 840.36,-757 834.63,-754.24 834.16,-758.41"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note.ts&#45;&gt;packages/UI/controllers/dist/index.js -->
 <g id="edge68" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note.ts&#45;&gt;packages/UI/controllers/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M664.84,-739.82C676.38,-721.69 701,-683 701,-683 701,-683 714,-339 714,-339 714,-339 745.3,-281.66 760.02,-254.7"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="762.56,-250.04 762.14,-255.51 761.36,-252.24 760.17,-254.43 760.17,-254.43 760.17,-254.43 761.36,-252.24 758.19,-253.35 762.56,-250.04 762.56,-250.04"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M660.98,-739.75C674.02,-678.66 747.78,-333.33 764.24,-256.25"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="766.37,-256.33 765.57,-250.02 762.27,-255.45 766.37,-256.33"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js -->
 <g id="edge67" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M662.61,-758.19C674.84,-789.33 714,-889 714,-889 714,-889 836,-1023 836,-1023 836,-1023 993,-1043 993,-1043 993,-1043 1017,-1409 1017,-1409 1017,-1409 1048.33,-1447.24 1065.33,-1467.98"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1068.53,-1471.88 1063.62,-1469.44 1066.94,-1469.95 1065.36,-1468.01 1065.36,-1468.01 1065.36,-1468.01 1066.94,-1469.95 1067.1,-1466.59 1068.53,-1471.88 1068.53,-1471.88"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M663.3,-758.26C707.47,-835.42 1014.25,-1371.37 1068.73,-1466.56"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1067.02,-1467.79 1071.82,-1471.95 1070.66,-1465.7 1067.02,-1467.79"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note.ts&#45;&gt;packages/UI/view/dist/index.js -->
 <g id="edge71" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note.ts&#45;&gt;packages/UI/view/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M664.84,-739.82C676.38,-721.69 701,-683 701,-683 701,-683 714,-221 714,-221 714,-221 823,-221 823,-221 823,-221 977.1,-235.62 1044.77,-242.04"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1049.88,-242.52 1044.69,-244.29 1047.39,-242.29 1044.9,-242.05 1044.9,-242.05 1044.9,-242.05 1047.39,-242.29 1045.11,-239.81 1049.88,-242.52 1049.88,-242.52"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M665.63,-739.82C716.21,-678.98 1003.07,-333.93 1065.15,-259.25"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1067,-260.31 1069.23,-254.35 1063.78,-257.62 1067,-260.31"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note.ts&#45;&gt;packages/UI/view&#45;parameters/dist/index.js -->
 <g id="edge72" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note.ts&#45;&gt;packages/UI/view&#45;parameters/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M664.84,-739.82C676.38,-721.69 701,-683 701,-683 701,-683 714,-218 714,-218 714,-218 993,-173 993,-173 993,-173 1025.93,-158.72 1050.31,-148.14"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1055.06,-146.08 1051.36,-150.14 1052.76,-147.08 1050.47,-148.07 1050.47,-148.07 1050.47,-148.07 1052.76,-147.08 1049.57,-146.01 1055.06,-146.08 1055.06,-146.08"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M664.25,-739.87C711.27,-671.2 1009.33,-235.85 1067.25,-151.24"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1069.06,-152.32 1070.72,-146.18 1065.59,-149.94 1069.06,-152.32"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js -->
 <g id="edge70" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M664.68,-758.09C678.73,-780.57 714,-837 714,-837 714,-837 836,-947 836,-947 836,-947 993,-1029 993,-1029 993,-1029 1017,-1289 1017,-1289 1017,-1289 1049.61,-1334.32 1066.34,-1357.57"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1069.46,-1361.91 1064.71,-1359.17 1068,-1359.88 1066.54,-1357.85 1066.54,-1357.85 1066.54,-1357.85 1068,-1359.88 1068.37,-1356.54 1069.46,-1361.91 1069.46,-1361.91"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M664.25,-758.28C711.27,-828.07 1009.33,-1270.54 1067.25,-1356.53"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1065.62,-1357.87 1070.72,-1361.67 1069.11,-1355.52 1065.62,-1357.87"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note&#45;model.ts -->
 <g id="edge65" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note&#45;model.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M692.26,-758.07C703.85,-761.23 714,-764 714,-764 714,-764 823,-764 823,-764 823,-764 827.89,-763.93 835.1,-763.83"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="840.43,-763.75 835.46,-766.07 837.93,-763.79 835.43,-763.82 835.43,-763.82 835.43,-763.82 837.93,-763.79 835.4,-761.57 840.43,-763.75 840.43,-763.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M696.52,-751.28C733.78,-753.49 790.79,-756.86 834.08,-759.42"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="833.98,-761.52 840.1,-759.78 834.23,-757.33 833.98,-761.52"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note&#45;view.ts -->
 <g id="edge66" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note&#45;view.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M696.64,-749C701.99,-749 707.57,-749 713.15,-749"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="718.27,-749 713.27,-751.25 715.77,-749 713.27,-749 713.27,-749 713.27,-749 715.77,-749 713.27,-746.75 718.27,-749 718.27,-749"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M696.64,-749C701.66,-749 706.88,-749 712.12,-749"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="712.27,-751.1 718.27,-749 712.27,-746.9 712.27,-751.1"/>
 </g>
 <!-- packages/util/math/dist/index.js -->
 <g id="node33" class="node">
@@ -995,20 +995,20 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note.ts&#45;&gt;packages/util/math/dist/index.js -->
 <g id="edge69" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;note/chord&#45;note/chord&#45;note.ts&#45;&gt;packages/util/math/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M670.89,-758.2C710.57,-788.92 836,-886 836,-886 836,-886 993,-1001 993,-1001 993,-1001 1017,-1195 1017,-1195 1017,-1195 1045.09,-1221.66 1062.51,-1238.19"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1066.26,-1241.75 1061.08,-1239.94 1064.44,-1240.03 1062.63,-1238.31 1062.63,-1238.31 1062.63,-1238.31 1064.44,-1240.03 1064.18,-1236.68 1066.26,-1241.75 1066.26,-1241.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M665.63,-758.14C716.21,-818.75 1003.07,-1162.42 1065.15,-1236.8"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1063.77,-1238.43 1069.23,-1241.69 1066.99,-1235.73 1063.77,-1238.43"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman&#45;series.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js -->
 <g id="edge76" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman&#45;series.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M481.33,-640.29C495.77,-663.29 532,-721 532,-721 532,-721 540,-1067 540,-1067 540,-1067 993,-1131 993,-1131 993,-1131 1017,-1409 1017,-1409 1017,-1409 1048.33,-1447.24 1065.33,-1467.98"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1068.53,-1471.88 1063.62,-1469.44 1066.94,-1469.95 1065.36,-1468.01 1065.36,-1468.01 1065.36,-1468.01 1066.94,-1469.95 1067.1,-1466.59 1068.53,-1471.88 1068.53,-1471.88"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M481.06,-640.26C541.01,-724.83 993.24,-1362.84 1066.88,-1466.72"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1065.28,-1468.1 1070.46,-1471.78 1068.71,-1465.67 1065.28,-1468.1"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman&#45;series.ts&#45;&gt;packages/UI/view/dist/index.js -->
 <g id="edge77" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman&#45;series.ts&#45;&gt;packages/UI/view/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M492.45,-622C509.09,-613.16 532,-601 532,-601 532,-601 540,-77 540,-77 540,-77 602,-77 602,-77 602,-77 823,-91 823,-91 823,-91 993,-119 993,-119 993,-119 1017,-175 1017,-175 1017,-175 1047.76,-211.5 1064.86,-231.78"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1068.29,-235.85 1063.34,-233.48 1066.68,-233.94 1065.06,-232.03 1065.06,-232.03 1065.06,-232.03 1066.68,-233.94 1066.78,-230.58 1068.29,-235.85 1068.29,-235.85"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M488.8,-621.84C569.26,-570.29 965.23,-316.61 1057.68,-257.38"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1058.92,-259.08 1062.83,-254.08 1056.65,-255.54 1058.92,-259.08"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/index.ts -->
 <g id="node35" class="node">
@@ -1022,8 +1022,8 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman&#45;series.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/index.ts -->
 <g id="edge75" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman&#45;series.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M532.23,-631C535.82,-631 539.36,-631 542.76,-631"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="547.99,-631 542.99,-633.25 545.49,-631 542.99,-631 542.99,-631 542.99,-631 545.49,-631 542.99,-628.75 547.99,-631 547.99,-631"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M532.23,-631C535.48,-631 538.68,-631 541.79,-631"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="541.99,-633.1 547.99,-631 541.99,-628.9 541.99,-633.1"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman.ts -->
 <g id="node38" class="node">
@@ -1037,8 +1037,8 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman.ts -->
 <g id="edge95" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/index.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M602.07,-631C604.49,-631 606.99,-631 609.52,-631"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="614.76,-632.75 609.76,-631 614.76,-629.25 614.76,-632.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M602.07,-631C604.24,-631 606.46,-631 608.72,-631"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="614.76,-633.1 608.76,-631 614.76,-628.9 614.76,-633.1"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman&#45;model.ts -->
 <g id="node36" class="node">
@@ -1052,26 +1052,26 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman&#45;model.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js -->
 <g id="edge78" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman&#45;model.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M906.31,-654.31C931.69,-676.18 993,-729 993,-729 993,-729 1017,-1409 1017,-1409 1017,-1409 1048.33,-1447.24 1065.33,-1467.98"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1068.53,-1471.88 1063.62,-1469.44 1066.94,-1469.95 1065.36,-1468.01 1065.36,-1468.01 1065.36,-1468.01 1066.94,-1469.95 1067.1,-1466.59 1068.53,-1471.88 1068.53,-1471.88"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M897.47,-654.1C915.37,-737.04 1050.1,-1361.05 1072.77,-1466.03"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1070.72,-1466.51 1074.04,-1471.93 1074.83,-1465.62 1070.72,-1466.51"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman&#45;model.ts&#45;&gt;packages/UI/view/dist/index.js -->
 <g id="edge81" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman&#45;model.ts&#45;&gt;packages/UI/view/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M908.25,-635.85C934.67,-616.87 993,-575 993,-575 993,-575 1056.4,-322.91 1072.38,-259.39"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1073.69,-254.17 1074.66,-259.57 1073.08,-256.6 1072.47,-259.02 1072.47,-259.02 1072.47,-259.02 1073.08,-256.6 1070.29,-258.47 1073.69,-254.17 1073.69,-254.17"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M899.61,-635.89C923.04,-583.96 1039.8,-325.22 1069.25,-259.96"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1071.26,-260.6 1071.82,-254.27 1067.44,-258.87 1071.26,-260.6"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman&#45;model.ts&#45;&gt;packages/util/time&#45;and/dist/index.js -->
 <g id="edge79" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman&#45;model.ts&#45;&gt;packages/util/time&#45;and/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M906.31,-654.31C931.69,-676.18 993,-729 993,-729 993,-729 1017,-1007 1017,-1007 1017,-1007 1045.09,-1033.66 1062.51,-1050.19"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1066.26,-1053.75 1061.08,-1051.94 1064.44,-1052.03 1062.63,-1050.31 1062.63,-1050.31 1062.63,-1050.31 1064.44,-1052.03 1064.18,-1048.68 1066.26,-1053.75 1066.26,-1053.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M899.44,-654.12C922.51,-707.55 1040.16,-980.01 1069.41,-1047.74"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1067.65,-1048.97 1071.96,-1053.64 1071.51,-1047.3 1067.65,-1048.97"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman&#45;model.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js -->
 <g id="edge80" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman&#45;model.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M906.31,-654.31C931.69,-676.18 993,-729 993,-729 993,-729 1017,-1289 1017,-1289 1017,-1289 1049.61,-1334.32 1066.34,-1357.57"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1069.46,-1361.91 1064.71,-1359.17 1068,-1359.88 1066.54,-1357.85 1066.54,-1357.85 1066.54,-1357.85 1068,-1359.88 1068.37,-1356.54 1069.46,-1361.91 1069.46,-1361.91"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M897.78,-654.18C916.75,-730.48 1048.16,-1259.04 1072.22,-1355.8"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1070.22,-1356.46 1073.71,-1361.78 1074.3,-1355.45 1070.22,-1356.46"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman&#45;view.ts -->
 <g id="node37" class="node">
@@ -1085,80 +1085,80 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman&#45;view.ts&#45;&gt;packages/UI/view/dist/index.js -->
 <g id="edge86" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman&#45;view.ts&#45;&gt;packages/UI/view/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M778.33,-621.75C793.53,-605.85 823,-575 823,-575 823,-575 836,-318 836,-318 836,-318 993,-292 993,-292 993,-292 1031,-270.48 1055.58,-256.57"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1060,-254.06 1056.75,-258.48 1057.82,-255.29 1055.65,-256.53 1055.65,-256.53 1055.65,-256.53 1057.82,-255.29 1054.54,-254.57 1060,-254.06 1060,-254.06"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M775.82,-621.84C816.65,-570.76 1016.12,-321.18 1065.78,-259.03"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1067.5,-260.24 1069.61,-254.25 1064.22,-257.62 1067.5,-260.24"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman&#45;view.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;view&#45;params.ts -->
 <g id="edge82" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman&#45;view.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;view&#45;params.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M778.33,-621.75C793.53,-605.85 823,-575 823,-575 823,-575 836,-466 836,-466 836,-466 843.84,-463.95 853.73,-461.37"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="858.73,-460.07 854.46,-463.51 856.31,-460.7 853.89,-461.33 853.89,-461.33 853.89,-461.33 856.31,-460.7 853.32,-459.16 858.73,-460.07 858.73,-460.07"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M775.82,-621.83C795.96,-592.58 858.78,-501.4 883.43,-465.62"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="885.37,-466.5 887.04,-460.37 881.91,-464.12 885.37,-466.5"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman&#45;view.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/shorten.ts -->
 <g id="edge83" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman&#45;view.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/shorten.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M778.33,-621.75C793.53,-605.85 823,-575 823,-575 823,-575 836,-503 836,-503 836,-503 850.48,-497.46 864.91,-491.94"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="869.78,-490.08 865.91,-493.96 867.45,-490.97 865.11,-491.86 865.11,-491.86 865.11,-491.86 867.45,-490.97 864.31,-489.76 869.78,-490.08 869.78,-490.08"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M777.26,-621.62C798.31,-596.15 856.61,-525.62 881.73,-495.23"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="883.54,-496.34 885.75,-490.38 880.3,-493.67 883.54,-496.34"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman&#45;view.ts&#45;&gt;packages/util/color/dist/index.js -->
 <g id="edge85" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman&#45;view.ts&#45;&gt;packages/util/color/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M774.44,-640.04C787.68,-664.3 823,-729 823,-729 823,-729 836,-851 836,-851 836,-851 993,-866 993,-866 993,-866 1017,-1101 1017,-1101 1017,-1101 1045.09,-1127.66 1062.51,-1144.19"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1066.26,-1147.75 1061.08,-1145.94 1064.44,-1146.03 1062.63,-1144.31 1062.63,-1144.31 1062.63,-1144.31 1064.44,-1146.03 1064.18,-1142.68 1066.26,-1147.75 1066.26,-1147.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M773.85,-640.13C810.35,-702.35 1022.4,-1063.91 1068.26,-1142.1"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1066.65,-1143.51 1071.5,-1147.62 1070.27,-1141.38 1066.65,-1143.51"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman&#45;view.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman&#45;model.ts -->
 <g id="edge84" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman&#45;view.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman&#45;model.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M823.17,-637.06C825.65,-637.34 828.16,-637.62 830.67,-637.91"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="835.81,-638.49 830.59,-640.16 833.33,-638.21 830.84,-637.93 830.84,-637.93 830.84,-637.93 833.33,-638.21 831.09,-635.69 835.81,-638.49 835.81,-638.49"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M823.17,-637.06C825.26,-637.3 827.37,-637.53 829.48,-637.77"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="829.61,-639.9 835.81,-638.49 830.08,-635.73 829.61,-639.9"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman.ts&#45;&gt;packages/UI/controllers/dist/index.js -->
 <g id="edge91" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman.ts&#45;&gt;packages/UI/controllers/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M665.94,-621.75C677.86,-605.85 701,-575 701,-575 701,-575 714,-339 714,-339 714,-339 745.3,-281.66 760.02,-254.7"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="762.56,-250.04 762.14,-255.51 761.36,-252.24 760.17,-254.43 760.17,-254.43 760.17,-254.43 761.36,-252.24 758.19,-253.35 762.56,-250.04 762.56,-250.04"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M661.58,-621.74C675.85,-570.44 745.24,-321 763.23,-256.34"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="765.32,-256.69 764.9,-250.34 761.27,-255.56 765.32,-256.69"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js -->
 <g id="edge90" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M662.88,-640.04C673.27,-664.3 701,-729 701,-729 701,-729 714,-948 714,-948 714,-948 993,-1024 993,-1024 993,-1024 1017,-1409 1017,-1409 1017,-1409 1048.33,-1447.24 1065.33,-1467.98"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1068.53,-1471.88 1063.62,-1469.44 1066.94,-1469.95 1065.36,-1468.01 1065.36,-1468.01 1065.36,-1468.01 1066.94,-1469.95 1067.1,-1466.59 1068.53,-1471.88 1068.53,-1471.88"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M662.56,-640.26C704.17,-724.66 1017.5,-1360.3 1069.65,-1466.1"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1067.92,-1467.33 1072.45,-1471.78 1071.69,-1465.47 1067.92,-1467.33"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman.ts&#45;&gt;packages/UI/view/dist/index.js -->
 <g id="edge93" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman.ts&#45;&gt;packages/UI/view/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M665.94,-621.75C677.86,-605.85 701,-575 701,-575 701,-575 714,-203 714,-203 714,-203 823,-203 823,-203 823,-203 993,-217 993,-217 993,-217 1021.26,-226.53 1044.8,-234.47"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1049.74,-236.14 1044.28,-236.67 1047.37,-235.34 1045,-234.54 1045,-234.54 1045,-234.54 1047.37,-235.34 1045.72,-232.41 1049.74,-236.14 1049.74,-236.14"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M667.94,-621.84C723.5,-570.66 995.4,-320.18 1062.17,-258.66"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1063.97,-259.86 1066.96,-254.25 1061.13,-256.77 1063.97,-259.86"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman.ts&#45;&gt;packages/UI/view&#45;parameters/dist/index.js -->
 <g id="edge94" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman.ts&#45;&gt;packages/UI/view&#45;parameters/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M665.94,-621.75C677.86,-605.85 701,-575 701,-575 701,-575 714,-200 714,-200 714,-200 993,-157 993,-157 993,-157 1021.26,-150.19 1044.8,-144.52"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1049.74,-143.33 1045.4,-146.69 1047.31,-143.91 1044.88,-144.5 1044.88,-144.5 1044.88,-144.5 1047.31,-143.91 1044.35,-142.31 1049.74,-143.33 1049.74,-143.33"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M666,-621.57C717.59,-560.74 1003.36,-223.82 1065.2,-150.91"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1066.98,-152.06 1069.26,-146.13 1063.78,-149.35 1066.98,-152.06"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js -->
 <g id="edge92" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M662.88,-640.04C673.27,-664.3 701,-729 701,-729 701,-729 714,-939 714,-939 714,-939 993,-968 993,-968 993,-968 1017,-1289 1017,-1289 1017,-1289 1049.61,-1334.32 1066.34,-1357.57"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1069.46,-1361.91 1064.71,-1359.17 1068,-1359.88 1066.54,-1357.85 1066.54,-1357.85 1066.54,-1357.85 1068,-1359.88 1068.37,-1356.54 1069.46,-1361.91 1069.46,-1361.91"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M663.15,-640.09C706.76,-717.11 1014.12,-1259.95 1068.72,-1356.37"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1067.03,-1357.65 1071.81,-1361.83 1070.68,-1355.58 1067.03,-1357.65"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;view&#45;params.ts -->
 <g id="edge87" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;view&#45;params.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M665.94,-621.75C677.86,-605.85 701,-575 701,-575 701,-575 714,-485 714,-485 714,-485 823,-465 823,-465 823,-465 831.74,-463.26 843.06,-461.02"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="848.05,-460.02 843.59,-463.21 845.6,-460.51 843.15,-461 843.15,-461 843.15,-461 845.6,-460.51 842.71,-458.79 848.05,-460.02 848.05,-460.02"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M670.05,-621.83C709.12,-592.09 832.32,-498.33 877.59,-463.87"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="878.97,-465.46 882.47,-460.16 876.42,-462.12 878.97,-465.46"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman&#45;model.ts -->
 <g id="edge88" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman&#45;model.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M692.26,-640.07C703.85,-643.23 714,-646 714,-646 714,-646 823,-646 823,-646 823,-646 825.97,-645.96 830.68,-645.89"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="835.93,-645.82 830.96,-648.14 833.43,-645.85 830.93,-645.89 830.93,-645.89 830.93,-645.89 833.43,-645.85 830.9,-643.64 835.93,-645.82 835.93,-645.82"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M701.1,-633.55C736.97,-635.67 788.58,-638.73 829.46,-641.15"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="829.56,-643.26 835.67,-641.52 829.81,-639.07 829.56,-643.26"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman&#45;view.ts -->
 <g id="edge89" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman.ts&#45;&gt;packages/UI/piano&#45;roll/chord&#45;view/src/chord&#45;roman/chord&#45;roman/chord&#45;roman&#45;view.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M701.26,-631C703.73,-631 706.24,-631 708.76,-631"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="713.95,-631 708.95,-633.25 711.45,-631 708.95,-631 708.95,-631 708.95,-631 711.45,-631 708.95,-628.75 713.95,-631 713.95,-631"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M701.26,-631C703.34,-631 705.45,-631 707.57,-631"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="707.95,-633.1 713.95,-631 707.95,-628.9 707.95,-633.1"/>
 </g>
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/roman&#45;to&#45;color.ts -->
 <g id="node39" class="node">
@@ -1172,8 +1172,8 @@
 <!-- packages/UI/piano&#45;roll/chord&#45;view/src/roman&#45;to&#45;color.ts&#45;&gt;packages/util/color/dist/index.js -->
 <g id="edge104" class="edge">
 <title>packages/UI/piano&#45;roll/chord&#45;view/src/roman&#45;to&#45;color.ts&#45;&gt;packages/util/color/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M182.32,-824.12C213.97,-878.35 376,-1156 376,-1156 376,-1156 376,-1156 769.5,-1156 769.5,-1156 966.19,-1156.64 1044.44,-1156.9"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1049.87,-1156.91 1044.86,-1159.15 1047.37,-1156.91 1044.87,-1156.9 1044.87,-1156.9 1044.87,-1156.9 1047.37,-1156.91 1044.88,-1154.65 1049.87,-1156.91 1049.87,-1156.91"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M200.1,-824.15C326.12,-871.98 908.77,-1093.15 1047.36,-1145.75"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1046.89,-1147.82 1053.24,-1147.98 1048.38,-1143.89 1046.89,-1147.82"/>
 </g>
 </g>
 </svg>

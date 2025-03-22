@@ -65,8 +65,8 @@
 <!-- packages/util/math/fft/array/ftt&#45;core.ts&#45;&gt;packages/util/math/fft/array/complex.ts -->
 <g id="edge1" class="edge">
 <title>packages/util/math/fft/array/ftt&#45;core.ts&#45;&gt;packages/util/math/fft/array/complex.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M274.46,-127.06C279.66,-125.68 285.11,-124.24 290.46,-122.82"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="295.34,-121.53 291.08,-124.98 292.92,-122.17 290.5,-122.81 290.5,-122.81 290.5,-122.81 292.92,-122.17 289.93,-120.63 295.34,-121.53 295.34,-121.53"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M274.46,-127.06C279.34,-125.77 284.44,-124.41 289.48,-123.08"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="290.07,-125.09 295.34,-121.53 289,-121.03 290.07,-125.09"/>
 </g>
 <!-- packages/util/math/fft/array/root&#45;of&#45;unity.ts -->
 <g id="node3" class="node">
@@ -80,8 +80,8 @@
 <!-- packages/util/math/fft/array/ftt&#45;core.ts&#45;&gt;packages/util/math/fft/array/root&#45;of&#45;unity.ts -->
 <g id="edge2" class="edge">
 <title>packages/util/math/fft/array/ftt&#45;core.ts&#45;&gt;packages/util/math/fft/array/root&#45;of&#45;unity.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M274.46,-137.89C276.84,-138.12 279.26,-138.35 281.71,-138.59"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="286.74,-139.07 281.55,-140.83 284.26,-138.83 281.77,-138.59 281.77,-138.59 281.77,-138.59 284.26,-138.83 281.98,-136.35 286.74,-139.07 286.74,-139.07"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M274.46,-137.89C276.46,-138.08 278.5,-138.28 280.55,-138.47"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="280.57,-140.59 286.74,-139.07 280.97,-136.41 280.57,-140.59"/>
 </g>
 <!-- packages/util/math/fft/array/index.ts -->
 <g id="node4" class="node">
@@ -95,14 +95,14 @@
 <!-- packages/util/math/fft/array/index.ts&#45;&gt;packages/util/math/fft/array/complex.ts -->
 <g id="edge3" class="edge">
 <title>packages/util/math/fft/array/index.ts&#45;&gt;packages/util/math/fft/array/complex.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M187.55,-121.98C200.33,-120.98 213,-120 213,-120 213,-120 256.64,-117.33 290.04,-115.29"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="295.3,-114.97 290.45,-117.52 292.81,-115.12 290.31,-115.27 290.31,-115.27 290.31,-115.27 292.81,-115.12 290.17,-113.03 295.3,-114.97 295.3,-114.97"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M187.87,-122.21C215.41,-120.4 258.16,-117.61 289.3,-115.57"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="289.52,-117.66 295.37,-115.17 289.24,-113.47 289.52,-117.66"/>
 </g>
 <!-- packages/util/math/fft/array/index.ts&#45;&gt;packages/util/math/fft/array/ftt&#45;core.ts -->
 <g id="edge4" class="edge">
 <title>packages/util/math/fft/array/index.ts&#45;&gt;packages/util/math/fft/array/ftt&#45;core.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M187.57,-127.54C193.99,-128.41 200.95,-129.36 207.71,-130.27"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="212.81,-130.97 207.56,-132.53 210.34,-130.63 207.86,-130.3 207.86,-130.3 207.86,-130.3 210.34,-130.63 208.16,-128.07 212.81,-130.97 212.81,-130.97"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M187.57,-127.54C193.61,-128.36 200.14,-129.25 206.51,-130.11"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="206.59,-132.24 212.81,-130.97 207.15,-128.08 206.59,-132.24"/>
 </g>
 <!-- packages/util/math/fft/complex.ts -->
 <g id="node5" class="node">
@@ -125,8 +125,8 @@
 <!-- packages/util/math/fft/ftt&#45;core.ts&#45;&gt;packages/util/math/fft/complex.ts -->
 <g id="edge5" class="edge">
 <title>packages/util/math/fft/ftt&#45;core.ts&#45;&gt;packages/util/math/fft/complex.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M274.33,-63.62C303.73,-62.27 348.74,-60.19 380.54,-58.73"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="385.92,-58.48 381.03,-60.96 383.42,-58.59 380.92,-58.71 380.92,-58.71 380.92,-58.71 383.42,-58.59 380.82,-56.46 385.92,-58.48 385.92,-58.48"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M274.07,-63.61C303.35,-62.27 347.67,-60.25 379.59,-58.8"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="379.9,-60.88 385.8,-58.51 379.71,-56.69 379.9,-60.88"/>
 </g>
 <!-- packages/util/math/fft/root&#45;of&#45;unity.ts -->
 <g id="node7" class="node">
@@ -140,14 +140,14 @@
 <!-- packages/util/math/fft/ftt&#45;core.ts&#45;&gt;packages/util/math/fft/root&#45;of&#45;unity.ts -->
 <g id="edge6" class="edge">
 <title>packages/util/math/fft/ftt&#45;core.ts&#45;&gt;packages/util/math/fft/root&#45;of&#45;unity.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M274.46,-70.05C276.84,-70.45 279.26,-70.86 281.71,-71.28"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="286.74,-72.13 281.44,-73.51 284.28,-71.71 281.81,-71.29 281.81,-71.29 281.81,-71.29 284.28,-71.71 282.19,-69.08 286.74,-72.13 286.74,-72.13"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M274.46,-70.05C276.46,-70.39 278.5,-70.73 280.55,-71.08"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="280.48,-73.2 286.74,-72.13 281.18,-69.06 280.48,-73.2"/>
 </g>
 <!-- packages/util/math/fft/root&#45;of&#45;unity.ts&#45;&gt;packages/util/math/fft/complex.ts -->
 <g id="edge10" class="edge">
 <title>packages/util/math/fft/root&#45;of&#45;unity.ts&#45;&gt;packages/util/math/fft/complex.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M365.75,-69.99C370.76,-68.74 375.92,-67.46 380.94,-66.21"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="385.92,-64.98 381.61,-68.36 383.49,-65.58 381.07,-66.18 381.07,-66.18 381.07,-66.18 383.49,-65.58 380.52,-64 385.92,-64.98 385.92,-64.98"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M365.75,-69.99C370.45,-68.82 375.27,-67.62 380,-66.45"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="380.6,-68.46 385.92,-64.98 379.59,-64.38 380.6,-68.46"/>
 </g>
 <!-- packages/util/math/fft/index.ts -->
 <g id="node8" class="node">
@@ -161,20 +161,20 @@
 <!-- packages/util/math/fft/index.ts&#45;&gt;packages/util/math/fft/complex.ts -->
 <g id="edge7" class="edge">
 <title>packages/util/math/fft/index.ts&#45;&gt;packages/util/math/fft/complex.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M186.9,-69.93C195.75,-66.77 203.5,-64 203.5,-64 203.5,-64 213,-50 213,-50 213,-50 274,-50 274,-50 274,-50 378,-55 378,-55 378,-55 379,-55.05 380.69,-55.13"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="385.71,-55.39 380.61,-57.38 383.22,-55.26 380.72,-55.14 380.72,-55.14 380.72,-55.14 383.22,-55.26 380.83,-52.89 385.71,-55.39 385.71,-55.39"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M187.68,-76.69C233.51,-72.79 326.38,-64.88 379.45,-60.37"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="379.92,-62.43 385.72,-59.83 379.56,-58.25 379.92,-62.43"/>
 </g>
 <!-- packages/util/math/fft/index.ts&#45;&gt;packages/util/math/fft/ftt&#45;core.ts -->
 <g id="edge8" class="edge">
 <title>packages/util/math/fft/index.ts&#45;&gt;packages/util/math/fft/ftt&#45;core.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M187.57,-74.49C193.99,-73.38 200.95,-72.18 207.71,-71.01"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="212.81,-70.13 208.27,-73.2 210.35,-70.56 207.89,-70.98 207.89,-70.98 207.89,-70.98 210.35,-70.56 207.5,-68.77 212.81,-70.13 212.81,-70.13"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M187.57,-74.49C193.61,-73.45 200.14,-72.32 206.51,-71.22"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="207.26,-73.22 212.81,-70.13 206.54,-69.08 207.26,-73.22"/>
 </g>
 <!-- packages/util/math/fft/index.ts&#45;&gt;packages/util/math/fft/root&#45;of&#45;unity.ts -->
 <g id="edge9" class="edge">
 <title>packages/util/math/fft/index.ts&#45;&gt;packages/util/math/fft/root&#45;of&#45;unity.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M187.55,-79.51C200.33,-79.75 213,-80 213,-80 213,-80 274,-80 274,-80 274,-80 277.09,-79.94 281.78,-79.85"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="286.95,-79.76 281.99,-82.1 284.45,-79.8 281.95,-79.85 281.95,-79.85 281.95,-79.85 284.45,-79.8 281.91,-77.6 286.95,-79.76 286.95,-79.76"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M187.87,-79C212.95,-79 250.65,-79 280.71,-79"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="281,-81.1 287,-79 281,-76.9 281,-81.1"/>
 </g>
 <!-- packages/util/math/fft/typed&#45;array.ts -->
 <g id="node9" class="node">
@@ -206,8 +206,8 @@
 <!-- packages/util/math/index.ts&#45;&gt;packages/util/math/fft/index.ts -->
 <g id="edge11" class="edge">
 <title>packages/util/math/index.ts&#45;&gt;packages/util/math/fft/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M95.53,-93.93C105.7,-91.55 117.46,-88.81 128.1,-86.33"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="133.61,-86.84 128.35,-86.27 132.82,-83.43 133.61,-86.84"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M95.53,-93.93C105.43,-91.62 116.82,-88.96 127.22,-86.53"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="133.69,-87.18 127.37,-86.5 132.74,-83.09 133.69,-87.18"/>
 </g>
 <!-- packages/util/stdlib/dist/index.js -->
 <g id="node12" class="node">
@@ -221,8 +221,8 @@
 <!-- packages/util/math/index.ts&#45;&gt;packages/util/stdlib/dist/index.js -->
 <g id="edge12" class="edge">
 <title>packages/util/math/index.ts&#45;&gt;packages/util/stdlib/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M75.05,-109.06C85.03,-125.38 105,-158 105,-158 105,-158 113,-181 113,-181 113,-181 138.48,-225.94 151.72,-249.28"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="154.35,-253.91 149.92,-250.67 153.11,-251.74 151.88,-249.56 151.88,-249.56 151.88,-249.56 153.11,-251.74 153.84,-248.45 154.35,-253.91 154.35,-253.91"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M74.6,-109.23C89.51,-136.24 133.15,-215.28 151.37,-248.27"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="149.72,-249.63 154.46,-253.87 153.4,-247.6 149.72,-249.63"/>
 </g>
 </g>
 </svg>

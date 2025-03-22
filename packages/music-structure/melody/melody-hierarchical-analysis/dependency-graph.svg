@@ -171,8 +171,8 @@
 <!-- packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/index.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/index.ts -->
 <g id="edge1" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/index.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M94.1,-279C97.44,-279 100.89,-279 104.31,-279"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="109.64,-280.75 104.64,-279 109.64,-277.25 109.64,-280.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M94.1,-279C97.12,-279 100.23,-279 103.33,-279"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="109.64,-281.1 103.64,-279 109.64,-276.9 109.64,-281.1"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/get&#45;hierarchical&#45;melody.ts -->
 <g id="node7" class="node">
@@ -186,32 +186,32 @@
 <!-- packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/index.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/get&#45;hierarchical&#45;melody.ts -->
 <g id="edge12" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/index.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/get&#45;hierarchical&#45;melody.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M164.1,-279C166.47,-279 168.93,-279 171.47,-279"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="176.76,-280.75 171.76,-279 176.76,-277.25 176.76,-280.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M164.1,-279C166.22,-279 168.42,-279 170.67,-279"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="176.76,-281.1 170.76,-279 176.76,-276.9 176.76,-281.1"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/get&#45;hierarchical&#45;melody.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/dist/index.js -->
 <g id="edge4" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/get&#45;hierarchical&#45;melody.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M249.34,-288.4C267.43,-323.52 330,-445 330,-445 330,-445 476.63,-520.26 533.67,-549.54"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="538.27,-551.9 532.79,-551.62 536.04,-550.76 533.82,-549.61 533.82,-549.61 533.82,-549.61 536.04,-550.76 534.85,-547.61 538.27,-551.9 538.27,-551.9"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M253.58,-288.06C299.36,-329.24 487.88,-498.82 542.25,-547.74"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="540.94,-549.38 546.8,-551.83 543.75,-546.25 540.94,-549.38"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/get&#45;hierarchical&#45;melody.ts&#45;&gt;packages/data&#45;type/music&#45;xml/dist/index.js -->
 <g id="edge6" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/get&#45;hierarchical&#45;melody.ts&#45;&gt;packages/data&#45;type/music&#45;xml/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M248.28,-288.07C264.83,-327.75 330,-484 330,-484 330,-484 492.97,-631.82 542.13,-676.42"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="546,-679.93 540.78,-678.23 544.15,-678.25 542.29,-676.57 542.29,-676.57 542.29,-676.57 544.15,-678.25 543.81,-674.9 546,-679.93 546,-679.93"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M250.64,-288.33C291.59,-341.9 496.65,-610.07 546.21,-674.88"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="544.7,-676.37 550.01,-679.86 548.03,-673.82 544.7,-676.37"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/get&#45;hierarchical&#45;melody.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js -->
 <g id="edge3" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/get&#45;hierarchical&#45;melody.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M254.93,-288.21C280.43,-310.72 345.97,-368.58 375.14,-394.32"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="379.17,-397.88 373.93,-396.26 377.29,-396.22 375.42,-394.57 375.42,-394.57 375.42,-394.57 377.29,-396.22 376.91,-392.88 379.17,-397.88 379.17,-397.88"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M254.93,-288.21C280.22,-310.53 344.9,-367.63 374.41,-393.68"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="373.28,-395.48 379.17,-397.88 376.06,-392.33 373.28,-395.48"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/get&#45;hierarchical&#45;melody.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/dist/index.js -->
 <g id="edge5" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/get&#45;hierarchical&#45;melody.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M296.21,-288.07C314.21,-291.23 330,-294 330,-294 330,-294 467,-294 467,-294 467,-294 499.1,-288.59 524.75,-284.27"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="529.78,-283.42 525.22,-286.47 527.31,-283.83 524.85,-284.25 524.85,-284.25 524.85,-284.25 527.31,-283.83 524.47,-282.03 529.78,-283.42 529.78,-283.42"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M310.37,-279C375.9,-279 473.09,-279 523.67,-279"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="523.9,-281.1 529.9,-279 523.9,-276.9 523.9,-281.1"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/get&#45;time&#45;and&#45;melody.ts -->
 <g id="node8" class="node">
@@ -225,26 +225,26 @@
 <!-- packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/get&#45;hierarchical&#45;melody.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/get&#45;time&#45;and&#45;melody.ts -->
 <g id="edge2" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/get&#45;hierarchical&#45;melody.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/get&#45;time&#45;and&#45;melody.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M310.21,-279C315.05,-279 319.94,-279 324.77,-279"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="330,-279 325,-281.25 327.5,-279 325,-279 325,-279 325,-279 327.5,-279 325,-276.75 330,-279 330,-279"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M310.21,-279C314.75,-279 319.31,-279 323.85,-279"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="324,-281.1 330,-279 324,-276.9 324,-281.1"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/get&#45;time&#45;and&#45;melody.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/dist/index.js -->
 <g id="edge7" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/get&#45;time&#45;and&#45;melody.ts&#45;&gt;packages/cognitive&#45;theory&#45;of&#45;music/gttm/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M397.94,-288.21C416.2,-314.33 467,-387 467,-387 467,-387 527.69,-505.66 548.84,-547"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="551.21,-551.65 546.93,-548.22 550.08,-549.42 548.94,-547.19 548.94,-547.19 548.94,-547.19 550.08,-549.42 550.94,-546.17 551.21,-551.65 551.21,-551.65"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M396.79,-288.06C420.62,-328.91 518.14,-496.1 547.56,-546.53"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="545.81,-547.7 550.65,-551.83 549.44,-545.59 545.81,-547.7"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/get&#45;time&#45;and&#45;melody.ts&#45;&gt;packages/data&#45;type/music&#45;xml/dist/index.js -->
 <g id="edge9" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/get&#45;time&#45;and&#45;melody.ts&#45;&gt;packages/data&#45;type/music&#45;xml/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M397.94,-288.21C416.2,-314.33 467,-387 467,-387 467,-387 483,-599 483,-599 483,-599 524.83,-650.57 545.16,-675.64"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="548.46,-679.71 543.57,-677.24 546.89,-677.77 545.31,-675.82 545.31,-675.82 545.31,-675.82 546.89,-677.77 547.06,-674.41 548.46,-679.71 548.46,-679.71"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M395.24,-288.33C416.65,-341.68 523.47,-607.92 550.02,-674.09"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="548.15,-675.07 552.33,-679.86 552.05,-673.51 548.15,-675.07"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/get&#45;time&#45;and&#45;melody.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/dist/index.js -->
 <g id="edge8" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/get&#45;time&#45;and&#45;melody.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M451.35,-279C476.25,-279 504.11,-279 524.82,-279"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="529.93,-279 524.93,-281.25 527.43,-279 524.93,-279 524.93,-279 524.93,-279 527.43,-279 524.93,-276.75 529.93,-279 529.93,-279"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M451.35,-279C475.83,-279 503.17,-279 523.77,-279"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="523.93,-281.1 529.93,-279 523.93,-276.9 523.93,-281.1"/>
 </g>
 <!-- packages/util/time&#45;and/dist/index.js -->
 <g id="node9" class="node">
@@ -258,8 +258,8 @@
 <!-- packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/get&#45;time&#45;and&#45;melody.ts&#45;&gt;packages/util/time&#45;and/dist/index.js -->
 <g id="edge10" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/get&#45;time&#45;and&#45;melody.ts&#45;&gt;packages/util/time&#45;and/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M398.08,-269.65C419.06,-239.84 483,-149 483,-149 483,-149 526.42,-89.52 546.29,-62.31"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="549.26,-58.23 548.13,-63.59 547.79,-60.25 546.32,-62.27 546.32,-62.27 546.32,-62.27 547.79,-60.25 544.5,-60.94 549.26,-58.23 549.26,-58.23"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M397.95,-269.98C423.13,-234.78 514.94,-106.41 545.8,-63.26"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="547.63,-64.31 549.42,-58.2 544.22,-61.86 547.63,-64.31"/>
 </g>
 <!-- packages/tonal&#45;objects/dist/index.js -->
 <g id="node10" class="node">
@@ -273,8 +273,8 @@
 <!-- packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/get&#45;time&#45;and&#45;melody.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js -->
 <g id="edge11" class="edge">
 <title>packages/music&#45;structure/melody/melody&#45;hierarchical&#45;analysis/src/get&#45;time&#45;and&#45;melody.ts&#45;&gt;packages/tonal&#45;objects/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M404.96,-270C434.48,-250.26 504.92,-203.16 538.11,-180.96"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="542.35,-178.13 539.45,-182.78 540.27,-179.52 538.2,-180.91 538.2,-180.91 538.2,-180.91 540.27,-179.52 536.95,-179.04 542.35,-178.13 542.35,-178.13"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M404.96,-270C434.24,-250.42 503.77,-203.92 537.29,-181.51"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="538.53,-183.21 542.35,-178.13 536.2,-179.72 538.53,-183.21"/>
 </g>
 </g>
 </svg>

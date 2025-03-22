@@ -80,8 +80,8 @@
 <!-- packages/cli/chord&#45;analyze&#45;cli/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js -->
 <g id="edge1" class="edge">
 <title>packages/cli/chord&#45;analyze&#45;cli/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M95.04,-75C118.82,-75 154.01,-75 179.38,-75"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="184.64,-75 179.64,-77.25 182.14,-75 179.64,-75 179.64,-75 179.64,-75 182.14,-75 179.64,-72.75 184.64,-75 184.64,-75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M95.04,-75C118.52,-75 153.12,-75 178.42,-75"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="178.64,-77.1 184.64,-75 178.64,-72.9 178.64,-77.1"/>
 </g>
 <!-- packages/util/time&#45;and/dist/index.js -->
 <g id="node3" class="node">
@@ -95,14 +95,14 @@
 <!-- packages/cli/chord&#45;analyze&#45;cli/index.ts&#45;&gt;packages/util/time&#45;and/dist/index.js -->
 <g id="edge2" class="edge">
 <title>packages/cli/chord&#45;analyze&#45;cli/index.ts&#45;&gt;packages/util/time&#45;and/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M77.46,-84.17C101.57,-110.32 170.73,-185.33 198.87,-215.85"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="202.41,-219.68 197.36,-217.53 200.71,-217.84 199.02,-216.01 199.02,-216.01 199.02,-216.01 200.71,-217.84 200.67,-214.48 202.41,-219.68 202.41,-219.68"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M77.46,-84.17C101.37,-110.11 169.61,-184.11 198.18,-215.09"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="196.8,-216.69 202.41,-219.68 199.88,-213.85 196.8,-216.69"/>
 </g>
 <!-- readline -->
 <g id="node4" class="node">
 <title>readline</title>
 <g id="a_node4"><a xlink:href="https://nodejs.org/api/readline.html" xlink:title="readline">
-<path fill="#ffffcc" stroke="white" d="M233,-18C233,-18 191,-18 191,-18 188,-18 185,-15 185,-12 185,-12 185,-6 185,-6 185,-3 188,0 191,0 191,0 233,0 233,0 236,0 239,-3 239,-6 239,-6 239,-12 239,-12 239,-15 236,-18 233,-18"/>
+<path fill="#ffffcc" stroke="grey" d="M233,-18C233,-18 191,-18 191,-18 188,-18 185,-15 185,-12 185,-12 185,-6 185,-6 185,-3 188,0 191,0 191,0 233,0 233,0 236,0 239,-3 239,-6 239,-6 239,-12 239,-12 239,-15 236,-18 233,-18"/>
 <text text-anchor="middle" x="212" y="-6.8" font-family="Helvetica,sans-Serif" font-size="9.00" fill="grey">readline</text>
 </a>
 </g>
@@ -110,8 +110,8 @@
 <!-- packages/cli/chord&#45;analyze&#45;cli/index.ts&#45;&gt;readline -->
 <g id="edge3" class="edge">
 <title>packages/cli/chord&#45;analyze&#45;cli/index.ts&#45;&gt;readline</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" stroke-opacity="0.200000" d="M88.45,-65.96C114.01,-54.08 158.91,-33.21 186.69,-20.3"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="191.33,-18.14 187.75,-22.29 189.07,-19.2 186.8,-20.25 186.8,-20.25 186.8,-20.25 189.07,-19.2 185.85,-18.21 191.33,-18.14 191.33,-18.14"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" stroke-opacity="0.200000" d="M88.45,-65.96C113.69,-54.23 157.8,-33.73 185.65,-20.78"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="186.78,-22.57 191.33,-18.14 185.01,-18.77 186.78,-22.57"/>
 </g>
 </g>
 </svg>

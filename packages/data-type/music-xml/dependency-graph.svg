@@ -100,8 +100,8 @@
 <!-- packages/data&#45;type/music&#45;xml/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/index.ts -->
 <g id="edge1" class="edge">
 <title>packages/data&#45;type/music&#45;xml/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M120.63,-283.33C134.36,-285.61 151.3,-288.42 165.73,-290.81"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="170.63,-293.4 165.98,-290.86 171.2,-289.95 170.63,-293.4"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M120.63,-283.33C134.12,-285.57 150.7,-288.32 164.96,-290.69"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="170.57,-293.75 165,-290.69 171.26,-289.6 170.57,-293.75"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/attribute/index.ts -->
 <g id="node8" class="node">
@@ -115,8 +115,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/attribute/index.ts -->
 <g id="edge29" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/attribute/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M200.58,-286.82C207.87,-244.35 238,-69 238,-69 238,-69 354,-41 354,-41 354,-41 354,-41 1068,-41 1068,-41 1179.04,-67.92 1234.81,-81.44"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1239.29,-84.33 1234.85,-81.45 1240.12,-80.93 1239.29,-84.33"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M225.23,-290.73C372.41,-262.23 1072.2,-126.72 1233.69,-95.45"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1240.05,-96.36 1233.76,-95.44 1239.25,-92.23 1240.05,-96.36"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/credit/index.ts -->
 <g id="node11" class="node">
@@ -130,8 +130,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/credit/index.ts -->
 <g id="edge30" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/credit/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M204.1,-305.28C214.67,-324.53 238,-367 238,-367 238,-367 444.6,-490.11 510.23,-529.22"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="513.82,-533.39 510.42,-529.33 515.61,-530.39 513.82,-533.39"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M210.25,-305.01C260.93,-342.3 454.4,-484.64 513.65,-528.24"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="517.4,-533.6 513.81,-528.35 519.89,-530.22 517.4,-533.6"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/defaults/index.ts -->
 <g id="node16" class="node">
@@ -145,8 +145,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/defaults/index.ts -->
 <g id="edge31" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/defaults/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M225.23,-294.65C232.28,-294.29 238,-294 238,-294 238,-294 423.16,-287.02 498.59,-284.18"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="503.9,-285.73 498.83,-284.17 503.76,-282.24 503.9,-285.73"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M225.25,-294.94C285.89,-292.57 431.82,-286.87 497.72,-284.3"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="503.92,-286.16 497.84,-284.29 503.76,-281.96 503.92,-286.16"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/identification/index.ts -->
 <g id="node22" class="node">
@@ -160,8 +160,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/identification/index.ts -->
 <g id="edge32" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/identification/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M219.21,-286.9C276.8,-260.98 441.68,-186.76 504.91,-158.3"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="510.35,-157.76 505.08,-158.22 508.92,-154.57 510.35,-157.76"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M218.33,-286.9C276.04,-261.08 440.82,-187.35 504.98,-158.64"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="511.37,-158.08 505.04,-158.62 509.66,-154.25 511.37,-158.08"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/measure/index.ts -->
 <g id="node23" class="node">
@@ -175,8 +175,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/measure/index.ts -->
 <g id="edge33" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/measure/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M201.21,-286.77C209.46,-252.29 238,-133 238,-133 238,-133 320,-66 320,-66 320,-66 354,-55 354,-55 354,-55 354,-55 931,-55 931,-55 1032,-245 1032,-245 1032,-245 1034.17,-245.83 1037.41,-247.07"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1041.76,-250.61 1037.72,-247.19 1043.01,-247.34 1041.76,-250.61"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M225.44,-294.8C353.67,-289.19 893.41,-265.59 1033.61,-259.46"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1040.07,-261.28 1033.99,-259.44 1039.89,-257.08 1040.07,-261.28"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/music&#45;xml.ts -->
 <g id="node24" class="node">
@@ -190,8 +190,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/music&#45;xml.ts -->
 <g id="edge34" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/music&#45;xml.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M225.23,-300.55C227.64,-300.96 230.12,-301.39 232.61,-301.83"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="237.46,-304.44 232.84,-301.86 238.06,-300.99 237.46,-304.44"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M225.23,-300.55C227.39,-300.92 229.59,-301.3 231.83,-301.69"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="237.4,-304.79 231.85,-301.69 238.12,-300.65 237.4,-304.79"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part/index.ts -->
 <g id="node25" class="node">
@@ -205,8 +205,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part/index.ts -->
 <g id="edge35" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M205.27,-286.82C234.27,-244.35 354,-69 354,-69 354,-69 354,-69 717,-69 717,-69 887,-82 887,-82 887,-82 895,-378 895,-378 895,-378 897.17,-378.83 900.41,-380.07"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="904.76,-383.61 900.72,-380.19 906.01,-380.34 904.76,-383.61"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M225.36,-299.55C338.94,-314.29 773.13,-370.64 896.89,-386.7"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="902.62,-389.56 896.94,-386.71 903.16,-385.4 902.62,-389.56"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part&#45;list/index.ts -->
 <g id="node26" class="node">
@@ -220,8 +220,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part&#45;list/index.ts -->
 <g id="edge36" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part&#45;list/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M208.05,-305.05C219.57,-316.57 238,-335 238,-335 238,-335 320,-399 320,-399 320,-399 440.17,-413.31 498.7,-420.27"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="503.62,-422.62 498.86,-420.29 504.03,-419.15 503.62,-422.62"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M221.42,-305C280.62,-327.76 436.22,-387.57 501.51,-412.66"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="506.41,-416.8 501.56,-412.69 507.92,-412.88 506.41,-416.8"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/print/index.ts -->
 <g id="node27" class="node">
@@ -235,8 +235,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/print/index.ts -->
 <g id="edge37" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/print/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M202.74,-305.2C212.5,-329.23 238,-392 238,-392 238,-392 354,-599 354,-599 354,-599 354,-599 1068,-599 1068,-599 1200.82,-505.09 1248.89,-471.1"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1254.02,-469.61 1248.93,-471.07 1252,-466.76 1254.02,-469.61"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M225.23,-300.15C372.41,-322.59 1072.2,-429.3 1233.69,-453.92"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1239.34,-456.91 1233.72,-453.93 1239.97,-452.75 1239.34,-456.91"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/score&#45;partwise/index.ts -->
 <g id="node28" class="node">
@@ -250,8 +250,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/score&#45;partwise/index.ts -->
 <g id="edge38" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/score&#45;partwise/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M211.77,-305.17C223.14,-313.33 238,-324 238,-324 238,-324 288.66,-334.04 323.02,-340.86"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="327.63,-343.55 323.06,-340.87 328.31,-340.12 327.63,-343.55"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M225.35,-304.88C252.25,-313.62 293.35,-326.97 322.04,-336.29"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="327.32,-340.22 322.26,-336.36 328.61,-336.22 327.32,-340.22"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/sample/sample.muxicxml.ts -->
 <g id="node3" class="node">
@@ -265,8 +265,8 @@
 <!-- packages/data&#45;type/music&#45;xml/sample/sample.muxicxml.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/index.ts -->
 <g id="edge2" class="edge">
 <title>packages/data&#45;type/music&#45;xml/sample/sample.muxicxml.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M147.25,-304.25C153.56,-303.2 159.84,-302.16 165.71,-301.19"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="170.97,-300.32 166.4,-303.36 168.5,-300.73 166.03,-301.14 166.03,-301.14 166.03,-301.14 168.5,-300.73 165.66,-298.92 170.97,-300.32 170.97,-300.32"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M147.25,-304.25C153.3,-303.25 159.33,-302.25 164.99,-301.31"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="165.39,-303.37 170.97,-300.32 164.7,-299.23 165.39,-303.37"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/attribute/attribute.ts -->
 <g id="node4" class="node">
@@ -289,8 +289,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/attribute/attribute.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/attribute/clef.ts -->
 <g id="edge3" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/attribute/attribute.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/attribute/clef.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1381.68,-97.43C1390.21,-96.77 1399.35,-96.07 1407.77,-95.42"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1412.9,-95.02 1408.09,-97.65 1410.41,-95.21 1407.92,-95.4 1407.92,-95.4 1407.92,-95.4 1410.41,-95.21 1407.74,-93.16 1412.9,-95.02 1412.9,-95.02"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1381.68,-97.43C1389.89,-96.8 1398.66,-96.12 1406.81,-95.49"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1407.08,-97.58 1412.9,-95.02 1406.76,-93.39 1407.08,-97.58"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/attribute/key.ts -->
 <g id="node6" class="node">
@@ -304,8 +304,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/attribute/attribute.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/attribute/key.ts -->
 <g id="edge4" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/attribute/attribute.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/attribute/key.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1381.68,-108.43C1390.21,-110.6 1399.35,-112.92 1407.77,-115.06"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1412.9,-116.37 1407.5,-117.32 1410.48,-115.75 1408.06,-115.14 1408.06,-115.14 1408.06,-115.14 1410.48,-115.75 1408.61,-112.96 1412.9,-116.37 1412.9,-116.37"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1381.68,-108.43C1389.89,-110.52 1398.66,-112.75 1406.81,-114.82"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1406.57,-116.93 1412.9,-116.37 1407.61,-112.85 1406.57,-116.93"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/attribute/time.ts -->
 <g id="node7" class="node">
@@ -319,32 +319,32 @@
 <!-- packages/data&#45;type/music&#45;xml/src/attribute/attribute.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/attribute/time.ts -->
 <g id="edge5" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/attribute/attribute.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/attribute/time.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1367.48,-90.92C1380.15,-84.86 1394.5,-78 1394.5,-78 1394.5,-78 1400.45,-76 1407.99,-73.45"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1412.86,-71.81 1408.84,-75.54 1410.49,-72.61 1408.12,-73.41 1408.12,-73.41 1408.12,-73.41 1410.49,-72.61 1407.4,-71.28 1412.86,-71.81 1412.86,-71.81"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1370.87,-90.85C1383.04,-85.88 1398.19,-79.68 1411.12,-74.4"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1412.13,-76.26 1416.89,-72.04 1410.54,-72.37 1412.13,-76.26"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/attribute/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/attribute/attribute.ts -->
 <g id="edge6" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/attribute/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/attribute/attribute.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1294.14,-92.66C1298.66,-93.3 1303.44,-93.97 1308.2,-94.63"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1313.11,-97.09 1308.4,-94.66 1313.6,-93.62 1313.11,-97.09"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1294.14,-92.66C1298.37,-93.26 1302.83,-93.88 1307.29,-94.51"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1313.06,-97.43 1307.41,-94.52 1313.64,-93.28 1313.06,-97.43"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/attribute/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/attribute/clef.ts -->
 <g id="edge7" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/attribute/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/attribute/clef.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1294.2,-86.7C1304.32,-85.81 1313.5,-85 1313.5,-85 1313.5,-85 1381.5,-85 1381.5,-85 1381.5,-85 1394.37,-86.79 1407.94,-88.68"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1412.7,-91.11 1407.99,-88.69 1413.18,-87.64 1412.7,-91.11"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1294.03,-89.62C1324.41,-90.33 1373.76,-91.47 1406.55,-92.23"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1412.83,-94.47 1406.88,-92.23 1412.92,-90.27 1412.83,-94.47"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/attribute/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/attribute/key.ts -->
 <g id="edge8" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/attribute/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/attribute/key.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1283.91,-98.09C1297.03,-105.59 1313.5,-115 1313.5,-115 1313.5,-115 1370.49,-118.63 1407.66,-121"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1412.88,-123.09 1408.01,-121.02 1413.11,-119.6 1412.88,-123.09"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1294.03,-94.31C1324.54,-100.31 1374.17,-110.06 1406.96,-116.51"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1412.47,-119.73 1406.99,-116.51 1413.28,-115.61 1412.47,-119.73"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/attribute/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/attribute/time.ts -->
 <g id="edge9" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/attribute/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/attribute/time.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1294.2,-84.97C1304.32,-83.41 1313.5,-82 1313.5,-82 1313.5,-82 1370.49,-73.37 1407.66,-67.74"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1413.26,-68.67 1408.05,-67.69 1412.73,-65.21 1413.26,-68.67"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1294.03,-84.94C1324.41,-80.37 1373.76,-72.95 1406.55,-68.03"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1413.19,-69.15 1406.94,-67.97 1412.56,-65 1413.19,-69.15"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/credit/credit&#45;words.ts -->
 <g id="node9" class="node">
@@ -367,20 +367,20 @@
 <!-- packages/data&#45;type/music&#45;xml/src/credit/credit.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/credit/credit&#45;words.ts -->
 <g id="edge10" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/credit/credit.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/credit/credit&#45;words.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M644.61,-553.11C652.1,-552.56 660.5,-551.95 668.81,-551.35"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="673.97,-550.98 669.15,-553.58 671.48,-551.16 668.98,-551.34 668.98,-551.34 668.98,-551.34 671.48,-551.16 668.82,-549.09 673.97,-550.98 673.97,-550.98"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M644.61,-553.11C651.82,-552.58 659.87,-552 667.87,-551.42"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="668.14,-553.5 673.97,-550.98 667.84,-549.32 668.14,-553.5"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/credit/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/credit/credit&#45;words.ts -->
 <g id="edge12" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/credit/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/credit/credit&#45;words.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M558.36,-540.37C566.8,-540.17 574,-540 574,-540 574,-540 661,-540 661,-540 661,-540 664.04,-540.45 668.68,-541.14"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="673.54,-543.63 668.85,-541.16 674.05,-540.16 673.54,-543.63"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M558.3,-542.03C586.97,-543.12 632.64,-544.85 667.47,-546.16"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="673.76,-548.5 667.85,-546.18 673.92,-544.31 673.76,-548.5"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/credit/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/credit/credit.ts -->
 <g id="edge11" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/credit/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/credit/credit.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M558.27,-545.35C566.7,-546.75 576.12,-548.31 584.88,-549.76"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="589.96,-552.38 585.31,-549.83 590.53,-548.92 589.96,-552.38"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M558.27,-545.35C566.38,-546.7 575.41,-548.19 583.89,-549.6"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="589.9,-552.72 584.32,-549.67 590.59,-548.58 589.9,-552.72"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/defaults/defaults.ts -->
 <g id="node12" class="node">
@@ -403,8 +403,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/defaults/defaults.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/defaults/font.ts -->
 <g id="edge13" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/defaults/defaults.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/defaults/font.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M649.56,-243C660.45,-243 672.69,-243 683.61,-243"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="688.85,-243 683.85,-245.25 686.35,-243 683.85,-243 683.85,-243 683.85,-243 686.35,-243 683.85,-240.75 688.85,-243 688.85,-243"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M649.56,-243C660.16,-243 672.02,-243 682.71,-243"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="682.85,-245.1 688.85,-243 682.85,-240.9 682.85,-245.1"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/defaults/page&#45;layout.ts -->
 <g id="node14" class="node">
@@ -418,8 +418,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/defaults/defaults.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/defaults/page&#45;layout.ts -->
 <g id="edge14" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/defaults/defaults.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/defaults/page&#45;layout.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M647.45,-252C657.95,-255.26 669.9,-258.98 680.81,-262.37"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="685.73,-263.9 680.29,-264.57 683.35,-263.16 680.96,-262.42 680.96,-262.42 680.96,-262.42 683.35,-263.16 681.63,-260.27 685.73,-263.9 685.73,-263.9"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M647.45,-252C657.66,-255.18 669.26,-258.78 679.92,-262.09"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="679.38,-264.13 685.73,-263.9 680.63,-260.12 679.38,-264.13"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/defaults/scaling.ts -->
 <g id="node15" class="node">
@@ -433,8 +433,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/defaults/defaults.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/defaults/scaling.ts -->
 <g id="edge15" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/defaults/defaults.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/defaults/scaling.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M647.45,-234C658.14,-230.68 670.34,-226.88 681.41,-223.44"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="686.4,-221.89 682.29,-225.52 684.01,-222.63 681.63,-223.38 681.63,-223.38 681.63,-223.38 684.01,-222.63 680.96,-221.23 686.4,-221.89 686.4,-221.89"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M647.45,-234C657.85,-230.77 669.68,-227.09 680.51,-223.72"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="681.29,-225.68 686.4,-221.89 680.05,-221.67 681.29,-225.68"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/defaults/page&#45;margins.ts -->
 <g id="node17" class="node">
@@ -448,38 +448,38 @@
 <!-- packages/data&#45;type/music&#45;xml/src/defaults/page&#45;layout.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/defaults/page&#45;margins.ts -->
 <g id="edge21" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/defaults/page&#45;layout.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/defaults/page&#45;margins.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M756.79,-275.57C763.02,-275.97 769.53,-276.39 775.96,-276.8"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="781.32,-277.15 776.19,-279.07 778.83,-276.99 776.34,-276.83 776.34,-276.83 776.34,-276.83 778.83,-276.99 776.48,-274.58 781.32,-277.15 781.32,-277.15"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M756.79,-275.57C762.77,-275.95 769.01,-276.36 775.19,-276.75"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="775.2,-278.86 781.32,-277.15 775.47,-274.67 775.2,-278.86"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/defaults/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/defaults/defaults.ts -->
 <g id="edge16" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/defaults/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/defaults/defaults.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M550.06,-273.97C561.44,-268.28 574,-262 574,-262 574,-262 582.34,-258.27 591.64,-254.11"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="596.96,-253.65 591.68,-254.1 595.53,-250.46 596.96,-253.65"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M551.17,-273.92C563.17,-268.25 578.74,-260.88 591.67,-254.75"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="598.3,-253.94 591.98,-254.61 596.5,-250.14 598.3,-253.94"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/defaults/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/defaults/font.ts -->
 <g id="edge17" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/defaults/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/defaults/font.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M558.36,-276.1C566.8,-273.89 574,-272 574,-272 574,-272 661,-258 661,-258 661,-258 672.02,-254.94 684.1,-251.58"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="689.42,-251.92 684.13,-251.57 688.48,-248.55 689.42,-251.92"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M558.3,-277.1C591.46,-269.93 647.36,-257.84 682.93,-250.15"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="689.34,-250.91 683.03,-250.13 688.45,-246.81 689.34,-250.91"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/defaults/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/defaults/page&#45;layout.ts -->
 <g id="edge18" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/defaults/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/defaults/page&#45;layout.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M558.22,-281.57C587.42,-279.97 635.13,-277.36 670.26,-275.44"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="675.45,-276.91 670.36,-275.44 675.26,-273.42 675.45,-276.91"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M558.3,-281.52C587.35,-279.95 633.85,-277.44 668.85,-275.55"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="675.35,-277.3 669.25,-275.53 675.13,-273.11 675.35,-277.3"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/defaults/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/defaults/scaling.ts -->
 <g id="edge20" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/defaults/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/defaults/scaling.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M538.94,-273.92C550.86,-258.3 574,-228 574,-228 574,-228 639.54,-221.03 681.25,-216.59"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="686.65,-217.78 681.49,-216.56 686.28,-214.3 686.65,-217.78"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M554.81,-273.99C588.43,-261.27 649.8,-238.05 686.35,-224.22"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="692.73,-224.05 686.38,-224.21 691.25,-220.12 692.73,-224.05"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/defaults/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/defaults/page&#45;margins.ts -->
 <g id="edge19" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/defaults/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/defaults/page&#45;margins.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M558.04,-283.92C599.04,-285.36 674,-288 674,-288 674,-288 766,-288 766,-288 766,-288 770.17,-287.44 776.29,-286.62"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="781.56,-287.67 776.37,-286.61 781.09,-284.21 781.56,-287.67"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M558.01,-282.73C607.11,-282.23 711.78,-281.16 774.94,-280.52"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="781.32,-282.56 775.3,-280.52 781.28,-278.36 781.32,-282.56"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/identification/creator.ts -->
 <g id="node18" class="node">
@@ -511,8 +511,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/identification/encoding.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/identification/support.ts -->
 <g id="edge22" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/identification/encoding.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/identification/support.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M751.03,-141.2C763.32,-141.99 777.23,-142.89 789.67,-143.69"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="794.9,-144.03 789.76,-145.95 792.4,-143.86 789.91,-143.7 789.91,-143.7 789.91,-143.7 792.4,-143.86 790.05,-141.46 794.9,-144.03 794.9,-144.03"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M751.03,-141.2C762.99,-141.97 776.48,-142.84 788.66,-143.62"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="788.78,-145.73 794.9,-144.03 789.05,-141.54 788.78,-145.73"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/identification/identification.ts -->
 <g id="node21" class="node">
@@ -526,38 +526,38 @@
 <!-- packages/data&#45;type/music&#45;xml/src/identification/identification.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/identification/creator.ts -->
 <g id="edge23" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/identification/identification.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/identification/creator.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M661.11,-117.94C667.95,-116.8 674.94,-115.64 681.53,-114.55"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="686.48,-113.73 681.91,-116.77 684.01,-114.14 681.54,-114.55 681.54,-114.55 681.54,-114.55 684.01,-114.14 681.17,-112.33 686.48,-113.73 686.48,-113.73"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M661.11,-117.94C667.54,-116.87 674.12,-115.78 680.36,-114.74"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="680.9,-116.78 686.48,-113.73 680.21,-112.64 680.9,-116.78"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/identification/identification.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/identification/encoding.ts -->
 <g id="edge24" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/identification/identification.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/identification/encoding.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M661.11,-131.18C665.93,-131.88 670.82,-132.59 675.6,-133.28"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="680.73,-134.03 675.46,-135.54 678.25,-133.67 675.78,-133.31 675.78,-133.31 675.78,-133.31 678.25,-133.67 676.1,-131.08 680.73,-134.03 680.73,-134.03"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M661.11,-131.18C665.62,-131.84 670.2,-132.5 674.68,-133.15"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="674.49,-135.24 680.73,-134.03 675.09,-131.09 674.49,-135.24"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/identification/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/identification/creator.ts -->
 <g id="edge25" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/identification/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/identification/creator.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M542.6,-137.66C555.04,-126.7 574,-110 574,-110 574,-110 639.54,-109.54 681.25,-109.24"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="686.48,-110.95 681.47,-109.24 686.45,-107.45 686.48,-110.95"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M558.3,-141.39C590.7,-134.74 644.81,-123.62 680.45,-116.3"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="686.87,-117.13 680.57,-116.28 686.02,-113.01 686.87,-117.13"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/identification/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/identification/encoding.ts -->
 <g id="edge26" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/identification/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/identification/encoding.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M558.22,-145.85C588.93,-144.51 640.11,-142.27 675.6,-140.72"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="680.79,-142.25 675.72,-140.72 680.64,-138.75 680.79,-142.25"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M558.3,-145.82C589.08,-144.49 639.47,-142.31 674.99,-140.77"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="681.09,-142.61 675,-140.77 680.91,-138.42 681.09,-142.61"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/identification/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/identification/support.ts -->
 <g id="edge28" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/identification/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/identification/support.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M558.04,-148.28C599.04,-150.3 674,-154 674,-154 674,-154 766,-154 766,-154 766,-154 777.06,-152.51 789.64,-150.82"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="794.94,-151.87 789.75,-150.81 794.47,-148.41 794.94,-151.87"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M558.01,-146.91C610.9,-146.73 728.25,-146.33 788.78,-146.13"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="794.81,-148.21 788.81,-146.13 794.8,-144.01 794.81,-148.21"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/identification/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/identification/identification.ts -->
 <g id="edge27" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/identification/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/identification/identification.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M558.27,-140.16C564.1,-138.64 570.41,-137 576.64,-135.38"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="582.29,-135.71 577.01,-135.28 581.41,-132.33 582.29,-135.71"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M558.27,-140.16C563.87,-138.7 569.9,-137.13 575.89,-135.57"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="582.38,-136.05 576.04,-135.53 581.32,-131.99 582.38,-136.05"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/measure/barline.ts -->
 <g id="node29" class="node">
@@ -571,8 +571,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/measure/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/measure/barline.ts -->
 <g id="edge43" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/measure/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/measure/barline.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1086.41,-248.97C1090.93,-246.75 1094.5,-245 1094.5,-245 1094.5,-245 1107.5,-232 1107.5,-232 1107.5,-232 1185.49,-231.51 1232.06,-231.21"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1237.31,-232.93 1232.3,-231.21 1237.29,-229.43 1237.31,-232.93"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1094.39,-254.3C1129.93,-249.5 1192.03,-241.12 1231.25,-235.83"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1237.62,-237.09 1231.39,-235.81 1237.06,-232.92 1237.62,-237.09"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/measure/beam.ts -->
 <g id="node30" class="node">
@@ -586,8 +586,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/measure/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/measure/beam.ts -->
 <g id="edge44" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/measure/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/measure/beam.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1086.41,-248.97C1090.93,-246.75 1094.5,-245 1094.5,-245 1094.5,-245 1107.5,-228 1107.5,-228 1107.5,-228 1232,-216 1232,-216 1232,-216 1300.5,-216 1300.5,-216 1300.5,-216 1366.75,-223.17 1407.61,-227.6"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1412.76,-229.92 1407.98,-227.64 1413.14,-226.44 1412.76,-229.92"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1094.13,-256.04C1161.01,-251.2 1333.67,-238.7 1406.65,-233.41"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1413.13,-235.05 1406.99,-233.39 1412.82,-230.86 1413.13,-235.05"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/measure/extended&#45;measure.ts -->
 <g id="node31" class="node">
@@ -601,8 +601,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/measure/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/measure/extended&#45;measure.ts -->
 <g id="edge45" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/measure/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/measure/extended&#45;measure.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1094.21,-254.97C1096.82,-254.66 1099.54,-254.35 1102.32,-254.03"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1107.59,-255.18 1102.42,-254.01 1107.19,-251.7 1107.59,-255.18"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1094.21,-254.97C1096.43,-254.71 1098.72,-254.44 1101.07,-254.17"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1107.63,-255.53 1101.43,-254.13 1107.15,-251.35 1107.63,-255.53"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/measure/measure.ts -->
 <g id="node32" class="node">
@@ -616,8 +616,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/measure/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/measure/measure.ts -->
 <g id="edge46" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/measure/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/measure/measure.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1094.13,-260.65C1101.47,-261.39 1107.5,-262 1107.5,-262 1107.5,-262 1220.5,-262 1220.5,-262 1220.5,-262 1223.66,-261.93 1228.32,-261.83"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1233.46,-263.47 1228.42,-261.83 1233.38,-259.97 1233.46,-263.47"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1094.39,-258.41C1128.71,-258.93 1187.8,-259.81 1227.14,-260.4"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1233.24,-262.59 1227.27,-260.4 1233.3,-258.39 1233.24,-262.59"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/measure/note.ts -->
 <g id="node33" class="node">
@@ -631,8 +631,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/measure/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/measure/note.ts -->
 <g id="edge47" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/measure/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/measure/note.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1094.13,-263.29C1101.47,-264.78 1107.5,-266 1107.5,-266 1107.5,-266 1232,-276 1232,-276 1232,-276 1300.5,-276 1300.5,-276 1300.5,-276 1306.98,-274.87 1315.07,-273.47"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1320.57,-274.28 1315.35,-273.42 1319.98,-270.84 1320.57,-274.28"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1094.15,-258.97C1145.78,-260.81 1257.96,-264.81 1314.1,-266.81"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1320.26,-269.13 1314.34,-266.82 1320.41,-264.93 1320.26,-269.13"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/measure/pitch.ts -->
 <g id="node34" class="node">
@@ -646,14 +646,14 @@
 <!-- packages/data&#45;type/music&#45;xml/src/measure/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/measure/pitch.ts -->
 <g id="edge48" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/measure/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/measure/pitch.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1090.52,-267.12C1099.39,-270.71 1107.5,-274 1107.5,-274 1107.5,-274 1232,-280 1232,-280 1232,-280 1313.5,-283 1313.5,-283 1313.5,-283 1381.5,-283 1381.5,-283 1381.5,-283 1394.37,-281.21 1407.94,-279.32"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1413.18,-280.36 1407.99,-279.31 1412.7,-276.89 1413.18,-280.36"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1094.13,-259.24C1161.01,-262.28 1333.67,-270.15 1406.65,-273.48"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1412.88,-275.87 1406.98,-273.5 1413.07,-271.67 1412.88,-275.87"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/music&#45;xml.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/score&#45;partwise/index.ts -->
 <g id="edge52" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/music&#45;xml.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/score&#45;partwise/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M291.89,-318.03C304.49,-325.19 320,-334 320,-334 320,-334 322.17,-334.83 325.41,-336.07"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="330.39,-337.97 324.91,-338.29 328.05,-337.08 325.72,-336.19 325.72,-336.19 325.72,-336.19 328.05,-337.08 326.52,-334.08 330.39,-337.97 330.39,-337.97"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M294.48,-318.01C305.09,-323.17 318.53,-329.72 329.95,-335.29"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="329.06,-337.19 335.38,-337.93 330.9,-333.41 329.06,-337.19"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part/beat&#45;pos.ts -->
 <g id="node40" class="node">
@@ -667,8 +667,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/part/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part/beat&#45;pos.ts -->
 <g id="edge67" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/part/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part/beat&#45;pos.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M957.01,-392.03C986.94,-393.22 1032,-395 1032,-395 1032,-395 1094.5,-395 1094.5,-395 1094.5,-395 1109.2,-393.28 1124.98,-391.44"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1130.56,-392.55 1125.39,-391.39 1130.15,-389.07 1130.56,-392.55"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M957.3,-390.53C998.49,-389.83 1076.75,-388.49 1124.26,-387.68"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1130.51,-389.67 1124.47,-387.68 1130.44,-385.47 1130.51,-389.67"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part/has&#45;id.ts -->
 <g id="node41" class="node">
@@ -682,8 +682,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/part/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part/has&#45;id.ts -->
 <g id="edge68" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/part/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part/has&#45;id.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M957.03,-388.88C978.97,-387.09 1010.45,-384.53 1033.94,-382.61"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1039.27,-383.93 1034.14,-382.6 1038.98,-380.45 1039.27,-383.93"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M957.07,-388.83C978.83,-387.08 1009.53,-384.61 1032.95,-382.73"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1039.22,-384.34 1033.07,-382.72 1038.88,-380.15 1039.22,-384.34"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part/part.ts -->
 <g id="node42" class="node">
@@ -697,8 +697,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/part/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part/part.ts -->
 <g id="edge69" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/part/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part/part.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M954.47,-381.97C958.74,-380.33 963.24,-378.6 967.63,-376.91"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="972.98,-376.73 967.68,-376.89 971.72,-373.46 972.98,-376.73"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M954.47,-381.97C958.38,-380.47 962.47,-378.89 966.51,-377.34"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="973.1,-377.06 966.75,-377.25 971.6,-373.14 973.1,-377.06"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part&#45;list/midi&#45;device.ts -->
 <g id="node35" class="node">
@@ -712,8 +712,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/part&#45;list/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part&#45;list/midi&#45;device.ts -->
 <g id="edge53" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/part&#45;list/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part&#45;list/midi&#45;device.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M558.05,-423.73C608.26,-423.22 718.98,-422.09 781.07,-421.45"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="786.2,-423.15 781.18,-421.45 786.17,-419.65 786.2,-423.15"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M558.01,-423.73C608.49,-423.21 717.69,-422.1 780.16,-421.47"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="786.45,-423.51 780.43,-421.47 786.4,-419.31 786.45,-423.51"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part&#45;list/midi&#45;instrument.ts -->
 <g id="node36" class="node">
@@ -727,8 +727,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/part&#45;list/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part&#45;list/midi&#45;instrument.ts -->
 <g id="edge54" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/part&#45;list/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part&#45;list/midi&#45;instrument.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M541.74,-433.28C554.15,-445.09 574,-464 574,-464 574,-464 661,-464 661,-464 661,-464 766,-457 766,-457 766,-457 767.7,-456.83 770.53,-456.54"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="776,-457.75 770.85,-456.51 775.65,-454.27 776,-457.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M558.01,-426.47C605.83,-430.84 706.35,-440.02 769.92,-445.83"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="775.76,-448.47 769.97,-445.84 776.14,-444.29 775.76,-448.47"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part&#45;list/part&#45;list.ts -->
 <g id="node37" class="node">
@@ -742,8 +742,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/part&#45;list/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part&#45;list/part&#45;list.ts -->
 <g id="edge55" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/part&#45;list/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part&#45;list/part&#45;list.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M558.27,-431.77C565.66,-433.96 573.8,-436.37 581.6,-438.67"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="585.91,-441.77 581.61,-438.68 586.9,-438.42 585.91,-441.77"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M558.27,-431.77C565.24,-433.83 572.88,-436.09 580.27,-438.28"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="585.81,-442.11 580.65,-438.39 587,-438.08 585.81,-442.11"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part&#45;list/score&#45;instrument.ts -->
 <g id="node38" class="node">
@@ -757,8 +757,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/part&#45;list/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part&#45;list/score&#45;instrument.ts -->
 <g id="edge56" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/part&#45;list/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part&#45;list/score&#45;instrument.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M540.91,-433.33C553.24,-446.25 574,-468 574,-468 574,-468 694.56,-474.23 768.74,-478.07"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="773.91,-480.09 769,-478.08 774.09,-476.59 773.91,-480.09"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M558.01,-429.21C606.8,-438.62 710.44,-458.61 773.72,-470.82"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="779.32,-474.04 773.83,-470.84 780.12,-469.91 779.32,-474.04"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part&#45;list/score&#45;part.ts -->
 <g id="node39" class="node">
@@ -772,8 +772,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/part&#45;list/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part&#45;list/score&#45;part.ts -->
 <g id="edge57" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/part&#45;list/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part&#45;list/score&#45;part.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M558.11,-426.02C595.8,-428.95 661,-434 661,-434 661,-434 666.33,-434.79 673.64,-435.87"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="678.72,-438.39 674.04,-435.93 679.24,-434.93 678.72,-438.39"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M558.3,-426.66C588.42,-429.59 637.3,-434.34 672.67,-437.78"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="678.46,-440.46 672.69,-437.79 678.87,-436.28 678.46,-440.46"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/print/print.ts -->
 <g id="node43" class="node">
@@ -787,8 +787,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/print/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/print/print.ts -->
 <g id="edge72" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/print/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/print/print.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1294.14,-451.67C1301.02,-449.74 1308.52,-447.64 1315.63,-445.65"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1320.95,-445.98 1315.66,-445.64 1320,-442.61 1320.95,-445.98"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1294.14,-451.67C1300.63,-449.86 1307.66,-447.89 1314.39,-446"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1321.04,-446.32 1314.7,-445.91 1319.91,-442.27 1321.04,-446.32"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/print/system&#45;layout.ts -->
 <g id="node44" class="node">
@@ -802,8 +802,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/print/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/print/system&#45;layout.ts -->
 <g id="edge73" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/print/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/print/system&#45;layout.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1294.34,-457.77C1319.5,-456.59 1358.04,-454.79 1389.02,-453.34"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1394.4,-454.84 1389.32,-453.32 1394.24,-451.34 1394.4,-454.84"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1294.03,-457.75C1319.16,-456.59 1357.25,-454.83 1388.23,-453.39"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1394.42,-455.21 1388.33,-453.39 1394.22,-451.01 1394.42,-455.21"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/print/system&#45;margins.ts -->
 <g id="node45" class="node">
@@ -817,38 +817,38 @@
 <!-- packages/data&#45;type/music&#45;xml/src/print/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/print/system&#45;margins.ts -->
 <g id="edge74" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/print/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/print/system&#45;margins.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1294.21,-460.45C1331.26,-462.5 1394.5,-466 1394.5,-466 1394.5,-466 1485.5,-466 1485.5,-466 1485.5,-466 1488.49,-465.61 1493.16,-465.01"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1498.57,-466.08 1493.39,-464.98 1498.12,-462.61 1498.57,-466.08"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1294.25,-458.9C1339.8,-458.74 1432.33,-458.41 1492.31,-458.2"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1498.38,-460.28 1492.37,-458.2 1498.36,-456.08 1498.38,-460.28"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/score&#45;partwise/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/credit/index.ts -->
 <g id="edge77" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/score&#45;partwise/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/credit/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M374.06,-356.03C378.49,-358.25 382,-360 382,-360 382,-360 395,-392 395,-392 395,-392 488,-409 488,-409 488,-409 496,-519 496,-519 496,-519 503.45,-523.82 511.37,-528.95"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="514.83,-533.27 511.58,-529.08 516.73,-530.33 514.83,-533.27"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M363.25,-356.1C391.48,-387.21 484.3,-489.53 518.34,-527.05"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="521,-533.11 518.53,-527.25 524.12,-530.29 521,-533.11"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/score&#45;partwise/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/defaults/index.ts -->
 <g id="edge78" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/score&#45;partwise/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/defaults/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M382.08,-339.69C420.55,-328.91 488,-310 488,-310 488,-310 500.16,-302.19 511.39,-294.97"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="516.73,-293.61 511.57,-294.84 514.83,-290.67 516.73,-293.61"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M379.84,-337.97C411.46,-326.47 466.07,-306.61 500.28,-294.17"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="506.72,-294.06 500.36,-294.14 505.28,-290.12 506.72,-294.06"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/score&#45;partwise/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/identification/index.ts -->
 <g id="edge79" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/score&#45;partwise/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/identification/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M374.06,-337.97C378.49,-335.75 382,-334 382,-334 382,-334 395,-311 395,-311 395,-311 486.97,-199.27 519.09,-160.25"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="523.71,-157.4 519.18,-160.15 521,-155.18 523.71,-157.4"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M363.02,-337.89C391.08,-306 484.97,-199.3 518.76,-160.91"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="524.51,-157.55 518.97,-160.67 521.36,-154.78 524.51,-157.55"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/score&#45;partwise/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part/index.ts -->
 <g id="edge80" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/score&#45;partwise/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M374.06,-337.97C378.49,-335.75 382,-334 382,-334 382,-334 395,-197 395,-197 395,-197 496,-89 496,-89 496,-89 616.5,-83 616.5,-83 616.5,-83 616.5,-83 717,-83 717,-83 887,-89 887,-89 887,-89 895,-378 895,-378 895,-378 897.17,-378.83 900.41,-380.07"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="904.76,-383.61 900.72,-380.19 906.01,-380.34 904.76,-383.61"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M382.35,-349.09C477.33,-356.36 792.8,-380.5 896.58,-388.44"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="902.66,-391.01 896.84,-388.46 902.98,-386.83 902.66,-391.01"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/score&#45;partwise/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part&#45;list/index.ts -->
 <g id="edge81" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/score&#45;partwise/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part&#45;list/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M374.06,-356.03C378.49,-358.25 382,-360 382,-360 382,-360 395,-376 395,-376 395,-376 488,-400 488,-400 488,-400 498.75,-406.14 509.37,-412.21"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="513.01,-416.31 509.54,-412.31 514.75,-413.27 513.01,-416.31"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M375.88,-356.14C407.99,-370.18 469.44,-397.07 504.59,-412.45"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="509.58,-416.92 504.92,-412.59 511.26,-413.07 509.58,-416.92"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/score&#45;partwise/score&#45;partwise.ts -->
 <g id="node46" class="node">
@@ -862,8 +862,8 @@
 <!-- packages/data&#45;type/music&#45;xml/src/score&#45;partwise/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/score&#45;partwise/score&#45;partwise.ts -->
 <g id="edge82" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/score&#45;partwise/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/score&#45;partwise/score&#45;partwise.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M382.27,-351.35C384.69,-351.75 387.19,-352.17 389.73,-352.59"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="394.71,-355.19 390.06,-352.64 395.28,-351.73 394.71,-355.19"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M382.27,-351.35C384.44,-351.71 386.66,-352.08 388.93,-352.46"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="394.65,-355.53 389.07,-352.48 395.34,-351.39 394.65,-355.53"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/score&#45;partwise/work.ts -->
 <g id="node47" class="node">
@@ -877,164 +877,164 @@
 <!-- packages/data&#45;type/music&#45;xml/src/score&#45;partwise/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/score&#45;partwise/work.ts -->
 <g id="edge83" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/score&#45;partwise/index.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/score&#45;partwise/work.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M382.23,-346.33C389.28,-346.15 395,-346 395,-346 395,-346 488,-346 488,-346 488,-346 492.4,-346.52 498.34,-347.23"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="503.43,-349.6 498.67,-347.27 503.85,-346.12 503.43,-349.6"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M382.11,-347.62C413.25,-348.32 464.33,-349.48 497.82,-350.25"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="503.81,-352.48 497.86,-350.25 503.9,-348.28 503.81,-352.48"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/measure/extended&#45;measure.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/attribute/index.ts -->
 <g id="edge39" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/measure/extended&#45;measure.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/attribute/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1203.55,-237.97C1213.02,-235.75 1220.5,-234 1220.5,-234 1220.5,-234 1232,-197 1232,-197 1232,-197 1252.28,-132.59 1261.51,-103.25"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1263.1,-98.21 1263.75,-103.65 1262.35,-100.59 1261.6,-102.98 1261.6,-102.98 1261.6,-102.98 1262.35,-100.59 1259.45,-102.3 1263.1,-98.21 1263.1,-98.21"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1171.02,-237.59C1187.97,-211.07 1236.22,-135.59 1256.66,-103.61"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1258.68,-104.35 1260.14,-98.16 1255.14,-102.09 1258.68,-104.35"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/measure/extended&#45;measure.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/print/index.ts -->
 <g id="edge40" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/measure/extended&#45;measure.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/print/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1170.12,-256.14C1183.86,-280.64 1220.5,-346 1220.5,-346 1220.5,-346 1248.12,-414.6 1260.32,-444.9"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1262.28,-449.75 1258.32,-445.96 1261.34,-447.43 1260.41,-445.11 1260.41,-445.11 1260.41,-445.11 1261.34,-447.43 1262.5,-444.27 1262.28,-449.75 1262.28,-449.75"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1169.34,-256.11C1185.1,-289.2 1239.42,-403.21 1258.94,-444.19"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1257.09,-445.17 1261.56,-449.69 1260.88,-443.37 1257.09,-445.17"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/measure/extended&#45;measure.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/measure/barline.ts -->
 <g id="edge41" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/measure/extended&#45;measure.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/measure/barline.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1220.52,-238.2C1224.49,-237.58 1228.42,-236.95 1232.21,-236.35"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1237.28,-235.55 1232.69,-238.55 1234.81,-235.94 1232.34,-236.33 1232.34,-236.33 1232.34,-236.33 1234.81,-235.94 1231.99,-234.11 1237.28,-235.55 1237.28,-235.55"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1220.52,-238.2C1224.13,-237.63 1227.71,-237.07 1231.17,-236.52"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1231.68,-238.56 1237.28,-235.55 1231.02,-234.41 1231.68,-238.56"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/measure/extended&#45;measure.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/measure/measure.ts -->
 <g id="edge42" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/measure/extended&#45;measure.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/measure/measure.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1220.52,-254.7C1223.14,-255.06 1225.73,-255.42 1228.28,-255.77"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1233.43,-256.49 1228.17,-258.03 1230.96,-256.14 1228.48,-255.8 1228.48,-255.8 1228.48,-255.8 1230.96,-256.14 1228.79,-253.57 1233.43,-256.49 1233.43,-256.49"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1220.52,-254.7C1222.86,-255.02 1225.18,-255.34 1227.47,-255.66"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1227.2,-257.74 1233.43,-256.49 1227.78,-253.58 1227.2,-257.74"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/measure/measure.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/measure/note.ts -->
 <g id="edge49" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/measure/measure.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/measure/note.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1300.84,-263.93C1305.65,-264.36 1310.59,-264.8 1315.37,-265.22"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1320.48,-265.68 1315.3,-267.48 1317.99,-265.46 1315.5,-265.24 1315.5,-265.24 1315.5,-265.24 1317.99,-265.46 1315.7,-262.99 1320.48,-265.68 1320.48,-265.68"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1300.84,-263.93C1305.34,-264.33 1309.96,-264.74 1314.46,-265.14"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1314.31,-267.24 1320.48,-265.68 1314.69,-263.05 1314.31,-267.24"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/measure/note.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/measure/beam.ts -->
 <g id="edge50" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/measure/note.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/measure/beam.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1370.87,-258.85C1383.36,-253.75 1399.02,-247.35 1412.17,-241.97"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1416.89,-240.04 1413.11,-244.02 1414.57,-240.99 1412.26,-241.93 1412.26,-241.93 1412.26,-241.93 1414.57,-240.99 1411.41,-239.85 1416.89,-240.04 1416.89,-240.04"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1370.87,-258.85C1383.04,-253.88 1398.19,-247.68 1411.12,-242.4"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1412.13,-244.26 1416.89,-240.04 1410.54,-240.37 1412.13,-244.26"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/measure/note.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/measure/pitch.ts -->
 <g id="edge51" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/measure/note.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/measure/pitch.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1374.68,-270.02C1384.99,-270.82 1396.93,-271.75 1407.7,-272.58"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1412.88,-272.98 1407.72,-274.84 1410.39,-272.79 1407.9,-272.59 1407.9,-272.59 1407.9,-272.59 1410.39,-272.79 1408.07,-270.35 1412.88,-272.98 1412.88,-272.98"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1374.68,-270.02C1384.71,-270.8 1396.28,-271.7 1406.82,-272.51"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1406.74,-274.61 1412.88,-272.98 1407.06,-270.42 1406.74,-274.61"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part&#45;list/midi&#45;device.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part/index.ts -->
 <g id="edge58" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/part&#45;list/midi&#45;device.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M857.95,-412C870.53,-408.28 885.1,-403.97 897.76,-400.23"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="902.69,-398.78 898.53,-402.35 900.29,-399.48 897.9,-400.19 897.9,-400.19 897.9,-400.19 900.29,-399.48 897.26,-398.04 902.69,-398.78 902.69,-398.78"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M857.95,-412C870.2,-408.38 884.33,-404.2 896.75,-400.53"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="897.53,-402.49 902.69,-398.78 896.34,-398.46 897.53,-402.49"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part&#45;list/midi&#45;instrument.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part/index.ts -->
 <g id="edge59" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/part&#45;list/midi&#45;instrument.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M863.48,-441.93C876.01,-438.77 887,-436 887,-436 887,-436 895,-404 895,-404 895,-404 897.17,-403.17 900.41,-401.93"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="905.39,-400.03 901.52,-403.92 903.05,-400.92 900.72,-401.81 900.72,-401.81 900.72,-401.81 903.05,-400.92 899.91,-399.71 905.39,-400.03 905.39,-400.03"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M842.92,-441.89C860.46,-431.52 889.17,-414.54 908.57,-403.08"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="909.68,-404.86 913.77,-400 907.54,-401.25 909.68,-404.86"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part&#45;list/part&#45;list.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part&#45;list/score&#45;part.ts -->
 <g id="edge60" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/part&#45;list/part&#45;list.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part&#45;list/score&#45;part.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M648.5,-446.82C656.48,-446.25 665.23,-445.61 673.69,-445"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="678.91,-444.62 674.09,-447.22 676.42,-444.8 673.92,-444.98 673.92,-444.98 673.92,-444.98 676.42,-444.8 673.76,-442.74 678.91,-444.62 678.91,-444.62"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M648.5,-446.82C656.18,-446.27 664.57,-445.66 672.73,-445.07"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="673.08,-447.15 678.91,-444.62 672.77,-442.96 673.08,-447.15"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part&#45;list/score&#45;instrument.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part/index.ts -->
 <g id="edge61" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/part&#45;list/score&#45;instrument.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M863.48,-471.93C876.01,-468.77 887,-466 887,-466 887,-466 895,-404 895,-404 895,-404 897.17,-403.17 900.41,-401.93"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="905.39,-400.03 901.52,-403.92 903.05,-400.92 900.72,-401.81 900.72,-401.81 900.72,-401.81 903.05,-400.92 899.91,-399.71 905.39,-400.03 905.39,-400.03"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M837.98,-471.71C856.08,-455.66 893.25,-422.7 914.06,-404.25"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="915.63,-405.66 918.73,-400.11 912.85,-402.52 915.63,-405.66"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part&#45;list/score&#45;part.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part/index.ts -->
 <g id="edge62" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/part&#45;list/score&#45;part.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M731.38,-432.92C748.27,-422.25 774,-406 774,-406 774,-406 852.33,-398.42 897.62,-394.04"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="902.71,-393.54 897.95,-396.27 900.22,-393.79 897.73,-394.03 897.73,-394.03 897.73,-394.03 900.22,-393.79 897.51,-391.79 902.71,-393.54 902.71,-393.54"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M753.28,-433.12C793.86,-423.45 858.13,-408.13 896.97,-398.87"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="897.62,-400.88 902.97,-397.44 896.65,-396.79 897.62,-400.88"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part&#45;list/score&#45;part.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part&#45;list/midi&#45;device.ts -->
 <g id="edge63" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/part&#45;list/score&#45;part.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part&#45;list/midi&#45;device.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M753.13,-435.01C762.08,-433.28 771.76,-431.4 781.06,-429.6"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="786.17,-428.61 781.69,-431.77 783.72,-429.09 781.26,-429.56 781.26,-429.56 781.26,-429.56 783.72,-429.09 780.83,-427.35 786.17,-428.61 786.17,-428.61"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M753.13,-435.01C761.74,-433.34 771.05,-431.54 780.02,-429.8"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="780.68,-431.81 786.17,-428.61 779.88,-427.69 780.68,-431.81"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part&#45;list/score&#45;part.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part&#45;list/midi&#45;instrument.ts -->
 <g id="edge64" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/part&#45;list/score&#45;part.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part&#45;list/midi&#45;instrument.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M753.13,-445C758.81,-445.47 764.79,-445.96 770.78,-446.46"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="775.81,-446.88 770.64,-448.71 773.32,-446.67 770.83,-446.47 770.83,-446.47 770.83,-446.47 773.32,-446.67 771.02,-444.22 775.81,-446.88 775.81,-446.88"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M753.13,-445C758.47,-445.44 764.08,-445.91 769.71,-446.37"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="769.66,-448.48 775.81,-446.88 770.01,-444.29 769.66,-448.48"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part&#45;list/score&#45;part.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part&#45;list/score&#45;instrument.ts -->
 <g id="edge65" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/part&#45;list/score&#45;part.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part&#45;list/score&#45;instrument.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M738.55,-451.07C754.69,-457.87 774,-466 774,-466 774,-466 780.77,-467.97 789.4,-470.49"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="794.35,-471.93 788.92,-472.69 791.95,-471.23 789.55,-470.53 789.55,-470.53 789.55,-470.53 791.95,-471.23 790.18,-468.37 794.35,-471.93 794.35,-471.93"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M742.16,-451.05C757.66,-456.62 777.66,-463.8 794.18,-469.74"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="793.74,-471.82 800.1,-471.87 795.16,-467.86 793.74,-471.82"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part/has&#45;id.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part/beat&#45;pos.ts -->
 <g id="edge66" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/part/has&#45;id.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part/beat&#45;pos.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1094.72,-381.97C1104.16,-382.66 1114.96,-383.46 1125.15,-384.21"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1130.41,-384.6 1125.26,-386.47 1127.91,-384.41 1125.42,-384.23 1125.42,-384.23 1125.42,-384.23 1127.91,-384.41 1125.59,-381.99 1130.41,-384.6 1130.41,-384.6"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1094.72,-381.97C1103.9,-382.64 1114.37,-383.42 1124.3,-384.15"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1124.27,-386.25 1130.41,-384.6 1124.58,-382.06 1124.27,-386.25"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part/part.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/measure/index.ts -->
 <g id="edge70" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/part/part.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/measure/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1016.06,-356.97C1020.49,-354.75 1024,-353 1024,-353 1024,-353 1048.14,-298.41 1059.81,-271.99"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1061.97,-267.11 1062.01,-272.59 1060.96,-269.4 1059.95,-271.68 1059.95,-271.68 1059.95,-271.68 1060.96,-269.4 1057.89,-270.77 1061.97,-267.11 1061.97,-267.11"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1003.8,-356.79C1015.64,-337.98 1042.69,-295.02 1056.9,-272.46"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1058.8,-273.38 1060.22,-267.18 1055.24,-271.14 1058.8,-273.38"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/part/part.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part/has&#45;id.ts -->
 <g id="edge71" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/part/part.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part/has&#45;id.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1024.1,-371.37C1027.34,-372.04 1030.69,-372.73 1034.01,-373.41"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1039.19,-374.48 1033.83,-375.67 1036.74,-373.98 1034.29,-373.47 1034.29,-373.47 1034.29,-373.47 1036.74,-373.98 1034.74,-371.27 1039.19,-374.48 1039.19,-374.48"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1024.1,-371.37C1027.03,-371.98 1030.05,-372.6 1033.06,-373.22"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1032.89,-375.33 1039.19,-374.48 1033.73,-371.21 1032.89,-375.33"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/print/print.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/print/system&#45;layout.ts -->
 <g id="edge75" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/print/print.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/print/system&#45;layout.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1374.68,-441.05C1379.3,-441.76 1384.24,-442.53 1389.26,-443.31"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1394.29,-444.08 1389.01,-445.54 1391.82,-443.7 1389.35,-443.32 1389.35,-443.32 1389.35,-443.32 1391.82,-443.7 1389.7,-441.1 1394.29,-444.08 1394.29,-444.08"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1374.68,-441.05C1379.01,-441.72 1383.62,-442.43 1388.32,-443.16"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1388.04,-445.24 1394.29,-444.08 1388.69,-441.09 1388.04,-445.24"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/print/system&#45;layout.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/print/system&#45;margins.ts -->
 <g id="edge76" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/print/system&#45;layout.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/print/system&#45;margins.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1485.55,-453.93C1488.05,-454.09 1490.58,-454.26 1493.12,-454.43"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="1498.32,-454.77 1493.18,-456.68 1495.82,-454.6 1493.33,-454.44 1493.33,-454.44 1493.33,-454.44 1495.82,-454.6 1493.48,-452.19 1498.32,-454.77 1498.32,-454.77"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1485.55,-453.93C1487.79,-454.08 1490.05,-454.22 1492.32,-454.37"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1492.19,-456.47 1498.32,-454.77 1492.47,-452.28 1492.19,-456.47"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/score&#45;partwise/score&#45;partwise.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/credit/index.ts -->
 <g id="edge84" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/score&#45;partwise/score&#45;partwise.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/credit/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M453.05,-370.05C466.49,-381.57 488,-400 488,-400 488,-400 496,-519 496,-519 496,-519 503.45,-523.82 511.37,-528.95"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="515.78,-531.8 510.36,-530.97 513.68,-530.44 511.58,-529.08 511.58,-529.08 511.58,-529.08 513.68,-530.44 512.8,-527.19 515.78,-531.8 515.78,-531.8"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M446.96,-370.17C461.12,-399.29 505.13,-489.85 522.68,-525.94"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="520.93,-527.15 525.44,-531.63 524.71,-525.31 520.93,-527.15"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/score&#45;partwise/score&#45;partwise.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/defaults/index.ts -->
 <g id="edge85" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/score&#45;partwise/score&#45;partwise.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/defaults/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M454.93,-351.98C468.4,-342.21 488,-328 488,-328 488,-328 505.43,-309.32 517.84,-296.03"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="521.5,-292.11 519.73,-297.3 519.79,-293.93 518.09,-295.76 518.09,-295.76 518.09,-295.76 519.79,-293.93 516.44,-294.23 521.5,-292.11 521.5,-292.11"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M452.88,-351.75C468.36,-337.95 497.55,-311.93 515.24,-296.16"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="516.82,-297.56 519.9,-292 514.03,-294.43 516.82,-297.56"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/score&#45;partwise/score&#45;partwise.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/identification/index.ts -->
 <g id="edge86" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/score&#45;partwise/score&#45;partwise.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/identification/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M450.85,-351.65C463.98,-336.92 488,-310 488,-310 488,-310 496,-193 496,-193 496,-193 509.87,-174.23 519.89,-160.67"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="523.12,-156.31 521.96,-161.67 521.63,-158.32 520.15,-160.33 520.15,-160.33 520.15,-160.33 521.63,-158.32 518.34,-158.99 523.12,-156.31 523.12,-156.31"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M446.26,-351.8C459.89,-318.47 506.78,-203.78 523.78,-162.21"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="525.83,-162.75 526.16,-156.4 521.94,-161.16 525.83,-162.75"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/score&#45;partwise/score&#45;partwise.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part/index.ts -->
 <g id="edge87" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/score&#45;partwise/score&#45;partwise.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M488.11,-365.26C492.86,-365.71 496,-366 496,-366 496,-366 616.5,-375 616.5,-375 616.5,-375 616.5,-375 717,-375 717,-375 838.32,-384.16 897.4,-388.62"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="902.58,-389.01 897.42,-390.87 900.09,-388.82 897.59,-388.63 897.59,-388.63 897.59,-388.63 900.09,-388.82 897.76,-386.39 902.58,-389.01 902.58,-389.01"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M488.34,-363.88C586.54,-369.91 811.89,-383.75 896.81,-388.96"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="896.8,-391.06 902.92,-389.34 897.06,-386.87 896.8,-391.06"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/score&#45;partwise/score&#45;partwise.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part&#45;list/index.ts -->
 <g id="edge88" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/score&#45;partwise/score&#45;partwise.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/part&#45;list/index.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M460.48,-370.09C473.2,-376.52 488,-384 488,-384 488,-384 496,-399 496,-399 496,-399 504.85,-405.51 513.52,-411.88"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="517.73,-414.97 512.36,-413.83 515.71,-413.49 513.7,-412.01 513.7,-412.01 513.7,-412.01 515.71,-413.49 515.03,-410.2 517.73,-414.97 517.73,-414.97"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M455.04,-370.03C470.11,-380.88 495.5,-399.16 512.5,-411.4"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="511.39,-413.19 517.49,-414.99 513.84,-409.78 511.39,-413.19"/>
 </g>
 <!-- packages/data&#45;type/music&#45;xml/src/score&#45;partwise/score&#45;partwise.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/score&#45;partwise/work.ts -->
 <g id="edge89" class="edge">
 <title>packages/data&#45;type/music&#45;xml/src/score&#45;partwise/score&#45;partwise.ts&#45;&gt;packages/data&#45;type/music&#45;xml/src/score&#45;partwise/work.ts</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M488.04,-355.79C491.53,-355.4 495.01,-355 498.37,-354.61"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="503.57,-354.02 498.86,-356.82 501.09,-354.3 498.6,-354.59 498.6,-354.59 498.6,-354.59 501.09,-354.3 498.35,-352.35 503.57,-354.02 503.57,-354.02"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M488.04,-355.79C491.2,-355.43 494.34,-355.08 497.41,-354.72"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="497.85,-356.79 503.57,-354.02 497.37,-352.62 497.85,-356.79"/>
 </g>
 </g>
 </svg>
