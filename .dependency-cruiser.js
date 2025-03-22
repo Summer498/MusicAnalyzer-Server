@@ -150,16 +150,9 @@ module.exports = {
         collapsePattern: "node_modules/(?:@[^/]+/[^/]+|[^/]+)",
         theme: {
           graph: {
-            splines: "polyline"
+            splines: "line"
           }
         },
-        archi: {
-          collapsePattern:
-            "^(?:packages|src|lib(s?)|app(s?)|bin|test(s?)|spec(s?))/[^/]+|node_modules/(?:@[^/]+/[^/]+|[^/]+)"
-        },
-        text: {
-          highlightFocused: true
-        }
       }
     }
   }
