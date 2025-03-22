@@ -1,6 +1,6 @@
 import { MVVM_View } from "@music-analyzer/view";
-import { GravityModel } from "../gravity";
-import { LinePos } from "../line-pos";
+import { GravityModel } from "../gravity-model";
+import { LinePos } from "../../line-pos";
 
 const triangle_width = 4;
 const triangle_height = 5;
