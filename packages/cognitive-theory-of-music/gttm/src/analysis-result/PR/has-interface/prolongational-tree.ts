@@ -1,11 +1,12 @@
-import { ReductionElement } from "../ReductionElement";
+import { ReductionElement } from "../../ReductionElement";
 import { Head } from "./head";
-import { IProlongationTree, ProlongationTree } from "./prolongation-tree";
+import { IProlongationalRegion, IProlongationTree } from "../interface/i-prolongation-tree";
 
-export interface IProlongationalRegion {
-  readonly head: Head,
-  readonly primary?: IProlongationTree,
-  readonly secondary?: IProlongationTree,
+export class ProlongationTree {
+  readonly pr: ProlongationalRegion;
+  constructor(p_tree: IProlongationTree) {
+    this.pr = new ProlongationalRegion(p_tree.pr);
+  }
 }
 
 export class ProlongationalRegion 

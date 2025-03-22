@@ -1,8 +1,5 @@
-import { IProlongationTree, ProlongationTree } from "./prolongation-tree";
-
-export interface IProlongationalReduction {
-  readonly prtree: IProlongationTree
-}
+import { IProlongationalReduction } from "../interface/i-prolongation-reduction";
+import { ProlongationTree } from "./prolongational-tree";
 
 export class ProlongationalReduction 
   implements IProlongationalReduction {
