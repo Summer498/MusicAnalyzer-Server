@@ -1,10 +1,5 @@
-import { get_color_of_implication_realization, get_color_of_Narmour_concept, get_color_on_digital_intervallic_scale, get_color_on_digital_parametric_scale, get_color_on_intervallic_angle, get_color_on_parametric_scale, get_color_on_registral_scale, Triad } from "@music-analyzer/irm";
-import { IRM_ColorSelector } from "./irm-color-selector";
-
-export interface ColorChangeSubscriber {
-  setColor: (getColor: (e: Triad) => string) => void
-  updateColor: () => void
-}
+import { get_color_of_implication_realization, get_color_of_Narmour_concept, get_color_on_digital_intervallic_scale, get_color_on_digital_parametric_scale, get_color_on_intervallic_angle, get_color_on_parametric_scale, get_color_on_registral_scale } from "@music-analyzer/irm";
+import { ColorChangeSubscriber, IRM_ColorSelector } from "./irm-color-selector";
 
 export class MelodyColorSelector {
   readonly body: HTMLSpanElement;
