@@ -1,6 +1,6 @@
 import { Attribute } from "../attribute"
 import { Barline } from "./barline"
-import { Measure } from "."
+import { Measure } from "./measure"
 import { Print } from "../print"
 
 export interface ExtendedMeasure 

@@ -1,4 +1,5 @@
-import { Beam, Pitch } from "../part"
+import { Beam } from "./beam"
+import { Pitch } from "./pitch"
 
 export type Note = {
   readonly "default-x": number
