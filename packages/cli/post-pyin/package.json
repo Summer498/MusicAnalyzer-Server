@@ -17,6 +17,6 @@
   },
   "dependencies": {
     "@music-analyzer/math": "1.0.0",
-    "wavefile": "^11.0.0"
+    "@music-analyzer/post-f0-util": "1.0.0"
   }
 }
