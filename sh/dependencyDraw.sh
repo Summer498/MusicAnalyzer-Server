@@ -14,3 +14,6 @@ for dist in packages/**/package.json; do
         draw $dist &
     fi
 done
+
+wait
+exit
