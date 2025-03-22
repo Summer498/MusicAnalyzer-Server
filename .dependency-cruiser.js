@@ -125,7 +125,15 @@ module.exports = {
   ],
   options: {
     doNotFollow: {
-      path: ["node_modules"]
+      path: [
+        "MUSIC_ANALYZER",
+        "bin",
+        "python3.7",
+        "lib64",
+        "share",
+        "dist",
+        "node_modules",
+      ]
     },
     tsPreCompilationDeps: true,
     tsConfig: {
