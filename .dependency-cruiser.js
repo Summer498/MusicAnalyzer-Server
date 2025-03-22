@@ -132,7 +132,7 @@ module.exports = {
         "lib64",
         "share",
         "dist",
-        "node_modules",
+        "node_modules"
       ]
     },
     tsPreCompilationDeps: true,
@@ -147,14 +147,19 @@ module.exports = {
     skipAnalysisNotInRules: true,
     reporterOptions: {
       dot: {
-        collapsePattern: "node_modules/(?:@[^/]+/[^/]+|[^/]+)"
-      },
-      archi: {
-        collapsePattern:
-          "^(?:packages|src|lib(s?)|app(s?)|bin|test(s?)|spec(s?))/[^/]+|node_modules/(?:@[^/]+/[^/]+|[^/]+)"
-      },
-      text: {
-        highlightFocused: true
+        collapsePattern: "node_modules/(?:@[^/]+/[^/]+|[^/]+)",
+        theme: {
+          graph: {
+            splines: "polyline"
+          }
+        },
+        archi: {
+          collapsePattern:
+            "^(?:packages|src|lib(s?)|app(s?)|bin|test(s?)|spec(s?))/[^/]+|node_modules/(?:@[^/]+/[^/]+|[^/]+)"
+        },
+        text: {
+          highlightFocused: true
+        }
       }
     }
   }
