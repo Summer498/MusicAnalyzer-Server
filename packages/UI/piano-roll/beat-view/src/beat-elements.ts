@@ -5,8 +5,8 @@ import { BeatBarsSeries, RequiredByBeatBarsSeries } from "./beat-bar-series";
 export interface RequiredByBeatElements
   extends RequiredByBeatBarsSeries { }
 
-  export class BeatElements {
-  readonly children: unknown[];
+export class BeatElements {
+  readonly children: BeatBarsSeries[];
   readonly beat_bars: BeatBarsSeries;
   constructor(
     beat_info: BeatInfo,

@@ -22,8 +22,7 @@ export class BeatBar
   sound_reserved: boolean;
   constructor(
     beat_info: BeatInfo,
-    i: number,
-    controllers: RequiredByBeatBar,
+    i: number
   ) {
     const model = new BeatBarModel(beat_info, i);
     super(model, new BeatBarView(model));
@@ -32,9 +31,6 @@ export class BeatBar
     this.#y2 = PianoRollHeight.get();
     this.updateX();
     this.updateY();
-    controllers.audio.register(this);
-    controllers.window.register(this);
-    controllers.time_range.register(this);
   }
   updateX() {
     this.view.updateX(
