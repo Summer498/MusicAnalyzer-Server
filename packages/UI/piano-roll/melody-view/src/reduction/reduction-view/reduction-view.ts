@@ -1,5 +1,5 @@
 import { MVVM_View, WindowReflectableRegistry } from "@music-analyzer/view";
-import { ReductionModel } from "../reduction";
+import { ReductionModel } from "../reduction-model";
 import { ReductionViewModel, RequiredByReductionViewModel } from "./reduction-view-model";
 import { IRMSymbol, RequiredByIRMSymbol } from "./irm-symbol";
 import { Bracket } from "./bracket";

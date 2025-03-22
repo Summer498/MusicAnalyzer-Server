@@ -1,5 +1,5 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { ReductionModel } from "./reduction-model";
+import { ReductionModel } from "../reduction-model";
 import { ReductionView, RequiredByReductionView } from "../reduction-view";
 import { MVVM_ViewModel } from "@music-analyzer/view";
 
