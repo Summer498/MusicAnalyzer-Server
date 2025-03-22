@@ -1,18 +1,17 @@
 import { Head } from "../common";
 import { ReductionElement } from "../ReductionElement";
 import { At } from "./at";
-import { Chord, IChord } from "./Chord";
+import { Chord } from "./Chord";
 import { Temp } from "./temp";
-import { ITimeSpanTree, TimeSpanTree } from "./time-span-tree";
+import { ITimeSpan, ITimeSpanTree } from "./i-time-span";
 
-export interface ITimeSpan {
-  readonly timespan: number,
-  readonly leftend: number,
-  readonly rightend: number,
-  readonly head: Head<IChord>,
-  readonly at: At,
-  readonly primary?: ITimeSpanTree
-  readonly secondary?: ITimeSpanTree
+
+export class TimeSpanTree 
+  implements ITimeSpanTree {
+  readonly ts: TimeSpan;
+  constructor(ts_tree: ITimeSpanTree) {
+    this.ts = new TimeSpan(ts_tree.ts);
+  }
 }
 
 export class TimeSpan 
@@ -21,7 +20,7 @@ export class TimeSpan
   readonly timespan: number;
   readonly leftend: number;
   readonly rightend: number;
-  readonly head: Head<IChord>;
+  readonly head: Head<Chord>;
   readonly at: At;
   readonly primary?: TimeSpanTree;
   readonly secondary?: TimeSpanTree;
