@@ -2,7 +2,7 @@ import { HierarchyLevelController, HierarchyLevelSubscriber, TimeRangeSubscriber
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { AudioReflectable, CollectionHierarchy, WindowReflectable } from "@music-analyzer/view";
 import { IRSymbolLayer, RequiredByIRSymbolLayer } from "./ir-symbol-layer";
-import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color-selector";
+import { SetColor } from "@music-analyzer/controllers";
 
 export interface RequiredByIRSymbolHierarchy
   extends RequiredByIRSymbolLayer {

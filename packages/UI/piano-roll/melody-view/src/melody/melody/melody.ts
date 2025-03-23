@@ -5,7 +5,7 @@ import { MVVM_ViewModel, WindowReflectableRegistry } from "@music-analyzer/view"
 import { MelodyModel } from "./melody-model";
 import { MelodyView, RequiredByMelodyView } from "./melody-view";
 import { MelodyBeep, RequiredByMelodyBeep } from "./melody-beep";
-import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color-selector";
+import { SetColor } from "@music-analyzer/controllers";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();

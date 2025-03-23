@@ -2,7 +2,7 @@ import { AudioReflectableRegistry, MVVM_ViewModel, WindowReflectableRegistry } f
 import { IRPlotModel } from "./ir-plot-model";
 import { IRPlotView, RequiredByIRPlotView } from "./ir-plot-view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color-selector";
+import { SetColor } from "@music-analyzer/controllers";
 
 export interface RequiredByIRPlot
   extends RequiredByIRPlotView {

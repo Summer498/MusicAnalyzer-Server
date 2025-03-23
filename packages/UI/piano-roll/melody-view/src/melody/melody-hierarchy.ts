@@ -2,7 +2,7 @@ import { ColorChangeSubscriber, HierarchyLevelController, HierarchyLevelSubscrib
 import { AudioReflectableRegistry, CollectionHierarchy, WindowReflectable } from "@music-analyzer/view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MelodyLayer, RequiredByMelodyLayer } from "./melody-layer";
-import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color-selector";
+import { SetColor } from "@music-analyzer/controllers";
 
 export interface RequiredByMelodyHierarchy
   extends RequiredByMelodyLayer {

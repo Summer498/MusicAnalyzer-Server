@@ -4,4 +4,5 @@ export {
   MelodyColorController, ColorChangeSubscriber,
   HierarchyLevelController, TimeRangeController, TimeRangeSubscriber, HierarchyLevelSubscriber,
   MelodyBeepController, MelodyBeepSwitcher, MelodyBeepVolume, MelodyBeepVolumeSubscriber, MelodyBeepSwitcherSubscriber,
+  SetColor,
 } from "./src";

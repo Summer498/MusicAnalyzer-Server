@@ -1,3 +1,4 @@
+export { SetColor } from "./color-selector.ts";
 export { Controller } from "./controller";
 export { DMelodyController, DMelodyControllerSubscriber, GravityController, GravitySwitcher, GravitySwitcherSubscriber } from "./switcher";
 export { MelodyColorController, ColorChangeSubscriber } from "./color-selector.ts";

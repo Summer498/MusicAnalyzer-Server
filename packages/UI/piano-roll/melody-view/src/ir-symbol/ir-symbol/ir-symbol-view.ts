@@ -3,7 +3,7 @@ import { Triad } from "@music-analyzer/irm";
 import { MVVM_View } from "@music-analyzer/view";
 import { IRSymbolModel } from "./ir-symbol-model";
 import { ColorChangeSubscriber, MelodyColorController } from "@music-analyzer/controllers";
-import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color-selector";
+import { SetColor } from "@music-analyzer/controllers";
 
 const ir_analysis_em = size;
 

@@ -2,7 +2,7 @@ import { ColorChangeSubscriber, MelodyColorController } from "@music-analyzer/co
 import { MVVM_View } from "@music-analyzer/view";
 import { deleteMelody } from "../../melody-editor-function";
 import { MelodyModel } from "./melody-model";
-import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color-selector";
+import { SetColor } from "@music-analyzer/controllers";
 
 export interface RequiredByMelodyView {
   readonly melody_color: MelodyColorController

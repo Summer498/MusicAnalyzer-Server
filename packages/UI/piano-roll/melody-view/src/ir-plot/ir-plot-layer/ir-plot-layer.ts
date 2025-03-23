@@ -3,7 +3,7 @@ import { IRPlotLayerView } from "./ir-plot-layer-view";
 import { IRPlot, RequiredByIRPlot } from "../ir-plot";
 import { IRPlotLayerModel } from "./ir-plot-layer-model";
 import { AudioReflectable, WindowReflectable } from "@music-analyzer/view";
-import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color-selector";
+import { SetColor } from "@music-analyzer/controllers";
 
 export interface RequiredByIRPlotLayer
   extends RequiredByIRPlot { }

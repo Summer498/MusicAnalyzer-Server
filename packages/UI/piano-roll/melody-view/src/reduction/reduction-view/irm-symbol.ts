@@ -3,7 +3,7 @@ import { bracket_height } from "@music-analyzer/view-parameters";
 import { MVVM_View } from "@music-analyzer/view";
 import { ReductionViewModel } from "./reduction-view-model";
 import { MelodyColorController } from "@music-analyzer/controllers";
-import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color-selector";
+import { SetColor } from "@music-analyzer/controllers";
 
 export interface RequiredByIRMSymbol {
   readonly melody_color: MelodyColorController

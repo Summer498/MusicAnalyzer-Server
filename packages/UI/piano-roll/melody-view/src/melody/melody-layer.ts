@@ -2,7 +2,7 @@ import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { CollectionLayer, WindowReflectable } from "@music-analyzer/view";
 import { Melody, RequiredByMelody } from "./melody";
 import { MelodyBeepSwitcherSubscriber, MelodyBeepVolumeSubscriber, TimeRangeSubscriber } from "@music-analyzer/controllers";
-import { ColorChangeSubscriber, SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color-selector";
+import { ColorChangeSubscriber, SetColor } from "@music-analyzer/controllers";
 
 export interface RequiredByMelodyLayer
   extends RequiredByMelody { }

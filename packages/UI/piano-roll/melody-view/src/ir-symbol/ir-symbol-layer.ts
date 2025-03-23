@@ -2,7 +2,7 @@ import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { AudioReflectableRegistry, CollectionLayer, WindowReflectable } from "@music-analyzer/view";
 import { IRSymbol, RequiredByIRSymbol } from "./ir-symbol";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";
-import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color-selector";
+import { SetColor } from "@music-analyzer/controllers";
 
 export interface RequiredByIRSymbolLayer
   extends RequiredByIRSymbol {
