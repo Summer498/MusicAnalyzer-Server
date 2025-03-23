@@ -1,8 +1,11 @@
 import { Triad } from "@music-analyzer/irm";
 import { ColorSelector } from "./color-selector";
 
+export type GetColor = (e: Triad) => string;
+export type SetColor = (getColor: GetColor) => void;
+
 export interface ColorChangeSubscriber {
-  setColor: (getColor: (e: Triad) => string) => void
+  setColor: SetColor
 }
 
 export class IRM_ColorSelector 
