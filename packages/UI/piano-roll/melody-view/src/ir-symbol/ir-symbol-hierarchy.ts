@@ -2,6 +2,7 @@ import { HierarchyLevelController, HierarchyLevelSubscriber, TimeRangeSubscriber
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { AudioReflectable, CollectionHierarchy, WindowReflectable } from "@music-analyzer/view";
 import { IRSymbolLayer, RequiredByIRSymbolLayer } from "./ir-symbol-layer";
+import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color-selector";
 
 export interface RequiredByIRSymbolHierarchy
   extends RequiredByIRSymbolLayer {
@@ -19,12 +20,14 @@ export class IRSymbolHierarchy
     hierarchical_melodies: TimeAndAnalyzedMelody[][],
     controllers: RequiredByIRSymbolHierarchy
   ) {
-    super("implication-realization archetype", hierarchical_melodies.map((e, l) => new IRSymbolLayer(e, l, controllers)));
+    super("implication-realization archetype", hierarchical_melodies.map((e, l) => new IRSymbolLayer(e, l)));
     controllers.hierarchy.register(this);
     controllers.audio.register(this);
     controllers.window.register(this);
     controllers.time_range.register(this);
+    controllers.melody_color.register(this)
   }
+  readonly setColor: SetColor = f => this.children.forEach(e=>e.setColor(f))
   onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()); }
   onAudioUpdate() { this.children.forEach(e => e.onAudioUpdate()); }
   onWindowResized() { this.children.forEach(e => e.onWindowResized()); }

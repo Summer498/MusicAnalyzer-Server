@@ -4,6 +4,7 @@ import { IRSymbolModel } from "./ir-symbol-model";
 import { IRSymbolView, RequiredByIRSymbolView } from "./ir-symbol-view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { TimeRangeController, TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color-selector";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();
@@ -22,10 +23,9 @@ export class IRSymbol
   constructor(
     melody: TimeAndAnalyzedMelody,
     layer: number,
-    controllers: RequiredByIRSymbol,
   ) {
     const model = new IRSymbolModel(melody, layer);
-    super(model, new IRSymbolView(model, controllers));
+    super(model, new IRSymbolView(model));
     this.#y = isNaN(this.model.note) ? -99 : -convertToCoordinate(transposed(this.model.note));
     this.updateX();
     this.updateY();
@@ -41,4 +41,5 @@ export class IRSymbol
     this.updateX();
   }
   onTimeRangeChanged = this.onWindowResized
+  readonly setColor: SetColor = f => this.view.setColor(f)
 }

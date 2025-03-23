@@ -3,6 +3,7 @@ import { Triad } from "@music-analyzer/irm";
 import { MVVM_View } from "@music-analyzer/view";
 import { IRSymbolModel } from "./ir-symbol-model";
 import { ColorChangeSubscriber, MelodyColorController } from "@music-analyzer/controllers";
+import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color-selector";
 
 const ir_analysis_em = size;
 
@@ -16,7 +17,6 @@ export class IRSymbolView
   ColorChangeSubscriber {
   constructor(
     model: IRSymbolModel,
-    controllers: RequiredByIRSymbolView,
   ) {
     super("text", model);
     this.svg.textContent = this.model.archetype.symbol;
@@ -24,9 +24,8 @@ export class IRSymbolView
     this.svg.style.fontFamily = "Times New Roman";
     this.svg.style.fontSize = `${ir_analysis_em}em`;
     this.svg.style.textAnchor = "middle";
-    controllers.melody_color.register(this)
   }
   updateX(x: number) { this.svg.setAttribute("x", String(x)); }
   updateY(y: number) { this.svg.setAttribute("y", String(y)); }
-  setColor(getColor: (e: Triad) => string) { this.svg.style.fill = getColor(this.model.archetype) || "rgb(0, 0, 0)"; }
+  readonly setColor: SetColor = getColor => this.svg.style.fill = getColor(this.model.archetype) || "rgb(0, 0, 0)";
 }
