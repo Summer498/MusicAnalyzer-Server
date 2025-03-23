@@ -15,6 +15,6 @@ export class IRPlotLayer {
     controllers: RequiredByIRPlotLayer,
   ) {
     this.child = new IRPlot(melody_series, controllers);
-    this.view = new IRPlotLayerView(this.child, layer, max, new IRPlotLayerModel(this.child.view.w, this.child.view.h))
+    this.view = new IRPlotLayerView(this.child, layer, max, new IRPlotLayerModel(this.child.view.view_model.w, this.child.view.view_model.h))
   }
 }
