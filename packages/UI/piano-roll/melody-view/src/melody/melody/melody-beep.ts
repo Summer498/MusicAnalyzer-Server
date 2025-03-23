@@ -16,12 +16,10 @@ export class MelodyBeep
   #sound_reserved: boolean;
   constructor(
     private readonly model: MelodyModel,
-    controllers: RequiredByMelodyBeep
   ) {
     this.#beep_volume = 0;
     this.#do_melody_beep = false;
     this.#sound_reserved = false;
-    controllers.melody_beep.register(this);
   }
   #beepMelody = () => {
     const volume = this.#beep_volume / 400;
