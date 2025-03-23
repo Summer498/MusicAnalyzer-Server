@@ -1,8 +1,8 @@
 shopt -s globstar  # ** の有効化
 
 draw(){
-  echo "$1"
   npx depcruise "$(dirname "$1")" --output-type dot | dot -T svg > "$(dirname "$1")/dependency-graph.svg"
+  echo "$1"
 }
 
 draw ./packages &
