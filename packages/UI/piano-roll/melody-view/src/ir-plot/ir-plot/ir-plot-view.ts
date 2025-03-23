@@ -1,8 +1,8 @@
-import { Triad } from "@music-analyzer/irm";
 import { MVVM_View } from "@music-analyzer/view";
 import { IRPlotModel } from "./ir-plot-model";
 import { ColorChangeSubscriber, MelodyColorController } from "@music-analyzer/controllers";
 import { IRPlotViewModel } from "./ir-plot-view-model";
+import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color-selector";
 
 const get_pos = (_x: number, _y: number) => {
   const a = 1 / 3;
@@ -27,12 +27,10 @@ export class IRPlotView
   readonly view_model: IRPlotViewModel
   constructor(
     model: IRPlotModel,
-    controllers: RequiredByIRPlotView,
   ) {
     super("circle", model);
     this.svg.style.stroke = "rgb(16, 16, 16)";
     this.svg.style.strokeWidth = String(6);
-    controllers.melody_color.register(this);
     this.view_model = new IRPlotViewModel()
   }
   updateRadius(r: number) {
@@ -55,5 +53,5 @@ export class IRPlotView
     this.updateX(-((1 - r) * curr[0] + r * next[0]));
     this.updateY(-((1 - r) * curr[1] + r * next[1]));
   }
-  setColor(getColor: (e: Triad) => string) { this.svg.style.fill = getColor(this.model.archetype) || "rgb(0, 0, 0)"; }
+  readonly setColor: SetColor = getColor => this.svg.style.fill = getColor(this.model.archetype) || "rgb(0, 0, 0)";
 }

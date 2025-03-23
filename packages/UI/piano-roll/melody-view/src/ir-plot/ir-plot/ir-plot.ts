@@ -2,6 +2,7 @@ import { AudioReflectableRegistry, MVVM_ViewModel, WindowReflectableRegistry } f
 import { IRPlotModel } from "./ir-plot-model";
 import { IRPlotView, RequiredByIRPlotView } from "./ir-plot-view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color-selector";
 
 export interface RequiredByIRPlot
   extends RequiredByIRPlotView {
@@ -13,10 +14,9 @@ export class IRPlot
   readonly view: IRPlotView;
   constructor(
     e: TimeAndAnalyzedMelody[],
-    controllers: RequiredByIRPlot,
   ) {
     const model = new IRPlotModel(e);
-    const view = new IRPlotView(model, controllers);
+    const view = new IRPlotView(model);
     super(model, view);
     this.view = view;
   }
@@ -24,4 +24,5 @@ export class IRPlot
     this.view.updatePosition();
   }
   onWindowResized() { }
+  readonly setColor: SetColor = f => this.view.setColor(f)
 }

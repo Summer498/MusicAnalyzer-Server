@@ -3,6 +3,7 @@ import { IRPlotLayer, RequiredByIRPlotLayer } from "../ir-plot-layer";
 import { IRPlotHierarchyView } from "./ir-plot-hierarchy-view"
 import { HierarchyLevelController } from "@music-analyzer/controllers";
 import { IRPlotHierarchyModel } from "./ir-plot-hierarchy-model";
+import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color-selector";
 
 export interface RequiredByIRPlotHierarchy
   extends RequiredByIRPlotLayer {
@@ -21,12 +22,13 @@ export class IRPlotHierarchy {
     const N = hierarchical_melody.length;
     this.#visible_layer = N;
 
-    this.children = hierarchical_melody.map((e, l) => new IRPlotLayer(e, l, N, controllers));
+    this.children = hierarchical_melody.map((e, l) => new IRPlotLayer(e, l, N));
     this.model = new IRPlotHierarchyModel(this.children);
     this.view = new IRPlotHierarchyView(this.model.width, this.model.height)
     controllers.hierarchy.register(this);
     controllers.audio.register(this);
     controllers.window.register(this);
+    controllers.melody_color.register(this);
   }
   updateLayer() {
     const visible_layer = this.children
@@ -40,4 +42,5 @@ export class IRPlotHierarchy {
   }
   onAudioUpdate() { this.children.forEach(e=>e.onAudioUpdate()) }
   onWindowResized() { this.children.forEach(e=>e.onWindowResized()) }
+  readonly setColor: SetColor = f => this.children.forEach(e => e.setColor(f))
 }
