@@ -29,8 +29,6 @@ export class IRSymbol
     this.#y = isNaN(this.model.note) ? -99 : -convertToCoordinate(transposed(this.model.note));
     this.updateX();
     this.updateY();
-    controllers.window.register(this);
-    controllers.time_range.register(this);
   }
   updateX() {
     this.view.updateX(
