@@ -1,5 +1,5 @@
 import { size } from "@music-analyzer/view-parameters";
-import { get_color_of_Narmour_concept, Triad } from "@music-analyzer/irm";
+import { Triad } from "@music-analyzer/irm";
 import { MVVM_View } from "@music-analyzer/view";
 import { IRSymbolModel } from "./ir-symbol-model";
 import { ColorChangeSubscriber, MelodyColorController } from "@music-analyzer/controllers";
@@ -14,7 +14,6 @@ export class IRSymbolView
   extends MVVM_View<"text", IRSymbolModel>
   implements
   ColorChangeSubscriber {
-  #getColor: (e: Triad) => string;
   constructor(
     model: IRSymbolModel,
     controllers: RequiredByIRSymbolView,
@@ -25,16 +24,11 @@ export class IRSymbolView
     this.svg.style.fontFamily = "Times New Roman";
     this.svg.style.fontSize = `${ir_analysis_em}em`;
     this.svg.style.textAnchor = "middle";
-    this.#getColor = get_color_of_Narmour_concept;
     controllers.melody_color.register(this)
   }
   updateX(x: number) { this.svg.setAttribute("x", String(x)); }
   updateY(y: number) { this.svg.setAttribute("y", String(y)); }
   setColor(getColor: (e: Triad) => string) {
-    this.#getColor = getColor;
-    this.svg.style.fill = this.#getColor(this.model.archetype) || "rgb(0, 0, 0)";
-  }
-  updateColor() {
-    this.#getColor(this.model.archetype) || "rgb(0, 0, 0)";
+    this.svg.style.fill = getColor(this.model.archetype) || "rgb(0, 0, 0)";
   }
 }

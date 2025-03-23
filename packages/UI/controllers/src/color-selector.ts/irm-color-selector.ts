@@ -3,7 +3,6 @@ import { ColorSelector } from "./color-selector";
 
 export interface ColorChangeSubscriber {
   setColor: (getColor: (e: Triad) => string) => void
-  updateColor: () => void
 }
 
 export class IRM_ColorSelector 

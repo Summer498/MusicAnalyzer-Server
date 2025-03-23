@@ -22,7 +22,6 @@ export class IRPlot
   }
   onAudioUpdate() {
     this.view.updatePosition();
-    this.view.updateColor();
   }
   onWindowResized() { }
 }

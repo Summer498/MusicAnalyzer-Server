@@ -1,4 +1,4 @@
-import { get_color_of_Narmour_concept, Triad } from "@music-analyzer/irm";
+import { Triad } from "@music-analyzer/irm";
 import { MVVM_View } from "@music-analyzer/view";
 import { IRPlotModel } from "./ir-plot-model";
 import { ColorChangeSubscriber, MelodyColorController } from "@music-analyzer/controllers";
@@ -24,7 +24,6 @@ export interface RequiredByIRPlotView {
 export class IRPlotView
   extends MVVM_View<"circle", IRPlotModel>
   implements ColorChangeSubscriber {
-  #getColor: (archetype: Triad) => string;
   readonly view_model: IRPlotViewModel
   constructor(
     model: IRPlotModel,
@@ -33,7 +32,6 @@ export class IRPlotView
     super("circle", model);
     this.svg.style.stroke = "rgb(16, 16, 16)";
     this.svg.style.strokeWidth = String(6);
-    this.#getColor = get_color_of_Narmour_concept;
     controllers.melody_color.register(this);
     this.view_model = new IRPlotViewModel()
   }
@@ -58,10 +56,6 @@ export class IRPlotView
     this.updateY(-((1 - r) * curr[1] + r * next[1]));
   }
   setColor(getColor: (e: Triad) => string) {
-    this.#getColor = getColor;
-    this.svg.style.fill = this.#getColor(this.model.archetype) || "rgb(0, 0, 0)";
-  }
-  updateColor() {
-    this.svg.style.fill = this.#getColor(this.model.archetype) || "rgb(0, 0, 0)";
+    this.svg.style.fill = getColor(this.model.archetype) || "rgb(0, 0, 0)";
   }
 }
