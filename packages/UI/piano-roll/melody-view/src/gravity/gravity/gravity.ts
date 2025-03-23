@@ -23,7 +23,6 @@ export class Gravity
     layer: number,
     readonly next: TimeAndAnalyzedMelody,
     readonly gravity: GravityAnalysis,
-    controllers: RequiredByGravity,
   ) {
     const model = new GravityModel(e, layer, next, gravity);
     super(model, new GravityView(model));
@@ -33,8 +32,6 @@ export class Gravity
       isNaN(this.model.note) ? -99 : (0.5 - convertToCoordinate(transposed(this.model.note))),
       isNaN(this.model.note) ? -99 : (0.5 - convertToCoordinate(transposed(this.model.gravity.destination!))),
     )
-    controllers.window.register(this);
-    controllers.time_range.register(this);
   }
   updateWidth() { this.view.updateWidth(scaled(this.model.time.duration)) }
   updateHeight() { this.view.updateHeight(BlackKeyPrm.height) }
