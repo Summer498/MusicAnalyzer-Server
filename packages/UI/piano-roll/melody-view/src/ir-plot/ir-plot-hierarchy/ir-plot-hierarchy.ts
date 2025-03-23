@@ -25,10 +25,12 @@ export class IRPlotHierarchy {
     this.model = new IRPlotHierarchyModel(this.children);
     this.view = new IRPlotHierarchyView(this.model.width, this.model.height)
     controllers.hierarchy.register(this);
+    controllers.audio.register(this);
+    controllers.window.register(this);
   }
   updateLayer() {
     const visible_layer = this.children
-      .filter(e => e.child.model.is_visible)
+      .filter(e => e.children[0].model.is_visible)
       .filter(e => 1 < e.layer && e.layer <= this.#visible_layer);
     this.view.updateCircleVisibility(visible_layer)
   }
@@ -36,4 +38,6 @@ export class IRPlotHierarchy {
     this.#visible_layer = value;
     this.updateLayer();
   }
+  onAudioUpdate() { this.children.forEach(e=>e.onAudioUpdate()) }
+  onWindowResized() { this.children.forEach(e=>e.onWindowResized()) }
 }

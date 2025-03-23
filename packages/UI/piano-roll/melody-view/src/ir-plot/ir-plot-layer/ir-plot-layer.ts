@@ -2,19 +2,25 @@ import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { IRPlotLayerView } from "./ir-plot-layer-view";
 import { IRPlot, RequiredByIRPlot } from "../ir-plot";
 import { IRPlotLayerModel } from "./ir-plot-layer-model";
+import { AudioReflectable, WindowReflectable } from "@music-analyzer/view";
 
 export interface RequiredByIRPlotLayer
   extends RequiredByIRPlot { }
-export class IRPlotLayer {
+export class IRPlotLayer
+  implements
+  AudioReflectable,
+  WindowReflectable {
   readonly view: IRPlotLayerView
-  readonly child: IRPlot;
+  readonly children: [IRPlot];
   constructor(
     melody_series: TimeAndAnalyzedMelody[],
     readonly layer: number,
     max: number,
     controllers: RequiredByIRPlotLayer,
   ) {
-    this.child = new IRPlot(melody_series, controllers);
-    this.view = new IRPlotLayerView(this.child, layer, max, new IRPlotLayerModel(this.child.view.view_model.w, this.child.view.view_model.h))
+    this.children = [new IRPlot(melody_series, controllers)];
+    this.view = new IRPlotLayerView(this.children[0], layer, max, new IRPlotLayerModel(this.children[0].view.view_model.w, this.children[0].view.view_model.h))
   }
+  onAudioUpdate() { this.children.forEach(e=>e.onAudioUpdate()) }
+  onWindowResized() { this.children.forEach(e=>e.onWindowResized()) }
 }

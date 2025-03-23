@@ -19,8 +19,6 @@ export class IRPlot
     const view = new IRPlotView(model, controllers);
     super(model, view);
     this.view = view;
-    controllers.audio.register(this);
-    controllers.window.register(this);
   }
   onAudioUpdate() {
     this.view.updatePosition();
