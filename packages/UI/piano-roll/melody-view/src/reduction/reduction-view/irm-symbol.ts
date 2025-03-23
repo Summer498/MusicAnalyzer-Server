@@ -21,9 +21,7 @@ export class IRMSymbol
     this.svg.style.textAnchor = "middle";
     controllers.melody_color.register(this);
   }
-  setColor(getColor: (e: Triad) => string) {
-    this.svg.style.fill = getColor(this.model.archetype) || "rgb(0, 0, 0)";
-  }
+  setColor(getColor: (e: Triad) => string) { this.svg.style.fill = getColor(this.model.archetype) || "rgb(0, 0, 0)"; }
   update(cx: number, y: number, w: number, h: number) {
     this.svg.setAttribute("x", String(cx));
     this.svg.setAttribute("y", String(y));

@@ -55,7 +55,5 @@ export class IRPlotView
     this.updateX(-((1 - r) * curr[0] + r * next[0]));
     this.updateY(-((1 - r) * curr[1] + r * next[1]));
   }
-  setColor(getColor: (e: Triad) => string) {
-    this.svg.style.fill = getColor(this.model.archetype) || "rgb(0, 0, 0)";
-  }
+  setColor(getColor: (e: Triad) => string) { this.svg.style.fill = getColor(this.model.archetype) || "rgb(0, 0, 0)"; }
 }

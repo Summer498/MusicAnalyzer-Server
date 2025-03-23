@@ -21,10 +21,7 @@ export class MelodyView
     this.svg.onclick = deleteMelody;
     controllers.melody_color.register(this);
   }
-  setColor(getColor: (e: Triad) => string) {
-    this.svg.style.fill = getColor(this.model.archetype) || "rgb(0, 0, 0)";
-    this.svg.style.fill = "rgb(0, 192, 0)";
-  }
+  setColor(getColor: (e: Triad) => string) { this.svg.style.fill = "rgb(0, 192, 0)"; }
   updateX(x: number) { this.svg.setAttribute("x", String(x)); }
   updateY(y: number) { this.svg.setAttribute("y", String(y)); }
   updateWidth(w: number) { this.svg.setAttribute("width", String(w)); }

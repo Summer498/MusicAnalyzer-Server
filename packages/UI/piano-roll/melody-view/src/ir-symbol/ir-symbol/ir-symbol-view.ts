@@ -28,7 +28,5 @@ export class IRSymbolView
   }
   updateX(x: number) { this.svg.setAttribute("x", String(x)); }
   updateY(y: number) { this.svg.setAttribute("y", String(y)); }
-  setColor(getColor: (e: Triad) => string) {
-    this.svg.style.fill = getColor(this.model.archetype) || "rgb(0, 0, 0)";
-  }
+  setColor(getColor: (e: Triad) => string) { this.svg.style.fill = getColor(this.model.archetype) || "rgb(0, 0, 0)"; }
 }
