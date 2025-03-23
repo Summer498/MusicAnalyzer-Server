@@ -1,4 +1,5 @@
-import { ColorChangeSubscriber, MelodyColorSelector } from "./melody-color-selector";
+import { ColorChangeSubscriber } from "./irm-color-selector";
+import { MelodyColorSelector } from "./melody-color-selector";
 
 export class MelodyColorController {
   readonly view: HTMLDivElement;
