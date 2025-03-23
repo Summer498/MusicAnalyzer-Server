@@ -18,14 +18,15 @@ export interface RequiredByChordNote {
 }
 export class ChordNote
   extends MVVM_ViewModel<ChordNoteModel, ChordNoteView>
-  implements AudioReflectable, TimeRangeSubscriber {
+  implements
+  AudioReflectable,
+  TimeRangeSubscriber {
   #y: number;
   constructor(
     e: TimeAndRomanAnalysis,
     chord: Chord,
     note: string,
     oct: number,
-    controllers: RequiredByChordNote
   ) {
     const model = new ChordNoteModel(e, chord, note, oct);
     super(model, new ChordNoteView(model));
@@ -36,9 +37,6 @@ export class ChordNote
     this.updateY();
     this.updateWidth();
     this.updateHeight();
-    controllers.audio.register(this);
-    controllers.window.register(this);
-    controllers.time_range.register(this);
   }
   updateX() { this.view.updateX(scaled(this.model.time.begin)) }
   updateY() { this.view.updateY(this.#y) }
