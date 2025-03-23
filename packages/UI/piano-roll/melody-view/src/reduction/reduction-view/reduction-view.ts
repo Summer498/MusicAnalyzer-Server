@@ -5,6 +5,7 @@ import { IRMSymbol, RequiredByIRMSymbol } from "./irm-symbol";
 import { Bracket } from "./bracket";
 import { Dot } from "./dot";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color-selector";
 
 export interface RequiredByReductionView
   extends RequiredByIRMSymbol, RequiredByReductionViewModel {
@@ -19,12 +20,11 @@ export class ReductionView
   readonly ir_symbol: IRMSymbol;
   constructor(
     model: ReductionModel,
-    controllers: RequiredByReductionView,
   ) {
     super("g", new ReductionViewModel(model));
     this.bracket = new Bracket(this.model);
     this.dot = new Dot(this.model);
-    this.ir_symbol = new IRMSymbol(this.model, controllers);
+    this.ir_symbol = new IRMSymbol(this.model);
 
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.svg.id = "time-span-node";
@@ -38,6 +38,7 @@ export class ReductionView
     this.bracket.updateStrong();
     this.dot.updateStrong();
   }
+  readonly setColor: SetColor = f => this.ir_symbol.setColor(f)
   onTimeRangeChanged() { this.model.onTimeRangeChanged() }
   onWindowResized() {
     this.model.onWindowResized();

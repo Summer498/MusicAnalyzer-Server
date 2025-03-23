@@ -2,6 +2,7 @@ import { HierarchyLevelController, HierarchyLevelSubscriber, TimeRangeSubscriber
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { AudioReflectable, CollectionHierarchy, WindowReflectable } from "@music-analyzer/view";
 import { ReductionLayer, RequiredByReductionLayer } from "./reduction-layer";
+import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color-selector";
 
 export interface RequiredByReductionHierarchy
   extends RequiredByReductionLayer {
@@ -18,7 +19,8 @@ export class ReductionHierarchy
     hierarchical_melodies: TimeAndAnalyzedMelody[][],
     controllers: RequiredByReductionHierarchy
   ) {
-    super("time-span-reduction", hierarchical_melodies.map((e, l) => new ReductionLayer(e, l, controllers)));
+    super("time-span-reduction", hierarchical_melodies.map((e, l) => new ReductionLayer(e, l)));
+    controllers.melody_color.register(this);
     controllers.hierarchy.register(this);
     controllers.audio.register(this);
     controllers.window.register(this);
@@ -30,6 +32,7 @@ export class ReductionHierarchy
     visible_layer.forEach(e => e.renewStrong(value));
     this.setShow(visible_layer);
   }
+  readonly setColor: SetColor = f => this.children.forEach(e => e.setColor(f))
   onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()) }
   onAudioUpdate() { this.children.forEach(e => e.onAudioUpdate()) }
   onWindowResized() { this.children.forEach(e => e.onWindowResized()) }

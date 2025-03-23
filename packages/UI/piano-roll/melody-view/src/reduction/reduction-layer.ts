@@ -2,6 +2,7 @@ import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { AudioReflectableRegistry, CollectionLayer, WindowReflectable } from "@music-analyzer/view";
 import { Reduction, RequiredByReduction } from "./reduction";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color-selector";
 
 export interface RequiredByReductionLayer
   extends RequiredByReduction {
@@ -15,10 +16,10 @@ export class ReductionLayer
   constructor(
     melody: TimeAndAnalyzedMelody[],
     layer: number,
-    controllers: RequiredByReductionLayer
   ) {
-    super(layer, melody.map(e => new Reduction(e, layer, controllers)));
+    super(layer, melody.map(e => new Reduction(e, layer)));
   }
+  readonly setColor: SetColor = f => this.children.forEach(e => e.setColor(f))
   renewStrong(layer: number) { this.children.forEach(e => e.renewStrong(layer === this.layer)); }
   onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()) }
   onWindowResized() { this.children.forEach(e => e.onWindowResized()) }

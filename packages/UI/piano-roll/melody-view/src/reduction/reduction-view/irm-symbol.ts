@@ -3,6 +3,7 @@ import { bracket_height } from "@music-analyzer/view-parameters";
 import { MVVM_View } from "@music-analyzer/view";
 import { ReductionViewModel } from "./reduction-view-model";
 import { MelodyColorController } from "@music-analyzer/controllers";
+import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color-selector";
 
 export interface RequiredByIRMSymbol {
   readonly melody_color: MelodyColorController
@@ -11,7 +12,6 @@ export class IRMSymbol
   extends MVVM_View<"text", ReductionViewModel> {
   constructor(
     model: ReductionViewModel,
-    controllers: RequiredByIRMSymbol,
   ) {
     super("text", model);
     this.svg.textContent = this.model.archetype.symbol;
@@ -19,9 +19,8 @@ export class IRMSymbol
     this.svg.style.fontFamily = "Times New Roman";
     this.svg.style.fontSize = `${bracket_height}em`;
     this.svg.style.textAnchor = "middle";
-    controllers.melody_color.register(this);
   }
-  setColor(getColor: (e: Triad) => string) { this.svg.style.fill = getColor(this.model.archetype) || "rgb(0, 0, 0)"; }
+  readonly setColor: SetColor = getColor => this.svg.style.fill = getColor(this.model.archetype) || "rgb(0, 0, 0)";
   update(cx: number, y: number, w: number, h: number) {
     this.svg.setAttribute("x", String(cx));
     this.svg.setAttribute("y", String(y));
