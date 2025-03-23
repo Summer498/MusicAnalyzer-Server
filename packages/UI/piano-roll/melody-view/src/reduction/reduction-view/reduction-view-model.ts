@@ -30,7 +30,6 @@ export class ReductionViewModel
   readonly archetype: Triad;
   constructor(
     readonly model: ReductionModel,
-    controllers: RequiredByReductionViewModel,
   ) {
     super();
     this.#x = this.getViewX(this.model.time.begin);
@@ -41,7 +40,6 @@ export class ReductionViewModel
     this.h = BlackKeyPrm.height * bracket_height;
     this.#strong = false;
     this.archetype = model.archetype as Triad
-    controllers.time_range.register(this);
   }
   getViewX(x: number) { return scaled(x); }
   getViewW(w: number) { return scaled(w); }

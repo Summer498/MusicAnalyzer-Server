@@ -1,6 +1,6 @@
-import { HierarchyLevelController, HierarchyLevelSubscriber } from "@music-analyzer/controllers";
+import { HierarchyLevelController, HierarchyLevelSubscriber, TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { CollectionHierarchy } from "@music-analyzer/view";
+import { AudioReflectable, CollectionHierarchy, WindowReflectable } from "@music-analyzer/view";
 import { ReductionLayer, RequiredByReductionLayer } from "./reduction-layer";
 
 export interface RequiredByReductionHierarchy
@@ -10,13 +10,19 @@ export interface RequiredByReductionHierarchy
 export class ReductionHierarchy
   extends CollectionHierarchy<ReductionLayer>
   implements
-  HierarchyLevelSubscriber {
+  HierarchyLevelSubscriber,
+  TimeRangeSubscriber,
+  AudioReflectable,
+  WindowReflectable {
   constructor(
     hierarchical_melodies: TimeAndAnalyzedMelody[][],
     controllers: RequiredByReductionHierarchy
   ) {
     super("time-span-reduction", hierarchical_melodies.map((e, l) => new ReductionLayer(e, l, controllers)));
     controllers.hierarchy.register(this);
+    controllers.audio.register(this);
+    controllers.window.register(this);
+    controllers.time_range.register(this);
   }
   onChangedLayer(value: number) {
     const visible_layer = this.children.filter(e => value >= e.layer);
@@ -24,4 +30,7 @@ export class ReductionHierarchy
     visible_layer.forEach(e => e.renewStrong(value));
     this.setShow(visible_layer);
   }
+  onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()) }
+  onAudioUpdate() { this.children.forEach(e => e.onAudioUpdate()) }
+  onWindowResized() { this.children.forEach(e => e.onWindowResized()) }
 }

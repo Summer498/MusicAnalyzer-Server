@@ -4,13 +4,15 @@ import { ReductionViewModel, RequiredByReductionViewModel } from "./reduction-vi
 import { IRMSymbol, RequiredByIRMSymbol } from "./irm-symbol";
 import { Bracket } from "./bracket";
 import { Dot } from "./dot";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 
 export interface RequiredByReductionView
   extends RequiredByIRMSymbol, RequiredByReductionViewModel {
   readonly window: WindowReflectableRegistry,
 }
 export class ReductionView
-  extends MVVM_View<"g", ReductionViewModel> {
+  extends MVVM_View<"g", ReductionViewModel>
+  implements TimeRangeSubscriber {
   readonly svg: SVGGElement;
   readonly bracket: Bracket;
   readonly dot: Dot;
@@ -19,7 +21,7 @@ export class ReductionView
     model: ReductionModel,
     controllers: RequiredByReductionView,
   ) {
-    super("g", new ReductionViewModel(model, controllers));
+    super("g", new ReductionViewModel(model));
     this.bracket = new Bracket(this.model);
     this.dot = new Dot(this.model);
     this.ir_symbol = new IRMSymbol(this.model, controllers);
@@ -29,7 +31,6 @@ export class ReductionView
     this.svg.appendChild(this.bracket.svg);
     if (false) { this.svg.appendChild(this.dot.svg); }
     this.svg.appendChild(this.ir_symbol.svg);
-    controllers.window.register(this);
   }
   get strong() { return this.model.strong; }
   set strong(value: boolean) {
@@ -37,6 +38,7 @@ export class ReductionView
     this.bracket.updateStrong();
     this.dot.updateStrong();
   }
+  onTimeRangeChanged() { this.model.onTimeRangeChanged() }
   onWindowResized() {
     this.model.onWindowResized();
     this.bracket.onWindowResized();

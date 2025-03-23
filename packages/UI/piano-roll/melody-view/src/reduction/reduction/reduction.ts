@@ -1,12 +1,16 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { ReductionModel } from "../reduction-model";
 import { ReductionView, RequiredByReductionView } from "../reduction-view";
-import { MVVM_ViewModel } from "@music-analyzer/view";
+import { MVVM_ViewModel, WindowReflectable } from "@music-analyzer/view";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 
 export interface RequiredByReduction
   extends RequiredByReductionView { }
 export class Reduction
-  extends MVVM_ViewModel<ReductionModel, ReductionView> {
+  extends MVVM_ViewModel<ReductionModel, ReductionView>
+  implements
+  TimeRangeSubscriber,
+  WindowReflectable {
   constructor(
     melody: TimeAndAnalyzedMelody,
     layer: number,
@@ -16,4 +20,6 @@ export class Reduction
     super(model, new ReductionView(model, controllers));
   }
   renewStrong(strong: boolean) { this.view.strong = strong; }
+  onTimeRangeChanged() { this.view.onTimeRangeChanged() }
+  onWindowResized() { this.view.onWindowResized() }
 }
