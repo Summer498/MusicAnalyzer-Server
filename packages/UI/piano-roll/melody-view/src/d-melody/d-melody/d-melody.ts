@@ -20,7 +20,6 @@ export class DMelody
   implements TimeRangeSubscriber {
   constructor(
     e: TimeAndAnalyzedMelody,
-    controllers: RequiredByDMelody,
   ) {
     const model = new DMelodyModel(e);
     super(model, new DMelodyView(model));
@@ -29,8 +28,6 @@ export class DMelody
     this.updateY();
     this.updateWidth();
     this.updateHeight();
-    controllers.window.register(this)
-    controllers.time_range.register(this);
   }
   updateX() { this.view.updateX(scaled(this.model.time.begin)) }
   updateY() { this.view.updateY(isNaN(this.model.note) ? -99 : -convertToCoordinate(transposed(this.model.note))) }
