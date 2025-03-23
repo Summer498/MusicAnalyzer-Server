@@ -4,6 +4,7 @@ import { ColorChangeSubscriber, IRM_ColorSelector } from "./irm-color-selector";
 export class MelodyColorSelector {
   readonly body: HTMLSpanElement;
   readonly children: IRM_ColorSelector[];
+  readonly default: IRM_ColorSelector;
   constructor() {
     this.children = [
       new IRM_ColorSelector("Narmour_concept", "Narmour concept color", get_color_of_Narmour_concept),
@@ -16,12 +17,16 @@ export class MelodyColorSelector {
     ];
     this.children.forEach(e => { e.input.name = "melody-color-selector"; });
 
-    const default_item = this.children[0];
-    default_item && (default_item.input.checked = true);
+    this.default = this.children[0];
+    this.default && (this.default.input.checked = true);
 
     this.body = document.createElement("div");
     this.body.id = "melody_color_selector";
     this.children.forEach(e => this.body.appendChild(e.body));
+    this.default.update();
   }
-  register(...subscribers: ColorChangeSubscriber[]) { this.children.forEach(e => e.register(...subscribers)) }
+  register(...subscribers: ColorChangeSubscriber[]) {
+     this.children.forEach(e => e.register(...subscribers))
+     this.default.update();
+  }
 }
