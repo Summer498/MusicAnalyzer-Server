@@ -7,6 +7,7 @@ export { RectangleModel } from "./rectangle-model";
 export abstract class Rectangle implements WindowReflectable {
   readonly model: RectangleModel;
   readonly view: RectangleView;
+  get svg() { return this.view.svg; }
   constructor(
     id: string,
     protected readonly prm: typeof RectParameters,
