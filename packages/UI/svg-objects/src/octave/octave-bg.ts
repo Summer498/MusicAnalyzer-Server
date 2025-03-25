@@ -2,14 +2,12 @@ import { WindowReflectable } from "@music-analyzer/view";
 import { OctaveBlackBG } from "./octave-black-bg";
 import { OctaveWhiteBG } from "./octave-white-bg";
 
-export class OctaveBG 
+export class OctaveBG
   implements WindowReflectable {
   readonly svg: SVGGElement;
   readonly white_BGs: OctaveWhiteBG;
   readonly black_BGs: OctaveBlackBG;
-  constructor(
-    readonly oct: number,
-  ) {
+  constructor(readonly oct: number) {
     this.white_BGs = new OctaveWhiteBG(oct);
     this.black_BGs = new OctaveBlackBG(oct);
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
