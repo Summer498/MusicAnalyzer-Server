@@ -1,5 +1,5 @@
-import { BlackKey } from "../components";
-import { OctaveChunk } from "./octave-chunk.ts";
+import { BlackKey } from "../../components";
+import { OctaveChunk } from ".";
 
 export class OctaveBlackKey extends OctaveChunk {
   constructor(oct: number) {

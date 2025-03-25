@@ -1,5 +1,5 @@
-import { WhiteBG } from "../components";
-import { OctaveChunk } from "./octave-chunk.ts";
+import { WhiteBG } from "../../components";
+import { OctaveChunk } from ".";
 
 export class OctaveWhiteBG extends OctaveChunk {
   constructor(oct: number) {

@@ -1,6 +1,6 @@
 import { WindowReflectable } from "@music-analyzer/view";
-import { OctaveBlackBG } from "./octave-black-bg";
-import { OctaveWhiteBG } from "./octave-white-bg";
+import { OctaveBlackBG } from "./octave-chunk.ts/octave-black-bg";
+import { OctaveWhiteBG } from "./octave-chunk.ts/octave-white-bg";
 
 export class OctaveBG
   implements WindowReflectable {
