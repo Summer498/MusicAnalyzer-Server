@@ -1,16 +1,8 @@
-import { WindowReflectable } from "@music-analyzer/view";
 import { BlackKey } from "../components";
+import { OctaveChunk } from "./octave-chunk.ts";
 
-export class OctaveBlackKey
-  implements WindowReflectable {
-  readonly svg: SVGGElement;
-  readonly children: BlackKey[];
+export class OctaveBlackKey extends OctaveChunk {
   constructor(oct: number) {
-    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    this.svg.id = `octave-black-keys-${oct}`;
-    const seed = [...Array(5)];
-    this.children = seed.map((_, j) => new BlackKey(oct, j));
-    this.children.map(e => this.svg.appendChild(e.svg));
+    super(`octave-black-keys-${oct}`, [...Array(5)].map((_, j) => new BlackKey(oct, j)))
   }
-  onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
 }
