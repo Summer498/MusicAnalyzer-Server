@@ -1,2 +1,3 @@
-export { OctaveBGs } from "./octave-bgs";
-export { OctaveKeys } from "./octave-keys";
+export { Octave } from "./octave";
+export { OctaveBG } from "./octave-bg";
+export { OctaveKey } from "./octave-key";
