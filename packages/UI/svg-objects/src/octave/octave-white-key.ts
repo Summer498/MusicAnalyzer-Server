@@ -8,8 +8,8 @@ export class OctaveWhiteKey
   constructor(oct: number) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.svg.id = `octave-white-keys-${oct}`;
-    const white_seed = [...Array(7)];
-    this.children = white_seed.map((_, white_index) => new WhiteKey(oct, white_index));
+    const seed = [...Array(7)];
+    this.children = seed.map((_, i) => new WhiteKey(oct, i));
     this.children.map(e => this.svg.appendChild(e.svg));
   }
   onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
