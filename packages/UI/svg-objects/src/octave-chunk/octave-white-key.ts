@@ -1,5 +1,5 @@
-import { WhiteKey } from "../../components";
-import { OctaveChunk } from ".";
+import { WhiteKey } from "../components";
+import { OctaveChunk } from "./octave-chunk";
 
 export class OctaveWhiteKey extends OctaveChunk {
   constructor(oct: number) {

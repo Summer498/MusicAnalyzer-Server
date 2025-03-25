@@ -1,6 +1,6 @@
 import { WindowReflectable } from "@music-analyzer/view";
-import { OctaveBlackKey } from "./octave-chunk.ts/octave-black-key";
-import { OctaveWhiteKey } from "./octave-chunk.ts/octave-white-key";
+import { OctaveBlackKey } from "../octave-chunk/octave-black-key";
+import { OctaveWhiteKey } from "../octave-chunk/octave-white-key";
 
 export class OctaveKey
   implements WindowReflectable {
