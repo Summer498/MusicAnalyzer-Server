@@ -1,4 +1,4 @@
 export { BlackBG } from "./black-bg";
 export { BlackKey } from "./black-key";
 export { WhiteBG } from "./white-bg";
-export { WhiteKeySVG } from "./white-key";
+export { WhiteKey } from "./white-key";

@@ -2,7 +2,7 @@ import { WhiteKeyPrm } from "@music-analyzer/view-parameters";
 import { Rectangle } from "./rectangle";
 import { WhiteKeyModel } from "./white-key-model";
 
-export class WhiteKeySVG extends Rectangle {
+export class WhiteKey extends Rectangle {
   override model: WhiteKeyModel;
   constructor(oct: number, i: number) {
     const pos = [0, 1, 2, 3, 4, 5, 6]
