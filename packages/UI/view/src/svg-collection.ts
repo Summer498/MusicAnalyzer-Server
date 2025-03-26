@@ -1,6 +1,12 @@
-import { search_items_overlaps_range, Time } from "@music-analyzer/time-and";
+import { search_items_overlaps_range } from "@music-analyzer/time-and";
+import { Time } from "@music-analyzer/time-and";
 import { PianoRollTranslateX } from "@music-analyzer/view-parameters";
-import { MVVM_Collection, MVVM_ViewModel, MVVM_Model, MVVM_View, I_MVVM_Collection, I_MVVM_ModelView } from "./mvc";
+import { MVVM_Collection } from "./mvc";
+import { MVVM_ViewModel } from "./mvc";
+import { MVVM_Model } from "./mvc";
+import { MVVM_View } from "./mvc";
+import { I_MVVM_Collection } from "./mvc";
+import { I_MVVM_ModelView } from "./mvc";
 import { AudioReflectable } from "./reflectable";
 
 export abstract class TimeAndMVCModel

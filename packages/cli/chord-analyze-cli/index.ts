@@ -1,5 +1,6 @@
 import { default as ReadLine } from "readline";
-import { calcChordProgression, TimeAndChordSymbol } from "@music-analyzer/chord-analyze";
+import { calcChordProgression } from "@music-analyzer/chord-analyze";
+import { TimeAndChordSymbol } from "@music-analyzer/chord-analyze";
 import { RomanAnalysisData } from "@music-analyzer/chord-analyze";
 import { Time } from "@music-analyzer/time-and";
 

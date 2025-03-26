@@ -1,4 +1,5 @@
-import { ColorChangeSubscriber, MelodyColorController } from "@music-analyzer/controllers";
+import { ColorChangeSubscriber } from "@music-analyzer/controllers";
+import { MelodyColorController } from "@music-analyzer/controllers";
 import { MVVM_View } from "@music-analyzer/view";
 import { deleteMelody } from "../../melody-editor-function";
 import { MelodyModel } from "./melody-model";

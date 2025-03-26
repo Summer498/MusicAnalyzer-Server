@@ -1,5 +1,7 @@
 import { mod } from "@music-analyzer/math";
-import { _Note, Chord, Scale } from "@music-analyzer/tonal-objects";
+import { _Note } from "@music-analyzer/tonal-objects";
+import { Chord } from "@music-analyzer/tonal-objects";
+import { Scale } from "@music-analyzer/tonal-objects";
 import { Gravity } from "./interfaces";
 
 // TODO: マイナーコードに対応する

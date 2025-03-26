@@ -1,11 +1,17 @@
-import { AudioReflectable, AudioReflectableRegistry, MVVM_ViewModel, WindowReflectableRegistry } from "@music-analyzer/view";
+import { AudioReflectable } from "@music-analyzer/view";
+import { AudioReflectableRegistry } from "@music-analyzer/view";
+import { MVVM_ViewModel } from "@music-analyzer/view";
+import { WindowReflectableRegistry } from "@music-analyzer/view";
 import { ChordNoteModel } from "./chord-note-model";
 import { ChordNoteView } from "./chord-note-view";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
+import { BlackKeyPrm } from "@music-analyzer/view-parameters";
+import { NoteSize } from "@music-analyzer/view-parameters";
+import { PianoRollBegin } from "@music-analyzer/view-parameters";
 import { mod } from "@music-analyzer/math";
 import { Chord } from "@music-analyzer/tonal-objects";
-import { TimeRangeController, TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { TimeRangeController } from "@music-analyzer/controllers";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();

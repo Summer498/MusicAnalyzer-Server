@@ -1,2 +1,3 @@
-export { Gravity, RequiredByGravity } from "./gravity";
+export { Gravity } from "./gravity";
+export{ RequiredByGravity } from "./gravity";
 export { GravityModel } from "./gravity-model";

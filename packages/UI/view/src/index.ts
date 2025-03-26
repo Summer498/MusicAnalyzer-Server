@@ -1,5 +1,11 @@
 export { CollectionLayer } from "./collection-layer";
 export { CollectionHierarchy } from "./collection-hierarchy";
-export { MVVM_Collection, MVVM_Model, MVVM_View, MVVM_ViewModel } from "./mvc";
-export { AudioReflectable, AudioReflectableRegistry, WindowReflectable, WindowReflectableRegistry } from "./reflectable";
+export { MVVM_Collection } from "./mvc";
+export{ MVVM_Model } from "./mvc";
+export{ MVVM_View } from "./mvc";
+export{ MVVM_ViewModel } from "./mvc";
+export { AudioReflectable } from "./reflectable";
+export{ AudioReflectableRegistry } from "./reflectable";
+export{ WindowReflectable } from "./reflectable";
+export{ WindowReflectableRegistry } from "./reflectable";
 export { ReflectableTimeAndMVCControllerCollection } from "./svg-collection";

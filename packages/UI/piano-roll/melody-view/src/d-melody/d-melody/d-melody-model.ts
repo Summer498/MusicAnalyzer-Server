@@ -1,4 +1,5 @@
-import { TimeAndAnalyzedMelody, MelodyAnalysis } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { MelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { Time } from "@music-analyzer/time-and";
 
 export class DMelodyModel {

@@ -1,8 +1,13 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { CollectionLayer, WindowReflectable } from "@music-analyzer/view";
-import { Melody, RequiredByMelody } from "./melody";
-import { MelodyBeepSwitcherSubscriber, MelodyBeepVolumeSubscriber, TimeRangeSubscriber } from "@music-analyzer/controllers";
-import { ColorChangeSubscriber, SetColor } from "@music-analyzer/controllers";
+import { CollectionLayer } from "@music-analyzer/view";
+import { WindowReflectable } from "@music-analyzer/view";
+import { Melody } from "./melody";
+import { RequiredByMelody } from "./melody";
+import { MelodyBeepSwitcherSubscriber } from "@music-analyzer/controllers";
+import { MelodyBeepVolumeSubscriber } from "@music-analyzer/controllers";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { ColorChangeSubscriber } from "@music-analyzer/controllers";
+import { SetColor } from "@music-analyzer/controllers";
 
 export interface RequiredByMelodyLayer
   extends RequiredByMelody { }

@@ -1,10 +1,35 @@
-export { Attribute, Clef, Key, Time } from "./attribute"
+export { Attribute } from "./attribute";
+export{ Clef } from "./attribute";
+export{ Key } from "./attribute";
+export{ Time } from "./attribute";
 export { CreditWords } from "./credit"
-export { Font, PageLayout, PageMargins, Scaling } from "./defaults"
-export { Creator, Encoding, Support } from "./identification"
-export { Barline, Beam, ExtendedMeasure, Measure, Note, Pitch } from "./measure"
-export { BeatPos, HasID } from "./part"
-export { MidiDevice, MidiInstrument, ScoreInstrument, ScorePart } from "./part-list"
-export { Print, SystemLayout, SystemMargins } from "./print"
-export { Credit, Defaults, Identification, Part, PartList, ScorePartwise, Work } from "./score-partwise"
+export { Font } from "./defaults";
+export{ PageLayout } from "./defaults";
+export{ PageMargins } from "./defaults";
+export{ Scaling } from "./defaults";
+export { Creator } from "./identification";
+export{ Encoding } from "./identification";
+export{ Support } from "./identification";
+export { Barline } from "./measure";
+export{ Beam } from "./measure";
+export{ ExtendedMeasure } from "./measure";
+export{ Measure } from "./measure";
+export{ Note } from "./measure";
+export{ Pitch } from "./measure";
+export { BeatPos } from "./part";
+export{ HasID } from "./part";
+export { MidiDevice } from "./part-list";
+export{ MidiInstrument } from "./part-list";
+export{ ScoreInstrument } from "./part-list";
+export{ ScorePart } from "./part-list";
+export { Print } from "./print";
+export{ SystemLayout } from "./print";
+export{ SystemMargins } from "./print";
+export { Credit } from "./score-partwise";
+export{ Defaults } from "./score-partwise";
+export{ Identification } from "./score-partwise";
+export{ Part } from "./score-partwise";
+export{ PartList } from "./score-partwise";
+export{ ScorePartwise } from "./score-partwise";
+export{ Work } from "./score-partwise";
 export { MusicXML } from "./music-xml"

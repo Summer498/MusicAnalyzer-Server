@@ -1,4 +1,5 @@
-import { X2jOptions, validationOptions } from "fast-xml-parser";
+import { X2jOptions } from "fast-xml-parser";
+import { validationOptions } from "fast-xml-parser";
 
 export const options: X2jOptions = {
   preserveOrder: false,

@@ -1,4 +1,5 @@
-import { getCapitalCase, getLowerCase } from "@music-analyzer/stdlib";
+import { getCapitalCase } from "@music-analyzer/stdlib";
+import { getLowerCase } from "@music-analyzer/stdlib";
 import { Scale } from "@music-analyzer/tonal-objects";
 
 export const shortenChord = (chord: string) => {

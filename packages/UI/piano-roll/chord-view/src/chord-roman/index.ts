@@ -1,1 +1,2 @@
-export { ChordRomanSeries, RequiredByChordRomanSeries } from "./chord-roman-series";
+export { ChordRomanSeries } from "./chord-roman-series";
+export{ RequiredByChordRomanSeries } from "./chord-roman-series";

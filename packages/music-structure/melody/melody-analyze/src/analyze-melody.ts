@@ -1,7 +1,14 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-import { _Chord, _Note, _Scale } from "@music-analyzer/tonal-objects";
-import { Null_ad, Dyad, Monad, Triad } from "@music-analyzer/irm";
-import { TimeAndAnalyzedMelody, MelodyAnalysis, TimeAndMelody } from "./interfaces";
+import { _Chord } from "@music-analyzer/tonal-objects";
+import { _Note } from "@music-analyzer/tonal-objects";
+import { _Scale } from "@music-analyzer/tonal-objects";
+import { Null_ad } from "@music-analyzer/irm";
+import { Dyad } from "@music-analyzer/irm";
+import { Monad } from "@music-analyzer/irm";
+import { Triad } from "@music-analyzer/irm";
+import { TimeAndAnalyzedMelody } from "./interfaces";
+import { MelodyAnalysis } from "./interfaces";
+import { TimeAndMelody } from "./interfaces";
 import { registerGravity } from "./register-gravity";
 
 const getSome_ad = (prev?: number, curr?: number, next?: number) => {

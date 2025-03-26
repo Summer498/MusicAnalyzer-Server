@@ -1,10 +1,19 @@
-import { ColorChangeSubscriber, MelodyBeepSwitcherSubscriber, MelodyBeepVolumeSubscriber, TimeRangeController, TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { ColorChangeSubscriber } from "@music-analyzer/controllers";
+import { MelodyBeepSwitcherSubscriber } from "@music-analyzer/controllers";
+import { MelodyBeepVolumeSubscriber } from "@music-analyzer/controllers";
+import { TimeRangeController } from "@music-analyzer/controllers";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
-import { MVVM_ViewModel, WindowReflectableRegistry } from "@music-analyzer/view";
+import { BlackKeyPrm } from "@music-analyzer/view-parameters";
+import { NoteSize } from "@music-analyzer/view-parameters";
+import { PianoRollBegin } from "@music-analyzer/view-parameters";
+import { MVVM_ViewModel } from "@music-analyzer/view";
+import { WindowReflectableRegistry } from "@music-analyzer/view";
 import { MelodyModel } from "./melody-model";
-import { MelodyView, RequiredByMelodyView } from "./melody-view";
-import { MelodyBeep, RequiredByMelodyBeep } from "./melody-beep";
+import { MelodyView } from "./melody-view";
+import { RequiredByMelodyView } from "./melody-view";
+import { MelodyBeep } from "./melody-beep";
+import { RequiredByMelodyBeep } from "./melody-beep";
 import { SetColor } from "@music-analyzer/controllers";
 
 const transposed = (e: number) => e - PianoRollBegin.get()

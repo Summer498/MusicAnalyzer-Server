@@ -1,5 +1,7 @@
 import { RootOfUnity } from "./root-of-unity";
-import { addV2VC, mltV2VC, subV2VC } from "./complex";
+import { addV2VC } from "./complex";
+import { mltV2VC } from "./complex";
+import { subV2VC } from "./complex";
 
 const root_of_unity = new RootOfUnity();
 

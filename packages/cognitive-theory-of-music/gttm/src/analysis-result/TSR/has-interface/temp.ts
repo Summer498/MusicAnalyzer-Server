@@ -1,5 +1,6 @@
 import { Path } from "../../common";
-import { Pred, Succ } from "../common";
+import { Pred } from "../common";
+import { Succ } from "../common";
 import { ITemp } from "../interface/i-temp";
 
 export class Temp 

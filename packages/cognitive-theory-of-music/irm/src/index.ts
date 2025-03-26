@@ -1,4 +1,7 @@
-export { Dyad, Monad, Null_ad, Triad } from "./archetype";
+export { Dyad } from "./archetype";
+export{ Monad } from "./archetype";
+export{ Null_ad } from "./archetype";
+export{ Triad } from "./archetype";
 export { ArchetypeSymbol } from "./archetype";
 export {
   get_color_of_Narmour_concept,

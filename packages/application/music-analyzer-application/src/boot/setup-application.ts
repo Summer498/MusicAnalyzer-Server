@@ -1,5 +1,7 @@
-import { HTMLsContainer, URLsContainer } from "../containers";
-import { loadMusicAnalysis, setAudioPlayer } from "../data-loader";
+import { HTMLsContainer } from "../containers";
+import { URLsContainer } from "../containers";
+import { loadMusicAnalysis } from "../data-loader";
+import { setAudioPlayer } from "../data-loader";
 import { setup } from "./setup";
 import { updateTitle } from "./update-title";
 

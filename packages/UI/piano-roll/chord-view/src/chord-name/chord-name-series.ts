@@ -1,6 +1,11 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-import { AudioReflectable, AudioReflectableRegistry, ReflectableTimeAndMVCControllerCollection, WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
-import { ChordName, RequiredByChordName } from "./chord-name";
+import { AudioReflectable } from "@music-analyzer/view";
+import { AudioReflectableRegistry } from "@music-analyzer/view";
+import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
+import { WindowReflectable } from "@music-analyzer/view";
+import { WindowReflectableRegistry } from "@music-analyzer/view";
+import { ChordName } from "./chord-name";
+import { RequiredByChordName } from "./chord-name";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 
 export interface RequiredByChordNameSeries

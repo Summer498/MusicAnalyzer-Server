@@ -1,7 +1,11 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { PianoRollTranslateX } from "@music-analyzer/view-parameters";
-import { AudioReflectable, AudioReflectableRegistry, MVVM_Collection, WindowReflectable } from "@music-analyzer/view";
-import { ChordKey, RequiredByChordKey } from "./chord-key";
+import { AudioReflectable } from "@music-analyzer/view";
+import { AudioReflectableRegistry } from "@music-analyzer/view";
+import { MVVM_Collection } from "@music-analyzer/view";
+import { WindowReflectable } from "@music-analyzer/view";
+import { ChordKey } from "./chord-key";
+import { RequiredByChordKey } from "./chord-key";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 
 export interface RequiredByChordKeySeries

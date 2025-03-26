@@ -1,8 +1,11 @@
 import { Triad } from "@music-analyzer/irm";
 import { MVVM_Model } from "@music-analyzer/view";
-import { BlackKeyPrm, bracket_height, NoteSize } from "@music-analyzer/view-parameters";
+import { BlackKeyPrm } from "@music-analyzer/view-parameters";
+import { bracket_height } from "@music-analyzer/view-parameters";
+import { NoteSize } from "@music-analyzer/view-parameters";
 import { ReductionModel } from "../reduction-model";
-import { TimeRangeController, TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { TimeRangeController } from "@music-analyzer/controllers";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 
 const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;

@@ -1,4 +1,6 @@
-import { GTTMData, ProlongationalReduction, TimeSpanReduction } from "@music-analyzer/gttm";
+import { GTTMData } from "@music-analyzer/gttm";
+import { ProlongationalReduction } from "@music-analyzer/gttm";
+import { TimeSpanReduction } from "@music-analyzer/gttm";
 import { getHierarchicalMelody } from "@music-analyzer/melody-hierarchical-analysis";
 import { DataContainer } from "./data-container";
 import { AnalyzedMusicData } from "../MusicAnalyzerWindow";

@@ -1,4 +1,11 @@
-import { argmax, Complex, correlation, decimal, getRange, getZeros, mod, totalSum } from "@music-analyzer/math";
+import { argmax } from "@music-analyzer/math";
+import { Complex } from "@music-analyzer/math";
+import { correlation } from "@music-analyzer/math";
+import { decimal } from "@music-analyzer/math";
+import { getRange } from "@music-analyzer/math";
+import { getZeros } from "@music-analyzer/math";
+import { mod } from "@music-analyzer/math";
+import { totalSum } from "@music-analyzer/math";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 

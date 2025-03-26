@@ -1,7 +1,13 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { GravityLayer, RequiredByGravityLayer } from "./gravity-layer";
-import { GravitySwitcher, GravitySwitcherSubscriber, HierarchyLevelController, TimeRangeSubscriber } from "@music-analyzer/controllers";
-import { AudioReflectable, CollectionHierarchy, WindowReflectable } from "@music-analyzer/view";
+import { GravityLayer } from "./gravity-layer";
+import { RequiredByGravityLayer } from "./gravity-layer";
+import { GravitySwitcher } from "@music-analyzer/controllers";
+import { GravitySwitcherSubscriber } from "@music-analyzer/controllers";
+import { HierarchyLevelController } from "@music-analyzer/controllers";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { AudioReflectable } from "@music-analyzer/view";
+import { CollectionHierarchy } from "@music-analyzer/view";
+import { WindowReflectable } from "@music-analyzer/view";
 
 export interface RequiredByGravityHierarchy
   extends RequiredByGravityLayer {

@@ -1,1 +1,2 @@
-export { loadMusicAnalysis, setAudioPlayer } from "./MusicAnalysisLoader";
+export { loadMusicAnalysis } from "./MusicAnalysisLoader";
+export{ setAudioPlayer } from "./MusicAnalysisLoader";

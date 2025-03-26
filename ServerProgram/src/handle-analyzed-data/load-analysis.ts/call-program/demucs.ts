@@ -1,8 +1,12 @@
 import { execSync } from "child_process";
 import { detectFile } from "../../detect-file";
-import { existsSync, renameSync, rmdirSync } from "fs";
+import { existsSync } from "fs";
+import { renameSync } from "fs";
+import { debug_log } from "./util";
+import { DirectoriesWithTemp } from "./util";
 import { makeNewDir } from "../../make-new-dir";
-import { debug_log, DirectoriesWithTemp } from "./util";
+import { debug_log } from "./util";
+import { DirectoriesWithTemp } from "./util";
 
 export const demucs = (
   force: boolean,

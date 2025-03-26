@@ -1,11 +1,15 @@
 import { _Scale } from "@music-analyzer/tonal-objects";
-import { MVVM_ViewModel, WindowReflectableRegistry } from "@music-analyzer/view";
+import { MVVM_ViewModel } from "@music-analyzer/view";
+import { WindowReflectableRegistry } from "@music-analyzer/view";
 import { ChordKeyModel } from "./chord-key-model";
 import { ChordKeyView } from "./chord-key-view";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-import { NoteSize, PianoRollHeight } from "@music-analyzer/view-parameters";
-import { chord_name_margin, chord_text_size } from "../../chord-view-params";
-import { TimeRangeController, TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { NoteSize } from "@music-analyzer/view-parameters";
+import { PianoRollHeight } from "@music-analyzer/view-parameters";
+import { chord_name_margin } from "../../chord-view-params";
+import { chord_text_size } from "../../chord-view-params";
+import { TimeRangeController } from "@music-analyzer/controllers";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 
 const scaled = (e: number) => e * NoteSize.get();
 

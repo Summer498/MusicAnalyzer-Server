@@ -1,5 +1,8 @@
-import { getDistance, getKeysIncludeTheChord } from "@music-analyzer/tonal-pitch-space";
-import { _Chord, _Scale, Scale } from "@music-analyzer/tonal-objects";
+import { getDistance } from "@music-analyzer/tonal-pitch-space";
+import { getKeysIncludeTheChord } from "@music-analyzer/tonal-pitch-space";
+import { _Chord } from "@music-analyzer/tonal-objects";
+import { _Scale } from "@music-analyzer/tonal-objects";
+import { Scale } from "@music-analyzer/tonal-objects";
 import { RomanChord } from "@music-analyzer/roman-chord";
 import { dynamicLogViterbi } from "@music-analyzer/graph";
 import { Compare } from "@music-analyzer/math";

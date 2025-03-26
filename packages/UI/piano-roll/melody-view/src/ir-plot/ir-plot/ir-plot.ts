@@ -1,6 +1,9 @@
-import { AudioReflectableRegistry, MVVM_ViewModel, WindowReflectableRegistry } from "@music-analyzer/view";
+import { AudioReflectableRegistry } from "@music-analyzer/view";
+import { MVVM_ViewModel } from "@music-analyzer/view";
+import { WindowReflectableRegistry } from "@music-analyzer/view";
 import { IRPlotModel } from "./ir-plot-model";
-import { IRPlotView, RequiredByIRPlotView } from "./ir-plot-view";
+import { IRPlotView } from "./ir-plot-view";
+import { RequiredByIRPlotView } from "./ir-plot-view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { SetColor } from "@music-analyzer/controllers";
 

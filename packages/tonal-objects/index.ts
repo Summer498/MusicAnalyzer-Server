@@ -9,4 +9,9 @@ export { type Scale } from '@tonaljs/scale';
 export { type IntervalLiteral, type IntervalName } from '@tonaljs/pitch-interval';
 export { type NoteLiteral } from "@tonaljs/pitch-note";
 
-export { Note, Interval, ChordName, ScaleName, getIntervalDegree, getChroma } from "./src"
+export { Note } from "./src";
+export{ Interval } from "./src";
+export{ ChordName } from "./src";
+export{ ScaleName } from "./src";
+export{ getIntervalDegree } from "./src";
+export{ getChroma } from "./src";

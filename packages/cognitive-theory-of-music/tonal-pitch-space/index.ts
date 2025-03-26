@@ -1,1 +1,2 @@
-export { getDistance, getKeysIncludeTheChord } from "./src";
+export { getDistance } from "./src";
+export{ getKeysIncludeTheChord } from "./src";

@@ -2,7 +2,8 @@ import { execSync } from "child_process";
 import { dirname } from "path";
 import { _throw } from "../stdlib";
 import { makeNewDir } from "./make-new-dir";
-import { chmodSync, existsSync } from "fs";
+import { chmodSync } from "fs";
+import { existsSync } from "fs";
 
 const _runProcessWithCache = (
   dst: string,

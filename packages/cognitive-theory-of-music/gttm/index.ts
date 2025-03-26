@@ -1,2 +1,10 @@
 export { song_list } from "./sample";
-export { GTTMData, GroupingStructure, IProlongationalReduction, ITimeSpanReduction, MetricalStructure, ProlongationalReduction, ReductionElement, TimeSpan, TimeSpanReduction } from "./src";
+export { GTTMData } from "./src";
+export{ GroupingStructure } from "./src";
+export{ IProlongationalReduction } from "./src";
+export{ ITimeSpanReduction } from "./src";
+export{ MetricalStructure } from "./src";
+export{ ProlongationalReduction } from "./src";
+export{ ReductionElement } from "./src";
+export{ TimeSpan } from "./src";
+export{ TimeSpanReduction } from "./src";

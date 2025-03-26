@@ -1,4 +1,5 @@
-import { PianoRollTimeLength, PianoRollWidth } from "./piano-roll";
+import { PianoRollTimeLength } from "./piano-roll";
+import { PianoRollWidth } from "./piano-roll";
 
 export class NoteSize {
   static get() {

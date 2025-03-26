@@ -2,10 +2,12 @@ import { default as URL } from "url";
 import { existsSync } from "fs";
 import { basename } from "path";
 import { sendFile } from "../../routing";
-import { Request, Response } from "express";
+import { Request } from "express";
+import { Response } from "express";
 import { ROOT } from "../../constants";
 import { DataDirectories } from "../data-directories";
-import { chordExtract, chordToRoman } from "./call-program";
+import { chordExtract } from "./call-program";
+import { chordToRoman } from "./call-program";
 
 
 const _loadRomanAnalysis = (update: boolean, song_name: string, file_path: string) => {

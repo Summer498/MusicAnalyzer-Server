@@ -93,4 +93,8 @@ export const normal_rand = (m: number, s: number) => {
   return [r * Math.cos(t), r * Math.sin(t)];
 };
 
-export { Complex, fft, ifft, convolution, correlation, } from "./fft";
+export { Complex } from "./fft";
+export{ fft } from "./fft";
+export{ ifft } from "./fft";
+export{ convolution } from "./fft";
+export{ correlation, } from "./fft";

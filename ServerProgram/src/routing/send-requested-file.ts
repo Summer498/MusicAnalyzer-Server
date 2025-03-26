@@ -1,6 +1,7 @@
 import { default as path } from "path";
 import { default as url } from "url";
-import { Request, Response } from "express";
+import { Request } from "express";
+import { Response } from "express";
 import { send301Redirect } from "./send-301-redirect";
 import { sendFile } from "./send-file";
 import { ROOT } from "../constants";

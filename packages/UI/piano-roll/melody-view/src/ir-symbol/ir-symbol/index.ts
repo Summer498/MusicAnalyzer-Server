@@ -1,1 +1,2 @@
-export { IRSymbol, RequiredByIRSymbol } from "./ir-symbol";
+export { IRSymbol } from "./ir-symbol";
+export{ RequiredByIRSymbol } from "./ir-symbol";

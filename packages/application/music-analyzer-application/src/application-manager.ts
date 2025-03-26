@@ -1,4 +1,5 @@
-import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
+import { AudioReflectableRegistry } from "@music-analyzer/view";
+import { WindowReflectableRegistry } from "@music-analyzer/view";
 import { MusicStructureElements } from "@music-analyzer/piano-roll";
 import { Controllers } from "./controllers";
 import { BeatInfo } from "@music-analyzer/beat-estimation";

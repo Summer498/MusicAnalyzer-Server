@@ -1,4 +1,5 @@
-import { X2jOptions, XMLParser } from "fast-xml-parser";
+import { X2jOptions } from "fast-xml-parser";
+import { XMLParser } from "fast-xml-parser";
 
 const xml_options: X2jOptions = {
   preserveOrder: false,

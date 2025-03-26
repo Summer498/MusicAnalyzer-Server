@@ -1,4 +1,6 @@
-import { _Chord, Chord, getIntervalDegree } from "@music-analyzer/tonal-objects";
+import { _Chord } from "@music-analyzer/tonal-objects";
+import { Chord } from "@music-analyzer/tonal-objects";
+import { getIntervalDegree } from "@music-analyzer/tonal-objects";
 import { Assertion } from "@music-analyzer/stdlib";
 import { getBodyAndRoot } from "./get-body-and-root";
 

@@ -1,6 +1,8 @@
-import { ReductionElement, TimeSpan } from "@music-analyzer/gttm";
+import { ReductionElement } from "@music-analyzer/gttm";
+import { TimeSpan } from "@music-analyzer/gttm";
 import { TimeAndMelody } from "@music-analyzer/melody-analyze";
-import { MusicXML, Pitch } from "@music-analyzer/musicxml";
+import { MusicXML } from "@music-analyzer/musicxml";
+import { Pitch } from "@music-analyzer/musicxml";
 import { Time } from "@music-analyzer/time-and";
 import { getChroma } from "@music-analyzer/tonal-objects";
 

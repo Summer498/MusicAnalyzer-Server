@@ -1,7 +1,10 @@
-import { AudioReflectable, ReflectableTimeAndMVCControllerCollection, WindowReflectable } from "@music-analyzer/view";
+import { AudioReflectable } from "@music-analyzer/view";
+import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
+import { WindowReflectable } from "@music-analyzer/view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
-import { BeatBar, RequiredByBeatBar } from "./beat-bar";
+import { BeatBar } from "./beat-bar";
+import { RequiredByBeatBar } from "./beat-bar";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 
 export interface RequiredByBeatBarsSeries

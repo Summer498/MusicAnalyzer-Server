@@ -1,8 +1,10 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { IRPlotLayerView } from "./ir-plot-layer-view";
-import { IRPlot, RequiredByIRPlot } from "../ir-plot";
+import { IRPlot } from "../ir-plot";
+import { RequiredByIRPlot } from "../ir-plot";
 import { IRPlotLayerModel } from "./ir-plot-layer-model";
-import { AudioReflectable, WindowReflectable } from "@music-analyzer/view";
+import { AudioReflectable } from "@music-analyzer/view";
+import { WindowReflectable } from "@music-analyzer/view";
 import { SetColor } from "@music-analyzer/controllers";
 
 export interface RequiredByIRPlotLayer

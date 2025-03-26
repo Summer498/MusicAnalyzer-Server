@@ -1,7 +1,15 @@
-import { ColorChangeSubscriber, HierarchyLevelController, HierarchyLevelSubscriber, MelodyBeepSwitcherSubscriber, MelodyBeepVolumeSubscriber, TimeRangeSubscriber } from "@music-analyzer/controllers";
-import { AudioReflectableRegistry, CollectionHierarchy, WindowReflectable } from "@music-analyzer/view";
+import { ColorChangeSubscriber } from "@music-analyzer/controllers";
+import { HierarchyLevelController } from "@music-analyzer/controllers";
+import { HierarchyLevelSubscriber } from "@music-analyzer/controllers";
+import { MelodyBeepSwitcherSubscriber } from "@music-analyzer/controllers";
+import { MelodyBeepVolumeSubscriber } from "@music-analyzer/controllers";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { AudioReflectableRegistry } from "@music-analyzer/view";
+import { CollectionHierarchy } from "@music-analyzer/view";
+import { WindowReflectable } from "@music-analyzer/view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { MelodyLayer, RequiredByMelodyLayer } from "./melody-layer";
+import { MelodyLayer } from "./melody-layer";
+import { RequiredByMelodyLayer } from "./melody-layer";
 import { SetColor } from "@music-analyzer/controllers";
 
 export interface RequiredByMelodyHierarchy

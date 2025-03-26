@@ -1,1 +1,2 @@
-export { ChordKeySeries, RequiredByChordKeySeries } from "./chord-key-series";
+export { ChordKeySeries } from "./chord-key-series";
+export{ RequiredByChordKeySeries } from "./chord-key-series";

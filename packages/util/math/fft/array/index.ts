@@ -1,5 +1,8 @@
-import { mltV2VC, revVC, sclV2R } from "./complex";
-import { F32V, fft_core } from "./ftt-core";
+import { mltV2VC } from "./complex";
+import { revVC } from "./complex";
+import { sclV2R } from "./complex";
+import { F32V } from "./ftt-core";
+import { fft_core } from "./ftt-core";
 
 // thanks for fft-js
 export const fft = <T extends number>(...seq: [F32V, F32V]): [F32V, F32V] => {

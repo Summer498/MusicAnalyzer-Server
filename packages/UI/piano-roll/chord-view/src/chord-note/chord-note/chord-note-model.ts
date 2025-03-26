@@ -1,6 +1,8 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { Time } from "@music-analyzer/time-and";
-import { _Interval, _Note, Chord } from "@music-analyzer/tonal-objects";
+import { _Interval } from "@music-analyzer/tonal-objects";
+import { _Note } from "@music-analyzer/tonal-objects";
+import { Chord } from "@music-analyzer/tonal-objects";
 import { MVVM_Model } from "@music-analyzer/view";
 
 export class ChordNoteModel 

@@ -1,4 +1,5 @@
-import { BlackKeyPrm, BlackPosition } from "@music-analyzer/view-parameters";
+import { BlackKeyPrm } from "@music-analyzer/view-parameters";
+import { BlackPosition } from "@music-analyzer/view-parameters";
 import { Rectangle } from "./rectangle";
 
 export class BlackKey extends Rectangle {

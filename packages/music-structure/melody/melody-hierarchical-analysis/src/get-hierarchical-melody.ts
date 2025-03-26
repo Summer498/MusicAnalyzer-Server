@@ -1,5 +1,8 @@
-import { analyzeMelody, TimeAndAnalyzedMelody, TimeAndMelody } from "@music-analyzer/melody-analyze";
-import { ReductionElement, TimeSpan } from "@music-analyzer/gttm";
+import { analyzeMelody } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { TimeAndMelody } from "@music-analyzer/melody-analyze";
+import { ReductionElement } from "@music-analyzer/gttm";
+import { TimeSpan } from "@music-analyzer/gttm";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { getTimeAndMelody } from "./get-time-and-melody";
 import { MusicXML } from "@music-analyzer/musicxml";

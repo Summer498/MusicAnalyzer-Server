@@ -1,8 +1,11 @@
 import { play } from "@music-analyzer/synth";
-import { NowAt, reservation_range } from "@music-analyzer/view-parameters";
+import { NowAt } from "@music-analyzer/view-parameters";
+import { reservation_range } from "@music-analyzer/view-parameters";
 import { Time } from "@music-analyzer/time-and";
 import { MelodyModel } from "./melody-model";
-import { MelodyBeepController, MelodyBeepSwitcherSubscriber, MelodyBeepVolumeSubscriber } from "@music-analyzer/controllers";
+import { MelodyBeepController } from "@music-analyzer/controllers";
+import { MelodyBeepSwitcherSubscriber } from "@music-analyzer/controllers";
+import { MelodyBeepVolumeSubscriber } from "@music-analyzer/controllers";
 
 export interface RequiredByMelodyBeep {
   readonly melody_beep: MelodyBeepController,

@@ -1,1 +1,2 @@
-export { ChordRoman, RequiredByChordRoman } from "./chord-roman";
+export { ChordRoman } from "./chord-roman";
+export{ RequiredByChordRoman } from "./chord-roman";

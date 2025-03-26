@@ -1,7 +1,10 @@
-import { MVVM_View, WindowReflectableRegistry } from "@music-analyzer/view";
+import { MVVM_View } from "@music-analyzer/view";
+import { WindowReflectableRegistry } from "@music-analyzer/view";
 import { ReductionModel } from "../reduction-model";
-import { ReductionViewModel, RequiredByReductionViewModel } from "./reduction-view-model";
-import { IRMSymbol, RequiredByIRMSymbol } from "./irm-symbol";
+import { ReductionViewModel } from "./reduction-view-model";
+import { RequiredByReductionViewModel } from "./reduction-view-model";
+import { IRMSymbol } from "./irm-symbol";
+import { RequiredByIRMSymbol } from "./irm-symbol";
 import { Bracket } from "./bracket";
 import { Dot } from "./dot";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";

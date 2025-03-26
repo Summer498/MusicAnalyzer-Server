@@ -1,4 +1,7 @@
-import { Dyad, Monad, Null_ad, Triad } from "@music-analyzer/irm";
+import { Dyad } from "@music-analyzer/irm";
+import { Monad } from "@music-analyzer/irm";
+import { Null_ad } from "@music-analyzer/irm";
+import { Triad } from "@music-analyzer/irm";
 import { Gravity } from "./gravity";
 
 type MelodyAnalysis_Args = [Gravity | undefined, Gravity | undefined, Triad | Dyad | Monad | Null_ad];

@@ -1,7 +1,10 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { BeatInfo, calcTempo } from "@music-analyzer/beat-estimation";
-import { bracket_height, PianoRollBegin, PianoRollEnd } from "@music-analyzer/view-parameters";
+import { BeatInfo } from "@music-analyzer/beat-estimation";
+import { calcTempo } from "@music-analyzer/beat-estimation";
+import { bracket_height } from "@music-analyzer/view-parameters";
+import { PianoRollBegin } from "@music-analyzer/view-parameters";
+import { PianoRollEnd } from "@music-analyzer/view-parameters";
 
 export class AnalyzedDataContainer {
   readonly beat_info: BeatInfo

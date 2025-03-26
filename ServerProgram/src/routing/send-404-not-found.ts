@@ -1,4 +1,5 @@
-import { Request, Response } from "express";
+import { Request } from "express";
+import { Response } from "express";
 import { _throw } from "../stdlib";
 
 export const send404NotFound = (req: Request, res: Response) => {

@@ -1,5 +1,6 @@
 import { mod } from "@music-analyzer/math";
-import { getChroma, Scale } from "@music-analyzer/tonal-objects";
+import { getChroma } from "@music-analyzer/tonal-objects";
+import { Scale } from "@music-analyzer/tonal-objects";
 
 const regionDistanceInChromaNumber = (src: number, dst: number) => Math.abs(mod((dst - src) * 7 + 6, 12) - 6);
 export const regionDistance = (src: Scale, dst: Scale) => {

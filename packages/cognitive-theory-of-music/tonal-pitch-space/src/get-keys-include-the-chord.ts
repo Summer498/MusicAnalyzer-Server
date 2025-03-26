@@ -1,4 +1,6 @@
-import { _Key, _Scale, Chord } from "@music-analyzer/tonal-objects";
+import { _Key } from "@music-analyzer/tonal-objects";
+import { _Scale } from "@music-analyzer/tonal-objects";
+import { Chord } from "@music-analyzer/tonal-objects";
 import { doesKeyIncludeTheChord } from "./does-key-include-the-chord";
 
 // 最も尤もらしいコード進行を見つける

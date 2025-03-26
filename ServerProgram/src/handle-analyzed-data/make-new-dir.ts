@@ -1,4 +1,5 @@
-import { chmodSync, mkdirSync } from "fs";
+import { chmodSync } from "fs";
+import { mkdirSync } from "fs";
 import { dirname } from "path";
 
 export const makeNewDir = (

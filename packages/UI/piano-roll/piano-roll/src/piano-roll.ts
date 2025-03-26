@@ -1,7 +1,12 @@
-import { chord_name_margin, chord_text_size } from "@music-analyzer/chord-view";
-import { WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
-import { PianoRollHeight, PianoRollWidth } from "@music-analyzer/view-parameters";
-import { CurrentTimeLine, OctaveBGs, OctaveKeys } from "@music-analyzer/svg-objects";
+import { chord_name_margin } from "@music-analyzer/chord-view";
+import { chord_text_size } from "@music-analyzer/chord-view";
+import { WindowReflectable } from "@music-analyzer/view";
+import { WindowReflectableRegistry } from "@music-analyzer/view";
+import { PianoRollHeight } from "@music-analyzer/view-parameters";
+import { PianoRollWidth } from "@music-analyzer/view-parameters";
+import { CurrentTimeLine } from "@music-analyzer/svg-objects";
+import { OctaveBGs } from "@music-analyzer/svg-objects";
+import { OctaveKeys } from "@music-analyzer/svg-objects";
 import { AnalysisView } from "./analysis-view";
 import { MusicStructureElements } from "./music-structure-elements";
 

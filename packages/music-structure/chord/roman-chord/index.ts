@@ -1,4 +1,10 @@
-import { _RomanNumeral, _Chord, _Interval, _Note, _Scale, Chord, Scale } from "@music-analyzer/tonal-objects";
+import { _RomanNumeral } from "@music-analyzer/tonal-objects";
+import { _Chord } from "@music-analyzer/tonal-objects";
+import { _Interval } from "@music-analyzer/tonal-objects";
+import { _Note } from "@music-analyzer/tonal-objects";
+import { _Scale } from "@music-analyzer/tonal-objects";
+import { Chord } from "@music-analyzer/tonal-objects";
+import { Scale } from "@music-analyzer/tonal-objects";
 
 const get_roman = (chord: Chord, scale: Scale) => {
   // chord.tonic || _throw(TypeError("chord.tonic should not be null"));  // NOTE: chord.tonic を null にするテストケースを思いつかないので(=無さそうなので)コメントアウト

@@ -1,4 +1,9 @@
-import { MelodyColorController, DMelodyController, GravityController, HierarchyLevelController, MelodyBeepController, TimeRangeController } from "@music-analyzer/controllers";
+import { MelodyColorController } from "@music-analyzer/controllers";
+import { DMelodyController } from "@music-analyzer/controllers";
+import { GravityController } from "@music-analyzer/controllers";
+import { HierarchyLevelController } from "@music-analyzer/controllers";
+import { MelodyBeepController } from "@music-analyzer/controllers";
+import { TimeRangeController } from "@music-analyzer/controllers";
 
 export class Controllers {
   readonly div: HTMLDivElement

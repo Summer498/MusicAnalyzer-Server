@@ -1,4 +1,5 @@
-import { _Interval, Interval } from "@music-analyzer/tonal-objects";
+import { _Interval } from "@music-analyzer/tonal-objects";
+import { Interval } from "@music-analyzer/tonal-objects";
 import { Motion } from "./Motion";
 import { Direction } from "../Direction";
 import { Magnitude } from "../Magnitude";

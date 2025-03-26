@@ -1,10 +1,15 @@
-import { MVVM_ViewModel, WindowReflectableRegistry } from "@music-analyzer/view";
+import { MVVM_ViewModel } from "@music-analyzer/view";
+import { WindowReflectableRegistry } from "@music-analyzer/view";
 import { GravityModel } from "./gravity-model";
 import { GravityView } from "./gravity-view/gravity-view";
-import { Gravity as GravityAnalysis, TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { BlackKeyPrm, NoteSize, PianoRollBegin } from "@music-analyzer/view-parameters";
+import { Gravity as GravityAnalysis } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { BlackKeyPrm } from "@music-analyzer/view-parameters";
+import { NoteSize } from "@music-analyzer/view-parameters";
+import { PianoRollBegin } from "@music-analyzer/view-parameters";
 import { LinePos } from "../line-pos";
-import { TimeRangeController, TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { TimeRangeController } from "@music-analyzer/controllers";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();

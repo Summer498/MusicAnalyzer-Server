@@ -1,11 +1,17 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
+import { AudioReflectableRegistry } from "@music-analyzer/view";
+import { WindowReflectableRegistry } from "@music-analyzer/view";
 import { GravityController } from "@music-analyzer/controllers";
-import { DMelodySeries, RequiredByDMelodySeries } from "./d-melody";
-import { MelodyHierarchy, RequiredByMelodyHierarchy } from "./melody";
-import { IRSymbolHierarchy, RequiredByIRSymbolHierarchy } from "./ir-symbol";
-import { IRPlot, RequiredByIRPlot } from "./ir-plot";
-import { ReductionHierarchy, RequiredByReductionHierarchy } from "./reduction";
+import { DMelodySeries } from "./d-melody";
+import { RequiredByDMelodySeries } from "./d-melody";
+import { MelodyHierarchy } from "./melody";
+import { RequiredByMelodyHierarchy } from "./melody";
+import { IRSymbolHierarchy } from "./ir-symbol";
+import { RequiredByIRSymbolHierarchy } from "./ir-symbol";
+import { IRPlot } from "./ir-plot";
+import { RequiredByIRPlot } from "./ir-plot";
+import { ReductionHierarchy } from "./reduction";
+import { RequiredByReductionHierarchy } from "./reduction";
 import { GravityHierarchy } from "./gravity";
 
 export interface RequiredByMelodyElements

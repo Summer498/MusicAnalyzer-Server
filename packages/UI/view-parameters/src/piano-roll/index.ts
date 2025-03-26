@@ -1,5 +1,10 @@
 export { PianoRollBegin } from "./piano-roll-begin";
-export { BlackBGsPrm, BlackKeyPrm, octave_height, size, WhiteBGsPrm, WhiteKeyPrm } from "./piano-roll-constants";
+export { BlackBGsPrm } from "./piano-roll-constants";
+export{ BlackKeyPrm } from "./piano-roll-constants";
+export{ octave_height } from "./piano-roll-constants";
+export{ size } from "./piano-roll-constants";
+export{ WhiteBGsPrm } from "./piano-roll-constants";
+export{ WhiteKeyPrm } from "./piano-roll-constants";
 export { PianoRollEnd } from "./piano-roll-end";
 export { PianoRollHeight } from "./piano-roll-height";
 export { PianoRollRatio } from "./piano-roll-ratio";

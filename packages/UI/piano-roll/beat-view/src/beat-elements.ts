@@ -1,6 +1,7 @@
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { BeatBarsSeries, RequiredByBeatBarsSeries } from "./beat-bar-series";
+import { BeatBarsSeries } from "./beat-bar-series";
+import { RequiredByBeatBarsSeries } from "./beat-bar-series";
 
 export interface RequiredByBeatElements
   extends RequiredByBeatBarsSeries { }

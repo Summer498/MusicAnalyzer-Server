@@ -1,6 +1,9 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { AudioReflectableRegistry, CollectionLayer, WindowReflectable } from "@music-analyzer/view";
-import { IRSymbol, RequiredByIRSymbol } from "./ir-symbol";
+import { AudioReflectableRegistry } from "@music-analyzer/view";
+import { CollectionLayer } from "@music-analyzer/view";
+import { WindowReflectable } from "@music-analyzer/view";
+import { IRSymbol } from "./ir-symbol";
+import { RequiredByIRSymbol } from "./ir-symbol";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { SetColor } from "@music-analyzer/controllers";
 

@@ -1,1 +1,2 @@
-export { Reduction, RequiredByReduction } from "./reduction";
+export { Reduction } from "./reduction";
+export{ RequiredByReduction } from "./reduction";

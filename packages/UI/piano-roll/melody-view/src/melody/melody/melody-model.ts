@@ -1,5 +1,6 @@
 import { Triad } from "@music-analyzer/irm";
-import { MelodyAnalysis, TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { MelodyAnalysis } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { Time } from "@music-analyzer/time-and";
 import { MVVM_Model } from "@music-analyzer/view";
 

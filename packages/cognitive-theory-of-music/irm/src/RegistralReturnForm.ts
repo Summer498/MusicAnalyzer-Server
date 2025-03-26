@@ -1,4 +1,6 @@
-import { _Interval, _Note, NoteLiteral } from "@music-analyzer/tonal-objects";
+import { _Interval } from "@music-analyzer/tonal-objects";
+import { _Note } from "@music-analyzer/tonal-objects";
+import { NoteLiteral } from "@music-analyzer/tonal-objects";
 
 export class RegistralReturnForm {
   readonly is_null;

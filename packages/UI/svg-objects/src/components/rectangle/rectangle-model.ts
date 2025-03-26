@@ -1,4 +1,5 @@
-import { octave_height, RectParameters } from "@music-analyzer/view-parameters";
+import { octave_height } from "@music-analyzer/view-parameters";
+import { RectParameters } from "@music-analyzer/view-parameters";
 
 export class RectangleModel {
   constructor(

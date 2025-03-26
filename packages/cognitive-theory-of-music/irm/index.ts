@@ -1,5 +1,9 @@
 import { Triad } from "./src";
-export { ArchetypeSymbol, Dyad, Monad, Null_ad, Triad } from "./src";
+export { ArchetypeSymbol } from "./src";
+export{ Dyad } from "./src";
+export{ Monad } from "./src";
+export{ Null_ad } from "./src";
+export{ Triad } from "./src";
 
 export {
   get_color_of_Narmour_concept,

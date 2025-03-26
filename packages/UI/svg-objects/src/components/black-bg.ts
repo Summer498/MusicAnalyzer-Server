@@ -1,4 +1,5 @@
-import { BlackBGsPrm, BlackPosition } from "@music-analyzer/view-parameters";
+import { BlackBGsPrm } from "@music-analyzer/view-parameters";
+import { BlackPosition } from "@music-analyzer/view-parameters";
 import { Rectangle } from "./rectangle";
 
 export class BlackBG extends Rectangle {

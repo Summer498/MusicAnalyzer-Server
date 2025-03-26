@@ -1,5 +1,7 @@
 import { isSuperSet } from "@music-analyzer/math";
-import { _Key, _Note, Chord } from "@music-analyzer/tonal-objects";
+import { _Key } from "@music-analyzer/tonal-objects";
+import { _Note } from "@music-analyzer/tonal-objects";
+import { Chord } from "@music-analyzer/tonal-objects";
 
 const c_minor = _Key.minorKey("C").natural;
 type KeyScale = typeof c_minor;

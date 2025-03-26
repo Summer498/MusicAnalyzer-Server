@@ -1,7 +1,12 @@
-import { HierarchyLevelController, HierarchyLevelSubscriber, TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { HierarchyLevelController } from "@music-analyzer/controllers";
+import { HierarchyLevelSubscriber } from "@music-analyzer/controllers";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { AudioReflectable, CollectionHierarchy, WindowReflectable } from "@music-analyzer/view";
-import { ReductionLayer, RequiredByReductionLayer } from "./reduction-layer";
+import { AudioReflectable } from "@music-analyzer/view";
+import { CollectionHierarchy } from "@music-analyzer/view";
+import { WindowReflectable } from "@music-analyzer/view";
+import { ReductionLayer } from "./reduction-layer";
+import { RequiredByReductionLayer } from "./reduction-layer";
 import { SetColor } from "@music-analyzer/controllers";
 
 export interface RequiredByReductionHierarchy

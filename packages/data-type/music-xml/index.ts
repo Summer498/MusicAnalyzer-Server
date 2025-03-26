@@ -1,1 +1,3 @@
-export { MusicXML, Pitch, BeatPos } from "./src";
+export { MusicXML } from "./src";
+export{ Pitch } from "./src";
+export{ BeatPos } from "./src";

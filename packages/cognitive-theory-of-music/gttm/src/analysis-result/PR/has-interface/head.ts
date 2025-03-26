@@ -1,4 +1,5 @@
-import { Chord, Head as _Head } from "../../common";
+import { Chord } from "../../common";
+import { Head as _Head } from "../../common";
 import { IHead } from "../interface/i-head";
 
 export class Head

@@ -1,4 +1,5 @@
-import { Request, Response } from "express";
+import { Request } from "express";
+import { Response } from "express";
 import { getDirectoryContents } from "./get-directory-contents";
 
 export const listUpGTTMExample = (req: Request, res: Response) => {

@@ -2,7 +2,8 @@ import { execSync } from "child_process";
 import { detectFile } from "../../detect-file";
 import { existsSync } from "fs";
 import { makeNewDir } from "../../make-new-dir";
-import { debug_log, DirectoriesWithoutTemp } from "./util";
+import { debug_log } from "./util";
+import { DirectoriesWithoutTemp } from "./util";
 
 export const semitonesBy_pYIN = (
   force: boolean,

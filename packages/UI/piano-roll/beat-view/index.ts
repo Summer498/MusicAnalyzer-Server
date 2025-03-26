@@ -1,1 +1,4 @@
-export { BeatElements, RequiredByBeatElements, BeatBarsSeries, RequiredByBeatBarsSeries } from "./src";
+export { BeatElements } from "./src";
+export{ RequiredByBeatElements } from "./src";
+export{ BeatBarsSeries } from "./src";
+export{ RequiredByBeatBarsSeries } from "./src";

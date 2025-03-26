@@ -1,5 +1,7 @@
-import { _Interval, NoteLiteral } from "@music-analyzer/tonal-objects";
-import { hsv2rgb, rgbToString } from "@music-analyzer/color";
+import { _Interval } from "@music-analyzer/tonal-objects";
+import { NoteLiteral } from "@music-analyzer/tonal-objects";
+import { hsv2rgb } from "@music-analyzer/color";
+import { rgbToString } from "@music-analyzer/color";
 import { Triad } from "../archetype";
 
 const get_rgb_on_intervallic_angle = (

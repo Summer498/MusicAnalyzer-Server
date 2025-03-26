@@ -1,7 +1,14 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { AudioReflectable, AudioReflectableRegistry, ReflectableTimeAndMVCControllerCollection, WindowReflectable, WindowReflectableRegistry } from "@music-analyzer/view";
-import { DMelodyController, DMelodyControllerSubscriber, TimeRangeSubscriber } from "@music-analyzer/controllers";
-import { DMelody, RequiredByDMelody } from "./d-melody";
+import { AudioReflectable } from "@music-analyzer/view";
+import { AudioReflectableRegistry } from "@music-analyzer/view";
+import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
+import { WindowReflectable } from "@music-analyzer/view";
+import { WindowReflectableRegistry } from "@music-analyzer/view";
+import { DMelodyController } from "@music-analyzer/controllers";
+import { DMelodyControllerSubscriber } from "@music-analyzer/controllers";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { DMelody } from "./d-melody";
+import { RequiredByDMelody } from "./d-melody";
 
 export interface RequiredByDMelodySeries
   extends RequiredByDMelody {

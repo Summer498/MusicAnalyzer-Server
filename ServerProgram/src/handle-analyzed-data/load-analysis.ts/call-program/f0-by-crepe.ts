@@ -2,7 +2,8 @@ import { execSync } from "child_process";
 import { detectFile } from "../../detect-file";
 import { existsSync } from "fs";
 import { makeNewDir } from "../../make-new-dir";
-import { debug_log, DirectoriesWithTemp } from "./util";
+import { debug_log } from "./util";
+import { DirectoriesWithTemp } from "./util";
 
 export const f0ByCrepe = (
   force: boolean,
