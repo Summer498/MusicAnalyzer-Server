@@ -9,7 +9,7 @@ export class IRPlotLayerView {
     max: number,
     readonly model: IRPlotLayerModel
   ) {
-    const base = Math.log(Math.min(child.view.w, child.view.h) / 10) / Math.log(max);
+    const base = Math.log(Math.min(child.view.view_model.w, child.view.view_model.h) / 10) / Math.log(max);
     child.view.updateRadius(Math.pow(base, max - layer / 2));
     // const base = Math.min(child.view.w, child.view.h) / 10 / max;
     // child.view.updateRadius(base * (max - layer/2));

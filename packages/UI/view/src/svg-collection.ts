@@ -16,7 +16,7 @@ export abstract class TimeAndVM<
   M extends TimeAndMVCModel,
   K extends keyof SVGElementTagNameMap
 >
-  extends MVVM_ViewModel<M, MVVM_View<M, K>> {
+  extends MVVM_ViewModel<M, MVVM_View<K, M>> {
   abstract readonly model: M;
 }
 
