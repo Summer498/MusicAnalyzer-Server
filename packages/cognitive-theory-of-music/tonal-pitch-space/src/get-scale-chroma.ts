@@ -1,7 +1,7 @@
 import { isSubSet } from "@music-analyzer/math/src/set/subset";
 import { RomanChord } from "@music-analyzer/roman-chord";
-import { Assertion } from "@music-analyzer/stdlib";
-import { NotImplementedError } from "@music-analyzer/stdlib";
+import { Assertion } from "@music-analyzer/stdlib/src/assertion/assertion";
+import { NotImplementedError } from "@music-analyzer/stdlib/src/error/not-implemented-error";
 import { getChroma } from "@music-analyzer/tonal-objects";
 
 export const getScaleChroma = (roman: RomanChord) => {

@@ -1,5 +1,5 @@
 import { mod } from "@music-analyzer/math/src/basic-function/mod";
-import { assertNonNullable as NN } from "@music-analyzer/stdlib";
+import { assertNonNullable as NN } from "@music-analyzer/stdlib/src/assertion/not-null-like";
 import { Chord } from "@music-analyzer/tonal-objects";
 import { getIntervalDegree } from "@music-analyzer/tonal-objects";
 
