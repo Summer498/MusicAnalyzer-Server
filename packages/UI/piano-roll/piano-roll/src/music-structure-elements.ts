@@ -5,8 +5,8 @@ import { BeatElements } from "@music-analyzer/beat-view";
 import { RequiredByBeatElements } from "@music-analyzer/beat-view";
 import { ChordElements } from "@music-analyzer/chord-view";
 import { RequiredByChordElements } from "@music-analyzer/chord-view";
-import { MelodyElements } from "@music-analyzer/melody-view";
-import { RequiredByMelodyElements } from "@music-analyzer/melody-view";
+import { MelodyElements } from "@music-analyzer/melody-view/src/melody-elements";
+import { RequiredByMelodyElements } from "@music-analyzer/melody-view/src/melody-elements";
 
 export class MusicStructureElements {
   readonly beat: BeatElements

@@ -1,6 +1,6 @@
 import { IRPlotCircles } from "./ir-plot-circles";
 import { IRPlotAxis } from "./ir-plot-axis";
-import { IRPlotLayer } from "../ir-plot-layer";
+import { IRPlotLayer } from "../ir-plot-layer/ir-plot-layer";
 
 export class IRPlotHierarchyView {
   readonly svg: SVGGElement;

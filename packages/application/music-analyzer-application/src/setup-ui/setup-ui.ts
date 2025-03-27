@@ -33,7 +33,7 @@ export const setupUI = (
       html.audio_player,
       new ColumnHTML(
         manager.controller.div,
-        manager.analyzed.melody.ir_plot.svg
+        manager.analyzed.melody.ir_plot_svg.svg
       ).div,
     )
 };

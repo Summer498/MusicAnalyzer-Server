@@ -1,4 +1,4 @@
-import { IRPlot } from "../ir-plot";
+import { IRPlot } from "../ir-plot/ir-plot";
 import { IRPlotLayerModel } from "./ir-plot-layer-model";
 
 export class IRPlotLayerView {

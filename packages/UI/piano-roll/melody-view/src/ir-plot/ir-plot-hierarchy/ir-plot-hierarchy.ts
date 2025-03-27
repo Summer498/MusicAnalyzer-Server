@@ -1,6 +1,6 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { IRPlotLayer } from "../ir-plot-layer";
-import { RequiredByIRPlotLayer } from "../ir-plot-layer";
+import { IRPlotLayer } from "../ir-plot-layer/ir-plot-layer";
+import { RequiredByIRPlotLayer } from "../ir-plot-layer/ir-plot-layer";
 import { IRPlotHierarchyView } from "./ir-plot-hierarchy-view"
 import { HierarchyLevelController } from "@music-analyzer/controllers";
 import { IRPlotHierarchyModel } from "./ir-plot-hierarchy-model";

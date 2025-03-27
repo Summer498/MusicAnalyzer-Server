@@ -3,12 +3,11 @@ import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-refl
 import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/audio-reflectable-registry";
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view/src/svg-collection";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
-import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
 import { DMelodyController } from "@music-analyzer/controllers";
 import { DMelodyControllerSubscriber } from "@music-analyzer/controllers";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";
-import { DMelody } from "./d-melody";
-import { RequiredByDMelody } from "./d-melody";
+import { DMelody } from "./d-melody/d-melody";
+import { RequiredByDMelody } from "./d-melody/d-melody";
 
 export interface RequiredByDMelodySeries
   extends RequiredByDMelody {

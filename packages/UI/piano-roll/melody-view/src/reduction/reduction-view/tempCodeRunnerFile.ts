@@ -1,1 +1,0 @@
-NoteSize.get()

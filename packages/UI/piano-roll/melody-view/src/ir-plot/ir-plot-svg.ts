@@ -1,7 +1,7 @@
 import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
-import { IRPlotHierarchy } from "./ir-plot-hierarchy";
-import { RequiredByIRPlotHierarchy } from "./ir-plot-hierarchy";
+import { IRPlotHierarchy } from "./ir-plot-hierarchy/ir-plot-hierarchy";
+import { RequiredByIRPlotHierarchy } from "./ir-plot-hierarchy/ir-plot-hierarchy";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 
 export interface RequiredByIRPlotSVG
