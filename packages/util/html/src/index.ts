@@ -1,4 +1,5 @@
-import { Arraying, recurrentArray } from "@music-analyzer/stdlib";
+import { Arraying } from "@music-analyzer/stdlib/src/array-of-array/to-array";
+import { recurrentArray } from "@music-analyzer/stdlib/src/array-of-array/array-of-array";
 import { attribute } from "./attribute";
 export { attribute } from "./attribute";
 export { htmlElement } from "./html-element";

@@ -1,4 +1,4 @@
-import { Assertion } from "@music-analyzer/stdlib";
+import { Assertion } from "@music-analyzer/stdlib/src/assertion/assertion";
 import { mod } from "@music-analyzer/math/src/basic-function/mod";
 import { _Interval } from "@music-analyzer/tonal-objects";
 import { _Note } from "@music-analyzer/tonal-objects";

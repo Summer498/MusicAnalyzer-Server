@@ -1,4 +1,4 @@
-import { recurrentArray } from "@music-analyzer/stdlib";
+import { recurrentArray } from "@music-analyzer/stdlib/src/array-of-array/array-of-array";
 import { setComponentsToElement } from "./set-components-to-element";
 import { attribute } from "./attribute";
 

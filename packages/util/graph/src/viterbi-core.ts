@@ -1,4 +1,4 @@
-import { unique } from "@music-analyzer/stdlib";
+import { unique } from "@music-analyzer/stdlib/src/unique";
 import { argsMinMax } from "@music-analyzer/math/src/reduction/args-min-max";
 import { CompareFunc } from "@music-analyzer/math/src/reduction/compare-func";
 
