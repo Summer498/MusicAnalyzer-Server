@@ -1,5 +1,5 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
-import { _Chord } from "@music-analyzer/tonal-objects";
+import { getChord } from "@music-analyzer/tonal-objects";
 import { Chord } from "@music-analyzer/tonal-objects";
 import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view/src/svg-collection";
@@ -41,7 +41,7 @@ export class ChordNotes
   constructor(
     readonly model: TimeAndRomanAnalysis,
   ) {
-    const chord = _Chord.get(model.chord);
+    const chord = getChord(model.chord);
     super(chord.name, [...Array(OctaveCount.get())].map((_, oct) => new ChordNotesInOctave(model, chord, oct)));
   }
   onAudioUpdate() { this.children.forEach(e => e.onAudioUpdate()) }

@@ -1,5 +1,3 @@
-import { _Interval, } from "@music-analyzer/tonal-objects";
-
 describe("dummy", () => {
   test("hoge", () => {
     expect(42).toBe(42);

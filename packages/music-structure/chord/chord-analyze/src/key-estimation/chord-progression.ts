@@ -1,8 +1,6 @@
 import { getDistance } from "@music-analyzer/tonal-pitch-space";
 import { getKeysIncludeTheChord } from "@music-analyzer/tonal-pitch-space";
-import { _Chord } from "@music-analyzer/tonal-objects";
-import { _Scale } from "@music-analyzer/tonal-objects";
-import { Scale } from "@music-analyzer/tonal-objects";
+import { getScale, Scale } from "@music-analyzer/tonal-objects";
 import { RomanChord } from "@music-analyzer/roman-chord";
 import { dynamicLogViterbi } from "@music-analyzer/graph";
 import { Compare } from "@music-analyzer/math/src/reduction/compare";
@@ -18,7 +16,7 @@ export class ChordProgression {
     const chord = getChord(this.lead_sheet_chords[t]);
     const candidate_scales = getKeysIncludeTheChord(chord); // 候補がない時, ここが空配列になる
     if (candidate_scales.length === 0) {
-      return [_Scale.get("")];
+      return [getScale("")];
     }
     return candidate_scales;
   }
@@ -43,7 +41,7 @@ export class ChordProgression {
       Compare.findMin,
     ).trace.map((e, i) => e.map(scale => new RomanChord(
       scale,
-      _Chord.get(this.lead_sheet_chords[i]),
+      getChord(this.lead_sheet_chords[i]),
     )));
   }
 }

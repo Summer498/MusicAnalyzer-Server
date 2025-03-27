@@ -1,6 +1,6 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
 import { Time } from "@music-analyzer/time-and";
-import { _Chord } from "@music-analyzer/tonal-objects";
+import { getChord } from "@music-analyzer/tonal-objects";
 import { MVVM_Model } from "@music-analyzer/view/src/mvc";
 
 export class ChordRomanModel 
@@ -12,6 +12,6 @@ export class ChordRomanModel
     super();
     this.time = e.time;
     this.roman = e.roman;
-    this.tonic = _Chord.get(e.chord).tonic || "";
+    this.tonic = getChord(e.chord).tonic || "";
   }
 }

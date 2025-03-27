@@ -1,5 +1,5 @@
-import { _Key } from "@music-analyzer/tonal-objects";
-import { _Scale } from "@music-analyzer/tonal-objects";
+import { getScale } from "@music-analyzer/tonal-objects";
+import { majorKey } from "@music-analyzer/tonal-objects";
 import { Chord } from "@music-analyzer/tonal-objects";
 import { doesKeyIncludeTheChord } from "./does-key-include-the-chord";
 
@@ -11,10 +11,10 @@ const chroma2symbol = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb
 export const getKeysIncludeTheChord = (chord: Chord) => {
   const keys_includes_the_chord = chroma2symbol
     .flatMap(symbol => [
-      _Key.majorKey(symbol),
+      majorKey(symbol),
       // _Key.minorKey(symbol).natural,
     ])
     .filter(key => doesKeyIncludeTheChord(key, chord))
-    .map(key => _Scale.get(key.chordScales[0]));
+    .map(key => getScale(key.chordScales[0]));
   return keys_includes_the_chord;
 };

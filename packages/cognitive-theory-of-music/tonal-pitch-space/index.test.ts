@@ -5,14 +5,13 @@ import { mod } from "@music-analyzer/math/src/basic-function/mod"
 import { sameArray } from "@music-analyzer/math/src/array/same-array"
 import { totalSum } from "@music-analyzer/math/src/reduction/sum"
 import { vSub } from "@music-analyzer/math/src/vector/sub"
-import { Assertion } from "@music-analyzer/stdlib"
-import { assertNonNullable as NN } from "@music-analyzer/stdlib"
-import { _Chord } from "@music-analyzer/tonal-objects"
-import { _Key } from "@music-analyzer/tonal-objects"
-import { _Note } from "@music-analyzer/tonal-objects"
-import { _Scale } from "@music-analyzer/tonal-objects"
-// import { _ChordDictionary } from "@music-analyzer/tonal-objects"
+import { Assertion } from "@music-analyzer/stdlib/src/assertion/assertion"
+import { assertNonNullable as NN } from "@music-analyzer/stdlib/src/assertion/not-null-like"
 import { Chord } from "@music-analyzer/tonal-objects"
+import { getChord } from "@music-analyzer/tonal-objects"
+import { getScale } from "@music-analyzer/tonal-objects"
+import { majorKey } from "@music-analyzer/tonal-objects"
+import { minorKey } from "@music-analyzer/tonal-objects"
 import { getIntervalDegree } from "@music-analyzer/tonal-objects"
 import { getChroma } from "@music-analyzer/tonal-objects"
 import { RomanChord } from "@music-analyzer/roman-chord";
@@ -33,8 +32,8 @@ describe("dummy", () => {
 const comment = () => {
   console.log(
     getDistance(
-      new RomanChord(_Scale.get("C major"), _Chord.get("Am7")),
-      new RomanChord(_Scale.get("C major"), _Chord.get("G7")),
+      new RomanChord(getScale("C major"), getChord("Am7")),
+      new RomanChord(getScale("C major"), getChord("G7")),
     ),
   );
 
@@ -44,8 +43,8 @@ const comment = () => {
   for (let i = 0; i < 21; i++) {
     for (let j = 0; j < 21; j++) {
       const distance = regionDistance(
-        _Scale.get(`${all_note_symbols[i]} major`),
-        _Scale.get(`${all_note_symbols[j]} major`),
+        getScale(`${all_note_symbols[i]} major`),
+        getScale(`${all_note_symbols[j]} major`),
       );
       if (distance < -6 || 6 < distance) {
         throw new Error(
@@ -60,8 +59,8 @@ const comment = () => {
   for (let i = 0; i < 21; i++) {
     for (let j = 0; j < 21; j++) {
       const distance = tonicDistance(
-        _Chord.get(all_note_symbols[i]),
-        _Chord.get(all_note_symbols[j]),
+        getChord(all_note_symbols[i]),
+        getChord(all_note_symbols[j]),
       );
       if (distance < -3 || 3 < distance) {
         throw new Error(`rootDistance must be in range [0, 3] received is rootDistance(${i}, ${j}) = ${distance}`);
@@ -98,13 +97,13 @@ const comment = () => {
   // Basic Space Test (No Borrowing)
   for (const key of all_note_symbols
     .map(key_tonic => [
-      _Key.majorKey(key_tonic),
-      _Key.minorKey(key_tonic).natural,
+      majorKey(key_tonic),
+      minorKey(key_tonic).natural,
     ])
     .flat()) {
-    const scale = _Scale.get(key.chordScales[0]);
+    const scale = getScale(key.chordScales[0]);
     const chords = key.chords.map((chord_str: string) =>
-      _Chord.get(chord_str),
+      getChord(chord_str),
     );
     new Assertion(chords.length == 7).onFailed(() => {
       console.log(`received: ${chords}`);
@@ -153,24 +152,24 @@ const comment = () => {
   // I/C から任意のキーの任意の固有和音までの距離についてテストする
   // 出発点 I/C も任意の Roman Chord にすると, 計算量があまりにも多くなる.
   for (const src_key of [
-    _Key.majorKey("C"),
-    _Key.minorKey("C").natural,
+    majorKey("C"),
+    minorKey("C").natural,
   ]) {
-    const src_scale = _Scale.get(src_key.chordScales[0]);
+    const src_scale = getScale(src_key.chordScales[0]);
     // 固有和音を取り出す
-    const src_chord = _Chord.get(src_key.chords[0]);
+    const src_chord = getChord(src_key.chords[0]);
     const src_roman = new RomanChord(src_scale, src_chord);
     const src_BS = getBasicSpace(src_roman);
 
     for (const dst_key of all_note_symbols
       .map(dst_key_tonic => [
-        _Key.majorKey(dst_key_tonic),
-        _Key.minorKey(dst_key_tonic).natural,
+        majorKey(dst_key_tonic),
+        minorKey(dst_key_tonic).natural,
       ])
       .flat()) {
-      const dst_scale = _Scale.get(dst_key.chordScales[0]);
+      const dst_scale = getScale(dst_key.chordScales[0]);
       // 固有和音を取り出す
-      const dst_chords = dst_key.chords.map(chord_str => _Chord.get(chord_str));
+      const dst_chords = dst_key.chords.map(chord_str => getChord(chord_str));
 
       for (const dst_chord of dst_chords) {
         const dst_roman = new RomanChord(dst_scale, dst_chord);
@@ -188,52 +187,53 @@ const comment = () => {
       }
     }
   }
-
+  
+  
   // BS 距離の具体例
   new Assertion(
     getDistance(
-      new RomanChord(_Scale.get("C major"), _Chord.get("C")),
-      new RomanChord(_Scale.get("C major"), _Chord.get("F")),
+      new RomanChord(getScale("C major"), getChord("C")),
+      new RomanChord(getScale("C major"), getChord("F")),
     ) == 6,
   ).onFailed(() => {
     throw new Error();
   });
   new Assertion(
     getDistance(
-      new RomanChord(_Scale.get("C major"), _Chord.get("C")),
-      new RomanChord(_Scale.get("C major"), _Chord.get("G")),
+      new RomanChord(getScale("C major"), getChord("C")),
+      new RomanChord(getScale("C major"), getChord("G")),
     ) == 6,
   ).onFailed(() => {
     throw new Error();
   });
   new Assertion(
     getDistance(
-      new RomanChord(_Scale.get("C major"), _Chord.get("Dm")),
-      new RomanChord(_Scale.get("C major"), _Chord.get("Am")),
+      new RomanChord(getScale("C major"), getChord("Dm")),
+      new RomanChord(getScale("C major"), getChord("Am")),
     ) == 6,
   ).onFailed(() => {
     throw new Error();
   });
   new Assertion(
     getDistance(
-      new RomanChord(_Scale.get("C major"), _Chord.get("C")),
-      new RomanChord(_Scale.get("C major"), _Chord.get("Am")),
+      new RomanChord(getScale("C major"), getChord("C")),
+      new RomanChord(getScale("C major"), getChord("Am")),
     ) == 5,
   ).onFailed(() => {
     throw new Error();
   });
   new Assertion(
     getDistance(
-      new RomanChord(_Scale.get("C major"), _Chord.get("C")),
-      new RomanChord(_Scale.get("C major"), _Chord.get("Em")),
+      new RomanChord(getScale("C major"), getChord("C")),
+      new RomanChord(getScale("C major"), getChord("Em")),
     ) == 5,
   ).onFailed(() => {
     throw new Error();
   });
   new Assertion(
     getDistance(
-      new RomanChord(_Scale.get("C major"), _Chord.get("Dm")),
-      new RomanChord(_Scale.get("C major"), _Chord.get("F")),
+      new RomanChord(getScale("C major"), getChord("Dm")),
+      new RomanChord(getScale("C major"), getChord("F")),
     ) == 5,
   ).onFailed(() => {
     throw new Error();
@@ -243,11 +243,11 @@ const comment = () => {
   for (const note of all_note_symbols) {
     for (const chord_type of chord_types) {
       // |all_note_symbols| * |chord_types| > 12 * 100 = 1200
-      const chord = _Chord.get(note + chord_type);
-      const chord_chromas = chord.notes.map(note => _Note.chroma(note));
+      const chord = getChord(note + chord_type);
+      const chord_chromas = chord.notes.map(note => getChroma(note));
       const keys = getKeysIncludeTheChord(chord);
       new Assertion(
-        forAll(keys, key => isSuperSet(key.notes.map(note => _Note.chroma(note)), chord_chromas),
+        forAll(keys, key => isSuperSet(key.notes.map(note => getChroma(note)), chord_chromas),
         ),
       ).onFailed(() => {
         console.log(
@@ -263,21 +263,21 @@ const comment = () => {
 
   console.log(`getKeyIncludesTheChord("C")`);
   console.log(
-    getKeysIncludeTheChord(_Chord.get("C")), // TODO: getKeyIncludesTheChord のテスト作成
+    getKeysIncludeTheChord(getChord("C")), // TODO: getKeyIncludesTheChord のテスト作成
   );
 
   console.log(`getKeyIncludesTheChord("Am7")`);
   console.log(
-    getKeysIncludeTheChord(_Chord.get("Am7")), // TODO: getKeyIncludesTheChord のテスト作成
+    getKeysIncludeTheChord(getChord("Am7")), // TODO: getKeyIncludesTheChord のテスト作成
   );
 
   console.log(`getKeyIncludesTheChord("CM7")`);
   console.log(
-    getKeysIncludeTheChord(_Chord.get("CM7")), // TODO: getKeyIncludesTheChord のテスト作成
+    getKeysIncludeTheChord(getChord("CM7")), // TODO: getKeyIncludesTheChord のテスト作成
   );
 
   console.log(`getKeyIncludesTheChord("G7")`);
   console.log(
-    getKeysIncludeTheChord(_Chord.get("G7")), // TODO: getKeyIncludesTheChord のテスト作成
+    getKeysIncludeTheChord(getChord("G7")), // TODO: getKeyIncludesTheChord のテスト作成
   );
 };

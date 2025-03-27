@@ -1,5 +1,5 @@
-import { _Interval } from "@music-analyzer/tonal-objects";
 import { IntervalName } from "@music-analyzer/tonal-objects";
+import { intervalOf } from "@music-analyzer/tonal-objects";
 import { NoteLiteral } from "@music-analyzer/tonal-objects";
 
 export class Dyad {
@@ -9,6 +9,6 @@ export class Dyad {
   readonly intervals: [IntervalName];
   constructor(prev: NoteLiteral, curr: NoteLiteral) {
     this.notes = [prev,curr];
-    this.intervals = [_Interval.distance(prev, curr)];
+    this.intervals = [intervalOf(prev, curr)];
   }
 }

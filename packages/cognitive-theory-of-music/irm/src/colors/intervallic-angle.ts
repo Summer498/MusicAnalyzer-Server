@@ -1,4 +1,5 @@
-import { _Interval } from "@music-analyzer/tonal-objects";
+import { getInterval } from "@music-analyzer/tonal-objects";
+import { intervalOf } from "@music-analyzer/tonal-objects";
 import { NoteLiteral } from "@music-analyzer/tonal-objects";
 import { hsv2rgb } from "@music-analyzer/color";
 import { rgbToString } from "@music-analyzer/color";
@@ -10,9 +11,9 @@ const get_rgb_on_intervallic_angle = (
   n2: NoteLiteral,
 ) => {
   const intervals = [
-    _Interval.distance(n0, n1),
-    _Interval.distance(n1, n2)
-  ].map(e => _Interval.get(e).semitones);
+    intervalOf(n0, n1),
+    intervalOf(n1, n2)
+  ].map(e => getInterval(e).semitones);
   const dist = (p => Math.tanh(p[0] * p[0] + p[1] * p[1]))(intervals) || 0;
   const angle = Math.atan2(intervals[1], intervals[0]) || 0;
   return hsv2rgb(angle * 360 / Math.PI, 1, dist);

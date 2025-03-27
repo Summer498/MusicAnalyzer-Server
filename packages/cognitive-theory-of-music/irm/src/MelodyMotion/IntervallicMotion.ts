@@ -1,16 +1,16 @@
-import { _Interval } from "@music-analyzer/tonal-objects";
+import { getInterval } from "@music-analyzer/tonal-objects";
 import { Interval } from "@music-analyzer/tonal-objects";
 import { Motion } from "./Motion";
 import { Direction } from "../Direction";
 import { Magnitude } from "../Magnitude";
 
-const M3 = _Interval.get("M3");
-const m3 = _Interval.get("m3");
+const M3 = getInterval("M3");
+const m3 = getInterval("m3");
 
 const _sgn = (x: number) => x < 0 ? -1 : x && 1
 const _abs = (x: number) => x < 0 ? -x : x
 
-export class IntervallicMotion 
+export class IntervallicMotion
   extends Motion {
   constructor(prev: Interval, curr: Interval) {
     const dir_map: ["mL", "mN", "mR"] = ["mL", "mN", "mR"];

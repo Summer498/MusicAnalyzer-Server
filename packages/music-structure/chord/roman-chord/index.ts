@@ -1,8 +1,7 @@
-import { _RomanNumeral } from "@music-analyzer/tonal-objects";
-import { _Chord } from "@music-analyzer/tonal-objects";
-import { _Interval } from "@music-analyzer/tonal-objects";
-import { _Note } from "@music-analyzer/tonal-objects";
-import { _Scale } from "@music-analyzer/tonal-objects";
+import { getChord, getChroma } from "@music-analyzer/tonal-objects";
+import { getInterval } from "@music-analyzer/tonal-objects";
+import { getRomanNumeral } from "@music-analyzer/tonal-objects";
+import { intervalOf } from "@music-analyzer/tonal-objects";
 import { Chord } from "@music-analyzer/tonal-objects";
 import { Scale } from "@music-analyzer/tonal-objects";
 
@@ -12,19 +11,19 @@ const get_roman = (chord: Chord, scale: Scale) => {
     return chord.name;
   }
   const tonic = chord.tonic;
-  const true_tonic = scale.notes.find(e => _Note.chroma(e) === _Note.chroma(tonic));
-  const interval = _Interval.distance(scale.tonic, true_tonic!);
+  const true_tonic = scale.notes.find(e => getChroma(e) === getChroma(tonic));
+  const interval = intervalOf(scale.tonic, true_tonic!);
   // const interval = _Interval.distance(scale.tonic, tonic);
-  const roman = _RomanNumeral.get(_Interval.get(interval));
+  const roman = getRomanNumeral(getInterval(interval));
   return roman.roman + " " + chord.type;
 };
 
 const convertToTrueTonic = (chord: Chord, scale: Scale) => {
   if (chord.tonic) {
     const tonic = chord.tonic;
-    const true_tonic = scale.notes.find(e => _Note.chroma(e) === _Note.chroma(tonic));
+    const true_tonic = scale.notes.find(e => getChroma(e) === getChroma(tonic));
     if (true_tonic) {
-      return _Chord.get(chord.name.replace(tonic, true_tonic));
+      return getChord(chord.name.replace(tonic, true_tonic));
     }
   }
   return chord;

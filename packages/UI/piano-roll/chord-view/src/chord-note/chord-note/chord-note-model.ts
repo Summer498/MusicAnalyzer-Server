@@ -1,7 +1,7 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
 import { Time } from "@music-analyzer/time-and";
-import { _Interval } from "@music-analyzer/tonal-objects";
-import { _Note } from "@music-analyzer/tonal-objects";
+import { getNote } from "@music-analyzer/tonal-objects";
+import { intervalOf } from "@music-analyzer/tonal-objects";
 import { Chord } from "@music-analyzer/tonal-objects";
 import { MVVM_Model } from "@music-analyzer/view/src/mvc";
 
@@ -23,9 +23,9 @@ export class ChordNoteModel
     this.time = e.time;
     this.tonic = chord.tonic!;
     this.type = chord.type;
-    const _note = _Note.get(note);
+    const _note = getNote(note);
     this.note = _note.chroma;
     this.note_name = _note.name;
-    this.interval = _Interval.distance(this.tonic, _note);
+    this.interval = intervalOf(this.tonic, _note);
   }
 }

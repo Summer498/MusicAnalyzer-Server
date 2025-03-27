@@ -1,5 +1,5 @@
-import { _Chord } from "@music-analyzer/tonal-objects";
-import { _Scale } from "@music-analyzer/tonal-objects";
+import { chord_module } from "@music-analyzer/tonal-objects";
+import { scale_module } from "@music-analyzer/tonal-objects";
 import { Chord } from "@music-analyzer/tonal-objects";
 import { ChordProgression } from "../src/key-estimation/chord-progression";
 import { getChord } from "../src/key-estimation/get-chord";

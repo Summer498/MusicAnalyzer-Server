@@ -1,5 +1,6 @@
-import { _Interval } from "@music-analyzer/tonal-objects";
-import { _Note } from "@music-analyzer/tonal-objects";
+import { getNote } from "@music-analyzer/tonal-objects";
+import { getSemitones } from "@music-analyzer/tonal-objects";
+import { intervalOf } from "@music-analyzer/tonal-objects";
 import { NoteLiteral } from "@music-analyzer/tonal-objects";
 
 export class RegistralReturnForm {
@@ -8,17 +9,17 @@ export class RegistralReturnForm {
   constructor(notes: NoteLiteral[]) {
     this.is_null = true;
     if (notes.length !== 3) { throw new Error(`Invalid argument length. Required 3 arguments but given was ${notes.length} notes: ${JSON.stringify(notes)}`,); }
-    if (_Note.get(notes[0]) === _Note.get("")) {
+    if (getNote(notes[0]) === getNote("")) {
       // null object
       this.return_degree = ""; //_Interval.get("");
       return;
     }
-    this.return_degree = _Interval.distance(notes[0], notes[2]); //_Interval.get(_Interval.distance(notes[2], notes[0]));
+    this.return_degree = intervalOf(notes[0], notes[2]); //_Interval.get(_Interval.distance(notes[2], notes[0]));
     const dir1 = Math.sign(
-      _Interval.semitones(_Interval.distance(notes[0], notes[1])),
+      getSemitones(intervalOf(notes[0], notes[1])),
     );
     const dir2 = Math.sign(
-      _Interval.semitones(_Interval.distance(notes[1], notes[2])),
+      getSemitones(intervalOf(notes[1], notes[2])),
     );
     this.is_null = dir1 === dir2;
   }

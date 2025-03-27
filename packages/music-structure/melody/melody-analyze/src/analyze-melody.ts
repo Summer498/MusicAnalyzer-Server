@@ -1,7 +1,7 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
-import { _Chord } from "@music-analyzer/tonal-objects";
-import { _Note } from "@music-analyzer/tonal-objects";
-import { _Scale } from "@music-analyzer/tonal-objects";
+import { getChord } from "@music-analyzer/tonal-objects";
+import { getScale } from "@music-analyzer/tonal-objects";
+import { noteFromMidi } from "@music-analyzer/tonal-objects";
 import { Null_ad } from "@music-analyzer/irm";
 import { Dyad } from "@music-analyzer/irm";
 import { Monad } from "@music-analyzer/irm";
@@ -12,7 +12,7 @@ import { TimeAndMelody } from "./time-and-melody";
 import { registerGravity } from "./register-gravity";
 
 const getSome_ad = (prev?: number, curr?: number, next?: number) => {
-  const [p, c, n] = [prev, curr, next].map(e => e ? _Note.fromMidi(e) : undefined);
+  const [p, c, n] = [prev, curr, next].map(e => e ? noteFromMidi(e) : undefined);
   if (c !== undefined) {
     if (p !== undefined) {
       if (n !== undefined) { return new Triad(p, c, n) }
@@ -43,8 +43,8 @@ export const analyzeMelody = (
     );
 
     const melody_analysis = new MelodyAnalysis(
-      registerGravity(roman && _Scale.get(roman.scale), prev[i]?.note, curr[i]?.note),
-      registerGravity(roman && _Chord.get(roman.chord), prev[i]?.note, curr[i]?.note),
+      registerGravity(roman && getScale(roman.scale), prev[i]?.note, curr[i]?.note),
+      registerGravity(roman && getChord(roman.chord), prev[i]?.note, curr[i]?.note),
       getSome_ad(prev[i]?.note, curr[i]?.note, next[i]?.note)
     );
 

@@ -1,4 +1,3 @@
-import { _Chord } from "@music-analyzer/tonal-objects";
 import { MVVM_ViewModel} from "@music-analyzer/view/src/mvc";
 import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
 import { ChordNameModel } from "./chord-name-model";

@@ -1,4 +1,5 @@
-import { _Interval } from "@music-analyzer/tonal-objects";
+import { getInterval } from "@music-analyzer/tonal-objects";
+import { intervalOf } from "@music-analyzer/tonal-objects";
 import { IntervalName } from "@music-analyzer/tonal-objects";
 import { NoteLiteral } from "@music-analyzer/tonal-objects";
 import { RegistralReturnForm, } from "../../RegistralReturnForm";
@@ -16,9 +17,9 @@ export class TriadArchetype {
   readonly registral_return_form: RegistralReturnForm;
   constructor(prev: NoteLiteral, curr: NoteLiteral, next: NoteLiteral) {
     this.notes = [prev || "", curr || "", next || ""]
-    this.intervals = [_Interval.distance(prev, curr), _Interval.distance(curr, next),];
-    const initial = _Interval.get(this.intervals[0]);
-    const follow = _Interval.get(this.intervals[1]);
+    this.intervals = [intervalOf(prev, curr), intervalOf(curr, next),];
+    const initial = getInterval(this.intervals[0]);
+    const follow = getInterval(this.intervals[1]);
     this.registral = new RegistralMotion(initial, follow);
     this.intervallic = new IntervallicMotion(initial, follow);
     this.registral_return_form = new RegistralReturnForm(this.notes);

@@ -1,5 +1,4 @@
-import { _Chord } from "@music-analyzer/tonal-objects";
-import { Chord } from "@music-analyzer/tonal-objects";
+import { Chord, getChord as _getChord } from "@music-analyzer/tonal-objects";
 import { getIntervalDegree } from "@music-analyzer/tonal-objects";
 import { Assertion } from "@music-analyzer/stdlib/src/assertion/assertion";
 import { getBodyAndRoot } from "./get-body-and-root";
@@ -8,7 +7,7 @@ import { getBodyAndRoot } from "./get-body-and-root";
 export const getChord = (chord_string: string) => {
   const body_and_root = getBodyAndRoot(chord_string);
   const root = body_and_root.root;
-  const chord = _Chord.get(body_and_root.body);
+  const chord = _getChord(body_and_root.body);
   if (chord_string === "") { return chord; }
 
   new Assertion(!chord.empty).onFailed(() => { throw Error(`Illegal chord symbol "${chord_string}" received`); });

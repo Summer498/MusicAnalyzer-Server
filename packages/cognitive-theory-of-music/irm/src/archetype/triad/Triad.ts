@@ -1,6 +1,5 @@
-import { _Interval } from "@music-analyzer/tonal-objects";
-import { _Note } from "@music-analyzer/tonal-objects";
 import { IntervalName } from "@music-analyzer/tonal-objects";
+import { getInterval } from "@music-analyzer/tonal-objects";
 import { NoteLiteral } from "@music-analyzer/tonal-objects";
 import { TriadSymbol } from "../types";
 import { retrospectiveSymbol } from "../get-retrospective-symbol";
@@ -11,7 +10,7 @@ import { RegistralReturnForm } from "../../RegistralReturnForm";
 
 
 const isRetrospective = (archetype: TriadArchetype) => {
-  const initial = _Interval.get(archetype.intervals[0]);
+  const initial = getInterval(archetype.intervals[0]);
   const init_mgn = Math.abs(initial.num) < 5 ? "aa" : "ab";
   switch (archetype.symbol) {
     case "R":
