@@ -1,5 +1,5 @@
-import { Complex } from "@music-analyzer/math";
-import { correlation } from "@music-analyzer/math";
+import { Complex } from "@music-analyzer/math/src/fft/complex";
+import { correlation } from "@music-analyzer/math/src/fft";
 import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
 import { AudioAnalyzer } from "./audio-analyzer";
 

@@ -5,7 +5,7 @@ import { _Scale } from "@music-analyzer/tonal-objects";
 import { Scale } from "@music-analyzer/tonal-objects";
 import { RomanChord } from "@music-analyzer/roman-chord";
 import { dynamicLogViterbi } from "@music-analyzer/graph";
-import { Compare } from "@music-analyzer/math";
+import { Compare } from "@music-analyzer/math/src/reduction/compare";
 import { getChord } from "./get-chord"; 
 
 export class ChordProgression {

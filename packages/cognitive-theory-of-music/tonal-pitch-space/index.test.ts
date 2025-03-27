@@ -1,15 +1,27 @@
-import { forAll, getZeros, isSuperSet, mod, sameArray, totalSum, vSub } from "@music-analyzer/math";
-import { Assertion, assertNonNullable as NN } from "@music-analyzer/stdlib";
-import { _Chord, _Key, _Note, _Scale, _ChordDictionary, Chord, getIntervalDegree, getChroma } from "@music-analyzer/tonal-objects";
+import { forAll } from "@music-analyzer/math/src/logic/first-order-logic/for-all"
+import { getZeros } from "@music-analyzer/math/src/array/zeros"
+import { isSuperSet } from "@music-analyzer/math/src/set/superset"
+import { mod } from "@music-analyzer/math/src/basic-function/mod"
+import { sameArray } from "@music-analyzer/math/src/array/same-array"
+import { totalSum } from "@music-analyzer/math/src/reduction/sum"
+import { vSub } from "@music-analyzer/math/src/vector/sub"
+import { Assertion } from "@music-analyzer/stdlib"
+import { assertNonNullable as NN } from "@music-analyzer/stdlib"
+import { _Chord } from "@music-analyzer/tonal-objects"
+import { _Key } from "@music-analyzer/tonal-objects"
+import { _Note } from "@music-analyzer/tonal-objects"
+import { _Scale } from "@music-analyzer/tonal-objects"
+// import { _ChordDictionary } from "@music-analyzer/tonal-objects"
+import { Chord } from "@music-analyzer/tonal-objects"
+import { getIntervalDegree } from "@music-analyzer/tonal-objects"
+import { getChroma } from "@music-analyzer/tonal-objects"
 import { RomanChord } from "@music-analyzer/roman-chord";
-import {
-  getDistance,
-  tonicDistance,
-  regionDistance,
-  getBasicSpace,
-  basicSpaceDistance,
-  getKeysIncludeTheChord,
-} from ".";
+import { getDistance } from "."
+import { tonicDistance } from "./src/tonic-distance"
+import { regionDistance } from "./src/region-distance"
+import { getBasicSpace } from "./src/get-basic-space"
+import { basicSpaceDistance } from "./src/basic-space-distance"
+import { getKeysIncludeTheChord, } from "."
 
 describe("dummy", () => {
   test("dummy", () => {
@@ -25,7 +37,7 @@ const comment = () => {
       new RomanChord(_Scale.get("C major"), _Chord.get("G7")),
     ),
   );
-  
+
 
   const all_note_symbols = ["Ab", "A", "A#", "Bb", "B", "B#", "Cb", "C", "C#", "Db", "D", "D#", "Eb", "E", "E#", "Fb", "F", "F#", "Gb", "G", "G#",];
   // Range test for regionDistance

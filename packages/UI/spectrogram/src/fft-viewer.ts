@@ -1,4 +1,4 @@
-import { Complex } from "@music-analyzer/math";
+import { Complex } from "@music-analyzer/math/src/fft/complex";
 import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
 import { AudioAnalyzer } from "./audio-analyzer";
 

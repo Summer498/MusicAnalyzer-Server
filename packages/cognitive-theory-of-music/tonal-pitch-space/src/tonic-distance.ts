@@ -1,4 +1,4 @@
-import { mod } from "@music-analyzer/math";
+import { mod } from "@music-analyzer/math/src/basic-function/mod";
 import { assertNonNullable as NN } from "@music-analyzer/stdlib";
 import { Chord } from "@music-analyzer/tonal-objects";
 import { getIntervalDegree } from "@music-analyzer/tonal-objects";

@@ -1,4 +1,4 @@
-import { mod } from "@music-analyzer/math";
+import { mod } from "@music-analyzer/math/src/basic-function/mod";
 import { getChroma } from "@music-analyzer/tonal-objects";
 import { Scale } from "@music-analyzer/tonal-objects";
 

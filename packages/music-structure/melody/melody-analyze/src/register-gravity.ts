@@ -1,4 +1,4 @@
-import { mod } from "@music-analyzer/math";
+import { mod } from "@music-analyzer/math/src/basic-function/mod";
 import { _Note } from "@music-analyzer/tonal-objects";
 import { Chord } from "@music-analyzer/tonal-objects";
 import { Scale } from "@music-analyzer/tonal-objects";

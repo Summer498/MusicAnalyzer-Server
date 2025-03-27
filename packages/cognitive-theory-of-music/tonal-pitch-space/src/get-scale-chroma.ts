@@ -1,4 +1,4 @@
-import { isSubSet } from "@music-analyzer/math";
+import { isSubSet } from "@music-analyzer/math/src/set/subset";
 import { RomanChord } from "@music-analyzer/roman-chord";
 import { Assertion } from "@music-analyzer/stdlib";
 import { NotImplementedError } from "@music-analyzer/stdlib";

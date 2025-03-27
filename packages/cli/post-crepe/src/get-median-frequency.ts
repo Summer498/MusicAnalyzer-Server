@@ -1,4 +1,4 @@
-import { getRange } from "@music-analyzer/math";
+import { getRange } from "@music-analyzer/math/src/array/range";
 import { MedianFilter } from "./median-filter";
 
 export const getMedianFrequency = (freq_rounded: number[]) => {

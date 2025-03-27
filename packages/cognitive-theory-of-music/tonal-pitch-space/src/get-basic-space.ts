@@ -1,5 +1,5 @@
-import { getOnehot } from "@music-analyzer/math";
-import { vSum } from "@music-analyzer/math";
+import { getOnehot } from "@music-analyzer/math/src/vector/one-hot";
+import { vSum } from "@music-analyzer/math/src/vector/sum";
 import { RomanChord } from "@music-analyzer/roman-chord";
 import { Assertion } from "@music-analyzer/stdlib";
 import { getTonicChroma } from "./get-tonic-chroma";

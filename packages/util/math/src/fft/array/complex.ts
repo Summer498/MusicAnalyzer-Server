@@ -1,3 +1,4 @@
+import { TypedArray } from "../typed-array";
 type R = number;
 
 export const revVC = <V extends TypedArray>(x: [V, V]) => [

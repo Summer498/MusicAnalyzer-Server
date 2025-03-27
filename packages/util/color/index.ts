@@ -1,5 +1,5 @@
 import { Assertion } from "@music-analyzer/stdlib";
-import { mod } from "@music-analyzer/math";
+import { mod } from "@music-analyzer/math/src/basic-function/mod";
 import { _Interval } from "@music-analyzer/tonal-objects";
 import { _Note } from "@music-analyzer/tonal-objects";
 import { map2rgbByHue } from "./src";

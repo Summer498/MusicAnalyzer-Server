@@ -1,4 +1,4 @@
-import { isSuperSet } from "@music-analyzer/math";
+import { isSuperSet } from "@music-analyzer/math/src/set/superset";
 import { _Key } from "@music-analyzer/tonal-objects";
 import { _Note } from "@music-analyzer/tonal-objects";
 import { Chord } from "@music-analyzer/tonal-objects";
