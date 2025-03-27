@@ -1,4 +1,6 @@
-import { BlackKeyPrm, octave_height, PianoRollBegin } from "@music-analyzer/view-parameters"
+import { BlackKeyPrm } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-constants"
+import { octave_height } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-constants"
+import { PianoRollBegin } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-begin"
 import { RectangleModel } from "./rectangle"
 import { mod } from "@music-analyzer/math"
 

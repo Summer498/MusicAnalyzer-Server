@@ -1,5 +1,5 @@
 import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/audio-reflectable-registry";
-import { NowAt } from "@music-analyzer/view-parameters";
+import { NowAt } from "@music-analyzer/view-parameters/src/now-at";
 
 export class EventLoop {
   readonly fps_element: HTMLParagraphElement;

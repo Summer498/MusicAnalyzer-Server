@@ -1,4 +1,4 @@
-import { WhiteKeyPrm } from "@music-analyzer/view-parameters";
+import { WhiteKeyPrm } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-constants";
 import { Rectangle } from "./rectangle";
 import { WhiteKeyModel } from "./white-key-model";
 

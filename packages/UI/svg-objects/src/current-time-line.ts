@@ -1,7 +1,7 @@
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
-import { CurrentTimeX } from "@music-analyzer/view-parameters";
-import { PianoRollHeight } from "@music-analyzer/view-parameters";
+import { CurrentTimeX } from "@music-analyzer/view-parameters/src/current-time-x";
+import { PianoRollHeight } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-height";
 
 export class CurrentTimeLine 
   implements WindowReflectable {

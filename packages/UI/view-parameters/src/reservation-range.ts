@@ -1,0 +1,1 @@
+export const reservation_range = 1 / 15;  // play range [second]

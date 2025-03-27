@@ -1,5 +1,5 @@
-import { PianoRollHeight } from "@music-analyzer/view-parameters";
-import { PianoRollWidth } from "@music-analyzer/view-parameters";
+import { PianoRollHeight } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-height";
+import { PianoRollWidth } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-width";
 
 export const getSVG = (header_height?: number) => {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");

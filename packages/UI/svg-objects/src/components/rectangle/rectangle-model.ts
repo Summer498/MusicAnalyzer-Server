@@ -1,5 +1,5 @@
-import { octave_height } from "@music-analyzer/view-parameters";
-import { RectParameters } from "@music-analyzer/view-parameters";
+import { octave_height } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-constants";
+import { RectParameters } from "@music-analyzer/view-parameters/src/rect-parameter";
 
 export class RectangleModel {
   constructor(

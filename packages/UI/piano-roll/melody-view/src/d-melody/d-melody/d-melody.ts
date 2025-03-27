@@ -4,9 +4,9 @@ import { DMelodyModel } from "./d-melody-model";
 import { DMelodyView } from "./d-melody-view";
 import { insertMelody } from "../../melody-editor-function";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { BlackKeyPrm } from "@music-analyzer/view-parameters";
-import { NoteSize } from "@music-analyzer/view-parameters";
-import { PianoRollBegin } from "@music-analyzer/view-parameters";
+import { BlackKeyPrm } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-constants";
+import { NoteSize } from "@music-analyzer/view-parameters/src/note-size";
+import { PianoRollBegin } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-begin";
 import { TimeRangeController } from "@music-analyzer/controllers";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 

@@ -2,10 +2,10 @@ import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/a
 import { MVVM_ViewModel} from "@music-analyzer/view/src/mvc";
 import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
 import { play } from "@music-analyzer/synth";
-import { NoteSize } from "@music-analyzer/view-parameters";
-import { NowAt } from "@music-analyzer/view-parameters";
-import { PianoRollHeight } from "@music-analyzer/view-parameters";
-import { reservation_range } from "@music-analyzer/view-parameters";
+import { NoteSize } from "@music-analyzer/view-parameters/src/note-size";
+import { NowAt } from "@music-analyzer/view-parameters/src/now-at";
+import { PianoRollHeight } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-height";
+import { reservation_range } from "@music-analyzer/view-parameters/src/reservation-range";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { Time } from "@music-analyzer/time-and";
 import { BeatBarModel } from "./beat-bar-model";

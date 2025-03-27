@@ -1,4 +1,4 @@
-import { PianoRollRatio } from "@music-analyzer/view-parameters";
+import { PianoRollRatio } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-ratio";
 import { Slider } from "./abstract-slider";
 
 class TimeRangeSlider 

@@ -1,4 +1,4 @@
-import { size } from "@music-analyzer/view-parameters";
+import { size } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-constants";
 
 export const chord_text_em = size;
 export const chord_text_size = 16 * chord_text_em;

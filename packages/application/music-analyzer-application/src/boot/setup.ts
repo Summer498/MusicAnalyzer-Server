@@ -1,6 +1,6 @@
 import { AnalyzedDataContainer } from "@music-analyzer/analyzed-data-container"
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { SongLength } from "@music-analyzer/view-parameters";
+import { SongLength } from "@music-analyzer/view-parameters/src/song-length";
 import { AnalyzedMusicData } from "../MusicAnalyzerWindow";
 import { getMusicAnalyzerWindow } from "../MusicAnalyzerWindow";
 import { setupUI } from "../setup-ui";

@@ -5,9 +5,9 @@ import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/
 import { ChordNoteModel } from "./chord-note-model";
 import { ChordNoteView } from "./chord-note-view";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-import { BlackKeyPrm } from "@music-analyzer/view-parameters";
-import { NoteSize } from "@music-analyzer/view-parameters";
-import { PianoRollBegin } from "@music-analyzer/view-parameters";
+import { BlackKeyPrm } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-constants";
+import { NoteSize } from "@music-analyzer/view-parameters/src/note-size";
+import { PianoRollBegin } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-begin";
 import { mod } from "@music-analyzer/math";
 import { Chord } from "@music-analyzer/tonal-objects";
 import { TimeRangeController } from "@music-analyzer/controllers";

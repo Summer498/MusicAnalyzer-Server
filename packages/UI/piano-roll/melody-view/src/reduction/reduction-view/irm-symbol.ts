@@ -1,4 +1,4 @@
-import { bracket_height } from "@music-analyzer/view-parameters";
+import { bracket_height } from "@music-analyzer/view-parameters/src/bracket-height";
 import { MVVM_View } from "@music-analyzer/view/src/mvc";
 import { ReductionViewModel } from "./reduction-view-model";
 import { MelodyColorController } from "@music-analyzer/controllers";

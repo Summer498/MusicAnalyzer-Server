@@ -4,8 +4,8 @@ import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/
 import { ChordNameModel } from "./chord-name-model";
 import { ChordNameView } from "./chord-name-view";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-import { NoteSize } from "@music-analyzer/view-parameters";
-import { PianoRollHeight } from "@music-analyzer/view-parameters";
+import { NoteSize } from "@music-analyzer/view-parameters/src/note-size";
+import { PianoRollHeight } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-height";
 import { chord_text_size } from "../../chord-view-params";
 import { TimeRangeController } from "@music-analyzer/controllers";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";

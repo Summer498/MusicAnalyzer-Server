@@ -1,4 +1,4 @@
-import { PianoRollWidth } from "@music-analyzer/view-parameters";
+import { PianoRollWidth } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-width";
 
 export const getForeignObject = (header_height: number) => {
   const foreign_object = document.createElementNS("http://www.w3.org/2000/svg", "foreignObject");

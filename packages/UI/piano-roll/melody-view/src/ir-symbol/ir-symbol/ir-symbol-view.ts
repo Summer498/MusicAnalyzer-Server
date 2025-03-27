@@ -1,4 +1,4 @@
-import { size } from "@music-analyzer/view-parameters";
+import { size } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-constants";
 import { MVVM_View } from "@music-analyzer/view/src/mvc";
 import { IRSymbolModel } from "./ir-symbol-model";
 import { ColorChangeSubscriber } from "@music-analyzer/controllers";
