@@ -6,9 +6,9 @@ import { Null_ad } from "@music-analyzer/irm";
 import { Dyad } from "@music-analyzer/irm";
 import { Monad } from "@music-analyzer/irm";
 import { Triad } from "@music-analyzer/irm";
-import { TimeAndAnalyzedMelody } from "./interfaces";
-import { MelodyAnalysis } from "./interfaces";
-import { TimeAndMelody } from "./interfaces";
+import { TimeAndAnalyzedMelody } from "./time-and-analyzed-melody";
+import { MelodyAnalysis } from "./melody-analysis";
+import { TimeAndMelody } from "./time-and-melody";
 import { registerGravity } from "./register-gravity";
 
 const getSome_ad = (prev?: number, curr?: number, next?: number) => {

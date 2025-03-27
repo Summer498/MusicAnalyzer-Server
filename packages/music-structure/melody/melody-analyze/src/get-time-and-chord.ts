@@ -1,6 +1,6 @@
 import { TimeAndChordSymbol } from "@music-analyzer/chord-analyze";
 import { _Chord } from "@music-analyzer/tonal-objects";
-import { TimeAndChord } from "./interfaces";
+import { TimeAndChord } from "./time-and-chord";
 
 const _getTimeAndChord = (chords: TimeAndChordSymbol[]) => {
   return chords

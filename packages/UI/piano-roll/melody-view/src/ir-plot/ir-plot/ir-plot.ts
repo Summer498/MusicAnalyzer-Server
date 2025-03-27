@@ -4,7 +4,7 @@ import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/
 import { IRPlotModel } from "./ir-plot-model";
 import { IRPlotView } from "./ir-plot-view";
 import { RequiredByIRPlotView } from "./ir-plot-view";
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { SetColor } from "@music-analyzer/controllers";
 
 export interface RequiredByIRPlot

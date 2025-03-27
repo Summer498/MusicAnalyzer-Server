@@ -1,5 +1,5 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { calcTempo } from "@music-analyzer/beat-estimation";
 import { bracket_height } from "@music-analyzer/view-parameters/src/bracket-height";

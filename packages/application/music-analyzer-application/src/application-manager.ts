@@ -4,7 +4,7 @@ import { MusicStructureElements } from "@music-analyzer/piano-roll";
 import { Controllers } from "./controllers";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 
 export class ApplicationManager {
   readonly NO_CHORD = false;  // コード関連のものを表示しない

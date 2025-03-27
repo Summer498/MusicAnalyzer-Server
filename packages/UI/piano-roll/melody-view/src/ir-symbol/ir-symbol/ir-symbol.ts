@@ -6,7 +6,7 @@ import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/
 import { IRSymbolModel } from "./ir-symbol-model";
 import { IRSymbolView } from "./ir-symbol-view";
 import { RequiredByIRSymbolView } from "./ir-symbol-view";
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { TimeRangeController } from "@music-analyzer/controllers";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { SetColor } from "@music-analyzer/controllers";

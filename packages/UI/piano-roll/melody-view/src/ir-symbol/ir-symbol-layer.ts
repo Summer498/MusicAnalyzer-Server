@@ -1,4 +1,4 @@
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/audio-reflectable-registry";
 import { CollectionLayer } from "@music-analyzer/view/src/collection-layer";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";

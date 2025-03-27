@@ -1,4 +1,4 @@
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { ReductionModel } from "../reduction-model";
 import { ReductionView } from "../reduction-view/reduction-view";
 import { RequiredByReductionView } from "../reduction-view/reduction-view";

@@ -1,7 +1,7 @@
 import { HierarchyLevelController } from "@music-analyzer/controllers";
 import { HierarchyLevelSubscriber } from "@music-analyzer/controllers";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
 import { CollectionHierarchy} from "@music-analyzer/view/src/collection-hierarchy";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";

@@ -7,7 +7,7 @@ import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/audio-reflectable-registry";
 import { CollectionHierarchy} from "@music-analyzer/view/src/collection-hierarchy";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { MelodyLayer } from "./melody-layer";
 import { RequiredByMelodyLayer } from "./melody-layer";
 import { SetColor } from "@music-analyzer/controllers";

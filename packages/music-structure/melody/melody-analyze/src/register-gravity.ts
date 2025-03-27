@@ -2,7 +2,7 @@ import { mod } from "@music-analyzer/math";
 import { _Note } from "@music-analyzer/tonal-objects";
 import { Chord } from "@music-analyzer/tonal-objects";
 import { Scale } from "@music-analyzer/tonal-objects";
-import { Gravity } from "./interfaces";
+import { Gravity } from "./gravity";
 
 // TODO: マイナーコードに対応する
 export const registerGravity = (pitch_class_set: Scale | Chord | undefined, curr?: number, next?: number) => {

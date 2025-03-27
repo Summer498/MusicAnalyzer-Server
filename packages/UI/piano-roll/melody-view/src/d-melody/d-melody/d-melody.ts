@@ -3,7 +3,7 @@ import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/
 import { DMelodyModel } from "./d-melody-model";
 import { DMelodyView } from "./d-melody-view";
 import { insertMelody } from "../../melody-editor-function";
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { BlackKeyPrm } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-constants";
 import { NoteSize } from "@music-analyzer/view-parameters/src/note-size";
 import { PianoRollBegin } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-begin";

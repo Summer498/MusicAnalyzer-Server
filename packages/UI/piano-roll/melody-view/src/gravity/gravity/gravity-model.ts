@@ -1,5 +1,5 @@
-import { Gravity } from "@music-analyzer/melody-analyze";
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { Gravity } from "@music-analyzer/melody-analyze/src/gravity";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { Time } from "@music-analyzer/time-and";
 import { MVVM_Model } from "@music-analyzer/view/src/mvc";
 

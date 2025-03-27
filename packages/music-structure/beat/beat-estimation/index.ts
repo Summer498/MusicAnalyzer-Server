@@ -6,7 +6,7 @@ import { getRange } from "@music-analyzer/math";
 import { getZeros } from "@music-analyzer/math";
 import { mod } from "@music-analyzer/math";
 import { totalSum } from "@music-analyzer/math";
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 
 export type BeatInfo = {

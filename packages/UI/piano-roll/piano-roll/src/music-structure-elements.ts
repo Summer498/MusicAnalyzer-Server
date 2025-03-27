@@ -1,6 +1,6 @@
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { BeatElements } from "@music-analyzer/beat-view";
 import { RequiredByBeatElements } from "@music-analyzer/beat-view";
 import { ChordElements } from "@music-analyzer/chord-view";

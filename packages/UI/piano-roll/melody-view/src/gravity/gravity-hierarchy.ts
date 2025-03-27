@@ -1,4 +1,4 @@
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { GravityLayer } from "./gravity-layer";
 import { RequiredByGravityLayer } from "./gravity-layer";
 import { GravitySwitcher } from "@music-analyzer/controllers";

@@ -1,4 +1,4 @@
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { IRPlotLayerView } from "./ir-plot-layer-view";
 import { IRPlot } from "../ir-plot/ir-plot";
 import { RequiredByIRPlot } from "../ir-plot/ir-plot";
