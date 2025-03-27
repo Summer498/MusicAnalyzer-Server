@@ -1,4 +1,4 @@
-import { TimeAndChordSymbol } from "@music-analyzer/chord-analyze";
+import { TimeAndChordSymbol } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-chord";
 import { _Chord } from "@music-analyzer/tonal-objects";
 import { TimeAndChord } from "./time-and-chord";
 

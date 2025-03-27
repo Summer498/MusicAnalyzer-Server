@@ -3,7 +3,7 @@ import { MVVM_ViewModel} from "@music-analyzer/view/src/mvc";
 import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
 import { ChordRomanModel } from "./chord-roman-model";
 import { ChordRomanView } from "./chord-roman-view";
-import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
+import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
 import { NoteSize } from "@music-analyzer/view-parameters/src/note-size";
 import { PianoRollHeight } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-height";
 import { chord_name_margin } from "../../chord-view-params";

@@ -1,4 +1,4 @@
-import { ChordProgression } from "../key-estimation";
+import { ChordProgression } from "../key-estimation/chord-progression";
 import { remove_item } from "./remove-item";
 import { select_suitable_progression } from "./select-suitable-progression";
 import { splitArray } from "./split-array";

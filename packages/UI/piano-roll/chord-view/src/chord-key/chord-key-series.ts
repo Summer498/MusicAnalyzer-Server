@@ -1,4 +1,4 @@
-import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
+import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
 import { PianoRollTranslateX } from "@music-analyzer/view-parameters/src/piano-roll-translate-x";
 import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
 import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/audio-reflectable-registry";

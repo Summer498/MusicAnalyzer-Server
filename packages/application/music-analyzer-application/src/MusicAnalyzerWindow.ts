@@ -1,4 +1,4 @@
-import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
+import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { GTTMData } from "@music-analyzer/gttm";
 

@@ -1,4 +1,4 @@
-import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
+import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
 import { Time } from "@music-analyzer/time-and";
 import { _Chord } from "@music-analyzer/tonal-objects";
 import { Chord } from "@music-analyzer/tonal-objects";

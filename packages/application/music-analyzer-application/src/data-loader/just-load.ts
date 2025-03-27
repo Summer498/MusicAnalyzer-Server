@@ -1,4 +1,4 @@
-import { RomanAnalysisData } from "@music-analyzer/chord-analyze";
+import { RomanAnalysisData } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
 import { GroupingStructure } from "@music-analyzer/gttm";
 import { IProlongationalReduction } from "@music-analyzer/gttm";
 import { ITimeSpanReduction } from "@music-analyzer/gttm";

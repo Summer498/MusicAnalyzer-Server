@@ -7,7 +7,7 @@ import { getZeros } from "@music-analyzer/math";
 import { mod } from "@music-analyzer/math";
 import { totalSum } from "@music-analyzer/math";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
+import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
 
 export type BeatInfo = {
   tempo: number,
