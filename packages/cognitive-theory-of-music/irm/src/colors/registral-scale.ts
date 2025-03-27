@@ -1,4 +1,4 @@
-import { Triad } from "../archetype";
+import { Triad } from "../archetype/triad/Triad";
 
 export const get_color_on_registral_scale = (archetype: Triad)  => {
   switch (archetype.symbol) {

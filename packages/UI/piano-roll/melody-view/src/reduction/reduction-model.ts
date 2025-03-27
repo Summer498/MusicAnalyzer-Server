@@ -1,4 +1,4 @@
-import { Triad } from "@music-analyzer/irm";
+import { Triad } from "@music-analyzer/irm/src/archetype/triad/Triad";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { Time } from "@music-analyzer/time-and";
 import { MVVM_Model } from "@music-analyzer/view/src/mvc";

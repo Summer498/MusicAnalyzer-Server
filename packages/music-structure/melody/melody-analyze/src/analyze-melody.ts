@@ -2,10 +2,10 @@ import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-an
 import { getChord } from "@music-analyzer/tonal-objects/src/chord/get";
 import { getScale } from "@music-analyzer/tonal-objects/src/scale/get";
 import { noteFromMidi } from "@music-analyzer/tonal-objects/src/note/from-midi";
-import { Null_ad } from "@music-analyzer/irm";
-import { Dyad } from "@music-analyzer/irm";
-import { Monad } from "@music-analyzer/irm";
-import { Triad } from "@music-analyzer/irm";
+import { Null_ad } from "@music-analyzer/irm/src/archetype/Null-ad";
+import { Dyad } from "@music-analyzer/irm/src/archetype/Dyad";
+import { Monad } from "@music-analyzer/irm/src/archetype/Monad";
+import { Triad } from "@music-analyzer/irm/src/archetype/triad/Triad";
 import { TimeAndAnalyzedMelody } from "./time-and-analyzed-melody";
 import { MelodyAnalysis } from "./melody-analysis";
 import { TimeAndMelody } from "./time-and-melody";

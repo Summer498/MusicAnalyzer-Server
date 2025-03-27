@@ -4,8 +4,8 @@ import { NoteLiteral } from "@music-analyzer/tonal-objects/src/note/note-literal
 import { TriadSymbol } from "../types";
 import { retrospectiveSymbol } from "../get-retrospective-symbol";
 import { TriadArchetype } from "./triad-archetype";
-import { IntervallicMotion } from "../../MelodyMotion";
-import { RegistralMotion } from "../../MelodyMotion";
+import { IntervallicMotion } from "../../MelodyMotion/IntervallicMotion";
+import { RegistralMotion } from "../../MelodyMotion/RegistralMotion";
 import { RegistralReturnForm } from "../../RegistralReturnForm";
 
 
