@@ -7,7 +7,7 @@ import { NowAt } from "@music-analyzer/view-parameters/src/now-at";
 import { PianoRollHeight } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-height";
 import { reservation_range } from "@music-analyzer/view-parameters/src/reservation-range";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
-import { Time } from "@music-analyzer/time-and";
+import { Time } from "@music-analyzer/time-and/src/time";
 import { BeatBarModel } from "./beat-bar-model";
 import { BeatBarView } from "./beat-bar-view";
 import { TimeRangeController } from "@music-analyzer/controllers/src/slider/time-range/time-range-controller";

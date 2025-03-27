@@ -1,4 +1,4 @@
-import { Time } from "@music-analyzer/time-and";
+import { Time } from "@music-analyzer/time-and/src/time";
 
 type TimeAndMelody_Args = [Time, Time, number]
 const getArgsOfTimeAndMelody = (

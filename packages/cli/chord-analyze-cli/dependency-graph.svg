@@ -175,9 +175,9 @@
 <text text-anchor="middle" x="953" y="-930.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">time&#45;and</text>
 </g>
 <g id="clust34" class="cluster">
-<title>cluster_packages/util/time&#45;and/dist</title>
+<title>cluster_packages/util/time&#45;and/src</title>
 <path fill="#ffffff" stroke="black" stroke-width="2" d="M930,-864C930,-864 976,-864 976,-864 982,-864 988,-870 988,-876 988,-876 988,-904 988,-904 988,-910 982,-916 976,-916 976,-916 930,-916 930,-916 924,-916 918,-910 918,-904 918,-904 918,-876 918,-876 918,-870 924,-864 930,-864"/>
-<text text-anchor="middle" x="953" y="-904.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">dist</text>
+<text text-anchor="middle" x="953" y="-904.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">src</text>
 </g>
 <!-- node_modules/@tonaljs/chord -->
 <g id="node1" class="node">
@@ -281,18 +281,18 @@
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M95.05,-713C144.82,-713 252.55,-713 326.18,-713"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="326.31,-715.1 332.31,-713 326.31,-710.9 326.31,-715.1"/>
 </g>
-<!-- packages/util/time&#45;and/dist/index.js -->
+<!-- packages/util/time&#45;and/src/time.ts -->
 <g id="node9" class="node">
-<title>packages/util/time&#45;and/dist/index.js</title>
-<g id="a_node9"><a xlink:href="packages/util/time-and/dist/index.js" xlink:title="index.js">
-<polygon fill="#ffffcc" stroke="black" points="980,-890 978.5,-892 968,-892 966.5,-890 926,-890 926,-872 980,-872 980,-890"/>
-<text text-anchor="start" x="935.5" y="-878.8" font-family="Helvetica,sans-Serif" font-size="9.00">index.js</text>
+<title>packages/util/time&#45;and/src/time.ts</title>
+<g id="a_node9"><a xlink:href="packages/util/time-and/src/time.ts" xlink:title="time.ts">
+<path fill="#ddfeff" stroke="black" d="M974,-890C974,-890 932,-890 932,-890 929,-890 926,-887 926,-884 926,-884 926,-878 926,-878 926,-875 929,-872 932,-872 932,-872 974,-872 974,-872 977,-872 980,-875 980,-878 980,-878 980,-884 980,-884 980,-887 977,-890 974,-890"/>
+<text text-anchor="start" x="937" y="-878.8" font-family="Helvetica,sans-Serif" font-size="9.00">time.ts</text>
 </a>
 </g>
 </g>
-<!-- packages/cli/chord&#45;analyze&#45;cli/index.ts&#45;&gt;packages/util/time&#45;and/dist/index.js -->
+<!-- packages/cli/chord&#45;analyze&#45;cli/index.ts&#45;&gt;packages/util/time&#45;and/src/time.ts -->
 <g id="edge4" class="edge">
-<title>packages/cli/chord&#45;analyze&#45;cli/index.ts&#45;&gt;packages/util/time&#45;and/dist/index.js</title>
+<title>packages/cli/chord&#45;analyze&#45;cli/index.ts&#45;&gt;packages/util/time&#45;and/src/time.ts</title>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M95.46,-718.21C225.4,-742.88 778.17,-847.81 919.82,-874.7"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="919.58,-876.79 925.86,-875.85 920.36,-872.67 919.58,-876.79"/>
 </g>
@@ -383,15 +383,15 @@
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M315.2,-683C330.4,-683 346.18,-683 360.01,-683"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="360.21,-685.1 366.21,-683 360.21,-680.9 360.21,-685.1"/>
 </g>
-<!-- packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/time&#45;and&#45;chord.ts&#45;&gt;packages/util/time&#45;and/dist/index.js -->
+<!-- packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/time&#45;and&#45;chord.ts&#45;&gt;packages/util/time&#45;and/src/time.ts -->
 <g id="edge13" class="edge">
-<title>packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/time&#45;and&#45;chord.ts&#45;&gt;packages/util/time&#45;and/dist/index.js</title>
+<title>packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/time&#45;and&#45;chord.ts&#45;&gt;packages/util/time&#45;and/src/time.ts</title>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M438.15,-752.05C539.11,-777.34 822.98,-848.44 920.01,-872.74"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="919.52,-874.78 925.85,-874.2 920.54,-870.71 919.52,-874.78"/>
 </g>
-<!-- packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/time&#45;and&#45;roman&#45;analysis.ts&#45;&gt;packages/util/time&#45;and/dist/index.js -->
+<!-- packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/time&#45;and&#45;roman&#45;analysis.ts&#45;&gt;packages/util/time&#45;and/src/time.ts -->
 <g id="edge14" class="edge">
-<title>packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/time&#45;and&#45;roman&#45;analysis.ts&#45;&gt;packages/util/time&#45;and/dist/index.js</title>
+<title>packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/time&#45;and&#45;roman&#45;analysis.ts&#45;&gt;packages/util/time&#45;and/src/time.ts</title>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M431.62,-722.03C526.21,-750.87 820.56,-840.62 919.89,-870.9"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="919.51,-872.98 925.86,-872.73 920.74,-868.97 919.51,-872.98"/>
 </g>

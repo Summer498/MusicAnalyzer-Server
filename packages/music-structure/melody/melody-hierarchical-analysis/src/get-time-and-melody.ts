@@ -3,7 +3,7 @@ import { TimeSpan } from "@music-analyzer/gttm/src/analysis-result/TSR/has-inter
 import { TimeAndMelody } from "@music-analyzer/melody-analyze/src/time-and-melody";
 import { MusicXML } from "@music-analyzer/musicxml";
 import { Pitch } from "@music-analyzer/musicxml";
-import { Time } from "@music-analyzer/time-and";
+import { Time } from "@music-analyzer/time-and/src/time";
 import { getChroma } from "@music-analyzer/tonal-objects/src/note/chroma";
 
 const getTime = (

@@ -1,5 +1,5 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
-import { Time } from "@music-analyzer/time-and";
+import { Time } from "@music-analyzer/time-and/src/time";
 import { getNote } from "@music-analyzer/tonal-objects/src/note/get";
 import { intervalOf } from "@music-analyzer/tonal-objects/src/interval/distance";
 import { Chord } from "@music-analyzer/tonal-objects/src/chord/chord";

@@ -1,5 +1,5 @@
-import { search_items_overlaps_range } from "@music-analyzer/time-and";
-import { Time } from "@music-analyzer/time-and";
+import { search_items_overlaps_range } from "@music-analyzer/time-and/src/search-items-overlaps-range";
+import { Time } from "@music-analyzer/time-and/src/time";
 import { PianoRollTranslateX } from "@music-analyzer/view-parameters/src/piano-roll-translate-x";
 import { MVVM_Collection } from "./mvc";
 import { MVVM_ViewModel } from "./mvc";
