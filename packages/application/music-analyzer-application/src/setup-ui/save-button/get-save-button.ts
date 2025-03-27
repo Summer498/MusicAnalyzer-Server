@@ -1,4 +1,4 @@
-import { PianoRoll } from "@music-analyzer/piano-roll";
+import { PianoRoll } from "@music-analyzer/piano-roll/src/piano-roll";
 import { getSVGwithTitle } from "./get-svg-with-title";
 
 export const getSaveButton = (tune_id: string, title: HTMLHeadElement, piano_roll_view: PianoRoll) => {

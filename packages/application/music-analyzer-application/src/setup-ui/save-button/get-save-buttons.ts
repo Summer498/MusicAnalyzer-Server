@@ -1,4 +1,4 @@
-import { PianoRoll } from "@music-analyzer/piano-roll";
+import { PianoRoll } from "@music-analyzer/piano-roll/src/piano-roll";
 import { HTMLsContainer } from "../../containers";
 import { TitleInfo } from "../../containers";
 import { getSaveButton } from "./get-save-button";

@@ -1,5 +1,5 @@
 import { AudioViewer } from "@music-analyzer/spectrogram";
-import { PianoRoll } from "@music-analyzer/piano-roll";
+import { PianoRoll } from "@music-analyzer/piano-roll/src/piano-roll";
 import { CurrentTimeRatio } from "@music-analyzer/view-parameters/src/current-time-ratio";
 import { ApplicationManager } from "../application-manager";
 import { HTMLsContainer } from "../containers";
