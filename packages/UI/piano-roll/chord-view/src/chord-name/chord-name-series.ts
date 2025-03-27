@@ -3,9 +3,8 @@ import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-refl
 import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/audio-reflectable-registry";
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view/src/svg-collection";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
-import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
-import { ChordName } from "./chord-name";
-import { RequiredByChordName } from "./chord-name";
+import { ChordName } from "./chord-name/chord-name";
+import { RequiredByChordName } from "./chord-name/chord-name";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 
 export interface RequiredByChordNameSeries

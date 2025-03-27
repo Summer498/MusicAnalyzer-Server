@@ -3,8 +3,8 @@ import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-an
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { BeatElements } from "@music-analyzer/beat-view";
 import { RequiredByBeatElements } from "@music-analyzer/beat-view";
-import { ChordElements } from "@music-analyzer/chord-view";
-import { RequiredByChordElements } from "@music-analyzer/chord-view";
+import { ChordElements } from "@music-analyzer/chord-view/src/chord-elements";
+import { RequiredByChordElements } from "@music-analyzer/chord-view/src/chord-elements";
 import { MelodyElements } from "@music-analyzer/melody-view/src/melody-elements";
 import { RequiredByMelodyElements } from "@music-analyzer/melody-view/src/melody-elements";
 

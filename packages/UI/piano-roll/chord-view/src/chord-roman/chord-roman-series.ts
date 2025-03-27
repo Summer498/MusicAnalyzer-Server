@@ -3,8 +3,8 @@ import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-refl
 import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/audio-reflectable-registry";
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view/src/svg-collection";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
-import { ChordRoman } from "./chord-roman";
-import { RequiredByChordRoman } from "./chord-roman";
+import { ChordRoman } from "./chord-roman/chord-roman";
+import { RequiredByChordRoman } from "./chord-roman/chord-roman";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 
 export interface RequiredByChordRomanSeries

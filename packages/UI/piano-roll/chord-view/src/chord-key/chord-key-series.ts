@@ -4,8 +4,8 @@ import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-refl
 import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/audio-reflectable-registry";
 import { MVVM_Collection } from "@music-analyzer/view/src/mvc";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
-import { ChordKey } from "./chord-key";
-import { RequiredByChordKey } from "./chord-key";
+import { ChordKey } from "./chord-key/chord-key";
+import { RequiredByChordKey } from "./chord-key/chord-key";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 
 export interface RequiredByChordKeySeries

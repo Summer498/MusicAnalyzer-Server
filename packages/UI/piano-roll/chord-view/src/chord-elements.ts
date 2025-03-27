@@ -1,12 +1,12 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
-import { ChordKeySeries } from "./chord-key";
-import { RequiredByChordKeySeries } from "./chord-key";
-import { ChordNameSeries } from "./chord-name";
-import { RequiredByChordNameSeries } from "./chord-name";
-import { ChordNotesSeries } from "./chord-note";
-import { RequiredByChordNotesSeries } from "./chord-note";
-import { ChordRomanSeries } from "./chord-roman";
-import { RequiredByChordRomanSeries } from "./chord-roman";
+import { ChordKeySeries } from "./chord-key/chord-key-series";
+import { ChordNameSeries } from "./chord-name/chord-name-series";
+import { ChordNotesSeries } from "./chord-note/chord-note-series";
+import { ChordRomanSeries } from "./chord-roman/chord-roman-series";
+import { RequiredByChordKeySeries } from "./chord-key/chord-key-series";
+import { RequiredByChordNameSeries } from "./chord-name/chord-name-series";
+import { RequiredByChordNotesSeries } from "./chord-note/chord-note-series";
+import { RequiredByChordRomanSeries } from "./chord-roman/chord-roman-series";
 
 export interface RequiredByChordElements
   extends
