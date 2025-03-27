@@ -1,4 +1,4 @@
-import { handleGttmExampleIDs } from "@music-analyzer/music-analyzer-application";
+import { handleGttmExampleIDs } from "@music-analyzer/music-analyzer-application/src/handle-gttm-example-IDs";
 
 const main = () => {
   fetch("/MusicAnalyzer-server/api/gttm-example/")
