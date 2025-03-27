@@ -1,8 +1,8 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { AudioReflectable } from "@music-analyzer/view";
-import { AudioReflectableRegistry } from "@music-analyzer/view";
-import { CollectionLayer } from "@music-analyzer/view";
-import { WindowReflectable } from "@music-analyzer/view";
+import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
+import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/audio-reflectable-registry";
+import { CollectionLayer } from "@music-analyzer/view/src/collection-layer";
+import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { Gravity } from "./gravity";
 import { RequiredByGravity } from "./gravity";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";

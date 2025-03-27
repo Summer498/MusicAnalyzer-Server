@@ -1,6 +1,6 @@
 import { _Chord } from "@music-analyzer/tonal-objects";
-import { MVVM_ViewModel } from "@music-analyzer/view";
-import { WindowReflectableRegistry } from "@music-analyzer/view";
+import { MVVM_ViewModel} from "@music-analyzer/view/src/mvc";
+import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
 import { ChordRomanModel } from "./chord-roman-model";
 import { ChordRomanView } from "./chord-roman-view";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";

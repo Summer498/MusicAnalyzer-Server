@@ -1,5 +1,5 @@
-import { WindowReflectable } from "@music-analyzer/view";
-import { WindowReflectableRegistry } from "@music-analyzer/view";
+import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
+import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
 import { Octave } from "../octave";
 import { OctaveCount } from "@music-analyzer/view-parameters";
 

@@ -1,8 +1,8 @@
 import { BlackKeyPrm } from "@music-analyzer/view-parameters";
 import { NoteSize } from "@music-analyzer/view-parameters";
 import { PianoRollBegin } from "@music-analyzer/view-parameters";
-import { MVVM_ViewModel } from "@music-analyzer/view";
-import { WindowReflectableRegistry } from "@music-analyzer/view";
+import { MVVM_ViewModel} from "@music-analyzer/view/src/mvc";
+import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
 import { IRSymbolModel } from "./ir-symbol-model";
 import { IRSymbolView } from "./ir-symbol-view";
 import { RequiredByIRSymbolView } from "./ir-symbol-view";

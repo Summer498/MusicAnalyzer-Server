@@ -3,7 +3,7 @@ import { Time } from "@music-analyzer/time-and";
 import { _Interval } from "@music-analyzer/tonal-objects";
 import { _Note } from "@music-analyzer/tonal-objects";
 import { Chord } from "@music-analyzer/tonal-objects";
-import { MVVM_Model } from "@music-analyzer/view";
+import { MVVM_Model } from "@music-analyzer/view/src/mvc";
 
 export class ChordNoteModel 
   extends MVVM_Model {

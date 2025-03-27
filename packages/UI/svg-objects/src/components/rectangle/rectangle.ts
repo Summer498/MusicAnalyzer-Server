@@ -1,4 +1,4 @@
-import { WindowReflectable } from "@music-analyzer/view";
+import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { RectParameters } from "@music-analyzer/view-parameters";
 import { RectangleView } from "./rectangle-view";
 import { RectangleModel } from "./rectangle-model";

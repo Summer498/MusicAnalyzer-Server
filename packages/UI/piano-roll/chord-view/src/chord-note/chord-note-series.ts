@@ -1,11 +1,11 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { _Chord } from "@music-analyzer/tonal-objects";
 import { Chord } from "@music-analyzer/tonal-objects";
-import { AudioReflectable } from "@music-analyzer/view";
-import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
-import { WindowReflectable } from "@music-analyzer/view";
+import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
+import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view/src/svg-collection";
+import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { OctaveCount } from "@music-analyzer/view-parameters";
-import { MVVM_Collection } from "@music-analyzer/view";
+import { MVVM_Collection } from "@music-analyzer/view/src/mvc";
 import { ChordNote } from "./chord-note";
 import { RequiredByChordNote } from "./chord-note";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";

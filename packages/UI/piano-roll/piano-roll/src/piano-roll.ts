@@ -1,7 +1,7 @@
 import { chord_name_margin } from "@music-analyzer/chord-view";
 import { chord_text_size } from "@music-analyzer/chord-view";
-import { WindowReflectable } from "@music-analyzer/view";
-import { WindowReflectableRegistry } from "@music-analyzer/view";
+import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
+import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
 import { PianoRollHeight } from "@music-analyzer/view-parameters";
 import { PianoRollWidth } from "@music-analyzer/view-parameters";
 import { CurrentTimeLine } from "@music-analyzer/svg-objects";

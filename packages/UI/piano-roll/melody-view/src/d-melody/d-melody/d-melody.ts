@@ -1,5 +1,5 @@
-import { MVVM_ViewModel } from "@music-analyzer/view";
-import { WindowReflectableRegistry } from "@music-analyzer/view";
+import { MVVM_ViewModel} from "@music-analyzer/view/src/mvc";
+import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
 import { DMelodyModel } from "./d-melody-model";
 import { DMelodyView } from "./d-melody-view";
 import { insertMelody } from "../../melody-editor-function";

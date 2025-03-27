@@ -3,8 +3,8 @@ import { IRPlotLayerView } from "./ir-plot-layer-view";
 import { IRPlot } from "../ir-plot";
 import { RequiredByIRPlot } from "../ir-plot";
 import { IRPlotLayerModel } from "./ir-plot-layer-model";
-import { AudioReflectable } from "@music-analyzer/view";
-import { WindowReflectable } from "@music-analyzer/view";
+import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
+import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { SetColor } from "@music-analyzer/controllers";
 
 export interface RequiredByIRPlotLayer

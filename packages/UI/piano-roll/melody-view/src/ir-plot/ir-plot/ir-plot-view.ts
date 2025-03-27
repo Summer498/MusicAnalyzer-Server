@@ -1,4 +1,4 @@
-import { MVVM_View } from "@music-analyzer/view";
+import { MVVM_View } from "@music-analyzer/view/src/mvc";
 import { IRPlotModel } from "./ir-plot-model";
 import { ColorChangeSubscriber } from "@music-analyzer/controllers";
 import { MelodyColorController } from "@music-analyzer/controllers";

@@ -2,8 +2,8 @@ import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { ReductionModel } from "../reduction-model";
 import { ReductionView } from "../reduction-view";
 import { RequiredByReductionView } from "../reduction-view";
-import { MVVM_ViewModel } from "@music-analyzer/view";
-import { WindowReflectable } from "@music-analyzer/view";
+import { MVVM_ViewModel} from "@music-analyzer/view/src/mvc";
+import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { SetColor } from "@music-analyzer/controllers";
 

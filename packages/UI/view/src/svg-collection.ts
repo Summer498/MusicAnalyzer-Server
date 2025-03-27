@@ -7,7 +7,7 @@ import { MVVM_Model } from "./mvc";
 import { MVVM_View } from "./mvc";
 import { I_MVVM_Collection } from "./mvc";
 import { I_MVVM_ModelView } from "./mvc";
-import { AudioReflectable } from "./reflectable";
+import { AudioReflectable } from "./reflectable/audio-reflectable";
 
 export abstract class TimeAndMVCModel
   extends MVVM_Model {

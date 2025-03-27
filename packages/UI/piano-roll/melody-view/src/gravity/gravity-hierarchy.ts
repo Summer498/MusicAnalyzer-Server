@@ -5,9 +5,9 @@ import { GravitySwitcher } from "@music-analyzer/controllers";
 import { GravitySwitcherSubscriber } from "@music-analyzer/controllers";
 import { HierarchyLevelController } from "@music-analyzer/controllers";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";
-import { AudioReflectable } from "@music-analyzer/view";
-import { CollectionHierarchy } from "@music-analyzer/view";
-import { WindowReflectable } from "@music-analyzer/view";
+import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
+import { CollectionHierarchy } from "@music-analyzer/view/src/collection-hierarchy";
+import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 
 export interface RequiredByGravityHierarchy
   extends RequiredByGravityLayer {

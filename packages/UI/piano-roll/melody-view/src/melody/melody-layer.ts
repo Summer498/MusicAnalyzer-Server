@@ -1,6 +1,6 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { CollectionLayer } from "@music-analyzer/view";
-import { WindowReflectable } from "@music-analyzer/view";
+import { CollectionLayer } from "@music-analyzer/view/src/collection-layer";
+import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { Melody } from "./melody";
 import { RequiredByMelody } from "./melody";
 import { MelodyBeepSwitcherSubscriber } from "@music-analyzer/controllers";

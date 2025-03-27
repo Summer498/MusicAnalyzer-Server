@@ -1,5 +1,5 @@
 import { Triad } from "@music-analyzer/irm";
-import { MVVM_Model } from "@music-analyzer/view";
+import { MVVM_Model } from "@music-analyzer/view/src/mvc";
 import { BlackKeyPrm } from "@music-analyzer/view-parameters";
 import { bracket_height } from "@music-analyzer/view-parameters";
 import { NoteSize } from "@music-analyzer/view-parameters";

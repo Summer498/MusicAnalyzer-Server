@@ -1,6 +1,5 @@
 import { size } from "@music-analyzer/view-parameters";
-import { Triad } from "@music-analyzer/irm";
-import { MVVM_View } from "@music-analyzer/view";
+import { MVVM_View } from "@music-analyzer/view/src/mvc";
 import { IRSymbolModel } from "./ir-symbol-model";
 import { ColorChangeSubscriber } from "@music-analyzer/controllers";
 import { MelodyColorController } from "@music-analyzer/controllers";

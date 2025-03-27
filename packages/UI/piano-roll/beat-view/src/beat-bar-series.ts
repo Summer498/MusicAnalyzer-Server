@@ -1,6 +1,6 @@
-import { AudioReflectable } from "@music-analyzer/view";
-import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
-import { WindowReflectable } from "@music-analyzer/view";
+import { AudioReflectable } from "@music-analyzer/view/src/reflectable/audio-reflectable";
+import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view/src/svg-collection";
+import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { BeatBar } from "./beat-bar";

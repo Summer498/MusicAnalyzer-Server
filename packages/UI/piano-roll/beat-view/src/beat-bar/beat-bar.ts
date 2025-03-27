@@ -1,6 +1,6 @@
-import { AudioReflectableRegistry } from "@music-analyzer/view";
-import { MVVM_ViewModel } from "@music-analyzer/view";
-import { WindowReflectableRegistry } from "@music-analyzer/view";
+import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/audio-reflectable-registry";
+import { MVVM_ViewModel} from "@music-analyzer/view/src/mvc";
+import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
 import { play } from "@music-analyzer/synth";
 import { NoteSize } from "@music-analyzer/view-parameters";
 import { NowAt } from "@music-analyzer/view-parameters";

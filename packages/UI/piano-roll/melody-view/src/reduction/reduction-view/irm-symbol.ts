@@ -1,6 +1,5 @@
-import { Triad } from "@music-analyzer/irm";
 import { bracket_height } from "@music-analyzer/view-parameters";
-import { MVVM_View } from "@music-analyzer/view";
+import { MVVM_View } from "@music-analyzer/view/src/mvc";
 import { ReductionViewModel } from "./reduction-view-model";
 import { MelodyColorController } from "@music-analyzer/controllers";
 import { SetColor } from "@music-analyzer/controllers";

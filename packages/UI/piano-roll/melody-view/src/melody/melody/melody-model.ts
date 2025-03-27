@@ -2,7 +2,7 @@ import { Triad } from "@music-analyzer/irm";
 import { MelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { Time } from "@music-analyzer/time-and";
-import { MVVM_Model } from "@music-analyzer/view";
+import { MVVM_Model } from "@music-analyzer/view/src/mvc";
 
 export class MelodyModel 
   extends MVVM_Model {

@@ -1,6 +1,6 @@
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { Time } from "@music-analyzer/time-and";
-import { MVVM_Model } from "@music-analyzer/view";
+import { MVVM_Model } from "@music-analyzer/view/src/mvc";
 
 export class BeatBarModel 
   extends MVVM_Model {

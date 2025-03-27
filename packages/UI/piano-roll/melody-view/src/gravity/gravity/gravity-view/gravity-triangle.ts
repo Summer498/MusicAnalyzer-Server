@@ -1,4 +1,4 @@
-import { MVVM_View } from "@music-analyzer/view";
+import { MVVM_View } from "@music-analyzer/view/src/mvc";
 import { GravityModel } from "../gravity-model";
 import { LinePos } from "../../line-pos";
 
