@@ -1,4 +1,4 @@
-import { Part } from "../common"
+import { Part } from "../common/part"
 import { Group } from "./group"
 
 export type GroupingPreference = {

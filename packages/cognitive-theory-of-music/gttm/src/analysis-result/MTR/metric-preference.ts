@@ -1,4 +1,4 @@
-import { Part } from "../common";
+import { Part } from "../common/part";
 import { Metric } from "./metric";
 
 export type MetricalPreference = {

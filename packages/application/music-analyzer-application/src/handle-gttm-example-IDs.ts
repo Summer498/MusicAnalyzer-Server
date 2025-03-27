@@ -1,4 +1,4 @@
-import { song_list } from "@music-analyzer/gttm";
+import { song_list } from "@music-analyzer/gttm/src/sample/song-list";
 
 declare const tunes: HTMLUListElement;
 

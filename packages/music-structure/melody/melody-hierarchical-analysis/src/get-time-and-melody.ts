@@ -1,5 +1,5 @@
-import { ReductionElement } from "@music-analyzer/gttm";
-import { TimeSpan } from "@music-analyzer/gttm";
+import { ReductionElement } from "@music-analyzer/gttm/src/analysis-result/ReductionElement";
+import { TimeSpan } from "@music-analyzer/gttm/src/analysis-result/TSR/has-interface/time-span";
 import { TimeAndMelody } from "@music-analyzer/melody-analyze/src/time-and-melody";
 import { MusicXML } from "@music-analyzer/musicxml";
 import { Pitch } from "@music-analyzer/musicxml";

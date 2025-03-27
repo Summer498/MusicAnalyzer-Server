@@ -278,7 +278,7 @@ export const chopin_op18_pr_xml = `
 `;
 
 import { XMLParser } from "fast-xml-parser";
-import { options } from "../sandbox";
+import { xml_options } from "@music-analyzer/serializable-data/src/XMLParser";
 
-const parser = new XMLParser(options);
+const parser = new XMLParser(xml_options);
 export const chopin_op18_pr = parser.parse(chopin_op18_pr_xml);

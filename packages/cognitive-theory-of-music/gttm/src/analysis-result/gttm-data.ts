@@ -1,7 +1,7 @@
-import { GroupingStructure } from "./GRP";
-import { MetricalStructure } from "./MTR";
-import { IProlongationalReduction } from "./PR";
-import { ITimeSpanReduction } from "./TSR";
+import { GroupingStructure } from "./GRP/grouping-structure";
+import { MetricalStructure } from "./MTR/metric-structure";
+import { IProlongationalReduction } from "./PR/interface/i-prolongation-reduction";
+import { ITimeSpanReduction } from "./TSR/interface/i-time-span-reduction";
 
 export class GTTMData {
   constructor(

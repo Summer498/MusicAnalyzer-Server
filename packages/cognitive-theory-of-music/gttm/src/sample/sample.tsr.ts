@@ -1,4 +1,4 @@
-import { ITimeSpanReduction } from "../src";
+import { ITimeSpanReduction } from "../analysis-result/TSR/interface/i-time-span-reduction";
 
 export const do_re_mi_tsr_raw: ITimeSpanReduction = {
   tstree: {

@@ -1,4 +1,4 @@
-import { Path } from "../../common";
+import { Path } from "../../common/path";
 import { Pred } from "../common";
 import { Succ } from "../common";
 

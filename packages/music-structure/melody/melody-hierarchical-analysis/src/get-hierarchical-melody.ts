@@ -1,8 +1,8 @@
 import { analyzeMelody } from "@music-analyzer/melody-analyze/src/analyze-melody";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { TimeAndMelody } from "@music-analyzer/melody-analyze/src/time-and-melody";
-import { ReductionElement } from "@music-analyzer/gttm";
-import { TimeSpan } from "@music-analyzer/gttm";
+import { ReductionElement } from "@music-analyzer/gttm/src/analysis-result/ReductionElement";
+import { TimeSpan } from "@music-analyzer/gttm/src/analysis-result/TSR/has-interface/time-span";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
 import { getTimeAndMelody } from "./get-time-and-melody";
 import { MusicXML } from "@music-analyzer/musicxml";

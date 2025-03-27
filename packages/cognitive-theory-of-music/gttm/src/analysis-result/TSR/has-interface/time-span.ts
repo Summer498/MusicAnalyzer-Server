@@ -1,4 +1,4 @@
-import { Head } from "../../common";
+import { Head } from "../../common/head";
 import { ReductionElement } from "../../ReductionElement";
 import { IAt } from "../interface/i-at";
 import { Chord } from "./chord";

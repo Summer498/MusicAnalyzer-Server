@@ -1,4 +1,4 @@
-import { Note } from "../../common";
+import { Note } from "../../common/note";
 import { IChord } from "../interface/i-chord";
 
 export class Chord 

@@ -133,7 +133,7 @@ export const do_re_mi_grp_xml = `
 `;
 
 import { XMLParser } from "fast-xml-parser";
-import { options } from "../sandbox";
+import { xml_options } from "@music-analyzer/serializable-data/src/XMLParser";
 
-const parser = new XMLParser(options);
+const parser = new XMLParser(xml_options);
 export const do_re_mi_grp = parser.parse(do_re_mi_grp_xml);

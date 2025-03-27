@@ -1,4 +1,4 @@
-import { IHead } from "../../common";
+import { IHead } from "../../common/i-head";
 import { IAt } from "./i-at";
 import { IChord } from "./i-chord";
 

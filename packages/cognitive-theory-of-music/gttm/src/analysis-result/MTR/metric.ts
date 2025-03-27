@@ -1,4 +1,4 @@
-import { Note } from "../common";
+import { Note } from "../common/note";
 import { Applied } from "./applied";
 
 export type Metric = {

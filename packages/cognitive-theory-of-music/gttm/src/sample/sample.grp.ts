@@ -1,4 +1,4 @@
-import { GroupingStructure } from "../src";
+import { GroupingStructure } from "../../src/analysis-result/GRP/grouping-structure";
 
 export const do_re_mi_grp_raw: GroupingStructure = {
   GPR: {

@@ -1,7 +1,7 @@
 import { X2jOptions } from "fast-xml-parser";
 import { XMLParser } from "fast-xml-parser";
 
-const xml_options: X2jOptions = {
+export const xml_options: X2jOptions = {
   preserveOrder: false,
   attributeNamePrefix: "",
   attributesGroupName: false,
