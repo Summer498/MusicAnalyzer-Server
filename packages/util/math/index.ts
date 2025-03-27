@@ -40,8 +40,8 @@ export { median } from "./src/stochastic/median";
 export { normal_rand } from "./src/stochastic/normal-rand";
 
 
-export { Complex } from "./fft";
-export{ fft } from "./fft";
-export{ ifft } from "./fft";
-export{ convolution } from "./fft";
-export{ correlation, } from "./fft";
+export { Complex } from "./src/fft";
+export{ fft } from "./src/fft";
+export{ ifft } from "./src/fft";
+export{ convolution } from "./src/fft";
+export{ correlation, } from "./src/fft";

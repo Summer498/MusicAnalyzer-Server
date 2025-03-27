@@ -1,6 +1,6 @@
 // import { Complex } from "@music-analyzer/math";
 // import { fft } from "@music-analyzer/math";
-import { fft as fft } from "@music-analyzer/math/fft/array";
+import { fft as fft } from "@music-analyzer/math/src/fft/array";
 import { getByteTimeDomainData } from "./get-data-on-buffer";
 import { getFloatTimeDomainData } from "./get-data-on-buffer";
 

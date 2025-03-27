@@ -1,3 +1,3 @@
-import { totalSum } from "../src/reduction/sum";
+import { totalSum } from "../reduction/sum";
 
 export const average = (array: number[]) => totalSum(array) / array.length;
