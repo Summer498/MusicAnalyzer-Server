@@ -4,8 +4,8 @@ import { CollectionLayer } from "@music-analyzer/view/src/collection-layer";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { Reduction } from "./reduction/reduction";
 import { RequiredByReduction } from "./reduction/reduction";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers";
-import { SetColor } from "@music-analyzer/controllers";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
+import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
 
 export interface RequiredByReductionLayer
   extends RequiredByReduction {

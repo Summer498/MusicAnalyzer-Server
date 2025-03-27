@@ -1,9 +1,9 @@
-import { MelodyColorController } from "@music-analyzer/controllers";
-import { DMelodyController } from "@music-analyzer/controllers";
-import { GravityController } from "@music-analyzer/controllers";
-import { HierarchyLevelController } from "@music-analyzer/controllers";
-import { MelodyBeepController } from "@music-analyzer/controllers";
-import { TimeRangeController } from "@music-analyzer/controllers";
+import { MelodyColorController } from "@music-analyzer/controllers/src/color-selector.ts/melody-color/melody-color-controller";
+import { DMelodyController } from "@music-analyzer/controllers/src/switcher/d-melody/d-melody-controller";
+import { GravityController } from "@music-analyzer/controllers/src/switcher/gravity/gravity-controller";
+import { MelodyBeepController } from "@music-analyzer/controllers/src/melody-beep-controller/melody-beep-controller";
+import { TimeRangeController } from "@music-analyzer/controllers/src/slider/time-range/time-range-controller";
+import { HierarchyLevelController } from "@music-analyzer/controllers/src/slider/hierarchy-level/hierarchy-level-controller";
 
 export class Controllers {
   readonly div: HTMLDivElement

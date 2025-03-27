@@ -2,9 +2,9 @@ import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-a
 import { IRPlotLayer } from "../ir-plot-layer/ir-plot-layer";
 import { RequiredByIRPlotLayer } from "../ir-plot-layer/ir-plot-layer";
 import { IRPlotHierarchyView } from "./ir-plot-hierarchy-view"
-import { HierarchyLevelController } from "@music-analyzer/controllers";
+import { HierarchyLevelController } from "@music-analyzer/controllers/src/slider/hierarchy-level/hierarchy-level-controller";
 import { IRPlotHierarchyModel } from "./ir-plot-hierarchy-model";
-import { SetColor } from "@music-analyzer/controllers";
+import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
 
 export interface RequiredByIRPlotHierarchy
   extends RequiredByIRPlotLayer {

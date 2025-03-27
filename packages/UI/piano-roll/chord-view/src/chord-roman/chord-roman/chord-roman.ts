@@ -7,8 +7,8 @@ import { NoteSize } from "@music-analyzer/view-parameters/src/note-size";
 import { PianoRollHeight } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-height";
 import { chord_name_margin } from "../../chord-view-params";
 import { chord_text_size } from "../../chord-view-params";
-import { TimeRangeController } from "@music-analyzer/controllers";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { TimeRangeController } from "@music-analyzer/controllers/src/slider/time-range/time-range-controller";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 
 const scaled = (e: number) => e * NoteSize.get();
 

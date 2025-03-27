@@ -1,13 +1,13 @@
-import { HierarchyLevelController } from "@music-analyzer/controllers";
-import { HierarchyLevelSubscriber } from "@music-analyzer/controllers";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { HierarchyLevelController } from "@music-analyzer/controllers/src/slider/hierarchy-level/hierarchy-level-controller";
+import { HierarchyLevelSubscriber } from "@music-analyzer/controllers/src/slider/hierarchy-level/hierarchy-level-subscriber";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
 import { CollectionHierarchy} from "@music-analyzer/view/src/collection-hierarchy";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { IRSymbolLayer } from "./ir-symbol-layer";
 import { RequiredByIRSymbolLayer } from "./ir-symbol-layer";
-import { SetColor } from "@music-analyzer/controllers";
+import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
 
 export interface RequiredByIRSymbolHierarchy
   extends RequiredByIRSymbolLayer {

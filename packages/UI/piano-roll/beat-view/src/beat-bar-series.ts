@@ -5,7 +5,7 @@ import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-a
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { BeatBar } from "./beat-bar";
 import { RequiredByBeatBar } from "./beat-bar";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 
 export interface RequiredByBeatBarsSeries
   extends RequiredByBeatBar { }

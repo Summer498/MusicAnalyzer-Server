@@ -6,7 +6,7 @@ import { MVVM_Collection } from "@music-analyzer/view/src/mvc";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { ChordKey } from "./chord-key";
 import { RequiredByChordKey } from "./chord-key";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 
 export interface RequiredByChordKeySeries
   extends RequiredByChordKey {

@@ -7,8 +7,8 @@ import { IRMSymbol } from "./irm-symbol";
 import { RequiredByIRMSymbol } from "./irm-symbol";
 import { Bracket } from "./bracket";
 import { Dot } from "./dot";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers";
-import { SetColor } from "@music-analyzer/controllers";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
+import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
 
 export interface RequiredByReductionView
   extends RequiredByIRMSymbol, RequiredByReductionViewModel {

@@ -8,7 +8,7 @@ import { OctaveCount } from "@music-analyzer/view-parameters/src/piano-roll/octa
 import { MVVM_Collection } from "@music-analyzer/view/src/mvc";
 import { ChordNote } from "./chord-note";
 import { RequiredByChordNote } from "./chord-note";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 
 export interface RequiredByChordNotesInOctave
   extends RequiredByChordNote { }

@@ -1,8 +1,8 @@
-import { ColorChangeSubscriber } from "@music-analyzer/controllers";
-import { MelodyBeepSwitcherSubscriber } from "@music-analyzer/controllers";
-import { MelodyBeepVolumeSubscriber } from "@music-analyzer/controllers";
-import { TimeRangeController } from "@music-analyzer/controllers";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { ColorChangeSubscriber } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/color-change-subscriber";
+import { MelodyBeepSwitcherSubscriber } from "@music-analyzer/controllers/src/melody-beep-controller/melody-beep-toggle/melody-beep-switcher-subscriber";
+import { MelodyBeepVolumeSubscriber } from "@music-analyzer/controllers/src/melody-beep-controller/melody-beep-volume/melody-beep-volume-subscriber";
+import { TimeRangeController } from "@music-analyzer/controllers/src/slider/time-range/time-range-controller";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { BlackKeyPrm } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-constants";
 import { NoteSize } from "@music-analyzer/view-parameters/src/note-size";
@@ -14,7 +14,7 @@ import { MelodyView } from "./melody-view";
 import { RequiredByMelodyView } from "./melody-view";
 import { MelodyBeep } from "./melody-beep";
 import { RequiredByMelodyBeep } from "./melody-beep";
-import { SetColor } from "@music-analyzer/controllers";
+import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();

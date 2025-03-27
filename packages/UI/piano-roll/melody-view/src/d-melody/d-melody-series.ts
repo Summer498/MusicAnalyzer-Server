@@ -3,9 +3,9 @@ import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-refl
 import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/audio-reflectable-registry";
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view/src/svg-collection";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
-import { DMelodyController } from "@music-analyzer/controllers";
-import { DMelodyControllerSubscriber } from "@music-analyzer/controllers";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { DMelodyController } from "@music-analyzer/controllers/src/switcher/d-melody/d-melody-controller";
+import { DMelodyControllerSubscriber } from "@music-analyzer/controllers/src/switcher/d-melody/d-melody-controller-subscriber";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 import { DMelody } from "./d-melody/d-melody";
 import { RequiredByDMelody } from "./d-melody/d-melody";
 

@@ -1,7 +1,7 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/audio-reflectable-registry";
 import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
-import { GravityController } from "@music-analyzer/controllers";
+import { GravityController } from "@music-analyzer/controllers/src/switcher/gravity/gravity-controller";
 import { DMelodySeries } from "./d-melody/d-melody-series";
 import { RequiredByDMelodySeries } from "./d-melody/d-melody-series";
 import { MelodyHierarchy } from "./melody/melody-hierarchy";

@@ -1,4 +1,4 @@
-import { HierarchyLevelSubscriber } from "@music-analyzer/controllers"
+import { HierarchyLevelSubscriber } from "@music-analyzer/controllers/src/slider/hierarchy-level/hierarchy-level-subscriber"
 import { I_CollectionLayer } from "./collection-layer";
 import { I_MVVM_Collection } from "./mvc";
 import { MVVM_Collection } from "./mvc";

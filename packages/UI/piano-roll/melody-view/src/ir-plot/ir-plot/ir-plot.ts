@@ -5,7 +5,7 @@ import { IRPlotModel } from "./ir-plot-model";
 import { IRPlotView } from "./ir-plot-view";
 import { RequiredByIRPlotView } from "./ir-plot-view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { SetColor } from "@music-analyzer/controllers";
+import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
 
 export interface RequiredByIRPlot
   extends RequiredByIRPlotView {

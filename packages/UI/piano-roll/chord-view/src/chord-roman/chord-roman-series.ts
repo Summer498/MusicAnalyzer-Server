@@ -5,7 +5,7 @@ import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view/
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { ChordRoman } from "./chord-roman";
 import { RequiredByChordRoman } from "./chord-roman";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 
 export interface RequiredByChordRomanSeries
   extends RequiredByChordRoman {
