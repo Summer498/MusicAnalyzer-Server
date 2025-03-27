@@ -2,7 +2,7 @@ import { default as path } from "path";
 import { NextFunction } from "express";
 import { Request } from "express";
 import { Response } from "express";
-import { _throw, } from "../stdlib";
+import { _throw } from "../stdlib";
 import { send301Redirect } from "./send-301-redirect";
 
 const latin1toUtf8 = (latin1: string) => Buffer.from(latin1, "latin1").toString("utf8");
