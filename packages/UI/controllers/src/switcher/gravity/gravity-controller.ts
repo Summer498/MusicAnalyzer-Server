@@ -1,18 +1,4 @@
-import { Checkbox } from "./abstract-switcher";
-
-export interface GravitySwitcherSubscriber {
-  onUpdateGravityVisibility(visible: boolean): void
-}
-
-export class GravitySwitcher 
-  extends Checkbox<GravitySwitcherSubscriber> {
-  constructor(id: string, label: string) {
-    super(id, label);
-  };
-  update() {
-    this.subscribers.forEach(e => e.onUpdateGravityVisibility(this.input.checked));
-  }
-}
+import { GravitySwitcher } from "./gravity-switcher";
 
 export class GravityController {
   readonly view: HTMLDivElement;

@@ -1,8 +1,5 @@
-import { Checkbox } from "../switcher";
-
-export interface MelodyBeepSwitcherSubscriber {
-  onMelodyBeepCheckChanged: (hearable:boolean)=>void
-}
+import { Checkbox } from "../../switcher/abstract-switcher";
+import { MelodyBeepSwitcherSubscriber } from "./melody-beep-switcher-subscriber";
 
 export class MelodyBeepSwitcher 
   extends Checkbox<MelodyBeepSwitcherSubscriber> {

@@ -1,4 +1,4 @@
-import { Controller } from "../controller";
+import { Controller } from "../controller/controller";
 
 export abstract class Checkbox<T> extends Controller<T> {
   constructor(id: string, label: string) {

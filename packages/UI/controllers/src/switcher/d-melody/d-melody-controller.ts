@@ -1,18 +1,5 @@
-import { Checkbox } from "./abstract-switcher";
-
-class DMelodySwitcher 
-  extends Checkbox<DMelodyControllerSubscriber> {
-  constructor(id: string, label: string) {
-    super(id, label);
-  }
-  update() {
-    this.subscribers.forEach(e => e.onDMelodyVisibilityChanged(this.input.checked));
-  }
-}
-
-export interface DMelodyControllerSubscriber {
-  onDMelodyVisibilityChanged(visible: boolean): void
-}
+import { DMelodyControllerSubscriber } from "./d-melody-controller-subscriber";
+import { DMelodySwitcher } from "./d-melody-switcher";
 
 export class DMelodyController {
   readonly view: HTMLDivElement;
