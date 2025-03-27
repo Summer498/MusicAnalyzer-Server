@@ -4,7 +4,7 @@ import { IProlongationalReduction } from "@music-analyzer/gttm/src/analysis-resu
 import { ITimeSpanReduction } from "@music-analyzer/gttm/src/analysis-result/TSR/interface/i-time-span-reduction";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { MusicXML } from "@music-analyzer/musicxml";
+import { MusicXML } from "@music-analyzer/musicxml/src/music-xml";
 
 export type DataContainer = [
   TimeAndRomanAnalysis[],

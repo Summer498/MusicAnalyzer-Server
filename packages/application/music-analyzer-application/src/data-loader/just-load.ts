@@ -5,7 +5,7 @@ import { ITimeSpanReduction } from "@music-analyzer/gttm/src/analysis-result/TSR
 import { MetricalStructure } from "@music-analyzer/gttm/src/analysis-result/MTR/metric-structure";
 import { MelodyAnalysisData } from "@music-analyzer/melody-analyze/src/melody-analysis-data";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { MusicXML } from "@music-analyzer/musicxml";
+import { MusicXML } from "@music-analyzer/musicxml/src/music-xml";
 import { getJSONfromXML } from "./DataFetcher";
 import { DataPromises } from "./data-promises";
 

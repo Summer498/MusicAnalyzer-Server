@@ -5,7 +5,7 @@ import { ReductionElement } from "@music-analyzer/gttm/src/analysis-result/Reduc
 import { TimeSpan } from "@music-analyzer/gttm/src/analysis-result/TSR/has-interface/time-span";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
 import { getTimeAndMelody } from "./get-time-and-melody";
-import { MusicXML } from "@music-analyzer/musicxml";
+import { MusicXML } from "@music-analyzer/musicxml/src/music-xml";
 
 class TimeAndAnalyzedMelodyAndIR
   extends TimeAndAnalyzedMelody {

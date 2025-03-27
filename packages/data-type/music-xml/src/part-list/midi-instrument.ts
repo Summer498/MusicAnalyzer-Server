@@ -1,4 +1,4 @@
-import { HasID } from "../part";
+import { HasID } from "../part/has-id";
 
 export interface MidiInstrument 
   extends HasID {

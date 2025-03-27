@@ -1,5 +1,0 @@
-export { MidiDevice } from "./midi-device"
-export { MidiInstrument } from "./midi-instrument"
-export { PartList } from "./part-list"
-export { ScoreInstrument } from "./score-instrument"
-export { ScorePart } from "./score-part"

@@ -1,8 +1,8 @@
-import { Credit } from "../credit"
-import { Defaults } from "../defaults"
-import { Identification } from "../identification"
-import { Part } from "../part"
-import { PartList } from "../part-list"
+import { Credit } from "../credit/credit"
+import { Defaults } from "../defaults/defaults"
+import { Identification } from "../identification/identification"
+import { Part } from "../part/part"
+import { PartList } from "../part-list/part-list"
 import { Work } from "./work"
 
 export type ScorePartwise = {

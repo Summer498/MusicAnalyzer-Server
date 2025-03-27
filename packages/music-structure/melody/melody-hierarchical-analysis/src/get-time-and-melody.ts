@@ -1,8 +1,8 @@
 import { ReductionElement } from "@music-analyzer/gttm/src/analysis-result/ReductionElement";
 import { TimeSpan } from "@music-analyzer/gttm/src/analysis-result/TSR/has-interface/time-span";
 import { TimeAndMelody } from "@music-analyzer/melody-analyze/src/time-and-melody";
-import { MusicXML } from "@music-analyzer/musicxml";
-import { Pitch } from "@music-analyzer/musicxml";
+import { MusicXML } from "@music-analyzer/musicxml/src/music-xml";
+import { Pitch } from "@music-analyzer/musicxml/src/measure/pitch";
 import { Time } from "@music-analyzer/time-and/src/time";
 import { getChroma } from "@music-analyzer/tonal-objects/src/note/chroma";
 

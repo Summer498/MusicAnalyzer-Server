@@ -4,7 +4,7 @@ import { IProlongationalReduction } from "@music-analyzer/gttm/src/analysis-resu
 import { ITimeSpanReduction } from "@music-analyzer/gttm/src/analysis-result/TSR/interface/i-time-span-reduction";
 import { MetricalStructure } from "@music-analyzer/gttm/src/analysis-result/MTR/metric-structure";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { MusicXML } from "@music-analyzer/musicxml";
+import { MusicXML } from "@music-analyzer/musicxml/src/music-xml";
 
 export type DataPromises = [
   Promise<TimeAndRomanAnalysis[]>,
