@@ -1,8 +1,8 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
 import { Time } from "@music-analyzer/time-and";
-import { getNote } from "@music-analyzer/tonal-objects";
-import { intervalOf } from "@music-analyzer/tonal-objects";
-import { Chord } from "@music-analyzer/tonal-objects";
+import { getNote } from "@music-analyzer/tonal-objects/src/note/get";
+import { intervalOf } from "@music-analyzer/tonal-objects/src/interval/distance";
+import { Chord } from "@music-analyzer/tonal-objects/src/chord/chord";
 import { MVVM_Model } from "@music-analyzer/view/src/mvc";
 
 export class ChordNoteModel 

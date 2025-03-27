@@ -1,4 +1,4 @@
-import { IntervalName } from "@music-analyzer/tonal-objects";
+import { IntervalName } from "@music-analyzer/tonal-objects/src/interval/interval-name";
 
 export type ProspectiveTriadSymbol =
   | "P" | "IP" | "VP"

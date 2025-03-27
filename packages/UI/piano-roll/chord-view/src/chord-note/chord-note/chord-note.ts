@@ -9,7 +9,7 @@ import { BlackKeyPrm } from "@music-analyzer/view-parameters/src/piano-roll/pian
 import { NoteSize } from "@music-analyzer/view-parameters/src/note-size";
 import { PianoRollBegin } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-begin";
 import { mod } from "@music-analyzer/math/src/basic-function/mod";
-import { Chord } from "@music-analyzer/tonal-objects";
+import { Chord } from "@music-analyzer/tonal-objects/src/chord/chord";
 import { TimeRangeController } from "@music-analyzer/controllers";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 

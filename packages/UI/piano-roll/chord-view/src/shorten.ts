@@ -1,6 +1,6 @@
 import { getCapitalCase } from "@music-analyzer/stdlib/src/string/get-capital-case";
 import { getLowerCase } from "@music-analyzer/stdlib/src/string/get-lower-case";
-import { Scale } from "@music-analyzer/tonal-objects";
+import { Scale } from "@music-analyzer/tonal-objects/src/scale/scale";
 
 export const shortenChord = (chord: string) => {
   const M7 = chord.replace("major seventh", "M7");

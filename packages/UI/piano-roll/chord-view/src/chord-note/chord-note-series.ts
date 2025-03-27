@@ -1,6 +1,6 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
-import { getChord } from "@music-analyzer/tonal-objects";
-import { Chord } from "@music-analyzer/tonal-objects";
+import { getChord } from "@music-analyzer/tonal-objects/src/chord/get";
+import { Chord } from "@music-analyzer/tonal-objects/src/chord/chord";
 import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view/src/svg-collection";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";

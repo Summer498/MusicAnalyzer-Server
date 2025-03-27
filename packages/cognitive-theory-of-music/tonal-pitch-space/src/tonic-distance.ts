@@ -1,7 +1,7 @@
 import { mod } from "@music-analyzer/math/src/basic-function/mod";
 import { assertNonNullable as NN } from "@music-analyzer/stdlib/src/assertion/not-null-like";
-import { Chord } from "@music-analyzer/tonal-objects";
-import { getIntervalDegree } from "@music-analyzer/tonal-objects";
+import { Chord } from "@music-analyzer/tonal-objects/src/chord/chord";
+import { getIntervalDegree } from "@music-analyzer/tonal-objects/src/interval/interval-degree";
 
 const _tonicDistanceInChromaNumber = (src: number, dst: number) => Math.abs(mod((dst - src) * 3 + 3, 7) - 3);
 export const tonicDistance = (src: Chord, dst: Chord) => {

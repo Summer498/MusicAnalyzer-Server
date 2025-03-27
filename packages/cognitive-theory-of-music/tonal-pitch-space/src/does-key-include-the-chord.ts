@@ -1,7 +1,7 @@
 import { isSuperSet } from "@music-analyzer/math/src/set/superset";
-import { getChroma } from "@music-analyzer/tonal-objects";
-import { minorKey } from "@music-analyzer/tonal-objects";
-import { Chord } from "@music-analyzer/tonal-objects";
+import { getChroma } from "@music-analyzer/tonal-objects/src/note/chroma";
+import { minorKey } from "@music-analyzer/tonal-objects/src/key/minor-key";
+import { Chord } from "@music-analyzer/tonal-objects/src/chord/chord";
 
 const c_minor = minorKey("C").natural;
 type KeyScale = typeof c_minor;

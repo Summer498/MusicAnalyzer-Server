@@ -4,7 +4,7 @@ import { TimeAndMelody } from "@music-analyzer/melody-analyze/src/time-and-melod
 import { MusicXML } from "@music-analyzer/musicxml";
 import { Pitch } from "@music-analyzer/musicxml";
 import { Time } from "@music-analyzer/time-and";
-import { getChroma } from "@music-analyzer/tonal-objects";
+import { getChroma } from "@music-analyzer/tonal-objects/src/note/chroma";
 
 const getTime = (
   matrix: TimeSpan[][],

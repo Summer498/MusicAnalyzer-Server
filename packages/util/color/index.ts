@@ -1,8 +1,8 @@
 import { Assertion } from "@music-analyzer/stdlib/src/assertion/assertion";
 import { mod } from "@music-analyzer/math/src/basic-function/mod";
-import { getChroma } from "@music-analyzer/tonal-objects";
-import { getInterval } from "@music-analyzer/tonal-objects";
-import { intervalOf } from "@music-analyzer/tonal-objects";
+import { getChroma } from "@music-analyzer/tonal-objects/src/note/chroma";
+import { getInterval } from "@music-analyzer/tonal-objects/src/interval/get";
+import { intervalOf } from "@music-analyzer/tonal-objects/src/interval/distance";
 import { map2rgbByHue } from "./src";
 
 // 0 <= h < 360; 0 <= s <= 1; 0 <= b <= 1

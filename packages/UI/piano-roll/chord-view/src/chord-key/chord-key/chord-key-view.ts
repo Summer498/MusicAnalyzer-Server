@@ -3,7 +3,7 @@ import { MVVM_View } from "@music-analyzer/view/src/mvc";
 import { oneLetterKey } from "../../shorten";
 import { chord_text_em } from "../../chord-view-params";
 import { ChordKeyModel } from "./chord-key-model";
-import { getScale } from "@music-analyzer/tonal-objects";
+import { getScale } from "@music-analyzer/tonal-objects/src/scale/get";
 
 export class ChordKeyView 
   extends MVVM_View<"text", ChordKeyModel> {

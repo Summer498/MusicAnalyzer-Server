@@ -2,7 +2,7 @@ import { isSubSet } from "@music-analyzer/math/src/set/subset";
 import { RomanChord } from "@music-analyzer/roman-chord";
 import { Assertion } from "@music-analyzer/stdlib/src/assertion/assertion";
 import { NotImplementedError } from "@music-analyzer/stdlib/src/error/not-implemented-error";
-import { getChroma } from "@music-analyzer/tonal-objects";
+import { getChroma } from "@music-analyzer/tonal-objects/src/note/chroma";
 
 export const getScaleChroma = (roman: RomanChord) => {
   // TODO: 借用和音に伴いスケール構成音を変異させる
