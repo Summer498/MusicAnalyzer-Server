@@ -1,28 +1,7 @@
+import { createGain } from "./create-gain";
+import { createOscillator } from "./create-oscilllator";
+
 const audioCtx = new AudioContext();
-
-// オシレータオブジェクトを作る
-function createOscillator(
-  ctx: AudioContext,
-  parentNode: AudioNode,
-  type: OscillatorType,
-  frequency: number,
-  detune: number,
-) {
-  const osc = ctx.createOscillator();
-  osc.type = type;
-  osc.frequency.value = frequency;
-  osc.detune.value = detune;
-  osc.connect(parentNode);
-  return osc;
-}
-
-// ゲインオブジェクトを作る
-function createGain(ctx: AudioContext, parentNode: AudioNode, gain: number) {
-  const gainNode = ctx.createGain();
-  gainNode.gain.value = gain;
-  gainNode.connect(parentNode);
-  return gainNode;
-}
 
 // 任意個の音符を鳴らす
 export function play(
@@ -68,8 +47,4 @@ export function play(
 
     osc.stop(start + length_sec + release);
   });
-}
-
-export function play_note(hzs = [330, 440, 550], bpm = 60, note_value = 4, amplitude = 1) {
-  play(hzs, 0, 240 / (bpm * note_value), amplitude);
 }
