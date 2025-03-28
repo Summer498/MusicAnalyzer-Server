@@ -4,9 +4,9 @@ import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-r
 import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
 import { PianoRollHeight } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-height";
 import { PianoRollWidth } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-width";
-import { CurrentTimeLine } from "@music-analyzer/svg-objects";
-import { OctaveBGs } from "@music-analyzer/svg-objects";
-import { OctaveKeys } from "@music-analyzer/svg-objects";
+import { CurrentTimeLine } from "@music-analyzer/svg-objects/src/current-time-line";
+import { OctaveBGs } from "@music-analyzer/svg-objects/src/octaves/octave-bgs";
+import { OctaveKeys } from "@music-analyzer/svg-objects/src/octaves/octave-keys";
 import { AnalysisView } from "./analysis-view";
 import { MusicStructureElements } from "./music-structure-elements";
 

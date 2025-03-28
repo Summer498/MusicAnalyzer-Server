@@ -1,8 +1,8 @@
-import { BeatInfo } from "@music-analyzer/beat-estimation";
+import { BeatInfo } from "@music-analyzer/beat-estimation/src/beat-info";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { BeatElements } from "@music-analyzer/beat-view";
-import { RequiredByBeatElements } from "@music-analyzer/beat-view";
+import { BeatElements } from "@music-analyzer/beat-view/src/beat-elements";
+import { RequiredByBeatElements } from "@music-analyzer/beat-view/src/beat-elements";
 import { ChordElements } from "@music-analyzer/chord-view/src/chord-elements";
 import { RequiredByChordElements } from "@music-analyzer/chord-view/src/chord-elements";
 import { MelodyElements } from "@music-analyzer/melody-view/src/melody-elements";
