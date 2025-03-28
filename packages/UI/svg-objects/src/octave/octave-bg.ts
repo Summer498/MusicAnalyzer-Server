@@ -1,5 +1,5 @@
-import { OctaveBlackBG } from "../octave-chunk";
-import { OctaveWhiteBG } from "../octave-chunk";
+import { OctaveBlackBG } from "../octave-chunk/octave-black-bg";
+import { OctaveWhiteBG } from "../octave-chunk/octave-white-bg";
 import { Octave } from "./octave";
 
 export class OctaveBG extends Octave {

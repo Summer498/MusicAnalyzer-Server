@@ -1,4 +1,4 @@
-import { BlackBG } from "../components";
+import { BlackBG } from "../components/black-bg";
 import { OctaveChunk } from "./octave-chunk";
 
 export class OctaveBlackBG extends OctaveChunk {

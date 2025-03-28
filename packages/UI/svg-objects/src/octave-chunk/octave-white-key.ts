@@ -1,4 +1,4 @@
-import { WhiteKey } from "../components";
+import { WhiteKey } from "../components/white-key";
 import { OctaveChunk } from "./octave-chunk";
 
 export class OctaveWhiteKey extends OctaveChunk {

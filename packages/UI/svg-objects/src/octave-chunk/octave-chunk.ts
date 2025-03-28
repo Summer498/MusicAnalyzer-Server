@@ -1,5 +1,5 @@
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
-import { Rectangle } from "../components";
+import { Rectangle } from "../components/rectangle/rectangle";
 
 export abstract class OctaveChunk
   implements WindowReflectable {

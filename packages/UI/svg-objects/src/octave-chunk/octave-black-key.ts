@@ -1,4 +1,4 @@
-import { BlackKey } from "../components";
+import { BlackKey } from "../components/black-key";
 import { OctaveChunk } from "./octave-chunk";
 
 export class OctaveBlackKey extends OctaveChunk {

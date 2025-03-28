@@ -1,5 +1,5 @@
-import { OctaveBlackKey } from "../octave-chunk";
-import { OctaveWhiteKey } from "../octave-chunk";
+import { OctaveBlackKey } from "../octave-chunk/octave-black-key";
+import { OctaveWhiteKey } from "../octave-chunk/octave-white-key";
 import { Octave } from "./octave";
 
 export class OctaveKey extends Octave {
