@@ -1,5 +1,5 @@
-import { hsv2rgb } from "@music-analyzer/color";
-import { rgbToString } from "@music-analyzer/color";
+import { hsv2rgb } from "@music-analyzer/color/src/hsv2rgb";
+import { rgbToString } from "@music-analyzer/color/src/rgb-to-string";
 import { Dyad } from "../archetype/Dyad";
 import { Monad } from "../archetype/Monad";
 import { Null_ad } from "../archetype/Null-ad";
