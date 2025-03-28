@@ -2,7 +2,7 @@ import { fifthToColor } from "@music-analyzer/color/src/fifth-to-color";;
 import { shortenChord } from "../../shorten";
 import { ChordNameModel } from "./chord-name-model";
 import { chord_text_em } from "../../chord-view-params";
-import { MVVM_View } from "@music-analyzer/view/src/mvc";
+import { MVVM_View } from "@music-analyzer/view/src/mvvm/view";
 
 export class ChordNameView 
   extends MVVM_View<"text", ChordNameModel> {

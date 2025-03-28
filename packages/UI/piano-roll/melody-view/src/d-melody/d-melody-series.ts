@@ -1,7 +1,7 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
 import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/audio-reflectable-registry";
-import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view/src/svg-collection";
+import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view/src/reflectable-time-and-mvc-controller-collection/reflectable-time-and-mvc-controller-collection";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { DMelodyController } from "@music-analyzer/controllers/src/switcher/d-melody/d-melody-controller";
 import { DMelodyControllerSubscriber } from "@music-analyzer/controllers/src/switcher/d-melody/d-melody-controller-subscriber";

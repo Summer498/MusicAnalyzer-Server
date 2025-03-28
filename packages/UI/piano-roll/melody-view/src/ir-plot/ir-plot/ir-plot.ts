@@ -1,5 +1,5 @@
 import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/audio-reflectable-registry";
-import { MVVM_ViewModel} from "@music-analyzer/view/src/mvc";
+import { MVVM_ViewModel } from "@music-analyzer/view/src/mvvm/mvvm";
 import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
 import { IRPlotModel } from "./ir-plot-model";
 import { IRPlotView } from "./ir-plot-view";

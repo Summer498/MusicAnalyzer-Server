@@ -1,4 +1,4 @@
-import { MVVM_ViewModel} from "@music-analyzer/view/src/mvc";
+import { MVVM_ViewModel } from "@music-analyzer/view/src/mvvm/mvvm";
 import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
 import { GravityModel } from "./gravity-model";
 import { GravityView } from "./gravity-view/gravity-view";

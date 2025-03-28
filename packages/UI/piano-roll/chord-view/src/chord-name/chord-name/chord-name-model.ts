@@ -2,7 +2,7 @@ import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-an
 import { Time } from "@music-analyzer/time-and/src/time";
 import { Chord } from "@music-analyzer/tonal-objects/src/chord/chord";
 import { getChord } from "@music-analyzer/tonal-objects/src/chord/get";
-import { MVVM_Model } from "@music-analyzer/view/src/mvc";
+import { MVVM_Model } from "@music-analyzer/view/src/mvvm/model";
 
 export class ChordNameModel 
   extends MVVM_Model {

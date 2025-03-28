@@ -2,7 +2,7 @@ import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-an
 import { PianoRollTranslateX } from "@music-analyzer/view-parameters/src/piano-roll-translate-x";
 import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
 import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/audio-reflectable-registry";
-import { MVVM_Collection } from "@music-analyzer/view/src/mvc";
+import { MVVM_Collection } from "@music-analyzer/view/src/mvvm/collection";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { ChordKey } from "./chord-key/chord-key";
 import { RequiredByChordKey } from "./chord-key/chord-key";

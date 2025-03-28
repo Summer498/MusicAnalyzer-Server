@@ -1,5 +1,5 @@
 import { bracket_height } from "@music-analyzer/view-parameters/src/bracket-height";
-import { MVVM_View } from "@music-analyzer/view/src/mvc";
+import { MVVM_View } from "@music-analyzer/view/src/mvvm/view";
 import { ReductionViewModel } from "./reduction-view-model";
 import { MelodyColorController } from "@music-analyzer/controllers/src/color-selector.ts/melody-color/melody-color-controller";
 import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";

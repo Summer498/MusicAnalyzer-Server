@@ -1,4 +1,4 @@
-import { MVVM_View } from "@music-analyzer/view/src/mvc";
+import { MVVM_View } from "@music-analyzer/view/src/mvvm/view";
 import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
 import { ReductionModel } from "../reduction-model";
 import { ReductionViewModel } from "./reduction-view-model";

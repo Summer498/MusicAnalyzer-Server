@@ -1,5 +1,5 @@
 import { AudioReflectable } from "@music-analyzer/view/src/reflectable/audio-reflectable";
-import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view/src/svg-collection";
+import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view/src/reflectable-time-and-mvc-controller-collection/reflectable-time-and-mvc-controller-collection";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { BeatInfo } from "@music-analyzer/beat-estimation/src/beat-info";

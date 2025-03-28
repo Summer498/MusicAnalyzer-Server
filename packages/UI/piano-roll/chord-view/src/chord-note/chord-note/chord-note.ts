@@ -1,6 +1,6 @@
 import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
 import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/audio-reflectable-registry";
-import { MVVM_ViewModel} from "@music-analyzer/view/src/mvc";
+import { MVVM_ViewModel } from "@music-analyzer/view/src/mvvm/mvvm";
 import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
 import { ChordNoteModel } from "./chord-note-model";
 import { ChordNoteView } from "./chord-note-view";

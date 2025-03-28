@@ -1,7 +1,7 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
 import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
 import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/audio-reflectable-registry";
-import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view/src/svg-collection";
+import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view/src/reflectable-time-and-mvc-controller-collection/reflectable-time-and-mvc-controller-collection";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { ChordRoman } from "./chord-roman/chord-roman";
 import { RequiredByChordRoman } from "./chord-roman/chord-roman";
