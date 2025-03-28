@@ -1,4 +1,4 @@
-import { play } from "@music-analyzer/synth";
+import { play } from "@music-analyzer/synth/src/play";
 import { NowAt } from "@music-analyzer/view-parameters/src/now-at";
 import { reservation_range } from "@music-analyzer/view-parameters/src/reservation-range";
 import { Time } from "@music-analyzer/time-and/src/time";
