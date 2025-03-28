@@ -1,4 +1,4 @@
-import { AnalyzedDataContainer } from "@music-analyzer/analyzed-data-container"
+import { AnalyzedDataContainer } from "@music-analyzer/analyzed-data-container/src/analyze-data-container";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { SongLength } from "@music-analyzer/view-parameters/src/song-length";
 import { AnalyzedMusicData } from "../MusicAnalyzerWindow";

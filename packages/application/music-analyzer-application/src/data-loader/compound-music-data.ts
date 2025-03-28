@@ -1,7 +1,7 @@
 import { GTTMData } from "@music-analyzer/gttm/src/analysis-result/gttm-data";
 import { ProlongationalReduction } from "@music-analyzer/gttm/src/analysis-result/PR/has-interface/prolongation-reduction";
 import { TimeSpanReduction } from "@music-analyzer/gttm/src/analysis-result/TSR/has-interface/time-span-reduction";
-import { getHierarchicalMelody } from "@music-analyzer/melody-hierarchical-analysis";
+import { getHierarchicalMelody } from "@music-analyzer/melody-hierarchical-analysis/src/get-hierarchical-melody";
 import { DataContainer } from "./data-container";
 import { AnalyzedMusicData } from "../MusicAnalyzerWindow";
 import { TitleInfo } from "../containers/tune-info";

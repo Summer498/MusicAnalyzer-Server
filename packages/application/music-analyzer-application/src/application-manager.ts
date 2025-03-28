@@ -2,7 +2,7 @@ import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/a
 import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
 import { MusicStructureElements } from "@music-analyzer/piano-roll/src/music-structure-elements";
 import { Controllers } from "./controllers";
-import { BeatInfo } from "@music-analyzer/beat-estimation";
+import { BeatInfo } from "@music-analyzer/beat-estimation/src/beat-info";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 
