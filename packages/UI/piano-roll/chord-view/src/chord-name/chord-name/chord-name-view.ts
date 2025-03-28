@@ -1,4 +1,4 @@
-import { fifthToColor } from "@music-analyzer/color";
+import { fifthToColor } from "@music-analyzer/color/src/fifth-to-color";;
 import { shortenChord } from "../../shorten";
 import { ChordNameModel } from "./chord-name-model";
 import { chord_text_em } from "../../chord-view-params";

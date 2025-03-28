@@ -1,5 +1,5 @@
-import { hsv2rgb } from "@music-analyzer/color";
-import { rgbToString } from "@music-analyzer/color";
+import { hsv2rgb } from "@music-analyzer/color/src/hsv2rgb";;
+import { rgbToString } from "@music-analyzer/color/src/rgb-to-string";;
 
 export const romanToColor = (roman: string, s: number, v: number) => {
   let i: number | undefined = undefined;

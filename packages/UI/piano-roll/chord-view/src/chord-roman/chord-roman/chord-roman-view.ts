@@ -1,4 +1,4 @@
-import { fifthToColor } from "@music-analyzer/color";
+import { fifthToColor } from "@music-analyzer/color/src/fifth-to-color";;
 import { MVVM_View } from "@music-analyzer/view/src/mvc";
 import { shortenChord } from "../../shorten";
 import { ChordRomanModel } from "./chord-roman-model";

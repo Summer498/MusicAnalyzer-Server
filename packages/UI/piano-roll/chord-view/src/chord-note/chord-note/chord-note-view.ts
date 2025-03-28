@@ -1,5 +1,5 @@
-import { fifthToColor } from "@music-analyzer/color";
-import { thirdToColor } from "@music-analyzer/color";
+import { fifthToColor } from "@music-analyzer/color/src/fifth-to-color";;
+import { thirdToColor } from "@music-analyzer/color/src/third-to-color";
 import { MVVM_View } from "@music-analyzer/view/src/mvc";
 import { ChordNoteModel } from "./chord-note-model";
 
