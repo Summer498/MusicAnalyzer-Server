@@ -1,4 +1,4 @@
-import { RomanChord } from "@music-analyzer/roman-chord";
+import { RomanChord } from "@music-analyzer/roman-chord/src/roman-chord";
 import { totalSum } from "@music-analyzer/math/src/reduction/sum";
 import { vSub } from "@music-analyzer/math/src/vector/sub";
 import { getBasicSpace } from "./get-basic-space";

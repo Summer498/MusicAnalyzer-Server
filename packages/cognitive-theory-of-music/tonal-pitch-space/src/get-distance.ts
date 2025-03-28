@@ -1,4 +1,4 @@
-import { RomanChord } from "@music-analyzer/roman-chord";
+import { RomanChord } from "@music-analyzer/roman-chord/src/roman-chord";
 import { regionDistance } from "./region-distance";
 import { tonicDistance } from "./tonic-distance";
 import { basicSpaceDistance } from "./basic-space-distance";
