@@ -1,5 +1,5 @@
 import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
-import { AudioAnalyzer } from "./audio-analyzer";
+import { AudioAnalyzer } from "./audio-analyzer/audio-analyzer";
 
 export class spectrogramViewer 
   implements AudioReflectable {

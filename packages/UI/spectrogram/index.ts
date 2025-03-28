@@ -1,1 +1,0 @@
-export { AudioViewer } from "./src";

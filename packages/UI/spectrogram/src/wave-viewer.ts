@@ -1,7 +1,7 @@
 import { Complex } from "@music-analyzer/math/src/fft/complex";
 import { correlation } from "@music-analyzer/math/src/fft";
 import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
-import { AudioAnalyzer } from "./audio-analyzer";
+import { AudioAnalyzer } from "./audio-analyzer/audio-analyzer";
 
 export class WaveViewer 
   implements AudioReflectable {
