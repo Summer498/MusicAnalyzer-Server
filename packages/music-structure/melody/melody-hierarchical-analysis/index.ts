@@ -1,1 +1,0 @@
-export { getHierarchicalMelody } from "./src";
