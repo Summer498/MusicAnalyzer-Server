@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@music-analyzer/musicxml": "1.0.0",
+    "@music-analyzer/serializable-data": "1.0.0",
     "fast-xml-parser": "^4.4.1"
   }
 }
