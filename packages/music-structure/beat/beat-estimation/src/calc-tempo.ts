@@ -8,11 +8,7 @@ import { mod } from "@music-analyzer/math/src/basic-function/mod";
 import { totalSum } from "@music-analyzer/math/src/reduction/sum";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
-
-export type BeatInfo = {
-  tempo: number,
-  phase: number
-}
+import { BeatInfo } from "./beat-info";
 
 export const calcTempo = (melodies: TimeAndAnalyzedMelody[], romans: TimeAndRomanAnalysis[]) => {
   const phase = 0;
