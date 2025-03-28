@@ -1,4 +1,4 @@
-import { BeatInfo } from "@music-analyzer/beat-estimation";
+import { BeatInfo } from "@music-analyzer/beat-estimation/src/beat-info";
 import { Time } from "@music-analyzer/time-and/src/time";
 import { MVVM_Model } from "@music-analyzer/view/src/mvc";
 

@@ -1,4 +1,4 @@
-import { BeatInfo } from "@music-analyzer/beat-estimation";
+import { BeatInfo } from "@music-analyzer/beat-estimation/src/beat-info";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { BeatBarsSeries } from "./beat-bar-series";
 import { RequiredByBeatBarsSeries } from "./beat-bar-series";

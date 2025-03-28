@@ -2,9 +2,9 @@ import { AudioReflectable } from "@music-analyzer/view/src/reflectable/audio-ref
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view/src/svg-collection";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { BeatInfo } from "@music-analyzer/beat-estimation";
-import { BeatBar } from "./beat-bar";
-import { RequiredByBeatBar } from "./beat-bar";
+import { BeatInfo } from "@music-analyzer/beat-estimation/src/beat-info";
+import { BeatBar } from "./beat-bar/beat-bar";
+import { RequiredByBeatBar } from "./beat-bar/beat-bar";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 
 export interface RequiredByBeatBarsSeries
