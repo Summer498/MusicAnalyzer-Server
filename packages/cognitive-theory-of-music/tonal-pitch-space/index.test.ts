@@ -14,13 +14,13 @@ import { majorKey } from "@music-analyzer/tonal-objects/src/key/major-key"
 import { minorKey } from "@music-analyzer/tonal-objects/src/key/minor-key"
 import { getIntervalDegree } from "@music-analyzer/tonal-objects/src/interval/interval-degree"
 import { getChroma } from "@music-analyzer/tonal-objects/src/note/chroma"
-import { RomanChord } from "@music-analyzer/roman-chord";
-import { getDistance } from "."
+import { RomanChord } from "@music-analyzer/roman-chord/src/roman-chord";
+import { getDistance } from "./src/get-distance"
 import { tonicDistance } from "./src/tonic-distance"
 import { regionDistance } from "./src/region-distance"
 import { getBasicSpace } from "./src/get-basic-space"
 import { basicSpaceDistance } from "./src/basic-space-distance"
-import { getKeysIncludeTheChord, } from "."
+import { getKeysIncludeTheChord, } from "./src/get-keys-include-the-chord"
 
 describe("dummy", () => {
   test("dummy", () => {
