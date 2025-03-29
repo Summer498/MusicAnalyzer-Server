@@ -1,5 +1,5 @@
-import { RetrospectiveTriadSymbol } from "./types";
-import { ProspectiveTriadSymbol } from "./types";
+import { RetrospectiveTriadSymbol } from "./symbols/retrospective-triad";
+import { ProspectiveTriadSymbol } from "./symbols/prospective-triad";
 
 export const retrospectiveSymbol = (symbol: ProspectiveTriadSymbol): RetrospectiveTriadSymbol => {
   switch (symbol) {

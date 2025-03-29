@@ -1,9 +1,9 @@
 import { Interval } from "@music-analyzer/tonal-objects/src/interval/interval";
-import { ArchetypeSymbol } from "./types";
-import { RetrospectiveTriadSymbol } from "./types";
-import { ProspectiveDirectionalTriadSymbol } from "./types";
-import { ProspectiveTriadSymbol } from "./types";
-import { ArchetypeDirectionalSymbol } from "./types";
+import { ArchetypeSymbol } from "./symbols/archetype";
+import { RetrospectiveTriadSymbol } from "./symbols/retrospective-triad";
+import { ProspectiveDirectionalTriadSymbol } from "./symbols/directional/directional-prospective-triad";
+import { ProspectiveTriadSymbol } from "./symbols/prospective-triad";
+import { ArchetypeDirectionalSymbol } from "./symbols/directional/directional";
 import { directionalRetrospectiveSymbol } from "./get-directional-retrospective-symbol";
 
 export const directionalProspectiveSymbol = (symbol: ProspectiveTriadSymbol, realization: Interval): ProspectiveDirectionalTriadSymbol => {

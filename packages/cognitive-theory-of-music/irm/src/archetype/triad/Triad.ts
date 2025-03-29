@@ -1,7 +1,7 @@
 import { IntervalName } from "@music-analyzer/tonal-objects/src/interval/interval-name";
 import { getInterval } from "@music-analyzer/tonal-objects/src/interval/get";
 import { NoteLiteral } from "@music-analyzer/tonal-objects/src/note/note-literal";
-import { TriadSymbol } from "../types";
+import { TriadSymbol } from "../symbols/triad";
 import { retrospectiveSymbol } from "../get-retrospective-symbol";
 import { TriadArchetype } from "./triad-archetype";
 import { IntervallicMotion } from "../../MelodyMotion/IntervallicMotion";

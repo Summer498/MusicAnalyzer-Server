@@ -3,7 +3,7 @@ import { intervalOf } from "@music-analyzer/tonal-objects/src/interval/distance"
 import { IntervalName } from "@music-analyzer/tonal-objects/src/interval/interval-name";
 import { NoteLiteral } from "@music-analyzer/tonal-objects/src/note/note-literal";
 import { RegistralReturnForm } from "../../RegistralReturnForm";
-import { ProspectiveTriadSymbol } from "../types";
+import { ProspectiveTriadSymbol } from "../symbols/prospective-triad";
 import { IntervallicMotion } from "../../MelodyMotion/IntervallicMotion";
 import { RegistralMotion } from "../../MelodyMotion/RegistralMotion";
 import { getTriadArchetypeSymbol } from "./get-triad-archetype-symbol";

@@ -1,6 +1,6 @@
-import { ProspectiveTriadSymbol } from "../types";
-import { DirectionName } from "../../Direction";
-import { MagnitudeName } from "../../Magnitude";
+import { ProspectiveTriadSymbol } from "../symbols/prospective-triad";
+import { DirectionName } from "../../direction-name";
+import { MagnitudeName } from "../../magnitude-name";
 
 const getReverse = (
   I: DirectionName,
