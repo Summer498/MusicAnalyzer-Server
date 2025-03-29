@@ -1,14 +1,14 @@
 import { BeatInfo } from "@music-analyzer/beat-estimation/src/beat-info";
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { BeatBarsSeries } from "./beat-bar-series";
 import { RequiredByBeatElements } from "./requirement/beat-elements";
+import { Time } from "@music-analyzer/time-and/src/time";
 
 export class BeatElements {
   readonly children: BeatBarsSeries[];
   readonly beat_bars: BeatBarsSeries;
   constructor(
     beat_info: BeatInfo,
-    melodies: TimeAndAnalyzedMelody[],
+    melodies: { time: Time }[],
     controllers: RequiredByBeatElements
   ) {
     this.beat_bars = new BeatBarsSeries(beat_info, melodies, controllers);

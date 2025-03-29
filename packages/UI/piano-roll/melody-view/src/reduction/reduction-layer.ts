@@ -1,14 +1,8 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { CollectionLayer } from "@music-analyzer/view/src/collection-layer";
-import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { Reduction } from "./reduction";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
-
-interface IReductionLayer
-  extends
-  TimeRangeSubscriber,
-  WindowReflectable { }
+import { IReductionLayer } from "../interface/reduction/reduction-layer";
 
 export class ReductionLayer
   extends CollectionLayer<Reduction>

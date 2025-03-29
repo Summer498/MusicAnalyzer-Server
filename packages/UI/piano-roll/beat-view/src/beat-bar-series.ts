@@ -1,24 +1,16 @@
-import { AudioReflectable } from "@music-analyzer/view/src/reflectable/audio-reflectable";
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view/src/reflectable-time-and-mvc-controller-collection/reflectable-time-and-mvc-controller-collection";
-import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { BeatInfo } from "@music-analyzer/beat-estimation/src/beat-info";
 import { BeatBar } from "./beat-bar/beat-bar";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 import { RequiredByBeatBarsSeries } from "./requirement/beat-bar-series";
-
-export interface IBeatBarsSeries
-  extends
-  AudioReflectable,
-  TimeRangeSubscriber,
-  WindowReflectable { }
+import { IBeatBarsSeries } from "./interface/beat-bar-series";
+import { Time } from "@music-analyzer/time-and/src/time";
 
 export class BeatBarsSeries
   extends ReflectableTimeAndMVCControllerCollection<BeatBar>
   implements IBeatBarsSeries {
   constructor(
     beat_info: BeatInfo,
-    melodies: TimeAndAnalyzedMelody[],
+    melodies: { time: Time }[],
     controllers: RequiredByBeatBarsSeries
   ) {
     const N = Math.ceil(beat_info.tempo * melodies[melodies.length - 1].time.end) + beat_info.phase;

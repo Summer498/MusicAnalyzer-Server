@@ -1,13 +1,7 @@
-import { AudioReflectable } from "@music-analyzer/view/src/reflectable/audio-reflectable";
-import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { IRPlotHierarchy } from "./ir-plot-hierarchy/ir-plot-hierarchy";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { RequiredByIRPlotSVG } from "../requirement/ir-plot/required-by-ir-plot-svg";
-
-export interface I_IRPlotSVG
-  extends
-  AudioReflectable,
-  WindowReflectable { }
+import { I_IRPlotSVG } from "../interface/ir-plot/ir-plot-svg";
 
 export class IRPlotSVG
   implements I_IRPlotSVG {

@@ -2,14 +2,8 @@ import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-a
 import { IRPlotLayerView } from "./ir-plot-layer-view";
 import { IRPlot } from "../ir-plot/ir-plot";
 import { IRPlotLayerModel } from "./ir-plot-layer-model";
-import { AudioReflectable } from "@music-analyzer/view/src/reflectable/audio-reflectable";
-import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
-
-export interface I_IRPlotLayer
-  extends
-  AudioReflectable,
-  WindowReflectable { }
+import { I_IRPlotLayer } from "../../interface/ir-plot/ir-plot-layer";
 
 export class IRPlotLayer
   implements I_IRPlotLayer {

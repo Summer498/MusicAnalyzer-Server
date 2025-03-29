@@ -1,7 +1,3 @@
-import { ColorChangeSubscriber } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/color-change-subscriber";
-import { MelodyBeepSwitcherSubscriber } from "@music-analyzer/controllers/src/melody-beep-controller/melody-beep-toggle/melody-beep-switcher-subscriber";
-import { MelodyBeepVolumeSubscriber } from "@music-analyzer/controllers/src/melody-beep-controller/melody-beep-volume/melody-beep-volume-subscriber";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { BlackKeyPrm } from "@music-analyzer/view-parameters/src/piano-roll/rect-parameters/black-key";
 import { NoteSize } from "@music-analyzer/view-parameters/src/note-size";
@@ -11,17 +7,11 @@ import { MelodyModel } from "./melody-model";
 import { MelodyView } from "./melody-view";
 import { MelodyBeep } from "./melody-beep";
 import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
+import { IMelody } from "../../interface/melody/melody";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
-
-export interface IMelody
-  extends
-  ColorChangeSubscriber,
-  MelodyBeepSwitcherSubscriber,
-  MelodyBeepVolumeSubscriber,
-  TimeRangeSubscriber { }
 
 export class Melody
   extends MVVM_ViewModel<MelodyModel, MelodyView>

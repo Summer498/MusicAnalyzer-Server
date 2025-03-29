@@ -1,14 +1,10 @@
-import { HierarchyLevelSubscriber } from "@music-analyzer/controllers/src/slider/hierarchy-level/hierarchy-level-subscriber"
 import { I_CollectionLayer } from "./i-collection-layer";
-import { I_MVVM_Collection } from "./mvvm/i-collection";
 import { MVVM_Collection } from "./mvvm/collection";
+import { ICollectionHierarchy } from "./i-collection-hierarchy";
 
 export abstract class CollectionHierarchy<L extends I_CollectionLayer>
   extends MVVM_Collection<L>
-  implements
-  I_MVVM_Collection,
-  HierarchyLevelSubscriber
-  {
+  implements ICollectionHierarchy {
   protected _show: L[];
   get show() { return this._show; }
   constructor(id: string, readonly children: L[]) {

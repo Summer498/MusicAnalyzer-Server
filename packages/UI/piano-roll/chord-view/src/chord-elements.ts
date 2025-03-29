@@ -1,9 +1,10 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
-import { ChordKeySeries } from "./chord-key/chord-key-series";
-import { ChordNameSeries } from "./chord-name/chord-name-series";
-import { ChordNotesSeries } from "./chord-note/chord-note-series";
-import { ChordRomanSeries } from "./chord-roman/chord-roman-series";
-import { RequiredByChordElements } from "./requirement/chord-elements";
+import { ChordKeySeries } from "./chord-key-series";
+import { ChordNameSeries } from "./chord-name-series";
+import { ChordNotesSeries } from "./chord-note-series";
+import { ChordRomanSeries } from "./chord-roman-series";
+import { RequiredByChordElements } from "./r-chord-elements";
+import { RequiredByChordPartModel } from "./r-chord-part-model";
 
 export class ChordElements {
   readonly children: unknown[];
@@ -15,10 +16,11 @@ export class ChordElements {
     romans: TimeAndRomanAnalysis[],
     controllers: RequiredByChordElements
   ) {
-    this.chord_keys = new ChordKeySeries(romans, controllers);
-    this.chord_names = new ChordNameSeries(romans, controllers);
-    this.chord_notes = new ChordNotesSeries(romans, controllers);
-    this.chord_romans = new ChordRomanSeries(romans, controllers);
+    const data = romans.map(e => new RequiredByChordPartModel(e))
+    this.chord_keys = new ChordKeySeries(data, controllers);
+    this.chord_names = new ChordNameSeries(data, controllers);
+    this.chord_notes = new ChordNotesSeries(data, controllers);
+    this.chord_romans = new ChordRomanSeries(data, controllers);
     this.children = [
       this.chord_keys,
       this.chord_names,

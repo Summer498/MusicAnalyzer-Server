@@ -1,19 +1,9 @@
-import { HierarchyLevelSubscriber } from "@music-analyzer/controllers/src/slider/hierarchy-level/hierarchy-level-subscriber";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { AudioReflectable } from "@music-analyzer/view/src/reflectable/audio-reflectable";
 import { CollectionHierarchy } from "@music-analyzer/view/src/collection-hierarchy";
-import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { IRSymbolLayer } from "./ir-symbol-layer";
 import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
 import { RequiredByIRSymbolHierarchy } from "../requirement/ir-symbol/required-by-ir-symbol-hierarchy";
-
-export interface I_IRSymbolHierarchy
-  extends
-  HierarchyLevelSubscriber,
-  TimeRangeSubscriber,
-  AudioReflectable,
-  WindowReflectable { }
+import { I_IRSymbolHierarchy } from "../interface/ir-symbol/ir-symbol-hierarchy";
 
 export class IRSymbolHierarchy
   extends CollectionHierarchy<IRSymbolLayer>

@@ -1,15 +1,7 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { AudioReflectable } from "@music-analyzer/view/src/reflectable/audio-reflectable";
 import { CollectionLayer } from "@music-analyzer/view/src/collection-layer";
-import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { Gravity } from "./gravity/gravity";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
-
-export interface IGravityLayer
-  extends
-  TimeRangeSubscriber,
-  AudioReflectable,
-  WindowReflectable { }
+import { IGravityLayer } from "../interface/gravity/gravity-layer";
 
 export class GravityLayer
   extends CollectionLayer<Gravity>

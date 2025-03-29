@@ -1,14 +1,8 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { CollectionLayer } from "@music-analyzer/view/src/collection-layer";
-import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { IRSymbol } from "./ir-symbol/ir-symbol";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
-
-export interface I_IRSymbolLayer
-  extends
-  TimeRangeSubscriber,
-  WindowReflectable { }
+import { I_IRSymbolLayer } from "../interface/ir-symbol/ir-symbol-layer";
 
 export class IRSymbolLayer
   extends CollectionLayer<IRSymbol>
