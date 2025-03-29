@@ -6,10 +6,13 @@ import { MelodyModel } from "./melody-model";
 import { MelodyBeepSwitcherSubscriber } from "@music-analyzer/controllers/src/melody-beep-controller/melody-beep-toggle/melody-beep-switcher-subscriber";
 import { MelodyBeepVolumeSubscriber } from "@music-analyzer/controllers/src/melody-beep-controller/melody-beep-volume/melody-beep-volume-subscriber";
 
-export class MelodyBeep
-  implements
+export interface IMelodyBeep
+  extends
   MelodyBeepSwitcherSubscriber,
-  MelodyBeepVolumeSubscriber {
+  MelodyBeepVolumeSubscriber { }
+
+export class MelodyBeep
+  implements IMelodyBeep {
   #beep_volume: number;
   #do_melody_beep: boolean;
   #sound_reserved: boolean;

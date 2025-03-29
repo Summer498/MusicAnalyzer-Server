@@ -1,16 +1,19 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
+import { AudioReflectable } from "@music-analyzer/view/src/reflectable/audio-reflectable";
 import { CollectionLayer } from "@music-analyzer/view/src/collection-layer";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { Gravity } from "./gravity/gravity";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 
-export class GravityLayer
-  extends CollectionLayer<Gravity>
-  implements
+export interface IGravityLayer
+  extends
   TimeRangeSubscriber,
   AudioReflectable,
-  WindowReflectable {
+  WindowReflectable { }
+
+export class GravityLayer
+  extends CollectionLayer<Gravity>
+  implements IGravityLayer {
   constructor(
     mode: "chord_gravity" | "scale_gravity",
     melodies: TimeAndAnalyzedMelody[],

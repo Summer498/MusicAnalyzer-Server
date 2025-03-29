@@ -16,13 +16,16 @@ const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
-export class Melody
-  extends MVVM_ViewModel<MelodyModel, MelodyView>
-  implements
+export interface IMelody
+  extends
   ColorChangeSubscriber,
   MelodyBeepSwitcherSubscriber,
   MelodyBeepVolumeSubscriber,
-  TimeRangeSubscriber {
+  TimeRangeSubscriber { }
+
+export class Melody
+  extends MVVM_ViewModel<MelodyModel, MelodyView>
+  implements IMelody {
   #beeper: MelodyBeep
   constructor(
     melody: TimeAndAnalyzedMelody,

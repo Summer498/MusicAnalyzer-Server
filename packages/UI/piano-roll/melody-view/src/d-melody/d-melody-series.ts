@@ -1,5 +1,5 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
+import { AudioReflectable } from "@music-analyzer/view/src/reflectable/audio-reflectable";
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view/src/reflectable-time-and-mvc-controller-collection/reflectable-time-and-mvc-controller-collection";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { DMelodyControllerSubscriber } from "@music-analyzer/controllers/src/switcher/d-melody/d-melody-controller-subscriber";
@@ -7,13 +7,16 @@ import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time
 import { DMelody } from "./d-melody/d-melody";
 import { RequiredByDMelodySeries } from "../requirement/d-melody/required-by-d-melody-series";
 
-export class DMelodySeries
-  extends ReflectableTimeAndMVCControllerCollection<DMelody>
-  implements
+export interface IDMelodySeries
+  extends
   AudioReflectable,
   DMelodyControllerSubscriber,
   TimeRangeSubscriber,
-  WindowReflectable {
+  WindowReflectable { }
+
+export class DMelodySeries
+  extends ReflectableTimeAndMVCControllerCollection<DMelody>
+  implements IDMelodySeries {
   constructor(
     detected_melodies: TimeAndAnalyzedMelody[],
     controllers: RequiredByDMelodySeries,

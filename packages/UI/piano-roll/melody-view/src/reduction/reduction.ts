@@ -6,11 +6,14 @@ import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-r
 import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
 
+export interface IReduction
+  extends
+  TimeRangeSubscriber,
+  WindowReflectable { }
+
 export class Reduction
   extends MVVM_ViewModel<ReductionModel, ReductionView>
-  implements
-  TimeRangeSubscriber,
-  WindowReflectable {
+  implements IReduction {
   constructor(
     melody: TimeAndAnalyzedMelody,
     layer: number,

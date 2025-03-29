@@ -6,8 +6,7 @@ import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-
 
 export class MelodyView
   extends MVVM_View<"rect", MelodyModel>
-  implements
-  ColorChangeSubscriber {
+  implements ColorChangeSubscriber {
   constructor(
     model: MelodyModel,
   ) {

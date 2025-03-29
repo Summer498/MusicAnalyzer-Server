@@ -1,21 +1,23 @@
 import { HierarchyLevelSubscriber } from "@music-analyzer/controllers/src/slider/hierarchy-level/hierarchy-level-subscriber";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
-import { CollectionHierarchy} from "@music-analyzer/view/src/collection-hierarchy";
+import { AudioReflectable } from "@music-analyzer/view/src/reflectable/audio-reflectable";
+import { CollectionHierarchy } from "@music-analyzer/view/src/collection-hierarchy";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { ReductionLayer } from "./reduction-layer";
 import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
 import { RequiredByReductionHierarchy } from "../requirement/reduction/required-by-reduction-hierarchy";
 
-
-export class ReductionHierarchy
-  extends CollectionHierarchy<ReductionLayer>
-  implements
+export interface IReductionHierarchy
+  extends
   HierarchyLevelSubscriber,
   TimeRangeSubscriber,
   AudioReflectable,
-  WindowReflectable {
+  WindowReflectable { }
+
+export class ReductionHierarchy
+  extends CollectionHierarchy<ReductionLayer>
+  implements IReductionHierarchy {
   constructor(
     hierarchical_melodies: TimeAndAnalyzedMelody[][],
     controllers: RequiredByReductionHierarchy

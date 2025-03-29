@@ -5,11 +5,14 @@ import { Reduction } from "./reduction";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
 
+interface IReductionLayer
+  extends
+  TimeRangeSubscriber,
+  WindowReflectable { }
+
 export class ReductionLayer
   extends CollectionLayer<Reduction>
-  implements
-  TimeRangeSubscriber,
-  WindowReflectable {
+  implements IReductionLayer {
   constructor(
     melody: TimeAndAnalyzedMelody[],
     layer: number,

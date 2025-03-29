@@ -4,21 +4,24 @@ import { MelodyBeepSwitcherSubscriber } from "@music-analyzer/controllers/src/me
 import { MelodyBeepVolumeSubscriber } from "@music-analyzer/controllers/src/melody-beep-controller/melody-beep-volume/melody-beep-volume-subscriber";
 import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
-import { CollectionHierarchy} from "@music-analyzer/view/src/collection-hierarchy";
+import { CollectionHierarchy } from "@music-analyzer/view/src/collection-hierarchy";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { MelodyLayer } from "./melody-layer";
 import { RequiredByMelodyHierarchy } from "../requirement/melody/required-melody-hierarchy";
 
-export class MelodyHierarchy
-  extends CollectionHierarchy<MelodyLayer>
-  implements
+export interface IMelodyHierarchy
+  extends
   ColorChangeSubscriber,
   HierarchyLevelSubscriber,
   MelodyBeepSwitcherSubscriber,
   MelodyBeepVolumeSubscriber,
   TimeRangeSubscriber,
-  WindowReflectable {
+  WindowReflectable { }
+
+export class MelodyHierarchy
+  extends CollectionHierarchy<MelodyLayer>
+  implements IMelodyHierarchy {
   get show() { return this._show; }
   constructor(
     hierarchical_melodies: TimeAndAnalyzedMelody[][],

@@ -2,18 +2,21 @@ import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-a
 import { GravityLayer } from "./gravity-layer";
 import { GravitySwitcherSubscriber } from "@music-analyzer/controllers/src/switcher/gravity/gravity-switcher-subscriber";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
-import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
+import { AudioReflectable } from "@music-analyzer/view/src/reflectable/audio-reflectable";
 import { CollectionHierarchy } from "@music-analyzer/view/src/collection-hierarchy";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { RequiredByGravityHierarchy } from "../requirement/gravity/required-by-gravity-hierarchy";
 
-export class GravityHierarchy
-  extends CollectionHierarchy<GravityLayer>
-  implements
+export interface IGravityHierarchy
+  extends
   GravitySwitcherSubscriber,
   TimeRangeSubscriber,
   AudioReflectable,
-  WindowReflectable {
+  WindowReflectable { }
+
+export class GravityHierarchy
+  extends CollectionHierarchy<GravityLayer>
+  implements IGravityHierarchy {
   constructor(
     mode: "chord_gravity" | "scale_gravity",
     hierarchical_melodies: TimeAndAnalyzedMelody[][],

@@ -7,12 +7,15 @@ import { BeatBar } from "./beat-bar/beat-bar";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 import { RequiredByBeatBarsSeries } from "./requirement/beat-bar-series";
 
-export class BeatBarsSeries
-  extends ReflectableTimeAndMVCControllerCollection<BeatBar>
-  implements
+export interface IBeatBarsSeries
+  extends
   AudioReflectable,
   TimeRangeSubscriber,
-  WindowReflectable {
+  WindowReflectable { }
+
+export class BeatBarsSeries
+  extends ReflectableTimeAndMVCControllerCollection<BeatBar>
+  implements IBeatBarsSeries {
   constructor(
     beat_info: BeatInfo,
     melodies: TimeAndAnalyzedMelody[],

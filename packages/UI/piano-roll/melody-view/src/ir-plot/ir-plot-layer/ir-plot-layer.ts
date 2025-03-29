@@ -2,14 +2,17 @@ import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-a
 import { IRPlotLayerView } from "./ir-plot-layer-view";
 import { IRPlot } from "../ir-plot/ir-plot";
 import { IRPlotLayerModel } from "./ir-plot-layer-model";
-import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
+import { AudioReflectable } from "@music-analyzer/view/src/reflectable/audio-reflectable";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
 
-export class IRPlotLayer
-  implements
+export interface I_IRPlotLayer
+  extends
   AudioReflectable,
-  WindowReflectable {
+  WindowReflectable { }
+
+export class IRPlotLayer
+  implements I_IRPlotLayer {
   readonly view: IRPlotLayerView
   readonly children: [IRPlot];
   constructor(
@@ -20,7 +23,7 @@ export class IRPlotLayer
     this.children = [new IRPlot(melody_series)];
     this.view = new IRPlotLayerView(this.children[0], layer, max, new IRPlotLayerModel(this.children[0].view.view_model.w, this.children[0].view.view_model.h))
   }
-  onAudioUpdate() { this.children.forEach(e=>e.onAudioUpdate()) }
-  onWindowResized() { this.children.forEach(e=>e.onWindowResized()) }
+  onAudioUpdate() { this.children.forEach(e => e.onAudioUpdate()) }
+  onWindowResized() { this.children.forEach(e => e.onWindowResized()) }
   readonly setColor: SetColor = f => this.children.forEach(e => e.setColor(f))
 }

@@ -8,8 +8,7 @@ const ir_analysis_em = size;
 
 export class IRSymbolView
   extends MVVM_View<"text", IRSymbolModel>
-  implements
-  ColorChangeSubscriber {
+  implements ColorChangeSubscriber {
   constructor(
     model: IRSymbolModel,
   ) {

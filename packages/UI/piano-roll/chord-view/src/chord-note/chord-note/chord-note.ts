@@ -1,4 +1,4 @@
-import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
+import { AudioReflectable } from "@music-analyzer/view/src/reflectable/audio-reflectable";
 import { MVVM_ViewModel } from "@music-analyzer/view/src/mvvm/mvvm";
 import { ChordNoteModel } from "./chord-note-model";
 import { ChordNoteView } from "./chord-note-view";
@@ -14,11 +14,14 @@ const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
+export interface IChordNote
+  extends
+  AudioReflectable,
+  TimeRangeSubscriber { }
+
 export class ChordNote
   extends MVVM_ViewModel<ChordNoteModel, ChordNoteView>
-  implements
-  AudioReflectable,
-  TimeRangeSubscriber {
+  implements IChordNote {
   #y: number;
   constructor(
     e: TimeAndRomanAnalysis,

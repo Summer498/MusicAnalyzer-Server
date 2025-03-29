@@ -1,17 +1,20 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
-import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
+import { AudioReflectable } from "@music-analyzer/view/src/reflectable/audio-reflectable";
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view/src/reflectable-time-and-mvc-controller-collection/reflectable-time-and-mvc-controller-collection";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { ChordRoman } from "./chord-roman/chord-roman";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 import { RequiredByChordRomanSeries } from "../requirement/chord-roman-series";
 
-export class ChordRomanSeries
-  extends ReflectableTimeAndMVCControllerCollection<ChordRoman>
-  implements
+interface IChordRomanSeries
+  extends
   AudioReflectable,
   TimeRangeSubscriber,
-  WindowReflectable {
+  WindowReflectable { }
+
+export class ChordRomanSeries
+  extends ReflectableTimeAndMVCControllerCollection<ChordRoman>
+  implements IChordRomanSeries {
   constructor(
     romans: TimeAndRomanAnalysis[],
     controllers: RequiredByChordRomanSeries,
@@ -21,6 +24,6 @@ export class ChordRomanSeries
     controllers.window.register(this);
     controllers.time_range.register(this);
   }
-  onTimeRangeChanged(){this.children.forEach(e=>e.onTimeRangeChanged())}
-  onWindowResized(){this.children.forEach(e=>e.onWindowResized())}
+  onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()) }
+  onWindowResized() { this.children.forEach(e => e.onWindowResized()) }
 }

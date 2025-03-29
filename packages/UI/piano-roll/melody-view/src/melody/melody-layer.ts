@@ -8,15 +8,17 @@ import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time
 import { ColorChangeSubscriber } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/color-change-subscriber";
 import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
 
-
-export class MelodyLayer
-  extends CollectionLayer<Melody>
-  implements
+export interface IMelodyLayer
+  extends
   ColorChangeSubscriber,
   MelodyBeepSwitcherSubscriber,
   MelodyBeepVolumeSubscriber,
   TimeRangeSubscriber,
-  WindowReflectable {
+  WindowReflectable { }
+
+export class MelodyLayer
+  extends CollectionLayer<Melody>
+  implements IMelodyLayer {
   constructor(
     melodies: TimeAndAnalyzedMelody[],
     layer: number,

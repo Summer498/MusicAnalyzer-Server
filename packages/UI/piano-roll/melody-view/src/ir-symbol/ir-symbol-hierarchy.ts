@@ -1,20 +1,23 @@
 import { HierarchyLevelSubscriber } from "@music-analyzer/controllers/src/slider/hierarchy-level/hierarchy-level-subscriber";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
-import { CollectionHierarchy} from "@music-analyzer/view/src/collection-hierarchy";
+import { AudioReflectable } from "@music-analyzer/view/src/reflectable/audio-reflectable";
+import { CollectionHierarchy } from "@music-analyzer/view/src/collection-hierarchy";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { IRSymbolLayer } from "./ir-symbol-layer";
 import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
 import { RequiredByIRSymbolHierarchy } from "../requirement/ir-symbol/required-by-ir-symbol-hierarchy";
 
-export class IRSymbolHierarchy
-  extends CollectionHierarchy<IRSymbolLayer>
-  implements
+export interface I_IRSymbolHierarchy
+  extends
   HierarchyLevelSubscriber,
   TimeRangeSubscriber,
   AudioReflectable,
-  WindowReflectable {
+  WindowReflectable { }
+
+export class IRSymbolHierarchy
+  extends CollectionHierarchy<IRSymbolLayer>
+  implements I_IRSymbolHierarchy {
   constructor(
     hierarchical_melodies: TimeAndAnalyzedMelody[][],
     controllers: RequiredByIRSymbolHierarchy
@@ -26,7 +29,7 @@ export class IRSymbolHierarchy
     controllers.time_range.register(this);
     controllers.melody_color.register(this)
   }
-  readonly setColor: SetColor = f => this.children.forEach(e=>e.setColor(f))
+  readonly setColor: SetColor = f => this.children.forEach(e => e.setColor(f))
   onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()); }
   onAudioUpdate() { this.children.forEach(e => e.onAudioUpdate()); }
   onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
