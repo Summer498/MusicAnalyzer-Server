@@ -1,4 +1,4 @@
-import { BlackBGsPrm } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-constants";
+import { BlackBGsPrm } from "@music-analyzer/view-parameters/src/piano-roll/rect-parameters/black-bgs";
 import { BlackPosition } from "@music-analyzer/view-parameters/src/position/black-position";
 import { Rectangle } from "./rectangle/rectangle";
 

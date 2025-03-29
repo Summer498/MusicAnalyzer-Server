@@ -1,7 +1,7 @@
-import { BlackKeyPrm } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-constants"
-import { octave_height } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-constants"
+import { BlackKeyPrm } from "@music-analyzer/view-parameters/src/piano-roll/rect-parameters/black-key"
+import { octave_height } from "@music-analyzer/view-parameters/src/piano-roll/octave-height"
 import { PianoRollBegin } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-begin"
-import { RectangleModel } from "./rectangle/rectangle"
+import { RectangleModel } from "./rectangle/rectangle-model"
 import { mod } from "@music-analyzer/math/src/basic-function/mod"
 
 export class WhiteKeyModel extends RectangleModel {

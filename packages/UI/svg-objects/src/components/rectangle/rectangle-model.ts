@@ -1,4 +1,4 @@
-import { octave_height } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-constants";
+import { octave_height } from "@music-analyzer/view-parameters/src/piano-roll/octave-height";
 import { RectParameters } from "@music-analyzer/view-parameters/src/rect-parameter";
 
 export class RectangleModel {
