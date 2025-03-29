@@ -1,6 +1,4 @@
-import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/audio-reflectable-registry";
 import { MVVM_ViewModel} from "@music-analyzer/view/src/mvvm/mvvm";
-import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
 import { play } from "@music-analyzer/synth/src/play";
 import { NoteSize } from "@music-analyzer/view-parameters/src/note-size";
 import { NowAt } from "@music-analyzer/view-parameters/src/now-at";
@@ -10,16 +8,10 @@ import { BeatInfo } from "@music-analyzer/beat-estimation/src/beat-info";
 import { Time } from "@music-analyzer/time-and/src/time";
 import { BeatBarModel } from "./beat-bar-model";
 import { BeatBarView } from "./beat-bar-view";
-import { TimeRangeController } from "@music-analyzer/controllers/src/slider/time-range/time-range-controller";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 
 const scaled = (e: number) => e * NoteSize.get();
 
-export interface RequiredByBeatBar {
-  readonly audio: AudioReflectableRegistry,
-  readonly window: WindowReflectableRegistry,
-  readonly time_range: TimeRangeController,
-}
 export class BeatBar
   extends MVVM_ViewModel<BeatBarModel, BeatBarView>
   implements TimeRangeSubscriber {

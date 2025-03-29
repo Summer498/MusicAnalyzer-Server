@@ -4,11 +4,8 @@ import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-r
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { BeatInfo } from "@music-analyzer/beat-estimation/src/beat-info";
 import { BeatBar } from "./beat-bar/beat-bar";
-import { RequiredByBeatBar } from "./beat-bar/beat-bar";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
-
-export interface RequiredByBeatBarsSeries
-  extends RequiredByBeatBar { }
+import { RequiredByBeatBarsSeries } from "./requirement/beat-bar-series";
 
 export class BeatBarsSeries
   extends ReflectableTimeAndMVCControllerCollection<BeatBar>
