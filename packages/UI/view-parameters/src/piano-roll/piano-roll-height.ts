@@ -1,5 +1,5 @@
 import { OctaveCount } from "./octave-count";
-import { octave_height } from "./piano-roll-constants";
+import { octave_height } from "./octave-height";
 
 export class PianoRollHeight {
   static get() {
