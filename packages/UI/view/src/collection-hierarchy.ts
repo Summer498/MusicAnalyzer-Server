@@ -1,5 +1,5 @@
 import { HierarchyLevelSubscriber } from "@music-analyzer/controllers/src/slider/hierarchy-level/hierarchy-level-subscriber"
-import { I_CollectionLayer } from "./collection-layer";
+import { I_CollectionLayer } from "./i-collection-layer";
 import { I_MVVM_Collection } from "./mvvm/i-collection";
 import { MVVM_Collection } from "./mvvm/collection";
 

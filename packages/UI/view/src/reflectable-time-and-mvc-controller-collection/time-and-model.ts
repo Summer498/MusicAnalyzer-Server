@@ -1,4 +1,4 @@
-import { Time } from "@music-analyzer/time-and";
+import { Time } from "@music-analyzer/time-and/src/time";
 import { MVVM_Model } from "../mvvm/model";
 
 export abstract class TimeAndMVCModel
