@@ -1,15 +1,10 @@
-import { size } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-constants";
+import { size } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-size";
 import { MVVM_View } from "@music-analyzer/view/src/mvvm/view";
 import { IRSymbolModel } from "./ir-symbol-model";
 import { ColorChangeSubscriber } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/color-change-subscriber";
-import { MelodyColorController } from "@music-analyzer/controllers/src/color-selector.ts/melody-color/melody-color-controller";
 import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
 
 const ir_analysis_em = size;
-
-export interface RequiredByIRSymbolView {
-  readonly melody_color: MelodyColorController
-}
 
 export class IRSymbolView
   extends MVVM_View<"text", IRSymbolModel>

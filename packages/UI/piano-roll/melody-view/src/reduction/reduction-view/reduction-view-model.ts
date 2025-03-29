@@ -1,18 +1,14 @@
 import { Triad } from "@music-analyzer/irm/src/archetype/triad/Triad";
 import { MVVM_Model } from "@music-analyzer/view/src/mvvm/model";
-import { BlackKeyPrm } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-constants";
+import { BlackKeyPrm } from "@music-analyzer/view-parameters/src/piano-roll/rect-parameters/black-key";
 import { bracket_height } from "@music-analyzer/view-parameters/src/bracket-height";
 import { NoteSize } from "@music-analyzer/view-parameters/src/note-size";
 import { ReductionModel } from "../reduction-model";
-import { TimeRangeController } from "@music-analyzer/controllers/src/slider/time-range/time-range-controller";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 
 const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
-export interface RequiredByReductionViewModel {
-  readonly time_range: TimeRangeController
-}
 export class ReductionViewModel 
   extends MVVM_Model
   implements TimeRangeSubscriber

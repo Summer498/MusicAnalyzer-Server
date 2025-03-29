@@ -1,28 +1,14 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/audio-reflectable-registry";
 import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
-import { GravityController } from "@music-analyzer/controllers/src/switcher/gravity/gravity-controller";
 import { DMelodySeries } from "./d-melody/d-melody-series";
-import { RequiredByDMelodySeries } from "./d-melody/d-melody-series";
 import { MelodyHierarchy } from "./melody/melody-hierarchy";
-import { RequiredByMelodyHierarchy } from "./melody/melody-hierarchy";
 import { IRSymbolHierarchy } from "./ir-symbol/ir-symbol-hierarchy";
-import { RequiredByIRSymbolHierarchy } from "./ir-symbol/ir-symbol-hierarchy";
-import { RequiredByIRPlot } from "./ir-plot/ir-plot/ir-plot";
 import { ReductionHierarchy } from "./reduction/reduction-hierarchy";
-import { RequiredByReductionHierarchy } from "./reduction/reduction-hierarchy";
 import { GravityHierarchy } from "./gravity/gravity-hierarchy";
 import { IRPlotSVG } from "./ir-plot/ir-plot-svg";
+import { RequiredByMelodyElements } from "./requirement/required-melody-elements";
 
-export interface RequiredByMelodyElements
-  extends
-  RequiredByDMelodySeries,
-  RequiredByMelodyHierarchy,
-  RequiredByIRSymbolHierarchy,
-  RequiredByIRPlot,
-  RequiredByReductionHierarchy {
-    readonly gravity: GravityController
-  }
 
 export class MelodyElements {
   readonly children: unknown[];

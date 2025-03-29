@@ -1,19 +1,12 @@
 import { MVVM_View } from "@music-analyzer/view/src/mvvm/view";
-import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
 import { ReductionModel } from "../reduction-model";
 import { ReductionViewModel } from "./reduction-view-model";
-import { RequiredByReductionViewModel } from "./reduction-view-model";
 import { IRMSymbol } from "./irm-symbol";
-import { RequiredByIRMSymbol } from "./irm-symbol";
 import { Bracket } from "./bracket";
 import { Dot } from "./dot";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
 
-export interface RequiredByReductionView
-  extends RequiredByIRMSymbol, RequiredByReductionViewModel {
-  readonly window: WindowReflectableRegistry,
-}
 export class ReductionView
   extends MVVM_View<"g", ReductionViewModel>
   implements TimeRangeSubscriber {

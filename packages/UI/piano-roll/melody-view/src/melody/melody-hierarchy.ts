@@ -3,21 +3,12 @@ import { HierarchyLevelSubscriber } from "@music-analyzer/controllers/src/slider
 import { MelodyBeepSwitcherSubscriber } from "@music-analyzer/controllers/src/melody-beep-controller/melody-beep-toggle/melody-beep-switcher-subscriber";
 import { MelodyBeepVolumeSubscriber } from "@music-analyzer/controllers/src/melody-beep-controller/melody-beep-volume/melody-beep-volume-subscriber";
 import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
-import { HierarchyLevelController } from "@music-analyzer/controllers/src/slider/hierarchy-level/hierarchy-level-controller";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
-
-import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/audio-reflectable-registry";
 import { CollectionHierarchy} from "@music-analyzer/view/src/collection-hierarchy";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { MelodyLayer } from "./melody-layer";
-import { RequiredByMelodyLayer } from "./melody-layer";
-
-export interface RequiredByMelodyHierarchy
-  extends RequiredByMelodyLayer {
-  readonly hierarchy: HierarchyLevelController
-  readonly audio: AudioReflectableRegistry
-}
+import { RequiredByMelodyHierarchy } from "../requirement/melody/required-melody-hierarchy";
 
 export class MelodyHierarchy
   extends CollectionHierarchy<MelodyLayer>

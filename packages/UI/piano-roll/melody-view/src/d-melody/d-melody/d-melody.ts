@@ -1,23 +1,17 @@
 import { MVVM_ViewModel } from "@music-analyzer/view/src/mvvm/mvvm";
-import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
 import { DMelodyModel } from "./d-melody-model";
 import { DMelodyView } from "./d-melody-view";
-import { insertMelody } from "../../melody-editor-function";
+import { insertMelody } from "../../melody-editor-function/insert";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { BlackKeyPrm } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-constants";
+import { BlackKeyPrm } from "@music-analyzer/view-parameters/src/piano-roll/rect-parameters/black-key";
 import { NoteSize } from "@music-analyzer/view-parameters/src/note-size";
 import { PianoRollBegin } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-begin";
-import { TimeRangeController } from "@music-analyzer/controllers/src/slider/time-range/time-range-controller";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get()
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
-export interface RequiredByDMelody {
-  readonly window: WindowReflectableRegistry
-  readonly time_range: TimeRangeController
-}
 
 export class DMelody
   extends MVVM_ViewModel<DMelodyModel, DMelodyView>

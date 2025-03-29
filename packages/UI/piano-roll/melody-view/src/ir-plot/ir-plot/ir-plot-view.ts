@@ -1,7 +1,6 @@
 import { MVVM_View } from "@music-analyzer/view/src/mvvm/view";
 import { IRPlotModel } from "./ir-plot-model";
 import { ColorChangeSubscriber } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/color-change-subscriber";
-import { MelodyColorController } from "@music-analyzer/controllers/src/color-selector.ts/melody-color/melody-color-controller";
 import { IRPlotViewModel } from "./ir-plot-view-model";
 import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
 
@@ -18,10 +17,6 @@ const get_pos = (_x: number, _y: number) => {
   ];
 };
 
-
-export interface RequiredByIRPlotView {
-  readonly melody_color: MelodyColorController
-}
 export class IRPlotView
   extends MVVM_View<"circle", IRPlotModel>
   implements ColorChangeSubscriber {

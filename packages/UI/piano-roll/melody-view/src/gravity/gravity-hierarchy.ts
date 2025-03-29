@@ -1,19 +1,11 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { GravityLayer } from "./gravity-layer";
-import { RequiredByGravityLayer } from "./gravity-layer";
-import { GravitySwitcher } from "@music-analyzer/controllers/src/switcher/gravity/gravity-switcher";
 import { GravitySwitcherSubscriber } from "@music-analyzer/controllers/src/switcher/gravity/gravity-switcher-subscriber";
-import { HierarchyLevelController } from "@music-analyzer/controllers/src/slider/hierarchy-level/hierarchy-level-controller";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
 import { CollectionHierarchy } from "@music-analyzer/view/src/collection-hierarchy";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
-
-export interface RequiredByGravityHierarchy
-  extends RequiredByGravityLayer {
-  readonly switcher: GravitySwitcher,
-  readonly hierarchy: HierarchyLevelController,
-}
+import { RequiredByGravityHierarchy } from "../requirement/gravity/required-by-gravity-hierarchy";
 
 export class GravityHierarchy
   extends CollectionHierarchy<GravityLayer>

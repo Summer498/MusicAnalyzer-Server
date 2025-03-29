@@ -1,14 +1,11 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { ReductionModel } from "../reduction-model";
-import { ReductionView } from "../reduction-view/reduction-view";
-import { RequiredByReductionView } from "../reduction-view/reduction-view";
+import { ReductionModel } from "./reduction-model";
+import { ReductionView } from "./reduction-view/reduction-view";
 import { MVVM_ViewModel } from "@music-analyzer/view/src/mvvm/mvvm";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
 
-export interface RequiredByReduction
-  extends RequiredByReductionView { }
 export class Reduction
   extends MVVM_ViewModel<ReductionModel, ReductionView>
   implements
