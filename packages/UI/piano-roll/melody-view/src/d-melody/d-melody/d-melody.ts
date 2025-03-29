@@ -1,4 +1,4 @@
-import { MVVM_ViewModel } from "@music-analyzer/view/src/mvvm/mvvm";
+import { MVVM_ViewModel_Impl } from "@music-analyzer/view/src/mvvm/mvvm-impl";
 import { DMelodyModel } from "./d-melody-model";
 import { DMelodyView } from "./d-melody-view";
 import { insertMelody } from "../../melody-editor-function/insert";
@@ -14,7 +14,7 @@ const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 
 export class DMelody
-  extends MVVM_ViewModel<DMelodyModel, DMelodyView>
+  extends MVVM_ViewModel_Impl<DMelodyModel, DMelodyView>
   implements TimeRangeSubscriber {
   constructor(
     e: TimeAndAnalyzedMelody,

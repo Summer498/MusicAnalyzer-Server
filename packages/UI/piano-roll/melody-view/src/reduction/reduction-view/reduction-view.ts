@@ -1,4 +1,4 @@
-import { MVVM_View } from "@music-analyzer/view/src/mvvm/view";
+import { MVVM_View_Impl } from "@music-analyzer/view/src/mvvm/view-impl";
 import { ReductionModel } from "../reduction-model";
 import { ReductionViewModel } from "./reduction-view-model";
 import { IRMSymbol } from "./irm-symbol";
@@ -8,7 +8,7 @@ import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time
 import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
 
 export class ReductionView
-  extends MVVM_View<"g", ReductionViewModel>
+  extends MVVM_View_Impl<"g", ReductionViewModel>
   implements TimeRangeSubscriber {
   readonly svg: SVGGElement;
   readonly bracket: Bracket;

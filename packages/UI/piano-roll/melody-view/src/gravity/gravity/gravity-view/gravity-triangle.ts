@@ -1,4 +1,4 @@
-import { MVVM_View } from "@music-analyzer/view/src/mvvm/view";
+import { MVVM_View_Impl } from "@music-analyzer/view/src/mvvm/view-impl";
 import { GravityModel } from "../gravity-model";
 import { LinePos } from "../../line-pos";
 
@@ -6,7 +6,7 @@ const triangle_width = 4;
 const triangle_height = 5;
 
 export class GravityViewTriangle 
-  extends MVVM_View<"polygon", GravityModel> {
+  extends MVVM_View_Impl<"polygon", GravityModel> {
   constructor(model: GravityModel) {
     super("polygon", model);
     this.svg.classList.add("triangle");

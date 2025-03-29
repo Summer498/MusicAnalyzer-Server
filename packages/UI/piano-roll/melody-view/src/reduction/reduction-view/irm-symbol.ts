@@ -1,10 +1,10 @@
 import { bracket_height } from "@music-analyzer/view-parameters/src/bracket-height";
-import { MVVM_View } from "@music-analyzer/view/src/mvvm/view";
+import { MVVM_View_Impl } from "@music-analyzer/view/src/mvvm/view-impl";
 import { ReductionViewModel } from "./reduction-view-model";
 import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
 
 export class IRMSymbol
-  extends MVVM_View<"text", ReductionViewModel> {
+  extends MVVM_View_Impl<"text", ReductionViewModel> {
   constructor(
     model: ReductionViewModel,
   ) {

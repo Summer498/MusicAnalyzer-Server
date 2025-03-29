@@ -1,11 +1,11 @@
-import { MVVM_ViewModel } from "@music-analyzer/view/src/mvvm/mvvm";
+import { MVVM_ViewModel_Impl } from "@music-analyzer/view/src/mvvm/mvvm-impl";
 import { IRPlotModel } from "./ir-plot-model";
 import { IRPlotView } from "./ir-plot-view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
 import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
 
 export class IRPlot
-  extends MVVM_ViewModel<IRPlotModel, IRPlotView> {
+  extends MVVM_ViewModel_Impl<IRPlotModel, IRPlotView> {
   readonly view: IRPlotView;
   constructor(
     e: TimeAndAnalyzedMelody[],

@@ -5,7 +5,7 @@ import { BeatElements } from "@music-analyzer/beat-view/src/beat-elements";
 import { ChordElements } from "@music-analyzer/chord-view/src/chord-elements";
 import { MelodyElements } from "@music-analyzer/melody-view/src/melody-elements";
 import { RequiredByBeatElements } from "@music-analyzer/beat-view/src/requirement/beat-elements";
-import { RequiredByChordElements } from "@music-analyzer/chord-view/src/requirement/chord-elements";
+import { RequiredByChordElements } from "@music-analyzer/chord-view/src/r-chord-elements";
 import { RequiredByMelodyElements } from "@music-analyzer/melody-view/src/requirement/required-melody-elements";
 
 export class MusicStructureElements {

@@ -1,5 +1,5 @@
 import { size } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-size";
-import { MVVM_View } from "@music-analyzer/view/src/mvvm/view";
+import { MVVM_View_Impl } from "@music-analyzer/view/src/mvvm/view-impl";
 import { IRSymbolModel } from "./ir-symbol-model";
 import { ColorChangeSubscriber } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/color-change-subscriber";
 import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
@@ -7,7 +7,7 @@ import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-
 const ir_analysis_em = size;
 
 export class IRSymbolView
-  extends MVVM_View<"text", IRSymbolModel>
+  extends MVVM_View_Impl<"text", IRSymbolModel>
   implements ColorChangeSubscriber {
   constructor(
     model: IRSymbolModel,

@@ -1,9 +1,9 @@
-import { MVVM_View } from "@music-analyzer/view/src/mvvm/view";
+import { MVVM_View_Impl } from "@music-analyzer/view/src/mvvm/view-impl";
 import { LinePos } from "../../line-pos";
 import { GravityModel } from "../gravity-model";
 
 export class GravityViewLine 
-  extends MVVM_View<"line", GravityModel> {
+  extends MVVM_View_Impl<"line", GravityModel> {
   constructor(model: GravityModel) {
     super("line", model);
     this.svg.id = "gravity-arrow";

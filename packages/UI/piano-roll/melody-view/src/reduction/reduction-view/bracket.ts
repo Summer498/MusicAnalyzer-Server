@@ -1,8 +1,8 @@
-import { MVVM_View } from "@music-analyzer/view/src/mvvm/view";
+import { MVVM_View_Impl } from "@music-analyzer/view/src/mvvm/view-impl";
 import { ReductionViewModel } from "./reduction-view-model";
 
 export class Bracket 
-  extends MVVM_View<"path", ReductionViewModel> {
+  extends MVVM_View_Impl<"path", ReductionViewModel> {
   readonly svg: SVGPathElement;
   constructor(model: ReductionViewModel) {
     super("path", model);

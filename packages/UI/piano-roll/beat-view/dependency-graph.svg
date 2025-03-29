@@ -111,8 +111,8 @@
 </g>
 <g id="clust21" class="cluster">
 <title>cluster_packages/UI/view/src/mvvm</title>
-<path fill="#ffffff" stroke="black" stroke-width="2" d="M925.5,-860C925.5,-860 1422,-860 1422,-860 1428,-860 1434,-866 1434,-872 1434,-872 1434,-974 1434,-974 1434,-980 1428,-986 1422,-986 1422,-986 925.5,-986 925.5,-986 919.5,-986 913.5,-980 913.5,-974 913.5,-974 913.5,-872 913.5,-872 913.5,-866 919.5,-860 925.5,-860"/>
-<text text-anchor="middle" x="1173.75" y="-974.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">mvvm</text>
+<path fill="#ffffff" stroke="black" stroke-width="2" d="M914.5,-860C914.5,-860 1422,-860 1422,-860 1428,-860 1434,-866 1434,-872 1434,-872 1434,-974 1434,-974 1434,-980 1428,-986 1422,-986 1422,-986 914.5,-986 914.5,-986 908.5,-986 902.5,-980 902.5,-974 902.5,-974 902.5,-872 902.5,-872 902.5,-866 908.5,-860 914.5,-860"/>
+<text text-anchor="middle" x="1168.25" y="-974.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">mvvm</text>
 </g>
 <g id="clust22" class="cluster">
 <title>cluster_packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection</title>
@@ -495,18 +495,18 @@
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M318.39,-1163.92C368.1,-1093.31 692.72,-632.25 754.02,-545.17"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="755.78,-546.32 757.52,-540.2 752.35,-543.9 755.78,-546.32"/>
 </g>
-<!-- packages/UI/view/src/mvvm/mvvm.ts -->
+<!-- packages/UI/view/src/mvvm/mvvm&#45;impl.ts -->
 <g id="node25" class="node">
-<title>packages/UI/view/src/mvvm/mvvm.ts</title>
-<g id="a_node25"><a xlink:href="packages/UI/view/src/mvvm/mvvm.ts" xlink:title="mvvm.ts">
-<path fill="#ddfeff" stroke="black" d="M1155,-916C1155,-916 1111,-916 1111,-916 1108,-916 1105,-913 1105,-910 1105,-910 1105,-904 1105,-904 1105,-901 1108,-898 1111,-898 1111,-898 1155,-898 1155,-898 1158,-898 1161,-901 1161,-904 1161,-904 1161,-910 1161,-910 1161,-913 1158,-916 1155,-916"/>
-<text text-anchor="start" x="1113" y="-904.8" font-family="Helvetica,sans-Serif" font-size="9.00">mvvm.ts</text>
+<title>packages/UI/view/src/mvvm/mvvm&#45;impl.ts</title>
+<g id="a_node25"><a xlink:href="packages/UI/view/src/mvvm/mvvm-impl.ts" xlink:title="mvvm&#45;impl.ts">
+<path fill="#ddfeff" stroke="black" d="M1166.5,-916C1166.5,-916 1099.5,-916 1099.5,-916 1096.5,-916 1093.5,-913 1093.5,-910 1093.5,-910 1093.5,-904 1093.5,-904 1093.5,-901 1096.5,-898 1099.5,-898 1099.5,-898 1166.5,-898 1166.5,-898 1169.5,-898 1172.5,-901 1172.5,-904 1172.5,-904 1172.5,-910 1172.5,-910 1172.5,-913 1169.5,-916 1166.5,-916"/>
+<text text-anchor="start" x="1101.5" y="-904.8" font-family="Helvetica,sans-Serif" font-size="9.00">mvvm&#45;impl.ts</text>
 </a>
 </g>
 </g>
-<!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar.ts&#45;&gt;packages/UI/view/src/mvvm/mvvm.ts -->
+<!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar.ts&#45;&gt;packages/UI/view/src/mvvm/mvvm&#45;impl.ts -->
 <g id="edge29" class="edge">
-<title>packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar.ts&#45;&gt;packages/UI/view/src/mvvm/mvvm.ts</title>
+<title>packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar.ts&#45;&gt;packages/UI/view/src/mvvm/mvvm&#45;impl.ts</title>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M339.79,-1164C463.57,-1123.89 964.63,-961.55 1099.45,-917.87"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1100.16,-919.85 1105.22,-916 1098.87,-915.85 1100.16,-919.85"/>
 </g>
@@ -562,7 +562,7 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="476.91,-1249.1 482.91,-1247 476.91,-1244.9 476.91,-1249.1"/>
 </g>
 <!-- packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection.ts&#45;&gt;packages/util/time&#45;and/src/time.ts -->
-<g id="edge79" class="edge">
+<g id="edge80" class="edge">
 <title>packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection.ts&#45;&gt;packages/util/time&#45;and/src/time.ts</title>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M526.91,-826.1C613.18,-894.89 1162.38,-1332.82 1264.25,-1414.05"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1263.03,-1415.75 1269.03,-1417.85 1265.64,-1412.47 1263.03,-1415.75"/>
@@ -577,23 +577,23 @@
 </g>
 </g>
 <!-- packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll&#45;translate&#45;x.ts -->
-<g id="edge80" class="edge">
+<g id="edge81" class="edge">
 <title>packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection.ts&#45;&gt;packages/UI/view&#45;parameters/src/piano&#45;roll&#45;translate&#45;x.ts</title>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M525.27,-807.89C562.34,-769.4 706.2,-619.99 750.16,-574.33"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="751.68,-575.78 754.33,-570 748.66,-572.87 751.68,-575.78"/>
 </g>
-<!-- packages/UI/view/src/mvvm/collection.ts -->
+<!-- packages/UI/view/src/mvvm/collection&#45;impl.ts -->
 <g id="node47" class="node">
-<title>packages/UI/view/src/mvvm/collection.ts</title>
-<g id="a_node47"><a xlink:href="packages/UI/view/src/mvvm/collection.ts" xlink:title="collection.ts">
-<path fill="#ddfeff" stroke="black" d="M986.5,-938C986.5,-938 927.5,-938 927.5,-938 924.5,-938 921.5,-935 921.5,-932 921.5,-932 921.5,-926 921.5,-926 921.5,-923 924.5,-920 927.5,-920 927.5,-920 986.5,-920 986.5,-920 989.5,-920 992.5,-923 992.5,-926 992.5,-926 992.5,-932 992.5,-932 992.5,-935 989.5,-938 986.5,-938"/>
-<text text-anchor="start" x="929.5" y="-926.8" font-family="Helvetica,sans-Serif" font-size="9.00">collection.ts</text>
+<title>packages/UI/view/src/mvvm/collection&#45;impl.ts</title>
+<g id="a_node47"><a xlink:href="packages/UI/view/src/mvvm/collection-impl.ts" xlink:title="collection&#45;impl.ts">
+<path fill="#ddfeff" stroke="black" d="M997.5,-938C997.5,-938 916.5,-938 916.5,-938 913.5,-938 910.5,-935 910.5,-932 910.5,-932 910.5,-926 910.5,-926 910.5,-923 913.5,-920 916.5,-920 916.5,-920 997.5,-920 997.5,-920 1000.5,-920 1003.5,-923 1003.5,-926 1003.5,-926 1003.5,-932 1003.5,-932 1003.5,-935 1000.5,-938 997.5,-938"/>
+<text text-anchor="start" x="918.5" y="-926.8" font-family="Helvetica,sans-Serif" font-size="9.00">collection&#45;impl.ts</text>
 </a>
 </g>
 </g>
-<!-- packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection.ts&#45;&gt;packages/UI/view/src/mvvm/collection.ts -->
-<g id="edge74" class="edge">
-<title>packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection.ts&#45;&gt;packages/UI/view/src/mvvm/collection.ts</title>
+<!-- packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection.ts&#45;&gt;packages/UI/view/src/mvvm/collection&#45;impl.ts -->
+<g id="edge75" class="edge">
+<title>packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection.ts&#45;&gt;packages/UI/view/src/mvvm/collection&#45;impl.ts</title>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M551.26,-826.07C632.15,-846.59 828.85,-896.49 915.2,-918.4"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="914.89,-920.48 921.22,-919.92 915.92,-916.41 914.89,-920.48"/>
 </g>
@@ -607,7 +607,7 @@
 </g>
 </g>
 <!-- packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection.ts&#45;&gt;packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/i&#45;reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection.ts -->
-<g id="edge75" class="edge">
+<g id="edge76" class="edge">
 <title>packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection.ts&#45;&gt;packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/i&#45;reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection.ts</title>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M632.17,-810.43C634.3,-810.31 636.43,-810.19 638.56,-810.07"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="639.08,-812.14 644.95,-809.7 638.84,-807.95 639.08,-812.14"/>
@@ -622,7 +622,7 @@
 </g>
 </g>
 <!-- packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection.ts&#45;&gt;packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/i&#45;time&#45;and&#45;model.ts -->
-<g id="edge76" class="edge">
+<g id="edge77" class="edge">
 <title>packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection.ts&#45;&gt;packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/i&#45;time&#45;and&#45;model.ts</title>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M632.08,-809.61C718.01,-804.16 831.26,-796.97 898.85,-792.69"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="898.99,-794.78 904.85,-792.31 898.73,-790.59 898.99,-794.78"/>
@@ -637,7 +637,7 @@
 </g>
 </g>
 <!-- packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection.ts&#45;&gt;packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/time&#45;and&#45;model.ts -->
-<g id="edge77" class="edge">
+<g id="edge78" class="edge">
 <title>packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection.ts&#45;&gt;packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/time&#45;and&#45;model.ts</title>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M632.01,-817C765.01,-817 977.05,-817 1077.18,-817"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1077.32,-819.1 1083.32,-817 1077.32,-814.9 1077.32,-819.1"/>
@@ -652,7 +652,7 @@
 </g>
 </g>
 <!-- packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection.ts&#45;&gt;packages/util/time&#45;and/src/search&#45;items&#45;overlaps&#45;range.ts -->
-<g id="edge78" class="edge">
+<g id="edge79" class="edge">
 <title>packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection.ts&#45;&gt;packages/util/time&#45;and/src/search&#45;items&#45;overlaps&#45;range.ts</title>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M524.71,-826.1C594.14,-894.68 1035.02,-1330.21 1119.14,-1413.31"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1117.99,-1415.13 1123.74,-1417.85 1120.95,-1412.14 1117.99,-1415.13"/>
@@ -690,26 +690,41 @@
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M559.72,-1175.45C601.39,-1177.82 664.57,-1181.41 709.42,-1183.96"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="709.51,-1186.07 715.62,-1184.31 709.75,-1181.87 709.51,-1186.07"/>
 </g>
-<!-- packages/UI/view/src/mvvm/view.ts -->
+<!-- packages/UI/view/src/mvvm/view&#45;impl.ts -->
 <g id="node19" class="node">
-<title>packages/UI/view/src/mvvm/view.ts</title>
-<g id="a_node19"><a xlink:href="packages/UI/view/src/mvvm/view.ts" xlink:title="view.ts">
-<path fill="#ddfeff" stroke="black" d="M1154,-886C1154,-886 1112,-886 1112,-886 1109,-886 1106,-883 1106,-880 1106,-880 1106,-874 1106,-874 1106,-871 1109,-868 1112,-868 1112,-868 1154,-868 1154,-868 1157,-868 1160,-871 1160,-874 1160,-874 1160,-880 1160,-880 1160,-883 1157,-886 1154,-886"/>
-<text text-anchor="start" x="1117.5" y="-874.8" font-family="Helvetica,sans-Serif" font-size="9.00">view.ts</text>
+<title>packages/UI/view/src/mvvm/view&#45;impl.ts</title>
+<g id="a_node19"><a xlink:href="packages/UI/view/src/mvvm/view-impl.ts" xlink:title="view&#45;impl.ts">
+<path fill="#ddfeff" stroke="black" d="M1162.5,-886C1162.5,-886 1103.5,-886 1103.5,-886 1100.5,-886 1097.5,-883 1097.5,-880 1097.5,-880 1097.5,-874 1097.5,-874 1097.5,-871 1100.5,-868 1103.5,-868 1103.5,-868 1162.5,-868 1162.5,-868 1165.5,-868 1168.5,-871 1168.5,-874 1168.5,-874 1168.5,-880 1168.5,-880 1168.5,-883 1165.5,-886 1162.5,-886"/>
+<text text-anchor="start" x="1105.5" y="-874.8" font-family="Helvetica,sans-Serif" font-size="9.00">view&#45;impl.ts</text>
 </a>
 </g>
 </g>
-<!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar&#45;view.ts&#45;&gt;packages/UI/view/src/mvvm/view.ts -->
+<!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar&#45;view.ts&#45;&gt;packages/UI/view/src/mvvm/view&#45;impl.ts -->
 <g id="edge18" class="edge">
-<title>packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar&#45;view.ts&#45;&gt;packages/UI/view/src/mvvm/view.ts</title>
+<title>packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;bar/beat&#45;bar&#45;view.ts&#45;&gt;packages/UI/view/src/mvvm/view&#45;impl.ts</title>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M534.32,-1163.98C623.98,-1121 1007.7,-937.06 1108.61,-888.69"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1109.52,-890.58 1114.03,-886.1 1107.71,-886.8 1109.52,-890.58"/>
 </g>
-<!-- packages/UI/view/src/mvvm/view.ts&#45;&gt;packages/UI/view/src/mvvm/model.ts -->
+<!-- packages/UI/view/src/mvvm/view&#45;impl.ts&#45;&gt;packages/UI/view/src/mvvm/model.ts -->
+<g id="edge68" class="edge">
+<title>packages/UI/view/src/mvvm/view&#45;impl.ts&#45;&gt;packages/UI/view/src/mvvm/model.ts</title>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1168.85,-877C1192.31,-877 1223.07,-877 1246.2,-877"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1246.21,-879.1 1252.21,-877 1246.21,-874.9 1246.21,-879.1"/>
+</g>
+<!-- packages/UI/view/src/mvvm/i&#45;view.ts -->
+<g id="node50" class="node">
+<title>packages/UI/view/src/mvvm/i&#45;view.ts</title>
+<g id="a_node50"><a xlink:href="packages/UI/view/src/mvvm/i-view.ts" xlink:title="i&#45;view.ts">
+<path fill="#ddfeff" stroke="black" d="M1420,-933C1420,-933 1378,-933 1378,-933 1375,-933 1372,-930 1372,-927 1372,-927 1372,-921 1372,-921 1372,-918 1375,-915 1378,-915 1378,-915 1420,-915 1420,-915 1423,-915 1426,-918 1426,-921 1426,-921 1426,-927 1426,-927 1426,-930 1423,-933 1420,-933"/>
+<text text-anchor="start" x="1380.5" y="-921.8" font-family="Helvetica,sans-Serif" font-size="9.00">i&#45;view.ts</text>
+</a>
+</g>
+</g>
+<!-- packages/UI/view/src/mvvm/view&#45;impl.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;view.ts -->
 <g id="edge67" class="edge">
-<title>packages/UI/view/src/mvvm/view.ts&#45;&gt;packages/UI/view/src/mvvm/model.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1160.01,-877C1184.15,-877 1220.2,-877 1246.38,-877"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1246.48,-879.1 1252.48,-877 1246.48,-874.9 1246.48,-879.1"/>
+<title>packages/UI/view/src/mvvm/view&#45;impl.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;view.ts</title>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1168.6,-883.29C1220.29,-892.42 1315.44,-909.24 1365.77,-918.13"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1365.41,-920.2 1371.68,-919.17 1366.14,-916.06 1365.41,-920.2"/>
 </g>
 <!-- packages/UI/synth/src/create&#45;gain.ts -->
 <g id="node33" class="node">
@@ -801,41 +816,32 @@
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1184.07,-509C1198.6,-509 1214.47,-509 1229.03,-509"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1229.18,-511.1 1235.18,-509 1229.18,-506.9 1229.18,-511.1"/>
 </g>
-<!-- packages/UI/view/src/mvvm/mvvm.ts&#45;&gt;packages/UI/view/src/mvvm/model.ts -->
+<!-- packages/UI/view/src/mvvm/mvvm&#45;impl.ts&#45;&gt;packages/UI/view/src/mvvm/model.ts -->
 <g id="edge66" class="edge">
-<title>packages/UI/view/src/mvvm/mvvm.ts&#45;&gt;packages/UI/view/src/mvvm/model.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1161.03,-901.43C1185.07,-896.47 1220.32,-889.2 1246.11,-883.88"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1246.67,-885.91 1252.12,-882.64 1245.82,-881.8 1246.67,-885.91"/>
+<title>packages/UI/view/src/mvvm/mvvm&#45;impl.ts&#45;&gt;packages/UI/view/src/mvvm/model.ts</title>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1172.61,-899.04C1195.54,-894.31 1224.33,-888.38 1246.25,-883.86"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1246.79,-885.89 1252.24,-882.62 1245.94,-881.78 1246.79,-885.89"/>
 </g>
 <!-- packages/UI/view/src/mvvm/i&#45;mvvm.ts -->
 <g id="node49" class="node">
 <title>packages/UI/view/src/mvvm/i&#45;mvvm.ts</title>
 <g id="a_node49"><a xlink:href="packages/UI/view/src/mvvm/i-mvvm.ts" xlink:title="i&#45;mvvm.ts">
-<path fill="#ddfeff" stroke="black" d="M1305.5,-938C1305.5,-938 1255.5,-938 1255.5,-938 1252.5,-938 1249.5,-935 1249.5,-932 1249.5,-932 1249.5,-926 1249.5,-926 1249.5,-923 1252.5,-920 1255.5,-920 1255.5,-920 1305.5,-920 1305.5,-920 1308.5,-920 1311.5,-923 1311.5,-926 1311.5,-926 1311.5,-932 1311.5,-932 1311.5,-935 1308.5,-938 1305.5,-938"/>
-<text text-anchor="start" x="1257.5" y="-926.8" font-family="Helvetica,sans-Serif" font-size="9.00">i&#45;mvvm.ts</text>
+<path fill="#ddfeff" stroke="black" d="M1305.5,-944C1305.5,-944 1255.5,-944 1255.5,-944 1252.5,-944 1249.5,-941 1249.5,-938 1249.5,-938 1249.5,-932 1249.5,-932 1249.5,-929 1252.5,-926 1255.5,-926 1255.5,-926 1305.5,-926 1305.5,-926 1308.5,-926 1311.5,-929 1311.5,-932 1311.5,-932 1311.5,-938 1311.5,-938 1311.5,-941 1308.5,-944 1305.5,-944"/>
+<text text-anchor="start" x="1257.5" y="-932.8" font-family="Helvetica,sans-Serif" font-size="9.00">i&#45;mvvm.ts</text>
 </a>
 </g>
 </g>
-<!-- packages/UI/view/src/mvvm/mvvm.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;mvvm.ts -->
+<!-- packages/UI/view/src/mvvm/mvvm&#45;impl.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;mvvm.ts -->
 <g id="edge64" class="edge">
-<title>packages/UI/view/src/mvvm/mvvm.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;mvvm.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1161.03,-911.09C1184.23,-914.6 1217.87,-919.68 1243.39,-923.54"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1243.11,-925.62 1249.35,-924.44 1243.74,-921.47 1243.11,-925.62"/>
+<title>packages/UI/view/src/mvvm/mvvm&#45;impl.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;mvvm.ts</title>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1172.61,-914.43C1194.62,-918.67 1222.02,-923.94 1243.57,-928.09"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1243.19,-930.15 1249.48,-929.22 1243.99,-926.03 1243.19,-930.15"/>
 </g>
-<!-- packages/UI/view/src/mvvm/i&#45;view.ts -->
-<g id="node50" class="node">
-<title>packages/UI/view/src/mvvm/i&#45;view.ts</title>
-<g id="a_node50"><a xlink:href="packages/UI/view/src/mvvm/i-view.ts" xlink:title="i&#45;view.ts">
-<path fill="#ddfeff" stroke="black" d="M1420,-938C1420,-938 1378,-938 1378,-938 1375,-938 1372,-935 1372,-932 1372,-932 1372,-926 1372,-926 1372,-923 1375,-920 1378,-920 1378,-920 1420,-920 1420,-920 1423,-920 1426,-923 1426,-926 1426,-926 1426,-932 1426,-932 1426,-935 1423,-938 1420,-938"/>
-<text text-anchor="start" x="1380.5" y="-926.8" font-family="Helvetica,sans-Serif" font-size="9.00">i&#45;view.ts</text>
-</a>
-</g>
-</g>
-<!-- packages/UI/view/src/mvvm/mvvm.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;view.ts -->
+<!-- packages/UI/view/src/mvvm/mvvm&#45;impl.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;view.ts -->
 <g id="edge65" class="edge">
-<title>packages/UI/view/src/mvvm/mvvm.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;view.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1161.47,-909.35C1211.05,-913.46 1313,-921.89 1365.75,-926.25"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1365.78,-928.36 1371.93,-926.76 1366.12,-924.17 1365.78,-928.36"/>
+<title>packages/UI/view/src/mvvm/mvvm&#45;impl.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;view.ts</title>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1172.54,-909.53C1225,-912.88 1316.69,-918.74 1365.77,-921.88"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1365.7,-923.98 1371.82,-922.26 1365.97,-919.78 1365.7,-923.98"/>
 </g>
 <!-- packages/UI/piano&#45;roll/beat&#45;view/src/beat&#45;elements.ts -->
 <g id="node26" class="node">
@@ -922,13 +928,13 @@
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="758.23,-714.72 758.78,-708.38 754.4,-713 758.23,-714.72"/>
 </g>
 <!-- packages/UI/view/src/reflectable/audio&#45;reflectable&#45;registry.ts&#45;&gt;packages/UI/view/src/reflectable/audio&#45;reflectable.ts -->
-<g id="edge83" class="edge">
+<g id="edge84" class="edge">
 <title>packages/UI/view/src/reflectable/audio&#45;reflectable&#45;registry.ts&#45;&gt;packages/UI/view/src/reflectable/audio&#45;reflectable.ts</title>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M834.23,-729C855.41,-729 878.47,-729 898.77,-729"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="898.97,-731.1 904.97,-729 898.97,-726.9 898.97,-731.1"/>
 </g>
 <!-- packages/UI/view/src/reflectable/window&#45;reflectable&#45;registry.ts&#45;&gt;packages/UI/view/src/reflectable/window&#45;reflectable.ts -->
-<g id="edge84" class="edge">
+<g id="edge85" class="edge">
 <title>packages/UI/view/src/reflectable/window&#45;reflectable&#45;registry.ts&#45;&gt;packages/UI/view/src/reflectable/window&#45;reflectable.ts</title>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M838.57,-699C856.82,-699 876.2,-699 893.85,-699"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="894.26,-701.1 900.26,-699 894.26,-696.9 894.26,-701.1"/>
@@ -1071,86 +1077,86 @@
 </a>
 </g>
 </g>
-<!-- packages/UI/view/src/mvvm/collection.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;collection.ts -->
+<!-- packages/UI/view/src/mvvm/collection&#45;impl.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;collection.ts -->
 <g id="edge59" class="edge">
-<title>packages/UI/view/src/mvvm/collection.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;collection.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M992.79,-933.4C1020.38,-936.89 1059.09,-941.78 1088.69,-945.52"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1088.65,-947.63 1094.86,-946.3 1089.17,-943.47 1088.65,-947.63"/>
+<title>packages/UI/view/src/mvvm/collection&#45;impl.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;collection.ts</title>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1003.72,-934.78C1030,-938.1 1062.84,-942.26 1088.71,-945.53"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1088.57,-947.63 1094.79,-946.29 1089.1,-943.46 1088.57,-947.63"/>
 </g>
-<!-- packages/UI/view/src/mvvm/collection.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;mvvm.ts -->
+<!-- packages/UI/view/src/mvvm/collection&#45;impl.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;mvvm.ts -->
 <g id="edge60" class="edge">
-<title>packages/UI/view/src/mvvm/collection.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;mvvm.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M992.55,-929C1054.11,-929 1180.03,-929 1242.96,-929"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1243.22,-931.1 1249.22,-929 1243.22,-926.9 1243.22,-931.1"/>
+<title>packages/UI/view/src/mvvm/collection&#45;impl.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;mvvm.ts</title>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1003.69,-929.87C1068.35,-931.07 1183.87,-933.21 1243.15,-934.31"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1243.36,-936.41 1249.4,-934.42 1243.44,-932.21 1243.36,-936.41"/>
 </g>
 <!-- packages/UI/view/src/mvvm/i&#45;collection.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;mvvm.ts -->
 <g id="edge61" class="edge">
 <title>packages/UI/view/src/mvvm/i&#45;collection.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;mvvm.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1171.09,-945.39C1193.26,-942.04 1221.29,-937.8 1243.29,-934.47"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1243.71,-936.54 1249.33,-933.56 1243.08,-932.38 1243.71,-936.54"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1171.09,-946.92C1193.26,-944.48 1221.29,-941.4 1243.29,-938.98"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1243.6,-941.06 1249.33,-938.32 1243.14,-936.89 1243.6,-941.06"/>
 </g>
 <!-- packages/UI/view/src/mvvm/i&#45;collection.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;view.ts -->
 <g id="edge62" class="edge">
 <title>packages/UI/view/src/mvvm/i&#45;collection.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;view.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1171.11,-947.85C1223.32,-943.53 1316.25,-935.84 1365.77,-931.75"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1366.07,-933.83 1371.88,-931.24 1365.73,-929.64 1366.07,-933.83"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1171.11,-947.13C1223.32,-941.83 1316.25,-932.4 1365.77,-927.37"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1366.12,-929.45 1371.88,-926.75 1365.7,-925.27 1366.12,-929.45"/>
 </g>
 <!-- packages/UI/view/src/mvvm/i&#45;mvvm.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;view.ts -->
 <g id="edge63" class="edge">
 <title>packages/UI/view/src/mvvm/i&#45;mvvm.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;view.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1311.5,-929C1328.07,-929 1348.67,-929 1365.61,-929"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1365.67,-931.1 1371.67,-929 1365.67,-926.9 1365.67,-931.1"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1311.5,-932.17C1328.07,-930.6 1348.67,-928.66 1365.61,-927.06"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1365.89,-929.14 1371.67,-926.49 1365.5,-924.96 1365.89,-929.14"/>
 </g>
 <!-- packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/i&#45;reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection.ts&#45;&gt;packages/UI/view/src/reflectable/audio&#45;reflectable.ts -->
-<g id="edge69" class="edge">
+<g id="edge70" class="edge">
 <title>packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/i&#45;reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection.ts&#45;&gt;packages/UI/view/src/reflectable/audio&#45;reflectable.ts</title>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M788.42,-793.93C823.31,-780.41 888.89,-755 926.84,-740.3"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="927.85,-742.16 932.69,-738.03 926.33,-738.24 927.85,-742.16"/>
 </g>
 <!-- packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/i&#45;reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;collection.ts -->
-<g id="edge68" class="edge">
+<g id="edge69" class="edge">
 <title>packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/i&#45;reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;collection.ts</title>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M786.53,-812.04C850.6,-837.73 1033.81,-911.22 1104.6,-939.61"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1103.95,-941.61 1110.3,-941.89 1105.51,-937.71 1103.95,-941.61"/>
 </g>
 <!-- packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/i&#45;reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection.ts&#45;&gt;packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/i&#45;time&#45;and&#45;model.ts -->
-<g id="edge70" class="edge">
+<g id="edge71" class="edge">
 <title>packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/i&#45;reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection.ts&#45;&gt;packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/i&#45;time&#45;and&#45;model.ts</title>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M883.25,-794.33C888.5,-793.95 893.67,-793.57 898.66,-793.2"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="899.06,-795.28 904.89,-792.75 898.75,-791.09 899.06,-795.28"/>
 </g>
 <!-- packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/i&#45;reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection.ts&#45;&gt;packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/time&#45;and&#45;model.ts -->
-<g id="edge71" class="edge">
+<g id="edge72" class="edge">
 <title>packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/i&#45;reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection.ts&#45;&gt;packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/time&#45;and&#45;model.ts</title>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M883.04,-807.52C948.21,-809.99 1025.9,-812.94 1077.18,-814.88"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1077.22,-816.99 1083.3,-815.11 1077.38,-812.79 1077.22,-816.99"/>
 </g>
 <!-- packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/i&#45;time&#45;and&#45;model.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;mvvm.ts -->
-<g id="edge72" class="edge">
+<g id="edge73" class="edge">
 <title>packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/i&#45;time&#45;and&#45;model.ts&#45;&gt;packages/UI/view/src/mvvm/i&#45;mvvm.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M978.23,-798.19C1035.15,-822.82 1191.11,-890.31 1253.84,-917.46"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1253.28,-919.51 1259.62,-919.96 1254.94,-915.65 1253.28,-919.51"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M977.24,-798.13C1033.52,-823.53 1191.86,-895 1254.51,-923.27"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1253.94,-925.32 1260.27,-925.87 1255.67,-921.49 1253.94,-925.32"/>
 </g>
 <!-- packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/i&#45;time&#45;and&#45;model.ts&#45;&gt;packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/time&#45;and&#45;model.ts -->
-<g id="edge73" class="edge">
+<g id="edge74" class="edge">
 <title>packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/i&#45;time&#45;and&#45;model.ts&#45;&gt;packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/time&#45;and&#45;model.ts</title>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1009.26,-797.25C1030.71,-800.7 1055.65,-804.71 1077.43,-808.22"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1077.23,-810.31 1083.49,-809.19 1077.9,-806.17 1077.23,-810.31"/>
 </g>
 <!-- packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/time&#45;and&#45;model.ts&#45;&gt;packages/util/time&#45;and/src/time.ts -->
-<g id="edge82" class="edge">
+<g id="edge83" class="edge">
 <title>packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/time&#45;and&#45;model.ts&#45;&gt;packages/util/time&#45;and/src/time.ts</title>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1136.17,-826.1C1152.43,-894.27 1255.17,-1325.02 1275.87,-1411.78"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1273.88,-1412.5 1277.32,-1417.85 1277.97,-1411.53 1273.88,-1412.5"/>
 </g>
 <!-- packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/time&#45;and&#45;model.ts&#45;&gt;packages/UI/view/src/mvvm/model.ts -->
-<g id="edge81" class="edge">
+<g id="edge82" class="edge">
 <title>packages/UI/view/src/reflectable&#45;time&#45;and&#45;mvc&#45;controller&#45;collection/time&#45;and&#45;model.ts&#45;&gt;packages/UI/view/src/mvvm/model.ts</title>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1156.1,-826.11C1181.78,-836.7 1224.17,-854.19 1251.97,-865.65"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1251.32,-867.65 1257.67,-868 1252.92,-863.77 1251.32,-867.65"/>
 </g>
 <!-- packages/util/time&#45;and/src/search&#45;items&#45;overlaps&#45;range.ts&#45;&gt;packages/util/time&#45;and/src/time.ts -->
-<g id="edge85" class="edge">
+<g id="edge86" class="edge">
 <title>packages/util/time&#45;and/src/search&#45;items&#45;overlaps&#45;range.ts&#45;&gt;packages/util/time&#45;and/src/time.ts</title>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1211.01,-1427C1223.77,-1427 1236.36,-1427 1247.2,-1427"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1247.36,-1429.1 1253.36,-1427 1247.36,-1424.9 1247.36,-1429.1"/>

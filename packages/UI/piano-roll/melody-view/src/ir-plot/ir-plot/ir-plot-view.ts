@@ -1,4 +1,4 @@
-import { MVVM_View } from "@music-analyzer/view/src/mvvm/view";
+import { MVVM_View_Impl } from "@music-analyzer/view/src/mvvm/view-impl";
 import { IRPlotModel } from "./ir-plot-model";
 import { ColorChangeSubscriber } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/color-change-subscriber";
 import { IRPlotViewModel } from "./ir-plot-view-model";
@@ -18,7 +18,7 @@ const get_pos = (_x: number, _y: number) => {
 };
 
 export class IRPlotView
-  extends MVVM_View<"circle", IRPlotModel>
+  extends MVVM_View_Impl<"circle", IRPlotModel>
   implements ColorChangeSubscriber {
   readonly view_model: IRPlotViewModel
   constructor(

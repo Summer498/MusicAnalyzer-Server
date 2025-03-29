@@ -1,11 +1,11 @@
-import { MVVM_View } from "@music-analyzer/view/src/mvvm/view";
+import { MVVM_View_Impl } from "@music-analyzer/view/src/mvvm/view-impl";
 import { GravityModel } from "../gravity-model";
 import { LinePos } from "../../line-pos";
 import { GravityViewTriangle } from "./gravity-triangle";
 import { GravityViewLine } from "./gravity-line";
 
 export class GravityView 
-  extends MVVM_View<"g", GravityModel> {
+  extends MVVM_View_Impl<"g", GravityModel> {
   readonly triangle: GravityViewTriangle;
   readonly line: GravityViewLine;
   constructor(model: GravityModel) {

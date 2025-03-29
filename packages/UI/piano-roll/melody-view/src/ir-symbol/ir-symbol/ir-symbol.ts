@@ -1,7 +1,7 @@
 import { BlackKeyPrm } from "@music-analyzer/view-parameters/src/piano-roll/rect-parameters/black-key";
 import { NoteSize } from "@music-analyzer/view-parameters/src/note-size";
 import { PianoRollBegin } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-begin";
-import { MVVM_ViewModel } from "@music-analyzer/view/src/mvvm/mvvm";
+import { MVVM_ViewModel_Impl } from "@music-analyzer/view/src/mvvm/mvvm-impl";
 import { IRSymbolModel } from "./ir-symbol-model";
 import { IRSymbolView } from "./ir-symbol-view";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
@@ -13,7 +13,7 @@ const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class IRSymbol
-  extends MVVM_ViewModel<IRSymbolModel, IRSymbolView>
+  extends MVVM_ViewModel_Impl<IRSymbolModel, IRSymbolView>
   implements TimeRangeSubscriber {
   #y: number;
   constructor(

@@ -1,4 +1,4 @@
-import { MVVM_ViewModel} from "@music-analyzer/view/src/mvvm/mvvm";
+import { MVVM_ViewModel_Impl } from "@music-analyzer/view/src/mvvm/mvvm-impl";
 import { play } from "@music-analyzer/synth/src/play";
 import { NoteSize } from "@music-analyzer/view-parameters/src/note-size";
 import { NowAt } from "@music-analyzer/view-parameters/src/now-at";
@@ -13,7 +13,7 @@ import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time
 const scaled = (e: number) => e * NoteSize.get();
 
 export class BeatBar
-  extends MVVM_ViewModel<BeatBarModel, BeatBarView>
+  extends MVVM_ViewModel_Impl<BeatBarModel, BeatBarView>
   implements TimeRangeSubscriber {
   #y1: number;
   #y2: number;

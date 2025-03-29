@@ -1,10 +1,10 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
-import { ChordKeySeries } from "./chord-key-series";
-import { ChordNameSeries } from "./chord-name-series";
-import { ChordNotesSeries } from "./chord-note-series";
-import { ChordRomanSeries } from "./chord-roman-series";
 import { RequiredByChordElements } from "./r-chord-elements";
-import { RequiredByChordPartModel } from "./r-chord-part-model";
+import { RequiredByChordPartModel } from "./r-model/r-chord-part-model";
+import { ChordKeySeries } from "./series";
+import { ChordNameSeries } from "./series";
+import { ChordNotesSeries } from "./series";
+import { ChordRomanSeries } from "./series";
 
 export class ChordElements {
   readonly children: unknown[];

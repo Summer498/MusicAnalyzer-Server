@@ -1,4 +1,4 @@
-import { MVVM_ViewModel } from "@music-analyzer/view/src/mvvm/mvvm";
+import { MVVM_ViewModel_Impl } from "@music-analyzer/view/src/mvvm/mvvm-impl";
 import { GravityModel } from "./gravity-model";
 import { GravityView } from "./gravity-view/gravity-view";
 import { Gravity as GravityAnalysis } from "@music-analyzer/melody-analyze/src/gravity";
@@ -14,7 +14,7 @@ const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class Gravity
-  extends MVVM_ViewModel<GravityModel, GravityView>
+  extends MVVM_ViewModel_Impl<GravityModel, GravityView>
   implements TimeRangeSubscriber {
   #line_seed: LinePos;
   constructor(

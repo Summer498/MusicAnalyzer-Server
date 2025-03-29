@@ -1,9 +1,9 @@
 import { I_CollectionLayer } from "./i-collection-layer";
-import { MVVM_Collection } from "./mvvm/collection";
+import { MVVM_Collection_Impl } from "./mvvm/collection-impl";
 import { ICollectionHierarchy } from "./i-collection-hierarchy";
 
 export abstract class CollectionHierarchy<L extends I_CollectionLayer>
-  extends MVVM_Collection<L>
+  extends MVVM_Collection_Impl<L>
   implements ICollectionHierarchy {
   protected _show: L[];
   get show() { return this._show; }

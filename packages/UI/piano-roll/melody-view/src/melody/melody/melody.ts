@@ -2,7 +2,7 @@ import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-a
 import { BlackKeyPrm } from "@music-analyzer/view-parameters/src/piano-roll/rect-parameters/black-key";
 import { NoteSize } from "@music-analyzer/view-parameters/src/note-size";
 import { PianoRollBegin } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-begin";
-import { MVVM_ViewModel } from "@music-analyzer/view/src/mvvm/mvvm";
+import { MVVM_ViewModel_Impl } from "@music-analyzer/view/src/mvvm/mvvm-impl";
 import { MelodyModel } from "./melody-model";
 import { MelodyView } from "./melody-view";
 import { MelodyBeep } from "./melody-beep";
@@ -14,7 +14,7 @@ const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class Melody
-  extends MVVM_ViewModel<MelodyModel, MelodyView>
+  extends MVVM_ViewModel_Impl<MelodyModel, MelodyView>
   implements IMelody {
   #beeper: MelodyBeep
   constructor(
