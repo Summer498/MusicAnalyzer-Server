@@ -1,9 +1,9 @@
-import { noteChromaToColor } from ".";
-import { fifthChromaToColor } from ".";
-import { fifthToColor } from ".";
-import { noteToColor } from ".";
-import { rgbToString } from ".";
-import { hsv2rgb } from ".";
+import { noteChromaToColor } from "./src/note-chroma-to-color";
+import { fifthChromaToColor } from "./src/fifth-chroma-to-color";
+import { fifthToColor } from "./src/fifth-to-color";
+import { noteToColor } from "./src/note-to-color";
+import { rgbToString } from "./src/rgb-to-string";
+import { hsv2rgb } from "./src/hsv2rgb";
 import { map2rgbByHue } from "./src/util";
 
 describe("test map2rgbByHue", () => {

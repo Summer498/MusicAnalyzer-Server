@@ -1,6 +1,7 @@
 import { mod } from "@music-analyzer/math/src/basic-function/mod";
-import { hsv2rgb, rgbToString } from "../dist";
 import { green_hue } from "./green-hue";
+import { rgbToString } from "./rgb-to-string";
+import { hsv2rgb } from "./hsv2rgb";
 
 // hsv2rgb(A*chroma+B):  F C(green) G D A E(red) B F#/Gb Db Ab(blue) Eb Bb
 // hsv2rgb(-A*chroma+B):  F C(green) G D A E(blue) B F#/Gb Db Ab(red) Eb Bb
