@@ -3,5 +3,5 @@ import { RequiredByChordPart } from "./r-part";
 
 export interface RequiredByChordPartSeries
   extends RequiredByChordPart {
-  audio: AudioReflectableRegistry
+  readonly audio: AudioReflectableRegistry
 }
