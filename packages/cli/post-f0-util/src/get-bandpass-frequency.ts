@@ -1,4 +1,4 @@
-import { bandpass } from "./util";
+import { bandpass } from "./util/bandpass";
 
 export const getBandpassFrequency = (freq_median_filtered: number[]) => {
   const LOW = 220; // hz
