@@ -3,19 +3,9 @@ import { ChordKeySeries } from "./chord-key/chord-key-series";
 import { ChordNameSeries } from "./chord-name/chord-name-series";
 import { ChordNotesSeries } from "./chord-note/chord-note-series";
 import { ChordRomanSeries } from "./chord-roman/chord-roman-series";
-import { RequiredByChordKeySeries } from "./chord-key/chord-key-series";
-import { RequiredByChordNameSeries } from "./chord-name/chord-name-series";
-import { RequiredByChordNotesSeries } from "./chord-note/chord-note-series";
-import { RequiredByChordRomanSeries } from "./chord-roman/chord-roman-series";
+import { RequiredByChordElements } from "./requirement/chord-elements";
 
-export interface RequiredByChordElements
-  extends
-  RequiredByChordKeySeries,
-  RequiredByChordNameSeries,
-  RequiredByChordNotesSeries,
-  RequiredByChordRomanSeries { }
-
-  export class ChordElements {
+export class ChordElements {
   readonly children: unknown[];
   readonly chord_keys: ChordKeySeries;
   readonly chord_names: ChordNameSeries;

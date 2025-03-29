@@ -1,7 +1,7 @@
 import { fifthToColor } from "@music-analyzer/color/src/fifth-to-color";
 import { MVVM_View } from "@music-analyzer/view/src/mvvm/view";
-import { oneLetterKey } from "../../shorten";
-import { chord_text_em } from "../../chord-view-params";
+import { oneLetterKey } from "../../shorten/on-letter-key";
+import { chord_text_em } from "../../chord-view-params/text-em";
 import { ChordKeyModel } from "./chord-key-model";
 import { getScale } from "@music-analyzer/tonal-objects/src/scale/get";
 

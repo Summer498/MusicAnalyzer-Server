@@ -1,16 +1,11 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
 import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
-import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/audio-reflectable-registry";
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view/src/reflectable-time-and-mvc-controller-collection/reflectable-time-and-mvc-controller-collection";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { ChordRoman } from "./chord-roman/chord-roman";
-import { RequiredByChordRoman } from "./chord-roman/chord-roman";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
+import { RequiredByChordRomanSeries } from "../requirement/chord-roman-series";
 
-export interface RequiredByChordRomanSeries
-  extends RequiredByChordRoman {
-  readonly audio: AudioReflectableRegistry
-}
 export class ChordRomanSeries
   extends ReflectableTimeAndMVCControllerCollection<ChordRoman>
   implements

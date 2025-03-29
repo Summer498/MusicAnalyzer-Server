@@ -1,8 +1,8 @@
 import { fifthToColor } from "@music-analyzer/color/src/fifth-to-color";;
 import { MVVM_View } from "@music-analyzer/view/src/mvvm/view";
-import { shortenChord } from "../../shorten";
+import { shortenChord } from "../../shorten/chord";
 import { ChordRomanModel } from "./chord-roman-model";
-import { chord_text_em } from "../../chord-view-params";
+import { chord_text_em } from "../../chord-view-params/text-em";
 
 export class ChordRomanView 
   extends MVVM_View<"text", ChordRomanModel> {

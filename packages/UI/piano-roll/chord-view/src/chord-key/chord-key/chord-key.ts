@@ -1,21 +1,15 @@
 import { MVVM_ViewModel } from "@music-analyzer/view/src/mvvm/mvvm";
-import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
 import { ChordKeyModel } from "./chord-key-model";
 import { ChordKeyView } from "./chord-key-view";
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
 import { NoteSize } from "@music-analyzer/view-parameters/src/note-size";
 import { PianoRollHeight } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-height";
-import { chord_name_margin } from "../../chord-view-params";
-import { chord_text_size } from "../../chord-view-params";
-import { TimeRangeController } from "@music-analyzer/controllers/src/slider/time-range/time-range-controller";
+import { chord_name_margin } from "../../chord-view-params/margin";
+import { chord_text_size } from "../../chord-view-params/text-size";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
 
 const scaled = (e: number) => e * NoteSize.get();
 
-export interface RequiredByChordKey {
-  readonly window: WindowReflectableRegistry
-  readonly time_range: TimeRangeController,
-}
 export class ChordKey
   extends MVVM_ViewModel<ChordKeyModel, ChordKeyView>
   implements TimeRangeSubscriber {

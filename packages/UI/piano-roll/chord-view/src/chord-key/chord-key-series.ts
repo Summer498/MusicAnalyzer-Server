@@ -1,17 +1,11 @@
 import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
 import { PianoRollTranslateX } from "@music-analyzer/view-parameters/src/piano-roll-translate-x";
 import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
-import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/audio-reflectable-registry";
 import { MVVM_Collection } from "@music-analyzer/view/src/mvvm/collection";
 import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
 import { ChordKey } from "./chord-key/chord-key";
-import { RequiredByChordKey } from "./chord-key/chord-key";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
-
-export interface RequiredByChordKeySeries
-  extends RequiredByChordKey {
-  readonly audio: AudioReflectableRegistry
-}
+import { RequiredByChordKeySeries } from "../requirement/key/chord-key-series";
 
 export class ChordKeySeries
   extends MVVM_Collection<ChordKey>
