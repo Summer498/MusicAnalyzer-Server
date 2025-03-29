@@ -1,4 +1,4 @@
-export type DirectionName = "mL" | "mN" | "mR"
+import { DirectionName } from "./direction-name";
 
 export class Direction {
   readonly closure_degree;

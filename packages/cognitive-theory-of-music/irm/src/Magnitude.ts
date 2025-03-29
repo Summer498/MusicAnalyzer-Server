@@ -1,4 +1,4 @@
-export type MagnitudeName = "AA" | "AB";
+import { MagnitudeName } from "./magnitude-name";
 
 export class Magnitude {
   readonly closure_degree;
