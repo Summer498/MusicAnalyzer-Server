@@ -1,26 +1,28 @@
 export { ColorSelector } from "./src/color-selector";
-export { ColorChangeSubscriber, GetColor, SetColor } from "./src/color-selector";
+export { ColorChangeSubscriber } from "./src/color-selector";
+export { GetColor } from "./src/color-selector";
+export { SetColor } from "./src/color-selector";
 export { IRM_ColorSelector } from "./src/color-selector";
-export { MelodyColorController, MelodyColorSelector } from "./src/color-selector";
-
-export { Controller } from "./src/controller";
+export { MelodyColorController } from "./src/color-selector";
+export { MelodyColorSelector } from "./src/color-selector";
 export { ControllerView } from "./src/controller";
-
-
 export { MelodyBeepController } from "./src/melody-beep-controller";
-export { MelodyBeepSwitcher, MelodyBeepSwitcherSubscriber } from "./src/melody-beep-controller";
-export { MelodyBeepVolume, MelodyBeepVolumeSubscriber } from "./src/melody-beep-controller";
-
-export { Slider } from "./src/slider";
-export { HierarchyLevel, HierarchyLevelController, HierarchyLevelSubscriber } from "./src/slider";
-export { TimeRangeController, TimeRangeSlider, TimeRangeSubscriber } from "./src/slider";
-
-export { DMelodyControllerSubscriber } from "./src/switcher";
+export { MelodyBeepSwitcher } from "./src/melody-beep-controller";
+export { MelodyBeepSwitcherSubscriber } from "./src/melody-beep-controller";
+export { MelodyBeepVolume } from "./src/melody-beep-controller";
+export { MelodyBeepVolumeSubscriber } from "./src/melody-beep-controller";
+export { HierarchyLevel } from "./src/slider";
+export { HierarchyLevelController } from "./src/slider";
+export { HierarchyLevelSubscriber } from "./src/slider";
+export { TimeRangeController } from "./src/slider";
+export { TimeRangeSlider } from "./src/slider";
+export { TimeRangeSubscriber } from "./src/slider";
+export { Controller } from "./src/controller";
 export { DMelodyController } from "./src/switcher";
 export { DMelodySwitcher } from "./src/switcher";
-
-export { GravityController } from "./src/switcher";
 export { GravitySwitcher } from "./src/switcher";
 export { GravitySwitcherSubscriber } from "./src/switcher";
-
+export { Slider } from "./src/slider";
+export { DMelodyControllerSubscriber } from "./src/switcher";
+export { GravityController } from "./src/switcher";
 export { Checkbox } from "./src/switcher";
