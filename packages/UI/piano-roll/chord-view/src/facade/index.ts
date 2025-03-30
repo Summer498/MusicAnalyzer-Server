@@ -1,14 +1,14 @@
-export { type AudioReflectable } from "@music-analyzer/view"
-export { AudioReflectableRegistry } from "@music-analyzer/view"
-export { type WindowReflectable } from "@music-analyzer/view"
-export { WindowReflectableRegistry } from "@music-analyzer/view"
-export { MVVM_Collection_Impl } from "@music-analyzer/view"
-export { MVVM_ViewModel_Impl } from "@music-analyzer/view"
-export { MVVM_View_Impl } from "@music-analyzer/view"
-export { MVVM_Model } from "@music-analyzer/view"
-export { A_MVVM_View } from "@music-analyzer/view"
-export { type I_TimeAndVM } from "@music-analyzer/view"
-export { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view"
+export { type AudioReflectable } from "@music-analyzer/view";
+export { AudioReflectableRegistry } from "@music-analyzer/view";
+export { type WindowReflectable } from "@music-analyzer/view";
+export { WindowReflectableRegistry } from "@music-analyzer/view";
+export { MVVM_Collection_Impl } from "@music-analyzer/view";
+export { MVVM_ViewModel_Impl } from "@music-analyzer/view";
+export { MVVM_View_Impl } from "@music-analyzer/view";
+export { MVVM_Model } from "@music-analyzer/view";
+export { A_MVVM_View } from "@music-analyzer/view";
+export { type I_TimeAndVM } from "@music-analyzer/view";
+export { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
 export { BlackKeyPrm } from "@music-analyzer/view-parameters";
 export { PianoRollBegin } from "@music-analyzer/view-parameters";
 export { PianoRollHeight } from "@music-analyzer/view-parameters";
@@ -28,8 +28,8 @@ export { getLowerCase } from "@music-analyzer/stdlib";
 export { mod } from "@music-analyzer/math";
 export { TimeRangeSubscriber } from "@music-analyzer/controllers";
 export { TimeRangeController } from "@music-analyzer/controllers";
-export { hsv2rgb } from "@music-analyzer/color";;
-export { rgbToString } from "@music-analyzer/color";;
+export { hsv2rgb } from "@music-analyzer/color";
+export { rgbToString } from "@music-analyzer/color";
 export { thirdToColor } from "@music-analyzer/color";
 export { fifthToColor } from "@music-analyzer/color";
 export { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";

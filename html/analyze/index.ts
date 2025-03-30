@@ -1,6 +1,6 @@
-import { HTMLsContainer } from "@music-analyzer/music-analyzer-application";
-import { setupApplication } from "@music-analyzer/music-analyzer-application";
-import { URLsContainer } from "@music-analyzer/music-analyzer-application";
+import { HTMLsContainer } from "./src/facade";
+import { setupApplication } from "./src/facade";
+import { URLsContainer } from "./src/facade";
 
 declare const audio_player: HTMLAudioElement | HTMLVideoElement;
 declare const piano_roll_place: HTMLDivElement;

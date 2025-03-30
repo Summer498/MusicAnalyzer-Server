@@ -1,10 +1,10 @@
 import { default as fs } from "fs";
-import { freq2midi } from "@music-analyzer/post-f0-util"
-import { getBandpassFrequency } from "@music-analyzer/post-f0-util"
-import { getFreqFromPhase } from "@music-analyzer/post-f0-util"
-import { getFrequency } from "@music-analyzer/post-f0-util"
-import { getWav } from "@music-analyzer/post-f0-util"
-import { roundOnMIDI } from "@music-analyzer/post-f0-util"
+import { freq2midi } from "./src/facade";
+import { getBandpassFrequency } from "./src/facade";
+import { getFreqFromPhase } from "./src/facade";
+import { getFrequency } from "./src/facade";
+import { getWav } from "./src/facade";
+import { roundOnMIDI } from "./src/facade";
 import { getMedianFrequency } from "./src";
 import { Vocals } from "./src";
 

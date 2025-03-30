@@ -1,1 +1,1 @@
-export { mod } from "../../facade/math"
+export { mod } from "../../facade/math";
