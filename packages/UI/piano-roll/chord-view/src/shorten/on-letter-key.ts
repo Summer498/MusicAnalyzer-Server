@@ -1,6 +1,6 @@
-import { getCapitalCase } from "@music-analyzer/stdlib/src/string/get-capital-case";
-import { getLowerCase } from "@music-analyzer/stdlib/src/string/get-lower-case";
-import { Scale } from"../facade/tonal-object"
+import { getCapitalCase } from "./facade/string";
+import { getLowerCase } from "./facade/string";
+import { Scale } from"./facade/tonal-object"
 
 export const oneLetterKey = (key: Scale) => {
   const tonic = key.tonic || "";

@@ -1,6 +1,6 @@
-import { AudioReflectable } from "../facade/view";
-import { WindowReflectable } from "../facade/view";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
+import { AudioReflectable } from "./facade/view";
+import { WindowReflectable } from "./facade/view";
+import { TimeRangeSubscriber } from "./facade/time-range-subscriber";
 
 export interface IChordPartSeries
   extends

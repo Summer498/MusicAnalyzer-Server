@@ -1,4 +1,4 @@
-import { WindowReflectable } from "../facade/view";
+import { WindowReflectable } from "./facade/view";
 import { IChordNote } from "./i-chord-note";
 
 export interface IChordNotesInOctave

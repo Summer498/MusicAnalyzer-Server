@@ -1,4 +1,4 @@
-import { RequiredByChordNotes } from "./r-part";
+import { RequiredByChordNotes } from "./facade/r-part";
 
 export interface RequiredByChordNotesSeries
   extends RequiredByChordNotes { }

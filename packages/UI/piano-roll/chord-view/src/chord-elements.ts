@@ -1,6 +1,6 @@
-import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
+import { TimeAndRomanAnalysis } from "./facade/chord-analyze";
 import { RequiredByChordElements } from "./r-chord-elements";
-import { RequiredByChordPartModel } from "./r-model/r-chord-part-model";
+import { RequiredByChordPartModel } from "./r-model";
 import { ChordKeySeries } from "./series";
 import { ChordNameSeries } from "./series";
 import { ChordNotesSeries } from "./series";

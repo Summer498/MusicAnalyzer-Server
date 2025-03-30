@@ -1,7 +1,7 @@
-import { MVVM_ViewModel_Impl } from "../facade/view";
-import { NoteSize } from "@music-analyzer/view-parameters/src/note-size";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
-import { ChordPartModel } from "./model";
+import { NoteSize } from "./facade/note-size";
+import { TimeRangeSubscriber } from "./facade/time-range-subscriber";
+import { MVVM_ViewModel_Impl } from "./facade/view";
+import { ChordPartModel } from "./facade/model";
 import { RequiredViewByChordPart } from "./rv-chord-part";
 
 export abstract class ChordPart<

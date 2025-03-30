@@ -1,8 +1,8 @@
-import { fifthToColor } from "@music-analyzer/color/src/fifth-to-color";
-import { MVVM_View_Impl } from "../facade/view";
-import { oneLetterKey } from "../shorten/on-letter-key";
-import { chord_text_em } from "../chord-view-params/text-em";
-import { ChordPartModel } from "./model";
+import { fifthToColor } from "./facade/color";
+import { MVVM_View_Impl } from "./facade/view";
+import { oneLetterKey } from "./facade/shorten";
+import { chord_text_em } from "./facade/chord-view-params";
+import { ChordPartModel } from "./facade/model";
 
 export class ChordPartView_impl<Tag extends keyof SVGElementTagNameMap>
   extends MVVM_View_Impl<Tag, ChordPartModel> {

@@ -1,7 +1,7 @@
-import { shortenChord } from "../shorten/chord";
-import { chord_text_em } from "../chord-view-params/text-em";
+import { shortenChord } from "./facade/shorten";
+import { chord_text_em } from "./facade/chord-view-params";
 import { ChordPartView_impl } from "./chord-part-view-impl";
-import { ChordNameModel } from "./model";
+import { ChordNameModel } from "./facade/model";
 
 export class ChordNameView
   extends ChordPartView_impl<"text"> {

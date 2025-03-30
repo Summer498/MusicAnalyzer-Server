@@ -1,4 +1,4 @@
-import { IChordNotes } from "../i-part";
+import { IChordNotes } from "./facade/i-part";
 
 export interface IChordNotesSeries
   extends IChordNotes { }

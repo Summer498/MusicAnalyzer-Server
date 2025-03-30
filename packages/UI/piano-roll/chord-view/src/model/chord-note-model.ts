@@ -1,6 +1,6 @@
-import { Note } from"../facade/tonal-object"
-import { intervalOf } from"../facade/tonal-object"
-import { RequiredByChordNoteModel } from "./r-model";
+import { Note } from"./facade/tonal-object"
+import { intervalOf } from"./facade/tonal-object"
+import { RequiredByChordNoteModel } from "./facade/r-model";
 import { ChordPartModel } from "./chord-part-model";
 
 export class ChordNoteModel 

@@ -3,6 +3,7 @@ shopt -s globstar  # ** の有効化
 draw(){
 #  npx depcruise "$(dirname "$1")" --output-type dot | fdp -T svg > "$(dirname "$1")/dependency-graph.svg"
 #  npx depcruise "$(dirname "$1")" --output-type dot | sfdp -T svg > "$(dirname "$1")/dependency-graph.svg"
+#  npx depcruise "$(dirname "$1")" --output-type dot | osage -T svg > "$(dirname "$1")/dependency-graph.svg"
 #  npx depcruise "$(dirname "$1")" --output-type dot | neato -T svg > "$(dirname "$1")/dependency-graph.svg"
   npx depcruise "$(dirname "$1")" --output-type dot | dot -T svg > "$(dirname "$1")/dependency-graph.svg"
   echo "$1"

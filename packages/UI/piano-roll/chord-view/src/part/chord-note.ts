@@ -1,11 +1,11 @@
-import { BlackKeyPrm } from "@music-analyzer/view-parameters/src/piano-roll/rect-parameters/black-key";
-import { PianoRollBegin } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-begin";
-import { mod } from "@music-analyzer/math/src/basic-function/mod";
-import { Note } from"../facade/tonal-object"
-import { ChordNoteModel } from "./model";
-import { IChordNote } from "./i-part";
-import { RequiredByChordNoteModel } from "./r-model";
-import { ChordNoteView } from "./view";
+import { BlackKeyPrm } from "./facade/view-parameters";
+import { PianoRollBegin } from "./facade/view-parameters";
+import { mod } from "./facade/mod";
+import { Note } from"./facade/tonal-object"
+import { ChordNoteModel } from "./facade/model";
+import { IChordNote } from "./facade/i-part";
+import { RequiredByChordNoteModel } from "./facade/r-model";
+import { ChordNoteView } from "./facade/chord-view";
 import { ChordPart } from "./chord-part";
 
 const transposed = (e: number) => e - PianoRollBegin.get()

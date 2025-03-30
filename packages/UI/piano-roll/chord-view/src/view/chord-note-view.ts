@@ -1,6 +1,6 @@
-import { thirdToColor } from "@music-analyzer/color/src/third-to-color";
+import { thirdToColor } from "./facade/color";
 import { ChordPartView_impl } from "./chord-part-view-impl";
-import { ChordNoteModel } from "./model";
+import { ChordNoteModel } from "./facade/model";
 
 export class ChordNoteView 
   extends ChordPartView_impl<"rect"> {

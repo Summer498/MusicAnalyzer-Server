@@ -1,8 +1,8 @@
-import { ChordNotes } from "./part";
+import { ChordNotes } from "./facade/part";
 import { ChordPartSeries } from "./chord-parts-series";
-import { RequiredByChordNoteModel } from "./r-model";
-import { RequiredByChordNotesSeries } from "./r-series";
-import { IChordNotesSeries } from "./i-series";
+import { RequiredByChordNoteModel } from "./facade/r-model";
+import { RequiredByChordNotesSeries } from "./facade/r-series";
+import { IChordNotesSeries } from "./facade/i-series";
 
 export class ChordNotesSeries
   extends ChordPartSeries<ChordNotes>

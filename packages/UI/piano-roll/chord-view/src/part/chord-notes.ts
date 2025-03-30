@@ -1,8 +1,8 @@
-import { OctaveCount } from "@music-analyzer/view-parameters/src/piano-roll/octave-count";
-import { MVVM_Collection_Impl } from "../facade/view";
+import { OctaveCount } from "./facade/octave-count";
+import { MVVM_Collection_Impl } from "./facade/view";
 import { ChordNotesInOctave } from "./chord-notes-in-octave";
-import { IChordNotes } from "./i-part";
-import { RequiredByChordNoteModel } from "./r-model";
+import { IChordNotes } from "./facade/i-part";
+import { RequiredByChordNoteModel } from "./facade/r-model";
 
 export class ChordNotes
   extends MVVM_Collection_Impl<ChordNotesInOctave>
