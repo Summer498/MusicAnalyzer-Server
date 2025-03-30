@@ -1,3 +1,4 @@
+export { I_MVVM_ModelView } from "./i-mvvm";
 export { A_MVVM_Collection } from "./a-collection";
 export { A_MVVM_ModelView } from "./a-mvvm";
 export { A_MVVM_View } from "./a-view";

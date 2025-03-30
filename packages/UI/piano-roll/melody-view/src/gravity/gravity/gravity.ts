@@ -1,6 +1,6 @@
 import { MVVM_ViewModel_Impl } from "@music-analyzer/view";
 import { GravityModel } from "./gravity-model";
-import { GravityView } from "./gravity-view/gravity-view";
+import { GravityView } from "./gravity-view";
 import { Gravity as GravityAnalysis } from "@music-analyzer/melody-analyze";
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { BlackKeyPrm } from "@music-analyzer/view-parameters";

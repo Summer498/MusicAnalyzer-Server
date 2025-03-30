@@ -1,6 +1,6 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { ReductionModel } from "./reduction-model";
-import { ReductionView } from "./reduction-view/reduction-view";
+import { ReductionView } from "./reduction-view";
 import { MVVM_ViewModel_Impl } from "@music-analyzer/view";
 import { SetColor } from "@music-analyzer/controllers";
 import { IReduction } from "../interface/reduction/reduction";

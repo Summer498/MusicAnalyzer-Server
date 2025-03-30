@@ -1,5 +1,5 @@
-import { ReflectableTimeAndMVCControllerCollection } from "./reflectable-time-and-mvc-controller-collection/reflectable-time-and-mvc-controller-collection";
-import { I_TimeAndVM } from "./reflectable-time-and-mvc-controller-collection/i-time-and-model";
+import { ReflectableTimeAndMVCControllerCollection } from "./reflectable-time-and-mvc-controller-collection";
+import { I_TimeAndVM } from "./reflectable-time-and-mvc-controller-collection";
 import { I_CollectionLayer } from "./i-collection-layer";
 
 

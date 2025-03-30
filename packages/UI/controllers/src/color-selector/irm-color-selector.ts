@@ -1,6 +1,6 @@
 import { Triad } from "@music-analyzer/irm";
 import { ColorSelector } from "./color-selector";
-import { ColorChangeSubscriber } from "./irm-color/color-change-subscriber";
+import { ColorChangeSubscriber } from "./irm-color";
 
 export class IRM_ColorSelector 
   extends ColorSelector<ColorChangeSubscriber> {

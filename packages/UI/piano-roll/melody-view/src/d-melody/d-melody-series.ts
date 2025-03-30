@@ -1,6 +1,6 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
-import { DMelody } from "./d-melody/d-melody";
+import { DMelody } from "./d-melody";
 import { RequiredByDMelodySeries } from "../requirement/d-melody/required-by-d-melody-series";
 import { IDMelodySeries } from "../interface/d-melody/d-melody-series";
 

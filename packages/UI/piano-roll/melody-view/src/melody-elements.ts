@@ -1,13 +1,13 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { AudioReflectableRegistry } from "@music-analyzer/view";
 import { WindowReflectableRegistry } from "@music-analyzer/view";
-import { DMelodySeries } from "./d-melody/d-melody-series";
-import { MelodyHierarchy } from "./melody/melody-hierarchy";
-import { IRSymbolHierarchy } from "./ir-symbol/ir-symbol-hierarchy";
-import { ReductionHierarchy } from "./reduction/reduction-hierarchy";
-import { GravityHierarchy } from "./gravity/gravity-hierarchy";
-import { IRPlotSVG } from "./ir-plot/ir-plot-svg";
-import { RequiredByMelodyElements } from "./requirement/required-melody-elements";
+import { DMelodySeries } from "./d-melody";
+import { MelodyHierarchy } from "./melody";
+import { IRSymbolHierarchy } from "./ir-symbol";
+import { ReductionHierarchy } from "./reduction";
+import { GravityHierarchy } from "./gravity";
+import { IRPlotSVG } from "./ir-plot";
+import { RequiredByMelodyElements } from "./requirement";
 
 
 export class MelodyElements {

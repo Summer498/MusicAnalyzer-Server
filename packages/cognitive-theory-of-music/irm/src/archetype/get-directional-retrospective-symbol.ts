@@ -1,6 +1,6 @@
 import { Interval } from "@music-analyzer/tonal-objects";
-import { RetrospectiveDirectionalTriadSymbol } from "./symbols/directional/directional-retrospective-triad";
-import { RetrospectiveTriadSymbol } from "./symbols/retrospective-triad";
+import { RetrospectiveDirectionalTriadSymbol } from "./symbols";
+import { RetrospectiveTriadSymbol } from "./symbols";
 
 export const directionalRetrospectiveSymbol = (symbol: RetrospectiveTriadSymbol, realization: Interval): RetrospectiveDirectionalTriadSymbol => {
   switch (symbol) {

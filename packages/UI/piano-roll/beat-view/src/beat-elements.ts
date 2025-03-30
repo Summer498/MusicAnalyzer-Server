@@ -1,6 +1,6 @@
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { BeatBarsSeries } from "./beat-bar-series";
-import { RequiredByBeatElements } from "./requirement/beat-elements";
+import { RequiredByBeatElements } from "./requirement";
 import { Time } from "@music-analyzer/time-and";
 
 export class BeatElements {

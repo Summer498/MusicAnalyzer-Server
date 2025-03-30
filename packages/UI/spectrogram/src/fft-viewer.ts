@@ -1,6 +1,6 @@
 import { Complex } from "@music-analyzer/math";
 import { AudioReflectable} from "@music-analyzer/view";
-import { AudioAnalyzer } from "./audio-analyzer/audio-analyzer";
+import { AudioAnalyzer } from "./audio-analyzer";
 
 export class FFTViewer 
   implements AudioReflectable {

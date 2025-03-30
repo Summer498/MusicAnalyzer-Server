@@ -2,7 +2,7 @@ import { AudioReflectable} from "@music-analyzer/view";
 import { AudioReflectableRegistry } from "@music-analyzer/view";
 import { WaveViewer } from "./wave-viewer";
 import { spectrogramViewer } from "./spectrogram-viewer";
-import { AudioAnalyzer } from "./audio-analyzer/audio-analyzer";
+import { AudioAnalyzer } from "./audio-analyzer";
 import { FFTViewer } from "./fft-viewer";
 
 // AudioAnalyzer.ts

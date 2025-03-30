@@ -1,5 +1,5 @@
 import { I_CollectionLayer } from "./i-collection-layer";
-import { MVVM_Collection_Impl } from "./mvvm/collection-impl";
+import { MVVM_Collection_Impl } from "./mvvm";
 import { ICollectionHierarchy } from "./i-collection-hierarchy";
 
 export abstract class CollectionHierarchy<L extends I_CollectionLayer>

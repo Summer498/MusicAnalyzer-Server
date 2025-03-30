@@ -1,9 +1,9 @@
 import { GravityController } from "@music-analyzer/controllers";
-import { RequiredByDMelodySeries } from "./d-melody/required-by-d-melody-series";
-import { RequiredByMelodyHierarchy } from "./melody/required-melody-hierarchy";
-import { RequiredByIRSymbolHierarchy } from "./ir-symbol/required-by-ir-symbol-hierarchy";
-import { RequiredByIRPlot } from "./ir-plot/required-by-ir-plot";
-import { RequiredByReductionHierarchy } from "./reduction/required-by-reduction-hierarchy";
+import { RequiredByDMelodySeries } from "./d-melody";
+import { RequiredByMelodyHierarchy } from "./melody";
+import { RequiredByIRSymbolHierarchy } from "./ir-symbol";
+import { RequiredByIRPlot } from "./ir-plot";
+import { RequiredByReductionHierarchy } from "./reduction";
 
 export interface RequiredByMelodyElements
   extends

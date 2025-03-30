@@ -1,6 +1,6 @@
 import { HierarchyLevelSubscriber } from "@music-analyzer/controllers"
-import { I_MVVM_Collection } from "./mvvm/i-collection";
-import { I_MVVM_ModelView } from "./mvvm/i-mvvm";
+import { I_MVVM_Collection } from "./mvvm";
+import { I_MVVM_ModelView } from "./mvvm";
 
 export interface ICollectionHierarchy
   extends

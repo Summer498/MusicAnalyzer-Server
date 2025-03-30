@@ -1,3 +1,4 @@
+export { ReductionElement } from "./ReductionElement";
 export { TimeSpanReduction } from "./TSR";
 export { ProlongationalReduction } from "./PR";
 export { GTTMData } from "./gttm-data";

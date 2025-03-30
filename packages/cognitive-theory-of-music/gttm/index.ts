@@ -1,4 +1,4 @@
-export { ReductionElement } from "./src/analysis-result/ReductionElement";
+export { ReductionElement } from "./src/analysis-result";
 export { GroupingStructure } from "./src/analysis-result";
 export { MetricalStructure } from "./src/analysis-result";
 export { ITimeSpanReduction } from "./src/analysis-result";

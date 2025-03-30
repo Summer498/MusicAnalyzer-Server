@@ -1,7 +1,7 @@
-import { MelodyBeepSwitcher } from "./melody-beep-toggle/melody-beep-switcher";
-import { MelodyBeepSwitcherSubscriber } from "./melody-beep-toggle/melody-beep-switcher-subscriber";
-import { MelodyBeepVolume } from "./melody-beep-volume/melody-beep-volume";
-import { MelodyBeepVolumeSubscriber } from "./melody-beep-volume/melody-beep-volume-subscriber";
+import { MelodyBeepSwitcher } from "./melody-beep-toggle";
+import { MelodyBeepSwitcherSubscriber } from "./melody-beep-toggle";
+import { MelodyBeepVolume } from "./melody-beep-volume";
+import { MelodyBeepVolumeSubscriber } from "./melody-beep-volume";
 
 export class MelodyBeepController {
   readonly view: HTMLDivElement;

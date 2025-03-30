@@ -4,7 +4,7 @@ import { CurrentTimeRatio } from "./facade";
 import { ApplicationManager } from "./facade";
 import { HTMLsContainer } from "./facade";
 import { TitleInfo } from "./facade";
-import { getSaveButtons } from "./save-button/get-save-buttons";
+import { getSaveButtons } from "./save-button";
 import { asParent } from "./as-parent";
 import { ColumnHTML } from "./column-html";
 

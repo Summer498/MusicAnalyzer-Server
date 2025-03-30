@@ -1,6 +1,6 @@
 import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { CollectionLayer } from "@music-analyzer/view";
-import { Melody } from "./melody/melody";
+import { Melody } from "./melody";
 import { SetColor } from "@music-analyzer/controllers";
 import { IMelodyLayer } from "../interface/melody/melody-layer";
 
