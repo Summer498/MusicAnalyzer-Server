@@ -1,0 +1,12 @@
+export { MVVM_View_Impl } from "../../facade";
+export { A_MVVM_View } from "../../facade";
+export { shortenChord } from "../../shorten";
+export { oneLetterKey } from "../../shorten";
+export { ChordKeyModel } from "../../model";
+export { ChordNameModel } from "../../model";
+export { ChordNoteModel } from "../../model";
+export { ChordPartModel } from "../../model";
+export { ChordRomanModel } from "../../model";
+export { thirdToColor } from "../../facade";
+export { fifthToColor } from "../../facade";
+export { chord_text_em } from "../../chord-view-params";

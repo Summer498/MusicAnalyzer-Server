@@ -1,9 +1,9 @@
-import { TimeAndRomanAnalysis } from "./facade/chord-analyze";
-import { Time } from "./facade/time";
-import { Chord } from"./facade/tonal-object"
-import { Scale } from"./facade/tonal-object"
-import { getChord } from"./facade/tonal-object"
-import { getScale } from"./facade/tonal-object"
+import { TimeAndRomanAnalysis } from "./facade";
+import { Time } from "./facade";
+import { Chord } from"./facade"
+import { Scale } from"./facade"
+import { getChord } from"./facade"
+import { getScale } from"./facade"
 
 export class RequiredByChordPartModel {
   readonly time: Time

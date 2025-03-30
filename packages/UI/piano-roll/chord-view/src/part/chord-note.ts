@@ -1,11 +1,11 @@
-import { BlackKeyPrm } from "./facade/view-parameters";
-import { PianoRollBegin } from "./facade/view-parameters";
-import { mod } from "./facade/mod";
-import { Note } from"./facade/tonal-object"
-import { ChordNoteModel } from "./facade/model";
-import { IChordNote } from "./facade/i-part";
-import { RequiredByChordNoteModel } from "./facade/r-model";
-import { ChordNoteView } from "./facade/chord-view";
+import { BlackKeyPrm } from "./facade";
+import { PianoRollBegin } from "./facade";
+import { mod } from "./facade";
+import { Note } from"./facade"
+import { ChordNoteModel } from "./facade";
+import { IChordNote } from "./facade";
+import { RequiredByChordNoteModel } from "./facade";
+import { ChordNoteView } from "./facade";
 import { ChordPart } from "./chord-part";
 
 const transposed = (e: number) => e - PianoRollBegin.get()

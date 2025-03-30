@@ -1,4 +1,4 @@
-import { TimeRangeSubscriber } from "./facade/controllers";
+import { TimeRangeSubscriber } from "./facade";
 
 export interface IChordPart
   extends TimeRangeSubscriber { }

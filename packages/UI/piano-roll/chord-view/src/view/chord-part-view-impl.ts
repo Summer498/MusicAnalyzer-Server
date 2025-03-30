@@ -1,8 +1,8 @@
-import { fifthToColor } from "./facade/color";
-import { MVVM_View_Impl } from "./facade/view";
-import { oneLetterKey } from "./facade/shorten";
-import { chord_text_em } from "./facade/chord-view-params";
-import { ChordPartModel } from "./facade/model";
+import { fifthToColor } from "./facade";
+import { MVVM_View_Impl } from "./facade";
+import { oneLetterKey } from "./facade";
+import { chord_text_em } from "./facade";
+import { ChordPartModel } from "./facade";
 
 export class ChordPartView_impl<Tag extends keyof SVGElementTagNameMap>
   extends MVVM_View_Impl<Tag, ChordPartModel> {

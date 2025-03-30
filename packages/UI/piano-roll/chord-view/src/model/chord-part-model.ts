@@ -1,8 +1,8 @@
-import { Time } from "./facade/time";
-import { Chord } from"./facade/tonal-object"
-import { Scale } from"./facade/tonal-object"
-import { MVVM_Model } from "./facade/view";
-import { RequiredByChordPartModel } from "./facade/r-model";
+import { Time } from "./facade";
+import { Chord } from"./facade"
+import { Scale } from"./facade"
+import { MVVM_Model } from "./facade";
+import { RequiredByChordPartModel } from "./facade";
 
 export abstract class ChordPartModel
   extends MVVM_Model {

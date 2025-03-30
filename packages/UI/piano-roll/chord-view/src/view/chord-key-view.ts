@@ -1,7 +1,7 @@
-import { oneLetterKey } from "./facade/shorten";
-import { chord_text_em } from "./facade/chord-view-params";
+import { oneLetterKey } from "./facade";
+import { chord_text_em } from "./facade";
 import { ChordPartView_impl } from "./chord-part-view-impl";
-import { ChordKeyModel } from "./facade/model";
+import { ChordKeyModel } from "./facade";
 
 export class ChordKeyView
   extends ChordPartView_impl<"text"> {

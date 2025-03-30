@@ -1,7 +1,7 @@
-import { ChordNameModel } from "./facade/model";
-import { RequiredByChordNameModel } from "./facade/r-model";
-import { IChordName } from "./facade/i-part";
-import { ChordNameView } from "./facade/chord-view";
+import { ChordNameModel } from "./facade";
+import { RequiredByChordNameModel } from "./facade";
+import { IChordName } from "./facade";
+import { ChordNameView } from "./facade";
 import { ChordPartText } from "./chord-part-text";
 
 export class ChordName

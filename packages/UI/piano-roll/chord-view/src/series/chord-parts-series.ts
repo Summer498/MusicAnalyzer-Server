@@ -1,9 +1,9 @@
-import { TimeRangeSubscriber } from "./facade/controllers";
-import { ReflectableTimeAndMVCControllerCollection } from "./facade/view";
-import { I_TimeAndVM } from "./facade/view";
-import { WindowReflectable } from "./facade/view";
-import { RequiredByChordPartSeries } from "./facade/r-series";
-import { IChordPartSeries } from "./facade/i-series";
+import { TimeRangeSubscriber } from "./facade";
+import { ReflectableTimeAndMVCControllerCollection } from "./facade";
+import { I_TimeAndVM } from "./facade";
+import { WindowReflectable } from "./facade";
+import { RequiredByChordPartSeries } from "./facade";
+import { IChordPartSeries } from "./facade";
 
 export abstract class ChordPartSeries
   <T extends I_TimeAndVM & TimeRangeSubscriber & WindowReflectable>

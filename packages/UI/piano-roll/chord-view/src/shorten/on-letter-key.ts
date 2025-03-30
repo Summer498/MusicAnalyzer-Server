@@ -1,6 +1,6 @@
-import { getCapitalCase } from "./facade/string";
-import { getLowerCase } from "./facade/string";
-import { Scale } from"./facade/tonal-object"
+import { getCapitalCase } from "./facade";
+import { getLowerCase } from "./facade";
+import { Scale } from"./facade"
 
 export const oneLetterKey = (key: Scale) => {
   const tonic = key.tonic || "";

@@ -1,6 +1,6 @@
-import { thirdToColor } from "./facade/color";
+import { thirdToColor } from "./facade";
 import { ChordPartView_impl } from "./chord-part-view-impl";
-import { ChordNoteModel } from "./facade/model";
+import { ChordNoteModel } from "./facade";
 
 export class ChordNoteView 
   extends ChordPartView_impl<"rect"> {

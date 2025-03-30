@@ -1,4 +1,4 @@
-import { RequiredByChordRomanModel } from "./facade/r-model";
+import { RequiredByChordRomanModel } from "./facade";
 import { ChordPartModel } from "./chord-part-model";
 
 export class ChordRomanModel

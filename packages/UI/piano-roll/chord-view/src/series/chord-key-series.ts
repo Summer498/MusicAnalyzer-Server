@@ -1,8 +1,8 @@
-import { ChordKey } from "./facade/part";
+import { ChordKey } from "./facade";
 import { ChordPartSeries } from "./chord-parts-series";
-import { RequiredByChordKeyModel } from "./facade/r-model";
-import { RequiredByChordKeySeries } from "./facade/r-series";
-import { IChordKeySeries } from "./facade/i-series";
+import { RequiredByChordKeyModel } from "./facade";
+import { RequiredByChordKeySeries } from "./facade";
+import { IChordKeySeries } from "./facade";
 
 export class ChordKeySeries
   extends ChordPartSeries<ChordKey>

@@ -1,5 +1,5 @@
-import { AudioReflectableRegistry } from "./facade/view";
-import { RequiredByChordPart } from "./facade/r-part";
+import { AudioReflectableRegistry } from "./facade";
+import { RequiredByChordPart } from "./facade";
 
 export interface RequiredByChordPartSeries
   extends RequiredByChordPart {

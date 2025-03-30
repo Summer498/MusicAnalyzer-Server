@@ -1,9 +1,9 @@
-import { chord_name_margin } from "./facade/margin";
-import { chord_text_size } from "./facade/chord-view-params";
-import { ChordRomanModel } from "./facade/model";
-import { ChordRomanView } from "./facade/chord-view";
-import { RequiredByChordRomanModel } from "./facade/r-model";
-import { IChordRoman } from "./facade/i-part";
+import { chord_name_margin } from "./facade";
+import { chord_text_size } from "./facade";
+import { ChordRomanModel } from "./facade";
+import { ChordRomanView } from "./facade";
+import { RequiredByChordRomanModel } from "./facade";
+import { IChordRoman } from "./facade";
 import { ChordPartText } from "./chord-part-text";
 
 export class ChordRoman

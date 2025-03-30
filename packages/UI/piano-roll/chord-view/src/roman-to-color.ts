@@ -1,5 +1,5 @@
-import { hsv2rgb } from "./facade/color";
-import { rgbToString } from "./facade/color";
+import { hsv2rgb } from "./facade";
+import { rgbToString } from "./facade";
 
 export const romanToColor = (roman: string, s: number, v: number) => {
   let i: number | undefined = undefined;

@@ -1,7 +1,7 @@
-import { NoteSize } from "./facade/note-size";
-import { TimeRangeSubscriber } from "./facade/controllers";
-import { MVVM_ViewModel_Impl } from "./facade/view";
-import { ChordPartModel } from "./facade/model";
+import { NoteSize } from "./facade";
+import { TimeRangeSubscriber } from "./facade";
+import { MVVM_ViewModel_Impl } from "./facade";
+import { ChordPartModel } from "./facade";
 import { RequiredViewByChordPart } from "./rv-chord-part";
 
 export abstract class ChordPart<
