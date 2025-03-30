@@ -1,6 +1,6 @@
-import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { GTTMData } from "@music-analyzer/gttm";
+import { TimeAndRomanAnalysis } from "./facade";
+import { TimeAndAnalyzedMelody } from "./facade";
+import { GTTMData } from "./facade";
 
 export class AnalyzedMusicData {
   constructor(

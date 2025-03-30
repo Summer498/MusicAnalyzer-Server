@@ -1,10 +1,10 @@
-import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-import { GroupingStructure } from "@music-analyzer/gttm";
-import { IProlongationalReduction } from "@music-analyzer/gttm";
-import { ITimeSpanReduction } from "@music-analyzer/gttm";
-import { MetricalStructure } from "@music-analyzer/gttm";
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { MusicXML } from "@music-analyzer/musicxml";
+import { TimeAndRomanAnalysis } from "./facade";
+import { GroupingStructure } from "./facade";
+import { IProlongationalReduction } from "./facade";
+import { ITimeSpanReduction } from "./facade";
+import { MetricalStructure } from "./facade";
+import { TimeAndAnalyzedMelody } from "./facade";
+import { MusicXML } from "./facade";
 
 export type DataPromises = [
   Promise<TimeAndRomanAnalysis[]>,

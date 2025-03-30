@@ -1,4 +1,4 @@
-import { xml_parser } from "@music-analyzer/serializable-data";
+import { xml_parser } from "./facade";
 
 export const keyLength = (obj: object) => Object.keys(obj).length;
 export const getJSON = <T extends object>(url: string) => {

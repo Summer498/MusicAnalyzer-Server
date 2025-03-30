@@ -1,9 +1,9 @@
-import { AudioViewer } from "@music-analyzer/spectrogram";
-import { PianoRoll } from "@music-analyzer/piano-roll";
-import { CurrentTimeRatio } from "@music-analyzer/view-parameters";
-import { ApplicationManager } from "../application-manager";
-import { HTMLsContainer } from "../containers/HTMLs-container";
-import { TitleInfo } from "../containers/tune-info";
+import { AudioViewer } from "./facade";
+import { PianoRoll } from "./facade";
+import { CurrentTimeRatio } from "./facade";
+import { ApplicationManager } from "./facade";
+import { HTMLsContainer } from "./facade";
+import { TitleInfo } from "./facade";
 import { getSaveButtons } from "./save-button/get-save-buttons";
 import { asParent } from "./as-parent";
 import { ColumnHTML } from "./column-html";

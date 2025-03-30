@@ -1,10 +1,10 @@
-import { AudioReflectableRegistry } from "@music-analyzer/view";
-import { WindowReflectableRegistry } from "@music-analyzer/view";
-import { MusicStructureElements } from "@music-analyzer/piano-roll";
+import { AudioReflectableRegistry } from "./facade";
+import { WindowReflectableRegistry } from "./facade";
+import { MusicStructureElements } from "./facade";
+import { BeatInfo } from "./facade";
+import { TimeAndRomanAnalysis } from "./facade";
+import { TimeAndAnalyzedMelody } from "./facade";
 import { Controllers } from "./controllers";
-import { BeatInfo } from "@music-analyzer/beat-estimation";
-import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 
 export class ApplicationManager {
   readonly NO_CHORD = false;  // コード関連のものを表示しない

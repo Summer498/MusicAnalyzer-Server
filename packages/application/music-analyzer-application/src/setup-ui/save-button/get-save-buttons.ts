@@ -1,6 +1,6 @@
-import { PianoRoll } from "@music-analyzer/piano-roll";
-import { HTMLsContainer } from "../../containers/HTMLs-container";
-import { TitleInfo } from "../../containers/tune-info";
+import { PianoRoll } from "./facade";
+import { HTMLsContainer } from "./facade";
+import { TitleInfo } from "./facade";
 import { getSaveButton } from "./get-save-button";
 import { getRawSaveButton } from "./get-raw-save-button";
 

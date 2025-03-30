@@ -1,13 +1,13 @@
-import { AnalyzedDataContainer } from "@music-analyzer/analyzed-data-container";
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { SongLength } from "@music-analyzer/view-parameters";
-import { AnalyzedMusicData } from "../MusicAnalyzerWindow";
-import { getMusicAnalyzerWindow } from "../MusicAnalyzerWindow";
-import { EventLoop } from "../EventLoop";
-import { ApplicationManager } from "../application-manager";
-import { setupUI } from "../setup-ui/setup-ui";
-import { HTMLsContainer } from "../containers/HTMLs-container";
-import { TitleInfo } from "../containers/tune-info";
+import { AnalyzedDataContainer } from "./facade";
+import { TimeAndAnalyzedMelody } from "./facade";
+import { getMusicAnalyzerWindow } from "./facade";
+import { AnalyzedMusicData } from "./facade";
+import { ApplicationManager } from "./facade";
+import { HTMLsContainer } from "./facade";
+import { SongLength } from "./facade";
+import { TitleInfo } from "./facade";
+import { EventLoop } from "./facade";
+import { setupUI } from "./facade";
 
 const setSongLength = (
   hierarchical_melody: TimeAndAnalyzedMelody[][],

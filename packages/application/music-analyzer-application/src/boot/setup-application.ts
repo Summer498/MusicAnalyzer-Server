@@ -1,7 +1,7 @@
-import { HTMLsContainer } from "../containers/HTMLs-container";
-import { URLsContainer } from "../containers/URLs-container";
-import { loadMusicAnalysis } from "../data-loader/MusicAnalysisLoader";
-import { setAudioPlayer } from "../data-loader/set-audio-player";
+import { HTMLsContainer } from "./facade";
+import { URLsContainer } from "./facade";
+import { loadMusicAnalysis } from "./facade";
+import { setAudioPlayer } from "./facade";
 import { setup } from "./setup";
 import { updateTitle } from "./update-title";
 

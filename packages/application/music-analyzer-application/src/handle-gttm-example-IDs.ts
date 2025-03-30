@@ -1,4 +1,4 @@
-import { song_list } from "@music-analyzer/gttm";
+import { song_list } from "./facade";
 
 declare const tunes: HTMLUListElement;
 

@@ -1,9 +1,9 @@
-import { MelodyColorController } from "@music-analyzer/controllers";
-import { DMelodyController } from "@music-analyzer/controllers";
-import { GravityController } from "@music-analyzer/controllers";
-import { MelodyBeepController } from "@music-analyzer/controllers";
-import { TimeRangeController } from "@music-analyzer/controllers";
-import { HierarchyLevelController } from "@music-analyzer/controllers";
+import { MelodyColorController } from "./facade";
+import { DMelodyController } from "./facade";
+import { GravityController } from "./facade";
+import { MelodyBeepController } from "./facade";
+import { TimeRangeController } from "./facade";
+import { HierarchyLevelController } from "./facade";
 
 export class Controllers {
   readonly div: HTMLDivElement

@@ -1,4 +1,4 @@
-import { PianoRoll } from "@music-analyzer/piano-roll";
+import { PianoRoll } from "./facade";
 import { getG } from "./get-g";
 import { getSVG } from "./get-svg";
 

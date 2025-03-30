@@ -1,8 +1,8 @@
-export { setAudioPlayer } from "./set-audio-player";
+import { URLsContainer } from "./facade";
 import { I_GTTM_URLs } from "./just-load";
 import { justLoad } from "./just-load";
 import { compoundMusicData } from "./compound-music-data";
-import { URLsContainer } from "../containers/URLs-container";
+export { setAudioPlayer } from "./set-audio-player";
 
 class GTTM_URLs
   implements I_GTTM_URLs {
