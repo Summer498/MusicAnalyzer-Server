@@ -1,5 +1,5 @@
-import { ColorChangeSubscriber } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/color-change-subscriber";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
+import { ColorChangeSubscriber } from "@music-analyzer/controllers";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { IMelodyBeep } from "./melody-beep";
 
 export interface IMelody

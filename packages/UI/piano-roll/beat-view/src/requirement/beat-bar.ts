@@ -1,6 +1,6 @@
-import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/audio-reflectable-registry";
-import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
-import { TimeRangeController } from "@music-analyzer/controllers/src/slider/time-range/time-range-controller";
+import { AudioReflectableRegistry } from "@music-analyzer/view";
+import { WindowReflectableRegistry } from "@music-analyzer/view";
+import { TimeRangeController } from "@music-analyzer/controllers";
 
 export interface RequiredByBeatBar {
   readonly audio: AudioReflectableRegistry,

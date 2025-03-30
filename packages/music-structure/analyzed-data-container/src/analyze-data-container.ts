@@ -1,10 +1,10 @@
-import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { BeatInfo } from "@music-analyzer/beat-estimation/src/beat-info";
-import { calcTempo } from "@music-analyzer/beat-estimation/src/calc-tempo";
-import { bracket_height } from "@music-analyzer/view-parameters/src/bracket-height";
-import { PianoRollBegin } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-begin";
-import { PianoRollEnd } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-end";
+import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { BeatInfo } from "@music-analyzer/beat-estimation";
+import { calcTempo } from "@music-analyzer/beat-estimation";
+import { bracket_height } from "@music-analyzer/view-parameters";
+import { PianoRollBegin } from "@music-analyzer/view-parameters";
+import { PianoRollEnd } from "@music-analyzer/view-parameters";
 
 export class AnalyzedDataContainer {
   readonly beat_info: BeatInfo

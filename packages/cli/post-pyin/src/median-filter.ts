@@ -1,4 +1,4 @@
-import { median } from "@music-analyzer/math/src/stochastic/median";
+import { median } from "@music-analyzer/math";
 
 export class MedianFilter {
   i;

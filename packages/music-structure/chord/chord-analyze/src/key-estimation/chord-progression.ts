@@ -1,10 +1,10 @@
-import { getDistance } from "@music-analyzer/tonal-pitch-space/src/get-distance";
-import { getKeysIncludeTheChord } from "@music-analyzer/tonal-pitch-space/src/get-keys-include-the-chord";
-import { dynamicLogViterbi } from "@music-analyzer/graph/src/dynamic-log-viterbi";
-import { getScale } from "@music-analyzer/tonal-objects/src/scale/get";
-import { Scale } from "@music-analyzer/tonal-objects/src/scale/scale";
-import { RomanChord } from "@music-analyzer/roman-chord/src/roman-chord";
-import { Compare } from "@music-analyzer/math/src/reduction/compare";
+import { getDistance } from "@music-analyzer/tonal-pitch-space";
+import { getKeysIncludeTheChord } from "@music-analyzer/tonal-pitch-space";
+import { dynamicLogViterbi } from "@music-analyzer/graph";
+import { getScale } from "@music-analyzer/tonal-objects";
+import { Scale } from "@music-analyzer/tonal-objects";
+import { RomanChord } from "@music-analyzer/roman-chord";
+import { Compare } from "@music-analyzer/math";
 import { getChord } from "./get-chord"; 
 
 export class ChordProgression {

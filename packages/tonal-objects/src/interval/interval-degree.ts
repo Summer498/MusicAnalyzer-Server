@@ -1,4 +1,4 @@
-import { castToNumber } from "@music-analyzer/stdlib/src/string/cast-to-number";
+import { castToNumber } from "@music-analyzer/stdlib";
 import { NoteLiteral } from "@tonaljs/pitch-note";
 import { default as _Interval } from "@tonaljs/interval";
 

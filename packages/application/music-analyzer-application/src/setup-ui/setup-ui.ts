@@ -1,6 +1,6 @@
-import { AudioViewer } from "@music-analyzer/spectrogram/src/audio-viewer";
-import { PianoRoll } from "@music-analyzer/piano-roll/src/piano-roll";
-import { CurrentTimeRatio } from "@music-analyzer/view-parameters/src/current-time-ratio";
+import { AudioViewer } from "@music-analyzer/spectrogram";
+import { PianoRoll } from "@music-analyzer/piano-roll";
+import { CurrentTimeRatio } from "@music-analyzer/view-parameters";
 import { ApplicationManager } from "../application-manager";
 import { HTMLsContainer } from "../containers/HTMLs-container";
 import { TitleInfo } from "../containers/tune-info";

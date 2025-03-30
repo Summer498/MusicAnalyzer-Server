@@ -1,6 +1,6 @@
-import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
-import { CollectionHierarchy } from "@music-analyzer/view/src/collection-hierarchy";
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
+import { SetColor } from "@music-analyzer/controllers";
+import { CollectionHierarchy } from "@music-analyzer/view";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MelodyLayer } from "./melody-layer";
 import { RequiredByMelodyHierarchy } from "../requirement/melody/required-melody-hierarchy";
 import { IMelodyHierarchy } from "../interface/melody/melody-hierarchy";

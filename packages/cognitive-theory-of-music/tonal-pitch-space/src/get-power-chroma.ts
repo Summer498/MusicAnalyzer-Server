@@ -1,8 +1,8 @@
-import { assertNonNullable as NN } from "@music-analyzer/stdlib/src/assertion/not-null-like";
-import { Assertion } from "@music-analyzer/stdlib/src/assertion/assertion";
-import { Chord } from "@music-analyzer/tonal-objects/src/chord/chord";
-import { getChroma } from "@music-analyzer/tonal-objects/src/note/chroma";
-import { getIntervalDegree } from "@music-analyzer/tonal-objects/src/interval/interval-degree";
+import { assertNonNullable as NN } from "@music-analyzer/stdlib";
+import { Assertion } from "@music-analyzer/stdlib";
+import { Chord } from "@music-analyzer/tonal-objects";
+import { getChroma } from "@music-analyzer/tonal-objects";
+import { getIntervalDegree } from "@music-analyzer/tonal-objects";
 
 export const getPowerChroma = (chord: Chord) => {
   const tonic = NN(chord.tonic);

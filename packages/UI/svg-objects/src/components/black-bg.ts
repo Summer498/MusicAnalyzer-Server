@@ -1,5 +1,5 @@
-import { BlackBGsPrm } from "@music-analyzer/view-parameters/src/piano-roll/rect-parameters/black-bgs";
-import { BlackPosition } from "@music-analyzer/view-parameters/src/position/black-position";
+import { BlackBGsPrm } from "@music-analyzer/view-parameters";
+import { BlackPosition } from "@music-analyzer/view-parameters";
 import { Rectangle } from "./rectangle/rectangle";
 
 export class BlackBG extends Rectangle {

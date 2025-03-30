@@ -1,4 +1,4 @@
-import { MVVM_View_Impl } from "@music-analyzer/view/src/mvvm/view-impl";
+import { MVVM_View_Impl } from "@music-analyzer/view";
 import { GravityModel } from "../gravity-model";
 import { LinePos } from "../../line-pos";
 import { GravityViewTriangle } from "./gravity-triangle";

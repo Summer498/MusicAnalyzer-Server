@@ -1,7 +1,7 @@
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { CollectionHierarchy } from "@music-analyzer/view/src/collection-hierarchy";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { CollectionHierarchy } from "@music-analyzer/view";
 import { IRSymbolLayer } from "./ir-symbol-layer";
-import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
+import { SetColor } from "@music-analyzer/controllers";
 import { RequiredByIRSymbolHierarchy } from "../requirement/ir-symbol/required-by-ir-symbol-hierarchy";
 import { I_IRSymbolHierarchy } from "../interface/ir-symbol/ir-symbol-hierarchy";
 

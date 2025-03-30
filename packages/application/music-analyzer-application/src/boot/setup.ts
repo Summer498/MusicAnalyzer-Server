@@ -1,6 +1,6 @@
-import { AnalyzedDataContainer } from "@music-analyzer/analyzed-data-container/src/analyze-data-container";
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { SongLength } from "@music-analyzer/view-parameters/src/song-length";
+import { AnalyzedDataContainer } from "@music-analyzer/analyzed-data-container";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { SongLength } from "@music-analyzer/view-parameters";
 import { AnalyzedMusicData } from "../MusicAnalyzerWindow";
 import { getMusicAnalyzerWindow } from "../MusicAnalyzerWindow";
 import { EventLoop } from "../EventLoop";

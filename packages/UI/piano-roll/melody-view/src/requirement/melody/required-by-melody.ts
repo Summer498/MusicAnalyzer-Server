@@ -1,5 +1,5 @@
-import { TimeRangeController } from "@music-analyzer/controllers/src/slider/time-range/time-range-controller";
-import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
+import { TimeRangeController } from "@music-analyzer/controllers";
+import { WindowReflectableRegistry } from "@music-analyzer/view";
 import { RequiredByMelodyView } from "./required-by-melody-view";
 import { RequiredByMelodyBeep } from "./required-by-beep";
 

@@ -1,6 +1,6 @@
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { MelodyAnalysis } from "@music-analyzer/melody-analyze/src/melody-analysis";
-import { Time } from "@music-analyzer/time-and/src/time";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { MelodyAnalysis } from "@music-analyzer/melody-analyze";
+import { Time } from "@music-analyzer/time-and";
 
 export class DMelodyModel {
   readonly time: Time;

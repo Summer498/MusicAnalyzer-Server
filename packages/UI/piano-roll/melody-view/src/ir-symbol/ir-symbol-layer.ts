@@ -1,7 +1,7 @@
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { CollectionLayer } from "@music-analyzer/view/src/collection-layer";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { CollectionLayer } from "@music-analyzer/view";
 import { IRSymbol } from "./ir-symbol/ir-symbol";
-import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
+import { SetColor } from "@music-analyzer/controllers";
 import { I_IRSymbolLayer } from "../interface/ir-symbol/ir-symbol-layer";
 
 export class IRSymbolLayer

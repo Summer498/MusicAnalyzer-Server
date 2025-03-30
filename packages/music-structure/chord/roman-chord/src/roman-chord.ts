@@ -1,5 +1,5 @@
-import { Chord } from "@music-analyzer/tonal-objects/src/chord/chord";
-import { Scale } from "@music-analyzer/tonal-objects/src/scale/scale";
+import { Chord } from "@music-analyzer/tonal-objects";
+import { Scale } from "@music-analyzer/tonal-objects";
 import { convertToTrueTonic } from "./convert-to-true-tonic";
 import { get_roman } from "./get-roman";
 

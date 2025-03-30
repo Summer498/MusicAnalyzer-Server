@@ -1,5 +1,5 @@
-import { AudioReflectable} from "@music-analyzer/view/src/reflectable/audio-reflectable";
-import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/audio-reflectable-registry";
+import { AudioReflectable} from "@music-analyzer/view";
+import { AudioReflectableRegistry } from "@music-analyzer/view";
 import { WaveViewer } from "./wave-viewer";
 import { spectrogramViewer } from "./spectrogram-viewer";
 import { AudioAnalyzer } from "./audio-analyzer/audio-analyzer";

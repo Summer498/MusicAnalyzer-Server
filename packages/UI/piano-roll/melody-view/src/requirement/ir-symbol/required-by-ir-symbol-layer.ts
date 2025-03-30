@@ -1,4 +1,4 @@
-import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/audio-reflectable-registry";
+import { AudioReflectableRegistry } from "@music-analyzer/view";
 import { RequiredByIRSymbol } from "./required-by-ir-symbol";
 
 export interface RequiredByIRSymbolLayer

@@ -1,6 +1,6 @@
-import { HTMLsContainer } from "@music-analyzer/music-analyzer-application/src/containers/HTMLs-container";
-import { setupApplication } from "@music-analyzer/music-analyzer-application/src/boot/setup-application";
-import { URLsContainer } from "@music-analyzer/music-analyzer-application/src/containers/URLs-container";
+import { HTMLsContainer } from "@music-analyzer/music-analyzer-application";
+import { setupApplication } from "@music-analyzer/music-analyzer-application";
+import { URLsContainer } from "@music-analyzer/music-analyzer-application";
 
 declare const audio_player: HTMLAudioElement | HTMLVideoElement;
 declare const piano_roll_place: HTMLDivElement;

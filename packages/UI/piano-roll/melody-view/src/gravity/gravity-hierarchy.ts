@@ -1,6 +1,6 @@
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { GravityLayer } from "./gravity-layer";
-import { CollectionHierarchy } from "@music-analyzer/view/src/collection-hierarchy";
+import { CollectionHierarchy } from "@music-analyzer/view";
 import { RequiredByGravityHierarchy } from "../requirement/gravity/required-by-gravity-hierarchy";
 import { IGravityHierarchy } from "../interface/gravity/gravity-hierarchy";
 

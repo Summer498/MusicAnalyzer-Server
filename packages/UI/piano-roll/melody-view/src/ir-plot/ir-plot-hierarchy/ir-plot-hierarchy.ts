@@ -1,8 +1,8 @@
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { IRPlotLayer } from "../ir-plot-layer/ir-plot-layer";
 import { IRPlotHierarchyView } from "./ir-plot-hierarchy-view"
 import { IRPlotHierarchyModel } from "./ir-plot-hierarchy-model";
-import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
+import { SetColor } from "@music-analyzer/controllers";
 import { RequiredByIRPlotHierarchy } from "../../requirement/ir-plot/required-ir-plot-hierarchy";
 
 export class IRPlotHierarchy {

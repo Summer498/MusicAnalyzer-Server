@@ -1,5 +1,5 @@
-// import { Complex } from "@music-analyzer/math/src/fft/complex";
-// import { fft } from "@music-analyzer/math/src/fft";
+// import { Complex } from "@music-analyzer/math";
+// import { fft } from "@music-analyzer/math";
 import { fft as fft } from "@music-analyzer/math/src/fft/array";
 import { getFloatTimeDomainData } from "./get-data-on-buffer/float-time";
 

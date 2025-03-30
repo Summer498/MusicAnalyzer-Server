@@ -1,14 +1,14 @@
-import { MVVM_ViewModel_Impl } from "@music-analyzer/view/src/mvvm/mvvm-impl";
-import { play } from "@music-analyzer/synth/src/play";
-import { NoteSize } from "@music-analyzer/view-parameters/src/note-size";
-import { NowAt } from "@music-analyzer/view-parameters/src/now-at";
-import { PianoRollHeight } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-height";
-import { reservation_range } from "@music-analyzer/view-parameters/src/reservation-range";
-import { BeatInfo } from "@music-analyzer/beat-estimation/src/beat-info";
-import { Time } from "@music-analyzer/time-and/src/time";
+import { MVVM_ViewModel_Impl } from "@music-analyzer/view";
+import { play } from "@music-analyzer/synth";
+import { NoteSize } from "@music-analyzer/view-parameters";
+import { NowAt } from "@music-analyzer/view-parameters";
+import { PianoRollHeight } from "@music-analyzer/view-parameters";
+import { reservation_range } from "@music-analyzer/view-parameters";
+import { BeatInfo } from "@music-analyzer/beat-estimation";
+import { Time } from "@music-analyzer/time-and";
 import { BeatBarModel } from "./beat-bar-model";
 import { BeatBarView } from "./beat-bar-view";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 
 const scaled = (e: number) => e * NoteSize.get();
 

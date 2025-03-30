@@ -1,5 +1,5 @@
-import { WhiteBGsPrm } from "@music-analyzer/view-parameters/src/piano-roll/rect-parameters/white-bgs";
-import { WhitePosition } from "@music-analyzer/view-parameters/src/position/white-position";
+import { WhiteBGsPrm } from "@music-analyzer/view-parameters";
+import { WhitePosition } from "@music-analyzer/view-parameters";
 import { Rectangle } from "./rectangle/rectangle";
 
 export class WhiteBG extends Rectangle {

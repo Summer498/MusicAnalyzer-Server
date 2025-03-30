@@ -1,7 +1,7 @@
-import { getNote } from "@music-analyzer/tonal-objects/src/note/get";
-import { getSemitones } from "@music-analyzer/tonal-objects/src/interval/semitones";
-import { intervalOf } from "@music-analyzer/tonal-objects/src/interval/distance";
-import { NoteLiteral } from "@music-analyzer/tonal-objects/src/note/note-literal";
+import { getNote } from "@music-analyzer/tonal-objects";
+import { getSemitones } from "@music-analyzer/tonal-objects";
+import { intervalOf } from "@music-analyzer/tonal-objects";
+import { NoteLiteral } from "@music-analyzer/tonal-objects";
 
 export class RegistralReturnForm {
   readonly is_null;

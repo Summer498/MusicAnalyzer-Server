@@ -1,4 +1,4 @@
-import { RomanChord } from "@music-analyzer/roman-chord/src/roman-chord";
+import { RomanChord } from "@music-analyzer/roman-chord";
 
 // TODO: 自信のあるものを選ぶ処理は後で実装 (とりあえず type が major のものとしている)
 export const select_suitable_progression = (roman_chords: RomanChord[][]) => {

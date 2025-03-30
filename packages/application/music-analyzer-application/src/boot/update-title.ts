@@ -1,4 +1,4 @@
-import { song_list } from "@music-analyzer/gttm/src/sample/song-list";
+import { song_list } from "@music-analyzer/gttm";
 import { TitleInfo } from "../containers/tune-info";
 
 export const updateTitle = (

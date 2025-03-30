@@ -1,7 +1,7 @@
-import { BeatInfo } from "@music-analyzer/beat-estimation/src/beat-info";
+import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { BeatBarsSeries } from "./beat-bar-series";
 import { RequiredByBeatElements } from "./requirement/beat-elements";
-import { Time } from "@music-analyzer/time-and/src/time";
+import { Time } from "@music-analyzer/time-and";
 
 export class BeatElements {
   readonly children: BeatBarsSeries[];

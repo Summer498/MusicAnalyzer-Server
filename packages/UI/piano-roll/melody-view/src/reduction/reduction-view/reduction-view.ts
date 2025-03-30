@@ -1,11 +1,11 @@
-import { MVVM_View_Impl } from "@music-analyzer/view/src/mvvm/view-impl";
+import { MVVM_View_Impl } from "@music-analyzer/view";
 import { ReductionModel } from "../reduction-model";
 import { ReductionViewModel } from "./reduction-view-model";
 import { IRMSymbol } from "./irm-symbol";
 import { Bracket } from "./bracket";
 import { Dot } from "./dot";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
-import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { SetColor } from "@music-analyzer/controllers";
 
 export class ReductionView
   extends MVVM_View_Impl<"g", ReductionViewModel>

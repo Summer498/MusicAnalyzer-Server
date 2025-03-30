@@ -1,10 +1,10 @@
 import { default as fs } from "fs";
 import { default as yargs } from "yargs";
 import { hideBin } from "yargs/helpers";
-import { analyzeMelody } from "@music-analyzer/melody-analyze/src/analyze-melody";
-import { getTimeAndMelody } from "@music-analyzer/melody-analyze/src/get-time-and-melody";
-import { MelodyAnalysisData } from "@music-analyzer/melody-analyze/src/melody-analysis-data";
-import { RomanAnalysisData } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
+import { analyzeMelody } from "@music-analyzer/melody-analyze";
+import { getTimeAndMelody } from "@music-analyzer/melody-analyze";
+import { MelodyAnalysisData } from "@music-analyzer/melody-analyze";
+import { RomanAnalysisData } from "@music-analyzer/chord-analyze";
 
 interface CommandLineOptions {
   readonly melody_filename: string;

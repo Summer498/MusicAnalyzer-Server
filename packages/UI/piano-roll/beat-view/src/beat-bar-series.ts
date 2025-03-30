@@ -1,9 +1,9 @@
-import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view/src/reflectable-time-and-mvc-controller-collection/reflectable-time-and-mvc-controller-collection";
-import { BeatInfo } from "@music-analyzer/beat-estimation/src/beat-info";
+import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
+import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { BeatBar } from "./beat-bar/beat-bar";
 import { RequiredByBeatBarsSeries } from "./requirement/beat-bar-series";
 import { IBeatBarsSeries } from "./interface/beat-bar-series";
-import { Time } from "@music-analyzer/time-and/src/time";
+import { Time } from "@music-analyzer/time-and";
 
 export class BeatBarsSeries
   extends ReflectableTimeAndMVCControllerCollection<BeatBar>

@@ -1,6 +1,6 @@
-import { unique } from "@music-analyzer/stdlib/src/unique";
-import { argsMinMax } from "@music-analyzer/math/src/reduction/args-min-max";
-import { CompareFunc } from "@music-analyzer/math/src/reduction/compare-func";
+import { unique } from "@music-analyzer/stdlib";
+import { argsMinMax } from "@music-analyzer/math";
+import { CompareFunc } from "@music-analyzer/math";
 
 class LogViterbiResult<S> {
   constructor(

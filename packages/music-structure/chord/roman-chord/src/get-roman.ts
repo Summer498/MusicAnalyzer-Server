@@ -1,9 +1,9 @@
-import { getChroma } from "@music-analyzer/tonal-objects/src/note/chroma";
-import { getInterval } from "@music-analyzer/tonal-objects/src/interval/get";
-import { getRomanNumeral } from "@music-analyzer/tonal-objects/src/roman-numeral/get";
-import { intervalOf } from "@music-analyzer/tonal-objects/src/interval/distance";
-import { Chord } from "@music-analyzer/tonal-objects/src/chord/chord";
-import { Scale } from "@music-analyzer/tonal-objects/src/scale/scale";
+import { getChroma } from "@music-analyzer/tonal-objects";
+import { getInterval } from "@music-analyzer/tonal-objects";
+import { getRomanNumeral } from "@music-analyzer/tonal-objects";
+import { intervalOf } from "@music-analyzer/tonal-objects";
+import { Chord } from "@music-analyzer/tonal-objects";
+import { Scale } from "@music-analyzer/tonal-objects";
 
 export const get_roman = (chord: Chord, scale: Scale) => {
   // chord.tonic || _throw(TypeError("chord.tonic should not be null"));  // NOTE: chord.tonic を null にするテストケースを思いつかないので(=無さそうなので)コメントアウト

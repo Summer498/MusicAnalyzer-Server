@@ -1,5 +1,5 @@
-import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
-import { TimeRangeController } from "@music-analyzer/controllers/src/slider/time-range/time-range-controller";
+import { WindowReflectableRegistry } from "@music-analyzer/view";
+import { TimeRangeController } from "@music-analyzer/controllers";
 
 export interface RequiredByDMelody {
   readonly window: WindowReflectableRegistry

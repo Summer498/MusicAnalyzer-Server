@@ -1,7 +1,7 @@
-import { getChord } from "@music-analyzer/tonal-objects/src/chord/get";
-import { getChroma } from "@music-analyzer/tonal-objects/src/note/chroma";
-import { Chord } from "@music-analyzer/tonal-objects/src/chord/chord";
-import { Scale } from "@music-analyzer/tonal-objects/src/scale/scale";
+import { getChord } from "@music-analyzer/tonal-objects";
+import { getChroma } from "@music-analyzer/tonal-objects";
+import { Chord } from "@music-analyzer/tonal-objects";
+import { Scale } from "@music-analyzer/tonal-objects";
 
 export const convertToTrueTonic = (chord: Chord, scale: Scale) => {
   if (chord.tonic) {

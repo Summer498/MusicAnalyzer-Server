@@ -1,0 +1,10 @@
+export { ReductionElement } from "./src/analysis-result/ReductionElement";
+export { GroupingStructure } from "./src/analysis-result";
+export { MetricalStructure } from "./src/analysis-result";
+export { ITimeSpanReduction } from "./src/analysis-result";
+export { IProlongationalReduction } from "./src/analysis-result";
+export { TimeSpanReduction } from "./src/analysis-result";
+export { ProlongationalReduction } from "./src/analysis-result";
+export { GTTMData } from "./src/analysis-result";
+export { TimeSpan } from "./src/analysis-result";
+export { song_list } from "./src/sample";

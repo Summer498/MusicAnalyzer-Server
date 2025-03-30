@@ -1,8 +1,8 @@
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { IRPlotLayerView } from "./ir-plot-layer-view";
 import { IRPlot } from "../ir-plot/ir-plot";
 import { IRPlotLayerModel } from "./ir-plot-layer-model";
-import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
+import { SetColor } from "@music-analyzer/controllers";
 import { I_IRPlotLayer } from "../../interface/ir-plot/ir-plot-layer";
 
 export class IRPlotLayer

@@ -1,8 +1,8 @@
-import { MVVM_View_Impl } from "@music-analyzer/view/src/mvvm/view-impl";
+import { MVVM_View_Impl } from "@music-analyzer/view";
 import { IRPlotModel } from "./ir-plot-model";
-import { ColorChangeSubscriber } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/color-change-subscriber";
+import { ColorChangeSubscriber } from "@music-analyzer/controllers";
 import { IRPlotViewModel } from "./ir-plot-view-model";
-import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
+import { SetColor } from "@music-analyzer/controllers";
 
 const get_pos = (_x: number, _y: number) => {
   const a = 1 / 3;

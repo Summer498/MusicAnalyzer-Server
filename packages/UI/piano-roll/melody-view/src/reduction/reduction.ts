@@ -1,8 +1,8 @@
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { ReductionModel } from "./reduction-model";
 import { ReductionView } from "./reduction-view/reduction-view";
-import { MVVM_ViewModel_Impl } from "@music-analyzer/view/src/mvvm/mvvm-impl";
-import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
+import { MVVM_ViewModel_Impl } from "@music-analyzer/view";
+import { SetColor } from "@music-analyzer/controllers";
 import { IReduction } from "../interface/reduction/reduction";
 
 export class Reduction

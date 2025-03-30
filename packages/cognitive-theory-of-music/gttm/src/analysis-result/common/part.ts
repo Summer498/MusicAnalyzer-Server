@@ -1,4 +1,4 @@
-import { BeatPos } from "@music-analyzer/musicxml/src/part/beat-pos";
+import { BeatPos } from "@music-analyzer/musicxml";
 
 export type Part<K extends string, V> = {
   readonly id: BeatPos,

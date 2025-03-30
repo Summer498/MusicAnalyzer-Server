@@ -1,6 +1,6 @@
-import { search_items_overlaps_range } from "@music-analyzer/time-and/src/search-items-overlaps-range";
-import { Time } from "@music-analyzer/time-and/src/time";
-import { PianoRollTranslateX } from "@music-analyzer/view-parameters/src/piano-roll-translate-x";
+import { search_items_overlaps_range } from "@music-analyzer/time-and";
+import { Time } from "@music-analyzer/time-and";
+import { PianoRollTranslateX } from "@music-analyzer/view-parameters";
 import { MVVM_Collection_Impl } from "../mvvm/collection-impl";
 import { TimeAndMVCModel } from "./time-and-model";
 import { I_ReflectableTimeAndMVCControllerCollection } from "./i-reflectable-time-and-mvc-controller-collection";

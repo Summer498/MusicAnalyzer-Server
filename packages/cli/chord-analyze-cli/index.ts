@@ -1,8 +1,8 @@
 import { default as ReadLine } from "readline";
-import { calcChordProgression } from "@music-analyzer/chord-analyze/src/chord-analyze/calc-chord-progression";
-import { TimeAndChordSymbol } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-chord";
-import { RomanAnalysisData } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
-import { Time } from "@music-analyzer/time-and/src/time";
+import { calcChordProgression } from "@music-analyzer/chord-analyze";
+import { TimeAndChordSymbol } from "@music-analyzer/chord-analyze";
+import { RomanAnalysisData } from "@music-analyzer/chord-analyze";
+import { Time } from "@music-analyzer/time-and";
 
 type TimeAndItem<T> = { 0: number, 1: number, 2: T }
 type TimeAndString = TimeAndItem<string>;

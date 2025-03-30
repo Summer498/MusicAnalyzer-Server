@@ -1,12 +1,12 @@
-import { BlackKeyPrm } from "@music-analyzer/view-parameters/src/piano-roll/rect-parameters/black-key";
-import { NoteSize } from "@music-analyzer/view-parameters/src/note-size";
-import { PianoRollBegin } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-begin";
-import { MVVM_ViewModel_Impl } from "@music-analyzer/view/src/mvvm/mvvm-impl";
+import { BlackKeyPrm } from "@music-analyzer/view-parameters";
+import { NoteSize } from "@music-analyzer/view-parameters";
+import { PianoRollBegin } from "@music-analyzer/view-parameters";
+import { MVVM_ViewModel_Impl } from "@music-analyzer/view";
 import { IRSymbolModel } from "./ir-symbol-model";
 import { IRSymbolView } from "./ir-symbol-view";
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers/src/slider/time-range/time-range-subscriber";
-import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { SetColor } from "@music-analyzer/controllers";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();

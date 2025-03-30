@@ -1,4 +1,4 @@
-import { assertNonNullable } from "@music-analyzer/stdlib/src/assertion/not-null-like";
+import { assertNonNullable } from "@music-analyzer/stdlib";
 import { chroma } from "@tonaljs/note";
 import { NoteLiteral } from "@tonaljs/pitch-note";
 

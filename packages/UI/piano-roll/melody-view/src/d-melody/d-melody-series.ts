@@ -1,5 +1,5 @@
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view/src/reflectable-time-and-mvc-controller-collection/reflectable-time-and-mvc-controller-collection";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
 import { DMelody } from "./d-melody/d-melody";
 import { RequiredByDMelodySeries } from "../requirement/d-melody/required-by-d-melody-series";
 import { IDMelodySeries } from "../interface/d-melody/d-melody-series";

@@ -1,7 +1,7 @@
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { CollectionHierarchy } from "@music-analyzer/view/src/collection-hierarchy";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { CollectionHierarchy } from "@music-analyzer/view";
 import { ReductionLayer } from "./reduction-layer";
-import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
+import { SetColor } from "@music-analyzer/controllers";
 import { RequiredByReductionHierarchy } from "../requirement/reduction/required-by-reduction-hierarchy";
 import { IReductionHierarchy } from "../interface/reduction/reduction-hierarchy";
 

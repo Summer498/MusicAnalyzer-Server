@@ -1,4 +1,4 @@
-import { WindowReflectable } from "@music-analyzer/view/src/reflectable/window-reflectable";
+import { WindowReflectable } from "@music-analyzer/view";
 import { IMelody } from "./melody";
 
 export interface IMelodyLayer

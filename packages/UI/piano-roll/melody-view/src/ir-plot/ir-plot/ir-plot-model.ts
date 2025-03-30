@@ -1,6 +1,6 @@
-import { Triad } from "@music-analyzer/irm/src/archetype/triad/Triad";
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { MVVM_Model } from "@music-analyzer/view/src/mvvm/model";
+import { Triad } from "@music-analyzer/irm";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { MVVM_Model } from "@music-analyzer/view";
 import { MelodiesCache } from "./melodies-cache";
 
 export class IRPlotModel

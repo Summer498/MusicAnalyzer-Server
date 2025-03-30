@@ -1,6 +1,6 @@
-import { RomanChord } from "@music-analyzer/roman-chord/src/roman-chord";
-import { totalSum } from "@music-analyzer/math/src/reduction/sum";
-import { vSub } from "@music-analyzer/math/src/vector/sub";
+import { RomanChord } from "@music-analyzer/roman-chord";
+import { totalSum } from "@music-analyzer/math";
+import { vSub } from "@music-analyzer/math";
 import { getBasicSpace } from "./get-basic-space";
 
 export const basicSpaceDistance = (src: RomanChord, dst: RomanChord) => {

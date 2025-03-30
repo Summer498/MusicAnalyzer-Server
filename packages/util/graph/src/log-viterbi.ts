@@ -1,4 +1,4 @@
-import { Compare } from "@music-analyzer/math/src/reduction/compare";
+import { Compare } from "@music-analyzer/math";
 import { dynamicLogViterbi } from "./dynamic-log-viterbi";
 
 /**

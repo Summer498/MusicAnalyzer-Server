@@ -1,12 +1,12 @@
-import { BeatInfo } from "@music-analyzer/beat-estimation/src/beat-info";
-import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { BeatElements } from "@music-analyzer/beat-view/src/beat-elements";
-import { ChordElements } from "@music-analyzer/chord-view/src/chord-elements";
-import { MelodyElements } from "@music-analyzer/melody-view/src/melody-elements";
-import { RequiredByBeatElements } from "@music-analyzer/beat-view/src/requirement/beat-elements";
-import { RequiredByChordElements } from "@music-analyzer/chord-view/src/r-chord-elements";
-import { RequiredByMelodyElements } from "@music-analyzer/melody-view/src/requirement/required-melody-elements";
+import { BeatInfo } from "@music-analyzer/beat-estimation";
+import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { BeatElements } from "@music-analyzer/beat-view";
+import { ChordElements } from "@music-analyzer/chord-view";
+import { MelodyElements } from "@music-analyzer/melody-view";
+import { RequiredByBeatElements } from "@music-analyzer/beat-view";
+import { RequiredByChordElements } from "@music-analyzer/chord-view";
+import { RequiredByMelodyElements } from "@music-analyzer/melody-view";
 
 export class MusicStructureElements {
   readonly beat: BeatElements

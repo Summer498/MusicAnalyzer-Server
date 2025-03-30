@@ -1,13 +1,13 @@
-import { argmax } from "@music-analyzer/math/src/reduction/arg-max";
-import { Complex } from "@music-analyzer/math/src/fft/complex";
-import { correlation } from "@music-analyzer/math/src/fft";
-import { decimal } from "@music-analyzer/math/src/basic-function/decimal";
-import { getRange } from "@music-analyzer/math/src/array/range";
-import { getZeros } from "@music-analyzer/math/src/array/zeros";
-import { mod } from "@music-analyzer/math/src/basic-function/mod";
-import { totalSum } from "@music-analyzer/math/src/reduction/sum";
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze/src/chord-analyze/time-and-roman-analysis";
+import { argmax } from "@music-analyzer/math";
+import { Complex } from "@music-analyzer/math";
+import { correlation } from "@music-analyzer/math";
+import { decimal } from "@music-analyzer/math";
+import { getZeros } from "@music-analyzer/math";
+import { getRange } from "@music-analyzer/math";
+import { mod } from "@music-analyzer/math";
+import { totalSum } from "@music-analyzer/math";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { BeatInfo } from "./beat-info";
 
 export const calcTempo = (melodies: TimeAndAnalyzedMelody[], romans: TimeAndRomanAnalysis[]) => {

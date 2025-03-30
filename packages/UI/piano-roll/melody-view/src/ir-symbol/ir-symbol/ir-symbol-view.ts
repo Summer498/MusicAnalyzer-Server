@@ -1,8 +1,8 @@
-import { size } from "@music-analyzer/view-parameters/src/piano-roll/piano-roll-size";
-import { MVVM_View_Impl } from "@music-analyzer/view/src/mvvm/view-impl";
+import { size } from "@music-analyzer/view-parameters";
+import { MVVM_View_Impl } from "@music-analyzer/view";
 import { IRSymbolModel } from "./ir-symbol-model";
-import { ColorChangeSubscriber } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/color-change-subscriber";
-import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
+import { ColorChangeSubscriber } from "@music-analyzer/controllers";
+import { SetColor } from "@music-analyzer/controllers";
 
 const ir_analysis_em = size;
 

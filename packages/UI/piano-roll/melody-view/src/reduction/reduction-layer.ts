@@ -1,7 +1,7 @@
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { CollectionLayer } from "@music-analyzer/view/src/collection-layer";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { CollectionLayer } from "@music-analyzer/view";
 import { Reduction } from "./reduction";
-import { SetColor } from "@music-analyzer/controllers/src/color-selector.ts/irm-color/set-color";
+import { SetColor } from "@music-analyzer/controllers";
 import { IReductionLayer } from "../interface/reduction/reduction-layer";
 
 export class ReductionLayer

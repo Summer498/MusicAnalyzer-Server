@@ -1,7 +1,7 @@
-import { play } from "@music-analyzer/synth/src/play";
-import { NowAt } from "@music-analyzer/view-parameters/src/now-at";
-import { reservation_range } from "@music-analyzer/view-parameters/src/reservation-range";
-import { Time } from "@music-analyzer/time-and/src/time";
+import { play } from "@music-analyzer/synth";
+import { NowAt } from "@music-analyzer/view-parameters";
+import { reservation_range } from "@music-analyzer/view-parameters";
+import { Time } from "@music-analyzer/time-and";
 import { MelodyModel } from "./melody-model";
 import { IMelodyBeep } from "../../interface/melody/melody-beep";
 

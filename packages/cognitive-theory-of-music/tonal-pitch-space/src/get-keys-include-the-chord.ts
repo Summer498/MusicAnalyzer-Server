@@ -1,6 +1,6 @@
-import { getScale } from "@music-analyzer/tonal-objects/src/scale/get";
-import { majorKey } from "@music-analyzer/tonal-objects/src/key/major-key";
-import { Chord } from "@music-analyzer/tonal-objects/src/chord/chord";
+import { getScale } from "@music-analyzer/tonal-objects";
+import { majorKey } from "@music-analyzer/tonal-objects";
+import { Chord } from "@music-analyzer/tonal-objects";
 import { doesKeyIncludeTheChord } from "./does-key-include-the-chord";
 
 // 最も尤もらしいコード進行を見つける

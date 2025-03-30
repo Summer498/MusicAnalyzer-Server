@@ -1,6 +1,6 @@
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { AudioReflectableRegistry } from "@music-analyzer/view/src/reflectable/audio-reflectable-registry";
-import { WindowReflectableRegistry } from "@music-analyzer/view/src/reflectable/window-reflectable-registry";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { AudioReflectableRegistry } from "@music-analyzer/view";
+import { WindowReflectableRegistry } from "@music-analyzer/view";
 import { DMelodySeries } from "./d-melody/d-melody-series";
 import { MelodyHierarchy } from "./melody/melody-hierarchy";
 import { IRSymbolHierarchy } from "./ir-symbol/ir-symbol-hierarchy";

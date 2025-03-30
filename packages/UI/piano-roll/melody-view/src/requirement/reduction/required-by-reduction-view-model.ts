@@ -1,4 +1,4 @@
-import { TimeRangeController } from "@music-analyzer/controllers/src/slider/time-range/time-range-controller";
+import { TimeRangeController } from "@music-analyzer/controllers";
 
 export interface RequiredByReductionViewModel {
   readonly time_range: TimeRangeController

@@ -1,5 +1,5 @@
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze/src/time-and-analyzed-melody";
-import { CollectionLayer } from "@music-analyzer/view/src/collection-layer";
+import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { CollectionLayer } from "@music-analyzer/view";
 import { Gravity } from "./gravity/gravity";
 import { IGravityLayer } from "../interface/gravity/gravity-layer";
 
