@@ -1,2 +1,2 @@
-export { shortenChord } from "../../shorten/chord";
-export { oneLetterKey } from "../../shorten/on-letter-key";
+export { shortenChord } from "../../shorten";
+export { oneLetterKey } from "../../shorten";

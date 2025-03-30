@@ -1,4 +1,4 @@
-import { TimeRangeSubscriber } from "./facade/time-range-subscriber";
+import { TimeRangeSubscriber } from "./facade/controllers";
 import { ReflectableTimeAndMVCControllerCollection } from "./facade/view";
 import { I_TimeAndVM } from "./facade/view";
 import { WindowReflectable } from "./facade/view";

@@ -1,5 +1,5 @@
 import { PianoRollRatio } from "./piano-roll-ratio";
-import { SongLength } from "../song-length";
+import { SongLength } from "./song-length";
 
 export class PianoRollTimeLength {
   static get() {

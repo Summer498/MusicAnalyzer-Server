@@ -1,5 +1,5 @@
 import { WindowReflectableRegistry } from "./facade/view";
-import { TimeRangeController } from "./facade/time-range-controller";
+import { TimeRangeController } from "./facade/controllers";
 
 export interface RequiredByChordPart {
   readonly window: WindowReflectableRegistry,

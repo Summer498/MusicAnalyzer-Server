@@ -1,6 +1,6 @@
 import { AudioReflectable } from "./facade/view";
 import { WindowReflectable } from "./facade/view";
-import { TimeRangeSubscriber } from "./facade/time-range-subscriber";
+import { TimeRangeSubscriber } from "./facade/controllers";
 
 export interface IChordPartSeries
   extends

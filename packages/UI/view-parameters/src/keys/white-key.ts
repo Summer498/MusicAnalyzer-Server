@@ -1,4 +1,4 @@
-import { RectParameters } from "../../rect-parameter";
+import { RectParameters } from "../rect-parameter";
 import { KeyPrm } from "./key";
 
 export class WhiteKeyPrm 

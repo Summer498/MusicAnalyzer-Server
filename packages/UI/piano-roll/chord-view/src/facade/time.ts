@@ -1,1 +1,1 @@
-export { Time } from "@music-analyzer/time-and/src/time";
+export { Time } from "@music-analyzer/time-and";
