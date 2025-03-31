@@ -89,8 +89,8 @@
 <!-- packages/util/html/index.ts&#45;&gt;packages/util/html/src/svg.ts -->
 <g id="edge2" class="edge">
 <title>packages/util/html/index.ts&#45;&gt;packages/util/html/src/svg.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M83,-102.06C95.48,-110.43 114.15,-122.96 128.11,-132.33"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="132.23,-137.62 128.41,-132.53 134.57,-134.13 132.23,-137.62"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M80.48,-102.34C93.36,-113.3 113,-130 113,-130 113,-130 116.24,-131.43 120.73,-133.41"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="125.59,-137.85 120.95,-133.51 127.29,-134.01 125.59,-137.85"/>
 </g>
 <!-- packages/util/html/src/attribute.ts -->
 <g id="node5" class="node">
@@ -104,8 +104,8 @@
 <!-- packages/util/html/src/html.ts&#45;&gt;packages/util/html/src/attribute.ts -->
 <g id="edge6" class="edge">
 <title>packages/util/html/src/html.ts&#45;&gt;packages/util/html/src/attribute.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M175.2,-82.72C237.81,-91.29 392.37,-112.45 465.9,-122.51"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="465.67,-124.6 471.9,-123.33 466.24,-120.44 465.67,-124.6"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M175.23,-74.29C182.28,-73.03 188,-72 188,-72 188,-72 277,-72 277,-72 277,-72 443,-85 443,-85 443,-85 468.61,-102.76 486.91,-115.45"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="485.72,-117.19 491.85,-118.88 488.12,-113.74 485.72,-117.19"/>
 </g>
 <!-- packages/util/html/src/html&#45;element.ts -->
 <g id="node6" class="node">
@@ -134,20 +134,20 @@
 <!-- packages/util/html/src/html.ts&#45;&gt;packages/util/stdlib/src/array&#45;of&#45;array/array&#45;of&#45;array.ts -->
 <g id="edge8" class="edge">
 <title>packages/util/html/src/html.ts&#45;&gt;packages/util/stdlib/src/array&#45;of&#45;array/array&#45;of&#45;array.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M172.73,-88.03C250.81,-116.55 491.93,-204.61 577.5,-235.86"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="576.79,-237.84 583.15,-237.92 578.23,-233.89 576.79,-237.84"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M175.23,-72.27C182.28,-70.47 188,-69 188,-69 188,-69 277,-69 277,-69 277,-69 556,-92 556,-92 556,-92 589.05,-192.44 601.94,-231.62"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="600.09,-232.73 603.96,-237.77 604.08,-231.41 600.09,-232.73"/>
 </g>
 <!-- packages/util/html/src/svg.ts&#45;&gt;packages/util/html/src/attribute.ts -->
 <g id="edge20" class="edge">
 <title>packages/util/html/src/svg.ts&#45;&gt;packages/util/html/src/attribute.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M175.2,-143.71C237.81,-140.74 392.37,-133.4 465.9,-129.9"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="466.01,-132 471.9,-129.62 465.81,-127.81 466.01,-132"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M175.23,-145.67C182.28,-145.85 188,-146 188,-146 188,-146 277,-146 277,-146 277,-146 443,-136 443,-136 443,-136 453.4,-134.66 465.68,-133.07"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="466.14,-135.13 471.82,-132.28 465.6,-130.97 466.14,-135.13"/>
 </g>
 <!-- packages/util/html/src/svg.ts&#45;&gt;packages/util/stdlib/src/array&#45;of&#45;array/array&#45;of&#45;array.ts -->
 <g id="edge22" class="edge">
 <title>packages/util/html/src/svg.ts&#45;&gt;packages/util/stdlib/src/array&#45;of&#45;array/array&#45;of&#45;array.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M175.06,-151C250.81,-167.8 465.72,-215.45 561.24,-236.63"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="561.04,-238.74 567.36,-237.99 561.95,-234.64 561.04,-238.74"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M151.8,-154.21C160.75,-183.55 188,-273 188,-273 188,-273 556,-273 556,-273 556,-273 570.13,-265.8 583.52,-258.97"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="584.77,-260.69 589.16,-256.09 582.86,-256.95 584.77,-260.69"/>
 </g>
 <!-- packages/util/html/src/svg&#45;element.ts -->
 <g id="node10" class="node">
@@ -167,8 +167,8 @@
 <!-- packages/util/html/src/html&#45;element.ts&#45;&gt;packages/util/html/src/attribute.ts -->
 <g id="edge3" class="edge">
 <title>packages/util/html/src/html&#45;element.ts&#45;&gt;packages/util/html/src/attribute.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M277.05,-93.68C329.41,-101.53 415.54,-114.44 465.89,-121.99"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="465.61,-124.07 471.85,-122.88 466.23,-119.91 465.61,-124.07"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M277.16,-87.83C338.56,-89.01 443,-91 443,-91 443,-91 466.25,-104.88 484.28,-115.63"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="483.45,-117.58 489.67,-118.85 485.6,-113.98 483.45,-117.58"/>
 </g>
 <!-- packages/util/html/src/set&#45;components&#45;to&#45;element.ts -->
 <g id="node7" class="node">
@@ -188,8 +188,8 @@
 <!-- packages/util/html/src/html&#45;element.ts&#45;&gt;packages/util/stdlib/src/array&#45;of&#45;array/array&#45;of&#45;array.ts -->
 <g id="edge5" class="edge">
 <title>packages/util/html/src/html&#45;element.ts&#45;&gt;packages/util/stdlib/src/array&#45;of&#45;array/array&#45;of&#45;array.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M253.76,-96.06C317.9,-123.39 509.38,-204.98 580.77,-235.4"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="580.16,-237.42 586.5,-237.84 581.81,-233.56 580.16,-237.42"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M277.33,-88.63C365.51,-91.91 556,-99 556,-99 556,-99 588.75,-194.03 601.76,-231.79"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="599.87,-232.75 603.81,-237.74 603.84,-231.39 599.87,-232.75"/>
 </g>
 <!-- packages/util/html/src/set&#45;components&#45;to&#45;element.ts&#45;&gt;packages/util/html/src/attribute.ts -->
 <g id="edge14" class="edge">
@@ -200,8 +200,8 @@
 <!-- packages/util/html/src/set&#45;components&#45;to&#45;element.ts&#45;&gt;packages/util/stdlib/src/array&#45;of&#45;array/array&#45;of&#45;array.ts -->
 <g id="edge15" class="edge">
 <title>packages/util/html/src/set&#45;components&#45;to&#45;element.ts&#45;&gt;packages/util/stdlib/src/array&#45;of&#45;array/array&#45;of&#45;array.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M383.48,-126.14C426.09,-149.08 537.54,-209.07 585.51,-234.89"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="584.76,-236.87 591.04,-237.87 586.75,-233.18 584.76,-236.87"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M443.29,-113.37C448.06,-113.14 451,-113 451,-113 451,-113 556,-113 556,-113 556,-113 587.88,-196.76 601.23,-231.84"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="599.4,-232.93 603.49,-237.79 603.32,-231.44 599.4,-232.93"/>
 </g>
 <!-- packages/util/stdlib/src/array&#45;of&#45;array/to&#45;array.ts -->
 <g id="node11" class="node">
@@ -230,8 +230,8 @@
 <!-- packages/util/html/src/index.ts&#45;&gt;packages/util/html/src/attribute.ts -->
 <g id="edge9" class="edge">
 <title>packages/util/html/src/index.ts&#45;&gt;packages/util/html/src/attribute.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M175.2,-115.99C237.81,-118.26 392.37,-123.87 465.9,-126.54"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="465.83,-128.64 471.9,-126.76 465.98,-124.45 465.83,-128.64"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M175.19,-112.59C215.97,-108.83 290,-102 290,-102 290,-102 443,-102 443,-102 443,-102 461.11,-109.59 477.76,-116.57"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="476.97,-118.52 483.32,-118.91 478.59,-114.65 476.97,-118.52"/>
 </g>
 <!-- packages/util/html/src/index.ts&#45;&gt;packages/util/html/src/html&#45;element.ts -->
 <g id="edge10" class="edge">
@@ -242,8 +242,8 @@
 <!-- packages/util/html/src/index.ts&#45;&gt;packages/util/stdlib/src/array&#45;of&#45;array/array&#45;of&#45;array.ts -->
 <g id="edge12" class="edge">
 <title>packages/util/html/src/index.ts&#45;&gt;packages/util/stdlib/src/array&#45;of&#45;array/array&#45;of&#45;array.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M175.06,-122.76C253.37,-145.24 480.4,-210.38 570.5,-236.24"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="570.15,-238.32 576.5,-237.96 571.31,-234.29 570.15,-238.32"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M164.72,-124.07C170.2,-127.23 175,-130 175,-130 175,-130 188,-163 188,-163 188,-163 290,-207 290,-207 290,-207 451,-262 451,-262 451,-262 556,-262 556,-262 556,-262 562.22,-260.17 570.31,-257.79"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="570.99,-259.78 576.16,-256.07 569.81,-255.75 570.99,-259.78"/>
 </g>
 <!-- packages/util/html/src/index.ts&#45;&gt;packages/util/html/src/svg&#45;element.ts -->
 <g id="edge11" class="edge">
@@ -254,14 +254,14 @@
 <!-- packages/util/html/src/index.ts&#45;&gt;packages/util/stdlib/src/array&#45;of&#45;array/to&#45;array.ts -->
 <g id="edge13" class="edge">
 <title>packages/util/html/src/index.ts&#45;&gt;packages/util/stdlib/src/array&#45;of&#45;array/to&#45;array.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M172.61,-124.07C236.09,-147.48 405.31,-209.88 475.17,-235.63"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="474.86,-237.76 481.22,-237.86 476.32,-233.82 474.86,-237.76"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M164.72,-124.07C170.2,-127.23 175,-130 175,-130 175,-130 188,-146 188,-146 188,-146 388.21,-209.79 470.41,-235.98"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="470.24,-238.13 476.59,-237.95 471.51,-234.13 470.24,-238.13"/>
 </g>
 <!-- packages/util/html/src/svg&#45;element.ts&#45;&gt;packages/util/html/src/attribute.ts -->
 <g id="edge17" class="edge">
 <title>packages/util/html/src/svg&#45;element.ts&#45;&gt;packages/util/html/src/attribute.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M274.04,-130.54C326.02,-129.97 414.44,-129 465.79,-128.44"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="465.89,-130.54 471.87,-128.37 465.84,-126.34 465.89,-130.54"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M274.26,-131.72C283.17,-131.88 290,-132 290,-132 290,-132 443,-132 443,-132 443,-132 453.4,-131.33 465.68,-130.54"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="465.97,-132.62 471.82,-130.14 465.7,-128.43 465.97,-132.62"/>
 </g>
 <!-- packages/util/html/src/svg&#45;element.ts&#45;&gt;packages/util/html/src/set&#45;components&#45;to&#45;element.ts -->
 <g id="edge18" class="edge">
@@ -272,8 +272,8 @@
 <!-- packages/util/html/src/svg&#45;element.ts&#45;&gt;packages/util/stdlib/src/array&#45;of&#45;array/array&#45;of&#45;array.ts -->
 <g id="edge19" class="edge">
 <title>packages/util/html/src/svg&#45;element.ts&#45;&gt;packages/util/stdlib/src/array&#45;of&#45;array/array&#45;of&#45;array.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M261.65,-140.01C329.78,-161.05 499.23,-213.4 572.89,-236.15"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="572.51,-238.24 578.87,-238 573.75,-234.22 572.51,-238.24"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M251.07,-121.98C267.65,-113.47 290,-102 290,-102 290,-102 443,-102 443,-102 443,-102 556,-110 556,-110 556,-110 588.15,-196.35 601.39,-231.94"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="599.43,-232.69 603.49,-237.58 603.37,-231.23 599.43,-232.69"/>
 </g>
 <!-- packages/util/stdlib/src/array&#45;of&#45;array/to&#45;array.ts&#45;&gt;packages/util/stdlib/src/array&#45;of&#45;array/array&#45;of&#45;array.ts -->
 <g id="edge23" class="edge">

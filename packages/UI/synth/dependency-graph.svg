@@ -59,8 +59,8 @@
 <!-- packages/UI/synth/index.ts&#45;&gt;packages/UI/synth/src/create&#45;gain.ts -->
 <g id="edge1" class="edge">
 <title>packages/UI/synth/index.ts&#45;&gt;packages/UI/synth/src/create&#45;gain.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M95.58,-53.89C138.57,-53.72 222.96,-53.39 275.55,-53.18"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="281.81,-55.26 275.8,-53.18 281.8,-51.06 281.81,-55.26"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M95.81,-47.35C104.97,-45.03 113,-43 113,-43 113,-43 258,-43 258,-43 258,-43 265.77,-44.24 275.84,-45.85"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="281.65,-48.91 276.06,-45.89 282.32,-44.76 281.65,-48.91"/>
 </g>
 <!-- packages/UI/synth/src/create&#45;oscilllator.ts -->
 <g id="node4" class="node">
@@ -74,8 +74,8 @@
 <!-- packages/UI/synth/index.ts&#45;&gt;packages/UI/synth/src/create&#45;oscilllator.ts -->
 <g id="edge2" class="edge">
 <title>packages/UI/synth/index.ts&#45;&gt;packages/UI/synth/src/create&#45;oscilllator.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M95.58,-57.1C135.71,-61.7 211.93,-70.44 264.66,-76.49"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="270.41,-79.26 264.69,-76.49 270.89,-75.09 270.41,-79.26"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M95.56,-54.43C131.27,-55.02 191,-56 191,-56 191,-56 258,-61 258,-61 258,-61 271,-68 271,-68 271,-68 276.8,-69.76 284.44,-72.07"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="289.95,-75.94 284.82,-72.19 291.17,-71.92 289.95,-75.94"/>
 </g>
 <!-- packages/UI/synth/src/play.ts -->
 <g id="node5" class="node">
@@ -89,8 +89,8 @@
 <!-- packages/UI/synth/index.ts&#45;&gt;packages/UI/synth/src/play.ts -->
 <g id="edge3" class="edge">
 <title>packages/UI/synth/index.ts&#45;&gt;packages/UI/synth/src/play.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M95.7,-57.68C123.79,-61.49 167.65,-67.42 197.77,-71.5"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="203.7,-74.42 198.04,-71.54 204.27,-70.26 203.7,-74.42"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M95.56,-57C131.27,-61.12 191,-68 191,-68 191,-68 193.7,-68.55 197.68,-69.37"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="203.35,-72.68 197.89,-69.41 204.19,-68.56 203.35,-72.68"/>
 </g>
 <!-- packages/UI/synth/src/play&#45;note.ts -->
 <g id="node6" class="node">
@@ -104,8 +104,8 @@
 <!-- packages/UI/synth/index.ts&#45;&gt;packages/UI/synth/src/play&#45;note.ts -->
 <g id="edge4" class="edge">
 <title>packages/UI/synth/index.ts&#45;&gt;packages/UI/synth/src/play&#45;note.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M95.62,-62.86C104.16,-65.76 113.75,-69.01 122.69,-72.04"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="127.78,-75.98 122.77,-72.07 129.13,-72.01 127.78,-75.98"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M94.05,-63.03C103.91,-66.66 113,-70 113,-70 113,-70 115.8,-70.87 119.95,-72.15"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="125.21,-75.98 120.1,-72.2 126.45,-71.96 125.21,-75.98"/>
 </g>
 <!-- packages/UI/synth/src/play.ts&#45;&gt;packages/UI/synth/src/create&#45;gain.ts -->
 <g id="edge6" class="edge">

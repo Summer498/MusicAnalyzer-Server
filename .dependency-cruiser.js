@@ -150,7 +150,10 @@ module.exports = {
         collapsePattern: "node_modules/(?:@[^/]+/[^/]+|[^/]+)",
         theme: {
           graph: {
-            splines: "line"
+            splines: "polyline"
+//            splines: "spline"
+//            splines: "ortho"
+//            splines: "line"
           }
         },
       }
