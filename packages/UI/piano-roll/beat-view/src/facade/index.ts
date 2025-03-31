@@ -1,3 +1,17 @@
 export { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
 export { BeatInfo } from "@music-analyzer/beat-estimation";
 export { Time } from "@music-analyzer/time-and";
+export { MVVM_ViewModel_Impl } from "@music-analyzer/view";
+export { play } from "@music-analyzer/synth";
+export { NoteSize } from "@music-analyzer/view-parameters";
+export { NowAt } from "@music-analyzer/view-parameters";
+export { PianoRollHeight } from "@music-analyzer/view-parameters";
+export { reservation_range } from "@music-analyzer/view-parameters";
+export { TimeRangeSubscriber } from "@music-analyzer/controllers";
+export { MVVM_Model } from "@music-analyzer/view";
+export { MVVM_View_Impl } from "@music-analyzer/view";
+export { AudioReflectable } from "@music-analyzer/view";
+export { WindowReflectable } from "@music-analyzer/view";
+export { AudioReflectableRegistry } from "@music-analyzer/view";
+export { WindowReflectableRegistry } from "@music-analyzer/view";
+export { TimeRangeController } from "@music-analyzer/controllers";

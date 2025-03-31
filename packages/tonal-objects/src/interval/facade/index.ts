@@ -1,1 +1,1 @@
-export { castToNumber } from "@music-analyzer/stdlib";
+export { castToNumber } from "../../facade";

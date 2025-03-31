@@ -1,2 +1,2 @@
-export { RomanChord } from "@music-analyzer/roman-chord";
-export { Time } from "@music-analyzer/time-and";
+export { RomanChord } from "../../facade";
+export { Time } from "../../facade";

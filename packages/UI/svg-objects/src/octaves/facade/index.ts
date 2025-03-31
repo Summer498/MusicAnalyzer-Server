@@ -1,3 +1,3 @@
-export { WindowReflectable } from "@music-analyzer/view";
-export { WindowReflectableRegistry } from "@music-analyzer/view";
-export { OctaveCount } from "@music-analyzer/view-parameters";
+export { WindowReflectable } from "../../facade";
+export { WindowReflectableRegistry } from "../../facade";
+export { OctaveCount } from "../../facade";

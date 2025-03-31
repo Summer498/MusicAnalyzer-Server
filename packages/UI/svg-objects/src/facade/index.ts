@@ -2,3 +2,14 @@ export { WindowReflectable } from "@music-analyzer/view";
 export { WindowReflectableRegistry } from "@music-analyzer/view";
 export { CurrentTimeX } from "@music-analyzer/view-parameters";
 export { PianoRollHeight } from "@music-analyzer/view-parameters";
+export { octave_height } from "@music-analyzer/view-parameters"
+export { mod } from "@music-analyzer/math"
+export { PianoRollBegin } from "@music-analyzer/view-parameters"
+export { BlackPosition } from "@music-analyzer/view-parameters";
+export { BlackKeyPrm } from "@music-analyzer/view-parameters"
+export { BlackBGsPrm } from "@music-analyzer/view-parameters";
+export { WhitePosition } from "@music-analyzer/view-parameters";
+export { WhiteBGsPrm } from "@music-analyzer/view-parameters";
+export { WhiteKeyPrm } from "@music-analyzer/view-parameters";
+export { RectParameters } from "@music-analyzer/view-parameters";
+export { OctaveCount } from "@music-analyzer/view-parameters";

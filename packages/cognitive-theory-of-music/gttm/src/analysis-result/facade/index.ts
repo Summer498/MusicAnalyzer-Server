@@ -1,1 +1,1 @@
-export { BeatPos } from "@music-analyzer/musicxml";
+export { BeatPos } from "../../facade";

@@ -1,1 +1,1 @@
-export { Triad } from "@music-analyzer/irm";
+export { Triad } from "../../facade";

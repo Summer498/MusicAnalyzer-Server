@@ -1,1 +1,1 @@
-export { hasSameValue } from "@music-analyzer/stdlib";
+export { hasSameValue } from "../../facade";

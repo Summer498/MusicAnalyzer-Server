@@ -1,4 +1,4 @@
-export { getInterval } from "@music-analyzer/tonal-objects";
-export { intervalOf } from "@music-analyzer/tonal-objects";
-export { IntervalName } from "@music-analyzer/tonal-objects";
-export { NoteLiteral } from "@music-analyzer/tonal-objects";
+export { getInterval } from "../../facade";
+export { intervalOf } from "../../facade";
+export { IntervalName } from "../../facade";
+export { NoteLiteral } from "../../facade";

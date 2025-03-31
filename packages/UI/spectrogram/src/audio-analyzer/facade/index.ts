@@ -1,3 +1,3 @@
-export { Complex } from "@music-analyzer/math";
-export { fft } from "@music-analyzer/math";
-export { fft as aFFT } from "@music-analyzer/math/src/fft/array";
+export { Complex } from "../../facade";
+export { fft } from "../../facade";
+export { fft as aFFT } from "../../facade";

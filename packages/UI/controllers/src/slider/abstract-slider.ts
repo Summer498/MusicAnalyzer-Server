@@ -1,4 +1,4 @@
-import { Controller } from "../controller/controller";
+import { Controller } from "../controller";
 
 export abstract class Slider<T> extends Controller<T> {
   readonly display: HTMLSpanElement;

@@ -1,1 +1,1 @@
-export { WindowReflectable } from "@music-analyzer/view";
+export { WindowReflectable } from "../../facade";
