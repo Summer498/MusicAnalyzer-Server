@@ -26,7 +26,7 @@ export { Time } from "@music-analyzer/time-and";
 export { getCapitalCase } from "@music-analyzer/stdlib";
 export { getLowerCase } from "@music-analyzer/stdlib";
 export { mod } from "@music-analyzer/math";
-export { TimeRangeSubscriber } from "@music-analyzer/controllers";
+export { type TimeRangeSubscriber } from "@music-analyzer/controllers";
 export { TimeRangeController } from "@music-analyzer/controllers";
 export { hsv2rgb } from "@music-analyzer/color";
 export { rgbToString } from "@music-analyzer/color";

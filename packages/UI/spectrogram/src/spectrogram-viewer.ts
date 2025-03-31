@@ -1,4 +1,4 @@
-import { AudioReflectable} from "@music-analyzer/view";
+import { type AudioReflectable } from "@music-analyzer/view";
 import { AudioAnalyzer } from "./audio-analyzer";
 
 export class spectrogramViewer 
