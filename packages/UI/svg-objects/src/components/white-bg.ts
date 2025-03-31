@@ -1,5 +1,5 @@
-import { WhiteBGsPrm } from "@music-analyzer/view-parameters";
-import { WhitePosition } from "@music-analyzer/view-parameters";
+import { WhiteBGsPrm } from "./facade";
+import { WhitePosition } from "./facade";
 import { Rectangle } from "./rectangle";
 
 export class WhiteBG extends Rectangle {

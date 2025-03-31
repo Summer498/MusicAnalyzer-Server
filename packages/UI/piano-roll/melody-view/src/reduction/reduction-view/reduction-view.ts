@@ -1,11 +1,11 @@
-import { MVVM_View_Impl } from "@music-analyzer/view";
+import { MVVM_View_Impl } from "./facade";
+import { TimeRangeSubscriber } from "./facade";
+import { SetColor } from "./facade";
 import { ReductionModel } from "../reduction-model";
 import { ReductionViewModel } from "./reduction-view-model";
 import { IRMSymbol } from "./irm-symbol";
 import { Bracket } from "./bracket";
 import { Dot } from "./dot";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers";
-import { SetColor } from "@music-analyzer/controllers";
 
 export class ReductionView
   extends MVVM_View_Impl<"g", ReductionViewModel>

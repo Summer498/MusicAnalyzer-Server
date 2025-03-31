@@ -1,5 +1,5 @@
-import { AudioReflectableRegistry } from "@music-analyzer/view";
-import { WindowReflectableRegistry } from "@music-analyzer/view";
+import { AudioReflectableRegistry } from "./facade";
+import { WindowReflectableRegistry } from "./facade";
 import { RequiredByIRPlotView } from "./required-by-ir-plot-view";
 
 export interface RequiredByIRPlot

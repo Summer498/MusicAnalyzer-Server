@@ -1,6 +1,6 @@
-import { AudioReflectableRegistry } from "@music-analyzer/view";
-import { WindowReflectableRegistry } from "@music-analyzer/view";
-import { TimeRangeController } from "@music-analyzer/controllers";
+import { AudioReflectableRegistry } from "./facade";
+import { WindowReflectableRegistry } from "./facade";
+import { TimeRangeController } from "./facade";
 
 export interface RequiredByBeatBar {
   readonly audio: AudioReflectableRegistry,

@@ -1,6 +1,6 @@
-import { IntervalName } from "@music-analyzer/tonal-objects";
-import { intervalOf } from "@music-analyzer/tonal-objects";
-import { NoteLiteral } from "@music-analyzer/tonal-objects";
+import { IntervalName } from "./facade";
+import { intervalOf } from "./facade";
+import { NoteLiteral } from "./facade";
 
 export class Dyad {
   readonly length = 2;

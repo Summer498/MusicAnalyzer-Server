@@ -1,5 +1,5 @@
-import { MelodyBeepSwitcherSubscriber } from "@music-analyzer/controllers";
-import { MelodyBeepVolumeSubscriber } from "@music-analyzer/controllers";
+import { MelodyBeepSwitcherSubscriber } from "./facade";
+import { MelodyBeepVolumeSubscriber } from "./facade";
 
 export interface IMelodyBeep
   extends

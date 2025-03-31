@@ -1,10 +1,10 @@
-import { Triad } from "@music-analyzer/irm";
-import { MVVM_Model } from "@music-analyzer/view";
-import { BlackKeyPrm } from "@music-analyzer/view-parameters";
-import { bracket_height } from "@music-analyzer/view-parameters";
-import { NoteSize } from "@music-analyzer/view-parameters";
+import { Triad } from "./facade";
+import { MVVM_Model } from "./facade";
+import { BlackKeyPrm } from "./facade";
+import { bracket_height } from "./facade";
+import { NoteSize } from "./facade";
+import { TimeRangeSubscriber } from "./facade";
 import { ReductionModel } from "../reduction-model";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 
 const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;

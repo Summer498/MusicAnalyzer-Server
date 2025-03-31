@@ -1,4 +1,4 @@
-import { Triad } from "@music-analyzer/irm";
+import { Triad } from "./facade";
 import { ColorSelector } from "./color-selector";
 import { ColorChangeSubscriber } from "./irm-color";
 

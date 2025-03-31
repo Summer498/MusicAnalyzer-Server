@@ -1,4 +1,4 @@
-import { WhiteKeyPrm } from "@music-analyzer/view-parameters";
+import { WhiteKeyPrm } from "./facade";
 import { WhiteKeyModel } from "./white-key-model";
 import { Rectangle } from "./rectangle";
 

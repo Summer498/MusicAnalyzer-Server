@@ -1,5 +1,5 @@
-import { HierarchyLevelSubscriber } from "@music-analyzer/controllers";
-import { AudioReflectable } from "@music-analyzer/view";
+import { HierarchyLevelSubscriber } from "./facade";
+import { AudioReflectable } from "./facade";
 import { I_IRSymbolLayer } from "./ir-symbol-layer";
 
 export interface I_IRSymbolHierarchy

@@ -1,4 +1,4 @@
-import { BeatPos } from "@music-analyzer/musicxml";
+import { BeatPos } from "./facade";
 
 export abstract class ReductionElement {
   abstract readonly head: {

@@ -1,4 +1,4 @@
-import { median } from "@music-analyzer/math";
+import { median } from "./facade";
 
 export class MedianFilter {
   readonly buff;

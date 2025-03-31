@@ -1,4 +1,4 @@
-import { Time } from "@music-analyzer/time-and";
+import { Time } from "./facade";
 
 export class TimeAndChordSymbol {
   constructor(

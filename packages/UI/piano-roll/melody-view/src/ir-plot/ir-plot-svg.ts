@@ -1,5 +1,5 @@
+import { TimeAndAnalyzedMelody } from "./facade";
 import { IRPlotHierarchy } from "./ir-plot-hierarchy";
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { RequiredByIRPlotSVG } from "../requirement/ir-plot/required-by-ir-plot-svg";
 import { I_IRPlotSVG } from "../interface/ir-plot/ir-plot-svg";
 

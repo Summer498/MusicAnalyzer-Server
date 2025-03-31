@@ -1,4 +1,5 @@
-import { assertNonNullable } from "@music-analyzer/stdlib";
+import { assertNonNullable } from "./facade";
+
 import { chroma } from "@tonaljs/note";
 import { NoteLiteral } from "@tonaljs/pitch-note";
 

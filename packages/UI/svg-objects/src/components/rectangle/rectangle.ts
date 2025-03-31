@@ -1,5 +1,5 @@
-import { WindowReflectable } from "@music-analyzer/view";
-import { RectParameters } from "@music-analyzer/view-parameters";
+import { WindowReflectable } from "./facade";
+import { RectParameters } from "./facade";
 import { RectangleView } from "./rectangle-view";
 import { RectangleModel } from "./rectangle-model";
 

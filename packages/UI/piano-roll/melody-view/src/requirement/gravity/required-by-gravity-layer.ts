@@ -1,4 +1,4 @@
-import { AudioReflectableRegistry } from "@music-analyzer/view";
+import { AudioReflectableRegistry } from "./facade";
 import { RequiredByGravity } from "./required-by-gravity";
 
 export interface RequiredByGravityLayer

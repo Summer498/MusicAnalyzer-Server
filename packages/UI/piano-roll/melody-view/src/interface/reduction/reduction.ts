@@ -1,5 +1,5 @@
-import { WindowReflectable } from "@music-analyzer/view";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { WindowReflectable } from "./facade";
+import { TimeRangeSubscriber } from "./facade";
 
 export interface IReduction
   extends

@@ -1,4 +1,4 @@
-import { GravityController } from "@music-analyzer/controllers";
+import { GravityController } from "./facade";
 import { RequiredByDMelodySeries } from "./d-melody";
 import { RequiredByMelodyHierarchy } from "./melody";
 import { RequiredByIRSymbolHierarchy } from "./ir-symbol";

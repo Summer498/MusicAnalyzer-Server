@@ -1,5 +1,5 @@
-import { AudioReflectableRegistry } from "@music-analyzer/view";
-import { DMelodyController } from "@music-analyzer/controllers";
+import { AudioReflectableRegistry } from "./facade";
+import { DMelodyController } from "./facade";
 import { RequiredByDMelody } from "./required-by-d-melody";
 
 export interface RequiredByDMelodySeries

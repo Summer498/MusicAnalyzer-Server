@@ -1,4 +1,4 @@
-import { HierarchyLevelController } from "@music-analyzer/controllers";
+import { HierarchyLevelController } from "./facade";
 import { RequiredByReductionLayer } from "./required-by-reduction-layer";
 
 export interface RequiredByReductionHierarchy

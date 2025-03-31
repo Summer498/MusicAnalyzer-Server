@@ -1,6 +1,6 @@
-import { hsv2rgb } from "@music-analyzer/color";;
-import { rgbToString } from "@music-analyzer/color";;
-import { MVVM_View_Impl } from "@music-analyzer/view";
+import { hsv2rgb } from "./facade";;
+import { rgbToString } from "./facade";;
+import { MVVM_View_Impl } from "./facade";
 import { DMelodyModel } from "./d-melody-model";
 
 export class DMelodyView 

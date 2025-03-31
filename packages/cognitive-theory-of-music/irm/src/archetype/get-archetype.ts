@@ -1,4 +1,4 @@
-import { NoteLiteral } from "@music-analyzer/tonal-objects";
+import { NoteLiteral } from "./facade";
 import { Triad } from "./triad";
 import { Dyad } from "./Dyad";
 import { Monad } from "./Monad";

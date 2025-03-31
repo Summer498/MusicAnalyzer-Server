@@ -1,12 +1,12 @@
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { BlackKeyPrm } from "@music-analyzer/view-parameters";
-import { NoteSize } from "@music-analyzer/view-parameters";
-import { PianoRollBegin } from "@music-analyzer/view-parameters";
-import { MVVM_ViewModel_Impl } from "@music-analyzer/view";
+import { TimeAndAnalyzedMelody } from "./facade";
+import { BlackKeyPrm } from "./facade";
+import { NoteSize } from "./facade";
+import { PianoRollBegin } from "./facade";
+import { MVVM_ViewModel_Impl } from "./facade";
+import { SetColor } from "./facade";
 import { MelodyModel } from "./melody-model";
 import { MelodyView } from "./melody-view";
 import { MelodyBeep } from "./melody-beep";
-import { SetColor } from "@music-analyzer/controllers";
 import { IMelody } from "../../interface/melody/melody";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
