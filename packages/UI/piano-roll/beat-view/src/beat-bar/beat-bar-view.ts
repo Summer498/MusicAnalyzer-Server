@@ -1,4 +1,4 @@
-import { MVVM_View_Impl } from "@music-analyzer/view";
+import { MVVM_View_Impl } from "./facade";
 import { BeatBarModel } from "./beat-bar-model";
 
 export class BeatBarView 

@@ -1,6 +1,6 @@
-import { IntervalName } from "@music-analyzer/tonal-objects";
-import { getInterval } from "@music-analyzer/tonal-objects";
-import { NoteLiteral } from "@music-analyzer/tonal-objects";
+import { IntervalName } from "./facade";
+import { getInterval } from "./facade";
+import { NoteLiteral } from "./facade";
 import { TriadSymbol } from "../symbols/triad";
 import { retrospectiveSymbol } from "../get-retrospective-symbol";
 import { TriadArchetype } from "./triad-archetype";

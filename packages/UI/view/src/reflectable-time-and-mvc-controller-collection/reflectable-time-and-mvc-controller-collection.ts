@@ -1,6 +1,6 @@
-import { search_items_overlaps_range } from "@music-analyzer/time-and";
-import { Time } from "@music-analyzer/time-and";
-import { PianoRollTranslateX } from "@music-analyzer/view-parameters";
+import { search_items_overlaps_range } from "./facade";
+import { Time } from "./facade";
+import { PianoRollTranslateX } from "./facade";
 import { MVVM_Collection_Impl } from "../mvvm/collection-impl";
 import { TimeAndMVCModel } from "./time-and-model";
 import { I_ReflectableTimeAndMVCControllerCollection } from "./i-reflectable-time-and-mvc-controller-collection";

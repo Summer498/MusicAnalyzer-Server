@@ -1,5 +1,5 @@
-import { HierarchyLevelController } from "@music-analyzer/controllers";
-import { AudioReflectableRegistry } from "@music-analyzer/view";
+import { HierarchyLevelController } from "./facade";
+import { AudioReflectableRegistry } from "./facade";
 import { RequiredByMelodyLayer } from "./required-melody-layer";
 
 export interface RequiredByMelodyHierarchy

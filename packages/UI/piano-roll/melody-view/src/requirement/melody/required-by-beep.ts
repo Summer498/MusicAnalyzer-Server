@@ -1,4 +1,4 @@
-import { MelodyBeepController } from "@music-analyzer/controllers";
+import { MelodyBeepController } from "./facade";
 
 export interface RequiredByMelodyBeep {
   readonly melody_beep: MelodyBeepController,

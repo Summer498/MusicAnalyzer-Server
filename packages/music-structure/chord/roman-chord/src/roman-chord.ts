@@ -1,9 +1,7 @@
-import { Chord } from "@music-analyzer/tonal-objects";
-import { Scale } from "@music-analyzer/tonal-objects";
+import { Chord } from "./facade";
+import { Scale } from "./facade";
 import { convertToTrueTonic } from "./convert-to-true-tonic";
 import { get_roman } from "./get-roman";
-
-
 
 export class RomanChord {
   readonly roman: string;

@@ -1,4 +1,4 @@
-import { Time } from "@music-analyzer/time-and";
+import { Time } from "./facade";
 import { MelodyAnalysis } from "./melody-analysis";
 
 type TimeAndAnalyzedMelody_Args = [Time, Time, number, MelodyAnalysis]

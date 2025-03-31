@@ -1,4 +1,4 @@
-import { mod } from "@music-analyzer/math";
+import { mod } from "./facade";
 import { green_hue } from "./green-hue";
 import { rgbToString } from "./rgb-to-string";
 import { hsv2rgb } from "./hsv2rgb";

@@ -1,5 +1,5 @@
-import { Assertion } from "@music-analyzer/stdlib";
-import { mod } from "@music-analyzer/math";
+import { Assertion } from "./facade";
+import { mod } from "./facade";
 import { map2rgbByHue } from "./util";
 
 // 0 <= h < 360; 0 <= s <= 1; 0 <= b <= 1

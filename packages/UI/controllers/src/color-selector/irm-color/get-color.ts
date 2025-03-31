@@ -1,3 +1,3 @@
-import { Triad } from "@music-analyzer/irm";
+import { Triad } from "./facade";
 
 export type GetColor = (e: Triad) => string;

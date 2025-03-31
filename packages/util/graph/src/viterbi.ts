@@ -1,4 +1,4 @@
-import { Compare } from "@music-analyzer/math";
+import { Compare } from "./facade";
 import { logViterbi } from "./log-viterbi";
 
 class ViterbiResult<S> {

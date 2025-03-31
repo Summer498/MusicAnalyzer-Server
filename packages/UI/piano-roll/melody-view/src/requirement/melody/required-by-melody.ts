@@ -1,5 +1,5 @@
-import { TimeRangeController } from "@music-analyzer/controllers";
-import { WindowReflectableRegistry } from "@music-analyzer/view";
+import { TimeRangeController } from "./facade";
+import { WindowReflectableRegistry } from "./facade";
 import { RequiredByMelodyView } from "./required-by-melody-view";
 import { RequiredByMelodyBeep } from "./required-by-beep";
 

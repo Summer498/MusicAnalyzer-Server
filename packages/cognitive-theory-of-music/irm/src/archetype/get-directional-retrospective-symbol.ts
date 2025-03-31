@@ -1,4 +1,4 @@
-import { Interval } from "@music-analyzer/tonal-objects";
+import { Interval } from "./facade";
 import { RetrospectiveDirectionalTriadSymbol } from "./symbols";
 import { RetrospectiveTriadSymbol } from "./symbols";
 

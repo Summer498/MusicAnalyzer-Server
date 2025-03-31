@@ -1,8 +1,8 @@
-import { BlackKeyPrm } from "@music-analyzer/view-parameters"
-import { octave_height } from "@music-analyzer/view-parameters"
-import { PianoRollBegin } from "@music-analyzer/view-parameters"
+import { BlackKeyPrm } from "./facade"
+import { octave_height } from "./facade"
+import { PianoRollBegin } from "./facade"
+import { mod } from "./facade"
 import { RectangleModel } from "./rectangle"
-import { mod } from "@music-analyzer/math"
 
 export class WhiteKeyModel extends RectangleModel {
   override get y() {

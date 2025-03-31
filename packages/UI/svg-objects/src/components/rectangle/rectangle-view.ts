@@ -1,4 +1,4 @@
-import { RectParameters } from "@music-analyzer/view-parameters";
+import { RectParameters } from "./facade";
 
 export class RectangleView {
   readonly svg: SVGRectElement;

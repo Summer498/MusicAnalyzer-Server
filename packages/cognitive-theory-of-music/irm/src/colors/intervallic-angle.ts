@@ -1,8 +1,8 @@
-import { getInterval } from "@music-analyzer/tonal-objects";
-import { intervalOf } from "@music-analyzer/tonal-objects";
-import { NoteLiteral } from "@music-analyzer/tonal-objects";
-import { hsv2rgb } from "@music-analyzer/color";;
-import { rgbToString } from "@music-analyzer/color";;
+import { getInterval } from "./facade";
+import { intervalOf } from "./facade";
+import { NoteLiteral } from "./facade";
+import { hsv2rgb } from "./facade";
+import { rgbToString } from "./facade";
 import { Triad } from "../archetype/triad/Triad";
 
 const get_rgb_on_intervallic_angle = (

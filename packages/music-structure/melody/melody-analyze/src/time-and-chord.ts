@@ -1,5 +1,5 @@
-import { Time } from "@music-analyzer/time-and";
-import { Chord } from "@music-analyzer/tonal-objects";
+import { Time } from "./facade";
+import { Chord } from "./facade";
 
 export class TimeAndChord {
   constructor(

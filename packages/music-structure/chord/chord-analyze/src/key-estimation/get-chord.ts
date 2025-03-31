@@ -1,7 +1,7 @@
-import { Chord } from "@music-analyzer/tonal-objects";
-import { getChord as _getChord } from "@music-analyzer/tonal-objects";
-import { getIntervalDegree } from "@music-analyzer/tonal-objects";
-import { Assertion } from "@music-analyzer/stdlib";
+import { Chord } from "./facade";
+import { getChord as _getChord } from "./facade";
+import { getIntervalDegree } from "./facade";
+import { Assertion } from "./facade";
 import { getBodyAndRoot } from "./get-body-and-root";
 
 // ルート付きコードが入力されてもコードを得られるようにする.

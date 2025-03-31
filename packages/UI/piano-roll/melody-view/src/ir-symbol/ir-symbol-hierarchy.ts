@@ -1,7 +1,7 @@
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { CollectionHierarchy } from "@music-analyzer/view";
+import { TimeAndAnalyzedMelody } from "./facade";
+import { CollectionHierarchy } from "./facade";
+import { SetColor } from "./facade";
 import { IRSymbolLayer } from "./ir-symbol-layer";
-import { SetColor } from "@music-analyzer/controllers";
 import { RequiredByIRSymbolHierarchy } from "../requirement/ir-symbol/required-by-ir-symbol-hierarchy";
 import { I_IRSymbolHierarchy } from "../interface/ir-symbol/ir-symbol-hierarchy";
 

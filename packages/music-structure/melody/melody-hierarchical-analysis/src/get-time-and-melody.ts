@@ -1,10 +1,10 @@
-import { ReductionElement } from "@music-analyzer/gttm";
-import { TimeSpan } from "@music-analyzer/gttm";
-import { TimeAndMelody } from "@music-analyzer/melody-analyze";
-import { MusicXML } from "@music-analyzer/musicxml";
-import { Pitch } from "@music-analyzer/musicxml";
-import { Time } from "@music-analyzer/time-and";
-import { getChroma } from "@music-analyzer/tonal-objects";
+import { ReductionElement } from "./facade";
+import { TimeSpan } from "./facade";
+import { TimeAndMelody } from "./facade";
+import { MusicXML } from "./facade";
+import { Pitch } from "./facade";
+import { Time } from "./facade";
+import { getChroma } from "./facade";
 
 const getTime = (
   matrix: TimeSpan[][],

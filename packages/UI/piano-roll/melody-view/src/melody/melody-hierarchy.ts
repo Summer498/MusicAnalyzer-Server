@@ -1,6 +1,6 @@
-import { SetColor } from "@music-analyzer/controllers";
-import { CollectionHierarchy } from "@music-analyzer/view";
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { SetColor } from "./facade";
+import { CollectionHierarchy } from "./facade";
+import { TimeAndAnalyzedMelody } from "./facade";
 import { MelodyLayer } from "./melody-layer";
 import { RequiredByMelodyHierarchy } from "../requirement/melody/required-melody-hierarchy";
 import { IMelodyHierarchy } from "../interface/melody/melody-hierarchy";

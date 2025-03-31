@@ -1,4 +1,4 @@
-import { HierarchyLevelSubscriber } from "@music-analyzer/controllers";
+import { HierarchyLevelSubscriber } from "./facade";
 import { IMelodyLayer } from "./melody-layer";
 
 export interface IMelodyHierarchy

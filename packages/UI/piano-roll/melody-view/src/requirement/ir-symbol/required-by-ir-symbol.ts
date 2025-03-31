@@ -1,6 +1,6 @@
-import { WindowReflectableRegistry } from "@music-analyzer/view";
+import { WindowReflectableRegistry } from "./facade";
+import { TimeRangeController } from "./facade";
 import { RequiredByIRSymbolView } from "./required-by-ir-symbol-view";
-import { TimeRangeController } from "@music-analyzer/controllers";
 
 export interface RequiredByIRSymbol
   extends RequiredByIRSymbolView {

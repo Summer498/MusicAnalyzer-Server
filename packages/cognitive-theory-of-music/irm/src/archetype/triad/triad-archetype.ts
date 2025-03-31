@@ -1,7 +1,7 @@
-import { getInterval } from "@music-analyzer/tonal-objects";
-import { intervalOf } from "@music-analyzer/tonal-objects";
-import { IntervalName } from "@music-analyzer/tonal-objects";
-import { NoteLiteral } from "@music-analyzer/tonal-objects";
+import { getInterval } from "./facade";
+import { intervalOf } from "./facade";
+import { IntervalName } from "./facade";
+import { NoteLiteral } from "./facade";
 import { RegistralReturnForm } from "../../RegistralReturnForm";
 import { ProspectiveTriadSymbol } from "../symbols/prospective-triad";
 import { IntervallicMotion } from "../../MelodyMotion/IntervallicMotion";

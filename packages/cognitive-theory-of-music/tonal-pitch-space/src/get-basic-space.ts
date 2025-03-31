@@ -1,7 +1,7 @@
-import { getOnehot } from "@music-analyzer/math";
-import { vSum } from "@music-analyzer/math";
-import { RomanChord } from "@music-analyzer/roman-chord";
-import { Assertion } from "@music-analyzer/stdlib";
+import { getOnehot } from "./facade";
+import { vSum } from "./facade";
+import { RomanChord } from "./facade";
+import { Assertion } from "./facade";
 import { getTonicChroma } from "./get-tonic-chroma";
 import { getPowerChroma } from "./get-power-chroma";
 import { getChordChroma } from "./get-chord-chroma";

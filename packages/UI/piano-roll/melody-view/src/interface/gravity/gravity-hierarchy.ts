@@ -1,4 +1,4 @@
-import { GravitySwitcherSubscriber } from "@music-analyzer/controllers";
+import { GravitySwitcherSubscriber } from "./facade";
 import { IGravityLayer } from "./gravity-layer";
 
 export interface IGravityHierarchy

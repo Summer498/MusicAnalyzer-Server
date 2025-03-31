@@ -1,7 +1,7 @@
-import { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { CollectionHierarchy } from "@music-analyzer/view";
+import { TimeAndAnalyzedMelody } from "./facade";
+import { CollectionHierarchy } from "./facade";
+import { SetColor } from "./facade";
 import { ReductionLayer } from "./reduction-layer";
-import { SetColor } from "@music-analyzer/controllers";
 import { RequiredByReductionHierarchy } from "../requirement/reduction/required-by-reduction-hierarchy";
 import { IReductionHierarchy } from "../interface/reduction/reduction-hierarchy";
 
