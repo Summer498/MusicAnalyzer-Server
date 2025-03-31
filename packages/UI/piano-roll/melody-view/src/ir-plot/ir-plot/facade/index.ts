@@ -1,8 +1,8 @@
-export { Triad } from "@music-analyzer/irm";
-export { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-export { MVVM_Model } from "@music-analyzer/view";
-export { MVVM_View_Impl } from "@music-analyzer/view";
-export { ColorChangeSubscriber } from "@music-analyzer/controllers";
-export { SetColor } from "@music-analyzer/controllers";
-export { MVVM_ViewModel_Impl } from "@music-analyzer/view";
-export { NowAt } from "@music-analyzer/view-parameters";
+export { Triad } from "../../facade";
+export { TimeAndAnalyzedMelody } from "../../facade";
+export { MVVM_Model } from "../../facade";
+export { MVVM_View_Impl } from "../../facade";
+export { ColorChangeSubscriber } from "../../facade";
+export { SetColor } from "../../facade";
+export { MVVM_ViewModel_Impl } from "../../facade";
+export { NowAt } from "../../facade";

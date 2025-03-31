@@ -91,18 +91,18 @@
 </g>
 <g id="clust17" class="cluster">
 <title>cluster_packages/music&#45;structure/chord/roman&#45;chord</title>
-<path fill="#ffffff" stroke="black" stroke-width="2" d="M739,-716C739,-716 1251,-716 1251,-716 1257,-716 1263,-722 1263,-728 1263,-728 1263,-824 1263,-824 1263,-830 1257,-836 1251,-836 1251,-836 739,-836 739,-836 733,-836 727,-830 727,-824 727,-824 727,-728 727,-728 727,-722 733,-716 739,-716"/>
-<text text-anchor="middle" x="995" y="-824.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">roman&#45;chord</text>
+<path fill="#ffffff" stroke="black" stroke-width="2" d="M739,-718C739,-718 1251,-718 1251,-718 1257,-718 1263,-724 1263,-730 1263,-730 1263,-836 1263,-836 1263,-842 1257,-848 1251,-848 1251,-848 739,-848 739,-848 733,-848 727,-842 727,-836 727,-836 727,-730 727,-730 727,-724 733,-718 739,-718"/>
+<text text-anchor="middle" x="995" y="-836.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">roman&#45;chord</text>
 </g>
 <g id="clust18" class="cluster">
 <title>cluster_packages/music&#45;structure/chord/roman&#45;chord/src</title>
-<path fill="#ffffff" stroke="black" stroke-width="2" d="M840.5,-724C840.5,-724 1243,-724 1243,-724 1249,-724 1255,-730 1255,-736 1255,-736 1255,-798 1255,-798 1255,-804 1249,-810 1243,-810 1243,-810 840.5,-810 840.5,-810 834.5,-810 828.5,-804 828.5,-798 828.5,-798 828.5,-736 828.5,-736 828.5,-730 834.5,-724 840.5,-724"/>
-<text text-anchor="middle" x="1041.75" y="-798.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">src</text>
+<path fill="#ffffff" stroke="black" stroke-width="2" d="M840.5,-726C840.5,-726 1243,-726 1243,-726 1249,-726 1255,-732 1255,-738 1255,-738 1255,-810 1255,-810 1255,-816 1249,-822 1243,-822 1243,-822 840.5,-822 840.5,-822 834.5,-822 828.5,-816 828.5,-810 828.5,-810 828.5,-738 828.5,-738 828.5,-732 834.5,-726 840.5,-726"/>
+<text text-anchor="middle" x="1041.75" y="-810.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">src</text>
 </g>
 <g id="clust19" class="cluster">
 <title>cluster_packages/music&#45;structure/chord/roman&#45;chord/src/facade</title>
-<path fill="#ffffff" stroke="black" stroke-width="2" d="M1189,-732C1189,-732 1235,-732 1235,-732 1241,-732 1247,-738 1247,-744 1247,-744 1247,-772 1247,-772 1247,-778 1241,-784 1235,-784 1235,-784 1189,-784 1189,-784 1183,-784 1177,-778 1177,-772 1177,-772 1177,-744 1177,-744 1177,-738 1183,-732 1189,-732"/>
-<text text-anchor="middle" x="1212" y="-772.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">facade</text>
+<path fill="#ffffff" stroke="black" stroke-width="2" d="M1189,-739C1189,-739 1235,-739 1235,-739 1241,-739 1247,-745 1247,-751 1247,-751 1247,-779 1247,-779 1247,-785 1241,-791 1235,-791 1235,-791 1189,-791 1189,-791 1183,-791 1177,-785 1177,-779 1177,-779 1177,-751 1177,-751 1177,-745 1183,-739 1189,-739"/>
+<text text-anchor="middle" x="1212" y="-779.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">facade</text>
 </g>
 <g id="clust20" class="cluster">
 <title>cluster_packages/tonal&#45;objects</title>
@@ -454,16 +454,16 @@
 <g id="node15" class="node">
 <title>packages/music&#45;structure/chord/roman&#45;chord/index.ts</title>
 <g id="a_node15"><a xlink:href="packages/music-structure/chord/roman-chord/index.ts" xlink:title="index.ts">
-<path fill="#ddfeff" stroke="black" d="M783,-746C783,-746 741,-746 741,-746 738,-746 735,-743 735,-740 735,-740 735,-734 735,-734 735,-731 738,-728 741,-728 741,-728 783,-728 783,-728 786,-728 789,-731 789,-734 789,-734 789,-740 789,-740 789,-743 786,-746 783,-746"/>
-<text text-anchor="start" x="743.5" y="-734.8" font-family="Helvetica,sans-Serif" font-size="9.00">index.ts</text>
+<path fill="#ddfeff" stroke="black" d="M783,-748C783,-748 741,-748 741,-748 738,-748 735,-745 735,-742 735,-742 735,-736 735,-736 735,-733 738,-730 741,-730 741,-730 783,-730 783,-730 786,-730 789,-733 789,-736 789,-736 789,-742 789,-742 789,-745 786,-748 783,-748"/>
+<text text-anchor="start" x="743.5" y="-736.8" font-family="Helvetica,sans-Serif" font-size="9.00">index.ts</text>
 </a>
 </g>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/tonal&#45;pitch&#45;space/src/facade/index.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/index.ts -->
 <g id="edge5" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/tonal&#45;pitch&#45;space/src/facade/index.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1200.86,-1097.84C1140.16,-1047.93 849.34,-808.81 777.88,-750.06"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="774.46,-744.52 777.76,-749.96 771.79,-747.77 774.46,-744.52"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1200.86,-1097.89C1140.16,-1048.25 849.34,-810.42 777.88,-751.99"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="774.45,-746.47 777.77,-751.9 771.79,-749.72 774.45,-746.47"/>
 </g>
 <!-- packages/util/stdlib/index.ts -->
 <g id="node16" class="node">
@@ -484,16 +484,16 @@
 <g id="node17" class="node">
 <title>packages/tonal&#45;objects/index.ts</title>
 <g id="a_node17"><a xlink:href="packages/tonal-objects/index.ts" xlink:title="index.ts">
-<path fill="#ddfeff" stroke="black" d="M1360.5,-758C1360.5,-758 1318.5,-758 1318.5,-758 1315.5,-758 1312.5,-755 1312.5,-752 1312.5,-752 1312.5,-746 1312.5,-746 1312.5,-743 1315.5,-740 1318.5,-740 1318.5,-740 1360.5,-740 1360.5,-740 1363.5,-740 1366.5,-743 1366.5,-746 1366.5,-746 1366.5,-752 1366.5,-752 1366.5,-755 1363.5,-758 1360.5,-758"/>
-<text text-anchor="start" x="1321" y="-746.8" font-family="Helvetica,sans-Serif" font-size="9.00">index.ts</text>
+<path fill="#ddfeff" stroke="black" d="M1360.5,-760C1360.5,-760 1318.5,-760 1318.5,-760 1315.5,-760 1312.5,-757 1312.5,-754 1312.5,-754 1312.5,-748 1312.5,-748 1312.5,-745 1315.5,-742 1318.5,-742 1318.5,-742 1360.5,-742 1360.5,-742 1363.5,-742 1366.5,-745 1366.5,-748 1366.5,-748 1366.5,-754 1366.5,-754 1366.5,-757 1363.5,-760 1360.5,-760"/>
+<text text-anchor="start" x="1321" y="-748.8" font-family="Helvetica,sans-Serif" font-size="9.00">index.ts</text>
 </a>
 </g>
 </g>
 <!-- packages/cognitive&#45;theory&#45;of&#45;music/tonal&#45;pitch&#45;space/src/facade/index.ts&#45;&gt;packages/tonal&#45;objects/index.ts -->
 <g id="edge7" class="edge">
 <title>packages/cognitive&#45;theory&#45;of&#45;music/tonal&#45;pitch&#45;space/src/facade/index.ts&#45;&gt;packages/tonal&#45;objects/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1216.23,-1097.79C1233.18,-1049.43 1311.95,-824.73 1333.2,-764.11"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1337.27,-758.84 1333.31,-763.81 1333.31,-757.45 1337.27,-758.84"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1216.23,-1097.84C1233.18,-1049.75 1311.95,-826.31 1333.2,-766.02"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1337.27,-760.8 1333.3,-765.76 1333.31,-759.4 1337.27,-760.8"/>
 </g>
 <!-- packages/util/math/src/array/index.ts -->
 <g id="node74" class="node">
@@ -604,16 +604,16 @@
 <g id="node36" class="node">
 <title>packages/music&#45;structure/chord/roman&#45;chord/src/roman&#45;chord.ts</title>
 <g id="a_node36"><a xlink:href="packages/music-structure/chord/roman-chord/src/roman-chord.ts" xlink:title="roman&#45;chord.ts">
-<path fill="#ddfeff" stroke="black" d="M916.5,-765C916.5,-765 842.5,-765 842.5,-765 839.5,-765 836.5,-762 836.5,-759 836.5,-759 836.5,-753 836.5,-753 836.5,-750 839.5,-747 842.5,-747 842.5,-747 916.5,-747 916.5,-747 919.5,-747 922.5,-750 922.5,-753 922.5,-753 922.5,-759 922.5,-759 922.5,-762 919.5,-765 916.5,-765"/>
-<text text-anchor="start" x="844.5" y="-753.8" font-family="Helvetica,sans-Serif" font-size="9.00">roman&#45;chord.ts</text>
+<path fill="#ddfeff" stroke="black" d="M916.5,-763C916.5,-763 842.5,-763 842.5,-763 839.5,-763 836.5,-760 836.5,-757 836.5,-757 836.5,-751 836.5,-751 836.5,-748 839.5,-745 842.5,-745 842.5,-745 916.5,-745 916.5,-745 919.5,-745 922.5,-748 922.5,-751 922.5,-751 922.5,-757 922.5,-757 922.5,-760 919.5,-763 916.5,-763"/>
+<text text-anchor="start" x="844.5" y="-751.8" font-family="Helvetica,sans-Serif" font-size="9.00">roman&#45;chord.ts</text>
 </a>
 </g>
 </g>
 <!-- packages/music&#45;structure/chord/roman&#45;chord/index.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/roman&#45;chord.ts -->
 <g id="edge38" class="edge">
 <title>packages/music&#45;structure/chord/roman&#45;chord/index.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/roman&#45;chord.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M789.21,-741.31C801.32,-743.3 816.11,-745.74 830.13,-748.04"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="835.75,-751.1 830.17,-748.05 836.43,-746.95 835.75,-751.1"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M789.21,-742.4C801.32,-743.98 816.11,-745.9 830.13,-747.72"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="835.82,-750.57 830.14,-747.72 836.36,-746.41 835.82,-750.57"/>
 </g>
 <!-- packages/util/stdlib/src/assertion/index.ts -->
 <g id="node103" class="node">
@@ -702,8 +702,8 @@
 <!-- packages/tonal&#45;objects/index.ts&#45;&gt;packages/tonal&#45;objects/src/chord/index.ts -->
 <g id="edge45" class="edge">
 <title>packages/tonal&#45;objects/index.ts&#45;&gt;packages/tonal&#45;objects/src/chord/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1350.33,-758.14C1369.19,-775.67 1410.54,-814.11 1432.55,-834.57"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1435.77,-840.42 1432.8,-834.8 1438.63,-837.35 1435.77,-840.42"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1350.71,-760.3C1369.69,-777.58 1410.43,-814.69 1432.34,-834.65"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1435.56,-840.42 1432.54,-834.83 1438.39,-837.32 1435.56,-840.42"/>
 </g>
 <!-- packages/tonal&#45;objects/src/interval/index.ts -->
 <g id="node41" class="node">
@@ -717,23 +717,23 @@
 <!-- packages/tonal&#45;objects/index.ts&#45;&gt;packages/tonal&#45;objects/src/interval/index.ts -->
 <g id="edge46" class="edge">
 <title>packages/tonal&#45;objects/index.ts&#45;&gt;packages/tonal&#45;objects/src/interval/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1344.04,-758.28C1359.62,-799.09 1422.08,-962.72 1441.33,-1013.13"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1441.59,-1019.71 1441.41,-1013.36 1445.51,-1018.22 1441.59,-1019.71"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1344.04,-760.22C1359.58,-800.64 1421.8,-962.46 1441.2,-1012.91"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1441.48,-1019.5 1441.29,-1013.15 1445.4,-1018 1441.48,-1019.5"/>
 </g>
 <!-- packages/tonal&#45;objects/src/key/index.ts -->
 <g id="node42" class="node">
 <title>packages/tonal&#45;objects/src/key/index.ts</title>
 <g id="a_node42"><a xlink:href="packages/tonal-objects/src/key/index.ts" xlink:title="index.ts">
-<path fill="#ddfeff" stroke="black" d="M1469,-758C1469,-758 1427,-758 1427,-758 1424,-758 1421,-755 1421,-752 1421,-752 1421,-746 1421,-746 1421,-743 1424,-740 1427,-740 1427,-740 1469,-740 1469,-740 1472,-740 1475,-743 1475,-746 1475,-746 1475,-752 1475,-752 1475,-755 1472,-758 1469,-758"/>
-<text text-anchor="start" x="1429.5" y="-746.8" font-family="Helvetica,sans-Serif" font-size="9.00">index.ts</text>
+<path fill="#ddfeff" stroke="black" d="M1469,-760C1469,-760 1427,-760 1427,-760 1424,-760 1421,-757 1421,-754 1421,-754 1421,-748 1421,-748 1421,-745 1424,-742 1427,-742 1427,-742 1469,-742 1469,-742 1472,-742 1475,-745 1475,-748 1475,-748 1475,-754 1475,-754 1475,-757 1472,-760 1469,-760"/>
+<text text-anchor="start" x="1429.5" y="-748.8" font-family="Helvetica,sans-Serif" font-size="9.00">index.ts</text>
 </a>
 </g>
 </g>
 <!-- packages/tonal&#45;objects/index.ts&#45;&gt;packages/tonal&#45;objects/src/key/index.ts -->
 <g id="edge47" class="edge">
 <title>packages/tonal&#45;objects/index.ts&#45;&gt;packages/tonal&#45;objects/src/key/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1366.55,-749C1380.99,-749 1399.08,-749 1414.45,-749"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1420.85,-751.1 1414.85,-749 1420.85,-746.9 1420.85,-751.1"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1366.55,-751C1380.99,-751 1399.08,-751 1414.45,-751"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1420.85,-753.1 1414.85,-751 1420.85,-748.9 1420.85,-753.1"/>
 </g>
 <!-- packages/tonal&#45;objects/src/note/index.ts -->
 <g id="node43" class="node">
@@ -747,8 +747,8 @@
 <!-- packages/tonal&#45;objects/index.ts&#45;&gt;packages/tonal&#45;objects/src/note/index.ts -->
 <g id="edge48" class="edge">
 <title>packages/tonal&#45;objects/index.ts&#45;&gt;packages/tonal&#45;objects/src/note/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1348.16,-739.94C1366.49,-718.25 1413.01,-663.22 1435.05,-637.13"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1440.73,-633.68 1435.25,-636.9 1437.52,-630.96 1440.73,-633.68"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1348.16,-741.79C1366.58,-719.65 1413.46,-663.31 1435.38,-636.97"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1441.02,-633.47 1435.57,-636.73 1437.8,-630.78 1441.02,-633.47"/>
 </g>
 <!-- packages/tonal&#45;objects/src/roman&#45;numeral/index.ts -->
 <g id="node44" class="node">
@@ -762,8 +762,8 @@
 <!-- packages/tonal&#45;objects/index.ts&#45;&gt;packages/tonal&#45;objects/src/roman&#45;numeral/index.ts -->
 <g id="edge49" class="edge">
 <title>packages/tonal&#45;objects/index.ts&#45;&gt;packages/tonal&#45;objects/src/roman&#45;numeral/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1344.04,-739.82C1359.58,-699.54 1421.8,-538.3 1441.2,-488.04"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1445.4,-482.97 1441.28,-487.82 1441.48,-481.46 1445.4,-482.97"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1344.04,-741.75C1359.62,-701.09 1422.08,-538.05 1441.33,-487.81"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1445.51,-482.75 1441.4,-487.61 1441.59,-481.25 1445.51,-482.75"/>
 </g>
 <!-- packages/tonal&#45;objects/src/scale/index.ts -->
 <g id="node45" class="node">
@@ -777,8 +777,8 @@
 <!-- packages/tonal&#45;objects/index.ts&#45;&gt;packages/tonal&#45;objects/src/scale/index.ts -->
 <g id="edge50" class="edge">
 <title>packages/tonal&#45;objects/index.ts&#45;&gt;packages/tonal&#45;objects/src/scale/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1343.24,-739.97C1357.6,-692.66 1424.18,-473.21 1442.39,-413.2"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1446.19,-407.9 1442.44,-413.03 1442.17,-406.68 1446.19,-407.9"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1343.24,-741.92C1357.63,-694.23 1424.47,-472.67 1442.51,-412.89"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1446.29,-407.63 1442.55,-412.76 1442.27,-406.41 1446.29,-407.63"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/index.ts -->
 <g id="node18" class="node">
@@ -981,8 +981,8 @@
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/facade/index.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/index.ts -->
 <g id="edge17" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/chord&#45;analyze/facade/index.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M540.06,-879.95C580.39,-853.97 696.57,-779.14 742.74,-749.4"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="749.15,-747.77 742.97,-749.25 746.88,-744.24 749.15,-747.77"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M540.41,-879.84C580.99,-854.05 696.29,-780.76 742.5,-751.4"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="748.91,-749.81 742.72,-751.26 746.65,-746.27 748.91,-749.81"/>
 </g>
 <!-- packages/util/time&#45;and/index.ts -->
 <g id="node28" class="node">
@@ -1003,46 +1003,46 @@
 <g id="node118" class="node">
 <title>packages/util/time&#45;and/src/compress.ts</title>
 <g id="a_node118"><a xlink:href="packages/util/time-and/src/compress.ts" xlink:title="compress.ts">
-<path fill="#ddfeff" stroke="black" d="M1241.5,-1524C1241.5,-1524 1182.5,-1524 1182.5,-1524 1179.5,-1524 1176.5,-1521 1176.5,-1518 1176.5,-1518 1176.5,-1512 1176.5,-1512 1176.5,-1509 1179.5,-1506 1182.5,-1506 1182.5,-1506 1241.5,-1506 1241.5,-1506 1244.5,-1506 1247.5,-1509 1247.5,-1512 1247.5,-1512 1247.5,-1518 1247.5,-1518 1247.5,-1521 1244.5,-1524 1241.5,-1524"/>
-<text text-anchor="start" x="1184.5" y="-1512.8" font-family="Helvetica,sans-Serif" font-size="9.00">compress.ts</text>
+<path fill="#ddfeff" stroke="black" d="M1241.5,-1494C1241.5,-1494 1182.5,-1494 1182.5,-1494 1179.5,-1494 1176.5,-1491 1176.5,-1488 1176.5,-1488 1176.5,-1482 1176.5,-1482 1176.5,-1479 1179.5,-1476 1182.5,-1476 1182.5,-1476 1241.5,-1476 1241.5,-1476 1244.5,-1476 1247.5,-1479 1247.5,-1482 1247.5,-1482 1247.5,-1488 1247.5,-1488 1247.5,-1491 1244.5,-1494 1241.5,-1494"/>
+<text text-anchor="start" x="1184.5" y="-1482.8" font-family="Helvetica,sans-Serif" font-size="9.00">compress.ts</text>
 </a>
 </g>
 </g>
 <!-- packages/util/time&#45;and/index.ts&#45;&gt;packages/util/time&#45;and/src/compress.ts -->
 <g id="edge164" class="edge">
 <title>packages/util/time&#45;and/index.ts&#45;&gt;packages/util/time&#45;and/src/compress.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1069.67,-1489.69C1096.58,-1494.51 1138.87,-1502.08 1170.19,-1507.69"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1175.92,-1510.85 1170.39,-1507.73 1176.66,-1506.72 1175.92,-1510.85"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1069.67,-1485C1096.58,-1485 1138.87,-1485 1170.19,-1485"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1176.29,-1487.1 1170.29,-1485 1176.29,-1482.9 1176.29,-1487.1"/>
 </g>
 <!-- packages/util/time&#45;and/src/search&#45;items&#45;in&#45;range.ts -->
 <g id="node119" class="node">
 <title>packages/util/time&#45;and/src/search&#45;items&#45;in&#45;range.ts</title>
 <g id="a_node119"><a xlink:href="packages/util/time-and/src/search-items-in-range.ts" xlink:title="search&#45;items&#45;in&#45;range.ts">
-<path fill="#ddfeff" stroke="black" d="M1269,-1494C1269,-1494 1155,-1494 1155,-1494 1152,-1494 1149,-1491 1149,-1488 1149,-1488 1149,-1482 1149,-1482 1149,-1479 1152,-1476 1155,-1476 1155,-1476 1269,-1476 1269,-1476 1272,-1476 1275,-1479 1275,-1482 1275,-1482 1275,-1488 1275,-1488 1275,-1491 1272,-1494 1269,-1494"/>
-<text text-anchor="start" x="1157" y="-1482.8" font-family="Helvetica,sans-Serif" font-size="9.00">search&#45;items&#45;in&#45;range.ts</text>
+<path fill="#ddfeff" stroke="black" d="M1269,-1464C1269,-1464 1155,-1464 1155,-1464 1152,-1464 1149,-1461 1149,-1458 1149,-1458 1149,-1452 1149,-1452 1149,-1449 1152,-1446 1155,-1446 1155,-1446 1269,-1446 1269,-1446 1272,-1446 1275,-1449 1275,-1452 1275,-1452 1275,-1458 1275,-1458 1275,-1461 1272,-1464 1269,-1464"/>
+<text text-anchor="start" x="1157" y="-1452.8" font-family="Helvetica,sans-Serif" font-size="9.00">search&#45;items&#45;in&#45;range.ts</text>
 </a>
 </g>
 </g>
 <!-- packages/util/time&#45;and/index.ts&#45;&gt;packages/util/time&#45;and/src/search&#45;items&#45;in&#45;range.ts -->
 <g id="edge165" class="edge">
 <title>packages/util/time&#45;and/index.ts&#45;&gt;packages/util/time&#45;and/src/search&#45;items&#45;in&#45;range.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1069.67,-1485C1089.26,-1485 1117,-1485 1142.73,-1485"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1148.87,-1487.1 1142.87,-1485 1148.87,-1482.9 1148.87,-1487.1"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1069.67,-1480.31C1092.35,-1476.25 1125.94,-1470.23 1154.69,-1465.09"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1161.11,-1466.07 1154.84,-1465.06 1160.37,-1461.93 1161.11,-1466.07"/>
 </g>
 <!-- packages/util/time&#45;and/src/search&#45;items&#45;overlaps&#45;range.ts -->
 <g id="node120" class="node">
 <title>packages/util/time&#45;and/src/search&#45;items&#45;overlaps&#45;range.ts</title>
 <g id="a_node120"><a xlink:href="packages/util/time-and/src/search-items-overlaps-range.ts" xlink:title="search&#45;items&#45;overlaps&#45;range.ts">
-<path fill="#ddfeff" stroke="black" d="M1284,-1464C1284,-1464 1140,-1464 1140,-1464 1137,-1464 1134,-1461 1134,-1458 1134,-1458 1134,-1452 1134,-1452 1134,-1449 1137,-1446 1140,-1446 1140,-1446 1284,-1446 1284,-1446 1287,-1446 1290,-1449 1290,-1452 1290,-1452 1290,-1458 1290,-1458 1290,-1461 1287,-1464 1284,-1464"/>
-<text text-anchor="start" x="1142" y="-1452.8" font-family="Helvetica,sans-Serif" font-size="9.00">search&#45;items&#45;overlaps&#45;range.ts</text>
+<path fill="#ddfeff" stroke="black" d="M1284,-1524C1284,-1524 1140,-1524 1140,-1524 1137,-1524 1134,-1521 1134,-1518 1134,-1518 1134,-1512 1134,-1512 1134,-1509 1137,-1506 1140,-1506 1140,-1506 1284,-1506 1284,-1506 1287,-1506 1290,-1509 1290,-1512 1290,-1512 1290,-1518 1290,-1518 1290,-1521 1287,-1524 1284,-1524"/>
+<text text-anchor="start" x="1142" y="-1512.8" font-family="Helvetica,sans-Serif" font-size="9.00">search&#45;items&#45;overlaps&#45;range.ts</text>
 </a>
 </g>
 </g>
 <!-- packages/util/time&#45;and/index.ts&#45;&gt;packages/util/time&#45;and/src/search&#45;items&#45;overlaps&#45;range.ts -->
 <g id="edge166" class="edge">
 <title>packages/util/time&#45;and/index.ts&#45;&gt;packages/util/time&#45;and/src/search&#45;items&#45;overlaps&#45;range.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1069.67,-1480.31C1092.35,-1476.25 1125.94,-1470.23 1154.69,-1465.09"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1161.11,-1466.07 1154.84,-1465.06 1160.37,-1461.93 1161.11,-1466.07"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1069.67,-1489.69C1092.35,-1493.75 1125.94,-1499.77 1154.69,-1504.91"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1160.37,-1508.07 1154.84,-1504.94 1161.11,-1503.93 1160.37,-1508.07"/>
 </g>
 <!-- packages/util/time&#45;and/src/time.ts -->
 <g id="node121" class="node">
@@ -1074,8 +1074,8 @@
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/facade/index.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/index.ts -->
 <g id="edge29" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/facade/index.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M659.21,-717.91C679.32,-721.68 707.17,-726.91 728.66,-730.94"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="734.44,-734.16 728.93,-730.99 735.21,-730.03 734.44,-734.16"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M659.21,-718.32C679.4,-722.43 707.41,-728.11 728.94,-732.49"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="734.41,-735.74 728.94,-732.49 735.24,-731.62 734.41,-735.74"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/facade/index.ts&#45;&gt;packages/util/stdlib/index.ts -->
 <g id="edge30" class="edge">
@@ -1086,8 +1086,8 @@
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/facade/index.ts&#45;&gt;packages/tonal&#45;objects/index.ts -->
 <g id="edge31" class="edge">
 <title>packages/music&#45;structure/chord/chord&#45;analyze/src/key&#45;estimation/facade/index.ts&#45;&gt;packages/tonal&#45;objects/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M659.3,-714.39C769.95,-720.02 1184.86,-741.13 1306.06,-747.3"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1312.17,-749.71 1306.29,-747.31 1312.39,-745.52 1312.17,-749.71"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M659.3,-714.47C769.95,-720.41 1184.86,-742.69 1306.06,-749.2"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1312.17,-751.63 1306.29,-749.22 1312.39,-747.44 1312.17,-751.63"/>
 </g>
 <!-- packages/util/graph/index.ts -->
 <g id="node31" class="node">
@@ -1236,68 +1236,68 @@
 <path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M1584.31,-823.81C1598.33,-752.61 1689.58,-289.22 1707.46,-198.42"/>
 <polygon fill="none" stroke="#000000" stroke-opacity="0.200000" points="1709.57,-198.61 1708.67,-192.32 1705.45,-197.8 1709.57,-198.61"/>
 </g>
-<!-- packages/music&#45;structure/chord/roman&#45;chord/src/roman&#45;chord.ts&#45;&gt;packages/tonal&#45;objects/index.ts -->
-<g id="edge44" class="edge">
-<title>packages/music&#45;structure/chord/roman&#45;chord/src/roman&#45;chord.ts&#45;&gt;packages/tonal&#45;objects/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M922.78,-755.34C1014,-753.95 1224.34,-750.75 1306.12,-749.51"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1306.28,-751.61 1312.25,-749.41 1306.22,-747.41 1306.28,-751.61"/>
-</g>
 <!-- packages/music&#45;structure/chord/roman&#45;chord/src/convert&#45;to&#45;true&#45;tonic.ts -->
 <g id="node37" class="node">
 <title>packages/music&#45;structure/chord/roman&#45;chord/src/convert&#45;to&#45;true&#45;tonic.ts</title>
 <g id="a_node37"><a xlink:href="packages/music-structure/chord/roman-chord/src/convert-to-true-tonic.ts" xlink:title="convert&#45;to&#45;true&#45;tonic.ts">
-<path fill="#ddfeff" stroke="black" d="M1097.5,-750C1097.5,-750 987.5,-750 987.5,-750 984.5,-750 981.5,-747 981.5,-744 981.5,-744 981.5,-738 981.5,-738 981.5,-735 984.5,-732 987.5,-732 987.5,-732 1097.5,-732 1097.5,-732 1100.5,-732 1103.5,-735 1103.5,-738 1103.5,-738 1103.5,-744 1103.5,-744 1103.5,-747 1100.5,-750 1097.5,-750"/>
-<text text-anchor="start" x="989.5" y="-738.8" font-family="Helvetica,sans-Serif" font-size="9.00">convert&#45;to&#45;true&#45;tonic.ts</text>
+<path fill="#ddfeff" stroke="black" d="M1097.5,-752C1097.5,-752 987.5,-752 987.5,-752 984.5,-752 981.5,-749 981.5,-746 981.5,-746 981.5,-740 981.5,-740 981.5,-737 984.5,-734 987.5,-734 987.5,-734 1097.5,-734 1097.5,-734 1100.5,-734 1103.5,-737 1103.5,-740 1103.5,-740 1103.5,-746 1103.5,-746 1103.5,-749 1100.5,-752 1097.5,-752"/>
+<text text-anchor="start" x="989.5" y="-740.8" font-family="Helvetica,sans-Serif" font-size="9.00">convert&#45;to&#45;true&#45;tonic.ts</text>
 </a>
 </g>
 </g>
 <!-- packages/music&#45;structure/chord/roman&#45;chord/src/roman&#45;chord.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/convert&#45;to&#45;true&#45;tonic.ts -->
 <g id="edge42" class="edge">
 <title>packages/music&#45;structure/chord/roman&#45;chord/src/roman&#45;chord.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/convert&#45;to&#45;true&#45;tonic.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M922.8,-752.06C938.87,-750.56 957.59,-748.82 975.34,-747.16"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="975.54,-749.25 981.32,-746.61 975.15,-745.07 975.54,-749.25"/>
-</g>
-<!-- packages/music&#45;structure/chord/roman&#45;chord/src/get&#45;roman.ts -->
-<g id="node39" class="node">
-<title>packages/music&#45;structure/chord/roman&#45;chord/src/get&#45;roman.ts</title>
-<g id="a_node39"><a xlink:href="packages/music-structure/chord/roman-chord/src/get-roman.ts" xlink:title="get&#45;roman.ts">
-<path fill="#ddfeff" stroke="black" d="M1074,-780C1074,-780 1011,-780 1011,-780 1008,-780 1005,-777 1005,-774 1005,-774 1005,-768 1005,-768 1005,-765 1008,-762 1011,-762 1011,-762 1074,-762 1074,-762 1077,-762 1080,-765 1080,-768 1080,-768 1080,-774 1080,-774 1080,-777 1077,-780 1074,-780"/>
-<text text-anchor="start" x="1013" y="-768.8" font-family="Helvetica,sans-Serif" font-size="9.00">get&#45;roman.ts</text>
-</a>
-</g>
-</g>
-<!-- packages/music&#45;structure/chord/roman&#45;chord/src/roman&#45;chord.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/get&#45;roman.ts -->
-<g id="edge43" class="edge">
-<title>packages/music&#45;structure/chord/roman&#45;chord/src/roman&#45;chord.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/get&#45;roman.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M922.8,-759.94C946.23,-762.12 975.29,-764.83 998.79,-767.02"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="998.78,-769.13 1004.95,-767.59 999.17,-764.95 998.78,-769.13"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M922.8,-751.11C938.73,-750.02 957.26,-748.76 974.88,-747.55"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="975.48,-749.62 981.32,-747.11 975.19,-745.43 975.48,-749.62"/>
 </g>
 <!-- packages/music&#45;structure/chord/roman&#45;chord/src/facade/index.ts -->
 <g id="node38" class="node">
 <title>packages/music&#45;structure/chord/roman&#45;chord/src/facade/index.ts</title>
 <g id="a_node38"><a xlink:href="packages/music-structure/chord/roman-chord/src/facade/index.ts" xlink:title="index.ts">
-<path fill="#ddfeff" stroke="black" d="M1233,-758C1233,-758 1191,-758 1191,-758 1188,-758 1185,-755 1185,-752 1185,-752 1185,-746 1185,-746 1185,-743 1188,-740 1191,-740 1191,-740 1233,-740 1233,-740 1236,-740 1239,-743 1239,-746 1239,-746 1239,-752 1239,-752 1239,-755 1236,-758 1233,-758"/>
-<text text-anchor="start" x="1193.5" y="-746.8" font-family="Helvetica,sans-Serif" font-size="9.00">index.ts</text>
+<path fill="#ddfeff" stroke="black" d="M1233,-765C1233,-765 1191,-765 1191,-765 1188,-765 1185,-762 1185,-759 1185,-759 1185,-753 1185,-753 1185,-750 1188,-747 1191,-747 1191,-747 1233,-747 1233,-747 1236,-747 1239,-750 1239,-753 1239,-753 1239,-759 1239,-759 1239,-762 1236,-765 1233,-765"/>
+<text text-anchor="start" x="1193.5" y="-753.8" font-family="Helvetica,sans-Serif" font-size="9.00">index.ts</text>
 </a>
 </g>
+</g>
+<!-- packages/music&#45;structure/chord/roman&#45;chord/src/roman&#45;chord.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/facade/index.ts -->
+<g id="edge43" class="edge">
+<title>packages/music&#45;structure/chord/roman&#45;chord/src/roman&#45;chord.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/facade/index.ts</title>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M922.63,-754.26C989.76,-754.66 1117.85,-755.43 1178.53,-755.8"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1178.87,-757.9 1184.88,-755.84 1178.9,-753.7 1178.87,-757.9"/>
+</g>
+<!-- packages/music&#45;structure/chord/roman&#45;chord/src/get&#45;roman.ts -->
+<g id="node39" class="node">
+<title>packages/music&#45;structure/chord/roman&#45;chord/src/get&#45;roman.ts</title>
+<g id="a_node39"><a xlink:href="packages/music-structure/chord/roman-chord/src/get-roman.ts" xlink:title="get&#45;roman.ts">
+<path fill="#ddfeff" stroke="black" d="M1074,-796C1074,-796 1011,-796 1011,-796 1008,-796 1005,-793 1005,-790 1005,-790 1005,-784 1005,-784 1005,-781 1008,-778 1011,-778 1011,-778 1074,-778 1074,-778 1077,-778 1080,-781 1080,-784 1080,-784 1080,-790 1080,-790 1080,-793 1077,-796 1074,-796"/>
+<text text-anchor="start" x="1013" y="-784.8" font-family="Helvetica,sans-Serif" font-size="9.00">get&#45;roman.ts</text>
+</a>
+</g>
+</g>
+<!-- packages/music&#45;structure/chord/roman&#45;chord/src/roman&#45;chord.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/get&#45;roman.ts -->
+<g id="edge44" class="edge">
+<title>packages/music&#45;structure/chord/roman&#45;chord/src/roman&#45;chord.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/get&#45;roman.ts</title>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M922.8,-762.67C946.23,-767.47 975.29,-773.43 998.79,-778.25"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="998.65,-780.36 1004.95,-779.51 999.49,-776.25 998.65,-780.36"/>
 </g>
 <!-- packages/music&#45;structure/chord/roman&#45;chord/src/convert&#45;to&#45;true&#45;tonic.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/facade/index.ts -->
 <g id="edge39" class="edge">
 <title>packages/music&#45;structure/chord/roman&#45;chord/src/convert&#45;to&#45;true&#45;tonic.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/facade/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1103.97,-743.89C1129.22,-745.09 1157.53,-746.45 1178.69,-747.46"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1178.64,-749.56 1184.74,-747.75 1178.84,-745.36 1178.64,-749.56"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1103.97,-747.69C1129.22,-749.65 1157.53,-751.85 1178.69,-753.49"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1178.59,-755.59 1184.74,-753.96 1178.92,-751.4 1178.59,-755.59"/>
 </g>
 <!-- packages/music&#45;structure/chord/roman&#45;chord/src/facade/index.ts&#45;&gt;packages/tonal&#45;objects/index.ts -->
 <g id="edge40" class="edge">
 <title>packages/music&#45;structure/chord/roman&#45;chord/src/facade/index.ts&#45;&gt;packages/tonal&#45;objects/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1239,-749C1258.39,-749 1285.01,-749 1305.84,-749"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1312.1,-751.1 1306.1,-749 1312.1,-746.9 1312.1,-751.1"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1239,-754.96C1258.39,-754.19 1285.01,-753.13 1305.84,-752.3"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1312.18,-754.15 1306.1,-752.29 1312.01,-749.95 1312.18,-754.15"/>
 </g>
 <!-- packages/music&#45;structure/chord/roman&#45;chord/src/get&#45;roman.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/facade/index.ts -->
 <g id="edge41" class="edge">
 <title>packages/music&#45;structure/chord/roman&#45;chord/src/get&#45;roman.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/facade/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1080.26,-766.17C1109.71,-762.3 1150.64,-756.93 1178.81,-753.23"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1179.3,-755.28 1184.98,-752.42 1178.75,-751.12 1179.3,-755.28"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1080.26,-780.2C1109.71,-774.75 1150.64,-767.17 1178.81,-761.96"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1179.46,-763.97 1184.98,-760.82 1178.69,-759.84 1179.46,-763.97"/>
 </g>
 <!-- packages/tonal&#45;objects/src/chord/index.ts&#45;&gt;packages/tonal&#45;objects/src/chord/chord.ts -->
 <g id="edge53" class="edge">
@@ -1452,8 +1452,8 @@
 <!-- packages/tonal&#45;objects/src/key/index.ts&#45;&gt;packages/tonal&#45;objects/src/key/major&#45;key.ts -->
 <g id="edge72" class="edge">
 <title>packages/tonal&#45;objects/src/key/index.ts&#45;&gt;packages/tonal&#45;objects/src/key/major&#45;key.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1475.29,-747.8C1493.85,-746.95 1519.06,-745.8 1540.15,-744.84"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1546.36,-746.66 1540.27,-744.84 1546.17,-742.46 1546.36,-746.66"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1475.29,-749.4C1493.85,-748.27 1519.06,-746.74 1540.15,-745.45"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1546.39,-747.18 1540.27,-745.45 1546.13,-742.99 1546.39,-747.18"/>
 </g>
 <!-- packages/tonal&#45;objects/src/key/minor&#45;key.ts -->
 <g id="node57" class="node">
@@ -1467,8 +1467,8 @@
 <!-- packages/tonal&#45;objects/src/key/index.ts&#45;&gt;packages/tonal&#45;objects/src/key/minor&#45;key.ts -->
 <g id="edge73" class="edge">
 <title>packages/tonal&#45;objects/src/key/index.ts&#45;&gt;packages/tonal&#45;objects/src/key/minor&#45;key.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1475.29,-753.8C1493.71,-757.16 1518.69,-761.72 1539.68,-765.55"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1545.39,-768.73 1539.87,-765.58 1546.15,-764.6 1545.39,-768.73"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1475.29,-755.4C1493.71,-758.48 1518.69,-762.66 1539.68,-766.17"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1545.42,-769.26 1539.85,-766.2 1546.12,-765.12 1545.42,-769.26"/>
 </g>
 <!-- packages/tonal&#45;objects/src/note/chroma&#45;from&#45;non&#45;null.ts -->
 <g id="node58" class="node">
@@ -2382,20 +2382,20 @@
 <!-- packages/util/time&#45;and/src/compress.ts&#45;&gt;packages/util/time&#45;and/src/time.ts -->
 <g id="edge168" class="edge">
 <title>packages/util/time&#45;and/src/compress.ts&#45;&gt;packages/util/time&#45;and/src/time.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1247.63,-1510.86C1265.85,-1508.68 1288.06,-1506.03 1305.96,-1503.89"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1306.64,-1505.92 1312.35,-1503.13 1306.14,-1501.75 1306.64,-1505.92"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1247.63,-1489.14C1265.85,-1491.32 1288.06,-1493.97 1305.96,-1496.11"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1306.14,-1498.25 1312.35,-1496.87 1306.64,-1494.08 1306.14,-1498.25"/>
 </g>
 <!-- packages/util/time&#45;and/src/search&#45;items&#45;in&#45;range.ts&#45;&gt;packages/util/time&#45;and/src/time.ts -->
 <g id="edge169" class="edge">
 <title>packages/util/time&#45;and/src/search&#45;items&#45;in&#45;range.ts&#45;&gt;packages/util/time&#45;and/src/time.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1275.01,-1492.41C1285.86,-1493.71 1296.73,-1495.01 1306.33,-1496.16"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1306.24,-1498.26 1312.45,-1496.89 1306.74,-1494.09 1306.24,-1498.26"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1238.4,-1464.11C1258.3,-1471.24 1286.08,-1481.21 1307.33,-1488.82"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1306.78,-1490.86 1313.14,-1490.91 1308.2,-1486.91 1306.78,-1490.86"/>
 </g>
 <!-- packages/util/time&#45;and/src/search&#45;items&#45;overlaps&#45;range.ts&#45;&gt;packages/util/time&#45;and/src/time.ts -->
 <g id="edge170" class="edge">
 <title>packages/util/time&#45;and/src/search&#45;items&#45;overlaps&#45;range.ts&#45;&gt;packages/util/time&#45;and/src/time.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1238.4,-1464.11C1258.3,-1471.24 1286.08,-1481.21 1307.33,-1488.82"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1306.78,-1490.86 1313.14,-1490.91 1308.2,-1486.91 1306.78,-1490.86"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1288.54,-1505.97C1294.66,-1505.24 1300.61,-1504.53 1306.14,-1503.87"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1306.72,-1505.91 1312.43,-1503.12 1306.23,-1501.74 1306.72,-1505.91"/>
 </g>
 </g>
 </svg>

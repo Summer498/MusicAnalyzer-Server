@@ -1,1 +1,1 @@
-export { MVVM_View_Impl } from "@music-analyzer/view";
+export { MVVM_View_Impl } from "../../facade";

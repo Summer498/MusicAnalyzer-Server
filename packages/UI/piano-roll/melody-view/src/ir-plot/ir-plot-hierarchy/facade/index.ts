@@ -1,2 +1,2 @@
-export { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-export { SetColor } from "@music-analyzer/controllers";
+export { TimeAndAnalyzedMelody } from "../../facade";
+export { SetColor } from "../../facade";

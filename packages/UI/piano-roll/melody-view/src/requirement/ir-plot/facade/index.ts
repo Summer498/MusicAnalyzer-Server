@@ -1,4 +1,4 @@
-export { MelodyColorController } from "@music-analyzer/controllers";
-export { AudioReflectableRegistry } from "@music-analyzer/view";
-export { WindowReflectableRegistry } from "@music-analyzer/view";
-export { HierarchyLevelController } from "@music-analyzer/controllers";
+export { MelodyColorController } from "../../facade";
+export { AudioReflectableRegistry } from "../../facade";
+export { WindowReflectableRegistry } from "../../facade";
+export { HierarchyLevelController } from "../../facade";

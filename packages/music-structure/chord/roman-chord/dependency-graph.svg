@@ -26,28 +26,28 @@
 </g>
 <g id="clust4" class="cluster">
 <title>cluster_packages/music&#45;structure</title>
-<path fill="#ffffff" stroke="black" stroke-width="2" d="M28,-612C28,-612 429,-612 429,-612 435,-612 441,-618 441,-624 441,-624 441,-788 441,-788 441,-794 435,-800 429,-800 429,-800 28,-800 28,-800 22,-800 16,-794 16,-788 16,-788 16,-624 16,-624 16,-618 22,-612 28,-612"/>
-<text text-anchor="middle" x="228.5" y="-788.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">music&#45;structure</text>
+<path fill="#ffffff" stroke="black" stroke-width="2" d="M28,-624C28,-624 429,-624 429,-624 435,-624 441,-630 441,-636 441,-636 441,-810 441,-810 441,-816 435,-822 429,-822 429,-822 28,-822 28,-822 22,-822 16,-816 16,-810 16,-810 16,-636 16,-636 16,-630 22,-624 28,-624"/>
+<text text-anchor="middle" x="228.5" y="-810.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">music&#45;structure</text>
 </g>
 <g id="clust5" class="cluster">
 <title>cluster_packages/music&#45;structure/chord</title>
-<path fill="#ffffff" stroke="black" stroke-width="2" d="M36,-620C36,-620 421,-620 421,-620 427,-620 433,-626 433,-632 433,-632 433,-762 433,-762 433,-768 427,-774 421,-774 421,-774 36,-774 36,-774 30,-774 24,-768 24,-762 24,-762 24,-632 24,-632 24,-626 30,-620 36,-620"/>
-<text text-anchor="start" x="213.5" y="-762.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">chord</text>
+<path fill="#ffffff" stroke="black" stroke-width="2" d="M36,-632C36,-632 421,-632 421,-632 427,-632 433,-638 433,-644 433,-644 433,-784 433,-784 433,-790 427,-796 421,-796 421,-796 36,-796 36,-796 30,-796 24,-790 24,-784 24,-784 24,-644 24,-644 24,-638 30,-632 36,-632"/>
+<text text-anchor="start" x="213.5" y="-784.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">chord</text>
 </g>
 <g id="clust6" class="cluster">
 <title>cluster_packages/music&#45;structure/chord/roman&#45;chord</title>
-<path fill="#ffffff" stroke="black" stroke-width="2" d="M44,-628C44,-628 413,-628 413,-628 419,-628 425,-634 425,-640 425,-640 425,-736 425,-736 425,-742 419,-748 413,-748 413,-748 44,-748 44,-748 38,-748 32,-742 32,-736 32,-736 32,-640 32,-640 32,-634 38,-628 44,-628"/>
-<text text-anchor="middle" x="228.5" y="-736.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">roman&#45;chord</text>
+<path fill="#ffffff" stroke="black" stroke-width="2" d="M44,-640C44,-640 413,-640 413,-640 419,-640 425,-646 425,-652 425,-652 425,-758 425,-758 425,-764 419,-770 413,-770 413,-770 44,-770 44,-770 38,-770 32,-764 32,-758 32,-758 32,-652 32,-652 32,-646 38,-640 44,-640"/>
+<text text-anchor="middle" x="228.5" y="-758.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">roman&#45;chord</text>
 </g>
 <g id="clust7" class="cluster">
 <title>cluster_packages/music&#45;structure/chord/roman&#45;chord/src</title>
-<path fill="#ffffff" stroke="black" stroke-width="2" d="M114,-636C114,-636 405,-636 405,-636 411,-636 417,-642 417,-648 417,-648 417,-710 417,-710 417,-716 411,-722 405,-722 405,-722 114,-722 114,-722 108,-722 102,-716 102,-710 102,-710 102,-648 102,-648 102,-642 108,-636 114,-636"/>
-<text text-anchor="middle" x="259.5" y="-710.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">src</text>
+<path fill="#ffffff" stroke="black" stroke-width="2" d="M114,-648C114,-648 405,-648 405,-648 411,-648 417,-654 417,-660 417,-660 417,-732 417,-732 417,-738 411,-744 405,-744 405,-744 114,-744 114,-744 108,-744 102,-738 102,-732 102,-732 102,-660 102,-660 102,-654 108,-648 114,-648"/>
+<text text-anchor="middle" x="259.5" y="-732.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">src</text>
 </g>
 <g id="clust8" class="cluster">
 <title>cluster_packages/music&#45;structure/chord/roman&#45;chord/src/facade</title>
-<path fill="#ffffff" stroke="black" stroke-width="2" d="M351,-644C351,-644 397,-644 397,-644 403,-644 409,-650 409,-656 409,-656 409,-684 409,-684 409,-690 403,-696 397,-696 397,-696 351,-696 351,-696 345,-696 339,-690 339,-684 339,-684 339,-656 339,-656 339,-650 345,-644 351,-644"/>
-<text text-anchor="middle" x="374" y="-684.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">facade</text>
+<path fill="#ffffff" stroke="black" stroke-width="2" d="M351,-666C351,-666 397,-666 397,-666 403,-666 409,-672 409,-678 409,-678 409,-706 409,-706 409,-712 403,-718 397,-718 397,-718 351,-718 351,-718 345,-718 339,-712 339,-706 339,-706 339,-678 339,-678 339,-672 345,-666 351,-666"/>
+<text text-anchor="middle" x="374" y="-706.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">facade</text>
 </g>
 <g id="clust9" class="cluster">
 <title>cluster_packages/tonal&#45;objects</title>
@@ -229,8 +229,8 @@
 <g id="node9" class="node">
 <title>packages/music&#45;structure/chord/roman&#45;chord/index.ts</title>
 <g id="a_node9"><a xlink:href="packages/music-structure/chord/roman-chord/index.ts" xlink:title="index.ts">
-<path fill="#ddfeff" stroke="black" d="M88,-692C88,-692 46,-692 46,-692 43,-692 40,-689 40,-686 40,-686 40,-680 40,-680 40,-677 43,-674 46,-674 46,-674 88,-674 88,-674 91,-674 94,-677 94,-680 94,-680 94,-686 94,-686 94,-689 91,-692 88,-692"/>
-<text text-anchor="start" x="48.5" y="-680.8" font-family="Helvetica,sans-Serif" font-size="9.00">index.ts</text>
+<path fill="#ddfeff" stroke="black" d="M88,-696C88,-696 46,-696 46,-696 43,-696 40,-693 40,-690 40,-690 40,-684 40,-684 40,-681 43,-678 46,-678 46,-678 88,-678 88,-678 91,-678 94,-681 94,-684 94,-684 94,-690 94,-690 94,-693 91,-696 88,-696"/>
+<text text-anchor="start" x="48.5" y="-684.8" font-family="Helvetica,sans-Serif" font-size="9.00">index.ts</text>
 </a>
 </g>
 </g>
@@ -238,31 +238,67 @@
 <g id="node10" class="node">
 <title>packages/music&#45;structure/chord/roman&#45;chord/src/roman&#45;chord.ts</title>
 <g id="a_node10"><a xlink:href="packages/music-structure/chord/roman-chord/src/roman-chord.ts" xlink:title="roman&#45;chord.ts">
-<path fill="#ddfeff" stroke="black" d="M190,-692C190,-692 116,-692 116,-692 113,-692 110,-689 110,-686 110,-686 110,-680 110,-680 110,-677 113,-674 116,-674 116,-674 190,-674 190,-674 193,-674 196,-677 196,-680 196,-680 196,-686 196,-686 196,-689 193,-692 190,-692"/>
-<text text-anchor="start" x="118" y="-680.8" font-family="Helvetica,sans-Serif" font-size="9.00">roman&#45;chord.ts</text>
+<path fill="#ddfeff" stroke="black" d="M190,-696C190,-696 116,-696 116,-696 113,-696 110,-693 110,-690 110,-690 110,-684 110,-684 110,-681 113,-678 116,-678 116,-678 190,-678 190,-678 193,-678 196,-681 196,-684 196,-684 196,-690 196,-690 196,-693 193,-696 190,-696"/>
+<text text-anchor="start" x="118" y="-684.8" font-family="Helvetica,sans-Serif" font-size="9.00">roman&#45;chord.ts</text>
 </a>
 </g>
 </g>
 <!-- packages/music&#45;structure/chord/roman&#45;chord/index.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/roman&#45;chord.ts -->
 <g id="edge1" class="edge">
 <title>packages/music&#45;structure/chord/roman&#45;chord/index.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/roman&#45;chord.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M94.12,-683C97.25,-683 100.52,-683 103.84,-683"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="109.85,-685.1 103.85,-683 109.85,-680.9 109.85,-685.1"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M94.12,-687C97.25,-687 100.52,-687 103.84,-687"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="109.85,-689.1 103.85,-687 109.85,-684.9 109.85,-689.1"/>
 </g>
 <!-- packages/music&#45;structure/chord/roman&#45;chord/src/convert&#45;to&#45;true&#45;tonic.ts -->
 <g id="node11" class="node">
 <title>packages/music&#45;structure/chord/roman&#45;chord/src/convert&#45;to&#45;true&#45;tonic.ts</title>
 <g id="a_node11"><a xlink:href="packages/music-structure/chord/roman-chord/src/convert-to-true-tonic.ts" xlink:title="convert&#45;to&#45;true&#45;tonic.ts">
-<path fill="#ddfeff" stroke="black" d="M325,-662C325,-662 215,-662 215,-662 212,-662 209,-659 209,-656 209,-656 209,-650 209,-650 209,-647 212,-644 215,-644 215,-644 325,-644 325,-644 328,-644 331,-647 331,-650 331,-650 331,-656 331,-656 331,-659 328,-662 325,-662"/>
-<text text-anchor="start" x="217" y="-650.8" font-family="Helvetica,sans-Serif" font-size="9.00">convert&#45;to&#45;true&#45;tonic.ts</text>
+<path fill="#ddfeff" stroke="black" d="M325,-674C325,-674 215,-674 215,-674 212,-674 209,-671 209,-668 209,-668 209,-662 209,-662 209,-659 212,-656 215,-656 215,-656 325,-656 325,-656 328,-656 331,-659 331,-662 331,-662 331,-668 331,-668 331,-671 328,-674 325,-674"/>
+<text text-anchor="start" x="217" y="-662.8" font-family="Helvetica,sans-Serif" font-size="9.00">convert&#45;to&#45;true&#45;tonic.ts</text>
 </a>
 </g>
 </g>
 <!-- packages/music&#45;structure/chord/roman&#45;chord/src/roman&#45;chord.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/convert&#45;to&#45;true&#45;tonic.ts -->
 <g id="edge5" class="edge">
 <title>packages/music&#45;structure/chord/roman&#45;chord/src/roman&#45;chord.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/convert&#45;to&#45;true&#45;tonic.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M188.5,-674C201.01,-670.74 215.26,-667.02 228.25,-663.63"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="228.85,-665.64 234.12,-662.1 227.79,-661.58 228.85,-665.64"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M196.17,-678.93C202.55,-677.71 209.2,-676.44 215.78,-675.18"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="216.29,-677.22 221.79,-674.03 215.5,-673.1 216.29,-677.22"/>
+</g>
+<!-- packages/music&#45;structure/chord/roman&#45;chord/src/facade/index.ts -->
+<g id="node12" class="node">
+<title>packages/music&#45;structure/chord/roman&#45;chord/src/facade/index.ts</title>
+<g id="a_node12"><a xlink:href="packages/music-structure/chord/roman-chord/src/facade/index.ts" xlink:title="index.ts">
+<path fill="#ddfeff" stroke="black" d="M395,-692C395,-692 353,-692 353,-692 350,-692 347,-689 347,-686 347,-686 347,-680 347,-680 347,-677 350,-674 353,-674 353,-674 395,-674 395,-674 398,-674 401,-677 401,-680 401,-680 401,-686 401,-686 401,-689 398,-692 395,-692"/>
+<text text-anchor="start" x="355.5" y="-680.8" font-family="Helvetica,sans-Serif" font-size="9.00">index.ts</text>
+</a>
+</g>
+</g>
+<!-- packages/music&#45;structure/chord/roman&#45;chord/src/roman&#45;chord.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/facade/index.ts -->
+<g id="edge6" class="edge">
+<title>packages/music&#45;structure/chord/roman&#45;chord/src/roman&#45;chord.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/facade/index.ts</title>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M196.14,-686.22C238.41,-685.45 301.95,-684.3 340.54,-683.61"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="341.02,-685.7 346.98,-683.49 340.94,-681.5 341.02,-685.7"/>
+</g>
+<!-- packages/music&#45;structure/chord/roman&#45;chord/src/get&#45;roman.ts -->
+<g id="node14" class="node">
+<title>packages/music&#45;structure/chord/roman&#45;chord/src/get&#45;roman.ts</title>
+<g id="a_node14"><a xlink:href="packages/music-structure/chord/roman-chord/src/get-roman.ts" xlink:title="get&#45;roman.ts">
+<path fill="#ddfeff" stroke="black" d="M301.5,-718C301.5,-718 238.5,-718 238.5,-718 235.5,-718 232.5,-715 232.5,-712 232.5,-712 232.5,-706 232.5,-706 232.5,-703 235.5,-700 238.5,-700 238.5,-700 301.5,-700 301.5,-700 304.5,-700 307.5,-703 307.5,-706 307.5,-706 307.5,-712 307.5,-712 307.5,-715 304.5,-718 301.5,-718"/>
+<text text-anchor="start" x="240.5" y="-706.8" font-family="Helvetica,sans-Serif" font-size="9.00">get&#45;roman.ts</text>
+</a>
+</g>
+</g>
+<!-- packages/music&#45;structure/chord/roman&#45;chord/src/roman&#45;chord.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/get&#45;roman.ts -->
+<g id="edge7" class="edge">
+<title>packages/music&#45;structure/chord/roman&#45;chord/src/roman&#45;chord.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/get&#45;roman.ts</title>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M196.17,-695.07C205.94,-696.94 216.34,-698.93 226.14,-700.8"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="225.86,-702.89 232.15,-701.95 226.65,-698.76 225.86,-702.89"/>
+</g>
+<!-- packages/music&#45;structure/chord/roman&#45;chord/src/convert&#45;to&#45;true&#45;tonic.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/facade/index.ts -->
+<g id="edge2" class="edge">
+<title>packages/music&#45;structure/chord/roman&#45;chord/src/convert&#45;to&#45;true&#45;tonic.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/facade/index.ts</title>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M322.3,-674.05C328.57,-675.16 334.83,-676.26 340.7,-677.3"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="340.63,-679.42 346.91,-678.4 341.36,-675.28 340.63,-679.42"/>
 </g>
 <!-- packages/tonal&#45;objects/index.ts -->
 <g id="node13" class="node">
@@ -273,47 +309,11 @@
 </a>
 </g>
 </g>
-<!-- packages/music&#45;structure/chord/roman&#45;chord/src/roman&#45;chord.ts&#45;&gt;packages/tonal&#45;objects/index.ts -->
-<g id="edge7" class="edge">
-<title>packages/music&#45;structure/chord/roman&#45;chord/src/roman&#45;chord.ts&#45;&gt;packages/tonal&#45;objects/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M196.27,-683C263.06,-683 389.84,-683 450.3,-683"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="450.64,-685.1 456.64,-683 450.64,-680.9 450.64,-685.1"/>
-</g>
-<!-- packages/music&#45;structure/chord/roman&#45;chord/src/get&#45;roman.ts -->
-<g id="node14" class="node">
-<title>packages/music&#45;structure/chord/roman&#45;chord/src/get&#45;roman.ts</title>
-<g id="a_node14"><a xlink:href="packages/music-structure/chord/roman-chord/src/get-roman.ts" xlink:title="get&#45;roman.ts">
-<path fill="#ddfeff" stroke="black" d="M301.5,-692C301.5,-692 238.5,-692 238.5,-692 235.5,-692 232.5,-689 232.5,-686 232.5,-686 232.5,-680 232.5,-680 232.5,-677 235.5,-674 238.5,-674 238.5,-674 301.5,-674 301.5,-674 304.5,-674 307.5,-677 307.5,-680 307.5,-680 307.5,-686 307.5,-686 307.5,-689 304.5,-692 301.5,-692"/>
-<text text-anchor="start" x="240.5" y="-680.8" font-family="Helvetica,sans-Serif" font-size="9.00">get&#45;roman.ts</text>
-</a>
-</g>
-</g>
-<!-- packages/music&#45;structure/chord/roman&#45;chord/src/roman&#45;chord.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/get&#45;roman.ts -->
-<g id="edge6" class="edge">
-<title>packages/music&#45;structure/chord/roman&#45;chord/src/roman&#45;chord.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/get&#45;roman.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M196.17,-683C205.94,-683 216.34,-683 226.14,-683"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="226.15,-685.1 232.15,-683 226.15,-680.9 226.15,-685.1"/>
-</g>
-<!-- packages/music&#45;structure/chord/roman&#45;chord/src/facade/index.ts -->
-<g id="node12" class="node">
-<title>packages/music&#45;structure/chord/roman&#45;chord/src/facade/index.ts</title>
-<g id="a_node12"><a xlink:href="packages/music-structure/chord/roman-chord/src/facade/index.ts" xlink:title="index.ts">
-<path fill="#ddfeff" stroke="black" d="M395,-670C395,-670 353,-670 353,-670 350,-670 347,-667 347,-664 347,-664 347,-658 347,-658 347,-655 350,-652 353,-652 353,-652 395,-652 395,-652 398,-652 401,-655 401,-658 401,-658 401,-664 401,-664 401,-667 398,-670 395,-670"/>
-<text text-anchor="start" x="355.5" y="-658.8" font-family="Helvetica,sans-Serif" font-size="9.00">index.ts</text>
-</a>
-</g>
-</g>
-<!-- packages/music&#45;structure/chord/roman&#45;chord/src/convert&#45;to&#45;true&#45;tonic.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/facade/index.ts -->
-<g id="edge2" class="edge">
-<title>packages/music&#45;structure/chord/roman&#45;chord/src/convert&#45;to&#45;true&#45;tonic.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/facade/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M331.22,-657.72C334.39,-657.97 337.52,-658.22 340.55,-658.45"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="340.45,-660.55 346.6,-658.93 340.78,-656.37 340.45,-660.55"/>
-</g>
 <!-- packages/music&#45;structure/chord/roman&#45;chord/src/facade/index.ts&#45;&gt;packages/tonal&#45;objects/index.ts -->
 <g id="edge3" class="edge">
 <title>packages/music&#45;structure/chord/roman&#45;chord/src/facade/index.ts&#45;&gt;packages/tonal&#45;objects/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M401.14,-666.33C416.02,-669.36 434.79,-673.18 450.6,-676.4"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="456.3,-679.7 450.84,-676.45 457.14,-675.59 456.3,-679.7"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M401.14,-683C416.02,-683 434.79,-683 450.6,-683"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="456.72,-685.1 450.72,-683 456.72,-680.9 456.72,-685.1"/>
 </g>
 <!-- packages/tonal&#45;objects/src/chord/index.ts -->
 <g id="node15" class="node">
@@ -408,8 +408,8 @@
 <!-- packages/music&#45;structure/chord/roman&#45;chord/src/get&#45;roman.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/facade/index.ts -->
 <g id="edge4" class="edge">
 <title>packages/music&#45;structure/chord/roman&#45;chord/src/get&#45;roman.ts&#45;&gt;packages/music&#45;structure/chord/roman&#45;chord/src/facade/index.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M307.54,-675.12C318.43,-672.77 330.29,-670.21 340.88,-667.93"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="341.53,-669.94 346.95,-666.62 340.64,-665.83 341.53,-669.94"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M306.39,-699.98C317.55,-697.13 329.83,-694.01 340.76,-691.22"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="341.39,-693.23 346.68,-689.71 340.35,-689.16 341.39,-693.23"/>
 </g>
 <!-- packages/tonal&#45;objects/src/chord/chord&#45;name.ts -->
 <g id="node21" class="node">

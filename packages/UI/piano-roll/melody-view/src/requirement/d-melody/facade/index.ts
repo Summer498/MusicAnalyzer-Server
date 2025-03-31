@@ -1,4 +1,4 @@
-export { AudioReflectableRegistry } from "@music-analyzer/view";
-export { DMelodyController } from "@music-analyzer/controllers";
-export { WindowReflectableRegistry } from "@music-analyzer/view";
-export { TimeRangeController } from "@music-analyzer/controllers";
+export { AudioReflectableRegistry } from "../../facade";
+export { DMelodyController } from "../../facade";
+export { WindowReflectableRegistry } from "../../facade";
+export { TimeRangeController } from "../../facade";
