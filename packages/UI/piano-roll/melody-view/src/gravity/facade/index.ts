@@ -1,4 +1,4 @@
-export { TimeAndAnalyzedMelody } from "../../facade";
+export { SerializedTimeAndAnalyzedMelody } from "../../facade";
 export { CollectionHierarchy } from "../../facade";
 export { CollectionLayer } from "../../facade";
 export { Gravity } from "../../facade";

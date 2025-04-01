@@ -6,5 +6,5 @@ export { MVVM_Model } from "../../facade";
 export { BlackKeyPrm } from "../../facade";
 export { NoteSize } from "../../facade";
 export { TimeRangeSubscriber } from "../../facade";
-export { TimeAndAnalyzedMelody } from "../../facade";
+export { SerializedTimeAndAnalyzedMelody } from "../../facade";
 export { CollectionHierarchy } from "../../facade";

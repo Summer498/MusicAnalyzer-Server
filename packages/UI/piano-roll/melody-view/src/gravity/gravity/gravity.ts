@@ -1,6 +1,6 @@
 import { MVVM_ViewModel_Impl } from "./facade";
 import { Gravity as GravityAnalysis } from "./facade";
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { BlackKeyPrm } from "./facade";
 import { NoteSize } from "./facade";
 import { PianoRollBegin } from "./facade";
@@ -18,9 +18,9 @@ export class Gravity
   implements TimeRangeSubscriber {
   #line_seed: LinePos;
   constructor(
-    e: TimeAndAnalyzedMelody,
+    e: SerializedTimeAndAnalyzedMelody,
     layer: number,
-    readonly next: TimeAndAnalyzedMelody,
+    readonly next: SerializedTimeAndAnalyzedMelody,
     readonly gravity: GravityAnalysis,
   ) {
     const model = new GravityModel(e, layer, next, gravity);

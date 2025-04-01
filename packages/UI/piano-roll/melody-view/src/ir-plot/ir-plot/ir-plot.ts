@@ -1,5 +1,5 @@
 import { MVVM_ViewModel_Impl } from "./facade";
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { SetColor } from "./facade";
 import { IRPlotModel } from "./ir-plot-model";
 import { IRPlotView } from "./ir-plot-view";
@@ -8,7 +8,7 @@ export class IRPlot
   extends MVVM_ViewModel_Impl<IRPlotModel, IRPlotView> {
   readonly view: IRPlotView;
   constructor(
-    e: TimeAndAnalyzedMelody[],
+    e: SerializedTimeAndAnalyzedMelody[],
   ) {
     const model = new IRPlotModel(e);
     const view = new IRPlotView(model);

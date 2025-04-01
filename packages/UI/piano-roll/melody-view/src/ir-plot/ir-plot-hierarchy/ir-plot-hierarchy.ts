@@ -1,4 +1,4 @@
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { SetColor } from "./facade";
 import { IRPlotLayer } from "../ir-plot-layer/ir-plot-layer";
 import { IRPlotHierarchyView } from "./ir-plot-hierarchy-view"
@@ -12,7 +12,7 @@ export class IRPlotHierarchy {
   readonly children: IRPlotLayer[];
   get show() { return this.view.circles.show }
   constructor(
-    hierarchical_melody: TimeAndAnalyzedMelody[][],
+    hierarchical_melody: SerializedTimeAndAnalyzedMelody[][],
     controllers: RequiredByIRPlotHierarchy,
   ) {
     const N = hierarchical_melody.length;

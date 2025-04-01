@@ -1,5 +1,5 @@
-import { TimeAndRomanAnalysis } from "./facade";
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndRomanAnalysis } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { BeatInfo } from "./facade";
 import { calcTempo } from "./facade";
 import { bracket_height } from "./facade";
@@ -8,11 +8,11 @@ import { PianoRollEnd } from "./facade";
 
 export class AnalyzedDataContainer {
   readonly beat_info: BeatInfo
-  readonly d_melodies: TimeAndAnalyzedMelody[]
+  readonly d_melodies: SerializedTimeAndAnalyzedMelody[]
   constructor(
-    readonly roman: TimeAndRomanAnalysis[],
-    readonly melody: TimeAndAnalyzedMelody[],
-    readonly hierarchical_melody: TimeAndAnalyzedMelody[][],
+    readonly roman: SerializedTimeAndRomanAnalysis[],
+    readonly melody: SerializedTimeAndAnalyzedMelody[],
+    readonly hierarchical_melody: SerializedTimeAndAnalyzedMelody[][],
   ) {
     this.d_melodies = melody.map(e => e);
     this.melody = this.d_melodies.map(e => e)

@@ -1,6 +1,6 @@
 export { song_list } from "../../facade";
 export { AnalyzedDataContainer } from "../../facade";
-export { TimeAndAnalyzedMelody } from "../../facade";
+export { SerializedTimeAndAnalyzedMelody } from "../../facade";
 export { SongLength } from "../../facade";
 export { TitleInfo } from "../../containers";
 export { AnalyzedMusicData } from "../../MusicAnalyzerWindow";

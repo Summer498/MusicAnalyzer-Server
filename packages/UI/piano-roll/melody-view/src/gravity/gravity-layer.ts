@@ -1,4 +1,4 @@
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { CollectionLayer } from "./facade";
 import { Gravity } from "./gravity";
 import { IGravityLayer } from "../interface/gravity/gravity-layer";
@@ -8,7 +8,7 @@ export class GravityLayer
   implements IGravityLayer {
   constructor(
     mode: "chord_gravity" | "scale_gravity",
-    melodies: TimeAndAnalyzedMelody[],
+    melodies: SerializedTimeAndAnalyzedMelody[],
     layer: number,
   ) {
     const next = melodies.slice(1);

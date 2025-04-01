@@ -1,6 +1,6 @@
 export { SetColor } from "../../facade";
 export { CollectionHierarchy } from "../../facade";
-export { TimeAndAnalyzedMelody } from "../../facade";
+export { SerializedTimeAndAnalyzedMelody } from "../../facade";
 export { CollectionLayer } from "../../facade";
 export { play } from "../../facade";
 export { NowAt } from "../../facade";

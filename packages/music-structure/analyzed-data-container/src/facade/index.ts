@@ -1,5 +1,5 @@
-export { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-export { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+export { SerializedTimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
+export { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 export { type BeatInfo } from "@music-analyzer/beat-estimation";
 export { calcTempo } from "@music-analyzer/beat-estimation";
 export { bracket_height } from "@music-analyzer/view-parameters";

@@ -1,4 +1,4 @@
-export { TimeAndAnalyzedMelody } from "../../facade";
+export { SerializedTimeAndAnalyzedMelody } from "../../facade";
 export { Triad } from "../../facade";
 export { MVVM_Model } from "../../facade";
 export { MVVM_View_Impl } from "../../facade";

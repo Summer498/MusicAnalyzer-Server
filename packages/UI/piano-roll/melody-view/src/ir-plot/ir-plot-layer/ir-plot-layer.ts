@@ -1,4 +1,4 @@
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { SetColor } from "./facade";
 import { IRPlotLayerView } from "./ir-plot-layer-view";
 import { IRPlot } from "../ir-plot/ir-plot";
@@ -10,7 +10,7 @@ export class IRPlotLayer
   readonly view: IRPlotLayerView
   readonly children: [IRPlot];
   constructor(
-    melody_series: TimeAndAnalyzedMelody[],
+    melody_series: SerializedTimeAndAnalyzedMelody[],
     readonly layer: number,
     max: number,
   ) {

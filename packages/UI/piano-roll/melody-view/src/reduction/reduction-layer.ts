@@ -1,4 +1,4 @@
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { CollectionLayer } from "./facade";
 import { SetColor } from "./facade";
 import { Reduction } from "./reduction";
@@ -8,7 +8,7 @@ export class ReductionLayer
   extends CollectionLayer<Reduction>
   implements IReductionLayer {
   constructor(
-    melody: TimeAndAnalyzedMelody[],
+    melody: SerializedTimeAndAnalyzedMelody[],
     layer: number,
   ) {
     super(layer, melody.map(e => new Reduction(e, layer)));

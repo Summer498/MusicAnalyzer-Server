@@ -1,4 +1,4 @@
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { MelodyAnalysis } from "./facade";
 import { Time } from "./facade";
 
@@ -7,7 +7,7 @@ export class DMelodyModel {
   readonly head: Time;
   readonly note: number;
   readonly melody_analysis: MelodyAnalysis;
-  constructor(e: TimeAndAnalyzedMelody) {
+  constructor(e: SerializedTimeAndAnalyzedMelody) {
     this.time = e.time
     this.head = e.head;
     this.note = e.note;

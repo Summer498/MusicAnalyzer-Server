@@ -1,11 +1,11 @@
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { NowAt } from "./facade";
 
 class CacheCore {
-  #cache: TimeAndAnalyzedMelody[];
+  #cache: SerializedTimeAndAnalyzedMelody[];
   #index: number;
   constructor(
-    readonly melody_series: TimeAndAnalyzedMelody[],
+    readonly melody_series: SerializedTimeAndAnalyzedMelody[],
   ) {
     this.#cache = [];
     this.#index = 0;
@@ -46,7 +46,7 @@ class CacheCore {
 export class MelodiesCache {
   #core: CacheCore;
   constructor(
-    melody_series: TimeAndAnalyzedMelody[],
+    melody_series: SerializedTimeAndAnalyzedMelody[],
   ) {
     this.#core = new CacheCore(melody_series);
   }

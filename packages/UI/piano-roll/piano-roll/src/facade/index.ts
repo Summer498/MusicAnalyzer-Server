@@ -1,6 +1,6 @@
 export { type BeatInfo } from "@music-analyzer/beat-estimation";
-export { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-export { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+export { SerializedTimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
+export { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 export { BeatElements } from "@music-analyzer/beat-view";
 export { ChordElements } from "@music-analyzer/chord-view";
 export { MelodyElements } from "@music-analyzer/melody-view";

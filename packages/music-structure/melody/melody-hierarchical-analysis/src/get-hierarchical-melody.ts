@@ -1,24 +1,24 @@
 import { analyzeMelody } from "./facade";
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { TimeAndMelody } from "./facade";
 import { ReductionElement } from "./facade";
 import { TimeSpan } from "./facade";
-import { TimeAndRomanAnalysis } from "./facade";
+import { SerializedTimeAndRomanAnalysis } from "./facade";
 import { MusicXML } from "./facade";
 import { getTimeAndMelody } from "./get-time-and-melody";
 
-class TimeAndAnalyzedMelodyAndIR
-  extends TimeAndAnalyzedMelody {
+class SerializedTimeAndAnalyzedMelodyAndIR
+  extends SerializedTimeAndAnalyzedMelody {
   constructor(
-    e: TimeAndAnalyzedMelody,
+    e: SerializedTimeAndAnalyzedMelody,
     readonly IR: string,
   ) {
     super(e.time, e.head, e.note, e.melody_analysis);
   }
 }
 
-const appendIR = (e: TimeAndAnalyzedMelody) => {
-  return new TimeAndAnalyzedMelodyAndIR(
+const appendIR = (e: SerializedTimeAndAnalyzedMelody) => {
+  return new SerializedTimeAndAnalyzedMelodyAndIR(
     e,
     e.melody_analysis.implication_realization.symbol,
   );
@@ -37,7 +37,7 @@ const analyzeAndScaleMelody = (measure: number, matrix: TimeSpan[][], musicxml: 
   );
 };
 
-const getMapOntToHierarchicalMelodyFromLayer = (measure: number, reduction: ReductionElement, matrix: TimeSpan[][], musicxml: MusicXML, roman: TimeAndRomanAnalysis[]) => (_: unknown, layer: number) => {
+const getMapOntToHierarchicalMelodyFromLayer = (measure: number, reduction: ReductionElement, matrix: TimeSpan[][], musicxml: MusicXML, roman: SerializedTimeAndRomanAnalysis[]) => (_: unknown, layer: number) => {
   const melodies = reduction.getArrayOfLayer(layer)
     .map(analyzeAndScaleMelody(measure, matrix, musicxml));
   return analyzeMelody(melodies, roman)
@@ -49,7 +49,7 @@ export const getHierarchicalMelody = (
   reduction: ReductionElement,
   matrix: TimeSpan[][],
   musicxml: MusicXML,
-  roman: TimeAndRomanAnalysis[]
+  roman: SerializedTimeAndRomanAnalysis[]
 ) => {
   return [...Array(reduction.getDepthCount())]
     .map(getMapOntToHierarchicalMelodyFromLayer(measure, reduction, matrix, musicxml, roman));

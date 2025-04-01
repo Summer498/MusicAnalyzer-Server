@@ -1,5 +1,5 @@
 import { Triad } from "./facade";
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { Time } from "./facade";
 import { MVVM_Model } from "./facade";
 
@@ -9,7 +9,7 @@ export class ReductionModel
   readonly head: Time;
   readonly archetype: Triad;
   constructor(
-    e: TimeAndAnalyzedMelody,
+    e: SerializedTimeAndAnalyzedMelody,
     readonly layer: number,
   ) {
     super();

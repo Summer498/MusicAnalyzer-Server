@@ -4,7 +4,7 @@ export { reservation_range } from "@music-analyzer/view-parameters";
 export { bracket_height } from "@music-analyzer/view-parameters";
 export { hsv2rgb } from "@music-analyzer/color";;
 export { rgbToString } from "@music-analyzer/color";;
-export { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+export { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 export { AudioReflectableRegistry } from "@music-analyzer/view";
 export { WindowReflectableRegistry } from "@music-analyzer/view";
 export { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";

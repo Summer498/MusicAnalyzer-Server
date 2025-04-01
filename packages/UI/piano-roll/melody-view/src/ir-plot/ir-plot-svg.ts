@@ -1,4 +1,4 @@
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { IRPlotHierarchy } from "./ir-plot-hierarchy";
 import { RequiredByIRPlotSVG } from "../requirement/ir-plot/required-by-ir-plot-svg";
 import { I_IRPlotSVG } from "../interface/ir-plot/ir-plot-svg";
@@ -8,7 +8,7 @@ export class IRPlotSVG
   readonly svg: SVGSVGElement;
   readonly children: [IRPlotHierarchy];
   constructor(
-    hierarchical_melody: TimeAndAnalyzedMelody[][],
+    hierarchical_melody: SerializedTimeAndAnalyzedMelody[][],
     controllers: RequiredByIRPlotSVG,
   ) {
     const g = new IRPlotHierarchy(hierarchical_melody, controllers)

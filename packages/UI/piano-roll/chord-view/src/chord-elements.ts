@@ -1,4 +1,4 @@
-import { TimeAndRomanAnalysis } from "./facade";
+import { SerializedTimeAndRomanAnalysis } from "./facade";
 import { RequiredByChordElements } from "./r-chord-elements";
 import { RequiredByChordPartModel } from "./r-model";
 import { ChordKeySeries } from "./series";
@@ -13,7 +13,7 @@ export class ChordElements {
   readonly chord_notes: ChordNotesSeries;
   readonly chord_romans: ChordRomanSeries;
   constructor(
-    romans: TimeAndRomanAnalysis[],
+    romans: SerializedTimeAndRomanAnalysis[],
     controllers: RequiredByChordElements
   ) {
     const data = romans.map(e => new RequiredByChordPartModel(e))

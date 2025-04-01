@@ -1,4 +1,4 @@
-export { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
+export { SerializedTimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 export { getChord } from "@music-analyzer/tonal-objects";
 export { getScale } from "@music-analyzer/tonal-objects";
 export { noteFromMidi } from "@music-analyzer/tonal-objects";

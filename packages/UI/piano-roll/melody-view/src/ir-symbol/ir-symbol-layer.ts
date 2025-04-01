@@ -1,4 +1,4 @@
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { CollectionLayer } from "./facade";
 import { SetColor } from "./facade";
 import { IRSymbol } from "./ir-symbol";
@@ -8,7 +8,7 @@ export class IRSymbolLayer
   extends CollectionLayer<IRSymbol>
   implements I_IRSymbolLayer {
   constructor(
-    melodies: TimeAndAnalyzedMelody[],
+    melodies: SerializedTimeAndAnalyzedMelody[],
     layer: number,
   ) {
     super(layer, melodies.map(e => new IRSymbol(e, layer)));

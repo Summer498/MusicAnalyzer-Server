@@ -1,9 +1,9 @@
 export { analyzeMelody } from "@music-analyzer/melody-analyze";
-export { TimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+export { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 export { TimeAndMelody } from "@music-analyzer/melody-analyze";
 export { ReductionElement } from "@music-analyzer/gttm";
 export { TimeSpan } from "@music-analyzer/gttm";
-export { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
+export { SerializedTimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 export { MusicXML } from "@music-analyzer/musicxml";
 export { Pitch } from "@music-analyzer/musicxml";
 export { Time } from "@music-analyzer/time-and";

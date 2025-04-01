@@ -1,4 +1,4 @@
-export { TimeAndAnalyzedMelody } from "../../facade";
+export { SerializedTimeAndAnalyzedMelody } from "../../facade";
 export { MelodyAnalysis } from "../../facade";
 export { Time } from "../../facade";
 export { hsv2rgb } from "../../facade";;

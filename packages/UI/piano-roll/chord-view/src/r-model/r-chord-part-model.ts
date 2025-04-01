@@ -1,4 +1,4 @@
-import { TimeAndRomanAnalysis } from "./facade";
+import { SerializedTimeAndRomanAnalysis } from "./facade";
 import { Time } from "./facade";
 import { Chord } from"./facade"
 import { Scale } from"./facade"
@@ -10,7 +10,7 @@ export class RequiredByChordPartModel {
   readonly chord: Chord
   readonly scale: Scale
   readonly roman: string
-  constructor(e:TimeAndRomanAnalysis){
+  constructor(e:SerializedTimeAndRomanAnalysis){
     this.time = e.time
     this.chord = getChord(e.chord)
     this.scale = getScale(e.scale)

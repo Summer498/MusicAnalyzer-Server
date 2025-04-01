@@ -1,24 +1,24 @@
 import { Time } from "./facade";
 import { MelodyAnalysis } from "./melody-analysis";
 
-type TimeAndAnalyzedMelody_Args = [Time, Time, number, MelodyAnalysis]
-const getArgsOfTimeAndAnalyzedMelody = (
+type SerializedTimeAndAnalyzedMelody_Args = [Time, Time, number, MelodyAnalysis]
+const getArgsOfSerializedTimeAndAnalyzedMelody = (
   args
-    : TimeAndAnalyzedMelody_Args
-    | [TimeAndAnalyzedMelody]
+    : SerializedTimeAndAnalyzedMelody_Args
+    | [SerializedTimeAndAnalyzedMelody]
 ) => {
   if (args.length === 1) {
     const [e] = args;
-    return [new Time(e.time), new Time(e.head), e.note, new MelodyAnalysis(e.melody_analysis)] as TimeAndAnalyzedMelody_Args
+    return [new Time(e.time), new Time(e.head), e.note, new MelodyAnalysis(e.melody_analysis)] as SerializedTimeAndAnalyzedMelody_Args
   }
   return args
 }
-export class TimeAndAnalyzedMelody {
+export class SerializedTimeAndAnalyzedMelody {
   readonly time: Time
   readonly head: Time
   readonly note: number
   readonly melody_analysis: MelodyAnalysis;
-  constructor(e: TimeAndAnalyzedMelody);
+  constructor(e: SerializedTimeAndAnalyzedMelody);
   constructor(
     time: Time,
     head: Time,
@@ -27,10 +27,10 @@ export class TimeAndAnalyzedMelody {
   );
   constructor(
     ...args
-      : TimeAndAnalyzedMelody_Args
-      | [TimeAndAnalyzedMelody]
+      : SerializedTimeAndAnalyzedMelody_Args
+      | [SerializedTimeAndAnalyzedMelody]
   ) {
-    const [time, head, note, melody_analysis] = getArgsOfTimeAndAnalyzedMelody(args);
+    const [time, head, note, melody_analysis] = getArgsOfSerializedTimeAndAnalyzedMelody(args);
     this.time = time
     this.head = head
     this.note = note

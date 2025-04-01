@@ -1,5 +1,5 @@
 export { Triad } from "../../facade";
-export { TimeAndAnalyzedMelody } from "../../facade";
+export { SerializedTimeAndAnalyzedMelody } from "../../facade";
 export { Time } from "../../facade";
 export { MVVM_Model } from "../../facade";
 export { size } from "../../facade";

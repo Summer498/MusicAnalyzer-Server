@@ -4,7 +4,7 @@ import { IProlongationalReduction } from "./facade";
 import { ITimeSpanReduction } from "./facade";
 import { MetricalStructure } from "./facade";
 import { MelodyAnalysisData } from "./facade";
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { MusicXML } from "./facade";
 import { getJSONfromXML } from "./DataFetcher";
 import { DataPromises } from "./data-promises";
@@ -50,7 +50,7 @@ export const justLoad = (
         .then(res => MelodyAnalysisData.instantiate(res))
       )
       .then(res => res?.body)
-      .then(res => res?.map(e => ({ ...e, head: e.time })) as TimeAndAnalyzedMelody[])
+      .then(res => res?.map(e => ({ ...e, head: e.time })) as SerializedTimeAndAnalyzedMelody[])
       .catch(e => { console.error(e); return []; }),
     getJSONfromXML<MusicXML>(gttm_urls.msc),
     getJSONfromXML<GroupingStructure>(gttm_urls.grp),

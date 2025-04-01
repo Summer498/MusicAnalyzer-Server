@@ -1,4 +1,4 @@
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { CollectionHierarchy } from "./facade";
 import { SetColor } from "./facade";
 import { IRSymbolLayer } from "./ir-symbol-layer";
@@ -9,7 +9,7 @@ export class IRSymbolHierarchy
   extends CollectionHierarchy<IRSymbolLayer>
   implements I_IRSymbolHierarchy {
   constructor(
-    hierarchical_melodies: TimeAndAnalyzedMelody[][],
+    hierarchical_melodies: SerializedTimeAndAnalyzedMelody[][],
     controllers: RequiredByIRSymbolHierarchy
   ) {
     super("implication-realization archetype", hierarchical_melodies.map((e, l) => new IRSymbolLayer(e, l)));

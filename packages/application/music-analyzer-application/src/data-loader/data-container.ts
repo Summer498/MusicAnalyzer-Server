@@ -2,13 +2,13 @@ import { GroupingStructure } from "./facade";
 import { MetricalStructure } from "./facade";
 import { IProlongationalReduction } from "./facade";
 import { ITimeSpanReduction } from "./facade";
-import { TimeAndRomanAnalysis } from "./facade";
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndRomanAnalysis } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { MusicXML } from "./facade";
 
 export type DataContainer = [
-  TimeAndRomanAnalysis[],
-  TimeAndAnalyzedMelody[],
+  SerializedTimeAndRomanAnalysis[],
+  SerializedTimeAndAnalyzedMelody[],
   MusicXML | undefined,
   GroupingStructure | undefined,
   MetricalStructure | undefined,

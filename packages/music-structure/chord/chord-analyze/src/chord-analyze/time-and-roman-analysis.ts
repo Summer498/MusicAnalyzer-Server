@@ -1,24 +1,24 @@
 import { Time } from "./facade";
 
-type TimeAndRomanAnalysis_Arg = [Time, string, string, string];
-const getArgsOfTimeAndRomanAnalysis = (
+type SerializedTimeAndRomanAnalysis_Arg = [Time, string, string, string];
+const getArgsOfSerializedTimeAndRomanAnalysis = (
   args
-    : TimeAndRomanAnalysis_Arg
-    | [TimeAndRomanAnalysis]
+    : SerializedTimeAndRomanAnalysis_Arg
+    | [SerializedTimeAndRomanAnalysis]
 ) => {
   if (args.length === 1) {
     const [e] = args;
-    return [e.time, e.chord, e.scale, e.roman] as TimeAndRomanAnalysis_Arg
+    return [e.time, e.chord, e.scale, e.roman] as SerializedTimeAndRomanAnalysis_Arg
   }
   return args;
 }
 
-export class TimeAndRomanAnalysis {
+export class SerializedTimeAndRomanAnalysis {
   readonly time: Time;
   readonly chord: string
   readonly scale: string
   readonly roman: string
-  constructor(e: TimeAndRomanAnalysis);
+  constructor(e: SerializedTimeAndRomanAnalysis);
   constructor(
     time: Time,
     chord: string,
@@ -27,10 +27,10 @@ export class TimeAndRomanAnalysis {
   );
   constructor(
     ...args
-      : TimeAndRomanAnalysis_Arg
-      | [TimeAndRomanAnalysis]
+      : SerializedTimeAndRomanAnalysis_Arg
+      | [SerializedTimeAndRomanAnalysis]
   ) {
-    const [time, chord, scale, roman] = getArgsOfTimeAndRomanAnalysis(args);
+    const [time, chord, scale, roman] = getArgsOfSerializedTimeAndRomanAnalysis(args);
     this.time = new Time(time);
     this.chord = chord;
     this.scale = scale;
@@ -42,14 +42,14 @@ const v = "25.03.10.08.51";
 export class RomanAnalysisData {
   readonly version = v;
   constructor(
-    readonly body: TimeAndRomanAnalysis[]
+    readonly body: SerializedTimeAndRomanAnalysis[]
   ) { }
   static checkVersion(e: RomanAnalysisData) {
     return e.version === v;
   }
   // required by the class with the constructor which has 1 argument
   static instantiate(e: RomanAnalysisData) {
-    return new RomanAnalysisData(e.body.map(e => new TimeAndRomanAnalysis(e)))
+    return new RomanAnalysisData(e.body.map(e => new SerializedTimeAndRomanAnalysis(e)))
   }
 }
 

@@ -1,5 +1,5 @@
 import { Gravity } from "./facade";
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { Time } from "./facade";
 import { MVVM_Model } from "./facade";
 
@@ -10,9 +10,9 @@ export class GravityModel
   readonly destination?: number;
   readonly layer: number;
   constructor(
-    e: TimeAndAnalyzedMelody,
+    e: SerializedTimeAndAnalyzedMelody,
     layer: number,
-    readonly next: TimeAndAnalyzedMelody,
+    readonly next: SerializedTimeAndAnalyzedMelody,
     readonly gravity: Gravity,
   ) {
     super();

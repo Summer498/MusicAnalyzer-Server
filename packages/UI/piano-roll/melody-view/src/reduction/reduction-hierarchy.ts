@@ -1,4 +1,4 @@
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { CollectionHierarchy } from "./facade";
 import { SetColor } from "./facade";
 import { ReductionLayer } from "./reduction-layer";
@@ -9,7 +9,7 @@ export class ReductionHierarchy
   extends CollectionHierarchy<ReductionLayer>
   implements IReductionHierarchy {
   constructor(
-    hierarchical_melodies: TimeAndAnalyzedMelody[][],
+    hierarchical_melodies: SerializedTimeAndAnalyzedMelody[][],
     controllers: RequiredByReductionHierarchy
   ) {
     super("time-span-reduction", hierarchical_melodies.map((e, l) => new ReductionLayer(e, l)));

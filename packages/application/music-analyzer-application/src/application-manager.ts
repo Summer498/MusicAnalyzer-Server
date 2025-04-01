@@ -2,8 +2,8 @@ import { AudioReflectableRegistry } from "./facade";
 import { WindowReflectableRegistry } from "./facade";
 import { MusicStructureElements } from "./facade";
 import { BeatInfo } from "./facade";
-import { TimeAndRomanAnalysis } from "./facade";
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndRomanAnalysis } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { Controllers } from "./controllers";
 
 export class ApplicationManager {
@@ -15,10 +15,10 @@ export class ApplicationManager {
   readonly window_size_mediator: WindowReflectableRegistry
   constructor(
     beat_info: BeatInfo,
-    romans: TimeAndRomanAnalysis[],
-    hierarchical_melody: TimeAndAnalyzedMelody[][],
-    melodies: TimeAndAnalyzedMelody[],
-    d_melodies: TimeAndAnalyzedMelody[],
+    romans: SerializedTimeAndRomanAnalysis[],
+    hierarchical_melody: SerializedTimeAndAnalyzedMelody[][],
+    melodies: SerializedTimeAndAnalyzedMelody[],
+    d_melodies: SerializedTimeAndAnalyzedMelody[],
   ) {
     if (hierarchical_melody.length <= 0) {
       throw new Error(`hierarchical melody length must be more than 0 but it is ${hierarchical_melody.length}`);

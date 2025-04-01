@@ -32,4 +32,4 @@ export { hsv2rgb } from "@music-analyzer/color";
 export { rgbToString } from "@music-analyzer/color";
 export { thirdToColor } from "@music-analyzer/color";
 export { fifthToColor } from "@music-analyzer/color";
-export { TimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
+export { SerializedTimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";

@@ -1,4 +1,4 @@
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { AudioReflectableRegistry } from "./facade";
 import { WindowReflectableRegistry } from "./facade";
 import { DMelodySeries } from "./d-melody";
@@ -20,8 +20,8 @@ export class MelodyElements {
   readonly scale_gravities: GravityHierarchy;
   readonly time_span_tree: ReductionHierarchy;
   constructor(
-    hierarchical_melody: TimeAndAnalyzedMelody[][],
-    d_melodies: TimeAndAnalyzedMelody[],
+    hierarchical_melody: SerializedTimeAndAnalyzedMelody[][],
+    d_melodies: SerializedTimeAndAnalyzedMelody[],
     controllers: RequiredByMelodyElements & { audio: AudioReflectableRegistry, window: WindowReflectableRegistry },
   ) {
     const { chord_checkbox, scale_checkbox } = controllers.gravity;

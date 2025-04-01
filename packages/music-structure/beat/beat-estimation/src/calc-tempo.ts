@@ -6,11 +6,11 @@ import { getZeros } from "./facade";
 import { getRange } from "./facade";
 import { mod } from "./facade";
 import { totalSum } from "./facade";
-import { TimeAndAnalyzedMelody } from "./facade";
-import { TimeAndRomanAnalysis } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndRomanAnalysis } from "./facade";
 import { BeatInfo } from "./beat-info";
 
-export const calcTempo = (melodies: TimeAndAnalyzedMelody[], romans: TimeAndRomanAnalysis[]) => {
+export const calcTempo = (melodies: SerializedTimeAndAnalyzedMelody[], romans: SerializedTimeAndRomanAnalysis[]) => {
   const phase = 0;
   const melody_bpm: number[] = [];
   const bpm_range = 90;

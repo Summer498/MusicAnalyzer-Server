@@ -1,4 +1,4 @@
-export { TimeAndAnalyzedMelody } from "../../facade";
+export { SerializedTimeAndAnalyzedMelody } from "../../facade";
 export { ReflectableTimeAndMVCControllerCollection } from "../../facade";
 export { MelodyAnalysis } from "../../facade";
 export { Time } from "../../facade";

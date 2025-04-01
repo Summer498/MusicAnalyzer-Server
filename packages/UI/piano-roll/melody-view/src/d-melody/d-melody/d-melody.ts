@@ -1,5 +1,5 @@
 import { MVVM_ViewModel_Impl } from "./facade";
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { BlackKeyPrm } from "./facade";
 import { NoteSize } from "./facade";
 import { PianoRollBegin } from "./facade";
@@ -17,7 +17,7 @@ export class DMelody
   extends MVVM_ViewModel_Impl<DMelodyModel, DMelodyView>
   implements TimeRangeSubscriber {
   constructor(
-    e: TimeAndAnalyzedMelody,
+    e: SerializedTimeAndAnalyzedMelody,
   ) {
     const model = new DMelodyModel(e);
     super(model, new DMelodyView(model));

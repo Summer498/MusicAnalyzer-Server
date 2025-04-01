@@ -1,4 +1,4 @@
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { ReflectableTimeAndMVCControllerCollection } from "./facade";
 import { DMelody } from "./d-melody";
 import { RequiredByDMelodySeries } from "../requirement/d-melody/required-by-d-melody-series";
@@ -8,7 +8,7 @@ export class DMelodySeries
   extends ReflectableTimeAndMVCControllerCollection<DMelody>
   implements IDMelodySeries {
   constructor(
-    detected_melodies: TimeAndAnalyzedMelody[],
+    detected_melodies: SerializedTimeAndAnalyzedMelody[],
     controllers: RequiredByDMelodySeries,
   ) {
     super("detected-melody", detected_melodies.map(e => new DMelody(e)));

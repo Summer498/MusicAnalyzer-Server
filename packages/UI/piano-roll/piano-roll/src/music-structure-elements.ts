@@ -1,6 +1,6 @@
 import { BeatInfo } from "./facade";
-import { TimeAndRomanAnalysis } from "./facade";
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndRomanAnalysis } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { BeatElements } from "./facade";
 import { ChordElements } from "./facade";
 import { MelodyElements } from "./facade";
@@ -14,10 +14,10 @@ export class MusicStructureElements {
   readonly melody: MelodyElements
   constructor(
     beat_info: BeatInfo,
-    romans: TimeAndRomanAnalysis[],
-    hierarchical_melody: TimeAndAnalyzedMelody[][],
-    melodies: TimeAndAnalyzedMelody[],
-    d_melodies: TimeAndAnalyzedMelody[],
+    romans: SerializedTimeAndRomanAnalysis[],
+    hierarchical_melody: SerializedTimeAndAnalyzedMelody[][],
+    melodies: SerializedTimeAndAnalyzedMelody[],
+    d_melodies: SerializedTimeAndAnalyzedMelody[],
     controllers: RequiredByBeatElements & RequiredByChordElements & RequiredByMelodyElements
   ) {
     this.beat = new BeatElements(beat_info, melodies, controllers)

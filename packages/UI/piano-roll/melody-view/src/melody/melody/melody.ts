@@ -1,4 +1,4 @@
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { BlackKeyPrm } from "./facade";
 import { NoteSize } from "./facade";
 import { PianoRollBegin } from "./facade";
@@ -18,7 +18,7 @@ export class Melody
   implements IMelody {
   #beeper: MelodyBeep
   constructor(
-    melody: TimeAndAnalyzedMelody,
+    melody: SerializedTimeAndAnalyzedMelody,
   ) {
     const model = new MelodyModel(melody);
     super(model, new MelodyView(model));

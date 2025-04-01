@@ -1,12 +1,12 @@
-import { TimeAndRomanAnalysis } from "./facade";
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndRomanAnalysis } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { GTTMData } from "./facade";
 
 export class AnalyzedMusicData {
   constructor(
-    readonly roman: TimeAndRomanAnalysis[],
-    readonly melody: TimeAndAnalyzedMelody[],
-    readonly hierarchical_melody: TimeAndAnalyzedMelody[][],
+    readonly roman: SerializedTimeAndRomanAnalysis[],
+    readonly melody: SerializedTimeAndAnalyzedMelody[],
+    readonly hierarchical_melody: SerializedTimeAndAnalyzedMelody[][],
     readonly GTTM: GTTMData,
   ) { }
 }

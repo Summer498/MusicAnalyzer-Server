@@ -1,4 +1,4 @@
-import { TimeAndRomanAnalysis } from "./facade";
+import { SerializedTimeAndRomanAnalysis } from "./facade";
 import { getChord } from "./facade";
 import { getScale } from "./facade";
 import { noteFromMidi } from "./facade";
@@ -6,7 +6,7 @@ import { Null_ad } from "./facade";
 import { Dyad } from "./facade";
 import { Monad } from "./facade";
 import { Triad } from "./facade";
-import { TimeAndAnalyzedMelody } from "./time-and-analyzed-melody";
+import { SerializedTimeAndAnalyzedMelody } from "./time-and-analyzed-melody";
 import { MelodyAnalysis } from "./melody-analysis";
 import { TimeAndMelody } from "./time-and-melody";
 import { registerGravity } from "./register-gravity";
@@ -28,7 +28,7 @@ const getSome_ad = (prev?: number, curr?: number, next?: number) => {
 
 export const analyzeMelody = (
   melodies: TimeAndMelody[],
-  romans: TimeAndRomanAnalysis[],
+  romans: SerializedTimeAndRomanAnalysis[],
 ) => {
   //  const prev_prev = [undefined, undefined, ...melodies];
   const prev = [undefined, ...melodies];
@@ -48,7 +48,7 @@ export const analyzeMelody = (
       getSome_ad(prev[i]?.note, curr[i]?.note, next[i]?.note)
     );
 
-    return new TimeAndAnalyzedMelody(
+    return new SerializedTimeAndAnalyzedMelody(
       time_and_melody.time,
       time_and_melody.head,
       time_and_melody.note,

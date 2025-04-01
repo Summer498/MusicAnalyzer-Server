@@ -1,6 +1,6 @@
 import { Triad } from "./facade";
 import { MelodyAnalysis } from "./facade";
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { Time } from "./facade";
 import { MVVM_Model } from "./facade";
 
@@ -11,7 +11,7 @@ export class MelodyModel
   readonly head: Time;
   readonly melody_analysis: MelodyAnalysis;
   readonly archetype: Triad;
-  constructor(e: TimeAndAnalyzedMelody) {
+  constructor(e: SerializedTimeAndAnalyzedMelody) {
     super();
     this.time = e.time
     this.note = e.note;

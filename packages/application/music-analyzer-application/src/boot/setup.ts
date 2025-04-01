@@ -1,5 +1,5 @@
 import { AnalyzedDataContainer } from "./facade";
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { getMusicAnalyzerWindow } from "./facade";
 import { AnalyzedMusicData } from "./facade";
 import { ApplicationManager } from "./facade";
@@ -10,7 +10,7 @@ import { EventLoop } from "./facade";
 import { setupUI } from "./facade";
 
 const setSongLength = (
-  hierarchical_melody: TimeAndAnalyzedMelody[][],
+  hierarchical_melody: SerializedTimeAndAnalyzedMelody[][],
 ) => {
   const last = <T>(arr: T[]) => arr[arr.length - 1];
   const melodies = last(hierarchical_melody);

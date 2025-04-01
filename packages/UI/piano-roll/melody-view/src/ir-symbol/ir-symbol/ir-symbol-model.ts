@@ -1,5 +1,5 @@
 import { Triad } from "./facade";
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { Time } from "./facade";
 import { MVVM_Model } from "./facade";
 
@@ -9,7 +9,7 @@ export class IRSymbolModel
   readonly note: number;
   readonly archetype: Triad;
   readonly layer: number;
-  constructor(e: TimeAndAnalyzedMelody, layer: number) {
+  constructor(e: SerializedTimeAndAnalyzedMelody, layer: number) {
     super();
     this.time = e.time
     this.note = e.note;

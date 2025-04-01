@@ -1,4 +1,4 @@
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { CollectionHierarchy } from "./facade";
 import { GravityLayer } from "./gravity-layer";
 import { RequiredByGravityHierarchy } from "../requirement/gravity/required-by-gravity-hierarchy";
@@ -9,7 +9,7 @@ export class GravityHierarchy
   implements IGravityHierarchy {
   constructor(
     mode: "chord_gravity" | "scale_gravity",
-    hierarchical_melodies: TimeAndAnalyzedMelody[][],
+    hierarchical_melodies: SerializedTimeAndAnalyzedMelody[][],
     controllers: RequiredByGravityHierarchy,
   ) {
     super(mode, hierarchical_melodies.map((e, l) => new GravityLayer(mode, e, l)));

@@ -2,7 +2,7 @@ import { BlackKeyPrm } from "./facade";
 import { NoteSize } from "./facade";
 import { PianoRollBegin } from "./facade";
 import { MVVM_ViewModel_Impl } from "./facade";
-import { TimeAndAnalyzedMelody } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "./facade";
 import { TimeRangeSubscriber } from "./facade";
 import { SetColor } from "./facade";
 import { IRSymbolModel } from "./ir-symbol-model";
@@ -17,7 +17,7 @@ export class IRSymbol
   implements TimeRangeSubscriber {
   #y: number;
   constructor(
-    melody: TimeAndAnalyzedMelody,
+    melody: SerializedTimeAndAnalyzedMelody,
     layer: number,
   ) {
     const model = new IRSymbolModel(melody, layer);

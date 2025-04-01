@@ -3,7 +3,7 @@ import { remove_item } from "./remove-item";
 import { select_suitable_progression } from "./select-suitable-progression";
 import { splitArray } from "./split-array";
 import { TimeAndChordSymbol } from "./time-and-chord";
-import { TimeAndRomanAnalysis } from "./time-and-roman-analysis";
+import { SerializedTimeAndRomanAnalysis } from "./time-and-roman-analysis";
 
 // Expected Input: "Am7 FM7 G7 CM7"
 export const calcChordProgression = (chords: TimeAndChordSymbol[]) => {
@@ -15,7 +15,7 @@ export const calcChordProgression = (chords: TimeAndChordSymbol[]) => {
     const progression = select_suitable_progression(
       new ChordProgression(chords.map(chord => chord.chord)).getMinimumPath(),
     );
-    return chords.map((_, i) => new TimeAndRomanAnalysis(
+    return chords.map((_, i) => new SerializedTimeAndRomanAnalysis(
       time[i],
       progression[i].chord.name,
       progression[i].scale.name,
