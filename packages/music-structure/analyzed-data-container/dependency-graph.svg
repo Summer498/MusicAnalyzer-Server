@@ -36,60 +36,55 @@
 </g>
 <g id="clust6" class="cluster">
 <title>cluster_packages/music&#45;structure/analyzed&#45;data&#45;container</title>
-<path fill="#ffffff" stroke="black" stroke-width="2" d="M36,-207C36,-207 236,-207 236,-207 242,-207 248,-213 248,-219 248,-219 248,-341 248,-341 248,-347 242,-353 236,-353 236,-353 36,-353 36,-353 30,-353 24,-347 24,-341 24,-341 24,-219 24,-219 24,-213 30,-207 36,-207"/>
-<text text-anchor="middle" x="136" y="-341.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">analyzed&#45;data&#45;container</text>
+<path fill="#ffffff" stroke="black" stroke-width="2" d="M36,-224C36,-224 236,-224 236,-224 242,-224 248,-230 248,-236 248,-236 248,-298 248,-298 248,-304 242,-310 236,-310 236,-310 36,-310 36,-310 30,-310 24,-304 24,-298 24,-298 24,-236 24,-236 24,-230 30,-224 36,-224"/>
+<text text-anchor="middle" x="136" y="-298.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">analyzed&#45;data&#45;container</text>
 </g>
 <g id="clust7" class="cluster">
 <title>cluster_packages/music&#45;structure/analyzed&#45;data&#45;container/src</title>
-<path fill="#ffffff" stroke="black" stroke-width="2" d="M106,-215C106,-215 228,-215 228,-215 234,-215 240,-221 240,-227 240,-227 240,-315 240,-315 240,-321 234,-327 228,-327 228,-327 106,-327 106,-327 100,-327 94,-321 94,-315 94,-315 94,-227 94,-227 94,-221 100,-215 106,-215"/>
-<text text-anchor="middle" x="167" y="-315.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">src</text>
+<path fill="#ffffff" stroke="black" stroke-width="2" d="M106,-232C106,-232 228,-232 228,-232 234,-232 240,-238 240,-244 240,-244 240,-272 240,-272 240,-278 234,-284 228,-284 228,-284 106,-284 106,-284 100,-284 94,-278 94,-272 94,-272 94,-244 94,-244 94,-238 100,-232 106,-232"/>
+<text text-anchor="middle" x="167" y="-272.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">src</text>
 </g>
 <g id="clust8" class="cluster">
-<title>cluster_packages/music&#45;structure/analyzed&#45;data&#45;container/src/facade</title>
-<path fill="#ffffff" stroke="black" stroke-width="2" d="M144,-249C144,-249 190,-249 190,-249 196,-249 202,-255 202,-261 202,-261 202,-289 202,-289 202,-295 196,-301 190,-301 190,-301 144,-301 144,-301 138,-301 132,-295 132,-289 132,-289 132,-261 132,-261 132,-255 138,-249 144,-249"/>
-<text text-anchor="middle" x="167" y="-289.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">facade</text>
-</g>
-<g id="clust9" class="cluster">
 <title>cluster_packages/music&#45;structure/beat</title>
 <path fill="#ffffff" stroke="black" stroke-width="2" d="M314,-24C314,-24 404,-24 404,-24 410,-24 416,-30 416,-36 416,-36 416,-132 416,-132 416,-138 410,-144 404,-144 404,-144 314,-144 314,-144 308,-144 302,-138 302,-132 302,-132 302,-36 302,-36 302,-30 308,-24 314,-24"/>
 <text text-anchor="middle" x="359" y="-132.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">beat</text>
 </g>
-<g id="clust10" class="cluster">
+<g id="clust9" class="cluster">
 <title>cluster_packages/music&#45;structure/beat/beat&#45;estimation</title>
 <path fill="#ffffff" stroke="black" stroke-width="2" d="M322,-32C322,-32 396,-32 396,-32 402,-32 408,-38 408,-44 408,-44 408,-106 408,-106 408,-112 402,-118 396,-118 396,-118 322,-118 322,-118 316,-118 310,-112 310,-106 310,-106 310,-44 310,-44 310,-38 316,-32 322,-32"/>
 <text text-anchor="middle" x="359" y="-106.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">beat&#45;estimation</text>
 </g>
-<g id="clust11" class="cluster">
+<g id="clust10" class="cluster">
 <title>cluster_packages/music&#45;structure/beat/beat&#45;estimation/dist</title>
 <path fill="#ffffff" stroke="black" stroke-width="2" d="M336,-40C336,-40 382,-40 382,-40 388,-40 394,-46 394,-52 394,-52 394,-80 394,-80 394,-86 388,-92 382,-92 382,-92 336,-92 336,-92 330,-92 324,-86 324,-80 324,-80 324,-52 324,-52 324,-46 330,-40 336,-40"/>
 <text text-anchor="middle" x="359" y="-80.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">dist</text>
 </g>
-<g id="clust12" class="cluster">
+<g id="clust11" class="cluster">
 <title>cluster_packages/music&#45;structure/chord</title>
 <path fill="#ffffff" stroke="black" stroke-width="2" d="M319,-152C319,-152 400,-152 400,-152 406,-152 412,-158 412,-164 412,-164 412,-260 412,-260 412,-266 406,-272 400,-272 400,-272 319,-272 319,-272 313,-272 307,-266 307,-260 307,-260 307,-164 307,-164 307,-158 313,-152 319,-152"/>
 <text text-anchor="middle" x="359.5" y="-260.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">chord</text>
 </g>
-<g id="clust13" class="cluster">
+<g id="clust12" class="cluster">
 <title>cluster_packages/music&#45;structure/chord/chord&#45;analyze</title>
 <path fill="#ffffff" stroke="black" stroke-width="2" d="M327,-160C327,-160 392,-160 392,-160 398,-160 404,-166 404,-172 404,-172 404,-234 404,-234 404,-240 398,-246 392,-246 392,-246 327,-246 327,-246 321,-246 315,-240 315,-234 315,-234 315,-172 315,-172 315,-166 321,-160 327,-160"/>
 <text text-anchor="middle" x="359.5" y="-234.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">chord&#45;analyze</text>
 </g>
-<g id="clust14" class="cluster">
+<g id="clust13" class="cluster">
 <title>cluster_packages/music&#45;structure/chord/chord&#45;analyze/dist</title>
 <path fill="#ffffff" stroke="black" stroke-width="2" d="M336,-168C336,-168 382,-168 382,-168 388,-168 394,-174 394,-180 394,-180 394,-208 394,-208 394,-214 388,-220 382,-220 382,-220 336,-220 336,-220 330,-220 324,-214 324,-208 324,-208 324,-180 324,-180 324,-174 330,-168 336,-168"/>
 <text text-anchor="middle" x="359" y="-208.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">dist</text>
 </g>
-<g id="clust15" class="cluster">
+<g id="clust14" class="cluster">
 <title>cluster_packages/music&#45;structure/melody</title>
 <path fill="#ffffff" stroke="black" stroke-width="2" d="M315,-280C315,-280 404,-280 404,-280 410,-280 416,-286 416,-292 416,-292 416,-388 416,-388 416,-394 410,-400 404,-400 404,-400 315,-400 315,-400 309,-400 303,-394 303,-388 303,-388 303,-292 303,-292 303,-286 309,-280 315,-280"/>
 <text text-anchor="middle" x="359.5" y="-388.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">melody</text>
 </g>
-<g id="clust16" class="cluster">
+<g id="clust15" class="cluster">
 <title>cluster_packages/music&#45;structure/melody/melody&#45;analyze</title>
 <path fill="#ffffff" stroke="black" stroke-width="2" d="M323,-288C323,-288 396,-288 396,-288 402,-288 408,-294 408,-300 408,-300 408,-362 408,-362 408,-368 402,-374 396,-374 396,-374 323,-374 323,-374 317,-374 311,-368 311,-362 311,-362 311,-300 311,-300 311,-294 317,-288 323,-288"/>
 <text text-anchor="middle" x="359.5" y="-362.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">melody&#45;analyze</text>
 </g>
-<g id="clust17" class="cluster">
+<g id="clust16" class="cluster">
 <title>cluster_packages/music&#45;structure/melody/melody&#45;analyze/dist</title>
 <path fill="#ffffff" stroke="black" stroke-width="2" d="M336,-296C336,-296 382,-296 382,-296 388,-296 394,-302 394,-308 394,-308 394,-336 394,-336 394,-342 388,-348 382,-348 382,-348 336,-348 336,-348 330,-348 324,-342 324,-336 324,-336 324,-308 324,-308 324,-302 330,-296 336,-296"/>
 <text text-anchor="middle" x="359" y="-336.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">dist</text>
@@ -107,8 +102,8 @@
 <g id="node2" class="node">
 <title>packages/music&#45;structure/analyzed&#45;data&#45;container/index.ts</title>
 <g id="a_node2"><a xlink:href="packages/music-structure/analyzed-data-container/index.ts" xlink:title="index.ts">
-<path fill="#ddfeff" stroke="black" d="M80,-241C80,-241 38,-241 38,-241 35,-241 32,-238 32,-235 32,-235 32,-229 32,-229 32,-226 35,-223 38,-223 38,-223 80,-223 80,-223 83,-223 86,-226 86,-229 86,-229 86,-235 86,-235 86,-238 83,-241 80,-241"/>
-<text text-anchor="start" x="40.5" y="-229.8" font-family="Helvetica,sans-Serif" font-size="9.00">index.ts</text>
+<path fill="#ddfeff" stroke="black" d="M80,-258C80,-258 38,-258 38,-258 35,-258 32,-255 32,-252 32,-252 32,-246 32,-246 32,-243 35,-240 38,-240 38,-240 80,-240 80,-240 83,-240 86,-243 86,-246 86,-246 86,-252 86,-252 86,-255 83,-258 80,-258"/>
+<text text-anchor="start" x="40.5" y="-246.8" font-family="Helvetica,sans-Serif" font-size="9.00">index.ts</text>
 </a>
 </g>
 </g>
@@ -116,22 +111,22 @@
 <g id="node3" class="node">
 <title>packages/music&#45;structure/analyzed&#45;data&#45;container/src/analyze&#45;data&#45;container.ts</title>
 <g id="a_node3"><a xlink:href="packages/music-structure/analyzed-data-container/src/analyze-data-container.ts" xlink:title="analyze&#45;data&#45;container.ts">
-<path fill="#ddfeff" stroke="black" d="M226,-241C226,-241 108,-241 108,-241 105,-241 102,-238 102,-235 102,-235 102,-229 102,-229 102,-226 105,-223 108,-223 108,-223 226,-223 226,-223 229,-223 232,-226 232,-229 232,-229 232,-235 232,-235 232,-238 229,-241 226,-241"/>
-<text text-anchor="start" x="110" y="-229.8" font-family="Helvetica,sans-Serif" font-size="9.00">analyze&#45;data&#45;container.ts</text>
+<path fill="#ddfeff" stroke="black" d="M226,-258C226,-258 108,-258 108,-258 105,-258 102,-255 102,-252 102,-252 102,-246 102,-246 102,-243 105,-240 108,-240 108,-240 226,-240 226,-240 229,-240 232,-243 232,-246 232,-246 232,-252 232,-252 232,-255 229,-258 226,-258"/>
+<text text-anchor="start" x="110" y="-246.8" font-family="Helvetica,sans-Serif" font-size="9.00">analyze&#45;data&#45;container.ts</text>
 </a>
 </g>
 </g>
 <!-- packages/music&#45;structure/analyzed&#45;data&#45;container/index.ts&#45;&gt;packages/music&#45;structure/analyzed&#45;data&#45;container/src/analyze&#45;data&#45;container.ts -->
 <g id="edge1" class="edge">
 <title>packages/music&#45;structure/analyzed&#45;data&#45;container/index.ts&#45;&gt;packages/music&#45;structure/analyzed&#45;data&#45;container/src/analyze&#45;data&#45;container.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M86.2,-232C89.27,-232 92.5,-232 95.82,-232"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="101.91,-234.1 95.91,-232 101.91,-229.9 101.91,-234.1"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M86.2,-249C89.27,-249 92.5,-249 95.82,-249"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="101.91,-251.1 95.91,-249 101.91,-246.9 101.91,-251.1"/>
 </g>
 <!-- packages/music&#45;structure/analyzed&#45;data&#45;container/src/analyze&#45;data&#45;container.ts&#45;&gt;packages/UI/view&#45;parameters/dist/index.js -->
 <g id="edge5" class="edge">
 <title>packages/music&#45;structure/analyzed&#45;data&#45;container/src/analyze&#45;data&#45;container.ts&#45;&gt;packages/UI/view&#45;parameters/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M219.57,-241.02C235.05,-243.73 248,-246 248,-246 248,-246 300,-351 300,-351 300,-351 334.96,-420.92 350.6,-452.19"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="348.89,-453.47 353.45,-457.9 352.64,-451.59 348.89,-453.47"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M175.92,-258.09C205.62,-292.16 310.44,-412.43 346.05,-453.29"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="344.52,-454.73 350.04,-457.87 347.68,-451.97 344.52,-454.73"/>
 </g>
 <!-- packages/music&#45;structure/beat/beat&#45;estimation/dist/index.js -->
 <g id="node4" class="node">
@@ -145,8 +140,8 @@
 <!-- packages/music&#45;structure/analyzed&#45;data&#45;container/src/analyze&#45;data&#45;container.ts&#45;&gt;packages/music&#45;structure/beat/beat&#45;estimation/dist/index.js -->
 <g id="edge2" class="edge">
 <title>packages/music&#45;structure/analyzed&#45;data&#45;container/src/analyze&#45;data&#45;container.ts&#45;&gt;packages/music&#45;structure/beat/beat&#45;estimation/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M177.95,-222.84C209.37,-193.9 306.6,-104.34 343.55,-70.31"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="345.16,-71.68 348.15,-66.07 342.31,-68.59 345.16,-71.68"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M176.91,-240C207.38,-209.2 307.59,-107.94 344.34,-70.81"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="346.16,-71.95 348.89,-66.21 343.18,-68.99 346.16,-71.95"/>
 </g>
 <!-- packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js -->
 <g id="node5" class="node">
@@ -160,8 +155,8 @@
 <!-- packages/music&#45;structure/analyzed&#45;data&#45;container/src/analyze&#45;data&#45;container.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js -->
 <g id="edge3" class="edge">
 <title>packages/music&#45;structure/analyzed&#45;data&#45;container/src/analyze&#45;data&#45;container.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M204.63,-222.94C239.76,-214.25 292.26,-201.26 325.82,-192.96"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="326.54,-194.95 331.86,-191.47 325.53,-190.87 326.54,-194.95"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M194.82,-239.97C229.39,-228.32 289.41,-208.11 326.22,-195.7"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="326.91,-197.69 331.93,-193.78 325.57,-193.71 326.91,-197.69"/>
 </g>
 <!-- packages/music&#45;structure/melody/melody&#45;analyze/dist/index.js -->
 <g id="node6" class="node">
@@ -175,41 +170,8 @@
 <!-- packages/music&#45;structure/analyzed&#45;data&#45;container/src/analyze&#45;data&#45;container.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/dist/index.js -->
 <g id="edge4" class="edge">
 <title>packages/music&#45;structure/analyzed&#45;data&#45;container/src/analyze&#45;data&#45;container.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M219.57,-241.02C235.05,-243.73 248,-246 248,-246 248,-246 306.21,-281.46 337.94,-300.78"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="336.95,-302.64 343.16,-303.96 339.13,-299.05 336.95,-302.64"/>
-</g>
-<!-- packages/music&#45;structure/analyzed&#45;data&#45;container/src/facade/index.ts -->
-<g id="node7" class="node">
-<title>packages/music&#45;structure/analyzed&#45;data&#45;container/src/facade/index.ts</title>
-<g id="a_node7"><a xlink:href="packages/music-structure/analyzed-data-container/src/facade/index.ts" xlink:title="index.ts">
-<path fill="#ddfeff" stroke="black" d="M188,-275C188,-275 146,-275 146,-275 143,-275 140,-272 140,-269 140,-269 140,-263 140,-263 140,-260 143,-257 146,-257 146,-257 188,-257 188,-257 191,-257 194,-260 194,-263 194,-263 194,-269 194,-269 194,-272 191,-275 188,-275"/>
-<text text-anchor="start" x="148.5" y="-263.8" font-family="Helvetica,sans-Serif" font-size="9.00">index.ts</text>
-</a>
-</g>
-</g>
-<!-- packages/music&#45;structure/analyzed&#45;data&#45;container/src/facade/index.ts&#45;&gt;packages/UI/view&#45;parameters/dist/index.js -->
-<g id="edge9" class="edge">
-<title>packages/music&#45;structure/analyzed&#45;data&#45;container/src/facade/index.ts&#45;&gt;packages/UI/view&#45;parameters/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M176.66,-275.16C206.95,-307.2 308.31,-414.43 344.78,-453.02"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="347.77,-459.23 345.17,-453.43 350.82,-456.34 347.77,-459.23"/>
-</g>
-<!-- packages/music&#45;structure/analyzed&#45;data&#45;container/src/facade/index.ts&#45;&gt;packages/music&#45;structure/beat/beat&#45;estimation/dist/index.js -->
-<g id="edge6" class="edge">
-<title>packages/music&#45;structure/analyzed&#45;data&#45;container/src/facade/index.ts&#45;&gt;packages/music&#45;structure/beat/beat&#45;estimation/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M194.19,-261.74C217.53,-257.95 248,-253 248,-253 248,-253 324.42,-116.84 349.87,-71.49"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="354.67,-67.22 349.91,-71.42 351.01,-65.16 354.67,-67.22"/>
-</g>
-<!-- packages/music&#45;structure/analyzed&#45;data&#45;container/src/facade/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js -->
-<g id="edge7" class="edge">
-<title>packages/music&#45;structure/analyzed&#45;data&#45;container/src/facade/index.ts&#45;&gt;packages/music&#45;structure/chord/chord&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M194.19,-261.74C217.53,-257.95 248,-253 248,-253 248,-253 306.21,-217.02 337.94,-197.4"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="344.27,-195.96 338.06,-197.33 342.06,-192.38 344.27,-195.96"/>
-</g>
-<!-- packages/music&#45;structure/analyzed&#45;data&#45;container/src/facade/index.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/dist/index.js -->
-<g id="edge8" class="edge">
-<title>packages/music&#45;structure/analyzed&#45;data&#45;container/src/facade/index.ts&#45;&gt;packages/music&#45;structure/melody/melody&#45;analyze/dist/index.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M194.02,-272.44C228.32,-280.92 288.65,-295.84 325.79,-305.03"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="331.49,-308.6 326.17,-305.13 332.49,-304.53 331.49,-308.6"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M194.82,-258.03C229.39,-269.68 289.41,-289.89 326.22,-302.3"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="325.57,-304.29 331.93,-304.22 326.91,-300.31 325.57,-304.29"/>
 </g>
 </g>
 </svg>
