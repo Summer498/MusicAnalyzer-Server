@@ -12,8 +12,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup index.ts --dts --format esm,cjs",
-    "build:minify": "tsup index.ts--sourcemap --dts --format esm,cjs --minify"
+    "build": "tsup index.ts --format esm,cjs",
+    "build:minify": "tsup index.ts--sourcemap --format esm,cjs --minify"
   },
   "dependencies": {
     "@music-analyzer/musicxml": "1.0.0",

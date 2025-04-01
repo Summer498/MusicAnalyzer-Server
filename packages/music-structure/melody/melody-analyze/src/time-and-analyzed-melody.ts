@@ -36,5 +36,4 @@ export class TimeAndAnalyzedMelody {
     this.note = note
     this.melody_analysis = melody_analysis
   }
-
 }
