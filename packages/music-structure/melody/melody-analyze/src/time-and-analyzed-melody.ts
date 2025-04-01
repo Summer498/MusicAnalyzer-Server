@@ -1,7 +1,7 @@
 import { Time } from "@music-analyzer/time-and";
-import { MelodyAnalysis } from "./melody-analysis";
+import { SerializedMelodyAnalysis } from "./melody-analysis";
 
-type SerializedTimeAndAnalyzedMelody_Args = [Time, Time, number, MelodyAnalysis]
+type SerializedTimeAndAnalyzedMelody_Args = [Time, Time, number, SerializedMelodyAnalysis]
 const getArgsOfSerializedTimeAndAnalyzedMelody = (
   args
     : SerializedTimeAndAnalyzedMelody_Args
@@ -9,7 +9,7 @@ const getArgsOfSerializedTimeAndAnalyzedMelody = (
 ) => {
   if (args.length === 1) {
     const [e] = args;
-    return [new Time(e.time), new Time(e.head), e.note, new MelodyAnalysis(e.melody_analysis)] as SerializedTimeAndAnalyzedMelody_Args
+    return [new Time(e.time), new Time(e.head), e.note, new SerializedMelodyAnalysis(e.melody_analysis)] as SerializedTimeAndAnalyzedMelody_Args
   }
   return args
 }
@@ -17,13 +17,13 @@ export class SerializedTimeAndAnalyzedMelody {
   readonly time: Time
   readonly head: Time
   readonly note: number
-  readonly melody_analysis: MelodyAnalysis;
+  readonly melody_analysis: SerializedMelodyAnalysis;
   constructor(e: SerializedTimeAndAnalyzedMelody);
   constructor(
     time: Time,
     head: Time,
     note: number,
-    melody_analysis: MelodyAnalysis,
+    melody_analysis: SerializedMelodyAnalysis,
   );
   constructor(
     ...args

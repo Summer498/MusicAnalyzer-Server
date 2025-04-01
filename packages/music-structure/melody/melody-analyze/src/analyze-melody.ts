@@ -3,7 +3,7 @@ import { getChord } from "@music-analyzer/tonal-objects";
 import { noteFromMidi } from "@music-analyzer/tonal-objects";
 import { getScale } from "@music-analyzer/tonal-objects";
 import { SerializedTimeAndAnalyzedMelody } from "./time-and-analyzed-melody";
-import { MelodyAnalysis } from "./melody-analysis";
+import { SerializedMelodyAnalysis } from "./melody-analysis";
 import { TimeAndMelody } from "./time-and-melody";
 import { registerGravity } from "./register-gravity";
 import { Dyad } from "@music-analyzer/irm";
@@ -42,7 +42,7 @@ export const analyzeMelody = (
       e.note,
     );
 
-    const melody_analysis = new MelodyAnalysis(
+    const melody_analysis = new SerializedMelodyAnalysis(
       registerGravity(roman && getScale(roman.scale), prev[i]?.note, curr[i]?.note),
       registerGravity(roman && getChord(roman.chord), prev[i]?.note, curr[i]?.note),
       getSome_ad(prev[i]?.note, curr[i]?.note, next[i]?.note)

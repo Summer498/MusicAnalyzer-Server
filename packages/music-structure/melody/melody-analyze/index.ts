@@ -1,5 +1,5 @@
 export { Gravity } from "./src/gravity";
-export { MelodyAnalysis } from "./src/melody-analysis";
+export { SerializedMelodyAnalysis } from "./src/melody-analysis";
 export { analyzeMelody } from "./src/analyze-melody";
 export { getTimeAndMelody } from "./src/get-time-and-melody";
 export { MelodyAnalysisData } from "./src/melody-analysis-data";

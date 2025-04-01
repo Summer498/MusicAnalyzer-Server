@@ -8,7 +8,7 @@ type MelodyAnalysis_Args = [Gravity | undefined, Gravity | undefined, Triad | Dy
 const getArgsOfMelodyAnalysis = (
   args
     : MelodyAnalysis_Args
-    | [MelodyAnalysis]
+    | [SerializedMelodyAnalysis]
 ) => {
   if (args.length === 1) {
     const [e] = args;
@@ -20,11 +20,11 @@ const getArgsOfMelodyAnalysis = (
   }
   return args;
 }
-export class MelodyAnalysis {
+export class SerializedMelodyAnalysis {
   readonly chord_gravity: Gravity | undefined
   readonly scale_gravity: Gravity | undefined
   readonly implication_realization: Triad | Dyad | Monad | Null_ad
-  constructor(e: MelodyAnalysis);
+  constructor(e: SerializedMelodyAnalysis);
   constructor(
     scale_gravity: Gravity | undefined,
     chord_gravity: Gravity | undefined,
@@ -33,7 +33,7 @@ export class MelodyAnalysis {
   constructor(
     ...args
       : MelodyAnalysis_Args
-      | [MelodyAnalysis]
+      | [SerializedMelodyAnalysis]
   ) {
     const [scale_gravity, chord_gravity, implication_realization] = getArgsOfMelodyAnalysis(args)
     this.scale_gravity = scale_gravity;

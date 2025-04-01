@@ -1,5 +1,5 @@
 import { Triad } from "@music-analyzer/irm";
-import { MelodyAnalysis } from "@music-analyzer/melody-analyze";
+import { SerializedMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { Time } from "@music-analyzer/time-and";
 import { MVVM_Model } from "@music-analyzer/view";
@@ -9,7 +9,7 @@ export class MelodyModel
   readonly time: Time;
   readonly note: number;
   readonly head: Time;
-  readonly melody_analysis: MelodyAnalysis;
+  readonly melody_analysis: SerializedMelodyAnalysis;
   readonly archetype: Triad;
   constructor(e: SerializedTimeAndAnalyzedMelody) {
     super();
