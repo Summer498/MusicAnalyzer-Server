@@ -1,10 +1,10 @@
-import { PianoRoll } from "./facade";
 import { getHTML } from "./get-html";
 import { getDiv } from "./get-div";
 import { getH1 } from "./get-h1";
 import { getForeignObject } from "./get-foreign-object";
 import { getG } from "./get-g";
 import { getSVG } from "./get-svg";
+import { PianoRoll } from "@music-analyzer/piano-roll";
 
 export const getSVGwithTitle = (title: HTMLHeadElement, piano_roll_view: PianoRoll, header_height: number) => {
   const h1 = getH1(title);

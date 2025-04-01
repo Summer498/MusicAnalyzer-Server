@@ -1,10 +1,10 @@
-import { MVVM_ViewModel_Impl } from "./facade";
-import { Gravity as GravityAnalysis } from "./facade";
-import { SerializedTimeAndAnalyzedMelody } from "./facade";
-import { BlackKeyPrm } from "./facade";
-import { NoteSize } from "./facade";
-import { PianoRollBegin } from "./facade";
-import { TimeRangeSubscriber } from "./facade";
+import { MVVM_ViewModel_Impl } from "@music-analyzer/view";
+import { Gravity as GravityAnalysis } from "@music-analyzer/melody-analyze";
+import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { BlackKeyPrm } from "@music-analyzer/view-parameters";
+import { NoteSize } from "@music-analyzer/view-parameters";
+import { PianoRollBegin } from "@music-analyzer/view-parameters";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { GravityModel } from "./gravity-model";
 import { GravityView } from "./gravity-view";
 import { LinePos } from "../line-pos";

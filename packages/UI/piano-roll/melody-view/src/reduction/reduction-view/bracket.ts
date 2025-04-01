@@ -1,4 +1,4 @@
-import { MVVM_View_Impl } from "./facade";
+import { MVVM_View_Impl } from "@music-analyzer/view";
 import { ReductionViewModel } from "./reduction-view-model";
 
 export class Bracket 

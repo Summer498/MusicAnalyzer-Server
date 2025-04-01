@@ -1,5 +1,5 @@
-import { SerializedTimeAndAnalyzedMelody } from "./facade";
-import { SetColor } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { SetColor } from "@music-analyzer/controllers";
 import { IRPlotLayerView } from "./ir-plot-layer-view";
 import { IRPlot } from "../ir-plot/ir-plot";
 import { IRPlotLayerModel } from "./ir-plot-layer-model";

@@ -1,11 +1,12 @@
-import { getDistance } from "./facade";
-import { getKeysIncludeTheChord } from "./facade";
-import { dynamicLogViterbi } from "./facade";
-import { getScale } from "./facade";
-import { Scale } from "./facade";
-import { RomanChord } from "./facade";
-import { Compare } from "./facade";
+import { getScale } from "@music-analyzer/tonal-objects";
+import { Scale } from "@music-analyzer/tonal-objects";
+import { RomanChord } from "@music-analyzer/roman-chord";
 import { getChord } from "./get-chord"; 
+
+import { getDistance } from "@music-analyzer/tonal-pitch-space";
+import { getKeysIncludeTheChord } from "@music-analyzer/tonal-pitch-space";
+import { dynamicLogViterbi } from "@music-analyzer/graph";
+import { Compare } from "@music-analyzer/math";
 
 export class ChordProgression {
   readonly lead_sheet_chords: string[];

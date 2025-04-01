@@ -1,6 +1,6 @@
-import { SerializedTimeAndAnalyzedMelody } from "./facade";
-import { AudioReflectableRegistry } from "./facade";
-import { WindowReflectableRegistry } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { AudioReflectableRegistry } from "@music-analyzer/view";
+import { WindowReflectableRegistry } from "@music-analyzer/view";
 import { DMelodySeries } from "./d-melody";
 import { MelodyHierarchy } from "./melody";
 import { IRSymbolHierarchy } from "./ir-symbol";

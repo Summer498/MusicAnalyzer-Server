@@ -1,12 +1,12 @@
-import { BeatInfo } from "./facade";
-import { SerializedTimeAndRomanAnalysis } from "./facade";
-import { SerializedTimeAndAnalyzedMelody } from "./facade";
-import { BeatElements } from "./facade";
-import { ChordElements } from "./facade";
-import { MelodyElements } from "./facade";
-import { RequiredByBeatElements } from "./facade";
-import { RequiredByChordElements } from "./facade";
-import { RequiredByMelodyElements } from "./facade";
+import { BeatInfo } from "@music-analyzer/beat-estimation";
+import { BeatElements } from "@music-analyzer/beat-view";
+import { RequiredByBeatElements } from "@music-analyzer/beat-view";
+import { SerializedTimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
+import { ChordElements } from "@music-analyzer/chord-view";
+import { RequiredByChordElements } from "@music-analyzer/chord-view";
+import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { MelodyElements } from "@music-analyzer/melody-view";
+import { RequiredByMelodyElements } from "@music-analyzer/melody-view";
 
 export class MusicStructureElements {
   readonly beat: BeatElements

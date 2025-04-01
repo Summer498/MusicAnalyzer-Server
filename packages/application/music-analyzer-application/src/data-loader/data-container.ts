@@ -1,10 +1,10 @@
-import { GroupingStructure } from "./facade";
-import { MetricalStructure } from "./facade";
-import { IProlongationalReduction } from "./facade";
-import { ITimeSpanReduction } from "./facade";
-import { SerializedTimeAndRomanAnalysis } from "./facade";
-import { SerializedTimeAndAnalyzedMelody } from "./facade";
-import { MusicXML } from "./facade";
+import { SerializedTimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
+import { GroupingStructure } from "@music-analyzer/gttm";
+import { IProlongationalReduction } from "@music-analyzer/gttm";
+import { ITimeSpanReduction } from "@music-analyzer/gttm";
+import { MetricalStructure } from "@music-analyzer/gttm";
+import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { MusicXML } from "@music-analyzer/musicxml";
 
 export type DataContainer = [
   SerializedTimeAndRomanAnalysis[],

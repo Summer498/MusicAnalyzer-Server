@@ -1,8 +1,8 @@
-import { Triad } from "./facade";
-import { MelodyAnalysis } from "./facade";
-import { SerializedTimeAndAnalyzedMelody } from "./facade";
-import { Time } from "./facade";
-import { MVVM_Model } from "./facade";
+import { Triad } from "@music-analyzer/irm";
+import { MelodyAnalysis } from "@music-analyzer/melody-analyze";
+import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { Time } from "@music-analyzer/time-and";
+import { MVVM_Model } from "@music-analyzer/view";
 
 export class MelodyModel 
   extends MVVM_Model {

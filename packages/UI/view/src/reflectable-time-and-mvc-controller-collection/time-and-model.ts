@@ -1,4 +1,4 @@
-import { Time } from "./facade";
+import { Time } from "@music-analyzer/time-and";
 import { MVVM_Model } from "../mvvm/model";
 
 export abstract class TimeAndMVCModel

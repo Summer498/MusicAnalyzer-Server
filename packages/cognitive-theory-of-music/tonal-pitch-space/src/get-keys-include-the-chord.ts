@@ -1,6 +1,6 @@
-import { getScale } from "./facade";
-import { majorKey } from "./facade";
-import { Chord } from "./facade";
+import { Chord } from "@music-analyzer/tonal-objects";
+import { getScale } from "@music-analyzer/tonal-objects";
+import { majorKey } from "@music-analyzer/tonal-objects";
 import { doesKeyIncludeTheChord } from "./does-key-include-the-chord";
 
 // 最も尤もらしいコード進行を見つける

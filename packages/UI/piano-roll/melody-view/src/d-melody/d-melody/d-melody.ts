@@ -1,9 +1,9 @@
-import { MVVM_ViewModel_Impl } from "./facade";
-import { SerializedTimeAndAnalyzedMelody } from "./facade";
-import { BlackKeyPrm } from "./facade";
-import { NoteSize } from "./facade";
-import { PianoRollBegin } from "./facade";
-import { TimeRangeSubscriber } from "./facade";
+import { MVVM_ViewModel_Impl } from "@music-analyzer/view";
+import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { BlackKeyPrm } from "@music-analyzer/view-parameters";
+import { NoteSize } from "@music-analyzer/view-parameters";
+import { PianoRollBegin } from "@music-analyzer/view-parameters";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { DMelodyModel } from "./d-melody-model";
 import { DMelodyView } from "./d-melody-view";
 import { insertMelody } from "../../melody-editor-function/insert";

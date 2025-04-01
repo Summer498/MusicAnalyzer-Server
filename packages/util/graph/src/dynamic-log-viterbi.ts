@@ -1,4 +1,4 @@
-import { Compare } from "./facade";
+import { Compare } from "@music-analyzer/math";
 import { viterbiCore } from "./viterbi-core";
 
 /*  c.f. Viterbi algorithm - Wikipedia

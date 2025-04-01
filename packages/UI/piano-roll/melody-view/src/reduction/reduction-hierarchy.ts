@@ -1,6 +1,6 @@
-import { SerializedTimeAndAnalyzedMelody } from "./facade";
-import { CollectionHierarchy } from "./facade";
-import { SetColor } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { CollectionHierarchy } from "@music-analyzer/view";
+import { SetColor } from "@music-analyzer/controllers";
 import { ReductionLayer } from "./reduction-layer";
 import { RequiredByReductionHierarchy } from "../requirement/reduction/required-by-reduction-hierarchy";
 import { IReductionHierarchy } from "../interface/reduction/reduction-hierarchy";

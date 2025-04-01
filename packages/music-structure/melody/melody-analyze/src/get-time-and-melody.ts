@@ -1,4 +1,4 @@
-import { compress } from "./facade";
+import { compress } from "@music-analyzer/time-and";
 import { TimeAndMelody } from "./time-and-melody";
 
 const freqToMidi = (freq: number) => (Math.log2(freq) - Math.log2(440)) * 12 + 69;

@@ -1,6 +1,6 @@
-import { AudioReflectable } from "./facade";
-import { WindowReflectable } from "./facade";
-import { TimeRangeSubscriber } from "./facade";
+import { AudioReflectable } from "@music-analyzer/view";
+import { WindowReflectable } from "@music-analyzer/view";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 
 export interface IGravityLayer
   extends

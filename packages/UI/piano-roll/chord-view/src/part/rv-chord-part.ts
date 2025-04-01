@@ -1,4 +1,4 @@
-import { ChordPartView } from "./facade"
+import { ChordPartView } from "../view"
 
 export interface RequiredViewByChordPart
   extends ChordPartView {

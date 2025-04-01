@@ -1,7 +1,7 @@
-import { Gravity } from "./facade";
-import { SerializedTimeAndAnalyzedMelody } from "./facade";
-import { Time } from "./facade";
-import { MVVM_Model } from "./facade";
+import { Gravity } from "@music-analyzer/melody-analyze";
+import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { Time } from "@music-analyzer/time-and";
+import { MVVM_Model } from "@music-analyzer/view";
 
 export class GravityModel 
   extends MVVM_Model {

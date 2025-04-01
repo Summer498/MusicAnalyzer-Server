@@ -1,8 +1,8 @@
-import { PianoRollHeight } from "./facade";
-import { chord_text_size } from "./facade";
+import { PianoRollHeight } from "@music-analyzer/view-parameters";
+import { chord_text_size } from "@music-analyzer/chord-view";
 import { ChordPart } from "./chord-part";
-import { ChordPartModel } from "./facade";
 import { RequiredViewByChordPart } from "./rv-chord-part";
+import { ChordPartModel } from "../model";
 
 export abstract class ChordPartText<
   M extends ChordPartModel,

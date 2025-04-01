@@ -1,9 +1,9 @@
-import { SerializedTimeAndRomanAnalysis } from "./facade";
-import { Time } from "./facade";
-import { Chord } from"./facade"
-import { Scale } from"./facade"
-import { getChord } from"./facade"
-import { getScale } from"./facade"
+import { SerializedTimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
+import { Time } from "@music-analyzer/time-and";
+import { Chord } from "@music-analyzer/tonal-objects";
+import { getChord } from "@music-analyzer/tonal-objects";
+import { getScale } from "@music-analyzer/tonal-objects";
+import { Scale } from "@music-analyzer/tonal-objects";
 
 export class RequiredByChordPartModel {
   readonly time: Time

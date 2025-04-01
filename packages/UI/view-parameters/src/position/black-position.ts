@@ -1,4 +1,4 @@
-import { mod } from "./facade";
+import { mod } from "@music-analyzer/math";
 import { PianoRollBegin } from "./piano-roll-begin";
 
 const black_seed = [2, 4, 6, 9, 11];

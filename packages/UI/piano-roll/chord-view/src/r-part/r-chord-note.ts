@@ -1,4 +1,4 @@
-import { AudioReflectableRegistry } from "./facade";
+import { AudioReflectableRegistry } from "@music-analyzer/view";
 import { RequiredByChordPart } from "./r-chord-parts";
 
 export interface RequiredByChordNote

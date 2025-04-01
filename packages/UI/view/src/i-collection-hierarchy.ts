@@ -1,4 +1,4 @@
-import { HierarchyLevelSubscriber } from "./facade"
+import { HierarchyLevelSubscriber } from "@music-analyzer/controllers";
 import { I_MVVM_Collection } from "./mvvm";
 import { I_MVVM_ModelView } from "./mvvm";
 

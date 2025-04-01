@@ -1,9 +1,9 @@
-import { TimeRangeSubscriber } from "./facade";
-import { ReflectableTimeAndMVCControllerCollection } from "./facade";
-import { I_TimeAndVM } from "./facade";
-import { WindowReflectable } from "./facade";
-import { RequiredByChordPartSeries } from "./facade";
-import { IChordPartSeries } from "./facade";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { I_TimeAndVM } from "@music-analyzer/view";
+import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
+import { WindowReflectable } from "@music-analyzer/view";
+import { IChordPartSeries } from "../i-series";
+import { RequiredByChordPartSeries } from "../r-series";
 
 export abstract class ChordPartSeries
   <T extends I_TimeAndVM & TimeRangeSubscriber & WindowReflectable>

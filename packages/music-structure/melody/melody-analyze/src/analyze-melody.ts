@@ -1,15 +1,15 @@
-import { SerializedTimeAndRomanAnalysis } from "./facade";
-import { getChord } from "./facade";
-import { getScale } from "./facade";
-import { noteFromMidi } from "./facade";
-import { Null_ad } from "./facade";
-import { Dyad } from "./facade";
-import { Monad } from "./facade";
-import { Triad } from "./facade";
+import { SerializedTimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
+import { getChord } from "@music-analyzer/tonal-objects";
+import { noteFromMidi } from "@music-analyzer/tonal-objects";
+import { getScale } from "@music-analyzer/tonal-objects";
 import { SerializedTimeAndAnalyzedMelody } from "./time-and-analyzed-melody";
 import { MelodyAnalysis } from "./melody-analysis";
 import { TimeAndMelody } from "./time-and-melody";
 import { registerGravity } from "./register-gravity";
+import { Dyad } from "@music-analyzer/irm";
+import { Monad } from "@music-analyzer/irm";
+import { Null_ad } from "@music-analyzer/irm";
+import { Triad } from "@music-analyzer/irm";
 
 const getSome_ad = (prev?: number, curr?: number, next?: number) => {
   const [p, c, n] = [prev, curr, next].map(e => e ? noteFromMidi(e) : undefined);

@@ -1,8 +1,8 @@
-import { OctaveCount } from "./facade";
-import { MVVM_Collection_Impl } from "./facade";
+import { MVVM_Collection_Impl } from "@music-analyzer/view";
 import { ChordNotesInOctave } from "./chord-notes-in-octave";
-import { IChordNotes } from "./facade";
-import { RequiredByChordNoteModel } from "./facade";
+import { IChordNotes } from "../i-part";
+import { RequiredByChordNoteModel } from "../r-model";
+import { OctaveCount } from "@music-analyzer/view-parameters";
 
 export class ChordNotes
   extends MVVM_Collection_Impl<ChordNotesInOctave>

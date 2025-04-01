@@ -1,8 +1,8 @@
-import { MVVM_View_Impl } from "./facade";
-import { ColorChangeSubscriber } from "./facade";
-import { SetColor } from "./facade";
+import { MVVM_View_Impl } from "@music-analyzer/view";
 import { IRPlotModel } from "./ir-plot-model";
 import { IRPlotViewModel } from "./ir-plot-view-model";
+import { ColorChangeSubscriber } from "@music-analyzer/controllers";
+import { SetColor } from "@music-analyzer/controllers";
 
 const get_pos = (_x: number, _y: number) => {
   const a = 1 / 3;

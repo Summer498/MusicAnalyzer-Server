@@ -1,7 +1,7 @@
-import { SerializedTimeAndAnalyzedMelody } from "./facade";
-import { CollectionLayer } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { Gravity } from "./gravity";
 import { IGravityLayer } from "../interface/gravity/gravity-layer";
+import { CollectionLayer } from "@music-analyzer/view";
 
 export class GravityLayer
   extends CollectionLayer<Gravity>

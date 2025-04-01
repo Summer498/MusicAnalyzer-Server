@@ -1,14 +1,14 @@
-import { MVVM_ViewModel_Impl } from "./facade";
-import { play } from "./facade";
-import { NoteSize } from "./facade";
-import { NowAt } from "./facade";
-import { PianoRollHeight } from "./facade";
-import { reservation_range } from "./facade";
-import { BeatInfo } from "./facade";
-import { Time } from "./facade";
-import { TimeRangeSubscriber } from "./facade";
+import { BeatInfo } from "@music-analyzer/beat-estimation";
+import { Time } from "@music-analyzer/time-and";
 import { BeatBarModel } from "./beat-bar-model";
 import { BeatBarView } from "./beat-bar-view";
+import { NoteSize } from "@music-analyzer/view-parameters";
+import { NowAt } from "@music-analyzer/view-parameters";
+import { PianoRollHeight } from "@music-analyzer/view-parameters";
+import { reservation_range } from "@music-analyzer/view-parameters";
+import { MVVM_ViewModel_Impl } from "@music-analyzer/view";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { play } from "@music-analyzer/synth";
 
 const scaled = (e: number) => e * NoteSize.get();
 

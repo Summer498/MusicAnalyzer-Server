@@ -1,5 +1,5 @@
-import { GravitySwitcher } from "./facade";
-import { HierarchyLevelController } from "./facade";
+import { GravitySwitcher } from "@music-analyzer/controllers";
+import { HierarchyLevelController } from "@music-analyzer/controllers";
 import { RequiredByGravityLayer } from "./required-by-gravity-layer";
 
 export interface RequiredByGravityHierarchy

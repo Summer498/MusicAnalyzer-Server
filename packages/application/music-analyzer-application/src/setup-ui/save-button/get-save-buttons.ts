@@ -1,8 +1,8 @@
-import { PianoRoll } from "./facade";
-import { HTMLsContainer } from "./facade";
-import { TitleInfo } from "./facade";
 import { getSaveButton } from "./get-save-button";
 import { getRawSaveButton } from "./get-raw-save-button";
+import { HTMLsContainer } from "../../containers";
+import { TitleInfo } from "../../containers";
+import { PianoRoll } from "@music-analyzer/piano-roll";
 
 export const getSaveButtons = (
   title: TitleInfo,

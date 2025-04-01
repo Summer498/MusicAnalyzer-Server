@@ -1,8 +1,8 @@
-import { NoteSize } from "./facade";
-import { TimeRangeSubscriber } from "./facade";
-import { MVVM_ViewModel_Impl } from "./facade";
-import { ChordPartModel } from "./facade";
+import { NoteSize } from "@music-analyzer/view-parameters";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { MVVM_ViewModel_Impl } from "@music-analyzer/view";
 import { RequiredViewByChordPart } from "./rv-chord-part";
+import { ChordPartModel } from "../model";
 
 export abstract class ChordPart<
   M extends ChordPartModel,

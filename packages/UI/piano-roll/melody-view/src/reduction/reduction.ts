@@ -1,6 +1,6 @@
-import { SerializedTimeAndAnalyzedMelody } from "./facade";
-import { MVVM_ViewModel_Impl } from "./facade";
-import { SetColor } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { MVVM_ViewModel_Impl } from "@music-analyzer/view";
+import { SetColor } from "@music-analyzer/controllers";
 import { ReductionModel } from "./reduction-model";
 import { ReductionView } from "./reduction-view";
 import { IReduction } from "../interface/reduction/reduction";

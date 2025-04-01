@@ -1,6 +1,6 @@
-// import { Complex } from "./facade";
-// import { fft } from "./facade";
-import { aFFT as fft } from "./facade";
+// import { Complex } from "@music-analyzer/math";
+// import { fft } from "@music-analyzer/math";
+import { fft } from "@music-analyzer/math/src/fft/array";
 import { getFloatTimeDomainData } from "./get-data-on-buffer";
 
 const blackManWindow = (x: Float32Array<ArrayBuffer>) => {

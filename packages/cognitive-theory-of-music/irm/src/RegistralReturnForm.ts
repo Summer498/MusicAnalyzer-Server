@@ -1,7 +1,7 @@
-import { getNote } from "./facade";
-import { getSemitones } from "./facade";
-import { intervalOf } from "./facade";
-import { NoteLiteral } from "./facade";
+import { getNote } from "@music-analyzer/tonal-objects";
+import { getSemitones } from "@music-analyzer/tonal-objects";
+import { intervalOf } from "@music-analyzer/tonal-objects";
+import { NoteLiteral } from "@music-analyzer/tonal-objects";
 
 export class RegistralReturnForm {
   readonly is_null;

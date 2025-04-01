@@ -1,6 +1,6 @@
-import { ColorChangeSubscriber } from "./facade";
-import { MVVM_View_Impl } from "./facade";
-import { SetColor } from "./facade";
+import { ColorChangeSubscriber } from "@music-analyzer/controllers";
+import { MVVM_View_Impl } from "@music-analyzer/view";
+import { SetColor } from "@music-analyzer/controllers";
 import { deleteMelody } from "../../melody-editor-function/delete";
 import { MelodyModel } from "./melody-model";
 

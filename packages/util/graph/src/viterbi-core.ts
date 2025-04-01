@@ -1,6 +1,6 @@
-import { unique } from "./facade";
-import { argsMinMax } from "./facade";
-import { CompareFunc } from "./facade";
+import { argsMinMax } from "@music-analyzer/math";
+import { CompareFunc } from "@music-analyzer/math";
+import { unique } from "../../stdlib";
 
 class LogViterbiResult<S> {
   constructor(

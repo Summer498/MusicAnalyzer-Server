@@ -1,4 +1,4 @@
-import { Scale } from"./facade"
+import { Scale } from "@music-analyzer/tonal-objects";
 import { oneLetterKey } from "./on-letter-key";
 
 export const shortenKey = (key: Scale) => {

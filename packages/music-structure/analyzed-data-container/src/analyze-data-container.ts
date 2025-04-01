@@ -1,10 +1,10 @@
-import { SerializedTimeAndRomanAnalysis } from "./facade";
-import { SerializedTimeAndAnalyzedMelody } from "./facade";
-import { BeatInfo } from "./facade";
-import { calcTempo } from "./facade";
-import { bracket_height } from "./facade";
-import { PianoRollBegin } from "./facade";
-import { PianoRollEnd } from "./facade";
+import { BeatInfo } from "@music-analyzer/beat-estimation";
+import { calcTempo } from "@music-analyzer/beat-estimation";
+import { SerializedTimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
+import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { bracket_height } from "@music-analyzer/view-parameters";
+import { PianoRollBegin } from "@music-analyzer/view-parameters";
+import { PianoRollEnd } from "@music-analyzer/view-parameters";
 
 export class AnalyzedDataContainer {
   readonly beat_info: BeatInfo

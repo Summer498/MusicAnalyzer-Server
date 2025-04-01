@@ -1,5 +1,5 @@
-import { WindowReflectable } from "./facade";
-import { TimeRangeSubscriber } from "./facade";
+import { WindowReflectable } from "@music-analyzer/view";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 
 export interface I_IRSymbolLayer
   extends

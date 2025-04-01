@@ -1,12 +1,12 @@
-import { fifthToColor } from "./facade";
-import { MVVM_View_Impl } from "./facade";
-import { oneLetterKey } from "./facade";
-import { chord_text_em } from "./facade";
-import { ChordPartModel } from "./facade";
+import { MVVM_View_Impl } from "@music-analyzer/view";
+import { fifthToColor } from "@music-analyzer/color";
+import { ChordPartModel } from "../model";
+import { oneLetterKey } from "../shorten";
+import { chord_text_em } from "../chord-view-params";
 
 export class ChordPartView_impl<Tag extends keyof SVGElementTagNameMap>
   extends MVVM_View_Impl<Tag, ChordPartModel> {
-  constructor(tag: Tag, model: ChordPartModel,) {
+  constructor(tag: Tag, model: ChordPartModel) {
     super(tag, model);
     this.svg.textContent = oneLetterKey(this.model.scale) + ': ';
     this.svg.id = "key-name";

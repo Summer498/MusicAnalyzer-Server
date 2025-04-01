@@ -1,12 +1,12 @@
-import { AudioViewer } from "./facade";
-import { PianoRoll } from "./facade";
-import { CurrentTimeRatio } from "./facade";
-import { ApplicationManager } from "./facade";
-import { HTMLsContainer } from "./facade";
-import { TitleInfo } from "./facade";
 import { getSaveButtons } from "./save-button";
 import { asParent } from "./as-parent";
 import { ColumnHTML } from "./column-html";
+import { HTMLsContainer } from "../containers";
+import { TitleInfo } from "../containers";
+import { ApplicationManager } from "../application-manager";
+import { CurrentTimeRatio } from "@music-analyzer/view-parameters";
+import { AudioViewer } from "@music-analyzer/spectrogram";
+import { PianoRoll } from "@music-analyzer/piano-roll";
 
 export const setupUI = (
   title_info: TitleInfo,

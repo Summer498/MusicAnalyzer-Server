@@ -1,10 +1,10 @@
-import { chord_name_margin } from "./facade";
-import { chord_text_size } from "./facade";
-import { ChordRomanModel } from "./facade";
-import { ChordRomanView } from "./facade";
-import { RequiredByChordRomanModel } from "./facade";
-import { IChordRoman } from "./facade";
+import { chord_name_margin } from "@music-analyzer/chord-view";
+import { chord_text_size } from "@music-analyzer/chord-view";
 import { ChordPartText } from "./chord-part-text";
+import { IChordRoman } from "../i-part";
+import { RequiredByChordRomanModel } from "../r-model";
+import { ChordRomanModel } from "../model";
+import { ChordRomanView } from "../view";
 
 export class ChordRoman
   extends ChordPartText<ChordRomanModel, ChordRomanView>

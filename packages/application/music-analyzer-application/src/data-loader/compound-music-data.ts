@@ -1,10 +1,10 @@
-import { GTTMData } from "./facade";
-import { ProlongationalReduction } from "./facade";
-import { TimeSpanReduction } from "./facade";
-import { getHierarchicalMelody } from "./facade";
-import { AnalyzedMusicData } from "./facade";
-import { TitleInfo } from "./facade";
+import { GTTMData } from "@music-analyzer/gttm";
+import { ProlongationalReduction } from "@music-analyzer/gttm";
+import { TimeSpanReduction } from "@music-analyzer/gttm";
+import { TitleInfo } from "../containers";
 import { DataContainer } from "./data-container";
+import { getHierarchicalMelody } from "@music-analyzer/melody-hierarchical-analysis";
+import { AnalyzedMusicData } from "../MusicAnalyzerWindow";
 
 export const compoundMusicData = (title:TitleInfo) => (e: DataContainer) => {
   const [roman, read_melody, musicxml, grouping, metric, time_span, prolongation] = e;

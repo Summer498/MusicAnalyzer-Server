@@ -1,4 +1,4 @@
-import { RequiredByChordNameModel } from "./facade";
+import { RequiredByChordNameModel } from "../r-model";
 import { ChordPartModel } from "./chord-part-model";
 
 export class ChordNameModel 

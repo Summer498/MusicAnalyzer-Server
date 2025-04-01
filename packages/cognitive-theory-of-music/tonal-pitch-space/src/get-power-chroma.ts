@@ -1,8 +1,8 @@
-import { assertNonNullable as NN } from "./facade";
-import { Assertion } from "./facade";
-import { Chord } from "./facade";
-import { getChroma } from "./facade";
-import { getIntervalDegree } from "./facade";
+import { Assertion } from "@music-analyzer/stdlib";
+import { assertNonNullable as NN } from "@music-analyzer/stdlib";
+import { Chord } from "@music-analyzer/tonal-objects";
+import { getIntervalDegree } from "@music-analyzer/tonal-objects";
+import { getChroma } from "@music-analyzer/tonal-objects";
 
 export const getPowerChroma = (chord: Chord) => {
   const tonic = NN(chord.tonic);

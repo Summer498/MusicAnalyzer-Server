@@ -1,4 +1,4 @@
-import { MVVM_View_Impl } from "./facade";
+import { MVVM_View_Impl } from "@music-analyzer/view";
 import { GravityModel } from "../gravity-model";
 import { LinePos } from "../../line-pos";
 

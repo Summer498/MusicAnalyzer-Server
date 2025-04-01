@@ -1,8 +1,8 @@
-import { ChordRoman } from "./facade";
+import { IChordRomanSeries } from "../i-series";
+import { ChordRoman } from "../part";
+import { RequiredByChordRomanModel } from "../r-model";
+import { RequiredByChordRomanSeries } from "../r-series";
 import { ChordPartSeries } from "./chord-parts-series";
-import { RequiredByChordRomanModel } from "./facade";
-import { RequiredByChordRomanSeries } from "./facade";
-import { IChordRomanSeries } from "./facade";
 
 export class ChordRomanSeries
   extends ChordPartSeries<ChordRoman>

@@ -1,6 +1,6 @@
-import { WindowReflectable } from "./facade";
-import { WindowReflectableRegistry } from "./facade";
-import { OctaveCount } from "./facade";
+import { WindowReflectable } from "@music-analyzer/view";
+import { WindowReflectableRegistry } from "@music-analyzer/view";
+import { OctaveCount } from "@music-analyzer/view-parameters";
 import { Octave } from "../octave/octave";
 
 export class Octaves

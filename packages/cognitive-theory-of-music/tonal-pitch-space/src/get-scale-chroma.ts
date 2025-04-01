@@ -1,8 +1,8 @@
-import { isSubSet } from "./facade";
-import { RomanChord } from "./facade";
-import { Assertion } from "./facade";
-import { NotImplementedError } from "./facade";
-import { getChroma } from "./facade";
+import { isSubSet } from "@music-analyzer/math";
+import { RomanChord } from "@music-analyzer/roman-chord";
+import { Assertion } from "@music-analyzer/stdlib";
+import { NotImplementedError } from "@music-analyzer/stdlib";
+import { getChroma } from "@music-analyzer/tonal-objects";
 
 export const getScaleChroma = (roman: RomanChord) => {
   // TODO: 借用和音に伴いスケール構成音を変異させる

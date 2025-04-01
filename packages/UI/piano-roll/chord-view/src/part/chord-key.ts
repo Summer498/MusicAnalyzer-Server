@@ -1,9 +1,9 @@
-import { chord_name_margin } from "./facade";
-import { chord_text_size } from "./facade";
-import { ChordKeyModel } from "./facade";
-import { ChordKeyView } from "./facade";
-import { RequiredByChordKeyModel } from "./facade";
-import { IChordKey } from "./facade";
+import { chord_name_margin } from "../chord-view-params";
+import { chord_text_size } from "../chord-view-params";
+import { IChordKey } from "../i-part";
+import { ChordKeyModel } from "../model";
+import { RequiredByChordKeyModel } from "../r-model";
+import { ChordKeyView } from "../view";
 import { ChordPartText } from "./chord-part-text";
 
 export class ChordKey

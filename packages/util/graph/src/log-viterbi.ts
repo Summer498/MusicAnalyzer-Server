@@ -1,4 +1,4 @@
-import { Compare } from "./facade";
+import { Compare } from "@music-analyzer/math";
 import { dynamicLogViterbi } from "./dynamic-log-viterbi";
 
 /**

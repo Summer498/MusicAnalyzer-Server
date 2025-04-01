@@ -1,4 +1,4 @@
-import { WindowReflectable } from "./facade";
+import { WindowReflectable } from "@music-analyzer/view";
 import { Rectangle } from "../components/rectangle/rectangle";
 
 export abstract class OctaveChunk

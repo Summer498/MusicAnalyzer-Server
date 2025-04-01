@@ -1,6 +1,6 @@
-import { MVVM_ViewModel_Impl } from "./facade";
-import { SerializedTimeAndAnalyzedMelody } from "./facade";
-import { SetColor } from "./facade";
+import { MVVM_ViewModel_Impl } from "@music-analyzer/view";
+import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { SetColor } from "@music-analyzer/controllers";
 import { IRPlotModel } from "./ir-plot-model";
 import { IRPlotView } from "./ir-plot-view";
 

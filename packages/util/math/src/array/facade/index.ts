@@ -1,1 +1,0 @@
-export { hasSameValue } from "../../facade";

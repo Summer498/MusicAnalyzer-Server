@@ -1,9 +1,9 @@
-import { Chord } from"./facade"
-import { getNote } from"./facade"
-import { MVVM_Collection_Impl } from "./facade";
+import { MVVM_Collection_Impl } from "@music-analyzer/view";
 import { ChordNote } from "./chord-note";
-import { IChordNotesInOctave } from "./facade";
-import { RequiredByChordNoteModel } from "./facade";
+import { IChordNotesInOctave } from "../i-part";
+import { RequiredByChordNoteModel } from "../r-model";
+import { Chord } from "@music-analyzer/tonal-objects";
+import { getNote } from "@music-analyzer/tonal-objects";
 
 export class ChordNotesInOctave
   extends MVVM_Collection_Impl<ChordNote>

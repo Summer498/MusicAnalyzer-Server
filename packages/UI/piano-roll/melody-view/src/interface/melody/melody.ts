@@ -1,5 +1,5 @@
-import { ColorChangeSubscriber } from "./facade";
-import { TimeRangeSubscriber } from "./facade";
+import { ColorChangeSubscriber } from "@music-analyzer/controllers";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { IMelodyBeep } from "./melody-beep";
 
 export interface IMelody

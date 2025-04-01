@@ -1,7 +1,7 @@
-import { Complex } from "./facade";
-import { correlation } from "./facade";
-import { AudioReflectable} from "./facade";
+import { Complex } from "@music-analyzer/math";
+import { correlation } from "@music-analyzer/math";
 import { AudioAnalyzer } from "./audio-analyzer";
+import { AudioReflectable } from "@music-analyzer/view";
 
 export class WaveViewer 
   implements AudioReflectable {

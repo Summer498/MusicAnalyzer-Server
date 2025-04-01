@@ -1,6 +1,6 @@
-import { SerializedTimeAndAnalyzedMelody } from "./facade";
-import { CollectionLayer } from "./facade";
-import { SetColor } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { CollectionLayer } from "@music-analyzer/view";
+import { SetColor } from "@music-analyzer/controllers";
 import { Reduction } from "./reduction";
 import { IReductionLayer } from "../interface/reduction/reduction-layer";
 

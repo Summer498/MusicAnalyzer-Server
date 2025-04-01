@@ -1,5 +1,5 @@
-import { hsv2rgb } from "./facade";
-import { rgbToString } from "./facade";
+import { hsv2rgb } from "@music-analyzer/color";
+import { rgbToString } from "@music-analyzer/color";
 
 export const romanToColor = (roman: string, s: number, v: number) => {
   let i: number | undefined = undefined;

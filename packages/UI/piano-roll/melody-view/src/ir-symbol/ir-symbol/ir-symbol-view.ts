@@ -1,7 +1,7 @@
-import { size } from "./facade";
-import { MVVM_View_Impl } from "./facade";
-import { ColorChangeSubscriber } from "./facade";
-import { SetColor } from "./facade";
+import { size } from "@music-analyzer/view-parameters";
+import { MVVM_View_Impl } from "@music-analyzer/view";
+import { ColorChangeSubscriber } from "@music-analyzer/controllers";
+import { SetColor } from "@music-analyzer/controllers";
 import { IRSymbolModel } from "./ir-symbol-model";
 
 const ir_analysis_em = size;

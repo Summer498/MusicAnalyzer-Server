@@ -1,4 +1,4 @@
-import { PianoRollRatio } from "./facade";
+import { PianoRollRatio } from "@music-analyzer/view-parameters";
 import { Slider } from "../abstract-slider";
 import { TimeRangeSubscriber } from "./time-range-subscriber";
 

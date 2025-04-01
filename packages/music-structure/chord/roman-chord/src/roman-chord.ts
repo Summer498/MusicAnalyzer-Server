@@ -1,5 +1,5 @@
-import { Chord } from "./facade";
-import { Scale } from "./facade";
+import { Chord } from "@music-analyzer/tonal-objects";
+import { Scale } from "@music-analyzer/tonal-objects";
 import { convertToTrueTonic } from "./convert-to-true-tonic";
 import { get_roman } from "./get-roman";
 

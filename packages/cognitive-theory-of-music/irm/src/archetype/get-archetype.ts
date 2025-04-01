@@ -1,8 +1,8 @@
-import { NoteLiteral } from "./facade";
 import { Triad } from "./triad";
 import { Dyad } from "./Dyad";
 import { Monad } from "./Monad";
 import { Null_ad } from "./Null-ad";
+import { NoteLiteral } from "@music-analyzer/tonal-objects";
 
 export function getArchetype(): Null_ad;
 export function getArchetype(note: NoteLiteral): Monad;

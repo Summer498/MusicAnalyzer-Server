@@ -1,4 +1,4 @@
-import { RequiredByChordKeyModel } from "./facade";
+import { RequiredByChordKeyModel } from "../r-model";
 import { ChordPartModel } from "./chord-part-model";
 
 export class ChordKeyModel 

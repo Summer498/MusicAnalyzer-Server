@@ -1,13 +1,13 @@
-import { argmax } from "./facade";
-import { Complex } from "./facade";
-import { correlation } from "./facade";
-import { decimal } from "./facade";
-import { getZeros } from "./facade";
-import { getRange } from "./facade";
-import { mod } from "./facade";
-import { totalSum } from "./facade";
-import { SerializedTimeAndAnalyzedMelody } from "./facade";
-import { SerializedTimeAndRomanAnalysis } from "./facade";
+import { argmax } from "@music-analyzer/math";
+import { Complex } from "@music-analyzer/math";
+import { correlation } from "@music-analyzer/math";
+import { decimal } from "@music-analyzer/math";
+import { getRange } from "@music-analyzer/math";
+import { getZeros } from "@music-analyzer/math";
+import { mod } from "@music-analyzer/math";
+import { totalSum } from "@music-analyzer/math";
+import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { SerializedTimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { BeatInfo } from "./beat-info";
 
 export const calcTempo = (melodies: SerializedTimeAndAnalyzedMelody[], romans: SerializedTimeAndRomanAnalysis[]) => {

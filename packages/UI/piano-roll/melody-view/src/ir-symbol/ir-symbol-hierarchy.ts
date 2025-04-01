@@ -1,9 +1,9 @@
-import { SerializedTimeAndAnalyzedMelody } from "./facade";
-import { CollectionHierarchy } from "./facade";
-import { SetColor } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { SetColor } from "@music-analyzer/controllers";
 import { IRSymbolLayer } from "./ir-symbol-layer";
 import { RequiredByIRSymbolHierarchy } from "../requirement/ir-symbol/required-by-ir-symbol-hierarchy";
 import { I_IRSymbolHierarchy } from "../interface/ir-symbol/ir-symbol-hierarchy";
+import { CollectionHierarchy } from "@music-analyzer/view";
 
 export class IRSymbolHierarchy
   extends CollectionHierarchy<IRSymbolLayer>

@@ -1,13 +1,13 @@
-import { RomanAnalysisData } from "./facade";
-import { GroupingStructure } from "./facade";
-import { IProlongationalReduction } from "./facade";
-import { ITimeSpanReduction } from "./facade";
-import { MetricalStructure } from "./facade";
-import { MelodyAnalysisData } from "./facade";
-import { SerializedTimeAndAnalyzedMelody } from "./facade";
-import { MusicXML } from "./facade";
+import { RomanAnalysisData } from "@music-analyzer/chord-analyze";
 import { getJSONfromXML } from "./DataFetcher";
 import { DataPromises } from "./data-promises";
+import { MelodyAnalysisData } from "@music-analyzer/melody-analyze";
+import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { MusicXML } from "@music-analyzer/musicxml";
+import { GroupingStructure } from "@music-analyzer/gttm";
+import { IProlongationalReduction } from "@music-analyzer/gttm";
+import { ITimeSpanReduction } from "@music-analyzer/gttm";
+import { MetricalStructure } from "@music-analyzer/gttm";
 
 export interface I_GTTM_URLs {
   readonly msc: string

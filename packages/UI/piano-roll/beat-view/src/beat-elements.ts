@@ -1,5 +1,5 @@
-import { BeatInfo } from "./facade";
-import { Time } from "./facade";
+import { BeatInfo } from "@music-analyzer/beat-estimation";
+import { Time } from "@music-analyzer/time-and";
 import { BeatBarsSeries } from "./beat-bar-series";
 import { RequiredByBeatElements } from "./requirement";
 

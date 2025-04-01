@@ -1,5 +1,5 @@
-import { SerializedTimeAndAnalyzedMelody } from "./facade";
-import { NowAt } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { NowAt } from "@music-analyzer/view-parameters";
 
 class CacheCore {
   #cache: SerializedTimeAndAnalyzedMelody[];

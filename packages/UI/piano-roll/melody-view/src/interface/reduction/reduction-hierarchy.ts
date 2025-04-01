@@ -1,6 +1,6 @@
-import { HierarchyLevelSubscriber } from "./facade";
-import { AudioReflectable } from "./facade";
+import { AudioReflectable } from "@music-analyzer/view";
 import { IReductionLayer } from "./reduction-layer";
+import { HierarchyLevelSubscriber } from "@music-analyzer/controllers";
 
 export interface IReductionHierarchy
   extends

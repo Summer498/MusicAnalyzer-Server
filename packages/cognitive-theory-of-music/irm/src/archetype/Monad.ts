@@ -1,4 +1,4 @@
-import { NoteLiteral } from "./facade";
+import { NoteLiteral } from "@music-analyzer/tonal-objects";
 
 export class Monad {
   readonly length = 1;

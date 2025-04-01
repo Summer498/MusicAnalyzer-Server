@@ -1,1 +1,0 @@
-export { Triad } from "../../facade";

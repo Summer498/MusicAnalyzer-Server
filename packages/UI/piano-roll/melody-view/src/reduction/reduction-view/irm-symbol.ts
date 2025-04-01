@@ -1,6 +1,6 @@
-import { bracket_height } from "./facade";
-import { MVVM_View_Impl } from "./facade";
-import { SetColor } from "./facade";
+import { bracket_height } from "@music-analyzer/view-parameters";
+import { MVVM_View_Impl } from "@music-analyzer/view";
+import { SetColor } from "@music-analyzer/controllers";
 import { ReductionViewModel } from "./reduction-view-model";
 
 export class IRMSymbol

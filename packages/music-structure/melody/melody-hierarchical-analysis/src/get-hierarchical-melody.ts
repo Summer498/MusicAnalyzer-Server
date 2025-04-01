@@ -1,11 +1,11 @@
-import { analyzeMelody } from "./facade";
-import { SerializedTimeAndAnalyzedMelody } from "./facade";
-import { TimeAndMelody } from "./facade";
-import { ReductionElement } from "./facade";
-import { TimeSpan } from "./facade";
-import { SerializedTimeAndRomanAnalysis } from "./facade";
-import { MusicXML } from "./facade";
+import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { analyzeMelody } from "@music-analyzer/melody-analyze";
+import { TimeAndMelody } from "@music-analyzer/melody-analyze";
+import { SerializedTimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { getTimeAndMelody } from "./get-time-and-melody";
+import { ReductionElement } from "@music-analyzer/gttm";
+import { TimeSpan } from "@music-analyzer/gttm";
+import { MusicXML } from "@music-analyzer/musicxml";
 
 class SerializedTimeAndAnalyzedMelodyAndIR
   extends SerializedTimeAndAnalyzedMelody {

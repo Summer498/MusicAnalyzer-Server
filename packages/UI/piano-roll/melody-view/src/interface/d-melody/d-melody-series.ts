@@ -1,7 +1,7 @@
-import { AudioReflectable } from "./facade";
-import { WindowReflectable } from "./facade";
-import { DMelodyControllerSubscriber } from "./facade";
-import { TimeRangeSubscriber } from "./facade";
+import { AudioReflectable } from "@music-analyzer/view";
+import { WindowReflectable } from "@music-analyzer/view";
+import { DMelodyControllerSubscriber } from "@music-analyzer/controllers";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 
 export interface IDMelodySeries
   extends

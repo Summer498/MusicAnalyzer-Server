@@ -1,9 +1,9 @@
-import { ReflectableTimeAndMVCControllerCollection } from "./facade";
-import { BeatInfo } from "./facade";
-import { Time } from "./facade";
+import { BeatInfo } from "@music-analyzer/beat-estimation";
+import { Time } from "@music-analyzer/time-and";
 import { BeatBar } from "./beat-bar";
 import { RequiredByBeatBarsSeries } from "./requirement";
 import { IBeatBarsSeries } from "./interface";
+import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
 
 export class BeatBarsSeries
   extends ReflectableTimeAndMVCControllerCollection<BeatBar>

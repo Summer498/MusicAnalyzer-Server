@@ -1,11 +1,11 @@
-import { getOnehot } from "./facade";
-import { vSum } from "./facade";
-import { RomanChord } from "./facade";
-import { Assertion } from "./facade";
+import { RomanChord } from "@music-analyzer/roman-chord";
 import { getTonicChroma } from "./get-tonic-chroma";
 import { getPowerChroma } from "./get-power-chroma";
 import { getChordChroma } from "./get-chord-chroma";
 import { getScaleChroma } from "./get-scale-chroma";
+import { Assertion } from "@music-analyzer/stdlib";
+import { getOnehot } from "@music-analyzer/math";
+import { vSum } from "@music-analyzer/math";
 
 export const getBasicSpace = (roman: RomanChord) => {
   new Assertion(!roman.scale.empty).onFailed(() => {

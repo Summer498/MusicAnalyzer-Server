@@ -1,8 +1,9 @@
-import { getInterval } from "./facade";
-import { Interval } from "./facade";
 import { Motion } from "./Motion";
 import { Direction } from "../Direction";
 import { Magnitude } from "../Magnitude";
+import { getInterval } from "@music-analyzer/tonal-objects";
+import { Interval } from "@music-analyzer/tonal-objects";
+
 
 const M3 = getInterval("M3");
 const m3 = getInterval("m3");

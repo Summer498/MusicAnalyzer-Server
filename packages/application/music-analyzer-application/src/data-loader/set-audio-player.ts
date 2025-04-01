@@ -1,4 +1,4 @@
-import { URLsContainer } from "./facade";
+import { URLsContainer } from "../containers";
 
 const registerSong = (urls: string[], default_url: string, audio_player: HTMLAudioElement | HTMLVideoElement) => {
   const url = urls.pop();

@@ -1,12 +1,15 @@
-import { Interval } from "./facade";
 import { ArchetypeSymbol } from "./symbols";
 import { RetrospectiveTriadSymbol } from "./symbols";
 import { ProspectiveDirectionalTriadSymbol } from "./symbols";
 import { ProspectiveTriadSymbol } from "./symbols";
 import { ArchetypeDirectionalSymbol } from "./symbols";
 import { directionalRetrospectiveSymbol } from "./get-directional-retrospective-symbol";
+import { Interval } from "@music-analyzer/tonal-objects";
 
-export const directionalProspectiveSymbol = (symbol: ProspectiveTriadSymbol, realization: Interval): ProspectiveDirectionalTriadSymbol => {
+export const directionalProspectiveSymbol = (
+  symbol: ProspectiveTriadSymbol,
+  realization: Interval
+): ProspectiveDirectionalTriadSymbol => {
   switch (symbol) {
     case "P":
       if (realization.semitones > 0) { return "uP"; }

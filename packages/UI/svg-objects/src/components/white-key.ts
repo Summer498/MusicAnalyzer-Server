@@ -1,6 +1,6 @@
-import { WhiteKeyPrm } from "./facade";
 import { WhiteKeyModel } from "./white-key-model";
 import { Rectangle } from "./rectangle";
+import { WhiteKeyPrm } from "@music-analyzer/view-parameters";
 
 export class WhiteKey extends Rectangle {
   override model: WhiteKeyModel;

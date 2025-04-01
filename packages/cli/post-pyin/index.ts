@@ -1,12 +1,12 @@
 import { default as fs } from "fs";
-import { freq2midi } from "./src/facade";
-import { getBandpassFrequency } from "./src/facade";
-import { getFreqFromPhase } from "./src/facade";
-import { getFrequency } from "./src/facade";
-import { getWav } from "./src/facade";
-import { roundOnMIDI } from "./src/facade";
 import { getMedianFrequency } from "./src";
 import { Vocals } from "./src";
+import { freq2midi } from "../post-f0-util";
+import { getBandpassFrequency } from "../post-f0-util";
+import { getFreqFromPhase } from "../post-f0-util";
+import { getFrequency } from "../post-f0-util";
+import { getWav } from "../post-f0-util";
+import { roundOnMIDI } from "../post-f0-util";
 
 const main = (argv: string[]) => {
   const csv_file_path = argv[2];

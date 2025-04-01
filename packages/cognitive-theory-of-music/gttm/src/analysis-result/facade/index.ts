@@ -1,1 +1,0 @@
-export { BeatPos } from "../../facade";

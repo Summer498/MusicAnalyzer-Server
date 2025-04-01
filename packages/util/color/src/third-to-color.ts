@@ -1,7 +1,7 @@
-import { mod } from "./facade";
-import { getChroma } from "./facade";
-import { getInterval } from "./facade";
-import { intervalOf } from "./facade";
+import { mod } from "@music-analyzer/math";
+import { getChroma } from "@music-analyzer/tonal-objects";
+import { getInterval } from "@music-analyzer/tonal-objects";
+import { intervalOf } from "@music-analyzer/tonal-objects";
 import { rgbToString } from "./rgb-to-string";
 import { hsv2rgb } from "./hsv2rgb";
 import { green_hue } from "./green-hue";

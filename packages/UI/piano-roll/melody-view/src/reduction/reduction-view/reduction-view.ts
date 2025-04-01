@@ -1,6 +1,6 @@
-import { MVVM_View_Impl } from "./facade";
-import { TimeRangeSubscriber } from "./facade";
-import { SetColor } from "./facade";
+import { MVVM_View_Impl } from "@music-analyzer/view";
+import { TimeRangeSubscriber } from "@music-analyzer/controllers";
+import { SetColor } from "@music-analyzer/controllers";
 import { ReductionModel } from "../reduction-model";
 import { ReductionViewModel } from "./reduction-view-model";
 import { IRMSymbol } from "./irm-symbol";

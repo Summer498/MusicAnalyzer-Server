@@ -1,7 +1,7 @@
-import { isSuperSet } from "./facade";
-import { getChroma } from "./facade";
-import { minorKey } from "./facade";
-import { Chord } from "./facade";
+import { isSuperSet } from "@music-analyzer/math";
+import { Chord } from "@music-analyzer/tonal-objects";
+import { getChroma } from "@music-analyzer/tonal-objects";
+import { minorKey } from "@music-analyzer/tonal-objects";
 
 const c_minor = minorKey("C").natural;
 type KeyScale = typeof c_minor;

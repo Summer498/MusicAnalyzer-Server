@@ -1,4 +1,4 @@
-import { Time } from "./facade";
+import { Time } from "@music-analyzer/time-and";
 
 type SerializedTimeAndRomanAnalysis_Arg = [Time, string, string, string];
 const getArgsOfSerializedTimeAndRomanAnalysis = (

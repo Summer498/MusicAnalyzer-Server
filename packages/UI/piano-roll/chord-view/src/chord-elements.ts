@@ -1,4 +1,4 @@
-import { SerializedTimeAndRomanAnalysis } from "./facade";
+import { SerializedTimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { RequiredByChordElements } from "./r-chord-elements";
 import { RequiredByChordPartModel } from "./r-model";
 import { ChordKeySeries } from "./series";
