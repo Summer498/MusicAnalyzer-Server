@@ -11,12 +11,7 @@ import { chordToRoman } from "./call-program";
 import { demucs } from "./call-program";
 import { semitonesBy_pYIN } from "./call-program";
 import { f0By_pYIN } from "./call-program";
-import { melodyAnalysisBy_pYIN } from "./call-program";
-import { chordExtract } from "./call-program";
-import { chordToRoman } from "./call-program";
-import { demucs } from "./call-program";
-import { semitonesBy_pYIN } from "./call-program";
-import { f0By_pYIN } from "./call-program";
+import { DataDirectories } from "../data-directories";
 
 const _loadAnalysisFromPYIN = (update: boolean, song_name: string, file_path: string) => {
   const force = false;

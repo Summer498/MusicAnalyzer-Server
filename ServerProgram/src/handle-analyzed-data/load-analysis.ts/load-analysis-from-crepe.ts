@@ -11,12 +11,7 @@ import { demucs } from "./call-program";
 import { f0ByCrepe } from "./call-program";
 import { melodyAnalysisByCrepe } from "./call-program";
 import { semitonesByCrepe } from "./call-program";
-import { chordExtract } from "./call-program";
-import { chordToRoman } from "./call-program";
-import { demucs } from "./call-program";
-import { f0ByCrepe } from "./call-program";
-import { melodyAnalysisByCrepe } from "./call-program";
-import { semitonesByCrepe } from "./call-program";
+import { DataDirectories } from "../data-directories";
 
 const _loadAnalysisFromCREPE = (update: boolean, song_name: string, file_path: string) => {
   const force = false;

@@ -1,12 +1,8 @@
 import { default as multer } from "multer";
 import { default as express } from "express";
-import { handlePostRequest } from "./routing";
+import { handlePostRequest, send404NotFound } from "./routing";
 import { listUpGTTMExample } from "./routing";
 import { send404HTML } from "./routing";
-import { loadAnalysisFromCrepe } from "./handle-analyzed-data";
-import { loadAnalysisFromPYIN } from "./handle-analyzed-data";
-import { loadRomanAnalysis } from "./handle-analyzed-data";
-import { renameFile } from "./handle-analyzed-data";
 import { sendRequestedFile } from "./routing";
 import { loadAnalysisFromCrepe } from "./handle-analyzed-data";
 import { loadAnalysisFromPYIN } from "./handle-analyzed-data";
