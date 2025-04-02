@@ -1,6 +1,15 @@
 import { WhiteKeyModel } from "./white-key-model";
 import { Rectangle } from "./rectangle";
-import { WhiteKeyPrm } from "@music-analyzer/view-parameters";
+import { RectParameters } from "@music-analyzer/view-parameters";
+import { KeyPrm } from "@music-analyzer/view-parameters";
+
+class WhiteKeyPrm 
+  extends RectParameters {
+  static readonly fill = "rgb(255, 255, 255)";
+  static readonly stroke = "rgb(0, 0, 0)";
+  static readonly width = KeyPrm.width;
+  static readonly height = KeyPrm.height / 7;
+};
 
 export class WhiteKey extends Rectangle {
   override model: WhiteKeyModel;

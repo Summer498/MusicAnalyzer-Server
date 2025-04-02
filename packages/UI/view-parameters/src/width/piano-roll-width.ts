@@ -1,4 +1,6 @@
-import { WindowInnerWidth } from "./windowInnerWidth";
+class WindowInnerWidth {
+  static get() { return window.innerWidth; }
+}
 
 export class PianoRollWidth {
   static get() {

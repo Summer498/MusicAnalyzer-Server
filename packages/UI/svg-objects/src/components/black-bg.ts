@@ -1,6 +1,11 @@
-import { BlackBGsPrm } from "@music-analyzer/view-parameters";
-import { BlackPosition } from "@music-analyzer/view-parameters";
+import { BGsPrm } from "./bgs";
+import { BlackPosition } from "../parameters"
 import { Rectangle } from "./rectangle";
+
+class BlackBGsPrm 
+  extends BGsPrm {
+  static readonly fill = "rgb(192, 192, 192)";
+}
 
 export class BlackBG extends Rectangle {
   constructor(oct: number, i: number) {

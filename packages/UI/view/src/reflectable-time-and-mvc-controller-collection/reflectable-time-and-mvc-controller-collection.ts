@@ -4,7 +4,15 @@ import { MVVM_Collection_Impl } from "../mvvm/collection-impl";
 import { TimeAndMVCModel } from "./time-and-model";
 import { I_ReflectableTimeAndMVCControllerCollection } from "./i-reflectable-time-and-mvc-controller-collection";
 import { I_TimeAndVM } from "./i-time-and-model";
-import { PianoRollTranslateX } from "@music-analyzer/view-parameters";
+import { CurrentTimeX } from "@music-analyzer/view-parameters";
+import { NoteSize } from "@music-analyzer/view-parameters";
+import { NowAt } from "@music-analyzer/view-parameters";
+
+class PianoRollTranslateX {
+  static get() {
+    return CurrentTimeX.get() - NowAt.get() * NoteSize.get();
+  }
+}
 
 export abstract class ReflectableTimeAndMVCControllerCollection<VM extends I_TimeAndVM>
   extends MVVM_Collection_Impl<VM>
