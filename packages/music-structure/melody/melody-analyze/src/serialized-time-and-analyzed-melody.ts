@@ -1,5 +1,5 @@
 import { Time } from "@music-analyzer/time-and";
-import { SerializedMelodyAnalysis } from "./melody-analysis";
+import { SerializedMelodyAnalysis } from "./serialized-melody-analysis";
 
 type SerializedTimeAndAnalyzedMelody_Args = [Time, Time, number, SerializedMelodyAnalysis]
 const getArgsOfSerializedTimeAndAnalyzedMelody = (

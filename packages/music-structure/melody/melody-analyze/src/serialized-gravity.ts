@@ -2,7 +2,7 @@ type Gravity_Args = [number, true | undefined];
 const getArgsOfGravity = (
   args
     : Gravity_Args
-    | [Gravity]
+    | [SerializedGravity]
 ) => {
   if (args.length === 1) {
     const [e] = args;
@@ -10,10 +10,10 @@ const getArgsOfGravity = (
   }
   return args;
 }
-export class Gravity {
+export class SerializedGravity {
   readonly destination: number
   readonly resolved: true | undefined
-  constructor(e: Gravity);
+  constructor(e: SerializedGravity);
   constructor(
     destination: number,
     resolved: true | undefined,
@@ -21,7 +21,7 @@ export class Gravity {
   constructor(
     ...args
       : Gravity_Args
-      | [Gravity]
+      | [SerializedGravity]
   ) {
     const [destination, resolved] = getArgsOfGravity(args);
     this.destination = destination;

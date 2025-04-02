@@ -1,7 +1,7 @@
-import { RomanAnalysisData } from "@music-analyzer/chord-analyze";
+import { SerializedRomanAnalysisData } from "@music-analyzer/chord-analyze";
 import { getJSONfromXML } from "./DataFetcher";
 import { DataPromises } from "./data-promises";
-import { MelodyAnalysisData } from "@music-analyzer/melody-analyze";
+import { SerializedMelodyAnalysisData } from "@music-analyzer/melody-analyze";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MusicXML } from "@music-analyzer/musicxml";
 import { GroupingStructure } from "@music-analyzer/gttm";
@@ -28,26 +28,26 @@ export const justLoad = (
 ) => {
   return [
     fetch(analysis_urls.roman)
-      .then(res => res.json() as Promise<RomanAnalysisData>)
+      .then(res => res.json() as Promise<SerializedRomanAnalysisData>)
       .then(res => {
-        if (RomanAnalysisData.checkVersion(res)) { return RomanAnalysisData.instantiate(res) }
+        if (SerializedRomanAnalysisData.checkVersion(res)) { return SerializedRomanAnalysisData.instantiate(res) }
         else { throw new Error(`Version check: fault in RomanAnalysisData`) }
       })
       .catch(e => fetch(`${analysis_urls.roman}?update`)
-        .then(res => res.json() as Promise<RomanAnalysisData>)
-        .then(res => RomanAnalysisData.instantiate(res))
+        .then(res => res.json() as Promise<SerializedRomanAnalysisData>)
+        .then(res => SerializedRomanAnalysisData.instantiate(res))
       )
       .then(res => res?.body)
       .catch(e => { console.error(e); return []; }),
     fetch(analysis_urls.melody)
-      .then(res => res.json() as Promise<MelodyAnalysisData>)
+      .then(res => res.json() as Promise<SerializedMelodyAnalysisData>)
       .then(res => {
-        if (MelodyAnalysisData.checkVersion(res)) { return MelodyAnalysisData.instantiate(res) }
+        if (SerializedMelodyAnalysisData.checkVersion(res)) { return SerializedMelodyAnalysisData.instantiate(res) }
         else { throw new Error(`Version check: fault in MelodyAnalysisData`) }
       })
       .catch(e => fetch(`${analysis_urls.melody}?update`)
-        .then(res => res.json() as Promise<MelodyAnalysisData>)
-        .then(res => MelodyAnalysisData.instantiate(res))
+        .then(res => res.json() as Promise<SerializedMelodyAnalysisData>)
+        .then(res => SerializedMelodyAnalysisData.instantiate(res))
       )
       .then(res => res?.body)
       .then(res => res?.map(e => ({ ...e, head: e.time })) as SerializedTimeAndAnalyzedMelody[])
