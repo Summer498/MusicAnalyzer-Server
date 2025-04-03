@@ -1,5 +1,5 @@
-import { RectParameters } from "../rect-parameter";
-import { octave_height } from "../height/octave-height";
+import { RectParameters } from "./rect-parameter";
+import { octave_height } from "./octave-height";
 
 export class KeyPrm 
   extends RectParameters {

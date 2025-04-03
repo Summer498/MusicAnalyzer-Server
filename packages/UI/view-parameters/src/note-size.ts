@@ -1,8 +1,8 @@
-import { PianoRollWidth } from "../width/piano-roll-width";
+import { PianoRollWidth } from "./piano-roll-width";
 
 
-import { PianoRollRatio } from "../length";
-import { SongLength } from "../length";
+import { PianoRollRatio } from "./piano-roll-ratio";
+import { SongLength } from "./song-length";
 
 class PianoRollTimeLength {
   static get() {
