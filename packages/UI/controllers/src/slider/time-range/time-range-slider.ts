@@ -2,13 +2,19 @@ import { PianoRollRatio } from "@music-analyzer/view-parameters";
 import { Slider } from "../abstract-slider";
 import { TimeRangeSubscriber } from "./time-range-subscriber";
 
-export class TimeRangeSlider 
+export class TimeRangeSlider
   extends Slider<TimeRangeSubscriber> {
   constructor() {
     super("time_range_slider", "Time Range", 1, 10, 0.1, 10);
   };
   override updateDisplay() {
-    this.display.textContent = `${Math.floor(Math.pow(2, Number(this.input.value) - Number(this.input.max)) * 100)} %`;
+    [Number(this.input.value)]
+      .map(e => e - Number(this.input.max))
+      .map(e => e * 100)
+      .map(e => Math.pow(2, e))
+      .map(e => Math.floor(e))
+      .map(e => `${e} %`)
+      .map(e => this.display.textContent = e)
   }
   update() {
     const value = Number(this.input.value);

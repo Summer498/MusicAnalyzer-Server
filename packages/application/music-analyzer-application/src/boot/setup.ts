@@ -14,7 +14,11 @@ const setSongLength = (
 ) => {
   const last = <T>(arr: T[]) => arr[arr.length - 1];
   const melodies = last(hierarchical_melody);
-  SongLength.set(Math.max(...melodies.map(e => e.time.end)) * 1.05); // ちょっとマージンを取っておく
+  melodies.map(e => e.time.end)
+    .map(e => [e])
+    .reduce((p, c) => [Math.max(p[0], c[0])])
+    .map(e => e * 1.05)
+    .map(e => SongLength.set(e));
 }
 
 export const setup = (
