@@ -1,7 +1,7 @@
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { SetColor } from "@music-analyzer/controllers";
 import { IRPlotLayerView } from "./ir-plot-layer-view";
-import { IRPlot } from "../ir-plot/ir-plot";
+import { IRPlot } from "../ir-plot";
 import { IRPlotLayerModel } from "./ir-plot-layer-model";
 import { I_IRPlotLayer } from "../../interface";
 

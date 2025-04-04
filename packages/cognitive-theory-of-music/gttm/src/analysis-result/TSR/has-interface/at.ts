@@ -1,5 +1,5 @@
 import { Temp } from "./temp";
-import { IAt } from "../interface/i-at";
+import { IAt } from "../interface";
 
 export class At {
   readonly temp: Temp

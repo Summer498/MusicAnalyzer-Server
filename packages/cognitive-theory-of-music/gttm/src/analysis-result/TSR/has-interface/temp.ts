@@ -1,7 +1,7 @@
-import { Path } from "../../common/path";
+import { Path } from "../../common";
 import { Pred } from "../common";
 import { Succ } from "../common";
-import { ITemp } from "../interface/i-temp";
+import { ITemp } from "../interface";
 
 export class Temp 
   implements ITemp {

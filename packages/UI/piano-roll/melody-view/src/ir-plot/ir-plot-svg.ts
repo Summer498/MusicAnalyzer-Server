@@ -1,7 +1,7 @@
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { IRPlotHierarchy } from "./ir-plot-hierarchy";
-import { RequiredByIRPlotSVG } from "../requirement/ir-plot/required-by-ir-plot-svg";
-import { I_IRPlotSVG } from "../interface/ir-plot/ir-plot-svg";
+import { RequiredByIRPlotSVG } from "../requirement";
+import { I_IRPlotSVG } from "../interface";
 
 export class IRPlotSVG
   implements I_IRPlotSVG {

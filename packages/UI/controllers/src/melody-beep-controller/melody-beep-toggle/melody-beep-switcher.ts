@@ -1,4 +1,4 @@
-import { Checkbox } from "../../switcher/abstract-switcher";
+import { Checkbox } from "../../switcher";
 import { MelodyBeepSwitcherSubscriber } from "./melody-beep-switcher-subscriber";
 
 export class MelodyBeepSwitcher 

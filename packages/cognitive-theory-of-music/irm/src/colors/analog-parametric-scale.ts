@@ -1,9 +1,9 @@
 import { hsv2rgb } from "@music-analyzer/color";
 import { rgbToString } from "@music-analyzer/color";
-import { Dyad } from "../archetype/Dyad";
-import { Monad } from "../archetype/Monad";
-import { Null_ad } from "../archetype/Null-ad";
-import { Triad } from "../archetype/triad/Triad";
+import { Dyad } from "../archetype";
+import { Monad } from "../archetype";
+import { Null_ad } from "../archetype";
+import { Triad } from "../archetype";
 
 const get_grb_on_parametric_scale = (archetype: Triad): [number, number, number] => {
   const s = archetype.intervallic?.direction.name === "mL" ? -1 : 0;

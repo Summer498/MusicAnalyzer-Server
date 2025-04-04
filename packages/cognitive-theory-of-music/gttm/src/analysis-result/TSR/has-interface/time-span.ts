@@ -1,9 +1,9 @@
-import { Head } from "../../common/head";
+import { Head } from "../../common";
 import { ReductionElement } from "../../ReductionElement";
-import { IAt } from "../interface/i-at";
+import { IAt } from "../interface";
 import { Chord } from "./chord";
-import { ITimeSpan } from "../interface/i-time-span";
-import { ITimeSpanTree } from "../interface/i-time-span";
+import { ITimeSpan } from "../interface";
+import { ITimeSpanTree } from "../interface";
 import { At } from "./at";
 
 

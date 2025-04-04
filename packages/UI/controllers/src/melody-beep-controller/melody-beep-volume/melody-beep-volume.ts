@@ -1,4 +1,4 @@
-import { Slider } from "../../slider/abstract-slider";
+import { Slider } from "../../slider";
 import { MelodyBeepVolumeSubscriber } from "./melody-beep-volume-subscriber";
 
 export class MelodyBeepVolume 

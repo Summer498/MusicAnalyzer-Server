@@ -1,6 +1,6 @@
 import { HasID } from "./has-id";
-import { ExtendedMeasure } from "../measure/extended-measure";
-import { Measure } from "../measure/measure";
+import { ExtendedMeasure } from "../measure";
+import { Measure } from "../measure";
 
 export interface Part 
   extends HasID {

@@ -1,5 +1,5 @@
-import { I_MVVM_Collection } from "../mvvm/i-collection";
-import { AudioReflectable } from "../reflectable/audio-reflectable";
+import { I_MVVM_Collection } from "../mvvm";
+import { AudioReflectable } from "../reflectable";
 import { I_TimeAndVM } from "./i-time-and-model";
 import { TimeAndMVCModel } from "./time-and-model";
 

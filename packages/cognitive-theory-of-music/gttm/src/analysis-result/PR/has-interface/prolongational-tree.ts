@@ -1,7 +1,7 @@
 import { ReductionElement } from "../../ReductionElement";
 import { Head } from "./head";
-import { IProlongationalRegion } from "../interface/i-prolongation-tree";
-import { IProlongationTree } from "../interface/i-prolongation-tree";
+import { IProlongationalRegion } from "../interface";
+import { IProlongationTree } from "../interface";
 
 export class ProlongationTree {
   readonly pr: ProlongationalRegion;

@@ -1,8 +1,8 @@
-import { TriadSymbol } from "../symbols/triad";
 import { retrospectiveSymbol } from "../get-retrospective-symbol";
 import { TriadArchetype } from "./triad-archetype";
-import { IntervallicMotion } from "../../MelodyMotion/IntervallicMotion";
-import { RegistralMotion } from "../../MelodyMotion/RegistralMotion";
+import { TriadSymbol } from "../symbols";
+import { IntervallicMotion } from "../../MelodyMotion";
+import { RegistralMotion } from "../../MelodyMotion";
 import { RegistralReturnForm } from "../../RegistralReturnForm";
 import { getInterval } from "@music-analyzer/tonal-objects";
 import { IntervalName } from "@music-analyzer/tonal-objects";

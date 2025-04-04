@@ -1,4 +1,4 @@
-import { Triad } from "../archetype/triad/Triad";
+import { Triad } from "../archetype";
 
 export const get_color_of_implication_realization = (archetype: Triad) => {
   switch (archetype.symbol) {

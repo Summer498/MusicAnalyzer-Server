@@ -1,4 +1,4 @@
-import { Triad } from "../archetype/triad/Triad";
+import { Triad } from "../archetype";
 
 export const get_color_on_digital_intervallic_scale = (archetype: Triad)  => {
   switch (archetype.symbol) {

@@ -2,7 +2,7 @@ import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze"
 import { CollectionLayer } from "@music-analyzer/view";
 import { SetColor } from "@music-analyzer/controllers";
 import { Melody } from "./melody";
-import { IMelodyLayer } from "../interface/melody/melody-layer";
+import { IMelodyLayer } from "../interface";
 
 export class MelodyLayer
   extends CollectionLayer<Melody>

@@ -6,7 +6,7 @@ import { PianoRollBegin } from "@music-analyzer/view-parameters";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { DMelodyModel } from "./d-melody-model";
 import { DMelodyView } from "./d-melody-view";
-import { insertMelody } from "../../melody-editor-function/insert";
+import { insertMelody } from "../../melody-editor-function";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get()

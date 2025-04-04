@@ -1,4 +1,4 @@
-import { IProlongationalReduction } from "../interface/i-prolongation-reduction";
+import { IProlongationalReduction } from "../interface";
 import { ProlongationTree } from "./prolongational-tree";
 
 export class ProlongationalReduction 

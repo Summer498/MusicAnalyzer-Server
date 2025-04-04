@@ -1,4 +1,4 @@
-import { ProspectiveTriadSymbol } from "../symbols/prospective-triad";
+import { ProspectiveTriadSymbol } from "../symbols";
 import { DirectionName } from "../../direction-name";
 import { MagnitudeName } from "../../magnitude-name";
 

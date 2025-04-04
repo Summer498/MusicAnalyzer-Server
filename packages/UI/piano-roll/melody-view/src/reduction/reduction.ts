@@ -3,7 +3,7 @@ import { MVVM_ViewModel_Impl } from "@music-analyzer/view";
 import { SetColor } from "@music-analyzer/controllers";
 import { ReductionModel } from "./reduction-model";
 import { ReductionView } from "./reduction-view";
-import { IReduction } from "../interface/reduction/reduction";
+import { IReduction } from "../interface";
 
 export class Reduction
   extends MVVM_ViewModel_Impl<ReductionModel, ReductionView>

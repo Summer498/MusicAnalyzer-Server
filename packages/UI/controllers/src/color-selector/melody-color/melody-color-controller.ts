@@ -1,4 +1,4 @@
-import { ColorChangeSubscriber } from "../irm-color/color-change-subscriber";
+import { ColorChangeSubscriber } from "../irm-color";
 import { MelodyColorSelector } from "./melody-color-selector";
 
 export class MelodyColorController {

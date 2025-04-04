@@ -1,5 +1,5 @@
-import { Note } from "../common/note";
-import { Applied } from "../common/applied";
+import { Note } from "../common";
+import { Applied } from "../common";
 import { GPR } from "./grouping-preference-rule";
 
 export type Group = {

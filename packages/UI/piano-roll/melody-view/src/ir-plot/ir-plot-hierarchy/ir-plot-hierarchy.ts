@@ -1,9 +1,9 @@
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { SetColor } from "@music-analyzer/controllers";
-import { IRPlotLayer } from "../ir-plot-layer/ir-plot-layer";
+import { IRPlotLayer } from "../ir-plot-layer";
 import { IRPlotHierarchyView } from "./ir-plot-hierarchy-view"
 import { IRPlotHierarchyModel } from "./ir-plot-hierarchy-model";
-import { RequiredByIRPlotHierarchy } from "../../requirement/ir-plot";
+import { RequiredByIRPlotHierarchy } from "../../requirement";
 
 export class IRPlotHierarchy {
   readonly view: IRPlotHierarchyView

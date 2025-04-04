@@ -1,8 +1,8 @@
 import { SetColor } from "@music-analyzer/controllers";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MelodyLayer } from "./melody-layer";
-import { RequiredByMelodyHierarchy } from "../requirement/melody/required-melody-hierarchy";
-import { IMelodyHierarchy } from "../interface/melody/melody-hierarchy";
+import { RequiredByMelodyHierarchy } from "../requirement";
+import { IMelodyHierarchy } from "../interface";
 import { CollectionHierarchy } from "@music-analyzer/view";
 
 export class MelodyHierarchy

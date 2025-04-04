@@ -1,4 +1,4 @@
-import { Controller } from "../controller/controller";
+import { Controller } from "../controller";
 
 export abstract class ColorSelector<T> extends Controller<T> {
   constructor(

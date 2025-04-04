@@ -1,4 +1,4 @@
-import { Chord } from "../../common/chord";
+import { Chord } from "../../common";
 
 export interface IChord 
   extends Chord {

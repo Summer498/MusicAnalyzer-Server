@@ -1,5 +1,5 @@
-import { Chord } from "../../common/chord";
-import { IHead as _IHead } from "../../common/i-head";
+import { Chord } from "../../common";
+import { IHead as _IHead } from "../../common";
 
 export interface IHead
   extends _IHead<Chord> {

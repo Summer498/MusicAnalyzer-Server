@@ -1,4 +1,4 @@
-export { HTMLsContainer } from "./src/containers/HTMLs-container";
-export { setupApplication } from "./src/boot/setup-application";
-export { URLsContainer } from "./src/containers/URLs-container";
+export { HTMLsContainer } from "./src/containers";
+export { setupApplication } from "./src/boot";
+export { URLsContainer } from "./src/containers";
 export { handleGttmExampleIDs } from "./src/handle-gttm-example-IDs";

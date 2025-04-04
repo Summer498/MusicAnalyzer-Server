@@ -1,5 +1,5 @@
 import { WindowReflectableRegistry } from "@music-analyzer/view";
-import { OctaveKey } from "../octave/octave-key";
+import { OctaveKey } from "../octave";
 import { Octaves } from "./octaves";
 
 export class OctaveKeys extends Octaves {

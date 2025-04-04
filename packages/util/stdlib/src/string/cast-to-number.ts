@@ -1,3 +1,3 @@
-import { assertNotNaN } from "../assertion/not-nan";
+import { assertNotNaN } from "../assertion";
 
 export const castToNumber = (value: string) => assertNotNaN(Number(value));

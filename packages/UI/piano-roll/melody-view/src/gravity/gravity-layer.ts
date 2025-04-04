@@ -1,6 +1,6 @@
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { Gravity } from "./gravity";
-import { IGravityLayer } from "../interface/gravity/gravity-layer";
+import { IGravityLayer } from "../interface";
 import { CollectionLayer } from "@music-analyzer/view";
 
 export class GravityLayer

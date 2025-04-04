@@ -1,3 +1,4 @@
+export { TriadSymbol } from "./triad";
 export { RetrospectiveTriadSymbol } from "./retrospective-triad";
 export { RetrospectiveDirectionalTriadSymbol } from "./directional";
 export { ArchetypeSymbol } from "./archetype";

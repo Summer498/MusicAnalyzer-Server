@@ -1,5 +1,5 @@
 import { WindowReflectable } from "@music-analyzer/view";
-import { OctaveChunk } from "../octave-chunk/octave-chunk";
+import { OctaveChunk } from "../octave-chunk";
 
 export abstract class Octave
   implements WindowReflectable {

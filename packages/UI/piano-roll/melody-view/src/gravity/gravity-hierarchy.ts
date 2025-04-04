@@ -1,7 +1,7 @@
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { GravityLayer } from "./gravity-layer";
-import { RequiredByGravityHierarchy } from "../requirement/gravity/required-by-gravity-hierarchy";
-import { IGravityHierarchy } from "../interface/gravity/gravity-hierarchy";
+import { RequiredByGravityHierarchy } from "../requirement";
+import { IGravityHierarchy } from "../interface";
 import { CollectionHierarchy } from "@music-analyzer/view";
 
 export class GravityHierarchy

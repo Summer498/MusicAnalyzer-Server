@@ -2,8 +2,8 @@ import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze"
 import { CollectionHierarchy } from "@music-analyzer/view";
 import { SetColor } from "@music-analyzer/controllers";
 import { ReductionLayer } from "./reduction-layer";
-import { RequiredByReductionHierarchy } from "../requirement/reduction/required-by-reduction-hierarchy";
-import { IReductionHierarchy } from "../interface/reduction/reduction-hierarchy";
+import { RequiredByReductionHierarchy } from "../requirement";
+import { IReductionHierarchy } from "../interface";
 
 export class ReductionHierarchy
   extends CollectionHierarchy<ReductionLayer>

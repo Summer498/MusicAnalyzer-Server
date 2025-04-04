@@ -1,7 +1,7 @@
 import { getInterval } from "@music-analyzer/tonal-objects";
 import { intervalOf } from "@music-analyzer/tonal-objects";
 import { NoteLiteral } from "@music-analyzer/tonal-objects";
-import { Triad } from "../archetype/triad/Triad";
+import { Triad } from "../archetype";
 import { hsv2rgb } from "@music-analyzer/color";
 import { rgbToString } from "@music-analyzer/color";
 

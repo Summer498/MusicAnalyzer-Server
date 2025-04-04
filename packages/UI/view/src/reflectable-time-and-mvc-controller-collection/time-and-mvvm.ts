@@ -1,5 +1,5 @@
-import { MVVM_ViewModel_Impl } from "../mvvm/mvvm-impl";
-import { MVVM_View_Impl } from "../mvvm/view-impl";
+import { MVVM_ViewModel_Impl } from "../mvvm";
+import { MVVM_View_Impl } from "../mvvm";
 import { TimeAndMVCModel } from "./time-and-model";
 
 export abstract class TimeAndVM<

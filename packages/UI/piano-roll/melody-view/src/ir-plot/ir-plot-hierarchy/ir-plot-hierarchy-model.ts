@@ -1,4 +1,4 @@
-import { IRPlotLayer } from "../ir-plot-layer/ir-plot-layer";
+import { IRPlotLayer } from "../ir-plot-layer";
 
 export class IRPlotHierarchyModel {
   readonly width: number;

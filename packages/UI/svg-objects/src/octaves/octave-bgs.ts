@@ -1,5 +1,5 @@
 import { WindowReflectableRegistry } from "@music-analyzer/view";
-import { OctaveBG } from "../octave/octave-bg";
+import { OctaveBG } from "../octave";
 import { Octaves } from "./octaves";
 
 export class OctaveBGs extends Octaves {

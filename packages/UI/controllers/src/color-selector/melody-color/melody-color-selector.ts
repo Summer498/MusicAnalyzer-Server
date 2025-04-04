@@ -6,7 +6,7 @@ import { get_color_on_intervallic_angle } from "@music-analyzer/irm";
 import { get_color_on_parametric_scale } from "@music-analyzer/irm";
 import { get_color_on_registral_scale } from "@music-analyzer/irm";
 import { IRM_ColorSelector } from "../irm-color-selector";
-import { ColorChangeSubscriber } from "../irm-color/color-change-subscriber";
+import { ColorChangeSubscriber } from "../irm-color";
 
 export class MelodyColorSelector {
   readonly body: HTMLSpanElement;

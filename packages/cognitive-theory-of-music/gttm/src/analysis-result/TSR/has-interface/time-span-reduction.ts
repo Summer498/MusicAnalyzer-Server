@@ -1,4 +1,4 @@
-import { ITimeSpanReduction } from "../interface/i-time-span-reduction";
+import { ITimeSpanReduction } from "../interface";
 import { TimeSpanTree } from "./time-span";
 
 export class TimeSpanReduction 

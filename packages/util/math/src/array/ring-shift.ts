@@ -1,4 +1,4 @@
-import { mod } from "../basic-function/mod";
+import { mod } from "../basic-function";
 
 export const ringShift = <T>(array: T[], b: number) => {
   const N = array.length;
