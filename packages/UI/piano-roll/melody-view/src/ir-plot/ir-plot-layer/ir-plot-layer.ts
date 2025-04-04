@@ -3,7 +3,7 @@ import { SetColor } from "@music-analyzer/controllers";
 import { IRPlotLayerView } from "./ir-plot-layer-view";
 import { IRPlot } from "../ir-plot/ir-plot";
 import { IRPlotLayerModel } from "./ir-plot-layer-model";
-import { I_IRPlotLayer } from "../../interface/ir-plot/ir-plot-layer";
+import { I_IRPlotLayer } from "../../interface";
 
 export class IRPlotLayer
   implements I_IRPlotLayer {

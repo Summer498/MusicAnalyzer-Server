@@ -7,7 +7,7 @@ import { SetColor } from "@music-analyzer/controllers";
 import { MelodyModel } from "./melody-model";
 import { MelodyView } from "./melody-view";
 import { MelodyBeep } from "./melody-beep";
-import { IMelody } from "../../interface/melody/melody";
+import { IMelody } from "../../interface";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();

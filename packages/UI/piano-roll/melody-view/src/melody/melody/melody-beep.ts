@@ -3,7 +3,7 @@ import { NowAt } from "@music-analyzer/view-parameters";
 import { reservation_range } from "@music-analyzer/view-parameters";
 import { Time } from "@music-analyzer/time-and";
 import { MelodyModel } from "./melody-model";
-import { IMelodyBeep } from "../../interface/melody/melody-beep";
+import { IMelodyBeep } from "../../interface";
 
 export class MelodyBeep
   implements IMelodyBeep {

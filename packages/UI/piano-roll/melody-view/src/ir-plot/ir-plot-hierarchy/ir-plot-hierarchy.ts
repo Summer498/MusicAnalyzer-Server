@@ -3,7 +3,7 @@ import { SetColor } from "@music-analyzer/controllers";
 import { IRPlotLayer } from "../ir-plot-layer/ir-plot-layer";
 import { IRPlotHierarchyView } from "./ir-plot-hierarchy-view"
 import { IRPlotHierarchyModel } from "./ir-plot-hierarchy-model";
-import { RequiredByIRPlotHierarchy } from "../../requirement/ir-plot/required-ir-plot-hierarchy";
+import { RequiredByIRPlotHierarchy } from "../../requirement/ir-plot";
 
 export class IRPlotHierarchy {
   readonly view: IRPlotHierarchyView
