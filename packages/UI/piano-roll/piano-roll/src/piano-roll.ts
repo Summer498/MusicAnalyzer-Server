@@ -2,13 +2,13 @@ import { WindowReflectable } from "@music-analyzer/view";
 import { WindowReflectableRegistry } from "@music-analyzer/view";
 import { PianoRollHeight } from "@music-analyzer/view-parameters";
 import { PianoRollWidth } from "@music-analyzer/view-parameters";
-import { AnalysisView } from "./analysis-view";
-import { MusicStructureElements } from "./music-structure-elements";
-import { CurrentTimeLine } from "@music-analyzer/svg-objects";
-import { OctaveBGs } from "@music-analyzer/svg-objects";
-import { OctaveKeys } from "@music-analyzer/svg-objects";
 import { chord_name_margin } from "@music-analyzer/chord-view";
 import { chord_text_size } from "@music-analyzer/chord-view";
+import { AnalysisView } from "./analysis-view";
+import { MusicStructureElements } from "./music-structure-elements";
+import { CurrentTimeLine } from "./current-time-line";
+import { OctaveBGs } from "./octaves";
+import { OctaveKeys } from "./octaves";
 
 export class PianoRoll
   implements WindowReflectable {
