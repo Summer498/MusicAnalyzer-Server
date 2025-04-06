@@ -1,5 +1,4 @@
-import { MelodyColorController } from "@music-analyzer/controllers";
+import { RequiredByView } from "./required-abstract-view";
 
-export interface RequiredByIRPlotView {
-  readonly melody_color: MelodyColorController
-}
+export interface RequiredByIRPlotView
+  extends RequiredByView { }
