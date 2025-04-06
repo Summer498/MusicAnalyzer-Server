@@ -2,16 +2,11 @@ import { Gravity as GravityAnalysis } from "@music-analyzer/melody-analyze";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { BlackKeyPrm } from "@music-analyzer/view-parameters";
 import { NoteSize } from "@music-analyzer/view-parameters";
-import { PianoRollBegin } from "@music-analyzer/view-parameters";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { GravityModel } from "../model";
 import { GravityView } from "../view";
 import { LinePos } from "../view";
 import { Part } from "./abstract-part";
-
-const transposed = (e: number) => e - PianoRollBegin.get()
-const scaled = (e: number) => e * NoteSize.get();
-const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class Gravity
   extends Part<GravityModel, GravityView>
@@ -28,11 +23,11 @@ export class Gravity
     this.#line_seed = new LinePos(
       this.model.time.begin + this.model.time.duration / 2,
       this.model.next.time.begin,
-      isNaN(this.model.note) ? -99 : (0.5 - convertToCoordinate(transposed(this.model.note))),
-      isNaN(this.model.note) ? -99 : (0.5 - convertToCoordinate(transposed(this.model.gravity.destination!))),
+      isNaN(this.model.note) ? -99 : (0.5 - this.converter.convertToCoordinate(this.converter.transposed(this.model.note))),
+      isNaN(this.model.note) ? -99 : (0.5 - this.converter.convertToCoordinate(this.converter.transposed(this.model.gravity.destination!))),
     )
   }
-  updateWidth() { this.view.updateWidth(scaled(this.model.time.duration)) }
+  updateWidth() { this.view.updateWidth(this.converter.scaled(this.model.time.duration)) }
   updateHeight() { this.view.updateHeight(BlackKeyPrm.height) }
   onWindowResized() {
     this.updateWidth();

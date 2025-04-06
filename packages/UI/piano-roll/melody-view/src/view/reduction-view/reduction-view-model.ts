@@ -9,10 +9,9 @@ import { ReductionModel } from "../../model";
 const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
-export class ReductionViewModel 
+export class ReductionViewModel
   extends MVVM_Model
-  implements TimeRangeSubscriber
-  {
+  implements TimeRangeSubscriber {
   #x: number;
   #w: number;
   #cx: number;
