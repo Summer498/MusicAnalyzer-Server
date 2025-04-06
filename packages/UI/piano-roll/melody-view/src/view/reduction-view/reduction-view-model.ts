@@ -34,7 +34,7 @@ export class ReductionViewModel
     this.#w = this.getViewW(this.model.time.duration);
     this.#cw = this.getViewW(this.model.head.duration);
     this.#cx = this.getViewX(this.model.head.begin) + this.#cw / 2;
-    this.y = convertToCoordinate((2 + this.model.layer)) * bracket_height;
+    this.y = this.converter.convertToCoordinate((2 + this.model.layer)) * bracket_height;
     this.h = BlackKeyPrm.height * bracket_height;
     this.#strong = false;
     this.archetype = model.archetype as Triad
