@@ -2,8 +2,8 @@ import { play } from "@music-analyzer/synth";
 import { NowAt } from "@music-analyzer/view-parameters";
 import { reservation_range } from "@music-analyzer/view-parameters";
 import { Time } from "@music-analyzer/time-and";
-import { MelodyModel } from "../model/melody-model";
-import { IMelodyBeep } from "../i-part/i-melody-beep";
+import { MelodyModel } from "../model";
+import { IMelodyBeep } from "../i-part";
 
 export class MelodyBeep
   implements IMelodyBeep {

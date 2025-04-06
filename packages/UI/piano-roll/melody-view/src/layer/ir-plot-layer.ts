@@ -1,10 +1,10 @@
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { SetColor } from "@music-analyzer/controllers";
-import { IRPlotLayerView } from "./ir-plot-layer-view";
-import { IRPlot } from "../part/ir-plot";
-import { IRPlotLayerModel } from "./ir-plot-layer-model";
-import { I_IRPlotLayer } from "../i-layer/i-ir-plot-layer";
 import { CollectionLayer } from "@music-analyzer/view";
+import { IRPlot } from "../part";
+import { I_IRPlotLayer } from "../i-layer";
+import { IRPlotLayerView } from "./ir-plot-layer-view";
+import { IRPlotLayerModel } from "./ir-plot-layer-model";
 
 export class IRPlotLayer
   extends CollectionLayer<IRPlot>

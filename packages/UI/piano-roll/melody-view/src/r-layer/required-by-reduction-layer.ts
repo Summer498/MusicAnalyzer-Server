@@ -1,4 +1,4 @@
-import { RequiredByReduction } from "../r-part/required-by-reduction";
+import { RequiredByReduction } from "../r-part";
 import { RequiredByLayer } from "./required-by-abstract-layer";
 
 export interface RequiredByReductionLayer

@@ -1,8 +1,8 @@
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { CollectionLayer } from "@music-analyzer/view";
 import { SetColor } from "@music-analyzer/controllers";
-import { Reduction } from "../part/reduction";
-import { IReductionLayer } from "../i-layer/i-reduction-layer";
+import { Reduction } from "../part";
+import { IReductionLayer } from "../i-layer";
 
 export class ReductionLayer
   extends CollectionLayer<Reduction>

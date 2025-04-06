@@ -1,4 +1,4 @@
-import { IReduction } from "../i-part/i-reduction";
+import { IReduction } from "../i-part";
 
 export interface IReductionLayer
   extends IReduction { }

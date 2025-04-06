@@ -5,9 +5,9 @@ import { BlackKeyPrm } from "@music-analyzer/view-parameters";
 import { NoteSize } from "@music-analyzer/view-parameters";
 import { PianoRollBegin } from "@music-analyzer/view-parameters";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";
-import { GravityModel } from "../model/gravity-model";
-import { GravityView } from "../view/gravity-view";
-import { LinePos } from "../view/line-pos";
+import { GravityModel } from "../model";
+import { GravityView } from "../view";
+import { LinePos } from "../view";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();

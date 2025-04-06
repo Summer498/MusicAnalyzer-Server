@@ -1,5 +1,5 @@
 import { MVVM_View_Impl } from "@music-analyzer/view";
-import { IRPlotModel } from "../model/ir-plot-model";
+import { IRPlotModel } from "../model";
 import { IRPlotViewModel } from "./ir-plot-view-model";
 import { ColorChangeSubscriber } from "@music-analyzer/controllers";
 import { SetColor } from "@music-analyzer/controllers";

@@ -1,4 +1,4 @@
-import { RequiredByDMelody } from "../r-part/required-by-d-melody";
+import { RequiredByDMelody } from "../r-part";
 import { DMelodyController } from "@music-analyzer/controllers";
 import { RequiredByLayer } from "./required-by-abstract-layer";
 

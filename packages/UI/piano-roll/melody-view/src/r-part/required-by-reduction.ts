@@ -1,4 +1,4 @@
-import { RequiredByReductionView } from "../r-view/required-by-reduction-view";
+import { RequiredByReductionView } from "../r-view";
 
 export interface RequiredByReduction
   extends RequiredByReductionView { }

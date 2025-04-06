@@ -1,6 +1,6 @@
-import { GravityHierarchy } from "../hierarchy/gravity-hierarchy";
+import { GravityHierarchy } from "../hierarchy";
 import { GravitySwitcher } from "@music-analyzer/controllers";
-import { GravityLayer } from "../layer/gravity-layer";
+import { GravityLayer } from "../layer";
 import { IHierarchyBuilder } from "./i-hierarchy-builder";
 
 export function buildGravity(

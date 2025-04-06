@@ -1,8 +1,8 @@
 import { ColorChangeSubscriber } from "@music-analyzer/controllers";
 import { MVVM_View_Impl } from "@music-analyzer/view";
 import { SetColor } from "@music-analyzer/controllers";
-import { deleteMelody } from "../part/delete";
-import { MelodyModel } from "../model/melody-model";
+import { MelodyModel } from "../model";
+import { deleteMelody } from "./delete";
 
 export class MelodyView
   extends MVVM_View_Impl<"rect", MelodyModel>

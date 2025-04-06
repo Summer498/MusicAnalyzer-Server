@@ -4,9 +4,9 @@ import { BlackKeyPrm } from "@music-analyzer/view-parameters";
 import { NoteSize } from "@music-analyzer/view-parameters";
 import { PianoRollBegin } from "@music-analyzer/view-parameters";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";
-import { DMelodyModel } from "../model/d-melody-model";
-import { DMelodyView } from "../view/d-melody-view";
-import { insertMelody } from "./insert";
+import { DMelodyModel } from "../model";
+import { DMelodyView } from "../view";
+import { insertMelody } from "../view/insert";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get()

@@ -5,8 +5,8 @@ import { MVVM_ViewModel_Impl } from "@music-analyzer/view";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { SetColor } from "@music-analyzer/controllers";
-import { IRSymbolModel } from "../model/ir-symbol-model";
-import { IRSymbolView } from "../view/ir-symbol-view";
+import { IRSymbolModel } from "../model";
+import { IRSymbolView } from "../view";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();

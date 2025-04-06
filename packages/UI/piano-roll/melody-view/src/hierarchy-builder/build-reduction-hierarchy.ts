@@ -1,5 +1,5 @@
-import { ReductionHierarchy } from "../hierarchy/reduction-hierarchy";
-import { ReductionLayer } from "../layer/reduction-layer";
+import { ReductionHierarchy } from "../hierarchy";
+import { ReductionLayer } from "../layer";
 import { IHierarchyBuilder } from "./i-hierarchy-builder";
 
 export function buildReduction(this: IHierarchyBuilder) {

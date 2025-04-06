@@ -1,8 +1,8 @@
 import { CollectionHierarchy } from "@music-analyzer/view";
 import { SetColor } from "@music-analyzer/controllers";
-import { MelodyLayer } from "../layer/melody-layer";
-import { RequiredByMelodyHierarchy } from "../r-hierarchy/required-by-melody-hierarchy";
-import { IMelodyHierarchy } from "../i-hierarchy/i-melody-hierarchy";
+import { MelodyLayer } from "../layer";
+import { RequiredByMelodyHierarchy } from "../r-hierarchy";
+import { IMelodyHierarchy } from "../i-hierarchy";
 
 export class MelodyHierarchy
   extends CollectionHierarchy<MelodyLayer>

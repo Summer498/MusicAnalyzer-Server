@@ -1,4 +1,4 @@
-import { RequiredByIRSymbolView } from "../r-view/required-by-ir-symbol-view";
+import { RequiredByIRSymbolView } from "../r-view";
 import { RequiredByPart } from "./required-by-abstract-part";
 
 export interface RequiredByIRSymbol

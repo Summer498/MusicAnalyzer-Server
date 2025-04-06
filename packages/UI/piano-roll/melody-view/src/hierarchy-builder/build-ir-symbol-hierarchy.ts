@@ -1,5 +1,5 @@
-import { IRSymbolHierarchy } from "../hierarchy/ir-symbol-hierarchy";
-import { IRSymbolLayer } from "../layer/ir-symbol-layer";
+import { IRSymbolHierarchy } from "../hierarchy";
+import { IRSymbolLayer } from "../layer";
 import { IHierarchyBuilder } from "./i-hierarchy-builder";
 
 export function buildIRSymbol(this: IHierarchyBuilder) {

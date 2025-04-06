@@ -1,7 +1,7 @@
-import { HierarchyLevelSubscriber } from "@music-analyzer/controllers";
-import { IMelodyLayer } from "../i-layer/i-melody-layer";
+import { IMelodyLayer } from "../i-layer";
+import { IHierarchy } from "./i-abstract-hierarchy";
 
 export interface IMelodyHierarchy
   extends
   IMelodyLayer,
-  HierarchyLevelSubscriber { }
+  IHierarchy { }

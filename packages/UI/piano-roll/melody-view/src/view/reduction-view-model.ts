@@ -4,7 +4,7 @@ import { BlackKeyPrm } from "@music-analyzer/view-parameters";
 import { bracket_height } from "@music-analyzer/view-parameters";
 import { NoteSize } from "@music-analyzer/view-parameters";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";
-import { ReductionModel } from "../model/reduction-model";
+import { ReductionModel } from "../model";
 
 const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;

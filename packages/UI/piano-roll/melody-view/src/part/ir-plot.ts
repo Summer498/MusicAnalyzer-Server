@@ -1,8 +1,8 @@
 import { MVVM_ViewModel_Impl } from "@music-analyzer/view";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { SetColor } from "@music-analyzer/controllers";
-import { IRPlotModel } from "../model/ir-plot-model";
-import { IRPlotView } from "../view/ir-plot-view";
+import { IRPlotModel } from "../model";
+import { IRPlotView } from "../view";
 
 export class IRPlot
   extends MVVM_ViewModel_Impl<IRPlotModel, IRPlotView> {

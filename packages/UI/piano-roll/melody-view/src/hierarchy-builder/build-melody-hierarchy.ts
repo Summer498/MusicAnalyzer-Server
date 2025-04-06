@@ -1,5 +1,5 @@
-import { MelodyHierarchy } from "../hierarchy/melody-hierarchy";
-import { MelodyLayer } from "../layer/melody-layer";
+import { MelodyHierarchy } from "../hierarchy";
+import { MelodyLayer } from "../layer";
 import { IHierarchyBuilder } from "./i-hierarchy-builder";
 
 export function buildMelody(this: IHierarchyBuilder) {

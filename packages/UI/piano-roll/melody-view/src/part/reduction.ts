@@ -1,9 +1,9 @@
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MVVM_ViewModel_Impl } from "@music-analyzer/view";
 import { SetColor } from "@music-analyzer/controllers";
-import { ReductionModel } from "../model/reduction-model";
-import { ReductionView } from "../view/reduction-view";
-import { IReduction } from "../i-part/i-reduction";
+import { ReductionModel } from "../model";
+import { ReductionView } from "../view";
+import { IReduction } from "../i-part";
 
 export class Reduction
   extends MVVM_ViewModel_Impl<ReductionModel, ReductionView>

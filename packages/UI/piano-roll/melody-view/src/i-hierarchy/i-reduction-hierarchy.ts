@@ -1,9 +1,7 @@
-import { AudioReflectable } from "@music-analyzer/view";
-import { IReductionLayer } from "../i-layer/i-reduction-layer";
-import { HierarchyLevelSubscriber } from "@music-analyzer/controllers";
+import { IReductionLayer } from "../i-layer";
+import { IHierarchy } from "./i-abstract-hierarchy";
 
 export interface IReductionHierarchy
   extends
   IReductionLayer,
-  HierarchyLevelSubscriber,
-  AudioReflectable { }
+  IHierarchy { }

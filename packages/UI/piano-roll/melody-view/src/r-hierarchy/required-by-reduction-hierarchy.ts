@@ -1,4 +1,4 @@
-import { RequiredByReductionLayer } from "../r-layer/required-by-reduction-layer";
+import { RequiredByReductionLayer } from "../r-layer";
 import { RequiredByHierarchy } from "./required-by-abstract-hierarchy";
 
 export interface RequiredByReductionHierarchy

@@ -1,7 +1,7 @@
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
-import { DMelody } from "../part/d-melody";
-import { RequiredByDMelodySeries } from "../r-layer/required-by-d-melody-series";
-import { IDMelodySeries } from "../i-layer/i-d-melody-series";
+import { DMelody } from "../part";
+import { RequiredByDMelodySeries } from "../r-layer";
+import { IDMelodySeries } from "../i-layer";
 
 export class DMelodySeries
   extends ReflectableTimeAndMVCControllerCollection<DMelody>

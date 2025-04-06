@@ -1,8 +1,8 @@
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { SetColor } from "@music-analyzer/controllers";
-import { IRSymbol } from "../part/ir-symbol";
-import { I_IRSymbolLayer } from "../i-layer/i-ir-symbol-layer";
 import { CollectionLayer } from "@music-analyzer/view";
+import { IRSymbol } from "../part";
+import { I_IRSymbolLayer } from "../i-layer";
 
 export class IRSymbolLayer
   extends CollectionLayer<IRSymbol>

@@ -1,4 +1,4 @@
-import { IRPlotLayer } from "../layer/ir-plot-layer";
+import { IRPlotLayer } from "../layer";
 
 export class IRPlotCircles {
   readonly svg: SVGGElement;

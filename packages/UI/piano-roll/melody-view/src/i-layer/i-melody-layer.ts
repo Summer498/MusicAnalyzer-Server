@@ -1,5 +1,5 @@
 import { WindowReflectable } from "@music-analyzer/view";
-import { IMelody } from "../i-part/i-melody";
+import { IMelody } from "../i-part";
 
 export interface IMelodyLayer
   extends

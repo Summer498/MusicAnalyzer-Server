@@ -2,7 +2,7 @@ import { size } from "@music-analyzer/view-parameters";
 import { MVVM_View_Impl } from "@music-analyzer/view";
 import { ColorChangeSubscriber } from "@music-analyzer/controllers";
 import { SetColor } from "@music-analyzer/controllers";
-import { IRSymbolModel } from "../model/ir-symbol-model";
+import { IRSymbolModel } from "../model";
 
 const ir_analysis_em = size;
 

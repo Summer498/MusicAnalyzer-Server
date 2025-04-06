@@ -1,7 +1,7 @@
 import { MVVM_View_Impl } from "@music-analyzer/view";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { SetColor } from "@music-analyzer/controllers";
-import { ReductionModel } from "../model/reduction-model";
+import { ReductionModel } from "../model";
 import { ReductionViewModel } from "./reduction-view-model";
 import { IRMSymbol } from "./irm-symbol";
 import { Bracket } from "./bracket";

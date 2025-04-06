@@ -1,5 +1,5 @@
-import { DMelodySeries } from "../layer/d-melody-series";
-import { DMelody } from "../part/d-melody";
+import { DMelodySeries } from "../layer";
+import { DMelody } from "../part";
 import { IHierarchyBuilder } from "./i-hierarchy-builder";
 
 export function buildDMelody(this: IHierarchyBuilder) {

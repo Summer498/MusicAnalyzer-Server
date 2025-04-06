@@ -1,5 +1,5 @@
 import { MVVM_View_Impl } from "@music-analyzer/view";
-import { GravityModel } from "../model/gravity-model";
+import { GravityModel } from "../model";
 import { LinePos } from "./line-pos";
 import { GravityViewTriangle } from "./gravity-triangle";
 import { GravityViewLine } from "./gravity-line";

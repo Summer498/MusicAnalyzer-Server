@@ -1,5 +1,5 @@
 import { AudioReflectableRegistry } from "@music-analyzer/view";
-import { RequiredByMelodyLayer } from "../r-layer/required-by-melody-layer";
+import { RequiredByMelodyLayer } from "../r-layer";
 import { RequiredByHierarchy } from "./required-by-abstract-hierarchy";
 
 export interface RequiredByMelodyHierarchy

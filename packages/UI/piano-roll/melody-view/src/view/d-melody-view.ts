@@ -1,7 +1,7 @@
 import { hsv2rgb } from "@music-analyzer/color";
 import { rgbToString } from "@music-analyzer/color";
 import { MVVM_View_Impl } from "@music-analyzer/view";
-import { DMelodyModel } from "../model/d-melody-model";
+import { DMelodyModel } from "../model";
 
 export class DMelodyView 
   extends MVVM_View_Impl<"rect", DMelodyModel> {

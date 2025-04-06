@@ -1,5 +1,5 @@
 import { IRPlotSVG } from "../ir-plot-svg";
-import { IRPlotHierarchy } from "../hierarchy/ir-plot-hierarchy";
+import { IRPlotHierarchy } from "../hierarchy";
 import { IHierarchyBuilder } from "./i-hierarchy-builder";
 
 export function buildIRPlot(this: IHierarchyBuilder) {

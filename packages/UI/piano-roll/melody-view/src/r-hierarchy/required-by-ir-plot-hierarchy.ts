@@ -1,4 +1,4 @@
-import { RequiredByIRPlotLayer } from "../r-layer/required-by-ir-plot-layer";
+import { RequiredByIRPlotLayer } from "../r-layer";
 import { RequiredByHierarchy } from "./required-by-abstract-hierarchy";
 
 export interface RequiredByIRPlotHierarchy

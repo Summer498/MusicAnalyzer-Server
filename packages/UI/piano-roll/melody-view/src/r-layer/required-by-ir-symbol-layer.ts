@@ -1,4 +1,4 @@
-import { RequiredByIRSymbol } from "../r-part/required-by-ir-symbol";
+import { RequiredByIRSymbol } from "../r-part";
 import { RequiredByLayer } from "./required-by-abstract-layer";
 
 export interface RequiredByIRSymbolLayer

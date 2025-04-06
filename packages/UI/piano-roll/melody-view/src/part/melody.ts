@@ -4,10 +4,10 @@ import { NoteSize } from "@music-analyzer/view-parameters";
 import { PianoRollBegin } from "@music-analyzer/view-parameters";
 import { MVVM_ViewModel_Impl } from "@music-analyzer/view";
 import { SetColor } from "@music-analyzer/controllers";
-import { MelodyModel } from "../model/melody-model";
-import { MelodyView } from "../view/melody-view";
+import { MelodyModel } from "../model";
+import { MelodyView } from "../view";
 import { MelodyBeep } from "./melody-beep";
-import { IMelody } from "../i-part/i-melody";
+import { IMelody } from "../i-part";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();

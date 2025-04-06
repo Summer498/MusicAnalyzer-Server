@@ -1,4 +1,4 @@
-import { RequiredByMelodyView } from "../r-view/required-by-melody-view";
+import { RequiredByMelodyView } from "../r-view";
 import { RequiredByMelodyBeep } from "./required-by-beep";
 import { RequiredByPart } from "./required-by-abstract-part";
 
