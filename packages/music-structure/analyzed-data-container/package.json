@@ -18,7 +18,6 @@
   "dependencies": {
     "@music-analyzer/chord-analyze": "1.0.0",
     "@music-analyzer/melody-analyze": "1.0.0",
-    "@music-analyzer/beat-estimation": "1.0.0",
-    "@music-analyzer/view-parameters": "1.0.0"
+    "@music-analyzer/beat-estimation": "1.0.0"
   }
 }
