@@ -1,1 +1,0 @@
-export { Gravity } from "./gravity";
