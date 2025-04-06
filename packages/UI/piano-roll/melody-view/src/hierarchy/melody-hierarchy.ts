@@ -1,6 +1,5 @@
 import { CollectionHierarchy } from "@music-analyzer/view";
 import { SetColor } from "@music-analyzer/controllers";
-import { SerializedTimeAndAnalyzedMelody } from "./serialized-time-and-analyzed-melody";
 import { MelodyLayer } from "../layer/melody-layer";
 import { RequiredByMelodyHierarchy } from "../r-hierarchy/required-by-melody-hierarchy";
 import { IMelodyHierarchy } from "../i-hierarchy/i-melody-hierarchy";
@@ -10,10 +9,10 @@ export class MelodyHierarchy
   implements IMelodyHierarchy {
   get show() { return this._show; }
   constructor(
-    hierarchical_melodies: SerializedTimeAndAnalyzedMelody[][],
+    children: MelodyLayer[],
     controllers: RequiredByMelodyHierarchy
   ) {
-    super("melody", hierarchical_melodies.map((e, l) => new MelodyLayer(e, l)));
+    super("melody", children);
     controllers.hierarchy.register(this);
     controllers.audio.register(this);
     controllers.time_range.register(this);

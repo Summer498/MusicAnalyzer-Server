@@ -1,4 +1,3 @@
-import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
 import { DMelody } from "../part/d-melody";
 import { RequiredByDMelodySeries } from "../r-layer/required-by-d-melody-series";
@@ -8,10 +7,10 @@ export class DMelodySeries
   extends ReflectableTimeAndMVCControllerCollection<DMelody>
   implements IDMelodySeries {
   constructor(
-    detected_melodies: SerializedTimeAndAnalyzedMelody[],
+    children: DMelody[],
     controllers: RequiredByDMelodySeries,
   ) {
-    super("detected-melody", detected_melodies.map(e => new DMelody(e)));
+    super("detected-melody", children);
     controllers.audio.register(this);
     controllers.d_melody.register(this);
     controllers.time_range.register(this);

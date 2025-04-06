@@ -8,7 +8,7 @@ import { ReductionHierarchy } from "./hierarchy/reduction-hierarchy";
 import { GravityHierarchy } from "./hierarchy/gravity-hierarchy";
 import { IRPlotSVG } from "./ir-plot-svg";
 import { RequiredByMelodyElements } from "./required-by-melody-elements";
-
+import { HierarchyBuilder } from "./hierarchy-builder/hierarchy-builder";
 
 export class MelodyElements {
   readonly children: unknown[];
@@ -25,15 +25,15 @@ export class MelodyElements {
     controllers: RequiredByMelodyElements & { audio: AudioReflectableRegistry, window: WindowReflectableRegistry },
   ) {
     const { chord_checkbox, scale_checkbox } = controllers.gravity;
-    const publishers = { ...controllers }
 
-    this.d_melody_collection = new DMelodySeries(d_melodies, publishers);
-    this.melody_hierarchy = new MelodyHierarchy(hierarchical_melody, publishers);
-    this.ir_hierarchy = new IRSymbolHierarchy(hierarchical_melody, publishers);
-    this.ir_plot_svg = new IRPlotSVG(hierarchical_melody, publishers);
-    this.chord_gravities = new GravityHierarchy("chord_gravity", hierarchical_melody, { ...publishers, switcher: chord_checkbox });
-    this.scale_gravities = new GravityHierarchy("scale_gravity", hierarchical_melody, { ...publishers, switcher: scale_checkbox });
-    this.time_span_tree = new ReductionHierarchy(hierarchical_melody, publishers);
+    const builder = new HierarchyBuilder(d_melodies, hierarchical_melody, controllers)
+    this.d_melody_collection = builder.buildDMelody();
+    this.melody_hierarchy = builder.buildMelody();
+    this.ir_hierarchy = builder.buildIRSymbol();
+    this.ir_plot_svg = builder.buildIRPlot();
+    this.chord_gravities = builder.buildGravity("chord_gravity", chord_checkbox);
+    this.scale_gravities = builder.buildGravity("scale_gravity", scale_checkbox);
+    this.time_span_tree = builder.buildReduction();
     this.children = [
       this.d_melody_collection,
       this.melody_hierarchy,

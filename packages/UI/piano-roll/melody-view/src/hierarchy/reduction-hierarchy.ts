@@ -3,16 +3,15 @@ import { SetColor } from "@music-analyzer/controllers";
 import { ReductionLayer } from "../layer/reduction-layer";
 import { IReductionHierarchy } from "../i-hierarchy/i-reduction-hierarchy";
 import { RequiredByReductionHierarchy } from "../r-hierarchy/required-by-reduction-hierarchy";
-import { SerializedTimeAndAnalyzedMelody } from "./serialized-time-and-analyzed-melody";
 
 export class ReductionHierarchy
   extends CollectionHierarchy<ReductionLayer>
   implements IReductionHierarchy {
   constructor(
-    hierarchical_melodies: SerializedTimeAndAnalyzedMelody[][],
+    children: ReductionLayer[],
     controllers: RequiredByReductionHierarchy
   ) {
-    super("time-span-reduction", hierarchical_melodies.map((e, l) => new ReductionLayer(e, l)));
+    super("time-span-reduction", children);
     controllers.melody_color.register(this);
     controllers.hierarchy.register(this);
     controllers.audio.register(this);

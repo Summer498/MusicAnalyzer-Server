@@ -2,17 +2,16 @@ import { CollectionHierarchy } from "@music-analyzer/view";
 import { GravityLayer } from "../layer/gravity-layer";
 import { RequiredByGravityHierarchy } from "../r-hierarchy/required-by-gravity-hierarchy";
 import { IGravityHierarchy } from "../i-hierarchy/i-gravity-hierarchy";
-import { SerializedTimeAndAnalyzedMelody } from "./serialized-time-and-analyzed-melody";
 
 export class GravityHierarchy
   extends CollectionHierarchy<GravityLayer>
   implements IGravityHierarchy {
   constructor(
     mode: "chord_gravity" | "scale_gravity",
-    hierarchical_melodies: SerializedTimeAndAnalyzedMelody[][],
+    children: GravityLayer[],
     controllers: RequiredByGravityHierarchy,
   ) {
-    super(mode, hierarchical_melodies.map((e, l) => new GravityLayer(mode, e, l)));
+    super(mode, children);
     controllers.switcher.register(this);
     controllers.hierarchy.register(this);
     controllers.audio.register(this);
