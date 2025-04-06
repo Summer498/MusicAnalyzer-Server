@@ -1,4 +1,4 @@
-import { LinePos } from "../line-pos";
+import { LinePos } from "./line-pos";
 import { View } from "../abstract-view";
 
 export class GravityViewLine 

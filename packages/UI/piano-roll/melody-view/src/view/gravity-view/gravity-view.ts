@@ -1,4 +1,4 @@
-import { LinePos } from "../line-pos";
+import { LinePos } from "./line-pos";
 import { GravityViewTriangle } from "./gravity-triangle";
 import { GravityViewLine } from "./gravity-line";
 import { View } from "../abstract-view";
