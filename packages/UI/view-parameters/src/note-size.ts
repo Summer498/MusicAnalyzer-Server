@@ -1,6 +1,6 @@
-import { PianoRollWidth } from "./piano-roll-width";
+import { PianoRollWidth } from "./song-parameters";
+import { SongLength } from "./song-parameters";
 import { PianoRollRatio } from "./piano-roll-ratio";
-import { SongLength } from "./song-length";
 
 
 class PianoRollTimeLength {
