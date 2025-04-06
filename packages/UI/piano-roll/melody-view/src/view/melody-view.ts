@@ -1,11 +1,8 @@
-import { ColorChangeSubscriber } from "@music-analyzer/controllers";
-import { MVVM_View_Impl } from "@music-analyzer/view";
-import { SetColor } from "@music-analyzer/controllers";
 import { deleteMelody } from "./delete";
+import { ColorChangeable } from "./color-changeable";
 
 export class MelodyView
-  extends MVVM_View_Impl<"rect">
-  implements ColorChangeSubscriber {
+  extends ColorChangeable<"rect"> {
   constructor(
   ) {
     super("rect");
@@ -13,7 +10,6 @@ export class MelodyView
     this.svg.style.stroke = "rgb(64, 64, 64)";
     this.svg.onclick = deleteMelody;
   }
-  readonly setColor: SetColor = getColor => this.svg.style.fill = "rgb(0, 192, 0)";
   updateX(x: number) { this.svg.setAttribute("x", String(x)); }
   updateY(y: number) { this.svg.setAttribute("y", String(y)); }
   updateWidth(w: number) { this.svg.setAttribute("width", String(w)); }

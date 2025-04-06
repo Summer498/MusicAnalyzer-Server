@@ -1,10 +1,9 @@
 import { bracket_height } from "@music-analyzer/view-parameters";
-import { MVVM_View_Impl } from "@music-analyzer/view";
-import { SetColor } from "@music-analyzer/controllers";
 import { ReductionViewModel } from "./reduction-view-model";
+import { ColorChangeable } from "../color-changeable";
 
 export class IRMSymbol
-  extends MVVM_View_Impl<"text"> {
+  extends ColorChangeable<"text"> {
   constructor(
     protected readonly model: ReductionViewModel,
   ) {
@@ -15,7 +14,6 @@ export class IRMSymbol
     this.svg.style.fontSize = `${bracket_height}em`;
     this.svg.style.textAnchor = "middle";
   }
-  readonly setColor: SetColor = getColor => this.svg.style.fill = getColor(this.model.archetype) || "rgb(0, 0, 0)";
   update(cx: number, y: number, w: number, h: number) {
     this.svg.setAttribute("x", String(cx));
     this.svg.setAttribute("y", String(y));

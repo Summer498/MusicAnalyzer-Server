@@ -1,14 +1,13 @@
-import { MVVM_View_Impl } from "@music-analyzer/view";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";
-import { SetColor } from "@music-analyzer/controllers";
 import { ReductionModel } from "../../model";
 import { ReductionViewModel } from "./reduction-view-model";
 import { IRMSymbol } from "./irm-symbol";
 import { Bracket } from "./bracket";
 import { Dot } from "./dot";
+import { ColorChangeable } from "../color-changeable";
 
 export class ReductionView
-  extends MVVM_View_Impl<"g">
+  extends ColorChangeable<"g">
   implements TimeRangeSubscriber {
   readonly bracket: Bracket;
   readonly dot: Dot;
@@ -34,7 +33,6 @@ export class ReductionView
     this.bracket.updateStrong();
     this.dot.updateStrong();
   }
-  readonly setColor: SetColor = f => this.ir_symbol.setColor(f)
   onTimeRangeChanged() { this.model.onTimeRangeChanged() }
   onWindowResized() {
     this.model.onWindowResized();

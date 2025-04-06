@@ -1,9 +1,9 @@
 import { hsv2rgb } from "@music-analyzer/color";
 import { rgbToString } from "@music-analyzer/color";
-import { MVVM_View_Impl } from "@music-analyzer/view";
+import { View } from "./abstract-view";
 
 export class DMelodyView 
-  extends MVVM_View_Impl<"rect"> {
+  extends View<"rect"> {
   constructor() {
     super("rect");
     this.svg.id = "melody-note";

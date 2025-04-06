@@ -1,14 +1,11 @@
 import { size } from "@music-analyzer/view-parameters";
-import { MVVM_View_Impl } from "@music-analyzer/view";
-import { ColorChangeSubscriber } from "@music-analyzer/controllers";
-import { SetColor } from "@music-analyzer/controllers";
 import { IRSymbolModel } from "../model";
+import { ColorChangeable } from "./color-changeable";
 
 const ir_analysis_em = size;
 
 export class IRSymbolView
-  extends MVVM_View_Impl<"text">
-  implements ColorChangeSubscriber {
+  extends ColorChangeable<"text"> {
   constructor(
     protected readonly model: IRSymbolModel,
   ) {
@@ -21,5 +18,4 @@ export class IRSymbolView
   }
   updateX(x: number) { this.svg.setAttribute("x", String(x)); }
   updateY(y: number) { this.svg.setAttribute("y", String(y)); }
-  readonly setColor: SetColor = getColor => this.svg.style.fill = getColor(this.model.archetype) || "rgb(0, 0, 0)";
 }
