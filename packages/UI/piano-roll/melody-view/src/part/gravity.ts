@@ -24,7 +24,7 @@ export class Gravity
     readonly gravity: GravityAnalysis,
   ) {
     const model = new GravityModel(e, layer, next, gravity);
-    super(model, new GravityView(model));
+    super(model, new GravityView());
     this.#line_seed = new LinePos(
       this.model.time.begin + this.model.time.duration / 2,
       this.model.next.time.begin,

@@ -20,7 +20,7 @@ export class DMelody
     e: SerializedTimeAndAnalyzedMelody,
   ) {
     const model = new DMelodyModel(e);
-    super(model, new DMelodyView(model));
+    super(model, new DMelodyView());
     this.onAudioUpdate();
     this.updateX();
     this.updateY();

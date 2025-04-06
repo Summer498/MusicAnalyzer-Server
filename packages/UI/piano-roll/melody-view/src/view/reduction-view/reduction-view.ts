@@ -1,28 +1,28 @@
 import { MVVM_View_Impl } from "@music-analyzer/view";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { SetColor } from "@music-analyzer/controllers";
-import { ReductionModel } from "../model";
+import { ReductionModel } from "../../model";
 import { ReductionViewModel } from "./reduction-view-model";
 import { IRMSymbol } from "./irm-symbol";
 import { Bracket } from "./bracket";
 import { Dot } from "./dot";
 
 export class ReductionView
-  extends MVVM_View_Impl<"g", ReductionViewModel>
+  extends MVVM_View_Impl<"g">
   implements TimeRangeSubscriber {
-  readonly svg: SVGGElement;
   readonly bracket: Bracket;
   readonly dot: Dot;
   readonly ir_symbol: IRMSymbol;
+  protected readonly model:ReductionViewModel;
   constructor(
     model: ReductionModel,
   ) {
-    super("g", new ReductionViewModel(model));
+    super("g");
+    this.model = new ReductionViewModel(model);
     this.bracket = new Bracket(this.model);
     this.dot = new Dot(this.model);
     this.ir_symbol = new IRMSymbol(this.model);
 
-    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.svg.id = "time-span-node";
     this.svg.appendChild(this.bracket.svg);
     if (false) { this.svg.appendChild(this.dot.svg); }

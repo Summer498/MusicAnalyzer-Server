@@ -1,14 +1,13 @@
 import { MVVM_View_Impl } from "@music-analyzer/view";
-import { GravityModel } from "../model";
-import { LinePos } from "./line-pos";
+import { LinePos } from "../line-pos";
 
 const triangle_width = 4;
 const triangle_height = 5;
 
 export class GravityViewTriangle 
-  extends MVVM_View_Impl<"polygon", GravityModel> {
-  constructor(model: GravityModel) {
-    super("polygon", model);
+  extends MVVM_View_Impl<"polygon"> {
+  constructor() {
+    super("polygon");
     this.svg.classList.add("triangle");
     this.svg.id = "gravity-arrow";
     this.svg.style.stroke = "rgb(0, 0, 0)";

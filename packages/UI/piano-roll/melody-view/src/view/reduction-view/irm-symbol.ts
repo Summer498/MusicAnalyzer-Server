@@ -4,11 +4,11 @@ import { SetColor } from "@music-analyzer/controllers";
 import { ReductionViewModel } from "./reduction-view-model";
 
 export class IRMSymbol
-  extends MVVM_View_Impl<"text", ReductionViewModel> {
+  extends MVVM_View_Impl<"text"> {
   constructor(
-    model: ReductionViewModel,
+    protected readonly model: ReductionViewModel,
   ) {
-    super("text", model);
+    super("text");
     this.svg.textContent = this.model.archetype.symbol;
     this.svg.id = "I-R Symbol";
     this.svg.style.fontFamily = "Times New Roman";

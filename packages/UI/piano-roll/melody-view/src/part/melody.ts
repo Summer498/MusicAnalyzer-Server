@@ -21,7 +21,7 @@ export class Melody
     melody: SerializedTimeAndAnalyzedMelody,
   ) {
     const model = new MelodyModel(melody);
-    super(model, new MelodyView(model));
+    super(model, new MelodyView());
     this.#beeper = new MelodyBeep(model);
     this.updateX();
     this.updateY();

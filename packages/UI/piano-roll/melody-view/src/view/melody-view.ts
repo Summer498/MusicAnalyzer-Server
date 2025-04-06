@@ -1,16 +1,14 @@
 import { ColorChangeSubscriber } from "@music-analyzer/controllers";
 import { MVVM_View_Impl } from "@music-analyzer/view";
 import { SetColor } from "@music-analyzer/controllers";
-import { MelodyModel } from "../model";
 import { deleteMelody } from "./delete";
 
 export class MelodyView
-  extends MVVM_View_Impl<"rect", MelodyModel>
+  extends MVVM_View_Impl<"rect">
   implements ColorChangeSubscriber {
   constructor(
-    model: MelodyModel,
   ) {
-    super("rect", model);
+    super("rect");
     this.svg.id = "melody-note";
     this.svg.style.stroke = "rgb(64, 64, 64)";
     this.svg.onclick = deleteMelody;

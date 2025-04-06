@@ -7,12 +7,12 @@ import { IRSymbolModel } from "../model";
 const ir_analysis_em = size;
 
 export class IRSymbolView
-  extends MVVM_View_Impl<"text", IRSymbolModel>
+  extends MVVM_View_Impl<"text">
   implements ColorChangeSubscriber {
   constructor(
-    model: IRSymbolModel,
+    protected readonly model: IRSymbolModel,
   ) {
-    super("text", model);
+    super("text");
     this.svg.textContent = this.model.archetype.symbol;
     this.svg.id = "I-R Symbol";
     this.svg.style.fontFamily = "Times New Roman";

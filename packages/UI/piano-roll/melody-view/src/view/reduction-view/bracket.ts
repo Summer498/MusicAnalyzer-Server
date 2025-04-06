@@ -2,10 +2,12 @@ import { MVVM_View_Impl } from "@music-analyzer/view";
 import { ReductionViewModel } from "./reduction-view-model";
 
 export class Bracket 
-  extends MVVM_View_Impl<"path", ReductionViewModel> {
+  extends MVVM_View_Impl<"path"> {
+  private readonly model: ReductionViewModel
   readonly svg: SVGPathElement;
   constructor(model: ReductionViewModel) {
-    super("path", model);
+    super("path");
+    this.model = model
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "path");
     this.svg.id = "group";
     this.svg.style.stroke = "rgb(0, 0, 64)";

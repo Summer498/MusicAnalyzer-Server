@@ -1,12 +1,11 @@
 import { hsv2rgb } from "@music-analyzer/color";
 import { rgbToString } from "@music-analyzer/color";
 import { MVVM_View_Impl } from "@music-analyzer/view";
-import { DMelodyModel } from "../model";
 
 export class DMelodyView 
-  extends MVVM_View_Impl<"rect", DMelodyModel> {
-  constructor(model: DMelodyModel) {
-    super("rect", model);
+  extends MVVM_View_Impl<"rect"> {
+  constructor() {
+    super("rect");
     this.svg.id = "melody-note";
     this.svg.style.fill = rgbToString(hsv2rgb(0, 0, 0.75));
     this.svg.style.stroke = "rgb(64, 64, 64)";

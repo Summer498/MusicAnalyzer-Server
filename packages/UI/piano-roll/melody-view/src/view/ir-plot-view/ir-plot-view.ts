@@ -1,7 +1,7 @@
 import { MVVM_View_Impl } from "@music-analyzer/view";
 import { ColorChangeSubscriber } from "@music-analyzer/controllers";
 import { SetColor } from "@music-analyzer/controllers";
-import { IRPlotModel } from "../model";
+import { IRPlotModel } from "../../model";
 import { IRPlotViewModel } from "./ir-plot-view-model";
 
 const get_pos = (_x: number, _y: number) => {
@@ -18,13 +18,13 @@ const get_pos = (_x: number, _y: number) => {
 };
 
 export class IRPlotView
-  extends MVVM_View_Impl<"circle", IRPlotModel>
+  extends MVVM_View_Impl<"circle">
   implements ColorChangeSubscriber {
   readonly view_model: IRPlotViewModel
   constructor(
-    model: IRPlotModel,
+    protected readonly model: IRPlotModel,
   ) {
-    super("circle", model);
+    super("circle");
     this.svg.style.stroke = "rgb(16, 16, 16)";
     this.svg.style.strokeWidth = String(6);
     this.view_model = new IRPlotViewModel()
