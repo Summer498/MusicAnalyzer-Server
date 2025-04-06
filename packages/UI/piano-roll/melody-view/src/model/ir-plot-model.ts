@@ -1,19 +1,20 @@
 import { Triad } from "@music-analyzer/irm";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { MVVM_Model } from "@music-analyzer/view";
-import { Time } from "@music-analyzer/time-and";
+import { Time } from "../facade";
 import { MelodiesCache } from "../melodies-cache";
+import { Model } from "./abstract-model";
 
 export class IRPlotModel
-  extends MVVM_Model {
-  readonly time: Time
+  extends Model {
   readonly melody: MelodiesCache
   get archetype() { return this.melody.getCurrentNote().melody_analysis.implication_realization as Triad; }
   constructor(
     melody_series: SerializedTimeAndAnalyzedMelody[],
   ) {
-    super();
-    this.time = new Time(0, 0);  // dummy
+    super(
+      new Time(0, 0),  // dummy
+      new Time(0, 0),  // dummy
+    );
     this.melody = new MelodiesCache(melody_series);
   }
   get is_visible() { return this.melody.is_visible; }

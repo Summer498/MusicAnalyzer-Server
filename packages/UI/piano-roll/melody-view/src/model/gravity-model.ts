@@ -1,11 +1,9 @@
 import { Gravity } from "@music-analyzer/melody-analyze";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { Time } from "@music-analyzer/time-and";
-import { MVVM_Model } from "@music-analyzer/view";
+import { Model } from "./abstract-model";
 
 export class GravityModel 
-  extends MVVM_Model {
-  readonly time: Time;
+  extends Model {
   readonly note: number;
   readonly destination?: number;
   readonly layer: number;
@@ -15,8 +13,10 @@ export class GravityModel
     readonly next: SerializedTimeAndAnalyzedMelody,
     readonly gravity: Gravity,
   ) {
-    super();
-    this.time = e.time
+    super(
+      e.time,
+      e.head,
+    );
     this.note = e.note;
     this.destination = gravity.destination;
     this.layer = layer || 0;

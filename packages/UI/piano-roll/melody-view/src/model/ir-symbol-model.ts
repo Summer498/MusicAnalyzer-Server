@@ -1,17 +1,17 @@
 import { Triad } from "@music-analyzer/irm";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { Time } from "@music-analyzer/time-and";
-import { MVVM_Model } from "@music-analyzer/view";
+import { Model } from "./abstract-model";
 
 export class IRSymbolModel 
-  extends MVVM_Model {
-  readonly time: Time;
+  extends Model {
   readonly note: number;
   readonly archetype: Triad;
   readonly layer: number;
   constructor(e: SerializedTimeAndAnalyzedMelody, layer: number) {
-    super();
-    this.time = e.time
+    super(
+      e.time,
+      e.head,
+    );
     this.note = e.note;
     this.archetype = e.melody_analysis.implication_realization as Triad;
     this.layer = layer || 0;

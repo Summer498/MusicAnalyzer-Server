@@ -1,21 +1,19 @@
 import { Triad } from "@music-analyzer/irm";
 import { SerializedMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { Time } from "@music-analyzer/time-and";
-import { MVVM_Model } from "@music-analyzer/view";
+import { Model } from "./abstract-model";
 
-export class MelodyModel 
-  extends MVVM_Model {
-  readonly time: Time;
+export class MelodyModel
+  extends Model {
   readonly note: number;
-  readonly head: Time;
   readonly melody_analysis: SerializedMelodyAnalysis;
   readonly archetype: Triad;
   constructor(e: SerializedTimeAndAnalyzedMelody) {
-    super();
-    this.time = e.time
+    super(
+      e.time,
+      e.head,
+    );
     this.note = e.note;
-    this.head = e.head;
     this.melody_analysis = e.melody_analysis;
     this.archetype = e.melody_analysis.implication_realization as Triad;
   }
