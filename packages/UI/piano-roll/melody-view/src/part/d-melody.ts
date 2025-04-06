@@ -1,4 +1,3 @@
-import { MVVM_ViewModel_Impl } from "@music-analyzer/view";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { BlackKeyPrm } from "@music-analyzer/view-parameters";
 import { NoteSize } from "@music-analyzer/view-parameters";
@@ -7,6 +6,7 @@ import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { DMelodyModel } from "../model";
 import { DMelodyView } from "../view";
 import { insertMelody } from "../view/insert";
+import { Part } from "./abstract-part";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get()
@@ -14,7 +14,7 @@ const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 
 export class DMelody
-  extends MVVM_ViewModel_Impl<DMelodyModel, DMelodyView>
+  extends Part<DMelodyModel, DMelodyView>
   implements TimeRangeSubscriber {
   constructor(
     e: SerializedTimeAndAnalyzedMelody,

@@ -2,19 +2,19 @@ import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze"
 import { BlackKeyPrm } from "@music-analyzer/view-parameters";
 import { NoteSize } from "@music-analyzer/view-parameters";
 import { PianoRollBegin } from "@music-analyzer/view-parameters";
-import { MVVM_ViewModel_Impl } from "@music-analyzer/view";
 import { SetColor } from "@music-analyzer/controllers";
 import { MelodyModel } from "../model";
 import { MelodyView } from "../view";
 import { MelodyBeep } from "./melody-beep";
 import { IMelody } from "../i-part";
+import { Part } from "./abstract-part";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class Melody
-  extends MVVM_ViewModel_Impl<MelodyModel, MelodyView>
+  extends Part<MelodyModel, MelodyView>
   implements IMelody {
   #beeper: MelodyBeep
   constructor(

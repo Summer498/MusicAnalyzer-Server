@@ -1,4 +1,3 @@
-import { MVVM_ViewModel_Impl } from "@music-analyzer/view";
 import { Gravity as GravityAnalysis } from "@music-analyzer/melody-analyze";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { BlackKeyPrm } from "@music-analyzer/view-parameters";
@@ -8,13 +7,14 @@ import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { GravityModel } from "../model";
 import { GravityView } from "../view";
 import { LinePos } from "../view";
+import { Part } from "./abstract-part";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class Gravity
-  extends MVVM_ViewModel_Impl<GravityModel, GravityView>
+  extends Part<GravityModel, GravityView>
   implements TimeRangeSubscriber {
   #line_seed: LinePos;
   constructor(

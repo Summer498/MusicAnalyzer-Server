@@ -1,19 +1,19 @@
 import { BlackKeyPrm } from "@music-analyzer/view-parameters";
 import { NoteSize } from "@music-analyzer/view-parameters";
 import { PianoRollBegin } from "@music-analyzer/view-parameters";
-import { MVVM_ViewModel_Impl } from "@music-analyzer/view";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { SetColor } from "@music-analyzer/controllers";
 import { IRSymbolModel } from "../model";
 import { IRSymbolView } from "../view";
+import { Part } from "./abstract-part";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class IRSymbol
-  extends MVVM_ViewModel_Impl<IRSymbolModel, IRSymbolView>
+  extends Part<IRSymbolModel, IRSymbolView>
   implements TimeRangeSubscriber {
   #y: number;
   constructor(
