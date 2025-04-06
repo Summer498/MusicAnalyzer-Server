@@ -5,9 +5,12 @@ import { oneLetterKey } from "../shorten";
 import { chord_text_em } from "../chord-view-params";
 
 export class ChordPartView_impl<Tag extends keyof SVGElementTagNameMap>
-  extends MVVM_View_Impl<Tag, ChordPartModel> {
-  constructor(tag: Tag, model: ChordPartModel) {
-    super(tag, model);
+  extends MVVM_View_Impl<Tag> {
+  constructor(
+    tag: Tag,
+    protected readonly model: ChordPartModel
+  ) {
+    super(tag);
     this.svg.textContent = oneLetterKey(this.model.scale) + ': ';
     this.svg.id = "key-name";
     this.svg.style.fontFamily = "Times New Roman";
