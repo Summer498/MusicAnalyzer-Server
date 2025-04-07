@@ -1,7 +1,7 @@
 import { CollectionHierarchy } from "@music-analyzer/view";
-import { GravityLayer } from "../layer";
-import { RequiredByGravityHierarchy } from "../r-hierarchy";
-import { IGravityHierarchy } from "../i-hierarchy";
+import { GravityLayer } from "./gravity-layer";
+import { IGravityHierarchy } from "./i-gravity-hierarchy";
+import { RequiredByGravityHierarchy } from "./required-by-gravity-hierarchy";
 
 export class GravityHierarchy
   extends CollectionHierarchy<GravityLayer>

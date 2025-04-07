@@ -1,10 +1,9 @@
 import { BlackKeyPrm } from "@music-analyzer/view-parameters";
 import { NoteSize } from "@music-analyzer/view-parameters";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";
-import { GravityModel } from "../model";
-import { GravityView } from "../view";
-import { LinePos } from "../view";
-import { Part } from "./abstract-part";
+import { GravityModel } from "./gravity-model";
+import { GravityView, LinePos } from "./gravity-view";
+import { Part } from "../part/abstract-part";
 
 export class Gravity
   extends Part<GravityModel, GravityView>

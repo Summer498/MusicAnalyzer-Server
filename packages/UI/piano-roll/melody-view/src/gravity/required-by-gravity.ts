@@ -1,4 +1,4 @@
-import { RequiredByPart } from "./required-by-abstract-part";
+import { RequiredByPart } from "../r-part";
 
 export interface RequiredByGravity
   extends RequiredByPart { }

@@ -5,7 +5,7 @@ import { DMelodySeries } from "./layer/d-melody-series";
 import { MelodyHierarchy } from "./hierarchy/melody-hierarchy";
 import { IRSymbolHierarchy } from "./hierarchy/ir-symbol-hierarchy";
 import { ReductionHierarchy } from "./hierarchy/reduction-hierarchy";
-import { GravityHierarchy } from "./hierarchy/gravity-hierarchy";
+import { GravityHierarchy } from "./gravity/gravity-hierarchy";
 import { IRPlotSVG } from "./ir-plot-svg";
 import { RequiredByMelodyElements } from "./required-by-melody-elements";
 import { HierarchyBuilder } from "./hierarchy-builder/hierarchy-builder";

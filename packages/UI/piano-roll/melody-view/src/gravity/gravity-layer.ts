@@ -1,6 +1,6 @@
 import { CollectionLayer } from "@music-analyzer/view";
-import { Gravity } from "../part";
-import { IGravityLayer } from "../i-layer";
+import { Gravity } from "./gravity";
+import { IGravityLayer } from "./i-gravity-layer";
 
 export class GravityLayer
   extends CollectionLayer<Gravity>

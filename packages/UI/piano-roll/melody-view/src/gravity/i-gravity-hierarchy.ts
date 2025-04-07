@@ -1,6 +1,6 @@
 import { GravitySwitcherSubscriber } from "@music-analyzer/controllers";
-import { IGravityLayer } from "../i-layer";
-import { IHierarchy } from "./i-abstract-hierarchy";
+import { IHierarchy } from "../i-hierarchy/i-abstract-hierarchy";
+import { IGravityLayer } from "./i-gravity-layer";
 
 export interface IGravityHierarchy
   extends

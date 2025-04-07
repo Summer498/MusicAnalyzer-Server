@@ -4,7 +4,7 @@ import { WindowReflectableRegistry } from "@music-analyzer/view";
 import { RequiredByMelodyElements } from "../required-by-melody-elements";
 import { IHierarchyBuilder } from "./i-hierarchy-builder";
 import { buildDMelody } from "./build-d-melody-series";
-import { buildGravity } from "./build-gravity-hierarchy";
+import { buildGravity } from "../gravity/build-gravity-hierarchy";
 import { buildIRPlot } from "./build-ir-plot-svg";
 import { buildIRSymbol } from "./build-ir-symbol-hierarchy";
 import { buildMelody } from "./build-melody-hierarchy";

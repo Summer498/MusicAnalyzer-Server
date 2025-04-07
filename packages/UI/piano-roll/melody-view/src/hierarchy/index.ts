@@ -1,4 +1,3 @@
-export { GravityHierarchy } from "./gravity-hierarchy";
 export { IRPlotHierarchy } from "./ir-plot-hierarchy";
 export { IRSymbolHierarchy } from "./ir-symbol-hierarchy";
 export { MelodyHierarchy } from "./melody-hierarchy";

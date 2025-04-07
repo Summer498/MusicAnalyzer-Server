@@ -1,11 +1,11 @@
-import { GravityHierarchy } from "../hierarchy";
 import { GravitySwitcher } from "@music-analyzer/controllers";
-import { GravityLayer } from "../layer";
-import { IHierarchyBuilder } from "./i-hierarchy-builder";
-import { GravityModel } from "../model";
-import { GravityView, LinePos } from "../view";
+import { IHierarchyBuilder } from "../hierarchy-builder/i-hierarchy-builder";
+import { GravityModel } from "./gravity-model";
 import { PianoRollConverter } from "@music-analyzer/view-parameters";
-import { Gravity } from "../part";
+import { GravityView, LinePos } from "./gravity-view";
+import { GravityLayer } from "./gravity-layer";
+import { GravityHierarchy } from "./gravity-hierarchy";
+import { Gravity } from "./gravity";
 
 export function buildGravity(
   this: IHierarchyBuilder,

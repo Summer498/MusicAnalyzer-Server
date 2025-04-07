@@ -1,6 +1,6 @@
 import { GravitySwitcher } from "@music-analyzer/controllers";
-import { RequiredByGravityLayer } from "../r-layer";
-import { RequiredByHierarchy } from "./required-by-abstract-hierarchy";
+import { RequiredByHierarchy } from "../r-hierarchy";
+import { RequiredByGravityLayer } from "./required-by-gravity-layer";
 
 export interface RequiredByGravityHierarchy
   extends
