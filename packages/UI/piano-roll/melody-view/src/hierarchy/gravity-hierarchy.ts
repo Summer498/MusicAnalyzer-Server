@@ -7,11 +7,11 @@ export class GravityHierarchy
   extends CollectionHierarchy<GravityLayer>
   implements IGravityHierarchy {
   constructor(
-    mode: "chord_gravity" | "scale_gravity",
+    id: string,
     children: GravityLayer[],
     controllers: RequiredByGravityHierarchy,
   ) {
-    super(mode, children);
+    super(id, children);
     controllers.switcher.register(this);
     controllers.hierarchy.register(this);
     controllers.audio.register(this);
