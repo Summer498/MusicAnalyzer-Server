@@ -1,5 +1,5 @@
 import { LinePos } from "./line-pos";
-import { View } from "../../view/abstract-view";
+import { View } from "../../abstract/abstract-view";
 
 const triangle_width = 4;
 const triangle_height = 5;

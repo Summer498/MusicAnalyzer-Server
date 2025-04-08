@@ -1,7 +1,7 @@
 import { LinePos } from "./line-pos";
 import { GravityViewTriangle } from "./gravity-triangle";
 import { GravityViewLine } from "./gravity-line";
-import { View } from "../../view/abstract-view";
+import { View } from "../../abstract/abstract-view";
 
 export class GravityView 
   extends View<"g"> {

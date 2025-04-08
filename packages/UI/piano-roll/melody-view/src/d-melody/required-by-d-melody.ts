@@ -1,4 +1,4 @@
 import { RequiredByPart } from "../abstract/required-by-abstract-part";
 
-export interface RequiredByGravity
+export interface RequiredByDMelody
   extends RequiredByPart { }

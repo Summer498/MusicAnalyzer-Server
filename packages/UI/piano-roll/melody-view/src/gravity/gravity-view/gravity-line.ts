@@ -1,5 +1,5 @@
 import { LinePos } from "./line-pos";
-import { View } from "../../view/abstract-view";
+import { View } from "../../abstract/abstract-view";
 
 export class GravityViewLine 
   extends View<"line"> {

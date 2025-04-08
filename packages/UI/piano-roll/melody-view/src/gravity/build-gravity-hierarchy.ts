@@ -1,5 +1,5 @@
 import { GravitySwitcher } from "@music-analyzer/controllers";
-import { IHierarchyBuilder } from "../hierarchy-builder/i-hierarchy-builder";
+import { IHierarchyBuilder } from "../i-hierarchy-builder";
 import { GravityModel } from "./gravity-model";
 import { PianoRollConverter } from "@music-analyzer/view-parameters";
 import { GravityView, LinePos } from "./gravity-view";
