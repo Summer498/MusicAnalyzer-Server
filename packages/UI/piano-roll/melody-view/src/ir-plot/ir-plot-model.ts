@@ -1,7 +1,7 @@
 import { Triad } from "@music-analyzer/irm";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { Time } from "../facade";
-import { MelodiesCache } from "../melodies-cache";
+import { MelodiesCache } from "./melodies-cache";
 import { Model } from "../abstract/abstract-model";
 
 export class IRPlotModel

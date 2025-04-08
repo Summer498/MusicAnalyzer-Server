@@ -1,5 +1,5 @@
 import { Gravity } from "@music-analyzer/melody-analyze";
-import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { SerializedTimeAndAnalyzedMelody } from "../serialized-time-and-analyzed-melody";
 import { Model } from "../abstract/abstract-model";
 
 export class GravityModel 
