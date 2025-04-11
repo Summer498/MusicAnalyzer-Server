@@ -20,16 +20,16 @@ export function buildGravity(
       const e = melodies[i]
       const g = e.melody_analysis[mode];
       if (!g) { return }
-      const v = new GravityView();
+      
+      const model = new GravityModel(e, l, n, g);
+      const view = new GravityView();
       const line = new LinePos(
         e.time.begin + e.time.duration / 2,
         n.time.begin,
         isNaN(e.note) ? -99 : (0.5 - converter.convertToCoordinate(converter.transposed(e.note))),
         isNaN(e.note) ? -99 : (0.5 - converter.convertToCoordinate(converter.transposed(g.destination))),
       )
-      return new Gravity(
-        new GravityModel(e, l, n, g)
-        , v, line)
+      return new Gravity(model, view, line)
     }).filter(e => e !== undefined)
     return new GravityLayer(l, gravity);
   });
