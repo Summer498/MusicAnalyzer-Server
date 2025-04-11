@@ -1,4 +1,3 @@
-import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { BlackKeyPrm } from "@music-analyzer/view-parameters";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { DMelodyModel } from "./d-melody-model";
@@ -10,10 +9,10 @@ export class DMelody
   extends Part<DMelodyModel, DMelodyView>
   implements TimeRangeSubscriber {
   constructor(
-    e: SerializedTimeAndAnalyzedMelody,
+    model: DMelodyModel,
+    view: DMelodyView,
   ) {
-    const model = new DMelodyModel(e);
-    super(model, new DMelodyView());
+    super(model, view);
     this.onAudioUpdate();
     this.updateX();
     this.updateY();
