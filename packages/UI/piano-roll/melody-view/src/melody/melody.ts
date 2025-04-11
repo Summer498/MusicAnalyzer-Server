@@ -1,4 +1,3 @@
-import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { BlackKeyPrm } from "@music-analyzer/view-parameters";
 import { SetColor } from "@music-analyzer/controllers";
 import { MelodyBeep } from "./melody-beep";
@@ -12,10 +11,10 @@ export class Melody
   implements IMelody {
   #beeper: MelodyBeep
   constructor(
-    melody: SerializedTimeAndAnalyzedMelody,
+    model: MelodyModel,
+    view:  MelodyView,
   ) {
-    const model = new MelodyModel(melody);
-    super(model, new MelodyView());
+    super(model, view);
     this.#beeper = new MelodyBeep(model);
     this.updateX();
     this.updateY();

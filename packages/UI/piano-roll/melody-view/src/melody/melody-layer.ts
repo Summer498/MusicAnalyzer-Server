@@ -1,4 +1,3 @@
-import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { CollectionLayer } from "@music-analyzer/view";
 import { SetColor } from "@music-analyzer/controllers";
 import { IMelodyLayer } from "./i-melody-layer";
@@ -8,10 +7,10 @@ export class MelodyLayer
   extends CollectionLayer<Melody>
   implements IMelodyLayer {
   constructor(
-    melodies: SerializedTimeAndAnalyzedMelody[],
+    children: Melody[],
     layer: number,
   ) {
-    super(layer, melodies.map(e => new Melody(e)));
+    super(layer, children);
   }
   readonly setColor: SetColor = f => this.children.forEach(e => e.setColor(f))
   beep() { this.children.forEach(e => e.beep()); }
