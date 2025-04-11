@@ -1,11 +1,11 @@
-import { CollectionHierarchy } from "@music-analyzer/view";
 import { SetColor } from "@music-analyzer/controllers";
 import { MelodyLayer } from "./melody-layer";
 import { RequiredByMelodyHierarchy } from "./required-by-melody-hierarchy";
 import { IMelodyHierarchy } from "./i-melody-hierarchy";
+import { Hierarchy } from "../abstract/abstract-hierarchy";
 
 export class MelodyHierarchy
-  extends CollectionHierarchy<MelodyLayer>
+  extends Hierarchy<MelodyLayer>
   implements IMelodyHierarchy {
   get show() { return this._show; }
   constructor(

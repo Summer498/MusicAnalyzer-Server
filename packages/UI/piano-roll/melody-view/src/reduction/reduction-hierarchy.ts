@@ -1,11 +1,11 @@
-import { CollectionHierarchy } from "@music-analyzer/view";
 import { SetColor } from "@music-analyzer/controllers";
 import { ReductionLayer } from "./reduction-layer";
 import { IReductionHierarchy } from "./i-reduction-hierarchy";
 import { RequiredByReductionHierarchy } from "./required-by-reduction-hierarchy";
+import { Hierarchy } from "../abstract/abstract-hierarchy";
 
 export class ReductionHierarchy
-  extends CollectionHierarchy<ReductionLayer>
+  extends Hierarchy<ReductionLayer>
   implements IReductionHierarchy {
   constructor(
     children: ReductionLayer[],

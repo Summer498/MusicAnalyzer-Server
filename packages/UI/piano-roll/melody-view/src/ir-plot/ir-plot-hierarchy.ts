@@ -1,12 +1,12 @@
-import { CollectionHierarchy } from "@music-analyzer/view";
 import { SetColor } from "@music-analyzer/controllers";
 import { IRPlotHierarchyView } from "./ir-plot-hierarchy-view"
 import { IRPlotHierarchyModel } from "./ir-plot-hierarchy-model";
 import { IRPlotLayer } from "./ir-plot-layer";
 import { RequiredByIRPlotHierarchy } from "./required-by-ir-plot-hierarchy";
+import { Hierarchy } from "../abstract/abstract-hierarchy";
 
 export class IRPlotHierarchy
-  extends CollectionHierarchy<IRPlotLayer> {
+  extends Hierarchy<IRPlotLayer> {
   readonly view: IRPlotHierarchyView
   readonly model: IRPlotHierarchyModel
   #visible_layer: number;

@@ -1,10 +1,10 @@
-import { CollectionHierarchy } from "@music-analyzer/view";
 import { GravityLayer } from "./gravity-layer";
 import { IGravityHierarchy } from "./i-gravity-hierarchy";
 import { RequiredByGravityHierarchy } from "./required-by-gravity-hierarchy";
+import { Hierarchy } from "../abstract/abstract-hierarchy";
 
 export class GravityHierarchy
-  extends CollectionHierarchy<GravityLayer>
+  extends Hierarchy<GravityLayer>
   implements IGravityHierarchy {
   constructor(
     id: string,

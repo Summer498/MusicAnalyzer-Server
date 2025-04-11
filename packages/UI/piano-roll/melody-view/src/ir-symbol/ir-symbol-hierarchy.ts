@@ -1,11 +1,11 @@
-import { CollectionHierarchy } from "@music-analyzer/view";
 import { SetColor } from "@music-analyzer/controllers";
 import { IRSymbolLayer } from "./ir-symbol-layer";
 import { RequiredByIRSymbolHierarchy } from "./required-by-ir-symbol-hierarchy";
 import { I_IRSymbolHierarchy } from "./i-ir-symbol-hierarchy";
+import { Hierarchy } from "../abstract/abstract-hierarchy";
 
 export class IRSymbolHierarchy
-  extends CollectionHierarchy<IRSymbolLayer>
+  extends Hierarchy<IRSymbolLayer>
   implements I_IRSymbolHierarchy {
   constructor(
     children: IRSymbolLayer[],
