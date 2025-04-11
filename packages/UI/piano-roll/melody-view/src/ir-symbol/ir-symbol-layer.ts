@@ -1,4 +1,3 @@
-import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { SetColor } from "@music-analyzer/controllers";
 import { CollectionLayer } from "@music-analyzer/view";
 import { IRSymbol } from "./ir-symbol";
@@ -8,10 +7,10 @@ export class IRSymbolLayer
   extends CollectionLayer<IRSymbol>
   implements I_IRSymbolLayer {
   constructor(
-    melodies: SerializedTimeAndAnalyzedMelody[],
+    children: IRSymbol[],
     layer: number,
   ) {
-    super(layer, melodies.map(e => new IRSymbol(e, layer)));
+    super(layer, children);
   }
   readonly setColor: SetColor = f => this.children.forEach(e => e.setColor(f))
   onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()); }

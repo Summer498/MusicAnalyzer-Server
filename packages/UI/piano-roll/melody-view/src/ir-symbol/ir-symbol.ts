@@ -1,4 +1,3 @@
-import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { SetColor } from "@music-analyzer/controllers";
 import { Part } from "../abstract/abstract-part";
@@ -10,11 +9,10 @@ export class IRSymbol
   implements TimeRangeSubscriber {
   #y: number;
   constructor(
-    melody: SerializedTimeAndAnalyzedMelody,
-    layer: number,
+    model: IRSymbolModel,
+    view: IRSymbolView,
   ) {
-    const model = new IRSymbolModel(melody, layer);
-    super(model, new IRSymbolView(model));
+    super(model, view);
     this.#y = isNaN(this.model.note) ? -99 : -this.converter.convertToCoordinate(this.converter.transposed(this.model.note));
     this.updateX();
     this.updateY();
