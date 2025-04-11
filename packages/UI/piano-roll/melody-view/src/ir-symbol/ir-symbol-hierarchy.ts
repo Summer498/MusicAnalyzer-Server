@@ -2,7 +2,7 @@ import { CollectionHierarchy } from "@music-analyzer/view";
 import { SetColor } from "@music-analyzer/controllers";
 import { IRSymbolLayer } from "./ir-symbol-layer";
 import { RequiredByIRSymbolHierarchy } from "./required-by-ir-symbol-hierarchy";
-import { I_IRSymbolHierarchy } from "../ir-plot/i-ir-symbol-hierarchy";
+import { I_IRSymbolHierarchy } from "./i-ir-symbol-hierarchy";
 
 export class IRSymbolHierarchy
   extends CollectionHierarchy<IRSymbolLayer>
