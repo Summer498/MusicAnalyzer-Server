@@ -2,7 +2,6 @@ import { CollectionHierarchy } from "@music-analyzer/view";
 import { SetColor } from "@music-analyzer/controllers";
 import { IRPlotHierarchyView } from "./ir-plot-hierarchy-view"
 import { IRPlotHierarchyModel } from "./ir-plot-hierarchy-model";
-import { SerializedTimeAndAnalyzedMelody } from "../serialized-time-and-analyzed-melody";
 import { IRPlotLayer } from "./ir-plot-layer";
 import { RequiredByIRPlotHierarchy } from "./required-by-ir-plot-hierarchy";
 
@@ -13,12 +12,11 @@ export class IRPlotHierarchy
   #visible_layer: number;
   get show() { return this.view.circles.show }
   constructor(
-    hierarchical_melody: SerializedTimeAndAnalyzedMelody[][],
+    children: IRPlotLayer[],
     controllers: RequiredByIRPlotHierarchy,
   ) {
-    const N = hierarchical_melody.length;
-    super("IR-plot-hierarchy", hierarchical_melody.map((e, l) => new IRPlotLayer(e, l, N)))
-    this.#visible_layer = N;
+    super("IR-plot-hierarchy", children)
+    this.#visible_layer = children.length;
     this.model = new IRPlotHierarchyModel(this.children);
     this.view = new IRPlotHierarchyView(this.model.width, this.model.height)
     controllers.hierarchy.register(this);

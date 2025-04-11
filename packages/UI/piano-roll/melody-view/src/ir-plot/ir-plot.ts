@@ -1,4 +1,3 @@
-import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { SetColor } from "@music-analyzer/controllers";
 import { IRPlotModel } from "./ir-plot-model";
 import { Part } from "../abstract/abstract-part";
@@ -8,10 +7,9 @@ export class IRPlot
   extends Part<IRPlotModel, IRPlotView> {
   readonly view: IRPlotView;
   constructor(
-    e: SerializedTimeAndAnalyzedMelody[],
+    model: IRPlotModel,
+    view: IRPlotView,
   ) {
-    const model = new IRPlotModel(e);
-    const view = new IRPlotView(model);
     super(model, view);
     this.view = view;
   }

@@ -1,4 +1,3 @@
-import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { SetColor } from "@music-analyzer/controllers";
 import { CollectionLayer } from "@music-analyzer/view";
 import { IRPlotLayerView } from "./ir-plot-layer-view";
@@ -11,11 +10,11 @@ export class IRPlotLayer
   implements I_IRPlotLayer {
   readonly view: IRPlotLayerView
   constructor(
-    melody_series: SerializedTimeAndAnalyzedMelody[],
+    children: IRPlot[],
     layer: number,
     max: number,
   ) {
-    super(layer, [new IRPlot(melody_series)]);
+    super(layer, children);
     this.view = new IRPlotLayerView(this.children[0], layer, max, new IRPlotLayerModel(this.children[0].view.view_model.w, this.children[0].view.view_model.h))
   }
   onAudioUpdate() { this.children.forEach(e => e.onAudioUpdate()) }
