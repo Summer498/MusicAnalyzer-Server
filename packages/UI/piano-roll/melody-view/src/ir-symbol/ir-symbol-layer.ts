@@ -1,10 +1,10 @@
 import { SetColor } from "@music-analyzer/controllers";
-import { CollectionLayer } from "@music-analyzer/view";
 import { IRSymbol } from "./ir-symbol";
 import { I_IRSymbolLayer } from "./i-ir-symbol-layer";
+import { Layer } from "../abstract/abstract-layer";
 
 export class IRSymbolLayer
-  extends CollectionLayer<IRSymbol>
+  extends Layer<IRSymbol>
   implements I_IRSymbolLayer {
   constructor(
     children: IRSymbol[],

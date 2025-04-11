@@ -1,10 +1,10 @@
-import { CollectionLayer } from "@music-analyzer/view";
 import { SetColor } from "@music-analyzer/controllers";
 import { IMelodyLayer } from "./i-melody-layer";
 import { Melody } from "./melody";
+import { Layer } from "../abstract/abstract-layer";
 
 export class MelodyLayer
-  extends CollectionLayer<Melody>
+  extends Layer<Melody>
   implements IMelodyLayer {
   constructor(
     children: Melody[],
