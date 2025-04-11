@@ -34,7 +34,5 @@ export class IRPlotHierarchy
     this.#visible_layer = value;
     this.updateLayer();
   }
-  onAudioUpdate() { this.children.forEach(e => e.onAudioUpdate()) }
-  onWindowResized() { this.children.forEach(e => e.onWindowResized()) }
   readonly setColor: SetColor = f => this.children.forEach(e => e.setColor(f))
 }

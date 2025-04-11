@@ -20,6 +20,4 @@ export class GravityHierarchy
   }
   onUpdateGravityVisibility(visible: boolean) { this.svg.style.visibility = visible ? "visible" : "hidden"; }
   onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()) }
-  onAudioUpdate() { this.children.forEach(e => e.onAudioUpdate()) }
-  onWindowResized() { this.children.forEach(e => e.onWindowResized()) }
 }

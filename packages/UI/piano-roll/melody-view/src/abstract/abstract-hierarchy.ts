@@ -1,6 +1,7 @@
-import { CollectionHierarchy, I_CollectionLayer } from "@music-analyzer/view";
+import { CollectionHierarchy } from "@music-analyzer/view";
+import { I_Layer } from "./i-layer";
 
-export abstract class Hierarchy<L extends I_CollectionLayer>
+export abstract class Hierarchy<L extends I_Layer>
   extends CollectionHierarchy<L> {
   constructor(
     id:string,
@@ -8,4 +9,6 @@ export abstract class Hierarchy<L extends I_CollectionLayer>
   ){
     super(id, children)
   }
+  onAudioUpdate() { this.children.forEach(e => e.onAudioUpdate()); }
+  onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
 }

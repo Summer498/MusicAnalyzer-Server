@@ -21,7 +21,7 @@ export class MelodyHierarchy
     controllers.melody_color.register(this);
   }
   onAudioUpdate() {
-    this.children.forEach(e => e.onAudioUpdate())
+    super.onAudioUpdate()
     this.show.forEach(e => e.beep())
   }
   readonly setColor: SetColor = f => this.children.forEach(e => e.setColor(f))
@@ -29,5 +29,4 @@ export class MelodyHierarchy
   onMelodyBeepCheckChanged(v: boolean) { this.children.forEach(e => e.onMelodyBeepCheckChanged(v)); }
   onMelodyVolumeBarChanged(v: number) { this.children.forEach(e => e.onMelodyVolumeBarChanged(v)); }
   onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()); }
-  onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
 }

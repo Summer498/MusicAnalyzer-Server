@@ -26,6 +26,4 @@ export class ReductionHierarchy
   }
   readonly setColor: SetColor = f => this.children.forEach(e => e.setColor(f))
   onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()) }
-  onAudioUpdate() { this.children.forEach(e => e.onAudioUpdate()) }
-  onWindowResized() { this.children.forEach(e => e.onWindowResized()) }
 }
