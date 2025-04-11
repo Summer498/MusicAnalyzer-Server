@@ -1,4 +1,3 @@
-import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { SetColor } from "@music-analyzer/controllers";
 import { Part } from "../abstract/abstract-part";
 import { IReduction } from "./i-reduction";
@@ -9,11 +8,10 @@ export class Reduction
   extends Part<ReductionModel, ReductionView>
   implements IReduction {
   constructor(
-    melody: SerializedTimeAndAnalyzedMelody,
-    layer: number,
+    model: ReductionModel,
+    view: ReductionView,
   ) {
-    const model = new ReductionModel(melody, layer);
-    super(model, new ReductionView(model));
+    super(model, view);
   }
   readonly setColor: SetColor = f => this.view.setColor(f)
   renewStrong(strong: boolean) { this.view.strong = strong; }
