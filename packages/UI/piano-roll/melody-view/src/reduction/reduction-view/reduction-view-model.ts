@@ -3,15 +3,13 @@ import { MVVM_Model } from "@music-analyzer/view";
 import { BlackKeyPrm } from "@music-analyzer/view-parameters";
 import { bracket_height } from "@music-analyzer/view-parameters";
 import { NoteSize } from "@music-analyzer/view-parameters";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { ReductionModel } from "../reduction-model";
 
 const scaled = (e: number) => e * NoteSize.get();
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class ReductionViewModel
-  extends MVVM_Model
-  implements TimeRangeSubscriber {
+  extends MVVM_Model {
   #x: number;
   #w: number;
   #cx: number;

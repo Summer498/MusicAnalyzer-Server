@@ -1,4 +1,3 @@
-import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { ReductionViewModel } from "./reduction-view-model";
 import { IRMSymbol } from "./irm-symbol";
 import { Bracket } from "./bracket";
@@ -7,12 +6,11 @@ import { ReductionModel } from "../reduction-model";
 import { ColorChangeable } from "../../color-changeable";
 
 export class ReductionView
-  extends ColorChangeable<"g">
-  implements TimeRangeSubscriber {
+  extends ColorChangeable<"g"> {
   readonly bracket: Bracket;
   readonly dot: Dot;
   readonly ir_symbol: IRMSymbol;
-  protected readonly model:ReductionViewModel;
+  protected readonly model: ReductionViewModel;
   constructor(
     model: ReductionModel,
   ) {

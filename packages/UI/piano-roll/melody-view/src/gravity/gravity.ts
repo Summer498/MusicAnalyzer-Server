@@ -1,13 +1,12 @@
 import { BlackKeyPrm } from "@music-analyzer/view-parameters";
 import { NoteSize } from "@music-analyzer/view-parameters";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { GravityModel } from "./gravity-model";
 import { GravityView, LinePos } from "./gravity-view";
 import { Part } from "../abstract/abstract-part";
 
 export class Gravity
   extends Part<GravityModel, GravityView>
-  implements TimeRangeSubscriber {
+  {
   constructor(
     model: GravityModel,
     view: GravityView,

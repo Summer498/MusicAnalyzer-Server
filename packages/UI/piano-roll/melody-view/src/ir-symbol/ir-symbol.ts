@@ -1,12 +1,10 @@
-import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { SetColor } from "@music-analyzer/controllers";
 import { Part } from "../abstract/abstract-part";
 import { IRSymbolModel } from "./ir-symbol-model";
 import { IRSymbolView } from "./ir-symbol-view";
 
 export class IRSymbol
-  extends Part<IRSymbolModel, IRSymbolView>
-  implements TimeRangeSubscriber {
+  extends Part<IRSymbolModel, IRSymbolView> {
   #y: number;
   constructor(
     model: IRSymbolModel,

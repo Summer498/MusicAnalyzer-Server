@@ -1,5 +1,4 @@
 import { BlackKeyPrm } from "@music-analyzer/view-parameters";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { DMelodyModel } from "./d-melody-model";
 import { Part } from "../abstract/abstract-part";
 import { DMelodyView } from "./d-melody-view";
@@ -7,7 +6,7 @@ import { insertMelody } from "../melody-editor/insert";
 
 export class DMelody
   extends Part<DMelodyModel, DMelodyView>
-  implements TimeRangeSubscriber {
+  {
   constructor(
     model: DMelodyModel,
     view: DMelodyView,

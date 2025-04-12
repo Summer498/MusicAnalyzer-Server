@@ -1,4 +1,3 @@
-import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { I_TimeAndVM } from "@music-analyzer/view";
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
 import { WindowReflectable } from "@music-analyzer/view";
@@ -6,7 +5,7 @@ import { IChordPartSeries } from "../i-series";
 import { RequiredByChordPartSeries } from "../r-series";
 
 export abstract class ChordPartSeries
-  <T extends I_TimeAndVM & TimeRangeSubscriber & WindowReflectable>
+  <T extends I_TimeAndVM & WindowReflectable & { onTimeRangeChanged: () => void }>
   extends ReflectableTimeAndMVCControllerCollection<T>
   implements IChordPartSeries {
   constructor(

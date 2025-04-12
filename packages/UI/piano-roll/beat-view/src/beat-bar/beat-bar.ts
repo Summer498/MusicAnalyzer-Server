@@ -7,14 +7,12 @@ import { NowAt } from "@music-analyzer/view-parameters";
 import { PianoRollHeight } from "@music-analyzer/view-parameters";
 import { reservation_range } from "@music-analyzer/view-parameters";
 import { MVVM_ViewModel_Impl } from "@music-analyzer/view";
-import { TimeRangeSubscriber } from "@music-analyzer/controllers";
 import { play } from "@music-analyzer/synth";
 
 const scaled = (e: number) => e * NoteSize.get();
 
 export class BeatBar
-  extends MVVM_ViewModel_Impl<BeatBarModel, BeatBarView>
-  implements TimeRangeSubscriber {
+  extends MVVM_ViewModel_Impl<BeatBarModel, BeatBarView> {
   #y1: number;
   #y2: number;
   sound_reserved: boolean;
