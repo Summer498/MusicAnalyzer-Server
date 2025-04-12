@@ -1,5 +1,4 @@
 import { MVVM_View_Impl } from "@music-analyzer/view";
-import { SetColor } from "@music-analyzer/controllers";
 
 export abstract class ColorChangeable<K extends keyof SVGElementTagNameMap>
   extends MVVM_View_Impl<K>
@@ -9,5 +8,5 @@ export abstract class ColorChangeable<K extends keyof SVGElementTagNameMap>
   ){
     super(tag)
   }
-  readonly setColor: SetColor = getColor => this.svg.style.fill = "rgb(0, 192, 0)";
+  readonly setColor = (color:string) => this.svg.style.fill = color;
 }

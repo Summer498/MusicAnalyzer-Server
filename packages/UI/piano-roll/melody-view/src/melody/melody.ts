@@ -27,7 +27,7 @@ export class Melody
     this.updateX();
     this.updateWidth();
   }
-  readonly setColor: SetColor = f => this.view.setColor(f)
+  readonly setColor: SetColor = f => this.view.setColor(f(this.model.archetype))
   onTimeRangeChanged = this.onWindowResized;
   beep() { this.#beeper.beepMelody(); }
   onMelodyBeepCheckChanged(e: boolean) { this.#beeper.onMelodyBeepCheckChanged(e); }

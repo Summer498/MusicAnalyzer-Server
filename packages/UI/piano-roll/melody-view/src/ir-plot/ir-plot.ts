@@ -17,5 +17,5 @@ export class IRPlot
     this.view.updatePosition();
   }
   onWindowResized() { }
-  readonly setColor: SetColor = f => this.view.setColor(f)
+  readonly setColor: SetColor = f => this.view.setColor(f(this.model.archetype))
 }

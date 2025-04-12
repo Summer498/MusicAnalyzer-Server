@@ -32,7 +32,7 @@ export class MelodyColorSelector {
     this.children.forEach(e => this.body.appendChild(e.body));
     this.default.update();
   }
-  addListeners(...listeners: ((setColor: GetColor) => void)[]) {
+  addListeners(...listeners: ((color: GetColor) => void)[]) {
     this.children.forEach(e => e.addListeners(...listeners))
     this.default.update()
   }

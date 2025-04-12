@@ -11,7 +11,7 @@ export class Reduction
   ) {
     super(model, view);
   }
-  readonly setColor: SetColor = f => this.view.setColor(f)
+  readonly setColor: SetColor = f => this.view.setColor(f(this.model.archetype))
   renewStrong(strong: boolean) { this.view.strong = strong; }
   onTimeRangeChanged() { this.view.onTimeRangeChanged() }
   onWindowResized() { this.view.onWindowResized() }

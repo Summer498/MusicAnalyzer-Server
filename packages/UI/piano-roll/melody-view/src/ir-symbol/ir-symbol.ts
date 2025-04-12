@@ -26,5 +26,5 @@ export class IRSymbol
     this.updateX();
   }
   onTimeRangeChanged = this.onWindowResized
-  readonly setColor: SetColor = f => this.view.setColor(f)
+  readonly setColor: SetColor = f => this.view.setColor(f(this.model.archetype))
 }
