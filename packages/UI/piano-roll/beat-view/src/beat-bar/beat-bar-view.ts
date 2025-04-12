@@ -2,9 +2,9 @@ import { MVVM_View_Impl } from "@music-analyzer/view";
 import { BeatBarModel } from "./beat-bar-model";
 
 export class BeatBarView 
-  extends MVVM_View_Impl<"line", BeatBarModel> {
+  extends MVVM_View_Impl<"line"> {
   constructor(model: BeatBarModel) {
-    super("line", model);
+    super("line");
     this.svg.id = "bar";
     this.svg.style.stroke = "rgb(0, 0, 0)";
     this.svg.style.display = "none";  //NOTE: 一旦非表示にしている

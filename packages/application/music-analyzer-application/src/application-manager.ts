@@ -37,7 +37,5 @@ export class ApplicationManager {
     }
 
     this.analyzed = new MusicStructureElements(beat_info, romans, hierarchical_melody, melodies, d_melodies, controllers)
-
-    // time_range.register(this.audio_time_mediator, this.window_size_mediator);
   }
 }

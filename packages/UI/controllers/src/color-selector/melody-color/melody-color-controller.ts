@@ -1,4 +1,4 @@
-import { ColorChangeSubscriber } from "../irm-color";
+import { GetColor } from "../irm-color";
 import { MelodyColorSelector } from "./melody-color-selector";
 
 export class MelodyColorController {
@@ -11,5 +11,7 @@ export class MelodyColorController {
     this.view.style.display = "inline";
     this.view.appendChild(this.selector.body);
   }
-  register(...subscribers: ColorChangeSubscriber[]) { this.selector.register(...subscribers) }
+  addListeners(...listeners: ((setColor: GetColor) => void)[]) {
+    this.selector.addListeners(...listeners)
+  }
 }

@@ -1,4 +1,3 @@
-import { DMelodyControllerSubscriber } from "./d-melody-controller-subscriber";
 import { DMelodySwitcher } from "./d-melody-switcher";
 
 export class DMelodyController {
@@ -11,5 +10,5 @@ export class DMelodyController {
     this.view.appendChild(d_melody_switcher.body);
     this.checkbox = d_melody_switcher;
   };
-  register(...subscribers: DMelodyControllerSubscriber[]) { this.checkbox.register(...subscribers) }
+  addListeners(...listeners: ((e:boolean) => void)[]) { this.checkbox.addListeners(...listeners); }
 }

@@ -6,7 +6,7 @@ import { get_color_on_intervallic_angle } from "@music-analyzer/irm";
 import { get_color_on_parametric_scale } from "@music-analyzer/irm";
 import { get_color_on_registral_scale } from "@music-analyzer/irm";
 import { IRM_ColorSelector } from "../irm-color-selector";
-import { ColorChangeSubscriber } from "../irm-color";
+import { GetColor } from "../irm-color";
 
 export class MelodyColorSelector {
   readonly body: HTMLSpanElement;
@@ -32,8 +32,8 @@ export class MelodyColorSelector {
     this.children.forEach(e => this.body.appendChild(e.body));
     this.default.update();
   }
-  register(...subscribers: ColorChangeSubscriber[]) {
-     this.children.forEach(e => e.register(...subscribers))
-     this.default.update();
+  addListeners(...listeners: ((setColor: GetColor) => void)[]) {
+    this.children.forEach(e => e.addListeners(...listeners))
+    this.default.update()
   }
 }

@@ -1,6 +1,4 @@
 import { TimeRangeSlider } from "./time-range-slider";
-import { TimeRangeSubscriber } from "./time-range-subscriber";
-
 
 export class TimeRangeController {
   readonly view: HTMLDivElement;
@@ -21,5 +19,5 @@ export class TimeRangeController {
       this.slider.updateDisplay();
     }
   }
-  register(...subscribers: TimeRangeSubscriber[]) { this.slider.register(...subscribers) }
+  addListeners(...listeners: (() => void)[]) { this.slider.addListeners(...listeners); }
 }

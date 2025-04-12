@@ -1,19 +1,19 @@
 import { Triad } from "@music-analyzer/irm";
 import { ColorSelector } from "./color-selector";
-import { ColorChangeSubscriber } from "./irm-color";
+import { GetColor } from "./irm-color";
 
-export class IRM_ColorSelector 
-  extends ColorSelector<ColorChangeSubscriber> {
-  getColor: (e:Triad)=>string;
+export class IRM_ColorSelector
+  extends ColorSelector<GetColor> {
+  getColor: (e: Triad) => string;
   constructor(
-    id:string,
-    text:string,
-    getColor: (e:Triad)=>string,
+    id: string,
+    text: string,
+    getColor: (e: Triad) => string,
   ) {
-    super(id,text);
+    super(id, text);
     this.getColor = getColor
   }
   update() {
-    this.subscribers.forEach(e => e.setColor(triad => this.getColor(triad)));
+    this.listeners.forEach(e => e(triad => this.getColor(triad)));
   }
 }

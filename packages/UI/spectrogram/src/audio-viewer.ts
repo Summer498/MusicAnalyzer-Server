@@ -14,13 +14,13 @@ export class AudioViewer
 
   constructor(
     private readonly audio_element: HTMLMediaElement,
-    publisher: AudioReflectableRegistry
+    audio_registry: AudioReflectableRegistry
   ) {
     const analyser = new AudioAnalyzer(this.audio_element);
     this.wave = new WaveViewer(analyser);
     this.spectrogram = new spectrogramViewer(analyser);
     this.fft = new FFTViewer(analyser)
-    publisher.register(this);
+    audio_registry.addListeners(this.onAudioUpdate);
   }
   onAudioUpdate() {
     this.wave.onAudioUpdate();

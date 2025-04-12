@@ -15,10 +15,10 @@ export abstract class Controller<T> {
     this.input = e.input
     this.init()
   }
-  readonly subscribers: T[] = [];
-  register(...subscribers: T[]) {
-    this.subscribers.push(...subscribers);
-    this.update()
+  protected readonly listeners: ((e:T) => void)[] = []
+  addListeners(...listeners: ((e:T) => void)[]) {
+    this.listeners.push(...listeners);
+    this.update();
   }
   abstract update(): void;
   init() {

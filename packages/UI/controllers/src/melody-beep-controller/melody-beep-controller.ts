@@ -1,7 +1,5 @@
 import { MelodyBeepSwitcher } from "./melody-beep-toggle";
-import { MelodyBeepSwitcherSubscriber } from "./melody-beep-toggle";
 import { MelodyBeepVolume } from "./melody-beep-volume";
-import { MelodyBeepVolumeSubscriber } from "./melody-beep-volume";
 
 export class MelodyBeepController {
   readonly view: HTMLDivElement;
@@ -17,11 +15,4 @@ export class MelodyBeepController {
     this.checkbox = melody_beep_switcher;
     this.volume = melody_beep_volume;
   };
-  register(...subscribers: (
-    MelodyBeepSwitcherSubscriber
-    & MelodyBeepVolumeSubscriber
-  )[]) {
-    this.checkbox.register(...subscribers);
-    this.volume.register(...subscribers)
-  }
 }

@@ -1,9 +1,8 @@
 import { PianoRollRatio } from "@music-analyzer/view-parameters";
 import { Slider } from "../abstract-slider";
-import { TimeRangeSubscriber } from "./time-range-subscriber";
 
 export class TimeRangeSlider
-  extends Slider<TimeRangeSubscriber> {
+  extends Slider<number> {
   constructor() {
     super("time_range_slider", "Time Range", 1, 10, 0.1, 10);
   };
@@ -21,6 +20,6 @@ export class TimeRangeSlider
     const max = Number(this.input.max);
     const ratio = Math.pow(2, value - max);
     PianoRollRatio.set(ratio);
-    this.subscribers.forEach(e => e.onTimeRangeChanged());
+    this.listeners.forEach(e => e(ratio));
   }
 }

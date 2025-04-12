@@ -8,14 +8,14 @@ export class CurrentTimeLine
   readonly svg: SVGLineElement;
   constructor(
     visible: boolean,
-    publisher: WindowReflectableRegistry
+    window_registry: WindowReflectableRegistry
   ) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "line");
     this.svg.id = "current_time";
     this.svg.style.strokeWidth = String(5);
     this.svg.style.stroke = "rgb(0, 0, 0)";
     this.svg.style.visibility = visible ? "visible" : "hidden";
-    publisher.register(this)
+    window_registry.addListeners(this.onWindowResized)
   }
   onWindowResized() {
     this.svg.setAttribute("x1", `${CurrentTimeX.get()}`);

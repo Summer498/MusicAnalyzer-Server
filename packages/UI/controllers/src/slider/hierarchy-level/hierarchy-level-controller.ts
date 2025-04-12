@@ -1,5 +1,4 @@
 import { HierarchyLevel } from "./hierarchy-level";
-import { HierarchyLevelSubscriber } from "./hierarchy-level-subscriber";
 
 export class HierarchyLevelController {
   readonly view: HTMLDivElement;
@@ -12,5 +11,5 @@ export class HierarchyLevelController {
     this.slider = hierarchy_level;
     this.slider.setHierarchyLevelSliderValues(layer_count)
   }
-  register(...subscribers: HierarchyLevelSubscriber[]) { this.slider.register(...subscribers) }
+  addListeners(...listeners: ((e:number) => void)[]) { this.slider.addListeners(...listeners); }
 }

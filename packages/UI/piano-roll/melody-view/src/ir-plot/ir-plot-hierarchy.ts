@@ -19,10 +19,10 @@ export class IRPlotHierarchy
     this.#visible_layer = children.length;
     this.model = new IRPlotHierarchyModel(this.children);
     this.view = new IRPlotHierarchyView(this.model.width, this.model.height)
-    controllers.hierarchy.register(this);
-    controllers.audio.register(this);
-    controllers.window.register(this);
-    controllers.melody_color.register(this);
+    controllers.hierarchy.addListeners(this.onChangedLayer);
+    controllers.audio.addListeners(this.onAudioUpdate);
+    controllers.window.addListeners(this.onWindowResized);
+    controllers.melody_color.addListeners(this.setColor);
   }
   updateLayer() {
     const visible_layer = this.children

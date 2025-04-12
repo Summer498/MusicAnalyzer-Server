@@ -12,11 +12,11 @@ export class GravityHierarchy
     controllers: RequiredByGravityHierarchy,
   ) {
     super(id, children);
-    controllers.switcher.register(this);
-    controllers.hierarchy.register(this);
-    controllers.audio.register(this);
-    controllers.window.register(this);
-    controllers.time_range.register(this);
+    controllers.switcher.addListeners(this.onUpdateGravityVisibility);
+    controllers.hierarchy.addListeners(this.onChangedLayer);
+    controllers.audio.addListeners(this.onAudioUpdate);
+    controllers.window.addListeners(this.onWindowResized);
+    controllers.time_range.addListeners(this.onTimeRangeChanged);
   }
   onUpdateGravityVisibility(visible: boolean) { this.svg.style.visibility = visible ? "visible" : "hidden"; }
   onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()) }

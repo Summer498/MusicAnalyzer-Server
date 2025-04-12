@@ -16,9 +16,9 @@ export class BeatBarsSeries
     const N = Math.ceil(beat_info.tempo * melodies[melodies.length - 1].time.end) + beat_info.phase;
     const seed = [...Array(N)];
     super("beat-bars", seed.map((_, i) => new BeatBar(beat_info, i)));
-    controllers.audio.register(this);
-    controllers.window.register(this);
-    controllers.time_range.register(this);
+    controllers.audio.addListeners(this.onAudioUpdate);
+    controllers.window.addListeners(this.onWindowResized);
+    controllers.time_range.addListeners(this.onTimeRangeChanged);
   }
   onAudioUpdate() { this.children.forEach(e => e.onAudioUpdate()) }
   onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()) }

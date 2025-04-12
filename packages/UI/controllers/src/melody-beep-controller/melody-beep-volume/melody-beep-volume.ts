@@ -1,8 +1,7 @@
 import { Slider } from "../../slider";
-import { MelodyBeepVolumeSubscriber } from "./melody-beep-volume-subscriber";
 
-export class MelodyBeepVolume 
-  extends Slider<MelodyBeepVolumeSubscriber> {
+export class MelodyBeepVolume
+  extends Slider<number> {
   constructor() {
     super("melody_beep_volume", "", 0, 100, 1);
   };
@@ -11,6 +10,6 @@ export class MelodyBeepVolume
   }
   update() {
     const value = Number(this.input.value);
-    this.subscribers.forEach(e => e.onMelodyVolumeBarChanged(value));
+    this.listeners.forEach(e => e(value));
   }
 }

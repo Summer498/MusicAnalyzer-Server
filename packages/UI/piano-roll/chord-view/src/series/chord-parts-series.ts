@@ -15,9 +15,9 @@ export abstract class ChordPartSeries
     romans: T[],
   ) {
     super(id, romans);
-    controllers.audio.register(this);
-    controllers.window.register(this);
-    controllers.time_range.register(this);
+    controllers.audio.addListeners(this.onAudioUpdate);
+    controllers.window.addListeners(this.onWindowResized);
+    controllers.time_range.addListeners(this.onTimeRangeChanged);
   }
   onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()) }
   onWindowResized() { this.children.forEach(e => e.onWindowResized()) }

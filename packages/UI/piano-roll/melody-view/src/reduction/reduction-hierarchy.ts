@@ -12,11 +12,11 @@ export class ReductionHierarchy
     controllers: RequiredByReductionHierarchy
   ) {
     super("time-span-reduction", children);
-    controllers.melody_color.register(this);
-    controllers.hierarchy.register(this);
-    controllers.audio.register(this);
-    controllers.window.register(this);
-    controllers.time_range.register(this);
+    controllers.melody_color.addListeners(this.setColor);
+    controllers.hierarchy.addListeners(this.onChangedLayer);
+    controllers.audio.addListeners(this.onAudioUpdate);
+    controllers.window.addListeners(this.onWindowResized);
+    controllers.time_range.addListeners(this.onTimeRangeChanged)
   }
   onChangedLayer(value: number) {
     const visible_layer = this.children.filter(e => value >= e.layer);
