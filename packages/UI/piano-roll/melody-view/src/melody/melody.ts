@@ -3,12 +3,10 @@ import { SetColor } from "@music-analyzer/controllers";
 import { MelodyBeep } from "./melody-beep";
 import { Part } from "../abstract/abstract-part";
 import { MelodyView } from "./melody-view";
-import { IMelody } from "./i-melody";
 import { MelodyModel } from "./melody-model";
 
 export class Melody
-  extends Part<MelodyModel, MelodyView>
-  implements IMelody {
+  extends Part<MelodyModel, MelodyView> {
   #beeper: MelodyBeep
   constructor(
     model: MelodyModel,

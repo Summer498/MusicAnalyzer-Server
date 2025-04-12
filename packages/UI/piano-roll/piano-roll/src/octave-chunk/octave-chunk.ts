@@ -1,8 +1,6 @@
-import { WindowReflectable } from "@music-analyzer/view";
 import { Rectangle } from "../components";
 
-export abstract class OctaveChunk
-  implements WindowReflectable {
+export abstract class OctaveChunk {
   readonly svg: SVGGElement;
   readonly children: Rectangle[];
   constructor(

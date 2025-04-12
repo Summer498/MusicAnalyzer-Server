@@ -1,11 +1,9 @@
 import { SetColor } from "@music-analyzer/controllers";
 import { Reduction } from "./reduction";
-import { IReductionLayer } from "./i-reduction-layer";
 import { Layer } from "../abstract/abstract-layer";
 
 export class ReductionLayer
-  extends Layer<Reduction>
-  implements IReductionLayer {
+  extends Layer<Reduction> {
   constructor(
     children: Reduction[],
     layer: number,

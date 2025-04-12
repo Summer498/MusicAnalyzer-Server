@@ -4,4 +4,4 @@ import { RequiredByIRPlotLayer } from "./required-by-ir-plot-layer";
 export interface RequiredByIRPlotHierarchy
   extends
   RequiredByIRPlotLayer,
-  RequiredByHierarchy {}
+  RequiredByHierarchy { }

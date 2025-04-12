@@ -1,10 +1,8 @@
 import { Gravity } from "./gravity";
-import { IGravityLayer } from "./i-gravity-layer";
 import { Layer } from "../abstract/abstract-layer";
 
 export class GravityLayer
-  extends Layer<Gravity>
-  implements IGravityLayer {
+  extends Layer<Gravity> {
   constructor(
     layer: number,
     children: Gravity[],

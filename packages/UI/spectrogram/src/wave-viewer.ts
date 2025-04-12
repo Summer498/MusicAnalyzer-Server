@@ -1,10 +1,8 @@
 import { Complex } from "@music-analyzer/math";
 import { correlation } from "@music-analyzer/math";
 import { AudioAnalyzer } from "./audio-analyzer";
-import { AudioReflectable } from "@music-analyzer/view";
 
-export class WaveViewer 
-  implements AudioReflectable {
+export class WaveViewer {
   private readonly path: SVGPathElement;
   private old_wave: Complex<number>[];
   readonly svg: SVGSVGElement;

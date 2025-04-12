@@ -1,12 +1,10 @@
-import { IChordName } from "../i-part";
 import { ChordNameModel } from "../model";
 import { RequiredByChordNameModel } from "../r-model";
 import { ChordNameView } from "../view";
 import { ChordPartText } from "./chord-part-text";
 
 export class ChordName
-  extends ChordPartText<ChordNameModel, ChordNameView>
-  implements IChordName {
+  extends ChordPartText<ChordNameModel, ChordNameView> {
   y: number;
   constructor(
     e: RequiredByChordNameModel,

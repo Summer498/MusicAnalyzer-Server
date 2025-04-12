@@ -5,15 +5,13 @@ import { ChordPart } from "./chord-part";
 import { ChordNoteModel } from "../model";
 import { RequiredByChordNoteModel } from "../r-model";
 import { Note } from "@music-analyzer/tonal-objects";
-import { IChordNote } from "../i-part";
 import { ChordNoteView } from "../view";
 
 const transposed = (e: number) => e - PianoRollBegin.get()
 const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
 
 export class ChordNote
-  extends ChordPart<ChordNoteModel, ChordNoteView>
-  implements IChordNote {
+  extends ChordPart<ChordNoteModel, ChordNoteView> {
   y: number;
   constructor(
     e: RequiredByChordNoteModel,

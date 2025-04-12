@@ -3,4 +3,5 @@ import { I_ReflectableTimeAndMVCControllerCollection } from "./reflectable-time-
 export interface I_CollectionLayer
   extends I_ReflectableTimeAndMVCControllerCollection {
   readonly layer: number
+  onAudioUpdate():void
 }

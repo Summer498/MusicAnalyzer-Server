@@ -1,13 +1,11 @@
 import { SetColor } from "@music-analyzer/controllers";
 import { IRPlotLayerView } from "./ir-plot-layer-view";
 import { IRPlotLayerModel } from "./ir-plot-layer-model";
-import { I_IRPlotLayer } from "./i-ir-plot-layer";
 import { IRPlot } from "./ir-plot";
 import { Layer } from "../abstract/abstract-layer";
 
 export class IRPlotLayer
-  extends Layer<IRPlot>
-  implements I_IRPlotLayer {
+  extends Layer<IRPlot> {
   readonly view: IRPlotLayerView
   constructor(
     children: IRPlot[],

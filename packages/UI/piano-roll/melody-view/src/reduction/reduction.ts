@@ -1,12 +1,10 @@
 import { SetColor } from "@music-analyzer/controllers";
 import { Part } from "../abstract/abstract-part";
-import { IReduction } from "./i-reduction";
 import { ReductionModel } from "./reduction-model";
 import { ReductionView } from "./reduction-view/reduction-view";
 
 export class Reduction
-  extends Part<ReductionModel, ReductionView>
-  implements IReduction {
+  extends Part<ReductionModel, ReductionView> {
   constructor(
     model: ReductionModel,
     view: ReductionView,

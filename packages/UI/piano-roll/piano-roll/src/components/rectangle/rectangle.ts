@@ -1,9 +1,8 @@
-import { WindowReflectable } from "@music-analyzer/view";
 import { RectParameters } from "@music-analyzer/view-parameters";
 import { RectangleView } from "./rectangle-view";
 import { RectangleModel } from "./rectangle-model";
 
-export abstract class Rectangle implements WindowReflectable {
+export abstract class Rectangle {
   readonly model: RectangleModel;
   readonly view: RectangleView;
   get svg() { return this.view.svg; }

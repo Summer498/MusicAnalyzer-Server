@@ -1,10 +1,8 @@
-import { WindowReflectable } from "@music-analyzer/view";
 import { WindowReflectableRegistry } from "@music-analyzer/view";
 import { OctaveCount } from "@music-analyzer/view-parameters";
 import { Octave } from "../octave";
 
-export class Octaves
-  implements WindowReflectable {
+export class Octaves {
   readonly svg: SVGGElement;
   readonly children: Octave[];
   constructor(

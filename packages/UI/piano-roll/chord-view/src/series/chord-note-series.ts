@@ -1,12 +1,10 @@
-import { IChordNotesSeries } from "../i-series";
 import { ChordNotes } from "../part";
 import { RequiredByChordNoteModel } from "../r-model";
 import { RequiredByChordNotesSeries } from "../r-series";
 import { ChordPartSeries } from "./chord-parts-series";
 
 export class ChordNotesSeries
-  extends ChordPartSeries<ChordNotes>
-  implements IChordNotesSeries {
+  extends ChordPartSeries<ChordNotes> {
   constructor(
     romans: RequiredByChordNoteModel[],
     controllers: RequiredByChordNotesSeries

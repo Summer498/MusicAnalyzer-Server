@@ -1,13 +1,11 @@
 import { ChordPartText } from "./chord-part-text";
-import { IChordRoman } from "../i-part";
 import { RequiredByChordRomanModel } from "../r-model";
 import { ChordRomanModel } from "../model";
 import { ChordRomanView } from "../view";
 import { chord_name_margin, chord_text_size } from "../chord-view-params";
 
 export class ChordRoman
-  extends ChordPartText<ChordRomanModel, ChordRomanView>
-  implements IChordRoman {
+  extends ChordPartText<ChordRomanModel, ChordRomanView> {
   y: number;
   constructor(
     e: RequiredByChordRomanModel,

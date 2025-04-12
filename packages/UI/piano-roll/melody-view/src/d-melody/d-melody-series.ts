@@ -1,11 +1,9 @@
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
 import { DMelody } from "./d-melody";
-import { IDMelodySeries } from "./i-d-melody-series";
 import { RequiredByDMelodySeries } from "./required-by-d-melody-series";
 
 export class DMelodySeries
-  extends ReflectableTimeAndMVCControllerCollection<DMelody>
-  implements IDMelodySeries {
+  extends ReflectableTimeAndMVCControllerCollection<DMelody> {
   constructor(
     children: DMelody[],
     controllers: RequiredByDMelodySeries,

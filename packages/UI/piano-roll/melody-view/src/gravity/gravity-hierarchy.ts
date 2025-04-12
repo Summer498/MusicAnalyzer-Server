@@ -1,11 +1,9 @@
 import { GravityLayer } from "./gravity-layer";
-import { IGravityHierarchy } from "./i-gravity-hierarchy";
 import { RequiredByGravityHierarchy } from "./required-by-gravity-hierarchy";
 import { Hierarchy } from "../abstract/abstract-hierarchy";
 
 export class GravityHierarchy
-  extends Hierarchy<GravityLayer>
-  implements IGravityHierarchy {
+  extends Hierarchy<GravityLayer> {
   constructor(
     id: string,
     children: GravityLayer[],

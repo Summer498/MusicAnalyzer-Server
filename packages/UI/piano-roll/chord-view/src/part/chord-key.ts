@@ -1,14 +1,12 @@
 import { chord_name_margin } from "../chord-view-params";
 import { chord_text_size } from "../chord-view-params";
-import { IChordKey } from "../i-part";
 import { ChordKeyModel } from "../model";
 import { RequiredByChordKeyModel } from "../r-model";
 import { ChordKeyView } from "../view";
 import { ChordPartText } from "./chord-part-text";
 
 export class ChordKey
-  extends ChordPartText<ChordKeyModel, ChordKeyView>
-  implements IChordKey {
+  extends ChordPartText<ChordKeyModel, ChordKeyView> {
   y: number;
   constructor(
     e: RequiredByChordKeyModel,

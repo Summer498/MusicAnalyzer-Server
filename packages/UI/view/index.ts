@@ -8,7 +8,6 @@ export { MVVM_Model } from "./src/mvvm";
 export { MVVM_ViewModel_Impl } from "./src/mvvm";
 export { MVVM_View_Impl } from "./src/mvvm";
 export { AudioReflectableRegistry } from "./src/reflectable";
-export { WindowReflectable } from "./src/reflectable";
 export { WindowReflectableRegistry } from "./src/reflectable";
 export { I_TimeAndVM } from "./src/reflectable-time-and-mvc-controller-collection";
 export { ReflectableTimeAndMVCControllerCollection } from "./src/reflectable-time-and-mvc-controller-collection";
@@ -17,6 +16,5 @@ export { TimeAndVM } from "./src/reflectable-time-and-mvc-controller-collection"
 export { CollectionLayer } from "./src/collection-layer";
 export { ICollectionHierarchy } from "./src/i-collection-hierarchy";
 export { I_CollectionLayer } from "./src/i-collection-layer";
-export { AudioReflectable } from "./src/reflectable";
 export { I_ReflectableTimeAndMVCControllerCollection } from "./src/reflectable-time-and-mvc-controller-collection";
 export { CollectionHierarchy } from "./src/collection-hierarchy";

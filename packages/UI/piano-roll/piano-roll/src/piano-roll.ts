@@ -1,4 +1,3 @@
-import { WindowReflectable } from "@music-analyzer/view";
 import { WindowReflectableRegistry } from "@music-analyzer/view";
 import { PianoRollHeight } from "@music-analyzer/view-parameters";
 import { PianoRollWidth } from "@music-analyzer/view-parameters";
@@ -10,8 +9,7 @@ import { CurrentTimeLine } from "./current-time-line";
 import { OctaveBGs } from "./octaves";
 import { OctaveKeys } from "./octaves";
 
-export class PianoRoll
-  implements WindowReflectable {
+export class PianoRoll {
   readonly svg: SVGSVGElement;
   constructor(
     analyzed: MusicStructureElements,

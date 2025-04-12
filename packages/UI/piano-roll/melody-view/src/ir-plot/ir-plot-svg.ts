@@ -1,8 +1,6 @@
 import { IRPlotHierarchy } from "./ir-plot-hierarchy";
-import { I_IRPlotSVG } from "./i-ir-plot-svg";
 
-export class IRPlotSVG
-  implements I_IRPlotSVG {
+export class IRPlotSVG {
   readonly svg: SVGSVGElement;
   constructor(
     readonly children: IRPlotHierarchy[],

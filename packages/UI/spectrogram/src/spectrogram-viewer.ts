@@ -1,8 +1,6 @@
-import { type AudioReflectable } from "@music-analyzer/view";
 import { AudioAnalyzer } from "./audio-analyzer";
 
-export class spectrogramViewer 
-  implements AudioReflectable {
+export class spectrogramViewer {
   private readonly path: SVGPathElement;
   readonly svg: SVGSVGElement;
   constructor(
