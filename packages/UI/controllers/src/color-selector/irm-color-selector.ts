@@ -1,14 +1,13 @@
-import { Triad } from "@music-analyzer/irm";
 import { ColorSelector } from "./color-selector";
-import { GetColor } from "./irm-color";
+import { GetColor } from "./irm-color/get-color";
 
 export class IRM_ColorSelector
   extends ColorSelector<GetColor> {
-  getColor: (e: Triad) => string;
+  getColor: GetColor;
   constructor(
     id: string,
     text: string,
-    getColor: (e: Triad) => string,
+    getColor: GetColor,
   ) {
     super(id, text);
     this.getColor = getColor

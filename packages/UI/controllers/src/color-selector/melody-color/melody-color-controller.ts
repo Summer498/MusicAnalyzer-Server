@@ -11,7 +11,7 @@ export class MelodyColorController {
     this.view.style.display = "inline";
     this.view.appendChild(this.selector.body);
   }
-  addListeners(...listeners: ((setColor: GetColor) => void)[]) {
+  addListeners(...listeners: ((color: GetColor) => void)[]) {
     this.selector.addListeners(...listeners)
   }
 }
