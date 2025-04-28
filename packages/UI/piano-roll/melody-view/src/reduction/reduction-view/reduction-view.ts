@@ -31,7 +31,7 @@ export class ReductionView
     this.bracket.updateStrong();
     this.dot.updateStrong();
   }
-  onTimeRangeChanged() { this.model.onTimeRangeChanged() }
+  onTimeRangeChanged() { this.onWindowResized() }
   onWindowResized() {
     this.model.onWindowResized();
     this.bracket.onWindowResized();
