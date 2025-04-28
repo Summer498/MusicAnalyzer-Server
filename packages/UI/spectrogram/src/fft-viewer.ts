@@ -19,8 +19,6 @@ export class FFTViewer {
 
   onAudioUpdate() {
     const freqData = this.analyser.getFFT();
-    console.log("freqData")
-    console.log(freqData)
     const N = freqData[0].length / 2;
     const width = this.svg.clientWidth;
     const height = this.svg.clientHeight;
@@ -29,11 +27,6 @@ export class FFTViewer {
     const abs = <T extends number>(e: Complex<T>) => Math.sqrt(e.re * e.re + e.im * e.im)
     const absV = (...c: [Float32Array<ArrayBuffer>, Float32Array<ArrayBuffer>]) =>
       c[0].map((e, i) => Math.sqrt(e * e + c[1][i] * c[1][i]))
-
-    console.log("freqData[1]")
-    console.log(
-       absV(...freqData)
-    )
 
     this.path.setAttribute("d", "M" +
 //      freqData.map(e => abs(e))

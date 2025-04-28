@@ -15,6 +15,8 @@ const get_pos = (_x: number, _y: number) => {
   ];
 };
 
+const nan2zero = (x: number) => isNaN(x) ? 0 : x
+
 export class IRPlotView
   extends ColorChangeable<"circle"> {
   readonly view_model: IRPlotViewModel
@@ -30,10 +32,16 @@ export class IRPlotView
     this.svg.style.r = String(r);
   }
   private updateX(x: number) {
-    this.svg.setAttribute("cx", String(this.view_model.getTranslatedX(x)))
+    [x]
+      .map(e => this.view_model.getTranslatedX(e))
+      .map(e => nan2zero(e))
+      .map(e => this.svg.setAttribute("cx", String(e)))
   }
   private updateY(y: number) {
-    this.svg.setAttribute("cy", String(this.view_model.getTranslatedY(y)))
+    [y]
+      .map(e => this.view_model.getTranslatedY(e))
+      .map(e => nan2zero(e))
+      .map(e => this.svg.setAttribute("cy", String(e)))
   }
   private easeInOutCos(t: number): number {
     return (1 - Math.cos(t * Math.PI)) / 2;
