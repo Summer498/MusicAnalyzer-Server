@@ -9,10 +9,10 @@ export class DMelodySeries
     controllers: RequiredByDMelodySeries,
   ) {
     super("detected-melody", children);
-    controllers.audio.addListeners(this.onAudioUpdate);
-    controllers.d_melody.addListeners(this.onDMelodyVisibilityChanged);
-    controllers.time_range.addListeners(this.onTimeRangeChanged);
-    controllers.window.addListeners(this.onWindowResized)
+    controllers.audio.addListeners(this.onAudioUpdate.bind(this));
+    controllers.d_melody.addListeners(this.onDMelodyVisibilityChanged.bind(this));
+    controllers.time_range.addListeners(this.onTimeRangeChanged.bind(this));
+    controllers.window.addListeners(this.onWindowResized.bind(this))
   }
   onDMelodyVisibilityChanged(visible: boolean) {
     const visibility = visible ? "visible" : "hidden";

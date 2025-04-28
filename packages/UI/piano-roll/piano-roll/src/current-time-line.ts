@@ -13,7 +13,7 @@ export class CurrentTimeLine {
     this.svg.style.strokeWidth = String(5);
     this.svg.style.stroke = "rgb(0, 0, 0)";
     this.svg.style.visibility = visible ? "visible" : "hidden";
-    window_registry.addListeners(this.onWindowResized)
+    window_registry.addListeners(this.onWindowResized.bind(this))
   }
   onWindowResized() {
     this.svg.setAttribute("x1", `${CurrentTimeX.get()}`);

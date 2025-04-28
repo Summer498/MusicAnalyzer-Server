@@ -11,13 +11,13 @@ export class MelodyHierarchy
     controllers: RequiredByMelodyHierarchy
   ) {
     super("melody", children);
-    controllers.hierarchy.addListeners(this.onChangedLayer);
-    controllers.audio.addListeners(this.onAudioUpdate);
-    controllers.time_range.addListeners(this.onTimeRangeChanged);
-    controllers.window.addListeners(this.onWindowResized)
-    controllers.melody_beep.checkbox.addListeners(this.onMelodyBeepCheckChanged);
-    controllers.melody_beep.volume.addListeners(this.onMelodyVolumeBarChanged);
-    controllers.melody_color.addListeners(this.setColor);
+    controllers.hierarchy.addListeners(this.onChangedLayer.bind(this));
+    controllers.audio.addListeners(this.onAudioUpdate.bind(this));
+    controllers.time_range.addListeners(this.onTimeRangeChanged.bind(this));
+    controllers.window.addListeners(this.onWindowResized.bind(this))
+    controllers.melody_beep.checkbox.addListeners(this.onMelodyBeepCheckChanged.bind(this));
+    controllers.melody_beep.volume.addListeners(this.onMelodyVolumeBarChanged.bind(this));
+    controllers.melody_color.addListeners(this.setColor.bind(this));
   }
   onAudioUpdate() {
     super.onAudioUpdate()

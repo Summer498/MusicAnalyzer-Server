@@ -18,7 +18,7 @@ export class AudioViewer {
     this.wave = new WaveViewer(analyser);
     this.spectrogram = new spectrogramViewer(analyser);
     this.fft = new FFTViewer(analyser)
-    audio_registry.addListeners(this.onAudioUpdate);
+    audio_registry.addListeners(this.onAudioUpdate.bind(this));
   }
   onAudioUpdate() {
     this.wave.onAudioUpdate();

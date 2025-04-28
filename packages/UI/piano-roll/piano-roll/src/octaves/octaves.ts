@@ -14,7 +14,7 @@ export class Octaves {
     this.svg.id = id;
     this.children = [...Array(OctaveCount.get())].map(generator)
     this.children.forEach(e => this.svg.appendChild(e.svg));
-    window_registry.addListeners(this.onWindowResized);
+    window_registry.addListeners(this.onWindowResized.bind(this));
   }
   onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
 }

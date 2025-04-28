@@ -18,14 +18,14 @@ export class PianoRoll {
   ) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     this.svg.id = "piano-roll";
-    window.addListeners(this.onWindowResized)
+    window.addListeners(this.onWindowResized.bind(this))
     this.appendChildren(
       new OctaveBGs(window).svg,
       new AnalysisView(analyzed).svg,
       new OctaveKeys(window).svg,
       new CurrentTimeLine(show_current_time_line, window).svg,
     );
-    window.addListeners(this.onWindowResized)
+    window.addListeners(this.onWindowResized.bind(this))
   }
   appendChildren(...children: SVGElement[]) {
     children.forEach(e => this.svg.appendChild(e));
