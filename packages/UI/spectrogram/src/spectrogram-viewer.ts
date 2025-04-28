@@ -18,7 +18,7 @@ export class spectrogramViewer {
 
   onAudioUpdate() {
     const freqData = this.analyser.getFloatFrequencyData();
-    const fftSize = freqData.length/2;
+    const fftSize = freqData.length / 2;
     const width = this.svg.clientWidth;
     const height = this.svg.clientHeight;
     let pathData = "";
@@ -29,6 +29,9 @@ export class spectrogramViewer {
       const y = -(freqData[i] / 128) * height;
       pathData += `L ${x},${y}`;
     }
-    this.path.setAttribute("d", "M" + pathData.slice(1));
+    [pathData]
+      .map(e => e.slice(1))
+      .filter(e => e.length > 0)
+      .map(e => this.path.setAttribute("d", "M" + e))
   }
 }
