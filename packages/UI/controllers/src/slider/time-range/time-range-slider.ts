@@ -9,8 +9,8 @@ export class TimeRangeSlider
   override updateDisplay() {
     [Number(this.input.value)]
       .map(e => e - Number(this.input.max))
-      .map(e => e * 100)
       .map(e => Math.pow(2, e))
+      .map(e => e * 100)
       .map(e => Math.floor(e))
       .map(e => `${e} %`)
       .map(e => this.display.textContent = e)
