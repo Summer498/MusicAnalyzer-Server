@@ -30,9 +30,10 @@ const analyzeAndScaleMelody = (measure: number, matrix: TimeSpan[][], musicxml: 
   const e = getTimeAndMelody(element, matrix, musicxml);
 
   const time = e.time.map(e => e * w + b);
+  const head = e.head.map(e => e * w + b);
   return new TimeAndMelody(
     time,
-    time,
+    head,
     e.note,
   );
 };
