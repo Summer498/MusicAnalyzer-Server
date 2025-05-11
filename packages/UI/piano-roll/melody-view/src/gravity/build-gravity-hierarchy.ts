@@ -2,15 +2,11 @@ import { GravitySwitcher } from "@music-analyzer/controllers";
 import { IHierarchyBuilder } from "../i-hierarchy-builder";
 import { PianoRollConverter } from "@music-analyzer/view-parameters";
 import { RequiredByGravityHierarchy } from "./required-by-gravity-hierarchy";
-import { Hierarchy } from "../abstract/abstract-hierarchy";
-import { Layer } from "../abstract/abstract-layer";
-import { Part } from "../abstract/abstract-part";
-import { View } from "../abstract/abstract-view";
+import { Hierarchy, Layer, Model, Part, View } from "../abstract/abstract-hierarchy";
 import { BlackKeyPrm } from "@music-analyzer/view-parameters";
 import { NoteSize } from "@music-analyzer/view-parameters";
 import { Gravity as SerializedGravity } from "@music-analyzer/melody-analyze";
 import { SerializedTimeAndAnalyzedMelody } from "../serialized-time-and-analyzed-melody";
-import { Model } from "../abstract/abstract-model";
 
 export class GravityModel 
   extends Model {

@@ -1,6 +1,51 @@
 import { CollectionHierarchy } from "@music-analyzer/view";
 import { I_Layer } from "./i-layer";
+import { CollectionLayer, I_TimeAndVM } from "@music-analyzer/view";
+import { I_MVVM_View, MVVM_Model, MVVM_ViewModel_Impl } from "@music-analyzer/view"
+import { PianoRollConverter } from "@music-analyzer/view-parameters"
+import { MVVM_View_Impl } from "@music-analyzer/view";
+import { Time } from "@music-analyzer/time-and";
 
+export abstract class Model
+extends MVVM_Model {
+  constructor(
+    readonly time: Time,
+    readonly head: Time,
+  ){
+    super()
+  }
+}
+export abstract class View<K extends keyof SVGElementTagNameMap>
+  extends MVVM_View_Impl<K> {
+  constructor(
+    tag: K
+  ){
+    super(tag)
+  }
+}
+export abstract class Part<M extends MVVM_Model, V extends I_MVVM_View>
+extends MVVM_ViewModel_Impl<M, V> {
+  protected readonly converter: PianoRollConverter;
+  constructor(
+    model: M,
+    view: V,
+  ){
+    super(model,view)
+    this.converter = new PianoRollConverter();
+  }
+}
+
+export abstract class Layer<P extends I_TimeAndVM>
+  extends CollectionLayer<P>
+  implements I_Layer {
+  constructor(
+    layer: number,
+    children: P[],
+  ) {
+    super(layer, children);
+  }
+  abstract onWindowResized(): void
+}
 export abstract class Hierarchy<L extends I_Layer>
   extends CollectionHierarchy<L> {
   constructor(

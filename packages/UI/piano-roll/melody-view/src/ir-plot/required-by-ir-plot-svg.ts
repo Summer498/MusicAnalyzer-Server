@@ -1,6 +1,4 @@
-import { RequiredByHierarchy } from "../abstract/required-by-abstract-hierarchy";
-import { RequiredByLayer } from "../abstract/required-by-abstract-layer";
-import { RequiredByView } from "../abstract/required-by-abstract-view";
+import { RequiredByHierarchy, RequiredByLayer, RequiredByView } from "../abstract/required-by-abstract-hierarchy";
 import { AudioReflectableRegistry } from "@music-analyzer/view";
 import { WindowReflectableRegistry } from "@music-analyzer/view";
 

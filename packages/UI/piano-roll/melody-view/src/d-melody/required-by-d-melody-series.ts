@@ -1,6 +1,5 @@
 import { DMelodyController } from "@music-analyzer/controllers";
-import { RequiredByLayer } from "../abstract/required-by-abstract-layer";
-import { RequiredByPart } from "../abstract/required-by-abstract-part";
+import { RequiredByLayer, RequiredByPart } from "../abstract/required-by-abstract-hierarchy";
 
 interface RequiredByDMelody
   extends RequiredByPart { }

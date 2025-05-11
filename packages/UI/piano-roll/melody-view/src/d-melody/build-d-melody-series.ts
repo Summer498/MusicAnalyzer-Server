@@ -2,14 +2,12 @@ import { IHierarchyBuilder } from "../i-hierarchy-builder";
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
 import { RequiredByDMelodySeries } from "./required-by-d-melody-series";
 import { BlackKeyPrm } from "@music-analyzer/view-parameters";
-import { Part } from "../abstract/abstract-part";
 import { insertMelody } from "../melody-editor/insert";
 import { hsv2rgb } from "@music-analyzer/color";
 import { rgbToString } from "@music-analyzer/color";
-import { View } from "../abstract/abstract-view";
 import { SerializedMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { Model } from "../abstract/abstract-model";
+import { Model, Part, View } from "../abstract/abstract-hierarchy";
 
 class DMelodyView 
   extends View<"rect"> {

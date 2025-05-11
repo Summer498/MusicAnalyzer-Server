@@ -1,12 +1,9 @@
 import { IHierarchyBuilder } from "../i-hierarchy-builder";
 import { SetColor } from "@music-analyzer/controllers";
 import { RequiredByMelodyHierarchy } from "./required-by-melody-hierarchy";
-import { Hierarchy } from "../abstract/abstract-hierarchy";
-import { Layer } from "../abstract/abstract-layer";
-import { Part } from "../abstract/abstract-part";
+import { Hierarchy, Layer, Model, Part } from "../abstract/abstract-hierarchy";
 import { deleteMelody } from "../melody-editor/delete";
 import { ColorChangeable } from "../color-changeable";
-import { Model } from "../abstract/abstract-model";
 import { Time } from "../facade";
 import { BlackKeyPrm } from "@music-analyzer/view-parameters";
 import { Triad } from "@music-analyzer/irm";

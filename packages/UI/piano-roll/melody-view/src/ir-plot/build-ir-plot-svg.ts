@@ -1,8 +1,5 @@
 import { IHierarchyBuilder } from "../i-hierarchy-builder";
-import { Hierarchy } from "../abstract/abstract-hierarchy";
-import { Layer } from "../abstract/abstract-layer";
-import { Part } from "../abstract/abstract-part";
-import { Model } from "../abstract/abstract-model";
+import { Hierarchy, Layer, Model, Part } from "../abstract/abstract-hierarchy";
 import { ColorChangeable } from "../color-changeable";
 import { Time } from "../facade";
 import { SetColor } from "@music-analyzer/controllers";

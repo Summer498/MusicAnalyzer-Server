@@ -1,8 +1,6 @@
 import { AudioReflectableRegistry } from "@music-analyzer/view";
-import { RequiredByHierarchy } from "../abstract/required-by-abstract-hierarchy";
-import { RequiredByPart } from "../abstract/required-by-abstract-part";
+import { RequiredByHierarchy, RequiredByPart, RequiredByView } from "../abstract/required-by-abstract-hierarchy";
 import { MelodyBeepController } from "@music-analyzer/controllers";
-import { RequiredByView } from "../abstract/required-by-abstract-view";
 
 export interface RequiredByMelodyView
   extends RequiredByView { }

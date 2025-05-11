@@ -1,11 +1,7 @@
 import { IHierarchyBuilder } from "../i-hierarchy-builder";
 import { RequiredByReductionHierarchy } from "./required-by-reduction-hierarchy";
-import { Hierarchy } from "../abstract/abstract-hierarchy";
-import { Layer } from "../abstract/abstract-layer";
+import { Hierarchy, Layer, Model, Part, View } from "../abstract/abstract-hierarchy";
 import { ColorChangeable } from "../color-changeable";
-import { Part } from "../abstract/abstract-part";
-import { View } from "../abstract/abstract-view";
-import { Model } from "../abstract/abstract-model";
 import { SetColor } from "@music-analyzer/controllers";
 import { Triad } from "@music-analyzer/irm";
 import { MVVM_Model } from "@music-analyzer/view";

@@ -1,11 +1,8 @@
 import { IHierarchyBuilder } from "../i-hierarchy-builder";
 import { RequiredByIRSymbolHierarchy } from "./required-by-ir-symbol-hierarchy";
-import { Hierarchy } from "../abstract/abstract-hierarchy";
-import { Layer } from "../abstract/abstract-layer";
-import { Part } from "../abstract/abstract-part";
+import { Hierarchy, Layer, Model, Part } from "../abstract/abstract-hierarchy";
 import { size } from "@music-analyzer/view-parameters";
 import { ColorChangeable } from "../color-changeable";
-import { Model } from "../abstract/abstract-model";
 import { SetColor } from "@music-analyzer/controllers";
 import { Triad } from "@music-analyzer/irm";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
