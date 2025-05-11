@@ -1,14 +1,14 @@
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { AudioReflectableRegistry } from "@music-analyzer/view";
 import { WindowReflectableRegistry } from "@music-analyzer/view";
-import { DMelodySeries } from "./d-melody/d-melody-series";
-import { ReductionHierarchy } from "./reduction/reduction-hierarchy";
-import { GravityHierarchy } from "./gravity/gravity-hierarchy";
-import { IRPlotSVG } from "./ir-plot/ir-plot-svg";
+import { DMelodySeries } from "./d-melody/build-d-melody-series";
+import { ReductionHierarchy } from "./reduction/build-reduction-hierarchy";
+import { GravityHierarchy } from "./gravity/build-gravity-hierarchy";
+import { IRPlotSVG } from "./ir-plot/build-ir-plot-svg";
 import { RequiredByMelodyElements } from "./required-by-melody-elements";
 import { HierarchyBuilder } from "./hierarchy-builder";
-import { IRSymbolHierarchy } from "./ir-symbol/ir-symbol-hierarchy";
-import { MelodyHierarchy } from "./melody/melody-hierarchy";
+import { IRSymbolHierarchy } from "./ir-symbol/build-ir-symbol-hierarchy";
+import { MelodyHierarchy } from "./melody/build-melody-hierarchy";
 
 export class MelodyElements {
   readonly children: unknown[];
