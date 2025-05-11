@@ -1,3 +1,6 @@
+import { AudioReflectableRegistry } from "@music-analyzer/view";
+import { WindowReflectableRegistry } from "@music-analyzer/view";
+import { TimeRangeController } from "@music-analyzer/controllers";
 import { SerializedTimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { Time } from "@music-analyzer/time-and";
 import { Chord } from "@music-analyzer/tonal-objects";
@@ -16,4 +19,14 @@ export class RequiredByChordPartModel {
     this.scale = getScale(e.scale)
     this.roman = e.scale
   }
+}
+
+export interface RequiredByChordPart {
+  readonly window: WindowReflectableRegistry,
+  readonly time_range: TimeRangeController,
+}
+
+export interface RequiredByChordPartSeries
+  extends RequiredByChordPart {
+  readonly audio: AudioReflectableRegistry
 }
