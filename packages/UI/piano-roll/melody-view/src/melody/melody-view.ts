@@ -14,4 +14,5 @@ export class MelodyView
   updateY(y: number) { this.svg.setAttribute("y", String(y)); }
   updateWidth(w: number) { this.svg.setAttribute("width", String(w)); }
   updateHeight(h: number) { this.svg.setAttribute("height", String(h)); }
+  readonly setColor = (color:string) => this.svg.style.fill = "#0d0";
 }
