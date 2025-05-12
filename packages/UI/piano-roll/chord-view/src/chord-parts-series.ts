@@ -8,21 +8,18 @@ import { A_MVVM_View } from "@music-analyzer/view";
 import { Time } from "@music-analyzer/time-and";
 import { Chord } from "@music-analyzer/tonal-objects";
 import { Scale } from "@music-analyzer/tonal-objects";
-import { MVVM_Model } from "@music-analyzer/view";
 import { MVVM_View_Impl } from "@music-analyzer/view";
 import { fifthToColor } from "@music-analyzer/color";
 import { oneLetterKey } from "./shorten/on-letter-key";
 import { chord_text_em } from "./chord-view-params/text-em";
 
-export abstract class ChordPartModel
-  extends MVVM_Model {
+export abstract class ChordPartModel {
   readonly time: Time;
   readonly chord: Chord
   readonly scale: Scale
   readonly roman: string
   abstract readonly tonic: string
   constructor(e: RequiredByChordPartModel) {
-    super()
     this.time = e.time;
     this.chord = e.chord;
     this.scale = e.scale;

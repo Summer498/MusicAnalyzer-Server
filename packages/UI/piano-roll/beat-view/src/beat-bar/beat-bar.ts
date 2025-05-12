@@ -2,14 +2,11 @@ import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { Time } from "@music-analyzer/time-and";
 import { BeatBarModel } from "./beat-bar-model";
 import { BeatBarView } from "./beat-bar-view";
-import { NoteSize } from "@music-analyzer/view-parameters";
-import { NowAt } from "@music-analyzer/view-parameters";
+import { NowAt, PianoRollConverter } from "@music-analyzer/view-parameters";
 import { PianoRollHeight } from "@music-analyzer/view-parameters";
 import { reservation_range } from "@music-analyzer/view-parameters";
 import { MVVM_ViewModel_Impl } from "@music-analyzer/view";
 import { play } from "@music-analyzer/synth";
-
-const scaled = (e: number) => e * NoteSize.get();
 
 export class BeatBar
   extends MVVM_ViewModel_Impl<BeatBarModel, BeatBarView> {
@@ -30,8 +27,8 @@ export class BeatBar
   }
   updateX() {
     this.view.updateX(
-      scaled(this.model.time.begin),
-      scaled(this.model.time.begin),
+      PianoRollConverter.scaled(this.model.time.begin),
+      PianoRollConverter.scaled(this.model.time.begin),
     )
   }
   updateY() {

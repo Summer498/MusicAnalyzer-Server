@@ -4,13 +4,8 @@ import { Hierarchy, Layer, Model, Part, View } from "../abstract/abstract-hierar
 import { ColorChangeable } from "../color-changeable";
 import { SetColor } from "@music-analyzer/controllers";
 import { Triad } from "@music-analyzer/irm";
-import { MVVM_Model } from "@music-analyzer/view";
-import { black_key_height, bracket_height } from "@music-analyzer/view-parameters";
-import { NoteSize } from "@music-analyzer/view-parameters";
+import { black_key_height, bracket_height, PianoRollConverter } from "@music-analyzer/view-parameters";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-
-const scaled = (e: number) => e * NoteSize.get();
-const convertToCoordinate = (e: number) => e * black_key_height;
 
 class ReductionModel
   extends Model {
@@ -24,8 +19,7 @@ class ReductionModel
   }
 }
 
-class ReductionViewModel
-  extends MVVM_Model {
+class ReductionViewModel {
   #x: number;
   #w: number;
   #cx: number;
@@ -43,18 +37,17 @@ class ReductionViewModel
   constructor(
     readonly model: ReductionModel,
   ) {
-    super();
     this.#x = this.getViewX(this.model.time.begin);
     this.#w = this.getViewW(this.model.time.duration);
     this.#cw = this.getViewW(this.model.head.duration);
     this.#cx = this.getViewX(this.model.head.begin) + this.#cw / 2;
-    this.y = convertToCoordinate((2 + this.model.layer)) * bracket_height;
+    this.y = PianoRollConverter.convertToCoordinate((2 + this.model.layer)) * bracket_height;
     this.h = black_key_height * bracket_height;
     this.#strong = false;
     this.archetype = model.archetype as Triad
   }
-  getViewX(x: number) { return scaled(x); }
-  getViewW(w: number) { return scaled(w); }
+  getViewX(x: number) { return PianoRollConverter.scaled(x); }
+  getViewW(w: number) { return PianoRollConverter.scaled(w); }
   updateX() {
     this.#x = this.getViewX(this.model.time.begin);
     this.#cx = this.getViewX(this.model.head.begin) + this.#cw / 2;

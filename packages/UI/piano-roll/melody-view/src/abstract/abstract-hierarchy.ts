@@ -1,34 +1,31 @@
 import { CollectionHierarchy } from "@music-analyzer/view";
 import { I_Layer } from "./i-layer";
 import { CollectionLayer, I_TimeAndVM } from "@music-analyzer/view";
-import { I_MVVM_View, MVVM_Model, MVVM_ViewModel_Impl } from "@music-analyzer/view"
+import { I_MVVM_View, MVVM_ViewModel_Impl } from "@music-analyzer/view"
 import { MVVM_View_Impl } from "@music-analyzer/view";
 import { Time } from "@music-analyzer/time-and";
 
-export abstract class Model
-extends MVVM_Model {
+export abstract class Model {
   constructor(
     readonly time: Time,
     readonly head: Time,
-  ){
-    super()
-  }
+  ) { }
 }
 export abstract class View<K extends keyof SVGElementTagNameMap>
   extends MVVM_View_Impl<K> {
   constructor(
     tag: K
-  ){
+  ) {
     super(tag)
   }
 }
-export abstract class Part<M extends MVVM_Model, V extends I_MVVM_View>
-extends MVVM_ViewModel_Impl<M, V> {
+export abstract class Part<M extends {}, V extends I_MVVM_View>
+  extends MVVM_ViewModel_Impl<M, V> {
   constructor(
     model: M,
     view: V,
-  ){
-    super(model,view)
+  ) {
+    super(model, view)
   }
 }
 
@@ -46,9 +43,9 @@ export abstract class Layer<P extends I_TimeAndVM>
 export abstract class Hierarchy<L extends I_Layer>
   extends CollectionHierarchy<L> {
   constructor(
-    id:string,
+    id: string,
     children: L[]
-  ){
+  ) {
     super(id, children)
   }
   onAudioUpdate() { this.children.forEach(e => e.onAudioUpdate()); }
