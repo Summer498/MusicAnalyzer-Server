@@ -5,12 +5,11 @@ import { Hierarchy, Layer, Model, Part } from "../abstract/abstract-hierarchy";
 import { deleteMelody } from "../melody-editor/delete";
 import { ColorChangeable } from "../color-changeable";
 import { Time } from "../facade";
-import { BlackKeyPrm } from "@music-analyzer/view-parameters";
 import { Triad } from "@music-analyzer/irm";
 import { SerializedMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { play } from "@music-analyzer/synth";
-import { NowAt } from "@music-analyzer/view-parameters";
+import { black_key_height, NowAt, PianoRollConverter } from "@music-analyzer/view-parameters";
 import { reservation_range } from "@music-analyzer/view-parameters";
 
 export class MelodyBeep {
@@ -95,10 +94,10 @@ export class Melody
     this.updateWidth();
     this.updateHeight();
   }
-  updateX() { this.view.updateX(this.converter.scaled(this.model.time.begin)) }
-  updateY() { this.view.updateY(isNaN(this.model.note) ? -99 : -this.converter.convertToCoordinate(this.converter.transposed(this.model.note))) }
-  updateWidth() { this.view.updateWidth(31 / 32 * this.converter.scaled(this.model.time.duration)) }
-  updateHeight() { this.view.updateHeight(BlackKeyPrm.height) }
+  updateX() { this.view.updateX(PianoRollConverter.scaled(this.model.time.begin)) }
+  updateY() { this.view.updateY(isNaN(this.model.note) ? -99 : -PianoRollConverter.convertToCoordinate(PianoRollConverter.transposed(this.model.note))) }
+  updateWidth() { this.view.updateWidth(31 / 32 * PianoRollConverter.scaled(this.model.time.duration)) }
+  updateHeight() { this.view.updateHeight(black_key_height) }
   onWindowResized() {
     this.updateX();
     this.updateWidth();

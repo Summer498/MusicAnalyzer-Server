@@ -1,15 +1,15 @@
 import { IHierarchyBuilder } from "../i-hierarchy-builder";
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
 import { RequiredByDMelodySeries } from "./required-by-d-melody-series";
-import { BlackKeyPrm } from "@music-analyzer/view-parameters";
 import { insertMelody } from "../melody-editor/insert";
 import { hsv2rgb } from "@music-analyzer/color";
 import { rgbToString } from "@music-analyzer/color";
 import { SerializedMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { Model, Part, View } from "../abstract/abstract-hierarchy";
+import { black_key_height, PianoRollConverter } from "@music-analyzer/view-parameters";
 
-class DMelodyView 
+class DMelodyView
   extends View<"rect"> {
   constructor() {
     super("rect");
@@ -39,8 +39,7 @@ class DMelodyModel
 }
 
 class DMelody
-  extends Part<DMelodyModel, DMelodyView>
-  {
+  extends Part<DMelodyModel, DMelodyView> {
   constructor(
     model: DMelodyModel,
     view: DMelodyView,
@@ -52,10 +51,10 @@ class DMelody
     this.updateWidth();
     this.updateHeight();
   }
-  updateX() { this.view.updateX(this.converter.scaled(this.model.time.begin)) }
-  updateY() { this.view.updateY(isNaN(this.model.note) ? -99 : -this.converter.convertToCoordinate(this.converter.transposed(this.model.note))) }
-  updateWidth() { this.view.updateWidth(this.converter.scaled(this.model.time.duration)) }
-  updateHeight() { this.view.updateHeight(BlackKeyPrm.height) }
+  updateX() { this.view.updateX(PianoRollConverter.scaled(this.model.time.begin)) }
+  updateY() { this.view.updateY(isNaN(this.model.note) ? -99 : -PianoRollConverter.convertToCoordinate(PianoRollConverter.transposed(this.model.note))) }
+  updateWidth() { this.view.updateWidth(PianoRollConverter.scaled(this.model.time.duration)) }
+  updateHeight() { this.view.updateHeight(black_key_height) }
   onWindowResized() {
     this.updateX();
     this.updateWidth();
@@ -91,7 +90,7 @@ export function buildDMelody(this: IHierarchyBuilder) {
   const parts = this.d_melody.map(e => {
     const model = new DMelodyModel(e);
     const view = new DMelodyView();
-    
+
     return new DMelody(model, view)
   })
   return new DMelodySeries(parts, this.controllers);

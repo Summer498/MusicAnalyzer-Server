@@ -5,13 +5,12 @@ import { ColorChangeable } from "../color-changeable";
 import { SetColor } from "@music-analyzer/controllers";
 import { Triad } from "@music-analyzer/irm";
 import { MVVM_Model } from "@music-analyzer/view";
-import { BlackKeyPrm } from "@music-analyzer/view-parameters";
-import { bracket_height } from "@music-analyzer/view-parameters";
+import { black_key_height, bracket_height } from "@music-analyzer/view-parameters";
 import { NoteSize } from "@music-analyzer/view-parameters";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 
 const scaled = (e: number) => e * NoteSize.get();
-const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
+const convertToCoordinate = (e: number) => e * black_key_height;
 
 class ReductionModel
   extends Model {
@@ -50,7 +49,7 @@ class ReductionViewModel
     this.#cw = this.getViewW(this.model.head.duration);
     this.#cx = this.getViewX(this.model.head.begin) + this.#cw / 2;
     this.y = convertToCoordinate((2 + this.model.layer)) * bracket_height;
-    this.h = BlackKeyPrm.height * bracket_height;
+    this.h = black_key_height * bracket_height;
     this.#strong = false;
     this.archetype = model.archetype as Triad
   }

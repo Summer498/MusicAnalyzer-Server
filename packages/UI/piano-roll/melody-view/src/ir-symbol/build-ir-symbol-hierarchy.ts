@@ -1,7 +1,7 @@
 import { IHierarchyBuilder } from "../i-hierarchy-builder";
 import { RequiredByIRSymbolHierarchy } from "./required-by-ir-symbol-hierarchy";
 import { Hierarchy, Layer, Model, Part } from "../abstract/abstract-hierarchy";
-import { size } from "@music-analyzer/view-parameters";
+import { PianoRollConverter, size } from "@music-analyzer/view-parameters";
 import { ColorChangeable } from "../color-changeable";
 import { SetColor } from "@music-analyzer/controllers";
 import { Triad } from "@music-analyzer/irm";
@@ -49,14 +49,14 @@ export class IRSymbol
     view: IRSymbolView,
   ) {
     super(model, view);
-    this.#y = isNaN(this.model.note) ? -99 : -this.converter.convertToCoordinate(this.converter.transposed(this.model.note));
+    this.#y = isNaN(this.model.note) ? -99 : -PianoRollConverter.convertToCoordinate(PianoRollConverter.transposed(this.model.note));
     this.updateX();
     this.updateY();
   }
   updateX() {
     this.view.updateX(
-      this.converter.scaled(this.model.time.begin)
-      + this.converter.scaled(this.model.time.duration) / 2
+      PianoRollConverter.scaled(this.model.time.begin)
+      + PianoRollConverter.scaled(this.model.time.duration) / 2
     )
   }
   updateY() { this.view.updateY(this.#y) }

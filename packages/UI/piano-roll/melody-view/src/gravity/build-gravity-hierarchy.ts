@@ -1,9 +1,8 @@
 import { GravitySwitcher } from "@music-analyzer/controllers";
 import { IHierarchyBuilder } from "../i-hierarchy-builder";
-import { PianoRollConverter } from "@music-analyzer/view-parameters";
+import { black_key_height, PianoRollConverter } from "@music-analyzer/view-parameters";
 import { RequiredByGravityHierarchy } from "./required-by-gravity-hierarchy";
 import { Hierarchy, Layer, Model, Part, View } from "../abstract/abstract-hierarchy";
-import { BlackKeyPrm } from "@music-analyzer/view-parameters";
 import { NoteSize } from "@music-analyzer/view-parameters";
 import { Gravity as SerializedGravity } from "@music-analyzer/melody-analyze";
 import { SerializedTimeAndAnalyzedMelody } from "../serialized-time-and-analyzed-melody";
@@ -124,8 +123,8 @@ export class Gravity
   ) {
     super(model, view);
   }
-  updateWidth() { this.view.updateWidth(this.converter.scaled(this.model.time.duration)) }
-  updateHeight() { this.view.updateHeight(BlackKeyPrm.height) }
+  updateWidth() { this.view.updateWidth(PianoRollConverter.scaled(this.model.time.duration)) }
+  updateHeight() { this.view.updateHeight(black_key_height) }
   onWindowResized() {
     this.updateWidth();
     this.updateHeight();
@@ -169,8 +168,6 @@ export function buildGravity(
   mode: "chord_gravity" | "scale_gravity",
   switcher: GravitySwitcher,
 ) {
-  const converter = new PianoRollConverter()
-
   const layers = this.h_melodies.map((melodies, l) => {
     const next = melodies.slice(1);
     const gravity = next.map((n, i) => {
@@ -183,8 +180,8 @@ export function buildGravity(
       const line = new LinePos(
         e.time.begin + e.time.duration / 2,
         n.time.begin,
-        isNaN(e.note) ? -99 : (0.5 - converter.convertToCoordinate(converter.transposed(e.note))),
-        isNaN(e.note) ? -99 : (0.5 - converter.convertToCoordinate(converter.transposed(g.destination))),
+        isNaN(e.note) ? -99 : (0.5 - PianoRollConverter.convertToCoordinate(PianoRollConverter.transposed(e.note))),
+        isNaN(e.note) ? -99 : (0.5 - PianoRollConverter.convertToCoordinate(PianoRollConverter.transposed(g.destination))),
       )
       return new Gravity(model, view, line)
     }).filter(e => e !== undefined)
