@@ -30,7 +30,6 @@ class PianoRollTimeLength {
   static get() { return PianoRollRatio.get() * SongLength.get(); }
 }
 
-
 export class NoteSize {
   constructor(
     private readonly width: PianoRollWidth,
@@ -53,11 +52,6 @@ class CurrentTimeRatio {
   static #value = 1 / 4;
   static get() { return this.#value; }
   static set(value: number) { this.#value = value; }
-}
-
-export abstract class RectParameters {
-  static readonly width: number;
-  static readonly height: number;
 }
 
 export class CurrentTimeX {
@@ -111,7 +105,7 @@ export class PianoRollWidth {
   _get() { return window.innerWidth - 48; }
   static get() { return WindowInnerWidth.get() - 48; }
 }
-export class SongLength {
+class SongLength {
   constructor(readonly value: number) { }
 
   static #value: number = 0;
