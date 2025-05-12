@@ -134,22 +134,20 @@ class Key extends Rectangle {
     i: number
   ) {
     const y = (isBlack(i)
+      // black
       ? [i]
         .map(e => PianoRollConverter.transposed(e))
         .map(e => PianoRollConverter.convertToCoordinate(e))
         .map(e => -e)
       [0]
+      // white
       : [i]
-        .map(e => ({
-          chroma: Math.ceil(mod(e, 12) / 2),
-          oct: Math.floor(e / 12) * 12,
-        } as const))
-        .map(e => ({
-          chroma: e.chroma * white_key_height,
-          oct: e.oct * black_key_height,
-        }))
-        .map(e => e.chroma + e.oct)
-        .map(e => e - PianoRollConverter.convertToCoordinate(PianoRollBegin.get()))
+        .map(e => PianoRollConverter.transposed(e))
+        .map(e => e + 1)
+        .map(e => PianoRollConverter.convertToCoordinate(e))
+        .map(e => e + white_key_height)
+        .map(e => e - mod(i, 12) * 2)
+        .map(e => e + (mod(i, 12) > 4 ? 12 : 0))
         .map(e => -e)
       [0])
     super(
@@ -169,10 +167,11 @@ class Keys {
   constructor(publisher: WindowReflectableRegistry) {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.svg.id = "keys";
+    const sgn = PianoRollBegin.get() < PianoRollEnd.get() ? 1 : -1;
     const keys = getRange(
-      PianoRollBegin.get(),
-      PianoRollEnd.get(),
-      PianoRollBegin.get() < PianoRollEnd.get() ? 1 : -1)
+      PianoRollBegin.get() - sgn,
+      PianoRollEnd.get() + sgn * 2,
+      sgn)
       .map(i => {
         const svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
         svg.id = `key-${i}`;
