@@ -9,7 +9,7 @@ import { Note } from "@music-analyzer/tonal-objects";
 import { thirdToColor } from "@music-analyzer/color";
 import { intervalOf } from "@music-analyzer/tonal-objects";
 
-export class ChordNoteModel 
+export class ChordNoteModel
   extends ChordPartModel {
   readonly tonic: string;
   readonly type: string;
@@ -30,7 +30,7 @@ export class ChordNoteModel
   }
 }
 
-export class ChordNoteView 
+export class ChordNoteView
   extends ChordPartView_impl<"rect"> {
   constructor(model: ChordNoteModel) {
     super("rect", model);
@@ -45,8 +45,8 @@ export class ChordNoteView
       this.svg.style.fill = this.getColor(0.25, model.type === "major" ? 1 : 0.9);
     }
   }
-  updateWidth(w:number) { this.svg.setAttribute("width", String(w)); }
-  updateHeight(h:number) { this.svg.setAttribute("height", String(h)); }
+  updateWidth(w: number) { this.svg.setAttribute("width", String(w)); }
+  updateHeight(h: number) { this.svg.setAttribute("height", String(h)); }
 }
 
 export class ChordNote
@@ -59,9 +59,13 @@ export class ChordNote
   ) {
     const model = new ChordNoteModel(e, note, oct);
     super(model, new ChordNoteView(model));
-    this.y =
-      PianoRollConverter.convertToCoordinate(mod(-PianoRollConverter.transposed(this.model.note), 12))
-      + PianoRollConverter.convertToCoordinate(12 * this.model.oct);
+    this.y = [this.model.note]
+      .map(e => mod(e, 12))
+      .map(e => e + 12 * this.model.oct)
+      .map(e => PianoRollConverter.transposed(e))
+      .map(e => PianoRollConverter.convertToCoordinate(e))
+      .map(e => -e)
+    [0]
     this.updateX();
     this.updateY();
     this.updateWidth();

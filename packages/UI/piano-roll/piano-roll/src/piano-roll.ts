@@ -1,5 +1,5 @@
 import { WindowReflectableRegistry } from "@music-analyzer/view";
-import { black_key_height, octave_height, PianoRollBegin, PianoRollHeight } from "@music-analyzer/view-parameters";
+import { black_key_height, octave_height, PianoRollBegin, PianoRollConverter, PianoRollHeight } from "@music-analyzer/view-parameters";
 import { PianoRollWidth } from "@music-analyzer/view-parameters";
 import { chord_name_margin } from "@music-analyzer/chord-view";
 import { chord_text_size } from "@music-analyzer/chord-view";
@@ -70,7 +70,11 @@ class BG extends Rectangle {
     svg: SVGRectElement,
     i: number
   ) {
-    const y = i * bg_height;
+    const y = [i]
+      .map(e => PianoRollConverter.transposed(e))
+      .map(e => PianoRollConverter.convertToCoordinate(e))
+      .map(e => -e)
+    [0]
     super(
       new RectangleModel(
         y,
@@ -99,7 +103,7 @@ class BGs {
       PianoRollBegin.get(),
       PianoRollEnd.get(),
       PianoRollBegin.get() < PianoRollEnd.get() ? 1 : -1)
-      .map((_, i) => {
+      .map(i => {
         const svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
         svg.id = `BG-${i}`;
         svg.style.fill = isBlack(i) ? "rgb(192, 192, 192)" : "rgb(242, 242, 242)";
@@ -118,9 +122,7 @@ class BGs {
 // i => i / 2
 // 0 1 2 2.5 3.5 4.5 5.5 6
 
-const whiteOrder = (i: number) => (Math.ceil((i) / 2) + Math.floor((i) / 12))
 const key_width = 36;
-
 const black_key_width = key_width * 2 / 3;
 const white_key_width = key_width;
 const white_key_height = octave_height / 7;
@@ -132,8 +134,24 @@ class Key extends Rectangle {
     i: number
   ) {
     const y = (isBlack(i)
-      ? i * black_key_height
-      : whiteOrder(i) * white_key_height)
+      ? [i]
+        .map(e => PianoRollConverter.transposed(e))
+        .map(e => PianoRollConverter.convertToCoordinate(e))
+        .map(e => -e)
+      [0]
+      : [i]
+        .map(e => ({
+          chroma: Math.ceil(mod(e, 12) / 2),
+          oct: Math.floor(e / 12) * 12,
+        } as const))
+        .map(e => ({
+          chroma: e.chroma * white_key_height,
+          oct: e.oct * black_key_height,
+        }))
+        .map(e => e.chroma + e.oct)
+        .map(e => e - PianoRollConverter.convertToCoordinate(PianoRollBegin.get()))
+        .map(e => -e)
+      [0])
     super(
       new RectangleModel(
         y,
@@ -155,7 +173,7 @@ class Keys {
       PianoRollBegin.get(),
       PianoRollEnd.get(),
       PianoRollBegin.get() < PianoRollEnd.get() ? 1 : -1)
-      .map((_, i) => {
+      .map(i => {
         const svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
         svg.id = `key-${i}`;
         svg.style.fill = isBlack(i) ? "rgb(64, 64, 64)" : "rgb(255, 255, 255)";

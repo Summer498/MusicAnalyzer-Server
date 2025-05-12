@@ -77,7 +77,7 @@ export class MelodyView
   updateY(y: number) { this.svg.setAttribute("y", String(y)); }
   updateWidth(w: number) { this.svg.setAttribute("width", String(w)); }
   updateHeight(h: number) { this.svg.setAttribute("height", String(h)); }
-  readonly setColor = (color:string) => this.svg.style.fill = "#0d0";
+  readonly setColor = (color: string) => this.svg.style.fill = "#0d0";
 }
 
 export class Melody
@@ -85,7 +85,7 @@ export class Melody
   #beeper: MelodyBeep
   constructor(
     model: MelodyModel,
-    view:  MelodyView,
+    view: MelodyView,
   ) {
     super(model, view);
     this.#beeper = new MelodyBeep(model);
@@ -95,7 +95,14 @@ export class Melody
     this.updateHeight();
   }
   updateX() { this.view.updateX(PianoRollConverter.scaled(this.model.time.begin)) }
-  updateY() { this.view.updateY(isNaN(this.model.note) ? -99 : -PianoRollConverter.convertToCoordinate(PianoRollConverter.transposed(this.model.note))) }
+  updateY() {
+    [this.model.note]
+      .map(e => PianoRollConverter.transposed(e))
+      .map(e => PianoRollConverter.convertToCoordinate(e))
+      .map(e => -e)
+      .map(e => isNaN(e) ? -99 : e)
+      .map(e => this.view.updateY(e))
+  }
   updateWidth() { this.view.updateWidth(31 / 32 * PianoRollConverter.scaled(this.model.time.duration)) }
   updateHeight() { this.view.updateHeight(black_key_height) }
   onWindowResized() {

@@ -7,7 +7,7 @@ import { NoteSize } from "@music-analyzer/view-parameters";
 import { Gravity as SerializedGravity } from "@music-analyzer/melody-analyze";
 import { SerializedTimeAndAnalyzedMelody } from "../serialized-time-and-analyzed-melody";
 
-export class GravityModel 
+export class GravityModel
   extends Model {
   readonly note: number;
   readonly destination?: number;
@@ -51,7 +51,7 @@ export class LinePos {
   }
 };
 
-export class GravityViewLine 
+export class GravityViewLine
   extends View<"line"> {
   constructor() {
     super("line");
@@ -71,7 +71,7 @@ export class GravityViewLine
 
 const triangle_width = 4;
 const triangle_height = 5;
-export class GravityViewTriangle 
+export class GravityViewTriangle
   extends View<"polygon"> {
   constructor() {
     super("polygon");
@@ -91,7 +91,7 @@ export class GravityViewTriangle
   onWindowResized() { }
 }
 
-export class GravityView 
+export class GravityView
   extends View<"g"> {
   readonly triangle: GravityViewTriangle;
   readonly line: GravityViewLine;
@@ -114,8 +114,7 @@ export class GravityView
 }
 
 export class Gravity
-  extends Part<GravityModel, GravityView>
-  {
+  extends Part<GravityModel, GravityView> {
   constructor(
     model: GravityModel,
     view: GravityView,
@@ -174,14 +173,21 @@ export function buildGravity(
       const e = melodies[i]
       const g = e.melody_analysis[mode];
       if (!g) { return }
-      
+
       const model = new GravityModel(e, l, n, g);
       const view = new GravityView();
+      const convert = (arg: number) => [
+        ((e: number) => PianoRollConverter.transposed(e)),
+        ((e: number) => PianoRollConverter.convertToCoordinate(e)),
+        ((e: number) => - e),
+        ((e: number) => 0.5 + e),
+      ].reduce((c, f) => f(c), arg)
+
       const line = new LinePos(
         e.time.begin + e.time.duration / 2,
         n.time.begin,
-        isNaN(e.note) ? -99 : (0.5 - PianoRollConverter.convertToCoordinate(PianoRollConverter.transposed(e.note))),
-        isNaN(e.note) ? -99 : (0.5 - PianoRollConverter.convertToCoordinate(PianoRollConverter.transposed(g.destination))),
+        isNaN(e.note) ? -99 : convert(e.note),
+        isNaN(e.note) ? -99 : convert(g.destination),
       )
       return new Gravity(model, view, line)
     }).filter(e => e !== undefined)

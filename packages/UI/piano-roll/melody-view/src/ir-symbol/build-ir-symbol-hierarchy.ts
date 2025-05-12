@@ -7,7 +7,7 @@ import { SetColor } from "@music-analyzer/controllers";
 import { Triad } from "@music-analyzer/irm";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 
-export class IRSymbolModel 
+export class IRSymbolModel
   extends Model {
   readonly note: number;
   readonly archetype: Triad;
@@ -49,7 +49,12 @@ export class IRSymbol
     view: IRSymbolView,
   ) {
     super(model, view);
-    this.#y = isNaN(this.model.note) ? -99 : -PianoRollConverter.convertToCoordinate(PianoRollConverter.transposed(this.model.note));
+    this.#y = [this.model.note]
+      .map(e => PianoRollConverter.transposed(e))
+      .map(e => PianoRollConverter.convertToCoordinate(e))
+      .map(e => -e)
+      .map(e => isNaN(e) ? -99 : e)
+    [0]
     this.updateX();
     this.updateY();
   }
