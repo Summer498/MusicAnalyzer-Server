@@ -70,11 +70,7 @@ class BG extends Rectangle {
     svg: SVGRectElement,
     i: number
   ) {
-    const y = [i]
-      .map(e => PianoRollConverter.transposed(e))
-      .map(e => PianoRollConverter.convertToCoordinate(e))
-      .map(e => -e)
-    [0]
+    const y = PianoRollConverter.midi2BlackCoordinate(i);
     super(
       new RectangleModel(
         y,
@@ -135,11 +131,7 @@ class Key extends Rectangle {
   ) {
     const y = (isBlack(i)
       // black
-      ? [i]
-        .map(e => PianoRollConverter.transposed(e))
-        .map(e => PianoRollConverter.convertToCoordinate(e))
-        .map(e => -e)
-      [0]
+      ? PianoRollConverter.midi2BlackCoordinate(i) 
       // white
       : [i]
         .map(e => PianoRollConverter.transposed(e))

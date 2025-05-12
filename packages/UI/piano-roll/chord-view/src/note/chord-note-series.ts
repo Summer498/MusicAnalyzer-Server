@@ -61,10 +61,9 @@ export class ChordNote
     super(model, new ChordNoteView(model));
     this.y = [this.model.note]
       .map(e => mod(e, 12))
-      .map(e => e + 12 * this.model.oct)
-      .map(e => PianoRollConverter.transposed(e))
-      .map(e => PianoRollConverter.convertToCoordinate(e))
-      .map(e => -e)
+      .map(e => e + 12)
+      .map(e => e * this.model.oct)
+      .map(e => PianoRollConverter.midi2BlackCoordinate(e))
     [0]
     this.updateX();
     this.updateY();

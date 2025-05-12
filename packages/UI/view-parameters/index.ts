@@ -40,10 +40,29 @@ export class NoteSize {
   static get() { return PianoRollWidth.get() / PianoRollTimeLength.get(); }
 }
 
+const transposed = (e: number) => e - PianoRollBegin.get();
+const scaled = (e: number) => e * NoteSize.get();
+const negated = (e: number) => -e;
+const convertToCoordinate = (e: number) => e * black_key_height;
+const replaceNNasInf = (e: number) => isNaN(e) ? -99 : e;
+
+const midi2BlackCoordinate = (arg:number) => [
+  transposed,
+  convertToCoordinate,
+  negated,
+].reduce((c, f) => f(c), arg);
+
+const midi2NNBlackCoordinate = (arg:number) => [
+  midi2BlackCoordinate,
+  replaceNNasInf,
+].reduce((c, f) => f(c), arg);
+
 export const PianoRollConverter = {
-   transposed: (e: number) => e - PianoRollBegin.get(),
-   scaled: (e: number) => e * NoteSize.get(),
-   convertToCoordinate: (e: number) => e * black_key_height,
+  midi2BlackCoordinate,
+  midi2NNBlackCoordinate,
+  transposed,
+  scaled,
+  convertToCoordinate,
 } as const;
 
 class CurrentTimeRatio {

@@ -49,12 +49,7 @@ export class IRSymbol
     view: IRSymbolView,
   ) {
     super(model, view);
-    this.#y = [this.model.note]
-      .map(e => PianoRollConverter.transposed(e))
-      .map(e => PianoRollConverter.convertToCoordinate(e))
-      .map(e => -e)
-      .map(e => isNaN(e) ? -99 : e)
-    [0]
+    this.#y = PianoRollConverter.midi2NNBlackCoordinate(this.model.note)
     this.updateX();
     this.updateY();
   }

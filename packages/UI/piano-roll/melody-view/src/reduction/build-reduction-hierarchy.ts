@@ -14,7 +14,7 @@ class ReductionModel
     e: SerializedTimeAndAnalyzedMelody,
     readonly layer: number,
   ) {
-    super(e.time,e.head);
+    super(e.time, e.head);
     this.archetype = e.melody_analysis.implication_realization as Triad;
   }
 }
@@ -41,7 +41,11 @@ class ReductionViewModel {
     this.#w = this.getViewW(this.model.time.duration);
     this.#cw = this.getViewW(this.model.head.duration);
     this.#cx = this.getViewX(this.model.head.begin) + this.#cw / 2;
-    this.y = PianoRollConverter.convertToCoordinate((2 + this.model.layer)) * bracket_height;
+    this.y = [this.model.layer]
+      .map(e => e + 2)
+      .map(e => PianoRollConverter.convertToCoordinate(e))
+      .map(e => e * bracket_height)
+    [0];
     this.h = black_key_height * bracket_height;
     this.#strong = false;
     this.archetype = model.archetype as Triad
@@ -85,7 +89,7 @@ class IRMSymbol
   }
 }
 
-class Bracket 
+class Bracket
   extends View<"path"> {
   private readonly model: ReductionViewModel
   readonly svg: SVGPathElement;
@@ -126,7 +130,7 @@ class Bracket
   }
 }
 
-class Dot 
+class Dot
   extends View<"circle"> {
   constructor(
     readonly model: ReductionViewModel,

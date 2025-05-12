@@ -95,14 +95,7 @@ export class Melody
     this.updateHeight();
   }
   updateX() { this.view.updateX(PianoRollConverter.scaled(this.model.time.begin)) }
-  updateY() {
-    [this.model.note]
-      .map(e => PianoRollConverter.transposed(e))
-      .map(e => PianoRollConverter.convertToCoordinate(e))
-      .map(e => -e)
-      .map(e => isNaN(e) ? -99 : e)
-      .map(e => this.view.updateY(e))
-  }
+  updateY() { this.view.updateY(PianoRollConverter.midi2NNBlackCoordinate(this.model.note)); }
   updateWidth() { this.view.updateWidth(31 / 32 * PianoRollConverter.scaled(this.model.time.duration)) }
   updateHeight() { this.view.updateHeight(black_key_height) }
   onWindowResized() {

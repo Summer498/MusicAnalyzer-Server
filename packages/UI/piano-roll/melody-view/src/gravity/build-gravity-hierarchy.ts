@@ -177,9 +177,7 @@ export function buildGravity(
       const model = new GravityModel(e, l, n, g);
       const view = new GravityView();
       const convert = (arg: number) => [
-        ((e: number) => PianoRollConverter.transposed(e)),
-        ((e: number) => PianoRollConverter.convertToCoordinate(e)),
-        ((e: number) => - e),
+        ((e: number) => PianoRollConverter.midi2BlackCoordinate(e)),
         ((e: number) => 0.5 + e),
       ].reduce((c, f) => f(c), arg)
 
