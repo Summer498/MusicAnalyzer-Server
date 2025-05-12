@@ -1,11 +1,9 @@
 import { RequiredByChordNoteModel, RequiredByChordNotesSeries } from "./r-chord-note-series";
 import { ChordPart, ChordPartModel, ChordPartSeries, ChordPartView_impl } from "../chord-parts-series";
 import { MVVM_Collection_Impl } from "@music-analyzer/view";
-import { OctaveCount } from "@music-analyzer/view-parameters";
+import { black_key_height, OctaveCount, PianoRollConverter } from "@music-analyzer/view-parameters";
 import { Chord } from "@music-analyzer/tonal-objects";
 import { getNote } from "@music-analyzer/tonal-objects";
-import { BlackKeyPrm } from "@music-analyzer/view-parameters";
-import { PianoRollBegin } from "@music-analyzer/view-parameters";
 import { mod } from "@music-analyzer/math";
 import { Note } from "@music-analyzer/tonal-objects";
 import { thirdToColor } from "@music-analyzer/color";
@@ -51,9 +49,6 @@ export class ChordNoteView
   updateHeight(h:number) { this.svg.setAttribute("height", String(h)); }
 }
 
-const transposed = (e: number) => e - PianoRollBegin.get()
-const convertToCoordinate = (e: number) => e * BlackKeyPrm.height;
-
 export class ChordNote
   extends ChordPart<ChordNoteModel, ChordNoteView> {
   y: number;
@@ -65,15 +60,15 @@ export class ChordNote
     const model = new ChordNoteModel(e, note, oct);
     super(model, new ChordNoteView(model));
     this.y =
-      convertToCoordinate(mod(-transposed(this.model.note), 12))
-      + convertToCoordinate(12 * this.model.oct);
+      PianoRollConverter.convertToCoordinate(mod(-PianoRollConverter.transposed(this.model.note), 12))
+      + PianoRollConverter.convertToCoordinate(12 * this.model.oct);
     this.updateX();
     this.updateY();
     this.updateWidth();
     this.updateHeight();
   }
   updateWidth() { this.view.updateWidth(this.scaled(this.model.time.duration)) }
-  updateHeight() { this.view.updateHeight(BlackKeyPrm.height) }
+  updateHeight() { this.view.updateHeight(black_key_height) }
   onWindowResized() {
     this.updateX();
     this.updateWidth();
