@@ -1,13 +1,177 @@
 import { WindowReflectableRegistry } from "@music-analyzer/view";
-import { PianoRollHeight } from "@music-analyzer/view-parameters";
+import { black_key_height, octave_height, PianoRollBegin, PianoRollHeight } from "@music-analyzer/view-parameters";
 import { PianoRollWidth } from "@music-analyzer/view-parameters";
 import { chord_name_margin } from "@music-analyzer/chord-view";
 import { chord_text_size } from "@music-analyzer/chord-view";
-import { AnalysisView } from "./analysis-view";
-import { MusicStructureElements } from "./music-structure-elements";
-import { CurrentTimeLine } from "./current-time-line";
-import { OctaveBGs } from "./octaves";
-import { OctaveKeys } from "./octaves";
+import { CurrentTimeX } from "@music-analyzer/view-parameters";
+import { AnalysisView, MusicStructureElements } from "./analysis-view";
+import { mod, getRange } from "@music-analyzer/math";
+import { PianoRollEnd } from "@music-analyzer/view-parameters";
+
+class CurrentTimeLine {
+  readonly svg: SVGLineElement;
+  constructor(
+    visible: boolean,
+    window_registry: WindowReflectableRegistry
+  ) {
+    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    this.svg.id = "current_time";
+    this.svg.style.strokeWidth = String(5);
+    this.svg.style.stroke = "rgb(0, 0, 0)";
+    this.svg.style.visibility = visible ? "visible" : "hidden";
+    window_registry.addListeners(this.onWindowResized.bind(this))
+  }
+  onWindowResized() {
+    this.svg.setAttribute("x1", `${CurrentTimeX.get()}`);
+    this.svg.setAttribute("x2", `${CurrentTimeX.get()}`);
+    this.svg.setAttribute("y1", "0");
+    this.svg.setAttribute("y2", `${PianoRollHeight.get()}`);
+  }
+}
+class RectangleView {
+  constructor(
+    readonly svg: SVGRectElement,
+  ) { }
+  setX(x: number) { this.svg.setAttribute("x", String(x)) }
+  setY(y: number) { this.svg.setAttribute("y", String(y)) }
+  setW(w: number) { this.svg.setAttribute("width", String(w)) }
+  setH(h: number) { this.svg.setAttribute("height", String(h)) }
+}
+
+class RectangleModel {
+  constructor(
+    readonly y: number,
+    readonly w: number,
+    readonly h: number,
+  ) { }
+  get x() { return 0; }
+}
+abstract class Rectangle {
+  get svg() { return this.view.svg; }
+
+  constructor(
+    readonly model: RectangleModel,
+    readonly view: RectangleView,
+  ) { }
+
+  onWindowResized() {
+    this.view.setX(this.model.x);
+    this.view.setY(this.model.y);
+    this.view.setW(this.model.w);
+    this.view.setH(this.model.h);
+  }
+}
+
+const bg_width = PianoRollWidth.get();
+const bg_height = octave_height / 12;
+
+class BG extends Rectangle {
+  constructor(
+    svg: SVGRectElement,
+    i: number
+  ) {
+    const y = i * bg_height;
+    super(
+      new RectangleModel(
+        y,
+        bg_width,
+        bg_height,
+      ),
+      new RectangleView(svg),
+    )
+  }
+}
+
+// list up black key
+// 1 3 6 8 10
+// i => mod(i * 5, 12)
+// 5 3 6 4 2
+// sort
+// 2 3 4 5 6
+const isBlack = (i: number) => mod(i * 5 - 2, 12) < 5;
+class BGs {
+  readonly svg: SVGGElement;
+  readonly children: BG[];
+  constructor(publisher: WindowReflectableRegistry) {
+    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    this.svg.id = `BGs`;
+    this.children = getRange(
+      PianoRollBegin.get(),
+      PianoRollEnd.get(),
+      PianoRollBegin.get() < PianoRollEnd.get() ? 1 : -1)
+      .map((_, i) => {
+        const svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        svg.id = `BG-${i}`;
+        svg.style.fill = isBlack(i) ? "rgb(192, 192, 192)" : "rgb(242, 242, 242)";
+        svg.style.stroke = "rgb(0, 0, 0)";
+
+        return new BG(svg, i);
+      })
+    this.children.forEach(e => this.svg.appendChild(e.svg));
+    publisher.addListeners(this.onWindowResized.bind(this));
+  }
+  onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
+}
+
+// list up white keys
+// 0 2 4 5 7 9 11 12 14 16 17 19 21 23 
+// i => i / 2
+// 0 1 2 2.5 3.5 4.5 5.5 6
+
+const whiteOrder = (i: number) => (Math.ceil((i) / 2) + Math.floor((i) / 12))
+const key_width = 36;
+
+const black_key_width = key_width * 2 / 3;
+const white_key_width = key_width;
+const white_key_height = octave_height / 7;
+
+class Key extends Rectangle {
+  readonly isBlack: boolean;
+  constructor(
+    svg: SVGRectElement,
+    i: number
+  ) {
+    const y = (isBlack(i)
+      ? i * black_key_height
+      : whiteOrder(i) * white_key_height)
+    super(
+      new RectangleModel(
+        y,
+        isBlack(i) ? black_key_width : white_key_width,
+        isBlack(i) ? black_key_height : white_key_height,
+      ),
+      new RectangleView(svg),
+    )
+    this.isBlack = isBlack(i);
+  }
+}
+class Keys {
+  readonly svg: SVGGElement;
+  readonly children: Key[];
+  constructor(publisher: WindowReflectableRegistry) {
+    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    this.svg.id = "keys";
+    const keys = getRange(
+      PianoRollBegin.get(),
+      PianoRollEnd.get(),
+      PianoRollBegin.get() < PianoRollEnd.get() ? 1 : -1)
+      .map((_, i) => {
+        const svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        svg.id = `key-${i}`;
+        svg.style.fill = isBlack(i) ? "rgb(64, 64, 64)" : "rgb(255, 255, 255)";
+        svg.style.stroke = "rgb(0, 0, 0)";
+
+        return new Key(svg, i)
+      })
+    this.children = [
+      keys.filter(e => !e.isBlack),
+      keys.filter(e => e.isBlack),
+    ].flat()
+    this.children.forEach(e => this.svg.appendChild(e.svg));
+    publisher.addListeners(this.onWindowResized.bind(this));
+  }
+  onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
+}
 
 export class PianoRoll {
   readonly svg: SVGSVGElement;
@@ -20,9 +184,9 @@ export class PianoRoll {
     this.svg.id = "piano-roll";
     window.addListeners(this.onWindowResized.bind(this))
     this.appendChildren(
-      new OctaveBGs(window).svg,
+      new BGs(window).svg,
       new AnalysisView(analyzed).svg,
-      new OctaveKeys(window).svg,
+      new Keys(window).svg,
       new CurrentTimeLine(show_current_time_line, window).svg,
     );
     window.addListeners(this.onWindowResized.bind(this))

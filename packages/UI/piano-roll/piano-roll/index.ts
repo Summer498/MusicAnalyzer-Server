@@ -1,2 +1,2 @@
-export { MusicStructureElements } from "./src/music-structure-elements";
+export { MusicStructureElements } from "./src/analysis-view";
 export { PianoRoll } from "./src/piano-roll";
