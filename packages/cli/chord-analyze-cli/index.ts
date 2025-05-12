@@ -1,5 +1,4 @@
-import { calcChordProgression } from "@music-analyzer/chord-analyze";
-import { RomanAnalysisData } from "@music-analyzer/chord-analyze";
+import { calcChordProgression, SerializedRomanAnalysisData } from "@music-analyzer/chord-analyze";
 import { TimeAndChordSymbol } from "@music-analyzer/chord-analyze";
 import { Time } from "@music-analyzer/time-and";
 import { default as ReadLine } from "readline";
@@ -11,7 +10,7 @@ const analyzeAndOutputProgression = (chords: TimeAndString[]) => {
   const chords_with_time = chords.map(e => new TimeAndChordSymbol(new Time(e[0], e[1]), e[2].replace(":", "")));
   const roman_chords = calcChordProgression(chords_with_time);
   console.log(JSON.stringify(
-    new RomanAnalysisData(roman_chords),
+    new SerializedRomanAnalysisData(roman_chords),
     undefined, "  "
   ));
 };

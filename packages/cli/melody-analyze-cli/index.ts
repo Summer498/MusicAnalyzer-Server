@@ -1,7 +1,6 @@
-import { RomanAnalysisData } from "@music-analyzer/chord-analyze";
-import { analyzeMelody } from "@music-analyzer/melody-analyze";
+import { SerializedRomanAnalysisData } from "@music-analyzer/chord-analyze";
+import { analyzeMelody, SerializedMelodyAnalysisData } from "@music-analyzer/melody-analyze";
 import { getTimeAndMelody } from "@music-analyzer/melody-analyze";
-import { MelodyAnalysisData } from "@music-analyzer/melody-analyze";
 import { default as fs } from "fs";
 import { default as yargs } from "yargs";
 import { hideBin } from "yargs/helpers";
@@ -55,11 +54,11 @@ const main = (argv: string[]) => {
   const roman_txt = fs.readFileSync(args.roman_file, "utf-8");
   const melody_data: number[] = JSON.parse(melody_txt);
   const non_null_melody = getTimeAndMelody(melody_data, args.sampling_rate);
-  const time_and_roman = JSON.parse(roman_txt) as RomanAnalysisData;
+  const time_and_roman = JSON.parse(roman_txt) as SerializedRomanAnalysisData;
 
   fs.writeFileSync(
     args.out_file,
-    JSON.stringify(new MelodyAnalysisData(analyzeMelody(non_null_melody, time_and_roman.body)), undefined, "  ")
+    JSON.stringify(new SerializedMelodyAnalysisData(analyzeMelody(non_null_melody, time_and_roman.body)), undefined, "  ")
   );
 };
 main(process.argv);
