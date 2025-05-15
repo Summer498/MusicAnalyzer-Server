@@ -1,11 +1,21 @@
-import { IHierarchyBuilder } from "../i-hierarchy-builder";
-import { RequiredByReductionHierarchy } from "./required-by-reduction-hierarchy";
-import { Hierarchy, Layer, Model, Part, View } from "../abstract/abstract-hierarchy";
-import { ColorChangeable } from "../color-changeable";
-import { SetColor } from "@music-analyzer/controllers";
+import { Hierarchy, Layer, Model, Part, View } from "./abstract/abstract-hierarchy";
+import { ColorChangeable } from "./color-changeable";
+import { HierarchyLevelController, MelodyColorController, SetColor } from "@music-analyzer/controllers";
 import { Triad } from "@music-analyzer/irm";
 import { black_key_height, bracket_height, PianoRollConverter } from "@music-analyzer/view-parameters";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+
+import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
+import { TimeRangeController } from "@music-analyzer/controllers";
+import { RequiredByMelodyElements } from "./required-by-melody-elements";
+
+interface RequiredByReductionHierarchy {
+  readonly time_range: TimeRangeController
+  readonly window: WindowReflectableRegistry,
+  readonly melody_color: MelodyColorController
+  readonly audio: AudioReflectableRegistry,
+  readonly hierarchy: HierarchyLevelController,
+}
 
 class ReductionModel
   extends Model {
@@ -239,8 +249,11 @@ export class ReductionHierarchy
   onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()) }
 }
 
-export function buildReduction(this: IHierarchyBuilder) {
-  const layer = this.h_melodies.map((e, l) => {
+export function buildReduction(
+    h_melodies: SerializedTimeAndAnalyzedMelody[][],
+    controllers: RequiredByMelodyElements,
+  ) {
+  const layer = h_melodies.map((e, l) => {
     const parts = e.map(e => {
       const model = new ReductionModel(e, l);
       const view = new ReductionView(model);
@@ -248,5 +261,5 @@ export function buildReduction(this: IHierarchyBuilder) {
     });
     return new ReductionLayer(parts, l)
   })
-  return new ReductionHierarchy(layer, this.controllers);
+  return new ReductionHierarchy(layer, controllers);
 }

@@ -1,8 +1,15 @@
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { Time } from "@music-analyzer/time-and";
 import { BeatBar } from "./beat-bar";
-import { RequiredByBeatBarsSeries } from "./requirement";
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
+import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
+import { TimeRangeController } from "@music-analyzer/controllers";
+
+export interface RequiredByBeatBarsSeries {
+  readonly audio: AudioReflectableRegistry,
+  readonly window: WindowReflectableRegistry,
+  readonly time_range: TimeRangeController,
+}
 
 export class BeatBarsSeries
   extends ReflectableTimeAndMVCControllerCollection<BeatBar> {

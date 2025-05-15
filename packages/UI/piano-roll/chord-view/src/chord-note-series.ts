@@ -1,5 +1,4 @@
-import { RequiredByChordNoteModel, RequiredByChordNotesSeries } from "./r-chord-note-series";
-import { ChordPart, ChordPartModel, ChordPartSeries, ChordPartView_impl } from "../chord-parts-series";
+import { ChordPart, ChordPartModel, ChordPartSeries, ChordPartView_impl } from "./chord-parts-series";
 import { MVVM_Collection_Impl } from "@music-analyzer/view";
 import { black_key_height, OctaveCount, PianoRollConverter } from "@music-analyzer/view-parameters";
 import { Chord } from "@music-analyzer/tonal-objects";
@@ -9,7 +8,18 @@ import { Note } from "@music-analyzer/tonal-objects";
 import { thirdToColor } from "@music-analyzer/color";
 import { intervalOf } from "@music-analyzer/tonal-objects";
 
-export class ChordNoteModel
+import { AudioReflectableRegistry } from "@music-analyzer/view";
+import { WindowReflectableRegistry } from "@music-analyzer/view";
+import { TimeRangeController } from "@music-analyzer/controllers";
+import { RequiredByChordPartModel } from "./require-by-chord-part-model";
+
+interface RequiredByChordNotesSeries {
+    readonly audio: AudioReflectableRegistry
+    readonly window: WindowReflectableRegistry,
+    readonly time_range: TimeRangeController,
+  }
+
+class ChordNoteModel
   extends ChordPartModel {
   readonly tonic: string;
   readonly type: string;
@@ -17,7 +27,7 @@ export class ChordNoteModel
   readonly note_name: string;
   readonly interval: string;
   constructor(
-    e: RequiredByChordNoteModel,
+    e: RequiredByChordPartModel,
     note: Note,
     readonly oct: number,
   ) {
@@ -30,7 +40,7 @@ export class ChordNoteModel
   }
 }
 
-export class ChordNoteView
+class ChordNoteView
   extends ChordPartView_impl<"rect"> {
   constructor(model: ChordNoteModel) {
     super("rect", model);
@@ -49,11 +59,11 @@ export class ChordNoteView
   updateHeight(h: number) { this.svg.setAttribute("height", String(h)); }
 }
 
-export class ChordNote
+class ChordNote
   extends ChordPart<ChordNoteModel, ChordNoteView> {
   y: number;
   constructor(
-    e: RequiredByChordNoteModel,
+    e: RequiredByChordPartModel,
     note: Note,
     oct: number,
   ) {
@@ -80,10 +90,10 @@ export class ChordNote
   onAudioUpdate = this.onWindowResized;
 }
 
-export class ChordNotesInOctave
+class ChordNotesInOctave
   extends MVVM_Collection_Impl<ChordNote> {
   constructor(
-    roman: RequiredByChordNoteModel,
+    roman: RequiredByChordPartModel,
     chord: Chord,
     oct: number,
   ) {
@@ -94,10 +104,10 @@ export class ChordNotesInOctave
   onWindowResized() { this.children.forEach(e => e.onWindowResized()) }
 }
 
-export class ChordNotes
+class ChordNotes
   extends MVVM_Collection_Impl<ChordNotesInOctave> {
   constructor(
-    readonly model: RequiredByChordNoteModel,
+    readonly model: RequiredByChordPartModel,
   ) {
     const chord = model.chord;
     super(chord.name, [...Array(OctaveCount.get())].map((_, oct) => new ChordNotesInOctave(model, chord, oct)));
@@ -110,7 +120,7 @@ export class ChordNotes
 export class ChordNotesSeries
   extends ChordPartSeries<ChordNotes> {
   constructor(
-    romans: RequiredByChordNoteModel[],
+    romans: RequiredByChordPartModel[],
     controllers: RequiredByChordNotesSeries
   ) {
     super("chords", controllers, romans.map(roman => new ChordNotes(roman)));

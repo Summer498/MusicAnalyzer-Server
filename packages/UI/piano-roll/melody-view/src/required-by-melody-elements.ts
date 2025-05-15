@@ -1,16 +1,15 @@
-import { RequiredByDMelodySeries } from "./d-melody/required-by-d-melody-series";
-import { GravityController } from "@music-analyzer/controllers";
-import { RequiredByMelodyHierarchy } from "./melody/required-by-melody-hierarchy";
-import { RequiredByIRSymbolHierarchy } from "./ir-symbol/required-by-ir-symbol-hierarchy";
-import { RequiredByReductionHierarchy } from "./reduction/required-by-reduction-hierarchy";
-import { RequiredByIRPlot } from "./ir-plot/required-by-ir-plot-svg";
+import { AudioReflectableRegistry } from "@music-analyzer/view";
+import { WindowReflectableRegistry } from "@music-analyzer/view";
+import { DMelodyController, GravityController, HierarchyLevelController, MelodyBeepController, MelodyColorController, TimeRangeController } from "@music-analyzer/controllers";
 
-export interface RequiredByMelodyElements
-  extends
-  RequiredByDMelodySeries,
-  RequiredByMelodyHierarchy,
-  RequiredByIRSymbolHierarchy,
-  RequiredByIRPlot,
-  RequiredByReductionHierarchy {
+export interface RequiredByMelodyElements {
   readonly gravity: GravityController
+  readonly audio: AudioReflectableRegistry,
+  readonly d_melody: DMelodyController,
+  readonly window: WindowReflectableRegistry
+  readonly time_range: TimeRangeController
+
+  readonly melody_beep: MelodyBeepController
+  readonly melody_color: MelodyColorController
+  readonly hierarchy: HierarchyLevelController,
 }

@@ -1,12 +1,21 @@
-import { IHierarchyBuilder } from "../i-hierarchy-builder";
-import { Hierarchy, Layer, Model, Part } from "../abstract/abstract-hierarchy";
-import { ColorChangeable } from "../color-changeable";
-import { Time } from "../facade";
-import { SetColor } from "@music-analyzer/controllers";
+import { Hierarchy, Layer, Model, Part } from "./abstract/abstract-hierarchy";
+import { ColorChangeable } from "./color-changeable";
+import { Time } from "./facade";
+import { HierarchyLevelController, MelodyColorController, SetColor } from "@music-analyzer/controllers";
 import { Triad } from "@music-analyzer/irm";
 import { NowAt } from "@music-analyzer/view-parameters";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { RequiredByIRPlotHierarchy } from "./required-by-ir-plot-svg";
+
+import { AudioReflectableRegistry } from "@music-analyzer/view";
+import { WindowReflectableRegistry } from "@music-analyzer/view";
+import { RequiredByMelodyElements } from "./required-by-melody-elements";
+
+interface RequiredByIRPlotHierarchy {
+  readonly audio: AudioReflectableRegistry,
+  readonly window: WindowReflectableRegistry,
+  readonly melody_color: MelodyColorController
+  readonly hierarchy: HierarchyLevelController,
+}
 
 export class IRPlotAxis {
   readonly svg: SVGLineElement;
@@ -343,15 +352,18 @@ export class IRPlotSVG {
   onWindowResized() { }
 }
 
-export function buildIRPlot(this: IHierarchyBuilder) {
-  const N = this.h_melodies.length;
+export function buildIRPlot(
+    h_melodies: SerializedTimeAndAnalyzedMelody[][],
+    controllers: RequiredByMelodyElements,
+  ) {
+  const N = h_melodies.length;
 
-  const layers = this.h_melodies.map((e, l) => {
+  const layers = h_melodies.map((e, l) => {
     const model = new IRPlotModel(e);
     const view = new IRPlotView(model);
     const part = new IRPlot(model, view);
     return new IRPlotLayer([part], l, N)
   })
-  const hierarchy = [new IRPlotHierarchy(layers, this.controllers)]
+  const hierarchy = [new IRPlotHierarchy(layers, controllers)]
   return new IRPlotSVG(hierarchy);
 }

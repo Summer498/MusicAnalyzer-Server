@@ -1,21 +1,31 @@
-import { ChordPartModel, ChordPartSeries, ChordPartView_impl } from "../chord-parts-series";
-import { RequiredByChordRomanModel, RequiredByChordRomanSeries } from "./r-chord-roman-series";
-import { chord_name_margin } from "../chord-view-params/margin";
-import { chord_text_size } from "../chord-view-params/text-size";
-import { ChordPartText } from "../chord-part-text";
-import { shortenChord } from "../shorten/chord";
-import { chord_text_em } from "../chord-view-params/text-em";
+import { ChordPartModel, ChordPartSeries, ChordPartView_impl } from "./chord-parts-series";
+import { chord_name_margin } from "./chord-view-params/margin";
+import { chord_text_size } from "./chord-view-params/text-size";
+import { ChordPartText } from "./chord-part-text";
+import { shortenChord } from "./shorten/chord";
+import { chord_text_em } from "./chord-view-params/text-em";
 
-export class ChordRomanModel
+import { AudioReflectableRegistry } from "@music-analyzer/view";
+import { WindowReflectableRegistry } from "@music-analyzer/view";
+import { TimeRangeController } from "@music-analyzer/controllers";
+import { RequiredByChordPartModel } from "./require-by-chord-part-model";
+
+interface RequiredByChordRomanSeries {
+  readonly audio: AudioReflectableRegistry
+  readonly window: WindowReflectableRegistry,
+  readonly time_range: TimeRangeController,
+}
+
+class ChordRomanModel
   extends ChordPartModel {
   readonly tonic: string;
-  constructor(e: RequiredByChordRomanModel) {
+  constructor(e: RequiredByChordPartModel) {
     super(e);
     this.tonic = e.chord.tonic || "";
   }
 }
 
-export class ChordRomanView
+class ChordRomanView
   extends ChordPartView_impl<"text"> {
   constructor(model: ChordRomanModel) {
     super("text", model);
@@ -27,11 +37,11 @@ export class ChordRomanView
   }
 }
 
-export class ChordRoman
+class ChordRoman
   extends ChordPartText<ChordRomanModel, ChordRomanView> {
   y: number;
   constructor(
-    e: RequiredByChordRomanModel,
+    e: RequiredByChordPartModel,
   ) {
     const model = new ChordRomanModel(e);
     super(model, new ChordRomanView(model));
@@ -47,7 +57,7 @@ export class ChordRoman
 export class ChordRomanSeries
   extends ChordPartSeries<ChordRoman> {
   constructor(
-    romans: RequiredByChordRomanModel[],
+    romans: RequiredByChordPartModel[],
     controllers: RequiredByChordRomanSeries,
   ) {
     super("roman-names", controllers, romans.map(e => new ChordRoman(e)));

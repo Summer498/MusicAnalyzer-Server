@@ -1,6 +1,4 @@
-import { RequiredByChordPartSeries } from "./r-chord-parts-series";
-import { RequiredByChordPartModel } from "./r-chord-parts-series";
-import { I_TimeAndVM } from "@music-analyzer/view";
+import { AudioReflectableRegistry, I_TimeAndVM, WindowReflectableRegistry } from "@music-analyzer/view";
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
 import { NoteSize } from "@music-analyzer/view-parameters";
 import { MVVM_ViewModel_Impl } from "@music-analyzer/view";
@@ -12,6 +10,14 @@ import { MVVM_View_Impl } from "@music-analyzer/view";
 import { fifthToColor } from "@music-analyzer/color";
 import { oneLetterKey } from "./shorten/on-letter-key";
 import { chord_text_em } from "./chord-view-params/text-em";
+import { RequiredByChordPartModel } from "./require-by-chord-part-model";
+import { TimeRangeController } from "@music-analyzer/controllers";
+
+interface RequiredByChordPartSeries {
+  readonly audio: AudioReflectableRegistry
+  readonly window: WindowReflectableRegistry,
+  readonly time_range: TimeRangeController,
+}
 
 export abstract class ChordPartModel {
   readonly time: Time;

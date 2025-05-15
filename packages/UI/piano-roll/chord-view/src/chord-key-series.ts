@@ -1,21 +1,32 @@
-import { RequiredByChordKeyModel, RequiredByChordKeySeries } from "./r-chord-key-series";
-import { ChordPartModel, ChordPartSeries, ChordPartView_impl } from "../chord-parts-series";
-import { chord_name_margin } from "../chord-view-params/margin";
-import { chord_text_size } from "../chord-view-params/text-size";
-import { ChordPartText } from "../chord-part-text";
-import { chord_text_em } from "../chord-view-params/text-em";
-import { oneLetterKey } from "../shorten/on-letter-key";
+import { ChordPartModel, ChordPartSeries, ChordPartView_impl } from "./chord-parts-series";
+import { chord_name_margin } from "./chord-view-params/margin";
+import { chord_text_size } from "./chord-view-params/text-size";
+import { ChordPartText } from "./chord-part-text";
+import { chord_text_em } from "./chord-view-params/text-em";
+import { oneLetterKey } from "./shorten/on-letter-key";
 
-export class ChordKeyModel 
+import { AudioReflectableRegistry } from "@music-analyzer/view";
+import { WindowReflectableRegistry } from "@music-analyzer/view";
+import { TimeRangeController } from "@music-analyzer/controllers";
+import { RequiredByChordPartModel } from "./require-by-chord-part-model";
+
+interface RequiredByChordKeySeries {
+  readonly window: WindowReflectableRegistry,
+  readonly time_range: TimeRangeController,
+  readonly audio: AudioReflectableRegistry
+}
+
+
+class ChordKeyModel
   extends ChordPartModel {
   readonly tonic: string;
-  constructor(e: RequiredByChordKeyModel) {
+  constructor(e: RequiredByChordPartModel) {
     super(e);
     this.tonic = this.scale.tonic || "";
   }
 }
 
-export class ChordKeyView
+class ChordKeyView
   extends ChordPartView_impl<"text"> {
   constructor(model: ChordKeyModel) {
     super("text", model);
@@ -28,11 +39,11 @@ export class ChordKeyView
   }
 }
 
-export class ChordKey
+class ChordKey
   extends ChordPartText<ChordKeyModel, ChordKeyView> {
   y: number;
   constructor(
-    e: RequiredByChordKeyModel,
+    e: RequiredByChordPartModel,
   ) {
     const model = new ChordKeyModel(e);
     super(model, new ChordKeyView(model));
@@ -49,7 +60,7 @@ export class ChordKeySeries
   extends ChordPartSeries<ChordKey> {
   readonly remaining: ChordKey | undefined;
   constructor(
-    romans: RequiredByChordKeyModel[],
+    romans: RequiredByChordPartModel[],
     controllers: RequiredByChordKeySeries
   ) {
     super("key-names", controllers, romans.map(e => new ChordKey(e)));

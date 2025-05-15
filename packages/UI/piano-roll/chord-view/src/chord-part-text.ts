@@ -3,7 +3,7 @@ import { chord_text_size } from "./chord-view-params/text-size";
 import { ChordPart, ChordPartModel } from "./chord-parts-series";
 import { A_MVVM_View } from "@music-analyzer/view";
 
-export abstract class ChordPartView
+abstract class ChordPartView
   extends A_MVVM_View {
   abstract svg: SVGElement;
   constructor() {
@@ -11,8 +11,7 @@ export abstract class ChordPartView
   }
 }
 
-
-export interface RequiredViewByChordPart
+interface RequiredViewByChordPart
   extends ChordPartView {
   updateX: (x: number) => void
   updateY: (y: number) => void

@@ -1,16 +1,28 @@
-import { IHierarchyBuilder } from "../i-hierarchy-builder";
-import { SetColor } from "@music-analyzer/controllers";
-import { RequiredByMelodyHierarchy } from "./required-by-melody-hierarchy";
-import { Hierarchy, Layer, Model, Part } from "../abstract/abstract-hierarchy";
-import { deleteMelody } from "../melody-editor/delete";
-import { ColorChangeable } from "../color-changeable";
-import { Time } from "../facade";
+import { HierarchyLevelController, MelodyColorController, SetColor, TimeRangeController } from "@music-analyzer/controllers";
+import { Hierarchy, Layer, Model, Part } from "./abstract/abstract-hierarchy";
+import { deleteMelody } from "./melody-editor/delete";
+import { ColorChangeable } from "./color-changeable";
+import { Time } from "./facade";
 import { Triad } from "@music-analyzer/irm";
 import { SerializedMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { play } from "@music-analyzer/synth";
 import { black_key_height, NowAt, PianoRollConverter } from "@music-analyzer/view-parameters";
 import { reservation_range } from "@music-analyzer/view-parameters";
+
+import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
+import { MelodyBeepController } from "@music-analyzer/controllers";
+import { RequiredByMelodyElements } from "./required-by-melody-elements";
+
+interface RequiredByMelodyHierarchy {
+  readonly melody_beep: MelodyBeepController
+  readonly melody_color: MelodyColorController
+  readonly window: WindowReflectableRegistry
+  readonly time_range: TimeRangeController
+
+  readonly audio: AudioReflectableRegistry,
+  readonly hierarchy: HierarchyLevelController,
+}
 
 export class MelodyBeep {
   #beep_volume: number;
@@ -153,8 +165,11 @@ export class MelodyHierarchy
   onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()); }
 }
 
-export function buildMelody(this: IHierarchyBuilder) {
-  const layers = this.h_melodies.map((e, l) => {
+export function buildMelody(
+    h_melodies: SerializedTimeAndAnalyzedMelody[][],
+    controllers: RequiredByMelodyElements & { audio: AudioReflectableRegistry, window: WindowReflectableRegistry },
+  ) {
+  const layers = h_melodies.map((e, l) => {
     const parts = e.map(e => {
       const model = new MelodyModel(e);
       const view = new MelodyView();
@@ -162,5 +177,5 @@ export function buildMelody(this: IHierarchyBuilder) {
     })
     return new MelodyLayer(parts, l)
   });
-  return new MelodyHierarchy(layers, this.controllers);
+  return new MelodyHierarchy(layers, controllers);
 }

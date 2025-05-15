@@ -1,11 +1,19 @@
-import { GravitySwitcher } from "@music-analyzer/controllers";
-import { IHierarchyBuilder } from "../i-hierarchy-builder";
+import { GravitySwitcher, HierarchyLevelController, TimeRangeController } from "@music-analyzer/controllers";
 import { black_key_height, PianoRollConverter } from "@music-analyzer/view-parameters";
-import { RequiredByGravityHierarchy } from "./required-by-gravity-hierarchy";
-import { Hierarchy, Layer, Model, Part, View } from "../abstract/abstract-hierarchy";
 import { NoteSize } from "@music-analyzer/view-parameters";
 import { Gravity as SerializedGravity } from "@music-analyzer/melody-analyze";
-import { SerializedTimeAndAnalyzedMelody } from "../serialized-time-and-analyzed-melody";
+import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
+import { Hierarchy, Layer, Model, Part, View } from "./abstract/abstract-hierarchy";
+import { SerializedTimeAndAnalyzedMelody } from "./serialized-time-and-analyzed-melody";
+import { RequiredByMelodyElements } from "./required-by-melody-elements";
+
+interface RequiredByGravityHierarchy {
+  readonly audio: AudioReflectableRegistry,
+  readonly window: WindowReflectableRegistry,
+  readonly time_range: TimeRangeController,
+  readonly switcher: GravitySwitcher,
+  readonly hierarchy: HierarchyLevelController,
+}
 
 export class GravityModel
   extends Model {
@@ -163,11 +171,12 @@ export class GravityHierarchy
 }
 
 export function buildGravity(
-  this: IHierarchyBuilder,
   mode: "chord_gravity" | "scale_gravity",
+  h_melodies: SerializedTimeAndAnalyzedMelody[][],
+  controllers: RequiredByMelodyElements,
   switcher: GravitySwitcher,
 ) {
-  const layers = this.h_melodies.map((melodies, l) => {
+  const layers = h_melodies.map((melodies, l) => {
     const next = melodies.slice(1);
     const gravity = next.map((n, i) => {
       const e = melodies[i]
@@ -191,5 +200,5 @@ export function buildGravity(
     }).filter(e => e !== undefined)
     return new GravityLayer(l, gravity);
   });
-  return new GravityHierarchy(mode, layers, { ...this.controllers, switcher });
+  return new GravityHierarchy(mode, layers, { ...controllers, switcher });
 }

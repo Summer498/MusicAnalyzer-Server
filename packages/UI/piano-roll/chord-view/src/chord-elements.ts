@@ -1,10 +1,19 @@
+import { ChordKeySeries } from "./chord-key-series";
+import { ChordNotesSeries } from "./chord-note-series";
+import { ChordNameSeries } from "./chord-name-series";
+import { ChordRomanSeries } from "./chord-roman-series";
+
+import { AudioReflectableRegistry } from "@music-analyzer/view";
+import { WindowReflectableRegistry } from "@music-analyzer/view";
+import { TimeRangeController } from "@music-analyzer/controllers";
 import { SerializedTimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-import { ChordKeySeries } from "./key/chord-key-series";
-import { ChordNotesSeries } from "./note/chord-note-series";
-import { RequiredByChordElements } from "./r-chord-elements";
-import { ChordNameSeries } from "./name/chord-name-series";
-import { ChordRomanSeries } from "./roman/chord-roman-series";
-import { RequiredByChordPartModel } from "./r-chord-parts-series";
+import { RequiredByChordPartModel } from "./require-by-chord-part-model";
+
+export interface RequiredByChordElements {
+  readonly audio: AudioReflectableRegistry
+  readonly window: WindowReflectableRegistry,
+  readonly time_range: TimeRangeController,
+  }
 
 export class ChordElements {
   readonly children: unknown[];
