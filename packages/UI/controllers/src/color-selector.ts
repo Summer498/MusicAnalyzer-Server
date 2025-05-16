@@ -5,8 +5,37 @@ import { get_color_on_digital_parametric_scale } from "@music-analyzer/irm";
 import { get_color_on_intervallic_angle } from "@music-analyzer/irm";
 import { get_color_on_parametric_scale } from "@music-analyzer/irm";
 import { get_color_on_registral_scale } from "@music-analyzer/irm";
-import { IRM_ColorSelector } from "../irm-color-selector";
-import { GetColor } from "../irm-color";
+import { Triad } from "@music-analyzer/irm";
+import { Controller } from "./controller";
+
+
+export type GetColor = (e: Triad) => string;
+export type SetColor = (getColor: GetColor) => void;
+
+export abstract class ColorSelector<T> extends Controller<T> {
+  constructor(
+    readonly id: string,
+    text: string
+  ) {
+    super("radio", id, text);
+  };
+}
+
+export class IRM_ColorSelector
+  extends ColorSelector<GetColor> {
+  getColor: GetColor;
+  constructor(
+    id: string,
+    text: string,
+    getColor: GetColor,
+  ) {
+    super(id, text);
+    this.getColor = getColor
+  }
+  update() {
+    this.listeners.forEach(setColor => setColor(triad => this.getColor(triad)));
+  }
+}
 
 export class MelodyColorSelector {
   readonly body: HTMLSpanElement;
@@ -35,5 +64,20 @@ export class MelodyColorSelector {
   addListeners(...listeners: ((color: GetColor) => void)[]) {
     this.children.forEach(e => e.addListeners(...listeners))
     this.default.update()
+  }
+}
+
+export class MelodyColorController {
+  readonly view: HTMLDivElement;
+  readonly selector: MelodyColorSelector;
+  constructor() {
+    this.selector = new MelodyColorSelector();
+    this.view = document.createElement("div");
+    this.view.id = "melody-color-selector";
+    this.view.style.display = "inline";
+    this.view.appendChild(this.selector.body);
+  }
+  addListeners(...listeners: ((color: GetColor) => void)[]) {
+    this.selector.addListeners(...listeners)
   }
 }
