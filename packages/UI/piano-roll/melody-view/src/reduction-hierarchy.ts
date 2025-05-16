@@ -1,21 +1,10 @@
 import { Hierarchy, Layer, Model, Part, View } from "./abstract-hierarchy";
 import { ColorChangeable } from "./color-changeable";
-import { HierarchyLevelController, MelodyColorController, SetColor } from "@music-analyzer/controllers";
 import { Triad } from "@music-analyzer/irm";
 import { black_key_height, bracket_height, PianoRollConverter } from "@music-analyzer/view-parameters";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
+import { SetColor } from "@music-analyzer/controllers";
 
-import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
-import { TimeRangeController } from "@music-analyzer/controllers";
-import { RequiredByMelodyElements } from "./required-by-melody-elements";
-
-interface RequiredByReductionHierarchy {
-  readonly time_range: TimeRangeController
-  readonly window: WindowReflectableRegistry,
-  readonly melody_color: MelodyColorController
-  readonly audio: AudioReflectableRegistry,
-  readonly hierarchy: HierarchyLevelController,
-}
 
 class ReductionModel
   extends Model {
@@ -197,7 +186,6 @@ class ReductionView
   }
 }
 
-
 class Reduction
   extends Part<ReductionModel, ReductionView> {
   constructor(
@@ -220,7 +208,6 @@ class ReductionLayer
   ) {
     super(layer, children);
   }
-  readonly setColor: SetColor = f => this.children.forEach(e => e.setColor(f))
   renewStrong(layer: number) { this.children.forEach(e => e.renewStrong(layer === this.layer)); }
   onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()) }
   onWindowResized() { this.children.forEach(e => e.onWindowResized()) }
@@ -230,14 +217,8 @@ export class ReductionHierarchy
   extends Hierarchy<ReductionLayer> {
   constructor(
     children: ReductionLayer[],
-    controllers: RequiredByReductionHierarchy
   ) {
     super("time-span-reduction", children);
-    controllers.melody_color.addListeners(this.setColor.bind(this));
-    controllers.hierarchy.addListeners(this.onChangedLayer.bind(this));
-    controllers.audio.addListeners(this.onAudioUpdate.bind(this));
-    controllers.window.addListeners(this.onWindowResized.bind(this));
-    controllers.time_range.addListeners(this.onTimeRangeChanged.bind(this))
   }
   onChangedLayer(value: number) {
     const visible_layer = this.children.filter(e => value >= e.layer);
@@ -245,13 +226,11 @@ export class ReductionHierarchy
     visible_layer.forEach(e => e.renewStrong(value));
     this.setShow(visible_layer);
   }
-  readonly setColor: SetColor = f => this.children.forEach(e => e.setColor(f))
   onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()) }
 }
 
 export function buildReduction(
     h_melodies: SerializedTimeAndAnalyzedMelody[][],
-    controllers: RequiredByMelodyElements,
   ) {
   const layer = h_melodies.map((e, l) => {
     const parts = e.map(e => {
@@ -261,5 +240,5 @@ export function buildReduction(
     });
     return new ReductionLayer(parts, l)
   })
-  return new ReductionHierarchy(layer, controllers);
+  return new ReductionHierarchy(layer);
 }

@@ -1,19 +1,8 @@
-import { GravitySwitcher, HierarchyLevelController, TimeRangeController } from "@music-analyzer/controllers";
 import { black_key_height, PianoRollConverter } from "@music-analyzer/view-parameters";
 import { NoteSize } from "@music-analyzer/view-parameters";
 import { Gravity as SerializedGravity } from "@music-analyzer/melody-analyze";
-import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 import { Hierarchy, Layer, Model, Part, View } from "./abstract-hierarchy";
 import { SerializedTimeAndAnalyzedMelody } from "./serialized-time-and-analyzed-melody";
-import { RequiredByMelodyElements } from "./required-by-melody-elements";
-
-interface RequiredByGravityHierarchy {
-  readonly audio: AudioReflectableRegistry,
-  readonly window: WindowReflectableRegistry,
-  readonly time_range: TimeRangeController,
-  readonly switcher: GravitySwitcher,
-  readonly hierarchy: HierarchyLevelController,
-}
 
 export class GravityModel
   extends Model {
@@ -157,14 +146,8 @@ export class GravityHierarchy
   constructor(
     id: string,
     children: GravityLayer[],
-    controllers: RequiredByGravityHierarchy,
   ) {
     super(id, children);
-    controllers.switcher.addListeners(this.onUpdateGravityVisibility.bind(this));
-    controllers.hierarchy.addListeners(this.onChangedLayer.bind(this));
-    controllers.audio.addListeners(this.onAudioUpdate.bind(this));
-    controllers.window.addListeners(this.onWindowResized.bind(this));
-    controllers.time_range.addListeners(this.onTimeRangeChanged.bind(this));
   }
   onUpdateGravityVisibility(visible: boolean) { this.svg.style.visibility = visible ? "visible" : "hidden"; }
   onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()) }
@@ -173,8 +156,6 @@ export class GravityHierarchy
 export function buildGravity(
   mode: "chord_gravity" | "scale_gravity",
   h_melodies: SerializedTimeAndAnalyzedMelody[][],
-  controllers: RequiredByMelodyElements,
-  switcher: GravitySwitcher,
 ) {
   const layers = h_melodies.map((melodies, l) => {
     const next = melodies.slice(1);
@@ -200,5 +181,5 @@ export function buildGravity(
     }).filter(e => e !== undefined)
     return new GravityLayer(l, gravity);
   });
-  return new GravityHierarchy(mode, layers, { ...controllers, switcher });
+  return new GravityHierarchy(mode, layers);
 }

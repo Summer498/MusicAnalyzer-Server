@@ -1,4 +1,4 @@
-import { AudioReflectableRegistry, ReflectableTimeAndMVCControllerCollection, WindowReflectableRegistry } from "@music-analyzer/view";
+import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
 import { insertMelody } from "./melody-editor/insert";
 import { hsv2rgb } from "@music-analyzer/color";
 import { rgbToString } from "@music-analyzer/color";
@@ -6,15 +6,6 @@ import { SerializedMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { Model, Part, View } from "./abstract-hierarchy";
 import { black_key_height, PianoRollConverter } from "@music-analyzer/view-parameters";
-import { DMelodyController, TimeRangeController } from "@music-analyzer/controllers";
-import { RequiredByMelodyElements } from "./required-by-melody-elements";
-
-interface RequiredByDMelodySeries {
-  readonly audio: AudioReflectableRegistry,
-  readonly d_melody: DMelodyController,
-  readonly window: WindowReflectableRegistry
-  readonly time_range: TimeRangeController
-}
 
 class DMelodyView
   extends View<"rect"> {
@@ -77,13 +68,8 @@ export class DMelodySeries
   extends ReflectableTimeAndMVCControllerCollection<DMelody> {
   constructor(
     children: DMelody[],
-    controllers: RequiredByDMelodySeries,
   ) {
     super("detected-melody", children);
-    controllers.audio.addListeners(this.onAudioUpdate.bind(this));
-    controllers.d_melody.addListeners(this.onDMelodyVisibilityChanged.bind(this));
-    controllers.time_range.addListeners(this.onTimeRangeChanged.bind(this));
-    controllers.window.addListeners(this.onWindowResized.bind(this))
   }
   onDMelodyVisibilityChanged(visible: boolean) {
     const visibility = visible ? "visible" : "hidden";
@@ -95,7 +81,6 @@ export class DMelodySeries
 
 export function buildDMelody(
     d_melody: SerializedTimeAndAnalyzedMelody[],
-    controllers: RequiredByMelodyElements,
   ) {
   const parts = d_melody.map(e => {
     const model = new DMelodyModel(e);
@@ -103,5 +88,5 @@ export function buildDMelody(
 
     return new DMelody(model, view)
   })
-  return new DMelodySeries(parts, controllers);
+  return new DMelodySeries(parts);
 }

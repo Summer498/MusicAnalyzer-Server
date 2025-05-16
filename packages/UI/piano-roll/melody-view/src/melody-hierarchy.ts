@@ -1,4 +1,3 @@
-import { HierarchyLevelController, MelodyColorController, SetColor, TimeRangeController } from "@music-analyzer/controllers";
 import { Hierarchy, Layer, Model, Part } from "./abstract-hierarchy";
 import { deleteMelody } from "./melody-editor/delete";
 import { ColorChangeable } from "./color-changeable";
@@ -10,19 +9,7 @@ import { play } from "@music-analyzer/synth";
 import { black_key_height, NowAt, PianoRollConverter } from "@music-analyzer/view-parameters";
 import { reservation_range } from "@music-analyzer/view-parameters";
 
-import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
-import { MelodyBeepController } from "@music-analyzer/controllers";
-import { RequiredByMelodyElements } from "./required-by-melody-elements";
-
-interface RequiredByMelodyHierarchy {
-  readonly melody_beep: MelodyBeepController
-  readonly melody_color: MelodyColorController
-  readonly window: WindowReflectableRegistry
-  readonly time_range: TimeRangeController
-
-  readonly audio: AudioReflectableRegistry,
-  readonly hierarchy: HierarchyLevelController,
-}
+import { SetColor } from "@music-analyzer/controllers";
 
 export class MelodyBeep {
   #beep_volume: number;
@@ -130,7 +117,6 @@ export class MelodyLayer
   ) {
     super(layer, children);
   }
-  readonly setColor: SetColor = f => this.children.forEach(e => e.setColor(f))
   beep() { this.children.forEach(e => e.beep()); }
   onMelodyBeepCheckChanged(v: boolean) { this.children.forEach(e => e.onMelodyBeepCheckChanged(v)); }
   onMelodyVolumeBarChanged(v: number) { this.children.forEach(e => e.onMelodyVolumeBarChanged(v)); }
@@ -143,22 +129,13 @@ export class MelodyHierarchy
   get show() { return this._show; }
   constructor(
     children: MelodyLayer[],
-    controllers: RequiredByMelodyHierarchy
   ) {
     super("melody", children);
-    controllers.hierarchy.addListeners(this.onChangedLayer.bind(this));
-    controllers.audio.addListeners(this.onAudioUpdate.bind(this));
-    controllers.time_range.addListeners(this.onTimeRangeChanged.bind(this));
-    controllers.window.addListeners(this.onWindowResized.bind(this))
-    controllers.melody_beep.checkbox.addListeners(this.onMelodyBeepCheckChanged.bind(this));
-    controllers.melody_beep.volume.addListeners(this.onMelodyVolumeBarChanged.bind(this));
-    controllers.melody_color.addListeners(this.setColor.bind(this));
   }
   onAudioUpdate() {
     super.onAudioUpdate()
     this.show.forEach(e => e.beep())
   }
-  readonly setColor: SetColor = f => this.children.forEach(e => e.setColor(f))
   beep() { this.children.forEach(e => e.beep()); }
   onMelodyBeepCheckChanged(v: boolean) { this.children.forEach(e => e.onMelodyBeepCheckChanged(v)); }
   onMelodyVolumeBarChanged(v: number) { this.children.forEach(e => e.onMelodyVolumeBarChanged(v)); }
@@ -167,7 +144,6 @@ export class MelodyHierarchy
 
 export function buildMelody(
     h_melodies: SerializedTimeAndAnalyzedMelody[][],
-    controllers: RequiredByMelodyElements & { audio: AudioReflectableRegistry, window: WindowReflectableRegistry },
   ) {
   const layers = h_melodies.map((e, l) => {
     const parts = e.map(e => {
@@ -177,5 +153,5 @@ export function buildMelody(
     })
     return new MelodyLayer(parts, l)
   });
-  return new MelodyHierarchy(layers, controllers);
+  return new MelodyHierarchy(layers);
 }

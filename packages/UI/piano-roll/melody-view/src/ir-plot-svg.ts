@@ -1,21 +1,10 @@
 import { Hierarchy, Layer, Model, Part } from "./abstract-hierarchy";
 import { ColorChangeable } from "./color-changeable";
 import { Time } from "./facade";
-import { HierarchyLevelController, MelodyColorController, SetColor } from "@music-analyzer/controllers";
 import { Triad } from "@music-analyzer/irm";
 import { NowAt } from "@music-analyzer/view-parameters";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-
-import { AudioReflectableRegistry } from "@music-analyzer/view";
-import { WindowReflectableRegistry } from "@music-analyzer/view";
-import { RequiredByMelodyElements } from "./required-by-melody-elements";
-
-interface RequiredByIRPlotHierarchy {
-  readonly audio: AudioReflectableRegistry,
-  readonly window: WindowReflectableRegistry,
-  readonly melody_color: MelodyColorController
-  readonly hierarchy: HierarchyLevelController,
-}
+import { SetColor } from "@music-analyzer/controllers";
 
 export class IRPlotAxis {
   readonly svg: SVGLineElement;
@@ -302,7 +291,6 @@ export class IRPlotLayer
   }
   onAudioUpdate() { this.children.forEach(e => e.onAudioUpdate()) }
   onWindowResized() { this.children.forEach(e => e.onWindowResized()) }
-  readonly setColor: SetColor = f => this.children.forEach(e => e.setColor(f))
 }
 
 export class IRPlotHierarchy
@@ -313,16 +301,11 @@ export class IRPlotHierarchy
   get show() { return this.view.circles.show }
   constructor(
     children: IRPlotLayer[],
-    controllers: RequiredByIRPlotHierarchy,
   ) {
     super("IR-plot-hierarchy", children)
     this.#visible_layer = children.length;
     this.model = new IRPlotHierarchyModel(this.children);
     this.view = new IRPlotHierarchyView(this.model.width, this.model.height)
-    controllers.hierarchy.addListeners(this.onChangedLayer.bind(this));
-    controllers.audio.addListeners(this.onAudioUpdate.bind(this));
-    controllers.window.addListeners(this.onWindowResized.bind(this));
-    controllers.melody_color.addListeners(this.setColor.bind(this));
   }
   updateLayer() {
     const visible_layer = this.children
@@ -334,7 +317,6 @@ export class IRPlotHierarchy
     this.#visible_layer = value;
     this.updateLayer();
   }
-  readonly setColor: SetColor = f => this.children.forEach(e => e.setColor(f))
 }
 
 export class IRPlotSVG {
@@ -354,7 +336,6 @@ export class IRPlotSVG {
 
 export function buildIRPlot(
     h_melodies: SerializedTimeAndAnalyzedMelody[][],
-    controllers: RequiredByMelodyElements,
   ) {
   const N = h_melodies.length;
 
@@ -364,6 +345,6 @@ export function buildIRPlot(
     const part = new IRPlot(model, view);
     return new IRPlotLayer([part], l, N)
   })
-  const hierarchy = [new IRPlotHierarchy(layers, controllers)]
+  const hierarchy = [new IRPlotHierarchy(layers)]
   return new IRPlotSVG(hierarchy);
 }

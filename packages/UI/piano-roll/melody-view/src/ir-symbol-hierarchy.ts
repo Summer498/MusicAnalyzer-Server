@@ -1,20 +1,9 @@
 import { Hierarchy, Layer, Model, Part } from "./abstract-hierarchy";
 import { PianoRollConverter, size } from "@music-analyzer/view-parameters";
 import { ColorChangeable } from "./color-changeable";
-import { HierarchyLevelController, MelodyColorController, SetColor, TimeRangeController } from "@music-analyzer/controllers";
 import { Triad } from "@music-analyzer/irm";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-
-import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
-import { RequiredByMelodyElements } from "./required-by-melody-elements";
-
-interface RequiredByIRSymbolHierarchy {
-    readonly audio: AudioReflectableRegistry,
-    readonly melody_color: MelodyColorController
-    readonly window: WindowReflectableRegistry
-    readonly time_range: TimeRangeController
-    readonly hierarchy: HierarchyLevelController,
-  }
+import { SetColor } from "@music-analyzer/controllers";
 
 export class IRSymbolModel
   extends Model {
@@ -84,7 +73,6 @@ export class IRSymbolLayer
   ) {
     super(layer, children);
   }
-  readonly setColor: SetColor = f => this.children.forEach(e => e.setColor(f))
   onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()); }
   onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
 }
@@ -93,22 +81,14 @@ export class IRSymbolHierarchy
   extends Hierarchy<IRSymbolLayer> {
   constructor(
     children: IRSymbolLayer[],
-    controllers: RequiredByIRSymbolHierarchy
   ) {
     super("implication-realization archetype", children);
-    controllers.hierarchy.addListeners(this.onChangedLayer.bind(this));
-    controllers.audio.addListeners(this.onAudioUpdate.bind(this));
-    controllers.window.addListeners(this.onWindowResized.bind(this));
-    controllers.time_range.addListeners(this.onTimeRangeChanged.bind(this));
-    controllers.melody_color.addListeners(this.setColor.bind(this))
   }
-  readonly setColor: SetColor = f => this.children.forEach(e => e.setColor(f))
   onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()); }
 }
 
 export function buildIRSymbol(
     h_melodies: SerializedTimeAndAnalyzedMelody[][],
-    controllers: RequiredByMelodyElements,
   ) {
   const children = h_melodies.map((e, l) => {
     const parts = e.map(e => {
@@ -118,5 +98,5 @@ export function buildIRSymbol(
     });
     return new IRSymbolLayer(parts, l)
   });
-  return new IRSymbolHierarchy(children, controllers);
+  return new IRSymbolHierarchy(children);
 }

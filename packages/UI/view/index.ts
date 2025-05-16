@@ -1,5 +1,4 @@
 import { Time } from "@music-analyzer/time-and";
-import { search_items_overlaps_range } from "@music-analyzer/time-and";
 import { CurrentTimeX } from "@music-analyzer/view-parameters";
 import { NoteSize } from "@music-analyzer/view-parameters";
 import { NowAt } from "@music-analyzer/view-parameters";
@@ -102,24 +101,6 @@ export abstract class ReflectableTimeAndMVCControllerCollection<VM extends I_Tim
     this.children_model = this.children.map(e => e.model);
     this.#show = children;
   }
-  private updateShow(begin: number, end: number) {
-    /*
-    const remain = search_items_overlaps_range(this.show.map(e=>e.model), begin, end);
-    this.show.splice(remain.end_index, this.show.length - remain.end_index).forEach(e=>e.view.svg.parentNode?.removeChild(e.view.svg));  // 右側にはみ出したものを消す
-    this.show.splice(0, remain.begin_index).forEach(e=>e.view.svg.parentNode?.removeChild(e.view.svg));  // 左側にはみ出したものを消す
-    */
-
-    this.#show = []; //.splice(0, this.show.length);  // 全部消す
-    this.svg.textContent = "";  // 全部消す
-
-    const append = search_items_overlaps_range(this.children_model, new Time(begin - 5, end + 5));  // melodic gravity の矢印を隠すために ±5 のマージンを取る
-    const fragment = document.createDocumentFragment();
-    this.children.slice(append.begin_index, append.end_index).forEach(e => {
-      this.show.push(e);
-      fragment.appendChild(e.svg);
-    });  // 必要分全部追加する
-    this.svg.appendChild(fragment);
-  }
   onAudioUpdate() {
     this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`);
   }
@@ -175,7 +156,7 @@ export abstract class CollectionHierarchy<L extends I_CollectionLayer>
     super(id, children);
     this._show = [];
   }
-  protected setShow(visible_layers: L[]) {
+  setShow(visible_layers: L[]) {
     this._show = visible_layers;
     this._show.forEach(e => e.onAudioUpdate());
     this.svg.replaceChildren(...this._show.map(e => e.svg));
