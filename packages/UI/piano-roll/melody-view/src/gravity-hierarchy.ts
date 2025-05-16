@@ -3,7 +3,7 @@ import { black_key_height, PianoRollConverter } from "@music-analyzer/view-param
 import { NoteSize } from "@music-analyzer/view-parameters";
 import { Gravity as SerializedGravity } from "@music-analyzer/melody-analyze";
 import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
-import { Hierarchy, Layer, Model, Part, View } from "./abstract/abstract-hierarchy";
+import { Hierarchy, Layer, Model, Part, View } from "./abstract-hierarchy";
 import { SerializedTimeAndAnalyzedMelody } from "./serialized-time-and-analyzed-melody";
 import { RequiredByMelodyElements } from "./required-by-melody-elements";
 

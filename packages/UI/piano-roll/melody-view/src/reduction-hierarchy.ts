@@ -1,4 +1,4 @@
-import { Hierarchy, Layer, Model, Part, View } from "./abstract/abstract-hierarchy";
+import { Hierarchy, Layer, Model, Part, View } from "./abstract-hierarchy";
 import { ColorChangeable } from "./color-changeable";
 import { HierarchyLevelController, MelodyColorController, SetColor } from "@music-analyzer/controllers";
 import { Triad } from "@music-analyzer/irm";

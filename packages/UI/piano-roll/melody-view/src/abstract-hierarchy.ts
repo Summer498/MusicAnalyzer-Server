@@ -1,10 +1,14 @@
 import { CollectionHierarchy } from "@music-analyzer/view";
-import { I_Layer } from "./i-layer";
 import { CollectionLayer, I_TimeAndVM } from "@music-analyzer/view";
 import { I_MVVM_View, MVVM_ViewModel_Impl } from "@music-analyzer/view"
 import { MVVM_View_Impl } from "@music-analyzer/view";
 import { Time } from "@music-analyzer/time-and";
+import { I_CollectionLayer } from "@music-analyzer/view";
 
+export interface I_Layer
+  extends I_CollectionLayer {
+  onWindowResized(): void
+}
 export abstract class Model {
   constructor(
     readonly time: Time,

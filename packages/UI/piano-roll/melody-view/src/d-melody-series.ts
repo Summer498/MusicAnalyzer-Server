@@ -4,7 +4,7 @@ import { hsv2rgb } from "@music-analyzer/color";
 import { rgbToString } from "@music-analyzer/color";
 import { SerializedMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { Model, Part, View } from "./abstract/abstract-hierarchy";
+import { Model, Part, View } from "./abstract-hierarchy";
 import { black_key_height, PianoRollConverter } from "@music-analyzer/view-parameters";
 import { DMelodyController, TimeRangeController } from "@music-analyzer/controllers";
 import { RequiredByMelodyElements } from "./required-by-melody-elements";

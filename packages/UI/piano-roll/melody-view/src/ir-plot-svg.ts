@@ -1,4 +1,4 @@
-import { Hierarchy, Layer, Model, Part } from "./abstract/abstract-hierarchy";
+import { Hierarchy, Layer, Model, Part } from "./abstract-hierarchy";
 import { ColorChangeable } from "./color-changeable";
 import { Time } from "./facade";
 import { HierarchyLevelController, MelodyColorController, SetColor } from "@music-analyzer/controllers";

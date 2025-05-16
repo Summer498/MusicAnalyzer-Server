@@ -1,4 +1,4 @@
-import { Hierarchy, Layer, Model, Part } from "./abstract/abstract-hierarchy";
+import { Hierarchy, Layer, Model, Part } from "./abstract-hierarchy";
 import { PianoRollConverter, size } from "@music-analyzer/view-parameters";
 import { ColorChangeable } from "./color-changeable";
 import { HierarchyLevelController, MelodyColorController, SetColor, TimeRangeController } from "@music-analyzer/controllers";

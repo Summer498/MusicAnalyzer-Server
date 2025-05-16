@@ -1,5 +1,5 @@
 import { HierarchyLevelController, MelodyColorController, SetColor, TimeRangeController } from "@music-analyzer/controllers";
-import { Hierarchy, Layer, Model, Part } from "./abstract/abstract-hierarchy";
+import { Hierarchy, Layer, Model, Part } from "./abstract-hierarchy";
 import { deleteMelody } from "./melody-editor/delete";
 import { ColorChangeable } from "./color-changeable";
 import { Time } from "./facade";
