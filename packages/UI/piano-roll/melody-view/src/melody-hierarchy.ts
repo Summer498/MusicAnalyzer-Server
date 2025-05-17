@@ -59,7 +59,6 @@ export class MelodyModel {
   }
 }
 
-
 export class MelodyView {
   constructor(
     readonly svg: SVGRectElement
@@ -99,7 +98,6 @@ export class Melody {
   onMelodyVolumeBarChanged(e: number) { this.#beeper.onMelodyVolumeBarChanged(e); }
 }
 
-
 class MelodyLayer
   extends CollectionLayer<Melody> {
   constructor(
@@ -130,18 +128,21 @@ export class MelodyHierarchy
   onMelodyVolumeBarChanged(v: number) { this.children.forEach(e => e.onMelodyVolumeBarChanged(v)); }
 }
 
+function getMelodySVG(){
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  svg.id = "melody-note";
+  svg.style.stroke = "rgb(64, 64, 64)";
+  svg.onclick = deleteMelody;
+  return svg;
+}
+
 export function buildMelody(
   h_melodies: SerializedTimeAndAnalyzedMelody[][],
 ) {
   const layers = h_melodies.map((e, l) => {
     const parts = e.map(e => {
       const model = new MelodyModel(e);
-
-      const svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-      svg.id = "melody-note";
-      svg.style.stroke = "rgb(64, 64, 64)";
-      svg.onclick = deleteMelody;
-
+      const svg = getMelodySVG();
       const view = new MelodyView(svg);
       return new Melody(model, view)
     })

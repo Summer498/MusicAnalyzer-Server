@@ -237,7 +237,7 @@ class IRPlotLayerView {
 
 class IRPlotLayer
   extends CollectionLayer<IRPlot> {
-    constructor(
+  constructor(
     readonly view: IRPlotLayerView,
     children: IRPlot[],
     layer: number,
@@ -276,78 +276,113 @@ export class IRPlotSVG {
   constructor(
     readonly svg: SVGSVGElement,
     readonly children: IRPlotHierarchy[],
-  ) {  }
+  ) { }
 }
 
-export function buildIRPlot(
-  h_melodies: SerializedTimeAndAnalyzedMelody[][],
+function getCircle() {
+  const circle_svg = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  circle_svg.style.stroke = "rgb(16, 16, 16)";
+  circle_svg.style.strokeWidth = String(6);
+  return circle_svg;
+}
+
+function getLayer(
+  layer: number,
+  child: { view: { svg: SVGElement } }
 ) {
-  const N = h_melodies.length;
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  svg.id = `layer-${layer}`;
+  svg.appendChild(child.view.svg);
+  return svg;
+}
 
-  const layers = h_melodies.map((e, l) => {
-    const model = new IRPlotModel(e);
+function updateRadius(
+  l: number,
+  N: number,
+  part: IRPlot,
+) {
+  // const base = Math.log(Math.min(part.view.view_model.w, part.view.view_model.h) / 10) / Math.log(N);
+  // part.view.updateRadius(Math.pow(base, N - l / 2));
+  const base = Math.min(part.view.view_model.w, part.view.view_model.h) / 10 / N;
+  part.view.updateRadius(base * (N - l / 2));
+}
 
-    const circle_svg = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    circle_svg.style.stroke = "rgb(16, 16, 16)";
-    circle_svg.style.strokeWidth = String(6);
-
-    const view_model = new IRPlotViewModel()
-    const view = new IRPlotView(circle_svg, view_model, model);
-    const part = new IRPlot(model, view);
-
-    const max = N
-    const layer = l
-    const child = part;
-    const base = Math.log(Math.min(child.view.view_model.w, child.view.view_model.h) / 10) / Math.log(max);
-    child.view.updateRadius(Math.pow(base, max - layer / 2));
-    // const base = Math.min(child.view.w, child.view.h) / 10 / max;
-    // child.view.updateRadius(base * (max - layer/2));
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    svg.id = `layer-${layer}`;
-    svg.appendChild(child.view.svg);
-
-    const layer_model = new IRPlotLayerModel(part.view.view_model.w, part.view.view_model.h);
-
-    const layer_view = new IRPlotLayerView(svg, layer, layer_model)
-    layer_view.updateWidth(layer_model.w);
-    layer_view.updateHeight(layer_model.h);
-
-    return new IRPlotLayer(layer_view, [part], layer);
-  })
-
-  const model = new IRPlotHierarchyModel(layers);
-
-  const w = model.width
-  const h = model.height
+function getXAxisSVG(
+  w: number,
+  h: number
+) {
   const x_axis_svg = document.createElementNS("http://www.w3.org/2000/svg", "line");
   x_axis_svg.setAttribute("x1", String(0));
   x_axis_svg.setAttribute("x2", String(w));
   x_axis_svg.setAttribute("y1", String(h / 2));
   x_axis_svg.setAttribute("y2", String(h / 2));
   x_axis_svg.style.stroke = "rgb(0, 0, 0)";
+  return x_axis_svg;
+}
 
+function getYAxisSVG(
+  w: number,
+  h: number
+) {
   const y_axis_svg = document.createElementNS("http://www.w3.org/2000/svg", "line");
   y_axis_svg.setAttribute("x1", String(w / 2));
   y_axis_svg.setAttribute("x2", String(w / 2));
   y_axis_svg.setAttribute("y1", String(0));
   y_axis_svg.setAttribute("y2", String(h));
   y_axis_svg.style.stroke = "rgb(0, 0, 0)";
+  return y_axis_svg;
+}
 
-  const x_axis = new IRPlotAxis(x_axis_svg);
-  const y_axis = new IRPlotAxis(y_axis_svg);
-
-  const circle_svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-
-  const circles = new IRPlotCircles(circle_svg);
+function getAxisSVG(
+  w: number,
+  h: number,
+  x_axis: { svg: SVGElement },
+  y_axis: { svg: SVGElement },
+  circles: { svg: SVGElement },
+) {
   const axis_svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
   axis_svg.id = "implication-realization plot";
   axis_svg.replaceChildren(x_axis.svg, y_axis.svg, circles.svg);
   axis_svg.setAttribute("width", String(w));
   axis_svg.setAttribute("height", String(h));
+  return axis_svg;
+}
 
+export function buildIRPlot(
+  h_melodies: SerializedTimeAndAnalyzedMelody[][],
+) {
+  const layers = h_melodies.map((e, l) => {
+    const model = new IRPlotModel(e);
+    const circle_svg = getCircle();
+    const view_model = new IRPlotViewModel()
+    const view = new IRPlotView(circle_svg, view_model, model);
+    const part = new IRPlot(model, view);
+    const svg = getLayer(l, part)
+    const layer_model = new IRPlotLayerModel(part.view.view_model.w, part.view.view_model.h);
+    updateRadius(l, h_melodies.length, part);
+
+    const layer_view = new IRPlotLayerView(svg, l, layer_model)
+    layer_view.updateWidth(layer_model.w);
+    layer_view.updateHeight(layer_model.h);
+
+    return new IRPlotLayer(layer_view, [part], l);
+  })
+
+  const h_model = new IRPlotHierarchyModel(layers);
+  const w = h_model.width
+  const h = h_model.height
+  const x_axis_svg = getXAxisSVG(w, h);
+  const y_axis_svg = getYAxisSVG(w, h);
+
+  const x_axis = new IRPlotAxis(x_axis_svg);
+  const y_axis = new IRPlotAxis(y_axis_svg);
+
+  const circle_svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  const circles = new IRPlotCircles(circle_svg);
+  const axis_svg = getAxisSVG(w, h, x_axis, y_axis, circles);
   const view = new IRPlotHierarchyView(axis_svg, x_axis, y_axis, circles);
 
-  const hierarchy = [new IRPlotHierarchy(layers, view, model)]
+  const hierarchy = [new IRPlotHierarchy(layers, view, h_model)]
 
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.id = "IR-plot";
@@ -355,6 +390,5 @@ export function buildIRPlot(
   hierarchy.forEach(e => svg.setAttribute("width", String(e.model.width)));
   hierarchy.forEach(e => svg.setAttribute("height", String(e.model.height)));
 
-
-  return new IRPlotSVG(svg,hierarchy);
+  return new IRPlotSVG(svg, hierarchy);
 }

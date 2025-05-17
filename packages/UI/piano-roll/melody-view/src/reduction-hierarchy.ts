@@ -68,18 +68,10 @@ class ReductionViewModel {
 }
 
 class IRMSymbol {
-  readonly svg: SVGTextElement
   constructor(
+    readonly svg: SVGTextElement,
     protected readonly model: ReductionViewModel,
-  ) {
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "text")
-    svg.textContent = this.model.archetype.symbol;
-    svg.id = "I-R Symbol";
-    svg.style.fontFamily = "Times New Roman";
-    svg.style.fontSize = `${bracket_height}em`;
-    svg.style.textAnchor = "middle";
-    this.svg = svg;
-  }
+  ) { }
   update(cx: number, y: number, w: number, h: number) {
     this.svg.setAttribute("x", String(cx));
     this.svg.setAttribute("y", String(y));
@@ -92,16 +84,12 @@ class IRMSymbol {
 }
 
 class Bracket {
-  readonly svg: SVGPathElement;
   private readonly model: ReductionViewModel
-  constructor(model: ReductionViewModel) {
+  constructor(
+    readonly svg: SVGPathElement,
+    model: ReductionViewModel,
+  ) {
     this.model = model
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    svg.id = "group";
-    svg.style.stroke = "rgb(0, 0, 64)";
-    svg.style.strokeWidth = String(3);
-    svg.style.fill = "rgb(242, 242, 242)";
-    this.svg = svg
   }
   updateStrong() {
     this.svg.style.strokeWidth = this.model.strong ? "3" : "1";
@@ -132,16 +120,10 @@ class Bracket {
 }
 
 class Dot {
-  readonly svg: SVGCircleElement;
   constructor(
+    readonly svg: SVGCircleElement,
     readonly model: ReductionViewModel,
-  ) {
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    svg.id = "head";
-    svg.style.stroke = "rgb(192, 0, 0)";
-    svg.style.fill = "rgb(192, 0, 0)";
-    this.svg = svg;
-  }
+  ) { }
   updateStrong() {
     this.svg.style.r = String(this.model.strong ? 5 : 3);
   }
@@ -217,6 +199,48 @@ export class ReductionHierarchy
   }
 }
 
+function getReductionSVG(
+  bracket: Bracket,
+  dot: Dot,
+  ir_symbol: IRMSymbol,
+) {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  svg.id = "time-span-node";
+  svg.appendChild(bracket.svg);
+  if (false) { svg.appendChild(dot.svg); }
+  svg.appendChild(ir_symbol.svg);
+  return svg;
+}
+
+function getIRMSymbolSVG(
+  model: ReductionModel
+) {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "text")
+  svg.textContent = model.archetype.symbol;
+  svg.id = "I-R Symbol";
+  svg.style.fontFamily = "Times New Roman";
+  svg.style.fontSize = `${bracket_height}em`;
+  svg.style.textAnchor = "middle";
+  return svg;
+}
+
+function getBracketSVG() {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  svg.id = "group";
+  svg.style.stroke = "rgb(0, 0, 64)";
+  svg.style.strokeWidth = String(3);
+  svg.style.fill = "rgb(242, 242, 242)";
+  return svg;
+}
+
+function getDotSVG() {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  svg.id = "head";
+  svg.style.stroke = "rgb(192, 0, 0)";
+  svg.style.fill = "rgb(192, 0, 0)";
+  return svg;
+}
+
 export function buildReduction(
   h_melodies: SerializedTimeAndAnalyzedMelody[][],
 ) {
@@ -224,17 +248,14 @@ export function buildReduction(
     const parts = e.map(e => {
       const model = new ReductionModel(e, l);
 
-      const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
       const view_model = new ReductionViewModel(model);
-      const bracket = new Bracket(view_model);
-      const dot = new Dot(view_model);
-      const ir_symbol = new IRMSymbol(view_model);
-
-      svg.id = "time-span-node";
-      svg.appendChild(bracket.svg);
-      if (false) { svg.appendChild(dot.svg); }
-      svg.appendChild(ir_symbol.svg);
-
+      const bracket_svg = getBracketSVG();
+      const bracket = new Bracket(bracket_svg, view_model);
+      const dot_svg = getDotSVG();
+      const dot = new Dot(dot_svg, view_model);
+      const svg_irm_symbol = getIRMSymbolSVG(model);
+      const ir_symbol = new IRMSymbol(svg_irm_symbol, view_model);
+      const svg = getReductionSVG(bracket, dot, ir_symbol);
       const view = new ReductionView(svg, bracket, dot, ir_symbol, view_model);
       return new Reduction(model, view)
     });

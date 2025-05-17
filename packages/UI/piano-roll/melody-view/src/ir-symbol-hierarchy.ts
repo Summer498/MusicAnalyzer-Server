@@ -75,21 +75,24 @@ export class IRSymbolHierarchy
   }
 }
 
+function getIRSymbolSVG(text:string){
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  svg.textContent = text;
+  svg.id = "I-R Symbol";
+  svg.style.fontFamily = "Times New Roman";
+  svg.style.fontSize = `${ir_analysis_em}em`;
+  svg.style.textAnchor = "middle";
+  svg.style.visibility = "hidden";
+  return svg;
+}
+
 export function buildIRSymbol(
   h_melodies: SerializedTimeAndAnalyzedMelody[][],
 ) {
   const children = h_melodies.map((e, l) => {
     const parts = e.map(e => {
       const model = new IRSymbolModel(e, l);
-
-      const svg = document.createElementNS("http://www.w3.org/2000/svg", "text");
-      svg.textContent = model.archetype.symbol;
-      svg.id = "I-R Symbol";
-      svg.style.fontFamily = "Times New Roman";
-      svg.style.fontSize = `${ir_analysis_em}em`;
-      svg.style.textAnchor = "middle";
-      svg.style.visibility = "hidden";
-  
+      const svg = getIRSymbolSVG(model.archetype.symbol);
       const view = new IRSymbolView(svg);
       return new IRSymbol(model, view)
     });

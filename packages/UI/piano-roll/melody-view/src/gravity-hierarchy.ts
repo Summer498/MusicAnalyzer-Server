@@ -125,6 +125,56 @@ export class GravityHierarchy
   onUpdateGravityVisibility(visible: boolean) { this.svg.style.visibility = visible ? "visible" : "hidden"; }
 }
 
+function getTriangle() {
+  const triangle_svg = document.createElementNS("http://www.w3.org/2000/svg", "polygon")
+  triangle_svg.classList.add("triangle");
+  triangle_svg.id = "gravity-arrow";
+  triangle_svg.style.stroke = "rgb(0, 0, 0)";
+  triangle_svg.style.fill = "rgb(0, 0, 0)";
+  triangle_svg.style.strokeWidth = String(5);
+  triangle_svg.setAttribute("points", getInitPos().join(","));
+  return new GravityViewTriangle(triangle_svg);
+}
+
+function getLine() {
+  const line_svg = document.createElementNS("http://www.w3.org/2000/svg", "line")
+  line_svg.id = "gravity-arrow";
+  line_svg.classList.add("line");
+  line_svg.style.stroke = "rgb(0, 0, 0)";
+  line_svg.style.strokeWidth = String(5);
+  return new GravityViewLine(line_svg);
+}
+
+function getGravitySVG(
+  triangle: { svg: SVGElement },
+  line: { svg: SVGElement },
+) {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  svg.id = "gravity";
+  svg.appendChild(triangle.svg);
+  svg.appendChild(line.svg);
+  return svg
+}
+
+function getLinePos(
+  e: { time: { begin: number, duration: number }, note: number },
+  n: { time: { begin: number } },
+  g: { destination: number },
+) {
+  const convert = (arg: number) => [
+    ((e: number) => PianoRollConverter.midi2BlackCoordinate(e)),
+    ((e: number) => 0.5 + e),
+  ].reduce((c, f) => f(c), arg)
+
+  const line_pos = new LinePos(
+    e.time.begin + e.time.duration / 2,
+    n.time.begin,
+    isNaN(e.note) ? -99 : convert(e.note),
+    isNaN(e.note) ? -99 : convert(g.destination),
+  )
+  return line_pos;
+}
+
 export function buildGravity(
   mode: "chord_gravity" | "scale_gravity",
   h_melodies: SerializedTimeAndAnalyzedMelody[][],
@@ -137,40 +187,12 @@ export function buildGravity(
       if (!g) { return }
 
       const model = new GravityModel(e, l, n, g);
-
-      const triangle_svg = document.createElementNS("http://www.w3.org/2000/svg", "polygon")
-      triangle_svg.classList.add("triangle");
-      triangle_svg.id = "gravity-arrow";
-      triangle_svg.style.stroke = "rgb(0, 0, 0)";
-      triangle_svg.style.fill = "rgb(0, 0, 0)";
-      triangle_svg.style.strokeWidth = String(5);
-      triangle_svg.setAttribute("points", getInitPos().join(","));
-      const triangle = new GravityViewTriangle(triangle_svg);
-
-      const line_svg = document.createElementNS("http://www.w3.org/2000/svg", "line")
-      line_svg.id = "gravity-arrow";
-      line_svg.classList.add("line");
-      line_svg.style.stroke = "rgb(0, 0, 0)";
-      line_svg.style.strokeWidth = String(5);
-      const line = new GravityViewLine(line_svg);
-
-      const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-      svg.id = "gravity";
-      svg.appendChild(triangle.svg);
-      svg.appendChild(line.svg);
-
+      const triangle = getTriangle()
+      const line = getLine();
+      const svg = getGravitySVG(triangle, line);
       const view = new GravityView(svg, triangle, line);
-      const convert = (arg: number) => [
-        ((e: number) => PianoRollConverter.midi2BlackCoordinate(e)),
-        ((e: number) => 0.5 + e),
-      ].reduce((c, f) => f(c), arg)
 
-      const line_pos = new LinePos(
-        e.time.begin + e.time.duration / 2,
-        n.time.begin,
-        isNaN(e.note) ? -99 : convert(e.note),
-        isNaN(e.note) ? -99 : convert(g.destination),
-      )
+      const line_pos = getLinePos(e, n, g);
       return new Gravity(model, view, line_pos)
     }).filter(e => e !== undefined)
     return new GravityLayer(l, gravity);

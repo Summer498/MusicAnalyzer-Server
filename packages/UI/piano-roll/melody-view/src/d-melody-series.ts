@@ -71,19 +71,21 @@ export class DMelodySeries
   }
 }
 
+function getMelodyViewSVG() {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "rect")
+  svg.id = "melody-note";
+  svg.style.fill = rgbToString(hsv2rgb(0, 0, 0.75));
+  svg.style.stroke = "rgb(64, 64, 64)";
+  return svg;
+}
+
 export function buildDMelody(
   d_melody: SerializedTimeAndAnalyzedMelody[],
 ) {
   const parts = d_melody.map(e => {
+    const svg = getMelodyViewSVG();
     const model = new DMelodyModel(e);
-
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "rect")
-    svg.id = "melody-note";
-    svg.style.fill = rgbToString(hsv2rgb(0, 0, 0.75));
-    svg.style.stroke = "rgb(64, 64, 64)";
-
     const view = new DMelodyView(svg);
-
     return new DMelody(model, view)
   })
   return new DMelodySeries(parts);
