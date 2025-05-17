@@ -12,7 +12,7 @@ import { Controller } from "./controller";
 export type GetColor = (e: Triad) => string;
 export type SetColor = (getColor: GetColor) => void;
 
-export abstract class ColorSelector<T> extends Controller<T> {
+abstract class ColorSelector<T> extends Controller<T> {
   constructor(
     readonly id: string,
     text: string

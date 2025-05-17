@@ -1,4 +1,3 @@
-export { ColorSelector } from "./src/color-selector";
 export { GetColor } from "./src/color-selector";
 export { SetColor } from "./src/color-selector";
 export { IRM_ColorSelector } from "./src/color-selector";
