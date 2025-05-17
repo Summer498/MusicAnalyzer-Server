@@ -155,26 +155,13 @@ class Dot {
 }
 
 class ReductionView {
-  readonly svg: SVGGElement;
-  readonly bracket: Bracket;
-  readonly dot: Dot;
-  readonly ir_symbol: IRMSymbol;
-  protected readonly model: ReductionViewModel;
   constructor(
-    model: ReductionModel,
-  ) {
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    this.model = new ReductionViewModel(model);
-    this.bracket = new Bracket(this.model);
-    this.dot = new Dot(this.model);
-    this.ir_symbol = new IRMSymbol(this.model);
-
-    svg.id = "time-span-node";
-    svg.appendChild(this.bracket.svg);
-    if (false) { svg.appendChild(this.dot.svg); }
-    svg.appendChild(this.ir_symbol.svg);
-    this.svg = svg;
-  }
+    readonly svg: SVGGElement,
+    readonly bracket: Bracket,
+    readonly dot: Dot,
+    readonly ir_symbol: IRMSymbol,
+    readonly model: ReductionViewModel,
+  ) { }
   get strong() { return this.model.strong; }
   set strong(value: boolean) {
     this.model.strong = value;
@@ -236,7 +223,19 @@ export function buildReduction(
   const layer = h_melodies.map((e, l) => {
     const parts = e.map(e => {
       const model = new ReductionModel(e, l);
-      const view = new ReductionView(model);
+
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+      const view_model = new ReductionViewModel(model);
+      const bracket = new Bracket(view_model);
+      const dot = new Dot(view_model);
+      const ir_symbol = new IRMSymbol(view_model);
+
+      svg.id = "time-span-node";
+      svg.appendChild(bracket.svg);
+      if (false) { svg.appendChild(dot.svg); }
+      svg.appendChild(ir_symbol.svg);
+
+      const view = new ReductionView(svg, bracket, dot, ir_symbol, view_model);
       return new Reduction(model, view)
     });
     return new ReductionLayer(parts, l)

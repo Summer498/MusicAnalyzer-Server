@@ -61,15 +61,9 @@ export class MelodyModel {
 
 
 export class MelodyView {
-  readonly svg: SVGRectElement
   constructor(
-  ) {
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-    svg.id = "melody-note";
-    svg.style.stroke = "rgb(64, 64, 64)";
-    svg.onclick = deleteMelody;
-    this.svg = svg;
-  }
+    readonly svg: SVGRectElement
+  ) {  }
   updateX(x: number) { this.svg.setAttribute("x", String(x)); }
   updateY(y: number) { this.svg.setAttribute("y", String(y)); }
   updateWidth(w: number) { this.svg.setAttribute("width", String(w)); }
@@ -81,8 +75,8 @@ export class Melody {
   #beeper: MelodyBeep
   get svg() { return this.view.svg; }
   constructor(
-readonly    model: MelodyModel,
-readonly    view: MelodyView,
+    readonly model: MelodyModel,
+    readonly view: MelodyView,
   ) {
     this.#beeper = new MelodyBeep(model);
     this.updateX();
@@ -106,7 +100,7 @@ readonly    view: MelodyView,
 }
 
 
-export class MelodyLayer
+class MelodyLayer
   extends CollectionLayer<Melody> {
   constructor(
     children: Melody[],
@@ -137,12 +131,18 @@ export class MelodyHierarchy
 }
 
 export function buildMelody(
-    h_melodies: SerializedTimeAndAnalyzedMelody[][],
-  ) {
+  h_melodies: SerializedTimeAndAnalyzedMelody[][],
+) {
   const layers = h_melodies.map((e, l) => {
     const parts = e.map(e => {
       const model = new MelodyModel(e);
-      const view = new MelodyView();
+
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+      svg.id = "melody-note";
+      svg.style.stroke = "rgb(64, 64, 64)";
+      svg.onclick = deleteMelody;
+
+      const view = new MelodyView(svg);
       return new Melody(model, view)
     })
     return new MelodyLayer(parts, l)

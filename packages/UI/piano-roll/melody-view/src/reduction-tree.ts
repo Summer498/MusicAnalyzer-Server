@@ -19,17 +19,9 @@ interface RequiredByTreeHierarchy {
 }
 
 export class TreeHierarchy {
-  readonly svg: SVGGElement;
   constructor(
-    children: SVGLineElement[],
-    controllers: RequiredByTreeHierarchy,
+    readonly svg: SVGGElement,
   ) {
-    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    this.svg.id = "reduction-tree";
-    controllers.hierarchy.addListeners(this.onChangedLayer.bind(this));
-    controllers.audio.addListeners(this.onAudioUpdate.bind(this));
-    controllers.window.addListeners(this.onWindowResized.bind(this));
-    controllers.time_range.addListeners(this.onTimeRangeChanged.bind(this))
   }
   onChangedLayer(value: number){
 
@@ -92,8 +84,19 @@ export function buildTree(
       return l
     })
   })
+  
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  svg.id = "reduction-tree";
 
-  return new TreeHierarchy(children.flat(), controllers);
+  const hierarchy = new TreeHierarchy(svg)
+
+  controllers.hierarchy.addListeners(hierarchy.onChangedLayer.bind(hierarchy));
+  controllers.audio.addListeners(hierarchy.onAudioUpdate.bind(hierarchy));
+  controllers.window.addListeners(hierarchy.onWindowResized.bind(hierarchy));
+  controllers.time_range.addListeners(hierarchy.onTimeRangeChanged.bind(hierarchy))
+
+  return hierarchy;
+
 }
 
 

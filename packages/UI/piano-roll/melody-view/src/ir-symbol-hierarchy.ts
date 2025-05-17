@@ -5,7 +5,7 @@ import { SetColor } from "@music-analyzer/controllers";
 import { Time } from "@music-analyzer/time-and";
 import { CollectionHierarchy, CollectionLayer } from "@music-analyzer/view";
 
-export class IRSymbolModel {
+class IRSymbolModel {
   readonly time: Time;
   readonly head: Time;
   readonly note: number;
@@ -21,20 +21,10 @@ export class IRSymbolModel {
 }
 
 const ir_analysis_em = size;
-export class IRSymbolView {
-  readonly svg: SVGTextElement;
+class IRSymbolView {
   constructor(
-    protected readonly model: IRSymbolModel,
-  ) {
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    svg.textContent = this.model.archetype.symbol;
-    svg.id = "I-R Symbol";
-    svg.style.fontFamily = "Times New Roman";
-    svg.style.fontSize = `${ir_analysis_em}em`;
-    svg.style.textAnchor = "middle";
-    svg.style.visibility = "hidden";
-    this.svg = svg;
-  }
+    readonly svg: SVGTextElement,
+  ) { }
   updateX(x: number) { this.svg.setAttribute("x", String(x)); }
   updateY(y: number) { this.svg.setAttribute("y", String(y)); }
   readonly setColor = (color: string) => this.svg.style.fill = color;
@@ -65,7 +55,7 @@ export class IRSymbol {
   readonly setColor: SetColor = f => this.view.setColor(f(this.model.archetype))
 }
 
-export class IRSymbolLayer
+class IRSymbolLayer
   extends CollectionLayer<IRSymbol> {
   constructor(
     children: IRSymbol[],
@@ -91,7 +81,16 @@ export function buildIRSymbol(
   const children = h_melodies.map((e, l) => {
     const parts = e.map(e => {
       const model = new IRSymbolModel(e, l);
-      const view = new IRSymbolView(model);
+
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      svg.textContent = model.archetype.symbol;
+      svg.id = "I-R Symbol";
+      svg.style.fontFamily = "Times New Roman";
+      svg.style.fontSize = `${ir_analysis_em}em`;
+      svg.style.textAnchor = "middle";
+      svg.style.visibility = "hidden";
+  
+      const view = new IRSymbolView(svg);
       return new IRSymbol(model, view)
     });
     return new IRSymbolLayer(parts, l)

@@ -8,14 +8,9 @@ import { black_key_height, PianoRollConverter } from "@music-analyzer/view-param
 import { Time } from "@music-analyzer/time-and";
 
 class DMelodyView {
-  readonly svg: SVGRectElement
-  constructor() {
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "rect")
-    svg.id = "melody-note";
-    svg.style.fill = rgbToString(hsv2rgb(0, 0, 0.75));
-    svg.style.stroke = "rgb(64, 64, 64)";
-    this.svg = svg;
-  }
+  constructor(
+    readonly svg: SVGRectElement
+  ) { }
   set onclick(value: () => void) { this.svg.onclick = value; };
   updateX(x: number) { this.svg.setAttribute("x", String(x)); }
   updateY(y: number) { this.svg.setAttribute("y", String(y)); }
@@ -81,7 +76,13 @@ export function buildDMelody(
 ) {
   const parts = d_melody.map(e => {
     const model = new DMelodyModel(e);
-    const view = new DMelodyView();
+
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "rect")
+    svg.id = "melody-note";
+    svg.style.fill = rgbToString(hsv2rgb(0, 0, 0.75));
+    svg.style.stroke = "rgb(64, 64, 64)";
+
+    const view = new DMelodyView(svg);
 
     return new DMelody(model, view)
   })
