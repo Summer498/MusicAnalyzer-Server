@@ -3,20 +3,6 @@ import { CurrentTimeX } from "@music-analyzer/view-parameters";
 import { NoteSize } from "@music-analyzer/view-parameters";
 import { NowAt } from "@music-analyzer/view-parameters";
 
-export abstract class MVVM_Collection_Impl<
-  VM extends { readonly svg: SVGElement }
-> {
-  readonly svg: SVGGElement;
-  constructor(
-    id: string,
-    readonly children: VM[],
-  ) {
-    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    this.svg.id = id;
-    this.children.forEach(e => this.svg.appendChild(e.svg));
-  }
-}
-
 export class AudioReflectableRegistry {
   static #count = 0;
   constructor() {
@@ -48,16 +34,21 @@ class PianoRollTranslateX {
 export abstract class ReflectableTimeAndMVCControllerCollection<VM extends {
   readonly svg: SVGElement
   readonly model: { readonly time: Time };
-}>
-  extends MVVM_Collection_Impl<VM> {
+}> {
+  readonly svg: SVGGElement
+  readonly children: VM[]
   readonly children_model: { readonly time: Time }[];
   #show: VM[];
   get show() { return this.#show; };
   constructor(
     id: string,
-    readonly children: VM[],
+    children: VM[],
   ) {
-    super(id, children);
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    svg.id = id;
+    this.svg = svg
+    this.children = children
+    children.forEach(e => this.svg.appendChild(e.svg));
     this.children_model = this.children.map(e => e.model);
     this.#show = children;
   }
@@ -84,19 +75,26 @@ type Part = {
   readonly model: { readonly time: Time };
 }
 
-export abstract class CollectionHierarchy<L extends {
+type Layer = {
   readonly svg: SVGGElement
   readonly show: Part[];
   readonly children: Part[];
   readonly children_model: { readonly time: Time }[]
   readonly layer: number
   onAudioUpdate(): void
-}>
-  extends MVVM_Collection_Impl<L> {
-  protected _show: L[];
+}
+
+export abstract class CollectionHierarchy<L extends Layer> {
+    readonly svg: SVGGElement
+    readonly children: L[]
+     protected _show: L[];
   get show() { return this._show; }
-  constructor(id: string, readonly children: L[]) {
-    super(id, children);
+  constructor(id: string, children: L[]) {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    svg.id = id;
+    this.svg = svg
+    this.children = children
+    this.children.forEach(e => this.svg.appendChild(e.svg));
     this._show = [];
   }
   setShow(visible_layers: L[]) {
