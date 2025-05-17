@@ -19,14 +19,9 @@ export class BeatBarModel {
 }
 
 export class BeatBarView {
-  readonly svg: SVGLineElement;
-  constructor(model: BeatBarModel) {
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "line");
-    svg.id = "bar";
-    svg.style.stroke = "rgb(0, 0, 0)";
-    svg.style.display = "none";  //NOTE: 一旦非表示にしている
-    this.svg = svg;
-  }
+  constructor(
+    readonly svg: SVGLineElement,
+  ) { }
   updateX(x1: number, x2: number) {
     this.svg.setAttribute("x1", String(x1));
     this.svg.setAttribute("x2", String(x2));
@@ -38,18 +33,14 @@ export class BeatBarView {
 }
 
 export class BeatBar {
-  readonly model: BeatBarModel
-  readonly view: BeatBarView
   get svg() { return this.view.svg; }
   #y1: number;
   #y2: number;
   sound_reserved: boolean;
   constructor(
-    beat_info: BeatInfo,
-    i: number
+    readonly model: BeatBarModel,
+    readonly view: BeatBarView,
   ) {
-    const model = new BeatBarModel(beat_info, i);
-    const view = new BeatBarView(model);
     this.model = model;
     this.view = view;
     this.sound_reserved = false;
@@ -102,20 +93,10 @@ export interface RequiredByBeatBarsSeries {
 export class BeatBarsSeries
   extends ReflectableTimeAndMVCControllerCollection<BeatBar> {
   constructor(
-    beat_info: BeatInfo,
-    melodies: { time: Time }[],
-    controllers: RequiredByBeatBarsSeries
+    children: BeatBar[]
   ) {
-    const N = Math.ceil(beat_info.tempo * melodies[melodies.length - 1].time.end) + beat_info.phase;
-    const seed = [...Array(N)];
-    super("beat-bars", seed.map((_, i) => new BeatBar(beat_info, i)));
-    controllers.audio.addListeners(this.onAudioUpdate.bind(this));
-    controllers.window.addListeners(this.onWindowResized.bind(this));
-    controllers.time_range.addListeners(this.onTimeRangeChanged.bind(this));
+    super("beat-bars", children);
   }
-  onAudioUpdate() { this.children.forEach(e => e.onAudioUpdate()) }
-  onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()) }
-  onWindowResized() { this.children.forEach(e => e.onWindowResized()) }
 }
 
 export interface RequiredByBeatElements {
@@ -132,7 +113,33 @@ export class BeatElements {
     melodies: { time: Time }[],
     controllers: RequiredByBeatElements
   ) {
-    this.beat_bars = new BeatBarsSeries(beat_info, melodies, controllers);
+    const N = Math.ceil(beat_info.tempo * melodies[melodies.length - 1].time.end) + beat_info.phase;
+    const seed = [...Array(N)];
+
+    const beat_bar = seed.map((_, i) => {
+      const model = new BeatBarModel(beat_info, i);
+
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      svg.id = "bar";
+      svg.style.stroke = "rgb(0, 0, 0)";
+      svg.style.display = "none";  //NOTE: 一旦非表示にしている
+
+      const view = new BeatBarView(svg);
+      return new BeatBar(model, view)
+    })
+
+    const beat_bars = new BeatBarsSeries(beat_bar);
+    beat_bars.children
+      .map(e => e.onAudioUpdate.bind(e))
+      .map(f => controllers.audio.addListeners(f))
+    beat_bars.children
+      .map(e => e.onWindowResized.bind(e))
+      .map(f => controllers.window.addListeners(f))
+    beat_bars.children
+      .map(e => e.onTimeRangeChanged.bind(e))
+      .map(f => controllers.time_range.addListeners(f))
+    this.beat_bars = beat_bars
+
     this.children = [this.beat_bars];
   }
 }
