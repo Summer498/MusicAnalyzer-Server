@@ -1,4 +1,4 @@
-import { ChordPart, ChordPartModel, ChordPartSeries, ChordPartView_impl } from "./chord-parts-series";
+import { ChordPart, ChordPartModel, ChordPartSeries, ChordPartView_impl, getColor } from "./chord-parts-series";
 import { MVVM_Collection_Impl } from "@music-analyzer/view";
 import { black_key_height, OctaveCount, PianoRollConverter } from "@music-analyzer/view-parameters";
 import { Chord } from "@music-analyzer/tonal-objects";
@@ -14,10 +14,10 @@ import { TimeRangeController } from "@music-analyzer/controllers";
 import { RequiredByChordPartModel } from "./require-by-chord-part-model";
 
 interface RequiredByChordNotesSeries {
-    readonly audio: AudioReflectableRegistry
-    readonly window: WindowReflectableRegistry,
-    readonly time_range: TimeRangeController,
-  }
+  readonly audio: AudioReflectableRegistry
+  readonly window: WindowReflectableRegistry,
+  readonly time_range: TimeRangeController,
+}
 
 class ChordNoteModel
   extends ChordPartModel {
@@ -52,7 +52,7 @@ class ChordNoteView
       1
     );
     if (false) {
-      this.svg.style.fill = this.getColor(0.25, model.type === "major" ? 1 : 0.9);
+      this.svg.style.fill = getColor(this.model.tonic)(0.25, model.type === "major" ? 1 : 0.9);
     }
   }
   updateWidth(w: number) { this.svg.setAttribute("width", String(w)); }
@@ -61,6 +61,7 @@ class ChordNoteView
 
 class ChordNote
   extends ChordPart<ChordNoteModel, ChordNoteView> {
+  get svg() { return this.view.svg }
   y: number;
   constructor(
     e: RequiredByChordPartModel,
@@ -68,7 +69,8 @@ class ChordNote
     oct: number,
   ) {
     const model = new ChordNoteModel(e, note, oct);
-    super(model, new ChordNoteView(model));
+    const view = new ChordNoteView(model);
+    super(model, view);
     this.y = [this.model.note]
       .map(e => mod(e, 12))
       .map(e => e + 12)

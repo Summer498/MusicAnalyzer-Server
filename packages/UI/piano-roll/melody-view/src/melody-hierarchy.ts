@@ -1,15 +1,13 @@
-import { Hierarchy, Layer, Model, Part } from "./abstract-hierarchy";
 import { deleteMelody } from "./melody-editor/delete";
-import { ColorChangeable } from "./color-changeable";
-import { Time } from "./facade";
 import { Triad } from "@music-analyzer/irm";
 import { SerializedMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { play } from "@music-analyzer/synth";
 import { black_key_height, NowAt, PianoRollConverter } from "@music-analyzer/view-parameters";
 import { reservation_range } from "@music-analyzer/view-parameters";
-
 import { SetColor } from "@music-analyzer/controllers";
+import { Time } from "@music-analyzer/time-and";
+import { CollectionHierarchy, CollectionLayer } from "@music-analyzer/view";
 
 export class MelodyBeep {
   #beep_volume: number;
@@ -46,16 +44,15 @@ export class MelodyBeep {
   onMelodyVolumeBarChanged(beep_volume: number) { this.#beep_volume = beep_volume; }
 }
 
-export class MelodyModel
-  extends Model {
+export class MelodyModel {
+  readonly time: Time;
+  readonly head: Time;
   readonly note: number;
   readonly melody_analysis: SerializedMelodyAnalysis;
   readonly archetype: Triad;
   constructor(e: SerializedTimeAndAnalyzedMelody) {
-    super(
-      e.time,
-      e.head,
-    );
+    this.time = e.time;
+    this.head = e.head;
     this.note = e.note;
     this.melody_analysis = e.melody_analysis;
     this.archetype = e.melody_analysis.implication_realization as Triad;
@@ -63,14 +60,15 @@ export class MelodyModel
 }
 
 
-export class MelodyView
-  extends ColorChangeable<"rect"> {
+export class MelodyView {
+  readonly svg: SVGRectElement
   constructor(
   ) {
-    super("rect");
-    this.svg.id = "melody-note";
-    this.svg.style.stroke = "rgb(64, 64, 64)";
-    this.svg.onclick = deleteMelody;
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    svg.id = "melody-note";
+    svg.style.stroke = "rgb(64, 64, 64)";
+    svg.onclick = deleteMelody;
+    this.svg = svg;
   }
   updateX(x: number) { this.svg.setAttribute("x", String(x)); }
   updateY(y: number) { this.svg.setAttribute("y", String(y)); }
@@ -79,14 +77,13 @@ export class MelodyView
   readonly setColor = (color: string) => this.svg.style.fill = "#0d0";
 }
 
-export class Melody
-  extends Part<MelodyModel, MelodyView> {
+export class Melody {
   #beeper: MelodyBeep
+  get svg() { return this.view.svg; }
   constructor(
-    model: MelodyModel,
-    view: MelodyView,
+readonly    model: MelodyModel,
+readonly    view: MelodyView,
   ) {
-    super(model, view);
     this.#beeper = new MelodyBeep(model);
     this.updateX();
     this.updateY();
@@ -110,7 +107,7 @@ export class Melody
 
 
 export class MelodyLayer
-  extends Layer<Melody> {
+  extends CollectionLayer<Melody> {
   constructor(
     children: Melody[],
     layer: number,
@@ -120,12 +117,11 @@ export class MelodyLayer
   beep() { this.children.forEach(e => e.beep()); }
   onMelodyBeepCheckChanged(v: boolean) { this.children.forEach(e => e.onMelodyBeepCheckChanged(v)); }
   onMelodyVolumeBarChanged(v: number) { this.children.forEach(e => e.onMelodyVolumeBarChanged(v)); }
-  onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()); }
   onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
 }
 
 export class MelodyHierarchy
-  extends Hierarchy<MelodyLayer> {
+  extends CollectionHierarchy<MelodyLayer> {
   get show() { return this._show; }
   constructor(
     children: MelodyLayer[],
@@ -133,13 +129,11 @@ export class MelodyHierarchy
     super("melody", children);
   }
   onAudioUpdate() {
-    super.onAudioUpdate()
     this.show.forEach(e => e.beep())
   }
   beep() { this.children.forEach(e => e.beep()); }
   onMelodyBeepCheckChanged(v: boolean) { this.children.forEach(e => e.onMelodyBeepCheckChanged(v)); }
   onMelodyVolumeBarChanged(v: number) { this.children.forEach(e => e.onMelodyVolumeBarChanged(v)); }
-  onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()); }
 }
 
 export function buildMelody(

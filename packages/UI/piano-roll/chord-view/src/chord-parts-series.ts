@@ -1,23 +1,14 @@
-import { AudioReflectableRegistry, I_TimeAndVM, WindowReflectableRegistry } from "@music-analyzer/view";
+import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
 import { NoteSize } from "@music-analyzer/view-parameters";
-import { MVVM_ViewModel_Impl } from "@music-analyzer/view";
-import { A_MVVM_View } from "@music-analyzer/view";
 import { Time } from "@music-analyzer/time-and";
 import { Chord } from "@music-analyzer/tonal-objects";
 import { Scale } from "@music-analyzer/tonal-objects";
-import { MVVM_View_Impl } from "@music-analyzer/view";
 import { fifthToColor } from "@music-analyzer/color";
 import { oneLetterKey } from "./shorten/on-letter-key";
 import { chord_text_em } from "./chord-view-params/text-em";
 import { RequiredByChordPartModel } from "./require-by-chord-part-model";
 import { TimeRangeController } from "@music-analyzer/controllers";
-
-interface RequiredByChordPartSeries {
-  readonly audio: AudioReflectableRegistry
-  readonly window: WindowReflectableRegistry,
-  readonly time_range: TimeRangeController,
-}
 
 export abstract class ChordPartModel {
   readonly time: Time;
@@ -32,49 +23,40 @@ export abstract class ChordPartModel {
     this.roman = e.roman
   }
 }
-export abstract class ChordPartView
-  extends A_MVVM_View {
-  abstract svg: SVGElement;
-  constructor() {
-    super();
-  }
-}
-export class ChordPartView_impl<Tag extends keyof SVGElementTagNameMap>
-  extends MVVM_View_Impl<Tag> {
+
+export const getColor = (tonic: string) => (s: number, v: number) => { return fifthToColor(tonic, s, v) || "rgb(0, 0, 0)" }
+export class ChordPartView_impl<Tag extends keyof SVGElementTagNameMap> {
+  readonly svg: SVGElementTagNameMap[Tag];
   constructor(
     tag: Tag,
-    protected readonly model: ChordPartModel
+    readonly model: ChordPartModel
   ) {
-    super(tag);
-    this.svg.textContent = oneLetterKey(this.model.scale) + ': ';
-    this.svg.id = "key-name";
-    this.svg.style.fontFamily = "Times New Roman";
-    this.svg.style.fontSize = `${chord_text_em}em`;
-    this.svg.style.textAnchor = "end";
-    this.svg.style.fill = this.getColor(1, 0.75);
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    svg.id = "key-name";
+    svg.style.fontFamily = "Times New Roman";
+    svg.style.fontSize = `${chord_text_em}em`;
+    svg.style.textAnchor = "end";
+    this.svg = svg;
+    this.svg.textContent = oneLetterKey(model.scale) + ': ';
+    this.svg.style.fill = getColor(model.tonic)(1, 0.75);
   }
-  protected getColor(s: number, v: number) { return fifthToColor(this.model.tonic, s, v) || "rgb(0, 0, 0)" }
   updateX(x: number) { this.svg.setAttribute("x", String(x)); }
   updateY(y: number) { this.svg.setAttribute("y", String(y)); }
 }
 
-
-export interface RequiredViewByChordPart
-  extends ChordPartView {
-  updateX: (x: number) => void
-  updateY: (y: number) => void
-}
-
 export abstract class ChordPart<
   M extends ChordPartModel,
-  V extends RequiredViewByChordPart,
-> extends MVVM_ViewModel_Impl<M, V> {
+  V extends {
+    svg: SVGElement;
+    updateX: (x: number) => void
+    updateY: (y: number) => void
+  },
+> {
   protected abstract y: number;
   constructor(
-    model: M,
-    view: V,
+    readonly model: M,
+    readonly view: V,
   ) {
-    super(model, view);
     this.updateX();
     this.updateY();
   }
@@ -87,11 +69,20 @@ export abstract class ChordPart<
 }
 
 export abstract class ChordPartSeries
-  <T extends I_TimeAndVM & { onWindowResized: () => void } & { onTimeRangeChanged: () => void }>
+  <T extends {
+    readonly svg: SVGElement
+    readonly model: { readonly time: Time };
+    onWindowResized: () => void
+    onTimeRangeChanged: () => void
+  }>
   extends ReflectableTimeAndMVCControllerCollection<T> {
   constructor(
     id: string,
-    controllers: RequiredByChordPartSeries,
+    controllers: {
+      readonly audio: AudioReflectableRegistry
+      readonly window: WindowReflectableRegistry,
+      readonly time_range: TimeRangeController,
+    },
     romans: T[],
   ) {
     super(id, romans);

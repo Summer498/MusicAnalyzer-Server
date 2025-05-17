@@ -4,16 +4,17 @@ import { hsv2rgb } from "@music-analyzer/color";
 import { rgbToString } from "@music-analyzer/color";
 import { SerializedMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { Model, Part, View } from "./abstract-hierarchy";
 import { black_key_height, PianoRollConverter } from "@music-analyzer/view-parameters";
+import { Time } from "@music-analyzer/time-and";
 
-class DMelodyView
-  extends View<"rect"> {
+class DMelodyView {
+  readonly svg: SVGRectElement
   constructor() {
-    super("rect");
-    this.svg.id = "melody-note";
-    this.svg.style.fill = rgbToString(hsv2rgb(0, 0, 0.75));
-    this.svg.style.stroke = "rgb(64, 64, 64)";
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "rect")
+    svg.id = "melody-note";
+    svg.style.fill = rgbToString(hsv2rgb(0, 0, 0.75));
+    svg.style.stroke = "rgb(64, 64, 64)";
+    this.svg = svg;
   }
   set onclick(value: () => void) { this.svg.onclick = value; };
   updateX(x: number) { this.svg.setAttribute("x", String(x)); }
@@ -22,27 +23,25 @@ class DMelodyView
   updateHeight(h: number) { this.svg.setAttribute("height", String(h)); }
 }
 
-class DMelodyModel
-  extends Model {
+class DMelodyModel {
+  readonly time: Time;
+  readonly head: Time;
   readonly note: number;
   readonly melody_analysis: SerializedMelodyAnalysis;
   constructor(e: SerializedTimeAndAnalyzedMelody) {
-    super(
-      e.time,
-      e.head,
-    )
+    this.time = e.time;
+    this.head = e.head;
     this.note = e.note;
     this.melody_analysis = e.melody_analysis;
   }
 }
 
-class DMelody
-  extends Part<DMelodyModel, DMelodyView> {
+class DMelody {
+  get svg() { return this.view.svg; }
   constructor(
-    model: DMelodyModel,
-    view: DMelodyView,
+    readonly model: DMelodyModel,
+    readonly view: DMelodyView,
   ) {
-    super(model, view);
     this.onAudioUpdate();
     this.updateX();
     this.updateY();
@@ -75,13 +74,11 @@ export class DMelodySeries
     const visibility = visible ? "visible" : "hidden";
     this.svg.style.visibility = visibility;
   }
-  onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()) }
-  onWindowResized() { this.children.forEach(e => e.onWindowResized()) }
 }
 
 export function buildDMelody(
-    d_melody: SerializedTimeAndAnalyzedMelody[],
-  ) {
+  d_melody: SerializedTimeAndAnalyzedMelody[],
+) {
   const parts = d_melody.map(e => {
     const model = new DMelodyModel(e);
     const view = new DMelodyView();

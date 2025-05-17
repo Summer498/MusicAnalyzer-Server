@@ -32,11 +32,13 @@ const setControllers = (
 ) => (
   controllers: Controllers,
 ) => {
-    [melody, ir_symbol, reduction, scale_gravity, chord_gravity, ir_plot, d_melodies,]
+    [melody, ir_symbol, reduction, scale_gravity, chord_gravity, ...ir_plot.children, d_melodies,]
+      .flatMap(e => e.children.map(e=>e))
       .map(e => () => e.onAudioUpdate())
       .map(f => controllers.audio.addListeners(f));
 
-    [melody, ir_symbol, reduction, scale_gravity, chord_gravity, ir_plot, d_melodies,]
+    [melody, ir_symbol, reduction, scale_gravity, chord_gravity, ...ir_plot.children, d_melodies,]
+      .flatMap(e => e.children.map(e=>e))
       .map(e => e.onWindowResized.bind(e))
       .map(f => controllers.window.addListeners(f));
 
@@ -44,7 +46,9 @@ const setControllers = (
       .map(e => e.onChangedLayer.bind(e))
       .map(f => controllers.hierarchy.addListeners(f));
 
-    [melody, ir_symbol, reduction, chord_gravity, scale_gravity,]
+    [...[melody, ir_symbol, reduction, chord_gravity, scale_gravity]
+      .flatMap(e => e.children.map(e=>e)), d_melodies]
+      .flatMap(e => e.children.map(e=>e))
       .map(e => e.onTimeRangeChanged.bind(e))
       .map(f => controllers.time_range.addListeners(f));
 
@@ -52,14 +56,13 @@ const setControllers = (
       ...melody.children,
       ...ir_symbol.children,
       ...reduction.children,
-      ...ir_plot.children.flatMap(e=>e.children),
+      ...ir_plot.children.flatMap(e => e.children),
     ]
-      .flatMap(e => e.children.flatMap(e=>e))
+      .flatMap(e => e.children.flatMap(e => e))
       .map(e => e.setColor.bind(e))
       .map(f => controllers.melody_color.addListeners(f))
 
     controllers.d_melody.addListeners(d_melodies.onDMelodyVisibilityChanged.bind(d_melodies));
-    controllers.time_range.addListeners(d_melodies.onTimeRangeChanged.bind(d_melodies));
     controllers.melody_beep.checkbox.addListeners(melody.onMelodyBeepCheckChanged.bind(melody));
     controllers.melody_beep.volume.addListeners(melody.onMelodyVolumeBarChanged.bind(melody));
     controllers.gravity.chord_checkbox.addListeners(chord_gravity.onUpdateGravityVisibility.bind(chord_gravity));

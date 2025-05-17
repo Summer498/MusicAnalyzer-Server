@@ -1,10 +1,9 @@
-import { Hierarchy, Layer, Model, Part } from "./abstract-hierarchy";
-import { ColorChangeable } from "./color-changeable";
-import { Time } from "./facade";
 import { Triad } from "@music-analyzer/irm";
 import { NowAt } from "@music-analyzer/view-parameters";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { SetColor } from "@music-analyzer/controllers";
+import { Time } from "@music-analyzer/time-and";
+import { CollectionHierarchy, CollectionLayer } from "@music-analyzer/view";
 
 export class IRPlotAxis {
   readonly svg: SVGLineElement;
@@ -142,17 +141,16 @@ export class MelodiesCache {
   }
 }
 
-export class IRPlotModel
-  extends Model {
+export class IRPlotModel {
+  readonly time: Time;
+  readonly head: Time;
   readonly melody: MelodiesCache
   get archetype() { return this.melody.getCurrentNote().melody_analysis.implication_realization as Triad; }
   constructor(
     melody_series: SerializedTimeAndAnalyzedMelody[],
   ) {
-    super(
-      new Time(0, 0),  // dummy
-      new Time(0, 0),  // dummy
-    );
+    this.time = new Time(0, 0);  // dummy
+    this.head = new Time(0, 0);  // dummy
     this.melody = new MelodiesCache(melody_series);
   }
   get is_visible() { return this.melody.is_visible; }
@@ -192,15 +190,16 @@ const get_pos = (_x: number, _y: number) => {
 
 const nan2zero = (x: number) => isNaN(x) ? 0 : x
 
-export class IRPlotView
-  extends ColorChangeable<"circle"> {
+export class IRPlotView {
+  readonly svg: SVGGElement;
   readonly view_model: IRPlotViewModel
   constructor(
     protected readonly model: IRPlotModel,
   ) {
-    super("circle");
-    this.svg.style.stroke = "rgb(16, 16, 16)";
-    this.svg.style.strokeWidth = String(6);
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    svg.style.stroke = "rgb(16, 16, 16)";
+    svg.style.strokeWidth = String(6);
+    this.svg = svg;
     this.view_model = new IRPlotViewModel()
   }
   updateRadius(r: number) {
@@ -229,16 +228,15 @@ export class IRPlotView
     this.updateX(-((1 - r) * curr[0] + r * next[0]));
     this.updateY(-((1 - r) * curr[1] + r * next[1]));
   }
+  readonly setColor = (color: string) => this.svg.style.fill = color;
 }
 
-export class IRPlot
-  extends Part<IRPlotModel, IRPlotView> {
-  readonly view: IRPlotView;
+export class IRPlot {
+  get svg() { return this.view.svg; }
   constructor(
-    model: IRPlotModel,
-    view: IRPlotView,
+    readonly model: IRPlotModel,
+    readonly view: IRPlotView,
   ) {
-    super(model, view);
     this.view = view;
   }
   onAudioUpdate() {
@@ -279,7 +277,7 @@ export class IRPlotLayerView {
 }
 
 export class IRPlotLayer
-  extends Layer<IRPlot> {
+  extends CollectionLayer<IRPlot> {
   readonly view: IRPlotLayerView
   constructor(
     children: IRPlot[],
@@ -294,7 +292,7 @@ export class IRPlotLayer
 }
 
 export class IRPlotHierarchy
-  extends Hierarchy<IRPlotLayer> {
+  extends CollectionHierarchy<IRPlotLayer> {
   readonly view: IRPlotHierarchyView
   readonly model: IRPlotHierarchyModel
   #visible_layer: number;
@@ -335,8 +333,8 @@ export class IRPlotSVG {
 }
 
 export function buildIRPlot(
-    h_melodies: SerializedTimeAndAnalyzedMelody[][],
-  ) {
+  h_melodies: SerializedTimeAndAnalyzedMelody[][],
+) {
   const N = h_melodies.length;
 
   const layers = h_melodies.map((e, l) => {

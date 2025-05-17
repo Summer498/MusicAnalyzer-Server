@@ -6,9 +6,7 @@ import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view"
 import { NowAt, PianoRollConverter } from "@music-analyzer/view-parameters";
 import { PianoRollHeight } from "@music-analyzer/view-parameters";
 import { reservation_range } from "@music-analyzer/view-parameters";
-import { MVVM_ViewModel_Impl } from "@music-analyzer/view";
 import { play } from "@music-analyzer/synth";
-import { MVVM_View_Impl } from "@music-analyzer/view";
 
 export class BeatBarModel {
   readonly time: Time;
@@ -20,13 +18,14 @@ export class BeatBarModel {
   }
 }
 
-export class BeatBarView 
-  extends MVVM_View_Impl<"line"> {
+export class BeatBarView {
+  readonly svg: SVGLineElement;
   constructor(model: BeatBarModel) {
-    super("line");
-    this.svg.id = "bar";
-    this.svg.style.stroke = "rgb(0, 0, 0)";
-    this.svg.style.display = "none";  //NOTE: 一旦非表示にしている
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    svg.id = "bar";
+    svg.style.stroke = "rgb(0, 0, 0)";
+    svg.style.display = "none";  //NOTE: 一旦非表示にしている
+    this.svg = svg;
   }
   updateX(x1: number, x2: number) {
     this.svg.setAttribute("x1", String(x1));
@@ -38,8 +37,10 @@ export class BeatBarView
   }
 }
 
-export class BeatBar
-  extends MVVM_ViewModel_Impl<BeatBarModel, BeatBarView> {
+export class BeatBar {
+  readonly model: BeatBarModel
+  readonly view: BeatBarView
+  get svg() { return this.view.svg; }
   #y1: number;
   #y2: number;
   sound_reserved: boolean;
@@ -48,7 +49,9 @@ export class BeatBar
     i: number
   ) {
     const model = new BeatBarModel(beat_info, i);
-    super(model, new BeatBarView(model));
+    const view = new BeatBarView(model);
+    this.model = model;
+    this.view = view;
     this.sound_reserved = false;
     this.#y1 = 0;
     this.#y2 = PianoRollHeight.get();

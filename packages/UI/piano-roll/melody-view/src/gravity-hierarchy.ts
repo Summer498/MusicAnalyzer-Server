@@ -1,11 +1,13 @@
 import { black_key_height, PianoRollConverter } from "@music-analyzer/view-parameters";
 import { NoteSize } from "@music-analyzer/view-parameters";
 import { Gravity as SerializedGravity } from "@music-analyzer/melody-analyze";
-import { Hierarchy, Layer, Model, Part, View } from "./abstract-hierarchy";
 import { SerializedTimeAndAnalyzedMelody } from "./serialized-time-and-analyzed-melody";
+import { Time } from "@music-analyzer/time-and";
+import { CollectionHierarchy, CollectionLayer } from "@music-analyzer/view";
 
-export class GravityModel
-  extends Model {
+export class GravityModel {
+  readonly time: Time;
+  readonly head: Time;
   readonly note: number;
   readonly destination?: number;
   readonly layer: number;
@@ -15,10 +17,8 @@ export class GravityModel
     readonly next: SerializedTimeAndAnalyzedMelody,
     readonly gravity: SerializedGravity,
   ) {
-    super(
-      e.time,
-      e.head,
-    );
+    this.time = e.time;
+    this.head = e.head;
     this.note = e.note;
     this.destination = gravity.destination;
     this.layer = layer || 0;
@@ -48,14 +48,15 @@ export class LinePos {
   }
 };
 
-export class GravityViewLine
-  extends View<"line"> {
+export class GravityViewLine {
+  readonly svg: SVGLineElement
   constructor() {
-    super("line");
-    this.svg.id = "gravity-arrow";
-    this.svg.classList.add("line");
-    this.svg.style.stroke = "rgb(0, 0, 0)";
-    this.svg.style.strokeWidth = String(5);
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "line")
+    svg.id = "gravity-arrow";
+    svg.classList.add("line");
+    svg.style.stroke = "rgb(0, 0, 0)";
+    svg.style.strokeWidth = String(5);
+    this.svg = svg;
   }
   update(line_pos: LinePos) {
     this.svg.setAttribute("x1", String(line_pos.x1));
@@ -68,17 +69,18 @@ export class GravityViewLine
 
 const triangle_width = 4;
 const triangle_height = 5;
-export class GravityViewTriangle
-  extends View<"polygon"> {
+export class GravityViewTriangle {
+  readonly svg: SVGPolygonElement;
   constructor() {
-    super("polygon");
-    this.svg.classList.add("triangle");
-    this.svg.id = "gravity-arrow";
-    this.svg.style.stroke = "rgb(0, 0, 0)";
-    this.svg.style.fill = "rgb(0, 0, 0)";
-    this.svg.style.strokeWidth = String(5);
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "polygon")
+    svg.classList.add("triangle");
+    svg.id = "gravity-arrow";
+    svg.style.stroke = "rgb(0, 0, 0)";
+    svg.style.fill = "rgb(0, 0, 0)";
+    svg.style.strokeWidth = String(5);
 
-    this.svg.setAttribute("points", this.getInitPos().join(","));
+    svg.setAttribute("points", this.getInitPos().join(","));
+    this.svg = svg;
   }
   getInitPos() { return [0, 0, - triangle_width, + triangle_height, + triangle_width, + triangle_height,]; }
   update(line_pos: LinePos) {
@@ -88,19 +90,19 @@ export class GravityViewTriangle
   onWindowResized() { }
 }
 
-export class GravityView
-  extends View<"g"> {
+export class GravityView {
+  readonly svg: SVGGElement;
   readonly triangle: GravityViewTriangle;
   readonly line: GravityViewLine;
   constructor() {
-    super("g");
-
     this.triangle = new GravityViewTriangle();
     this.line = new GravityViewLine();
 
-    this.svg.id = "gravity";
-    this.svg.appendChild(this.triangle.svg);
-    this.svg.appendChild(this.line.svg);
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    svg.id = "gravity";
+    svg.appendChild(this.triangle.svg);
+    svg.appendChild(this.line.svg);
+    this.svg = svg;
   }
   updateWidth(w: number) { this.svg.setAttribute("width", String(w)); }
   updateHeight(h: number) { this.svg.setAttribute("height", String(h)); }
@@ -110,14 +112,13 @@ export class GravityView
   }
 }
 
-export class Gravity
-  extends Part<GravityModel, GravityView> {
+export class Gravity {
+  get svg() { return this.view.svg; }
   constructor(
-    model: GravityModel,
-    view: GravityView,
+    readonly model: GravityModel,
+    readonly view: GravityView,
     readonly line_seed: LinePos,
   ) {
-    super(model, view);
   }
   updateWidth() { this.view.updateWidth(PianoRollConverter.scaled(this.model.time.duration)) }
   updateHeight() { this.view.updateHeight(black_key_height) }
@@ -130,19 +131,18 @@ export class Gravity
 }
 
 export class GravityLayer
-  extends Layer<Gravity> {
+  extends CollectionLayer<Gravity> {
   constructor(
     layer: number,
     children: Gravity[],
   ) {
     super(layer, children);
   }
-  onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()) }
   onWindowResized() { this.children.forEach(e => e.onWindowResized()) }
 }
 
 export class GravityHierarchy
-  extends Hierarchy<GravityLayer> {
+  extends CollectionHierarchy<GravityLayer> {
   constructor(
     id: string,
     children: GravityLayer[],
@@ -150,7 +150,6 @@ export class GravityHierarchy
     super(id, children);
   }
   onUpdateGravityVisibility(visible: boolean) { this.svg.style.visibility = visible ? "visible" : "hidden"; }
-  onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()) }
 }
 
 export function buildGravity(

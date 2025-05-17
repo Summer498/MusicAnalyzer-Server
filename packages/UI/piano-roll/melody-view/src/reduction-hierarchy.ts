@@ -1,19 +1,20 @@
-import { Hierarchy, Layer, Model, Part, View } from "./abstract-hierarchy";
-import { ColorChangeable } from "./color-changeable";
 import { Triad } from "@music-analyzer/irm";
 import { black_key_height, bracket_height, PianoRollConverter } from "@music-analyzer/view-parameters";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { SetColor } from "@music-analyzer/controllers";
+import { Time } from "@music-analyzer/time-and";
+import { CollectionHierarchy, CollectionLayer } from "@music-analyzer/view";
 
-
-class ReductionModel
-  extends Model {
+class ReductionModel {
+  readonly time: Time;
+  readonly head: Time;
   readonly archetype: Triad;
   constructor(
     e: SerializedTimeAndAnalyzedMelody,
     readonly layer: number,
   ) {
-    super(e.time, e.head);
+    this.time = e.time;
+    this.head = e.head;
     this.archetype = e.melody_analysis.implication_realization as Triad;
   }
 }
@@ -66,17 +67,18 @@ class ReductionViewModel {
   onTimeRangeChanged = this.onWindowResized;
 }
 
-class IRMSymbol
-  extends ColorChangeable<"text"> {
+class IRMSymbol {
+  readonly svg: SVGTextElement
   constructor(
     protected readonly model: ReductionViewModel,
   ) {
-    super("text");
-    this.svg.textContent = this.model.archetype.symbol;
-    this.svg.id = "I-R Symbol";
-    this.svg.style.fontFamily = "Times New Roman";
-    this.svg.style.fontSize = `${bracket_height}em`;
-    this.svg.style.textAnchor = "middle";
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "text")
+    svg.textContent = this.model.archetype.symbol;
+    svg.id = "I-R Symbol";
+    svg.style.fontFamily = "Times New Roman";
+    svg.style.fontSize = `${bracket_height}em`;
+    svg.style.textAnchor = "middle";
+    this.svg = svg;
   }
   update(cx: number, y: number, w: number, h: number) {
     this.svg.setAttribute("x", String(cx));
@@ -86,20 +88,20 @@ class IRMSymbol
   onWindowResized() {
     this.update(this.model.cx, this.model.y, this.model.w, this.model.h);
   }
+  readonly setColor = (color: string) => this.svg.style.fill = color;
 }
 
-class Bracket
-  extends View<"path"> {
-  private readonly model: ReductionViewModel
+class Bracket {
   readonly svg: SVGPathElement;
+  private readonly model: ReductionViewModel
   constructor(model: ReductionViewModel) {
-    super("path");
     this.model = model
-    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    this.svg.id = "group";
-    this.svg.style.stroke = "rgb(0, 0, 64)";
-    this.svg.style.strokeWidth = String(3);
-    this.svg.style.fill = "rgb(242, 242, 242)";
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    svg.id = "group";
+    svg.style.stroke = "rgb(0, 0, 64)";
+    svg.style.strokeWidth = String(3);
+    svg.style.fill = "rgb(242, 242, 242)";
+    this.svg = svg
   }
   updateStrong() {
     this.svg.style.strokeWidth = this.model.strong ? "3" : "1";
@@ -129,15 +131,16 @@ class Bracket
   }
 }
 
-class Dot
-  extends View<"circle"> {
+class Dot {
+  readonly svg: SVGCircleElement;
   constructor(
     readonly model: ReductionViewModel,
   ) {
-    super("circle");
-    this.svg.id = "head";
-    this.svg.style.stroke = "rgb(192, 0, 0)";
-    this.svg.style.fill = "rgb(192, 0, 0)";
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    svg.id = "head";
+    svg.style.stroke = "rgb(192, 0, 0)";
+    svg.style.fill = "rgb(192, 0, 0)";
+    this.svg = svg;
   }
   updateStrong() {
     this.svg.style.r = String(this.model.strong ? 5 : 3);
@@ -151,8 +154,8 @@ class Dot
   }
 }
 
-class ReductionView
-  extends ColorChangeable<"g"> {
+class ReductionView {
+  readonly svg: SVGGElement;
   readonly bracket: Bracket;
   readonly dot: Dot;
   readonly ir_symbol: IRMSymbol;
@@ -160,16 +163,17 @@ class ReductionView
   constructor(
     model: ReductionModel,
   ) {
-    super("g");
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.model = new ReductionViewModel(model);
     this.bracket = new Bracket(this.model);
     this.dot = new Dot(this.model);
     this.ir_symbol = new IRMSymbol(this.model);
 
-    this.svg.id = "time-span-node";
-    this.svg.appendChild(this.bracket.svg);
-    if (false) { this.svg.appendChild(this.dot.svg); }
-    this.svg.appendChild(this.ir_symbol.svg);
+    svg.id = "time-span-node";
+    svg.appendChild(this.bracket.svg);
+    if (false) { svg.appendChild(this.dot.svg); }
+    svg.appendChild(this.ir_symbol.svg);
+    this.svg = svg;
   }
   get strong() { return this.model.strong; }
   set strong(value: boolean) {
@@ -184,16 +188,15 @@ class ReductionView
     this.dot.onWindowResized();
     this.ir_symbol.onWindowResized();
   }
+  readonly setColor = (color: string) => this.svg.style.fill = color;
 }
 
-class Reduction
-  extends Part<ReductionModel, ReductionView> {
+class Reduction {
+  get svg() { return this.view.svg; }
   constructor(
-    model: ReductionModel,
-    view: ReductionView,
-  ) {
-    super(model, view);
-  }
+    readonly model: ReductionModel,
+    readonly view: ReductionView,
+  ) { }
   readonly setColor: SetColor = f => this.view.setColor(f(this.model.archetype))
   renewStrong(strong: boolean) { this.view.strong = strong; }
   onTimeRangeChanged() { this.view.onTimeRangeChanged() }
@@ -201,7 +204,7 @@ class Reduction
 }
 
 class ReductionLayer
-  extends Layer<Reduction> {
+  extends CollectionLayer<Reduction> {
   constructor(
     children: Reduction[],
     layer: number,
@@ -209,12 +212,11 @@ class ReductionLayer
     super(layer, children);
   }
   renewStrong(layer: number) { this.children.forEach(e => e.renewStrong(layer === this.layer)); }
-  onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()) }
   onWindowResized() { this.children.forEach(e => e.onWindowResized()) }
 }
 
 export class ReductionHierarchy
-  extends Hierarchy<ReductionLayer> {
+  extends CollectionHierarchy<ReductionLayer> {
   constructor(
     children: ReductionLayer[],
   ) {
@@ -226,12 +228,11 @@ export class ReductionHierarchy
     visible_layer.forEach(e => e.renewStrong(value));
     this.setShow(visible_layer);
   }
-  onTimeRangeChanged() { this.children.forEach(e => e.onTimeRangeChanged()) }
 }
 
 export function buildReduction(
-    h_melodies: SerializedTimeAndAnalyzedMelody[][],
-  ) {
+  h_melodies: SerializedTimeAndAnalyzedMelody[][],
+) {
   const layer = h_melodies.map((e, l) => {
     const parts = e.map(e => {
       const model = new ReductionModel(e, l);
