@@ -1,8 +1,7 @@
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { Time } from "@music-analyzer/time-and";
-import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
+import { AudioReflectableRegistry, PianoRollTranslateX, WindowReflectableRegistry } from "@music-analyzer/view";
 import { TimeRangeController } from "@music-analyzer/controllers";
-import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
 import { NowAt, PianoRollConverter } from "@music-analyzer/view-parameters";
 import { PianoRollHeight } from "@music-analyzer/view-parameters";
 import { reservation_range } from "@music-analyzer/view-parameters";
@@ -90,13 +89,24 @@ export interface RequiredByBeatBarsSeries {
   readonly time_range: TimeRangeController,
 }
 
-export class BeatBarsSeries
-  extends ReflectableTimeAndMVCControllerCollection<BeatBar> {
+export class BeatBarsSeries {
+  readonly children_model: { readonly time: Time }[];
+  #show: BeatBar[];
+  get show() { return this.#show; };
+  readonly svg: SVGGElement;
+
   constructor(
-    children: BeatBar[]
+    readonly children: BeatBar[]
   ) {
-    super("beat-bars", children);
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    svg.id = "beat-bars";
+    children.forEach(e => svg.appendChild(e.svg));
+
+    this.svg = svg;
+    this.children_model = children.map(e => e.model);
+    this.#show = children;
   }
+  onAudioUpdate() { this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
 }
 
 export interface RequiredByBeatElements {

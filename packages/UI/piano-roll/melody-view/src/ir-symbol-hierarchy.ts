@@ -3,7 +3,7 @@ import { Triad } from "@music-analyzer/irm";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { SetColor } from "@music-analyzer/controllers";
 import { Time } from "@music-analyzer/time-and";
-import { CollectionHierarchy, CollectionLayer } from "@music-analyzer/view";
+import { CollectionHierarchy, PianoRollTranslateX } from "@music-analyzer/view";
 
 class IRSymbolModel {
   readonly time: Time;
@@ -55,14 +55,24 @@ export class IRSymbol {
   readonly setColor: SetColor = f => this.view.setColor(f(this.model.archetype))
 }
 
-class IRSymbolLayer
-  extends CollectionLayer<IRSymbol> {
+class IRSymbolLayer {
+  readonly children_model: { readonly time: Time }[];
+  #show: IRSymbol[];
+  get show() { return this.#show; };
+  readonly svg: SVGGElement
   constructor(
-    children: IRSymbol[],
-    layer: number,
+    readonly children: IRSymbol[],
+    readonly layer: number,
   ) {
-    super(layer, children);
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    svg.id = `layer-${layer}`;
+    children.forEach(e => svg.appendChild(e.svg));
+
+    this.svg = svg;
+    this.children_model = this.children.map(e => e.model);
+    this.#show = children;
   }
+  onAudioUpdate() { this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
 }
 
 export class IRSymbolHierarchy
@@ -74,7 +84,7 @@ export class IRSymbolHierarchy
   }
 }
 
-function getIRSymbolSVG(text:string){
+function getIRSymbolSVG(text: string) {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "text");
   svg.textContent = text;
   svg.id = "I-R Symbol";

@@ -3,7 +3,7 @@ import { NowAt } from "@music-analyzer/view-parameters";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { SetColor } from "@music-analyzer/controllers";
 import { Time } from "@music-analyzer/time-and";
-import { CollectionHierarchy, CollectionLayer } from "@music-analyzer/view";
+import { CollectionHierarchy, PianoRollTranslateX } from "@music-analyzer/view";
 
 class IRPlotAxis {
   constructor(
@@ -235,15 +235,25 @@ class IRPlotLayerView {
   updateHeight(h: number) { this.svg.setAttribute("height", String(h)); }
 }
 
-class IRPlotLayer
-  extends CollectionLayer<IRPlot> {
+class IRPlotLayer {
+  readonly children_model: { readonly time: Time }[];
+  #show: IRPlot[];
+  get show() { return this.#show; };
+  readonly svg: SVGGElement;
   constructor(
     readonly view: IRPlotLayerView,
-    children: IRPlot[],
-    layer: number,
+    readonly children: IRPlot[],
+    readonly layer: number,
   ) {
-    super(layer, children);
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    svg.id = `layer-${layer}`;
+    children.forEach(e => svg.appendChild(e.svg));
+
+    this.svg = svg;
+    this.children_model = this.children.map(e => e.model);
+    this.#show = children;
   }
+  onAudioUpdate() { this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
 }
 
 class IRPlotHierarchy

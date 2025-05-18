@@ -7,7 +7,7 @@ import { black_key_height, NowAt, PianoRollConverter } from "@music-analyzer/vie
 import { reservation_range } from "@music-analyzer/view-parameters";
 import { SetColor } from "@music-analyzer/controllers";
 import { Time } from "@music-analyzer/time-and";
-import { CollectionHierarchy, CollectionLayer } from "@music-analyzer/view";
+import { CollectionHierarchy, PianoRollTranslateX } from "@music-analyzer/view";
 
 export class MelodyBeep {
   #beep_volume: number;
@@ -62,7 +62,7 @@ export class MelodyModel {
 export class MelodyView {
   constructor(
     readonly svg: SVGRectElement
-  ) {  }
+  ) { }
   updateX(x: number) { this.svg.setAttribute("x", String(x)); }
   updateY(y: number) { this.svg.setAttribute("y", String(y)); }
   updateWidth(w: number) { this.svg.setAttribute("width", String(w)); }
@@ -98,15 +98,24 @@ export class Melody {
   onMelodyVolumeBarChanged(e: number) { this.#beeper.onMelodyVolumeBarChanged(e); }
 }
 
-class MelodyLayer
-  extends CollectionLayer<Melody> {
+class MelodyLayer {
+  readonly children_model: { readonly time: Time }[];
+  #show: Melody[];
+  get show() { return this.#show; };    
+  readonly svg: SVGGElement;
   constructor(
-    children: Melody[],
-    layer: number,
+  readonly  children: Melody[],
+    readonly layer: number,
   ) {
-    super(layer, children);
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    svg.id = `layer-${layer}`;
+    children.forEach(e => svg.appendChild(e.svg));
+    this.svg = svg;
+    this.children_model = this.children.map(e => e.model);
+    this.#show = children;
   }
   beep() { this.children.forEach(e => e.beep()); }
+  onAudioUpdate() { this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
 }
 
 export class MelodyHierarchy
@@ -123,7 +132,7 @@ export class MelodyHierarchy
   beep() { this.children.forEach(e => e.beep()); }
 }
 
-function getMelodySVG(){
+function getMelodySVG() {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
   svg.id = "melody-note";
   svg.style.stroke = "rgb(64, 64, 64)";

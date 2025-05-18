@@ -93,9 +93,9 @@ class BGs {
   readonly svg: SVGGElement;
   readonly children: BG[];
   constructor(publisher: WindowReflectableRegistry) {
-    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    this.svg.id = `BGs`;
-    this.children = getRange(
+    const svg =  document.createElementNS("http://www.w3.org/2000/svg", "g");
+    svg.id = `BGs`;
+    const children = getRange(
       PianoRollBegin.get(),
       PianoRollEnd.get(),
       PianoRollBegin.get() < PianoRollEnd.get() ? 1 : -1)
@@ -107,7 +107,9 @@ class BGs {
 
         return new BG(svg, i);
       })
-    this.children.forEach(e => this.svg.appendChild(e.svg));
+    children.forEach(e => svg.appendChild(e.svg));
+    this.svg = svg;
+    this.children = children
     publisher.addListeners(this.onWindowResized.bind(this));
   }
   onWindowResized() { this.children.forEach(e => e.onWindowResized()); }

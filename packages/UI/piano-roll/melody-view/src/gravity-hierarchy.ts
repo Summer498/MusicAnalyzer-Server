@@ -3,7 +3,7 @@ import { NoteSize } from "@music-analyzer/view-parameters";
 import { Gravity as SerializedGravity } from "@music-analyzer/melody-analyze";
 import { SerializedTimeAndAnalyzedMelody } from "./serialized-time-and-analyzed-melody";
 import { Time } from "@music-analyzer/time-and";
-import { CollectionHierarchy, CollectionLayer } from "@music-analyzer/view";
+import { CollectionHierarchy, PianoRollTranslateX } from "@music-analyzer/view";
 
 export class GravityModel {
   readonly time: Time;
@@ -103,14 +103,25 @@ export class Gravity {
   onTimeRangeChanged = this.onWindowResized
 }
 
-export class GravityLayer
-  extends CollectionLayer<Gravity> {
+export class GravityLayer {
+  readonly children_model: { readonly time: Time }[];
+  readonly svg: SVGGElement;
+  #show: Gravity[];
+  get show() { return this.#show; };
+
   constructor(
-    layer: number,
-    children: Gravity[],
+    readonly layer: number,
+    readonly children: Gravity[],
   ) {
-    super(layer, children);
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    svg.id = `layer-${layer}`;
+    this.svg = svg;
+    children.forEach(e => svg.appendChild(e.svg));
+
+    this.children_model = this.children.map(e => e.model);
+    this.#show = children;
   }
+  onAudioUpdate() { this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
 }
 
 export class GravityHierarchy

@@ -25,48 +25,9 @@ export class WindowReflectableRegistry {
   onUpdate() { this.listeners.forEach(e => e()); }
 }
 
-class PianoRollTranslateX {
+export class PianoRollTranslateX {
   static get() {
     return CurrentTimeX.get() - NowAt.get() * NoteSize.get();
-  }
-}
-
-export abstract class ReflectableTimeAndMVCControllerCollection<VM extends {
-  readonly svg: SVGElement
-  readonly model: { readonly time: Time };
-}> {
-  readonly svg: SVGGElement
-  readonly children: VM[]
-  readonly children_model: { readonly time: Time }[];
-  #show: VM[];
-  get show() { return this.#show; };
-  constructor(
-    id: string,
-    children: VM[],
-  ) {
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    svg.id = id;
-    this.svg = svg
-    this.children = children
-    children.forEach(e => this.svg.appendChild(e.svg));
-    this.children_model = this.children.map(e => e.model);
-    this.#show = children;
-  }
-  onAudioUpdate() {
-    this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`);
-  }
-}
-
-export class CollectionLayer<VM extends {
-  readonly svg: SVGElement
-  readonly model: { readonly time: Time };
-}>
-  extends ReflectableTimeAndMVCControllerCollection<VM> {
-  constructor(
-    readonly layer: number,
-    children: VM[],
-  ) {
-    super(`layer-${layer}`, children);
   }
 }
 
@@ -85,17 +46,17 @@ type Layer = {
 }
 
 export abstract class CollectionHierarchy<L extends Layer> {
-    readonly svg: SVGGElement
-    readonly children: L[]
-     protected _show: L[];
+  readonly svg: SVGGElement
+  readonly children: L[]
+  protected _show: L[];
   get show() { return this._show; }
   constructor(id: string, children: L[]) {
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     svg.id = id;
+    children.forEach(e => svg.appendChild(e.svg));
+    this._show = [];
     this.svg = svg
     this.children = children
-    this.children.forEach(e => this.svg.appendChild(e.svg));
-    this._show = [];
   }
   setShow(visible_layers: L[]) {
     this._show = visible_layers;

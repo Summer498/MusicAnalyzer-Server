@@ -1,4 +1,4 @@
-import { ReflectableTimeAndMVCControllerCollection } from "@music-analyzer/view";
+import { PianoRollTranslateX } from "@music-analyzer/view";
 import { insertMelody } from "./melody-editor/insert";
 import { hsv2rgb } from "@music-analyzer/color";
 import { rgbToString } from "@music-analyzer/color";
@@ -58,17 +58,27 @@ class DMelody {
   onTimeRangeChanged = this.onWindowResized
 }
 
-export class DMelodySeries
-  extends ReflectableTimeAndMVCControllerCollection<DMelody> {
+export class DMelodySeries {
+  readonly svg: SVGGElement;
+  readonly children_model: { readonly time: Time }[];
+  #show: DMelody[];
+  get show() { return this.#show; };
+
   constructor(
-    children: DMelody[],
+    readonly children: DMelody[],
   ) {
-    super("detected-melody", children);
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    svg.id = "detected-melody";
+    children.forEach(e => svg.appendChild(e.svg));
+    this.svg = svg;
+    this.children_model = this.children.map(e => e.model);
+    this.#show = children;
   }
   onDMelodyVisibilityChanged(visible: boolean) {
     const visibility = visible ? "visible" : "hidden";
     this.svg.style.visibility = visibility;
   }
+  onAudioUpdate() { this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
 }
 
 function getMelodyViewSVG() {

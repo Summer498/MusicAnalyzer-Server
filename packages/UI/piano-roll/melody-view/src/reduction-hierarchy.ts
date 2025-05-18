@@ -3,7 +3,7 @@ import { black_key_height, bracket_height, PianoRollConverter } from "@music-ana
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { SetColor } from "@music-analyzer/controllers";
 import { Time } from "@music-analyzer/time-and";
-import { CollectionHierarchy, CollectionLayer } from "@music-analyzer/view";
+import { CollectionHierarchy, PianoRollTranslateX } from "@music-analyzer/view";
 
 class ReductionModel {
   readonly time: Time;
@@ -172,15 +172,24 @@ class Reduction {
   onWindowResized() { this.view.onWindowResized() }
 }
 
-class ReductionLayer
-  extends CollectionLayer<Reduction> {
+class ReductionLayer {
+  readonly children_model: { readonly time: Time }[];
+  #show: Reduction[];
+  get show() { return this.#show; };
+  readonly svg: SVGGElement
   constructor(
-    children: Reduction[],
-    layer: number,
+    readonly children: Reduction[],
+    readonly layer: number,
   ) {
-    super(layer, children);
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    svg.id = `layer-${layer}`;
+    children.forEach(e => svg.appendChild(e.svg));
+    this.svg = svg;
+    this.children_model = this.children.map(e => e.model);
+    this.#show = children;
   }
   renewStrong(layer: number) { this.children.forEach(e => e.renewStrong(layer === this.layer)); }
+  onAudioUpdate() { this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
 }
 
 export class ReductionHierarchy
