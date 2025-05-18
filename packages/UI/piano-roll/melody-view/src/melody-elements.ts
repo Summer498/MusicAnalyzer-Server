@@ -32,28 +32,28 @@ const setControllers = (
 ) => (
   controllers: Controllers,
 ) => {
-    [melody, ir_symbol, reduction, scale_gravity, chord_gravity, ...ir_plot.children, d_melodies,]
+    const audioListeners = [melody, ir_symbol, reduction, scale_gravity, chord_gravity, ...ir_plot.children, d_melodies,]
       .flatMap(e => e.children.map(e => e))
       .map(e => () => e.onAudioUpdate())
-      .map(f => controllers.audio.addListeners(f));
+    controllers.audio.addListeners(...audioListeners);
 
-    [...[melody, ir_symbol, reduction, scale_gravity, chord_gravity, ...ir_plot.children]
+    const windowListeners = [...[melody, ir_symbol, reduction, scale_gravity, chord_gravity, ...ir_plot.children]
       .flatMap(e => e.children.map(e => e)), d_melodies]
       .flatMap(e => e.children.map(e => e))
       .map(e => e.onWindowResized.bind(e))
-      .map(f => controllers.window.addListeners(f));
+    controllers.window.addListeners(...windowListeners);
 
-    [melody, ir_symbol, reduction, chord_gravity, scale_gravity, ...ir_plot.children,]
+    const hierarchyListeners = [melody, ir_symbol, reduction, chord_gravity, scale_gravity, ...ir_plot.children,]
       .map(e => e.onChangedLayer.bind(e))
-      .map(f => controllers.hierarchy.addListeners(f));
+    controllers.hierarchy.addListeners(...hierarchyListeners);
 
-    [...[melody, ir_symbol, reduction, chord_gravity, scale_gravity]
+    const timeRangeListeners = [...[melody, ir_symbol, reduction, chord_gravity, scale_gravity]
       .flatMap(e => e.children.map(e => e)), d_melodies]
       .flatMap(e => e.children.map(e => e))
       .map(e => e.onTimeRangeChanged.bind(e))
-      .map(f => controllers.time_range.addListeners(f));
+    controllers.time_range.addListeners(...timeRangeListeners);
 
-    [
+    const melodyColorListeners = [
       ...melody.children,
       ...ir_symbol.children,
       ...reduction.children,
@@ -61,15 +61,17 @@ const setControllers = (
     ]
       .flatMap(e => e.children.flatMap(e => e))
       .map(e => e.setColor.bind(e))
-      .map(f => controllers.melody_color.addListeners(f))
+    controllers.melody_color.addListeners(...melodyColorListeners);
 
     controllers.d_melody.addListeners(d_melodies.onDMelodyVisibilityChanged.bind(d_melodies));
-    melody.children.flatMap(e => e.children)
+    const melodyBeepCheckBoxListeners = melody.children.flatMap(e => e.children)
       .flatMap(e => e.onMelodyBeepCheckChanged.bind(e))
-      .map(f => controllers.melody_beep.checkbox.addListeners(f));
-    melody.children.flatMap(e => e.children)
+    controllers.melody_beep.checkbox.addListeners(...melodyBeepCheckBoxListeners);
+
+    const melodyBeepVolumeListeners = melody.children.flatMap(e => e.children)
       .flatMap(e => e.onMelodyVolumeBarChanged.bind(e))
-      .map(f => controllers.melody_beep.volume.addListeners(f));
+    controllers.melody_beep.volume.addListeners(...melodyBeepVolumeListeners)
+
     controllers.gravity.chord_checkbox.addListeners(chord_gravity.onUpdateGravityVisibility.bind(chord_gravity));
     controllers.gravity.scale_checkbox.addListeners(scale_gravity.onUpdateGravityVisibility.bind(scale_gravity));
   }

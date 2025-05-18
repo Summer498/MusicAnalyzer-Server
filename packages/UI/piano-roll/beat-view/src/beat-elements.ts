@@ -145,11 +145,9 @@ export class BeatElements {
     beat_bars.children
       .map(e => e.onWindowResized.bind(e))
       .map(f => controllers.window.addListeners(f))
-    beat_bars.children
-      .map(e => e.onTimeRangeChanged.bind(e))
-      .map(f => controllers.time_range.addListeners(f))
+    const listeners = beat_bars.children.map(e => e.onTimeRangeChanged.bind(e))
+    controllers.time_range.addListeners(...listeners)
     this.beat_bars = beat_bars
-
     this.children = [this.beat_bars];
   }
 }
