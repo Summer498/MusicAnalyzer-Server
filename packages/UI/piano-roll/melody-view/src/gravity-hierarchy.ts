@@ -12,8 +12,8 @@ export class GravityModel {
   readonly destination?: number;
   readonly layer: number;
   constructor(
-    e: SerializedTimeAndAnalyzedMelody,
     layer: number,
+    e: SerializedTimeAndAnalyzedMelody,
     readonly next: SerializedTimeAndAnalyzedMelody,
     readonly gravity: SerializedGravity,
   ) {
@@ -105,19 +105,14 @@ export class Gravity {
 
 export class GravityLayer {
   readonly children_model: { readonly time: Time }[];
-  readonly svg: SVGGElement;
   #show: Gravity[];
   get show() { return this.#show; };
 
   constructor(
     readonly layer: number,
+    readonly svg: SVGGElement,
     readonly children: Gravity[],
   ) {
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    svg.id = `layer-${layer}`;
-    this.svg = svg;
-    children.forEach(e => svg.appendChild(e.svg));
-
     this.children_model = this.children.map(e => e.model);
     this.#show = children;
   }
@@ -143,7 +138,7 @@ function getTriangle() {
   triangle_svg.style.fill = "rgb(0, 0, 0)";
   triangle_svg.style.strokeWidth = String(5);
   triangle_svg.setAttribute("points", getInitPos().join(","));
-  return new GravityViewTriangle(triangle_svg);
+  return triangle_svg;
 }
 
 function getLine() {
@@ -152,7 +147,7 @@ function getLine() {
   line_svg.classList.add("line");
   line_svg.style.stroke = "rgb(0, 0, 0)";
   line_svg.style.strokeWidth = String(5);
-  return new GravityViewLine(line_svg);
+  return line_svg;
 }
 
 function getGravitySVG(
@@ -185,27 +180,44 @@ function getLinePos(
   return line_pos;
 }
 
+function getLayerSVG(l: number, gravity: { svg: SVGElement }[]) {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  svg.id = `layer-${l}`;
+  gravity.forEach(e => svg.appendChild(e.svg));
+  return svg;
+}
+
 export function buildGravity(
   mode: "chord_gravity" | "scale_gravity",
   h_melodies: SerializedTimeAndAnalyzedMelody[][],
 ) {
-  const layers = h_melodies.map((melodies, l) => {
+  const getLayers = (
+    melodies: SerializedTimeAndAnalyzedMelody[],
+    l: number
+  ) => {
     const next = melodies.slice(1);
     const gravity = next.map((n, i) => {
       const e = melodies[i]
       const g = e.melody_analysis[mode];
       if (!g) { return }
 
-      const model = new GravityModel(e, l, n, g);
-      const triangle = getTriangle()
-      const line = getLine();
+      const line_pos = getLinePos(e, n, g);
+      const model = new GravityModel(l, e, n, g);
+      const triangle = new GravityViewTriangle(getTriangle());
+      const line = new GravityViewLine(getLine());
       const svg = getGravitySVG(triangle, line);
       const view = new GravityView(svg, triangle, line);
+      return {
+        model, view, line_pos
+      }
+    })
+    .filter(e => e !== undefined)
+    .map(e => new Gravity(e.model, e.view, e.line_pos))
 
-      const line_pos = getLinePos(e, n, g);
-      return new Gravity(model, view, line_pos)
-    }).filter(e => e !== undefined)
-    return new GravityLayer(l, gravity);
-  });
+    const svg = getLayerSVG(l, gravity);
+
+    return new GravityLayer(l, svg, gravity);
+  }
+  const layers = h_melodies.map(getLayers);
   return new GravityHierarchy(mode, layers);
 }
