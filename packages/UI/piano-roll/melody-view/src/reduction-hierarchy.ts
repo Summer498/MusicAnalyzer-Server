@@ -181,7 +181,6 @@ class ReductionLayer
     super(layer, children);
   }
   renewStrong(layer: number) { this.children.forEach(e => e.renewStrong(layer === this.layer)); }
-  onWindowResized() { this.children.forEach(e => e.onWindowResized()) }
 }
 
 export class ReductionHierarchy

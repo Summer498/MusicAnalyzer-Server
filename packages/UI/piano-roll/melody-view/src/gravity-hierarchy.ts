@@ -111,7 +111,6 @@ export class GravityLayer
   ) {
     super(layer, children);
   }
-  onWindowResized() { this.children.forEach(e => e.onWindowResized()) }
 }
 
 export class GravityHierarchy

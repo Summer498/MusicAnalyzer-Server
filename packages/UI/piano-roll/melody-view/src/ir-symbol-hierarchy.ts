@@ -63,7 +63,6 @@ class IRSymbolLayer
   ) {
     super(layer, children);
   }
-  onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
 }
 
 export class IRSymbolHierarchy

@@ -107,9 +107,6 @@ class MelodyLayer
     super(layer, children);
   }
   beep() { this.children.forEach(e => e.beep()); }
-  onMelodyBeepCheckChanged(v: boolean) { this.children.forEach(e => e.onMelodyBeepCheckChanged(v)); }
-  onMelodyVolumeBarChanged(v: number) { this.children.forEach(e => e.onMelodyVolumeBarChanged(v)); }
-  onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
 }
 
 export class MelodyHierarchy
@@ -124,8 +121,6 @@ export class MelodyHierarchy
     this.show.forEach(e => e.beep())
   }
   beep() { this.children.forEach(e => e.beep()); }
-  onMelodyBeepCheckChanged(v: boolean) { this.children.forEach(e => e.onMelodyBeepCheckChanged(v)); }
-  onMelodyVolumeBarChanged(v: number) { this.children.forEach(e => e.onMelodyVolumeBarChanged(v)); }
 }
 
 function getMelodySVG(){

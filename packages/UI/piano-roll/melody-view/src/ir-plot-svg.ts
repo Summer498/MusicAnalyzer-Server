@@ -244,8 +244,6 @@ class IRPlotLayer
   ) {
     super(layer, children);
   }
-  onAudioUpdate() { this.children.forEach(e => e.onAudioUpdate()) }
-  onWindowResized() { this.children.forEach(e => e.onWindowResized()) }
 }
 
 class IRPlotHierarchy
