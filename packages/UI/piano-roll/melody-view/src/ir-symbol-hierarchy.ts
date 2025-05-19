@@ -3,7 +3,7 @@ import { Triad } from "@music-analyzer/irm";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { SetColor } from "@music-analyzer/controllers";
 import { Time } from "@music-analyzer/time-and";
-import { CollectionHierarchy, PianoRollTranslateX } from "@music-analyzer/view";
+import { PianoRollTranslateX } from "@music-analyzer/view";
 
 class IRSymbolModel {
   readonly time: Time;
@@ -75,12 +75,29 @@ class IRSymbolLayer {
   onAudioUpdate() { this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
 }
 
-export class IRSymbolHierarchy
-  extends CollectionHierarchy<IRSymbolLayer> {
+export class IRSymbolHierarchy {
+  readonly svg: SVGGElement
+  readonly children: IRSymbolLayer[]
+  protected _show: IRSymbolLayer[];
+  get show() { return this._show; }
   constructor(
     children: IRSymbolLayer[],
   ) {
-    super("implication-realization archetype", children);
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    svg.id = "implication-realization archetype";
+    children.forEach(e => svg.appendChild(e.svg));
+    this._show = [];
+    this.svg = svg
+    this.children = children
+  }
+  setShow(visible_layers: IRSymbolLayer[]) {
+    this._show = visible_layers;
+    this._show.forEach(e => e.onAudioUpdate());
+    this.svg.replaceChildren(...this._show.map(e => e.svg));
+  }
+  onChangedLayer(value: number) {
+    const visible_layer = this.children.filter(e => value === e.layer);
+    this.setShow(visible_layer);
   }
 }
 

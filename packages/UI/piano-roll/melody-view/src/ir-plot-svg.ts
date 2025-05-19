@@ -3,7 +3,7 @@ import { NowAt } from "@music-analyzer/view-parameters";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { SetColor } from "@music-analyzer/controllers";
 import { Time } from "@music-analyzer/time-and";
-import { CollectionHierarchy, PianoRollTranslateX } from "@music-analyzer/view";
+import { PianoRollTranslateX } from "@music-analyzer/view";
 
 class IRPlotAxis {
   constructor(
@@ -256,16 +256,24 @@ class IRPlotLayer {
   onAudioUpdate() { this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
 }
 
-class IRPlotHierarchy
-  extends CollectionHierarchy<IRPlotLayer> {
+class IRPlotHierarchy {
   #visible_layer: number;
+  readonly svg: SVGGElement
+  readonly children: IRPlotLayer[]
+  protected _show: IRPlotLayer[];
   get show() { return this.view.circles.show }
   constructor(
     children: IRPlotLayer[],
     readonly view: IRPlotHierarchyView,
     readonly model: IRPlotHierarchyModel,
   ) {
-    super("IR-plot-hierarchy", children)
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    svg.id = "IR-plot-hierarchy";
+    children.forEach(e => svg.appendChild(e.svg));
+    this._show = [];
+    this.svg = svg
+    this.children = children
+
     this.#visible_layer = children.length;
   }
   updateLayer() {
@@ -277,6 +285,11 @@ class IRPlotHierarchy
   onChangedLayer(value: number) {
     this.#visible_layer = value;
     this.updateLayer();
+  }
+  setShow(visible_layers: IRPlotLayer[]) {
+    this._show = visible_layers;
+    this._show.forEach(e => e.onAudioUpdate());
+    this.svg.replaceChildren(...this._show.map(e => e.svg));
   }
 }
 

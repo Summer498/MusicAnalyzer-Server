@@ -3,7 +3,7 @@ import { NoteSize } from "@music-analyzer/view-parameters";
 import { Gravity as SerializedGravity } from "@music-analyzer/melody-analyze";
 import { SerializedTimeAndAnalyzedMelody } from "./serialized-time-and-analyzed-melody";
 import { Time } from "@music-analyzer/time-and";
-import { CollectionHierarchy, PianoRollTranslateX } from "@music-analyzer/view";
+import { PianoRollTranslateX } from "@music-analyzer/view";
 
 export class GravityModel {
   readonly time: Time;
@@ -119,15 +119,32 @@ export class GravityLayer {
   onAudioUpdate() { this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
 }
 
-export class GravityHierarchy
-  extends CollectionHierarchy<GravityLayer> {
+export class GravityHierarchy {
+  readonly svg: SVGGElement
+  readonly children: GravityLayer[]
+  protected _show: GravityLayer[];
+  get show() { return this._show; }
   constructor(
     id: string,
     children: GravityLayer[],
   ) {
-    super(id, children);
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    svg.id = id;
+    children.forEach(e => svg.appendChild(e.svg));
+    this._show = [];
+    this.svg = svg
+    this.children = children
   }
   onUpdateGravityVisibility(visible: boolean) { this.svg.style.visibility = visible ? "visible" : "hidden"; }
+  setShow(visible_layers: GravityLayer[]) {
+    this._show = visible_layers;
+    this._show.forEach(e => e.onAudioUpdate());
+    this.svg.replaceChildren(...this._show.map(e => e.svg));
+  }
+  onChangedLayer(value: number) {
+    const visible_layer = this.children.filter(e => value === e.layer);
+    this.setShow(visible_layer);
+  }
 }
 
 function getTriangle() {

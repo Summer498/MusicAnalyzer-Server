@@ -3,7 +3,7 @@ import { black_key_height, bracket_height, PianoRollConverter } from "@music-ana
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { SetColor } from "@music-analyzer/controllers";
 import { Time } from "@music-analyzer/time-and";
-import { CollectionHierarchy, PianoRollTranslateX } from "@music-analyzer/view";
+import { PianoRollTranslateX } from "@music-analyzer/view";
 
 class ReductionModel {
   readonly time: Time;
@@ -192,12 +192,25 @@ class ReductionLayer {
   onAudioUpdate() { this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
 }
 
-export class ReductionHierarchy
-  extends CollectionHierarchy<ReductionLayer> {
+export class ReductionHierarchy {
+  readonly svg: SVGGElement
+  readonly children: ReductionLayer[]
+  protected _show: ReductionLayer[];
+  get show() { return this._show; }
   constructor(
     children: ReductionLayer[],
   ) {
-    super("time-span-reduction", children);
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    svg.id = "time-span-reduction";
+    children.forEach(e => svg.appendChild(e.svg));
+    this._show = [];
+    this.svg = svg
+    this.children = children
+  }
+  setShow(visible_layers: ReductionLayer[]) {
+    this._show = visible_layers;
+    this._show.forEach(e => e.onAudioUpdate());
+    this.svg.replaceChildren(...this._show.map(e => e.svg));
   }
   onChangedLayer(value: number) {
     const visible_layer = this.children.filter(e => value >= e.layer);

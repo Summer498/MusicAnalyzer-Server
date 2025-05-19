@@ -7,7 +7,7 @@ import { black_key_height, NowAt, PianoRollConverter } from "@music-analyzer/vie
 import { reservation_range } from "@music-analyzer/view-parameters";
 import { SetColor } from "@music-analyzer/controllers";
 import { Time } from "@music-analyzer/time-and";
-import { CollectionHierarchy, PianoRollTranslateX } from "@music-analyzer/view";
+import { PianoRollTranslateX } from "@music-analyzer/view";
 
 export class MelodyBeep {
   #beep_volume: number;
@@ -118,18 +118,32 @@ class MelodyLayer {
   onAudioUpdate() { this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
 }
 
-export class MelodyHierarchy
-  extends CollectionHierarchy<MelodyLayer> {
+export class MelodyHierarchy {
+  readonly svg: SVGGElement
+  readonly children: MelodyLayer[]
+  protected _show: MelodyLayer[];
   get show() { return this._show; }
   constructor(
     children: MelodyLayer[],
   ) {
-    super("melody", children);
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    svg.id = "melody";
+    children.forEach(e => svg.appendChild(e.svg));
+    this._show = [];
+    this.svg = svg
+    this.children = children
   }
-  onAudioUpdate() {
-    this.show.forEach(e => e.beep())
-  }
+  onAudioUpdate() { this.show.forEach(e => e.beep()) }
   beep() { this.children.forEach(e => e.beep()); }
+  setShow(visible_layers: MelodyLayer[]) {
+    this._show = visible_layers;
+    this._show.forEach(e => e.onAudioUpdate());
+    this.svg.replaceChildren(...this._show.map(e => e.svg));
+  }
+  onChangedLayer(value: number) {
+    const visible_layer = this.children.filter(e => value === e.layer);
+    this.setShow(visible_layer);
+  }
 }
 
 function getMelodySVG() {

@@ -1,5 +1,5 @@
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { AudioReflectableRegistry } from "@music-analyzer/view";
+import { AudioReflectableRegistry, PianoRollTranslateX } from "@music-analyzer/view";
 import { WindowReflectableRegistry } from "@music-analyzer/view";
 import { DMelodySeries } from "./d-melody-series";
 import { ReductionHierarchy } from "./reduction-hierarchy";
@@ -9,6 +9,7 @@ import { HierarchyBuilder } from "./hierarchy-builder";
 import { IRSymbolHierarchy } from "./ir-symbol-hierarchy";
 import { MelodyHierarchy } from "./melody-hierarchy";
 import { DMelodyController, GravityController, HierarchyLevelController, MelodyBeepController, MelodyColorController, TimeRangeController } from "@music-analyzer/controllers";
+import { insertMelody } from "./melody-editor/insert";
 
 interface Controllers {
   readonly d_melody: DMelodyController,
@@ -32,10 +33,15 @@ const setControllers = (
 ) => (
   controllers: Controllers,
 ) => {
-    const audioListeners = [melody, ir_symbol, reduction, scale_gravity, chord_gravity, ...ir_plot.children, d_melodies,]
-      .flatMap(e => e.children.map(e => e))
-      .map(e => () => e.onAudioUpdate())
+    const onAudioUpdate = (svg: SVGGElement) => { svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
+
+    const audioListeners = [
+      ...[melody, ir_symbol, reduction, scale_gravity, chord_gravity, ...ir_plot.children, d_melodies]
+        .flatMap(e => e.children.map(e => e))
+        .map(e => () => e.onAudioUpdate()),
+    ]
     controllers.audio.addListeners(...audioListeners);
+    audioListeners.forEach(f=>f())
 
     const windowListeners = [...[melody, ir_symbol, reduction, scale_gravity, chord_gravity, ...ir_plot.children]
       .flatMap(e => e.children.map(e => e)), d_melodies]
