@@ -117,7 +117,7 @@ export interface RequiredByBeatElements {
 
 export class BeatElements {
   readonly children: BeatBarsSeries[];
-  readonly beat_bars: BeatBarsSeries;
+  readonly beat_bars: SVGGElement;
   constructor(
     beat_info: BeatInfo,
     melodies: { time: Time }[],
@@ -147,7 +147,7 @@ export class BeatElements {
       .map(f => controllers.window.addListeners(f))
     const listeners = beat_bars.children.map(e => e.onTimeRangeChanged.bind(e))
     controllers.time_range.addListeners(...listeners)
-    this.beat_bars = beat_bars
-    this.children = [this.beat_bars];
+    this.beat_bars = beat_bars.svg
+    this.children = [beat_bars];
   }
 }

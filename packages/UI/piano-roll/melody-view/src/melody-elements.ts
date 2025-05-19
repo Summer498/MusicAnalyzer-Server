@@ -78,35 +78,43 @@ const setControllers = (
 
 export class MelodyElements {
   readonly children: unknown[];
-  readonly d_melody_collection: DMelodySeries;
-  readonly melody_hierarchy: MelodyHierarchy;
-  readonly ir_hierarchy: IRSymbolHierarchy;
-  readonly ir_plot_svg: IRPlotSVG;
-  readonly chord_gravities: GravityHierarchy;
-  readonly scale_gravities: GravityHierarchy;
-  readonly time_span_tree: ReductionHierarchy;
+  readonly d_melody_collection: SVGGElement;
+  readonly melody_hierarchy: SVGGElement;
+  readonly ir_hierarchy: SVGGElement;
+  readonly ir_plot_svg: SVGGElement;
+  readonly chord_gravities: SVGGElement;
+  readonly scale_gravities: SVGGElement;
+  readonly time_span_tree: SVGGElement;
   constructor(
     hierarchical_melody: SerializedTimeAndAnalyzedMelody[][],
     d_melodies: SerializedTimeAndAnalyzedMelody[],
     controllers: Controllers
   ) {
     const builder = new HierarchyBuilder(d_melodies, hierarchical_melody, controllers)
-    this.d_melody_collection = builder.buildDMelody(d_melodies);
-    this.melody_hierarchy = builder.buildMelody(hierarchical_melody);
-    this.ir_hierarchy = builder.buildIRSymbol(hierarchical_melody);
-    this.ir_plot_svg = builder.buildIRPlot(hierarchical_melody);
-    this.chord_gravities = builder.buildGravity("chord_gravity", hierarchical_melody);
-    this.scale_gravities = builder.buildGravity("scale_gravity", hierarchical_melody);
-    this.time_span_tree = builder.buildReduction(hierarchical_melody);
+    const d_melody_collection = builder.buildDMelody(d_melodies);
+    const melody_hierarchy = builder.buildMelody(hierarchical_melody);
+    const ir_hierarchy = builder.buildIRSymbol(hierarchical_melody);
+    const ir_plot_svg = builder.buildIRPlot(hierarchical_melody);
+    const chord_gravities = builder.buildGravity("chord_gravity", hierarchical_melody);
+    const scale_gravities = builder.buildGravity("scale_gravity", hierarchical_melody);
+    const time_span_tree = builder.buildReduction(hierarchical_melody);
+
+    this.d_melody_collection = d_melody_collection.svg
+    this.melody_hierarchy = melody_hierarchy.svg
+    this.ir_hierarchy = ir_hierarchy.svg
+    this.ir_plot_svg = ir_plot_svg.svg
+    this.chord_gravities = chord_gravities.svg
+    this.scale_gravities = scale_gravities.svg
+    this.time_span_tree = time_span_tree.svg
 
     setControllers(
-      this.d_melody_collection,
-      this.melody_hierarchy,
-      this.ir_hierarchy,
-      this.ir_plot_svg,
-      this.chord_gravities,
-      this.scale_gravities,
-      this.time_span_tree,
+      d_melody_collection,
+      melody_hierarchy,
+      ir_hierarchy,
+      ir_plot_svg,
+      chord_gravities,
+      scale_gravities,
+      time_span_tree,
     )(controllers);
 
     this.children = [

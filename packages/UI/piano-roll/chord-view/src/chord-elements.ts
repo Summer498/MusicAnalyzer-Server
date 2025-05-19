@@ -17,19 +17,25 @@ export interface RequiredByChordElements {
 
 export class ChordElements {
   readonly children: unknown[];
-  readonly chord_keys: ChordKeySeries;
-  readonly chord_names: ChordNameSeries;
-  readonly chord_notes: ChordNotesSeries;
-  readonly chord_romans: ChordRomanSeries;
+  readonly chord_keys: SVGGElement;
+  readonly chord_names: SVGGElement;
+  readonly chord_notes: SVGGElement;
+  readonly chord_romans: SVGGElement;
   constructor(
     romans: SerializedTimeAndRomanAnalysis[],
     controllers: RequiredByChordElements
   ) {
     const data = romans.map(e => new RequiredByChordPartModel(e))
-    this.chord_keys = new ChordKeySeries(data, controllers);
-    this.chord_names = new ChordNameSeries(data, controllers);
-    this.chord_notes = new ChordNotesSeries(data, controllers);
-    this.chord_romans = new ChordRomanSeries(data, controllers);
+    const chord_keys = new ChordKeySeries(data, controllers);
+    const chord_names = new ChordNameSeries(data, controllers);
+    const chord_notes = new ChordNotesSeries(data, controllers);
+    const chord_romans = new ChordRomanSeries(data, controllers);
+
+    this.chord_keys = chord_keys.svg;
+    this.chord_names = chord_names.svg;
+    this.chord_notes = chord_notes.svg;
+    this.chord_romans = chord_romans.svg;
+
     this.children = [
       this.chord_keys,
       this.chord_names,
