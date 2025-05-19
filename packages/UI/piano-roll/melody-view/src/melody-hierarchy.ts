@@ -101,16 +101,12 @@ export class Melody {
 class MelodyLayer {
   readonly children_model: { readonly time: Time }[];
   #show: Melody[];
-  get show() { return this.#show; };    
-  readonly svg: SVGGElement;
+  get show() { return this.#show; };
   constructor(
-  readonly  children: Melody[],
+    readonly svg: SVGGElement,
+    readonly children: Melody[],
     readonly layer: number,
   ) {
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    svg.id = `layer-${layer}`;
-    children.forEach(e => svg.appendChild(e.svg));
-    this.svg = svg;
     this.children_model = this.children.map(e => e.model);
     this.#show = children;
   }
@@ -119,20 +115,12 @@ class MelodyLayer {
 }
 
 export class MelodyHierarchy {
-  readonly svg: SVGGElement
-  readonly children: MelodyLayer[]
-  protected _show: MelodyLayer[];
+  protected _show: MelodyLayer[] = [];
   get show() { return this._show; }
   constructor(
-    children: MelodyLayer[],
-  ) {
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    svg.id = "melody";
-    children.forEach(e => svg.appendChild(e.svg));
-    this._show = [];
-    this.svg = svg
-    this.children = children
-  }
+  readonly svg: SVGGElement,
+  readonly children: MelodyLayer[],
+  ) { }
   onAudioUpdate() { this.show.forEach(e => e.beep()) }
   beep() { this.children.forEach(e => e.beep()); }
   setShow(visible_layers: MelodyLayer[]) {
@@ -154,6 +142,13 @@ function getMelodySVG() {
   return svg;
 }
 
+function getSVGG(id: string, children: { svg: SVGGElement }[]) {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  svg.id = id;
+  children.forEach(e => svg.appendChild(e.svg));
+  return svg;
+}
+
 export function buildMelody(
   h_melodies: SerializedTimeAndAnalyzedMelody[][],
 ) {
@@ -164,7 +159,10 @@ export function buildMelody(
       const view = new MelodyView(svg);
       return new Melody(model, view)
     })
-    return new MelodyLayer(parts, l)
+    const svg = getSVGG(`layer-${l}`, parts);
+    return new MelodyLayer(svg, parts, l)
   });
-  return new MelodyHierarchy(layers);
+
+  const svg = getSVGG("melody", layers);
+  return new MelodyHierarchy(svg, layers);
 }

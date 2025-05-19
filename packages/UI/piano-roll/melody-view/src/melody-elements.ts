@@ -9,7 +9,6 @@ import { HierarchyBuilder } from "./hierarchy-builder";
 import { IRSymbolHierarchy } from "./ir-symbol-hierarchy";
 import { MelodyHierarchy } from "./melody-hierarchy";
 import { DMelodyController, GravityController, HierarchyLevelController, MelodyBeepController, MelodyColorController, TimeRangeController } from "@music-analyzer/controllers";
-import { insertMelody } from "./melody-editor/insert";
 
 interface Controllers {
   readonly d_melody: DMelodyController,

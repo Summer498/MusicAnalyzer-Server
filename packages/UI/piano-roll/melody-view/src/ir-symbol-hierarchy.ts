@@ -59,15 +59,11 @@ class IRSymbolLayer {
   readonly children_model: { readonly time: Time }[];
   #show: IRSymbol[];
   get show() { return this.#show; };
-  readonly svg: SVGGElement
   constructor(
+    readonly svg: SVGGElement,
     readonly children: IRSymbol[],
     readonly layer: number,
   ) {
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    svg.id = `layer-${layer}`;
-    children.forEach(e => svg.appendChild(e.svg));
-
     this.svg = svg;
     this.children_model = this.children.map(e => e.model);
     this.#show = children;
@@ -76,20 +72,12 @@ class IRSymbolLayer {
 }
 
 export class IRSymbolHierarchy {
-  readonly svg: SVGGElement
-  readonly children: IRSymbolLayer[]
-  protected _show: IRSymbolLayer[];
+  protected _show: IRSymbolLayer[] = [];
   get show() { return this._show; }
   constructor(
-    children: IRSymbolLayer[],
-  ) {
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    svg.id = "implication-realization archetype";
-    children.forEach(e => svg.appendChild(e.svg));
-    this._show = [];
-    this.svg = svg
-    this.children = children
-  }
+    readonly svg: SVGGElement,
+    readonly children: IRSymbolLayer[],
+  ) { }
   setShow(visible_layers: IRSymbolLayer[]) {
     this._show = visible_layers;
     this._show.forEach(e => e.onAudioUpdate());
@@ -112,17 +100,26 @@ function getIRSymbolSVG(text: string) {
   return svg;
 }
 
+function getSVGG(id:string, children: {svg:SVGElement}[]){
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  svg.id = id;
+  children.forEach(e => svg.appendChild(e.svg));
+  return svg;
+}
+
 export function buildIRSymbol(
   h_melodies: SerializedTimeAndAnalyzedMelody[][],
 ) {
-  const children = h_melodies.map((e, l) => {
+  const layers = h_melodies.map((e, l) => {
     const parts = e.map(e => {
       const model = new IRSymbolModel(e, l);
       const svg = getIRSymbolSVG(model.archetype.symbol);
       const view = new IRSymbolView(svg);
       return new IRSymbol(model, view)
     });
-    return new IRSymbolLayer(parts, l)
+    const svg = getSVGG(`layer-${l}`, parts);
+    return new IRSymbolLayer(svg, parts, l)
   });
-  return new IRSymbolHierarchy(children);
+  const svg = getSVGG("implication-realization archetype", layers)
+  return new IRSymbolHierarchy(svg, layers);
 }

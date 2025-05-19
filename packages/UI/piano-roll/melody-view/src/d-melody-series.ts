@@ -59,18 +59,14 @@ class DMelody {
 }
 
 export class DMelodySeries {
-  readonly svg: SVGGElement;
   readonly children_model: { readonly time: Time }[];
   #show: DMelody[];
   get show() { return this.#show; };
 
   constructor(
+    readonly svg: SVGGElement,
     readonly children: DMelody[],
   ) {
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    svg.id = "detected-melody";
-    children.forEach(e => svg.appendChild(e.svg));
-    this.svg = svg;
     this.children_model = this.children.map(e => e.model);
     this.#show = children;
   }
@@ -89,6 +85,13 @@ function getMelodyViewSVG() {
   return svg;
 }
 
+function getSVGG(id: string, parts: { svg: SVGElement }[]) {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  svg.id = id;
+  parts.forEach(e => svg.appendChild(e.svg));
+  return svg;
+}
+
 export function buildDMelody(
   d_melody: SerializedTimeAndAnalyzedMelody[],
 ) {
@@ -98,5 +101,6 @@ export function buildDMelody(
     const view = new DMelodyView(svg);
     return new DMelody(model, view)
   })
-  return new DMelodySeries(parts);
+  const svg = getSVGG("detected-melody", parts);
+  return new DMelodySeries(svg, parts);
 }

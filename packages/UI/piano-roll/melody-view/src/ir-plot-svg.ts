@@ -203,7 +203,7 @@ class IRPlotView {
   readonly setColor = (color: string) => this.svg.style.fill = color;
 }
 
-export class IRPlot {
+class IRPlot {
   get svg() { return this.view.svg; }
   constructor(
     readonly model: IRPlotModel,
@@ -239,16 +239,12 @@ class IRPlotLayer {
   readonly children_model: { readonly time: Time }[];
   #show: IRPlot[];
   get show() { return this.#show; };
-  readonly svg: SVGGElement;
   constructor(
+    readonly svg: SVGGElement,
     readonly view: IRPlotLayerView,
     readonly children: IRPlot[],
     readonly layer: number,
   ) {
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    svg.id = `layer-${layer}`;
-    children.forEach(e => svg.appendChild(e.svg));
-
     this.svg = svg;
     this.children_model = this.children.map(e => e.model);
     this.#show = children;
@@ -258,22 +254,14 @@ class IRPlotLayer {
 
 class IRPlotHierarchy {
   #visible_layer: number;
-  readonly svg: SVGGElement
-  readonly children: IRPlotLayer[]
-  protected _show: IRPlotLayer[];
+  protected _show: IRPlotLayer[] = [];
   get show() { return this.view.circles.show }
   constructor(
-    children: IRPlotLayer[],
+    readonly svg: SVGGElement,
+    readonly children: IRPlotLayer[],
     readonly view: IRPlotHierarchyView,
     readonly model: IRPlotHierarchyModel,
   ) {
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    svg.id = "IR-plot-hierarchy";
-    children.forEach(e => svg.appendChild(e.svg));
-    this._show = [];
-    this.svg = svg
-    this.children = children
-
     this.#visible_layer = children.length;
   }
   updateLayer() {
@@ -328,30 +316,19 @@ function updateRadius(
   part.view.updateRadius(base * (N - l / 2));
 }
 
-function getXAxisSVG(
-  w: number,
-  h: number
-) {
+function getAxis(p: {
+  readonly x1: number,
+  readonly x2: number,
+  readonly y1: number,
+  readonly y2: number,
+}) {
   const x_axis_svg = document.createElementNS("http://www.w3.org/2000/svg", "line");
-  x_axis_svg.setAttribute("x1", String(0));
-  x_axis_svg.setAttribute("x2", String(w));
-  x_axis_svg.setAttribute("y1", String(h / 2));
-  x_axis_svg.setAttribute("y2", String(h / 2));
+  x_axis_svg.setAttribute("x1", String(p.x1));
+  x_axis_svg.setAttribute("x2", String(p.x2));
+  x_axis_svg.setAttribute("y1", String(p.y1));
+  x_axis_svg.setAttribute("y2", String(p.y2));
   x_axis_svg.style.stroke = "rgb(0, 0, 0)";
   return x_axis_svg;
-}
-
-function getYAxisSVG(
-  w: number,
-  h: number
-) {
-  const y_axis_svg = document.createElementNS("http://www.w3.org/2000/svg", "line");
-  y_axis_svg.setAttribute("x1", String(w / 2));
-  y_axis_svg.setAttribute("x2", String(w / 2));
-  y_axis_svg.setAttribute("y1", String(0));
-  y_axis_svg.setAttribute("y2", String(h));
-  y_axis_svg.style.stroke = "rgb(0, 0, 0)";
-  return y_axis_svg;
 }
 
 function getAxisSVG(
@@ -368,6 +345,13 @@ function getAxisSVG(
   axis_svg.setAttribute("height", String(h));
   return axis_svg;
 }
+function getSVGG(id: string, children: { svg: SVGElement }[]) {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  svg.id = id;
+  children.forEach(e => svg.appendChild(e.svg));
+  return svg;
+}
+
 
 export function buildIRPlot(
   h_melodies: SerializedTimeAndAnalyzedMelody[][],
@@ -386,14 +370,16 @@ export function buildIRPlot(
     layer_view.updateWidth(layer_model.w);
     layer_view.updateHeight(layer_model.h);
 
-    return new IRPlotLayer(layer_view, [part], l);
+    const svgg = getSVGG(`layer-${l}`, [part]);
+    return new IRPlotLayer(svgg, layer_view, [part], l);
   })
 
   const h_model = new IRPlotHierarchyModel(layers);
   const w = h_model.width
   const h = h_model.height
-  const x_axis_svg = getXAxisSVG(w, h);
-  const y_axis_svg = getYAxisSVG(w, h);
+
+  const x_axis_svg = getAxis({ x1: 0, x2: w, y1: h / 2, y2: h / 2 });
+  const y_axis_svg = getAxis({ x1: w / 2, x2: w / 2, y1: 0, y2: h });
 
   const x_axis = new IRPlotAxis(x_axis_svg);
   const y_axis = new IRPlotAxis(y_axis_svg);
@@ -403,7 +389,8 @@ export function buildIRPlot(
   const axis_svg = getAxisSVG(w, h, x_axis, y_axis, circles);
   const view = new IRPlotHierarchyView(axis_svg, x_axis, y_axis, circles);
 
-  const hierarchy = [new IRPlotHierarchy(layers, view, h_model)]
+  const svgg = getSVGG("IR-plot-hierarchy", layers);
+  const hierarchy = [new IRPlotHierarchy(svgg, layers, view, h_model)]
 
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.id = "IR-plot";

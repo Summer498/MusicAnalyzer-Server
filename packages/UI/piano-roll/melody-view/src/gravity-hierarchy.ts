@@ -120,21 +120,12 @@ export class GravityLayer {
 }
 
 export class GravityHierarchy {
-  readonly svg: SVGGElement
-  readonly children: GravityLayer[]
-  protected _show: GravityLayer[];
+  protected _show: GravityLayer[] = [];
   get show() { return this._show; }
   constructor(
-    id: string,
-    children: GravityLayer[],
-  ) {
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    svg.id = id;
-    children.forEach(e => svg.appendChild(e.svg));
-    this._show = [];
-    this.svg = svg
-    this.children = children
-  }
+    readonly svg: SVGGElement,
+    readonly children: GravityLayer[]
+  ) { }
   onUpdateGravityVisibility(visible: boolean) { this.svg.style.visibility = visible ? "visible" : "hidden"; }
   setShow(visible_layers: GravityLayer[]) {
     this._show = visible_layers;
@@ -197,10 +188,10 @@ function getLinePos(
   return line_pos;
 }
 
-function getLayerSVG(l: number, gravity: { svg: SVGElement }[]) {
+function getSVGG(id: string, children: { svg: SVGElement }[]) {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-  svg.id = `layer-${l}`;
-  gravity.forEach(e => svg.appendChild(e.svg));
+  svg.id = id;
+  children.forEach(e => svg.appendChild(e.svg));
   return svg;
 }
 
@@ -228,13 +219,12 @@ export function buildGravity(
         model, view, line_pos
       }
     })
-    .filter(e => e !== undefined)
-    .map(e => new Gravity(e.model, e.view, e.line_pos))
-
-    const svg = getLayerSVG(l, gravity);
-
+      .filter(e => e !== undefined)
+      .map(e => new Gravity(e.model, e.view, e.line_pos))
+    const svg = getSVGG(`layer-${l}`, gravity);
     return new GravityLayer(l, svg, gravity);
   }
   const layers = h_melodies.map(getLayers);
-  return new GravityHierarchy(mode, layers);
+  const svg = getSVGG(mode, layers);
+  return new GravityHierarchy(svg, layers);
 }

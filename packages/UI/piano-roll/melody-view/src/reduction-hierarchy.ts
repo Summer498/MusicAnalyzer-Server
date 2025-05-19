@@ -176,15 +176,11 @@ class ReductionLayer {
   readonly children_model: { readonly time: Time }[];
   #show: Reduction[];
   get show() { return this.#show; };
-  readonly svg: SVGGElement
   constructor(
+    readonly svg: SVGGElement,
     readonly children: Reduction[],
     readonly layer: number,
   ) {
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    svg.id = `layer-${layer}`;
-    children.forEach(e => svg.appendChild(e.svg));
-    this.svg = svg;
     this.children_model = this.children.map(e => e.model);
     this.#show = children;
   }
@@ -193,20 +189,12 @@ class ReductionLayer {
 }
 
 export class ReductionHierarchy {
-  readonly svg: SVGGElement
-  readonly children: ReductionLayer[]
-  protected _show: ReductionLayer[];
+  protected _show: ReductionLayer[] = [];
   get show() { return this._show; }
   constructor(
-    children: ReductionLayer[],
-  ) {
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    svg.id = "time-span-reduction";
-    children.forEach(e => svg.appendChild(e.svg));
-    this._show = [];
-    this.svg = svg
-    this.children = children
-  }
+    readonly svg: SVGGElement,
+    readonly children: ReductionLayer[],
+  ) { }
   setShow(visible_layers: ReductionLayer[]) {
     this._show = visible_layers;
     this._show.forEach(e => e.onAudioUpdate());
@@ -262,6 +250,13 @@ function getDotSVG() {
   return svg;
 }
 
+function getSVGG(id: string, children: { svg: SVGGElement }[]) {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  svg.id = id;
+  children.forEach(e => svg.appendChild(e.svg));
+  return svg;
+}
+
 export function buildReduction(
   h_melodies: SerializedTimeAndAnalyzedMelody[][],
 ) {
@@ -280,7 +275,9 @@ export function buildReduction(
       const view = new ReductionView(svg, bracket, dot, ir_symbol, view_model);
       return new Reduction(model, view)
     });
-    return new ReductionLayer(parts, l)
+    const svg = getSVGG(`layer-${l}`, parts);
+    return new ReductionLayer(svg, parts, l)
   })
-  return new ReductionHierarchy(layer);
+  const svg = getSVGG("time-span-reduction", layer);
+  return new ReductionHierarchy(svg, layer);
 }
