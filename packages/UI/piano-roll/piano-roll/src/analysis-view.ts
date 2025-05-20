@@ -33,7 +33,7 @@ export class AnalysisView {
   ) {
     const { beat, chord, melody } = analysis;
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-     this.svg.appendChild(beat.beat_bars);
+    // this.svg.appendChild(beat.beat_bars);
     this.svg.appendChild(chord.chord_notes);
     this.svg.appendChild(chord.chord_names);
     this.svg.appendChild(chord.chord_romans);
