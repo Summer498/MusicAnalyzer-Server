@@ -91,7 +91,7 @@ class BGs {
   readonly svg: SVGGElement;
   readonly children: BG[];
   constructor(publisher: WindowReflectableRegistry) {
-    const svg =  document.createElementNS("http://www.w3.org/2000/svg", "g");
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     svg.id = `BGs`;
     const children = getRange(
       PianoRollBegin.get(),
@@ -131,7 +131,7 @@ class Key extends Rectangle {
   ) {
     const y = (isBlack(i)
       // black
-      ? PianoRollConverter.midi2BlackCoordinate(i) 
+      ? PianoRollConverter.midi2BlackCoordinate(i)
       // white
       : [i]
         .map(e => PianoRollConverter.transposed(e))
@@ -180,6 +180,16 @@ class Keys {
   }
 }
 
+const appendChildren = (svg: SVGElement) => (...children: SVGElement[]) => {
+  children.forEach(e => svg.appendChild(e));
+}
+const onWindowResized = (svg: SVGElement) => () => {
+  svg.setAttribute("x", String(0));
+  svg.setAttribute("y", String(0));
+  svg.setAttribute("width", String(PianoRollWidth.get()));
+  svg.setAttribute("height", String(PianoRollHeight.get() + chord_text_size * 2 + chord_name_margin));
+}
+
 export class PianoRoll {
   readonly svg: SVGSVGElement;
   constructor(
@@ -187,25 +197,15 @@ export class PianoRoll {
     window: WindowReflectableRegistry,
     show_current_time_line: boolean
   ) {
-    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    this.svg.id = "piano-roll";
-    window.addListeners(this.onWindowResized.bind(this))
-    this.appendChildren(
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.id = "piano-roll";
+    appendChildren(svg)(
       new BGs(window).svg,
       new AnalysisView(analyzed).svg,
       new Keys().svg,
       new CurrentTimeLine(show_current_time_line, window).svg,
     );
-    window.addListeners(this.onWindowResized.bind(this))
-  }
-  appendChildren(...children: SVGElement[]) {
-    children.forEach(e => this.svg.appendChild(e));
-    return this;
-  }
-  onWindowResized() {
-    this.svg.setAttribute("x", String(0));
-    this.svg.setAttribute("y", String(0));
-    this.svg.setAttribute("width", String(PianoRollWidth.get()));
-    this.svg.setAttribute("height", String(PianoRollHeight.get() + chord_text_size * 2 + chord_name_margin));
+    window.addListeners(onWindowResized(svg))
+    this.svg = svg;
   }
 }
