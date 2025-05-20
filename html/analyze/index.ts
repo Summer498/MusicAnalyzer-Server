@@ -1,7 +1,3 @@
-declare const audio_player: HTMLAudioElement | HTMLVideoElement;
-declare const piano_roll_place: HTMLDivElement;
-declare const title: HTMLHeadingElement;
-
 import { setCurrentTimeRatio, setPianoRollParameters } from "@music-analyzer/view-parameters";
 import { song_list } from "@music-analyzer/gttm";
 import { AnalyzedDataContainer } from "@music-analyzer/analyzed-data-container";
@@ -73,14 +69,6 @@ class Controllers {
   }
 }
 
-class HTMLsContainer {
-  constructor(
-    readonly audio_player: HTMLAudioElement | HTMLVideoElement,
-    readonly title: HTMLHeadingElement,
-    readonly piano_roll_place: HTMLDivElement,
-  ) { }
-}
-
 type Mode = "TSR" | "PR" | "";
 
 class TitleInfo {
@@ -88,20 +76,6 @@ class TitleInfo {
     readonly id: string,
     readonly mode: Mode,
   ) { }
-}
-
-class URLsContainer {
-  readonly title: TitleInfo;
-  constructor(
-    readonly resources: `/${string}/${string}`,
-    readonly audio_src: `/${string}/${string}.${string}`,
-    readonly urlParams: URLSearchParams,
-  ) {
-    this.title = new TitleInfo(
-      urlParams.get("tune") || "",
-      urlParams.has("pr") ? "PR" : urlParams.has("tsr") ? "TSR" : "",
-    )
-  }
 }
 
 class AnalyzedMusicData {
@@ -308,13 +282,13 @@ const getSaveButton = (tune_id: string, title: HTMLHeadElement, piano_roll_view:
 
 const getSaveButtons = (
   title: TitleInfo,
-  html: HTMLsContainer,
+  titleHead: HTMLHeadingElement,
   piano_roll_view: PianoRoll,
 ) => {
   const tune_id = `${title.mode}-${title.id}`;
   return [
-    getSaveButton(tune_id, html.title, piano_roll_view),
-    getRawSaveButton(tune_id, html.title, piano_roll_view),
+    getSaveButton(tune_id, titleHead, piano_roll_view),
+    getRawSaveButton(tune_id, titleHead, piano_roll_view),
   ]
 }
 
@@ -337,21 +311,23 @@ class ColumnHTML {
 
 const setupUI = (
   title_info: TitleInfo,
-  html: HTMLsContainer,
+  audio_player: HTMLAudioElement,
+  titleHead: HTMLHeadingElement,
+  piano_roll_place: HTMLDivElement,
   manager: ApplicationManager,
 ) => {
-  const audio_viewer = new AudioViewer(html.audio_player, manager.audio_time_mediator);
+  const audio_viewer = new AudioViewer(audio_player, manager.audio_time_mediator);
   const piano_roll_view = new PianoRoll(manager.analyzed, manager.window_size_mediator, !manager.FULL_VIEW)
-  asParent(html.piano_roll_place)
+  asParent(piano_roll_place)
     .appendChildren(
       new ColumnHTML(
         audio_viewer.wave.svg,
         audio_viewer.spectrogram.svg,
         audio_viewer.fft.svg,
       ).div,
-      ...getSaveButtons(title_info, html, piano_roll_view),
+      ...getSaveButtons(title_info, titleHead, piano_roll_view),
       piano_roll_view.svg,
-      html.audio_player,
+      audio_player,
       new ColumnHTML(
         manager.controller.div,
         manager.analyzed.melody.ir_plot_svg
@@ -362,13 +338,13 @@ const setupUI = (
 
 const setFullView = (
   FULL_VIEW: boolean,
-  html: HTMLsContainer,
+  audio_player: HTMLAudioElement,
 ) => {
   if (FULL_VIEW) {
     setCurrentTimeRatio(0.025);
-    html.audio_player.autoplay = false;
+    audio_player.autoplay = false;
   }
-  else { html.audio_player.autoplay = true; }
+  else { audio_player.autoplay = true; }
 }
 
 const setIRCount = () => {
@@ -377,32 +353,34 @@ const setIRCount = () => {
 
 const setup = (
   window: Window,
-  html: HTMLsContainer,
+  audio_player: HTMLAudioElement,
+  titleHead: HTMLHeadingElement,
+  piano_roll_place: HTMLDivElement,
   title: TitleInfo,
 ) => (raw_analyzed_data: AnalyzedMusicData) => {
   const { roman, hierarchical_melody, melody, } = raw_analyzed_data;
   const { beat_info, d_melodies } = new AnalyzedDataContainer(roman, melody, hierarchical_melody)
   setPianoRollParameters(hierarchical_melody);
   const manager = new ApplicationManager(beat_info, roman, hierarchical_melody, melody, d_melodies);
-  setFullView(manager.FULL_VIEW, html);
+  setFullView(manager.FULL_VIEW, audio_player);
 
-  setupUI(title, html, manager);
+  setupUI(title, audio_player, titleHead, piano_roll_place, manager);
   setIRCount();
-  new EventLoop(manager.audio_time_mediator, html.audio_player).update();
+  new EventLoop(manager.audio_time_mediator, audio_player).update();
   getMusicAnalyzerWindow(window, raw_analyzed_data).onresize = _ => manager.window_size_mediator.onUpdate();
   manager.window_size_mediator.onUpdate();
 }
 
 const updateTitle = (
-  title: HTMLHeadingElement,
+  titleHead: HTMLHeadingElement,
   gttm: TitleInfo,
 ) => {
-  title.textContent = gttm.mode ? `[${gttm.mode}] ${gttm.id}` : gttm.id;
+  titleHead.textContent = gttm.mode ? `[${gttm.mode}] ${gttm.id}` : gttm.id;
   const tune_match = gttm.id.match(/([0-9]+)_[0-9]/);
   const tune_no = tune_match ? Number(tune_match[1]) : Number(gttm.id);
   if (tune_no) {
     const song_data = song_list[tune_no];
-    title.innerHTML = `[${gttm.mode || "???"}] ${gttm.id}, ${song_data.author}, <i>"${song_data.title}"</i>`;
+    titleHead.innerHTML = `[${gttm.mode || "???"}] ${gttm.id}, ${song_data.author}, <i>"${song_data.title}"</i>`;
   }
 };
 
@@ -515,28 +493,37 @@ class GTTM_URLs
   readonly mtr: string
   readonly tsr: string
   readonly pr: string
-  constructor(url: URLsContainer) {
-    this.msc = `${url.resources}/gttm-example/${url.title.id}/MSC-${url.title.id}.xml`
-    this.grp = `${url.resources}/gttm-example/${url.title.id}/GPR-${url.title.id}.xml`
-    this.mtr = `${url.resources}/gttm-example/${url.title.id}/MPR-${url.title.id}.xml`
-    this.tsr = `${url.resources}/gttm-example/${url.title.id}/TS-${url.title.id}.xml`
-    this.pr = `${url.resources}/gttm-example/${url.title.id}/PR-${url.title.id}.xml`
+  constructor(
+      title: TitleInfo,
+      resources: `/${string}/${string}`,
+  ) {
+    this.msc = `${resources}/gttm-example/${title.id}/MSC-${title.id}.xml`
+    this.grp = `${resources}/gttm-example/${title.id}/GPR-${title.id}.xml`
+    this.mtr = `${resources}/gttm-example/${title.id}/MPR-${title.id}.xml`
+    this.tsr = `${resources}/gttm-example/${title.id}/TS-${title.id}.xml`
+    this.pr = `${resources}/gttm-example/${title.id}/PR-${title.id}.xml`
   }
 }
 
 class AnalysisURLs {
   readonly melody: string
   readonly roman: string
-  constructor(url: URLsContainer) {
-    this.melody = `${url.resources}/${url.title.id}/analyzed/melody/crepe/manalyze.json`
-    this.roman = `${url.resources}/${url.title.id}/analyzed/chord/roman.json`
+  constructor(
+    title: TitleInfo,
+    resources: `/${string}/${string}`,
+  ) {
+    this.melody = `${resources}/${title.id}/analyzed/melody/crepe/manalyze.json`
+    this.roman = `${resources}/${title.id}/analyzed/chord/roman.json`
   }
 }
 
-const loadMusicAnalysis = (url: URLsContainer) => {
-  const tune_name = encodeURI(url.title.id)
-  return Promise.all(justLoad(new AnalysisURLs(url), new GTTM_URLs(url)))
-    .then(compoundMusicData(url.title));
+const loadMusicAnalysis = (
+  title: TitleInfo,
+  resources: `/${string}/${string}`,
+) => {
+  const tune_name = encodeURI(title.id)
+  return Promise.all(justLoad(new AnalysisURLs(title,resources), new GTTM_URLs(title,resources)))
+    .then(compoundMusicData(title));
 }
 
 const registerSong = (urls: string[], default_url: string, audio_player: HTMLAudioElement | HTMLVideoElement) => {
@@ -554,37 +541,33 @@ const registerSong = (urls: string[], default_url: string, audio_player: HTMLAud
   };
 };
 
-const setAudioPlayer = (url: URLsContainer, audio_player: HTMLAudioElement | HTMLVideoElement) => {
-  const filename = `${url.resources}/${url.title.id}/${url.title.id}`;
+const setAudioPlayer = (
+  title: TitleInfo,
+  resources: `/${string}/${string}`,
+  audio_src: `/${string}/${string}.${string}`,
+  audio_player: HTMLAudioElement | HTMLVideoElement) => {
+  const filename = `${resources}/${title.id}/${title.id}`;
   const extensions = ["mp3", "mp4", "wav", "m4a"];
-  registerSong(extensions.map(e => `${filename}.${e}`), url.audio_src, audio_player);
+  registerSong(extensions.map(e => `${filename}.${e}`), audio_src, audio_player);
 };
 
-
-
-const setupApplication = (
-  window: Window,
-  html: HTMLsContainer,
-  url: URLsContainer,
-) => {
-  updateTitle(html.title, url.title);
-  setAudioPlayer(url, html.audio_player);
-  loadMusicAnalysis(url)
-    .then(setup(window, html, url.title));
-}
-
+declare const audio_player: HTMLAudioElement | HTMLVideoElement;
+declare const piano_roll_place: HTMLDivElement;
+declare const titleHead: HTMLHeadingElement;
 
 const main = () => {
-  const html = new HTMLsContainer(
-    audio_player,
-    title,
-    piano_roll_place,
+  const urlParams = new URLSearchParams(window.location.search);
+  const title = new TitleInfo(
+    urlParams.get("tune") || "",
+    urlParams.has("pr") ? "PR" : urlParams.has("tsr") ? "TSR" : "",
   )
-  const url = new URLsContainer(
-    `/MusicAnalyzer-server/resources`,
-    `/MusicAnalyzer-server/resources/Hierarchical Analysis Sample/sample1.mp4`,
-    new URLSearchParams(window.location.search),
-  )
-  setupApplication(window, html, url)
+  const resources = `/MusicAnalyzer-server/resources`;
+  const audio_src = `/MusicAnalyzer-server/resources/Hierarchical Analysis Sample/sample1.mp4`;
+
+  updateTitle(titleHead, title);
+  setAudioPlayer(title, resources, audio_src, audio_player);
+  loadMusicAnalysis(title, resources)
+    .then(setup(window, audio_player, titleHead, piano_roll_place, title));
+
 };
 main();
