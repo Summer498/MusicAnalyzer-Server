@@ -11,8 +11,8 @@
 <polygon fill="white" stroke="transparent" points="-4,4 -4,-234 442,-234 442,4 -4,4"/>
 <g id="clust1" class="cluster">
 <title>cluster_node_modules</title>
-<path fill="#ffffff" stroke="black" stroke-width="2" d="M342,-92C342,-92 418,-92 418,-92 424,-92 430,-98 430,-104 430,-104 430,-132 430,-132 430,-138 424,-144 418,-144 418,-144 342,-144 342,-144 336,-144 330,-138 330,-132 330,-132 330,-104 330,-104 330,-98 336,-92 342,-92"/>
-<text text-anchor="middle" x="380" y="-132.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">node_modules</text>
+<path fill="#ffffff" stroke="black" stroke-width="2" d="M342,-84C342,-84 418,-84 418,-84 424,-84 430,-90 430,-96 430,-96 430,-124 430,-124 430,-130 424,-136 418,-136 418,-136 342,-136 342,-136 336,-136 330,-130 330,-124 330,-124 330,-96 330,-96 330,-90 336,-84 342,-84"/>
+<text text-anchor="middle" x="380" y="-124.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">node_modules</text>
 </g>
 <g id="clust2" class="cluster">
 <title>cluster_packages</title>
@@ -38,11 +38,11 @@
 <g id="node1" class="node">
 <title>node_modules/fast&#45;xml&#45;parser</title>
 <g id="a_node1"><a xlink:href="https://www.npmjs.com/package/fast-xml-parser" xlink:title="fast&#45;xml&#45;parser">
-<polygon fill="#c40b0a" fill-opacity="0.101961" stroke="black" points="422,-118 340,-118 338,-116 338,-100 420,-100 422,-102 422,-118"/>
-<polyline fill="none" stroke="black" points="420,-116 338,-116 "/>
-<polyline fill="none" stroke="black" points="420,-116 420,-100 "/>
-<polyline fill="none" stroke="black" points="420,-116 422,-118 "/>
-<text text-anchor="start" x="346" y="-106.8" font-family="Helvetica,sans-Serif" font-size="9.00" fill="#c40b0a">fast&#45;xml&#45;parser</text>
+<polygon fill="#c40b0a" fill-opacity="0.101961" stroke="black" points="422,-110 340,-110 338,-108 338,-92 420,-92 422,-94 422,-110"/>
+<polyline fill="none" stroke="black" points="420,-108 338,-108 "/>
+<polyline fill="none" stroke="black" points="420,-108 420,-92 "/>
+<polyline fill="none" stroke="black" points="420,-108 422,-110 "/>
+<text text-anchor="start" x="346" y="-98.8" font-family="Helvetica,sans-Serif" font-size="9.00" fill="#c40b0a">fast&#45;xml&#45;parser</text>
 </a>
 </g>
 </g>
@@ -74,22 +74,22 @@
 <g id="node4" class="node">
 <title>packages/data&#45;type/serializable&#45;data/src/XMLParser.ts</title>
 <g id="a_node4"><a xlink:href="packages/data-type/serializable-data/src/XMLParser.ts" xlink:title="XMLParser.ts">
-<path fill="#ddfeff" stroke="black" d="M282.5,-118C282.5,-118 220.5,-118 220.5,-118 217.5,-118 214.5,-115 214.5,-112 214.5,-112 214.5,-106 214.5,-106 214.5,-103 217.5,-100 220.5,-100 220.5,-100 282.5,-100 282.5,-100 285.5,-100 288.5,-103 288.5,-106 288.5,-106 288.5,-112 288.5,-112 288.5,-115 285.5,-118 282.5,-118"/>
-<text text-anchor="start" x="222.5" y="-106.8" font-family="Helvetica,sans-Serif" font-size="9.00">XMLParser.ts</text>
+<path fill="#ddfeff" stroke="black" d="M282.5,-110C282.5,-110 220.5,-110 220.5,-110 217.5,-110 214.5,-107 214.5,-104 214.5,-104 214.5,-98 214.5,-98 214.5,-95 217.5,-92 220.5,-92 220.5,-92 282.5,-92 282.5,-92 285.5,-92 288.5,-95 288.5,-98 288.5,-98 288.5,-104 288.5,-104 288.5,-107 285.5,-110 282.5,-110"/>
+<text text-anchor="start" x="222.5" y="-98.8" font-family="Helvetica,sans-Serif" font-size="9.00">XMLParser.ts</text>
 </a>
 </g>
 </g>
 <!-- packages/data&#45;type/serializable&#45;data/src/index.ts&#45;&gt;packages/data&#45;type/serializable&#45;data/src/XMLParser.ts -->
 <g id="edge3" class="edge">
 <title>packages/data&#45;type/serializable&#45;data/src/index.ts&#45;&gt;packages/data&#45;type/serializable&#45;data/src/XMLParser.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M178.14,-109C187.29,-109 197.83,-109 207.98,-109"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="214.23,-111.1 208.23,-109 214.23,-106.9 214.23,-111.1"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M178.14,-106.88C187.29,-106.13 197.83,-105.28 207.98,-104.45"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="214.4,-106.04 208.25,-104.43 214.06,-101.85 214.4,-106.04"/>
 </g>
 <!-- packages/data&#45;type/serializable&#45;data/src/XMLParser.ts&#45;&gt;node_modules/fast&#45;xml&#45;parser -->
 <g id="edge2" class="edge">
 <title>packages/data&#45;type/serializable&#45;data/src/XMLParser.ts&#45;&gt;node_modules/fast&#45;xml&#45;parser</title>
-<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M288.75,-109C302.17,-109 317.58,-109 331.82,-109"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="331.85,-111.1 337.85,-109 331.85,-106.9 331.85,-111.1"/>
+<path fill="none" stroke="#000000" stroke-opacity="0.200000" d="M288.75,-101C302.17,-101 317.58,-101 331.82,-101"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="331.85,-103.1 337.85,-101 331.85,-98.9 331.85,-103.1"/>
 </g>
 <!-- packages/data&#45;type/serializable&#45;data/src/json&#45;serializable.ts -->
 <g id="node5" class="node">
@@ -104,52 +104,37 @@
 <g id="node6" class="node">
 <title>packages/data&#45;type/serializable&#45;data/src/serializable.ts</title>
 <g id="a_node6"><a xlink:href="packages/data-type/serializable-data/src/serializable.ts" xlink:title="serializable.ts">
-<path fill="#ddfeff" stroke="black" d="M284,-58C284,-58 219,-58 219,-58 216,-58 213,-55 213,-52 213,-52 213,-46 213,-46 213,-43 216,-40 219,-40 219,-40 284,-40 284,-40 287,-40 290,-43 290,-46 290,-46 290,-52 290,-52 290,-55 287,-58 284,-58"/>
-<text text-anchor="start" x="221" y="-46.8" font-family="Helvetica,sans-Serif" font-size="9.00">serializable.ts</text>
+<path fill="#ddfeff" stroke="black" d="M284,-73C284,-73 219,-73 219,-73 216,-73 213,-70 213,-67 213,-67 213,-61 213,-61 213,-58 216,-55 219,-55 219,-55 284,-55 284,-55 287,-55 290,-58 290,-61 290,-61 290,-67 290,-67 290,-70 287,-73 284,-73"/>
+<text text-anchor="start" x="221" y="-61.8" font-family="Helvetica,sans-Serif" font-size="9.00">serializable.ts</text>
 </a>
 </g>
 </g>
 <!-- packages/data&#45;type/serializable&#45;data/src/json&#45;serializable.ts&#45;&gt;packages/data&#45;type/serializable&#45;data/src/serializable.ts -->
 <g id="edge4" class="edge">
 <title>packages/data&#45;type/serializable&#45;data/src/json&#45;serializable.ts&#45;&gt;packages/data&#45;type/serializable&#45;data/src/serializable.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M200.1,-49C202.24,-49 204.4,-49 206.53,-49"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="206.89,-51.1 212.89,-49 206.89,-46.9 206.89,-51.1"/>
-</g>
-<!-- packages/data&#45;type/serializable&#45;data/src/key&#45;length.ts -->
-<g id="node7" class="node">
-<title>packages/data&#45;type/serializable&#45;data/src/key&#45;length.ts</title>
-<g id="a_node7"><a xlink:href="packages/data-type/serializable-data/src/key-length.ts" xlink:title="key&#45;length.ts">
-<path fill="#ddfeff" stroke="black" d="M283.5,-88C283.5,-88 219.5,-88 219.5,-88 216.5,-88 213.5,-85 213.5,-82 213.5,-82 213.5,-76 213.5,-76 213.5,-73 216.5,-70 219.5,-70 219.5,-70 283.5,-70 283.5,-70 286.5,-70 289.5,-73 289.5,-76 289.5,-76 289.5,-82 289.5,-82 289.5,-85 286.5,-88 283.5,-88"/>
-<text text-anchor="start" x="221.5" y="-76.8" font-family="Helvetica,sans-Serif" font-size="9.00">key&#45;length.ts</text>
-</a>
-</g>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M200.1,-56.32C202.38,-56.67 204.67,-57.02 206.94,-57.37"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="206.64,-59.45 212.89,-58.27 207.28,-55.29 206.64,-59.45"/>
 </g>
 <!-- packages/data&#45;type/serializable&#45;data/src/xml&#45;serializable.ts -->
-<g id="node8" class="node">
+<g id="node7" class="node">
 <title>packages/data&#45;type/serializable&#45;data/src/xml&#45;serializable.ts</title>
-<g id="a_node8"><a xlink:href="packages/data-type/serializable-data/src/xml-serializable.ts" xlink:title="xml&#45;serializable.ts">
+<g id="a_node7"><a xlink:href="packages/data-type/serializable-data/src/xml-serializable.ts" xlink:title="xml&#45;serializable.ts">
 <path fill="#ddfeff" stroke="black" d="M193,-88C193,-88 109,-88 109,-88 106,-88 103,-85 103,-82 103,-82 103,-76 103,-76 103,-73 106,-70 109,-70 109,-70 193,-70 193,-70 196,-70 199,-73 199,-76 199,-76 199,-82 199,-82 199,-85 196,-88 193,-88"/>
 <text text-anchor="start" x="111" y="-76.8" font-family="Helvetica,sans-Serif" font-size="9.00">xml&#45;serializable.ts</text>
 </a>
 </g>
 </g>
 <!-- packages/data&#45;type/serializable&#45;data/src/xml&#45;serializable.ts&#45;&gt;packages/data&#45;type/serializable&#45;data/src/XMLParser.ts -->
-<g id="edge7" class="edge">
+<g id="edge6" class="edge">
 <title>packages/data&#45;type/serializable&#45;data/src/xml&#45;serializable.ts&#45;&gt;packages/data&#45;type/serializable&#45;data/src/XMLParser.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M181.55,-88C191.98,-91.18 203.81,-94.78 214.69,-98.09"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="214.28,-100.16 220.63,-99.9 215.5,-96.14 214.28,-100.16"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M192.35,-88.01C197.62,-89.19 203.03,-90.4 208.33,-91.58"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="208.17,-93.7 214.48,-92.96 209.08,-89.6 208.17,-93.7"/>
 </g>
 <!-- packages/data&#45;type/serializable&#45;data/src/xml&#45;serializable.ts&#45;&gt;packages/data&#45;type/serializable&#45;data/src/serializable.ts -->
-<g id="edge6" class="edge">
-<title>packages/data&#45;type/serializable&#45;data/src/xml&#45;serializable.ts&#45;&gt;packages/data&#45;type/serializable&#45;data/src/serializable.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M181.55,-70C191.98,-66.82 203.81,-63.22 214.69,-59.91"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="215.5,-61.86 220.63,-58.1 214.28,-57.84 215.5,-61.86"/>
-</g>
-<!-- packages/data&#45;type/serializable&#45;data/src/xml&#45;serializable.ts&#45;&gt;packages/data&#45;type/serializable&#45;data/src/key&#45;length.ts -->
 <g id="edge5" class="edge">
-<title>packages/data&#45;type/serializable&#45;data/src/xml&#45;serializable.ts&#45;&gt;packages/data&#45;type/serializable&#45;data/src/key&#45;length.ts</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M199.23,-79C201.9,-79 204.57,-79 207.22,-79"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="207.35,-81.1 213.35,-79 207.35,-76.9 207.35,-81.1"/>
+<title>packages/data&#45;type/serializable&#45;data/src/xml&#45;serializable.ts&#45;&gt;packages/data&#45;type/serializable&#45;data/src/serializable.ts</title>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M199.23,-71.81C201.64,-71.44 204.06,-71.07 206.47,-70.71"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="207.16,-72.72 212.77,-69.75 206.52,-68.57 207.16,-72.72"/>
 </g>
 </g>
 </svg>

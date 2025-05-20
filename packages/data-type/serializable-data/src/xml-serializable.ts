@@ -1,7 +1,7 @@
-import { keyLength } from "./key-length";
 import { Serializable } from "./serializable";
 import { xml_parser } from "./XMLParser";
 
+const keyLength = (obj: object) => Object.keys(obj).length;
 const removeEmpty = <O extends object>(obj: O) => keyLength(obj) ? obj : undefined;
 // eslint-disable-next-line no-use-before-define
 export abstract class XMLSerializable<T extends XMLSerializable<T>> extends Serializable<T> {

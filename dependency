@@ -2,11 +2,27 @@ packages/_packagetemplate
 No depcheck issue
 
 
+packages/UI/piano-roll/beat-view
+No depcheck issue
+
+
+./html
+No depcheck issue
+
+
+packages/music-structure/melody/melody-hierarchical-analysis
+No depcheck issue
+
+
 packages/UI/synth
 No depcheck issue
 
 
-packages/util/graph
+packages/UI/spectrogram
+No depcheck issue
+
+
+packages/UI/piano-roll/piano-roll
 No depcheck issue
 
 
@@ -14,7 +30,79 @@ packages/data-type/serializable-data
 No depcheck issue
 
 
+packages/cli/post-f0-util
+No depcheck issue
+
+
+packages/cli/chord-analyze-cli
+No depcheck issue
+
+
 packages/data-type/music-xml
+No depcheck issue
+
+
+packages/music-structure/chord/roman-chord
+No depcheck issue
+
+
+packages/UI/view
+No depcheck issue
+
+
+packages/UI/view-parameters
+No depcheck issue
+
+
+packages/music-structure/analyzed-data-container
+No depcheck issue
+
+
+packages/util/graph
+No depcheck issue
+
+
+packages/music-structure/beat/beat-estimation
+No depcheck issue
+
+
+packages/cli/melody-analyze-cli
+No depcheck issue
+
+
+packages/UI/controllers
+No depcheck issue
+
+
+packages/util/color
+No depcheck issue
+
+
+packages/UI/piano-roll/chord-view
+No depcheck issue
+
+
+packages/cognitive-theory-of-music/irm
+No depcheck issue
+
+
+packages/util/stdlib
+No depcheck issue
+
+
+packages/tonal-objects
+No depcheck issue
+
+
+./html/hierarchical-analysis-sample
+No depcheck issue
+
+
+packages/music-structure/chord/chord-analyze
+No depcheck issue
+
+
+packages/cognitive-theory-of-music/gttm
 No depcheck issue
 
 
@@ -26,55 +114,11 @@ packages/music-structure/melody/melody-analyze
 No depcheck issue
 
 
-./html
+packages/cognitive-theory-of-music/tonal-pitch-space
 No depcheck issue
 
 
-packages/cli/melody-analyze-cli
-No depcheck issue
-
-
-packages/music-structure/chord/roman-chord
-No depcheck issue
-
-
-packages/tonal-objects
-No depcheck issue
-
-
-packages/cli/post-f0-util
-No depcheck issue
-
-
-packages/music-structure/melody/melody-hierarchical-analysis
-No depcheck issue
-
-
-packages/music-structure/beat/beat-estimation
-No depcheck issue
-
-
-packages/UI/controllers
-No depcheck issue
-
-
-packages/cli/chord-analyze-cli
-No depcheck issue
-
-
-packages/music-structure/analyzed-data-container
-No depcheck issue
-
-
-packages/UI/view
-No depcheck issue
-
-
-packages/UI/piano-roll/beat-view
-No depcheck issue
-
-
-packages/UI/piano-roll/piano-roll
+packages/util/math
 No depcheck issue
 
 
@@ -82,59 +126,7 @@ packages/util/html
 No depcheck issue
 
 
-packages/UI/spectrogram
-No depcheck issue
-
-
-packages/UI/view-parameters
-No depcheck issue
-
-
-packages/UI/piano-roll/chord-view
-No depcheck issue
-
-
-packages/cognitive-theory-of-music/tonal-pitch-space
-No depcheck issue
-
-
-packages/util/stdlib
-No depcheck issue
-
-
-packages/music-structure/chord/chord-analyze
-No depcheck issue
-
-
-./html/hierarchical-analysis-sample
-No depcheck issue
-
-
-packages/util/color
-No depcheck issue
-
-
-packages/cli/post-pyin
-packages/application/music-analyzer-application
-No depcheck issue
-No depcheck issue
-
-
-
-
-packages/util/math
-No depcheck issue
-
-
 packages/UI/piano-roll/melody-view
-No depcheck issue
-
-
-./html/analyze
-No depcheck issue
-
-
-packages/cognitive-theory-of-music/irm
 No depcheck issue
 
 
@@ -142,7 +134,11 @@ packages/cli/post-crepe
 No depcheck issue
 
 
-packages/cognitive-theory-of-music/gttm
+packages/cli/post-pyin
+No depcheck issue
+
+
+./html/analyze
 No depcheck issue
 
 

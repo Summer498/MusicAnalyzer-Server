@@ -86,7 +86,7 @@ export class MelodyElements {
   readonly d_melody_collection: SVGGElement;
   readonly melody_hierarchy: SVGGElement;
   readonly ir_hierarchy: SVGGElement;
-  readonly ir_plot_svg: SVGGElement;
+  readonly ir_plot_svg: SVGSVGElement;
   readonly chord_gravities: SVGGElement;
   readonly scale_gravities: SVGGElement;
   readonly time_span_tree: SVGGElement;
