@@ -53,16 +53,8 @@ abstract class Rectangle {
     readonly model: RectangleModel,
     readonly view: RectangleView,
   ) { }
-
-  onWindowResized() {
-    this.view.setX(this.model.x);
-    this.view.setY(this.model.y);
-    this.view.setW(this.model.w);
-    this.view.setH(this.model.h);
-  }
 }
 
-const bg_width = PianoRollWidth.get();
 const bg_height = octave_height / 12;
 
 class BG extends Rectangle {
@@ -74,11 +66,17 @@ class BG extends Rectangle {
     super(
       new RectangleModel(
         y,
-        bg_width,
+        1,
         bg_height,
       ),
       new RectangleView(svg),
     )
+  }
+  onWindowResized() {
+    this.view.setX(this.model.x);
+    this.view.setY(this.model.y);
+    this.view.setW(PianoRollWidth.get());
+    this.view.setH(this.model.h);
   }
 }
 
@@ -158,7 +156,7 @@ class Key extends Rectangle {
 class Keys {
   readonly svg: SVGGElement;
   readonly children: Key[];
-  constructor(publisher: WindowReflectableRegistry) {
+  constructor() {
     this.svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.svg.id = "keys";
     const sgn = PianoRollBegin.get() < PianoRollEnd.get() ? 1 : -1;
@@ -179,9 +177,7 @@ class Keys {
       keys.filter(e => e.isBlack),
     ].flat()
     this.children.forEach(e => this.svg.appendChild(e.svg));
-    publisher.addListeners(this.onWindowResized.bind(this));
   }
-  onWindowResized() { this.children.forEach(e => e.onWindowResized()); }
 }
 
 export class PianoRoll {
@@ -197,7 +193,7 @@ export class PianoRoll {
     this.appendChildren(
       new BGs(window).svg,
       new AnalysisView(analyzed).svg,
-      new Keys(window).svg,
+      new Keys().svg,
       new CurrentTimeLine(show_current_time_line, window).svg,
     );
     window.addListeners(this.onWindowResized.bind(this))
