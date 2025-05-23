@@ -495,7 +495,7 @@ class GTTM_URLs
   readonly pr: string
   constructor(
       title: TitleInfo,
-      resources: `/${string}/${string}`,
+      resources: string,
   ) {
     this.msc = `${resources}/gttm-example/${title.id}/MSC-${title.id}.xml`
     this.grp = `${resources}/gttm-example/${title.id}/GPR-${title.id}.xml`
@@ -510,7 +510,7 @@ class AnalysisURLs {
   readonly roman: string
   constructor(
     title: TitleInfo,
-    resources: `/${string}/${string}`,
+    resources: string,
   ) {
     this.melody = `${resources}/${title.id}/analyzed/melody/crepe/manalyze.json`
     this.roman = `${resources}/${title.id}/analyzed/chord/roman.json`
@@ -519,7 +519,7 @@ class AnalysisURLs {
 
 const loadMusicAnalysis = (
   title: TitleInfo,
-  resources: `/${string}/${string}`,
+  resources: string,
 ) => {
   const tune_name = encodeURI(title.id)
   return Promise.all(justLoad(new AnalysisURLs(title,resources), new GTTM_URLs(title,resources)))
@@ -543,8 +543,8 @@ const registerSong = (urls: string[], default_url: string, audio_player: HTMLAud
 
 const setAudioPlayer = (
   title: TitleInfo,
-  resources: `/${string}/${string}`,
-  audio_src: `/${string}/${string}.${string}`,
+  resources: string,
+  audio_src: string,
   audio_player: HTMLAudioElement | HTMLVideoElement) => {
   const filename = `${resources}/${title.id}/${title.id}`;
   const extensions = ["mp3", "mp4", "wav", "m4a"];
@@ -553,7 +553,8 @@ const setAudioPlayer = (
 
 declare const audio_player: HTMLAudioElement | HTMLVideoElement;
 declare const piano_roll_place: HTMLDivElement;
-declare const titleHead: HTMLHeadingElement;
+declare const title: HTMLHeadingElement;
+const titleHead = title;
 
 const main = () => {
   const urlParams = new URLSearchParams(window.location.search);
@@ -561,8 +562,8 @@ const main = () => {
     urlParams.get("tune") || "",
     urlParams.has("pr") ? "PR" : urlParams.has("tsr") ? "TSR" : "",
   )
-  const resources = `/MusicAnalyzer-server/resources`;
-  const audio_src = `/MusicAnalyzer-server/resources/Hierarchical Analysis Sample/sample1.mp4`;
+  const resources = `/resources`;
+  const audio_src = `/resources/無音.mp3`;
 
   updateTitle(titleHead, title);
   setAudioPlayer(title, resources, audio_src, audio_player);

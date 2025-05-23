@@ -216,8 +216,8 @@ function getReductionSVG(
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
   svg.id = "time-span-node";
   svg.appendChild(bracket.svg);
-  if (false) { svg.appendChild(dot.svg); }
-  svg.appendChild(ir_symbol.svg);
+  if (true) { svg.appendChild(dot.svg); }
+  if (false) { svg.appendChild(ir_symbol.svg); }
   return svg;
 }
 
