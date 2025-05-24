@@ -31,6 +31,7 @@ import { HierarchyLevelController } from "@music-analyzer/controllers";
 import { MelodyBeepController } from "@music-analyzer/controllers";
 import { MelodyColorController } from "@music-analyzer/controllers";
 import { TimeRangeController } from "@music-analyzer/controllers";
+import { Time } from "@music-analyzer/time-and";
 
 class Controllers {
   readonly div: HTMLDivElement
@@ -423,36 +424,31 @@ const getJSON = <T extends object>(url: string) => {
     .catch(e => { console.error(e); return undefined; });
 }
 
+const getVersionedJSON = <Hoge extends { time: Time }>(VersionChecker: {
+  checkVersion: (res: { version: string }) => boolean,
+  instantiate: (res: { body: Hoge[] }) => { body: Hoge[] }
+}) => (url: string) => fetch(url)
+  .then(res => res.json() as Promise<{ version: string, body: Hoge[] }>)
+  .then(res => {
+    if (VersionChecker.checkVersion(res)) { return VersionChecker.instantiate(res) }
+    else { throw new Error(`Version check: fault in ${url}`) }
+  })
+  .catch(e => fetch(`${url}?update`)
+    .then(res => res.json() as Promise<{ version: string, body: Hoge[] }>)
+    .then(res => VersionChecker.instantiate(res))
+  )
+  .then(res => res?.body)
+  .then(res => res?.map(e => ({ ...e, head: e.time })) as Hoge[])
+  .catch(e => { console.error(e); return []; })
+
+
 const justLoad = (
   analysis_urls: I_AnalysisURLs,
   gttm_urls: I_GTTM_URLs,
 ) => {
   return [
-    fetch(analysis_urls.roman)
-      .then(res => res.json() as Promise<SerializedRomanAnalysisData>)
-      .then(res => {
-        if (SerializedRomanAnalysisData.checkVersion(res)) { return SerializedRomanAnalysisData.instantiate(res) }
-        else { throw new Error(`Version check: fault in RomanAnalysisData`) }
-      })
-      .catch(e => fetch(`${analysis_urls.roman}?update`)
-        .then(res => res.json() as Promise<SerializedRomanAnalysisData>)
-        .then(res => SerializedRomanAnalysisData.instantiate(res))
-      )
-      .then(res => res?.body)
-      .catch(e => { console.error(e); return []; }),
-    fetch(analysis_urls.melody)
-      .then(res => res.json() as Promise<SerializedMelodyAnalysisData>)
-      .then(res => {
-        if (SerializedMelodyAnalysisData.checkVersion(res)) { return SerializedMelodyAnalysisData.instantiate(res) }
-        else { throw new Error(`Version check: fault in MelodyAnalysisData`) }
-      })
-      .catch(e => fetch(`${analysis_urls.melody}?update`)
-        .then(res => res.json() as Promise<SerializedMelodyAnalysisData>)
-        .then(res => SerializedMelodyAnalysisData.instantiate(res))
-      )
-      .then(res => res?.body)
-      .then(res => res?.map(e => ({ ...e, head: e.time })) as SerializedTimeAndAnalyzedMelody[])
-      .catch(e => { console.error(e); return []; }),
+    getVersionedJSON(SerializedRomanAnalysisData)(analysis_urls.roman),
+    getVersionedJSON(SerializedMelodyAnalysisData)(analysis_urls.melody),
     getJSON<MusicXML>(gttm_urls.msc),
     getJSON<GroupingStructure>(gttm_urls.grp),
     getJSON<MetricalStructure>(gttm_urls.mtr),

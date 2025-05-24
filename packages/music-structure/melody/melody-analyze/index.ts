@@ -162,16 +162,16 @@ export const getTimeAndMelody = (melody_data: number[], sampling_rate: number) =
   return non_null_melody;
 };
 
-const v = "25.03.10.08.51";
+const v = "25.03.10.08.51" as string;
 export class SerializedMelodyAnalysisData {
   readonly version = v;
   constructor(
     readonly body: SerializedTimeAndAnalyzedMelody[]
   ) { }
-  static checkVersion(e: SerializedMelodyAnalysisData) {
+  static checkVersion(e: {version:string}) {
     return e.version === v;
   }
-  static instantiate(e: SerializedMelodyAnalysisData) {
+  static instantiate(e: {body:SerializedTimeAndAnalyzedMelody[]}) {
     return new SerializedMelodyAnalysisData(e.body.map(e => new SerializedTimeAndAnalyzedMelody(e)))
   }
 }

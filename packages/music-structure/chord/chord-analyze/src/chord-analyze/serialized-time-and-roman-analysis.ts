@@ -38,17 +38,17 @@ export class SerializedTimeAndRomanAnalysis {
   }
 }
 
-const v = "25.03.10.08.51";
+const v = "25.03.10.08.51" as string;
 export class SerializedRomanAnalysisData {
   readonly version = v;
   constructor(
     readonly body: SerializedTimeAndRomanAnalysis[]
   ) { }
-  static checkVersion(e: SerializedRomanAnalysisData) {
+  static checkVersion(e: { version: string }) {
     return e.version === v;
   }
   // required by the class with the constructor which has 1 argument
-  static instantiate(e: SerializedRomanAnalysisData) {
+  static instantiate(e: { body: SerializedTimeAndRomanAnalysis[] }) {
     return new SerializedRomanAnalysisData(e.body.map(e => new SerializedTimeAndRomanAnalysis(e)))
   }
 }
