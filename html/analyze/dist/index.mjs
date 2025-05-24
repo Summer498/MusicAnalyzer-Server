@@ -347,7 +347,13 @@ var justLoad = (analysis_urls, gttm_urls) => {
 var compoundMusicData = (title2) => (e) => {
   const [roman, read_melody, musicxml, grouping, metric, time_span, prolongation] = e;
   const ts = time_span ? new TimeSpanReduction(time_span).tstree.ts : void 0;
-  const pr = prolongation ? new ProlongationalReduction(prolongation).prtree.pr : void 0;
+  const pr = (() => {
+    try {
+      return prolongation ? new ProlongationalReduction(prolongation).prtree.pr : void 0;
+    } catch (e2) {
+      return void 0;
+    }
+  })();
   const measure = title2.id === "doremi" ? 3.5 : 7;
   const reduction = title2.mode === "PR" && pr || title2.mode === "TSR" && ts;
   const matrix = ts?.getMatrixOfLayer(ts.getDepthCount() - 1);
