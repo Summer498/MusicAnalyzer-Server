@@ -419,8 +419,8 @@ const getJSONfromXML = <T extends object>(url: string) => {
 };
 const getJSON = <T extends object>(url: string) => {
   return fetch(url)
-  .then(res=>res.json() as T)
-  .catch(e => { console.error(e); return undefined; });
+    .then(res => res.json() as T)
+    .catch(e => { console.error(e); return undefined; });
 }
 
 const justLoad = (
@@ -453,11 +453,11 @@ const justLoad = (
       .then(res => res?.body)
       .then(res => res?.map(e => ({ ...e, head: e.time })) as SerializedTimeAndAnalyzedMelody[])
       .catch(e => { console.error(e); return []; }),
-      getJSON<MusicXML>(gttm_urls.msc),
-      getJSON<GroupingStructure>(gttm_urls.grp),
-      getJSON<MetricalStructure>(gttm_urls.mtr),
-      getJSON<TimeSpanReduction>(gttm_urls.tsr),
-      getJSON<IProlongationalReduction>(gttm_urls.pr),
+    getJSON<MusicXML>(gttm_urls.msc),
+    getJSON<GroupingStructure>(gttm_urls.grp),
+    getJSON<MetricalStructure>(gttm_urls.mtr),
+    getJSON<TimeSpanReduction>(gttm_urls.tsr),
+    getJSON<IProlongationalReduction>(gttm_urls.pr),
     /*
     getJSONfromXML<MusicXML>(gttm_urls.msc),
     getJSONfromXML<GroupingStructure>(gttm_urls.grp),
@@ -482,7 +482,13 @@ const compoundMusicData = (title: TitleInfo) => (e: DataContainer) => {
   const [roman, read_melody, musicxml, grouping, metric, time_span, prolongation] = e;
 
   const ts = time_span ? new TimeSpanReduction(time_span).tstree.ts : undefined;
-  const pr = prolongation ? new ProlongationalReduction(prolongation).prtree.pr : undefined;
+  const pr = (() => {
+    try {
+      return prolongation ? new ProlongationalReduction(prolongation).prtree.pr : undefined;
+    } catch (e) {
+      return undefined
+    }
+  })();
 
   const measure = title.id === "doremi" ? 3.5 : 7;
   const reduction = title.mode === "PR" && pr || title.mode === "TSR" && ts;
