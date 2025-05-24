@@ -7,7 +7,8 @@ yarn.lock
 *.pyc
 *.log
 coverage
-dist
+packages/**/dist
+ServerProgram/**/dist
 
 MUSIC_ANALYZER
 node_modules
