@@ -417,6 +417,11 @@ const getJSONfromXML = <T extends object>(url: string) => {
     })
     .catch(e => { console.error(e); return undefined; });
 };
+const getJSON = <T extends object>(url: string) => {
+  return fetch(url)
+  .then(res=>res.json() as T)
+  .catch(e => { console.error(e); return undefined; });
+}
 
 const justLoad = (
   analysis_urls: I_AnalysisURLs,
@@ -448,11 +453,18 @@ const justLoad = (
       .then(res => res?.body)
       .then(res => res?.map(e => ({ ...e, head: e.time })) as SerializedTimeAndAnalyzedMelody[])
       .catch(e => { console.error(e); return []; }),
+      getJSON<MusicXML>(gttm_urls.msc),
+      getJSON<GroupingStructure>(gttm_urls.grp),
+      getJSON<MetricalStructure>(gttm_urls.mtr),
+      getJSON<TimeSpanReduction>(gttm_urls.tsr),
+      getJSON<IProlongationalReduction>(gttm_urls.pr),
+    /*
     getJSONfromXML<MusicXML>(gttm_urls.msc),
     getJSONfromXML<GroupingStructure>(gttm_urls.grp),
     getJSONfromXML<MetricalStructure>(gttm_urls.mtr),
     getJSONfromXML<ITimeSpanReduction>(gttm_urls.tsr),
     getJSONfromXML<IProlongationalReduction>(gttm_urls.pr),
+    */
   ] as DataPromises;
 };
 
@@ -494,14 +506,21 @@ class GTTM_URLs
   readonly tsr: string
   readonly pr: string
   constructor(
-      title: TitleInfo,
-      resources: string,
+    title: TitleInfo,
+    resources: string,
   ) {
+    this.msc = `https://clone-of-gttm-database.vercel.app/api/MSC?tune=${title.id}`;
+    this.grp = `https://clone-of-gttm-database.vercel.app/api/GPR?tune=${title.id}`;
+    this.mtr = `https://clone-of-gttm-database.vercel.app/api/MPR?tune=${title.id}`;
+    this.tsr = `https://clone-of-gttm-database.vercel.app/api/TS?tune=${title.id}`;
+    this.pr = `https://clone-of-gttm-database.vercel.app/api/PR?tune=${title.id}`;
+    /*
     this.msc = `${resources}/gttm-example/${title.id}/MSC-${title.id}.xml`
     this.grp = `${resources}/gttm-example/${title.id}/GPR-${title.id}.xml`
     this.mtr = `${resources}/gttm-example/${title.id}/MPR-${title.id}.xml`
     this.tsr = `${resources}/gttm-example/${title.id}/TS-${title.id}.xml`
     this.pr = `${resources}/gttm-example/${title.id}/PR-${title.id}.xml`
+    */
   }
 }
 
@@ -522,7 +541,7 @@ const loadMusicAnalysis = (
   resources: string,
 ) => {
   const tune_name = encodeURI(title.id)
-  return Promise.all(justLoad(new AnalysisURLs(title,resources), new GTTM_URLs(title,resources)))
+  return Promise.all(justLoad(new AnalysisURLs(title, resources), new GTTM_URLs(title, resources)))
     .then(compoundMusicData(title));
 }
 
