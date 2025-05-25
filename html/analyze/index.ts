@@ -352,6 +352,42 @@ const setIRCount = () => {
   const area = document.getElementById("ir-count");
 }
 
+const calcIRMDistribution = (
+  hierarchical_melody: SerializedTimeAndAnalyzedMelody[][]
+) => {
+  const count = hierarchical_melody.map((layer, l) => {
+    const first = layer.slice(0)
+    const second = layer.slice(1)
+
+    const diff = second.map((_, i) => second[i].note - first[i].note);
+    const impl = diff.slice(0);
+    const real = diff.slice(1);
+    const next = diff.slice(2);
+
+    const dabs = (a: number, b: number) => Math.abs(a) - Math.sign(b)
+    const cdir = (a: number, b: number) => Math.sign(a) === Math.sign(b) ? 0 : 1;
+    const count: Record<number,
+      { count: number } & Record<number, Record<number,
+        { count: number } & Record<number, Record<number,
+          number>>>>> = {}
+    real.forEach((_, i) => {
+      const im = impl[i];
+      const reAbs = dabs(real[i], impl[i]);
+      const reDir = cdir(real[i], impl[i]);
+      const neAbs = dabs(next[i], impl[i]);
+      const neDir = cdir(next[i], impl[i]);
+      count[im] ||= { count: 0, 0: {}, 1: {} };
+      count[im].count++;
+      count[im][reDir][reAbs] ||= { count: 0, 0: {}, 1: {} };
+      count[im][reDir][reAbs].count++;
+      count[im][reDir][reAbs][neDir][neAbs] ||= 0;
+      count[im][reDir][reAbs][neDir][neAbs]++;
+    })
+    return count
+  })
+  console.log(count);
+}
+
 const setup = (
   window: Window,
   audio_player: HTMLAudioElement,
@@ -360,6 +396,9 @@ const setup = (
   title: TitleInfo,
 ) => (raw_analyzed_data: AnalyzedMusicData) => {
   const { roman, hierarchical_melody, melody, } = raw_analyzed_data;
+
+  calcIRMDistribution(hierarchical_melody);
+
   const { beat_info, d_melodies } = new AnalyzedDataContainer(roman, melody, hierarchical_melody)
   setPianoRollParameters(hierarchical_melody);
   const manager = new ApplicationManager(beat_info, roman, hierarchical_melody, melody, d_melodies);

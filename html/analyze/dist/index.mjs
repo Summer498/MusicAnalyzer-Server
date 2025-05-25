@@ -277,8 +277,37 @@ var setFullView = (FULL_VIEW, audio_player2) => {
 var setIRCount = () => {
   const area = document.getElementById("ir-count");
 };
+var calcIRMDistribution = (hierarchical_melody) => {
+  const count = hierarchical_melody.map((layer, l) => {
+    const first = layer.slice(0);
+    const second = layer.slice(1);
+    const diff = second.map((_, i) => second[i].note - first[i].note);
+    const impl = diff.slice(0);
+    const real = diff.slice(1);
+    const next = diff.slice(2);
+    const dabs = (a, b) => Math.abs(a) - Math.sign(b);
+    const cdir = (a, b) => Math.sign(a) === Math.sign(b) ? 0 : 1;
+    const count2 = {};
+    real.forEach((_, i) => {
+      const im = impl[i];
+      const reAbs = dabs(real[i], impl[i]);
+      const reDir = cdir(real[i], impl[i]);
+      const neAbs = dabs(next[i], impl[i]);
+      const neDir = cdir(next[i], impl[i]);
+      count2[im] ||= { count: 0, 0: {}, 1: {} };
+      count2[im].count++;
+      count2[im][reDir][reAbs] ||= { count: 0, 0: {}, 1: {} };
+      count2[im][reDir][reAbs].count++;
+      count2[im][reDir][reAbs][neDir][neAbs] ||= 0;
+      count2[im][reDir][reAbs][neDir][neAbs]++;
+    });
+    return count2;
+  });
+  console.log(count);
+};
 var setup = (window2, audio_player2, titleHead2, piano_roll_place2, title2) => (raw_analyzed_data) => {
   const { roman, hierarchical_melody, melody } = raw_analyzed_data;
+  calcIRMDistribution(hierarchical_melody);
   const { beat_info, d_melodies } = new AnalyzedDataContainer(roman, melody, hierarchical_melody);
   setPianoRollParameters(hierarchical_melody);
   const manager = new ApplicationManager(beat_info, roman, hierarchical_melody, melody, d_melodies);
@@ -304,32 +333,22 @@ var getJSON = (url) => {
     return void 0;
   });
 };
+var getVersionedJSON = (VersionChecker) => (url) => fetch(url).then((res) => res.json()).then((res) => {
+  if (VersionChecker.checkVersion(res)) {
+    return VersionChecker.instantiate(res);
+  } else {
+    throw new Error(`Version check: fault in ${url}`);
+  }
+}).catch(
+  (e) => fetch(`${url}?update`).then((res) => res.json()).then((res) => VersionChecker.instantiate(res))
+).then((res) => res?.body).then((res) => res?.map((e) => ({ ...e, head: e.time }))).catch((e) => {
+  console.error(e);
+  return [];
+});
 var justLoad = (analysis_urls, gttm_urls) => {
   return [
-    fetch(analysis_urls.roman).then((res) => res.json()).then((res) => {
-      if (SerializedRomanAnalysisData.checkVersion(res)) {
-        return SerializedRomanAnalysisData.instantiate(res);
-      } else {
-        throw new Error(`Version check: fault in RomanAnalysisData`);
-      }
-    }).catch(
-      (e) => fetch(`${analysis_urls.roman}?update`).then((res) => res.json()).then((res) => SerializedRomanAnalysisData.instantiate(res))
-    ).then((res) => res?.body).catch((e) => {
-      console.error(e);
-      return [];
-    }),
-    fetch(analysis_urls.melody).then((res) => res.json()).then((res) => {
-      if (SerializedMelodyAnalysisData.checkVersion(res)) {
-        return SerializedMelodyAnalysisData.instantiate(res);
-      } else {
-        throw new Error(`Version check: fault in MelodyAnalysisData`);
-      }
-    }).catch(
-      (e) => fetch(`${analysis_urls.melody}?update`).then((res) => res.json()).then((res) => SerializedMelodyAnalysisData.instantiate(res))
-    ).then((res) => res?.body).then((res) => res?.map((e) => ({ ...e, head: e.time }))).catch((e) => {
-      console.error(e);
-      return [];
-    }),
+    getVersionedJSON(SerializedRomanAnalysisData)(analysis_urls.roman),
+    getVersionedJSON(SerializedMelodyAnalysisData)(analysis_urls.melody),
     getJSON(gttm_urls.msc),
     getJSON(gttm_urls.grp),
     getJSON(gttm_urls.mtr),
