@@ -623,7 +623,7 @@ const main = () => {
     urlParams.has("pr") ? "PR" : urlParams.has("tsr") ? "TSR" : "",
   )
   const resources = `/resources`;
-  const audio_src = `/MusicAnalyzer-Server/resources/silence.mp3`;
+  const audio_src = `https://summer498.github.io/MusicAnalyzer-Server/resources/silence.mp3`;
 
   updateTitle(titleHead, title);
   setAudioPlayer(title, resources, audio_src, audio_player);
