@@ -6270,7 +6270,8 @@ Expected id is: ${regexp}`);
     const audioListeners = [
       ...[melody, ir_symbol, reduction, scale_gravity, chord_gravity, ...ir_plot.children, d_melodies].flatMap((e) => e.children.map((e2) => e2)).map((e) => () => e.onAudioUpdate())
     ];
-    controllers.audio.addListeners(...audioListeners);
+    const beepMelody = () => melody.show.forEach((e) => e.beep());
+    controllers.audio.addListeners(...audioListeners, beepMelody);
     audioListeners.forEach((f) => f());
     const windowListeners = [...[melody, ir_symbol, reduction, scale_gravity, chord_gravity, ...ir_plot.children].flatMap((e) => e.children.map((e2) => e2)), d_melodies].flatMap((e) => e.children.map((e2) => e2)).map((e) => e.onWindowResized.bind(e));
     controllers.window.addListeners(...windowListeners);
@@ -7937,7 +7938,7 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
       urlParams.has("pr") ? "PR" : urlParams.has("tsr") ? "TSR" : ""
     );
     const resources = `/resources`;
-    const audio_src = `/MusicAnalyzer-Server/resources/silence.mp3`;
+    const audio_src = `https://summer498.github.io/MusicAnalyzer-Server/resources/silence.mp3`;
     updateTitle(titleHead, title2);
     setAudioPlayer(title2, resources, audio_src, audio_player);
     loadMusicAnalysis(title2, resources).then(setup(window, audio_player, titleHead, piano_roll_place, title2));
