@@ -39,8 +39,9 @@ const setControllers = (
         .flatMap(e => e.children.map(e => e))
         .map(e => () => e.onAudioUpdate()),
     ]
-    controllers.audio.addListeners(...audioListeners);
-    audioListeners.forEach(f=>f())
+    const beepMelody = () => melody.show.forEach(e => e.beep())
+    controllers.audio.addListeners(...audioListeners, beepMelody);
+    audioListeners.forEach(f => f())
 
     const windowListeners = [...[melody, ir_symbol, reduction, scale_gravity, chord_gravity, ...ir_plot.children]
       .flatMap(e => e.children.map(e => e)), d_melodies]
