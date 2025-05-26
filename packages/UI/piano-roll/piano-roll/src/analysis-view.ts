@@ -41,6 +41,7 @@ export class AnalysisView {
     this.svg.appendChild(melody.d_melody_collection);
     this.svg.appendChild(melody.melody_hierarchy);
     this.svg.appendChild(melody.ir_hierarchy);
+    this.svg.appendChild(melody.ir_gravity);
     this.svg.appendChild(melody.chord_gravities);
     this.svg.appendChild(melody.scale_gravities);
     this.svg.appendChild(melody.time_span_tree);

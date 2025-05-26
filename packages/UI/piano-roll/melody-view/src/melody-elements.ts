@@ -9,6 +9,7 @@ import { HierarchyBuilder } from "./hierarchy-builder";
 import { IRSymbolHierarchy } from "./ir-symbol-hierarchy";
 import { MelodyHierarchy } from "./melody-hierarchy";
 import { DMelodyController, GravityController, HierarchyLevelController, MelodyBeepController, MelodyColorController, TimeRangeController } from "@music-analyzer/controllers";
+import { IRGravityHierarchy } from "./ir-gravity-hierarchy";
 
 interface Controllers {
   readonly d_melody: DMelodyController,
@@ -26,6 +27,7 @@ const setControllers = (
   melody: MelodyHierarchy,
   ir_symbol: IRSymbolHierarchy,
   ir_plot: IRPlotSVG,
+  ir_gravity: IRGravityHierarchy,
   chord_gravity: GravityHierarchy,
   scale_gravity: GravityHierarchy,
   reduction: ReductionHierarchy,
@@ -35,7 +37,7 @@ const setControllers = (
     const onAudioUpdate = (svg: SVGGElement) => { svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
 
     const audioListeners = [
-      ...[melody, ir_symbol, reduction, scale_gravity, chord_gravity, ...ir_plot.children, d_melodies]
+      ...[melody, ir_symbol, ir_gravity, reduction, scale_gravity, chord_gravity, ...ir_plot.children, d_melodies]
         .flatMap(e => e.children.map(e => e))
         .map(e => () => e.onAudioUpdate()),
     ]
@@ -43,17 +45,17 @@ const setControllers = (
     controllers.audio.addListeners(...audioListeners, beepMelody);
     audioListeners.forEach(f => f())
 
-    const windowListeners = [...[melody, ir_symbol, reduction, scale_gravity, chord_gravity, ...ir_plot.children]
+    const windowListeners = [...[melody, ir_symbol, ir_gravity, reduction, scale_gravity, chord_gravity, ...ir_plot.children]
       .flatMap(e => e.children.map(e => e)), d_melodies]
       .flatMap(e => e.children.map(e => e))
       .map(e => e.onWindowResized.bind(e))
     controllers.window.addListeners(...windowListeners);
 
-    const hierarchyListeners = [melody, ir_symbol, reduction, chord_gravity, scale_gravity, ...ir_plot.children,]
+    const hierarchyListeners = [melody, ir_symbol, ir_gravity, reduction, chord_gravity, scale_gravity, ...ir_plot.children,]
       .map(e => e.onChangedLayer.bind(e))
     controllers.hierarchy.addListeners(...hierarchyListeners);
 
-    const timeRangeListeners = [...[melody, ir_symbol, reduction, chord_gravity, scale_gravity]
+    const timeRangeListeners = [...[melody, ir_symbol, ir_gravity, reduction, chord_gravity, scale_gravity]
       .flatMap(e => e.children.map(e => e)), d_melodies]
       .flatMap(e => e.children.map(e => e))
       .map(e => e.onTimeRangeChanged.bind(e))
@@ -62,6 +64,7 @@ const setControllers = (
     const melodyColorListeners = [
       ...melody.children,
       ...ir_symbol.children,
+      ...ir_gravity.children,
       ...reduction.children,
       ...ir_plot.children.flatMap(e => e.children),
     ]
@@ -88,6 +91,7 @@ export class MelodyElements {
   readonly melody_hierarchy: SVGGElement;
   readonly ir_hierarchy: SVGGElement;
   readonly ir_plot_svg: SVGSVGElement;
+  readonly ir_gravity: SVGGElement;
   readonly chord_gravities: SVGGElement;
   readonly scale_gravities: SVGGElement;
   readonly time_span_tree: SVGGElement;
@@ -101,6 +105,7 @@ export class MelodyElements {
     const melody_hierarchy = builder.buildMelody(hierarchical_melody);
     const ir_hierarchy = builder.buildIRSymbol(hierarchical_melody);
     const ir_plot_svg = builder.buildIRPlot(hierarchical_melody);
+    const ir_gravity = builder.buildIRGravity(hierarchical_melody);
     const chord_gravities = builder.buildGravity("chord_gravity", hierarchical_melody);
     const scale_gravities = builder.buildGravity("scale_gravity", hierarchical_melody);
     const time_span_tree = builder.buildReduction(hierarchical_melody);
@@ -109,6 +114,7 @@ export class MelodyElements {
     this.melody_hierarchy = melody_hierarchy.svg
     this.ir_hierarchy = ir_hierarchy.svg
     this.ir_plot_svg = ir_plot_svg.svg
+    this.ir_gravity = ir_gravity.svg
     this.chord_gravities = chord_gravities.svg
     this.scale_gravities = scale_gravities.svg
     this.time_span_tree = time_span_tree.svg
@@ -118,6 +124,7 @@ export class MelodyElements {
       melody_hierarchy,
       ir_hierarchy,
       ir_plot_svg,
+      ir_gravity,
       chord_gravities,
       scale_gravities,
       time_span_tree,

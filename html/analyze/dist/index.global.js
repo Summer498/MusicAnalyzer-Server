@@ -6250,6 +6250,218 @@ Expected id is: ${regexp}`);
     const svg = getSVGG6(mode, layers);
     return new GravityHierarchy(svg, layers);
   }
+  var getGravityModel = (layer, e) => ({
+    ...e,
+    archetype: e.melody_analysis.implication_realization,
+    layer: layer || 0
+  });
+  var getAngle = (e) => {
+    const w = e.x2 - e.x1;
+    const h = e.y2 - e.y1;
+    return Math.atan2(h, w) * 180 / Math.PI;
+  };
+  var LinePos2 = class _LinePos2 {
+    constructor(x1, x2, y1, y2) {
+      this.x1 = x1;
+      this.x2 = x2;
+      this.y1 = y1;
+      this.y2 = y2;
+    }
+    scaled(w, h) {
+      return new _LinePos2(
+        this.x1 * w,
+        this.x2 * w,
+        this.y1 * h,
+        this.y2 * h
+      );
+    }
+    getAngle() {
+      return getAngle(this);
+    }
+  };
+  var updateViewLine = (svg) => (line_pos) => {
+    svg.setAttribute("x1", String(line_pos.x1));
+    svg.setAttribute("x2", String(line_pos.x2));
+    svg.setAttribute("y1", String(line_pos.y1));
+    svg.setAttribute("y2", String(line_pos.y2));
+  };
+  var triangle_width2 = 4;
+  var triangle_height2 = 5;
+  var getInitPos2 = () => [0, 0, -triangle_width2, +triangle_height2, +triangle_width2, +triangle_height2];
+  var updateTriangle = (svg) => (line_pos) => {
+    const angle = line_pos.getAngle() + 90;
+    svg.setAttribute("transform", `translate(${line_pos.x2},${line_pos.y2}) rotate(${angle})`);
+  };
+  var IRGravityView = class {
+    constructor(svg, triangle, line) {
+      this.svg = svg;
+      this.triangle = triangle;
+      this.line = line;
+    }
+    updateWidth(w) {
+      this.svg.setAttribute("width", String(w));
+    }
+    updateHeight(h) {
+      this.svg.setAttribute("height", String(h));
+    }
+    onWindowResized(line_pos) {
+      updateTriangle(this.triangle)(line_pos);
+      updateViewLine(this.line)(line_pos);
+    }
+    setColor = (color) => this.svg.style.fill = color;
+  };
+  var IRGravity = class {
+    constructor(model, view, line_seed) {
+      this.model = model;
+      this.view = view;
+      this.line_seed = line_seed;
+    }
+    get svg() {
+      return this.view.svg;
+    }
+    updateWidth() {
+      this.view.updateWidth(PianoRollConverter.scaled(this.model.time.duration));
+    }
+    updateHeight() {
+      this.view.updateHeight(black_key_height);
+    }
+    onWindowResized() {
+      this.updateWidth();
+      this.updateHeight();
+      this.view.onWindowResized(this.line_seed.scaled(NoteSize.get(), 1));
+    }
+    onTimeRangeChanged = this.onWindowResized;
+    setColor = (f) => this.view.setColor(f(this.model.archetype));
+  };
+  var IRGravityLayer = class {
+    constructor(layer, svg, children) {
+      this.layer = layer;
+      this.svg = svg;
+      this.children = children;
+      this.children_model = this.children.map((e) => e.model);
+      this.#show = children;
+    }
+    children_model;
+    #show;
+    get show() {
+      return this.#show;
+    }
+    onAudioUpdate() {
+      this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`);
+    }
+  };
+  var IRGravityHierarchy = class {
+    constructor(svg, children) {
+      this.svg = svg;
+      this.children = children;
+    }
+    _show = [];
+    get show() {
+      return this._show;
+    }
+    onUpdateGravityVisibility(visible) {
+      this.svg.style.visibility = visible ? "visible" : "hidden";
+    }
+    setShow(visible_layers) {
+      this._show = visible_layers;
+      this._show.forEach((e) => e.onAudioUpdate());
+      this.svg.replaceChildren(...this._show.map((e) => e.svg));
+    }
+    onChangedLayer(value) {
+      const visible_layer = this.children.filter((e) => value === e.layer);
+      this.setShow(visible_layer);
+    }
+  };
+  function getTriangle2() {
+    const triangle_svg = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+    triangle_svg.classList.add("triangle");
+    triangle_svg.id = "gravity-arrow";
+    triangle_svg.style.stroke = "rgb(0, 0, 0)";
+    triangle_svg.style.fill = "rgb(0, 0, 0)";
+    triangle_svg.style.strokeWidth = String(5);
+    triangle_svg.setAttribute("points", getInitPos2().join(","));
+    return triangle_svg;
+  }
+  function getLine2() {
+    const line_svg = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    line_svg.id = "gravity-arrow";
+    line_svg.classList.add("line");
+    line_svg.style.stroke = "rgb(0, 0, 0)";
+    line_svg.style.strokeWidth = String(5);
+    return line_svg;
+  }
+  function getGravitySVG2(...children) {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    svg.id = "gravity";
+    children.forEach((e) => svg.appendChild(e));
+    return svg;
+  }
+  function getSVGG7(id, children) {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    svg.id = id;
+    children.forEach((e) => svg.appendChild(e));
+    return svg;
+  }
+  function getLinePos2(e, n) {
+    const convert = (arg) => [
+      (e2) => e2 - 0.5,
+      (e2) => PianoRollConverter.midi2BlackCoordinate(e2)
+    ].reduce((c, f) => f(c), arg);
+    const line_pos = new LinePos2(
+      e.time.begin + e.time.duration / 2,
+      n.time.begin + n.time.duration / 2,
+      isNaN(e.note) ? -99 : convert(e.note),
+      isNaN(n.note) ? -99 : convert(n.note)
+    );
+    return line_pos;
+  }
+  var m3 = 3;
+  var getImplication = (interval4) => {
+    const sign = Math.sign(interval4);
+    const I = Math.abs(interval4);
+    return I < 6 ? { inf: sign * (I - m3), sup: sign * (I + m3), over: sign * (I + m3), sgn: 1 } : { inf: 0, sup: sign * (I - m3), over: sign * (I + m3), sgn: -1 };
+  };
+  function buildIRGravity(h_melodies) {
+    const getLayers = (melodies, l) => {
+      const second = melodies.slice(1);
+      const third = melodies.slice(2);
+      const fourth = [...melodies.slice(3), void 0];
+      const gravity = third.map((_, i) => {
+        const past = melodies[i];
+        const pre = second[i];
+        const next = third[i];
+        const re_next = fourth[i];
+        const implication = getImplication(pre.note - past.note);
+        const line_pos_implication = getLinePos2(
+          { time: pre.time, note: pre.note },
+          { time: next.time, note: pre.note + (implication.inf + implication.sup) / 2 }
+        );
+        if (re_next) {
+          const IImplicationDist = re_next?.note + (implication.inf + implication.sup) / 2;
+          const VImplicationDist = next.note + (implication.inf + implication.sup) / 2;
+          const line_pos_reImplication = re_next && getLinePos2(
+            { time: next.time, note: next.note },
+            { time: re_next.time, note: re_next.note }
+          );
+        }
+        const model = getGravityModel(l, pre);
+        const triangle = getTriangle2();
+        const line = getLine2();
+        const svg3 = getGravitySVG2(triangle, line);
+        const view = new IRGravityView(svg3, triangle, line);
+        return {
+          model,
+          view,
+          line_pos: line_pos_implication
+        };
+      }).filter((e) => e !== void 0).map((e) => new IRGravity(e.model, e.view, e.line_pos));
+      const svg2 = getSVGG7(`layer-${l}`, gravity.map((e) => e.svg));
+      return new IRGravityLayer(l, svg2, gravity);
+    };
+    const layers = h_melodies.map(getLayers);
+    const svg = getSVGG7("ir_gravity", layers.map((e) => e.svg));
+    return new IRGravityHierarchy(svg, layers);
+  }
   var HierarchyBuilder = class {
     constructor(d_melody, h_melodies, controllers) {
       this.d_melody = d_melody;
@@ -6262,26 +6474,28 @@ Expected id is: ${regexp}`);
     buildIRSymbol = buildIRSymbol;
     buildMelody = buildMelody;
     buildReduction = buildReduction;
+    buildIRGravity = buildIRGravity;
   };
-  var setControllers = (d_melodies, melody, ir_symbol, ir_plot, chord_gravity, scale_gravity, reduction) => (controllers) => {
+  var setControllers = (d_melodies, melody, ir_symbol, ir_plot, ir_gravity, chord_gravity, scale_gravity, reduction) => (controllers) => {
     const onAudioUpdate = (svg) => {
       svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`);
     };
     const audioListeners = [
-      ...[melody, ir_symbol, reduction, scale_gravity, chord_gravity, ...ir_plot.children, d_melodies].flatMap((e) => e.children.map((e2) => e2)).map((e) => () => e.onAudioUpdate())
+      ...[melody, ir_symbol, ir_gravity, reduction, scale_gravity, chord_gravity, ...ir_plot.children, d_melodies].flatMap((e) => e.children.map((e2) => e2)).map((e) => () => e.onAudioUpdate())
     ];
     const beepMelody = () => melody.show.forEach((e) => e.beep());
     controllers.audio.addListeners(...audioListeners, beepMelody);
     audioListeners.forEach((f) => f());
-    const windowListeners = [...[melody, ir_symbol, reduction, scale_gravity, chord_gravity, ...ir_plot.children].flatMap((e) => e.children.map((e2) => e2)), d_melodies].flatMap((e) => e.children.map((e2) => e2)).map((e) => e.onWindowResized.bind(e));
+    const windowListeners = [...[melody, ir_symbol, ir_gravity, reduction, scale_gravity, chord_gravity, ...ir_plot.children].flatMap((e) => e.children.map((e2) => e2)), d_melodies].flatMap((e) => e.children.map((e2) => e2)).map((e) => e.onWindowResized.bind(e));
     controllers.window.addListeners(...windowListeners);
-    const hierarchyListeners = [melody, ir_symbol, reduction, chord_gravity, scale_gravity, ...ir_plot.children].map((e) => e.onChangedLayer.bind(e));
+    const hierarchyListeners = [melody, ir_symbol, ir_gravity, reduction, chord_gravity, scale_gravity, ...ir_plot.children].map((e) => e.onChangedLayer.bind(e));
     controllers.hierarchy.addListeners(...hierarchyListeners);
-    const timeRangeListeners = [...[melody, ir_symbol, reduction, chord_gravity, scale_gravity].flatMap((e) => e.children.map((e2) => e2)), d_melodies].flatMap((e) => e.children.map((e2) => e2)).map((e) => e.onTimeRangeChanged.bind(e));
+    const timeRangeListeners = [...[melody, ir_symbol, ir_gravity, reduction, chord_gravity, scale_gravity].flatMap((e) => e.children.map((e2) => e2)), d_melodies].flatMap((e) => e.children.map((e2) => e2)).map((e) => e.onTimeRangeChanged.bind(e));
     controllers.time_range.addListeners(...timeRangeListeners);
     const melodyColorListeners = [
       ...melody.children,
       ...ir_symbol.children,
+      ...ir_gravity.children,
       ...reduction.children,
       ...ir_plot.children.flatMap((e) => e.children)
     ].flatMap((e) => e.children.flatMap((e2) => e2)).map((e) => e.setColor.bind(e));
@@ -6300,6 +6514,7 @@ Expected id is: ${regexp}`);
     melody_hierarchy;
     ir_hierarchy;
     ir_plot_svg;
+    ir_gravity;
     chord_gravities;
     scale_gravities;
     time_span_tree;
@@ -6309,6 +6524,7 @@ Expected id is: ${regexp}`);
       const melody_hierarchy = builder.buildMelody(hierarchical_melody);
       const ir_hierarchy = builder.buildIRSymbol(hierarchical_melody);
       const ir_plot_svg = builder.buildIRPlot(hierarchical_melody);
+      const ir_gravity = builder.buildIRGravity(hierarchical_melody);
       const chord_gravities = builder.buildGravity("chord_gravity", hierarchical_melody);
       const scale_gravities = builder.buildGravity("scale_gravity", hierarchical_melody);
       const time_span_tree = builder.buildReduction(hierarchical_melody);
@@ -6316,6 +6532,7 @@ Expected id is: ${regexp}`);
       this.melody_hierarchy = melody_hierarchy.svg;
       this.ir_hierarchy = ir_hierarchy.svg;
       this.ir_plot_svg = ir_plot_svg.svg;
+      this.ir_gravity = ir_gravity.svg;
       this.chord_gravities = chord_gravities.svg;
       this.scale_gravities = scale_gravities.svg;
       this.time_span_tree = time_span_tree.svg;
@@ -6324,6 +6541,7 @@ Expected id is: ${regexp}`);
         melody_hierarchy,
         ir_hierarchy,
         ir_plot_svg,
+        ir_gravity,
         chord_gravities,
         scale_gravities,
         time_span_tree
@@ -6363,6 +6581,7 @@ Expected id is: ${regexp}`);
       this.svg.appendChild(melody.d_melody_collection);
       this.svg.appendChild(melody.melody_hierarchy);
       this.svg.appendChild(melody.ir_hierarchy);
+      this.svg.appendChild(melody.ir_gravity);
       this.svg.appendChild(melody.chord_gravities);
       this.svg.appendChild(melody.scale_gravities);
       this.svg.appendChild(melody.time_span_tree);
@@ -6650,7 +6869,7 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
     closure_degree;
   };
   var M3 = get5("M3");
-  var m3 = get5("m3");
+  var m32 = get5("m3");
   var _sgn = (x) => x < 0 ? -1 : x && 1;
   var _abs = (x) => x < 0 ? -x : x;
   var IntervallicMotion = class extends Motion {
@@ -6658,7 +6877,7 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
       const dir_map = ["mL", "mN", "mR"];
       const pd = _sgn(prev.semitones);
       const cd = _sgn(curr.semitones);
-      const C = (cd - pd ? m3 : M3).semitones;
+      const C = (cd - pd ? m32 : M3).semitones;
       const p = _abs(prev.semitones);
       const c = _abs(curr.semitones);
       const d = c - p;

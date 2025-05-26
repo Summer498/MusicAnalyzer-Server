@@ -8,6 +8,7 @@ import { buildMelody } from "./melody-hierarchy";
 import { buildReduction } from "./reduction-hierarchy";
 import { buildGravity } from "./gravity-hierarchy";
 import { RequiredByMelodyElements } from "./required-by-melody-elements";
+import { buildIRGravity } from "./ir-gravity-hierarchy";
 
 interface IHierarchyBuilder {
   readonly d_melody: SerializedTimeAndAnalyzedMelody[],
@@ -27,4 +28,5 @@ export class HierarchyBuilder implements IHierarchyBuilder {
   buildIRSymbol = buildIRSymbol
   buildMelody = buildMelody
   buildReduction = buildReduction
+  buildIRGravity = buildIRGravity
 }
