@@ -1,16 +1,22 @@
-import { ChordPartSeries } from "./chord-parts-series";
-import { chord_name_margin } from "./chord-view-params/margin";
-import { chord_text_size } from "./chord-view-params/text-size";
-import { shortenChord } from "./shorten/chord";
-import { chord_text_em } from "./chord-view-params/text-em";
-import { AudioReflectableRegistry } from "@music-analyzer/view";
+import { AudioReflectableRegistry, PianoRollTranslateX } from "@music-analyzer/view";
 import { WindowReflectableRegistry } from "@music-analyzer/view";
 import { TimeRangeController } from "@music-analyzer/controllers";
-import { RequiredByChordPartModel } from "./require-by-chord-part-model";
 import { NoteSize, PianoRollHeight } from "@music-analyzer/view-parameters";
 import { Chord, Scale } from "@music-analyzer/tonal-objects";
 import { Time } from "@music-analyzer/time-and";
 import { fifthToColor } from "@music-analyzer/color";
+
+import { chord_name_margin } from "./chord-view-params/margin";
+import { chord_text_size } from "./chord-view-params/text-size";
+import { shortenChord } from "./shorten/chord";
+import { chord_text_em } from "./chord-view-params/text-em";
+
+interface IRequiredByChordPartModel {
+  readonly time: Time
+  readonly chord: Chord
+  readonly scale: Scale
+  readonly roman: string
+}
 
 interface RequiredByChordRomanSeries {
   readonly audio: AudioReflectableRegistry
@@ -18,20 +24,21 @@ interface RequiredByChordRomanSeries {
   readonly time_range: TimeRangeController,
 }
 
-class ChordRomanModel {
+interface IChordRomanModel {
   readonly time: Time
   readonly chord: Chord
   readonly scale: Scale
   readonly roman: string
   readonly tonic: string;
-  constructor(e: RequiredByChordPartModel) {
-    this.time = e.time;
-    this.chord = e.chord;
-    this.scale = e.scale;
-    this.roman = e.roman
-    this.tonic = e.chord.tonic || "";
-  }
 }
+
+const getChordRomanModel = (e: IRequiredByChordPartModel) => ({
+  time: e.time,
+  chord: e.chord,
+  scale: e.scale,
+  roman: e.roman,
+  tonic: e.chord.tonic || "",
+} as IChordRomanModel)
 
 const getColor = (tonic: string) => (s: number, v: number) => { return fifthToColor(tonic, s, v) || "rgb(0, 0, 0)" }
 class ChordRomanView {
@@ -43,12 +50,12 @@ class ChordRomanView {
 }
 
 class ChordRoman {
-  readonly model: ChordRomanModel;
+  readonly model: IChordRomanModel;
   readonly view: ChordRomanView;
   get svg() { return this.view.svg; }
   y: number;
   constructor(
-    model: ChordRomanModel,
+    model: IChordRomanModel,
     view: ChordRomanView,
   ) {
     this.model = model;
@@ -64,14 +71,18 @@ class ChordRoman {
   onTimeRangeChanged = this.onWindowResized
 }
 
-export class ChordRomanSeries
-  extends ChordPartSeries<ChordRoman> {
+class ChordRomanSeries {
+  readonly svg: SVGGElement
+  readonly children_model: { readonly time: Time }[];
+  #show: ChordRoman[];
+  get show() { return this.#show; };
+
   constructor(
-    romans: RequiredByChordPartModel[],
+    romans: IRequiredByChordPartModel[],
     controllers: RequiredByChordRomanSeries,
   ) {
     const children = romans.map(e => {
-      const model = new ChordRomanModel(e);
+      const model = getChordRomanModel(e);
 
       const svg = document.createElementNS("http://www.w3.org/2000/svg", "text");
       svg.textContent = shortenChord(model.roman);
@@ -84,6 +95,24 @@ export class ChordRomanSeries
 
       return new ChordRoman(model, view)
     });
-    super("roman-names", controllers, children);
+    const id = "roman-names"
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    svg.id = id;
+    children.forEach(e => svg.appendChild(e.svg));
+    
+    controllers.audio.addListeners(()=>children.forEach(e => e.onTimeRangeChanged()));
+    controllers.window.addListeners(()=>children.forEach(e => e.onWindowResized()));
+    controllers.time_range.addListeners(()=>svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`));
+    
+    this.svg = svg;
+    this.children_model = children.map(e => e.model);
+    this.#show = children;
   }
+}
+
+export function buildChordRomanSeries(
+  romans: IRequiredByChordPartModel[],
+  controllers: RequiredByChordRomanSeries,
+) {
+  return new ChordRomanSeries(romans, controllers);
 }

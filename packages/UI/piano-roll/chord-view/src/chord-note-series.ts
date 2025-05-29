@@ -1,4 +1,3 @@
-import { ChordPartSeries } from "./chord-parts-series";
 import { black_key_height, NoteSize, OctaveCount, PianoRollConverter } from "@music-analyzer/view-parameters";
 import { Chord, Scale } from "@music-analyzer/tonal-objects";
 import { getNote } from "@music-analyzer/tonal-objects";
@@ -6,13 +5,20 @@ import { mod } from "@music-analyzer/math";
 import { Note } from "@music-analyzer/tonal-objects";
 import { fifthToColor, thirdToColor } from "@music-analyzer/color";
 import { intervalOf } from "@music-analyzer/tonal-objects";
-import { AudioReflectableRegistry } from "@music-analyzer/view";
+import { AudioReflectableRegistry, PianoRollTranslateX } from "@music-analyzer/view";
 import { WindowReflectableRegistry } from "@music-analyzer/view";
 import { TimeRangeController } from "@music-analyzer/controllers";
-import { RequiredByChordPartModel } from "./require-by-chord-part-model";
 import { Time } from "@music-analyzer/time-and";
+
 import { oneLetterKey } from "./shorten/on-letter-key";
 import { chord_text_em } from "./chord-view-params/text-em";
+
+interface IRequiredByChordPartModel {
+  readonly time: Time
+  readonly chord: Chord
+  readonly scale: Scale
+  readonly roman: string
+}
 
 interface RequiredByChordNotesSeries {
   readonly audio: AudioReflectableRegistry
@@ -20,7 +26,7 @@ interface RequiredByChordNotesSeries {
   readonly time_range: TimeRangeController,
 }
 
-class ChordNoteModel {
+interface IChordNoteModel {
   readonly time: Time;
   readonly chord: Chord
   readonly scale: Scale
@@ -30,22 +36,25 @@ class ChordNoteModel {
   readonly note: number;
   readonly note_name: string;
   readonly interval: string;
-  constructor(
-    e: RequiredByChordPartModel,
-    note: Note,
-    readonly oct: number,
-  ) {
-    this.time = e.time;
-    this.chord = e.chord;
-    this.scale = e.scale;
-    this.roman = e.roman
-    this.tonic = e.chord.tonic || "";
-    this.type = e.chord.type;
-    this.note = note.chroma;
-    this.note_name = note.name;
-    this.interval = intervalOf(this.tonic, note);
-  }
+  readonly oct: number;
 }
+
+const getChordNoteModel = (
+  e: IRequiredByChordPartModel,
+  note: Note,
+  oct: number,
+) => ({
+  time: e.time,
+  chord: e.chord,
+  scale: e.scale,
+  roman: e.roman,
+  tonic: e.chord.tonic || "",
+  type: e.chord.type,
+  note: note.chroma,
+  note_name: note.name,
+  interval: intervalOf(e.chord.tonic || "", note),
+  oct,
+} as IChordNoteModel)
 
 class ChordNoteView {
   constructor(
@@ -62,7 +71,7 @@ class ChordNote {
   get svg() { return this.view.svg }
   y: number;
   constructor(
-    readonly model: ChordNoteModel,
+    readonly model: IChordNoteModel,
     readonly view: ChordNoteView,
   ) {
     this.y = [this.model.note]
@@ -94,14 +103,14 @@ class ChordNotesInOctave {
   readonly svg: SVGGElement
   readonly children: ChordNote[]
   constructor(
-    roman: RequiredByChordPartModel,
+    roman: IRequiredByChordPartModel,
     chord: Chord,
     oct: number,
   ) {
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     svg.id = `${chord.name}-${oct}`;
     const children = chord.notes.map(note => {
-      const model = new ChordNoteModel(roman, getNote(note), oct);
+      const model = getChordNoteModel(roman, getNote(note), oct);
       const svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
       svg.id = "key-name";
       svg.style.fontFamily = "Times New Roman";
@@ -130,7 +139,7 @@ class ChordNotes {
   readonly svg: SVGGElement;
   readonly children: ChordNotesInOctave[];
   constructor(
-    readonly model: RequiredByChordPartModel,
+    readonly model: IRequiredByChordPartModel,
   ) {
     const chord = model.chord;
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
@@ -145,15 +154,37 @@ class ChordNotes {
   onWindowResized() { this.children.forEach(e => e.onWindowResized()) }
 }
 
-export class ChordNotesSeries
-  extends ChordPartSeries<ChordNotes> {
+class ChordNotesSeries {
+  readonly svg: SVGGElement
+  readonly children_model: { readonly time: Time }[];
+  #show: ChordNotes[];
+  get show() { return this.#show; };
+
   constructor(
-    romans: RequiredByChordPartModel[],
+    romans: IRequiredByChordPartModel[],
     controllers: RequiredByChordNotesSeries
   ) {
     const children = romans.map(roman => {
       return new ChordNotes(roman)
     })
-    super("chords", controllers, children);
+    const id = "chords";
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    svg.id = id;
+    children.forEach(e => svg.appendChild(e.svg));
+
+    controllers.audio.addListeners(() => children.forEach(e => e.onTimeRangeChanged()));
+    controllers.window.addListeners(() => children.forEach(e => e.onWindowResized()));
+    controllers.time_range.addListeners(() => svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`));
+
+    this.svg = svg;
+    this.children_model = children.map(e => e.model);
+    this.#show = children;
   }
+}
+
+export function buildChordNotesSeries(
+  romans: IRequiredByChordPartModel[],
+  controllers: RequiredByChordNotesSeries
+) {
+  return new ChordNotesSeries(romans, controllers)
 }

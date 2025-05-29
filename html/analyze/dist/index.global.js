@@ -4537,35 +4537,6 @@ Expected id is: ${regexp}`);
   var chord_name_margin = 5;
   var chord_text_em = size;
   var chord_text_size = 16 * chord_text_em;
-  var ChordPartSeries = class {
-    constructor(id, controllers, children) {
-      this.children = children;
-      const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-      svg.id = id;
-      children.forEach((e) => svg.appendChild(e.svg));
-      controllers.audio.addListeners(this.onAudioUpdate.bind(this));
-      controllers.window.addListeners(this.onWindowResized.bind(this));
-      controllers.time_range.addListeners(this.onTimeRangeChanged.bind(this));
-      this.svg = svg;
-      this.children_model = children.map((e) => e.model);
-      this.#show = children;
-    }
-    svg;
-    children_model;
-    #show;
-    get show() {
-      return this.#show;
-    }
-    onTimeRangeChanged() {
-      this.children.forEach((e) => e.onTimeRangeChanged());
-    }
-    onWindowResized() {
-      this.children.forEach((e) => e.onWindowResized());
-    }
-    onAudioUpdate() {
-      this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`);
-    }
-  };
   var oneLetterKey = (key) => {
     const tonic = key.tonic || "";
     const type = key.type;
@@ -4581,100 +4552,88 @@ Expected id is: ${regexp}`);
       return key.name;
     }
   };
-  var ChordKeyModel = class {
-    time;
-    chord;
-    scale;
-    roman;
-    tonic;
-    constructor(e) {
-      this.time = e.time;
-      this.chord = e.chord;
-      this.scale = e.scale;
-      this.roman = e.roman;
-      this.tonic = this.scale.tonic || "";
-    }
-  };
+  var getChordKeyModel = (e) => ({
+    time: e.time,
+    chord: e.chord,
+    scale: e.scale,
+    roman: e.roman,
+    tonic: e.scale.tonic || ""
+  });
   var getColor = (tonic) => (s, v3) => {
     return fifthToColor(tonic, s, v3) || "rgb(0, 0, 0)";
   };
-  var ChordKeyView = class {
-    constructor(model) {
-      this.model = model;
-      const svg = document.createElementNS("http://www.w3.org/2000/svg", "text");
-      svg.id = "key-name";
-      svg.style.fontFamily = "Times New Roman";
-      svg.style.fontSize = `${chord_text_em}em`;
-      svg.style.textAnchor = "end";
-      svg.textContent = oneLetterKey(model.scale) + ": ";
-      svg.style.fill = getColor(model.tonic)(1, 0.75);
-      this.svg = svg;
-    }
-    svg;
-    updateX(x) {
-      this.svg.setAttribute("x", String(x));
-    }
-    updateY(y) {
-      this.svg.setAttribute("y", String(y));
-    }
+  var updateChordKeyViewX = (svg) => (x) => {
+    svg.setAttribute("x", String(x));
+  };
+  var updateChordKeyViewY = (svg) => (y) => {
+    svg.setAttribute("y", String(y));
   };
   var ChordKey = class {
-    model;
-    view;
-    get svg() {
-      return this.view.svg;
-    }
-    y;
-    constructor(e) {
-      const model = new ChordKeyModel(e);
-      const view = new ChordKeyView(model);
+    constructor(model, svg) {
       this.model = model;
-      this.view = view;
+      this.svg = svg;
       this.y = PianoRollHeight.get() + chord_text_size + (chord_text_size + chord_name_margin);
       this.updateX();
       this.updateY();
     }
+    y;
     onWindowResized() {
       this.updateX();
     }
     scaled = (e) => e * NoteSize.get();
     updateX() {
-      this.view.updateX(this.scaled(this.model.time.begin));
+      updateChordKeyViewX(this.svg)(this.scaled(this.model.time.begin));
     }
     updateY() {
-      this.view.updateY(this.y);
+      updateChordKeyViewY(this.svg)(this.y);
     }
     onTimeRangeChanged = this.onWindowResized;
   };
-  var ChordKeySeries = class extends ChordPartSeries {
+  var ChordKeySeries = class {
+    constructor(svg, children) {
+      this.svg = svg;
+      this.children = children;
+      this.#show = children;
+    }
+    #show;
+    get show() {
+      return this.#show;
+    }
     remaining;
-    constructor(romans, controllers) {
-      super("key-names", controllers, romans.map((e) => new ChordKey(e)));
-    }
   };
-  var ChordNoteModel = class {
-    constructor(e, note4, oct) {
-      this.oct = oct;
-      this.time = e.time;
-      this.chord = e.chord;
-      this.scale = e.scale;
-      this.roman = e.roman;
-      this.tonic = e.chord.tonic || "";
-      this.type = e.chord.type;
-      this.note = note4.chroma;
-      this.note_name = note4.name;
-      this.interval = distance4(this.tonic, note4);
-    }
-    time;
-    chord;
-    scale;
-    roman;
-    tonic;
-    type;
-    note;
-    note_name;
-    interval;
-  };
+  function buildChordKeySeries(romans, controllers) {
+    const children = romans.map((e) => {
+      const model = getChordKeyModel(e);
+      const svg2 = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      svg2.id = "key-name";
+      svg2.style.fontFamily = "Times New Roman";
+      svg2.style.fontSize = `${chord_text_em}em`;
+      svg2.style.textAnchor = "end";
+      svg2.textContent = oneLetterKey(model.scale) + ": ";
+      svg2.style.fill = getColor(model.tonic)(1, 0.75);
+      return new ChordKey(model, svg2);
+    });
+    const id = "key-names";
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    svg.id = id;
+    children.forEach((e) => svg.appendChild(e.svg));
+    controllers.audio.addListeners(() => children.forEach((e) => e.onTimeRangeChanged()));
+    controllers.window.addListeners(() => children.forEach((e) => e.onWindowResized()));
+    controllers.time_range.addListeners(() => svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`));
+    return new ChordKeySeries(svg, children);
+  }
+  var getChordNoteModel = (e, note4, oct) => ({
+    time: e.time,
+    chord: e.chord,
+    scale: e.scale,
+    roman: e.roman,
+    tonic: e.chord.tonic || "",
+    type: e.chord.type,
+    note: note4.chroma,
+    note_name: note4.name,
+    interval: distance4(e.chord.tonic || "", note4),
+    oct
+  });
   var ChordNoteView = class {
     constructor(svg) {
       this.svg = svg;
@@ -4737,7 +4696,7 @@ Expected id is: ${regexp}`);
       const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
       svg.id = `${chord.name}-${oct}`;
       const children = chord.notes.map((note4) => {
-        const model = new ChordNoteModel(roman, get6(note4), oct);
+        const model = getChordNoteModel(roman, get6(note4), oct);
         const svg2 = document.createElementNS("http://www.w3.org/2000/svg", "rect");
         svg2.id = "key-name";
         svg2.style.fontFamily = "Times New Roman";
@@ -4790,14 +4749,32 @@ Expected id is: ${regexp}`);
       this.children.forEach((e) => e.onWindowResized());
     }
   };
-  var ChordNotesSeries = class extends ChordPartSeries {
+  var ChordNotesSeries = class {
+    svg;
+    children_model;
+    #show;
+    get show() {
+      return this.#show;
+    }
     constructor(romans, controllers) {
       const children = romans.map((roman) => {
         return new ChordNotes(roman);
       });
-      super("chords", controllers, children);
+      const id = "chords";
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+      svg.id = id;
+      children.forEach((e) => svg.appendChild(e.svg));
+      controllers.audio.addListeners(() => children.forEach((e) => e.onTimeRangeChanged()));
+      controllers.window.addListeners(() => children.forEach((e) => e.onWindowResized()));
+      controllers.time_range.addListeners(() => svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`));
+      this.svg = svg;
+      this.children_model = children.map((e) => e.model);
+      this.#show = children;
     }
   };
+  function buildChordNotesSeries(romans, controllers) {
+    return new ChordNotesSeries(romans, controllers);
+  }
   var shortenChord = (chord) => {
     const M7 = chord.replace("major seventh", "M7");
     const major = M7.replace("major", "");
@@ -4805,46 +4782,30 @@ Expected id is: ${regexp}`);
     const seventh = minor.replace("seventh", "7");
     return seventh;
   };
-  var ChordNameModel = class {
-    time;
-    chord;
-    scale;
-    roman;
-    tonic;
-    name;
-    constructor(e) {
-      this.time = e.time;
-      this.chord = e.chord;
-      this.scale = e.scale;
-      this.roman = e.roman;
-      this.tonic = this.chord.tonic || "";
-      this.name = this.chord.name;
-    }
-  };
+  var getChordNameModel = (e) => ({
+    time: e.time,
+    chord: e.chord,
+    scale: e.scale,
+    roman: e.roman,
+    tonic: e.chord.tonic || "",
+    name: e.chord.name
+  });
   var getColor3 = (tonic) => (s, v3) => {
     return fifthToColor(tonic, s, v3) || "rgb(0, 0, 0)";
   };
-  var ChordNameView = class {
-    constructor(svg) {
-      this.svg = svg;
-    }
-    updateX(x) {
-      this.svg.setAttribute("x", String(x));
-    }
-    updateY(y) {
-      this.svg.setAttribute("y", String(y));
-    }
+  var updateChordNameViewX = (svg) => (x) => {
+    svg.setAttribute("x", String(x));
+  };
+  var updateChordNameViewY = (svg) => (y) => {
+    svg.setAttribute("y", String(y));
   };
   var ChordName = class {
-    constructor(model, view) {
+    constructor(model, svg) {
       this.model = model;
-      this.view = view;
+      this.svg = svg;
       this.y = PianoRollHeight.get() + chord_text_size;
       this.updateX();
       this.updateY();
-    }
-    get svg() {
-      return this.view.svg;
     }
     y;
     onWindowResized() {
@@ -4852,43 +4813,53 @@ Expected id is: ${regexp}`);
     }
     scaled = (e) => e * NoteSize.get();
     updateX() {
-      this.view.updateX(this.scaled(this.model.time.begin));
+      updateChordNameViewX(this.svg)(this.scaled(this.model.time.begin));
     }
     updateY() {
-      this.view.updateY(this.y);
+      updateChordNameViewY(this.svg)(this.y);
     }
     onTimeRangeChanged = this.onWindowResized;
   };
-  var ChordNameSeries = class extends ChordPartSeries {
+  var ChordNameSeries = class {
+    svg;
+    children_model;
+    #show;
+    get show() {
+      return this.#show;
+    }
     constructor(romans, controllers) {
       const children = romans.map((e) => {
-        const model = new ChordNameModel(e);
-        const svg = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        svg.textContent = shortenChord(model.chord.name);
-        svg.id = "chord-name";
-        svg.style.fontFamily = "Times New Roman";
-        svg.style.fontSize = `${chord_text_em}em`;
-        svg.style.fill = getColor3(model.tonic)(1, 0.75);
-        const view = new ChordNameView(svg);
-        return new ChordName(model, view);
+        const model = getChordNameModel(e);
+        const svg2 = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        svg2.textContent = shortenChord(model.chord.name);
+        svg2.id = "chord-name";
+        svg2.style.fontFamily = "Times New Roman";
+        svg2.style.fontSize = `${chord_text_em}em`;
+        svg2.style.fill = getColor3(model.tonic)(1, 0.75);
+        return new ChordName(model, svg2);
       });
-      super("chord-names", controllers, children);
+      const id = "chord-names";
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+      svg.id = id;
+      children.forEach((e) => svg.appendChild(e.svg));
+      controllers.audio.addListeners(() => children.forEach((e) => e.onTimeRangeChanged()));
+      controllers.window.addListeners(() => children.forEach((e) => e.onWindowResized()));
+      controllers.time_range.addListeners(() => svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`));
+      this.svg = svg;
+      this.children_model = children.map((e) => e.model);
+      this.#show = children;
     }
   };
-  var ChordRomanModel = class {
-    time;
-    chord;
-    scale;
-    roman;
-    tonic;
-    constructor(e) {
-      this.time = e.time;
-      this.chord = e.chord;
-      this.scale = e.scale;
-      this.roman = e.roman;
-      this.tonic = e.chord.tonic || "";
-    }
-  };
+  function buildChordNameSeries(romans, controllers) {
+    return new ChordNameSeries(romans, controllers);
+  }
+  var getChordRomanModel = (e) => ({
+    time: e.time,
+    chord: e.chord,
+    scale: e.scale,
+    roman: e.roman,
+    tonic: e.chord.tonic || ""
+  });
   var getColor4 = (tonic) => (s, v3) => {
     return fifthToColor(tonic, s, v3) || "rgb(0, 0, 0)";
   };
@@ -4929,22 +4900,40 @@ Expected id is: ${regexp}`);
     }
     onTimeRangeChanged = this.onWindowResized;
   };
-  var ChordRomanSeries = class extends ChordPartSeries {
+  var ChordRomanSeries = class {
+    svg;
+    children_model;
+    #show;
+    get show() {
+      return this.#show;
+    }
     constructor(romans, controllers) {
       const children = romans.map((e) => {
-        const model = new ChordRomanModel(e);
-        const svg = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        svg.textContent = shortenChord(model.roman);
-        svg.id = "roman-name";
-        svg.style.fontFamily = "Times New Roman";
-        svg.style.fontSize = `${chord_text_em}em`;
-        svg.style.fill = getColor4(model.tonic)(1, 0.75);
-        const view = new ChordRomanView(svg);
+        const model = getChordRomanModel(e);
+        const svg2 = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        svg2.textContent = shortenChord(model.roman);
+        svg2.id = "roman-name";
+        svg2.style.fontFamily = "Times New Roman";
+        svg2.style.fontSize = `${chord_text_em}em`;
+        svg2.style.fill = getColor4(model.tonic)(1, 0.75);
+        const view = new ChordRomanView(svg2);
         return new ChordRoman(model, view);
       });
-      super("roman-names", controllers, children);
+      const id = "roman-names";
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+      svg.id = id;
+      children.forEach((e) => svg.appendChild(e.svg));
+      controllers.audio.addListeners(() => children.forEach((e) => e.onTimeRangeChanged()));
+      controllers.window.addListeners(() => children.forEach((e) => e.onWindowResized()));
+      controllers.time_range.addListeners(() => svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`));
+      this.svg = svg;
+      this.children_model = children.map((e) => e.model);
+      this.#show = children;
     }
   };
+  function buildChordRomanSeries(romans, controllers) {
+    return new ChordRomanSeries(romans, controllers);
+  }
   var RequiredByChordPartModel = class {
     time;
     chord;
@@ -4965,10 +4954,10 @@ Expected id is: ${regexp}`);
     chord_romans;
     constructor(romans, controllers) {
       const data = romans.map((e) => new RequiredByChordPartModel(e));
-      const chord_keys = new ChordKeySeries(data, controllers);
-      const chord_names = new ChordNameSeries(data, controllers);
-      const chord_notes = new ChordNotesSeries(data, controllers);
-      const chord_romans = new ChordRomanSeries(data, controllers);
+      const chord_keys = buildChordKeySeries(data, controllers);
+      const chord_names = buildChordNameSeries(data, controllers);
+      const chord_notes = buildChordNotesSeries(data, controllers);
+      const chord_romans = buildChordRomanSeries(data, controllers);
       this.chord_keys = chord_keys.svg;
       this.chord_names = chord_names.svg;
       this.chord_notes = chord_notes.svg;
@@ -6441,7 +6430,7 @@ Expected id is: ${regexp}`);
           const VImplicationDist = next.note + (implication.inf + implication.sup) / 2;
           const line_pos_reImplication = re_next && getLinePos2(
             { time: next.time, note: next.note },
-            { time: re_next.time, note: re_next.note }
+            { time: re_next.time, note: next.note }
           );
         }
         const model = getGravityModel(l, pre);
@@ -6462,20 +6451,6 @@ Expected id is: ${regexp}`);
     const svg = getSVGG7("ir_gravity", layers.map((e) => e.svg));
     return new IRGravityHierarchy(svg, layers);
   }
-  var HierarchyBuilder = class {
-    constructor(d_melody, h_melodies, controllers) {
-      this.d_melody = d_melody;
-      this.h_melodies = h_melodies;
-      this.controllers = controllers;
-    }
-    buildDMelody = buildDMelody;
-    buildGravity = buildGravity;
-    buildIRPlot = buildIRPlot;
-    buildIRSymbol = buildIRSymbol;
-    buildMelody = buildMelody;
-    buildReduction = buildReduction;
-    buildIRGravity = buildIRGravity;
-  };
   var setControllers = (d_melodies, melody, ir_symbol, ir_plot, ir_gravity, chord_gravity, scale_gravity, reduction) => (controllers) => {
     const onAudioUpdate = (svg) => {
       svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`);
@@ -6519,15 +6494,14 @@ Expected id is: ${regexp}`);
     scale_gravities;
     time_span_tree;
     constructor(hierarchical_melody, d_melodies, controllers) {
-      const builder = new HierarchyBuilder(d_melodies, hierarchical_melody, controllers);
-      const d_melody_collection = builder.buildDMelody(d_melodies);
-      const melody_hierarchy = builder.buildMelody(hierarchical_melody);
-      const ir_hierarchy = builder.buildIRSymbol(hierarchical_melody);
-      const ir_plot_svg = builder.buildIRPlot(hierarchical_melody);
-      const ir_gravity = builder.buildIRGravity(hierarchical_melody);
-      const chord_gravities = builder.buildGravity("chord_gravity", hierarchical_melody);
-      const scale_gravities = builder.buildGravity("scale_gravity", hierarchical_melody);
-      const time_span_tree = builder.buildReduction(hierarchical_melody);
+      const d_melody_collection = buildDMelody(d_melodies);
+      const melody_hierarchy = buildMelody(hierarchical_melody);
+      const ir_hierarchy = buildIRSymbol(hierarchical_melody);
+      const ir_plot_svg = buildIRPlot(hierarchical_melody);
+      const ir_gravity = buildIRGravity(hierarchical_melody);
+      const chord_gravities = buildGravity("chord_gravity", hierarchical_melody);
+      const scale_gravities = buildGravity("scale_gravity", hierarchical_melody);
+      const time_span_tree = buildReduction(hierarchical_melody);
       this.d_melody_collection = d_melody_collection.svg;
       this.melody_hierarchy = melody_hierarchy.svg;
       this.ir_hierarchy = ir_hierarchy.svg;

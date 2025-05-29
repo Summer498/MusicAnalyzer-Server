@@ -1,8 +1,19 @@
 import { PianoRollConverter } from "@music-analyzer/view-parameters";
-import { HierarchyLevelController, TimeRangeController } from "@music-analyzer/controllers";
+import { DMelodyController, GravityController, HierarchyLevelController, MelodyBeepController, MelodyColorController, TimeRangeController } from "@music-analyzer/controllers";
 import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { RequiredByMelodyElements } from "./required-by-melody-elements";
+
+interface RequiredByMelodyElements {
+  readonly gravity: GravityController
+  readonly audio: AudioReflectableRegistry,
+  readonly d_melody: DMelodyController,
+  readonly window: WindowReflectableRegistry
+  readonly time_range: TimeRangeController
+
+  readonly melody_beep: MelodyBeepController
+  readonly melody_color: MelodyColorController
+  readonly hierarchy: HierarchyLevelController,
+}
 
 class Line {
   constructor(

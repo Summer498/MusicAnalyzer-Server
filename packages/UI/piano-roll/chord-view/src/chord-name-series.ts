@@ -1,15 +1,21 @@
-import { ChordPartSeries } from "./chord-parts-series";
-import { chord_text_em } from "./chord-view-params/text-em";
-import { shortenChord } from "./shorten/chord";
-import { AudioReflectableRegistry } from "@music-analyzer/view";
+import { AudioReflectableRegistry, PianoRollTranslateX } from "@music-analyzer/view";
 import { WindowReflectableRegistry } from "@music-analyzer/view";
 import { TimeRangeController } from "@music-analyzer/controllers";
-import { RequiredByChordPartModel } from "./require-by-chord-part-model";
-import { chord_text_size } from "./chord-view-params/text-size";
 import { NoteSize, PianoRollHeight } from "@music-analyzer/view-parameters";
 import { Chord, Scale } from "@music-analyzer/tonal-objects";
 import { Time } from "@music-analyzer/time-and";
 import { fifthToColor } from "@music-analyzer/color";
+
+import { chord_text_em } from "./chord-view-params/text-em";
+import { shortenChord } from "./shorten/chord";
+import { chord_text_size } from "./chord-view-params/text-size";
+
+interface IRequiredByChordPartModel {
+  readonly time: Time
+  readonly chord: Chord
+  readonly scale: Scale
+  readonly roman: string
+}
 
 interface RequiredByChordNameSeries {
   readonly audio: AudioReflectableRegistry
@@ -17,61 +23,57 @@ interface RequiredByChordNameSeries {
   readonly time_range: TimeRangeController,
 }
 
-
-class ChordNameModel {
+interface IChordNameModel {
   readonly time: Time;
   readonly chord: Chord
   readonly scale: Scale
   readonly roman: string
   readonly tonic: string;
   readonly name: string;
-  constructor(e: RequiredByChordPartModel) {
-    this.time = e.time;
-    this.chord = e.chord;
-    this.scale = e.scale;
-    this.roman = e.roman
-    this.tonic = this.chord.tonic || "";
-    this.name = this.chord.name;
-  }
 }
+
+const getChordNameModel = (e: IRequiredByChordPartModel) => ({
+  time: e.time,
+  chord: e.chord,
+  scale: e.scale,
+  roman: e.roman,
+  tonic: e.chord.tonic || "",
+  name: e.chord.name,
+} as IChordNameModel)
 
 const getColor = (tonic: string) => (s: number, v: number) => { return fifthToColor(tonic, s, v) || "rgb(0, 0, 0)" }
-class ChordNameView {
-  constructor(
-    readonly svg: SVGTextElement,
-  ) { }
-  updateX(x: number) { this.svg.setAttribute("x", String(x)); }
-  updateY(y: number) { this.svg.setAttribute("y", String(y)); }
-}
+const updateChordNameViewX = (svg: SVGTextElement) => (x: number) => { svg.setAttribute("x", String(x)); }
+const updateChordNameViewY = (svg: SVGTextElement) => (y: number) => { svg.setAttribute("y", String(y)); }
 
 class ChordName {
-  get svg() { return this.view.svg }
   y: number;
   constructor(
-    readonly model: ChordNameModel,
-    readonly view: ChordNameView,
+    readonly model: IChordNameModel,
+    readonly svg: SVGTextElement,
   ) {
     this.y = PianoRollHeight.get() + chord_text_size
     this.updateX();
     this.updateY();
   }
-  onWindowResized() {
-    this.updateX();
-  }
+  onWindowResized() { this.updateX(); }
   private scaled = (e: number) => e * NoteSize.get();
-  updateX() { this.view.updateX(this.scaled(this.model.time.begin)) }
-  updateY() { this.view.updateY(this.y) }
+  updateX() { updateChordNameViewX(this.svg)(this.scaled(this.model.time.begin)) }
+  updateY() { updateChordNameViewY(this.svg)(this.y) }
   onTimeRangeChanged = this.onWindowResized
 }
 
-export class ChordNameSeries
-  extends ChordPartSeries<ChordName> {
+class ChordNameSeries {
+  readonly svg: SVGGElement
+  readonly children_model: { readonly time: Time }[];
+  #show: ChordName[];
+  get show() { return this.#show; };
+
   constructor(
-    romans: RequiredByChordPartModel[],
+    romans: IRequiredByChordPartModel[],
     controllers: RequiredByChordNameSeries,
   ) {
     const children = romans.map(e => {
-      const model = new ChordNameModel(e);
+      const model = getChordNameModel(e);
 
       const svg = document.createElementNS("http://www.w3.org/2000/svg", "text")
       svg.textContent = shortenChord(model.chord.name);
@@ -80,9 +82,26 @@ export class ChordNameSeries
       svg.style.fontSize = `${chord_text_em}em`;
       svg.style.fill = getColor(model.tonic)(1, 0.75);
 
-      const view = new ChordNameView(svg);
-      return new ChordName(model, view)
+      return new ChordName(model, svg)
     })
-    super("chord-names", controllers, children);
+    const id = "chord-names";
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    svg.id = id;
+    children.forEach(e => svg.appendChild(e.svg));
+
+    controllers.audio.addListeners(() => children.forEach(e => e.onTimeRangeChanged()));
+    controllers.window.addListeners(() => children.forEach(e => e.onWindowResized()));
+    controllers.time_range.addListeners(() => svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`));
+
+    this.svg = svg;
+    this.children_model = children.map(e => e.model);
+    this.#show = children;
   }
+}
+
+export function buildChordNameSeries(
+  romans: IRequiredByChordPartModel[],
+  controllers: RequiredByChordNameSeries,
+) {
+  return new ChordNameSeries(romans, controllers)
 }
