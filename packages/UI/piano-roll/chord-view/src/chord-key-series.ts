@@ -25,6 +25,7 @@ interface IChordKeyModel {
   readonly roman: string
   readonly tonic: string;
 }
+
 const getChordKeyModel = (e: IRequiredByChordPartModel) => ({
   time: e.time,
   chord: e.chord,
@@ -36,36 +37,8 @@ const getChordKeyModel = (e: IRequiredByChordPartModel) => ({
 const getColor = (tonic: string) => (s: number, v: number) => { return fifthToColor(tonic, s, v) || "rgb(0, 0, 0)" }
 const updateChordKeyViewX = (svg: SVGTextElement) => (x: number) => { svg.setAttribute("x", String(x)); }
 const updateChordKeyViewY = (svg: SVGTextElement) => (y: number) => { svg.setAttribute("y", String(y)); }
-
-class ChordKey {
-  y: number;
-  constructor(
-    readonly model: IChordKeyModel,
-    readonly svg: SVGTextElement,
-  ) {
-    this.y = PianoRollHeight.get() + chord_text_size + (chord_text_size + chord_name_margin);
-    this.updateX();
-    this.updateY();
-  }
-  onWindowResized() { this.updateX(); }
-  private scaled = (e: number) => e * NoteSize.get();
-  updateX() { updateChordKeyViewX(this.svg)(this.scaled(this.model.time.begin)) }
-  updateY() { updateChordKeyViewY(this.svg)(this.y) }
-  onTimeRangeChanged = this.onWindowResized
-}
-
-class ChordKeySeries {
-  #show: ChordKey[];
-  get show() { return this.#show; };
-
-  readonly remaining: ChordKey | undefined;
-  constructor(
-    readonly svg: SVGGElement,
-    readonly children: ChordKey[],
-  ) {
-    this.#show = children;
-  }
-}
+const scaled = (e: number) => e * NoteSize.get();
+const onWindowResized = (begin: number, svg: SVGTextElement) => () => { updateChordKeyViewX(svg)(scaled(begin)) }
 
 export function buildChordKeySeries(
   romans: IRequiredByChordPartModel[],
@@ -86,16 +59,19 @@ export function buildChordKeySeries(
     svg.textContent = oneLetterKey(model.scale) + ': ';
     svg.style.fill = getColor(model.tonic)(1, 0.75);
 
-    return new ChordKey(model, svg)
+    updateChordKeyViewX(svg)(scaled(model.time.begin))
+    updateChordKeyViewY(svg)(PianoRollHeight.get() + chord_text_size + (chord_text_size + chord_name_margin))
+    const key = { model, svg }
+    return key
   })
   const id = "key-names";
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
   svg.id = id;
   children.forEach(e => svg.appendChild(e.svg));
 
-  controllers.audio.addListeners(() => children.forEach(e => e.onTimeRangeChanged()));
-  controllers.window.addListeners(() => children.forEach(e => e.onWindowResized()));
+  controllers.audio.addListeners(() => children.forEach(e => onWindowResized(e.model.time.begin, e.svg)()));
+  controllers.window.addListeners(() => children.forEach(e => onWindowResized(e.model.time.begin, e.svg)));
   controllers.time_range.addListeners(() => svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`))
 
-  return new ChordKeySeries(svg, children);
+  return svg;
 }

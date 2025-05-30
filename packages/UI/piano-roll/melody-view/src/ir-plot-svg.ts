@@ -255,7 +255,7 @@ class IRPlotLayer {
 class IRPlotHierarchy {
   #visible_layer: number;
   protected _show: IRPlotLayer[] = [];
-  get show() { return this.view.circles.show }
+ private get show() { return this.view.circles.show }
   constructor(
     readonly svg: SVGGElement,
     readonly children: IRPlotLayer[],

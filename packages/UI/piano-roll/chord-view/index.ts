@@ -54,10 +54,10 @@ export class ChordElements {
     const chord_notes = buildChordNotesSeries(data, controllers);
     const chord_romans = buildChordRomanSeries(data, controllers);
 
-    this.chord_keys = chord_keys.svg;
-    this.chord_names = chord_names.svg;
-    this.chord_notes = chord_notes.svg;
-    this.chord_romans = chord_romans.svg;
+    this.chord_keys = chord_keys;
+    this.chord_names = chord_names;
+    this.chord_notes = chord_notes;
+    this.chord_romans = chord_romans;
 
     this.children = [
       this.chord_keys,

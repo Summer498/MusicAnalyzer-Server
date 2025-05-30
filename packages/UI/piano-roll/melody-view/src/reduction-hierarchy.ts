@@ -190,7 +190,7 @@ class ReductionLayer {
 
 export class ReductionHierarchy {
   protected _show: ReductionLayer[] = [];
-  get show() { return this._show; }
+  private get show() { return this._show; }
   constructor(
     readonly svg: SVGGElement,
     readonly children: ReductionLayer[],
