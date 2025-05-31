@@ -21,7 +21,7 @@ export class DMelodyController {
   addListeners(...listeners: ((e:boolean) => void)[]) { this.checkbox.addListeners(...listeners); }
 }
 
-export class DMelodySwitcher 
+class DMelodySwitcher 
   extends Checkbox<boolean> {
   constructor(id: string, label: string) {
     super(id, label);
@@ -51,7 +51,7 @@ export class GravityController {
   };
 }
 
-export class GravitySwitcher 
+class GravitySwitcher 
   extends Checkbox<boolean> {
   constructor(id: string, label: string) {
     super(id, label);

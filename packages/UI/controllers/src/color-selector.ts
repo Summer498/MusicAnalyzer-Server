@@ -9,7 +9,7 @@ import { Triad } from "@music-analyzer/irm";
 import { Controller } from "./controller";
 
 
-export type GetColor = (e: Triad) => string;
+type GetColor = (e: Triad) => string;
 export type SetColor = (getColor: GetColor) => void;
 
 abstract class ColorSelector<T> extends Controller<T> {
@@ -21,7 +21,7 @@ abstract class ColorSelector<T> extends Controller<T> {
   };
 }
 
-export class IRM_ColorSelector
+class IRM_ColorSelector
   extends ColorSelector<GetColor> {
   getColor: GetColor;
   constructor(
@@ -37,7 +37,7 @@ export class IRM_ColorSelector
   }
 }
 
-export class MelodyColorSelector {
+class MelodyColorSelector {
   readonly body: HTMLSpanElement;
   readonly children: IRM_ColorSelector[];
   readonly default: IRM_ColorSelector;

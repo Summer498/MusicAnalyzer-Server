@@ -19,7 +19,7 @@ export abstract class Slider<T> extends Controller<T> {
   abstract updateDisplay(): void;
 }
 
-export class HierarchyLevel
+class HierarchyLevel
   extends Slider<number> {
   constructor() {
     super("hierarchy_level_slider", "Melody Hierarchy Level", 0, 1, 1);
@@ -73,7 +73,7 @@ export class TimeRangeController {
   }
   addListeners(...listeners: (() => void)[]) { this.slider.addListeners(...listeners); }
 }
-export class TimeRangeSlider
+class TimeRangeSlider
   extends Slider<number> {
   constructor() {
     super("time_range_slider", "Time Range", 1, 10, 0.1, 10);

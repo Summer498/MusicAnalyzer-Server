@@ -2,8 +2,8 @@ import { black_key_height, PianoRollConverter } from "@music-analyzer/view-param
 import { NoteSize } from "@music-analyzer/view-parameters";
 import { SerializedTimeAndAnalyzedMelody } from "./serialized-time-and-analyzed-melody";
 import { Time } from "@music-analyzer/time-and";
-import { PianoRollTranslateX } from "@music-analyzer/view";
-import { SetColor } from "@music-analyzer/controllers";
+import { AudioReflectableRegistry, PianoRollTranslateX, WindowReflectableRegistry } from "@music-analyzer/view";
+import { HierarchyLevelController, MelodyColorController, SetColor, TimeRangeController } from "@music-analyzer/controllers";
 import { Triad } from "@music-analyzer/irm";
 import { intervalOf } from "@music-analyzer/tonal-objects";
 
@@ -119,7 +119,7 @@ class IRGravityLayer {
   onAudioUpdate() { this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
 }
 
-export class IRGravityHierarchy {
+class IRGravityHierarchy {
   protected _show: IRGravityLayer[] = [];
   get show() { return this._show; }
   constructor(
@@ -209,7 +209,7 @@ const getReImplication = (observed: number, realization: number) => {
   else if (0 <= -R && -R < O - m3) // R
   { }
   else if (O - m3 <= R && R < O + m3) // P
-  { return  }
+  { return }
   else if (O - m3 <= -R && -R < O + m3) // IP
   { }
   else if (O + m3 <= R) // VP
@@ -220,6 +220,13 @@ const getReImplication = (observed: number, realization: number) => {
 
 export function buildIRGravity(
   h_melodies: SerializedTimeAndAnalyzedMelody[][],
+  controllers: {
+    readonly audio: AudioReflectableRegistry,
+    readonly window: WindowReflectableRegistry,
+    readonly time_range: TimeRangeController,
+    readonly melody_color: MelodyColorController,
+    readonly hierarchy: HierarchyLevelController,
+  }
 ) {
   const getLayers = (
     melodies: SerializedTimeAndAnalyzedMelody[],
@@ -238,7 +245,7 @@ export function buildIRGravity(
         { time: pre.time, note: pre.note },
         { time: next.time, note: pre.note + (implication.inf + implication.sup) / 2 }
       );
-      if(re_next){
+      if (re_next) {
         const IImplicationDist = re_next?.note + (implication.inf + implication.sup) / 2;
         const VImplicationDist = next.note + (implication.inf + implication.sup) / 2;
         const line_pos_reImplication = re_next && getLinePos(
@@ -263,5 +270,14 @@ export function buildIRGravity(
   }
   const layers = h_melodies.map(getLayers);
   const svg = getSVGG("ir_gravity", layers.map(e => e.svg));
-  return new IRGravityHierarchy(svg, layers);
+  const ir_gravity = new IRGravityHierarchy(svg, layers);
+
+  controllers.window.addListeners(...ir_gravity.children.flatMap(e => e.children).map(e => e.onWindowResized.bind(e)));
+  controllers.hierarchy.addListeners(ir_gravity.onChangedLayer.bind(ir_gravity));
+  controllers.time_range.addListeners(...ir_gravity.children.flatMap(e => e.children).map(e => e.onTimeRangeChanged.bind(e)));
+  controllers.melody_color.addListeners(...ir_gravity.children.flatMap(e => e.children).map(e => e.setColor.bind(e)));
+  controllers.audio.addListeners(...ir_gravity.children.map(e => e.onAudioUpdate));
+  ir_gravity.children.map(e => e.onAudioUpdate())
+
+  return ir_gravity.svg;
 }

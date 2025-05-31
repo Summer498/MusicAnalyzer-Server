@@ -1,7 +1,7 @@
 import { Checkbox } from "./switcher";
 import { Slider } from "./slider";
 
-export class MelodyBeepVolume
+class MelodyBeepVolume
   extends Slider<number> {
   constructor() {
     super("melody_beep_volume", "", 0, 100, 1);
@@ -15,7 +15,7 @@ export class MelodyBeepVolume
   }
 }
 
-export class MelodyBeepSwitcher
+class MelodyBeepSwitcher
   extends Checkbox<boolean> {
   constructor(id: string, label: string) {
     super(id, label);

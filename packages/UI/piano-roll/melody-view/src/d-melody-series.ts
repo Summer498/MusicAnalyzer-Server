@@ -1,4 +1,4 @@
-import { PianoRollTranslateX } from "@music-analyzer/view";
+import { AudioReflectableRegistry, PianoRollTranslateX, WindowReflectableRegistry } from "@music-analyzer/view";
 import { insertMelody } from "./melody-editor/insert";
 import { hsv2rgb } from "@music-analyzer/color";
 import { rgbToString } from "@music-analyzer/color";
@@ -6,6 +6,7 @@ import { SerializedMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { black_key_height, PianoRollConverter } from "@music-analyzer/view-parameters";
 import { Time } from "@music-analyzer/time-and";
+import { DMelodyController, TimeRangeController } from "@music-analyzer/controllers";
 
 class DMelodyView {
   constructor(
@@ -58,7 +59,7 @@ class DMelody {
   onTimeRangeChanged = this.onWindowResized
 }
 
-export class DMelodySeries {
+class DMelodySeries {
   readonly children_model: { readonly time: Time }[];
   #show: DMelody[];
   get show() { return this.#show; };
@@ -94,6 +95,12 @@ function getSVGG(id: string, parts: { svg: SVGElement }[]) {
 
 export function buildDMelody(
   d_melody: SerializedTimeAndAnalyzedMelody[],
+    controllers: {
+      readonly audio: AudioReflectableRegistry,
+      readonly d_melody: DMelodyController,
+      readonly window: WindowReflectableRegistry,
+      readonly time_range: TimeRangeController,
+    }
 ) {
   const parts = d_melody.map(e => {
     const svg = getMelodyViewSVG();
@@ -102,5 +109,14 @@ export function buildDMelody(
     return new DMelody(model, view)
   })
   const svg = getSVGG("detected-melody", parts);
-  return new DMelodySeries(svg, parts);
+
+  const d_melody_collection = new DMelodySeries(svg, parts);
+
+  controllers.window.addListeners(...d_melody_collection.children.map(e => e.onWindowResized.bind(e)));
+  controllers.time_range.addListeners(...d_melody_collection.children.map(e => e.onTimeRangeChanged.bind(e)));
+  controllers.d_melody.addListeners(d_melody_collection.onDMelodyVisibilityChanged.bind(d_melody_collection));
+  controllers.audio.addListeners(...d_melody_collection.children.map(e => e.onAudioUpdate));
+  d_melody_collection.children.map(e => e.onAudioUpdate())
+
+  return d_melody_collection.svg;
 }

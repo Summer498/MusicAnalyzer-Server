@@ -1,9 +1,9 @@
 import { Triad } from "@music-analyzer/irm";
 import { black_key_height, bracket_height, PianoRollConverter } from "@music-analyzer/view-parameters";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { SetColor } from "@music-analyzer/controllers";
+import { HierarchyLevelController, MelodyColorController, SetColor, TimeRangeController } from "@music-analyzer/controllers";
 import { Time } from "@music-analyzer/time-and";
-import { PianoRollTranslateX } from "@music-analyzer/view";
+import { AudioReflectableRegistry, PianoRollTranslateX, WindowReflectableRegistry } from "@music-analyzer/view";
 
 class ReductionModel {
   readonly time: Time;
@@ -188,7 +188,7 @@ class ReductionLayer {
   onAudioUpdate() { this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
 }
 
-export class ReductionHierarchy {
+class ReductionHierarchy {
   protected _show: ReductionLayer[] = [];
   private get show() { return this._show; }
   constructor(
@@ -259,6 +259,13 @@ function getSVGG(id: string, children: { svg: SVGGElement }[]) {
 
 export function buildReduction(
   h_melodies: SerializedTimeAndAnalyzedMelody[][],
+  controllers: {
+    readonly audio: AudioReflectableRegistry,
+    readonly window: WindowReflectableRegistry,
+    readonly time_range: TimeRangeController,
+    readonly melody_color: MelodyColorController,
+    readonly hierarchy: HierarchyLevelController,
+  }
 ) {
   const layer = h_melodies.map((e, l) => {
     const parts = e.map(e => {
@@ -279,5 +286,14 @@ export function buildReduction(
     return new ReductionLayer(svg, parts, l)
   })
   const svg = getSVGG("time-span-reduction", layer);
-  return new ReductionHierarchy(svg, layer);
+  const time_span_tree = new ReductionHierarchy(svg, layer);
+
+  controllers.window.addListeners(...time_span_tree.children.flatMap(e => e.children).map(e => e.onWindowResized.bind(e)));
+  controllers.hierarchy.addListeners(time_span_tree.onChangedLayer.bind(time_span_tree));
+  controllers.time_range.addListeners(...time_span_tree.children.flatMap(e => e.children).map(e => e.onTimeRangeChanged.bind(e)));
+  controllers.melody_color.addListeners(...time_span_tree.children.flatMap(e => e.children).map(e => e.setColor.bind(e)));
+  controllers.audio.addListeners(...time_span_tree.children.map(e => e.onAudioUpdate));
+  time_span_tree.children.map(e => e.onAudioUpdate());
+
+  return time_span_tree.svg
 }

@@ -5,11 +5,11 @@ import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze"
 import { play } from "@music-analyzer/synth";
 import { black_key_height, NowAt, PianoRollConverter } from "@music-analyzer/view-parameters";
 import { reservation_range } from "@music-analyzer/view-parameters";
-import { SetColor } from "@music-analyzer/controllers";
+import { HierarchyLevelController, MelodyBeepController, MelodyColorController, SetColor, TimeRangeController } from "@music-analyzer/controllers";
 import { Time } from "@music-analyzer/time-and";
-import { PianoRollTranslateX } from "@music-analyzer/view";
+import { AudioReflectableRegistry, PianoRollTranslateX, WindowReflectableRegistry } from "@music-analyzer/view";
 
-export class MelodyBeep {
+class MelodyBeep {
   #beep_volume: number;
   #do_melody_beep: boolean;
   #sound_reserved: boolean;
@@ -44,7 +44,7 @@ export class MelodyBeep {
   onMelodyVolumeBarChanged(beep_volume: number) { this.#beep_volume = beep_volume; }
 }
 
-export class MelodyModel {
+class MelodyModel {
   readonly time: Time;
   readonly head: Time;
   readonly note: number;
@@ -59,7 +59,7 @@ export class MelodyModel {
   }
 }
 
-export class MelodyView {
+class MelodyView {
   constructor(
     readonly svg: SVGRectElement
   ) { }
@@ -70,7 +70,7 @@ export class MelodyView {
   readonly setColor = (color: string) => this.svg.style.fill = "#0d0";
 }
 
-export class Melody {
+class Melody {
   #beeper: MelodyBeep
   get svg() { return this.view.svg; }
   constructor(
@@ -114,12 +114,12 @@ class MelodyLayer {
   onAudioUpdate() { this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
 }
 
-export class MelodyHierarchy {
+class MelodyHierarchy {
   protected _show: MelodyLayer[] = [];
   get show() { return this._show; }
   constructor(
-  readonly svg: SVGGElement,
-  readonly children: MelodyLayer[],
+    readonly svg: SVGGElement,
+    readonly children: MelodyLayer[],
   ) { }
   onAudioUpdate() { this.show.forEach(e => e.beep()) }
   beep() { this.children.forEach(e => e.beep()); }
@@ -151,6 +151,14 @@ function getSVGG(id: string, children: { svg: SVGGElement }[]) {
 
 export function buildMelody(
   h_melodies: SerializedTimeAndAnalyzedMelody[][],
+  controllers: {
+    readonly audio: AudioReflectableRegistry,
+    readonly window: WindowReflectableRegistry,
+    readonly time_range: TimeRangeController,
+    readonly melody_beep: MelodyBeepController,
+    readonly melody_color: MelodyColorController,
+    readonly hierarchy: HierarchyLevelController,
+  }
 ) {
   const layers = h_melodies.map((e, l) => {
     const parts = e.map(e => {
@@ -164,5 +172,18 @@ export function buildMelody(
   });
 
   const svg = getSVGG("melody", layers);
-  return new MelodyHierarchy(svg, layers);
+  const melody_hierarchy = new MelodyHierarchy(svg, layers);
+
+  controllers.window.addListeners(...melody_hierarchy.children.flatMap(e => e.children).map(e => e.onWindowResized.bind(e)));
+  controllers.hierarchy.addListeners(melody_hierarchy.onChangedLayer.bind(melody_hierarchy));
+  controllers.time_range.addListeners(...melody_hierarchy.children.flatMap(e => e.children).map(e => e.onTimeRangeChanged.bind(e)));
+  controllers.melody_color.addListeners(...melody_hierarchy.children.flatMap(e => e.children).map(e => e.setColor.bind(e)));
+  controllers.melody_beep.checkbox.addListeners(...melody_hierarchy.children.flatMap(e => e.children).map(e => e.onMelodyBeepCheckChanged.bind(e)));
+  controllers.melody_beep.volume.addListeners(...melody_hierarchy.children.flatMap(e => e.children).map(e => e.onMelodyVolumeBarChanged.bind(e)))
+  controllers.audio.addListeners(...melody_hierarchy.children.map(e => e.onAudioUpdate));
+  controllers.audio.addListeners(...melody_hierarchy.show.map(e => e.beep));
+  melody_hierarchy.children.map(e => e.onAudioUpdate())
+  melody_hierarchy.show.map(e => e.beep())
+
+  return melody_hierarchy.svg;
 }

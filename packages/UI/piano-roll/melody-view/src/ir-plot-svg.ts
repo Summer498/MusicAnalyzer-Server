@@ -1,9 +1,9 @@
 import { Triad } from "@music-analyzer/irm";
 import { NowAt } from "@music-analyzer/view-parameters";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { SetColor } from "@music-analyzer/controllers";
+import { HierarchyLevelController, MelodyColorController, SetColor } from "@music-analyzer/controllers";
 import { Time } from "@music-analyzer/time-and";
-import { PianoRollTranslateX } from "@music-analyzer/view";
+import { AudioReflectableRegistry, PianoRollTranslateX, WindowReflectableRegistry } from "@music-analyzer/view";
 
 class IRPlotAxis {
   constructor(
@@ -281,7 +281,7 @@ class IRPlotHierarchy {
   }
 }
 
-export class IRPlotSVG {
+class IRPlotSVG {
   constructor(
     readonly svg: SVGSVGElement,
     readonly children: IRPlotHierarchy[],
@@ -355,6 +355,12 @@ function getSVGG(id: string, children: { svg: SVGElement }[]) {
 
 export function buildIRPlot(
   h_melodies: SerializedTimeAndAnalyzedMelody[][],
+  controllers: {
+    readonly audio: AudioReflectableRegistry,
+    readonly window: WindowReflectableRegistry,
+    readonly melody_color: MelodyColorController,
+    readonly hierarchy: HierarchyLevelController,
+  }
 ) {
   const layers = h_melodies.map((e, l) => {
     const model = new IRPlotModel(e);
@@ -398,5 +404,13 @@ export function buildIRPlot(
   hierarchy.forEach(e => svg.setAttribute("width", String(e.model.width)));
   hierarchy.forEach(e => svg.setAttribute("height", String(e.model.height)));
 
-  return new IRPlotSVG(svg, hierarchy);
+  const ir_plot_svg = new IRPlotSVG(svg, hierarchy);
+
+  controllers.window.addListeners(...ir_plot_svg.children.flatMap(e => e).flatMap(e => e.children).flatMap(e => e.children).map(e => e.onWindowResized.bind(e)));
+  controllers.hierarchy.addListeners(...ir_plot_svg.children.flatMap(e => e.onChangedLayer.bind(e)));
+  controllers.melody_color.addListeners(...ir_plot_svg.children.flatMap(e => e.children).flatMap(e => e.children).map(e => e.setColor.bind(e)));
+  controllers.audio.addListeners(...ir_plot_svg.children.flatMap(e => e.children).map(e => e.onAudioUpdate));
+  ir_plot_svg.children.flatMap(e => e.children).map(e => e.onAudioUpdate())
+
+  return ir_plot_svg.svg;
 }

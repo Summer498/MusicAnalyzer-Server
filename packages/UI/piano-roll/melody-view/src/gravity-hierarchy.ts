@@ -3,9 +3,10 @@ import { NoteSize } from "@music-analyzer/view-parameters";
 import { Gravity as SerializedGravity } from "@music-analyzer/melody-analyze";
 import { SerializedTimeAndAnalyzedMelody } from "./serialized-time-and-analyzed-melody";
 import { Time } from "@music-analyzer/time-and";
-import { PianoRollTranslateX } from "@music-analyzer/view";
+import { AudioReflectableRegistry, PianoRollTranslateX, WindowReflectableRegistry } from "@music-analyzer/view";
+import { GravityController, HierarchyLevelController, TimeRangeController } from "@music-analyzer/controllers";
 
-export class GravityModel {
+ class GravityModel {
   readonly time: Time;
   readonly head: Time;
   readonly note: number;
@@ -25,7 +26,7 @@ export class GravityModel {
   }
 }
 
-export class LinePos {
+class LinePos {
   constructor(
     readonly x1: number,
     readonly x2: number,
@@ -47,7 +48,7 @@ export class LinePos {
   }
 };
 
-export class GravityViewLine {
+ class GravityViewLine {
   constructor(
     readonly svg: SVGLineElement
   ) { }
@@ -62,7 +63,7 @@ export class GravityViewLine {
 const triangle_width = 4;
 const triangle_height = 5;
 const getInitPos = () => [0, 0, - triangle_width, + triangle_height, + triangle_width, + triangle_height,]
-export class GravityViewTriangle {
+ class GravityViewTriangle {
   constructor(
     readonly svg: SVGPolygonElement
   ) { }
@@ -72,7 +73,7 @@ export class GravityViewTriangle {
   }
 }
 
-export class GravityView {
+ class GravityView {
   constructor(
     readonly svg: SVGGElement,
     readonly triangle: GravityViewTriangle,
@@ -86,7 +87,7 @@ export class GravityView {
   }
 }
 
-export class Gravity {
+class Gravity {
   get svg() { return this.view.svg; }
   constructor(
     readonly model: GravityModel,
@@ -103,7 +104,7 @@ export class Gravity {
   onTimeRangeChanged = this.onWindowResized
 }
 
-export class GravityLayer {
+ class GravityLayer {
   readonly children_model: { readonly time: Time }[];
   #show: Gravity[];
   get show() { return this.#show; };
@@ -119,7 +120,7 @@ export class GravityLayer {
   onAudioUpdate() { this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
 }
 
-export class GravityHierarchy {
+ class GravityHierarchy {
   protected _show: GravityLayer[] = [];
   get show() { return this._show; }
   constructor(
@@ -198,6 +199,13 @@ function getSVGG(id: string, children: { svg: SVGElement }[]) {
 export function buildGravity(
   mode: "chord_gravity" | "scale_gravity",
   h_melodies: SerializedTimeAndAnalyzedMelody[][],
+  controllers: {
+    readonly gravity: GravityController,
+    readonly audio: AudioReflectableRegistry,
+    readonly window: WindowReflectableRegistry,
+    readonly time_range: TimeRangeController,
+    readonly hierarchy: HierarchyLevelController,
+  }
 ) {
   const getLayers = (
     melodies: SerializedTimeAndAnalyzedMelody[],
@@ -226,5 +234,21 @@ export function buildGravity(
   }
   const layers = h_melodies.map(getLayers);
   const svg = getSVGG(mode, layers);
-  return new GravityHierarchy(svg, layers);
+  const gravity_hierarchy = new GravityHierarchy(svg, layers);
+
+  switch (mode) {
+    case "chord_gravity":
+      controllers.gravity.chord_checkbox.addListeners(gravity_hierarchy.onUpdateGravityVisibility.bind(gravity_hierarchy));
+    case "scale_gravity":
+      controllers.gravity.scale_checkbox.addListeners(gravity_hierarchy.onUpdateGravityVisibility.bind(gravity_hierarchy));
+    default: ;
+  }
+  controllers.window.addListeners(...gravity_hierarchy.children.flatMap(e => e.children).map(e => e.onWindowResized.bind(e)));
+  controllers.hierarchy.addListeners(gravity_hierarchy.onChangedLayer.bind(gravity_hierarchy));
+  controllers.time_range.addListeners(...gravity_hierarchy.children.flatMap(e => e.children).map(e => e.onTimeRangeChanged.bind(e)));
+  controllers.audio.addListeners(...gravity_hierarchy.children.map(e => e.onAudioUpdate));
+  gravity_hierarchy.children.map(e => e.onAudioUpdate())
+
+
+  return gravity_hierarchy.svg;
 }

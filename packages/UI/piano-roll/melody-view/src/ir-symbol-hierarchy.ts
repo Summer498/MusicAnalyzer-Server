@@ -1,9 +1,9 @@
 import { PianoRollConverter, size } from "@music-analyzer/view-parameters";
 import { Triad } from "@music-analyzer/irm";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { SetColor } from "@music-analyzer/controllers";
+import { HierarchyLevelController, MelodyColorController, SetColor, TimeRangeController } from "@music-analyzer/controllers";
 import { Time } from "@music-analyzer/time-and";
-import { PianoRollTranslateX } from "@music-analyzer/view";
+import { AudioReflectableRegistry, PianoRollTranslateX, WindowReflectableRegistry } from "@music-analyzer/view";
 
 class IRSymbolModel {
   readonly time: Time;
@@ -30,7 +30,7 @@ class IRSymbolView {
   readonly setColor = (color: string) => this.svg.style.fill = color;
 }
 
-export class IRSymbol {
+class IRSymbol {
   get svg() { return this.view.svg; }
   #y: number;
   constructor(
@@ -71,7 +71,7 @@ class IRSymbolLayer {
   onAudioUpdate() { this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
 }
 
-export class IRSymbolHierarchy {
+class IRSymbolHierarchy {
   protected _show: IRSymbolLayer[] = [];
   get show() { return this._show; }
   constructor(
@@ -100,7 +100,7 @@ function getIRSymbolSVG(text: string) {
   return svg;
 }
 
-function getSVGG(id:string, children: {svg:SVGElement}[]){
+function getSVGG(id: string, children: { svg: SVGElement }[]) {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
   svg.id = id;
   children.forEach(e => svg.appendChild(e.svg));
@@ -109,6 +109,13 @@ function getSVGG(id:string, children: {svg:SVGElement}[]){
 
 export function buildIRSymbol(
   h_melodies: SerializedTimeAndAnalyzedMelody[][],
+  controllers: {
+    readonly audio: AudioReflectableRegistry,
+    readonly window: WindowReflectableRegistry,
+    readonly time_range: TimeRangeController,
+    readonly melody_color: MelodyColorController,
+    readonly hierarchy: HierarchyLevelController,
+  }
 ) {
   const layers = h_melodies.map((e, l) => {
     const parts = e.map(e => {
@@ -121,5 +128,14 @@ export function buildIRSymbol(
     return new IRSymbolLayer(svg, parts, l)
   });
   const svg = getSVGG("implication-realization archetype", layers)
-  return new IRSymbolHierarchy(svg, layers);
+
+  const ir_hierarchy = new IRSymbolHierarchy(svg, layers);
+    controllers.window.addListeners(...ir_hierarchy.children.flatMap(e => e.children).map(e => e.onWindowResized.bind(e)));
+    controllers.hierarchy.addListeners(ir_hierarchy.onChangedLayer.bind(ir_hierarchy));
+    controllers.time_range.addListeners(...ir_hierarchy.children.flatMap(e => e.children).map(e => e.onTimeRangeChanged.bind(e)));
+    controllers.melody_color.addListeners(...ir_hierarchy.children.flatMap(e => e.children).map(e => e.setColor.bind(e)));
+    controllers.audio.addListeners(...ir_hierarchy.children.map(e => e.onAudioUpdate));
+    ir_hierarchy.children.map(e => e.onAudioUpdate())
+
+  return ir_hierarchy.svg;
 }
