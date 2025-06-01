@@ -115,7 +115,7 @@ export function buildDMelody(
   controllers.window.addListeners(...d_melody_collection.children.map(e => e.onWindowResized.bind(e)));
   controllers.time_range.addListeners(...d_melody_collection.children.map(e => e.onTimeRangeChanged.bind(e)));
   controllers.d_melody.addListeners(d_melody_collection.onDMelodyVisibilityChanged.bind(d_melody_collection));
-  controllers.audio.addListeners(...d_melody_collection.children.map(e => e.onAudioUpdate));
+  controllers.audio.addListeners(...d_melody_collection.children.map(e => e.onAudioUpdate.bind(e)));
   d_melody_collection.children.map(e => e.onAudioUpdate())
 
   return d_melody_collection.svg;

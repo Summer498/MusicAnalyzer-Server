@@ -9,7 +9,7 @@ import { Triad } from "@music-analyzer/irm";
 import { Controller } from "./controller";
 
 
-type GetColor = (e: Triad) => string;
+export type GetColor = (e: Triad) => string;
 export type SetColor = (getColor: GetColor) => void;
 
 abstract class ColorSelector<T> extends Controller<T> {

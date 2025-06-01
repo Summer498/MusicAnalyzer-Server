@@ -134,7 +134,7 @@ export function buildIRSymbol(
     controllers.hierarchy.addListeners(ir_hierarchy.onChangedLayer.bind(ir_hierarchy));
     controllers.time_range.addListeners(...ir_hierarchy.children.flatMap(e => e.children).map(e => e.onTimeRangeChanged.bind(e)));
     controllers.melody_color.addListeners(...ir_hierarchy.children.flatMap(e => e.children).map(e => e.setColor.bind(e)));
-    controllers.audio.addListeners(...ir_hierarchy.children.map(e => e.onAudioUpdate));
+    controllers.audio.addListeners(...ir_hierarchy.children.map(e => e.onAudioUpdate.bind(e)));
     ir_hierarchy.children.map(e => e.onAudioUpdate())
 
   return ir_hierarchy.svg;

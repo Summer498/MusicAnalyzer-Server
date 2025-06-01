@@ -180,8 +180,8 @@ export function buildMelody(
   controllers.melody_color.addListeners(...melody_hierarchy.children.flatMap(e => e.children).map(e => e.setColor.bind(e)));
   controllers.melody_beep.checkbox.addListeners(...melody_hierarchy.children.flatMap(e => e.children).map(e => e.onMelodyBeepCheckChanged.bind(e)));
   controllers.melody_beep.volume.addListeners(...melody_hierarchy.children.flatMap(e => e.children).map(e => e.onMelodyVolumeBarChanged.bind(e)))
-  controllers.audio.addListeners(...melody_hierarchy.children.map(e => e.onAudioUpdate));
-  controllers.audio.addListeners(...melody_hierarchy.show.map(e => e.beep));
+  controllers.audio.addListeners(...melody_hierarchy.children.map(e => e.onAudioUpdate.bind(e)));
+  controllers.audio.addListeners(...melody_hierarchy.show.map(e => e.beep.bind(e)));
   melody_hierarchy.children.map(e => e.onAudioUpdate())
   melody_hierarchy.show.map(e => e.beep())
 
