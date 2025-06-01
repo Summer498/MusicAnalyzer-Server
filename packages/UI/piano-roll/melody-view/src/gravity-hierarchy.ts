@@ -6,147 +6,107 @@ import { Time } from "@music-analyzer/time-and";
 import { AudioReflectableRegistry, PianoRollTranslateX, WindowReflectableRegistry } from "@music-analyzer/view";
 import { GravityController, HierarchyLevelController, TimeRangeController } from "@music-analyzer/controllers";
 
- class GravityModel {
+interface IGravityModel {
   readonly time: Time;
   readonly head: Time;
   readonly note: number;
   readonly destination?: number;
   readonly layer: number;
-  constructor(
-    layer: number,
-    e: SerializedTimeAndAnalyzedMelody,
-    readonly next: SerializedTimeAndAnalyzedMelody,
-    readonly gravity: SerializedGravity,
-  ) {
-    this.time = e.time;
-    this.head = e.head;
-    this.note = e.note;
-    this.destination = gravity.destination;
-    this.layer = layer || 0;
-  }
+  readonly next: SerializedTimeAndAnalyzedMelody;
+  readonly gravity: SerializedGravity;
 }
 
-class LinePos {
-  constructor(
-    readonly x1: number,
-    readonly x2: number,
-    readonly y1: number,
-    readonly y2: number,
-  ) { }
-  scaled(w: number, h: number) {
-    return new LinePos(
-      this.x1 * w,
-      this.x2 * w,
-      this.y1 * h,
-      this.y2 * h,
-    )
-  }
-  getAngle() {
-    const w = this.x2 - this.x1;
-    const h = this.y2 - this.y1;
-    return Math.atan2(h, w) * 180 / Math.PI;
-  }
-};
+const getGravityModel = (
+  layer: number,
+  e: SerializedTimeAndAnalyzedMelody,
+  next: SerializedTimeAndAnalyzedMelody,
+  gravity: SerializedGravity,
+) => ({
+  ...e,
+  next,
+  gravity,
+  destination: gravity.destination,
+  layer: layer || 0,
+} as IGravityModel)
 
- class GravityViewLine {
-  constructor(
-    readonly svg: SVGLineElement
-  ) { }
-  update(line_pos: LinePos) {
-    this.svg.setAttribute("x1", String(line_pos.x1));
-    this.svg.setAttribute("x2", String(line_pos.x2));
-    this.svg.setAttribute("y1", String(line_pos.y1));
-    this.svg.setAttribute("y2", String(line_pos.y2));
-  }
+interface ILinePos {
+  readonly x1: number
+  readonly x2: number
+  readonly y1: number
+  readonly y2: number
 }
 
-const triangle_width = 4;
-const triangle_height = 5;
-const getInitPos = () => [0, 0, - triangle_width, + triangle_height, + triangle_width, + triangle_height,]
- class GravityViewTriangle {
-  constructor(
-    readonly svg: SVGPolygonElement
-  ) { }
-  update(line_pos: LinePos) {
-    const angle = line_pos.getAngle() + 90;
-    this.svg.setAttribute("transform", `translate(${line_pos.x2},${line_pos.y2}) rotate(${angle})`);
-  }
+const getLinePos = (
+  x1: number,
+  x2: number,
+  y1: number,
+  y2: number,
+) => ({
+  x1: x1,
+  x2: x2,
+  y1: y1,
+  y2: y2,
+} as ILinePos)
+
+const scaled = (e: ILinePos) => (w: number, h: number) => getLinePos(
+  e.x1 * w,
+  e.x2 * w,
+  e.y1 * h,
+  e.y2 * h,
+);
+
+const updateWidth_GravityView = (svg: SVGGElement) => (w: number) => { svg.setAttribute("width", String(w)); }
+const updateHeight_GravityView = (svg: SVGGElement) => (h: number) => { svg.setAttribute("height", String(h)); }
+const onWindowResized_GravityView = (triangle: SVGPolygonElement, line: SVGLineElement) => (line_pos: ILinePos) => {
+  const angle = Math.atan2(line_pos.y2 - line_pos.y1, line_pos.x2 - line_pos.x1) * 180 / Math.PI + 90;
+  triangle.setAttribute("transform", `translate(${line_pos.x2},${line_pos.y2}) rotate(${angle})`);
+  line.setAttribute("x1", String(line_pos.x1));
+  line.setAttribute("x2", String(line_pos.x2));
+  line.setAttribute("y1", String(line_pos.y1));
+  line.setAttribute("y2", String(line_pos.y2));
 }
 
- class GravityView {
-  constructor(
-    readonly svg: SVGGElement,
-    readonly triangle: GravityViewTriangle,
-    readonly line: GravityViewLine,
-  ) { }
-  updateWidth(w: number) { this.svg.setAttribute("width", String(w)); }
-  updateHeight(h: number) { this.svg.setAttribute("height", String(h)); }
-  onWindowResized(line_pos: LinePos) {
-    this.triangle.update(line_pos);
-    this.line.update(line_pos);
-  }
+interface IGravity {
+  readonly model: IGravityModel,
+  readonly svg: SVGGElement,
+  readonly triangle: SVGPolygonElement,
+  readonly line: SVGLineElement,
+  readonly line_seed: ILinePos,
 }
 
-class Gravity {
-  get svg() { return this.view.svg; }
-  constructor(
-    readonly model: GravityModel,
-    readonly view: GravityView,
-    readonly line_seed: LinePos,
-  ) { }
-  updateWidth() { this.view.updateWidth(PianoRollConverter.scaled(this.model.time.duration)) }
-  updateHeight() { this.view.updateHeight(black_key_height) }
-  onWindowResized() {
-    this.updateWidth();
-    this.updateHeight();
-    this.view.onWindowResized(this.line_seed.scaled(NoteSize.get(), 1))
-  }
-  onTimeRangeChanged = this.onWindowResized
+const onWindowResized_Gravity = (svg: SVGGElement) => (model: IGravityModel) => (triangle: SVGPolygonElement, line: SVGLineElement, line_seed: ILinePos) => {
+  updateWidth_GravityView(svg)(PianoRollConverter.scaled(model.time.duration))
+  updateHeight_GravityView(svg)(black_key_height)
+  onWindowResized_GravityView(triangle, line)(scaled(line_seed)(NoteSize.get(), 1))
 }
 
- class GravityLayer {
-  readonly children_model: { readonly time: Time }[];
-  #show: Gravity[];
-  get show() { return this.#show; };
-
-  constructor(
-    readonly layer: number,
-    readonly svg: SVGGElement,
-    readonly children: Gravity[],
-  ) {
-    this.children_model = this.children.map(e => e.model);
-    this.#show = children;
-  }
-  onAudioUpdate() { this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
+interface IGravityLayer {
+  readonly layer: number,
+  readonly svg: SVGGElement,
+  readonly show: IGravity[],
+  readonly children: IGravity[],
 }
 
- class GravityHierarchy {
-  protected _show: GravityLayer[] = [];
-  get show() { return this._show; }
-  constructor(
-    readonly svg: SVGGElement,
-    readonly children: GravityLayer[]
-  ) { }
-  onUpdateGravityVisibility(visible: boolean) { this.svg.style.visibility = visible ? "visible" : "hidden"; }
-  setShow(visible_layers: GravityLayer[]) {
-    this._show = visible_layers;
-    this._show.forEach(e => e.onAudioUpdate());
-    this.svg.replaceChildren(...this._show.map(e => e.svg));
-  }
-  onChangedLayer(value: number) {
-    const visible_layer = this.children.filter(e => value === e.layer);
-    this.setShow(visible_layer);
-  }
+const onAudioUpdate = (svg: SVGGElement) => { svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
+
+const onUpdateGravityVisibility_GravityHierarchy = (svg: SVGGElement) => (visible: boolean) => { svg.style.visibility = visible ? "visible" : "hidden"; }
+const onChangedLayer_GravityHierarchy = (svg: SVGGElement, show: IGravityLayer[], children: IGravityLayer[]) => (value: number) => {
+  show = children.filter(e => value === e.layer);
+  show.forEach(e => onAudioUpdate(e.svg));
+  svg.replaceChildren(...show.map(e => e.svg));
 }
 
 function getTriangle() {
+  const triangle_width = 4;
+  const triangle_height = 5;
+
   const triangle_svg = document.createElementNS("http://www.w3.org/2000/svg", "polygon")
   triangle_svg.classList.add("triangle");
   triangle_svg.id = "gravity-arrow";
   triangle_svg.style.stroke = "rgb(0, 0, 0)";
   triangle_svg.style.fill = "rgb(0, 0, 0)";
   triangle_svg.style.strokeWidth = String(5);
-  triangle_svg.setAttribute("points", getInitPos().join(","));
+  triangle_svg.setAttribute("points", [0, 0, - triangle_width, + triangle_height, + triangle_width, + triangle_height].join(","));
   return triangle_svg;
 }
 
@@ -160,17 +120,17 @@ function getLine() {
 }
 
 function getGravitySVG(
-  triangle: { svg: SVGElement },
-  line: { svg: SVGElement },
+  triangle: SVGPolygonElement,
+  line: SVGLineElement,
 ) {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
   svg.id = "gravity";
-  svg.appendChild(triangle.svg);
-  svg.appendChild(line.svg);
+  svg.appendChild(triangle);
+  svg.appendChild(line);
   return svg
 }
 
-function getLinePos(
+function getLinePos2(
   e: { time: { begin: number, duration: number }, note: number },
   n: { time: { begin: number } },
   g: { destination: number },
@@ -180,7 +140,7 @@ function getLinePos(
     ((e: number) => 0.5 + e),
   ].reduce((c, f) => f(c), arg)
 
-  const line_pos = new LinePos(
+  const line_pos = getLinePos(
     e.time.begin + e.time.duration / 2,
     n.time.begin,
     isNaN(e.note) ? -99 : convert(e.note),
@@ -209,45 +169,45 @@ export function buildGravity(
 ) {
   const getLayers = (
     melodies: SerializedTimeAndAnalyzedMelody[],
-    l: number
+    layer: number
   ) => {
     const next = melodies.slice(1);
-    const gravity = next.map((n, i) => {
+    const children = next.map((n, i) => {
       const e = melodies[i]
       const g = e.melody_analysis[mode];
       if (!g) { return }
 
-      const line_pos = getLinePos(e, n, g);
-      const model = new GravityModel(l, e, n, g);
-      const triangle = new GravityViewTriangle(getTriangle());
-      const line = new GravityViewLine(getLine());
+      const line_seed = getLinePos2(e, n, g);
+      const model = getGravityModel(layer, e, n, g);
+      const triangle = getTriangle();
+      const line = getLine();
       const svg = getGravitySVG(triangle, line);
-      const view = new GravityView(svg, triangle, line);
+      const view = { svg, triangle, line };
       return {
-        model, view, line_pos
+        model, view, line_seed, ...view
       }
     })
       .filter(e => e !== undefined)
-      .map(e => new Gravity(e.model, e.view, e.line_pos))
-    const svg = getSVGG(`layer-${l}`, gravity);
-    return new GravityLayer(l, svg, gravity);
+      .map(e => ({ ...e, ...e.view }))
+    const svg = getSVGG(`layer-${layer}`, children);
+    return { layer, svg, children, show: children };
   }
-  const layers = h_melodies.map(getLayers);
-  const svg = getSVGG(mode, layers);
-  const gravity_hierarchy = new GravityHierarchy(svg, layers);
+  const children = h_melodies.map(getLayers);
+  const svg = getSVGG(mode, children);
+  const gravity_hierarchy = { svg, children, show: children };
 
   switch (mode) {
     case "chord_gravity":
-      controllers.gravity.chord_checkbox.addListeners(gravity_hierarchy.onUpdateGravityVisibility.bind(gravity_hierarchy));
+      controllers.gravity.chord_checkbox.addListeners(() => onUpdateGravityVisibility_GravityHierarchy(gravity_hierarchy.svg));
     case "scale_gravity":
-      controllers.gravity.scale_checkbox.addListeners(gravity_hierarchy.onUpdateGravityVisibility.bind(gravity_hierarchy));
+      controllers.gravity.scale_checkbox.addListeners(() => onUpdateGravityVisibility_GravityHierarchy(gravity_hierarchy.svg));
     default: ;
   }
-  controllers.window.addListeners(...gravity_hierarchy.children.flatMap(e => e.children).map(e => e.onWindowResized.bind(e)));
-  controllers.hierarchy.addListeners(gravity_hierarchy.onChangedLayer.bind(gravity_hierarchy));
-  controllers.time_range.addListeners(...gravity_hierarchy.children.flatMap(e => e.children).map(e => e.onTimeRangeChanged.bind(e)));
-  controllers.audio.addListeners(...gravity_hierarchy.children.map(e => e.onAudioUpdate));
-  gravity_hierarchy.children.map(e => e.onAudioUpdate())
+  controllers.hierarchy.addListeners(onChangedLayer_GravityHierarchy(gravity_hierarchy.svg, gravity_hierarchy.show, gravity_hierarchy.children));
+  controllers.window.addListeners(...gravity_hierarchy.children.flatMap(e => e.children).map(e => () => onWindowResized_Gravity(e.svg)(e.model)(e.triangle, e.line, e.line_seed)));
+  controllers.time_range.addListeners(...gravity_hierarchy.children.flatMap(e => e.children).map(e => () => onWindowResized_Gravity(e.svg)(e.model)(e.triangle, e.line, e.line_seed)));
+  controllers.audio.addListeners(...gravity_hierarchy.children.map(e => () => onAudioUpdate(e.svg)));
+  gravity_hierarchy.children.map(e => onAudioUpdate(e.svg))
 
 
   return gravity_hierarchy.svg;

@@ -3,9 +3,9 @@ import { NoteSize } from "@music-analyzer/view-parameters";
 import { SerializedTimeAndAnalyzedMelody } from "./serialized-time-and-analyzed-melody";
 import { Time } from "@music-analyzer/time-and";
 import { AudioReflectableRegistry, PianoRollTranslateX, WindowReflectableRegistry } from "@music-analyzer/view";
-import { HierarchyLevelController, MelodyColorController, SetColor, TimeRangeController } from "@music-analyzer/controllers";
+import { HierarchyLevelController, MelodyColorController, TimeRangeController } from "@music-analyzer/controllers";
 import { Triad } from "@music-analyzer/irm";
-import { intervalOf } from "@music-analyzer/tonal-objects";
+import { GetColor } from "@music-analyzer/controllers/src/color-selector";
 
 interface IRGravityModel {
   readonly time: Time;
@@ -15,15 +15,6 @@ interface IRGravityModel {
   readonly archetype: Triad;
 }
 
-const getGravityModel = (
-  layer: number,
-  e: SerializedTimeAndAnalyzedMelody,
-) => ({
-  ...e,
-  archetype: e.melody_analysis.implication_realization as Triad,
-  layer: layer || 0,
-} as IRGravityModel)
-
 interface ILinePos {
   readonly x1: number,
   readonly x2: number,
@@ -31,121 +22,35 @@ interface ILinePos {
   readonly y2: number,
 }
 
-const getAngle = (e: ILinePos) => {
-  const w = e.x2 - e.x1;
-  const h = e.y2 - e.y1;
-  return Math.atan2(h, w) * 180 / Math.PI;
-}
-
-class LinePos {
-  constructor(
-    readonly x1: number,
-    readonly x2: number,
-    readonly y1: number,
-    readonly y2: number,
-  ) { }
-  scaled(w: number, h: number) {
-    return new LinePos(
-      this.x1 * w,
-      this.x2 * w,
-      this.y1 * h,
-      this.y2 * h,
-    )
-  }
-  getAngle() { return getAngle(this) }
-};
-
-const updateViewLine = (svg: SVGLineElement) => (line_pos: LinePos) => {
-  svg.setAttribute("x1", String(line_pos.x1));
-  svg.setAttribute("x2", String(line_pos.x2));
-  svg.setAttribute("y1", String(line_pos.y1));
-  svg.setAttribute("y2", String(line_pos.y2));
-}
-
-const triangle_width = 4;
-const triangle_height = 5;
-const getInitPos = () => [0, 0, - triangle_width, + triangle_height, + triangle_width, + triangle_height,]
-const updateTriangle = (svg: SVGPolygonElement) => (line_pos: LinePos) => {
-  const angle = line_pos.getAngle() + 90;
-  svg.setAttribute("transform", `translate(${line_pos.x2},${line_pos.y2}) rotate(${angle})`);
-}
-
-class IRGravityView {
-  constructor(
+interface I_IRGravity {
+  readonly svg: SVGGElement,
+  readonly model: IRGravityModel,
+  readonly view: {
     readonly svg: SVGGElement,
     readonly triangle: SVGPolygonElement,
     readonly line: SVGLineElement,
-  ) { }
-  updateWidth(w: number) { this.svg.setAttribute("width", String(w)); }
-  updateHeight(h: number) { this.svg.setAttribute("height", String(h)); }
-  onWindowResized(line_pos: LinePos) {
-    updateTriangle(this.triangle)(line_pos);
-    updateViewLine(this.line)(line_pos);
-  }
-  readonly setColor = (color: string) => this.svg.style.fill = color;
+  },
+  readonly line_seed: ILinePos,
 }
 
-class IRGravity {
-  get svg() { return this.view.svg; }
-  constructor(
-    readonly model: IRGravityModel,
-    readonly view: IRGravityView,
-    readonly line_seed: LinePos,
-  ) { }
-  updateWidth() { this.view.updateWidth(PianoRollConverter.scaled(this.model.time.duration)) }
-  updateHeight() { this.view.updateHeight(black_key_height) }
-  onWindowResized() {
-    this.updateWidth();
-    this.updateHeight();
-    this.view.onWindowResized(this.line_seed.scaled(NoteSize.get(), 1))
-  }
-  onTimeRangeChanged = this.onWindowResized
-  readonly setColor: SetColor = f => this.view.setColor(f(this.model.archetype))
-}
-
-class IRGravityLayer {
-  readonly children_model: { readonly time: Time }[];
-  #show: IRGravity[];
-  get show() { return this.#show; };
-
-  constructor(
-    readonly layer: number,
-    readonly svg: SVGGElement,
-    readonly children: IRGravity[],
-  ) {
-    this.children_model = this.children.map(e => e.model);
-    this.#show = children;
-  }
-  onAudioUpdate() { this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
-}
-
-class IRGravityHierarchy {
-  protected _show: IRGravityLayer[] = [];
-  get show() { return this._show; }
-  constructor(
-    readonly svg: SVGGElement,
-    readonly children: IRGravityLayer[]
-  ) { }
-  onUpdateGravityVisibility(visible: boolean) { this.svg.style.visibility = visible ? "visible" : "hidden"; }
-  setShow(visible_layers: IRGravityLayer[]) {
-    this._show = visible_layers;
-    this._show.forEach(e => e.onAudioUpdate());
-    this.svg.replaceChildren(...this._show.map(e => e.svg));
-  }
-  onChangedLayer(value: number) {
-    const visible_layer = this.children.filter(e => value === e.layer);
-    this.setShow(visible_layer);
-  }
+interface I_IRGravityLayer {
+  readonly layer: number
+  readonly svg: SVGGElement
+  readonly children: I_IRGravity[]
+  readonly show: I_IRGravity[];
 }
 
 function getTriangle() {
+  const triangle_width = 4;
+  const triangle_height = 5;
+
   const triangle_svg = document.createElementNS("http://www.w3.org/2000/svg", "polygon")
   triangle_svg.classList.add("triangle");
   triangle_svg.id = "gravity-arrow";
   triangle_svg.style.stroke = "rgb(0, 0, 0)";
   triangle_svg.style.fill = "rgb(0, 0, 0)";
   triangle_svg.style.strokeWidth = String(5);
-  triangle_svg.setAttribute("points", getInitPos().join(","));
+  triangle_svg.setAttribute("points", [0, 0, - triangle_width, + triangle_height, + triangle_width, + triangle_height].join(","));
   return triangle_svg;
 }
 
@@ -174,50 +79,6 @@ function getSVGG(id: string, children: SVGElement[]) {
   return svg;
 }
 
-function getLinePos(
-  e: { time: { begin: number, duration: number }, note: number },
-  n: { time: { begin: number, duration: number }, note: number },
-) {
-  const convert = (arg: number) => [
-    ((e: number) => e - 0.5),
-    ((e: number) => PianoRollConverter.midi2BlackCoordinate(e)),
-  ].reduce((c, f) => f(c), arg)
-
-  const line_pos = new LinePos(
-    e.time.begin + e.time.duration / 2,
-    n.time.begin + n.time.duration / 2,
-    isNaN(e.note) ? -99 : convert(e.note),
-    isNaN(n.note) ? -99 : convert(n.note),
-  )
-  return line_pos;
-}
-
-const m3 = 3;
-const getImplication = (interval: number) => {
-  const sign = Math.sign(interval);
-  const I = Math.abs(interval);
-  return (I < 6) ? { inf: sign * (I - m3), sup: sign * (I + m3), over: sign * (I + m3), sgn: 1 } : { inf: 0, sup: sign * (I - m3), over: sign * (I + m3), sgn: -1 }
-}
-
-const getReImplication = (observed: number, realization: number) => {
-  const sign = Math.sign(observed);
-  const implication = getImplication(observed);
-  const O = sign * observed;
-  const R = sign * realization;
-  if (0 <= R && R < O - m3) // IR
-  { }
-  else if (0 <= -R && -R < O - m3) // R
-  { }
-  else if (O - m3 <= R && R < O + m3) // P
-  { return }
-  else if (O - m3 <= -R && -R < O + m3) // IP
-  { }
-  else if (O + m3 <= R) // VP
-  { }
-  else if (O + m3 <= -R) // VR
-  { }
-}
-
 export function buildIRGravity(
   h_melodies: SerializedTimeAndAnalyzedMelody[][],
   controllers: {
@@ -240,7 +101,53 @@ export function buildIRGravity(
       const pre = second[i];
       const next = third[i];
       const re_next = fourth[i];
+
+      const m3 = 3;
+      const getImplication = (interval: number) => {
+        const sign = Math.sign(interval);
+        const I = Math.abs(interval);
+        return (I < 6) ? { inf: sign * (I - m3), sup: sign * (I + m3), over: sign * (I + m3), sgn: 1 } : { inf: 0, sup: sign * (I - m3), over: sign * (I + m3), sgn: -1 }
+      }
+
+      const getReImplication = (observed: number, realization: number) => {
+        const sign = Math.sign(observed);
+        const implication = getImplication(observed);
+        const O = sign * observed;
+        const R = sign * realization;
+        if (0 <= R && R < O - m3) // IR
+        { }
+        else if (0 <= -R && -R < O - m3) // R
+        { }
+        else if (O - m3 <= R && R < O + m3) // P
+        { return }
+        else if (O - m3 <= -R && -R < O + m3) // IP
+        { }
+        else if (O + m3 <= R) // VP
+        { }
+        else if (O + m3 <= -R) // VR
+        { }
+      }
+
       const implication = getImplication(pre.note - past.note)
+
+      function getLinePos(
+        e: { time: { begin: number, duration: number }, note: number },
+        n: { time: { begin: number, duration: number }, note: number },
+      ) {
+        const convert = (arg: number) => [
+          ((e: number) => e - 0.5),
+          ((e: number) => PianoRollConverter.midi2BlackCoordinate(e)),
+        ].reduce((c, f) => f(c), arg)
+
+        const line_pos = {
+          x1: e.time.begin + e.time.duration / 2,
+          x2: n.time.begin + n.time.duration / 2,
+          y1: isNaN(e.note) ? -99 : convert(e.note),
+          y2: isNaN(n.note) ? -99 : convert(n.note),
+        } as ILinePos
+        return line_pos;
+      }
+
       const line_pos_implication = getLinePos(
         { time: pre.time, note: pre.note },
         { time: next.time, note: pre.note + (implication.inf + implication.sup) / 2 }
@@ -253,31 +160,70 @@ export function buildIRGravity(
           { time: re_next.time, note: next.note }
         );
       }
-      const model = getGravityModel(l, pre);
+      const model = {
+        ...pre,
+        archetype: pre.melody_analysis.implication_realization as Triad,
+        layer: l || 0,
+      } as IRGravityModel;
       const triangle = getTriangle();
       const line = getLine();
       //      line.style.color = get_color_of_Narmour_concept()
       const svg = getGravitySVG(triangle, line);
-      const view = new IRGravityView(svg, triangle, line);
-      return {
-        model, view, line_pos: line_pos_implication
-      }
+      const view = { svg, triangle, line };
+      return { model, view, line_pos: line_pos_implication }
     })
       .filter(e => e !== undefined)
-      .map(e => new IRGravity(e.model, e.view, e.line_pos))
+      .map(e => ({ svg: e.view.svg, model: e.model, view: e.view, line_seed: e.line_pos }))
     const svg = getSVGG(`layer-${l}`, gravity.map(e => e.svg));
-    return new IRGravityLayer(l, svg, gravity);
+    return ({
+      layer: l,
+      svg: svg,
+      children: gravity,
+      show: gravity,
+    } as I_IRGravityLayer)
   }
-  const layers = h_melodies.map(getLayers);
-  const svg = getSVGG("ir_gravity", layers.map(e => e.svg));
-  const ir_gravity = new IRGravityHierarchy(svg, layers);
+  const children = h_melodies.map(getLayers);
+  const svg = getSVGG("ir_gravity", children.map(e => e.svg));
+  const ir_gravity = { svg, children, show: [] } as { svg: SVGGElement, children: I_IRGravityLayer[], show: I_IRGravityLayer[] };
 
-  controllers.window.addListeners(...ir_gravity.children.flatMap(e => e.children).map(e => e.onWindowResized.bind(e)));
-  controllers.hierarchy.addListeners(ir_gravity.onChangedLayer.bind(ir_gravity));
-  controllers.time_range.addListeners(...ir_gravity.children.flatMap(e => e.children).map(e => e.onTimeRangeChanged.bind(e)));
-  controllers.melody_color.addListeners(...ir_gravity.children.flatMap(e => e.children).map(e => e.setColor.bind(e)));
-  controllers.audio.addListeners(...ir_gravity.children.map(e => e.onAudioUpdate));
-  ir_gravity.children.map(e => e.onAudioUpdate())
+
+  const onWindowResized_IRGravity = (
+    e: {
+      readonly svg: SVGGElement,
+      readonly line_seed: ILinePos,
+      readonly model: IRGravityModel,
+      readonly view: {
+        readonly svg: SVGGElement,
+        readonly triangle: SVGPolygonElement,
+        readonly line: SVGLineElement,
+      },
+    }
+  ) => {
+    svg.setAttribute("width", String(PianoRollConverter.scaled(e.model.time.duration)));
+    svg.setAttribute("height", String(black_key_height));
+
+    const line_pos = { x1: e.line_seed.x1 * NoteSize.get(), x2: e.line_seed.x2 * NoteSize.get(), y1: e.line_seed.y1 * 1, y2: e.line_seed.y2 * 1 } as ILinePos
+    const angle = Math.atan2(line_pos.y2 - line_pos.y1, line_pos.x2 - line_pos.x1) * 180 / Math.PI + 90;
+    e.view.triangle.setAttribute("transform", `translate(${line_pos.x2},${line_pos.y2}) rotate(${angle})`);
+    e.view.line.setAttribute("x1", String(line_pos.x1));
+    e.view.line.setAttribute("x2", String(line_pos.x2));
+    e.view.line.setAttribute("y1", String(line_pos.y1));
+    e.view.line.setAttribute("y2", String(line_pos.y2));
+  }
+  controllers.window.addListeners(...ir_gravity.children.flatMap(e => e.children).map(e => () => onWindowResized_IRGravity(e)));
+  controllers.time_range.addListeners(...ir_gravity.children.flatMap(e => e.children).map(e => () => onWindowResized_IRGravity(e)));
+
+  const onAudioUpdate = (svg: SVGGElement) => { svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
+  controllers.hierarchy.addListeners(
+    (value: number) => {
+      ir_gravity.show = ir_gravity.children.filter(e => value === e.layer);
+      ir_gravity.show.forEach(e => onAudioUpdate(e.svg));
+      ir_gravity.svg.replaceChildren(...ir_gravity.show.map(e => e.svg));
+    }
+  );
+  controllers.melody_color.addListeners(...ir_gravity.children.flatMap(e => e.children).map(e => (f: GetColor) => e.svg.style.fill = f(e.model.archetype)));
+  controllers.audio.addListeners(...ir_gravity.children.map(e => () => onAudioUpdate(e.svg)));
+  ir_gravity.children.map(e => onAudioUpdate(e.svg))
 
   return ir_gravity.svg;
 }
