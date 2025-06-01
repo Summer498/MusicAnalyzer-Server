@@ -73,7 +73,7 @@ var getMusicAnalyzerWindow = (window2, raw_analyzed_data) => {
 var ApplicationManager = class {
   NO_CHORD = false;
   // コード関連のものを表示しない
-  FULL_VIEW = true;
+  FULL_VIEW = false;
   // 横いっぱいに分析結果を表示
   analyzed;
   controller;

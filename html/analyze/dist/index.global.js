@@ -4898,14 +4898,14 @@ Expected id is: ${regexp}`);
     return svg;
   }
   function buildDMelody(d_melody, controllers) {
-    const children = d_melody.map((e) => {
+    const parts = d_melody.map((e) => {
       const svg2 = getMelodyViewSVG();
       const model = new DMelodyModel(e);
       const view = new DMelodyView(svg2);
       return new DMelody(model, view);
     });
-    const svg = getSVGG("detected-melody", children);
-    const d_melody_collection = new DMelodySeries(svg, children);
+    const svg = getSVGG("detected-melody", parts);
+    const d_melody_collection = new DMelodySeries(svg, parts);
     controllers.window.addListeners(...d_melody_collection.children.map((e) => e.onWindowResized.bind(e)));
     controllers.time_range.addListeners(...d_melody_collection.children.map((e) => e.onTimeRangeChanged.bind(e)));
     controllers.d_melody.addListeners(d_melody_collection.onDMelodyVisibilityChanged.bind(d_melody_collection));
@@ -5984,7 +5984,7 @@ Expected id is: ${regexp}`);
     return svg;
   }
   function buildGravity(mode, h_melodies, controllers) {
-    const getLayers = (melodies, layer) => {
+    const getLayers2 = (melodies, layer) => {
       const next = melodies.slice(1);
       const children2 = next.map((n, i) => {
         const e = melodies[i];
@@ -6008,7 +6008,7 @@ Expected id is: ${regexp}`);
       const svg2 = getSVGG6(`layer-${layer}`, children2);
       return { layer, svg: svg2, children: children2, show: children2 };
     };
-    const children = h_melodies.map(getLayers);
+    const children = h_melodies.map(getLayers2);
     const svg = getSVGG6(mode, children);
     const gravity_hierarchy = { svg, children, show: children };
     switch (mode) {
@@ -6025,6 +6025,19 @@ Expected id is: ${regexp}`);
     controllers.audio.addListeners(...gravity_hierarchy.children.map((e) => () => onAudioUpdate(e.svg)));
     gravity_hierarchy.children.map((e) => onAudioUpdate(e.svg));
     return gravity_hierarchy.svg;
+  }
+  function getLinePos3(e, n) {
+    const convert = (arg) => [
+      (e2) => e2 - 0.5,
+      (e2) => PianoRollConverter.midi2BlackCoordinate(e2)
+    ].reduce((c, f) => f(c), arg);
+    const line_pos = {
+      x1: e.time.begin + e.time.duration / 2,
+      x2: n.time.begin + n.time.duration / 2,
+      y1: isNaN(e.note) ? -99 : convert(e.note),
+      y2: isNaN(n.note) ? -99 : convert(n.note)
+    };
+    return line_pos;
   }
   function getTriangle2() {
     const triangle_width = 4;
@@ -6058,107 +6071,115 @@ Expected id is: ${regexp}`);
     children.forEach((e) => svg.appendChild(e));
     return svg;
   }
-  function buildIRGravity(h_melodies, controllers) {
-    const getLayers = (melodies, l) => {
-      const second = melodies.slice(1);
-      const third = melodies.slice(2);
-      const fourth = [...melodies.slice(3), void 0];
-      const gravity = third.map((_, i) => {
-        const past = melodies[i];
-        const pre = second[i];
-        const next = third[i];
-        const re_next = fourth[i];
-        const m32 = 3;
-        const getImplication = (interval4) => {
-          const sign = Math.sign(interval4);
-          const I = Math.abs(interval4);
-          return I < 6 ? { inf: sign * (I - m32), sup: sign * (I + m32), over: sign * (I + m32), sgn: 1 } : { inf: 0, sup: sign * (I - m32), over: sign * (I + m32), sgn: -1 };
-        };
-        const getReImplication = (observed, realization) => {
-          const sign = Math.sign(observed);
-          const implication2 = getImplication(observed);
-          const O = sign * observed;
-          const R = sign * realization;
-          if (0 <= R && R < O - m32) {
-          } else if (0 <= -R && -R < O - m32) {
-          } else if (O - m32 <= R && R < O + m32) {
-            return;
-          } else if (O - m32 <= -R && -R < O + m32) {
-          } else if (O + m32 <= R) {
-          } else if (O + m32 <= -R) {
-          }
-        };
-        const implication = getImplication(pre.note - past.note);
-        function getLinePos3(e, n) {
-          const convert = (arg) => [
-            (e2) => e2 - 0.5,
-            (e2) => PianoRollConverter.midi2BlackCoordinate(e2)
-          ].reduce((c, f) => f(c), arg);
-          const line_pos = {
-            x1: e.time.begin + e.time.duration / 2,
-            x2: n.time.begin + n.time.duration / 2,
-            y1: isNaN(e.note) ? -99 : convert(e.note),
-            y2: isNaN(n.note) ? -99 : convert(n.note)
-          };
-          return line_pos;
-        }
-        const line_pos_implication = getLinePos3(
-          { time: pre.time, note: pre.note },
-          { time: next.time, note: pre.note + (implication.inf + implication.sup) / 2 }
-        );
-        if (re_next) {
-          const IImplicationDist = re_next?.note + (implication.inf + implication.sup) / 2;
-          const VImplicationDist = next.note + (implication.inf + implication.sup) / 2;
-          const line_pos_reImplication = re_next && getLinePos3(
-            { time: next.time, note: next.note },
-            { time: re_next.time, note: next.note }
-          );
-        }
-        const model = {
-          ...pre,
-          archetype: pre.melody_analysis.implication_realization,
-          layer: l || 0
-        };
-        const triangle = getTriangle2();
-        const line = getLine2();
-        const svg3 = getGravitySVG2(triangle, line);
-        const view = { svg: svg3, triangle, line };
-        return { model, view, line_pos: line_pos_implication };
-      }).filter((e) => e !== void 0).map((e) => ({ svg: e.view.svg, model: e.model, view: e.view, line_seed: e.line_pos }));
-      const svg2 = getSVGG7(`layer-${l}`, gravity.map((e) => e.svg));
-      return {
-        layer: l,
-        svg: svg2,
-        children: gravity,
-        show: gravity
-      };
+  var getImplicationColor = (archetype) => {
+    switch (archetype.symbol) {
+      case "P":
+        return "rgba(0,0,255,1)";
+      case "IP":
+        return "rgba(0,0,255,.5)";
+      case "VP":
+        return "rgba(0,0,255,.5)";
+      case "R":
+        return "rgba(255,0,0,1)";
+      case "IR":
+        return "rgba(255,0,0,.5)";
+      case "VR":
+        return "rgba(255,0,0,.5)";
+      case "D":
+        return "rgba(0,255,0,1)";
+      case "ID":
+        return "rgba(0,255,0,.5)";
+      case "(P)":
+        return "rgba(0,0,255,1)";
+      case "(IP)":
+        return "rgba(0,0,255,.5)";
+      case "(VP)":
+        return "rgba(0,0,255,.5)";
+      case "(R)":
+        return "rgba(255,0,0,1)";
+      case "(IR)":
+        return "rgba(255,0,0,.5)";
+      case "(VR)":
+        return "rgba(255,0,0,.5)";
+      case "(D)":
+        return "rgba(0,255,0,1)";
+      case "(ID)":
+        return "rgba(0,255,0,.5)";
+      default:
+        "rgba(0,0,0,.25)";
+    }
+  };
+  var getRange2 = (inf, sup, over, sgn) => ({ inf, sup, over, sgn });
+  var m3 = 3;
+  var getDestination = (interval4) => {
+    const s = Math.sign(interval4);
+    const I = Math.abs(interval4);
+    const L = I - m3;
+    const G = I + m3;
+    return I < 6 ? getRange2(s * L, s * G, s * G, 1) : getRange2(s * 0, s * L, s * G, -1);
+  };
+  var getImplicationArrow = (layer) => (delayed_melody) => (_, i) => {
+    const first = delayed_melody[0][i];
+    const second = delayed_melody[1][i];
+    const third = delayed_melody[2][i];
+    const implication = getDestination(second.note - first.note);
+    const line_pos = getLinePos3(
+      { time: second.time, note: second.note },
+      { time: third.time, note: second.note + (implication.inf + implication.sup) / 2 }
+    );
+    const model = {
+      ...second,
+      archetype: second.melody_analysis.implication_realization,
+      layer: layer || 0
     };
-    const children = h_melodies.map(getLayers);
+    const triangle = getTriangle2();
+    const line = getLine2();
+    triangle.style.stroke = getImplicationColor(model.archetype) || "rgba(0,0,0,.25)";
+    line.style.stroke = getImplicationColor(model.archetype) || "rgba(0,0,0,.25)";
+    const svg = getGravitySVG2(triangle, line);
+    const view = { svg, triangle, line };
+    return { model, view, line_pos };
+  };
+  var getLayers = (melodies, layer) => {
+    const triangle_matrix = melodies.map((_, i) => melodies.slice(i));
+    if (triangle_matrix.length <= 3) {
+      return;
+    }
+    const gravity = triangle_matrix[2].map(getImplicationArrow(layer)(triangle_matrix)).filter((e) => e !== void 0).map((e) => ({ svg: e.view.svg, model: e.model, view: e.view, line_seed: e.line_pos }));
+    const svg = getSVGG7(`layer-${layer}`, gravity.map((e) => e.svg));
+    return {
+      layer,
+      svg,
+      children: gravity,
+      show: gravity
+    };
+  };
+  var onWindowResized_IRGravity = (e) => {
+    e.svg.setAttribute("width", String(PianoRollConverter.scaled(e.model.time.duration)));
+    e.svg.setAttribute("height", String(black_key_height));
+    const line_pos = { x1: e.line_seed.x1 * NoteSize.get(), x2: e.line_seed.x2 * NoteSize.get(), y1: e.line_seed.y1 * 1, y2: e.line_seed.y2 * 1 };
+    const angle = Math.atan2(line_pos.y2 - line_pos.y1, line_pos.x2 - line_pos.x1) * 180 / Math.PI + 90;
+    e.view.triangle.setAttribute("transform", `translate(${line_pos.x2},${line_pos.y2}) rotate(${angle})`);
+    e.view.line.setAttribute("x1", String(line_pos.x1));
+    e.view.line.setAttribute("x2", String(line_pos.x2));
+    e.view.line.setAttribute("y1", String(line_pos.y1));
+    e.view.line.setAttribute("y2", String(line_pos.y2));
+  };
+  var onAudioUpdate2 = (svg) => {
+    svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`);
+  };
+  var onChangedLayer = (ir_gravity) => (value) => {
+    ir_gravity.show = ir_gravity.children.filter((e) => value === e.layer);
+    ir_gravity.show.forEach((e) => onAudioUpdate2(e.svg));
+    ir_gravity.svg.replaceChildren(...ir_gravity.show.map((e) => e.svg));
+  };
+  function buildIRGravity(h_melodies, controllers) {
+    const children = h_melodies.map(getLayers).filter((e) => e !== void 0);
     const svg = getSVGG7("ir_gravity", children.map((e) => e.svg));
     const ir_gravity = { svg, children, show: [] };
-    const onWindowResized_IRGravity = (e) => {
-      svg.setAttribute("width", String(PianoRollConverter.scaled(e.model.time.duration)));
-      svg.setAttribute("height", String(black_key_height));
-      const line_pos = { x1: e.line_seed.x1 * NoteSize.get(), x2: e.line_seed.x2 * NoteSize.get(), y1: e.line_seed.y1 * 1, y2: e.line_seed.y2 * 1 };
-      const angle = Math.atan2(line_pos.y2 - line_pos.y1, line_pos.x2 - line_pos.x1) * 180 / Math.PI + 90;
-      e.view.triangle.setAttribute("transform", `translate(${line_pos.x2},${line_pos.y2}) rotate(${angle})`);
-      e.view.line.setAttribute("x1", String(line_pos.x1));
-      e.view.line.setAttribute("x2", String(line_pos.x2));
-      e.view.line.setAttribute("y1", String(line_pos.y1));
-      e.view.line.setAttribute("y2", String(line_pos.y2));
-    };
     controllers.window.addListeners(...ir_gravity.children.flatMap((e) => e.children).map((e) => () => onWindowResized_IRGravity(e)));
     controllers.time_range.addListeners(...ir_gravity.children.flatMap((e) => e.children).map((e) => () => onWindowResized_IRGravity(e)));
-    const onAudioUpdate2 = (svg2) => {
-      svg2.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`);
-    };
-    controllers.hierarchy.addListeners(
-      (value) => {
-        ir_gravity.show = ir_gravity.children.filter((e) => value === e.layer);
-        ir_gravity.show.forEach((e) => onAudioUpdate2(e.svg));
-        ir_gravity.svg.replaceChildren(...ir_gravity.show.map((e) => e.svg));
-      }
-    );
+    controllers.hierarchy.addListeners(onChangedLayer(ir_gravity));
     controllers.melody_color.addListeners(...ir_gravity.children.flatMap((e) => e.children).map((e) => (f) => e.svg.style.fill = f(e.model.archetype)));
     controllers.audio.addListeners(...ir_gravity.children.map((e) => () => onAudioUpdate2(e.svg)));
     ir_gravity.children.map((e) => onAudioUpdate2(e.svg));
@@ -6506,7 +6527,7 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
     closure_degree;
   };
   var M3 = get5("M3");
-  var m3 = get5("m3");
+  var m32 = get5("m3");
   var _sgn = (x) => x < 0 ? -1 : x && 1;
   var _abs = (x) => x < 0 ? -x : x;
   var IntervallicMotion = class extends Motion {
@@ -6514,7 +6535,7 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
       const dir_map = ["mL", "mN", "mR"];
       const pd = _sgn(prev.semitones);
       const cd = _sgn(curr.semitones);
-      const C = (cd - pd ? m3 : M3).semitones;
+      const C = (cd - pd ? m32 : M3).semitones;
       const p = _abs(prev.semitones);
       const c = _abs(curr.semitones);
       const d = c - p;
@@ -7430,7 +7451,7 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
   var ApplicationManager = class {
     NO_CHORD = false;
     // コード関連のものを表示しない
-    FULL_VIEW = true;
+    FULL_VIEW = false;
     // 横いっぱいに分析結果を表示
     analyzed;
     controller;

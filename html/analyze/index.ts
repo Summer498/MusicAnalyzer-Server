@@ -101,7 +101,7 @@ const getMusicAnalyzerWindow = (window: Window, raw_analyzed_data: AnalyzedMusic
 
 class ApplicationManager {
   readonly NO_CHORD = false;  // コード関連のものを表示しない
-  readonly FULL_VIEW = true;  // 横いっぱいに分析結果を表示
+  readonly FULL_VIEW = false;  // 横いっぱいに分析結果を表示
   readonly analyzed: MusicStructureElements
   readonly controller: Controllers
   readonly audio_time_mediator: AudioReflectableRegistry
