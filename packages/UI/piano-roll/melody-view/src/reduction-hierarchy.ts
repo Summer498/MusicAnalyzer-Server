@@ -40,7 +40,7 @@ class ReductionViewModel {
     this.#x = this.getViewX(this.model.time.begin);
     this.#w = this.getViewW(this.model.time.duration);
     this.#cw = this.getViewW(this.model.head.duration);
-    this.#cx = this.getViewX(this.model.head.begin) + this.#cw / 2;
+    this.#cx = this.getViewX(this.model.head.begin) + this.getViewW(this.model.head.duration) / 2;
     this.y = [this.model.layer]
       .map(e => e + 2)
       .map(e => PianoRollConverter.convertToCoordinate(e))
@@ -54,15 +54,16 @@ class ReductionViewModel {
   getViewW(w: number) { return PianoRollConverter.scaled(w); }
   updateX() {
     this.#x = this.getViewX(this.model.time.begin);
-    this.#cx = this.getViewX(this.model.head.begin) + this.#cw / 2;
+    this.#cx = this.getViewX(this.model.head.begin) + this.getViewW(this.model.head.duration) / 2;
   }
   updateWidth() {
     this.#w = this.getViewW(this.model.time.duration);
     this.#cw = this.getViewW(this.model.head.duration);
   }
   onWindowResized() {
-    this.updateX();
     this.updateWidth();
+    this.updateX();
+    return this;
   }
   onTimeRangeChanged = this.onWindowResized;
 }
@@ -70,15 +71,14 @@ class ReductionViewModel {
 class IRMSymbol {
   constructor(
     readonly svg: SVGTextElement,
-    protected readonly model: ReductionViewModel,
   ) { }
   update(cx: number, y: number, w: number, h: number) {
     this.svg.setAttribute("x", String(cx));
     this.svg.setAttribute("y", String(y));
-    this.svg.style.fontSize = `${Math.min(w / h, bracket_height)}em`;
+    this.svg.setAttribute("fontSize", `${Math.min(w / h, bracket_height)}em`)
   }
-  onWindowResized() {
-    this.update(this.model.cx, this.model.y, this.model.w, this.model.h);
+  onWindowResized(model: ReductionViewModel) {
+    this.update(model.cx, model.y, model.w, model.h);
   }
   readonly setColor = (color: string) => this.svg.style.fill = color;
 }
@@ -114,25 +114,25 @@ class Bracket {
       + ` ${end.x} ${end.y}`
     );
   }
-  onWindowResized() {
-    this.update(this.model.x, this.model.y, this.model.w, this.model.h);
+  onWindowResized(model: ReductionViewModel) {
+    this.update(model.x, model.y, model.w, model.h);
   }
 }
 
 class Dot {
   constructor(
     readonly svg: SVGCircleElement,
-    readonly model: ReductionViewModel,
+    private readonly model: ReductionViewModel,
   ) { }
   updateStrong() {
     this.svg.style.r = String(this.model.strong ? 5 : 3);
   }
   update(cx: number, cy: number) {
-    this.svg.style.cx = String(cx);
-    this.svg.style.cy = String(cy);
+    this.svg.setAttribute("cx", String(cx));
+    this.svg.setAttribute("cy", String(cy));
   }
-  onWindowResized() {
-    this.update(this.model.cx, this.model.y - this.model.h);
+  onWindowResized(model: ReductionViewModel) {
+    this.update(model.cx, model.y - model.h);
   }
 }
 
@@ -152,10 +152,10 @@ class ReductionView {
   }
   onTimeRangeChanged() { this.onWindowResized() }
   onWindowResized() {
-    this.model.onWindowResized();
-    this.bracket.onWindowResized();
-    this.dot.onWindowResized();
-    this.ir_symbol.onWindowResized();
+    const model = this.model.onWindowResized();
+    this.bracket.onWindowResized(model);
+    this.dot.onWindowResized(model);
+    this.ir_symbol.onWindowResized(model);
   }
   readonly setColor = (color: string) => this.svg.style.fill = color;
 }
@@ -277,7 +277,7 @@ export function buildReduction(
       const dot_svg = getDotSVG();
       const dot = new Dot(dot_svg, view_model);
       const svg_irm_symbol = getIRMSymbolSVG(model);
-      const ir_symbol = new IRMSymbol(svg_irm_symbol, view_model);
+      const ir_symbol = new IRMSymbol(svg_irm_symbol);
       const svg = getReductionSVG(bracket, dot, ir_symbol);
       const view = new ReductionView(svg, bracket, dot, ir_symbol, view_model);
       return new Reduction(model, view)
@@ -292,7 +292,7 @@ export function buildReduction(
   controllers.hierarchy.addListeners(time_span_tree.onChangedLayer.bind(time_span_tree));
   controllers.time_range.addListeners(...time_span_tree.children.flatMap(e => e.children).map(e => e.onTimeRangeChanged.bind(e)));
   controllers.melody_color.addListeners(...time_span_tree.children.flatMap(e => e.children).map(e => e.setColor.bind(e)));
-  controllers.audio.addListeners(...time_span_tree.children.map(e => e.onAudioUpdate));
+  controllers.audio.addListeners(...time_span_tree.children.map(e => e.onAudioUpdate.bind(e)));
   time_span_tree.children.map(e => e.onAudioUpdate());
 
   return time_span_tree.svg
