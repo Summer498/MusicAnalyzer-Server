@@ -3,6 +3,7 @@ import { Dyad } from "./Dyad";
 import { Monad } from "./Monad";
 import { Null_ad } from "./Null-ad";
 import { NoteLiteral } from "@music-analyzer/tonal-objects";
+import { getTriad } from "./triad";
 
 export function getArchetype(): Null_ad;
 export function getArchetype(note: NoteLiteral): Monad;
@@ -20,7 +21,7 @@ export function getArchetype(
     case 0: return new Null_ad();
     case 1: return new Monad(e[0]);
     case 2: return new Dyad(e[0], e[1]);
-    case 3: return new Triad(e[0], e[1], e[2]);
+    case 3: return getTriad(e[0], e[1], e[2]);
     default: throw new Error(`Invalid argument length: ${args.length}`)
   }
 }

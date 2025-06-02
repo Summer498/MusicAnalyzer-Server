@@ -8,4 +8,5 @@ export { get_color_on_registral_scale } from "./src/colors";
 export { Monad } from "./src/archetype";
 export { Null_ad } from "./src/archetype";
 export { Triad } from "./src/archetype";
+export { getTriad } from "./src/archetype";
 export { Dyad } from "./src/archetype";

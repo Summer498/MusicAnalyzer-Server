@@ -1,1 +1,1 @@
-export { Triad } from "./Triad";
+export { Triad, getTriad } from "./Triad";

@@ -22,8 +22,8 @@ const isRetrospective = (archetype: TriadArchetype) => {
   }
 }
 
-export class Triad {
-  readonly length = 3;
+export interface Triad {
+  readonly length: 3;
   readonly symbol: TriadSymbol;
   readonly notes: [NoteLiteral, NoteLiteral, NoteLiteral];
   readonly intervals: [IntervalName, IntervalName];
@@ -32,15 +32,21 @@ export class Triad {
   readonly registral_return_form: RegistralReturnForm;
   readonly archetype: TriadArchetype;
   readonly retrospective: boolean;
-  constructor(prev: NoteLiteral, curr: NoteLiteral, next: NoteLiteral) {
-    this.notes = [prev || "", curr || "", next || ""]
-    this.archetype = new TriadArchetype(prev, curr, next);
-    const { intervals, registral, intervallic, registral_return_form } = this.archetype;
-    this.intervals = intervals;
-    this.registral = registral;
-    this.intervallic = intervallic;
-    this.registral_return_form = registral_return_form;
-    this.retrospective = isRetrospective(this.archetype);
-    this.symbol = this.retrospective ? retrospectiveSymbol(this.archetype.symbol) : this.archetype.symbol
-  }
+}
+
+export const getTriad = (prev: NoteLiteral, curr: NoteLiteral, next: NoteLiteral) => {
+  const archetype = new TriadArchetype(prev, curr, next)
+  const { intervals, registral, intervallic, registral_return_form } = archetype;
+  const retrospective = isRetrospective(archetype);
+
+  return {
+    notes: [prev || "", curr || "", next || ""],
+    archetype,
+    intervals,
+    registral,
+    intervallic,
+    registral_return_form,
+    retrospective,
+    symbol: retrospective ? retrospectiveSymbol(archetype.symbol) : archetype.symbol,
+  } as Triad
 }

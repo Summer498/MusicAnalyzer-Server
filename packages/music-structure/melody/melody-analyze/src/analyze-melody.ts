@@ -9,13 +9,13 @@ import { registerGravity } from "./register-gravity";
 import { Dyad } from "@music-analyzer/irm";
 import { Monad } from "@music-analyzer/irm";
 import { Null_ad } from "@music-analyzer/irm";
-import { Triad } from "@music-analyzer/irm";
+import { getTriad } from "@music-analyzer/irm";
 
 const getSome_ad = (prev?: number, curr?: number, next?: number) => {
   const [p, c, n] = [prev, curr, next].map(e => e ? noteFromMidi(e) : undefined);
   if (c !== undefined) {
     if (p !== undefined) {
-      if (n !== undefined) { return new Triad(p, c, n) }
+      if (n !== undefined) { return getTriad(p, c, n) }
       else { return new Dyad(p, c); }
     }
     else if (n !== undefined) { return new Dyad(c, n) }
