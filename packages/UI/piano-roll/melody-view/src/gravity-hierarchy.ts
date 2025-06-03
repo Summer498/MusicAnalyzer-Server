@@ -156,6 +156,32 @@ function getSVGG(id: string, children: { svg: SVGElement }[]) {
   return svg;
 }
 
+const getLayers = (mode: "chord_gravity" | "scale_gravity") => (
+  melodies: SerializedTimeAndAnalyzedMelody[],
+  layer: number
+) => {
+  const next = melodies.slice(1);
+  const children = next.map((n, i) => {
+    const e = melodies[i]
+    const g = e.melody_analysis[mode];
+    if (!g) { return }
+
+    const line_seed = getLinePos2(e, n, g);
+    const model = getGravityModel(layer, e, n, g);
+    const triangle = getTriangle();
+    const line = getLine();
+    const svg = getGravitySVG(triangle, line);
+    const view = { svg, triangle, line };
+    return {
+      model, view, line_seed, ...view
+    }
+  })
+    .filter(e => e !== undefined)
+    .map(e => ({ ...e, ...e.view }))
+  const svg = getSVGG(`layer-${layer}`, children);
+  return { layer, svg, children, show: children };
+}
+
 export function buildGravity(
   mode: "chord_gravity" | "scale_gravity",
   h_melodies: SerializedTimeAndAnalyzedMelody[][],
@@ -167,35 +193,10 @@ export function buildGravity(
     readonly hierarchy: HierarchyLevelController,
   }
 ) {
-  const getLayers = (
-    melodies: SerializedTimeAndAnalyzedMelody[],
-    layer: number
-  ) => {
-    const next = melodies.slice(1);
-    const children = next.map((n, i) => {
-      const e = melodies[i]
-      const g = e.melody_analysis[mode];
-      if (!g) { return }
-
-      const line_seed = getLinePos2(e, n, g);
-      const model = getGravityModel(layer, e, n, g);
-      const triangle = getTriangle();
-      const line = getLine();
-      const svg = getGravitySVG(triangle, line);
-      const view = { svg, triangle, line };
-      return {
-        model, view, line_seed, ...view
-      }
-    })
-      .filter(e => e !== undefined)
-      .map(e => ({ ...e, ...e.view }))
-    const svg = getSVGG(`layer-${layer}`, children);
-    return { layer, svg, children, show: children };
-  }
-  const children = h_melodies.map(getLayers);
+  const children = h_melodies.map(getLayers(mode));
   const svg = getSVGG(mode, children);
   const gravity_hierarchy = { svg, children, show: children };
-
+  
   switch (mode) {
     case "chord_gravity":
       controllers.gravity.chord_checkbox.addListeners(() => onUpdateGravityVisibility_GravityHierarchy(gravity_hierarchy.svg));
