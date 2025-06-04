@@ -5,88 +5,77 @@ import { HierarchyLevelController, MelodyColorController, SetColor, TimeRangeCon
 import { Time } from "@music-analyzer/time-and";
 import { AudioReflectableRegistry, PianoRollTranslateX, WindowReflectableRegistry } from "@music-analyzer/view";
 
-class IRSymbolModel {
+interface I_IRSymbolModel {
   readonly time: Time;
   readonly head: Time;
   readonly note: number;
   readonly archetype: Triad;
   readonly layer: number;
-  constructor(e: SerializedTimeAndAnalyzedMelody, layer: number) {
-    this.time = e.time;
-    this.head = e.head;
-    this.note = e.note;
-    this.archetype = e.melody_analysis.implication_realization as Triad;
-    this.layer = layer || 0;
-  }
 }
+
+const getIRSymbolModel = (e: SerializedTimeAndAnalyzedMelody, layer: number) => ({
+  ...e,
+  archetype: e.melody_analysis.implication_realization as Triad,
+  layer: layer || 0,
+} as I_IRSymbolModel)
 
 const ir_analysis_em = size;
-class IRSymbolView {
-  constructor(
-    readonly svg: SVGTextElement,
-  ) { }
-  updateX(x: number) { this.svg.setAttribute("x", String(x)); }
-  updateY(y: number) { this.svg.setAttribute("y", String(y)); }
-  readonly setColor = (color: string) => this.svg.style.fill = color;
+
+const updateX_IRSymbolView = (svg: SVGTextElement) => (x: number) => { svg.setAttribute("x", String(x)); }
+const updateY_IRSymbolView = (svg: SVGTextElement) => (y: number) => { svg.setAttribute("y", String(y)); }
+const setColor_IRSymbolView = (svg: SVGTextElement) => (color: string) => svg.setAttribute("fill", color);
+
+const updateX = (svg: SVGTextElement) => (model: I_IRSymbolModel) => {
+  updateX_IRSymbolView(svg)(
+    PianoRollConverter.scaled(model.time.begin)
+    + PianoRollConverter.scaled(model.time.duration) / 2
+  )
 }
 
-class IRSymbol {
-  get svg() { return this.view.svg; }
-  #y: number;
-  constructor(
-    readonly model: IRSymbolModel,
-    readonly view: IRSymbolView,
-  ) {
-    this.#y = PianoRollConverter.midi2NNBlackCoordinate(this.model.note)
-    this.updateX();
-    this.updateY();
-  }
-  updateX() {
-    this.view.updateX(
-      PianoRollConverter.scaled(this.model.time.begin)
-      + PianoRollConverter.scaled(this.model.time.duration) / 2
-    )
-  }
-  updateY() { this.view.updateY(this.#y) }
-  onWindowResized() {
-    this.updateX();
-  }
-  onTimeRangeChanged = this.onWindowResized
-  readonly setColor: SetColor = f => this.view.setColor(f(this.model.archetype))
+const updateY = (svg: SVGTextElement) => (model: I_IRSymbolModel) => { updateY_IRSymbolView(svg)(PianoRollConverter.midi2NNBlackCoordinate(model.note)) }
+const onWindowResized = (svg: SVGTextElement) => (model: I_IRSymbolModel) => {
+  updateX(svg)(model);
 }
 
-class IRSymbolLayer {
+const onTimeRangeChanged = onWindowResized
+const setColor = (svg: SVGTextElement) => (model: I_IRSymbolModel) => (f => setColor_IRSymbolView(svg)(f(model.archetype))) as SetColor
+
+interface I_IRSymbol {
+  readonly model: I_IRSymbolModel,
+  readonly svg: SVGTextElement,
+}
+
+interface I_IRSymbolLayer {
   readonly children_model: { readonly time: Time }[];
-  #show: IRSymbol[];
-  get show() { return this.#show; };
-  constructor(
-    readonly svg: SVGGElement,
-    readonly children: IRSymbol[],
-    readonly layer: number,
-  ) {
-    this.svg = svg;
-    this.children_model = this.children.map(e => e.model);
-    this.#show = children;
-  }
-  onAudioUpdate() { this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
+  readonly svg: SVGGElement;
+  readonly show: I_IRSymbol[];
+  readonly children: I_IRSymbol[];
+  readonly layer: number;
 }
 
-class IRSymbolHierarchy {
-  protected _show: IRSymbolLayer[] = [];
-  get show() { return this._show; }
-  constructor(
-    readonly svg: SVGGElement,
-    readonly children: IRSymbolLayer[],
-  ) { }
-  setShow(visible_layers: IRSymbolLayer[]) {
-    this._show = visible_layers;
-    this._show.forEach(e => e.onAudioUpdate());
-    this.svg.replaceChildren(...this._show.map(e => e.svg));
-  }
-  onChangedLayer(value: number) {
-    const visible_layer = this.children.filter(e => value === e.layer);
-    this.setShow(visible_layer);
-  }
+const getIRSymbolLayer = (
+  svg: SVGGElement,
+  children: I_IRSymbol[],
+  layer: number,
+) => ({
+  svg: svg,
+  layer: layer,
+  show: children,
+  children: children,
+  children_model: children.map(e => e.model),
+})
+
+const onAudioUpdate = (svg: SVGElement) => { svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
+
+const setShow = (svg: SVGGElement) => (show: I_IRSymbolLayer[]) => (visible_layers: I_IRSymbolLayer[]) => {
+  show = visible_layers;
+  show.forEach(e => onAudioUpdate(e.svg));
+  svg.replaceChildren(...show.map(e => e.svg));
+}
+
+const onChangedLayer = (svg: SVGGElement) => (show: I_IRSymbolLayer[]) => (children: I_IRSymbolLayer[]) => (value: number) => {
+  const visible_layer = children.filter(e => value === e.layer);
+  setShow(svg)(show)(visible_layer);
 }
 
 function getIRSymbolSVG(text: string) {
@@ -107,6 +96,21 @@ function getSVGG(id: string, children: { svg: SVGElement }[]) {
   return svg;
 }
 
+const getParts = (l: number) => (e: SerializedTimeAndAnalyzedMelody) => {
+  const model = getIRSymbolModel(e, l);
+  const svg = getIRSymbolSVG(model.archetype.symbol);
+  updateX(svg)(model);
+  updateY(svg)(model);
+
+  return { model, svg } as I_IRSymbol
+}
+
+const getLayers = (e: SerializedTimeAndAnalyzedMelody[], l: number) => {
+  const parts = e.map(getParts(l));
+  const svg = getSVGG(`layer-${l}`, parts);
+  return getIRSymbolLayer(svg, parts, l)
+}
+
 export function buildIRSymbol(
   h_melodies: SerializedTimeAndAnalyzedMelody[][],
   controllers: {
@@ -117,25 +121,16 @@ export function buildIRSymbol(
     readonly hierarchy: HierarchyLevelController,
   }
 ) {
-  const layers = h_melodies.map((e, l) => {
-    const parts = e.map(e => {
-      const model = new IRSymbolModel(e, l);
-      const svg = getIRSymbolSVG(model.archetype.symbol);
-      const view = new IRSymbolView(svg);
-      return new IRSymbol(model, view)
-    });
-    const svg = getSVGG(`layer-${l}`, parts);
-    return new IRSymbolLayer(svg, parts, l)
-  });
-  const svg = getSVGG("implication-realization archetype", layers)
+  const children = h_melodies.map(getLayers);
+  const svg = getSVGG("implication-realization archetype", children)
 
-  const ir_hierarchy = new IRSymbolHierarchy(svg, layers);
-    controllers.window.addListeners(...ir_hierarchy.children.flatMap(e => e.children).map(e => e.onWindowResized.bind(e)));
-    controllers.hierarchy.addListeners(ir_hierarchy.onChangedLayer.bind(ir_hierarchy));
-    controllers.time_range.addListeners(...ir_hierarchy.children.flatMap(e => e.children).map(e => e.onTimeRangeChanged.bind(e)));
-    controllers.melody_color.addListeners(...ir_hierarchy.children.flatMap(e => e.children).map(e => e.setColor.bind(e)));
-    controllers.audio.addListeners(...ir_hierarchy.children.map(e => e.onAudioUpdate.bind(e)));
-    ir_hierarchy.children.map(e => e.onAudioUpdate())
+  const ir_hierarchy = { svg, children, show: children };
+  controllers.hierarchy.addListeners(() => onChangedLayer(ir_hierarchy.svg)(ir_hierarchy.show)(ir_hierarchy.children));
+  controllers.window.addListeners(...ir_hierarchy.children.flatMap(e => e.children).map(e => () => onWindowResized(e.svg)(e.model)));
+  controllers.time_range.addListeners(...ir_hierarchy.children.flatMap(e => e.children).map(e => () => onTimeRangeChanged(e.svg)(e.model)));
+  controllers.melody_color.addListeners(...ir_hierarchy.children.flatMap(e => e.children).map(e => () => setColor(e.svg)(e.model)));
+  controllers.audio.addListeners(...ir_hierarchy.children.map(e => () => onAudioUpdate(e.svg)));
+  ir_hierarchy.children.map(e => onAudioUpdate(e.svg))
 
   return ir_hierarchy.svg;
 }
