@@ -4794,95 +4794,42 @@ Expected id is: ${regexp}`);
   };
 
   // ../../packages/UI/piano-roll/melody-view/dist/index.mjs
-  var insertMelody = () => {
-    console.log("insertMelody called");
+  var updateX_DMelodyView = (svg) => (x) => {
+    svg.setAttribute("x", String(x));
   };
-  var DMelodyView = class {
-    constructor(svg) {
-      this.svg = svg;
-    }
-    set onclick(value) {
-      this.svg.onclick = value;
-    }
-    updateX(x) {
-      this.svg.setAttribute("x", String(x));
-    }
-    updateY(y) {
-      this.svg.setAttribute("y", String(y));
-    }
-    updateWidth(w) {
-      this.svg.setAttribute("width", String(w));
-    }
-    updateHeight(h) {
-      this.svg.setAttribute("height", String(h));
-    }
+  var updateY_DMelodyView = (svg) => (y) => {
+    svg.setAttribute("y", String(y));
   };
-  var DMelodyModel = class {
-    time;
-    head;
-    note;
-    melody_analysis;
-    constructor(e) {
-      this.time = e.time;
-      this.head = e.head;
-      this.note = e.note;
-      this.melody_analysis = e.melody_analysis;
-    }
+  var updateWidth_DMelodyView = (svg) => (w) => {
+    svg.setAttribute("width", String(w));
   };
-  var DMelody = class {
-    constructor(model, view) {
-      this.model = model;
-      this.view = view;
-      this.onAudioUpdate();
-      this.updateX();
-      this.updateY();
-      this.updateWidth();
-      this.updateHeight();
-    }
-    get svg() {
-      return this.view.svg;
-    }
-    updateX() {
-      this.view.updateX(PianoRollConverter.scaled(this.model.time.begin));
-    }
-    updateY() {
-      this.view.updateY(PianoRollConverter.midi2NNBlackCoordinate(this.model.note));
-    }
-    updateWidth() {
-      this.view.updateWidth(PianoRollConverter.scaled(this.model.time.duration));
-    }
-    updateHeight() {
-      this.view.updateHeight(black_key_height);
-    }
-    onWindowResized() {
-      this.updateX();
-      this.updateWidth();
-      this.updateHeight();
-    }
-    onAudioUpdate() {
-      this.view.onclick = insertMelody;
-    }
-    onTimeRangeChanged = this.onWindowResized;
+  var updateHeight_DMelodyView = (svg) => (h) => {
+    svg.setAttribute("height", String(h));
   };
-  var DMelodySeries = class {
-    constructor(svg, children) {
-      this.svg = svg;
-      this.children = children;
-      this.children_model = this.children.map((e) => e.model);
-      this.#show = children;
-    }
-    children_model;
-    #show;
-    get show() {
-      return this.#show;
-    }
-    onDMelodyVisibilityChanged(visible) {
-      const visibility = visible ? "visible" : "hidden";
-      this.svg.style.visibility = visibility;
-    }
-    onAudioUpdate() {
-      this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`);
-    }
+  var updateX = (svg) => (begin) => {
+    updateX_DMelodyView(svg)(PianoRollConverter.scaled(begin));
+  };
+  var updateY = (svg) => (note4) => {
+    updateY_DMelodyView(svg)(PianoRollConverter.midi2NNBlackCoordinate(note4));
+  };
+  var updateWidth = (svg) => (duration) => {
+    updateWidth_DMelodyView(svg)(PianoRollConverter.scaled(duration));
+  };
+  var updateHeight = (svg) => {
+    updateHeight_DMelodyView(svg)(black_key_height);
+  };
+  var onWindowResized2 = (svg) => (model) => {
+    updateX(svg)(model.time.begin);
+    updateWidth(svg)(model.time.duration);
+    updateHeight(svg);
+  };
+  var onTimeRangeChanged = onWindowResized2;
+  var onDMelodyVisibilityChanged = (svg) => (visible) => {
+    const visibility = visible ? "visible" : "hidden";
+    svg.setAttribute("visibility", visibility);
+  };
+  var onAudioUpdate = (svg) => {
+    svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`);
   };
   function getMelodyViewSVG() {
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
@@ -4898,19 +4845,21 @@ Expected id is: ${regexp}`);
     return svg;
   }
   function buildDMelody(d_melody, controllers) {
-    const parts = d_melody.map((e) => {
+    const children = d_melody.map((melody) => {
       const svg2 = getMelodyViewSVG();
-      const model = new DMelodyModel(e);
-      const view = new DMelodyView(svg2);
-      return new DMelody(model, view);
+      updateX(svg2)(melody.time.begin);
+      updateY(svg2)(melody.note);
+      updateWidth(svg2)(melody.time.duration);
+      updateHeight(svg2);
+      return { model: melody, svg: svg2 };
     });
-    const svg = getSVGG("detected-melody", parts);
-    const d_melody_collection = new DMelodySeries(svg, parts);
-    controllers.window.addListeners(...d_melody_collection.children.map((e) => e.onWindowResized.bind(e)));
-    controllers.time_range.addListeners(...d_melody_collection.children.map((e) => e.onTimeRangeChanged.bind(e)));
-    controllers.d_melody.addListeners(d_melody_collection.onDMelodyVisibilityChanged.bind(d_melody_collection));
-    controllers.audio.addListeners(...d_melody_collection.children.map((e) => e.onAudioUpdate.bind(e)));
-    d_melody_collection.children.map((e) => e.onAudioUpdate());
+    const svg = getSVGG("detected-melody", children);
+    const d_melody_collection = { svg, children };
+    controllers.window.addListeners(...d_melody_collection.children.map((e) => () => onWindowResized2(e.svg)(e.model)));
+    controllers.time_range.addListeners(...d_melody_collection.children.map((e) => () => onTimeRangeChanged(e.svg)(e.model)));
+    controllers.d_melody.addListeners(onDMelodyVisibilityChanged(d_melody_collection.svg));
+    controllers.audio.addListeners(() => onAudioUpdate(d_melody_collection.svg));
+    onAudioUpdate(d_melody_collection.svg);
     return d_melody_collection.svg;
   }
   var IRPlotAxis = class {
@@ -5926,7 +5875,7 @@ Expected id is: ${regexp}`);
     updateHeight_GravityView(svg)(black_key_height);
     onWindowResized_GravityView(triangle, line)(scaled5(line_seed)(NoteSize.get(), 1));
   };
-  var onAudioUpdate = (svg) => {
+  var onAudioUpdate2 = (svg) => {
     svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`);
   };
   var onUpdateGravityVisibility_GravityHierarchy = (svg) => (visible) => {
@@ -5934,19 +5883,19 @@ Expected id is: ${regexp}`);
   };
   var onChangedLayer_GravityHierarchy = (svg, show, children) => (value) => {
     show = children.filter((e) => value === e.layer);
-    show.forEach((e) => onAudioUpdate(e.svg));
+    show.forEach((e) => onAudioUpdate2(e.svg));
     svg.replaceChildren(...show.map((e) => e.svg));
   };
   function getTriangle() {
-    const triangle_width = 4;
-    const triangle_height = 5;
+    const triangle_width2 = 4;
+    const triangle_height2 = 5;
     const triangle_svg = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
     triangle_svg.classList.add("triangle");
     triangle_svg.id = "gravity-arrow";
     triangle_svg.style.stroke = "rgb(0, 0, 0)";
     triangle_svg.style.fill = "rgb(0, 0, 0)";
     triangle_svg.style.strokeWidth = String(5);
-    triangle_svg.setAttribute("points", [0, 0, -triangle_width, +triangle_height, +triangle_width, +triangle_height].join(","));
+    triangle_svg.setAttribute("points", [0, 0, -triangle_width2, +triangle_height2, +triangle_width2, +triangle_height2].join(","));
     return triangle_svg;
   }
   function getLine() {
@@ -5983,32 +5932,32 @@ Expected id is: ${regexp}`);
     children.forEach((e) => svg.appendChild(e.svg));
     return svg;
   }
+  var getLayers = (mode) => (melodies, layer) => {
+    const next = melodies.slice(1);
+    const children = next.map((n, i) => {
+      const e = melodies[i];
+      const g = e.melody_analysis[mode];
+      if (!g) {
+        return;
+      }
+      const line_seed = getLinePos2(e, n, g);
+      const model = getGravityModel(layer, e, n, g);
+      const triangle = getTriangle();
+      const line = getLine();
+      const svg2 = getGravitySVG(triangle, line);
+      const view = { svg: svg2, triangle, line };
+      return {
+        model,
+        view,
+        line_seed,
+        ...view
+      };
+    }).filter((e) => e !== void 0).map((e) => ({ ...e, ...e.view }));
+    const svg = getSVGG6(`layer-${layer}`, children);
+    return { layer, svg, children, show: children };
+  };
   function buildGravity(mode, h_melodies, controllers) {
-    const getLayers2 = (melodies, layer) => {
-      const next = melodies.slice(1);
-      const children2 = next.map((n, i) => {
-        const e = melodies[i];
-        const g = e.melody_analysis[mode];
-        if (!g) {
-          return;
-        }
-        const line_seed = getLinePos2(e, n, g);
-        const model = getGravityModel(layer, e, n, g);
-        const triangle = getTriangle();
-        const line = getLine();
-        const svg3 = getGravitySVG(triangle, line);
-        const view = { svg: svg3, triangle, line };
-        return {
-          model,
-          view,
-          line_seed,
-          ...view
-        };
-      }).filter((e) => e !== void 0).map((e) => ({ ...e, ...e.view }));
-      const svg2 = getSVGG6(`layer-${layer}`, children2);
-      return { layer, svg: svg2, children: children2, show: children2 };
-    };
-    const children = h_melodies.map(getLayers2);
+    const children = h_melodies.map(getLayers(mode));
     const svg = getSVGG6(mode, children);
     const gravity_hierarchy = { svg, children, show: children };
     switch (mode) {
@@ -6022,8 +5971,8 @@ Expected id is: ${regexp}`);
     controllers.hierarchy.addListeners(onChangedLayer_GravityHierarchy(gravity_hierarchy.svg, gravity_hierarchy.show, gravity_hierarchy.children));
     controllers.window.addListeners(...gravity_hierarchy.children.flatMap((e) => e.children).map((e) => () => onWindowResized_Gravity(e.svg)(e.model)(e.triangle, e.line, e.line_seed)));
     controllers.time_range.addListeners(...gravity_hierarchy.children.flatMap((e) => e.children).map((e) => () => onWindowResized_Gravity(e.svg)(e.model)(e.triangle, e.line, e.line_seed)));
-    controllers.audio.addListeners(...gravity_hierarchy.children.map((e) => () => onAudioUpdate(e.svg)));
-    gravity_hierarchy.children.map((e) => onAudioUpdate(e.svg));
+    controllers.audio.addListeners(...gravity_hierarchy.children.map((e) => () => onAudioUpdate2(e.svg)));
+    gravity_hierarchy.children.map((e) => onAudioUpdate2(e.svg));
     return gravity_hierarchy.svg;
   }
   function getLinePos3(e, n) {
@@ -6039,15 +5988,15 @@ Expected id is: ${regexp}`);
     };
     return line_pos;
   }
+  var triangle_width = 10;
+  var triangle_height = 10;
   function getTriangle2() {
-    const triangle_width = 4;
-    const triangle_height = 5;
     const triangle_svg = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
     triangle_svg.classList.add("triangle");
     triangle_svg.id = "gravity-arrow";
     triangle_svg.style.stroke = "rgb(0, 0, 0)";
     triangle_svg.style.fill = "rgb(0, 0, 0)";
-    triangle_svg.style.strokeWidth = String(5);
+    triangle_svg.style.strokeWidth = String(0);
     triangle_svg.setAttribute("points", [0, 0, -triangle_width, +triangle_height, +triangle_width, +triangle_height].join(","));
     return triangle_svg;
   }
@@ -6071,52 +6020,44 @@ Expected id is: ${regexp}`);
     children.forEach((e) => svg.appendChild(e));
     return svg;
   }
-  var getImplicationColor = (archetype) => {
+  var getArchetypeColor = (archetype) => {
     switch (archetype.symbol) {
+      case "(P)":
       case "P":
         return "rgba(0,0,255,1)";
+      case "(IP)":
       case "IP":
-        return "rgba(0,0,255,.5)";
+        return "rgba(170,0,255,1)";
+      case "(VP)":
       case "VP":
-        return "rgba(0,0,255,.5)";
+        return "rgba(0,170,255,1)";
+      case "(R)":
       case "R":
         return "rgba(255,0,0,1)";
+      case "(IR)":
       case "IR":
-        return "rgba(255,0,0,.5)";
+        return "rgba(255,170,0,1)";
+      case "(VR)":
       case "VR":
-        return "rgba(255,0,0,.5)";
+        return "rgba(255,0,170,1)";
+      case "(D)":
       case "D":
         return "rgba(0,255,0,1)";
-      case "ID":
-        return "rgba(0,255,0,.5)";
-      case "(P)":
-        return "rgba(0,0,255,1)";
-      case "(IP)":
-        return "rgba(0,0,255,.5)";
-      case "(VP)":
-        return "rgba(0,0,255,.5)";
-      case "(R)":
-        return "rgba(255,0,0,1)";
-      case "(IR)":
-        return "rgba(255,0,0,.5)";
-      case "(VR)":
-        return "rgba(255,0,0,.5)";
-      case "(D)":
-        return "rgba(0,255,0,1)";
       case "(ID)":
-        return "rgba(0,255,0,.5)";
+      case "ID":
+        return "rgba(0,255,170,1)";
       default:
         "rgba(0,0,0,.25)";
     }
   };
   var getRange2 = (inf, sup, over, sgn) => ({ inf, sup, over, sgn });
   var m3 = 3;
-  var getDestination = (interval4) => {
-    const s = Math.sign(interval4);
-    const I = Math.abs(interval4);
-    const L = I - m3;
-    const G = I + m3;
-    return I < 6 ? getRange2(s * L, s * G, s * G, 1) : getRange2(s * 0, s * L, s * G, -1);
+  var getDestination = (observation) => {
+    const s = Math.sign(observation);
+    const O = Math.abs(observation);
+    const L = O - m3;
+    const G = O + m3;
+    return O < 6 ? getRange2(s * L, s * G, s * G, 1) : getRange2(s * 0, s * L, s * G, -1);
   };
   var getImplicationArrow = (layer) => (delayed_melody) => (_, i) => {
     const first = delayed_melody[0][i];
@@ -6134,18 +6075,72 @@ Expected id is: ${regexp}`);
     };
     const triangle = getTriangle2();
     const line = getLine2();
-    triangle.style.stroke = getImplicationColor(model.archetype) || "rgba(0,0,0,.25)";
-    line.style.stroke = getImplicationColor(model.archetype) || "rgba(0,0,0,.25)";
+    const a = isB(second.note - first.note, third.note - second.note) ? 1 : 0.25;
+    triangle.style.stroke = isP(first.note, second.note) ? `rgba(0,0,255,${a})` : `rgba(255,0,0,${a})`;
+    triangle.style.fill = isP(first.note, second.note) ? `rgba(0,0,255,${a})` : `rgba(255,0,0,${a})`;
+    line.style.stroke = isP(first.note, second.note) ? `rgba(0,0,255,${a})` : `rgba(255,0,0,${a})`;
     const svg = getGravitySVG2(triangle, line);
     const view = { svg, triangle, line };
     return { model, view, line_pos };
   };
-  var getLayers = (melodies, layer) => {
-    const triangle_matrix = melodies.map((_, i) => melodies.slice(i));
-    if (triangle_matrix.length <= 3) {
+  var eqv = (a, b) => !(a || b) || a && b;
+  var isV = (observed, realization) => {
+    const I = Math.abs(observed);
+    const R = Math.abs(realization);
+    return I + m3 <= R;
+  };
+  var isB = (observed, realization) => {
+    const I = Math.abs(observed);
+    const R = Math.abs(realization);
+    if (I + m3 <= R) {
+      return false;
+    }
+    return eqv(I - m3 < R && R < I + m3, Math.sign(observed) === Math.sign(realization));
+  };
+  var isP = (observed, realization) => {
+    const I = Math.abs(observed);
+    const R = Math.abs(realization);
+    return I + m3 <= R ? Math.sign(observed) === Math.sign(realization) : I - m3 < R;
+  };
+  var getReImplicationArrow = (layer) => (delayed_melody) => (_, i) => {
+    const first = delayed_melody[0][i];
+    const second = delayed_melody[1][i];
+    const third = delayed_melody[2][i];
+    const fourth = delayed_melody[3][i];
+    const implication = getDestination(second.note - first.note);
+    if (isB(second.note - first.note, third.note - second.note)) {
       return;
     }
-    const gravity = triangle_matrix[2].map(getImplicationArrow(layer)(triangle_matrix)).filter((e) => e !== void 0).map((e) => ({ svg: e.view.svg, model: e.model, view: e.view, line_seed: e.line_pos }));
+    const is_V = isV(second.note - first.note, third.note - second.note);
+    const IImplication = third?.note + (implication.inf + implication.sup) / 2;
+    const VImplication = third?.note - (implication.inf + implication.sup) / 2;
+    const line_pos = fourth && getLinePos3(
+      { time: third.time, note: third.note },
+      { time: fourth.time, note: is_V ? VImplication : IImplication }
+    );
+    const model = {
+      ...second,
+      archetype: second.melody_analysis.implication_realization,
+      layer: layer || 0
+    };
+    const triangle = getTriangle2();
+    const line = getLine2();
+    triangle.style.stroke = getArchetypeColor(model.archetype) || "rgba(0,0,0,.25)";
+    triangle.style.fill = getArchetypeColor(model.archetype) || "rgba(0,0,0,.25)";
+    line.style.stroke = getArchetypeColor(model.archetype) || "rgba(0,0,0,.25)";
+    const svg = getGravitySVG2(triangle, line);
+    const view = { svg, triangle, line };
+    return { model, view, line_pos };
+  };
+  var getLayers2 = (melodies, layer) => {
+    const delayed_melody = melodies.map((_, i) => melodies.slice(i));
+    if (delayed_melody.length <= 3) {
+      return;
+    }
+    const gravity = [
+      delayed_melody[2].map(getImplicationArrow(layer)(delayed_melody)),
+      delayed_melody[3].map(getReImplicationArrow(layer)(delayed_melody))
+    ].flat().filter((e) => e !== void 0).map((e) => ({ svg: e.view.svg, model: e.model, view: e.view, line_seed: e.line_pos }));
     const svg = getSVGG7(`layer-${layer}`, gravity.map((e) => e.svg));
     return {
       layer,
@@ -6158,31 +6153,33 @@ Expected id is: ${regexp}`);
     e.svg.setAttribute("width", String(PianoRollConverter.scaled(e.model.time.duration)));
     e.svg.setAttribute("height", String(black_key_height));
     const line_pos = { x1: e.line_seed.x1 * NoteSize.get(), x2: e.line_seed.x2 * NoteSize.get(), y1: e.line_seed.y1 * 1, y2: e.line_seed.y2 * 1 };
-    const angle = Math.atan2(line_pos.y2 - line_pos.y1, line_pos.x2 - line_pos.x1) * 180 / Math.PI + 90;
-    e.view.triangle.setAttribute("transform", `translate(${line_pos.x2},${line_pos.y2}) rotate(${angle})`);
+    const angle = Math.atan2(line_pos.y2 - line_pos.y1, line_pos.x2 - line_pos.x1);
+    const marginX = triangle_height * Math.cos(angle);
+    const marginY = triangle_height * Math.sin(angle);
+    e.view.triangle.setAttribute("transform", `translate(${line_pos.x2},${line_pos.y2}) rotate(${angle * 180 / Math.PI + 90})`);
     e.view.line.setAttribute("x1", String(line_pos.x1));
-    e.view.line.setAttribute("x2", String(line_pos.x2));
     e.view.line.setAttribute("y1", String(line_pos.y1));
-    e.view.line.setAttribute("y2", String(line_pos.y2));
+    e.view.line.setAttribute("x2", String(line_pos.x2 - marginX));
+    e.view.line.setAttribute("y2", String(line_pos.y2 - marginY));
   };
-  var onAudioUpdate2 = (svg) => {
+  var onAudioUpdate3 = (svg) => {
     svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`);
   };
   var onChangedLayer = (ir_gravity) => (value) => {
     ir_gravity.show = ir_gravity.children.filter((e) => value === e.layer);
-    ir_gravity.show.forEach((e) => onAudioUpdate2(e.svg));
+    ir_gravity.show.forEach((e) => onAudioUpdate3(e.svg));
     ir_gravity.svg.replaceChildren(...ir_gravity.show.map((e) => e.svg));
   };
   function buildIRGravity(h_melodies, controllers) {
-    const children = h_melodies.map(getLayers).filter((e) => e !== void 0);
+    const children = h_melodies.map(getLayers2).filter((e) => e !== void 0);
     const svg = getSVGG7("ir_gravity", children.map((e) => e.svg));
     const ir_gravity = { svg, children, show: [] };
     controllers.window.addListeners(...ir_gravity.children.flatMap((e) => e.children).map((e) => () => onWindowResized_IRGravity(e)));
     controllers.time_range.addListeners(...ir_gravity.children.flatMap((e) => e.children).map((e) => () => onWindowResized_IRGravity(e)));
     controllers.hierarchy.addListeners(onChangedLayer(ir_gravity));
     controllers.melody_color.addListeners(...ir_gravity.children.flatMap((e) => e.children).map((e) => (f) => e.svg.style.fill = f(e.model.archetype)));
-    controllers.audio.addListeners(...ir_gravity.children.map((e) => () => onAudioUpdate2(e.svg)));
-    ir_gravity.children.map((e) => onAudioUpdate2(e.svg));
+    controllers.audio.addListeners(...ir_gravity.children.map((e) => () => onAudioUpdate3(e.svg)));
+    ir_gravity.children.map((e) => onAudioUpdate3(e.svg));
     return ir_gravity.svg;
   }
   var MelodyElements = class {
@@ -6392,7 +6389,7 @@ Expected id is: ${regexp}`);
   var appendChildren = (svg) => (...children) => {
     children.forEach((e) => svg.appendChild(e));
   };
-  var onWindowResized2 = (svg) => () => {
+  var onWindowResized3 = (svg) => () => {
     svg.setAttribute("x", String(0));
     svg.setAttribute("y", String(0));
     svg.setAttribute("width", String(PianoRollWidth.get()));
@@ -6409,7 +6406,7 @@ Expected id is: ${regexp}`);
         new Keys().svg,
         new CurrentTimeLine(show_current_time_line, window2).svg
       );
-      window2.addListeners(onWindowResized2(svg));
+      window2.addListeners(onWindowResized3(svg));
       this.svg = svg;
     }
   };
@@ -6633,27 +6630,20 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
         return init_mgn === "ab";
     }
   };
-  var Triad = class {
-    length = 3;
-    symbol;
-    notes;
-    intervals;
-    registral;
-    intervallic;
-    registral_return_form;
-    archetype;
-    retrospective;
-    constructor(prev, curr, next) {
-      this.notes = [prev || "", curr || "", next || ""];
-      this.archetype = new TriadArchetype(prev, curr, next);
-      const { intervals, registral, intervallic, registral_return_form } = this.archetype;
-      this.intervals = intervals;
-      this.registral = registral;
-      this.intervallic = intervallic;
-      this.registral_return_form = registral_return_form;
-      this.retrospective = isRetrospective(this.archetype);
-      this.symbol = this.retrospective ? retrospectiveSymbol(this.archetype.symbol) : this.archetype.symbol;
-    }
+  var getTriad = (prev, curr, next) => {
+    const archetype = new TriadArchetype(prev, curr, next);
+    const { intervals, registral, intervallic, registral_return_form } = archetype;
+    const retrospective = isRetrospective(archetype);
+    return {
+      notes: [prev || "", curr || "", next || ""],
+      archetype,
+      intervals,
+      registral,
+      intervallic,
+      registral_return_form,
+      retrospective,
+      symbol: retrospective ? retrospectiveSymbol(archetype.symbol) : archetype.symbol
+    };
   };
   var get_grb_on_parametric_scale = (archetype) => {
     const s = archetype.intervallic?.direction.name === "mL" ? -1 : 0;
@@ -6873,7 +6863,7 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
     if (c !== void 0) {
       if (p !== void 0) {
         if (n !== void 0) {
-          return new Triad(p, c, n);
+          return getTriad(p, c, n);
         } else {
           return new Dyad(p, c);
         }

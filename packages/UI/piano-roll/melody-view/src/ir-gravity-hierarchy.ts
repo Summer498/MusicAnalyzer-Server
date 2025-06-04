@@ -64,16 +64,16 @@ function getLinePos(
   return line_pos;
 }
 
+const triangle_width = 10;
+const triangle_height = 10;
 function getTriangle() {
-  const triangle_width = 4;
-  const triangle_height = 5;
 
   const triangle_svg = document.createElementNS("http://www.w3.org/2000/svg", "polygon")
   triangle_svg.classList.add("triangle");
   triangle_svg.id = "gravity-arrow";
   triangle_svg.style.stroke = "rgb(0, 0, 0)";
   triangle_svg.style.fill = "rgb(0, 0, 0)";
-  triangle_svg.style.strokeWidth = String(5);
+  triangle_svg.style.strokeWidth = String(0);
   triangle_svg.setAttribute("points", [0, 0, - triangle_width, + triangle_height, + triangle_width, + triangle_height].join(","));
   return triangle_svg;
 }
@@ -106,43 +106,43 @@ function getSVGG(id: string, children: SVGElement[]) {
 const getImplicationColor = (archetype: Triad) => {
   switch (archetype.symbol) {
     case "P": return "rgba(0,0,255,1)"
-    case "IP": return "rgba(0,0,255,.5)"
-    case "VP": return "rgba(0,0,255,.5)"
+    case "IP": return "rgba(0,0,255,.25)"
+    case "VP": return "rgba(0,0,255,.25)"
     case "R": return "rgba(255,0,0,1)"
-    case "IR": return "rgba(255,0,0,.5)"
-    case "VR": return "rgba(255,0,0,.5)"
+    case "IR": return "rgba(255,0,0,.25)"
+    case "VR": return "rgba(255,0,0,.25)"
     case "D": return "rgba(0,255,0,1)"
     case "ID": return "rgba(0,255,0,.5)"
     case "(P)": return "rgba(0,0,255,1)"
-    case "(IP)": return "rgba(0,0,255,.5)"
-    case "(VP)": return "rgba(0,0,255,.5)"
+    case "(IP)": return "rgba(0,0,255,.25)"
+    case "(VP)": return "rgba(0,0,255,.25)"
     case "(R)": return "rgba(255,0,0,1)"
-    case "(IR)": return "rgba(255,0,0,.5)"
-    case "(VR)": return "rgba(255,0,0,.5)"
+    case "(IR)": return "rgba(255,0,0,.25)"
+    case "(VR)": return "rgba(255,0,0,.25)"
     case "(D)": return "rgba(0,255,0,1)"
-    case "(ID)": return "rgba(0,255,0,.5)"
+    case "(ID)": return "rgba(0,255,0,.25)"
     default: "rgba(0,0,0,.25)"
   }
 }
 
 const getArchetypeColor = (archetype: Triad) => {
   switch (archetype.symbol) {
+    case "(P)":
     case "P": return "rgba(0,0,255,1)"
+    case "(IP)":
     case "IP": return "rgba(170,0,255,1)"
+    case "(VP)":
     case "VP": return "rgba(0,170,255,1)"
+    case "(R)":
     case "R": return "rgba(255,0,0,1)"
+    case "(IR)":
     case "IR": return "rgba(255,170,0,1)"
+    case "(VR)":
     case "VR": return "rgba(255,0,170,1)"
+    case "(D)":
     case "D": return "rgba(0,255,0,1)"
+    case "(ID)":
     case "ID": return "rgba(0,255,170,1)"
-    case "(P)": return "rgba(0,0,255,.5)"
-    case "(IP)": return "rgba(170,0,255,.5)"
-    case "(VP)": return "rgba(0,170,255,.5)"
-    case "(R)": return "rgba(255,0,0,.5)"
-    case "(IR)": return "rgba(255,170,0,.5)"
-    case "(VR)": return "rgba(255,0,170,.5)"
-    case "(D)": return "rgba(0,255,0,.5)"
-    case "(ID)": return "rgba(0,255,170)"
     default: "rgba(0,0,0,.25)"
   }
 }
@@ -150,12 +150,12 @@ const getArchetypeColor = (archetype: Triad) => {
 const getRange = (inf: number, sup: number, over: number, sgn: -1 | 0 | 1) => ({ inf, sup, over, sgn } as const)
 
 const m3 = 3;
-const getDestination = (interval: number) => {
-  const s = Math.sign(interval);
-  const I = Math.abs(interval);
-  const L = I - m3;
-  const G = I + m3;
-  return (I < 6)
+const getDestination = (observation: number) => {
+  const s = Math.sign(observation);
+  const O = Math.abs(observation);
+  const L = O - m3;
+  const G = O + m3;
+  return (O < 6)
     ? getRange(s * L, s * G, s * G, 1)
     : getRange(s * 0, s * L, s * G, -1)
 }
@@ -178,31 +178,52 @@ const getImplicationArrow = (layer: number) => (delayed_melody: SerializedTimeAn
   } as IRGravityModel;
   const triangle = getTriangle();
   const line = getLine();
-  triangle.style.stroke = getImplicationColor(model.archetype) || "rgba(0,0,0,.25)"
-  line.style.stroke = getImplicationColor(model.archetype) || "rgba(0,0,0,.25)"
+  const a = isB(second.note - first.note, third.note - second.note) ? 1 : .25;
+  triangle.style.stroke = isP(first.note,second.note) ? `rgba(0,0,255,${a})` : `rgba(255,0,0,${a})`;
+  triangle.style.fill = isP(first.note,second.note) ? `rgba(0,0,255,${a})` : `rgba(255,0,0,${a})`;
+  line.style.stroke = isP(first.note,second.note) ? `rgba(0,0,255,${a})` : `rgba(255,0,0,${a})`;
   const svg = getGravitySVG(triangle, line);
   const view = { svg, triangle, line };
   return { model, view, line_pos }
 }
 
-const getReImplication = (observed: number, realization: number) => {
-  const s = Math.sign(observed);
-  const destination = getDestination(observed);
-  const O = s * observed;
-  const D = s * (destination.inf + destination.sup) / 2;
-  const R = s * realization;
-  if (0 <= R && R < O - m3) // IR
-  { }
-  else if (0 <= -R && -R < O - m3) // R
-  { }
-  else if (O - m3 <= R && R < O + m3) // P
-  { return }
-  else if (O - m3 <= -R && -R < O + m3) // IP
-  { }
-  else if (O + m3 <= R) // VP
-  { }
-  else if (O + m3 <= -R) // VR
-  { }
+const xor = <A, B>(a: A, b: B) => !(a && b) && (a || b);
+const eqv = <A, B>(a: A, b: B) => !(a || b) || (a && b);
+
+const isV = (observed: number, realization: number) => {
+  const I = Math.abs(observed);
+  const R = Math.abs(realization);
+  return I + m3 <= R;
+}
+
+const isI = (observed: number, realization: number) => {
+  const I = Math.abs(observed);
+  const R = Math.abs(realization);
+  if (I + m3 <= R) { return false; }
+  return xor(I - m3 < R && R < I + m3, Math.sign(observed) === Math.sign(realization))
+}
+
+const isB = (observed: number, realization: number) => {
+  const I = Math.abs(observed);
+  const R = Math.abs(realization);
+  if (I + m3 <= R) { return false; }
+  return eqv(I - m3 < R && R < I + m3, Math.sign(observed) === Math.sign(realization))
+}
+
+const isP = (observed: number, realization: number) => {
+  // x o o
+  // x o x
+  const I = Math.abs(observed);
+  const R = Math.abs(realization);
+  return I + m3 <= R ? (Math.sign(observed) === Math.sign(realization)) : I - m3 < R;
+}
+
+const isR = (observed: number, realization: number) => {
+  // o x x
+  // o x o
+  const I = Math.abs(observed);
+  const R = Math.abs(realization);
+  return !isP(observed, realization)
 }
 
 const getReImplicationArrow = (layer: number) => (delayed_melody: SerializedTimeAndAnalyzedMelody[][]) => (_: unknown, i: number) => {
@@ -211,17 +232,17 @@ const getReImplicationArrow = (layer: number) => (delayed_melody: SerializedTime
   const third = delayed_melody[2][i];
   const fourth = delayed_melody[3][i];
 
-  const implication = getDestination(second.note - first.note)
+  const implication = getDestination(second.note - first.note);
 
-  const line_pos = getLinePos(
-    { time: second.time, note: second.note },
-    { time: third.time, note: second.note + (implication.inf + implication.sup) / 2 }
-  );
-  const IImplicationDist = fourth?.note + (implication.inf + implication.sup) / 2;
-  const VImplicationDist = third.note + (implication.inf + implication.sup) / 2;
-  const line_pos_reImplication = fourth && getLinePos(
+  if (isB(second.note - first.note, third.note - second.note)) { return; }
+
+  const is_V = isV(second.note - first.note, third.note - second.note);
+  const IImplication = third?.note + (implication.inf + implication.sup) / 2;
+  const VImplication = third?.note - (implication.inf + implication.sup) / 2;
+  // const VImplication = third?.note + (implication.inf + implication.sup) / 2;
+  const line_pos = fourth && getLinePos(
     { time: third.time, note: third.note },
-    { time: fourth.time, note: third.note },
+    { time: fourth.time, note: is_V ? VImplication : IImplication },
   );
 
   const model = {
@@ -231,22 +252,26 @@ const getReImplicationArrow = (layer: number) => (delayed_melody: SerializedTime
   } as IRGravityModel;
   const triangle = getTriangle();
   const line = getLine();
-  triangle.style.stroke = getArchetypeColor(model.archetype) || "rgba(0,0,0,.25)"
-  line.style.stroke = getArchetypeColor(model.archetype) || "rgba(0,0,0,.25)"
+  triangle.style.stroke = getArchetypeColor(model.archetype) || "rgba(0,0,0,.25)";
+  triangle.style.fill = getArchetypeColor(model.archetype) || "rgba(0,0,0,.25)";
+  line.style.stroke = getArchetypeColor(model.archetype) || "rgba(0,0,0,.25)";
   const svg = getGravitySVG(triangle, line);
   const view = { svg, triangle, line };
-  return { model, view, line_pos }
+  return { model, view, line_pos };
 }
 
 const getLayers = (
   melodies: SerializedTimeAndAnalyzedMelody[],
   layer: number
 ) => {
-  const triangle_matrix = melodies.map((_, i) => melodies.slice(i));
-  if (triangle_matrix.length <= 3) { return; }
-  const gravity = triangle_matrix[2].map(getImplicationArrow(layer)(triangle_matrix))
+  const delayed_melody = melodies.map((_, i) => melodies.slice(i));
+  if (delayed_melody.length <= 3) { return; }
+  const gravity = [
+    delayed_melody[2].map(getImplicationArrow(layer)(delayed_melody)),
+    delayed_melody[3].map(getReImplicationArrow(layer)(delayed_melody)),
+  ].flat()
     .filter(e => e !== undefined)
-    .map(e => ({ svg: e.view.svg, model: e.model, view: e.view, line_seed: e.line_pos }))
+    .map(e => ({ svg: e.view.svg, model: e.model, view: e.view, line_seed: e.line_pos }));
   const svg = getSVGG(`layer-${layer}`, gravity.map(e => e.svg));
   return ({
     layer: layer,
@@ -263,12 +288,14 @@ const onWindowResized_IRGravity = (
   e.svg.setAttribute("height", String(black_key_height));
 
   const line_pos = { x1: e.line_seed.x1 * NoteSize.get(), x2: e.line_seed.x2 * NoteSize.get(), y1: e.line_seed.y1 * 1, y2: e.line_seed.y2 * 1 } as ILinePos
-  const angle = Math.atan2(line_pos.y2 - line_pos.y1, line_pos.x2 - line_pos.x1) * 180 / Math.PI + 90;
-  e.view.triangle.setAttribute("transform", `translate(${line_pos.x2},${line_pos.y2}) rotate(${angle})`);
+  const angle = Math.atan2(line_pos.y2 - line_pos.y1, line_pos.x2 - line_pos.x1);
+  const marginX = triangle_height * Math.cos(angle);
+  const marginY = triangle_height * Math.sin(angle);
+  e.view.triangle.setAttribute("transform", `translate(${line_pos.x2},${line_pos.y2}) rotate(${angle * 180 / Math.PI + 90})`);
   e.view.line.setAttribute("x1", String(line_pos.x1));
-  e.view.line.setAttribute("x2", String(line_pos.x2));
   e.view.line.setAttribute("y1", String(line_pos.y1));
-  e.view.line.setAttribute("y2", String(line_pos.y2));
+  e.view.line.setAttribute("x2", String(line_pos.x2 - marginX));
+  e.view.line.setAttribute("y2", String(line_pos.y2 - marginY));
 }
 
 const onAudioUpdate = (svg: SVGGElement) => { svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
