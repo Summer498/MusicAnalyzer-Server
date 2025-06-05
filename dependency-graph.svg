@@ -3020,18 +3020,18 @@
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M914.6,-1836.11C1013.76,-1836.53 1361.5,-1838 1361.5,-1838 1361.5,-1838 1382.74,-1840.43 1404.3,-1842.89"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1410.13,-1845.67 1404.41,-1842.9 1410.61,-1841.5 1410.13,-1845.67"/>
 </g>
-<!-- packages/UI/synth/src/create&#45;oscilllator.ts -->
+<!-- packages/UI/synth/src/create&#45;oscillator.ts -->
 <g id="node110" class="node">
-<title>packages/UI/synth/src/create&#45;oscilllator.ts</title>
-<g id="a_node110"><a xlink:href="packages/UI/synth/src/create-oscilllator.ts" xlink:title="create&#45;oscilllator.ts">
+<title>packages/UI/synth/src/create&#45;oscillator.ts</title>
+<g id="a_node110"><a xlink:href="packages/UI/synth/src/create-oscillator.ts" xlink:title="create&#45;oscillator.ts">
 <path fill="#ddfeff" stroke="black" d="M1494.5,-1887C1494.5,-1887 1405.5,-1887 1405.5,-1887 1402.5,-1887 1399.5,-1884 1399.5,-1881 1399.5,-1881 1399.5,-1875 1399.5,-1875 1399.5,-1872 1402.5,-1869 1405.5,-1869 1405.5,-1869 1494.5,-1869 1494.5,-1869 1497.5,-1869 1500.5,-1872 1500.5,-1875 1500.5,-1875 1500.5,-1881 1500.5,-1881 1500.5,-1884 1497.5,-1887 1494.5,-1887"/>
-<text text-anchor="start" x="1407.5" y="-1875.8" font-family="Helvetica,sans-Serif" font-size="9.00">create&#45;oscilllator.ts</text>
+<text text-anchor="start" x="1407.5" y="-1875.8" font-family="Helvetica,sans-Serif" font-size="9.00">create&#45;oscillator.ts</text>
 </a>
 </g>
 </g>
-<!-- packages/UI/synth/index.ts&#45;&gt;packages/UI/synth/src/create&#45;oscilllator.ts -->
+<!-- packages/UI/synth/index.ts&#45;&gt;packages/UI/synth/src/create&#45;oscillator.ts -->
 <g id="edge204" class="edge">
-<title>packages/UI/synth/index.ts&#45;&gt;packages/UI/synth/src/create&#45;oscilllator.ts</title>
+<title>packages/UI/synth/index.ts&#45;&gt;packages/UI/synth/src/create&#45;oscillator.ts</title>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M914.76,-1836.94C989.24,-1839.6 1196.5,-1847 1196.5,-1847 1196.5,-1847 1361.5,-1856 1361.5,-1856 1361.5,-1856 1374.5,-1863 1374.5,-1863 1374.5,-1863 1384.84,-1865.08 1397.82,-1867.7"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1403.53,-1870.99 1398.06,-1867.74 1404.36,-1866.87 1403.53,-1870.99"/>
 </g>
@@ -3071,9 +3071,9 @@
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1314.23,-1867.25C1338.6,-1863.77 1375.4,-1858.51 1404.39,-1854.37"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1404.81,-1856.43 1410.45,-1853.51 1404.21,-1852.28 1404.81,-1856.43"/>
 </g>
-<!-- packages/UI/synth/src/play.ts&#45;&gt;packages/UI/synth/src/create&#45;oscilllator.ts -->
+<!-- packages/UI/synth/src/play.ts&#45;&gt;packages/UI/synth/src/create&#45;oscillator.ts -->
 <g id="edge209" class="edge">
-<title>packages/UI/synth/src/play.ts&#45;&gt;packages/UI/synth/src/create&#45;oscilllator.ts</title>
+<title>packages/UI/synth/src/play.ts&#45;&gt;packages/UI/synth/src/create&#45;oscillator.ts</title>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M1314.23,-1872.14C1335.6,-1873.07 1366.52,-1874.41 1393.36,-1875.58"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="1393.29,-1877.68 1399.38,-1875.84 1393.47,-1873.48 1393.29,-1877.68"/>
 </g>
