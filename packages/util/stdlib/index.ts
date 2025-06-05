@@ -1,6 +1,8 @@
-export { NotImplementedError } from "./src/error";
+export type { NotImplementedError } from "./src/error";
+export { createNotImplementedError } from "./src/error";
 export { assertNonNullable } from "./src/assertion";
-export { Assertion } from "./src/assertion";
+export type { Assertion } from "./src/assertion";
+export { createAssertion } from "./src/assertion";
 export { castToNumber } from "./src/string";
 export { getCapitalCase } from "./src/string";
 export { getLowerCase } from "./src/string";

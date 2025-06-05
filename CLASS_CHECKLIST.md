@@ -103,12 +103,12 @@
 - [ ] packages/cognitive-theory-of-music/gttm/src/preference-rules/GPR/gpr3.ts -  GPR3b<T> {
 - [ ] packages/cognitive-theory-of-music/gttm/src/preference-rules/GPR/gpr3.ts -  GPR3c<T> {
 - [ ] packages/cognitive-theory-of-music/gttm/src/preference-rules/GPR/gpr3.ts -  GPR3d<T> {
-- [ ] packages/cognitive-theory-of-music/gttm/src/preference-rules/common/Interval.ts -  IntervalOfTime<Time> {
+- [x] packages/cognitive-theory-of-music/gttm/src/preference-rules/common/Interval.ts -  IntervalOfTime<Time> {
 - [ ] packages/cognitive-theory-of-music/gttm/src/preference-rules/common/Note.ts -  Note<T> {
-- [ ] packages/cognitive-theory-of-music/gttm/src/preference-rules/common/Pair.ts -  Pair<T> extends Negatable {
-- [ ] packages/cognitive-theory-of-music/gttm/src/preference-rules/common/Transition.ts -  IntervallicDistance<T> {
-- [ ] packages/cognitive-theory-of-music/gttm/src/preference-rules/common/Transition.ts -  Transition<T> extends Negatable {
-- [ ] packages/cognitive-theory-of-music/gttm/src/preference-rules/common/create-negated.ts -  Negatable {
+- [x] packages/cognitive-theory-of-music/gttm/src/preference-rules/common/Pair.ts -  Pair<T> extends Negatable {
+- [x] packages/cognitive-theory-of-music/gttm/src/preference-rules/common/Transition.ts -  IntervallicDistance<T> {
+- [x] packages/cognitive-theory-of-music/gttm/src/preference-rules/common/Transition.ts -  Transition<T> extends Negatable {
+- [x] packages/cognitive-theory-of-music/gttm/src/preference-rules/common/create-negated.ts -  Negatable {
 - [ ] packages/data-type/serializable-data/src/json-serializable.ts -  JSONSerializable<T extends JSONSerializable<T>> extends Serializable<T> {
 - [ ] packages/data-type/serializable-data/src/serializable.ts -  Serializable<T extends Serializable<T>> 
 - [ ] packages/data-type/serializable-data/src/xml-serializable.ts -  XMLSerializable<T extends XMLSerializable<T>> extends Serializable<T> {

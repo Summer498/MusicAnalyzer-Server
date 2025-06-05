@@ -1,2 +1,3 @@
 export { _throw } from "./throw-function";
-export { NotImplementedError } from "./not-implemented-error";
+export type { NotImplementedError } from "./not-implemented-error";
+export { createNotImplementedError } from "./not-implemented-error";
