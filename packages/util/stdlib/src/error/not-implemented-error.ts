@@ -1,2 +1,9 @@
-export class NotImplementedError 
-  extends Error { constructor(message = "Not Implemented.") { super(message); } }
+export interface NotImplementedError extends Error {}
+
+export const createNotImplementedError = (
+  message = "Not Implemented.",
+): NotImplementedError => {
+  const err = new Error(message);
+  err.name = "NotImplementedError";
+  return err as NotImplementedError;
+};

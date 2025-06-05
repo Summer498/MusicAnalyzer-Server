@@ -1,8 +1,11 @@
-export class IntervalOfTime<Time> {
-  constructor(time: { from: Time, to: Time }) {
-
-  }
-  isGreaterThan(operand: IntervalOfTime<Time>): boolean {
-    return false;  // TODO:
-  }
+export interface IntervalOfTime<Time> {
+  isGreaterThan(operand: IntervalOfTime<Time>): boolean;
 }
+
+export const createIntervalOfTime = <Time>(time: { from: Time; to: Time }): IntervalOfTime<Time> => {
+  return {
+    isGreaterThan(_operand: IntervalOfTime<Time>) {
+      return false; // TODO:
+    },
+  };
+};

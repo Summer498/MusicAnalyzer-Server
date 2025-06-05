@@ -1,24 +1,33 @@
-import { Negatable } from "./create-negated";
+import { Negatable, withNegatable } from "./create-negated";
 import { Note } from "./Note";
 
-export class IntervallicDistance<T> {
-  constructor(notes: { from: Note<T>, to: Note<T> }) {
-  }
-  isGreaterThan(operand: IntervallicDistance<T>): boolean {
-    return false;  // TODO:
-  }
+export interface IntervallicDistance<T> {
+  isGreaterThan(operand: IntervallicDistance<T>): boolean;
 }
 
-export class Transition<T> extends Negatable {
+export const createIntervallicDistance = <T>(notes: { from: Note<T>; to: Note<T> }): IntervallicDistance<T> => {
+  return {
+    isGreaterThan(_operand: IntervallicDistance<T>) {
+      return false; // TODO:
+    },
+  };
+};
+
+export interface Transition<T> extends Negatable<Transition<T>> {
   readonly intervallic_distance: IntervallicDistance<T>;
-  constructor(notes: { from: Note<T>, to: Note<T> }) {
-    super();
-    this.intervallic_distance = new IntervallicDistance(notes);
-  }
-  involves_aChangeInDynamics() {
-    return false;  // TODO:
-  }
-  involves_aChangeInArticulation() {
-    return false;  // TODO:
-  }
+  involves_aChangeInDynamics(): boolean;
+  involves_aChangeInArticulation(): boolean;
 }
+
+export const createTransition = <T>(notes: { from: Note<T>; to: Note<T> }): Transition<T> => {
+  const transition: Transition<T> = withNegatable({
+    intervallic_distance: createIntervallicDistance(notes),
+    involves_aChangeInDynamics() {
+      return false; // TODO:
+    },
+    involves_aChangeInArticulation() {
+      return false; // TODO:
+    },
+  });
+  return transition;
+};

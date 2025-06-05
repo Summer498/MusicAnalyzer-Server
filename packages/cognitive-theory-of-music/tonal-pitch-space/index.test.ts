@@ -5,7 +5,7 @@ import { mod } from "@music-analyzer/math/src/basic-function/mod"
 import { sameArray } from "@music-analyzer/math/src/array/same-array"
 import { totalSum } from "@music-analyzer/math/src/reduction/sum"
 import { vSub } from "@music-analyzer/math/src/vector/sub"
-import { Assertion } from "@music-analyzer/stdlib/src/assertion/assertion"
+import { createAssertion } from "@music-analyzer/stdlib/src/assertion/assertion"
 import { assertNonNullable as NN } from "@music-analyzer/stdlib/src/assertion/not-null-like"
 import { Chord } from "@music-analyzer/tonal-objects/src/chord/chord"
 import { getChord } from "@music-analyzer/tonal-objects/src/chord/get"
@@ -87,7 +87,7 @@ const comment = () => {
     const fifths = chord.notes.filter(
       (note: string) => getIntervalDegree(getTonic(chord), note) == 5,
     );
-    new Assertion(fifths.length == 1).onFailed(() => {
+    createAssertion(fifths.length == 1).onFailed(() => {
       console.log(`received: ${fifths}`);
       throw new Error(`Expected just one "fifth note"`);
     });
@@ -105,7 +105,7 @@ const comment = () => {
     const chords = key.chords.map((chord_str: string) =>
       getChord(chord_str),
     );
-    new Assertion(chords.length == 7).onFailed(() => {
+    createAssertion(chords.length == 7).onFailed(() => {
       console.log(`received: ${chords}`);
       throw new Error(`chords.length must be 7`);
     });
@@ -140,7 +140,7 @@ const comment = () => {
       });
       const received_BS = getBasicSpace(new RomanChord(scale, chord));
 
-      new Assertion(sameArray(received_BS, expected_BS)).onFailed(() => {
+      createAssertion(sameArray(received_BS, expected_BS)).onFailed(() => {
         console.log(`received: ${received_BS}`);
         console.log(`expected: ${expected_BS}`);
         throw new Error(`basic space is wrong`);
@@ -180,7 +180,7 @@ const comment = () => {
         );
 
         const received_dist = basicSpaceDistance(src_roman, dst_roman);
-        new Assertion(expected_dist === received_dist).onFailed(() => {
+        createAssertion(expected_dist === received_dist).onFailed(() => {
           console.log(`received: ${received_dist}`);
           console.log(`expected: ${expected_dist}`);
         });
@@ -190,7 +190,7 @@ const comment = () => {
   
   
   // BS 距離の具体例
-  new Assertion(
+  createAssertion(
     getDistance(
       new RomanChord(getScale("C major"), getChord("C")),
       new RomanChord(getScale("C major"), getChord("F")),
@@ -198,7 +198,7 @@ const comment = () => {
   ).onFailed(() => {
     throw new Error();
   });
-  new Assertion(
+  createAssertion(
     getDistance(
       new RomanChord(getScale("C major"), getChord("C")),
       new RomanChord(getScale("C major"), getChord("G")),
@@ -206,7 +206,7 @@ const comment = () => {
   ).onFailed(() => {
     throw new Error();
   });
-  new Assertion(
+  createAssertion(
     getDistance(
       new RomanChord(getScale("C major"), getChord("Dm")),
       new RomanChord(getScale("C major"), getChord("Am")),
@@ -214,7 +214,7 @@ const comment = () => {
   ).onFailed(() => {
     throw new Error();
   });
-  new Assertion(
+  createAssertion(
     getDistance(
       new RomanChord(getScale("C major"), getChord("C")),
       new RomanChord(getScale("C major"), getChord("Am")),
@@ -222,7 +222,7 @@ const comment = () => {
   ).onFailed(() => {
     throw new Error();
   });
-  new Assertion(
+  createAssertion(
     getDistance(
       new RomanChord(getScale("C major"), getChord("C")),
       new RomanChord(getScale("C major"), getChord("Em")),
@@ -230,7 +230,7 @@ const comment = () => {
   ).onFailed(() => {
     throw new Error();
   });
-  new Assertion(
+  createAssertion(
     getDistance(
       new RomanChord(getScale("C major"), getChord("Dm")),
       new RomanChord(getScale("C major"), getChord("F")),
@@ -246,7 +246,7 @@ const comment = () => {
       const chord = getChord(note + chord_type);
       const chord_chromas = chord.notes.map(note => getChroma(note));
       const keys = getKeysIncludeTheChord(chord);
-      new Assertion(
+      createAssertion(
         forAll(keys, key => isSuperSet(key.notes.map(note => getChroma(note)), chord_chromas),
         ),
       ).onFailed(() => {
