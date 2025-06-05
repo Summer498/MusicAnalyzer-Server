@@ -123,61 +123,83 @@ const detectFile = (dst: string) => {
   chmodSync(decodeURI(dst_dir), 0o775);
 };
 
-class Directories<
-  S 
-  extends string | undefined,
-  T 
-  extends string | undefined,
-  DD 
-  extends string | undefined,
-  D 
-  extends string | undefined,
+interface Directories<
+  S extends string | undefined,
+  T extends string | undefined,
+  DD extends string | undefined,
+  D extends string | undefined,
 > {
-  constructor(
-    readonly src: S,
-    readonly tmp: T,
-    readonly dst_dir: DD,
-    readonly dst: D,
-  ) { }
+  src: S
+  tmp: T
+  dst_dir: DD
+  dst: D
 }
-class DataDirectories {
-  readonly chord;
-  readonly roman;
 
-  readonly demucs;
+const createDirectories = <
+  S extends string | undefined,
+  T extends string | undefined,
+  DD extends string | undefined,
+  D extends string | undefined,
+>(src: S, tmp: T, dst_dir: DD, dst: D): Directories<S, T, DD, D> => ({
+  src,
+  tmp,
+  dst_dir,
+  dst,
+})
 
-  readonly f0_crepe;
-  readonly midi_crepe;
-  readonly melody_crepe;
+interface DataDirectories {
+  chord: Directories<string, undefined, string, string>
+  roman: Directories<string, undefined, string, string>
 
-  readonly f0_pyin;
-  readonly pyin_img;
-  readonly midi_pyin;
-  readonly melody_pyin;
+  demucs: Directories<string, string, string, string>
 
-  constructor(song_name: string, file_path: string) {
-    const resource = `./resources/${song_name}`;
-    const analyzed = `${resource}/analyzed`;
-    const chord = `${analyzed}/chord`;
-    const melody = `${analyzed}/melody`;
-    const demucs = `${resource}/demucs`;
-    const crepe = `${melody}/crepe`;
-    const pyin = `${melody}/pyin`;
+  f0_crepe: Directories<string, string, string, string>
+  midi_crepe: Directories<string, undefined, string, string>
+  melody_crepe: Directories<string, undefined, string, string>
 
-    this.chord = new Directories(file_path, undefined, chord, `${chord}/chords.json`);
-    this.roman = new Directories(this.chord.dst, undefined, chord, `${chord}/roman.json`);
+  f0_pyin: Directories<string, undefined, string, string>
+  pyin_img: Directories<string, undefined, string, string>
+  midi_pyin: Directories<string, undefined, string, string>
+  melody_pyin: Directories<string, undefined, string, string>
+}
 
-    this.demucs = new Directories(file_path, `separated/htdemucs/${song_name}`, demucs, `${demucs}/vocals.wav`);
+const createDataDirectories = (song_name: string, file_path: string): DataDirectories => {
+  const resource = `./resources/${song_name}`;
+  const analyzed = `${resource}/analyzed`;
+  const chord = `${analyzed}/chord`;
+  const melody = `${analyzed}/melody`;
+  const demucs = `${resource}/demucs`;
+  const crepe = `${melody}/crepe`;
+  const pyin = `${melody}/pyin`;
 
-    this.f0_crepe = new Directories(this.demucs.dst, `${crepe}/vocals.f0.csv`, crepe, `${crepe}/vocals.f0.csv`);
-    this.midi_crepe = new Directories(this.f0_crepe.dst, undefined, crepe, `${crepe}/vocals.midi.json`);
-    this.melody_crepe = new Directories(this.midi_crepe.dst, undefined, crepe, `${crepe}/manalyze.json`);
+  const chordDirs = createDirectories(file_path, undefined, chord, `${chord}/chords.json`);
+  const romanDirs = createDirectories(chordDirs.dst, undefined, chord, `${chord}/roman.json`);
 
-    this.f0_pyin = new Directories(this.demucs.dst, undefined, pyin, `${pyin}/vocals.f0.json`);
-    this.midi_pyin = new Directories(this.f0_pyin.dst, undefined, pyin, `${pyin}/vocals.midi.json`);
-    this.melody_pyin = new Directories(this.midi_pyin.dst, undefined, pyin, `${pyin}/manalyze.json`);
-    this.pyin_img = new Directories(this.f0_pyin.dst, undefined, pyin, `${pyin}/vocals.f0.png`);
+  const demucsDirs = createDirectories(file_path, `separated/htdemucs/${song_name}`, demucs, `${demucs}/vocals.wav`);
 
+  const f0Crepe = createDirectories(demucsDirs.dst, `${crepe}/vocals.f0.csv`, crepe, `${crepe}/vocals.f0.csv`);
+  const midiCrepe = createDirectories(f0Crepe.dst, undefined, crepe, `${crepe}/vocals.midi.json`);
+  const melodyCrepe = createDirectories(midiCrepe.dst, undefined, crepe, `${crepe}/manalyze.json`);
+
+  const f0Pyin = createDirectories(demucsDirs.dst, undefined, pyin, `${pyin}/vocals.f0.json`);
+  const midiPyin = createDirectories(f0Pyin.dst, undefined, pyin, `${pyin}/vocals.midi.json`);
+  const melodyPyin = createDirectories(midiPyin.dst, undefined, pyin, `${pyin}/manalyze.json`);
+  const pyinImg = createDirectories(f0Pyin.dst, undefined, pyin, `${pyin}/vocals.f0.png`);
+
+  return {
+    chord: chordDirs,
+    roman: romanDirs,
+
+    demucs: demucsDirs,
+
+    f0_crepe: f0Crepe,
+    midi_crepe: midiCrepe,
+    melody_crepe: melodyCrepe,
+
+    f0_pyin: f0Pyin,
+    pyin_img: pyinImg,
+    midi_pyin: midiPyin,
+    melody_pyin: melodyPyin,
   }
 }
 
@@ -381,7 +403,7 @@ const semitonesBy_pYIN = (
 
 const _loadAnalysisFromCREPE = (update: boolean, song_name: string, file_path: string) => {
   const force = false;
-  const e = new DataDirectories(song_name, file_path);
+  const e = createDataDirectories(song_name, file_path);
   chordExtract(false, e.chord);
   chordToRoman(false, e.roman);
 
@@ -393,7 +415,7 @@ const _loadAnalysisFromCREPE = (update: boolean, song_name: string, file_path: s
 
 const _loadAnalysisFromPYIN = (update: boolean, song_name: string, file_path: string) => {
   const force = false;
-  const e = new DataDirectories(song_name, file_path);
+  const e = createDataDirectories(song_name, file_path);
   chordExtract(false, e.chord);
   chordToRoman(false, e.roman);
 
@@ -405,7 +427,7 @@ const _loadAnalysisFromPYIN = (update: boolean, song_name: string, file_path: st
 
 const _loadRomanAnalysis = (update: boolean, song_name: string, file_path: string) => {
   const force = false;
-  const e = new DataDirectories(song_name, file_path);
+  const e = createDataDirectories(song_name, file_path);
 
   chordExtract(false, e.chord);
   chordToRoman(update, e.roman);
