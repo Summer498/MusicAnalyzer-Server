@@ -64,3 +64,8 @@ import { createAssertion, createNotImplementedError } from "@music-analyzer/stdl
 createAssertion(x > 0).onFailed(() => { throw createNotImplementedError(); });
 ```
 
+```ts
+import { createAudioReflectableRegistry, createWindowReflectableRegistry } from "@music-analyzer/view";
+const audioReg = createAudioReflectableRegistry();
+const windowReg = createWindowReflectableRegistry();
+```

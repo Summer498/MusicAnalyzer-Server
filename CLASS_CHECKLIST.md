@@ -78,11 +78,11 @@
 - [ ] packages/UI/view-parameters/index.ts -  PianoRollWidth {
 - [ ] packages/UI/view-parameters/index.ts -  SongLength {
 - [ ] packages/UI/view-parameters/index.ts -  WindowInnerWidth {
-- [ ] packages/UI/view/index.ts -  AudioReflectableRegistry {
-- [ ] packages/UI/view/index.ts -  PianoRollTranslateX {
-- [ ] packages/UI/view/index.ts -  WindowReflectableRegistry {
-- [ ] packages/cli/post-crepe/src/median-filter.ts -  MedianFilter {
-- [ ] packages/cli/post-pyin/src/median-filter.ts -  MedianFilter {
+- [x] packages/UI/view/index.ts -  AudioReflectableRegistry {
+- [x] packages/UI/view/index.ts -  PianoRollTranslateX {
+- [x] packages/UI/view/index.ts -  WindowReflectableRegistry {
+- [x] packages/cli/post-crepe/src/median-filter.ts -  MedianFilter {
+- [x] packages/cli/post-pyin/src/median-filter.ts -  MedianFilter {
 - [ ] packages/cognitive-theory-of-music/gttm/src/analysis-result/PR.ts -  Head
 - [ ] packages/cognitive-theory-of-music/gttm/src/analysis-result/PR.ts -  ProlongationTree {
 - [ ] packages/cognitive-theory-of-music/gttm/src/analysis-result/PR.ts -  ProlongationalReduction 
