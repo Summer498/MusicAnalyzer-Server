@@ -16,7 +16,7 @@ const main = (argv: string[]) => {
   const parsed: VocalsF0CSV[] = parse(input, { columns: true, cast: true, delimiter: ',' });
 
   const SAMPLING_RATE = 22050;
-  // 瞬間周波数 [Hz/s]
+  // 瞬間周波数 [Hz]
   const raw = parsed.map(e => e.frequency);
   const round = raw.map(freq => roundOnMIDI(freq));
   const median = getMedianFrequency(round);
