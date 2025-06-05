@@ -1,6 +1,8 @@
-describe("dummy", () => {
-  test("hoge", () => {
-    expect(42).toBe(42);
+import * as Module from "../index";
+
+describe("MelodyMotion tests", () => {
+  test("module should load", () => {
+    expect(Module).toBeTruthy();
   });
 });
 
