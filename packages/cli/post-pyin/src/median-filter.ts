@@ -1,29 +1,31 @@
 import { median } from "@music-analyzer/math";
 
-export class MedianFilter {
-  i;
-  buff: number[];
-  constructor(
-    readonly window_size: number,
-  ) {
-    this.i = 0;
-    this.buff = [];
-  }
-  median(e: number | null) {
-    // i が 1 ずつ上がる想定
-    if (e === null) {
-      // バッファ初期化
-      this.i = 0;
-      this.buff = [];
-      return null;
-    }
+export interface MedianFilter {
+  median(e: number | null): number | null;
+}
 
-    if (this.buff.length < this.window_size) { this.buff.push(e); }
+export const createMedianFilter = (
+  window_size: number,
+): MedianFilter => {
+  let i = 0;
+  let buff: number[] = [];
+  return {
+    median(e: number | null) {
+      // i が 1 ずつ上がる想定
+      if (e === null) {
+        // バッファ初期化
+      i = 0;
+      buff = [];
+        return null;
+      }
+
+    if (buff.length < window_size) { buff.push(e); }
     else {
       // リングバッファに保存
-      this.i = (this.i + 1) % this.window_size;
-      this.buff[this.i] = e;
+      i = (i + 1) % window_size;
+      buff[i] = e;
     }
-    return median(this.buff);
-  }
-}
+    return median(buff);
+    },
+  };
+};
