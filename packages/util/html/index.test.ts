@@ -1,7 +1,9 @@
-import * as Module from "./index";
+import { HTML } from "./index";
 
 describe("html utilities", () => {
-  test("should load module", () => {
-    expect(Module).toBeTruthy();
+  test("HTML.p creates paragraph element", () => {
+    const p = HTML.p({}, "hello");
+    expect(p.tagName.toLowerCase()).toBe("p");
+    expect(p.textContent).toBe("hello");
   });
 });
