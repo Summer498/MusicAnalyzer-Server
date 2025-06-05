@@ -16,7 +16,7 @@ class MelodyBeepVolume
 }
 
 class MelodyBeepSwitcher
-  extends Checkbox<boolean> {
+  extends Checkbox {
   constructor(id: string, label: string) {
     super(id, label);
   }

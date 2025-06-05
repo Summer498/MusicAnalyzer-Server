@@ -6,6 +6,7 @@ import { AudioReflectableRegistry, PianoRollTranslateX, WindowReflectableRegistr
 import { HierarchyLevelController, MelodyColorController, TimeRangeController } from "@music-analyzer/controllers";
 import { Triad } from "@music-analyzer/irm";
 import { GetColor } from "@music-analyzer/controllers/src/color-selector";
+import { ImplicationDisplayController } from "@music-analyzer/controllers/src/switcher";
 
 interface IRGravityModel {
   readonly time: Time;
@@ -67,7 +68,6 @@ function getLinePos(
 const triangle_width = 10;
 const triangle_height = 10;
 function getTriangle() {
-
   const triangle_svg = document.createElementNS("http://www.w3.org/2000/svg", "polygon")
   triangle_svg.classList.add("triangle");
   triangle_svg.id = "gravity-arrow";
@@ -147,29 +147,95 @@ const getArchetypeColor = (archetype: Triad) => {
   }
 }
 
-const getRange = (inf: number, sup: number, over: number, sgn: -1 | 0 | 1) => ({ inf, sup, over, sgn } as const)
+const xor = <A, B>(a: A, b: B) => !(a && b) && (a || b);
+const eqv = <A, B>(a: A, b: B) => !(a || b) || (a && b);
+const sameSign = (a: number, b: number) => Math.sign(a) === Math.sign(b);
+const diffSign = (a: number, b: number) => Math.sign(a) !== Math.sign(b);
 
-const m3 = 3;
-const getDestination = (observation: number) => {
-  const s = Math.sign(observation);
-  const O = Math.abs(observation);
-  const L = O - m3;
-  const G = O + m3;
-  return (O < 6)
-    ? getRange(s * L, s * G, s * G, 1)
-    : getRange(s * 0, s * L, s * G, -1)
+const isMR = (observed: number, realized: number) => {
+  const I = Math.abs(observed);
+  const R = Math.abs(realized);
+  return (I + m3 <= R);
 }
 
-const getImplicationArrow = (layer: number) => (delayed_melody: SerializedTimeAndAnalyzedMelody[][]) => (_: unknown, i: number) => {
+const isML = (observed: number, realized: number) => {
+  const I = Math.abs(observed);
+  const R = Math.abs(realized);
+  return (R <= I - m3);
+}
+
+const isMN = (observed: number, realized: number) => {
+  const I = Math.abs(observed);
+  const R = Math.abs(realized);
+  return (I - m3 < R && R < I + m3);
+}
+
+
+const isV = (observed: number, realized: number) => {
+  return isMR(observed, realized);
+}
+
+const isI = (observed: number, realized: number) => {
+  return !isV(observed, realized) && xor(isMN(observed, realized), sameSign(observed, realized))
+}
+
+const isB = (observed: number, realized: number) => {
+  return !isV(observed, realized) && eqv(isMN(observed, realized), sameSign(observed, realized))
+}
+
+const isR = (observed: number, realized: number) => {
+  return isV(observed, realized) ? (diffSign(observed, realized)) : isML(observed, realized);
+}
+
+const isP = (observed: number, realized: number) => {
+  return !isR(observed, realized)
+}
+
+const isAA = (observed: number) => {
+  return Math.abs(observed) < 6;
+}
+
+const isAB = (observed: number) => {
+  return !isAA(observed);
+}
+
+const isReconsidered = (observed: number, realized: number) => {
+  const AA = isAA(observed);
+  const is_P = isP(observed, realized);
+  return xor(AA, is_P)
+}
+
+const m3 = 3;
+const getRange = (inf: number, sup: number, over: number, sgn: -1 | 0 | 1, dst: number) => {
+  return ({
+    inf,
+    sup,
+    over,
+    sgn,
+    dst,
+  } as const)
+}
+const getProspectiveDestination = (observed: number) => {
+  const s = Math.sign(observed);
+  const O = Math.abs(observed);
+  const L = O - m3;
+  const G = O + m3;
+  return (isAA(observed))
+    ? getRange(+s * L, +s * G, +s * G, +1, s * O)
+    : getRange(-s * 0, -s * L, -s * G, -1, O < m3 ? -s * M2 : -s * L / 2)
+}
+
+const getProspectiveArrow = (layer: number) => (delayed_melody: SerializedTimeAndAnalyzedMelody[][]) => (_: unknown, i: number) => {
   const first = delayed_melody[0][i];
   const second = delayed_melody[1][i];
   const third = delayed_melody[2][i];
 
-  const implication = getDestination(second.note - first.note)
+  if (!isReconsidered(second.note - first.note, third.note - second.note)) { return; }
+  const implication = getProspectiveDestination(second.note - first.note)
 
   const line_pos = getLinePos(
     { time: second.time, note: second.note },
-    { time: third.time, note: second.note + (implication.inf + implication.sup) / 2 }
+    { time: third.time, note: second.note + implication.dst }
   );
   const model = {
     ...second,
@@ -178,68 +244,71 @@ const getImplicationArrow = (layer: number) => (delayed_melody: SerializedTimeAn
   } as IRGravityModel;
   const triangle = getTriangle();
   const line = getLine();
-  const a = isB(second.note - first.note, third.note - second.note) ? 1 : .25;
-  triangle.style.stroke = isP(first.note,second.note) ? `rgba(0,0,255,${a})` : `rgba(255,0,0,${a})`;
-  triangle.style.fill = isP(first.note,second.note) ? `rgba(0,0,255,${a})` : `rgba(255,0,0,${a})`;
-  line.style.stroke = isP(first.note,second.note) ? `rgba(0,0,255,${a})` : `rgba(255,0,0,${a})`;
+  const alpha = isReconsidered(second.note - first.note, third.note - second.note) ? .25 : 1;
+  const color = isAA(second.note - first.note) ? `rgba(0,0,255,${alpha})` : `rgba(255,0,0,${alpha})`;
+  triangle.style.stroke = color;
+  triangle.style.fill = color;
+  line.style.stroke = color;
+  line.style.strokeWidth = String(2)
   const svg = getGravitySVG(triangle, line);
   const view = { svg, triangle, line };
   return { model, view, line_pos }
 }
 
-const xor = <A, B>(a: A, b: B) => !(a && b) && (a || b);
-const eqv = <A, B>(a: A, b: B) => !(a || b) || (a && b);
-
-const isV = (observed: number, realization: number) => {
-  const I = Math.abs(observed);
-  const R = Math.abs(realization);
-  return I + m3 <= R;
+const m2 = 1;
+const M2 = 2;
+const getRetrospectiveDestination = (observed: number, realized: number) => {
+  const s = Math.sign(observed);
+  const O = Math.abs(observed);
+  const L = O - m3;
+  const G = O + m3;
+  return (isP(observed, realized))
+    ? getRange(+s * L, +s * G, +s * G, +1, s * O)
+    : getRange(-s * 0, -s * L, -s * G, -1, O < m3 ? -s * M2 : -s * L / 2)
 }
 
-const isI = (observed: number, realization: number) => {
-  const I = Math.abs(observed);
-  const R = Math.abs(realization);
-  if (I + m3 <= R) { return false; }
-  return xor(I - m3 < R && R < I + m3, Math.sign(observed) === Math.sign(realization))
+const getRetrospectiveArrow = (layer: number) => (delayed_melody: SerializedTimeAndAnalyzedMelody[][]) => (_: unknown, i: number) => {
+  const first = delayed_melody[0][i];
+  const second = delayed_melody[1][i];
+  const third = delayed_melody[2][i];
+
+  const implication = getRetrospectiveDestination(second.note - first.note, third.note - second.note);
+
+  const line_pos = getLinePos(
+    { time: second.time, note: second.note },
+    { time: third.time, note: second.note + implication.dst },
+  );
+
+  const model = {
+    ...second,
+    archetype: second.melody_analysis.implication_realization as Triad,
+    layer: layer || 0,
+  } as IRGravityModel;
+  const triangle = getTriangle();
+  const line = getLine();
+  const alpha = isB(second.note - first.note, third.note - second.note) ? 1 : .25;
+  const color = isP(second.note - first.note, third.note - second.note) ? `rgba(0,0,255,${alpha})` : `rgba(255,0,0,${alpha})`;
+  triangle.style.stroke = color;
+  triangle.style.fill = color;
+  line.style.stroke = color; const svg = getGravitySVG(triangle, line);
+  const view = { svg, triangle, line };
+  return { model, view, line_pos };
 }
 
-const isB = (observed: number, realization: number) => {
-  const I = Math.abs(observed);
-  const R = Math.abs(realization);
-  if (I + m3 <= R) { return false; }
-  return eqv(I - m3 < R && R < I + m3, Math.sign(observed) === Math.sign(realization))
-}
-
-const isP = (observed: number, realization: number) => {
-  // x o o
-  // x o x
-  const I = Math.abs(observed);
-  const R = Math.abs(realization);
-  return I + m3 <= R ? (Math.sign(observed) === Math.sign(realization)) : I - m3 < R;
-}
-
-const isR = (observed: number, realization: number) => {
-  // o x x
-  // o x o
-  const I = Math.abs(observed);
-  const R = Math.abs(realization);
-  return !isP(observed, realization)
-}
-
-const getReImplicationArrow = (layer: number) => (delayed_melody: SerializedTimeAndAnalyzedMelody[][]) => (_: unknown, i: number) => {
+const getReconstructedArrow = (layer: number) => (delayed_melody: SerializedTimeAndAnalyzedMelody[][]) => (_: unknown, i: number) => {
   const first = delayed_melody[0][i];
   const second = delayed_melody[1][i];
   const third = delayed_melody[2][i];
   const fourth = delayed_melody[3][i];
 
-  const implication = getDestination(second.note - first.note);
+  const implication = getRetrospectiveDestination(second.note - first.note, third.note - second.note);
 
   if (isB(second.note - first.note, third.note - second.note)) { return; }
 
   const is_V = isV(second.note - first.note, third.note - second.note);
-  const IImplication = third?.note + (implication.inf + implication.sup) / 2;
-  const VImplication = third?.note - (implication.inf + implication.sup) / 2;
-  // const VImplication = third?.note + (implication.inf + implication.sup) / 2;
+  const IImplication = third?.note + implication.dst;
+  const VImplication = third?.note - implication.dst;
+  // const VImplication = second?.note + implication.dst;
   const line_pos = fourth && getLinePos(
     { time: third.time, note: third.note },
     { time: fourth.time, note: is_V ? VImplication : IImplication },
@@ -252,9 +321,10 @@ const getReImplicationArrow = (layer: number) => (delayed_melody: SerializedTime
   } as IRGravityModel;
   const triangle = getTriangle();
   const line = getLine();
-  triangle.style.stroke = getArchetypeColor(model.archetype) || "rgba(0,0,0,.25)";
-  triangle.style.fill = getArchetypeColor(model.archetype) || "rgba(0,0,0,.25)";
-  line.style.stroke = getArchetypeColor(model.archetype) || "rgba(0,0,0,.25)";
+  const color = getArchetypeColor(model.archetype) || "rgba(0,0,0,.25)";
+  triangle.style.stroke = color;
+  triangle.style.fill = color;
+  line.style.stroke = color;
   const svg = getGravitySVG(triangle, line);
   const view = { svg, triangle, line };
   return { model, view, line_pos };
@@ -266,19 +336,26 @@ const getLayers = (
 ) => {
   const delayed_melody = melodies.map((_, i) => melodies.slice(i));
   if (delayed_melody.length <= 3) { return; }
-  const gravity = [
-    delayed_melody[2].map(getImplicationArrow(layer)(delayed_melody)),
-    delayed_melody[3].map(getReImplicationArrow(layer)(delayed_melody)),
+  const prospective = delayed_melody[2].map(getProspectiveArrow(layer)(delayed_melody)).filter(e => e !== undefined);
+  const retrospective = delayed_melody[2].map(getRetrospectiveArrow(layer)(delayed_melody)).filter(e => e !== undefined);
+  const reconstructed = delayed_melody[3].map(getReconstructedArrow(layer)(delayed_melody)).filter(e => e !== undefined);
+
+  const children = [
+    prospective,
+    retrospective,
+    reconstructed,
   ].flat()
-    .filter(e => e !== undefined)
     .map(e => ({ svg: e.view.svg, model: e.model, view: e.view, line_seed: e.line_pos }));
-  const svg = getSVGG(`layer-${layer}`, gravity.map(e => e.svg));
+  const svg = getSVGG(`layer-${layer}`, children.map(e => e.svg));
   return ({
-    layer: layer,
-    svg: svg,
-    children: gravity,
-    show: gravity,
-  } as I_IRGravityLayer)
+    layer,
+    svg,
+    children,
+    prospective,
+    retrospective,
+    reconstructed,
+    show: children,
+  })
 }
 
 const onWindowResized_IRGravity = (
@@ -313,14 +390,18 @@ export function buildIRGravity(
     readonly time_range: TimeRangeController,
     readonly melody_color: MelodyColorController,
     readonly hierarchy: HierarchyLevelController,
+    readonly implication: ImplicationDisplayController,
   }
 ) {
   const children = h_melodies.map(getLayers).filter(e => e !== undefined);
   const svg = getSVGG("ir_gravity", children.map(e => e.svg));
-  const ir_gravity = { svg, children, show: [] } as I_IRGravityHierarchy;
+  const ir_gravity = { svg, children, show: [] };
 
   controllers.window.addListeners(...ir_gravity.children.flatMap(e => e.children).map(e => () => onWindowResized_IRGravity(e)));
   controllers.time_range.addListeners(...ir_gravity.children.flatMap(e => e.children).map(e => () => onWindowResized_IRGravity(e)));
+  controllers.implication.prospective_checkbox.addListeners(...ir_gravity.children.flatMap(e => e.prospective).flatMap(e => (value: boolean) => (e.view.svg.setAttribute("visibility", value ? "visible" : "hidden"))))
+  controllers.implication.retrospective_checkbox.addListeners(...ir_gravity.children.flatMap(e => e.retrospective).flatMap(e => (value: boolean) => (e.view.svg.setAttribute("visibility", value ? "visible" : "hidden"))))
+  controllers.implication.reconstructed_checkbox.addListeners(...ir_gravity.children.flatMap(e => e.reconstructed).flatMap(e => (value: boolean) => (e.view.svg.setAttribute("visibility", value ? "visible" : "hidden"))))
 
   controllers.hierarchy.addListeners(onChangedLayer(ir_gravity));
   controllers.melody_color.addListeners(...ir_gravity.children.flatMap(e => e.children).map(e => (f: GetColor) => e.svg.style.fill = f(e.model.archetype)));

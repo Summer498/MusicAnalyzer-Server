@@ -10,6 +10,7 @@ import { buildMelody } from "./src/melody-hierarchy";
 import { buildReduction } from "./src/reduction-hierarchy";
 import { buildGravity } from "./src/gravity-hierarchy";
 import { buildIRGravity } from "./src/ir-gravity-hierarchy";
+import { ImplicationDisplayController } from "@music-analyzer/controllers/src/switcher";
 
 export interface RequiredByMelodyElements {
   readonly gravity: GravityController
@@ -17,6 +18,7 @@ export interface RequiredByMelodyElements {
   readonly d_melody: DMelodyController,
   readonly window: WindowReflectableRegistry
   readonly time_range: TimeRangeController
+  readonly implication : ImplicationDisplayController
 
   readonly melody_beep: MelodyBeepController
   readonly melody_color: MelodyColorController
@@ -42,6 +44,7 @@ export class MelodyElements {
       readonly d_melody: DMelodyController,
       readonly window: WindowReflectableRegistry,
       readonly time_range: TimeRangeController,
+      readonly implication : ImplicationDisplayController,
       readonly melody_beep: MelodyBeepController,
       readonly melody_color: MelodyColorController,
       readonly hierarchy: HierarchyLevelController,

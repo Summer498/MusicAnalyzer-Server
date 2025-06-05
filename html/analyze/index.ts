@@ -32,12 +32,14 @@ import { MelodyBeepController } from "@music-analyzer/controllers";
 import { MelodyColorController } from "@music-analyzer/controllers";
 import { TimeRangeController } from "@music-analyzer/controllers";
 import { Time } from "@music-analyzer/time-and";
+import { ImplicationDisplayController } from "@music-analyzer/controllers/src/switcher";
 
 class Controllers {
   readonly div: HTMLDivElement
   readonly d_melody: DMelodyController
   readonly hierarchy: HierarchyLevelController
   readonly time_range: TimeRangeController
+  readonly implication: ImplicationDisplayController
   readonly gravity: GravityController
   readonly melody_beep: MelodyBeepController
   readonly melody_color: MelodyColorController
@@ -54,16 +56,21 @@ class Controllers {
     this.d_melody = new DMelodyController();
     this.hierarchy = new HierarchyLevelController(layer_count);
     this.time_range = new TimeRangeController(length);
+    this.implication = new ImplicationDisplayController()
     this.gravity = new GravityController(gravity_visible);
     this.melody_beep = new MelodyBeepController();
     this.melody_color = new MelodyColorController();
     this.melody_beep.checkbox.input.checked=true;
+    this.implication.prospective_checkbox.input.checked = false;
+    this.implication.retrospective_checkbox.input.checked = true;
+    this.implication.reconstructed_checkbox.input.checked = true;
 
 
     [
 //      this.d_melody,
       this.hierarchy,
       this.time_range,
+      this.implication,
 //      this.gravity,
       this.melody_beep,
 //      this.melody_color,

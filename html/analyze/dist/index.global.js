@@ -5944,23 +5944,73 @@ Expected id is: ${regexp}`);
         "rgba(0,0,0,.25)";
     }
   };
-  var getRange2 = (inf, sup, over, sgn) => ({ inf, sup, over, sgn });
+  var xor = (a, b) => !(a && b) && (a || b);
+  var eqv = (a, b) => !(a || b) || a && b;
+  var sameSign = (a, b) => Math.sign(a) === Math.sign(b);
+  var diffSign = (a, b) => Math.sign(a) !== Math.sign(b);
+  var isMR = (observed, realized) => {
+    const I = Math.abs(observed);
+    const R = Math.abs(realized);
+    return I + m3 <= R;
+  };
+  var isML = (observed, realized) => {
+    const I = Math.abs(observed);
+    const R = Math.abs(realized);
+    return R <= I - m3;
+  };
+  var isMN = (observed, realized) => {
+    const I = Math.abs(observed);
+    const R = Math.abs(realized);
+    return I - m3 < R && R < I + m3;
+  };
+  var isV = (observed, realized) => {
+    return isMR(observed, realized);
+  };
+  var isB = (observed, realized) => {
+    return !isV(observed, realized) && eqv(isMN(observed, realized), sameSign(observed, realized));
+  };
+  var isR = (observed, realized) => {
+    return isV(observed, realized) ? diffSign(observed, realized) : isML(observed, realized);
+  };
+  var isP = (observed, realized) => {
+    return !isR(observed, realized);
+  };
+  var isAA = (observed) => {
+    return Math.abs(observed) < 6;
+  };
+  var isReconsidered = (observed, realized) => {
+    const AA = isAA(observed);
+    const is_P = isP(observed, realized);
+    return xor(AA, is_P);
+  };
   var m3 = 3;
-  var getDestination = (observation) => {
-    const s = Math.sign(observation);
-    const O = Math.abs(observation);
+  var getRange2 = (inf, sup, over, sgn, dst) => {
+    return {
+      inf,
+      sup,
+      over,
+      sgn,
+      dst
+    };
+  };
+  var getProspectiveDestination = (observed) => {
+    const s = Math.sign(observed);
+    const O = Math.abs(observed);
     const L = O - m3;
     const G = O + m3;
-    return O < 6 ? getRange2(s * L, s * G, s * G, 1) : getRange2(s * 0, s * L, s * G, -1);
+    return isAA(observed) ? getRange2(+s * L, +s * G, +s * G, 1, s * O) : getRange2(-s * 0, -s * L, -s * G, -1, O < m3 ? -s * M2 : -s * L / 2);
   };
-  var getImplicationArrow = (layer) => (delayed_melody) => (_, i) => {
+  var getProspectiveArrow = (layer) => (delayed_melody) => (_, i) => {
     const first = delayed_melody[0][i];
     const second = delayed_melody[1][i];
     const third = delayed_melody[2][i];
-    const implication = getDestination(second.note - first.note);
+    if (!isReconsidered(second.note - first.note, third.note - second.note)) {
+      return;
+    }
+    const implication = getProspectiveDestination(second.note - first.note);
     const line_pos = getLinePos3(
       { time: second.time, note: second.note },
-      { time: third.time, note: second.note + (implication.inf + implication.sup) / 2 }
+      { time: third.time, note: second.note + implication.dst }
     );
     const model = {
       ...second,
@@ -5969,45 +6019,61 @@ Expected id is: ${regexp}`);
     };
     const triangle = getTriangle2();
     const line = getLine2();
-    const a = isB(second.note - first.note, third.note - second.note) ? 1 : 0.25;
-    triangle.style.stroke = isP(first.note, second.note) ? `rgba(0,0,255,${a})` : `rgba(255,0,0,${a})`;
-    triangle.style.fill = isP(first.note, second.note) ? `rgba(0,0,255,${a})` : `rgba(255,0,0,${a})`;
-    line.style.stroke = isP(first.note, second.note) ? `rgba(0,0,255,${a})` : `rgba(255,0,0,${a})`;
+    const alpha = isReconsidered(second.note - first.note, third.note - second.note) ? 0.25 : 1;
+    const color = isAA(second.note - first.note) ? `rgba(0,0,255,${alpha})` : `rgba(255,0,0,${alpha})`;
+    triangle.style.stroke = color;
+    triangle.style.fill = color;
+    line.style.stroke = color;
+    line.style.strokeWidth = String(2);
     const svg = getGravitySVG2(triangle, line);
     const view = { svg, triangle, line };
     return { model, view, line_pos };
   };
-  var eqv = (a, b) => !(a || b) || a && b;
-  var isV = (observed, realization) => {
-    const I = Math.abs(observed);
-    const R = Math.abs(realization);
-    return I + m3 <= R;
+  var M2 = 2;
+  var getRetrospectiveDestination = (observed, realized) => {
+    const s = Math.sign(observed);
+    const O = Math.abs(observed);
+    const L = O - m3;
+    const G = O + m3;
+    return isP(observed, realized) ? getRange2(+s * L, +s * G, +s * G, 1, s * O) : getRange2(-s * 0, -s * L, -s * G, -1, O < m3 ? -s * M2 : -s * L / 2);
   };
-  var isB = (observed, realization) => {
-    const I = Math.abs(observed);
-    const R = Math.abs(realization);
-    if (I + m3 <= R) {
-      return false;
-    }
-    return eqv(I - m3 < R && R < I + m3, Math.sign(observed) === Math.sign(realization));
+  var getRetrospectiveArrow = (layer) => (delayed_melody) => (_, i) => {
+    const first = delayed_melody[0][i];
+    const second = delayed_melody[1][i];
+    const third = delayed_melody[2][i];
+    const implication = getRetrospectiveDestination(second.note - first.note, third.note - second.note);
+    const line_pos = getLinePos3(
+      { time: second.time, note: second.note },
+      { time: third.time, note: second.note + implication.dst }
+    );
+    const model = {
+      ...second,
+      archetype: second.melody_analysis.implication_realization,
+      layer: layer || 0
+    };
+    const triangle = getTriangle2();
+    const line = getLine2();
+    const alpha = isB(second.note - first.note, third.note - second.note) ? 1 : 0.25;
+    const color = isP(second.note - first.note, third.note - second.note) ? `rgba(0,0,255,${alpha})` : `rgba(255,0,0,${alpha})`;
+    triangle.style.stroke = color;
+    triangle.style.fill = color;
+    line.style.stroke = color;
+    const svg = getGravitySVG2(triangle, line);
+    const view = { svg, triangle, line };
+    return { model, view, line_pos };
   };
-  var isP = (observed, realization) => {
-    const I = Math.abs(observed);
-    const R = Math.abs(realization);
-    return I + m3 <= R ? Math.sign(observed) === Math.sign(realization) : I - m3 < R;
-  };
-  var getReImplicationArrow = (layer) => (delayed_melody) => (_, i) => {
+  var getReconstructedArrow = (layer) => (delayed_melody) => (_, i) => {
     const first = delayed_melody[0][i];
     const second = delayed_melody[1][i];
     const third = delayed_melody[2][i];
     const fourth = delayed_melody[3][i];
-    const implication = getDestination(second.note - first.note);
+    const implication = getRetrospectiveDestination(second.note - first.note, third.note - second.note);
     if (isB(second.note - first.note, third.note - second.note)) {
       return;
     }
     const is_V = isV(second.note - first.note, third.note - second.note);
-    const IImplication = third?.note + (implication.inf + implication.sup) / 2;
-    const VImplication = third?.note - (implication.inf + implication.sup) / 2;
+    const IImplication = third?.note + implication.dst;
+    const VImplication = third?.note - implication.dst;
     const line_pos = fourth && getLinePos3(
       { time: third.time, note: third.note },
       { time: fourth.time, note: is_V ? VImplication : IImplication }
@@ -6019,9 +6085,10 @@ Expected id is: ${regexp}`);
     };
     const triangle = getTriangle2();
     const line = getLine2();
-    triangle.style.stroke = getArchetypeColor(model.archetype) || "rgba(0,0,0,.25)";
-    triangle.style.fill = getArchetypeColor(model.archetype) || "rgba(0,0,0,.25)";
-    line.style.stroke = getArchetypeColor(model.archetype) || "rgba(0,0,0,.25)";
+    const color = getArchetypeColor(model.archetype) || "rgba(0,0,0,.25)";
+    triangle.style.stroke = color;
+    triangle.style.fill = color;
+    line.style.stroke = color;
     const svg = getGravitySVG2(triangle, line);
     const view = { svg, triangle, line };
     return { model, view, line_pos };
@@ -6031,16 +6098,23 @@ Expected id is: ${regexp}`);
     if (delayed_melody.length <= 3) {
       return;
     }
-    const gravity = [
-      delayed_melody[2].map(getImplicationArrow(layer)(delayed_melody)),
-      delayed_melody[3].map(getReImplicationArrow(layer)(delayed_melody))
-    ].flat().filter((e) => e !== void 0).map((e) => ({ svg: e.view.svg, model: e.model, view: e.view, line_seed: e.line_pos }));
-    const svg = getSVGG7(`layer-${layer}`, gravity.map((e) => e.svg));
+    const prospective = delayed_melody[2].map(getProspectiveArrow(layer)(delayed_melody)).filter((e) => e !== void 0);
+    const retrospective = delayed_melody[2].map(getRetrospectiveArrow(layer)(delayed_melody)).filter((e) => e !== void 0);
+    const reconstructed = delayed_melody[3].map(getReconstructedArrow(layer)(delayed_melody)).filter((e) => e !== void 0);
+    const children = [
+      prospective,
+      retrospective,
+      reconstructed
+    ].flat().map((e) => ({ svg: e.view.svg, model: e.model, view: e.view, line_seed: e.line_pos }));
+    const svg = getSVGG7(`layer-${layer}`, children.map((e) => e.svg));
     return {
       layer,
       svg,
-      children: gravity,
-      show: gravity
+      children,
+      prospective,
+      retrospective,
+      reconstructed,
+      show: children
     };
   };
   var onWindowResized_IRGravity = (e) => {
@@ -6070,6 +6144,9 @@ Expected id is: ${regexp}`);
     const ir_gravity = { svg, children, show: [] };
     controllers.window.addListeners(...ir_gravity.children.flatMap((e) => e.children).map((e) => () => onWindowResized_IRGravity(e)));
     controllers.time_range.addListeners(...ir_gravity.children.flatMap((e) => e.children).map((e) => () => onWindowResized_IRGravity(e)));
+    controllers.implication.prospective_checkbox.addListeners(...ir_gravity.children.flatMap((e) => e.prospective).flatMap((e) => (value) => e.view.svg.setAttribute("visibility", value ? "visible" : "hidden")));
+    controllers.implication.retrospective_checkbox.addListeners(...ir_gravity.children.flatMap((e) => e.retrospective).flatMap((e) => (value) => e.view.svg.setAttribute("visibility", value ? "visible" : "hidden")));
+    controllers.implication.reconstructed_checkbox.addListeners(...ir_gravity.children.flatMap((e) => e.reconstructed).flatMap((e) => (value) => e.view.svg.setAttribute("visibility", value ? "visible" : "hidden")));
     controllers.hierarchy.addListeners(onChangedLayer3(ir_gravity));
     controllers.melody_color.addListeners(...ir_gravity.children.flatMap((e) => e.children).map((e) => (f) => e.svg.style.fill = f(e.model.archetype)));
     controllers.audio.addListeners(...ir_gravity.children.map((e) => () => onAudioUpdate4(e.svg)));
@@ -7117,12 +7194,15 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
       super("checkbox", id, label);
       this.input.checked = false;
     }
+    update() {
+      this.listeners.forEach((e) => e(this.input.checked));
+    }
   };
   var DMelodyController = class {
     view;
     checkbox;
     constructor() {
-      const d_melody_switcher = new DMelodySwitcher("d_melody_switcher", "detected melody before fix");
+      const d_melody_switcher = new Checkbox("d_melody_switcher", "detected melody before fix");
       this.view = document.createElement("div");
       this.view.id = "d-melody";
       this.view.appendChild(d_melody_switcher.body);
@@ -7132,21 +7212,13 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
       this.checkbox.addListeners(...listeners);
     }
   };
-  var DMelodySwitcher = class extends Checkbox {
-    constructor(id, label) {
-      super(id, label);
-    }
-    update() {
-      this.listeners.forEach((e) => e(this.input.checked));
-    }
-  };
   var GravityController = class {
     view;
     chord_checkbox;
     scale_checkbox;
     constructor(visible) {
-      const chord_gravity_switcher = new GravitySwitcher("chord_gravity_switcher", "Chord Gravity");
-      const scale_gravity_switcher = new GravitySwitcher("scale_gravity_switcher", "Scale Gravity");
+      const chord_gravity_switcher = new Checkbox("chord_gravity_switcher", "Chord Gravity");
+      const scale_gravity_switcher = new Checkbox("scale_gravity_switcher", "Scale Gravity");
       this.view = document.createElement("div");
       this.view.id = "gravity-switcher";
       this.view.style = visible ? "visible" : "hidden";
@@ -7154,14 +7226,6 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
       this.view.appendChild(chord_gravity_switcher.body);
       this.chord_checkbox = chord_gravity_switcher;
       this.scale_checkbox = scale_gravity_switcher;
-    }
-  };
-  var GravitySwitcher = class extends Checkbox {
-    constructor(id, label) {
-      super(id, label);
-    }
-    update() {
-      this.listeners.forEach((e) => e(this.input.checked));
     }
   };
   var Slider = class extends Controller {
@@ -7284,12 +7348,83 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
     }
   };
 
+  // ../../packages/UI/controllers/src/controller.ts
+  var Controller2 = class {
+    body;
+    input;
+    constructor(type, id, label) {
+      const e = new ControllerView2(type, id, label);
+      this.body = e.body;
+      this.input = e.input;
+      this.init();
+    }
+    listeners = [];
+    addListeners(...listeners) {
+      this.listeners.push(...listeners);
+      this.update();
+    }
+    init() {
+      this.input.addEventListener("input", this.update.bind(this));
+      this.update();
+    }
+  };
+  var ControllerView2 = class {
+    body;
+    input;
+    label;
+    constructor(type, id, label) {
+      this.input = document.createElement("input");
+      this.input.type = type;
+      this.input.id = id;
+      this.input.name = id;
+      this.label = document.createElement("label");
+      this.label.textContent = label;
+      this.label.htmlFor = this.input.id;
+      this.label.style.whiteSpace = "nowrap";
+      this.body = document.createElement("span");
+      this.body.style.whiteSpace = "nowrap";
+      this.body.appendChild(this.label);
+      this.body.appendChild(this.input);
+    }
+  };
+
+  // ../../packages/UI/controllers/src/switcher.ts
+  var Checkbox2 = class extends Controller2 {
+    constructor(id, label) {
+      super("checkbox", id, label);
+      this.input.checked = false;
+    }
+    update() {
+      this.listeners.forEach((e) => e(this.input.checked));
+    }
+  };
+  var ImplicationDisplayController = class {
+    view;
+    prospective_checkbox;
+    retrospective_checkbox;
+    reconstructed_checkbox;
+    constructor() {
+      const prospective_checkbox = new Checkbox2("prospective_checkbox", "prospective implication");
+      const retrospective_checkbox = new Checkbox2("retrospective_checkbox", "retrospective implication");
+      const reconstructed_checkbox = new Checkbox2("reconstructed_checkbox", "reconstructed implication");
+      this.view = document.createElement("div");
+      this.view.id = "prospective-implication";
+      this.view.appendChild(prospective_checkbox.body);
+      this.view.appendChild(retrospective_checkbox.body);
+      this.view.appendChild(reconstructed_checkbox.body);
+      this.prospective_checkbox = prospective_checkbox;
+      this.retrospective_checkbox = retrospective_checkbox;
+      this.reconstructed_checkbox = reconstructed_checkbox;
+    }
+  };
+
   // index.ts
   var Controllers = class {
     div;
     d_melody;
     hierarchy;
     time_range;
+    implication;
     gravity;
     melody_beep;
     melody_color;
@@ -7300,14 +7435,19 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
       this.d_melody = new DMelodyController();
       this.hierarchy = new HierarchyLevelController(layer_count);
       this.time_range = new TimeRangeController(length);
+      this.implication = new ImplicationDisplayController();
       this.gravity = new GravityController(gravity_visible);
       this.melody_beep = new MelodyBeepController();
       this.melody_color = new MelodyColorController();
       this.melody_beep.checkbox.input.checked = true;
+      this.implication.prospective_checkbox.input.checked = false;
+      this.implication.retrospective_checkbox.input.checked = true;
+      this.implication.reconstructed_checkbox.input.checked = true;
       [
         //      this.d_melody,
         this.hierarchy,
         this.time_range,
+        this.implication,
         //      this.gravity,
         this.melody_beep
         //      this.melody_color,
