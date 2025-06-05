@@ -15,7 +15,7 @@ const main = (argv: string[]) => {
   const parsed = (JSON.parse(input) as Vocals).f0;
 
   const SAMPLING_RATE = 22050;
-  // 瞬間周波数 [Hz/s]
+  // 瞬間周波数 [Hz]
   const raw = parsed.map(freq => freq && freq * 2);  // pYIN の推定結果が 1 オクターブ低く出るので 1 オクターブ上げる
   const round = raw.map(freq => freq && roundOnMIDI(freq));
   const median = getMedianFrequency(round).map(e => e === null ? NaN : e);
