@@ -42,3 +42,25 @@ and roman–numeral data and outputs analysis results.
 
 These commands operate from the repository root and leverage the Yarn workspace
 configuration.
+
+### Creating utility instances
+
+Some CLI utilities expose factory functions rather than classes. For example,
+the median filter used in post-processing is constructed with
+`createMedianFilter()`:
+
+```ts
+import { createMedianFilter } from "@music-analyzer/post-pyin";
+const filter = createMedianFilter(25);
+```
+
+This pattern replaces the previous `new MedianFilter()` usage and helps remove
+class declarations from the codebase.
+
+Other helpers now expose factory functions as well. For instance:
+
+```ts
+import { createAssertion, createNotImplementedError } from "@music-analyzer/stdlib";
+createAssertion(x > 0).onFailed(() => { throw createNotImplementedError(); });
+```
+

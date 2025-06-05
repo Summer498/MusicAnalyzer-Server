@@ -1,12 +1,15 @@
 import { Compare } from "@music-analyzer/math";
 import { logViterbi } from "./log-viterbi";
 
-class ViterbiResult<S> {
-  constructor(
-    readonly probability: number,
-    readonly trace: S[][],
-  ) { }
+interface ViterbiResult<S> {
+  probability: number;
+  trace: S[][];
 }
+
+const createViterbiResult = <S>(probability: number, trace: S[][]): ViterbiResult<S> => ({
+  probability,
+  trace,
+});
 
 
 /**
@@ -33,7 +36,7 @@ export const viterbi = <O, S>(
     observation_sequence,
     compare,
   );
-  return new ViterbiResult(
+  return createViterbiResult(
     Math.exp(log_viterbi.log_probability),
     log_viterbi.trace,
   );
