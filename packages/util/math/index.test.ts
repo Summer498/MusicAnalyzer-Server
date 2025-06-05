@@ -1,5 +1,7 @@
-describe("dummy", () => {
-  test("dummy", () => {
-    expect(1).toBe(1);
+import * as Module from "./index";
+
+describe("math utilities", () => {
+  test("should load module", () => {
+    expect(Module).toBeTruthy();
   });
 });

@@ -1,6 +1,6 @@
 import * as Module from "./index";
 
-describe("html utilities", () => {
+describe("time-and utilities", () => {
   test("should load module", () => {
     expect(Module).toBeTruthy();
   });
