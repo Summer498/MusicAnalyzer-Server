@@ -41,13 +41,14 @@ var Controllers = class {
     this.gravity = new GravityController(gravity_visible);
     this.melody_beep = new MelodyBeepController();
     this.melody_color = new MelodyColorController();
+    this.melody_beep.checkbox.input.checked = true;
     [
-      this.d_melody,
+      //      this.d_melody,
       this.hierarchy,
       this.time_range,
-      this.gravity,
-      this.melody_beep,
-      this.melody_color
+      //      this.gravity,
+      this.melody_beep
+      //      this.melody_color,
     ].forEach((e) => this.div.appendChild(e.view));
   }
 };
@@ -252,17 +253,12 @@ var setupUI = (title_info, audio_player2, titleHead2, piano_roll_place2, manager
   const audio_viewer = new AudioViewer(audio_player2, manager.audio_time_mediator);
   const piano_roll_view = new PianoRoll(manager.analyzed, manager.window_size_mediator, !manager.FULL_VIEW);
   asParent(piano_roll_place2).appendChildren(
-    new ColumnHTML(
-      audio_viewer.wave.svg,
-      audio_viewer.spectrogram.svg,
-      audio_viewer.fft.svg
-    ).div,
     ...getSaveButtons(title_info, titleHead2, piano_roll_view),
     piano_roll_view.svg,
     audio_player2,
     new ColumnHTML(
-      manager.controller.div,
-      manager.analyzed.melody.ir_plot_svg
+      manager.controller.div
+      //        manager.analyzed.melody.ir_plot_svg
     ).div
   );
 };
