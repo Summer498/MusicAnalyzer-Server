@@ -6383,30 +6383,82 @@ Expected id is: ${regexp}`);
   };
 
   // ../../packages/cognitive-theory-of-music/irm/dist/index.mjs
-  var Dyad = class {
-    length = 2;
-    symbol = "Dyad";
-    notes;
-    intervals;
-    constructor(prev, curr) {
-      this.notes = [prev, curr];
-      this.intervals = [distance4(prev, curr)];
+  var _sgn = (x) => x < 0 ? -1 : x && 1;
+  var _abs = (x) => x < 0 ? -x : x;
+  var M3 = get5("M3");
+  var m32 = get5("m3");
+  var getRegistralReturnForm = (notes) => {
+    if (notes.length !== 3) {
+      throw new Error(`Invalid argument length. Required 3 arguments but given was ${notes.length} notes: ${JSON.stringify(notes)}`);
     }
+    if (get6(notes[0]) === get6("")) {
+      const return_degree2 = "";
+      return { is_null: true, return_degree: return_degree2 };
+    }
+    const return_degree = distance4(notes[0], notes[2]);
+    const dir1 = Math.sign(
+      semitones(distance4(notes[0], notes[1]))
+    );
+    const dir2 = Math.sign(
+      semitones(distance4(notes[1], notes[2]))
+    );
+    const is_null = dir1 === dir2;
+    return { is_null, return_degree };
   };
-  var Monad = class {
-    length = 1;
-    symbol = "M";
-    notes;
-    constructor(note4) {
-      this.notes = [note4];
+  var NULL_REGISTRAL_RETURN_FORM = getRegistralReturnForm(["", "", ""]);
+  var getDirection = (name, value) => {
+    if (name === "mL") {
+      return { name, value, closure_degree: 1 };
     }
+    if (name === "mN") {
+      return { name, value, closure_degree: 0 };
+    }
+    if (name === "mR") {
+      return { name, value, closure_degree: -1 };
+    }
+    throw new Error(`from getDirection: invalid direction name (${name}) reserved`);
   };
-  var Null_ad = class {
-    length = 0;
-    symbol = "";
-    notes = [];
-    constructor() {
+  var getMagnitude = (name, value) => {
+    if (name === "AA") {
+      return { name, value, closure_degree: 1 };
     }
+    if (name === "AB") {
+      return { name, value, closure_degree: 2 };
+    }
+    throw new Error(`from getMagnitude: invalid magnitude name (${name}) reserved`);
+  };
+  var getMotion = (dir, mgn) => ({
+    direction: dir,
+    magnitude: mgn,
+    closure: dir.name === "mL" && mgn.name === "AB" ? 1 : 0
+  });
+  var getIntervallicMotion = (prev, curr) => {
+    const dir_map = ["mL", "mN", "mR"];
+    const pd = _sgn(prev.semitones);
+    const cd = _sgn(curr.semitones);
+    const C = (cd - pd ? m32 : M3).semitones;
+    const p = _abs(prev.semitones);
+    const c = _abs(curr.semitones);
+    const d = c - p;
+    const sgn = d < 0 ? -1 : d && 1;
+    const abs = d < 0 ? -d : d;
+    return getMotion(
+      getDirection(dir_map[sgn + 1], sgn),
+      getMagnitude(abs < C ? "AA" : "AB", abs)
+    );
+  };
+  var getRegistralMotion = (prev, curr) => {
+    const dir_map = ["mL", "mN", "mR"];
+    const mgn_map = ["AB", "AA", "AA"];
+    const p = _sgn(prev.semitones);
+    const c = _sgn(curr.semitones);
+    const d = c - p;
+    const sgn = d ? -1 : p && 1;
+    const abs = d ? -1 : p && 1;
+    return getMotion(
+      getDirection(dir_map[sgn + 1], sgn),
+      getMagnitude(mgn_map[abs + 1], abs)
+    );
   };
   var retrospectiveSymbol = (symbol) => {
     switch (symbol) {
@@ -6430,105 +6482,6 @@ Expected id is: ${regexp}`);
         throw new Error(`Illegal symbol given.
 Expected symbol: P, IP, VP, R, IR, VR, D, ID
  Given symbol:${symbol}`);
-    }
-  };
-  var RegistralReturnForm = class {
-    is_null;
-    return_degree;
-    constructor(notes) {
-      this.is_null = true;
-      if (notes.length !== 3) {
-        throw new Error(`Invalid argument length. Required 3 arguments but given was ${notes.length} notes: ${JSON.stringify(notes)}`);
-      }
-      if (get6(notes[0]) === get6("")) {
-        this.return_degree = "";
-        return;
-      }
-      this.return_degree = distance4(notes[0], notes[2]);
-      const dir1 = Math.sign(
-        semitones(distance4(notes[0], notes[1]))
-      );
-      const dir2 = Math.sign(
-        semitones(distance4(notes[1], notes[2]))
-      );
-      this.is_null = dir1 === dir2;
-    }
-  };
-  var NULL_REGISTRAL_RETURN_FORM = new RegistralReturnForm(["", "", ""]);
-  var Motion = class {
-    direction;
-    magnitude;
-    closure;
-    constructor(dir, mgn) {
-      this.direction = dir;
-      this.magnitude = mgn;
-      this.closure = dir.name === "mL" && mgn.name === "AB" ? 1 : 0;
-    }
-  };
-  var Direction = class {
-    constructor(name, value) {
-      this.name = name;
-      this.value = value;
-      if (name === "mL") {
-        this.closure_degree = 1;
-      }
-      if (name === "mN") {
-        this.closure_degree = 0;
-      }
-      if (name === "mR") {
-        this.closure_degree = -1;
-      }
-    }
-    closure_degree;
-  };
-  var Magnitude = class {
-    constructor(name, value) {
-      this.name = name;
-      this.value = value;
-      if (name === "AA") {
-        this.closure_degree = 1;
-      }
-      if (name === "AB") {
-        this.closure_degree = 2;
-      }
-    }
-    closure_degree;
-  };
-  var M3 = get5("M3");
-  var m32 = get5("m3");
-  var _sgn = (x) => x < 0 ? -1 : x && 1;
-  var _abs = (x) => x < 0 ? -x : x;
-  var IntervallicMotion = class extends Motion {
-    constructor(prev, curr) {
-      const dir_map = ["mL", "mN", "mR"];
-      const pd = _sgn(prev.semitones);
-      const cd = _sgn(curr.semitones);
-      const C = (cd - pd ? m32 : M3).semitones;
-      const p = _abs(prev.semitones);
-      const c = _abs(curr.semitones);
-      const d = c - p;
-      const sgn = d < 0 ? -1 : d && 1;
-      const abs = d < 0 ? -d : d;
-      super(
-        new Direction(dir_map[sgn + 1], sgn),
-        new Magnitude(abs < C ? "AA" : "AB", abs)
-      );
-    }
-  };
-  var _sgn2 = (x) => x < 0 ? -1 : x && 1;
-  var RegistralMotion = class extends Motion {
-    constructor(prev, curr) {
-      const dir_map = ["mL", "mN", "mR"];
-      const mgn_map = ["AB", "AA", "AA"];
-      const p = _sgn2(prev.semitones);
-      const c = _sgn2(curr.semitones);
-      const d = c - p;
-      const sgn = d ? -1 : p && 1;
-      const abs = d ? -1 : p && 1;
-      super(
-        new Direction(dir_map[sgn + 1], sgn),
-        new Magnitude(mgn_map[abs + 1], abs)
-      );
     }
   };
   var getReverse = (I, V) => {
@@ -6567,27 +6520,27 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
       return "VP";
     }
   };
-  var TriadArchetype = class {
-    symbol;
-    notes;
-    intervals;
-    registral;
-    intervallic;
-    registral_return_form;
-    constructor(prev, curr, next) {
-      this.notes = [prev || "", curr || "", next || ""];
-      this.intervals = [distance4(prev, curr), distance4(curr, next)];
-      const initial = get5(this.intervals[0]);
-      const follow = get5(this.intervals[1]);
-      this.registral = new RegistralMotion(initial, follow);
-      this.intervallic = new IntervallicMotion(initial, follow);
-      this.registral_return_form = new RegistralReturnForm(this.notes);
-      this.symbol = getTriadArchetypeSymbol(
-        this.intervallic.direction.name,
-        this.intervallic.magnitude.name,
-        this.registral.direction.name
-      );
-    }
+  var getTriadArchetype = (prev, curr, next) => {
+    const notes = [prev || "", curr || "", next || ""];
+    const intervals = [distance4(prev, curr), distance4(curr, next)];
+    const initial = get5(intervals[0]);
+    const follow = get5(intervals[1]);
+    const registral = getRegistralMotion(initial, follow);
+    const intervallic = getIntervallicMotion(initial, follow);
+    const registral_return_form = getRegistralReturnForm(notes);
+    const symbol = getTriadArchetypeSymbol(
+      intervallic.direction.name,
+      intervallic.magnitude.name,
+      registral.direction.name
+    );
+    return {
+      notes,
+      intervals,
+      registral,
+      intervallic,
+      registral_return_form,
+      symbol
+    };
   };
   var isRetrospective = (archetype) => {
     const initial = get5(archetype.intervals[0]);
@@ -6602,10 +6555,11 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
     }
   };
   var getTriad = (prev, curr, next) => {
-    const archetype = new TriadArchetype(prev, curr, next);
+    const archetype = getTriadArchetype(prev, curr, next);
     const { intervals, registral, intervallic, registral_return_form } = archetype;
     const retrospective = isRetrospective(archetype);
     return {
+      length: 3,
       notes: [prev || "", curr || "", next || ""],
       archetype,
       intervals,
@@ -6616,6 +6570,22 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
       symbol: retrospective ? retrospectiveSymbol(archetype.symbol) : archetype.symbol
     };
   };
+  var getDyad = (prev, curr) => ({
+    length: 2,
+    symbol: "Dyad",
+    notes: [prev, curr],
+    intervals: [distance4(prev, curr)]
+  });
+  var getMonad = (note4) => ({
+    length: 1,
+    symbol: "M",
+    notes: [note4]
+  });
+  var getNull_ad = () => ({
+    length: 0,
+    symbol: "",
+    notes: []
+  });
   var get_grb_on_parametric_scale = (archetype) => {
     const s = archetype.intervallic?.direction.name === "mL" ? -1 : 0;
     const v3 = archetype.intervallic?.direction.name === "mR" ? -1 : 0;
@@ -6632,7 +6602,7 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
     return [64, 64, 64];
   };
   function get_color_on_parametric_scale(archetype) {
-    if (archetype instanceof Dyad || archetype instanceof Monad || archetype instanceof Null_ad) {
+    if (archetype.symbol === "Dyad" || archetype.symbol === "M" || archetype.symbol === "") {
       return "rgb(64,64,64)";
     }
     return rgbToString(get_grb_on_parametric_scale(archetype));
@@ -6836,19 +6806,19 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
         if (n !== void 0) {
           return getTriad(p, c, n);
         } else {
-          return new Dyad(p, c);
+          return getDyad(p, c);
         }
       } else if (n !== void 0) {
-        return new Dyad(c, n);
+        return getDyad(c, n);
       } else {
-        return new Monad(c);
+        return getMonad(c);
       }
     } else if (p !== void 0) {
-      return new Monad(p);
+      return getMonad(p);
     } else if (n !== void 0) {
-      return new Monad(n);
+      return getMonad(n);
     } else {
-      return new Null_ad();
+      return getNull_ad();
     }
   };
   var analyzeMelody = (melodies, romans) => {

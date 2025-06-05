@@ -1,5 +1,5 @@
 import { PianoRollConverter, size } from "@music-analyzer/view-parameters";
-import { Triad } from "@music-analyzer/irm";
+import { ITriad } from "@music-analyzer/irm";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { HierarchyLevelController, MelodyColorController, SetColor, TimeRangeController } from "@music-analyzer/controllers";
 import { Time } from "@music-analyzer/time-and";
@@ -9,13 +9,13 @@ interface I_IRSymbolModel {
   readonly time: Time;
   readonly head: Time;
   readonly note: number;
-  readonly archetype: Triad;
+  readonly archetype: ITriad;
   readonly layer: number;
 }
 
 const getIRSymbolModel = (e: SerializedTimeAndAnalyzedMelody, layer: number) => ({
   ...e,
-  archetype: e.melody_analysis.implication_realization as Triad,
+  archetype: e.melody_analysis.implication_realization as ITriad,
   layer: layer || 0,
 } as I_IRSymbolModel)
 

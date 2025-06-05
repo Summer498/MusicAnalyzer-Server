@@ -1,9 +1,5 @@
 import { Time } from "@music-analyzer/time-and";
 import { compress } from "@music-analyzer/time-and";
-import { Dyad } from "@music-analyzer/irm";
-import { Monad } from "@music-analyzer/irm";
-import { Null_ad } from "@music-analyzer/irm";
-import { Triad } from "@music-analyzer/irm";
 import { SerializedTimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { getChord } from "@music-analyzer/tonal-objects";
 import { noteFromMidi } from "@music-analyzer/tonal-objects";
@@ -12,7 +8,7 @@ import { mod } from "@music-analyzer/math";
 import { Chord } from "@music-analyzer/tonal-objects";
 import { getNote } from "@music-analyzer/tonal-objects";
 import { Scale } from "@music-analyzer/tonal-objects";
-import { getTriad } from "@music-analyzer/irm";
+import { getDyad, getMonad, getNull_ad, getTriad, IDyad, IMonad, INull_ad, ITriad } from "@music-analyzer/irm";
 
 // TODO: マイナーコードに対応する
 export const registerGravity = (pitch_class_set: Scale | Chord | undefined, curr?: number, next?: number) => {
@@ -35,14 +31,14 @@ const getSome_ad = (prev?: number, curr?: number, next?: number) => {
   if (c !== undefined) {
     if (p !== undefined) {
       if (n !== undefined) { return getTriad(p, c, n) }
-      else { return new Dyad(p, c); }
+      else { return getDyad(p, c); }
     }
-    else if (n !== undefined) { return new Dyad(c, n) }
-    else { return new Monad(c) }
+    else if (n !== undefined) { return getDyad(c, n) }
+    else { return getMonad(c) }
   }
-  else if (p !== undefined) { return new Monad(p); }
-  else if (n !== undefined) { return new Monad(n); }
-  else { return new Null_ad(); }
+  else if (p !== undefined) { return getMonad(p); }
+  else if (n !== undefined) { return getMonad(n); }
+  else { return getNull_ad(); }
 }
 
 export const analyzeMelody = (
@@ -108,7 +104,7 @@ export class Gravity {
   }
 }
 
-type MelodyAnalysis_Args = [Gravity | undefined, Gravity | undefined, Triad | Dyad | Monad | Null_ad];
+type MelodyAnalysis_Args = [Gravity | undefined, Gravity | undefined, ITriad | IDyad | IMonad | INull_ad];
 const getArgsOfMelodyAnalysis = (
   args
     : MelodyAnalysis_Args
@@ -128,12 +124,12 @@ const getArgsOfMelodyAnalysis = (
 export class SerializedMelodyAnalysis {
   readonly chord_gravity: Gravity | undefined
   readonly scale_gravity: Gravity | undefined
-  readonly implication_realization: Triad | Dyad | Monad | Null_ad
+  readonly implication_realization: ITriad | IDyad | IMonad | INull_ad
   constructor(e: SerializedMelodyAnalysis);
   constructor(
     scale_gravity: Gravity | undefined,
     chord_gravity: Gravity | undefined,
-    implication_realization: Triad | Dyad | Monad | Null_ad,
+    implication_realization: ITriad | IDyad | IMonad | INull_ad,
   );
   constructor(
     ...args

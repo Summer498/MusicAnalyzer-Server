@@ -1,4 +1,4 @@
-import { Triad } from "@music-analyzer/irm";
+import { ITriad } from "@music-analyzer/irm";
 import { NowAt } from "@music-analyzer/view-parameters";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { HierarchyLevelController, MelodyColorController, SetColor } from "@music-analyzer/controllers";
@@ -122,7 +122,7 @@ class IRPlotModel {
   readonly time: Time;
   readonly head: Time;
   readonly melody: MelodiesCache
-  get archetype() { return this.melody.getCurrentNote().melody_analysis.implication_realization as Triad; }
+  get archetype() { return this.melody.getCurrentNote().melody_analysis.implication_realization as ITriad; }
   constructor(
     melody_series: SerializedTimeAndAnalyzedMelody[],
   ) {

@@ -4,16 +4,16 @@ import { SerializedTimeAndAnalyzedMelody } from "./serialized-time-and-analyzed-
 import { Time } from "@music-analyzer/time-and";
 import { AudioReflectableRegistry, PianoRollTranslateX, WindowReflectableRegistry } from "@music-analyzer/view";
 import { HierarchyLevelController, MelodyColorController, TimeRangeController } from "@music-analyzer/controllers";
-import { Triad } from "@music-analyzer/irm";
 import { GetColor } from "@music-analyzer/controllers/src/color-selector";
 import { ImplicationDisplayController } from "@music-analyzer/controllers/src/switcher";
+import { ITriad } from "@music-analyzer/irm";
 
 interface IRGravityModel {
   readonly time: Time;
   readonly head: Time;
   readonly note: number;
   readonly layer: number;
-  readonly archetype: Triad;
+  readonly archetype: ITriad;
 }
 
 interface ILinePos {
@@ -103,7 +103,7 @@ function getSVGG(id: string, children: SVGElement[]) {
   return svg;
 }
 
-const getImplicationColor = (archetype: Triad) => {
+const getImplicationColor = (archetype: ITriad) => {
   switch (archetype.symbol) {
     case "P": return "rgba(0,0,255,1)"
     case "IP": return "rgba(0,0,255,.25)"
@@ -125,7 +125,7 @@ const getImplicationColor = (archetype: Triad) => {
   }
 }
 
-const getArchetypeColor = (archetype: Triad) => {
+const getArchetypeColor = (archetype: ITriad) => {
   switch (archetype.symbol) {
     case "(P)":
     case "P": return "rgba(0,0,255,1)"
@@ -239,7 +239,7 @@ const getProspectiveArrow = (layer: number) => (delayed_melody: SerializedTimeAn
   );
   const model = {
     ...second,
-    archetype: second.melody_analysis.implication_realization as Triad,
+    archetype: second.melody_analysis.implication_realization as ITriad,
     layer: layer || 0,
   } as IRGravityModel;
   const triangle = getTriangle();
@@ -281,7 +281,7 @@ const getRetrospectiveArrow = (layer: number) => (delayed_melody: SerializedTime
 
   const model = {
     ...second,
-    archetype: second.melody_analysis.implication_realization as Triad,
+    archetype: second.melody_analysis.implication_realization as ITriad,
     layer: layer || 0,
   } as IRGravityModel;
   const triangle = getTriangle();
@@ -309,6 +309,7 @@ const getReconstructedArrow = (layer: number) => (delayed_melody: SerializedTime
   const IImplication = third?.note + implication.dst;
   const VImplication = third?.note - implication.dst;
   // const VImplication = second?.note + implication.dst;
+  // TODO: create 水たまり
   const line_pos = fourth && getLinePos(
     { time: third.time, note: third.note },
     { time: fourth.time, note: is_V ? VImplication : IImplication },
@@ -316,7 +317,7 @@ const getReconstructedArrow = (layer: number) => (delayed_melody: SerializedTime
 
   const model = {
     ...second,
-    archetype: second.melody_analysis.implication_realization as Triad,
+    archetype: second.melody_analysis.implication_realization as ITriad,
     layer: layer || 0,
   } as IRGravityModel;
   const triangle = getTriangle();

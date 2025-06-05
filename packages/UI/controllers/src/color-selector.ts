@@ -1,15 +1,14 @@
-import { get_color_of_implication_realization } from "@music-analyzer/irm";
+import { get_color_of_implication_realization, ITriad } from "@music-analyzer/irm";
 import { get_color_of_Narmour_concept } from "@music-analyzer/irm";
 import { get_color_on_digital_intervallic_scale } from "@music-analyzer/irm";
 import { get_color_on_digital_parametric_scale } from "@music-analyzer/irm";
 import { get_color_on_intervallic_angle } from "@music-analyzer/irm";
 import { get_color_on_parametric_scale } from "@music-analyzer/irm";
 import { get_color_on_registral_scale } from "@music-analyzer/irm";
-import { Triad } from "@music-analyzer/irm";
 import { Controller } from "./controller";
 
 
-export type GetColor = (e: Triad) => string;
+export type GetColor = (e: ITriad) => string;
 export type SetColor = (getColor: GetColor) => void;
 
 abstract class ColorSelector<T> extends Controller<T> {

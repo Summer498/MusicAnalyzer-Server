@@ -1,4 +1,4 @@
-import { Triad } from "@music-analyzer/irm";
+import { ITriad } from "@music-analyzer/irm";
 import { black_key_height, bracket_height, PianoRollConverter } from "@music-analyzer/view-parameters";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { HierarchyLevelController, MelodyColorController, SetColor, TimeRangeController } from "@music-analyzer/controllers";
@@ -8,14 +8,14 @@ import { AudioReflectableRegistry, PianoRollTranslateX, WindowReflectableRegistr
 class ReductionModel {
   readonly time: Time;
   readonly head: Time;
-  readonly archetype: Triad;
+  readonly archetype: ITriad;
   constructor(
     e: SerializedTimeAndAnalyzedMelody,
     readonly layer: number,
   ) {
     this.time = e.time;
     this.head = e.head;
-    this.archetype = e.melody_analysis.implication_realization as Triad;
+    this.archetype = e.melody_analysis.implication_realization as ITriad;
   }
 }
 
@@ -33,7 +33,7 @@ class ReductionViewModel {
   get cw() { return this.#cw; }
   get strong() { return this.#strong; }
   set strong(value: boolean) { this.#strong = value; }
-  readonly archetype: Triad;
+  readonly archetype: ITriad;
   constructor(
     readonly model: ReductionModel,
   ) {
@@ -48,7 +48,7 @@ class ReductionViewModel {
     [0];
     this.h = black_key_height * bracket_height;
     this.#strong = false;
-    this.archetype = model.archetype as Triad
+    this.archetype = model.archetype as ITriad
   }
   getViewX(x: number) { return PianoRollConverter.scaled(x); }
   getViewW(w: number) { return PianoRollConverter.scaled(w); }

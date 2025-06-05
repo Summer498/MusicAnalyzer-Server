@@ -6,24 +6,21 @@ import { SerializedTimeAndAnalyzedMelody } from "./serialized-time-and-analyzed-
 import { SerializedMelodyAnalysis } from "./serialized-melody-analysis";
 import { TimeAndMelody } from "./time-and-melody";
 import { registerGravity } from "./register-gravity";
-import { Dyad } from "@music-analyzer/irm";
-import { Monad } from "@music-analyzer/irm";
-import { Null_ad } from "@music-analyzer/irm";
-import { getTriad } from "@music-analyzer/irm";
+import { getDyad, getMonad, getNull_ad, getTriad } from "@music-analyzer/irm";
 
 const getSome_ad = (prev?: number, curr?: number, next?: number) => {
   const [p, c, n] = [prev, curr, next].map(e => e ? noteFromMidi(e) : undefined);
   if (c !== undefined) {
     if (p !== undefined) {
       if (n !== undefined) { return getTriad(p, c, n) }
-      else { return new Dyad(p, c); }
+      else { return getDyad(p, c); }
     }
-    else if (n !== undefined) { return new Dyad(c, n) }
-    else { return new Monad(c) }
+    else if (n !== undefined) { return getDyad(c, n) }
+    else { return getMonad(c) }
   }
-  else if (p !== undefined) { return new Monad(p); }
-  else if (n !== undefined) { return new Monad(n); }
-  else { return new Null_ad(); }
+  else if (p !== undefined) { return getMonad(p); }
+  else if (n !== undefined) { return getMonad(n); }
+  else { return getNull_ad(); }
 }
 
 export const analyzeMelody = (

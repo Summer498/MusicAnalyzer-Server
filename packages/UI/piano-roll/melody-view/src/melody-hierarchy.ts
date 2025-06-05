@@ -1,5 +1,5 @@
 import { deleteMelody } from "./melody-editor/delete";
-import { Triad } from "@music-analyzer/irm";
+import { ITriad } from "@music-analyzer/irm";
 import { SerializedMelodyAnalysis } from "@music-analyzer/melody-analyze";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { play } from "@music-analyzer/synth";
@@ -18,7 +18,7 @@ interface I_MelodyModel {
   readonly head: Time;
   readonly note: number;
   readonly melody_analysis: SerializedMelodyAnalysis;
-  readonly archetype: Triad;
+  readonly archetype: ITriad;
 }
 
 interface IMelody {
@@ -66,7 +66,7 @@ const getMelodyModel = (e: SerializedTimeAndAnalyzedMelody) => ({
   head: e.head,
   note: e.note,
   melody_analysis: e.melody_analysis,
-  archetype: e.melody_analysis.implication_realization as Triad,
+  archetype: e.melody_analysis.implication_realization as ITriad,
 })
 
 const updateX_MelodyView = (svg: SVGRectElement) => (x: number) => { svg.setAttribute("x", String(x)); }

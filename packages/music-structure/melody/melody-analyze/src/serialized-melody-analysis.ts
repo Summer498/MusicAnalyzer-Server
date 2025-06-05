@@ -1,10 +1,7 @@
-import { Dyad } from "@music-analyzer/irm";
-import { Monad } from "@music-analyzer/irm";
-import { Null_ad } from "@music-analyzer/irm";
-import { Triad } from "@music-analyzer/irm";
+import { IDyad, IMonad, INull_ad, ITriad } from "@music-analyzer/irm";
 import { SerializedGravity } from "./serialized-gravity";
 
-type MelodyAnalysis_Args = [SerializedGravity | undefined, SerializedGravity | undefined, Triad | Dyad | Monad | Null_ad];
+type MelodyAnalysis_Args = [SerializedGravity | undefined, SerializedGravity | undefined, ITriad | IDyad | IMonad | INull_ad];
 const getArgsOfMelodyAnalysis = (
   args
     : MelodyAnalysis_Args
@@ -23,12 +20,12 @@ const getArgsOfMelodyAnalysis = (
 export class SerializedMelodyAnalysis {
   readonly chord_gravity: SerializedGravity | undefined
   readonly scale_gravity: SerializedGravity | undefined
-  readonly implication_realization: Triad | Dyad | Monad | Null_ad
+  readonly implication_realization: ITriad | IDyad | IMonad | INull_ad
   constructor(e: SerializedMelodyAnalysis);
   constructor(
     scale_gravity: SerializedGravity | undefined,
     chord_gravity: SerializedGravity | undefined,
-    implication_realization: Triad | Dyad | Monad | Null_ad,
+    implication_realization: ITriad | IDyad | IMonad | INull_ad,
   );
   constructor(
     ...args
