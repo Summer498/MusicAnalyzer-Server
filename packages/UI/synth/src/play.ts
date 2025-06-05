@@ -1,5 +1,5 @@
 import { createGain } from "./create-gain";
-import { createOscillator } from "./create-oscilllator";
+import { createOscillator } from "./create-oscillator";
 
 const audioCtx = new AudioContext();
 
