@@ -13,6 +13,31 @@ let _beep_volume = 0;
 let _do_melody_beep = false;
 let _sound_reserved = false;
 
+interface I_MelodyModel {
+  readonly time: Time;
+  readonly head: Time;
+  readonly note: number;
+  readonly melody_analysis: SerializedMelodyAnalysis;
+  readonly archetype: Triad;
+}
+
+interface IMelody {
+  readonly model: I_MelodyModel,
+  readonly svg: SVGRectElement,
+}
+
+interface IMelodyLayer {
+  readonly svg: SVGGElement;
+  readonly parts: IMelody[];
+  readonly layer: number;
+}
+
+interface IMelodyHierarchy {
+  show: IMelodyLayer[];
+  readonly svg: SVGGElement;
+  readonly layers: IMelodyLayer[];
+}
+
 const _beepMelody = (model: I_MelodyModel) => {
   const volume = _beep_volume / 400;
   const pitch = [440 * Math.pow(2, (model.note - 69) / 12)];
@@ -35,14 +60,6 @@ const beepMelody = (model: I_MelodyModel) => {
 };
 const onMelodyBeepCheckChanged_MelodyBeep = (do_melody_beep: boolean) => { _do_melody_beep = do_melody_beep; }
 const onMelodyVolumeBarChanged_MelodyBeep = (beep_volume: number) => { _beep_volume = beep_volume; }
-
-interface I_MelodyModel {
-  readonly time: Time;
-  readonly head: Time;
-  readonly note: number;
-  readonly melody_analysis: SerializedMelodyAnalysis;
-  readonly archetype: Triad;
-}
 
 const getMelodyModel = (e: SerializedTimeAndAnalyzedMelody) => ({
   time: e.time,
@@ -71,24 +88,6 @@ const onTimeRangeChanged = onWindowResized;
 const beep = (model: I_MelodyModel) => { beepMelody(model); }
 const onMelodyBeepCheckChanged = (e: boolean) => { onMelodyBeepCheckChanged_MelodyBeep(e); }
 const onMelodyVolumeBarChanged = (e: number) => { onMelodyVolumeBarChanged_MelodyBeep(e); }
-
-
-interface IMelody {
-  readonly model: I_MelodyModel,
-  readonly svg: SVGRectElement,
-}
-
-interface IMelodyLayer {
-  readonly svg: SVGGElement;
-  readonly parts: IMelody[];
-  readonly layer: number;
-}
-
-interface IMelodyHierarchy {
-  show: IMelodyLayer[];
-  readonly svg: SVGGElement;
-  readonly layers: IMelodyLayer[];
-}
 
 const beep_MelodyLayer = (children: IMelody[]) => { children.forEach(e => beep(e.model)); }
 const onAudioUpdate_MelodyLayer = (svg: SVGGElement) => { svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
