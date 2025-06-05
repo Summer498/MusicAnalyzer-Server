@@ -1,5 +1,5 @@
-import { IntervalOfTime } from "../common";
-import { Note } from "../common";
+import type { IntervalOfTime, Note } from "../common";
+import { createIntervalOfTime } from "../common";
 
 export class GPR2b<T> {
   readonly is_fulfilled: boolean;
@@ -17,9 +17,9 @@ export class GPR2b<T> {
     // is greater than between those of n1 and n2 
     // and between those of n3 and n4.
 
-    const that = new IntervalOfTime({ from: n2.attack_point, to: n3.attack_point });
+    const that = createIntervalOfTime({ from: n2.attack_point, to: n3.attack_point });
     this.is_fulfilled
-      = that.isGreaterThan(new IntervalOfTime({ from: n1.attack_point, to: n2.attack_point }))
-      && that.isGreaterThan(new IntervalOfTime({ from: n3.attack_point, to: n4.attack_point }));
+      = that.isGreaterThan(createIntervalOfTime({ from: n1.attack_point, to: n2.attack_point }))
+      && that.isGreaterThan(createIntervalOfTime({ from: n3.attack_point, to: n4.attack_point }));
   }
 }

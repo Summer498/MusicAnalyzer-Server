@@ -1,3 +1,4 @@
 export { assertNotNaN } from "./not-nan";
 export { assertNonNullable } from "./not-null-like";
-export { Assertion } from "./assertion";
+export type { Assertion } from "./assertion";
+export { createAssertion } from "./assertion";

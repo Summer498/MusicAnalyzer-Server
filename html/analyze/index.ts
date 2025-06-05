@@ -19,10 +19,10 @@ import { MusicXML } from "@music-analyzer/musicxml";
 import { SerializedRomanAnalysisData } from "@music-analyzer/chord-analyze";
 import { SerializedMelodyAnalysisData } from "@music-analyzer/melody-analyze";
 import { xml_parser } from "@music-analyzer/serializable-data";
-import { AudioReflectableRegistry } from "@music-analyzer/view";
+import { AudioReflectableRegistry, createAudioReflectableRegistry } from "@music-analyzer/view";
 import { NowAt } from "@music-analyzer/view-parameters";
 import { MusicStructureElements } from "@music-analyzer/piano-roll";
-import { WindowReflectableRegistry } from "@music-analyzer/view";
+import { WindowReflectableRegistry, createWindowReflectableRegistry } from "@music-analyzer/view";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 
 import { DMelodyController } from "@music-analyzer/controllers";
@@ -129,8 +129,8 @@ class ApplicationManager {
     const length = melodies.length
 
     this.controller = new Controllers(layer_count, length, !this.NO_CHORD);
-    this.audio_time_mediator = new AudioReflectableRegistry();
-    this.window_size_mediator = new WindowReflectableRegistry();
+    this.audio_time_mediator = createAudioReflectableRegistry();
+    this.window_size_mediator = createWindowReflectableRegistry();
     const controllers = {
       ...this.controller,
       audio: this.audio_time_mediator,
