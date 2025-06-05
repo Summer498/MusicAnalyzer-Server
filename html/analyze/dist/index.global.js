@@ -5224,95 +5224,50 @@ Expected id is: ${regexp}`);
     ir_plot_svg.children.flatMap((e) => e.children).map((e) => e.onAudioUpdate());
     return ir_plot_svg.svg;
   }
-  var IRSymbolModel = class {
-    time;
-    head;
-    note;
-    archetype;
-    layer;
-    constructor(e, layer) {
-      this.time = e.time;
-      this.head = e.head;
-      this.note = e.note;
-      this.archetype = e.melody_analysis.implication_realization;
-      this.layer = layer || 0;
-    }
-  };
+  var getIRSymbolModel = (e, layer) => ({
+    ...e,
+    archetype: e.melody_analysis.implication_realization,
+    layer: layer || 0
+  });
   var ir_analysis_em = size;
-  var IRSymbolView = class {
-    constructor(svg) {
-      this.svg = svg;
-    }
-    updateX(x) {
-      this.svg.setAttribute("x", String(x));
-    }
-    updateY(y) {
-      this.svg.setAttribute("y", String(y));
-    }
-    setColor = (color) => this.svg.style.fill = color;
+  var updateX_IRSymbolView = (svg) => (x) => {
+    svg.setAttribute("x", String(x));
   };
-  var IRSymbol = class {
-    constructor(model, view) {
-      this.model = model;
-      this.view = view;
-      this.#y = PianoRollConverter.midi2NNBlackCoordinate(this.model.note);
-      this.updateX();
-      this.updateY();
-    }
-    get svg() {
-      return this.view.svg;
-    }
-    #y;
-    updateX() {
-      this.view.updateX(
-        PianoRollConverter.scaled(this.model.time.begin) + PianoRollConverter.scaled(this.model.time.duration) / 2
-      );
-    }
-    updateY() {
-      this.view.updateY(this.#y);
-    }
-    onWindowResized() {
-      this.updateX();
-    }
-    onTimeRangeChanged = this.onWindowResized;
-    setColor = (f) => this.view.setColor(f(this.model.archetype));
+  var updateY_IRSymbolView = (svg) => (y) => {
+    svg.setAttribute("y", String(y));
   };
-  var IRSymbolLayer = class {
-    constructor(svg, children, layer) {
-      this.svg = svg;
-      this.children = children;
-      this.layer = layer;
-      this.svg = svg;
-      this.children_model = this.children.map((e) => e.model);
-      this.#show = children;
-    }
-    children_model;
-    #show;
-    get show() {
-      return this.#show;
-    }
-    onAudioUpdate() {
-      this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`);
-    }
+  var setColor_IRSymbolView = (svg) => (color) => svg.setAttribute("fill", color);
+  var updateX2 = (svg) => (model) => {
+    updateX_IRSymbolView(svg)(
+      PianoRollConverter.scaled(model.time.begin) + PianoRollConverter.scaled(model.time.duration) / 2
+    );
   };
-  var IRSymbolHierarchy = class {
-    constructor(svg, children) {
-      this.svg = svg;
-      this.children = children;
-    }
-    _show = [];
-    get show() {
-      return this._show;
-    }
-    setShow(visible_layers) {
-      this._show = visible_layers;
-      this._show.forEach((e) => e.onAudioUpdate());
-      this.svg.replaceChildren(...this._show.map((e) => e.svg));
-    }
-    onChangedLayer(value) {
-      const visible_layer = this.children.filter((e) => value === e.layer);
-      this.setShow(visible_layer);
-    }
+  var updateY2 = (svg) => (model) => {
+    updateY_IRSymbolView(svg)(PianoRollConverter.midi2NNBlackCoordinate(model.note));
+  };
+  var onWindowResized22 = (svg) => (model) => {
+    updateX2(svg)(model);
+  };
+  var onTimeRangeChanged2 = onWindowResized22;
+  var setColor = (svg) => (model) => (f) => setColor_IRSymbolView(svg)(f(model.archetype));
+  var getIRSymbolLayer = (svg, children, layer) => ({
+    svg,
+    layer,
+    show: children,
+    children,
+    children_model: children.map((e) => e.model)
+  });
+  var onAudioUpdate2 = (svg) => {
+    svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`);
+  };
+  var setShow = (svg) => (show) => (visible_layers) => {
+    show = visible_layers;
+    show.forEach((e) => onAudioUpdate2(e.svg));
+    svg.replaceChildren(...show.map((e) => e.svg));
+  };
+  var onChangedLayer = (svg) => (show) => (children) => (value) => {
+    const visible_layer = children.filter((e) => value === e.layer);
+    setShow(svg)(show)(visible_layer);
   };
   function getIRSymbolSVG(text) {
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "text");
@@ -5330,190 +5285,124 @@ Expected id is: ${regexp}`);
     children.forEach((e) => svg.appendChild(e.svg));
     return svg;
   }
+  var getParts = (l) => (e) => {
+    const model = getIRSymbolModel(e, l);
+    const svg = getIRSymbolSVG(model.archetype.symbol);
+    updateX2(svg)(model);
+    updateY2(svg)(model);
+    return { model, svg };
+  };
+  var getLayers = (e, l) => {
+    const parts = e.map(getParts(l));
+    const svg = getSVGG3(`layer-${l}`, parts);
+    return getIRSymbolLayer(svg, parts, l);
+  };
   function buildIRSymbol(h_melodies, controllers) {
-    const layers = h_melodies.map((e, l) => {
-      const parts = e.map((e2) => {
-        const model = new IRSymbolModel(e2, l);
-        const svg3 = getIRSymbolSVG(model.archetype.symbol);
-        const view = new IRSymbolView(svg3);
-        return new IRSymbol(model, view);
-      });
-      const svg2 = getSVGG3(`layer-${l}`, parts);
-      return new IRSymbolLayer(svg2, parts, l);
-    });
-    const svg = getSVGG3("implication-realization archetype", layers);
-    const ir_hierarchy = new IRSymbolHierarchy(svg, layers);
-    controllers.window.addListeners(...ir_hierarchy.children.flatMap((e) => e.children).map((e) => e.onWindowResized.bind(e)));
-    controllers.hierarchy.addListeners(ir_hierarchy.onChangedLayer.bind(ir_hierarchy));
-    controllers.time_range.addListeners(...ir_hierarchy.children.flatMap((e) => e.children).map((e) => e.onTimeRangeChanged.bind(e)));
-    controllers.melody_color.addListeners(...ir_hierarchy.children.flatMap((e) => e.children).map((e) => e.setColor.bind(e)));
-    controllers.audio.addListeners(...ir_hierarchy.children.map((e) => e.onAudioUpdate.bind(e)));
-    ir_hierarchy.children.map((e) => e.onAudioUpdate());
+    const children = h_melodies.map(getLayers);
+    const svg = getSVGG3("implication-realization archetype", children);
+    const ir_hierarchy = { svg, children, show: children };
+    controllers.hierarchy.addListeners(() => onChangedLayer(ir_hierarchy.svg)(ir_hierarchy.show)(ir_hierarchy.children));
+    controllers.window.addListeners(...ir_hierarchy.children.flatMap((e) => e.children).map((e) => () => onWindowResized22(e.svg)(e.model)));
+    controllers.time_range.addListeners(...ir_hierarchy.children.flatMap((e) => e.children).map((e) => () => onTimeRangeChanged2(e.svg)(e.model)));
+    controllers.melody_color.addListeners(...ir_hierarchy.children.flatMap((e) => e.children).map((e) => () => setColor(e.svg)(e.model)));
+    controllers.audio.addListeners(...ir_hierarchy.children.map((e) => () => onAudioUpdate2(e.svg)));
+    ir_hierarchy.children.map((e) => onAudioUpdate2(e.svg));
     return ir_hierarchy.svg;
   }
   var deleteMelody = () => {
     console.log("deleteMelody called");
   };
-  var MelodyBeep = class {
-    constructor(model) {
-      this.model = model;
-      this.#beep_volume = 0;
-      this.#do_melody_beep = false;
-      this.#sound_reserved = false;
+  var _beep_volume = 0;
+  var _do_melody_beep = false;
+  var _sound_reserved = false;
+  var _beepMelody = (model) => {
+    const volume = _beep_volume / 400;
+    const pitch2 = [440 * Math.pow(2, (model.note - 69) / 12)];
+    const begin_sec = model.time.begin - NowAt.get();
+    const length_sec = model.time.duration;
+    play(pitch2, begin_sec, length_sec, volume);
+    _sound_reserved = true;
+    setTimeout(() => {
+      _sound_reserved = false;
+    }, reservation_range * 1e3);
+  };
+  var beepMelody = (model) => {
+    if (!_do_melody_beep) {
+      return;
     }
-    #beep_volume;
-    #do_melody_beep;
-    #sound_reserved;
-    #beepMelody = () => {
-      const volume = this.#beep_volume / 400;
-      const pitch2 = [440 * Math.pow(2, (this.model.note - 69) / 12)];
-      const begin_sec = this.model.time.begin - NowAt.get();
-      const length_sec = this.model.time.duration;
-      play(pitch2, begin_sec, length_sec, volume);
-      this.#sound_reserved = true;
-      setTimeout(() => {
-        this.#sound_reserved = false;
-      }, reservation_range * 1e3);
-    };
-    beepMelody = () => {
-      if (!this.#do_melody_beep) {
-        return;
+    if (!model.note) {
+      return;
+    }
+    const model_is_in_range = new Time(0, reservation_range).map((e) => e + NowAt.get()).has(model.time.begin);
+    if (model_is_in_range) {
+      if (_sound_reserved === false) {
+        _beepMelody(model);
       }
-      if (!this.model.note) {
-        return;
-      }
-      const model_is_in_range = new Time(0, reservation_range).map((e) => e + NowAt.get()).has(this.model.time.begin);
-      if (model_is_in_range) {
-        if (this.#sound_reserved === false) {
-          this.#beepMelody();
-        }
-      }
-    };
-    onMelodyBeepCheckChanged(do_melody_beep) {
-      this.#do_melody_beep = do_melody_beep;
-    }
-    onMelodyVolumeBarChanged(beep_volume) {
-      this.#beep_volume = beep_volume;
     }
   };
-  var MelodyModel = class {
-    time;
-    head;
-    note;
-    melody_analysis;
-    archetype;
-    constructor(e) {
-      this.time = e.time;
-      this.head = e.head;
-      this.note = e.note;
-      this.melody_analysis = e.melody_analysis;
-      this.archetype = e.melody_analysis.implication_realization;
-    }
+  var onMelodyBeepCheckChanged_MelodyBeep = (do_melody_beep) => {
+    _do_melody_beep = do_melody_beep;
   };
-  var MelodyView = class {
-    constructor(svg) {
-      this.svg = svg;
-    }
-    updateX(x) {
-      this.svg.setAttribute("x", String(x));
-    }
-    updateY(y) {
-      this.svg.setAttribute("y", String(y));
-    }
-    updateWidth(w) {
-      this.svg.setAttribute("width", String(w));
-    }
-    updateHeight(h) {
-      this.svg.setAttribute("height", String(h));
-    }
-    setColor = (color) => this.svg.style.fill = "#0d0";
+  var onMelodyVolumeBarChanged_MelodyBeep = (beep_volume) => {
+    _beep_volume = beep_volume;
   };
-  var Melody = class {
-    constructor(model, view) {
-      this.model = model;
-      this.view = view;
-      this.#beeper = new MelodyBeep(model);
-      this.updateX();
-      this.updateY();
-      this.updateWidth();
-      this.updateHeight();
-    }
-    #beeper;
-    get svg() {
-      return this.view.svg;
-    }
-    updateX() {
-      this.view.updateX(PianoRollConverter.scaled(this.model.time.begin));
-    }
-    updateY() {
-      this.view.updateY(PianoRollConverter.midi2NNBlackCoordinate(this.model.note));
-    }
-    updateWidth() {
-      this.view.updateWidth(31 / 32 * PianoRollConverter.scaled(this.model.time.duration));
-    }
-    updateHeight() {
-      this.view.updateHeight(black_key_height);
-    }
-    onWindowResized() {
-      this.updateX();
-      this.updateWidth();
-    }
-    setColor = (f) => this.view.setColor(f(this.model.archetype));
-    onTimeRangeChanged = this.onWindowResized;
-    beep() {
-      this.#beeper.beepMelody();
-    }
-    onMelodyBeepCheckChanged(e) {
-      this.#beeper.onMelodyBeepCheckChanged(e);
-    }
-    onMelodyVolumeBarChanged(e) {
-      this.#beeper.onMelodyVolumeBarChanged(e);
-    }
+  var getMelodyModel = (e) => ({
+    time: e.time,
+    head: e.head,
+    note: e.note,
+    melody_analysis: e.melody_analysis,
+    archetype: e.melody_analysis.implication_realization
+  });
+  var updateX_MelodyView = (svg) => (x) => {
+    svg.setAttribute("x", String(x));
   };
-  var MelodyLayer = class {
-    constructor(svg, children, layer) {
-      this.svg = svg;
-      this.children = children;
-      this.layer = layer;
-      this.children_model = this.children.map((e) => e.model);
-      this.#show = children;
-    }
-    children_model;
-    #show;
-    get show() {
-      return this.#show;
-    }
-    beep() {
-      this.children.forEach((e) => e.beep());
-    }
-    onAudioUpdate() {
-      this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`);
-    }
+  var updateY_MelodyView = (svg) => (y) => {
+    svg.setAttribute("y", String(y));
   };
-  var MelodyHierarchy = class {
-    constructor(svg, children) {
-      this.svg = svg;
-      this.children = children;
-    }
-    _show = [];
-    get show() {
-      return this._show;
-    }
-    onAudioUpdate() {
-      this.show.forEach((e) => e.beep());
-    }
-    beep() {
-      this.children.forEach((e) => e.beep());
-    }
-    setShow(visible_layers) {
-      this._show = visible_layers;
-      this._show.forEach((e) => e.onAudioUpdate());
-      this.svg.replaceChildren(...this._show.map((e) => e.svg));
-    }
-    onChangedLayer(value) {
-      const visible_layer = this.children.filter((e) => value === e.layer);
-      this.setShow(visible_layer);
-    }
+  var updateWidth_MelodyView = (svg) => (w) => {
+    svg.setAttribute("width", String(w));
+  };
+  var updateHeight_MelodyView = (svg) => (h) => {
+    svg.setAttribute("height", String(h));
+  };
+  var setColor_MelodyView = (svg) => (color) => svg.setAttribute("fill", "#0d0");
+  var updateX3 = (svg) => (model) => {
+    updateX_MelodyView(svg)(PianoRollConverter.scaled(model.time.begin));
+  };
+  var updateY3 = (svg) => (model) => {
+    updateY_MelodyView(svg)(PianoRollConverter.midi2NNBlackCoordinate(model.note));
+  };
+  var updateWidth2 = (svg) => (model) => {
+    updateWidth_MelodyView(svg)(31 / 32 * PianoRollConverter.scaled(model.time.duration));
+  };
+  var updateHeight2 = (svg) => {
+    updateHeight_MelodyView(svg)(black_key_height);
+  };
+  var onWindowResized3 = (svg) => (model) => {
+    updateX3(svg)(model);
+    updateWidth2(svg)(model);
+  };
+  var setColor2 = (svg) => (model) => (f) => setColor_MelodyView(svg)(f(model.archetype));
+  var onTimeRangeChanged3 = onWindowResized3;
+  var beep = (model) => {
+    beepMelody(model);
+  };
+  var onMelodyBeepCheckChanged = (e) => {
+    onMelodyBeepCheckChanged_MelodyBeep(e);
+  };
+  var onMelodyVolumeBarChanged = (e) => {
+    onMelodyVolumeBarChanged_MelodyBeep(e);
+  };
+  var beep_MelodyLayer = (children) => {
+    children.forEach((e) => beep(e.model));
+  };
+  var onAudioUpdate_MelodyLayer = (svg) => {
+    svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`);
+  };
+  var onChangedLayer2 = (svg) => (e) => (children) => (value) => {
+    e.show = children.filter((e2) => value === e2.layer);
+    e.show.forEach((e2) => onAudioUpdate_MelodyLayer(e2.svg));
+    svg.replaceChildren(...e.show.map((e2) => e2.svg));
   };
   function getMelodySVG() {
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
@@ -5528,29 +5417,34 @@ Expected id is: ${regexp}`);
     children.forEach((e) => svg.appendChild(e.svg));
     return svg;
   }
+  var getParts2 = (e) => {
+    const model = getMelodyModel(e);
+    const svg = getMelodySVG();
+    updateX3(svg)(model);
+    updateY3(svg)(model);
+    updateWidth2(svg)(model);
+    updateHeight2(svg);
+    return { model, svg };
+  };
+  var getLayers2 = (e, layer) => {
+    const parts = e.map(getParts2);
+    const svg = getSVGG4(`layer-${layer}`, parts);
+    return { svg, parts, layer };
+  };
   function buildMelody(h_melodies, controllers) {
-    const layers = h_melodies.map((e, l) => {
-      const parts = e.map((e2) => {
-        const model = new MelodyModel(e2);
-        const svg3 = getMelodySVG();
-        const view = new MelodyView(svg3);
-        return new Melody(model, view);
-      });
-      const svg2 = getSVGG4(`layer-${l}`, parts);
-      return new MelodyLayer(svg2, parts, l);
-    });
+    const layers = h_melodies.map(getLayers2);
     const svg = getSVGG4("melody", layers);
-    const melody_hierarchy = new MelodyHierarchy(svg, layers);
-    controllers.window.addListeners(...melody_hierarchy.children.flatMap((e) => e.children).map((e) => e.onWindowResized.bind(e)));
-    controllers.hierarchy.addListeners(melody_hierarchy.onChangedLayer.bind(melody_hierarchy));
-    controllers.time_range.addListeners(...melody_hierarchy.children.flatMap((e) => e.children).map((e) => e.onTimeRangeChanged.bind(e)));
-    controllers.melody_color.addListeners(...melody_hierarchy.children.flatMap((e) => e.children).map((e) => e.setColor.bind(e)));
-    controllers.melody_beep.checkbox.addListeners(...melody_hierarchy.children.flatMap((e) => e.children).map((e) => e.onMelodyBeepCheckChanged.bind(e)));
-    controllers.melody_beep.volume.addListeners(...melody_hierarchy.children.flatMap((e) => e.children).map((e) => e.onMelodyVolumeBarChanged.bind(e)));
-    controllers.audio.addListeners(...melody_hierarchy.children.map((e) => e.onAudioUpdate.bind(e)));
-    controllers.audio.addListeners(...melody_hierarchy.show.map((e) => e.beep.bind(e)));
-    melody_hierarchy.children.map((e) => e.onAudioUpdate());
-    melody_hierarchy.show.map((e) => e.beep());
+    const melody_hierarchy = { svg, layers, show: layers };
+    controllers.window.addListeners(...melody_hierarchy.layers.flatMap((e) => e.parts).map((e) => () => onWindowResized3(e.svg)(e.model)));
+    controllers.hierarchy.addListeners(onChangedLayer2(melody_hierarchy.svg)(melody_hierarchy)(melody_hierarchy.layers));
+    controllers.time_range.addListeners(...melody_hierarchy.layers.flatMap((e) => e.parts).map((e) => () => onTimeRangeChanged3(e.svg)(e.model)));
+    controllers.melody_color.addListeners(...melody_hierarchy.layers.flatMap((e) => e.parts).map((e) => setColor2(e.svg)(e.model)));
+    controllers.melody_beep.checkbox.addListeners(...melody_hierarchy.layers.flatMap((e) => e.parts).map((e) => onMelodyBeepCheckChanged));
+    controllers.melody_beep.volume.addListeners(...melody_hierarchy.layers.flatMap((e) => e.parts).map((e) => onMelodyVolumeBarChanged));
+    controllers.audio.addListeners(...melody_hierarchy.layers.map((e) => () => onAudioUpdate_MelodyLayer(e.svg)));
+    controllers.audio.addListeners(...melody_hierarchy.show.map((e) => () => beep_MelodyLayer(e.parts)));
+    melody_hierarchy.layers.map((e) => () => onAudioUpdate_MelodyLayer(e.svg));
+    melody_hierarchy.show.map((e) => beep_MelodyLayer(e.parts));
     return melody_hierarchy.svg;
   }
   var ReductionModel = class {
@@ -5875,7 +5769,7 @@ Expected id is: ${regexp}`);
     updateHeight_GravityView(svg)(black_key_height);
     onWindowResized_GravityView(triangle, line)(scaled5(line_seed)(NoteSize.get(), 1));
   };
-  var onAudioUpdate2 = (svg) => {
+  var onAudioUpdate3 = (svg) => {
     svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`);
   };
   var onUpdateGravityVisibility_GravityHierarchy = (svg) => (visible) => {
@@ -5883,7 +5777,7 @@ Expected id is: ${regexp}`);
   };
   var onChangedLayer_GravityHierarchy = (svg, show, children) => (value) => {
     show = children.filter((e) => value === e.layer);
-    show.forEach((e) => onAudioUpdate2(e.svg));
+    show.forEach((e) => onAudioUpdate3(e.svg));
     svg.replaceChildren(...show.map((e) => e.svg));
   };
   function getTriangle() {
@@ -5932,7 +5826,7 @@ Expected id is: ${regexp}`);
     children.forEach((e) => svg.appendChild(e.svg));
     return svg;
   }
-  var getLayers = (mode) => (melodies, layer) => {
+  var getLayers3 = (mode) => (melodies, layer) => {
     const next = melodies.slice(1);
     const children = next.map((n, i) => {
       const e = melodies[i];
@@ -5957,7 +5851,7 @@ Expected id is: ${regexp}`);
     return { layer, svg, children, show: children };
   };
   function buildGravity(mode, h_melodies, controllers) {
-    const children = h_melodies.map(getLayers(mode));
+    const children = h_melodies.map(getLayers3(mode));
     const svg = getSVGG6(mode, children);
     const gravity_hierarchy = { svg, children, show: children };
     switch (mode) {
@@ -5971,8 +5865,8 @@ Expected id is: ${regexp}`);
     controllers.hierarchy.addListeners(onChangedLayer_GravityHierarchy(gravity_hierarchy.svg, gravity_hierarchy.show, gravity_hierarchy.children));
     controllers.window.addListeners(...gravity_hierarchy.children.flatMap((e) => e.children).map((e) => () => onWindowResized_Gravity(e.svg)(e.model)(e.triangle, e.line, e.line_seed)));
     controllers.time_range.addListeners(...gravity_hierarchy.children.flatMap((e) => e.children).map((e) => () => onWindowResized_Gravity(e.svg)(e.model)(e.triangle, e.line, e.line_seed)));
-    controllers.audio.addListeners(...gravity_hierarchy.children.map((e) => () => onAudioUpdate2(e.svg)));
-    gravity_hierarchy.children.map((e) => onAudioUpdate2(e.svg));
+    controllers.audio.addListeners(...gravity_hierarchy.children.map((e) => () => onAudioUpdate3(e.svg)));
+    gravity_hierarchy.children.map((e) => onAudioUpdate3(e.svg));
     return gravity_hierarchy.svg;
   }
   function getLinePos3(e, n) {
@@ -6132,7 +6026,7 @@ Expected id is: ${regexp}`);
     const view = { svg, triangle, line };
     return { model, view, line_pos };
   };
-  var getLayers2 = (melodies, layer) => {
+  var getLayers4 = (melodies, layer) => {
     const delayed_melody = melodies.map((_, i) => melodies.slice(i));
     if (delayed_melody.length <= 3) {
       return;
@@ -6162,24 +6056,24 @@ Expected id is: ${regexp}`);
     e.view.line.setAttribute("x2", String(line_pos.x2 - marginX));
     e.view.line.setAttribute("y2", String(line_pos.y2 - marginY));
   };
-  var onAudioUpdate3 = (svg) => {
+  var onAudioUpdate4 = (svg) => {
     svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`);
   };
-  var onChangedLayer = (ir_gravity) => (value) => {
+  var onChangedLayer3 = (ir_gravity) => (value) => {
     ir_gravity.show = ir_gravity.children.filter((e) => value === e.layer);
-    ir_gravity.show.forEach((e) => onAudioUpdate3(e.svg));
+    ir_gravity.show.forEach((e) => onAudioUpdate4(e.svg));
     ir_gravity.svg.replaceChildren(...ir_gravity.show.map((e) => e.svg));
   };
   function buildIRGravity(h_melodies, controllers) {
-    const children = h_melodies.map(getLayers2).filter((e) => e !== void 0);
+    const children = h_melodies.map(getLayers4).filter((e) => e !== void 0);
     const svg = getSVGG7("ir_gravity", children.map((e) => e.svg));
     const ir_gravity = { svg, children, show: [] };
     controllers.window.addListeners(...ir_gravity.children.flatMap((e) => e.children).map((e) => () => onWindowResized_IRGravity(e)));
     controllers.time_range.addListeners(...ir_gravity.children.flatMap((e) => e.children).map((e) => () => onWindowResized_IRGravity(e)));
-    controllers.hierarchy.addListeners(onChangedLayer(ir_gravity));
+    controllers.hierarchy.addListeners(onChangedLayer3(ir_gravity));
     controllers.melody_color.addListeners(...ir_gravity.children.flatMap((e) => e.children).map((e) => (f) => e.svg.style.fill = f(e.model.archetype)));
-    controllers.audio.addListeners(...ir_gravity.children.map((e) => () => onAudioUpdate3(e.svg)));
-    ir_gravity.children.map((e) => onAudioUpdate3(e.svg));
+    controllers.audio.addListeners(...ir_gravity.children.map((e) => () => onAudioUpdate4(e.svg)));
+    ir_gravity.children.map((e) => onAudioUpdate4(e.svg));
     return ir_gravity.svg;
   }
   var MelodyElements = class {
@@ -6389,7 +6283,7 @@ Expected id is: ${regexp}`);
   var appendChildren = (svg) => (...children) => {
     children.forEach((e) => svg.appendChild(e));
   };
-  var onWindowResized3 = (svg) => () => {
+  var onWindowResized4 = (svg) => () => {
     svg.setAttribute("x", String(0));
     svg.setAttribute("y", String(0));
     svg.setAttribute("width", String(PianoRollWidth.get()));
@@ -6406,7 +6300,7 @@ Expected id is: ${regexp}`);
         new Keys().svg,
         new CurrentTimeLine(show_current_time_line, window2).svg
       );
-      window2.addListeners(onWindowResized3(svg));
+      window2.addListeners(onWindowResized4(svg));
       this.svg = svg;
     }
   };
@@ -7172,7 +7066,7 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
       this.getColor = getColor5;
     }
     update() {
-      this.listeners.forEach((setColor) => setColor((triad) => this.getColor(triad)));
+      this.listeners.forEach((setColor3) => setColor3((triad) => this.getColor(triad)));
     }
   };
   var MelodyColorSelector = class {
