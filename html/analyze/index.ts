@@ -6,8 +6,8 @@ import { PianoRoll } from "@music-analyzer/piano-roll";
 import { PianoRollHeight } from "@music-analyzer/view-parameters";
 import { PianoRollWidth } from "@music-analyzer/view-parameters";
 import { GTTMData } from "@music-analyzer/gttm";
-import { ProlongationalReduction } from "@music-analyzer/gttm";
-import { TimeSpanReduction } from "@music-analyzer/gttm";
+import { createProlongationalReduction } from "@music-analyzer/gttm";
+import { createTimeSpanReduction } from "@music-analyzer/gttm";
 import { getHierarchicalMelody } from "@music-analyzer/melody-hierarchical-analysis";
 import { SerializedTimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { GroupingStructure } from "@music-analyzer/gttm";
@@ -526,10 +526,10 @@ type DataContainer = [
 const compoundMusicData = (title: TitleInfo) => (e: DataContainer) => {
   const [roman, read_melody, musicxml, grouping, metric, time_span, prolongation] = e;
 
-  const ts = time_span ? new TimeSpanReduction(time_span).tstree.ts : undefined;
+  const ts = time_span ? createTimeSpanReduction(time_span).tstree.ts : undefined;
   const pr = (() => {
     try {
-      return prolongation ? new ProlongationalReduction(prolongation).prtree.pr : undefined;
+      return prolongation ? createProlongationalReduction(prolongation).prtree.pr : undefined;
     } catch (e) {
       return undefined
     }
