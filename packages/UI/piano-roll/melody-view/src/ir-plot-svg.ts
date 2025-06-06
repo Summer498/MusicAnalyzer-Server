@@ -31,10 +31,6 @@ const createIRPlotHierarchyModel = (children: IRPlotLayer[]): IRPlotHierarchyMod
   const width = Math.max(...children.map(e => e.view.model.w));
   const height = Math.max(...children.map(e => e.view.model.h));
   return { width, height };
-}
-
-class IRPlotHierarchyView {
-  constructor(
     readonly svg: SVGGElement,
     readonly x_axis: IRPlotAxis,
     readonly y_axis: IRPlotAxis,
@@ -237,10 +233,8 @@ interface IRPlotLayer {
   readonly view: IRPlotLayerView;
   readonly children: IRPlot[];
   readonly layer: number;
-  readonly children_model: { readonly time: Time }[];
   readonly show: IRPlot[];
   onAudioUpdate(): void;
-}
 const createIRPlotLayer = (
   svg: SVGGElement,
   view: IRPlotLayerView,
@@ -252,6 +246,11 @@ const createIRPlotLayer = (
   children,
   layer,
   children_model: children.map(e => e.model),
+  show: children,
+  onAudioUpdate: () => svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`),
+});
+interface IRPlotSVG { readonly svg: SVGSVGElement; readonly children: IRPlotHierarchy[] }
+const createIRPlotSVG = (svg: SVGSVGElement, children: IRPlotHierarchy[]): IRPlotSVG => ({ svg, children });
   show: children,
   onAudioUpdate: () => svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`),
 });

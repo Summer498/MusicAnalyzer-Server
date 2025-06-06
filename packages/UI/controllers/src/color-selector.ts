@@ -34,12 +34,34 @@ export interface MelodyColorController {
 
 class ColorSelectorImpl<T> extends Controller<T> implements ColorSelector<T> {
   constructor(id: string, text: string) {
-    super("radio", id, text);
   }
   update() { /* noop */ }
-}
-
 class IRM_ColorSelectorImpl
+  extends ColorSelectorImpl<GetColor>
+  implements IRM_ColorSelector {
+    readonly getColor: GetColor,
+  override update() {
+class MelodyColorSelectorImpl implements MelodyColorSelector {
+  readonly body: HTMLDivElement;
+  readonly children: IRM_ColorSelectorImpl[];
+  readonly default: IRM_ColorSelectorImpl;
+      new IRM_ColorSelectorImpl("Narmour_concept", "Narmour concept color", get_color_of_Narmour_concept),
+      new IRM_ColorSelectorImpl("implication_realization", "implication realization", get_color_of_implication_realization),
+      new IRM_ColorSelectorImpl("digital_parametric_scale", "digital parametric scale color", get_color_on_digital_parametric_scale),
+      new IRM_ColorSelectorImpl("digital_intervallic_scale", "digital intervallic scale color", get_color_on_digital_intervallic_scale),
+      new IRM_ColorSelectorImpl("registral_scale", "registral scale color", get_color_on_registral_scale),
+      new IRM_ColorSelectorImpl("intervallic_angle", "intervallic angle color", get_color_on_intervallic_angle),
+      new IRM_ColorSelectorImpl("analog_parametric_scale", "analog parametric scale color", get_color_on_parametric_scale),
+    this.children.forEach(e => e.addListeners(...listeners));
+    this.default.update();
+class MelodyColorControllerImpl implements MelodyColorController {
+  readonly selector: MelodyColorSelectorImpl;
+    this.selector = new MelodyColorSelectorImpl();
+    this.selector.addListeners(...listeners);
+
+export const createMelodyColorController = (): MelodyColorController =>
+  new MelodyColorControllerImpl();
+
   extends ColorSelectorImpl<GetColor>
   implements IRM_ColorSelector {
   constructor(

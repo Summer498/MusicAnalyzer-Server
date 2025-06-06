@@ -12,70 +12,75 @@ export const NowAt = {
   get: () => nowAtValue,
   set: (value: number) => { nowAtValue = value },
 };
-
 export interface PianoRollRatio { readonly value: number }
 export const createPianoRollRatio = (value: number): PianoRollRatio => ({ value });
-
 let pianoRollRatioValue: number = 1;
 export const PianoRollRatio = {
   get: () => pianoRollRatioValue,
   set: (value: number) => { pianoRollRatioValue = value },
 };
-
-class PianoRollTimeLength {
-  constructor(
-    private readonly ratio: PianoRollRatio,
-    private readonly length: SongLength,
-  ) { }
-  _get() { return this.ratio.value * this.length.value }
-
-  static get() { return PianoRollRatio.get() * SongLength.get(); }
-}
-
 export interface NoteSize { get: () => number }
 export const createNoteSize = (width: PianoRollWidth, length: PianoRollTimeLength): NoteSize => ({
   get: () => width.get() / length._get(),
 });
-
 export const NoteSize: NoteSize = {
   get: () => PianoRollWidth.get() / PianoRollTimeLength.get(),
 };
-
-const transposed = (e: number) => e - PianoRollBegin.get();
-const scaled = (e: number) => e * NoteSize.get();
-const negated = (e: number) => -e;
-const convertToCoordinate = (e: number) => e * black_key_height;
-const replaceNNasInf = (e: number) => isNaN(e) ? -99 : e;
-
-const midi2BlackCoordinate = (arg:number) => [
-  transposed,
-  convertToCoordinate,
-  negated,
-].reduce((c, f) => f(c), arg);
-
-const midi2NNBlackCoordinate = (arg:number) => [
-  midi2BlackCoordinate,
-  replaceNNasInf,
-].reduce((c, f) => f(c), arg);
-
-export const PianoRollConverter = {
-  midi2BlackCoordinate,
-  midi2NNBlackCoordinate,
-  transposed,
-  scaled,
-  convertToCoordinate,
-} as const;
-
-class CurrentTimeRatio {
-  constructor(readonly value: number) { };
-
-  static #value = 1 / 4;
-  static get() { return this.#value; }
-  static set(value: number) { this.#value = value; }
-}
-
 export interface CurrentTimeX { get: () => number }
 export const createCurrentTimeX = (width: PianoRollWidth, ratio: CurrentTimeRatio): CurrentTimeX => ({
+  get: () => width.get() * ratio.value,
+});
+
+export const CurrentTimeX: CurrentTimeX = {
+  get: () => PianoRollWidth.get() * CurrentTimeRatio.get(),
+};
+export interface OctaveCount { get: () => number }
+export const createOctaveCount = (end: PianoRollEnd, begin: PianoRollBegin): OctaveCount => ({
+  get: () => Math.ceil(-(end.value - begin.value) / 12),
+});
+
+export const OctaveCount: OctaveCount = {
+  get: () => Math.ceil(-(PianoRollEnd.get() - PianoRollBegin.get()) / 12),
+};
+export interface PianoRollBegin { readonly value: number }
+export const createPianoRollBegin = (value: number): PianoRollBegin => ({ value });
+
+let pianoRollBeginValue = 83;
+export const PianoRollBegin = {
+  get: () => pianoRollBeginValue,
+  set: (value: number) => { pianoRollBeginValue = value },
+};
+export interface PianoRollEnd { readonly value: number }
+export const createPianoRollEnd = (value: number): PianoRollEnd => ({ value });
+
+let pianoRollEndValue = 83 + 24;
+export const PianoRollEnd = {
+  get: () => pianoRollEndValue,
+  set: (value: number) => { pianoRollEndValue = value },
+};
+export interface PianoRollHeight { get: () => number }
+export const createPianoRollHeight = (count: OctaveCount): PianoRollHeight => ({
+  get: () => octave_height * count.get(),
+});
+
+export const PianoRollHeight: PianoRollHeight = {
+  get: () => octave_height * OctaveCount.get(),
+};
+export interface WindowInnerWidth { get: () => number }
+export const createWindowInnerWidth = (): WindowInnerWidth => ({ get: () => window.innerWidth });
+
+export const WindowInnerWidth: WindowInnerWidth = {
+  get: () => window.innerWidth,
+};
+
+export interface PianoRollWidth { get: () => number }
+export const createPianoRollWidth = (windowWidth: WindowInnerWidth): PianoRollWidth => ({
+  get: () => windowWidth.get() - 48,
+});
+
+export const PianoRollWidth: PianoRollWidth = {
+  get: () => WindowInnerWidth.get() - 48,
+};
   get: () => width.get() * ratio.value,
 });
 

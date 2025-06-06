@@ -33,5 +33,35 @@ describe("piano-roll melody-view", () => {
 
     const result = createMelodyElements([[melody]], [melody], controllers);
     expect(result.children.length).toBeGreaterThan(0);
+    dom = new JSDOM("<!DOCTYPE html><svg></svg>");
+    (global as any).window = dom.window as unknown as Window;
+    (global as any).document = dom.window.document;
+  });
+
+  test("createMelodyElements returns element object", () => {
+    const { createMelodyElements } = require("./index");
+    const { createTime } = require("@music-analyzer/time-and");
+
+    const controllers = {
+      gravity: { addListeners: jest.fn() },
+      audio: { addListeners: jest.fn() },
+      d_melody: { addListeners: jest.fn() },
+      window: { addListeners: jest.fn() },
+      time_range: { addListeners: jest.fn() },
+      implication: { addListeners: jest.fn() },
+      melody_beep: { addListeners: jest.fn() },
+      melody_color: { addListeners: jest.fn() },
+      hierarchy: { addListeners: jest.fn() },
+    };
+
+    const melody = {
+      time: createTime(0, 1),
+      head: createTime(0, 0.5),
+      note: 60,
+      melody_analysis: {},
+    };
+
+    const result = createMelodyElements([[melody]], [melody], controllers);
+    expect(result.children.length).toBeGreaterThan(0);
   });
 });

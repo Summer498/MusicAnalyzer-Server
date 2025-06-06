@@ -2,7 +2,6 @@ import { Complex } from "@music-analyzer/math";
 import { AudioAnalyzer } from "./audio-analyzer";
 
 export interface FFTViewer {
-  readonly svg: SVGSVGElement;
   onAudioUpdate(): void;
 }
 
@@ -17,12 +16,16 @@ export const createFFTViewer = (
   svg.id = "fft";
   svg.setAttribute("width", String(800));
   svg.setAttribute("height", String(450));
-
   const onAudioUpdate = () => {
     const freqData = analyser.getFFT();
-    const N = freqData[0].length / 2;
     const width = svg.clientWidth;
     const height = svg.clientHeight;
+    path.setAttribute("d", "M" +
+    path.setAttribute("d", "M" + pathData.slice(1));
+  };
+
+  return { svg, onAudioUpdate };
+};
     let pathData = "";
 
     const abs = <T extends number>(e: Complex<T>) => Math.sqrt(e.re * e.re + e.im * e.im)

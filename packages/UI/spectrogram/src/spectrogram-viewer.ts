@@ -1,7 +1,6 @@
 import { AudioAnalyzer } from "./audio-analyzer";
 
 export interface spectrogramViewer {
-  readonly svg: SVGSVGElement;
   onAudioUpdate(): void;
 }
 
@@ -16,11 +15,15 @@ export const createSpectrogramViewer = (
   svg.id = "spectrum";
   svg.setAttribute("width", String(800));
   svg.setAttribute("height", String(450));
-
   const onAudioUpdate = () => {
     const freqData = analyser.getFloatFrequencyData();
-    const fftSize = freqData.length / 2;
     const width = svg.clientWidth;
+    const height = svg.clientHeight;
+      .map(e => path.setAttribute("d", "M" + e));
+  };
+
+  return { svg, onAudioUpdate };
+};
     const height = svg.clientHeight;
     let pathData = "";
 

@@ -10,7 +10,6 @@ export interface AudioViewer {
   readonly spectrogram: spectrogramViewer;
   readonly fft: FFTViewer;
   onAudioUpdate(): void;
-}
 
 export const createAudioViewer = (
   audio_element: HTMLMediaElement,
@@ -25,6 +24,12 @@ export const createAudioViewer = (
     wave.onAudioUpdate();
     spectrogram.onAudioUpdate();
     fft.onAudioUpdate();
+  };
+
+  audio_registry.addListeners(onAudioUpdate);
+
+  return { wave, spectrogram, fft, onAudioUpdate };
+};
   };
 
   audio_registry.addListeners(onAudioUpdate);

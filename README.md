@@ -43,6 +43,7 @@ and roman–numeral data and outputs analysis results.
 These commands operate from the repository root and leverage the Yarn workspace
 configuration.
 **Note for new contributors**: Run `yarn install` (or `npm install`) before using `tsc` or running the tests. Running `yarn` creates a `yarn.lock` file for repeatable installs.
+**Note for new contributors**: Run `yarn install` (or `npm install`) before using `tsc` or running the tests. Running `yarn` creates a `yarn.lock` file for repeatable installs.
 
 ### Creating utility instances
 

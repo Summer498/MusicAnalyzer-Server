@@ -1,10 +1,8 @@
 import { setCurrentTimeRatio, setPianoRollParameters } from "@music-analyzer/view-parameters";
 import { song_list } from "@music-analyzer/gttm";
 import { createAnalyzedDataContainer } from "@music-analyzer/analyzed-data-container";
-import { AudioViewer } from "@music-analyzer/spectrogram";
+import { createAudioViewer, AudioViewer } from "@music-analyzer/spectrogram";
 import { createPianoRoll, PianoRoll } from "@music-analyzer/piano-roll";
-import { PianoRollHeight } from "@music-analyzer/view-parameters";
-import { PianoRollWidth } from "@music-analyzer/view-parameters";
 import { GTTMData } from "@music-analyzer/gttm";
 import { createProlongationalReduction } from "@music-analyzer/gttm";
 import { createTimeSpanReduction } from "@music-analyzer/gttm";
@@ -24,12 +22,12 @@ import { NowAt } from "@music-analyzer/view-parameters";
 import { createMusicStructureElements, MusicStructureElements } from "@music-analyzer/piano-roll";
 import { WindowReflectableRegistry, createWindowReflectableRegistry } from "@music-analyzer/view";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
-import {
-  DMelodyController,
-  createDMelodyController,
-  GravityController,
-  createGravityController,
-  HierarchyLevelController,
+import { DMelodyController, createDMelodyController } from "@music-analyzer/controllers";
+import { GravityController, createGravityController } from "@music-analyzer/controllers";
+import { type MelodyBeepController, createMelodyBeepController } from "@music-analyzer/controllers";
+import { ImplicationDisplayController, createImplicationDisplayController } from "@music-analyzer/controllers";
+    this.d_melody = createDMelodyController();
+    this.melody_beep = createMelodyBeepController();
   TimeRangeController,
   createHierarchyLevelController,
   createTimeRangeController,
@@ -301,7 +299,7 @@ const getSaveButtons = (
   titleHead: HTMLHeadingElement,
   piano_roll_view: PianoRoll,
 ) => {
-  const tune_id = `${title.mode}-${title.id}`;
+  const audio_viewer = createAudioViewer(audio_player, manager.audio_time_mediator);
   return [
     getSaveButton(tune_id, titleHead, piano_roll_view),
     getRawSaveButton(tune_id, titleHead, piano_roll_view),

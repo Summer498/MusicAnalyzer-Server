@@ -35,7 +35,6 @@ export interface TreeHierarchy {
   onAudioUpdate(): void;
   onWindowResized(): void;
   onTimeRangeChanged(): void;
-}
 export const createTreeHierarchy = (svg: SVGGElement): TreeHierarchy => ({
   svg,
   onChangedLayer: () => {},
@@ -43,9 +42,6 @@ export const createTreeHierarchy = (svg: SVGGElement): TreeHierarchy => ({
   onWindowResized: () => {},
   onTimeRangeChanged: () => {},
 });
-
-export function buildTree(
-    h_melodies: SerializedTimeAndAnalyzedMelody[][],
     controllers: RequiredByMelodyElements,
   ): TreeHierarchy {
 

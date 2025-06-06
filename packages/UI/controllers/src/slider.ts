@@ -1,8 +1,13 @@
 import { PianoRollRatio } from "@music-analyzer/view-parameters";
-import { ControllerView } from "./controller";
+import { Controller, createController } from "./controller";
 
-export interface Slider<T> {
-  readonly body: HTMLSpanElement;
+export abstract class Slider<T> implements Controller<T> {
+  body!: HTMLSpanElement;
+  input!: HTMLInputElement;
+  listeners!: ((e: T) => void)[];
+  addListeners!: (...listeners: ((e: T) => void)[]) => void;
+  init!: () => void;
+    createController<T>(this, "range", id, label);
   readonly input: HTMLInputElement;
   readonly display: HTMLSpanElement;
   addListeners(...listeners: ((e: T) => void)[]): void;

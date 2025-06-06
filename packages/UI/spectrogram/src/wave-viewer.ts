@@ -3,7 +3,6 @@ import { correlation } from "@music-analyzer/math";
 import { AudioAnalyzer } from "./audio-analyzer";
 
 export interface WaveViewer {
-  readonly svg: SVGSVGElement;
   onAudioUpdate(): void;
 }
 
@@ -22,16 +21,19 @@ export const createWaveViewer = (
 
   const getDelay = (copy: Complex<number>[]) => {
     const col = correlation(old_wave, copy);
-
-    let delay = 0;
-    for (let i = 0; i < col.length / 2; i++) {
-      if (col[delay].re < col[i].re) {
-        delay = i;
-      }
-    }
-    for (let i = 0; i < copy.length; i++) {
       old_wave[i] = copy[(i + delay) % copy.length];
+  };
+  const onAudioUpdate = () => {
+    const wave = analyser.getByteTimeDomainData();
+    const width = svg.clientWidth;
+    const height = svg.clientHeight;
+    const delay = getDelay(copy);
     }
+    path.setAttribute("d", "M" + path_data.slice(1));
+  };
+
+  return { svg, onAudioUpdate };
+};
     return delay;    
   };
 

@@ -5,7 +5,6 @@ export interface Checkbox {
   readonly input: HTMLInputElement
   addListeners(...listeners: ((e: boolean) => void)[]): void
 }
-
 export const createCheckbox = (id: string, label: string): Checkbox => {
   class CheckboxImpl extends Controller<boolean> {
     constructor() {
@@ -15,7 +14,6 @@ export const createCheckbox = (id: string, label: string): Checkbox => {
     update() {
       this.listeners.forEach(e => e(this.input.checked))
     }
-  }
   return new CheckboxImpl()
 }
 
@@ -34,9 +32,6 @@ export const createDMelodyController = (): DMelodyController => {
     view,
     checkbox,
     addListeners: (...ls: ((e: boolean) => void)[]) => checkbox.addListeners(...ls),
-  }
-}
-
 export interface ImplicationDisplayController {
   readonly view: HTMLDivElement
   readonly prospective_checkbox: Checkbox
@@ -54,6 +49,29 @@ export const createImplicationDisplayController = (): ImplicationDisplayControll
   view.appendChild(retrospective_checkbox.body)
   view.appendChild(reconstructed_checkbox.body)
   return {
+    view,
+    prospective_checkbox,
+    retrospective_checkbox,
+    reconstructed_checkbox,
+  }
+export interface GravityController {
+  readonly view: HTMLDivElement
+  readonly chord_checkbox: Checkbox
+  readonly scale_checkbox: Checkbox
+}
+export const createGravityController = (visible: boolean): GravityController => {
+  const chord_gravity_switcher = createCheckbox("chord_gravity_switcher", "Chord Gravity")
+  const scale_gravity_switcher = createCheckbox("scale_gravity_switcher", "Scale Gravity")
+  const view = document.createElement("div")
+  view.id = "gravity-switcher"
+  ;(view as any).style = visible ? "visible" : "hidden"
+  view.appendChild(scale_gravity_switcher.body)
+  view.appendChild(chord_gravity_switcher.body)
+  return {
+    view,
+    chord_checkbox: chord_gravity_switcher,
+    scale_checkbox: scale_gravity_switcher,
+  }
     view,
     prospective_checkbox,
     retrospective_checkbox,

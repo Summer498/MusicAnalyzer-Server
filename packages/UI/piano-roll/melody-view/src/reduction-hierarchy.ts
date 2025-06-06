@@ -10,7 +10,6 @@ interface ReductionModel {
   readonly head: Time;
   readonly archetype: ITriad;
   readonly layer: number;
-}
 const createReductionModel = (e: SerializedTimeAndAnalyzedMelody, layer: number): ReductionModel => ({
   time: e.time,
   head: e.head,
@@ -175,15 +174,18 @@ interface ReductionLayer {
   readonly svg: SVGGElement;
   readonly children: Reduction[];
   readonly layer: number;
-  readonly children_model: { readonly time: Time }[];
   readonly show: Reduction[];
   renewStrong(layer: number): void;
   onAudioUpdate(): void;
-}
 const createReductionLayer = (svg: SVGGElement, children: Reduction[], layer: number): ReductionLayer => ({
   svg,
   children,
   layer,
+  children_model: children.map(e => e.model),
+  show: children,
+  renewStrong: (value: number) => children.forEach(e => e.renewStrong(value === layer)),
+  onAudioUpdate: () => svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`),
+});
   children_model: children.map(e => e.model),
   show: children,
   renewStrong: (value: number) => children.forEach(e => e.renewStrong(value === layer)),
@@ -244,13 +246,13 @@ function getBracketSVG() {
   return svg;
 }
 
-function getDotSVG() {
-  const svg = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-  svg.id = "head";
-  svg.style.stroke = "rgb(192, 0, 0)";
-  svg.style.fill = "rgb(192, 0, 0)";
-  return svg;
-}
+      const model = createReductionModel(e, l);
+    return createReductionLayer(svg, parts, l)
+  controllers.window.addListeners(...time_span_tree.children.flatMap(e => e.children).map(e => e.onWindowResized));
+  controllers.hierarchy.addListeners(time_span_tree.onChangedLayer);
+  controllers.time_range.addListeners(...time_span_tree.children.flatMap(e => e.children).map(e => e.onTimeRangeChanged));
+  controllers.melody_color.addListeners(...time_span_tree.children.flatMap(e => e.children).map(e => e.setColor));
+  controllers.audio.addListeners(...time_span_tree.children.map(e => e.onAudioUpdate));
 
 function getSVGG(id: string, children: { svg: SVGGElement }[]) {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
