@@ -33,7 +33,7 @@ import { TimeRangeController } from "@music-analyzer/controllers";
 import { Time } from "@music-analyzer/time-and";
 import { ImplicationDisplayController } from "@music-analyzer/controllers/src/switcher";
 
-class Controllers {
+interface Controllers {
   readonly div: HTMLDivElement
   readonly d_melody: DMelodyController
   readonly hierarchy: HierarchyLevelController
@@ -42,57 +42,71 @@ class Controllers {
   readonly gravity: GravityController
   readonly melody_beep: MelodyBeepController
   readonly melody_color: MelodyColorController
-
-  constructor(
-    layer_count: number,
-    length: number,
-    gravity_visible: boolean,
-  ) {
-    this.div = document.createElement("div");
-    this.div.id = "controllers";
-    this.div.style = "margin-top:20px";
-
-    this.d_melody = new DMelodyController();
-    this.hierarchy = new HierarchyLevelController(layer_count);
-    this.time_range = new TimeRangeController(length);
-    this.implication = new ImplicationDisplayController();
-    this.gravity = new GravityController(gravity_visible);
-    this.melody_beep = new MelodyBeepController();
-    this.melody_color = createMelodyColorController();
-    this.melody_beep.checkbox.input.checked=true;
-    this.implication.prospective_checkbox.input.checked = false;
-    this.implication.retrospective_checkbox.input.checked = true;
-    this.implication.reconstructed_checkbox.input.checked = true;
-
-    [
-//      this.d_melody,
-      this.hierarchy,
-      this.time_range,
-      this.implication,
-//      this.gravity,
-      this.melody_beep,
-//      this.melody_color,
-    ].forEach(e => this.div.appendChild(e.view))
-  }
 }
+
+const createControllers = (
+  layer_count: number,
+  length: number,
+  gravity_visible: boolean,
+): Controllers => {
+  const div = document.createElement("div");
+  div.id = "controllers";
+  div.style.marginTop = "20px";
+
+  const d_melody = new DMelodyController();
+  const hierarchy = new HierarchyLevelController(layer_count);
+  const time_range = new TimeRangeController(length);
+  const implication = new ImplicationDisplayController();
+  const gravity = new GravityController(gravity_visible);
+  const melody_beep = new MelodyBeepController();
+  const melody_color = createMelodyColorController();
+
+  melody_beep.checkbox.input.checked = true;
+  implication.prospective_checkbox.input.checked = false;
+  implication.retrospective_checkbox.input.checked = true;
+  implication.reconstructed_checkbox.input.checked = true;
+
+  [
+    hierarchy,
+    time_range,
+    implication,
+    melody_beep,
+  ].forEach((e) => div.appendChild(e.view));
+
+  return {
+    div,
+    d_melody,
+    hierarchy,
+    time_range,
+    implication,
+    gravity,
+    melody_beep,
+    melody_color,
+  };
+};
 
 type Mode = "TSR" | "PR" | "";
 
-class TitleInfo {
-  constructor(
-    readonly id: string,
-    readonly mode: Mode,
-  ) { }
+interface TitleInfo {
+  readonly id: string
+  readonly mode: Mode
 }
 
-class AnalyzedMusicData {
-  constructor(
-    readonly roman: SerializedTimeAndRomanAnalysis[],
-    readonly melody: SerializedTimeAndAnalyzedMelody[],
-    readonly hierarchical_melody: SerializedTimeAndAnalyzedMelody[][],
-    readonly GTTM: GTTMData,
-  ) { }
+const createTitleInfo = (id: string, mode: Mode): TitleInfo => ({ id, mode });
+
+interface AnalyzedMusicData {
+  readonly roman: SerializedTimeAndRomanAnalysis[]
+  readonly melody: SerializedTimeAndAnalyzedMelody[]
+  readonly hierarchical_melody: SerializedTimeAndAnalyzedMelody[][]
+  readonly GTTM: GTTMData
 }
+
+const createAnalyzedMusicData = (
+  roman: SerializedTimeAndRomanAnalysis[],
+  melody: SerializedTimeAndAnalyzedMelody[],
+  hierarchical_melody: SerializedTimeAndAnalyzedMelody[][],
+  GTTM: GTTMData,
+): AnalyzedMusicData => ({ roman, melody, hierarchical_melody, GTTM });
 
 interface MusicAnalyzerWindow
   extends Window {
@@ -105,75 +119,104 @@ const getMusicAnalyzerWindow = (window: Window, raw_analyzed_data: AnalyzedMusic
   return e;
 }
 
-class ApplicationManager {
-  readonly NO_CHORD = false;  // コード関連のものを表示しない
-  readonly FULL_VIEW = false;  // 横いっぱいに分析結果を表示
+interface ApplicationManager {
+  readonly NO_CHORD: boolean
+  readonly FULL_VIEW: boolean
   readonly analyzed: MusicStructureElements
   readonly controller: Controllers
   readonly audio_time_mediator: AudioReflectableRegistry
   readonly window_size_mediator: WindowReflectableRegistry
-  constructor(
-    beat_info: BeatInfo,
-    romans: SerializedTimeAndRomanAnalysis[],
-    hierarchical_melody: SerializedTimeAndAnalyzedMelody[][],
-    melodies: SerializedTimeAndAnalyzedMelody[],
-    d_melodies: SerializedTimeAndAnalyzedMelody[],
-  ) {
-    if (hierarchical_melody.length <= 0) {
-      throw new Error(`hierarchical melody length must be more than 0 but it is ${hierarchical_melody.length}`);
-    }
-
-    const layer_count = hierarchical_melody.length - 1;
-    const length = melodies.length
-
-    this.controller = new Controllers(layer_count, length, !this.NO_CHORD);
-    this.audio_time_mediator = createAudioReflectableRegistry();
-    this.window_size_mediator = createWindowReflectableRegistry();
-    const controllers = {
-      ...this.controller,
-      audio: this.audio_time_mediator,
-      window: this.window_size_mediator,
-    }
-
-    this.analyzed = new MusicStructureElements(beat_info, romans, hierarchical_melody, melodies, d_melodies, controllers)
-  }
 }
 
-class EventLoop {
-  readonly fps_element: HTMLParagraphElement;
-  private last_audio_time = Number.MIN_SAFE_INTEGER;
-  private old_time: number;
-  constructor(
-    public readonly registry: AudioReflectableRegistry,
-    public readonly audio_player: HTMLAudioElement | HTMLVideoElement,
-  ) {
-    this.old_time = Date.now();
-    this.fps_element = document.createElement("p");
-    this.fps_element.id = "fps";
-    this.fps_element.textContent = `fps:${0}`;
-    document.body.insertAdjacentElement("beforeend", this.fps_element);
+const createApplicationManager = (
+  beat_info: BeatInfo,
+  romans: SerializedTimeAndRomanAnalysis[],
+  hierarchical_melody: SerializedTimeAndAnalyzedMelody[][],
+  melodies: SerializedTimeAndAnalyzedMelody[],
+  d_melodies: SerializedTimeAndAnalyzedMelody[],
+): ApplicationManager => {
+  const NO_CHORD = false;
+  const FULL_VIEW = false;
+
+  if (hierarchical_melody.length <= 0) {
+    throw new Error(`hierarchical melody length must be more than 0 but it is ${hierarchical_melody.length}`);
   }
-  audioUpdate() {
-    const now_at = this.audio_player.currentTime;
-    if (this.audio_player.paused && now_at === this.last_audio_time) { return; }
-    this.last_audio_time = now_at;
+
+  const layer_count = hierarchical_melody.length - 1;
+  const length = melodies.length;
+
+  const controller = createControllers(layer_count, length, !NO_CHORD);
+  const audio_time_mediator = createAudioReflectableRegistry();
+  const window_size_mediator = createWindowReflectableRegistry();
+  const controllers = {
+    ...controller,
+    audio: audio_time_mediator,
+    window: window_size_mediator,
+  };
+
+  const analyzed = new MusicStructureElements(
+    beat_info,
+    romans,
+    hierarchical_melody,
+    melodies,
+    d_melodies,
+    controllers,
+  );
+
+  return {
+    NO_CHORD,
+    FULL_VIEW,
+    analyzed,
+    controller,
+    audio_time_mediator,
+    window_size_mediator,
+  };
+};
+
+interface EventLoop {
+  readonly fps_element: HTMLParagraphElement
+  readonly registry: AudioReflectableRegistry
+  readonly audio_player: HTMLAudioElement | HTMLVideoElement
+  update(): void
+  onUpdate(): void
+  audioUpdate(): void
+}
+
+const createEventLoop = (
+  registry: AudioReflectableRegistry,
+  audio_player: HTMLAudioElement | HTMLVideoElement,
+): EventLoop => {
+  let last_audio_time = Number.MIN_SAFE_INTEGER;
+  let old_time = Date.now();
+  const fps_element = document.createElement("p");
+  fps_element.id = "fps";
+  fps_element.textContent = `fps:${0}`;
+  document.body.insertAdjacentElement("beforeend", fps_element);
+
+  const audioUpdate = () => {
+    const now_at = audio_player.currentTime;
+    if (audio_player.paused && now_at === last_audio_time) return;
+    last_audio_time = now_at;
     NowAt.set(now_at);
-    this.registry.onUpdate();
+    registry.onUpdate();
   };
-  onUpdate() {
-    const now = Date.now();
-    const fps = Math.floor(1000 / (now - this.old_time));
-    this.fps_element.textContent = `fps:${(" " + fps).slice(-3)}`;
-    this.fps_element.style.color = fps < 30 ? "red" : fps < 60 ? "yellow" : "lime";
-    this.old_time = now;
 
-    this.audioUpdate();
+  const onUpdate = () => {
+    const now = Date.now();
+    const fps = Math.floor(1000 / (now - old_time));
+    fps_element.textContent = `fps:${(" " + fps).slice(-3)}`;
+    fps_element.style.color = fps < 30 ? "red" : fps < 60 ? "yellow" : "lime";
+    old_time = now;
+    audioUpdate();
   };
-  update() {
-    this.onUpdate();
-    requestAnimationFrame(this.update.bind(this));
-  }
-}
+
+  const update = () => {
+    onUpdate();
+    requestAnimationFrame(update);
+  };
+
+  return { fps_element, registry, audio_player, update, onUpdate, audioUpdate };
+};
 
 const getG = (header_height?: number) => {
   const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
@@ -317,11 +360,11 @@ export const onLoad = async (
   const { melody_hierarchy, melodies, d_melodies } = getHierarchicalMelody(melody);
   const containers = await createAnalyzedDataContainer(melody_hierarchy, roman, midi);
   const { gttm, tsa, pra } = containers;
-  const app_manager = new ApplicationManager(beat_info, pra, melody_hierarchy, melodies, d_melodies);
+  const app_manager = createApplicationManager(beat_info, pra, melody_hierarchy, melodies, d_melodies);
   setPianoRollParameters(app_manager.analyzed.melody.getHierarchicalMelody());
   setFullView(app_manager.FULL_VIEW, audio_player);
-  setupUI(new TitleInfo("groove", "TSR"), audio_player, titleHead, piano_roll_place, app_manager);
+  setupUI(createTitleInfo("groove", "TSR"), audio_player, titleHead, piano_roll_place, app_manager);
   const registry = app_manager.audio_time_mediator;
-  const event_loop = new EventLoop(registry, audio_player);
+  const event_loop = createEventLoop(registry, audio_player);
   event_loop.update();
 };
