@@ -21,6 +21,7 @@ import { regionDistance } from "./src/region-distance"
 import { getBasicSpace } from "./src/get-basic-space"
 import { basicSpaceDistance } from "./src/basic-space-distance"
 import { getKeysIncludeTheChord, } from "./src/get-keys-include-the-chord"
+import * as Module from "./index"
 
 describe("tonal-pitch-space module", () => {
   test("should load module", () => {
