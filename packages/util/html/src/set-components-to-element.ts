@@ -12,6 +12,7 @@ export function setComponentsToElement<T extends Element>(
     element.setAttribute(key, String(attributes[key]));
   }
   text && element.appendChild(document.createTextNode(text));
-  children && Arraying(children).forEach(child => element.appendChild(child));
+  children &&
+    Arraying(children).forEach((child: Element) => element.appendChild(child));
   return element;
 }
