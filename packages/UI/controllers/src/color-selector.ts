@@ -5,23 +5,31 @@ import { get_color_on_digital_parametric_scale } from "@music-analyzer/irm";
 import { get_color_on_intervallic_angle } from "@music-analyzer/irm";
 import { get_color_on_parametric_scale } from "@music-analyzer/irm";
 import { get_color_on_registral_scale } from "@music-analyzer/irm";
-import { Controller } from "./controller";
+import { Controller, createController } from "./controller";
 
 
 export type GetColor = (e: ITriad) => string;
 export type SetColor = (getColor: GetColor) => void;
 
-abstract class ColorSelector<T> extends Controller<T> {
+abstract class ColorSelector<T> implements Controller<T> {
+  readonly body: HTMLSpanElement;
+  readonly input: HTMLInputElement;
+  readonly listeners: ((e: T) => void)[];
+  addListeners: (...listeners: ((e: T) => void)[]) => void;
+  update!: () => void;
   constructor(
     readonly id: string,
     text: string
   ) {
-    super("radio", id, text);
-  };
+    const c = createController<T>("radio", id, text);
+    this.body = c.body;
+    this.input = c.input;
+    this.listeners = c.listeners;
+    this.addListeners = c.addListeners.bind(c);
+  }
 }
 
-class IRM_ColorSelector
-  extends ColorSelector<GetColor> {
+class IRM_ColorSelector extends ColorSelector<GetColor> {
   getColor: GetColor;
   constructor(
     id: string,
@@ -29,10 +37,13 @@ class IRM_ColorSelector
     getColor: GetColor,
   ) {
     super(id, text);
-    this.getColor = getColor
-  }
-  update() {
-    this.listeners.forEach(setColor => setColor(triad => this.getColor(triad)));
+    this.getColor = getColor;
+    this.update = () => {
+      this.listeners.forEach((setColor) =>
+        setColor((triad) => this.getColor(triad))
+      );
+    };
+    this.update();
   }
 }
 

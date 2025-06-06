@@ -1,10 +1,28 @@
 import { PianoRollRatio } from "@music-analyzer/view-parameters";
-import { Controller } from "./controller";
+import { Controller, createController } from "./controller";
 
-export abstract class Slider<T> extends Controller<T> {
+export abstract class Slider<T> implements Controller<T> {
+  readonly body: HTMLSpanElement;
+  readonly input: HTMLInputElement;
+  readonly listeners: ((e: T) => void)[];
+  addListeners: (...listeners: ((e: T) => void)[]) => void;
+  abstract update(): void;
   readonly display: HTMLSpanElement;
-  constructor(id: string, label: string, min: number, max: number, step: number, value?: number) {
-    super ("range", id, label);
+  constructor(
+    id: string,
+    label: string,
+    min: number,
+    max: number,
+    step: number,
+    value?: number,
+  ) {
+    const c = createController<T>("range", id, label);
+    this.body = c.body;
+    this.input = c.input;
+    this.listeners = c.listeners;
+    this.addListeners = c.addListeners.bind(c);
+    c.update = () => this.update();
+
     this.display = document.createElement("span");
     this.body.appendChild(this.display);
 
@@ -15,6 +33,8 @@ export abstract class Slider<T> extends Controller<T> {
 
     this.updateDisplay();
     this.input.addEventListener("input", this.updateDisplay.bind(this));
+
+    this.update();
   }
   abstract updateDisplay(): void;
 }
