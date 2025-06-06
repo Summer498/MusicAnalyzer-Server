@@ -1,7 +1,7 @@
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { AudioReflectableRegistry } from "@music-analyzer/view";
 import { WindowReflectableRegistry } from "@music-analyzer/view";
-import { DMelodyController, GravityController, HierarchyLevelController, MelodyBeepController, MelodyColorController, TimeRangeController, ImplicationDisplayController } from "@music-analyzer/controllers";
+import { DMelodyController, GravityController, HierarchyLevelController, type MelodyBeepController, MelodyColorController, TimeRangeController } from "@music-analyzer/controllers";
 
 import { buildDMelody } from "./src/d-melody-series";
 import { buildIRPlot } from "./src/ir-plot-svg";

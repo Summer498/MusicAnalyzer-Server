@@ -28,8 +28,8 @@ import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { DMelodyController, createDMelodyController } from "@music-analyzer/controllers";
 import { GravityController, createGravityController } from "@music-analyzer/controllers";
 import { HierarchyLevelController } from "@music-analyzer/controllers";
-import { MelodyBeepController } from "@music-analyzer/controllers";
-import { MelodyColorController, createMelodyColorController } from "@music-analyzer/controllers";
+import { type MelodyBeepController, createMelodyBeepController } from "@music-analyzer/controllers";
+import { MelodyColorController } from "@music-analyzer/controllers";
 import { TimeRangeController } from "@music-analyzer/controllers";
 import { Time } from "@music-analyzer/time-and";
 import { ImplicationDisplayController, createImplicationDisplayController } from "@music-analyzer/controllers";
@@ -56,10 +56,10 @@ class Controllers {
     this.d_melody = createDMelodyController();
     this.hierarchy = new HierarchyLevelController(layer_count);
     this.time_range = new TimeRangeController(length);
-    this.implication = createImplicationDisplayController()
-    this.gravity = createGravityController(gravity_visible);
-    this.melody_beep = new MelodyBeepController();
-    this.melody_color = createMelodyColorController();
+    this.implication = new ImplicationDisplayController()
+    this.gravity = new GravityController(gravity_visible);
+    this.melody_beep = createMelodyBeepController();
+    this.melody_color = new MelodyColorController();
     this.melody_beep.checkbox.input.checked=true;
     this.implication.prospective_checkbox.input.checked = false;
     this.implication.retrospective_checkbox.input.checked = true;
