@@ -9,7 +9,7 @@ describe("piano-roll chord-view", () => {
   });
 
   test("ChordElements can be constructed", () => {
-    const { ChordElements } = require("./index");
+    const { createChordElements } = require("./index");
     const { createSerializedTimeAndRomanAnalysis } = require("@music-analyzer/chord-analyze");
     const { createTime } = require("@music-analyzer/time-and");
 
@@ -23,7 +23,8 @@ describe("piano-roll chord-view", () => {
       createSerializedTimeAndRomanAnalysis(createTime(0, 1), "C", "C", "I"),
     ];
 
-    const chord = new ChordElements(romans, controllers);
+    const { createChordElements } = require("./index");
+    const chord = createChordElements(romans, controllers);
     expect(chord.children.length).toBeGreaterThan(0);
   });
 });

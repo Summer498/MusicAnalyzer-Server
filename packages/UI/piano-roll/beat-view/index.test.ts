@@ -10,7 +10,7 @@ describe("piano-roll beat-view", () => {
   });
 
   test("BeatElements can be constructed", () => {
-    const { BeatElements } = require("./index");
+    const { createBeatElements } = require("./index");
     const { createTime } = require("@music-analyzer/time-and");
 
     const controllers = {
@@ -22,7 +22,7 @@ describe("piano-roll beat-view", () => {
     const beat_info = { tempo: 120, phase: 0 };
     const melodies = [{ time: createTime(0, 1) }];
 
-    const beat = new BeatElements(beat_info, melodies, controllers);
+    const beat = createBeatElements(beat_info, melodies, controllers);
     expect(beat.beat_bars instanceof window.SVGGElement).toBe(true);
   });
 });

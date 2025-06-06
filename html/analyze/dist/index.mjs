@@ -6,7 +6,7 @@ import { AudioViewer } from "@music-analyzer/spectrogram";
 import { PianoRoll } from "@music-analyzer/piano-roll";
 import { PianoRollHeight } from "@music-analyzer/view-parameters";
 import { PianoRollWidth } from "@music-analyzer/view-parameters";
-import { GTTMData } from "@music-analyzer/gttm";
+import { createGTTMData } from "@music-analyzer/gttm";
 import { ProlongationalReduction } from "@music-analyzer/gttm";
 import { TimeSpanReduction } from "@music-analyzer/gttm";
 import { getHierarchicalMelody } from "@music-analyzer/melody-hierarchical-analysis";
@@ -385,7 +385,7 @@ var compoundMusicData = (title2) => (e) => {
     roman,
     melody,
     hierarchical_melody,
-    new GTTMData(grouping, metric, time_span, prolongation)
+    createGTTMData(grouping, metric, time_span, prolongation)
   );
 };
 var GTTM_URLs = class {

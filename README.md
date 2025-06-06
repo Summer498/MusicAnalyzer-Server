@@ -88,3 +88,10 @@ import { createRootOfUnity } from "@music-analyzer/math";
 const time = createTime(0, 1);
 const roots = createRootOfUnity();
 ```
+
+A helper for working with analyzed melody data now follows the same pattern:
+
+```ts
+import { createSerializedTimeAndAnalyzedMelodyAndIR } from "@music-analyzer/melody-hierarchical-analysis";
+const entry = createSerializedTimeAndAnalyzedMelodyAndIR(melody, "I");
+```

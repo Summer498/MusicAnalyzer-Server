@@ -38,16 +38,20 @@ export const getTimeAndMelody = (
     pitch ? calcChroma(pitch) : NaN,
   );
 };
-interface SerializedTimeAndAnalyzedMelodyAndIR
+
+export interface SerializedTimeAndAnalyzedMelodyAndIR
   extends SerializedTimeAndAnalyzedMelody {
-  IR: string;
+  readonly IR: string;
 }
 
-const createSerializedTimeAndAnalyzedMelodyAndIR = (
+export const createSerializedTimeAndAnalyzedMelodyAndIR = (
   e: SerializedTimeAndAnalyzedMelody,
   IR: string,
 ): SerializedTimeAndAnalyzedMelodyAndIR => ({
-  ...cloneSerializedTimeAndAnalyzedMelody(e),
+  time: e.time,
+  head: e.head,
+  note: e.note,
+  melody_analysis: e.melody_analysis,
   IR,
 });
 

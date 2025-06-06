@@ -1,12 +1,15 @@
 import { BeatInfo } from "@music-analyzer/beat-estimation";
-import { BeatElements, createBeatElements } from "@music-analyzer/beat-view";
+import type { BeatElements } from "@music-analyzer/beat-view";
+import { createBeatElements } from "@music-analyzer/beat-view";
 import { SerializedTimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-import { ChordElements, createChordElements } from "@music-analyzer/chord-view";
+import type { ChordElements } from "@music-analyzer/chord-view";
+import { createChordElements } from "@music-analyzer/chord-view";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { MelodyElements, createMelodyElements } from "@music-analyzer/melody-view";
-import { RequiredByBeatElements } from "@music-analyzer/beat-view";
-import { RequiredByChordElements } from "@music-analyzer/chord-view";
-import { RequiredByMelodyElements } from "@music-analyzer/melody-view";
+import type { MelodyElements } from "@music-analyzer/melody-view";
+import { createMelodyElements } from "@music-analyzer/melody-view";
+import type { RequiredByBeatElements } from "@music-analyzer/beat-view";
+import type { RequiredByChordElements } from "@music-analyzer/chord-view";
+import type { RequiredByMelodyElements } from "@music-analyzer/melody-view";
 
 export interface MusicStructureElements {
   readonly beat: BeatElements
@@ -22,8 +25,8 @@ export function createMusicStructureElements(
   d_melodies: SerializedTimeAndAnalyzedMelody[],
   controllers: RequiredByBeatElements & RequiredByChordElements & RequiredByMelodyElements,
 ): MusicStructureElements {
-  const beat = new BeatElements(beat_info, melodies, controllers)
-  const chord = new ChordElements(romans, controllers)
+  const beat = createBeatElements(beat_info, melodies, controllers)
+  const chord = createChordElements(romans, controllers)
   const melody = createMelodyElements(hierarchical_melody, d_melodies, controllers)
   return { beat, chord, melody }
 }
