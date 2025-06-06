@@ -5,7 +5,13 @@ import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze"
 import { play } from "@music-analyzer/synth";
 import { black_key_height, NowAt, PianoRollConverter } from "@music-analyzer/view-parameters";
 import { reservation_range } from "@music-analyzer/view-parameters";
-import { HierarchyLevelController, MelodyBeepController, MelodyColorController, SetColor, TimeRangeController } from "@music-analyzer/controllers";
+import {
+  HierarchyLevelController,
+  MelodyBeepController,
+  MelodyColorController,
+  SetColor,
+  TimeRangeController,
+} from "@music-analyzer/controllers";
 import { Time, createTime } from "@music-analyzer/time-and";
 import { AudioReflectableRegistry, PianoRollTranslateX, WindowReflectableRegistry } from "@music-analyzer/view";
 

@@ -1,7 +1,14 @@
 export { SetColor } from "./src/color-selector";
 export { MelodyColorController } from "./src/color-selector";
 export { ControllerView } from "./src/controller";
-export { MelodyBeepController } from "./src/melody-beep-controller";
+export {
+  MelodyBeepController,
+  MelodyBeepSwitcher,
+  MelodyBeepVolume,
+  createMelodyBeepController,
+  createMelodyBeepSwitcher,
+  createMelodyBeepVolume,
+} from "./src/melody-beep-controller";
 export { HierarchyLevelController } from "./src/slider";
 export { TimeRangeController } from "./src/slider";
 export { Controller } from "./src/controller";
