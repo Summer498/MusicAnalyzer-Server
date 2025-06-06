@@ -4,7 +4,7 @@ import { Request } from "express";
 import { Response } from "express";
 import { dirname } from "path";
 import { basename } from "path";
-import { execSync } from "child_process";
+import { execSync, execFileSync } from "child_process";
 
 import { default as multer } from "multer";
 import { default as express } from "express";
@@ -304,9 +304,9 @@ const f0By_pYIN = (
   }
   else if (detectFile(e.src)) {
     makeNewDir(e.dst_dir);
-    execSync(`./sh/callPYIN.sh "${song_name}"`);
+    execFileSync("./sh/callPYIN.sh", [song_name], { stdio: "inherit" });
     makeNewDir(img.dst_dir);
-    execSync(`./sh/callPYIN2img.sh "${song_name}"`);
+    execFileSync("./sh/callPYIN2img.sh", [song_name], { stdio: "inherit" });
   }
   else {
     console.log(`required file ${e.src} not exist`)
