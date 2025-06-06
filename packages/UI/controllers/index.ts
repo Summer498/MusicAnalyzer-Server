@@ -1,10 +1,10 @@
 export { SetColor } from "./src/color-selector";
 export { MelodyColorController } from "./src/color-selector";
-export { ControllerView } from "./src/controller";
+export { ControllerView, createControllerView } from "./src/controller";
 export { MelodyBeepController } from "./src/melody-beep-controller";
 export { HierarchyLevelController } from "./src/slider";
 export { TimeRangeController } from "./src/slider";
-export { Controller } from "./src/controller";
+export { Controller, createController } from "./src/controller";
 export { DMelodyController } from "./src/switcher";
 export { Slider } from "./src/slider";
 export { GravityController } from "./src/switcher";

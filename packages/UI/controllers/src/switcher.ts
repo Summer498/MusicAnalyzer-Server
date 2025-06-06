@@ -1,8 +1,13 @@
-import { Controller } from "./controller";
+import { Controller, createController } from "./controller";
 
-export class Checkbox extends Controller<boolean> {
+export class Checkbox implements Controller<boolean> {
+  body!: HTMLSpanElement;
+  input!: HTMLInputElement;
+  listeners!: ((e: boolean) => void)[];
+  addListeners!: (...listeners: ((e: boolean) => void)[]) => void;
+  init!: () => void;
   constructor(id: string, label: string) {
-    super("checkbox", id, label);
+    createController<boolean>(this, "checkbox", id, label);
 
     this.input.checked = false;
   }
