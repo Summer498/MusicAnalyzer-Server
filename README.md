@@ -73,6 +73,13 @@ const audioReg = createAudioReflectableRegistry();
 const windowReg = createWindowReflectableRegistry();
 ```
 
+Color selector controllers are now created via factories as well:
+
+```ts
+import { createMelodyColorController } from "@music-analyzer/controllers";
+const colorCtrl = createMelodyColorController();
+```
+
 Time ranges and FFT helpers follow the same pattern:
 
 ```ts
