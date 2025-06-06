@@ -11,44 +11,62 @@ import { Controller } from "./controller";
 export type GetColor = (e: ITriad) => string;
 export type SetColor = (getColor: GetColor) => void;
 
-abstract class ColorSelector<T> extends Controller<T> {
-  constructor(
-    readonly id: string,
-    text: string
-  ) {
-    super("radio", id, text);
-  };
+export interface ColorSelector<T> {
+  readonly body: HTMLSpanElement;
+  readonly input: HTMLInputElement;
+  addListeners(...listeners: ((e: T) => void)[]): void;
 }
 
-class IRM_ColorSelector
-  extends ColorSelector<GetColor> {
-  getColor: GetColor;
+export interface IRM_ColorSelector extends ColorSelector<GetColor> {
+  readonly getColor: GetColor;
+}
+
+export interface MelodyColorSelector {
+  readonly body: HTMLDivElement;
+  addListeners(...listeners: ((color: GetColor) => void)[]): void;
+}
+
+export interface MelodyColorController {
+  readonly view: HTMLDivElement;
+  readonly selector: MelodyColorSelector;
+  addListeners(...listeners: ((color: GetColor) => void)[]): void;
+}
+
+class ColorSelectorImpl<T> extends Controller<T> implements ColorSelector<T> {
+  constructor(id: string, text: string) {
+    super("radio", id, text);
+  }
+  update() { /* noop */ }
+}
+
+class IRM_ColorSelectorImpl
+  extends ColorSelectorImpl<GetColor>
+  implements IRM_ColorSelector {
   constructor(
     id: string,
     text: string,
-    getColor: GetColor,
+    readonly getColor: GetColor,
   ) {
     super(id, text);
-    this.getColor = getColor
   }
-  update() {
+  override update() {
     this.listeners.forEach(setColor => setColor(triad => this.getColor(triad)));
   }
 }
 
-class MelodyColorSelector {
-  readonly body: HTMLSpanElement;
-  readonly children: IRM_ColorSelector[];
-  readonly default: IRM_ColorSelector;
+class MelodyColorSelectorImpl implements MelodyColorSelector {
+  readonly body: HTMLDivElement;
+  readonly children: IRM_ColorSelectorImpl[];
+  readonly default: IRM_ColorSelectorImpl;
   constructor() {
     this.children = [
-      new IRM_ColorSelector("Narmour_concept", "Narmour concept color", get_color_of_Narmour_concept),
-      new IRM_ColorSelector("implication_realization", "implication realization", get_color_of_implication_realization),
-      new IRM_ColorSelector("digital_parametric_scale", "digital parametric scale color", get_color_on_digital_parametric_scale),
-      new IRM_ColorSelector("digital_intervallic_scale", "digital intervallic scale color", get_color_on_digital_intervallic_scale),
-      new IRM_ColorSelector("registral_scale", "registral scale color", get_color_on_registral_scale),
-      new IRM_ColorSelector("intervallic_angle", "intervallic angle color", get_color_on_intervallic_angle),
-      new IRM_ColorSelector("analog_parametric_scale", "analog parametric scale color", get_color_on_parametric_scale),
+      new IRM_ColorSelectorImpl("Narmour_concept", "Narmour concept color", get_color_of_Narmour_concept),
+      new IRM_ColorSelectorImpl("implication_realization", "implication realization", get_color_of_implication_realization),
+      new IRM_ColorSelectorImpl("digital_parametric_scale", "digital parametric scale color", get_color_on_digital_parametric_scale),
+      new IRM_ColorSelectorImpl("digital_intervallic_scale", "digital intervallic scale color", get_color_on_digital_intervallic_scale),
+      new IRM_ColorSelectorImpl("registral_scale", "registral scale color", get_color_on_registral_scale),
+      new IRM_ColorSelectorImpl("intervallic_angle", "intervallic angle color", get_color_on_intervallic_angle),
+      new IRM_ColorSelectorImpl("analog_parametric_scale", "analog parametric scale color", get_color_on_parametric_scale),
     ];
     this.children.forEach(e => { e.input.name = "melody-color-selector"; });
 
@@ -61,22 +79,26 @@ class MelodyColorSelector {
     this.default.update();
   }
   addListeners(...listeners: ((color: GetColor) => void)[]) {
-    this.children.forEach(e => e.addListeners(...listeners))
-    this.default.update()
+    this.children.forEach(e => e.addListeners(...listeners));
+    this.default.update();
   }
 }
 
-export class MelodyColorController {
+class MelodyColorControllerImpl implements MelodyColorController {
   readonly view: HTMLDivElement;
-  readonly selector: MelodyColorSelector;
+  readonly selector: MelodyColorSelectorImpl;
   constructor() {
-    this.selector = new MelodyColorSelector();
+    this.selector = new MelodyColorSelectorImpl();
     this.view = document.createElement("div");
     this.view.id = "melody-color-selector";
     this.view.style.display = "inline";
     this.view.appendChild(this.selector.body);
   }
   addListeners(...listeners: ((color: GetColor) => void)[]) {
-    this.selector.addListeners(...listeners)
+    this.selector.addListeners(...listeners);
   }
 }
+
+export const createMelodyColorController = (): MelodyColorController =>
+  new MelodyColorControllerImpl();
+
