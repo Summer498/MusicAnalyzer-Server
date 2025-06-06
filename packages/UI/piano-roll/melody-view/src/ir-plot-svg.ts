@@ -221,7 +221,7 @@ const createIRPlotView = (
     svg,
     view_model,
     model,
-    updateRadius: (r) => { svg.style.r = String(r); },
+    updateRadius: (r) => { svg.setAttribute("r", String(r)); },
     updatePosition: () => {
       const interval = model.getInterval();
       const curr = get_pos(interval[0], interval[1]);

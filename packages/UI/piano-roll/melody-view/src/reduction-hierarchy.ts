@@ -123,7 +123,7 @@ interface Dot {
 }
 const createDot = (svg: SVGCircleElement, model: ReductionViewModel): Dot => ({
   svg,
-  updateStrong: () => { svg.style.r = String(model.strong ? 5 : 3); },
+  updateStrong: () => { svg.setAttribute("r", String(model.strong ? 5 : 3)); },
   update: (cx, cy) => { svg.setAttribute("cx", String(cx)); svg.setAttribute("cy", String(cy)); },
   onWindowResized: (m) => { svg.setAttribute("cx", String(m.cx)); svg.setAttribute("cy", String(m.y - m.h)); },
 });
