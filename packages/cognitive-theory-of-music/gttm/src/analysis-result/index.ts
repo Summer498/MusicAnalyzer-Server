@@ -1,10 +1,9 @@
 export { Note } from "./common";
-export { ReductionElement } from "./ReductionElement";
-export { TimeSpanReduction } from "./TSR";
-export { ProlongationalReduction } from "./PR";
+export { ReductionElement, createReductionElement } from "./ReductionElement";
+export { createTimeSpanReduction, createTimeSpan, TimeSpan } from "./TSR";
+export { createProlongationalReduction } from "./PR";
 export { GTTMData } from "./gttm-data";
 export { MetricalStructure } from "./MTR";
 export { ITimeSpanReduction } from "./TSR";
 export { IProlongationalReduction } from "./PR";
-export { TimeSpan } from "./TSR";
 export { GroupingStructure } from "./GRP";

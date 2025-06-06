@@ -1,8 +1,7 @@
 import { ReductionElement } from "./ReductionElement";
-import { Head } from "./common";
+import { Head, createHead } from "./common";
 import { Note } from "./common";
 import { Path } from "./common";
-import { IHead } from "./common";
 
 
 type Pred = { readonly temp: 0 | "-inf" | Path };
@@ -16,7 +15,7 @@ interface ITimeSpan {
   readonly timespan: number,
   readonly leftend: number,
   readonly rightend: number,
-  readonly head: IHead<IChord>,
+  readonly head: Head<IChord>,
   readonly at: IAt,
   readonly primary?: ITimeSpanTree
   readonly secondary?: ITimeSpanTree
@@ -41,88 +40,66 @@ export interface ITimeSpanReduction {
   readonly tstree: ITimeSpanTree;
 }
 
-class Temp 
-  implements ITemp {
-  readonly difference: number;
-  readonly stable: 0 | "unknown" | Path;
-  readonly pred: Pred;
-  readonly succ: Succ;
-  constructor(temp: ITemp) {
-    this.difference = temp.difference;
-    this.stable = temp.stable;
-    this.pred = temp.pred;
-    this.succ = temp.succ;
-  }
-}
+export interface Temp extends ITemp {}
+export const createTemp = (temp: ITemp): Temp => ({
+  difference: temp.difference,
+  stable: temp.stable,
+  pred: temp.pred,
+  succ: temp.succ,
+});
 
-class At {
-  readonly temp: Temp
-  constructor(
-    at: IAt
-  ) {
-    this.temp = new Temp(at.temp)
-  }
-}
+export interface At { readonly temp: Temp }
+export const createAt = (at: IAt): At => ({
+  temp: createTemp(at.temp),
+});
 
-class Chord 
-  implements IChord {
-  readonly duration: number;
-  readonly velocity: number;
-  readonly note: Note;
-  constructor(chord: IChord) {
-    this.duration = chord.duration;
-    this.velocity = chord.velocity;
-    this.note = chord.note;
-  }
-  // TODO: get chroma
-}
+export interface Chord extends IChord {}
+export const createChord = (chord: IChord): Chord => ({
+  duration: chord.duration,
+  velocity: chord.velocity,
+  note: chord.note,
+});
 
-class TimeSpanTree 
-  implements ITimeSpanTree {
-  readonly ts: TimeSpan;
-  constructor(ts_tree: ITimeSpanTree) {
-    this.ts = new TimeSpan(ts_tree.ts);
-  }
-}
+export interface TimeSpanTree extends ITimeSpanTree { ts: TimeSpan }
+export const createTimeSpanTree = (ts_tree: ITimeSpanTree): TimeSpanTree => ({
+  ts: createTimeSpan(ts_tree.ts),
+});
 
-export class TimeSpan 
-  extends ReductionElement 
-  implements ITimeSpan {
-  readonly timespan: number;
-  readonly leftend: number;
-  readonly rightend: number;
+export interface TimeSpan extends ReductionElement, ITimeSpan {
   readonly head: Head<Chord>;
-  readonly at: IAt;
+  readonly at: At;
   readonly primary?: TimeSpanTree;
   readonly secondary?: TimeSpanTree;
-  constructor(ts: ITimeSpan) {
-    const primary = ts.primary && new TimeSpanTree(ts.primary);
-    const secondary = ts.secondary && new TimeSpanTree(ts.secondary);
-    super(ts.head.chord.note.id, primary?.ts, secondary?.ts);
-    this.timespan = ts.timespan;
-    this.leftend = ts.leftend;
-    this.rightend = ts.rightend;
-    this.head = new Head(ts.head);
-    this.at = new At(ts.at);
-    this.primary = primary;
-    this.secondary = secondary;
-  }
-
-  getMatrixOfLayer(layer?: number) {
-    const array = this.getArrayOfLayer(layer) as TimeSpan[];
-    const matrix: TimeSpan[][] = [[]];
-    array?.forEach(e => {
-      if (!matrix[e.measure]) { matrix[e.measure] = []; }
-      matrix[e.measure][e.note] = e;
-    });
-    return matrix;
-  }
+  getMatrixOfLayer(layer?: number): TimeSpan[][];
 }
 
-export class TimeSpanReduction 
-  implements ITimeSpanReduction {
-  readonly tstree: TimeSpanTree;
-  constructor(tsr: ITimeSpanReduction) {
-    this.tstree = new TimeSpanTree(tsr.tstree);
-  }
-}
+export const createTimeSpan = (ts: ITimeSpan): TimeSpan => {
+  const primary = ts.primary && createTimeSpanTree(ts.primary);
+  const secondary = ts.secondary && createTimeSpanTree(ts.secondary);
+  const base = createReductionElement(ts.head.chord.note.id, primary?.ts, secondary?.ts);
+  const self: TimeSpan = {
+    ...base,
+    timespan: ts.timespan,
+    leftend: ts.leftend,
+    rightend: ts.rightend,
+    head: createHead(ts.head),
+    at: createAt(ts.at),
+    primary,
+    secondary,
+    getMatrixOfLayer(layer?: number) {
+      const array = self.getArrayOfLayer(layer) as TimeSpan[];
+      const matrix: TimeSpan[][] = [[]];
+      array?.forEach(e => {
+        if (!matrix[e.measure]) { matrix[e.measure] = []; }
+        matrix[e.measure][e.note] = e;
+      });
+      return matrix;
+    },
+  };
+  return self;
+};
+
+export interface TimeSpanReduction extends ITimeSpanReduction { tstree: TimeSpanTree }
+export const createTimeSpanReduction = (tsr: ITimeSpanReduction): TimeSpanReduction => ({
+  tstree: createTimeSpanTree(tsr.tstree),
+});
