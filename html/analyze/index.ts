@@ -25,14 +25,15 @@ import { MusicStructureElements } from "@music-analyzer/piano-roll";
 import { WindowReflectableRegistry, createWindowReflectableRegistry } from "@music-analyzer/view";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 
-import { DMelodyController, createDMelodyController } from "@music-analyzer/controllers";
-import { GravityController, createGravityController } from "@music-analyzer/controllers";
+import type { DMelodyController, GravityController } from "@music-analyzer/controllers";
+import { createDMelodyController, createGravityController } from "@music-analyzer/controllers";
 import { HierarchyLevelController } from "@music-analyzer/controllers";
 import { MelodyBeepController } from "@music-analyzer/controllers";
 import { MelodyColorController } from "@music-analyzer/controllers";
 import { TimeRangeController } from "@music-analyzer/controllers";
 import { Time } from "@music-analyzer/time-and";
-import { ImplicationDisplayController, createImplicationDisplayController } from "@music-analyzer/controllers/src/switcher";
+import type { ImplicationDisplayController } from "@music-analyzer/controllers/src/switcher";
+import { createImplicationDisplayController } from "@music-analyzer/controllers/src/switcher";
 
 class Controllers {
   readonly div: HTMLDivElement
@@ -642,3 +643,4 @@ const main = () => {
 
 };
 main();
+
