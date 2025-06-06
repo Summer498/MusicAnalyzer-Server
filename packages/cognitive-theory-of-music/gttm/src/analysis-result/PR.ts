@@ -1,7 +1,5 @@
-import { ReductionElement } from "./ReductionElement";
-import { Chord } from "./common";
-import { Head as _Head } from "./common";
-import { IHead as _IHead } from "./common";
+import { ReductionElement, createReductionElement } from "./ReductionElement";
+import { Chord, Head as BaseHead, createHead } from "./common";
 
 interface IProlongationTree {
   readonly pr: IProlongationalRegion
@@ -11,50 +9,42 @@ interface IProlongationalRegion {
   readonly primary?: IProlongationTree,
   readonly secondary?: IProlongationTree,
 }
-interface IHead
-  extends _IHead<Chord> {
+interface IHead extends BaseHead<Chord> {
   readonly recipe: "weak" | "progression" | "strong"
 }
 export interface IProlongationalReduction {
   readonly prtree: IProlongationTree
 }
 
-class Head
-extends _Head<Chord>
-implements IHead {
-  readonly recipe: "weak" | "progression" | "strong"
-  constructor(head:IHead){
-    super(head);
-    this.recipe = head.recipe;
-  }
-}
-class ProlongationTree {
-  readonly pr: ProlongationalRegion;
-  constructor(p_tree: IProlongationTree) {
-    this.pr = new ProlongationalRegion(p_tree.pr);
-  }
+export interface Head extends IHead {}
+export const createHeadPR = (head: IHead): Head => ({
+  ...createHead(head),
+  recipe: head.recipe,
+});
+
+export interface ProlongationTree { readonly pr: ProlongationalRegion }
+export const createProlongationTree = (p_tree: IProlongationTree): ProlongationTree => ({
+  pr: createProlongationalRegion(p_tree.pr),
+});
+
+export interface ProlongationalRegion extends ReductionElement, IProlongationalRegion {
+  readonly head: Head;
+  readonly primary?: ProlongationTree;
+  readonly secondary?: ProlongationTree;
 }
 
-class ProlongationalRegion 
-  extends ReductionElement 
-  implements IProlongationalRegion {
-  override readonly head: Head;
-  readonly primary?: IProlongationTree;
-  readonly secondary?: IProlongationTree;
-  constructor(pr: IProlongationalRegion) {
-    const primary = pr.primary && new ProlongationTree(pr.primary);
-    const secondary = pr.secondary && new ProlongationTree(pr.secondary);
-    super(pr.head.chord.note.id, primary?.pr, secondary?.pr);
-    this.head = pr.head;
-    this.primary = primary;
-    this.secondary = secondary;
-  }
-}
+export const createProlongationalRegion = (pr: IProlongationalRegion): ProlongationalRegion => {
+  const primary = pr.primary && createProlongationTree(pr.primary);
+  const secondary = pr.secondary && createProlongationTree(pr.secondary);
+  return {
+    ...createReductionElement(pr.head.chord.note.id, primary?.pr, secondary?.pr),
+    head: pr.head,
+    primary,
+    secondary,
+  };
+};
 
-export class ProlongationalReduction 
-  implements IProlongationalReduction {
-  readonly prtree: ProlongationTree;
-  constructor(pr: IProlongationalReduction){
-    this.prtree = new ProlongationTree(pr.prtree);
-  }
-}
+export interface ProlongationalReduction extends IProlongationalReduction { prtree: ProlongationTree }
+export const createProlongationalReduction = (pr: IProlongationalReduction): ProlongationalReduction => ({
+  prtree: createProlongationTree(pr.prtree),
+});

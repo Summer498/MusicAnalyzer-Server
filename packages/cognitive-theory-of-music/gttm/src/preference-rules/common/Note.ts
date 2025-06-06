@@ -1,11 +1,14 @@
-export class Note<T> {
+export interface Note<T> {
+  readonly begin: T;
+  readonly end: T;
   readonly length: T;
-  get attack_point() { return this.begin; }
-  // get length() { return this.end - this.begin }
-  constructor(
-    readonly begin: T,
-    readonly end: T,
-  ) {
-    this.length = end;
-  }
+  readonly attack_point: T;
 }
+
+export const createNote = <T>(begin: T, end: T): Note<T> => ({
+  begin,
+  end,
+  length: end,
+  attack_point: begin,
+});
+

@@ -1,92 +1,84 @@
 import { BeatPos } from "@music-analyzer/musicxml";
 
-export abstract class ReductionElement {
-  abstract readonly head: {
-    readonly chord: { readonly note: { readonly id: BeatPos } },
-  };
+export interface ReductionElement {
+  readonly head: { readonly chord: { readonly note: { readonly id: BeatPos } } };
   readonly measure: number;
   readonly note: number;
-  constructor(
-    id: BeatPos,
-    readonly primary_element: ReductionElement | undefined,
-    readonly secondary_element: ReductionElement | undefined,
-  ) {
-    const regexp = /P1-([0-9]+)-([0-9]+)/;
-    const match = id.match(regexp);
-    if (match) {
-      this.measure = Number(match[1]);
-      this.note = Number(match[2]);
-    }
-    else {
-      throw new SyntaxError(`Unexpected id received.\nExpected id is: ${regexp}`);
-      this.measure = 0;
-      this.note = 0;
-    }
+  readonly primary_element: ReductionElement | undefined;
+  readonly secondary_element: ReductionElement | undefined;
+  forEach(callback: (value: ReductionElement) => void): void;
+  getHeadElement(): ReductionElement;
+  getDepthCount(): number;
+  id2number(): number;
+  getLeftEnd(): ReductionElement;
+  getRightEnd(): ReductionElement;
+  getArrayOfLayer(layer?: number): ReductionElement[];
+}
+
+const parseId = (id: BeatPos) => {
+  const regexp = /P1-([0-9]+)-([0-9]+)/;
+  const match = id.match(regexp);
+  if (!match) {
+    throw new SyntaxError(`Unexpected id received.\nExpected id is: ${regexp}`);
   }
-  forEach(callback: (value: ReductionElement) => void) {
-    callback(this);
-    this.primary_element?.forEach(callback);
-    this.secondary_element?.forEach(callback);
+  return { measure: Number(match[1]), note: Number(match[2]) };
+};
+
+function _getArrayOfLayer(element: ReductionElement, i: number, layer?: number): ReductionElement[] {
+  if (layer !== undefined && i >= layer) { return [element]; }
+  if (!element.primary_element && !element.secondary_element) { return [element]; }
+  const p_array = element.primary_element && _getArrayOfLayer(element.primary_element, i + 1, layer);
+  const s_array = element.secondary_element && _getArrayOfLayer(element.secondary_element, i + 1, layer);
+  if (!p_array) { return s_array || []; }
+  else if (!s_array) { return p_array; }
+  else {
+    const p_id = p_array[0].id2number();
+    const s_id = s_array[0].id2number();
+    return p_id < s_id ? [...p_array, ...s_array] : [...s_array, ...p_array];
   }
-  getHeadElement(): ReductionElement {
-    return this.primary_element ? this.primary_element.getHeadElement() : this;
-  }
-  getDepthCount(): number {
-    // returns depth count (1 based)
-    // this.getArrayOfLayer(this.getDepth()-1) すると this と同じ階層の配列が取れる
-    const p_depth = this.primary_element?.getDepthCount() || 0;
-    const s_depth = this.secondary_element?.getDepthCount() || 0;
-    return 1 + Math.max(p_depth, s_depth);
-  }
-  id2number() {
-    return this.measure * 1024 + this.note;
-  }
-  getLeftEnd(): ReductionElement {
-    const primary = this.primary_element;
-    const secondary = this.secondary_element;
-    if (!primary) { return secondary ? secondary.getLeftEnd() : this; }
+}
+
+export const createReductionElement = (
+  id: BeatPos,
+  primary_element?: ReductionElement,
+  secondary_element?: ReductionElement,
+): Omit<ReductionElement, "head"> => {
+  const { measure, note } = parseId(id);
+  const element: any = {};
+  element.measure = measure;
+  element.note = note;
+  element.primary_element = primary_element;
+  element.secondary_element = secondary_element;
+  element.forEach = (callback) => {
+    callback(element);
+    primary_element?.forEach(callback);
+    secondary_element?.forEach(callback);
+  };
+  element.getHeadElement = () => primary_element ? primary_element.getHeadElement() : element;
+  element.getDepthCount = () => 1 + Math.max(primary_element?.getDepthCount() || 0, secondary_element?.getDepthCount() || 0);
+  element.id2number = () => measure * 1024 + note;
+  element.getLeftEnd = () => {
+    const primary = element.primary_element;
+    const secondary = element.secondary_element;
+    if (!primary) { return secondary ? secondary.getLeftEnd() : element; }
     else if (!secondary) { return primary.getLeftEnd(); }
     else {
       const p_id = primary.id2number();
       const s_id = secondary.id2number();
-      if (p_id < s_id) { return primary.getLeftEnd(); }
-      else if (p_id >= s_id) { return secondary.getLeftEnd(); }
-      else { throw new Error(`Reached unexpected code point`); }
+      return p_id < s_id ? primary.getLeftEnd() : secondary.getLeftEnd();
     }
-  }
-  getRightEnd(): ReductionElement {
-    const primary = this.primary_element;
-    const secondary = this.secondary_element;
-    if (!primary) { return secondary ? secondary.getRightEnd() : this; }
+  };
+  element.getRightEnd = () => {
+    const primary = element.primary_element;
+    const secondary = element.secondary_element;
+    if (!primary) { return secondary ? secondary.getRightEnd() : element; }
     else if (!secondary) { return primary.getRightEnd(); }
     else {
       const p_id = primary.id2number();
       const s_id = secondary.id2number();
-      if (s_id < p_id) { return primary.getRightEnd(); }
-      else if (s_id >= p_id) { return secondary.getRightEnd(); }
-      else { throw new Error(`Reached unexpected code point`); }
+      return s_id < p_id ? primary.getRightEnd() : secondary.getRightEnd();
     }
-  }
-  private _getArrayOfLayer(i: number, layer?: number): ReductionElement[] {
-    if (layer !== undefined && i >= layer) { return [this]; }  // stop search
-    if (this.primary_element === undefined && this.secondary_element === undefined) { return [this]; }  // arrival at leaf
-
-    const p_array = this.primary_element?._getArrayOfLayer(i + 1, layer);
-    const s_array = this.secondary_element?._getArrayOfLayer(i + 1, layer);
-
-    // marge arrays
-    if (!p_array) { return s_array || []; }
-    else if (!s_array) { return p_array; }
-    else {
-      const p_id = p_array[0].id2number();
-      const s_id = s_array[0].id2number();
-
-      if (p_id < s_id) { return [...p_array, ...s_array]; }
-      else if (p_id >= s_id) { return [...s_array, ...p_array]; }
-      else { throw new Error(`Reached unexpected code point`); }
-    }
-  }
-  getArrayOfLayer(layer?: number) {
-    return this._getArrayOfLayer(0, layer);
-  }
-}
+  };
+  element.getArrayOfLayer = (layer?: number) => _getArrayOfLayer(element, 0, layer);
+  return element as ReductionElement;
+};
