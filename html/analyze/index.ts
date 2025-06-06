@@ -27,10 +27,10 @@ import { BeatInfo } from "@music-analyzer/beat-estimation";
 
 import { DMelodyController } from "@music-analyzer/controllers";
 import { GravityController } from "@music-analyzer/controllers";
-import { HierarchyLevelController } from "@music-analyzer/controllers";
+import { HierarchyLevelController, createHierarchyLevelController } from "@music-analyzer/controllers";
 import { MelodyBeepController } from "@music-analyzer/controllers";
 import { MelodyColorController } from "@music-analyzer/controllers";
-import { TimeRangeController } from "@music-analyzer/controllers";
+import { TimeRangeController, createTimeRangeController } from "@music-analyzer/controllers";
 import { Time } from "@music-analyzer/time-and";
 import { ImplicationDisplayController } from "@music-analyzer/controllers/src/switcher";
 
@@ -54,8 +54,8 @@ class Controllers {
     this.div.style = "margin-top:20px";
 
     this.d_melody = new DMelodyController();
-    this.hierarchy = new HierarchyLevelController(layer_count);
-    this.time_range = new TimeRangeController(length);
+    this.hierarchy = createHierarchyLevelController(layer_count);
+    this.time_range = createTimeRangeController(length);
     this.implication = new ImplicationDisplayController()
     this.gravity = new GravityController(gravity_visible);
     this.melody_beep = new MelodyBeepController();
