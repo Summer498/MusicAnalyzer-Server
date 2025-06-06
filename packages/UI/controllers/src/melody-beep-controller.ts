@@ -25,7 +25,7 @@ export const createMelodyBeepSwitcher = (
 
 export interface MelodyBeepController {
   readonly view: HTMLDivElement;
-  readonly checkbox: MelodyBeepSwitcher;
+  readonly checkbox: Checkbox;
   readonly volume: MelodyBeepVolume;
 }
 
