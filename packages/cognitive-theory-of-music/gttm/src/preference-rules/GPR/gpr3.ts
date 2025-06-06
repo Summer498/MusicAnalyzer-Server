@@ -1,7 +1,5 @@
-import { IntervallicDistance } from "../common";
-import { Note } from "../common";
-import { Pair } from "../common";
-import { Transition } from "../common";
+import type { IntervallicDistance, Note } from "../common";
+import { createPair, createTransition, createIntervallicDistance } from "../common";
 
 export class GPR3a<T> {
   readonly is_fulfilled: boolean;
@@ -16,10 +14,10 @@ export class GPR3a<T> {
     // The transition n2–n3 may be heard as a group boundary if marked by
     // GPR3a (Register)
     // the transition n2-n3 involves a greater intervallic distance than both n1-n2 and n3-n4, or if
-    const the = new Transition({ from: n2, to: n3 });
+    const the = createTransition({ from: n2, to: n3 });
     this.is_fulfilled
-      = the.intervallic_distance.isGreaterThan(new IntervallicDistance({ from: n1, to: n2 }))
-      && the.intervallic_distance.isGreaterThan(new IntervallicDistance({ from: n3, to: n4 }));
+      = the.intervallic_distance.isGreaterThan(createIntervallicDistance({ from: n1, to: n2 }))
+      && the.intervallic_distance.isGreaterThan(createIntervallicDistance({ from: n3, to: n4 }));
   }
 }
 
@@ -37,9 +35,9 @@ export class GPR3b<T> {
     // GPR3b (Dynamics)
     // the transition n2-n3 involves a change in dynamics and n1-n2 and n3-n4 do not, or if
     this.is_fulfilled
-      = new Transition({ from: n2, to: n3 }).involves_aChangeInDynamics()
-      && new Transition({ from: n1, to: n2 }).not.involves_aChangeInDynamics()
-      && new Transition({ from: n3, to: n4 }).not.involves_aChangeInDynamics();
+      = createTransition({ from: n2, to: n3 }).involves_aChangeInDynamics()
+      && createTransition({ from: n1, to: n2 }).not.involves_aChangeInDynamics()
+      && createTransition({ from: n3, to: n4 }).not.involves_aChangeInDynamics();
   }
 }
 
@@ -58,9 +56,9 @@ export class GPR3c<T> {
     // GPR3c (Articulation)
     // the transition n2-n3 involves a change in articulation and n1-n2 and n3-n4 do not, or if
     this.is_fulfilled
-      = new Transition({ from: n2, to: n3 }).involves_aChangeInArticulation()
-      && new Transition({ from: n1, to: n2 }).not.involves_aChangeInArticulation()
-      && new Transition({ from: n3, to: n4 }).not.involves_aChangeInArticulation();
+      = createTransition({ from: n2, to: n3 }).involves_aChangeInArticulation()
+      && createTransition({ from: n1, to: n2 }).not.involves_aChangeInArticulation()
+      && createTransition({ from: n3, to: n4 }).not.involves_aChangeInArticulation();
   }
 }
 
@@ -78,8 +76,8 @@ export class GPR3d<T> {
     // GPR3d (Length)
     // n2 and n3 are of different length and both pairs n1,n2 and n3,n4 do not differ in length.
     this.is_fulfilled
-      = new Pair(n2.length, n3.length).are.different()
-      && new Pair(n1.length, n2.length).are.not.different()
-      && new Pair(n3.length, n4.length).are.not.different();
+      = createPair(n2.length, n3.length).are.different()
+      && createPair(n1.length, n2.length).are.not.different()
+      && createPair(n3.length, n4.length).are.not.different();
   }
 }

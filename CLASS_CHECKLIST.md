@@ -1,0 +1,144 @@
+- [ ] packages/UI/controllers/src/color-selector.ts -  ColorSelector<T> extends Controller<T> {
+- [ ] packages/UI/controllers/src/color-selector.ts -  IRM_ColorSelector
+- [ ] packages/UI/controllers/src/color-selector.ts -  MelodyColorController {
+- [ ] packages/UI/controllers/src/color-selector.ts -  MelodyColorSelector {
+- [ ] packages/UI/controllers/src/controller.ts -  Controller<T> {
+- [ ] packages/UI/controllers/src/controller.ts -  ControllerView {
+- [ ] packages/UI/controllers/src/melody-beep-controller.ts -  MelodyBeepController {
+- [ ] packages/UI/controllers/src/melody-beep-controller.ts -  MelodyBeepSwitcher
+- [ ] packages/UI/controllers/src/melody-beep-controller.ts -  MelodyBeepVolume
+- [ ] packages/UI/controllers/src/slider.ts -  HierarchyLevel
+- [ ] packages/UI/controllers/src/slider.ts -  HierarchyLevelController {
+- [ ] packages/UI/controllers/src/slider.ts -  Slider<T> extends Controller<T> {
+- [ ] packages/UI/controllers/src/slider.ts -  TimeRangeController {
+- [ ] packages/UI/controllers/src/slider.ts -  TimeRangeSlider
+- [ ] packages/UI/controllers/src/switcher.ts -  Checkbox extends Controller<boolean> {
+- [ ] packages/UI/controllers/src/switcher.ts -  DMelodyController {
+- [ ] packages/UI/controllers/src/switcher.ts -  GravityController {
+- [ ] packages/UI/controllers/src/switcher.ts -  ImplicationDisplayController {
+- [ ] packages/UI/piano-roll/beat-view/src/beat-elements.ts -  BeatBar {
+- [ ] packages/UI/piano-roll/beat-view/src/beat-elements.ts -  BeatBarModel {
+- [ ] packages/UI/piano-roll/beat-view/src/beat-elements.ts -  BeatBarView {
+- [ ] packages/UI/piano-roll/beat-view/src/beat-elements.ts -  BeatBarsSeries {
+- [ ] packages/UI/piano-roll/beat-view/src/beat-elements.ts -  BeatElements {
+- [ ] packages/UI/piano-roll/chord-view/index.ts -  ChordElements {
+- [ ] packages/UI/piano-roll/melody-view/index.ts -  MelodyElements {
+- [ ] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  CacheCore {
+- [ ] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlot {
+- [ ] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotAxis {
+- [ ] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotCircles {
+- [ ] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotHierarchy {
+- [ ] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotHierarchyModel {
+- [ ] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotHierarchyView {
+- [ ] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotLayer {
+- [ ] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotLayerModel {
+- [ ] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotLayerView {
+- [ ] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotModel {
+- [ ] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotSVG {
+- [ ] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotView {
+- [ ] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotViewModel {
+- [ ] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  MelodiesCache {
+- [ ] packages/UI/piano-roll/melody-view/src/reduction-hierarchy.ts -  Bracket {
+- [ ] packages/UI/piano-roll/melody-view/src/reduction-hierarchy.ts -  Dot {
+- [ ] packages/UI/piano-roll/melody-view/src/reduction-hierarchy.ts -  IRMSymbol {
+- [ ] packages/UI/piano-roll/melody-view/src/reduction-hierarchy.ts -  Reduction {
+- [ ] packages/UI/piano-roll/melody-view/src/reduction-hierarchy.ts -  ReductionHierarchy {
+- [ ] packages/UI/piano-roll/melody-view/src/reduction-hierarchy.ts -  ReductionLayer {
+- [ ] packages/UI/piano-roll/melody-view/src/reduction-hierarchy.ts -  ReductionModel {
+- [ ] packages/UI/piano-roll/melody-view/src/reduction-hierarchy.ts -  ReductionView {
+- [ ] packages/UI/piano-roll/melody-view/src/reduction-hierarchy.ts -  ReductionViewModel {
+- [ ] packages/UI/piano-roll/melody-view/src/reduction-tree.ts -  Line {
+- [ ] packages/UI/piano-roll/melody-view/src/reduction-tree.ts -  TreeHierarchy {
+- [ ] packages/UI/piano-roll/piano-roll/src/analysis-view.ts -  AnalysisView {
+- [ ] packages/UI/piano-roll/piano-roll/src/analysis-view.ts -  MusicStructureElements {
+- [ ] packages/UI/piano-roll/piano-roll/src/piano-roll.ts -  BG extends Rectangle {
+- [ ] packages/UI/piano-roll/piano-roll/src/piano-roll.ts -  BGs {
+- [ ] packages/UI/piano-roll/piano-roll/src/piano-roll.ts -  CurrentTimeLine {
+- [ ] packages/UI/piano-roll/piano-roll/src/piano-roll.ts -  Key extends Rectangle {
+- [ ] packages/UI/piano-roll/piano-roll/src/piano-roll.ts -  Keys {
+- [ ] packages/UI/piano-roll/piano-roll/src/piano-roll.ts -  PianoRoll {
+- [ ] packages/UI/piano-roll/piano-roll/src/piano-roll.ts -  Rectangle {
+- [ ] packages/UI/piano-roll/piano-roll/src/piano-roll.ts -  RectangleModel {
+- [ ] packages/UI/piano-roll/piano-roll/src/piano-roll.ts -  RectangleView {
+- [ ] packages/UI/spectrogram/src/audio-analyzer/audio-analyzer.ts -  AudioAnalyzer {
+- [ ] packages/UI/spectrogram/src/audio-viewer.ts -  AudioViewer {
+- [ ] packages/UI/spectrogram/src/fft-viewer.ts -  FFTViewer {
+- [ ] packages/UI/spectrogram/src/spectrogram-viewer.ts -  spectrogramViewer {
+- [ ] packages/UI/spectrogram/src/wave-viewer.ts -  WaveViewer {
+- [ ] packages/UI/view-parameters/index.ts -  CurrentTimeRatio {
+- [ ] packages/UI/view-parameters/index.ts -  CurrentTimeX {
+- [ ] packages/UI/view-parameters/index.ts -  NoteSize {
+- [ ] packages/UI/view-parameters/index.ts -  NowAt {
+- [ ] packages/UI/view-parameters/index.ts -  OctaveCount {
+- [ ] packages/UI/view-parameters/index.ts -  PianoRollBegin {
+- [ ] packages/UI/view-parameters/index.ts -  PianoRollEnd {
+- [ ] packages/UI/view-parameters/index.ts -  PianoRollHeight {
+- [ ] packages/UI/view-parameters/index.ts -  PianoRollRatio {
+- [ ] packages/UI/view-parameters/index.ts -  PianoRollTimeLength {
+- [ ] packages/UI/view-parameters/index.ts -  PianoRollWidth {
+- [ ] packages/UI/view-parameters/index.ts -  SongLength {
+- [ ] packages/UI/view-parameters/index.ts -  WindowInnerWidth {
+- [x] packages/UI/view/index.ts -  AudioReflectableRegistry {
+- [x] packages/UI/view/index.ts -  PianoRollTranslateX {
+- [x] packages/UI/view/index.ts -  WindowReflectableRegistry {
+- [x] packages/cli/post-crepe/src/median-filter.ts -  MedianFilter {
+- [x] packages/cli/post-pyin/src/median-filter.ts -  MedianFilter {
+- [ ] packages/cognitive-theory-of-music/gttm/src/analysis-result/PR.ts -  Head
+- [ ] packages/cognitive-theory-of-music/gttm/src/analysis-result/PR.ts -  ProlongationTree {
+- [ ] packages/cognitive-theory-of-music/gttm/src/analysis-result/PR.ts -  ProlongationalReduction 
+- [ ] packages/cognitive-theory-of-music/gttm/src/analysis-result/PR.ts -  ProlongationalRegion 
+- [ ] packages/cognitive-theory-of-music/gttm/src/analysis-result/ReductionElement.ts -  ReductionElement {
+- [ ] packages/cognitive-theory-of-music/gttm/src/analysis-result/TSR.ts -  At {
+- [ ] packages/cognitive-theory-of-music/gttm/src/analysis-result/TSR.ts -  Chord 
+- [ ] packages/cognitive-theory-of-music/gttm/src/analysis-result/TSR.ts -  Temp 
+- [ ] packages/cognitive-theory-of-music/gttm/src/analysis-result/TSR.ts -  TimeSpan 
+- [ ] packages/cognitive-theory-of-music/gttm/src/analysis-result/TSR.ts -  TimeSpanReduction 
+- [ ] packages/cognitive-theory-of-music/gttm/src/analysis-result/TSR.ts -  TimeSpanTree 
+- [ ] packages/cognitive-theory-of-music/gttm/src/analysis-result/common.ts -  Head<C extends Chord> {
+- [ ] packages/cognitive-theory-of-music/gttm/src/analysis-result/gttm-data.ts -  GTTMData {
+- [ ] packages/cognitive-theory-of-music/gttm/src/preference-rules/GPR/gpr1.ts -  GPR1 {
+- [ ] packages/cognitive-theory-of-music/gttm/src/preference-rules/GPR/gpr2a.ts -  GPR2a<T> {
+- [ ] packages/cognitive-theory-of-music/gttm/src/preference-rules/GPR/gpr2b.ts -  GPR2b<T> {
+- [ ] packages/cognitive-theory-of-music/gttm/src/preference-rules/GPR/gpr3.ts -  GPR3a<T> {
+- [ ] packages/cognitive-theory-of-music/gttm/src/preference-rules/GPR/gpr3.ts -  GPR3b<T> {
+- [ ] packages/cognitive-theory-of-music/gttm/src/preference-rules/GPR/gpr3.ts -  GPR3c<T> {
+- [ ] packages/cognitive-theory-of-music/gttm/src/preference-rules/GPR/gpr3.ts -  GPR3d<T> {
+- [x] packages/cognitive-theory-of-music/gttm/src/preference-rules/common/Interval.ts -  IntervalOfTime<Time> {
+- [ ] packages/cognitive-theory-of-music/gttm/src/preference-rules/common/Note.ts -  Note<T> {
+- [x] packages/cognitive-theory-of-music/gttm/src/preference-rules/common/Pair.ts -  Pair<T> extends Negatable {
+- [x] packages/cognitive-theory-of-music/gttm/src/preference-rules/common/Transition.ts -  IntervallicDistance<T> {
+- [x] packages/cognitive-theory-of-music/gttm/src/preference-rules/common/Transition.ts -  Transition<T> extends Negatable {
+- [x] packages/cognitive-theory-of-music/gttm/src/preference-rules/common/create-negated.ts -  Negatable {
+- [ ] packages/data-type/serializable-data/src/json-serializable.ts -  JSONSerializable<T extends JSONSerializable<T>> extends Serializable<T> {
+- [ ] packages/data-type/serializable-data/src/serializable.ts -  Serializable<T extends Serializable<T>> 
+- [ ] packages/data-type/serializable-data/src/xml-serializable.ts -  XMLSerializable<T extends XMLSerializable<T>> extends Serializable<T> {
+- [ ] packages/music-structure/analyzed-data-container/src/analyze-data-container.ts -  AnalyzedDataContainer {
+- [ ] packages/music-structure/chord/chord-analyze/src/chord-analyze/serialized-time-and-roman-analysis.ts -  SerializedRomanAnalysisData {
+- [ ] packages/music-structure/chord/chord-analyze/src/chord-analyze/serialized-time-and-roman-analysis.ts -  SerializedTimeAndRomanAnalysis {
+- [ ] packages/music-structure/chord/chord-analyze/src/chord-analyze/serialized-time-and-roman-analysis.ts -  with the constructor which has 1 argument
+- [ ] packages/music-structure/chord/chord-analyze/src/chord-analyze/time-and-chord.ts -  TimeAndChordSymbol {
+- [ ] packages/music-structure/chord/chord-analyze/src/key-estimation/chord-progression.ts -  ChordProgression {
+- [ ] packages/music-structure/chord/roman-chord/src/roman-chord.ts -  RomanChord {
+- [ ] packages/music-structure/melody/melody-analyze/index.ts -  Gravity {
+- [ ] packages/music-structure/melody/melody-analyze/index.ts -  SerializedMelodyAnalysis {
+- [ ] packages/music-structure/melody/melody-analyze/index.ts -  SerializedMelodyAnalysisData {
+- [ ] packages/music-structure/melody/melody-analyze/index.ts -  SerializedTimeAndAnalyzedMelody {
+- [ ] packages/music-structure/melody/melody-analyze/index.ts -  TimeAndMelody {
+- [ ] packages/music-structure/melody/melody-analyze/src/serialized-gravity.ts -  SerializedGravity {
+- [ ] packages/music-structure/melody/melody-analyze/src/serialized-melody-analysis-data.ts -  SerializedMelodyAnalysisData {
+- [ ] packages/music-structure/melody/melody-analyze/src/serialized-melody-analysis.ts -  SerializedMelodyAnalysis {
+- [ ] packages/music-structure/melody/melody-analyze/src/serialized-time-and-analyzed-melody.ts -  SerializedTimeAndAnalyzedMelody {
+- [ ] packages/music-structure/melody/melody-analyze/src/time-and-chord.ts -  TimeAndChord {
+- [ ] packages/music-structure/melody/melody-analyze/src/time-and-melody.ts -  TimeAndMelody {
+- [ ] packages/music-structure/melody/melody-hierarchical-analysis/index.ts -  SerializedTimeAndAnalyzedMelodyAndIR
+- [ ] packages/util/graph/src/viterbi-core.ts -  LogViterbiResult<S> {
+- [ ] packages/util/graph/src/viterbi.ts -  ViterbiResult<S> {
+- [ ] packages/util/html/src/html.ts -  HTML {
+- [ ] packages/util/html/src/svg.ts -  SVG {
+- [ ] packages/util/math/src/fft/array/root-of-unity.ts -  RootOfUnity {
+- [ ] packages/util/math/src/fft/complex.ts -  Complex<T extends number> {
+- [x] packages/util/math/src/fft/root-of-unity.ts -  RootOfUnity {
+- [x] packages/util/math/src/reduction/compare.ts -  Compare {
+- [x] packages/util/stdlib/src/assertion/assertion.ts -  Assertion {
+- [x] packages/util/stdlib/src/error/not-implemented-error.ts -  NotImplementedError
+- [x] packages/util/time-and/src/time.ts -  Time {

@@ -1,4 +1,4 @@
-import { Time } from "@music-analyzer/time-and";
+import { Time, createTime } from "@music-analyzer/time-and";
 import { SerializedMelodyAnalysis } from "./serialized-melody-analysis";
 
 type SerializedTimeAndAnalyzedMelody_Args = [Time, Time, number, SerializedMelodyAnalysis]
@@ -9,7 +9,7 @@ const getArgsOfSerializedTimeAndAnalyzedMelody = (
 ) => {
   if (args.length === 1) {
     const [e] = args;
-    return [new Time(e.time), new Time(e.head), e.note, new SerializedMelodyAnalysis(e.melody_analysis)] as SerializedTimeAndAnalyzedMelody_Args
+    return [createTime(e.time), createTime(e.head), e.note, new SerializedMelodyAnalysis(e.melody_analysis)] as SerializedTimeAndAnalyzedMelody_Args
   }
   return args
 }

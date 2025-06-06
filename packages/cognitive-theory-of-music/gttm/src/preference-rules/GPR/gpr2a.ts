@@ -1,5 +1,5 @@
-import { IntervalOfTime } from "../common";
-import { Note } from "../common";
+import type { IntervalOfTime, Note } from "../common";
+import { createIntervalOfTime } from "../common";
 
 export class GPR2a<T> {
   readonly is_fulfilled: boolean;
@@ -17,9 +17,9 @@ export class GPR2a<T> {
     // is greater than that from the end of n1 to the beginning of n2 
     // and that from the end of n3 to the beginning of n4 or if
     
-    const that = new IntervalOfTime({ from: n2.end, to: n3.begin });
+    const that = createIntervalOfTime({ from: n2.end, to: n3.begin });
     this.is_fulfilled
-      = that.isGreaterThan(new IntervalOfTime({ from: n1.end, to: n2.begin }))
-      && that.isGreaterThan(new IntervalOfTime({ from: n3.end, to: n4.begin }));
+      = that.isGreaterThan(createIntervalOfTime({ from: n1.end, to: n2.begin }))
+      && that.isGreaterThan(createIntervalOfTime({ from: n3.end, to: n4.begin }));
   }
 }
