@@ -4,7 +4,7 @@ import { Request } from "express";
 import { Response } from "express";
 import { dirname } from "path";
 import { basename } from "path";
-import { execSync } from "child_process";
+import { execSync, spawnSync } from "child_process";
 
 import { default as multer } from "multer";
 import { default as express } from "express";
@@ -374,7 +374,7 @@ const semitonesByCrepe = (
   }
   else if (detectFile(e.src)) {
     makeNewDir(e.dst_dir);
-    execSync(`./sh/callPostCrepe.sh "${song_name}"`);
+    spawnSync("sh", ["./sh/callPostCrepe.sh", song_name], { stdio: "inherit" });
   }
   else {
     console.log(`required file ${e.src} not exist`)
