@@ -32,8 +32,8 @@ import { MelodyBeepController } from "@music-analyzer/controllers";
 import { MelodyColorController } from "@music-analyzer/controllers";
 import { TimeRangeController } from "@music-analyzer/controllers";
 import { Time } from "@music-analyzer/time-and";
-import type { ImplicationDisplayController } from "@music-analyzer/controllers/src/switcher";
-import { createImplicationDisplayController } from "@music-analyzer/controllers/src/switcher";
+import type { ImplicationDisplayController } from "@music-analyzer/controllers";
+import { createImplicationDisplayController } from "@music-analyzer/controllers";
 
 class Controllers {
   readonly div: HTMLDivElement
