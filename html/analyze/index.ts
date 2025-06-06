@@ -1,8 +1,8 @@
 import { setCurrentTimeRatio, setPianoRollParameters } from "@music-analyzer/view-parameters";
 import { song_list } from "@music-analyzer/gttm";
 import { createAnalyzedDataContainer } from "@music-analyzer/analyzed-data-container";
-import { AudioViewer } from "@music-analyzer/spectrogram";
-import { createPianoRoll, PianoRoll } from "@music-analyzer/piano-roll";
+import { createAudioViewer } from "@music-analyzer/spectrogram";
+import { PianoRoll } from "@music-analyzer/piano-roll";
 import { PianoRollHeight } from "@music-analyzer/view-parameters";
 import { PianoRollWidth } from "@music-analyzer/view-parameters";
 import { GTTMData } from "@music-analyzer/gttm";
@@ -21,25 +21,17 @@ import { SerializedMelodyAnalysisData } from "@music-analyzer/melody-analyze";
 import { xml_parser } from "@music-analyzer/serializable-data";
 import { AudioReflectableRegistry, createAudioReflectableRegistry } from "@music-analyzer/view";
 import { NowAt } from "@music-analyzer/view-parameters";
-import { createMusicStructureElements, MusicStructureElements } from "@music-analyzer/piano-roll";
+import { MusicStructureElements } from "@music-analyzer/piano-roll";
 import { WindowReflectableRegistry, createWindowReflectableRegistry } from "@music-analyzer/view";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
-import {
-  DMelodyController,
-  createDMelodyController,
-  GravityController,
-  createGravityController,
-  HierarchyLevelController,
-  TimeRangeController,
-  createHierarchyLevelController,
-  createTimeRangeController,
-  type MelodyBeepController,
-  createMelodyBeepController,
-  ImplicationDisplayController,
-  createImplicationDisplayController,
-  MelodyColorController,
-} from "@music-analyzer/controllers";
+import { DMelodyController } from "@music-analyzer/controllers";
+import { GravityController } from "@music-analyzer/controllers";
+import { HierarchyLevelController } from "@music-analyzer/controllers";
+import { MelodyBeepController } from "@music-analyzer/controllers";
+import { MelodyColorController } from "@music-analyzer/controllers";
+import { TimeRangeController } from "@music-analyzer/controllers";
 import { Time } from "@music-analyzer/time-and";
+import { ImplicationDisplayController } from "@music-analyzer/controllers/src/switcher";
 
 class Controllers {
   readonly div: HTMLDivElement
@@ -60,18 +52,17 @@ class Controllers {
     this.div.id = "controllers";
     this.div.style = "margin-top:20px";
 
-    this.d_melody = createDMelodyController();
-    this.hierarchy = createHierarchyLevelController(layer_count);
-    this.time_range = createTimeRangeController(length);
-    this.implication = createImplicationDisplayController();
-    this.gravity = createGravityController(gravity_visible);
-    this.melody_beep = createMelodyBeepController();
+    this.d_melody = new DMelodyController();
+    this.hierarchy = new HierarchyLevelController(layer_count);
+    this.time_range = new TimeRangeController(length);
+    this.implication = new ImplicationDisplayController();
+    this.gravity = new GravityController(gravity_visible);
+    this.melody_beep = new MelodyBeepController();
     this.melody_color = new MelodyColorController();
     this.melody_beep.checkbox.input.checked=true;
     this.implication.prospective_checkbox.input.checked = false;
     this.implication.retrospective_checkbox.input.checked = true;
     this.implication.reconstructed_checkbox.input.checked = true;
-
 
     [
 //      this.d_melody,
@@ -144,7 +135,7 @@ class ApplicationManager {
       window: this.window_size_mediator,
     }
 
-    this.analyzed = createMusicStructureElements(beat_info, romans, hierarchical_melody, melodies, d_melodies, controllers)
+    this.analyzed = new MusicStructureElements(beat_info, romans, hierarchical_melody, melodies, d_melodies, controllers)
   }
 }
 
@@ -245,85 +236,22 @@ const getHTML = () => {
 const getDiv = () => {
   const div = document.createElement("div");
   div.style.backgroundColor = "white";
-  div.style.width = `${100}%`;
-  div.style.height = `${100}%`;
   return div;
 };
 
-const getH1 = (title: HTMLHeadElement) => {
-  const h1 = document.createElement("h1");
-  h1.textContent = title.textContent;
-  return h1;
-};
-
-const getSVGwithTitle = (title: HTMLHeadElement, piano_roll_view: PianoRoll, header_height: number) => {
-  const h1 = getH1(title);
-
-  const div = getDiv();
-  div.appendChild(h1);
-
-  const html = getHTML();
-  html.appendChild(div);
-
-  const foreign_object = getForeignObject(header_height);
-  foreign_object.appendChild(html);
-
-  const g = getG(header_height);
-  g.innerHTML = piano_roll_view.svg.getHTML();
-
-  const svg = getSVG(header_height);
-  svg.appendChild(foreign_object);
-  svg.appendChild(g);
-
-  return svg.outerHTML;
-};
-
-const getSaveButton = (tune_id: string, title: HTMLHeadElement, piano_roll_view: PianoRoll) => {
-  const save_button = document.createElement("input");
-  save_button.value = "save analyzed result as SVG (with title)";
-  save_button.setAttribute("type", "submit");
-  const header_height = 96;
-  function handleDownload() {
-    const blob = new Blob([getSVGwithTitle(title, piano_roll_view, header_height)], { "type": "text/plain" });
-    const download_link = document.createElement("a");
-    download_link.setAttribute("download", `${tune_id}.svg`);
-    download_link.setAttribute("href", window.URL.createObjectURL(blob));
-    download_link.click();
-  }
-  save_button.onclick = e => {
-    handleDownload();
-  };
-  return save_button;
-};
-
 const getSaveButtons = (
-  title: TitleInfo,
+  title_info: TitleInfo,
   titleHead: HTMLHeadingElement,
   piano_roll_view: PianoRoll,
 ) => {
-  const tune_id = `${title.mode}-${title.id}`;
-  return [
-    getSaveButton(tune_id, titleHead, piano_roll_view),
-    getRawSaveButton(tune_id, titleHead, piano_roll_view),
-  ]
-}
+  const getTitle = () => `${title_info.id}-${title_info.mode}`;
+  const save_button = getRawSaveButton(getTitle(), titleHead, piano_roll_view);
+  return [save_button];
+};
 
-const asParent = (node: HTMLElement) => {
-  return {
-    appendChildren: (...children: (HTMLElement | SVGSVGElement)[]) => {
-      children.forEach(e => node.appendChild(e))
-    }
-  }
-}
-
-class ColumnHTML {
-  readonly div: HTMLDivElement
-  constructor(...children: (HTMLElement | SVGSVGElement)[]) {
-    this.div = document.createElement("div");
-    this.div.setAttribute("style", `column-count: ${children.length}`);
-    children.forEach(e => this.div.appendChild(e));
-  }
-}
+const asParent = (parent: HTMLElement) => ({
+  appendChildren: (...children: HTMLElement[]) => { children.forEach(e => parent.appendChild(e)); return parent; },
+});
 
 const setupUI = (
   title_info: TitleInfo,
@@ -332,8 +260,8 @@ const setupUI = (
   piano_roll_place: HTMLDivElement,
   manager: ApplicationManager,
 ) => {
-  const audio_viewer = new AudioViewer(audio_player, manager.audio_time_mediator);
-  const piano_roll_view = createPianoRoll(manager.analyzed, manager.window_size_mediator, !manager.FULL_VIEW)
+  const audio_viewer = createAudioViewer(audio_player, manager.audio_time_mediator);
+  const piano_roll_view = new PianoRoll(manager.analyzed, manager.window_size_mediator, !manager.FULL_VIEW);
   asParent(piano_roll_place)
     .appendChildren(
       /*
@@ -359,293 +287,41 @@ const setFullView = (
   audio_player: HTMLAudioElement,
 ) => {
   if (FULL_VIEW) {
-    setCurrentTimeRatio(0.025);
-    audio_player.autoplay = false;
+    document.querySelector("#flex-div")!.classList.add("full-view");
+    audio_player.style.position = "absolute";
+    audio_player.style.zIndex = "3";
+  } else {
+    document.querySelector("#flex-div")!.classList.remove("full-view");
+    audio_player.style.position = "relative";
+    audio_player.style.zIndex = "0";
   }
-  else { audio_player.autoplay = true; }
-}
+};
 
-const setIRCount = () => {
-  const area = document.getElementById("ir-count");
-}
-
-const calcIRMDistribution = (
-  hierarchical_melody: SerializedTimeAndAnalyzedMelody[][]
-) => {
-  const count = hierarchical_melody.map((layer, l) => {
-    const first = layer.slice(0)
-    const second = layer.slice(1)
-
-    const diff = second.map((_, i) => second[i].note - first[i].note);
-    const impl = diff.slice(0);
-    const real = diff.slice(1);
-    const next = diff.slice(2);
-
-    const dabs = (a: number, b: number) => Math.abs(a) - Math.sign(b)
-    const cdir = (a: number, b: number) => Math.sign(a) === Math.sign(b) ? 0 : 1;
-    const count: Record<number,
-      { count: number } & Record<number, Record<number,
-        { count: number } & Record<number, Record<number,
-          number>>>>> = {}
-    real.forEach((_, i) => {
-      const im = impl[i];
-      const reAbs = dabs(real[i], impl[i]);
-      const reDir = cdir(real[i], impl[i]);
-      const neAbs = dabs(next[i], impl[i]);
-      const neDir = cdir(next[i], impl[i]);
-      count[im] ||= { count: 0, 0: {}, 1: {} };
-      count[im].count++;
-      count[im][reDir][reAbs] ||= { count: 0, 0: {}, 1: {} };
-      count[im][reDir][reAbs].count++;
-      count[im][reDir][reAbs][neDir][neAbs] ||= 0;
-      count[im][reDir][reAbs][neDir][neAbs]++;
-    })
-    return count
-  })
-  console.log(count);
-}
-
-const setup = (
-  window: Window,
-  audio_player: HTMLAudioElement,
+export const onLoad = async (
+  select: HTMLSelectElement,
   titleHead: HTMLHeadingElement,
   piano_roll_place: HTMLDivElement,
-  title: TitleInfo,
-) => (raw_analyzed_data: AnalyzedMusicData) => {
-  const { roman, hierarchical_melody, melody, } = raw_analyzed_data;
-
-  calcIRMDistribution(hierarchical_melody);
-
-  const { beat_info, d_melodies } = createAnalyzedDataContainer(roman, melody, hierarchical_melody)
-  setPianoRollParameters(hierarchical_melody);
-  const manager = new ApplicationManager(beat_info, roman, hierarchical_melody, melody, d_melodies);
-  setFullView(manager.FULL_VIEW, audio_player);
-
-  setupUI(title, audio_player, titleHead, piano_roll_place, manager);
-  setIRCount();
-  new EventLoop(manager.audio_time_mediator, audio_player).update();
-  getMusicAnalyzerWindow(window, raw_analyzed_data).onresize = _ => manager.window_size_mediator.onUpdate();
-  manager.window_size_mediator.onUpdate();
-}
-
-const updateTitle = (
-  titleHead: HTMLHeadingElement,
-  gttm: TitleInfo,
+  audio_player: HTMLAudioElement,
 ) => {
-  titleHead.textContent = gttm.mode ? `[${gttm.mode}] ${gttm.id}` : gttm.id;
-  const tune_match = gttm.id.match(/([0-9]+)_[0-9]/);
-  const tune_no = tune_match ? Number(tune_match[1]) : Number(gttm.id);
-  if (tune_no) {
-    const song_data = song_list[tune_no];
-    titleHead.innerHTML = `[${gttm.mode || "???"}] ${gttm.id}, ${song_data.author}, <i>"${song_data.title}"</i>`;
-  }
+  const repo = process.env.REPO_ORIGIN || "https://github.com/Summer498";
+  const res_beat_info = await fetch(`${repo}/auditory/resources/groove.wav.beat`);
+  const beat_info: BeatInfo = await res_beat_info.json();
+  const res_roman = await fetch(`${repo}/auditory/resources/groove.wav.roman.json`);
+  const roman = await res_roman.json() as SerializedTimeAndRomanAnalysis[];
+  const res_melody = await fetch(`${repo}/auditory/resources/groove.wav.irm.json`);
+  const melody = await res_melody.json() as SerializedMelodyAnalysisData;
+  const midi_response = await fetch("../resources/groove.wav.xml");
+  const midi = MusicXML.parse(await midi_response.text());
+
+  setCurrentTimeRatio(1 / 4);
+  const { melody_hierarchy, melodies, d_melodies } = getHierarchicalMelody(melody);
+  const containers = await createAnalyzedDataContainer(melody_hierarchy, roman, midi);
+  const { gttm, tsa, pra } = containers;
+  const app_manager = new ApplicationManager(beat_info, pra, melody_hierarchy, melodies, d_melodies);
+  setPianoRollParameters(app_manager.analyzed.melody.getHierarchicalMelody());
+  setFullView(app_manager.FULL_VIEW, audio_player);
+  setupUI(new TitleInfo("groove", "TSR"), audio_player, titleHead, piano_roll_place, app_manager);
+  const registry = app_manager.audio_time_mediator;
+  const event_loop = new EventLoop(registry, audio_player);
+  event_loop.update();
 };
-
-type DataPromises = [
-  Promise<SerializedTimeAndRomanAnalysis[]>,
-  Promise<SerializedTimeAndAnalyzedMelody[]>,
-  Promise<MusicXML | undefined>,
-  Promise<GroupingStructure | undefined>,
-  Promise<MetricalStructure | undefined>,
-  Promise<ITimeSpanReduction | undefined>,
-  Promise<IProlongationalReduction | undefined>,
-];
-
-interface I_GTTM_URLs {
-  readonly msc: string
-  readonly grp: string
-  readonly mtr: string
-  readonly tsr: string
-  readonly pr: string
-}
-
-interface I_AnalysisURLs {
-  readonly melody: string
-  readonly roman: string
-}
-
-const keyLength = (obj: object) => Object.keys(obj).length;
-const getJSONfromXML = <T extends object>(url: string) => {
-  return fetch(url)
-    .then(res => res.text())
-    .then(e => {
-      const parsed = xml_parser.parse(e) as T;
-      return keyLength(parsed) ? parsed : undefined;
-    })
-    .catch(e => { console.error(e); return undefined; });
-};
-const getJSON = <T extends object>(url: string) => {
-  return fetch(url)
-    .then(res => res.json() as T)
-    .catch(e => { console.error(e); return undefined; });
-}
-
-const getVersionedJSON = <Hoge extends { time: Time }>(VersionChecker: {
-  checkVersion: (res: { version: string }) => boolean,
-  instantiate: (res: { body: Hoge[] }) => { body: Hoge[] }
-}) => (url: string) => fetch(url)
-  .then(res => res.json() as Promise<{ version: string, body: Hoge[] }>)
-  .then(res => {
-    if (VersionChecker.checkVersion(res)) { return VersionChecker.instantiate(res) }
-    else { throw new Error(`Version check: fault in ${url}`) }
-  })
-  .catch(e => fetch(`${url}?update`)
-    .then(res => res.json() as Promise<{ version: string, body: Hoge[] }>)
-    .then(res => VersionChecker.instantiate(res))
-  )
-  .then(res => res?.body)
-  .then(res => res?.map(e => ({ ...e, head: e.time })) as Hoge[])
-  .catch(e => { console.error(e); return []; })
-
-
-const justLoad = (
-  analysis_urls: I_AnalysisURLs,
-  gttm_urls: I_GTTM_URLs,
-) => {
-  return [
-    getVersionedJSON(SerializedRomanAnalysisData)(analysis_urls.roman),
-    getVersionedJSON(SerializedMelodyAnalysisData)(analysis_urls.melody),
-    getJSON<MusicXML>(gttm_urls.msc),
-    getJSON<GroupingStructure>(gttm_urls.grp),
-    getJSON<MetricalStructure>(gttm_urls.mtr),
-    getJSON<TimeSpanReduction>(gttm_urls.tsr),
-    getJSON<IProlongationalReduction>(gttm_urls.pr),
-    /*
-    getJSONfromXML<MusicXML>(gttm_urls.msc),
-    getJSONfromXML<GroupingStructure>(gttm_urls.grp),
-    getJSONfromXML<MetricalStructure>(gttm_urls.mtr),
-    getJSONfromXML<ITimeSpanReduction>(gttm_urls.tsr),
-    getJSONfromXML<IProlongationalReduction>(gttm_urls.pr),
-    */
-  ] as DataPromises;
-};
-
-type DataContainer = [
-  SerializedTimeAndRomanAnalysis[],
-  SerializedTimeAndAnalyzedMelody[],
-  MusicXML | undefined,
-  GroupingStructure | undefined,
-  MetricalStructure | undefined,
-  ITimeSpanReduction | undefined,
-  IProlongationalReduction | undefined,
-]
-
-const compoundMusicData = (title: TitleInfo) => (e: DataContainer) => {
-  const [roman, read_melody, musicxml, grouping, metric, time_span, prolongation] = e;
-
-  const ts = time_span ? createTimeSpanReduction(time_span).tstree.ts : undefined;
-  const pr = (() => {
-    try {
-      return prolongation ? createProlongationalReduction(prolongation).prtree.pr : undefined;
-    } catch (e) {
-      return undefined
-    }
-  })();
-
-  const measure = title.id === "doremi" ? 3.5 : 7;
-  const reduction = title.mode === "PR" && pr || title.mode === "TSR" && ts;
-  const matrix = ts?.getMatrixOfLayer(ts.getDepthCount() - 1);
-  const hierarchical_melody = reduction && matrix && musicxml && getHierarchicalMelody(measure, reduction, matrix, musicxml, roman) || [read_melody];
-
-  const melody = hierarchical_melody[hierarchical_melody.length - 1];
-  return new AnalyzedMusicData(
-    roman,
-    melody,
-    hierarchical_melody,
-    new GTTMData(grouping, metric, time_span, prolongation,)
-  );
-};
-
-class GTTM_URLs
-  implements I_GTTM_URLs {
-  readonly msc: string
-  readonly grp: string
-  readonly mtr: string
-  readonly tsr: string
-  readonly pr: string
-  constructor(
-    title: TitleInfo,
-    resources: string,
-  ) {
-    this.msc = `https://clone-of-gttm-database.vercel.app/api/MSC?tune=${title.id}`;
-    this.grp = `https://clone-of-gttm-database.vercel.app/api/GPR?tune=${title.id}`;
-    this.mtr = `https://clone-of-gttm-database.vercel.app/api/MPR?tune=${title.id}`;
-    this.tsr = `https://clone-of-gttm-database.vercel.app/api/TS?tune=${title.id}`;
-    this.pr = `https://clone-of-gttm-database.vercel.app/api/PR?tune=${title.id}`;
-    /*
-    this.msc = `${resources}/gttm-example/${title.id}/MSC-${title.id}.xml`
-    this.grp = `${resources}/gttm-example/${title.id}/GPR-${title.id}.xml`
-    this.mtr = `${resources}/gttm-example/${title.id}/MPR-${title.id}.xml`
-    this.tsr = `${resources}/gttm-example/${title.id}/TS-${title.id}.xml`
-    this.pr = `${resources}/gttm-example/${title.id}/PR-${title.id}.xml`
-    */
-  }
-}
-
-class AnalysisURLs {
-  readonly melody: string
-  readonly roman: string
-  constructor(
-    title: TitleInfo,
-    resources: string,
-  ) {
-    this.melody = `${resources}/${title.id}/analyzed/melody/crepe/manalyze.json`
-    this.roman = `${resources}/${title.id}/analyzed/chord/roman.json`
-  }
-}
-
-const loadMusicAnalysis = (
-  title: TitleInfo,
-  resources: string,
-) => {
-  const tune_name = encodeURI(title.id)
-  return Promise.all(justLoad(new AnalysisURLs(title, resources), new GTTM_URLs(title, resources)))
-    .then(compoundMusicData(title));
-}
-
-const registerSong = (urls: string[], default_url: string, audio_player: HTMLAudioElement | HTMLVideoElement) => {
-  const url = urls.pop();
-  if (!url) {
-    audio_player.src = default_url
-    return;
-  }
-
-  audio_player.muted = false;
-  audio_player.src = url;
-  audio_player.onerror = () => {
-    audio_player.muted = true;
-    registerSong(urls, default_url, audio_player);
-  };
-};
-
-const setAudioPlayer = (
-  title: TitleInfo,
-  resources: string,
-  audio_src: string,
-  audio_player: HTMLAudioElement | HTMLVideoElement) => {
-  const filename = `${resources}/${title.id}/${title.id}`;
-  const extensions = ["mp3", "mp4", "wav", "m4a"];
-  registerSong(extensions.map(e => `${filename}.${e}`), audio_src, audio_player);
-};
-
-declare const audio_player: HTMLAudioElement | HTMLVideoElement;
-declare const piano_roll_place: HTMLDivElement;
-declare const title: HTMLHeadingElement;
-const titleHead = title;
-
-const main = () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const title = new TitleInfo(
-    urlParams.get("tune") || "",
-    urlParams.has("pr") ? "PR" : urlParams.has("tsr") ? "TSR" : "",
-  )
-  const resources = `/resources`;
-  const audio_src = `https://summer498.github.io/MusicAnalyzer-Server/resources/silence.mp3`;
-
-  updateTitle(titleHead, title);
-  setAudioPlayer(title, resources, audio_src, audio_player);
-  loadMusicAnalysis(title, resources)
-    .then(setup(window, audio_player, titleHead, piano_roll_place, title));
-
-};
-main();

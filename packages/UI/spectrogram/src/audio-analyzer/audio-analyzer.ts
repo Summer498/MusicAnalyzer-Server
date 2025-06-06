@@ -5,21 +5,22 @@ import { getFloatFrequencyData } from "./get-data-on-buffer";
 import { getFloatTimeDomainData } from "./get-data-on-buffer";
 import { getFFT } from "./get-fft";
 
-const resumeAudioCtx = (audioCtx: AudioContext) => () => { audioCtx.state === 'suspended' && audioCtx.resume(); }
+const resumeAudioCtx = (audioCtx: AudioContext) => () => { audioCtx.state === 'suspended' && audioCtx.resume(); };
 
 export interface AudioAnalyzer {
   readonly analyser: AnalyserNode;
-  getByteTimeDomainData(): Uint8Array<ArrayBuffer>;
-  getFloatTimeDomainData(): Float32Array<ArrayBuffer>;
-  getByteFrequencyData(): Uint8Array<ArrayBuffer>;
-  getFloatFrequencyData(): Float32Array<ArrayBuffer>;
-  getFFT(): [Float32Array<ArrayBuffer>, Float32Array<ArrayBuffer>];
+  getByteTimeDomainData(): Uint8Array;
+  getFloatTimeDomainData(): Float32Array;
+  getByteFrequencyData(): Uint8Array;
+  getFloatFrequencyData(): Float32Array;
+  getFFT(): [Float32Array, Float32Array];
 }
 
 export const createAudioAnalyzer = (
   audioElement: HTMLAudioElement,
+  contextFactory: () => AudioContext = () => new AudioContext(),
 ): AudioAnalyzer => {
-  const audioCtx = new AudioContext();
+  const audioCtx = contextFactory();
   const source = audioCtx.createMediaElementSource(audioElement);
   const analyser = audioCtx.createAnalyser();
 

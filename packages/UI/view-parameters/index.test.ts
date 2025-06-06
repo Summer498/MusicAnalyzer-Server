@@ -1,6 +1,6 @@
 import * as Module from "./index";
 
-describe("spectrogram module", () => {
+describe("view-parameters module", () => {
   test("should load module", () => {
     expect(Module).toBeTruthy();
   });
