@@ -2079,6 +2079,9 @@ Expected id is: ${regexp}`);
       this.prolongation = prolongation;
     }
   };
+  function createGTTMData(grouping, metric, time_span, prolongation) {
+    return { grouping, metric, time_span, prolongation };
+  }
   var song_list = [
     { title: "Error", author: "Error" },
     { title: "Waltz in E flat\u201DGrande Valse Brillante\u201DOp.18", author: "Fr\xE9d\xE9ric Fran\xE7ois Chopin" },
@@ -7750,7 +7753,7 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
       roman,
       melody,
       hierarchical_melody,
-      new GTTMData(grouping, metric, time_span, prolongation)
+      createGTTMData(grouping, metric, time_span, prolongation)
     );
   };
   var GTTM_URLs = class {
