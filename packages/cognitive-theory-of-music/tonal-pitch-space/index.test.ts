@@ -22,9 +22,9 @@ import { getBasicSpace } from "./src/get-basic-space"
 import { basicSpaceDistance } from "./src/basic-space-distance"
 import { getKeysIncludeTheChord, } from "./src/get-keys-include-the-chord"
 
-describe("dummy", () => {
-  test("dummy", () => {
-    expect(1).toBe(1);
+describe("tonal-pitch-space module", () => {
+  test("should load module", () => {
+    expect(Module).toBeTruthy();
   });
 });
 
@@ -281,3 +281,4 @@ const comment = () => {
     getKeysIncludeTheChord(getChord("G7")), // TODO: getKeyIncludesTheChord のテスト作成
   );
 };
+
