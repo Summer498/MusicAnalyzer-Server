@@ -1,6 +1,10 @@
-import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { analyzeMelody } from "@music-analyzer/melody-analyze";
-import { TimeAndMelody } from "@music-analyzer/melody-analyze";
+import {
+  SerializedTimeAndAnalyzedMelody,
+  cloneSerializedTimeAndAnalyzedMelody,
+  analyzeMelody,
+  createTimeAndMelody,
+  TimeAndMelody,
+} from "@music-analyzer/melody-analyze";
 import { SerializedTimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { ReductionElement } from "@music-analyzer/gttm";
 import { TimeSpan } from "@music-analyzer/gttm";
@@ -28,7 +32,7 @@ export const getTimeAndMelody = (
   const rightend = element.getRightEnd();
   const note = musicxml["score-partwise"].part.measure.find(e => e.number === element.measure)!.note;
   const pitch = Array.isArray(note) ? note[element.note - 1].pitch : note.pitch;
-  return new TimeAndMelody(
+  return createTimeAndMelody(
     getTime(matrix, leftend, rightend),
     getTime(matrix, element, element),
     pitch ? calcChroma(pitch) : NaN,
@@ -64,7 +68,7 @@ const analyzeAndScaleMelody = (measure: number, matrix: TimeSpan[][], musicxml: 
 
   const time = e.time.map(e => e * w + b);
   const head = e.head.map(e => e * w + b);
-  return new TimeAndMelody(
+  return createTimeAndMelody(
     time,
     head,
     e.note,

@@ -2,7 +2,7 @@ import { mod } from "@music-analyzer/math";
 import { Chord } from "@music-analyzer/tonal-objects";
 import { getNote } from "@music-analyzer/tonal-objects";
 import { Scale } from "@music-analyzer/tonal-objects";
-import { SerializedGravity } from "./serialized-gravity";
+import { createSerializedGravity } from "./serialized-gravity";
 
 // TODO: マイナーコードに対応する
 export const registerGravity = (pitch_class_set: Scale | Chord | undefined, curr?: number, next?: number) => {
@@ -13,7 +13,7 @@ export const registerGravity = (pitch_class_set: Scale | Chord | undefined, curr
   const chroma = mod(curr - tonic - (name.includes("major") ? 0 : 3), 12);
   const destination = chroma === 11 ? curr + 1 : chroma === 5 ? curr - 1 : undefined;
   if (destination === undefined) { return undefined; }
-  return new SerializedGravity(
+  return createSerializedGravity(
     destination,
     destination && next === destination || undefined
   );

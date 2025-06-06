@@ -2,9 +2,9 @@ import { SerializedTimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { getChord } from "@music-analyzer/tonal-objects";
 import { noteFromMidi } from "@music-analyzer/tonal-objects";
 import { getScale } from "@music-analyzer/tonal-objects";
-import { SerializedTimeAndAnalyzedMelody } from "./serialized-time-and-analyzed-melody";
-import { SerializedMelodyAnalysis } from "./serialized-melody-analysis";
-import { TimeAndMelody } from "./time-and-melody";
+import { createSerializedTimeAndAnalyzedMelody } from "./serialized-time-and-analyzed-melody";
+import { createSerializedMelodyAnalysis } from "./serialized-melody-analysis";
+import { createTimeAndMelody } from "./time-and-melody";
 import { registerGravity } from "./register-gravity";
 import { getDyad, getMonad, getNull_ad, getTriad } from "@music-analyzer/irm";
 
@@ -33,19 +33,19 @@ export const analyzeMelody = (
   const next = [...melodies.slice(1), undefined];
   return curr.map((e, i) => {
     const roman = romans.find(roman => roman.time.begin <= e.time.end && e.time.begin < roman.time.end); // TODO: 治す. 現状はとりあえずコードとメロディを大きめに重ならせてみているだけ
-    const time_and_melody = new TimeAndMelody(
+    const time_and_melody = createTimeAndMelody(
       e.time,
       e.head,
       e.note,
     );
 
-    const melody_analysis = new SerializedMelodyAnalysis(
+    const melody_analysis = createSerializedMelodyAnalysis(
       registerGravity(roman && getScale(roman.scale), prev[i]?.note, curr[i]?.note),
       registerGravity(roman && getChord(roman.chord), prev[i]?.note, curr[i]?.note),
       getSome_ad(prev[i]?.note, curr[i]?.note, next[i]?.note)
     );
 
-    return new SerializedTimeAndAnalyzedMelody(
+    return createSerializedTimeAndAnalyzedMelody(
       time_and_melody.time,
       time_and_melody.head,
       time_and_melody.note,
