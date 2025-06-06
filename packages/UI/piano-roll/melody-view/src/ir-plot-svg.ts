@@ -26,15 +26,11 @@ const createIRPlotCircles = (svg: SVGGElement): IRPlotCircles => {
   };
 };
 
-class IRPlotHierarchyModel {
-  readonly width: number;
-  readonly height: number;
-  constructor(children: IRPlotLayer[]) {
-    const w = Math.max(...children.map(e => e.view.model.w));
-    const h = Math.max(...children.map(e => e.view.model.h));
-    this.width = w;
-    this.height = h;
-  }
+interface IRPlotHierarchyModel { readonly width: number; readonly height: number }
+const createIRPlotHierarchyModel = (children: IRPlotLayer[]): IRPlotHierarchyModel => {
+  const width = Math.max(...children.map(e => e.view.model.w));
+  const height = Math.max(...children.map(e => e.view.model.h));
+  return { width, height };
 }
 
 class IRPlotHierarchyView {
@@ -236,22 +232,29 @@ class IRPlotLayerView {
   updateHeight(h: number) { this.svg.setAttribute("height", String(h)); }
 }
 
-class IRPlotLayer {
+interface IRPlotLayer {
+  readonly svg: SVGGElement;
+  readonly view: IRPlotLayerView;
+  readonly children: IRPlot[];
+  readonly layer: number;
   readonly children_model: { readonly time: Time }[];
-  #show: IRPlot[];
-  get show() { return this.#show; };
-  constructor(
-    readonly svg: SVGGElement,
-    readonly view: IRPlotLayerView,
-    readonly children: IRPlot[],
-    readonly layer: number,
-  ) {
-    this.svg = svg;
-    this.children_model = this.children.map(e => e.model);
-    this.#show = children;
-  }
-  onAudioUpdate() { this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
+  readonly show: IRPlot[];
+  onAudioUpdate(): void;
 }
+const createIRPlotLayer = (
+  svg: SVGGElement,
+  view: IRPlotLayerView,
+  children: IRPlot[],
+  layer: number,
+): IRPlotLayer => ({
+  svg,
+  view,
+  children,
+  layer,
+  children_model: children.map(e => e.model),
+  show: children,
+  onAudioUpdate: () => svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`),
+});
 
 class IRPlotHierarchy {
   #visible_layer: number;
@@ -282,12 +285,8 @@ class IRPlotHierarchy {
   }
 }
 
-class IRPlotSVG {
-  constructor(
-    readonly svg: SVGSVGElement,
-    readonly children: IRPlotHierarchy[],
-  ) { }
-}
+interface IRPlotSVG { readonly svg: SVGSVGElement; readonly children: IRPlotHierarchy[] }
+const createIRPlotSVG = (svg: SVGSVGElement, children: IRPlotHierarchy[]): IRPlotSVG => ({ svg, children });
 
 function getCircle() {
   const circle_svg = document.createElementNS("http://www.w3.org/2000/svg", "circle");
@@ -378,10 +377,10 @@ export function buildIRPlot(
     layer_view.updateHeight(layer_model.h);
 
     const svgg = getSVGG(`layer-${l}`, [part]);
-    return new IRPlotLayer(svgg, layer_view, [part], l);
+    return createIRPlotLayer(svgg, layer_view, [part], l);
   })
 
-  const h_model = new IRPlotHierarchyModel(layers);
+  const h_model = createIRPlotHierarchyModel(layers);
   const w = h_model.width
   const h = h_model.height
 
@@ -405,12 +404,12 @@ export function buildIRPlot(
   hierarchy.forEach(e => svg.setAttribute("width", String(e.model.width)));
   hierarchy.forEach(e => svg.setAttribute("height", String(e.model.height)));
 
-  const ir_plot_svg = new IRPlotSVG(svg, hierarchy);
+  const ir_plot_svg = createIRPlotSVG(svg, hierarchy);
 
-  controllers.window.addListeners(...ir_plot_svg.children.flatMap(e => e).flatMap(e => e.children).flatMap(e => e.children).map(e => e.onWindowResized.bind(e)));
-  controllers.hierarchy.addListeners(...ir_plot_svg.children.flatMap(e => e.onChangedLayer.bind(e)));
-  controllers.melody_color.addListeners(...ir_plot_svg.children.flatMap(e => e.children).flatMap(e => e.children).map(e => e.setColor.bind(e)));
-  controllers.audio.addListeners(...ir_plot_svg.children.flatMap(e => e.children).map(e => e.onAudioUpdate.bind(e)));
+  controllers.window.addListeners(...ir_plot_svg.children.flatMap(e => e).flatMap(e => e.children).flatMap(e => e.children).map(e => e.onWindowResized));
+  controllers.hierarchy.addListeners(...ir_plot_svg.children.flatMap(e => e.onChangedLayer));
+  controllers.melody_color.addListeners(...ir_plot_svg.children.flatMap(e => e.children).flatMap(e => e.children).map(e => e.setColor));
+  controllers.audio.addListeners(...ir_plot_svg.children.flatMap(e => e.children).map(e => e.onAudioUpdate));
   ir_plot_svg.children.flatMap(e => e.children).map(e => e.onAudioUpdate())
 
   return ir_plot_svg.svg;

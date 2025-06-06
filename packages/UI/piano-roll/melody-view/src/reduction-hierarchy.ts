@@ -5,19 +5,18 @@ import { HierarchyLevelController, MelodyColorController, SetColor, TimeRangeCon
 import { Time } from "@music-analyzer/time-and";
 import { AudioReflectableRegistry, PianoRollTranslateX, WindowReflectableRegistry } from "@music-analyzer/view";
 
-class ReductionModel {
+interface ReductionModel {
   readonly time: Time;
   readonly head: Time;
   readonly archetype: ITriad;
-  constructor(
-    e: SerializedTimeAndAnalyzedMelody,
-    readonly layer: number,
-  ) {
-    this.time = e.time;
-    this.head = e.head;
-    this.archetype = e.melody_analysis.implication_realization as ITriad;
-  }
+  readonly layer: number;
 }
+const createReductionModel = (e: SerializedTimeAndAnalyzedMelody, layer: number): ReductionModel => ({
+  time: e.time,
+  head: e.head,
+  archetype: e.melody_analysis.implication_realization as ITriad,
+  layer,
+});
 
 class ReductionViewModel {
   #x: number;
@@ -172,21 +171,24 @@ class Reduction {
   onWindowResized() { this.view.onWindowResized() }
 }
 
-class ReductionLayer {
+interface ReductionLayer {
+  readonly svg: SVGGElement;
+  readonly children: Reduction[];
+  readonly layer: number;
   readonly children_model: { readonly time: Time }[];
-  #show: Reduction[];
-  get show() { return this.#show; };
-  constructor(
-    readonly svg: SVGGElement,
-    readonly children: Reduction[],
-    readonly layer: number,
-  ) {
-    this.children_model = this.children.map(e => e.model);
-    this.#show = children;
-  }
-  renewStrong(layer: number) { this.children.forEach(e => e.renewStrong(layer === this.layer)); }
-  onAudioUpdate() { this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
+  readonly show: Reduction[];
+  renewStrong(layer: number): void;
+  onAudioUpdate(): void;
 }
+const createReductionLayer = (svg: SVGGElement, children: Reduction[], layer: number): ReductionLayer => ({
+  svg,
+  children,
+  layer,
+  children_model: children.map(e => e.model),
+  show: children,
+  renewStrong: (value: number) => children.forEach(e => e.renewStrong(value === layer)),
+  onAudioUpdate: () => svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`),
+});
 
 class ReductionHierarchy {
   protected _show: ReductionLayer[] = [];
@@ -269,7 +271,7 @@ export function buildReduction(
 ) {
   const layer = h_melodies.map((e, l) => {
     const parts = e.map(e => {
-      const model = new ReductionModel(e, l);
+      const model = createReductionModel(e, l);
 
       const view_model = new ReductionViewModel(model);
       const bracket_svg = getBracketSVG();
@@ -283,16 +285,16 @@ export function buildReduction(
       return new Reduction(model, view)
     });
     const svg = getSVGG(`layer-${l}`, parts);
-    return new ReductionLayer(svg, parts, l)
+    return createReductionLayer(svg, parts, l)
   })
   const svg = getSVGG("time-span-reduction", layer);
   const time_span_tree = new ReductionHierarchy(svg, layer);
 
-  controllers.window.addListeners(...time_span_tree.children.flatMap(e => e.children).map(e => e.onWindowResized.bind(e)));
-  controllers.hierarchy.addListeners(time_span_tree.onChangedLayer.bind(time_span_tree));
-  controllers.time_range.addListeners(...time_span_tree.children.flatMap(e => e.children).map(e => e.onTimeRangeChanged.bind(e)));
-  controllers.melody_color.addListeners(...time_span_tree.children.flatMap(e => e.children).map(e => e.setColor.bind(e)));
-  controllers.audio.addListeners(...time_span_tree.children.map(e => e.onAudioUpdate.bind(e)));
+  controllers.window.addListeners(...time_span_tree.children.flatMap(e => e.children).map(e => e.onWindowResized));
+  controllers.hierarchy.addListeners(time_span_tree.onChangedLayer);
+  controllers.time_range.addListeners(...time_span_tree.children.flatMap(e => e.children).map(e => e.onTimeRangeChanged));
+  controllers.melody_color.addListeners(...time_span_tree.children.flatMap(e => e.children).map(e => e.setColor));
+  controllers.audio.addListeners(...time_span_tree.children.map(e => e.onAudioUpdate));
   time_span_tree.children.map(e => e.onAudioUpdate());
 
   return time_span_tree.svg

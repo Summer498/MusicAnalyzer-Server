@@ -1,7 +1,7 @@
 import { setCurrentTimeRatio, setPianoRollParameters } from "@music-analyzer/view-parameters";
 import { song_list } from "@music-analyzer/gttm";
 import { createAnalyzedDataContainer } from "@music-analyzer/analyzed-data-container";
-import { AudioViewer } from "@music-analyzer/spectrogram";
+import { createAudioViewer, AudioViewer } from "@music-analyzer/spectrogram";
 import { PianoRoll } from "@music-analyzer/piano-roll";
 import { PianoRollHeight } from "@music-analyzer/view-parameters";
 import { PianoRollWidth } from "@music-analyzer/view-parameters";
@@ -25,15 +25,21 @@ import { MusicStructureElements } from "@music-analyzer/piano-roll";
 import { WindowReflectableRegistry, createWindowReflectableRegistry } from "@music-analyzer/view";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 
-import type { DMelodyController, GravityController } from "@music-analyzer/controllers";
-import { createDMelodyController, createGravityController } from "@music-analyzer/controllers";
+import type {
+  DMelodyController,
+  GravityController,
+  ImplicationDisplayController,
+} from "@music-analyzer/controllers";
+import {
+  createDMelodyController,
+  createGravityController,
+  createImplicationDisplayController,
+} from "@music-analyzer/controllers";
 import { HierarchyLevelController } from "@music-analyzer/controllers";
-import { MelodyBeepController } from "@music-analyzer/controllers";
+import { type MelodyBeepController, createMelodyBeepController } from "@music-analyzer/controllers";
 import { MelodyColorController } from "@music-analyzer/controllers";
 import { TimeRangeController } from "@music-analyzer/controllers";
 import { Time } from "@music-analyzer/time-and";
-import type { ImplicationDisplayController } from "@music-analyzer/controllers";
-import { createImplicationDisplayController } from "@music-analyzer/controllers";
 
 class Controllers {
   readonly div: HTMLDivElement
@@ -59,7 +65,7 @@ class Controllers {
     this.time_range = new TimeRangeController(length);
     this.implication = createImplicationDisplayController()
     this.gravity = createGravityController(gravity_visible);
-    this.melody_beep = new MelodyBeepController();
+    this.melody_beep = createMelodyBeepController();
     this.melody_color = new MelodyColorController();
     this.melody_beep.checkbox.input.checked=true;
     this.implication.prospective_checkbox.input.checked = false;
@@ -326,7 +332,7 @@ const setupUI = (
   piano_roll_place: HTMLDivElement,
   manager: ApplicationManager,
 ) => {
-  const audio_viewer = new AudioViewer(audio_player, manager.audio_time_mediator);
+  const audio_viewer = createAudioViewer(audio_player, manager.audio_time_mediator);
   const piano_roll_view = new PianoRoll(manager.analyzed, manager.window_size_mediator, !manager.FULL_VIEW)
   asParent(piano_roll_place)
     .appendChildren(
