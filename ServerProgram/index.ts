@@ -4,7 +4,7 @@ import { Request } from "express";
 import { Response } from "express";
 import { dirname } from "path";
 import { basename } from "path";
-import { execSync } from "child_process";
+import { execSync, execFileSync } from "child_process";
 
 import { default as multer } from "multer";
 import { default as express } from "express";
@@ -393,7 +393,7 @@ const semitonesBy_pYIN = (
   }
   else if (detectFile(e.src)) {
     makeNewDir(e.dst_dir);
-    execSync(`node ./packages/cli/post-pyin "${e.src}" "${e.dst_dir}"`)
+    execFileSync("node", ["./packages/cli/post-pyin", e.src, e.dst_dir])
   }
   else {
     console.log(`required file ${e.src} not exist`)
