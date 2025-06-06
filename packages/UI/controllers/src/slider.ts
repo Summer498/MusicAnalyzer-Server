@@ -1,10 +1,15 @@
 import { PianoRollRatio } from "@music-analyzer/view-parameters";
-import { Controller } from "./controller";
+import { Controller, createController } from "./controller";
 
-export abstract class Slider<T> extends Controller<T> {
+export abstract class Slider<T> implements Controller<T> {
+  body!: HTMLSpanElement;
+  input!: HTMLInputElement;
+  listeners!: ((e: T) => void)[];
+  addListeners!: (...listeners: ((e: T) => void)[]) => void;
+  init!: () => void;
   readonly display: HTMLSpanElement;
   constructor(id: string, label: string, min: number, max: number, step: number, value?: number) {
-    super ("range", id, label);
+    createController<T>(this, "range", id, label);
     this.display = document.createElement("span");
     this.body.appendChild(this.display);
 
