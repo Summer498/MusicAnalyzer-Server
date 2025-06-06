@@ -137,7 +137,7 @@ class ApplicationManager {
       window: this.window_size_mediator,
     }
 
-    this.analyzed = new MusicStructureElements(beat_info, romans, hierarchical_melody, melodies, d_melodies, controllers)
+    this.analyzed = MusicStructureElements(beat_info, romans, hierarchical_melody, melodies, d_melodies, controllers)
   }
 }
 
@@ -326,7 +326,7 @@ const setupUI = (
   manager: ApplicationManager,
 ) => {
   const audio_viewer = new AudioViewer(audio_player, manager.audio_time_mediator);
-  const piano_roll_view = new PianoRoll(manager.analyzed, manager.window_size_mediator, !manager.FULL_VIEW)
+  const piano_roll_view = PianoRoll(manager.analyzed, manager.window_size_mediator, !manager.FULL_VIEW)
   asParent(piano_roll_place)
     .appendChildren(
       /*
