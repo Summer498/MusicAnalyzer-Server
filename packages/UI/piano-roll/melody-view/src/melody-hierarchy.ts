@@ -73,7 +73,7 @@ const updateX_MelodyView = (svg: SVGRectElement) => (x: number) => { svg.setAttr
 const updateY_MelodyView = (svg: SVGRectElement) => (y: number) => { svg.setAttribute("y", String(y)); }
 const updateWidth_MelodyView = (svg: SVGRectElement) => (w: number) => { svg.setAttribute("width", String(w)); }
 const updateHeight_MelodyView = (svg: SVGRectElement) => (h: number) => { svg.setAttribute("height", String(h)); }
-const setColor_MelodyView = (svg: SVGRectElement) => (color: string) => svg.setAttribute("fill", "#0d0");
+const setColor_MelodyView = (svg: SVGRectElement) => (color: string) => svg.setAttribute("fill", color);
 
 const updateX = (svg: SVGRectElement) => (model: I_MelodyModel) => { updateX_MelodyView(svg)(PianoRollConverter.scaled(model.time.begin)) }
 const updateY = (svg: SVGRectElement) => (model: I_MelodyModel) => { updateY_MelodyView(svg)(PianoRollConverter.midi2NNBlackCoordinate(model.note)); }
