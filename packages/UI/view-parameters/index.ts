@@ -4,21 +4,23 @@ export const size = 2;
 export const octave_height = size * 84;  // 7 白鍵と 12 半音をきれいに描画するには 7 * 12 の倍数が良い
 export const black_key_height = octave_height / 12;
 
-export class NowAt {
-  constructor(readonly value: number) { }
+export interface NowAt { readonly value: number }
+export const createNowAt = (value: number): NowAt => ({ value });
 
-  static #value = 0;
-  static get() { return this.#value; }
-  static set(value: number) { this.#value = value; }
-}
+let nowAtValue = 0;
+export const NowAt = {
+  get: () => nowAtValue,
+  set: (value: number) => { nowAtValue = value },
+};
 
-export class PianoRollRatio {
-  constructor(readonly value: number) { }
+export interface PianoRollRatio { readonly value: number }
+export const createPianoRollRatio = (value: number): PianoRollRatio => ({ value });
 
-  static #value: number = 1;
-  static get() { return this.#value; }
-  static set(value: number) { this.#value = value; }
-}
+let pianoRollRatioValue: number = 1;
+export const PianoRollRatio = {
+  get: () => pianoRollRatioValue,
+  set: (value: number) => { pianoRollRatioValue = value },
+};
 
 class PianoRollTimeLength {
   constructor(
@@ -30,15 +32,14 @@ class PianoRollTimeLength {
   static get() { return PianoRollRatio.get() * SongLength.get(); }
 }
 
-export class NoteSize {
-  constructor(
-    private readonly width: PianoRollWidth,
-    private readonly length: PianoRollTimeLength,
-  ) { }
-  _get() { return this.width._get() / this.length._get(); }
+export interface NoteSize { get: () => number }
+export const createNoteSize = (width: PianoRollWidth, length: PianoRollTimeLength): NoteSize => ({
+  get: () => width.get() / length._get(),
+});
 
-  static get() { return PianoRollWidth.get() / PianoRollTimeLength.get(); }
-}
+export const NoteSize: NoteSize = {
+  get: () => PianoRollWidth.get() / PianoRollTimeLength.get(),
+};
 
 const transposed = (e: number) => e - PianoRollBegin.get();
 const scaled = (e: number) => e * NoteSize.get();
@@ -73,57 +74,61 @@ class CurrentTimeRatio {
   static set(value: number) { this.#value = value; }
 }
 
-export class CurrentTimeX {
-  constructor(
-    private readonly width: PianoRollWidth,
-    private readonly ratio: CurrentTimeRatio,
-  ) { }
-  _get() { return this.width._get() * this.ratio.value; }
+export interface CurrentTimeX { get: () => number }
+export const createCurrentTimeX = (width: PianoRollWidth, ratio: CurrentTimeRatio): CurrentTimeX => ({
+  get: () => width.get() * ratio.value,
+});
 
-  static get() {
-    return PianoRollWidth.get() * CurrentTimeRatio.get();
-  }
-}
-export class OctaveCount {
-  constructor(
-    private readonly end: PianoRollEnd,
-    private readonly begin: PianoRollBegin,
-  ) { }
-  _get() { return Math.ceil(-(this.end.value - this.begin.value) / 12); }
+export const CurrentTimeX: CurrentTimeX = {
+  get: () => PianoRollWidth.get() * CurrentTimeRatio.get(),
+};
+export interface OctaveCount { get: () => number }
+export const createOctaveCount = (end: PianoRollEnd, begin: PianoRollBegin): OctaveCount => ({
+  get: () => Math.ceil(-(end.value - begin.value) / 12),
+});
 
-  static get() { return Math.ceil(-(PianoRollEnd.get() - PianoRollBegin.get()) / 12); }
-}
-export class PianoRollBegin {
-  constructor(readonly value: number) { }
+export const OctaveCount: OctaveCount = {
+  get: () => Math.ceil(-(PianoRollEnd.get() - PianoRollBegin.get()) / 12),
+};
+export interface PianoRollBegin { readonly value: number }
+export const createPianoRollBegin = (value: number): PianoRollBegin => ({ value });
 
-  static #value = 83;
-  static get() { return this.#value; }
-  static set(value: number) { this.#value = value; }
-}
-export class PianoRollEnd {
-  constructor(readonly value: number) { }
+let pianoRollBeginValue = 83;
+export const PianoRollBegin = {
+  get: () => pianoRollBeginValue,
+  set: (value: number) => { pianoRollBeginValue = value },
+};
+export interface PianoRollEnd { readonly value: number }
+export const createPianoRollEnd = (value: number): PianoRollEnd => ({ value });
 
-  static #value = 83 + 24;
-  static get() { return this.#value; }
-  static set(value: number) { this.#value = value; }
-}
-export class PianoRollHeight {
-  constructor(
-    private readonly count: OctaveCount
-  ) { }
-  _get() { return octave_height * this.count._get(); }
+let pianoRollEndValue = 83 + 24;
+export const PianoRollEnd = {
+  get: () => pianoRollEndValue,
+  set: (value: number) => { pianoRollEndValue = value },
+};
+export interface PianoRollHeight { get: () => number }
+export const createPianoRollHeight = (count: OctaveCount): PianoRollHeight => ({
+  get: () => octave_height * count.get(),
+});
 
-  static get() { return octave_height * OctaveCount.get(); }
-}
-class WindowInnerWidth {
-  _get() { return window.innerWidth; }
-  static get() { return window.innerWidth; }
-}
+export const PianoRollHeight: PianoRollHeight = {
+  get: () => octave_height * OctaveCount.get(),
+};
+export interface WindowInnerWidth { get: () => number }
+export const createWindowInnerWidth = (): WindowInnerWidth => ({ get: () => window.innerWidth });
 
-export class PianoRollWidth {
-  _get() { return window.innerWidth - 48; }
-  static get() { return WindowInnerWidth.get() - 48; }
-}
+export const WindowInnerWidth: WindowInnerWidth = {
+  get: () => window.innerWidth,
+};
+
+export interface PianoRollWidth { get: () => number }
+export const createPianoRollWidth = (windowWidth: WindowInnerWidth): PianoRollWidth => ({
+  get: () => windowWidth.get() - 48,
+});
+
+export const PianoRollWidth: PianoRollWidth = {
+  get: () => WindowInnerWidth.get() - 48,
+};
 class SongLength {
   constructor(readonly value: number) { }
 
