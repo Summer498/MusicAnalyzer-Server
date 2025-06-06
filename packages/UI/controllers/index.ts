@@ -1,5 +1,4 @@
-export { SetColor } from "./src/color-selector";
-export { MelodyColorController } from "./src/color-selector";
+export { SetColor, MelodyColorController, createMelodyColorController } from "./src/color-selector";
 export { ControllerView } from "./src/controller";
 export { MelodyBeepController } from "./src/melody-beep-controller";
 export { HierarchyLevelController } from "./src/slider";
