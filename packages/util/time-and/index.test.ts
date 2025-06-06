@@ -19,9 +19,13 @@ describe("Time class", () => {
 describe("compress", () => {
   test("groups consecutive items", () => {
     const result = compress(["a", "a", "b", "b", "b"]);
-    expect(result).toEqual([
-      { time: createTime(0, 2), item: "a" },
-      { time: createTime(2, 5), item: "b" },
+    const mapped = result.map(({ time, item }) => ({
+      time: { begin: time.begin, end: time.end },
+      item,
+    }));
+    expect(mapped).toEqual([
+      { time: { begin: 0, end: 2 }, item: "a" },
+      { time: { begin: 2, end: 5 }, item: "b" },
     ]);
   });
 });

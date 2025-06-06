@@ -1,6 +1,7 @@
 module.exports = {
   preset: 'ts-jest',
-  testEnvironment: 'node',
+  // Use jsdom so DOM APIs are available in tests that manipulate HTML
+  testEnvironment: 'jsdom',
   transform: {
   },
   moduleNameMapper: {
