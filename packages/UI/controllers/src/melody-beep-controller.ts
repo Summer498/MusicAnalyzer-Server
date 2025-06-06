@@ -1,38 +1,27 @@
 import { Checkbox, createCheckbox } from "./switcher";
-import { Slider } from "./slider";
+import { Slider, createSlider } from "./slider";
 
-export interface MelodyBeepVolume extends Slider<number> {}
+export type MelodyBeepVolume = Slider<number>;
 
-export function createMelodyBeepVolume(): MelodyBeepVolume {
-  class Impl extends Slider<number> {
-    constructor() {
-      super("melody_beep_volume", "", 0, 100, 1);
-    }
-    override updateDisplay() {
-      this.display.textContent = `volume: ${this.input.value}`;
-    }
-    update() {
-      const value = Number(this.input.value);
-      this.listeners.forEach(e => e(value));
-    }
-  }
-  return new Impl();
-}
+export const createMelodyBeepVolume = (): MelodyBeepVolume =>
+  createSlider<number>({
+    id: "melody_beep_volume",
+    label: "",
+    min: 0,
+    max: 100,
+    step: 1,
+    updateDisplay: (input, display) => {
+      display.textContent = `volume: ${input.value}`;
+    },
+    getValue: input => Number(input.value),
+  });
 
-export interface MelodyBeepSwitcher extends Checkbox {}
+export type MelodyBeepSwitcher = Checkbox;
 
-export function createMelodyBeepSwitcher(id: string, label: string): MelodyBeepSwitcher {
-  class Impl extends Checkbox {
-    constructor(id: string, label: string) {
-      super(id, label);
-    }
-    update() {
-      const visibility = this.input.checked;
-      this.listeners.forEach(e => e(visibility));
-    }
-  }
-  return new Impl(id, label);
-}
+export const createMelodyBeepSwitcher = (
+  id: string,
+  label: string,
+): MelodyBeepSwitcher => createCheckbox(id, label);
 
 export interface MelodyBeepController {
   readonly view: HTMLDivElement;
@@ -40,8 +29,11 @@ export interface MelodyBeepController {
   readonly volume: MelodyBeepVolume;
 }
 
-export function createMelodyBeepController(): MelodyBeepController {
-  const melody_beep_switcher = createMelodyBeepSwitcher("melody_beep_switcher", "Beep Melody");
+export const createMelodyBeepController = (): MelodyBeepController => {
+  const melody_beep_switcher = createMelodyBeepSwitcher(
+    "melody_beep_switcher",
+    "Beep Melody",
+  );
   const melody_beep_volume = createMelodyBeepVolume();
   const view = document.createElement("div");
   view.appendChild(melody_beep_switcher.body);
@@ -52,4 +44,4 @@ export function createMelodyBeepController(): MelodyBeepController {
     checkbox: melody_beep_switcher,
     volume: melody_beep_volume,
   };
-}
+};
