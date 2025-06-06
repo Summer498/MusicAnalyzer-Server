@@ -1,8 +1,9 @@
-import { Checkbox } from "./switcher";
+import { Checkbox, createCheckbox } from "./switcher";
 import { Slider } from "./slider";
 
 export interface MelodyBeepVolume extends Slider<number> {}
-export const createMelodyBeepVolume = (): MelodyBeepVolume => {
+
+export function createMelodyBeepVolume(): MelodyBeepVolume {
   class Impl extends Slider<number> {
     constructor() {
       super("melody_beep_volume", "", 0, 100, 1);
@@ -16,15 +17,13 @@ export const createMelodyBeepVolume = (): MelodyBeepVolume => {
     }
   }
   return new Impl();
-};
+}
 
 export interface MelodyBeepSwitcher extends Checkbox {}
-export const createMelodyBeepSwitcher = (
-  id: string,
-  label: string,
-): MelodyBeepSwitcher => {
+
+export function createMelodyBeepSwitcher(id: string, label: string): MelodyBeepSwitcher {
   class Impl extends Checkbox {
-    constructor() {
+    constructor(id: string, label: string) {
       super(id, label);
     }
     update() {
@@ -32,19 +31,17 @@ export const createMelodyBeepSwitcher = (
       this.listeners.forEach(e => e(visibility));
     }
   }
-  return new Impl();
-};
+  return new Impl(id, label);
+}
 
 export interface MelodyBeepController {
   readonly view: HTMLDivElement;
-  readonly checkbox: MelodyBeepSwitcher;
+  readonly checkbox: Checkbox;
   readonly volume: MelodyBeepVolume;
 }
-export const createMelodyBeepController = (): MelodyBeepController => {
-  const melody_beep_switcher = createMelodyBeepSwitcher(
-    "melody_beep_switcher",
-    "Beep Melody",
-  );
+
+export function createMelodyBeepController(): MelodyBeepController {
+  const melody_beep_switcher = createMelodyBeepSwitcher("melody_beep_switcher", "Beep Melody");
   const melody_beep_volume = createMelodyBeepVolume();
   const view = document.createElement("div");
   view.appendChild(melody_beep_switcher.body);
@@ -55,5 +52,4 @@ export const createMelodyBeepController = (): MelodyBeepController => {
     checkbox: melody_beep_switcher,
     volume: melody_beep_volume,
   };
-};
-
+}

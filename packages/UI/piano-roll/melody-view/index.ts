@@ -1,15 +1,7 @@
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { AudioReflectableRegistry } from "@music-analyzer/view";
 import { WindowReflectableRegistry } from "@music-analyzer/view";
-import {
-  DMelodyController,
-  GravityController,
-  HierarchyLevelController,
-  MelodyBeepController,
-  MelodyColorController,
-  TimeRangeController,
-  createMelodyBeepController,
-} from "@music-analyzer/controllers";
+import { DMelodyController, GravityController, HierarchyLevelController, type MelodyBeepController, MelodyColorController, TimeRangeController } from "@music-analyzer/controllers";
 
 import { buildDMelody } from "./src/d-melody-series";
 import { buildIRPlot } from "./src/ir-plot-svg";
@@ -18,7 +10,6 @@ import { buildMelody } from "./src/melody-hierarchy";
 import { buildReduction } from "./src/reduction-hierarchy";
 import { buildGravity } from "./src/gravity-hierarchy";
 import { buildIRGravity } from "./src/ir-gravity-hierarchy";
-import { ImplicationDisplayController } from "@music-analyzer/controllers/src/switcher";
 
 export interface RequiredByMelodyElements {
   readonly gravity: GravityController
