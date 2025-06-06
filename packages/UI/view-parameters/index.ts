@@ -109,10 +109,11 @@ export const createPianoRollHeight = (count: OctaveCount): PianoRollHeight => ({
 export const PianoRollHeight = {
   get: () => octave_height * OctaveCount.get(),
 };
-class WindowInnerWidth {
-  _get() { return window.innerWidth; }
-  static get() { return window.innerWidth; }
-}
+export interface WindowInnerWidth { _get(): number }
+export const createWindowInnerWidth = (): WindowInnerWidth => ({
+  _get: () => window.innerWidth,
+});
+export const WindowInnerWidth = { get: () => window.innerWidth };
 
 export interface PianoRollWidth { _get(): number }
 export const createPianoRollWidth = (): PianoRollWidth => ({
