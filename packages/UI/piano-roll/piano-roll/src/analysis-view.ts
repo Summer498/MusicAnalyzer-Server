@@ -1,5 +1,5 @@
 import { BeatInfo } from "@music-analyzer/beat-estimation";
-import { BeatElements } from "@music-analyzer/beat-view";
+import { BeatElements, createBeatElements } from "@music-analyzer/beat-view";
 import { SerializedTimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { ChordElements, createChordElements } from "@music-analyzer/chord-view";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
