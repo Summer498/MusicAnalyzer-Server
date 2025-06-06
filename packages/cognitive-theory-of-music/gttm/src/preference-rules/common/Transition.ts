@@ -13,14 +13,14 @@ export const createIntervallicDistance = <T>(notes: { from: Note<T>; to: Note<T>
   };
 };
 
-export interface Transition<T> extends Negatable<Transition<T>> {
+export interface Transition<T> {
   readonly intervallic_distance: IntervallicDistance<T>;
   involves_aChangeInDynamics(): boolean;
   involves_aChangeInArticulation(): boolean;
 }
 
-export const createTransition = <T>(notes: { from: Note<T>; to: Note<T> }): Transition<T> => {
-  const transition: Transition<T> = withNegatable({
+export const createTransition = <T>(notes: { from: Note<T>; to: Note<T> }) => {
+  const transition = withNegatable({
     intervallic_distance: createIntervallicDistance(notes),
     involves_aChangeInDynamics() {
       return false; // TODO:
@@ -28,6 +28,6 @@ export const createTransition = <T>(notes: { from: Note<T>; to: Note<T> }): Tran
     involves_aChangeInArticulation() {
       return false; // TODO:
     },
-  });
+  } as Transition<T>);
   return transition;
 };

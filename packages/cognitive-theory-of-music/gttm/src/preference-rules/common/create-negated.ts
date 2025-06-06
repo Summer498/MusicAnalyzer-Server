@@ -51,7 +51,7 @@ export interface Negatable<T extends object = any> {
   readonly does_not: Negated<T>;
 }
 
-export const withNegatable = <T extends object>(target: T): T & Negatable<T> => {
+export const withNegatable = <T extends object>(target: T): Negatable<T> => {
   return Object.defineProperties(target, {
     not: { get: () => createNegated(target) },
     does_not: { get: () => createNegated(target) },

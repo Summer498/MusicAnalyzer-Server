@@ -2,7 +2,7 @@ import { argsMinMax } from "@music-analyzer/math";
 import { CompareFunc } from "@music-analyzer/math";
 import { unique } from "../../stdlib";
 
-interface LogViterbiResult<S> {
+export interface LogViterbiResult<S> {
   log_probability: number;
   trace: S[][];
 }
