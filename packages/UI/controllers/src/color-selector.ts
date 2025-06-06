@@ -5,7 +5,7 @@ import { get_color_on_digital_parametric_scale } from "@music-analyzer/irm";
 import { get_color_on_intervallic_angle } from "@music-analyzer/irm";
 import { get_color_on_parametric_scale } from "@music-analyzer/irm";
 import { get_color_on_registral_scale } from "@music-analyzer/irm";
-import { Controller } from "./controller";
+import { Controller, createController } from "./controller";
 
 
 export type GetColor = (e: ITriad) => string;
