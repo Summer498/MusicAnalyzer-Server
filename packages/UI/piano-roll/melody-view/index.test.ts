@@ -1,4 +1,5 @@
 import { JSDOM } from "jsdom";
+import * as Module from "./index";
 
 function expectFn(name: string) {
   expect(typeof (Module as any)[name]).toBe("function");

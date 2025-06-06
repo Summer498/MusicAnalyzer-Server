@@ -9,4 +9,4 @@ export {
   SerializedTimeAndRomanAnalysis,
   SerializedRomanAnalysisData,
 } from "./serialized-time-and-roman-analysis";
-export { createChordProgression } from "./key-estimation/chord-progression";
+export { createChordProgression } from "../key-estimation/chord-progression";
