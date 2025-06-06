@@ -315,11 +315,11 @@ export function buildReduction(
   const svg = getSVGG("time-span-reduction", layer);
   const time_span_tree = createReductionHierarchy(svg, layer);
 
-  controllers.window.addListeners(...time_span_tree.children.flatMap(e => e.children).map(e => e.onWindowResized.bind(e)));
-  controllers.hierarchy.addListeners(time_span_tree.onChangedLayer.bind(time_span_tree));
-  controllers.time_range.addListeners(...time_span_tree.children.flatMap(e => e.children).map(e => e.onTimeRangeChanged.bind(e)));
-  controllers.melody_color.addListeners(...time_span_tree.children.flatMap(e => e.children).map(e => e.setColor.bind(e)));
-  controllers.audio.addListeners(...time_span_tree.children.map(e => e.onAudioUpdate.bind(e)));
+  controllers.window.addListeners(...time_span_tree.children.flatMap(e => e.children).map(e => e.onWindowResized));
+  controllers.hierarchy.addListeners(time_span_tree.onChangedLayer);
+  controllers.time_range.addListeners(...time_span_tree.children.flatMap(e => e.children).map(e => e.onTimeRangeChanged));
+  controllers.melody_color.addListeners(...time_span_tree.children.flatMap(e => e.children).map(e => e.setColor));
+  controllers.audio.addListeners(...time_span_tree.children.map(e => e.onAudioUpdate));
   time_span_tree.children.map(e => e.onAudioUpdate());
 
   return time_span_tree.svg

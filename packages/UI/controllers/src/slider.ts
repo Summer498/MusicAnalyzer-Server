@@ -1,97 +1,147 @@
 import { PianoRollRatio } from "@music-analyzer/view-parameters";
-import { Controller } from "./controller";
+import { ControllerView } from "./controller";
 
-export abstract class Slider<T> extends Controller<T> {
+export interface Slider<T> {
+  readonly body: HTMLSpanElement;
+  readonly input: HTMLInputElement;
   readonly display: HTMLSpanElement;
-  constructor(id: string, label: string, min: number, max: number, step: number, value?: number) {
-    super ("range", id, label);
-    this.display = document.createElement("span");
-    this.body.appendChild(this.display);
-
-    this.input.min = String(min);
-    this.input.max = String(max);
-    this.input.step = String(step);
-    value && (this.input.value = String(value));
-
-    this.updateDisplay();
-    this.input.addEventListener("input", this.updateDisplay.bind(this));
-  }
-  abstract updateDisplay(): void;
+  addListeners(...listeners: ((e: T) => void)[]): void;
+  updateDisplay(): void;
 }
 
-class HierarchyLevel
-  extends Slider<number> {
-  constructor() {
-    super("hierarchy_level_slider", "Melody Hierarchy Level", 0, 1, 1);
+export const createSlider = <T>(ops: {
+  id: string;
+  label: string;
+  min: number;
+  max: number;
+  step: number;
+  value?: number;
+  updateDisplay(input: HTMLInputElement, display: HTMLSpanElement): void;
+  getValue(input: HTMLInputElement): T;
+}): Slider<T> => {
+  const view = new ControllerView("range", ops.id, ops.label);
+  const { body, input } = view;
+  const display = document.createElement("span");
+  body.appendChild(display);
+
+  input.min = String(ops.min);
+  input.max = String(ops.max);
+  input.step = String(ops.step);
+  if (ops.value !== undefined) input.value = String(ops.value);
+
+  const listeners: ((e: T) => void)[] = [];
+
+  const updateDisplay = () => ops.updateDisplay(input, display);
+  const update = () => {
+    const value = ops.getValue(input);
+    listeners.forEach(e => e(value));
   };
-  override updateDisplay() {
-    this.display.textContent = `layer: ${this.input.value}`;
-  }
-  setHierarchyLevelSliderValues = (max: number) => {
-    this.input.max = String(max);
-    this.input.value = String(max);
-    this.updateDisplay();
+
+  input.addEventListener("input", () => {
+    updateDisplay();
+    update();
+  });
+
+  updateDisplay();
+  update();
+
+  return {
+    body,
+    input,
+    display,
+    addListeners: (...ls: ((e: T) => void)[]) => { listeners.push(...ls); update(); },
+    updateDisplay,
   };
-  update() {
-    const value = Number(this.input.value);
-    this.listeners.forEach(e => e(value));
-  }
 };
 
-export class HierarchyLevelController {
+interface HierarchyLevel extends Slider<number> {
+  setHierarchyLevelSliderValues(max: number): void;
+}
+
+const createHierarchyLevel = (): HierarchyLevel => {
+  const slider = createSlider<number>({
+    id: "hierarchy_level_slider",
+    label: "Melody Hierarchy Level",
+    min: 0,
+    max: 1,
+    step: 1,
+    updateDisplay: (input, display) => { display.textContent = `layer: ${input.value}`; },
+    getValue: input => Number(input.value),
+  });
+
+  const setHierarchyLevelSliderValues = (max: number) => {
+    slider.input.max = String(max);
+    slider.input.value = String(max);
+    slider.updateDisplay();
+  };
+
+  return { ...slider, setHierarchyLevelSliderValues };
+};
+
+export interface HierarchyLevelController {
   readonly view: HTMLDivElement;
   readonly slider: HierarchyLevel;
-  constructor(layer_count: number) {
-    const hierarchy_level = new HierarchyLevel();
-    this.view = document.createElement("div");
-    this.view.id = "hierarchy-level";
-    this.view.appendChild(hierarchy_level.body);
-    this.slider = hierarchy_level;
-    this.slider.setHierarchyLevelSliderValues(layer_count)
-  }
-  addListeners(...listeners: ((e:number) => void)[]) { this.slider.addListeners(...listeners); }
+  addListeners(...listeners: ((e: number) => void)[]): void;
 }
 
-export class TimeRangeController {
+export const createHierarchyLevelController = (layer_count: number): HierarchyLevelController => {
+  const slider = createHierarchyLevel();
+  const view = document.createElement("div");
+  view.id = "hierarchy-level";
+  view.appendChild(slider.body);
+  slider.setHierarchyLevelSliderValues(layer_count);
+  return {
+    view,
+    slider,
+    addListeners: (...ls: ((e: number) => void)[]) => slider.addListeners(...ls),
+  };
+};
+
+export interface TimeRangeController {
   readonly view: HTMLDivElement;
   readonly slider: TimeRangeSlider;
-  constructor(length: number) {
-    const time_range_slider = new TimeRangeSlider();
-    this.view = document.createElement("div");
-    this.view.id = "time-length";
-    this.view.appendChild(time_range_slider.body);
-    this.slider = time_range_slider;
+  addListeners(...listeners: (() => void)[]): void;
+}
 
-    if (length > 30) {
-      const window = 30;  // 秒のつもりだが, 秒になってない感じがする
-      const ratio = window / length;
-      const max = this.slider.input.max;
-      const value = max + Math.log2(ratio);
-      this.slider.input.value = String(value);
-      this.slider.updateDisplay();
-    }
+interface TimeRangeSlider extends Slider<number> {}
+
+const createTimeRangeSlider = (): TimeRangeSlider =>
+  createSlider<number>({
+    id: "time_range_slider",
+    label: "Time Range",
+    min: 1,
+    max: 10,
+    step: 0.1,
+    value: 10,
+    updateDisplay: (input, display) => {
+      const ratio = Math.pow(2, Number(input.value) - Number(input.max));
+      display.textContent = `${Math.floor(ratio * 100)} %`;
+    },
+    getValue: input => {
+      const ratio = Math.pow(2, Number(input.value) - Number(input.max));
+      PianoRollRatio.set(ratio);
+      return ratio;
+    },
+  });
+
+export const createTimeRangeController = (length: number): TimeRangeController => {
+  const slider = createTimeRangeSlider();
+  const view = document.createElement("div");
+  view.id = "time-length";
+  view.appendChild(slider.body);
+
+  if (length > 30) {
+    const window = 30;  // 秒のつもりだが, 秒になってない感じがする
+    const ratio = window / length;
+    const max = slider.input.max;
+    const value = max + Math.log2(ratio);
+    slider.input.value = String(value);
+    slider.updateDisplay();
   }
-  addListeners(...listeners: (() => void)[]) { this.slider.addListeners(...listeners); }
-}
-class TimeRangeSlider
-  extends Slider<number> {
-  constructor() {
-    super("time_range_slider", "Time Range", 1, 10, 0.1, 10);
+
+  return {
+    view,
+    slider,
+    addListeners: (...ls: (() => void)[]) => slider.addListeners(...ls),
   };
-  override updateDisplay() {
-    [Number(this.input.value)]
-      .map(e => e - Number(this.input.max))
-      .map(e => Math.pow(2, e))
-      .map(e => e * 100)
-      .map(e => Math.floor(e))
-      .map(e => `${e} %`)
-      .map(e => this.display.textContent = e)
-  }
-  update() {
-    const value = Number(this.input.value);
-    const max = Number(this.input.max);
-    const ratio = Math.pow(2, value - max);
-    PianoRollRatio.set(ratio);
-    this.listeners.forEach(e => e(ratio));
-  }
-}
+};

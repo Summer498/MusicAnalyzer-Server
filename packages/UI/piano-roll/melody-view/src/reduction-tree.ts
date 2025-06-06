@@ -1,5 +1,5 @@
 import { PianoRollConverter } from "@music-analyzer/view-parameters";
-import { DMelodyController, GravityController, HierarchyLevelController, MelodyBeepController, MelodyColorController, TimeRangeController } from "@music-analyzer/controllers";
+import { DMelodyController, GravityController, HierarchyLevelController, type MelodyBeepController, MelodyColorController, TimeRangeController } from "@music-analyzer/controllers";
 import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 
@@ -93,10 +93,10 @@ export function buildTree(
 
   const hierarchy = createTreeHierarchy(svg)
 
-  controllers.hierarchy.addListeners(hierarchy.onChangedLayer.bind(hierarchy));
-  controllers.audio.addListeners(hierarchy.onAudioUpdate.bind(hierarchy));
-  controllers.window.addListeners(hierarchy.onWindowResized.bind(hierarchy));
-  controllers.time_range.addListeners(hierarchy.onTimeRangeChanged.bind(hierarchy))
+  controllers.hierarchy.addListeners(hierarchy.onChangedLayer);
+  controllers.audio.addListeners(hierarchy.onAudioUpdate);
+  controllers.window.addListeners(hierarchy.onWindowResized);
+  controllers.time_range.addListeners(hierarchy.onTimeRangeChanged)
 
   return hierarchy;
 
