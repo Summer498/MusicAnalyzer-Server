@@ -15,6 +15,7 @@ export interface ColorSelector<T> {
   readonly body: HTMLSpanElement;
   readonly input: HTMLInputElement;
   addListeners(...listeners: ((e: T) => void)[]): void;
+  update(): void;
 }
 
 export interface IRM_ColorSelector extends ColorSelector<GetColor> {}
