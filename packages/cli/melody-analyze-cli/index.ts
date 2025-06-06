@@ -1,6 +1,9 @@
 import { SerializedRomanAnalysisData } from "@music-analyzer/chord-analyze";
-import { analyzeMelody, SerializedMelodyAnalysisData } from "@music-analyzer/melody-analyze";
-import { getTimeAndMelody } from "@music-analyzer/melody-analyze";
+import {
+  analyzeMelody,
+  createSerializedMelodyAnalysisData,
+  getTimeAndMelody,
+} from "@music-analyzer/melody-analyze";
 import { default as fs } from "fs";
 import { default as yargs } from "yargs";
 import { hideBin } from "yargs/helpers";
@@ -58,7 +61,13 @@ const main = (argv: string[]) => {
 
   fs.writeFileSync(
     args.out_file,
-    JSON.stringify(new SerializedMelodyAnalysisData(analyzeMelody(non_null_melody, time_and_roman.body)), undefined, "  ")
+    JSON.stringify(
+      createSerializedMelodyAnalysisData(
+        analyzeMelody(non_null_melody, time_and_roman.body)
+      ),
+      undefined,
+      "  "
+    )
   );
 };
 main(process.argv);

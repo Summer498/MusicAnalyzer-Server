@@ -1,16 +1,18 @@
-import { SerializedTimeAndAnalyzedMelody } from "./serialized-time-and-analyzed-melody";
-
+import { SerializedTimeAndAnalyzedMelody, cloneSerializedTimeAndAnalyzedMelody } from "./serialized-time-and-analyzed-melody";
 
 const v = "25.03.10.08.51";
-export class SerializedMelodyAnalysisData {
-  readonly version = v;
-  constructor(
-    readonly body: SerializedTimeAndAnalyzedMelody[]
-  ) { }
-  static checkVersion(e: SerializedMelodyAnalysisData) {
-    return e.version === v;
-  }
-  static instantiate(e: SerializedMelodyAnalysisData) {
-    return new SerializedMelodyAnalysisData(e.body.map(e => new SerializedTimeAndAnalyzedMelody(e)))
-  }
+
+export interface SerializedMelodyAnalysisData {
+  version: string;
+  body: SerializedTimeAndAnalyzedMelody[];
 }
+
+export const createSerializedMelodyAnalysisData = (
+  body: SerializedTimeAndAnalyzedMelody[],
+): SerializedMelodyAnalysisData => ({ version: v, body });
+
+export const checkVersion = (e: { version: string }) => e.version === v;
+
+export const instantiateSerializedMelodyAnalysisData = (
+  e: { body: SerializedTimeAndAnalyzedMelody[] },
+) => createSerializedMelodyAnalysisData(e.body.map(cloneSerializedTimeAndAnalyzedMelody));

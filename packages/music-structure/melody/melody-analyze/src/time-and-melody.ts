@@ -1,39 +1,20 @@
 import { Time, createTime } from "@music-analyzer/time-and";
 
-type TimeAndMelody_Args = [Time, Time, number]
-const getArgsOfTimeAndMelody = (
-  args
-    : TimeAndMelody_Args
-    | [TimeAndMelody]
-) => {
-  if (args.length === 1) {
-    const [e] = args;
-    return [
-      createTime(e.time),
-      createTime(e.head),
-      e.note
-    ] as TimeAndMelody_Args
-  }
-  return args
+export interface TimeAndMelody {
+  time: Time;
+  head: Time;
+  note: number;
 }
-export class TimeAndMelody {
-  readonly time: Time
-  readonly head: Time
-  readonly note: number
-  constructor(e: TimeAndMelody);
-  constructor(
-    time: Time,
-    head: Time,
-    note: number,
-  );
-  constructor(
-    ...args
-      : TimeAndMelody_Args
-      | [TimeAndMelody]
-  ) {
-    const [time, head, note] = getArgsOfTimeAndMelody(args);
-    this.time = time;
-    this.head = head;
-    this.note = note;
-  }
-}
+
+export const createTimeAndMelody = (
+  time: Time,
+  head: Time,
+  note: number,
+): TimeAndMelody => ({
+  time: createTime(time),
+  head: createTime(head),
+  note,
+});
+
+export const cloneTimeAndMelody = (e: TimeAndMelody) =>
+  createTimeAndMelody(e.time, e.head, e.note);

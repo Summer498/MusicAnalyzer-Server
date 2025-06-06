@@ -1,39 +1,31 @@
 import { Time, createTime } from "@music-analyzer/time-and";
-import { SerializedMelodyAnalysis } from "./serialized-melody-analysis";
+import { SerializedMelodyAnalysis, cloneSerializedMelodyAnalysis } from "./serialized-melody-analysis";
 
-type SerializedTimeAndAnalyzedMelody_Args = [Time, Time, number, SerializedMelodyAnalysis]
-const getArgsOfSerializedTimeAndAnalyzedMelody = (
-  args
-    : SerializedTimeAndAnalyzedMelody_Args
-    | [SerializedTimeAndAnalyzedMelody]
-) => {
-  if (args.length === 1) {
-    const [e] = args;
-    return [createTime(e.time), createTime(e.head), e.note, new SerializedMelodyAnalysis(e.melody_analysis)] as SerializedTimeAndAnalyzedMelody_Args
-  }
-  return args
+export interface SerializedTimeAndAnalyzedMelody {
+  time: Time;
+  head: Time;
+  note: number;
+  melody_analysis: SerializedMelodyAnalysis;
 }
-export class SerializedTimeAndAnalyzedMelody {
-  readonly time: Time
-  readonly head: Time
-  readonly note: number
-  readonly melody_analysis: SerializedMelodyAnalysis;
-  constructor(e: SerializedTimeAndAnalyzedMelody);
-  constructor(
-    time: Time,
-    head: Time,
-    note: number,
-    melody_analysis: SerializedMelodyAnalysis,
+
+export const createSerializedTimeAndAnalyzedMelody = (
+  time: Time,
+  head: Time,
+  note: number,
+  melody_analysis: SerializedMelodyAnalysis,
+): SerializedTimeAndAnalyzedMelody => ({
+  time: createTime(time),
+  head: createTime(head),
+  note,
+  melody_analysis: cloneSerializedMelodyAnalysis(melody_analysis),
+});
+
+export const cloneSerializedTimeAndAnalyzedMelody = (
+  e: SerializedTimeAndAnalyzedMelody,
+) =>
+  createSerializedTimeAndAnalyzedMelody(
+    e.time,
+    e.head,
+    e.note,
+    e.melody_analysis,
   );
-  constructor(
-    ...args
-      : SerializedTimeAndAnalyzedMelody_Args
-      | [SerializedTimeAndAnalyzedMelody]
-  ) {
-    const [time, head, note, melody_analysis] = getArgsOfSerializedTimeAndAnalyzedMelody(args);
-    this.time = time
-    this.head = head
-    this.note = note
-    this.melody_analysis = melody_analysis
-  }
-}
