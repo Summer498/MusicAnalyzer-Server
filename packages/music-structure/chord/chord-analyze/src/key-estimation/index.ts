@@ -1,1 +1,1 @@
-export { ChordProgression } from "./chord-progression";
+export { ChordProgression, createChordProgression } from "./chord-progression";

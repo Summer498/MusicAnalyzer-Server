@@ -1,7 +1,7 @@
 import { JSDOM } from "jsdom";
 
 function expectFn(name: string) {
-  expect(typeof (Module as any)[name]).toBe("function");
+  expect(typeof require("./index")[name]).toBe("function");
 }
 
 describe("piano-roll melody-view", () => {

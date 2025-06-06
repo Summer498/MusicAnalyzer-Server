@@ -1,6 +1,6 @@
 export { Compare } from "./src/reduction";
 export { decimal } from "./src/basic-function";
-export { Complex } from "./src/fft";
+export { Complex, createComplex } from "./src/fft";
 export { createRootOfUnity } from "./src/fft";
 export { fft } from "./src/fft";
 export { correlation } from "./src/fft";

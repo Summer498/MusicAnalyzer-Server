@@ -1,5 +1,5 @@
 import { Chord } from "@music-analyzer/tonal-objects/src/chord/chord";
-import { ChordProgression } from "../src/key-estimation/chord-progression";
+import { createChordProgression } from "../src/key-estimation/chord-progression";
 import { getChord } from "../src/key-estimation/get-chord";
 
 const empty_chord: Chord = { aliases: [], bass: "", chroma: "", empty: true, intervals: [], name: "", normalized: "", notes: [], quality: "Unknown", root: "", rootDegree: 0, setNum: NaN, symbol: "", tonic: null, type: "" };
@@ -25,11 +25,11 @@ describe("key estimation module test", () => {
   });
 
   test("Canon progression", () => {
-    const progression = new ChordProgression(["CM7", "G7", "Am7", "Em7", "FM7", "CM7", "FM7", "G7"]);
+    const progression = createChordProgression(["CM7", "G7", "Am7", "Em7", "FM7", "CM7", "FM7", "G7"]);
     const candidate_scales = progression.lead_sheet_chords.map(
-      (e, t) => progression.getStatesOnTime(t)
+      (_: string, t: number) => progression.getStatesOnTime(t)
     );
-    expect(candidate_scales.map(e => e.map(e => e.name))).toEqual(
+    expect(candidate_scales.map(scales => scales.map(s => s.name))).toEqual(
       [
         ["C major", "G major"],            // CM7
         ["C major"],                       // G7
@@ -56,11 +56,11 @@ describe("key estimation module test", () => {
   });
 
   test("progression includes mM7 chord", () => {
-    const progression = new ChordProgression(["GM7", "GmM7", "F#m7", "Bm7", "A7", "DM7"]);
+    const progression = createChordProgression(["GM7", "GmM7", "F#m7", "Bm7", "A7", "DM7"]);
     const candidate_scales = progression.lead_sheet_chords.map(
-      (e, t) => progression.getStatesOnTime(t)
+      (_: string, t: number) => progression.getStatesOnTime(t)
     );
-    expect(candidate_scales.map(e => e.map(e => e.name))).toEqual(
+    expect(candidate_scales.map(scales => scales.map(s => s.name))).toEqual(
       [
         ["D major", "G major"],            // GM7
         [""],                              // GmM7 TODO: fix: ここで候補がなくなってしまう
@@ -85,11 +85,11 @@ describe("key estimation module test", () => {
   });
 
   test("Just the Two of Us Progression", () => {
-    const progression = new ChordProgression(["DbM7", "C7", "Fm7", "Ebm7", "Ab7"]);
+    const progression = createChordProgression(["DbM7", "C7", "Fm7", "Ebm7", "Ab7"]);
     const candidate_scales = progression.lead_sheet_chords.map(
-      (e, t) => progression.getStatesOnTime(t)
+      (_: string, t: number) => progression.getStatesOnTime(t)
     );
-    expect(candidate_scales.map(e => e.map(e => e.name))).toEqual(
+    expect(candidate_scales.map(scales => scales.map(s => s.name))).toEqual(
       [
         ["Db major", "Ab major"],
         ["F major"],

@@ -8,6 +8,10 @@ global.console = {
   // error: jest.fn(),
 };
 
+const { TextEncoder, TextDecoder } = require('util');
+global.TextEncoder = TextEncoder;
+global.TextDecoder = TextDecoder;
+
 class MockAudioNode {
   connect() {}
 }
