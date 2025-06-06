@@ -1,7 +1,9 @@
-import { Checkbox } from "./switcher";
+import { Checkbox, createCheckbox } from "./switcher";
 import { Slider, createSlider } from "./slider";
 
-const createMelodyBeepVolume = (): Slider<number> =>
+export type MelodyBeepVolume = Slider<number>;
+
+export const createMelodyBeepVolume = (): MelodyBeepVolume =>
   createSlider<number>({
     id: "melody_beep_volume",
     label: "",
@@ -14,29 +16,32 @@ const createMelodyBeepVolume = (): Slider<number> =>
     getValue: input => Number(input.value),
   });
 
-class MelodyBeepSwitcher
-  extends Checkbox {
-  constructor(id: string, label: string) {
-    super(id, label);
-  }
-  update() {
-    const visibility = this.input.checked;
-    this.listeners.forEach(e => e(visibility))
-  };
-};
+export type MelodyBeepSwitcher = Checkbox;
 
-export class MelodyBeepController {
+export const createMelodyBeepSwitcher = (
+  id: string,
+  label: string,
+): MelodyBeepSwitcher => createCheckbox(id, label);
+
+export interface MelodyBeepController {
   readonly view: HTMLDivElement;
   readonly checkbox: MelodyBeepSwitcher;
-  readonly volume: Slider<number>;
-  constructor() {
-    const melody_beep_switcher = new MelodyBeepSwitcher("melody_beep_switcher", "Beep Melody");
-    const melody_beep_volume = createMelodyBeepVolume();
-    this.view = document.createElement("div");
-    this.view.appendChild(melody_beep_switcher.body,);
-    this.view.appendChild(melody_beep_volume.body);
-    this.view.id = "melody-beep-controllers";
-    this.checkbox = melody_beep_switcher;
-    this.volume = melody_beep_volume;
-  };
+  readonly volume: MelodyBeepVolume;
 }
+
+export const createMelodyBeepController = (): MelodyBeepController => {
+  const melody_beep_switcher = createMelodyBeepSwitcher(
+    "melody_beep_switcher",
+    "Beep Melody",
+  );
+  const melody_beep_volume = createMelodyBeepVolume();
+  const view = document.createElement("div");
+  view.appendChild(melody_beep_switcher.body);
+  view.appendChild(melody_beep_volume.body);
+  view.id = "melody-beep-controllers";
+  return {
+    view,
+    checkbox: melody_beep_switcher,
+    volume: melody_beep_volume,
+  };
+};
