@@ -1,65 +1,103 @@
 import { Controller } from "./controller";
 
-export class Checkbox extends Controller<boolean> {
+export interface Checkbox extends Controller<boolean> {}
+
+class CheckboxImpl extends Controller<boolean> implements Checkbox {
   constructor(id: string, label: string) {
     super("checkbox", id, label);
 
     this.input.checked = false;
   }
   update() {
-    this.listeners.forEach(e=>e(this.input.checked))
+    this.listeners.forEach(e => e(this.input.checked));
   }
 }
 
-export class DMelodyController {
-  readonly view: HTMLDivElement;
-  readonly checkbox: Checkbox;
-  constructor() {
-    const d_melody_switcher = new Checkbox("d_melody_switcher", "detected melody before fix");
-    this.view = document.createElement("div");
-    this.view.id = "d-melody";
-    this.view.appendChild(d_melody_switcher.body);
-    this.checkbox = d_melody_switcher;
-  };
-  addListeners(...listeners: ((e:boolean) => void)[]) { this.checkbox.addListeners(...listeners); }
+export function createCheckbox(id: string, label: string): Checkbox {
+  return new CheckboxImpl(id, label);
 }
 
-export class ImplicationDisplayController {
+export interface DMelodyController {
+  readonly view: HTMLDivElement;
+  readonly checkbox: Checkbox;
+  addListeners(...listeners: ((e: boolean) => void)[]): void;
+}
+
+export function createDMelodyController(): DMelodyController {
+  const d_melody_switcher = createCheckbox(
+    "d_melody_switcher",
+    "detected melody before fix",
+  );
+  const view = document.createElement("div");
+  view.id = "d-melody";
+  view.appendChild(d_melody_switcher.body);
+  return {
+    view,
+    checkbox: d_melody_switcher,
+    addListeners(...listeners: ((e: boolean) => void)[]) {
+      d_melody_switcher.addListeners(...listeners);
+    },
+  };
+}
+
+export interface ImplicationDisplayController {
   readonly view: HTMLDivElement;
   readonly prospective_checkbox: Checkbox;
   readonly retrospective_checkbox: Checkbox;
   readonly reconstructed_checkbox: Checkbox;
-  constructor() {
-    const prospective_checkbox = new Checkbox("prospective_checkbox", "prospective implication");
-    const retrospective_checkbox = new Checkbox("retrospective_checkbox", "retrospective implication");
-    const reconstructed_checkbox = new Checkbox("reconstructed_checkbox", "reconstructed implication");
-    this.view = document.createElement("div");
-    this.view.id = "prospective-implication";
-    this.view.appendChild(prospective_checkbox.body);
-    this.view.appendChild(retrospective_checkbox.body);
-    this.view.appendChild(reconstructed_checkbox.body);
-    this.prospective_checkbox = prospective_checkbox;
-    this.retrospective_checkbox = retrospective_checkbox;
-    this.reconstructed_checkbox = reconstructed_checkbox;
+}
+
+export function createImplicationDisplayController(): ImplicationDisplayController {
+  const prospective_checkbox = createCheckbox(
+    "prospective_checkbox",
+    "prospective implication",
+  );
+  const retrospective_checkbox = createCheckbox(
+    "retrospective_checkbox",
+    "retrospective implication",
+  );
+  const reconstructed_checkbox = createCheckbox(
+    "reconstructed_checkbox",
+    "reconstructed implication",
+  );
+  const view = document.createElement("div");
+  view.id = "prospective-implication";
+  view.appendChild(prospective_checkbox.body);
+  view.appendChild(retrospective_checkbox.body);
+  view.appendChild(reconstructed_checkbox.body);
+  return {
+    view,
+    prospective_checkbox,
+    retrospective_checkbox,
+    reconstructed_checkbox,
   };
 }
 
-export class GravityController {
+export interface GravityController {
   readonly view: HTMLDivElement;
   readonly chord_checkbox: Checkbox;
   readonly scale_checkbox: Checkbox;
-  constructor(
-    visible: boolean
-  ) {
-    const chord_gravity_switcher = new Checkbox("chord_gravity_switcher", "Chord Gravity");
-    const scale_gravity_switcher = new Checkbox("scale_gravity_switcher", "Scale Gravity");
+}
 
-    this.view = document.createElement("div");
-    this.view.id = "gravity-switcher";
-    this.view.style = visible ? "visible" : "hidden";
-    this.view.appendChild(scale_gravity_switcher.body);
-    this.view.appendChild(chord_gravity_switcher.body);
-    this.chord_checkbox = chord_gravity_switcher;
-    this.scale_checkbox = scale_gravity_switcher;
+export function createGravityController(visible: boolean): GravityController {
+  const chord_gravity_switcher = createCheckbox(
+    "chord_gravity_switcher",
+    "Chord Gravity",
+  );
+  const scale_gravity_switcher = createCheckbox(
+    "scale_gravity_switcher",
+    "Scale Gravity",
+  );
+
+  const view = document.createElement("div");
+  view.id = "gravity-switcher";
+  view.style = visible ? "visible" : "hidden";
+  view.appendChild(scale_gravity_switcher.body);
+  view.appendChild(chord_gravity_switcher.body);
+
+  return {
+    view,
+    chord_checkbox: chord_gravity_switcher,
+    scale_checkbox: scale_gravity_switcher,
   };
 }
