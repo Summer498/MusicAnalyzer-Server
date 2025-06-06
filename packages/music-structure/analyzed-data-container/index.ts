@@ -1,1 +1,1 @@
-export { AnalyzedDataContainer } from "./src/analyze-data-container";
+export { createAnalyzedDataContainer, AnalyzedDataContainer } from "./src/analyze-data-container";

@@ -1,55 +1,38 @@
 import { Time, createTime } from "@music-analyzer/time-and";
 
-type SerializedTimeAndRomanAnalysis_Arg = [Time, string, string, string];
-const getArgsOfSerializedTimeAndRomanAnalysis = (
-  args
-    : SerializedTimeAndRomanAnalysis_Arg
-    | [SerializedTimeAndRomanAnalysis]
-) => {
-  if (args.length === 1) {
-    const [e] = args;
-    return [e.time, e.chord, e.scale, e.roman] as SerializedTimeAndRomanAnalysis_Arg
-  }
-  return args;
+export interface SerializedTimeAndRomanAnalysis {
+  time: Time;
+  chord: string;
+  scale: string;
+  roman: string;
 }
 
-export class SerializedTimeAndRomanAnalysis {
-  readonly time: Time;
-  readonly chord: string
-  readonly scale: string
-  readonly roman: string
-  constructor(e: SerializedTimeAndRomanAnalysis);
-  constructor(
-    time: Time,
-    chord: string,
-    scale: string,
-    roman: string,
-  );
-  constructor(
-    ...args
-      : SerializedTimeAndRomanAnalysis_Arg
-      | [SerializedTimeAndRomanAnalysis]
-  ) {
-    const [time, chord, scale, roman] = getArgsOfSerializedTimeAndRomanAnalysis(args);
-    this.time = createTime(time);
-    this.chord = chord;
-    this.scale = scale;
-    this.roman = roman;
-  }
-}
+export const createSerializedTimeAndRomanAnalysis = (
+  time: Time,
+  chord: string,
+  scale: string,
+  roman: string,
+): SerializedTimeAndRomanAnalysis => ({
+  time: createTime(time),
+  chord,
+  scale,
+  roman,
+});
+
+export const cloneSerializedTimeAndRomanAnalysis = (e: SerializedTimeAndRomanAnalysis) =>
+  createSerializedTimeAndRomanAnalysis(e.time, e.chord, e.scale, e.roman);
 
 const v = "25.03.10.08.51" as string;
-export class SerializedRomanAnalysisData {
-  readonly version = v;
-  constructor(
-    readonly body: SerializedTimeAndRomanAnalysis[]
-  ) { }
-  static checkVersion(e: { version: string }) {
-    return e.version === v;
-  }
-  // required by the class with the constructor which has 1 argument
-  static instantiate(e: { body: SerializedTimeAndRomanAnalysis[] }) {
-    return new SerializedRomanAnalysisData(e.body.map(e => new SerializedTimeAndRomanAnalysis(e)))
-  }
+export interface SerializedRomanAnalysisData {
+  version: string;
+  body: SerializedTimeAndRomanAnalysis[];
 }
 
+export const createSerializedRomanAnalysisData = (
+  body: SerializedTimeAndRomanAnalysis[],
+): SerializedRomanAnalysisData => ({ version: v, body });
+
+export const checkVersion = (e: { version: string }) => e.version === v;
+
+export const instantiateSerializedRomanAnalysisData = (e: { body: SerializedTimeAndRomanAnalysis[] }) =>
+  createSerializedRomanAnalysisData(e.body.map(cloneSerializedTimeAndRomanAnalysis));

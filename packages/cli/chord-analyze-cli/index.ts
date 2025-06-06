@@ -1,5 +1,4 @@
-import { calcChordProgression, SerializedRomanAnalysisData } from "@music-analyzer/chord-analyze";
-import { TimeAndChordSymbol } from "@music-analyzer/chord-analyze";
+import { createChordProgression, createSerializedRomanAnalysisData, createTimeAndChordSymbol } from "@music-analyzer/chord-analyze";
 import { Time, createTime } from "@music-analyzer/time-and";
 import { default as ReadLine } from "readline";
 
@@ -7,10 +6,10 @@ type TimeAndItem<T> = { 0: number, 1: number, 2: T }
 type TimeAndString = TimeAndItem<string>;
 
 const analyzeAndOutputProgression = (chords: TimeAndString[]) => {
-  const chords_with_time = chords.map(e => new TimeAndChordSymbol(createTime(e[0], e[1]), e[2].replace(":", "")));
-  const roman_chords = calcChordProgression(chords_with_time);
+  const chords_with_time = chords.map(e => createTimeAndChordSymbol(createTime(e[0], e[1]), e[2].replace(":", "")));
+  const roman_result = createChordProgression(chords_with_time).getMinimumPath();
   console.log(JSON.stringify(
-    new SerializedRomanAnalysisData(roman_chords),
+    createSerializedRomanAnalysisData(roman_result),
     undefined, "  "
   ));
 };

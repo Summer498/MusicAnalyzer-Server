@@ -1,6 +1,6 @@
 import { setCurrentTimeRatio, setPianoRollParameters } from "@music-analyzer/view-parameters";
 import { song_list } from "@music-analyzer/gttm";
-import { AnalyzedDataContainer } from "@music-analyzer/analyzed-data-container";
+import { createAnalyzedDataContainer } from "@music-analyzer/analyzed-data-container";
 import { AudioViewer } from "@music-analyzer/spectrogram";
 import { PianoRoll } from "@music-analyzer/piano-roll";
 import { PianoRollHeight } from "@music-analyzer/view-parameters";
@@ -409,7 +409,7 @@ const setup = (
 
   calcIRMDistribution(hierarchical_melody);
 
-  const { beat_info, d_melodies } = new AnalyzedDataContainer(roman, melody, hierarchical_melody)
+  const { beat_info, d_melodies } = createAnalyzedDataContainer(roman, melody, hierarchical_melody)
   setPianoRollParameters(hierarchical_melody);
   const manager = new ApplicationManager(beat_info, roman, hierarchical_melody, melody, d_melodies);
   setFullView(manager.FULL_VIEW, audio_player);

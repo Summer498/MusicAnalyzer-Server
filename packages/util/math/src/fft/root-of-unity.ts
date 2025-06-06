@@ -1,4 +1,4 @@
-import { Complex } from "./complex";
+import { Complex, createComplex } from "./complex";
 
 export interface RootOfUnity {
   exponent(k: number, N: number): Complex<number>
@@ -12,7 +12,7 @@ export const createRootOfUnity = (): RootOfUnity => {
     exponent(k: number, N: number) {
       const x = -2 * Math.PI * (k / N)
       exponent_cache[N] ||= []
-      exponent_cache[N][k] ||= new Complex(Math.cos(x), Math.sin(x))
+      exponent_cache[N][k] ||= createComplex(Math.cos(x), Math.sin(x))
       return exponent_cache[N][k]
     },
     modulo(k: number, N: number, modulo: number) {
