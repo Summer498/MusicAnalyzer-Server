@@ -15,12 +15,8 @@ interface RequiredByMelodyElements {
   readonly hierarchy: HierarchyLevelController,
 }
 
-class Line {
-  constructor(
-    readonly pos1: { x: number, y: number },
-    readonly pos2: { x: number, y: number },
-  ) { }
-}
+interface Line { readonly pos1: { x: number, y: number }; readonly pos2: { x: number, y: number } }
+const createLine = (pos1: { x: number, y: number }, pos2: { x: number, y: number }): Line => ({ pos1, pos2 });
 
 interface RequiredByTreeHierarchy {
   readonly hierarchy: HierarchyLevelController,
@@ -31,12 +27,12 @@ interface RequiredByTreeHierarchy {
 
 export interface TreeHierarchy {
   readonly svg: SVGGElement;
-  onChangedLayer(value: number): void;
-  onAudioUpdate(): void;
-  onWindowResized(): void;
-  onTimeRangeChanged(): void;
+  onChangedLayer: (v: number) => void;
+  onAudioUpdate: () => void;
+  onWindowResized: () => void;
+  onTimeRangeChanged: () => void;
 }
-export const createTreeHierarchy = (svg: SVGGElement): TreeHierarchy => ({
+const createTreeHierarchy = (svg: SVGGElement): TreeHierarchy => ({
   svg,
   onChangedLayer: () => {},
   onAudioUpdate: () => {},
@@ -68,7 +64,7 @@ export function buildTree(
       const y = layerY[i];
 
       startPos[i + 1] = { x, y };
-      return new Line(
+      return createLine(
         { x, y },
         { x: lx, y: ly },
       )

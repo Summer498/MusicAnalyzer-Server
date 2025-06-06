@@ -1,5 +1,9 @@
 import { JSDOM } from "jsdom";
 
+function expectFn(name: string) {
+  expect(typeof (Module as any)[name]).toBe("function");
+}
+
 describe("piano-roll melody-view", () => {
   let dom: JSDOM;
   beforeAll(() => {
@@ -33,5 +37,16 @@ describe("piano-roll melody-view", () => {
 
     const result = createMelodyElements([[melody]], [melody], controllers);
     expect(result.children.length).toBeGreaterThan(0);
+  });
+  test("should export factories", () => {
+    [
+      "buildDMelody",
+      "buildIRPlot",
+      "buildIRSymbol",
+      "buildMelody",
+      "buildReduction",
+      "buildGravity",
+      "buildIRGravity",
+    ].forEach(expectFn);
   });
 });
