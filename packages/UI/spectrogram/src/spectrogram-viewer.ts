@@ -1,26 +1,27 @@
 import { AudioAnalyzer } from "./audio-analyzer";
 
-export class spectrogramViewer {
-  private readonly path: SVGPathElement;
+export interface spectrogramViewer {
   readonly svg: SVGSVGElement;
-  constructor(
-    private readonly analyser: AudioAnalyzer,
-  ) {
-    this.path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    this.path.setAttribute("stroke", "red");
-    this.path.setAttribute("fill", "none");
-    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    this.svg.appendChild(this.path);
-    this.svg.id = "spectrum";
-    this.svg.setAttribute("width", String(800));
-    this.svg.setAttribute("height", String(450));
-  }
+  onAudioUpdate(): void;
+}
 
-  onAudioUpdate() {
-    const freqData = this.analyser.getFloatFrequencyData();
+export const createSpectrogramViewer = (
+  analyser: AudioAnalyzer,
+): spectrogramViewer => {
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("stroke", "red");
+  path.setAttribute("fill", "none");
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.appendChild(path);
+  svg.id = "spectrum";
+  svg.setAttribute("width", String(800));
+  svg.setAttribute("height", String(450));
+
+  const onAudioUpdate = () => {
+    const freqData = analyser.getFloatFrequencyData();
     const fftSize = freqData.length / 2;
-    const width = this.svg.clientWidth;
-    const height = this.svg.clientHeight;
+    const width = svg.clientWidth;
+    const height = svg.clientHeight;
     let pathData = "";
 
     for (let i = 0; i < fftSize; i++) {
@@ -32,6 +33,8 @@ export class spectrogramViewer {
     [pathData]
       .map(e => e.slice(1))
       .filter(e => e.length > 0)
-      .map(e => this.path.setAttribute("d", "M" + e))
-  }
-}
+      .map(e => path.setAttribute("d", "M" + e));
+  };
+
+  return { svg, onAudioUpdate };
+};
