@@ -1,13 +1,11 @@
 import { AudioAnalyzer } from "./audio-analyzer";
 
-export interface spectrogramViewer {
+export interface SpectrogramViewer {
   readonly svg: SVGSVGElement;
   onAudioUpdate(): void;
 }
 
-export const createSpectrogramViewer = (
-  analyser: AudioAnalyzer,
-): spectrogramViewer => {
+export const createSpectrogramViewer = (analyser: AudioAnalyzer): SpectrogramViewer => {
   const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
   path.setAttribute("stroke", "red");
   path.setAttribute("fill", "none");
@@ -23,17 +21,14 @@ export const createSpectrogramViewer = (
     const width = svg.clientWidth;
     const height = svg.clientHeight;
     let pathData = "";
-
     for (let i = 0; i < fftSize; i++) {
-      if (isNaN(freqData[i] * 0)) { continue; }
-      const x = i / (fftSize - 1) * width;
+      if (isNaN(freqData[i] * 0)) continue;
+      const x = (i / (fftSize - 1)) * width;
       const y = -(freqData[i] / 128) * height;
       pathData += `L ${x},${y}`;
     }
-    [pathData]
-      .map(e => e.slice(1))
-      .filter(e => e.length > 0)
-      .map(e => path.setAttribute("d", "M" + e));
+    const d = pathData.slice(1);
+    if (d.length > 0) path.setAttribute("d", "M" + d);
   };
 
   return { svg, onAudioUpdate };

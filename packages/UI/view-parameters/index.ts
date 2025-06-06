@@ -4,40 +4,35 @@ export const size = 2;
 export const octave_height = size * 84;  // 7 白鍵と 12 半音をきれいに描画するには 7 * 12 の倍数が良い
 export const black_key_height = octave_height / 12;
 
-export interface NowAt { readonly value: number }
-export const createNowAt = (value: number): NowAt => ({ value });
+export interface NowAt { get(): number; set(value: number): void; }
+export const createNowAt = (initial = 0): NowAt => {
+  let val = initial;
+  return { get: () => val, set: (v: number) => { val = v; } };
+};
+export const NowAt = createNowAt();
 
-let nowAtValue = 0;
-export const NowAt = {
-  get: () => nowAtValue,
-  set: (value: number) => { nowAtValue = value },
+export interface PianoRollRatio { get(): number; set(value: number): void; }
+export const createPianoRollRatio = (initial = 1): PianoRollRatio => {
+  let val = initial;
+  return { get: () => val, set: (v: number) => { val = v; } };
+};
+export const PianoRollRatio = createPianoRollRatio();
+
+interface PianoRollTimeLength { _get(): number }
+const createPianoRollTimeLength = (
+  ratio: PianoRollRatio,
+  length: SongLength,
+): PianoRollTimeLength => ({ _get: () => ratio.get() * length.get() });
+const PianoRollTimeLength = {
+  get: () => PianoRollRatio.get() * SongLength.get(),
 };
 
-export interface PianoRollRatio { readonly value: number }
-export const createPianoRollRatio = (value: number): PianoRollRatio => ({ value });
-
-let pianoRollRatioValue: number = 1;
-export const PianoRollRatio = {
-  get: () => pianoRollRatioValue,
-  set: (value: number) => { pianoRollRatioValue = value },
-};
-
-class PianoRollTimeLength {
-  constructor(
-    private readonly ratio: PianoRollRatio,
-    private readonly length: SongLength,
-  ) { }
-  _get() { return this.ratio.value * this.length.value }
-
-  static get() { return PianoRollRatio.get() * SongLength.get(); }
-}
-
-export interface NoteSize { get: () => number }
-export const createNoteSize = (width: PianoRollWidth, length: PianoRollTimeLength): NoteSize => ({
-  get: () => width.get() / length._get(),
-});
-
-export const NoteSize: NoteSize = {
+export interface NoteSize { _get(): number }
+export const createNoteSize = (
+  width: PianoRollWidth,
+  length: PianoRollTimeLength,
+): NoteSize => ({ _get: () => width._get() / length._get() });
+export const NoteSize = {
   get: () => PianoRollWidth.get() / PianoRollTimeLength.get(),
 };
 
@@ -66,76 +61,73 @@ export const PianoRollConverter = {
   convertToCoordinate,
 } as const;
 
-class CurrentTimeRatio {
-  constructor(readonly value: number) { };
+interface CurrentTimeRatio { get(): number; set(value: number): void; }
+const createCurrentTimeRatio = (initial = 1 / 4): CurrentTimeRatio => {
+  let val = initial;
+  return { get: () => val, set: (v: number) => { val = v; } };
+};
+const CurrentTimeRatio = createCurrentTimeRatio();
 
-  static #value = 1 / 4;
-  static get() { return this.#value; }
-  static set(value: number) { this.#value = value; }
-}
-
-export interface CurrentTimeX { get: () => number }
-export const createCurrentTimeX = (width: PianoRollWidth, ratio: CurrentTimeRatio): CurrentTimeX => ({
-  get: () => width.get() * ratio.value,
-});
-
-export const CurrentTimeX: CurrentTimeX = {
+export interface CurrentTimeX { _get(): number }
+export const createCurrentTimeX = (
+  width: PianoRollWidth,
+  ratio: CurrentTimeRatio,
+): CurrentTimeX => ({ _get: () => width._get() * ratio.get() });
+export const CurrentTimeX = {
   get: () => PianoRollWidth.get() * CurrentTimeRatio.get(),
 };
-export interface OctaveCount { get: () => number }
-export const createOctaveCount = (end: PianoRollEnd, begin: PianoRollBegin): OctaveCount => ({
-  get: () => Math.ceil(-(end.value - begin.value) / 12),
-});
-
-export const OctaveCount: OctaveCount = {
+export interface OctaveCount { _get(): number }
+export const createOctaveCount = (
+  end: PianoRollEnd,
+  begin: PianoRollBegin,
+): OctaveCount => ({ _get: () => Math.ceil(-(end.value - begin.value) / 12) });
+export const OctaveCount = {
   get: () => Math.ceil(-(PianoRollEnd.get() - PianoRollBegin.get()) / 12),
 };
-export interface PianoRollBegin { readonly value: number }
-export const createPianoRollBegin = (value: number): PianoRollBegin => ({ value });
-
+export interface PianoRollBegin { value: number }
+export const createPianoRollBegin = (initial = 83): PianoRollBegin => {
+  return { value: initial };
+};
 let pianoRollBeginValue = 83;
 export const PianoRollBegin = {
   get: () => pianoRollBeginValue,
-  set: (value: number) => { pianoRollBeginValue = value },
+  set: (v: number) => { pianoRollBeginValue = v; },
 };
-export interface PianoRollEnd { readonly value: number }
-export const createPianoRollEnd = (value: number): PianoRollEnd => ({ value });
-
+export interface PianoRollEnd { value: number }
+export const createPianoRollEnd = (initial = 83 + 24): PianoRollEnd => {
+  return { value: initial };
+};
 let pianoRollEndValue = 83 + 24;
 export const PianoRollEnd = {
   get: () => pianoRollEndValue,
-  set: (value: number) => { pianoRollEndValue = value },
+  set: (v: number) => { pianoRollEndValue = v; },
 };
-export interface PianoRollHeight { get: () => number }
+export interface PianoRollHeight { _get(): number }
 export const createPianoRollHeight = (count: OctaveCount): PianoRollHeight => ({
-  get: () => octave_height * count.get(),
+  _get: () => octave_height * count._get(),
 });
-
-export const PianoRollHeight: PianoRollHeight = {
+export const PianoRollHeight = {
   get: () => octave_height * OctaveCount.get(),
 };
-export interface WindowInnerWidth { get: () => number }
-export const createWindowInnerWidth = (): WindowInnerWidth => ({ get: () => window.innerWidth });
-
-export const WindowInnerWidth: WindowInnerWidth = {
-  get: () => window.innerWidth,
-};
-
-export interface PianoRollWidth { get: () => number }
-export const createPianoRollWidth = (windowWidth: WindowInnerWidth): PianoRollWidth => ({
-  get: () => windowWidth.get() - 48,
+export interface WindowInnerWidth { _get(): number }
+export const createWindowInnerWidth = (): WindowInnerWidth => ({
+  _get: () => window.innerWidth,
 });
+export const WindowInnerWidth = { get: () => window.innerWidth };
 
-export const PianoRollWidth: PianoRollWidth = {
+export interface PianoRollWidth { _get(): number }
+export const createPianoRollWidth = (): PianoRollWidth => ({
+  _get: () => window.innerWidth - 48,
+});
+export const PianoRollWidth = {
   get: () => WindowInnerWidth.get() - 48,
 };
-class SongLength {
-  constructor(readonly value: number) { }
-
-  static #value: number = 0;
-  static get() { return this.#value; }
-  static set(value: number) { this.#value = value; }
-}
+interface SongLength { get(): number; set(value: number): void; }
+const createSongLength = (initial = 0): SongLength => {
+  let val = initial;
+  return { get: () => val, set: (v: number) => { val = v; } };
+};
+const SongLength = createSongLength();
 
 export const setCurrentTimeRatio = (e: number) => { CurrentTimeRatio.set(e) }
 
