@@ -3,7 +3,7 @@ import { NextFunction } from "express";
 import { Request } from "express";
 import { Response } from "express";
 import { basename } from "path";
-import { execSync, spawnSync } from "child_process";
+import { execSync } from "child_process";
 
 import { default as multer } from "multer";
 import { default as express } from "express";
