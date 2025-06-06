@@ -1,2 +1,5 @@
-export { BeatElements } from "./src/beat-elements";
-export { RequiredByBeatElements } from "./src/beat-elements";
+export {
+  createBeatElements,
+  BeatElements,
+  RequiredByBeatElements,
+} from "./src/beat-elements";
