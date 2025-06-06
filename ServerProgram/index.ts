@@ -2,9 +2,8 @@ import { chmodSync, existsSync, mkdirSync, readdir, renameSync, rmdirSync } from
 import { NextFunction } from "express";
 import { Request } from "express";
 import { Response } from "express";
-import { dirname } from "path";
 import { basename } from "path";
-import { execSync, execFileSync } from "child_process";
+import { execSync } from "child_process";
 
 import { default as multer } from "multer";
 import { default as express } from "express";
@@ -115,10 +114,10 @@ const detectFile = (dst: string) => {
   return exists;
 };
 
- const makeNewDir = (
+const makeNewDir = (
   dst_dir: string
 ) => {
-  if (decodeURI(dirname(dst_dir))) { return; }
+  if (existsSync(decodeURI(dst_dir))) return;
   mkdirSync(decodeURI(dst_dir));
   chmodSync(decodeURI(dst_dir), 0o775);
 };
