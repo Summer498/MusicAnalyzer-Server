@@ -29,24 +29,20 @@ interface RequiredByTreeHierarchy {
   readonly time_range: TimeRangeController
 }
 
-export class TreeHierarchy {
-  constructor(
-    readonly svg: SVGGElement,
-  ) {
-  }
-  onChangedLayer(value: number){
-
-  }
-  onAudioUpdate(){
-
-  }
-  onWindowResized(){
-
-  }
-  onTimeRangeChanged(){
-
-  }
+export interface TreeHierarchy {
+  readonly svg: SVGGElement;
+  onChangedLayer(value: number): void;
+  onAudioUpdate(): void;
+  onWindowResized(): void;
+  onTimeRangeChanged(): void;
 }
+export const createTreeHierarchy = (svg: SVGGElement): TreeHierarchy => ({
+  svg,
+  onChangedLayer: () => {},
+  onAudioUpdate: () => {},
+  onWindowResized: () => {},
+  onTimeRangeChanged: () => {},
+});
 
 export function buildTree(
     h_melodies: SerializedTimeAndAnalyzedMelody[][],
@@ -99,12 +95,12 @@ export function buildTree(
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
   svg.id = "reduction-tree";
 
-  const hierarchy = new TreeHierarchy(svg)
+  const hierarchy = createTreeHierarchy(svg)
 
-  controllers.hierarchy.addListeners(hierarchy.onChangedLayer.bind(hierarchy));
-  controllers.audio.addListeners(hierarchy.onAudioUpdate.bind(hierarchy));
-  controllers.window.addListeners(hierarchy.onWindowResized.bind(hierarchy));
-  controllers.time_range.addListeners(hierarchy.onTimeRangeChanged.bind(hierarchy))
+  controllers.hierarchy.addListeners(hierarchy.onChangedLayer);
+  controllers.audio.addListeners(hierarchy.onAudioUpdate);
+  controllers.window.addListeners(hierarchy.onWindowResized);
+  controllers.time_range.addListeners(hierarchy.onTimeRangeChanged)
 
   return hierarchy;
 
