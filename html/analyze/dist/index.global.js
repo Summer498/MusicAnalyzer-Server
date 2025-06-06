@@ -2440,32 +2440,30 @@ Expected id is: ${regexp}`);
     }
     return res;
   };
-  var RootOfUnity = class {
-    exponent_cache;
-    modulo_cache;
-    constructor() {
-      this.exponent_cache = [];
-      this.modulo_cache = [];
-    }
-    exponent(k, N) {
-      const x = -2 * Math.PI * (k / N);
-      this.exponent_cache[N] ||= [];
-      this.exponent_cache[N][k] ||= new Complex(Math.cos(x), Math.sin(x));
-      return this.exponent_cache[N][k];
-    }
-    modulo(k, N, modulo) {
-      const root = modulo - 1;
-      this.modulo_cache[N] ||= [];
-      this.modulo_cache[N][k] ||= Math.pow(root, k * N) % modulo;
-      return this.exponent_cache[N][k];
-    }
+  var createRootOfUnity = () => {
+    const exponent_cache = [];
+    const modulo_cache = [];
+    return {
+      exponent(k, N) {
+        const x = -2 * Math.PI * (k / N);
+        exponent_cache[N] ||= [];
+        exponent_cache[N][k] ||= new Complex(Math.cos(x), Math.sin(x));
+        return exponent_cache[N][k];
+      },
+      modulo(k, N, modulo) {
+        const root = modulo - 1;
+        modulo_cache[N] ||= [];
+        modulo_cache[N][k] ||= Math.pow(root, k * N) % modulo;
+        return modulo_cache[N][k];
+      }
+    };
   };
   var fft = (seq) => {
     const N = Math.pow(2, Math.ceil(Math.log2(seq.length)));
     while (seq.length < N) {
       seq.push(new Complex(0, 0));
     }
-    return fft_core(seq, new RootOfUnity());
+    return fft_core(seq, createRootOfUnity());
   };
   var ifft = (seq) => {
     const ps = fft(seq.map((e) => new Complex(e.im, e.re)));
@@ -2569,35 +2567,33 @@ Expected id is: ${regexp}`);
   ];
 
   // ../../packages/util/math/src/fft/array/root-of-unity.ts
-  var RootOfUnity2 = class {
-    exponent_cache;
-    modulo_cache;
-    constructor() {
-      this.exponent_cache = [];
-      this.modulo_cache = [];
-    }
-    exponent(k, N) {
-      const x = -2 * Math.PI * (k / N);
-      this.exponent_cache[N] ||= [];
-      this.exponent_cache[N][k] ||= [Math.cos(x), Math.sin(x)];
-      return this.exponent_cache[N][k];
-    }
-    exponentList(N) {
-      return [
-        new Float32Array(N).map((e, k) => Math.cos(-2 * Math.PI * (k / N))),
-        new Float32Array(N).map((e, k) => Math.sin(-2 * Math.PI * (k / N)))
-      ];
-    }
-    modulo(k, N, modulo) {
-      const root = modulo - 1;
-      this.modulo_cache[N] ||= [];
-      this.modulo_cache[N][k] ||= Math.pow(root, k * N) % modulo;
-      return this.modulo_cache[N][k];
-    }
+  var createRootOfUnity2 = () => {
+    const exponent_cache = [];
+    const modulo_cache = [];
+    return {
+      exponent(k, N) {
+        const x = -2 * Math.PI * (k / N);
+        exponent_cache[N] ||= [];
+        exponent_cache[N][k] ||= [Math.cos(x), Math.sin(x)];
+        return exponent_cache[N][k];
+      },
+      exponentList(N) {
+        return [
+          new Float32Array(N).map((e, k) => Math.cos(-2 * Math.PI * (k / N))),
+          new Float32Array(N).map((e, k) => Math.sin(-2 * Math.PI * (k / N)))
+        ];
+      },
+      modulo(k, N, modulo) {
+        const root = modulo - 1;
+        modulo_cache[N] ||= [];
+        modulo_cache[N][k] ||= Math.pow(root, k * N) % modulo;
+        return modulo_cache[N][k];
+      }
+    };
   };
 
   // ../../packages/util/math/src/fft/array/ftt-core.ts
-  var root_of_unity = new RootOfUnity2();
+  var root_of_unity = createRootOfUnity2();
   var addAndSub = (x, y) => [
     addV2VC(x, y),
     subV2VC(x, y)
@@ -2843,64 +2839,57 @@ Expected id is: ${regexp}`);
     if (args.length === 1) {
       const [e] = args;
       return [e.begin, e.end];
-    } else {
-      return args;
     }
+    return args;
   };
-  var Time = class _Time {
-    begin;
-    end;
-    get duration() {
-      return this.end - this.begin;
-    }
-    constructor(...args) {
-      const [begin, end] = getArgs(...args);
-      this.begin = begin;
-      this.end = end;
-    }
-    map(func) {
-      return new _Time(func(this.begin), func(this.end));
-    }
-    has(medium) {
-      return this.begin <= medium && medium < this.end;
-    }
+  var createTime = (...args) => {
+    const [begin, end] = getArgs(...args);
+    return {
+      begin,
+      end,
+      get duration() {
+        return this.end - this.begin;
+      },
+      map: (func) => createTime(func(begin), func(end)),
+      has: (medium) => begin <= medium && medium < end
+    };
   };
 
   // ../../packages/UI/view/dist/index.mjs
-  var AudioReflectableRegistry = class _AudioReflectableRegistry {
-    static #count = 0;
-    constructor() {
-      if (_AudioReflectableRegistry.#count >= 1) {
-        throw new Error("this constructor should not be called twice (singleton)");
+  var audioRegistryCount = 0;
+  var createAudioReflectableRegistry = () => {
+    if (audioRegistryCount >= 1) {
+      throw new Error("this constructor should not be called twice (singleton)");
+    }
+    audioRegistryCount++;
+    const listeners = [];
+    return {
+      addListeners: (...ls) => {
+        listeners.push(...ls);
+      },
+      onUpdate: () => {
+        listeners.forEach((e) => e());
       }
-      _AudioReflectableRegistry.#count++;
-    }
-    listeners = [];
-    addListeners(...listeners) {
-      this.listeners.push(...listeners);
-    }
-    onUpdate() {
-      this.listeners.forEach((e) => e());
-    }
+    };
   };
-  var WindowReflectableRegistry = class _WindowReflectableRegistry {
-    static #count = 0;
-    constructor() {
-      if (_WindowReflectableRegistry.#count >= 1) {
-        throw new Error("this constructor should not be called twice (singleton)");
+  var windowRegistryCount = 0;
+  var createWindowReflectableRegistry = () => {
+    if (windowRegistryCount >= 1) {
+      throw new Error("this constructor should not be called twice (singleton)");
+    }
+    windowRegistryCount++;
+    const listeners = [];
+    return {
+      addListeners: (...ls) => {
+        listeners.push(...ls);
+      },
+      onUpdate: () => {
+        listeners.forEach((e) => e());
       }
-      _WindowReflectableRegistry.#count++;
-    }
-    listeners = [];
-    addListeners(...listeners) {
-      this.listeners.push(...listeners);
-    }
-    onUpdate() {
-      this.listeners.forEach((e) => e());
-    }
+    };
   };
-  var PianoRollTranslateX = class {
-    static get() {
+  var PianoRollTranslateX = {
+    get() {
       return CurrentTimeX.get() - NowAt.get() * NoteSize.get();
     }
   };
@@ -2961,7 +2950,7 @@ Expected id is: ${regexp}`);
   var BeatBarModel = class {
     time;
     constructor(beat_info, i) {
-      this.time = new Time(
+      this.time = createTime(
         i * 60 / beat_info.tempo,
         (i + 1) * 60 / beat_info.tempo
       );
@@ -3015,7 +3004,7 @@ Expected id is: ${regexp}`);
     }
     onTimeRangeChanged = this.onWindowResized;
     beepBeat() {
-      const model_is_in_range = new Time(0, reservation_range).map((e) => e + NowAt.get()).has(this.model.time.begin);
+      const model_is_in_range = createTime(0, reservation_range).map((e) => e + NowAt.get()).has(this.model.time.begin);
       if (model_is_in_range) {
         if (this.sound_reserved === false) {
           play([220], this.model.time.begin - NowAt.get(), 0.125);
@@ -3075,15 +3064,11 @@ Expected id is: ${regexp}`);
   };
 
   // ../../packages/util/stdlib/dist/index.mjs
-  var Assertion = class {
-    #assertion;
-    constructor(assertion) {
-      this.#assertion = assertion;
+  var createAssertion = (assertion) => ({
+    onFailed: (errorExecution) => {
+      if (!assertion) errorExecution();
     }
-    onFailed(errorExecution) {
-      this.#assertion || errorExecution();
-    }
-  };
+  });
   var getCapitalCase = (str) => str[0].toUpperCase().concat(str.slice(1));
   var getLowerCase = (str) => str.toLowerCase();
 
@@ -4505,10 +4490,10 @@ Expected id is: ${regexp}`);
     }
   };
   var hsv2rgb = (h, s, v3) => {
-    new Assertion(0 <= s && s <= 1).onFailed(() => {
+    createAssertion(0 <= s && s <= 1).onFailed(() => {
       throw new RangeError(`Unexpected value received. It should be in 0 <= s <= 1, but max is ${s}`);
     });
-    new Assertion(0 <= v3 && v3 <= 1).onFailed(() => {
+    createAssertion(0 <= v3 && v3 <= 1).onFailed(() => {
       throw new RangeError(`Unexpected value received. It should be in 0 <= v <= 1, but mid is ${v3}`);
     });
     const H = mod(h, 360) / 60;
@@ -4862,24 +4847,20 @@ Expected id is: ${regexp}`);
     onAudioUpdate(d_melody_collection.svg);
     return d_melody_collection.svg;
   }
-  var IRPlotAxis = class {
-    constructor(svg) {
-      this.svg = svg;
-    }
-  };
-  var IRPlotCircles = class {
-    constructor(svg) {
-      this.svg = svg;
-      this._show = [];
-    }
-    _show;
-    get show() {
-      return this._show;
-    }
-    setShow(visible_layers) {
-      this._show = visible_layers;
-      this.svg.replaceChildren(...this._show.map((e) => e.view.svg));
-    }
+  var createIRPlotAxis = (svg) => ({ svg });
+  var createIRPlotCircles = (svg) => {
+    let show = [];
+    const setShow2 = (visible_layers) => {
+      show = visible_layers;
+      svg.replaceChildren(...show.map((e) => e.view.svg));
+    };
+    return {
+      svg,
+      get show() {
+        return show;
+      },
+      setShow: setShow2
+    };
   };
   var IRPlotHierarchyModel = class {
     width;
@@ -4977,8 +4958,8 @@ Expected id is: ${regexp}`);
       return this.melody.getCurrentNote().melody_analysis.implication_realization;
     }
     constructor(melody_series) {
-      this.time = new Time(0, 0);
-      this.head = new Time(0, 0);
+      this.time = createTime(0, 0);
+      this.head = createTime(0, 0);
       this.melody = new MelodiesCache(melody_series);
     }
     get is_visible() {
@@ -5203,10 +5184,10 @@ Expected id is: ${regexp}`);
     const h = h_model.height;
     const x_axis_svg = getAxis({ x1: 0, x2: w, y1: h / 2, y2: h / 2 });
     const y_axis_svg = getAxis({ x1: w / 2, x2: w / 2, y1: 0, y2: h });
-    const x_axis = new IRPlotAxis(x_axis_svg);
-    const y_axis = new IRPlotAxis(y_axis_svg);
+    const x_axis = createIRPlotAxis(x_axis_svg);
+    const y_axis = createIRPlotAxis(y_axis_svg);
     const circle_svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    const circles = new IRPlotCircles(circle_svg);
+    const circles = createIRPlotCircles(circle_svg);
     const axis_svg = getAxisSVG(w, h, x_axis, y_axis, circles);
     const view = new IRPlotHierarchyView(axis_svg, x_axis, y_axis, circles);
     const svgg = getSVGG2("IR-plot-hierarchy", layers);
@@ -5333,7 +5314,7 @@ Expected id is: ${regexp}`);
     if (!model.note) {
       return;
     }
-    const model_is_in_range = new Time(0, reservation_range).map((e) => e + NowAt.get()).has(model.time.begin);
+    const model_is_in_range = createTime(0, reservation_range).map((e) => e + NowAt.get()).has(model.time.begin);
     if (model_is_in_range) {
       if (_sound_reserved === false) {
         _beepMelody(model);
@@ -6899,7 +6880,7 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
   var getArgsOfSerializedTimeAndAnalyzedMelody = (args) => {
     if (args.length === 1) {
       const [e] = args;
-      return [new Time(e.time), new Time(e.head), e.note, new SerializedMelodyAnalysis(e.melody_analysis)];
+      return [createTime(e.time), createTime(e.head), e.note, new SerializedMelodyAnalysis(e.melody_analysis)];
     }
     return args;
   };
@@ -6920,8 +6901,8 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
     if (args.length === 1) {
       const [e] = args;
       return [
-        new Time(e.time),
-        new Time(e.head),
+        createTime(e.time),
+        createTime(e.head),
         e.note
       ];
     }
@@ -6940,7 +6921,7 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
   };
 
   // ../../packages/music-structure/melody/melody-hierarchical-analysis/dist/index.mjs
-  var getTime = (matrix, left, right) => new Time(
+  var getTime = (matrix, left, right) => createTime(
     matrix[left.measure][left.note].leftend,
     matrix[right.measure][right.note].rightend
   );
@@ -7006,7 +6987,7 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
     roman;
     constructor(...args) {
       const [time, chord, scale2, roman] = getArgsOfSerializedTimeAndRomanAnalysis(args);
-      this.time = new Time(time);
+      this.time = createTime(time);
       this.chord = chord;
       this.scale = scale2;
       this.roman = roman;
@@ -7459,8 +7440,8 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
       const layer_count = hierarchical_melody.length - 1;
       const length = melodies.length;
       this.controller = new Controllers(layer_count, length, !this.NO_CHORD);
-      this.audio_time_mediator = new AudioReflectableRegistry();
-      this.window_size_mediator = new WindowReflectableRegistry();
+      this.audio_time_mediator = createAudioReflectableRegistry();
+      this.window_size_mediator = createWindowReflectableRegistry();
       const controllers = {
         ...this.controller,
         audio: this.audio_time_mediator,

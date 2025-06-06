@@ -13,10 +13,10 @@ import { getHierarchicalMelody } from "@music-analyzer/melody-hierarchical-analy
 import { SerializedRomanAnalysisData } from "@music-analyzer/chord-analyze";
 import { SerializedMelodyAnalysisData } from "@music-analyzer/melody-analyze";
 import { xml_parser } from "@music-analyzer/serializable-data";
-import { AudioReflectableRegistry, createAudioReflectableRegistry } from "@music-analyzer/view";
+import { createAudioReflectableRegistry } from "@music-analyzer/view";
 import { NowAt } from "@music-analyzer/view-parameters";
 import { MusicStructureElements } from "@music-analyzer/piano-roll";
-import { WindowReflectableRegistry, createWindowReflectableRegistry } from "@music-analyzer/view";
+import { createWindowReflectableRegistry } from "@music-analyzer/view";
 import { DMelodyController } from "@music-analyzer/controllers";
 import { GravityController } from "@music-analyzer/controllers";
 import { HierarchyLevelController } from "@music-analyzer/controllers";

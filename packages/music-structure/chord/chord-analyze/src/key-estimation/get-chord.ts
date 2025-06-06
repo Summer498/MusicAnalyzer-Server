@@ -1,8 +1,8 @@
 import { Chord } from "@music-analyzer/tonal-objects";
 import { getChord as _getChord } from "@music-analyzer/tonal-objects";
 import { getIntervalDegree } from "@music-analyzer/tonal-objects";
-import { Assertion } from "@music-analyzer/stdlib";
 import { getBodyAndRoot } from "./get-body-and-root";
+import { createAssertion } from "@music-analyzer/stdlib";
 
 // ルート付きコードが入力されてもコードを得られるようにする.
 export const getChord = (chord_string: string) => {
@@ -11,8 +11,8 @@ export const getChord = (chord_string: string) => {
   const chord = _getChord(body_and_root.body);
   if (chord_string === "") { return chord; }
 
-  new Assertion(!chord.empty).onFailed(() => { throw Error(`Illegal chord symbol "${chord_string}" received`); });
-  // new Assertion(chord.tonic != null).onFailed(() => { throw new TypeError("tonic must not be null"); });  // NOTE: chord.tonic を null にするテストケースを思いつかないので(=無さそうなので)コメントアウト
+  createAssertion(!chord.empty).onFailed(() => { throw Error(`Illegal chord symbol "${chord_string}" received`); });
+  // createAssertion(chord.tonic != null).onFailed(() => { throw new TypeError("tonic must not be null"); });  // NOTE: chord.tonic を null にするテストケースを思いつかないので(=無さそうなので)コメントアウト
 
   if (root != "" && !chord.notes.includes(root)) {
     // TODO: 現在はベース音をプッシュすると同じ(に見える)コードに対して候補が変化するように見えてしまう
