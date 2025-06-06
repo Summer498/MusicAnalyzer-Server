@@ -2,7 +2,7 @@ import { setCurrentTimeRatio, setPianoRollParameters } from "@music-analyzer/vie
 import { song_list } from "@music-analyzer/gttm";
 import { createAnalyzedDataContainer } from "@music-analyzer/analyzed-data-container";
 import { AudioViewer } from "@music-analyzer/spectrogram";
-import { PianoRoll } from "@music-analyzer/piano-roll";
+import { createPianoRoll, PianoRoll } from "@music-analyzer/piano-roll";
 import { PianoRollHeight } from "@music-analyzer/view-parameters";
 import { PianoRollWidth } from "@music-analyzer/view-parameters";
 import { GTTMData } from "@music-analyzer/gttm";
@@ -21,7 +21,7 @@ import { SerializedMelodyAnalysisData } from "@music-analyzer/melody-analyze";
 import { xml_parser } from "@music-analyzer/serializable-data";
 import { AudioReflectableRegistry, createAudioReflectableRegistry } from "@music-analyzer/view";
 import { NowAt } from "@music-analyzer/view-parameters";
-import { MusicStructureElements } from "@music-analyzer/piano-roll";
+import { createMusicStructureElements, MusicStructureElements } from "@music-analyzer/piano-roll";
 import { WindowReflectableRegistry, createWindowReflectableRegistry } from "@music-analyzer/view";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 
@@ -137,7 +137,7 @@ class ApplicationManager {
       window: this.window_size_mediator,
     }
 
-    this.analyzed = new MusicStructureElements(beat_info, romans, hierarchical_melody, melodies, d_melodies, controllers)
+    this.analyzed = createMusicStructureElements(beat_info, romans, hierarchical_melody, melodies, d_melodies, controllers)
   }
 }
 
@@ -326,7 +326,7 @@ const setupUI = (
   manager: ApplicationManager,
 ) => {
   const audio_viewer = new AudioViewer(audio_player, manager.audio_time_mediator);
-  const piano_roll_view = new PianoRoll(manager.analyzed, manager.window_size_mediator, !manager.FULL_VIEW)
+  const piano_roll_view = createPianoRoll(manager.analyzed, manager.window_size_mediator, !manager.FULL_VIEW)
   asParent(piano_roll_place)
     .appendChildren(
       /*
