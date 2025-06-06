@@ -1,4 +1,4 @@
-import { Controller } from "./controller";
+import { Controller, createController } from "./controller";
 
 export interface Checkbox {
   readonly body: HTMLSpanElement

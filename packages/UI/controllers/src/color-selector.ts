@@ -5,18 +5,23 @@ import { get_color_on_digital_parametric_scale } from "@music-analyzer/irm";
 import { get_color_on_intervallic_angle } from "@music-analyzer/irm";
 import { get_color_on_parametric_scale } from "@music-analyzer/irm";
 import { get_color_on_registral_scale } from "@music-analyzer/irm";
-import { Controller } from "./controller";
+import { Controller, createController } from "./controller";
 
 
 export type GetColor = (e: ITriad) => string;
 export type SetColor = (getColor: GetColor) => void;
 
-abstract class ColorSelector<T> extends Controller<T> {
+abstract class ColorSelector<T> implements Controller<T> {
+  body!: HTMLSpanElement;
+  input!: HTMLInputElement;
+  listeners!: ((e: T) => void)[];
+  addListeners!: (...listeners: ((e: T) => void)[]) => void;
+  init!: () => void;
   constructor(
     readonly id: string,
     text: string
   ) {
-    super("radio", id, text);
+    createController<T>(this, "radio", id, text);
   };
 }
 
