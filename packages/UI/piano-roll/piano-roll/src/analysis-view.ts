@@ -3,7 +3,7 @@ import { BeatElements } from "@music-analyzer/beat-view";
 import { SerializedTimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { ChordElements } from "@music-analyzer/chord-view";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
-import { MelodyElements } from "@music-analyzer/melody-view";
+import { MelodyElements, createMelodyElements } from "@music-analyzer/melody-view";
 import { RequiredByBeatElements } from "@music-analyzer/beat-view";
 import { RequiredByChordElements } from "@music-analyzer/chord-view";
 import { RequiredByMelodyElements } from "@music-analyzer/melody-view";
@@ -22,7 +22,7 @@ export class MusicStructureElements {
   ) {
     this.beat = new BeatElements(beat_info, melodies, controllers)
     this.chord = new ChordElements(romans, controllers)
-    this.melody = new MelodyElements(hierarchical_melody, d_melodies, controllers)
+    this.melody = createMelodyElements(hierarchical_melody, d_melodies, controllers)
   }
 }
 

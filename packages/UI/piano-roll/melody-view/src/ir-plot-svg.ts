@@ -5,25 +5,26 @@ import { HierarchyLevelController, MelodyColorController, SetColor } from "@musi
 import { Time, createTime } from "@music-analyzer/time-and";
 import { AudioReflectableRegistry, PianoRollTranslateX, WindowReflectableRegistry } from "@music-analyzer/view";
 
-class IRPlotAxis {
-  constructor(
-    readonly svg: SVGLineElement,
-  ) { }
-}
+interface IRPlotAxis { readonly svg: SVGLineElement }
+const createIRPlotAxis = (svg: SVGLineElement): IRPlotAxis => ({ svg })
 
-class IRPlotCircles {
-  private _show: IRPlotLayer[];
-  get show() { return this._show; }
-  constructor(
-    readonly svg: SVGGElement,
-  ) {
-    this._show = [];
-  }
-  setShow(visible_layers: IRPlotLayer[]) {
-    this._show = visible_layers;
-    this.svg.replaceChildren(...this._show.map(e => e.view.svg));
-  }
+interface IRPlotCircles {
+  readonly svg: SVGGElement;
+  readonly show: IRPlotLayer[];
+  setShow: (visible_layers: IRPlotLayer[]) => void;
 }
+const createIRPlotCircles = (svg: SVGGElement): IRPlotCircles => {
+  let show: IRPlotLayer[] = [];
+  const setShow = (visible_layers: IRPlotLayer[]) => {
+    show = visible_layers;
+    svg.replaceChildren(...show.map(e => e.view.svg));
+  };
+  return {
+    svg,
+    get show() { return show; },
+    setShow,
+  };
+};
 
 class IRPlotHierarchyModel {
   readonly width: number;
@@ -387,11 +388,11 @@ export function buildIRPlot(
   const x_axis_svg = getAxis({ x1: 0, x2: w, y1: h / 2, y2: h / 2 });
   const y_axis_svg = getAxis({ x1: w / 2, x2: w / 2, y1: 0, y2: h });
 
-  const x_axis = new IRPlotAxis(x_axis_svg);
-  const y_axis = new IRPlotAxis(y_axis_svg);
+  const x_axis = createIRPlotAxis(x_axis_svg);
+  const y_axis = createIRPlotAxis(y_axis_svg);
 
   const circle_svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-  const circles = new IRPlotCircles(circle_svg);
+  const circles = createIRPlotCircles(circle_svg);
   const axis_svg = getAxisSVG(w, h, x_axis, y_axis, circles);
   const view = new IRPlotHierarchyView(axis_svg, x_axis, y_axis, circles);
 

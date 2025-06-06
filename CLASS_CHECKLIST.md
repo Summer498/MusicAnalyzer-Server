@@ -22,11 +22,11 @@
 - [ ] packages/UI/piano-roll/beat-view/src/beat-elements.ts -  BeatBarsSeries {
 - [ ] packages/UI/piano-roll/beat-view/src/beat-elements.ts -  BeatElements {
 - [ ] packages/UI/piano-roll/chord-view/index.ts -  ChordElements {
-- [ ] packages/UI/piano-roll/melody-view/index.ts -  MelodyElements {
+- [x] packages/UI/piano-roll/melody-view/index.ts -  MelodyElements {
 - [ ] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  CacheCore {
 - [ ] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlot {
-- [ ] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotAxis {
-- [ ] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotCircles {
+- [x] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotAxis {
+- [x] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotCircles {
 - [ ] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotHierarchy {
 - [ ] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotHierarchyModel {
 - [ ] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotHierarchyView {
