@@ -1,7 +1,7 @@
 import { setCurrentTimeRatio, setPianoRollParameters } from "@music-analyzer/view-parameters";
 import { song_list } from "@music-analyzer/gttm";
 import { createAnalyzedDataContainer } from "@music-analyzer/analyzed-data-container";
-import { AudioViewer } from "@music-analyzer/spectrogram";
+import { createAudioViewer } from "@music-analyzer/spectrogram";
 import { PianoRoll } from "@music-analyzer/piano-roll";
 import { PianoRollHeight } from "@music-analyzer/view-parameters";
 import { PianoRollWidth } from "@music-analyzer/view-parameters";
@@ -325,7 +325,7 @@ const setupUI = (
   piano_roll_place: HTMLDivElement,
   manager: ApplicationManager,
 ) => {
-  const audio_viewer = new AudioViewer(audio_player, manager.audio_time_mediator);
+  const audio_viewer = createAudioViewer(audio_player, manager.audio_time_mediator);
   const piano_roll_view = new PianoRoll(manager.analyzed, manager.window_size_mediator, !manager.FULL_VIEW)
   asParent(piano_roll_place)
     .appendChildren(

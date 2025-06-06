@@ -1,28 +1,30 @@
 import { AudioReflectableRegistry } from "@music-analyzer/view";
-import { WaveViewer } from "./wave-viewer";
-import { spectrogramViewer } from "./spectrogram-viewer";
-import { AudioAnalyzer } from "./audio-analyzer";
-import { FFTViewer } from "./fft-viewer";
+import { WaveViewer, createWaveViewer } from "./wave-viewer";
+import { SpectrogramViewer, createSpectrogramViewer } from "./spectrogram-viewer";
+import { AudioAnalyzer, createAudioAnalyzer } from "./audio-analyzer";
+import { FFTViewer, createFFTViewer } from "./fft-viewer";
 
 // AudioAnalyzer.ts
-export class AudioViewer {
+export interface AudioViewer {
   readonly wave: WaveViewer;
-  readonly spectrogram: spectrogramViewer;
+  readonly spectrogram: SpectrogramViewer;
   readonly fft: FFTViewer;
-
-  constructor(
-    private readonly audio_element: HTMLMediaElement,
-    audio_registry: AudioReflectableRegistry
-  ) {
-    const analyser = new AudioAnalyzer(this.audio_element);
-    this.wave = new WaveViewer(analyser);
-    this.spectrogram = new spectrogramViewer(analyser);
-    this.fft = new FFTViewer(analyser)
-    audio_registry.addListeners(this.onAudioUpdate.bind(this));
-  }
-  onAudioUpdate() {
-    this.wave.onAudioUpdate();
-    this.spectrogram.onAudioUpdate();
-    this.fft.onAudioUpdate();
-  }
+  onAudioUpdate(): void;
 }
+
+export const createAudioViewer = (
+  audio_element: HTMLMediaElement,
+  audio_registry: AudioReflectableRegistry,
+): AudioViewer => {
+  const analyser = createAudioAnalyzer(audio_element);
+  const wave = createWaveViewer(analyser);
+  const spectrogram = createSpectrogramViewer(analyser);
+  const fft = createFFTViewer(analyser);
+  const onAudioUpdate = () => {
+    wave.onAudioUpdate();
+    spectrogram.onAudioUpdate();
+    fft.onAudioUpdate();
+  };
+  audio_registry.addListeners(onAudioUpdate);
+  return { wave, spectrogram, fft, onAudioUpdate };
+};

@@ -1,1 +1,4 @@
-export { AudioAnalyzer } from "./audio-analyzer";
+export {
+  type AudioAnalyzer,
+  createAudioAnalyzer,
+} from "./audio-analyzer";
