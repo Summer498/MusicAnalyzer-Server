@@ -1,7 +1,7 @@
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { BeatElements } from "@music-analyzer/beat-view";
 import { SerializedTimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
-import { ChordElements } from "@music-analyzer/chord-view";
+import { ChordElements, createChordElements } from "@music-analyzer/chord-view";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { MelodyElements, createMelodyElements } from "@music-analyzer/melody-view";
 import { RequiredByBeatElements } from "@music-analyzer/beat-view";
@@ -22,7 +22,7 @@ export function MusicStructureElements(
   controllers: RequiredByBeatElements & RequiredByChordElements & RequiredByMelodyElements,
 ): MusicStructureElements {
   const beat = new BeatElements(beat_info, melodies, controllers)
-  const chord = new ChordElements(romans, controllers)
+  const chord = createChordElements(romans, controllers)
   const melody = createMelodyElements(hierarchical_melody, d_melodies, controllers)
   return { beat, chord, melody }
 }
