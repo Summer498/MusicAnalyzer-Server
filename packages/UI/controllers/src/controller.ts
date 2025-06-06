@@ -1,53 +1,83 @@
-type HTMLInputElementType = "button" | "checkbox" | "color" | "date" | "datetime-local" | "email" | "file" | "hidden" | "image" | "month" | "number" | "password" | "radio" | "range" | "reset" | "search" | "submit" | "tel" | "text" | "time" | "url" | "week";
+type HTMLInputElementType =
+  | "button"
+  | "checkbox"
+  | "color"
+  | "date"
+  | "datetime-local"
+  | "email"
+  | "file"
+  | "hidden"
+  | "image"
+  | "month"
+  | "number"
+  | "password"
+  | "radio"
+  | "range"
+  | "reset"
+  | "search"
+  | "submit"
+  | "tel"
+  | "text"
+  | "time"
+  | "url"
+  | "week";
 
-export abstract class Controller<T> {
+export interface Controller<T> {
   readonly body: HTMLSpanElement;
   readonly input: HTMLInputElement;
-  constructor(
-    type: HTMLInputElementType,
-    id: string,
-    label: string,
-  ) {
-    const e = new ControllerView(type, id, label);
-    this.body = e.body;
-    this.input = e.input
-    this.init()
-  }
-  protected readonly listeners: ((e:T) => void)[] = []
-  addListeners(...listeners: ((e:T) => void)[]) {
-    this.listeners.push(...listeners);
-    this.update();
-  }
-  abstract update(): void;
-  init() {
-    this.input.addEventListener("input", this.update.bind(this));
-    this.update();
-  };
+  readonly listeners: ((e: T) => void)[];
+  addListeners(...listeners: ((e: T) => void)[]): void;
+  update(): void;
 }
 
-export class ControllerView {
+export interface ControllerView {
   readonly body: HTMLSpanElement;
   readonly input: HTMLInputElement;
   readonly label: HTMLLabelElement;
+}
 
-  constructor(
-    type: HTMLInputElementType,
-    id: string,
-    label: string,
-  ) {
-    this.input = document.createElement("input");
-    this.input.type = type;
-    this.input.id = id;
-    this.input.name = id;
+export function createControllerView(
+  type: HTMLInputElementType,
+  id: string,
+  label: string,
+): ControllerView {
+  const input = document.createElement("input");
+  input.type = type;
+  input.id = id;
+  input.name = id;
 
-    this.label = document.createElement("label");
-    this.label.textContent = label;
-    this.label.htmlFor = this.input.id;
-    this.label.style.whiteSpace = "nowrap";
+  const labelEl = document.createElement("label");
+  labelEl.textContent = label;
+  labelEl.htmlFor = input.id;
+  labelEl.style.whiteSpace = "nowrap";
 
-    this.body = document.createElement("span");
-    this.body.style.whiteSpace = "nowrap";
-    this.body.appendChild(this.label);
-    this.body.appendChild(this.input);
-  }
+  const body = document.createElement("span");
+  body.style.whiteSpace = "nowrap";
+  body.appendChild(labelEl);
+  body.appendChild(input);
+
+  return { body, input, label: labelEl };
+}
+
+export function createController<T>(
+  type: HTMLInputElementType,
+  id: string,
+  label: string,
+): Controller<T> {
+  const view = createControllerView(type, id, label);
+  const controller: Controller<T> = {
+    body: view.body,
+    input: view.input,
+    listeners: [],
+    addListeners(...listeners: ((e: T) => void)[]) {
+      controller.listeners.push(...listeners);
+      controller.update();
+    },
+    update() {},
+  };
+
+  controller.input.addEventListener("input", () => controller.update());
+  controller.update();
+
+  return controller;
 }
