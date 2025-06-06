@@ -1,5 +1,5 @@
 import { BeatInfo } from "@music-analyzer/beat-estimation";
-import { Time } from "@music-analyzer/time-and";
+import { Time, createTime } from "@music-analyzer/time-and";
 import { AudioReflectableRegistry, PianoRollTranslateX, WindowReflectableRegistry } from "@music-analyzer/view";
 import { TimeRangeController } from "@music-analyzer/controllers";
 import { NowAt, PianoRollConverter } from "@music-analyzer/view-parameters";
@@ -10,7 +10,7 @@ import { play } from "@music-analyzer/synth";
 export class BeatBarModel {
   readonly time: Time;
   constructor(beat_info: BeatInfo, i: number) {
-    this.time = new Time(
+    this.time = createTime(
       i * 60 / beat_info.tempo,
       (i + 1) * 60 / beat_info.tempo
     );
@@ -66,7 +66,7 @@ export class BeatBar {
   onTimeRangeChanged = this.onWindowResized
 
   beepBeat() {
-    const model_is_in_range = new Time(0, reservation_range)
+    const model_is_in_range = createTime(0, reservation_range)
       .map(e => e + NowAt.get())
       .has(this.model.time.begin);
     if (model_is_in_range) {

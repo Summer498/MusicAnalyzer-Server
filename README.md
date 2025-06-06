@@ -64,8 +64,19 @@ import { createAssertion, createNotImplementedError } from "@music-analyzer/stdl
 createAssertion(x > 0).onFailed(() => { throw createNotImplementedError(); });
 ```
 
+UI registries are instantiated in the same way:
+
 ```ts
 import { createAudioReflectableRegistry, createWindowReflectableRegistry } from "@music-analyzer/view";
 const audioReg = createAudioReflectableRegistry();
 const windowReg = createWindowReflectableRegistry();
+```
+
+Time ranges and FFT helpers follow the same pattern:
+
+```ts
+import { createTime } from "@music-analyzer/time-and";
+import { createRootOfUnity } from "@music-analyzer/math";
+const time = createTime(0, 1);
+const roots = createRootOfUnity();
 ```

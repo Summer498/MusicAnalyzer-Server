@@ -1,4 +1,4 @@
-import { Time } from "@music-analyzer/time-and";
+import { Time, createTime } from "@music-analyzer/time-and";
 
 type SerializedTimeAndRomanAnalysis_Arg = [Time, string, string, string];
 const getArgsOfSerializedTimeAndRomanAnalysis = (
@@ -31,7 +31,7 @@ export class SerializedTimeAndRomanAnalysis {
       | [SerializedTimeAndRomanAnalysis]
   ) {
     const [time, chord, scale, roman] = getArgsOfSerializedTimeAndRomanAnalysis(args);
-    this.time = new Time(time);
+    this.time = createTime(time);
     this.chord = chord;
     this.scale = scale;
     this.roman = roman;

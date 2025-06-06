@@ -6,14 +6,14 @@ import { ReductionElement } from "@music-analyzer/gttm";
 import { TimeSpan } from "@music-analyzer/gttm";
 import { MusicXML } from "@music-analyzer/musicxml";
 import { Pitch } from "@music-analyzer/musicxml";
-import { Time } from "@music-analyzer/time-and";
+import { Time, createTime } from "@music-analyzer/time-and";
 import { getChroma } from "@music-analyzer/tonal-objects";
 
 const getTime = (
   matrix: TimeSpan[][],
   left: ReductionElement,
   right: ReductionElement,
-) => new Time(
+) => createTime(
   matrix[left.measure][left.note].leftend,
   matrix[right.measure][right.note].rightend,
 )

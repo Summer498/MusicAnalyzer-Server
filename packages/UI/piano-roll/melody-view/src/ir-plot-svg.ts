@@ -2,7 +2,7 @@ import { ITriad } from "@music-analyzer/irm";
 import { NowAt } from "@music-analyzer/view-parameters";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 import { HierarchyLevelController, MelodyColorController, SetColor } from "@music-analyzer/controllers";
-import { Time } from "@music-analyzer/time-and";
+import { Time, createTime } from "@music-analyzer/time-and";
 import { AudioReflectableRegistry, PianoRollTranslateX, WindowReflectableRegistry } from "@music-analyzer/view";
 
 class IRPlotAxis {
@@ -126,8 +126,8 @@ class IRPlotModel {
   constructor(
     melody_series: SerializedTimeAndAnalyzedMelody[],
   ) {
-    this.time = new Time(0, 0);  // dummy
-    this.head = new Time(0, 0);  // dummy
+    this.time = createTime(0, 0);  // dummy
+    this.head = createTime(0, 0);  // dummy
     this.melody = new MelodiesCache(melody_series);
   }
   get is_visible() { return this.melody.is_visible; }

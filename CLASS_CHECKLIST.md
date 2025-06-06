@@ -137,8 +137,8 @@
 - [ ] packages/util/html/src/svg.ts -  SVG {
 - [ ] packages/util/math/src/fft/array/root-of-unity.ts -  RootOfUnity {
 - [ ] packages/util/math/src/fft/complex.ts -  Complex<T extends number> {
-- [ ] packages/util/math/src/fft/root-of-unity.ts -  RootOfUnity {
-- [ ] packages/util/math/src/reduction/compare.ts -  Compare {
-- [ ] packages/util/stdlib/src/assertion/assertion.ts -  Assertion {
-- [ ] packages/util/stdlib/src/error/not-implemented-error.ts -  NotImplementedError 
-- [ ] packages/util/time-and/src/time.ts -  Time {
+- [x] packages/util/math/src/fft/root-of-unity.ts -  RootOfUnity {
+- [x] packages/util/math/src/reduction/compare.ts -  Compare {
+- [x] packages/util/stdlib/src/assertion/assertion.ts -  Assertion {
+- [x] packages/util/stdlib/src/error/not-implemented-error.ts -  NotImplementedError
+- [x] packages/util/time-and/src/time.ts -  Time {

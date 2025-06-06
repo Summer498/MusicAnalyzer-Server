@@ -6,7 +6,7 @@ import { play } from "@music-analyzer/synth";
 import { black_key_height, NowAt, PianoRollConverter } from "@music-analyzer/view-parameters";
 import { reservation_range } from "@music-analyzer/view-parameters";
 import { HierarchyLevelController, MelodyBeepController, MelodyColorController, SetColor, TimeRangeController } from "@music-analyzer/controllers";
-import { Time } from "@music-analyzer/time-and";
+import { Time, createTime } from "@music-analyzer/time-and";
 import { AudioReflectableRegistry, PianoRollTranslateX, WindowReflectableRegistry } from "@music-analyzer/view";
 
 let _beep_volume = 0;
@@ -51,7 +51,7 @@ const beepMelody = (model: I_MelodyModel) => {
   if (!_do_melody_beep) { return; }
   if (!model.note) { return; }
   const model_is_in_range =
-    new Time(0, reservation_range)
+    createTime(0, reservation_range)
       .map(e => e + NowAt.get())
       .has(model.time.begin)
   if (model_is_in_range) {
