@@ -26,28 +26,32 @@ const createIRPlotCircles = (svg: SVGGElement): IRPlotCircles => {
   };
 };
 
-class IRPlotHierarchyModel {
-  readonly width: number;
-  readonly height: number;
-  constructor(children: IRPlotLayer[]) {
-    const w = Math.max(...children.map(e => e.view.model.w));
-    const h = Math.max(...children.map(e => e.view.model.h));
-    this.width = w;
-    this.height = h;
-  }
-}
+interface IRPlotHierarchyModel { readonly width: number; readonly height: number; }
+const createIRPlotHierarchyModel = (children: IRPlotLayer[]): IRPlotHierarchyModel => {
+  const w = Math.max(...children.map(e => e.view.model.w));
+  const h = Math.max(...children.map(e => e.view.model.h));
+  return { width: w, height: h };
+};
 
-class IRPlotHierarchyView {
-  constructor(
-    readonly svg: SVGGElement,
-    readonly x_axis: IRPlotAxis,
-    readonly y_axis: IRPlotAxis,
-    readonly circles: IRPlotCircles,
-  ) { }
-  updateCircleVisibility(visible_layer: IRPlotLayer[]) {
-    this.circles.setShow(visible_layer);
-  }
+interface IRPlotHierarchyView {
+  readonly svg: SVGGElement;
+  readonly x_axis: IRPlotAxis;
+  readonly y_axis: IRPlotAxis;
+  readonly circles: IRPlotCircles;
+  updateCircleVisibility: (visible_layer: IRPlotLayer[]) => void;
 }
+const createIRPlotHierarchyView = (
+  svg: SVGGElement,
+  x_axis: IRPlotAxis,
+  y_axis: IRPlotAxis,
+  circles: IRPlotCircles,
+): IRPlotHierarchyView => ({
+  svg,
+  x_axis,
+  y_axis,
+  circles,
+  updateCircleVisibility: (visible_layer) => circles.setShow(visible_layer),
+});
 
 class CacheCore {
   #cache: SerializedTimeAndAnalyzedMelody[];
@@ -119,39 +123,49 @@ class MelodiesCache {
   }
 }
 
-class IRPlotModel {
+interface IRPlotModel {
   readonly time: Time;
   readonly head: Time;
-  readonly melody: MelodiesCache
-  get archetype() { return this.melody.getCurrentNote().melody_analysis.implication_realization as ITriad; }
-  constructor(
-    melody_series: SerializedTimeAndAnalyzedMelody[],
-  ) {
-    this.time = createTime(0, 0);  // dummy
-    this.head = createTime(0, 0);  // dummy
-    this.melody = new MelodiesCache(melody_series);
-  }
-  get is_visible() { return this.melody.is_visible; }
-  getRangedMelody() { return this.melody.getRangedMelody() }
-  getPositionRatio() { return this.melody.getPositionRatio() }
-  getInterval() { return this.melody.getInterval() }
-  getCurrentNote() { return this.melody.getCurrentNote() }
+  readonly melody: MelodiesCache;
+  readonly archetype: ITriad;
+  readonly is_visible: boolean;
+  getRangedMelody: () => SerializedTimeAndAnalyzedMelody[];
+  getPositionRatio: () => number;
+  getInterval: () => number[];
+  getCurrentNote: () => SerializedTimeAndAnalyzedMelody;
 }
+const createIRPlotModel = (melody_series: SerializedTimeAndAnalyzedMelody[]): IRPlotModel => {
+  const melody = new MelodiesCache(melody_series);
+  const model: IRPlotModel = {
+    time: createTime(0, 0),
+    head: createTime(0, 0),
+    melody,
+    get archetype() { return melody.getCurrentNote().melody_analysis.implication_realization as ITriad; },
+    get is_visible() { return melody.is_visible; },
+    getRangedMelody: () => melody.getRangedMelody(),
+    getPositionRatio: () => melody.getPositionRatio(),
+    getInterval: () => melody.getInterval(),
+    getCurrentNote: () => melody.getCurrentNote(),
+  };
+  return model;
+};
 
-class IRPlotViewModel {
+interface IRPlotViewModel {
   readonly x0: number;
   readonly y0: number;
   readonly w: number;
   readonly h: number;
-  constructor() {
-    this.w = 500;
-    this.h = 500;
-    this.x0 = 250;
-    this.y0 = 250;
-  }
-  getTranslatedX(x: number) { return x * this.w / 2 + this.x0; }
-  getTranslatedY(y: number) { return y * this.h / 2 + this.y0; }
+  getTranslatedX: (x: number) => number;
+  getTranslatedY: (y: number) => number;
 }
+const createIRPlotViewModel = (): IRPlotViewModel => ({
+  w: 500,
+  h: 500,
+  x0: 250,
+  y0: 250,
+  getTranslatedX: function (x: number) { return x * this.w / 2 + this.x0; },
+  getTranslatedY: function (y: number) { return y * this.h / 2 + this.y0; },
+});
 
 const get_pos = (_x: number, _y: number) => {
   const a = 1 / 3;
@@ -168,126 +182,155 @@ const get_pos = (_x: number, _y: number) => {
 
 const nan2zero = (x: number) => isNaN(x) ? 0 : x
 
-class IRPlotView {
-  constructor(
-    readonly svg: SVGGElement,
-    readonly view_model: IRPlotViewModel,
-    readonly model: IRPlotModel
-  ) {
-  }
-  updateRadius(r: number) {
-    this.svg.style.r = String(r);
-  }
-  private updateX(x: number) {
+interface IRPlotView {
+  readonly svg: SVGGElement;
+  readonly view_model: IRPlotViewModel;
+  readonly model: IRPlotModel;
+  updateRadius: (r: number) => void;
+  updatePosition: () => void;
+  setColor: (color: string) => void;
+}
+const createIRPlotView = (
+  svg: SVGGElement,
+  view_model: IRPlotViewModel,
+  model: IRPlotModel,
+): IRPlotView => {
+  const updateX = (x: number) => {
     [x]
-      .map(e => this.view_model.getTranslatedX(e))
+      .map(e => view_model.getTranslatedX(e))
       .map(e => nan2zero(e))
-      .map(e => this.svg.setAttribute("cx", String(e)))
-  }
-  private updateY(y: number) {
+      .map(e => svg.setAttribute("cx", String(e)));
+  };
+  const updateY = (y: number) => {
     [y]
-      .map(e => this.view_model.getTranslatedY(e))
+      .map(e => view_model.getTranslatedY(e))
       .map(e => nan2zero(e))
-      .map(e => this.svg.setAttribute("cy", String(e)))
-  }
-  private easeInOutCos(t: number): number {
-    return (1 - Math.cos(t * Math.PI)) / 2;
-  }
-  updatePosition() {
-    const interval = this.model.getInterval();
-    const curr = get_pos(interval[0], interval[1]);
-    const next = get_pos(interval[1], interval[2]);
-    const r = this.easeInOutCos(this.model.getPositionRatio());
-    this.updateX(-((1 - r) * curr[0] + r * next[0]));
-    this.updateY(-((1 - r) * curr[1] + r * next[1]));
-  }
-  readonly setColor = (color: string) => this.svg.style.fill = color;
-}
+      .map(e => svg.setAttribute("cy", String(e)));
+  };
+  const easeInOutCos = (t: number) => (1 - Math.cos(t * Math.PI)) / 2;
+  return {
+    svg,
+    view_model,
+    model,
+    updateRadius: (r) => { svg.style.r = String(r); },
+    updatePosition: () => {
+      const interval = model.getInterval();
+      const curr = get_pos(interval[0], interval[1]);
+      const next = get_pos(interval[1], interval[2]);
+      const r = easeInOutCos(model.getPositionRatio());
+      updateX(-((1 - r) * curr[0] + r * next[0]));
+      updateY(-((1 - r) * curr[1] + r * next[1]));
+    },
+    setColor: (color: string) => { svg.style.fill = color; },
+  };
+};
 
-class IRPlot {
-  get svg() { return this.view.svg; }
-  constructor(
-    readonly model: IRPlotModel,
-    readonly view: IRPlotView,
-  ) {
-    this.view = view;
-  }
-  onAudioUpdate() {
-    this.view.updatePosition();
-  }
-  onWindowResized() { }
-  readonly setColor: SetColor = f => this.view.setColor(f(this.model.archetype))
+interface IRPlot {
+  readonly model: IRPlotModel;
+  readonly view: IRPlotView;
+  readonly svg: SVGGElement;
+  onAudioUpdate: () => void;
+  onWindowResized: () => void;
+  setColor: SetColor;
 }
+const createIRPlot = (model: IRPlotModel, view: IRPlotView): IRPlot => ({
+  model,
+  view,
+  get svg() { return view.svg; },
+  onAudioUpdate: () => view.updatePosition(),
+  onWindowResized: () => { },
+  setColor: (f) => view.setColor(f(model.archetype)),
+});
 
-class IRPlotLayerModel {
-  constructor(
-    readonly w: number,
-    readonly h: number,
-  ) { }
+interface IRPlotLayerModel { readonly w: number; readonly h: number }
+const createIRPlotLayerModel = (w: number, h: number): IRPlotLayerModel => ({ w, h });
+
+interface IRPlotLayerView {
+  readonly svg: SVGGElement;
+  readonly layer: number;
+  readonly model: IRPlotLayerModel;
+  updateWidth: (w: number) => void;
+  updateHeight: (h: number) => void;
 }
+const createIRPlotLayerView = (svg: SVGGElement, layer: number, model: IRPlotLayerModel): IRPlotLayerView => ({
+  svg,
+  layer,
+  model,
+  updateWidth: (w) => svg.setAttribute("width", String(w)),
+  updateHeight: (h) => svg.setAttribute("height", String(h)),
+});
 
-class IRPlotLayerView {
-  constructor(
-    readonly svg: SVGGElement,
-    readonly layer: number,
-    readonly model: IRPlotLayerModel,
-  ) { }
-  updateWidth(w: number) { this.svg.setAttribute("width", String(w)); }
-  updateHeight(h: number) { this.svg.setAttribute("height", String(h)); }
-}
-
-class IRPlotLayer {
+interface IRPlotLayer {
+  readonly svg: SVGGElement;
+  readonly view: IRPlotLayerView;
+  readonly children: IRPlot[];
+  readonly layer: number;
   readonly children_model: { readonly time: Time }[];
-  #show: IRPlot[];
-  get show() { return this.#show; };
-  constructor(
-    readonly svg: SVGGElement,
-    readonly view: IRPlotLayerView,
-    readonly children: IRPlot[],
-    readonly layer: number,
-  ) {
-    this.svg = svg;
-    this.children_model = this.children.map(e => e.model);
-    this.#show = children;
-  }
-  onAudioUpdate() { this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
+  readonly show: IRPlot[];
+  onAudioUpdate: () => void;
 }
+const createIRPlotLayer = (
+  svg: SVGGElement,
+  view: IRPlotLayerView,
+  children: IRPlot[],
+  layer: number,
+): IRPlotLayer => {
+  const children_model = children.map(e => e.model);
+  const show = children;
+  return {
+    svg,
+    view,
+    children,
+    layer,
+    children_model,
+    get show() { return show; },
+    onAudioUpdate: () => svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`),
+  };
+};
 
-class IRPlotHierarchy {
-  #visible_layer: number;
-  protected _show: IRPlotLayer[] = [];
- private get show() { return this.view.circles.show }
-  constructor(
-    readonly svg: SVGGElement,
-    readonly children: IRPlotLayer[],
-    readonly view: IRPlotHierarchyView,
-    readonly model: IRPlotHierarchyModel,
-  ) {
-    this.#visible_layer = children.length;
-  }
-  updateLayer() {
-    const visible_layer = this.children
-      .filter(e => e.children[0].model.is_visible)
-      .filter(e => 1 < e.layer && e.layer <= this.#visible_layer);
-    this.view.updateCircleVisibility(visible_layer)
-  }
-  onChangedLayer(value: number) {
-    this.#visible_layer = value;
-    this.updateLayer();
-  }
-  setShow(visible_layers: IRPlotLayer[]) {
-    this._show = visible_layers;
-    this._show.forEach(e => e.onAudioUpdate());
-    this.svg.replaceChildren(...this._show.map(e => e.svg));
-  }
+interface IRPlotHierarchy {
+  readonly svg: SVGGElement;
+  readonly children: IRPlotLayer[];
+  readonly view: IRPlotHierarchyView;
+  readonly model: IRPlotHierarchyModel;
+  onChangedLayer: (value: number) => void;
+  setShow: (layers: IRPlotLayer[]) => void;
+  readonly _show: IRPlotLayer[];
 }
+const createIRPlotHierarchy = (
+  svg: SVGGElement,
+  children: IRPlotLayer[],
+  view: IRPlotHierarchyView,
+  model: IRPlotHierarchyModel,
+): IRPlotHierarchy => {
+  let visible_layer = children.length;
+  const hierarchy: IRPlotHierarchy = {
+    svg,
+    children,
+    view,
+    model,
+    _show: [],
+    onChangedLayer(value: number) {
+      visible_layer = value;
+      const show = children
+        .filter(e => e.children[0].model.is_visible)
+        .filter(e => 1 < e.layer && e.layer <= visible_layer);
+      view.updateCircleVisibility(show);
+    },
+    setShow(layers: IRPlotLayer[]) {
+      this._show = layers;
+      this._show.forEach(e => e.onAudioUpdate());
+      svg.replaceChildren(...this._show.map(e => e.svg));
+    },
+  };
+  return hierarchy;
+};
 
-class IRPlotSVG {
-  constructor(
-    readonly svg: SVGSVGElement,
-    readonly children: IRPlotHierarchy[],
-  ) { }
+interface IRPlotSVG {
+  readonly svg: SVGSVGElement;
+  readonly children: IRPlotHierarchy[];
 }
+const createIRPlotSVG = (svg: SVGSVGElement, children: IRPlotHierarchy[]): IRPlotSVG => ({ svg, children });
 
 function getCircle() {
   const circle_svg = document.createElementNS("http://www.w3.org/2000/svg", "circle");
@@ -364,24 +407,24 @@ export function buildIRPlot(
   }
 ) {
   const layers = h_melodies.map((e, l) => {
-    const model = new IRPlotModel(e);
+    const model = createIRPlotModel(e);
     const circle_svg = getCircle();
-    const view_model = new IRPlotViewModel()
-    const view = new IRPlotView(circle_svg, view_model, model);
-    const part = new IRPlot(model, view);
-    const svg = getLayer(l, part)
-    const layer_model = new IRPlotLayerModel(part.view.view_model.w, part.view.view_model.h);
+    const view_model = createIRPlotViewModel();
+    const view = createIRPlotView(circle_svg, view_model, model);
+    const part = createIRPlot(model, view);
+    const svg = getLayer(l, part);
+    const layer_model = createIRPlotLayerModel(part.view.view_model.w, part.view.view_model.h);
     updateRadius(l, h_melodies.length, part);
 
-    const layer_view = new IRPlotLayerView(svg, l, layer_model)
+    const layer_view = createIRPlotLayerView(svg, l, layer_model);
     layer_view.updateWidth(layer_model.w);
     layer_view.updateHeight(layer_model.h);
 
     const svgg = getSVGG(`layer-${l}`, [part]);
-    return new IRPlotLayer(svgg, layer_view, [part], l);
+    return createIRPlotLayer(svgg, layer_view, [part], l);
   })
 
-  const h_model = new IRPlotHierarchyModel(layers);
+  const h_model = createIRPlotHierarchyModel(layers);
   const w = h_model.width
   const h = h_model.height
 
@@ -394,10 +437,10 @@ export function buildIRPlot(
   const circle_svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
   const circles = createIRPlotCircles(circle_svg);
   const axis_svg = getAxisSVG(w, h, x_axis, y_axis, circles);
-  const view = new IRPlotHierarchyView(axis_svg, x_axis, y_axis, circles);
+  const view = createIRPlotHierarchyView(axis_svg, x_axis, y_axis, circles);
 
   const svgg = getSVGG("IR-plot-hierarchy", layers);
-  const hierarchy = [new IRPlotHierarchy(svgg, layers, view, h_model)]
+  const hierarchy = [createIRPlotHierarchy(svgg, layers, view, h_model)]
 
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.id = "IR-plot";
@@ -405,7 +448,7 @@ export function buildIRPlot(
   hierarchy.forEach(e => svg.setAttribute("width", String(e.model.width)));
   hierarchy.forEach(e => svg.setAttribute("height", String(e.model.height)));
 
-  const ir_plot_svg = new IRPlotSVG(svg, hierarchy);
+  const ir_plot_svg = createIRPlotSVG(svg, hierarchy);
 
   controllers.window.addListeners(...ir_plot_svg.children.flatMap(e => e).flatMap(e => e.children).flatMap(e => e.children).map(e => e.onWindowResized.bind(e)));
   controllers.hierarchy.addListeners(...ir_plot_svg.children.flatMap(e => e.onChangedLayer.bind(e)));

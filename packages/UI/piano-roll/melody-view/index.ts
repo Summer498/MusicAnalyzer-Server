@@ -12,6 +12,14 @@ import { buildGravity } from "./src/gravity-hierarchy";
 import { buildIRGravity } from "./src/ir-gravity-hierarchy";
 import { ImplicationDisplayController } from "@music-analyzer/controllers/src/switcher";
 
+export { buildDMelody } from "./src/d-melody-series";
+export { buildIRPlot } from "./src/ir-plot-svg";
+export { buildIRSymbol } from "./src/ir-symbol-hierarchy";
+export { buildMelody } from "./src/melody-hierarchy";
+export { buildReduction } from "./src/reduction-hierarchy";
+export { buildGravity } from "./src/gravity-hierarchy";
+export { buildIRGravity } from "./src/ir-gravity-hierarchy";
+
 export interface RequiredByMelodyElements {
   readonly gravity: GravityController
   readonly audio: AudioReflectableRegistry,

@@ -15,12 +15,8 @@ interface RequiredByMelodyElements {
   readonly hierarchy: HierarchyLevelController,
 }
 
-class Line {
-  constructor(
-    readonly pos1: { x: number, y: number },
-    readonly pos2: { x: number, y: number },
-  ) { }
-}
+interface Line { readonly pos1: { x: number, y: number }; readonly pos2: { x: number, y: number } }
+const createLine = (pos1: { x: number, y: number }, pos2: { x: number, y: number }): Line => ({ pos1, pos2 });
 
 interface RequiredByTreeHierarchy {
   readonly hierarchy: HierarchyLevelController,
@@ -29,24 +25,20 @@ interface RequiredByTreeHierarchy {
   readonly time_range: TimeRangeController
 }
 
-export class TreeHierarchy {
-  constructor(
-    readonly svg: SVGGElement,
-  ) {
-  }
-  onChangedLayer(value: number){
-
-  }
-  onAudioUpdate(){
-
-  }
-  onWindowResized(){
-
-  }
-  onTimeRangeChanged(){
-
-  }
+export interface TreeHierarchy {
+  readonly svg: SVGGElement;
+  onChangedLayer: (v: number) => void;
+  onAudioUpdate: () => void;
+  onWindowResized: () => void;
+  onTimeRangeChanged: () => void;
 }
+const createTreeHierarchy = (svg: SVGGElement): TreeHierarchy => ({
+  svg,
+  onChangedLayer: () => {},
+  onAudioUpdate: () => {},
+  onWindowResized: () => {},
+  onTimeRangeChanged: () => {},
+});
 
 export function buildTree(
     h_melodies: SerializedTimeAndAnalyzedMelody[][],
@@ -72,7 +64,7 @@ export function buildTree(
       const y = layerY[i];
 
       startPos[i + 1] = { x, y };
-      return new Line(
+      return createLine(
         { x, y },
         { x: lx, y: ly },
       )
@@ -99,7 +91,7 @@ export function buildTree(
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
   svg.id = "reduction-tree";
 
-  const hierarchy = new TreeHierarchy(svg)
+  const hierarchy = createTreeHierarchy(svg)
 
   controllers.hierarchy.addListeners(hierarchy.onChangedLayer.bind(hierarchy));
   controllers.audio.addListeners(hierarchy.onAudioUpdate.bind(hierarchy));
