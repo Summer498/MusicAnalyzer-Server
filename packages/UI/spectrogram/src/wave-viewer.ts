@@ -2,26 +2,26 @@ import { Complex } from "@music-analyzer/math";
 import { correlation } from "@music-analyzer/math";
 import { AudioAnalyzer } from "./audio-analyzer";
 
-export class WaveViewer {
-  private readonly path: SVGPathElement;
-  private old_wave: Complex<number>[];
+export interface WaveViewer {
   readonly svg: SVGSVGElement;
-  constructor(
-    private readonly analyser: AudioAnalyzer,
-  ) {
-    this.path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    this.path.setAttribute("stroke", "blue");
-    this.path.setAttribute("fill", "none");
-    this.svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    this.svg.appendChild(this.path);
-    this.svg.id = "sound-wave";
-    this.svg.setAttribute("width", String(800));
-    this.svg.setAttribute("height", String(450));
-    this.old_wave = [... new Array(analyser.analyser.fftSize)].map(e => new Complex(0, 0));
-  }
+  onAudioUpdate(): void;
+}
 
-  private getDelay(copy:Complex<number>[]){
-    const col = correlation(this.old_wave, copy);
+export const createWaveViewer = (
+  analyser: AudioAnalyzer,
+): WaveViewer => {
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("stroke", "blue");
+  path.setAttribute("fill", "none");
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.appendChild(path);
+  svg.id = "sound-wave";
+  svg.setAttribute("width", String(800));
+  svg.setAttribute("height", String(450));
+  const old_wave = [...new Array(analyser.analyser.fftSize)].map(() => new Complex(0, 0));
+
+  const getDelay = (copy: Complex<number>[]) => {
+    const col = correlation(old_wave, copy);
 
     let delay = 0;
     for (let i = 0; i < col.length / 2; i++) {
@@ -30,20 +30,20 @@ export class WaveViewer {
       }
     }
     for (let i = 0; i < copy.length; i++) {
-      this.old_wave[i] = copy[(i + delay) % copy.length];
+      old_wave[i] = copy[(i + delay) % copy.length];
     }
     return delay;    
-  }
+  };
 
-  onAudioUpdate() {
-    const wave = this.analyser.getByteTimeDomainData();
-    const width = this.svg.clientWidth;
-    const height = this.svg.clientHeight;
+  const onAudioUpdate = () => {
+    const wave = analyser.getByteTimeDomainData();
+    const width = svg.clientWidth;
+    const height = svg.clientHeight;
     let path_data = "";
 
     const copy: Complex<number>[] = [];
     wave.forEach(e => { copy.push(new Complex(e, 0)); });
-    const delay = this.getDelay(copy);
+    const delay = getDelay(copy);
 
     for (let i = 0; i < wave.length / 2; i++) {
       if (isNaN(wave[i + delay] * 0)) { continue; }
@@ -52,6 +52,8 @@ export class WaveViewer {
       const y = wave[i + delay] / 255 * height;
       path_data += `L ${x},${y}`;
     }
-    this.path.setAttribute("d", "M" + path_data.slice(1));
-  }
-}
+    path.setAttribute("d", "M" + path_data.slice(1));
+  };
+
+  return { svg, onAudioUpdate };
+};

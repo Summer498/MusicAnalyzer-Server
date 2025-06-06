@@ -24,15 +24,22 @@ import { NowAt } from "@music-analyzer/view-parameters";
 import { createMusicStructureElements, MusicStructureElements } from "@music-analyzer/piano-roll";
 import { WindowReflectableRegistry, createWindowReflectableRegistry } from "@music-analyzer/view";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
-
-import { DMelodyController, createDMelodyController } from "@music-analyzer/controllers";
-import { GravityController, createGravityController } from "@music-analyzer/controllers";
-import { HierarchyLevelController } from "@music-analyzer/controllers";
-import { type MelodyBeepController, createMelodyBeepController } from "@music-analyzer/controllers";
-import { MelodyColorController } from "@music-analyzer/controllers";
-import { TimeRangeController } from "@music-analyzer/controllers";
+import {
+  DMelodyController,
+  createDMelodyController,
+  GravityController,
+  createGravityController,
+  HierarchyLevelController,
+  TimeRangeController,
+  createHierarchyLevelController,
+  createTimeRangeController,
+  type MelodyBeepController,
+  createMelodyBeepController,
+  ImplicationDisplayController,
+  createImplicationDisplayController,
+  MelodyColorController,
+} from "@music-analyzer/controllers";
 import { Time } from "@music-analyzer/time-and";
-import { ImplicationDisplayController, createImplicationDisplayController } from "@music-analyzer/controllers";
 
 class Controllers {
   readonly div: HTMLDivElement
@@ -54,10 +61,10 @@ class Controllers {
     this.div.style = "margin-top:20px";
 
     this.d_melody = createDMelodyController();
-    this.hierarchy = new HierarchyLevelController(layer_count);
-    this.time_range = new TimeRangeController(length);
-    this.implication = new ImplicationDisplayController()
-    this.gravity = new GravityController(gravity_visible);
+    this.hierarchy = createHierarchyLevelController(layer_count);
+    this.time_range = createTimeRangeController(length);
+    this.implication = createImplicationDisplayController();
+    this.gravity = createGravityController(gravity_visible);
     this.melody_beep = createMelodyBeepController();
     this.melody_color = new MelodyColorController();
     this.melody_beep.checkbox.input.checked=true;
