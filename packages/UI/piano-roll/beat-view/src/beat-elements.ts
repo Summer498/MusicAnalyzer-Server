@@ -7,79 +7,100 @@ import { PianoRollHeight } from "@music-analyzer/view-parameters";
 import { reservation_range } from "@music-analyzer/view-parameters";
 import { play } from "@music-analyzer/synth";
 
-export class BeatBarModel {
-  readonly time: Time;
-  constructor(beat_info: BeatInfo, i: number) {
-    this.time = createTime(
-      i * 60 / beat_info.tempo,
-      (i + 1) * 60 / beat_info.tempo
-    );
-  }
+export interface BeatBarModel {
+  readonly time: Time
 }
 
-export class BeatBarView {
-  constructor(
-    readonly svg: SVGLineElement,
-  ) { }
+export const createBeatBarModel = (
+  beat_info: BeatInfo,
+  i: number,
+): BeatBarModel => ({
+  time: createTime(
+    i * 60 / beat_info.tempo,
+    (i + 1) * 60 / beat_info.tempo,
+  ),
+})
+
+export interface BeatBarView {
+  readonly svg: SVGLineElement
+  updateX(x1: number, x2: number): void
+  updateY(y1: number, y2: number): void
+}
+
+export const createBeatBarView = (svg: SVGLineElement): BeatBarView => ({
+  svg,
   updateX(x1: number, x2: number) {
-    this.svg.setAttribute("x1", String(x1));
-    this.svg.setAttribute("x2", String(x2));
-  }
+    svg.setAttribute("x1", String(x1))
+    svg.setAttribute("x2", String(x2))
+  },
   updateY(y1: number, y2: number) {
-    this.svg.setAttribute("y1", String(y1));
-    this.svg.setAttribute("y2", String(y2));
-  }
+    svg.setAttribute("y1", String(y1))
+    svg.setAttribute("y2", String(y2))
+  },
+})
+
+export interface BeatBar {
+  readonly model: BeatBarModel
+  readonly view: BeatBarView
+  readonly svg: SVGLineElement
+  onWindowResized(): void
+  onTimeRangeChanged(): void
+  onAudioUpdate(): void
 }
 
-export class BeatBar {
-  get svg() { return this.view.svg; }
-  #y1: number;
-  #y2: number;
-  sound_reserved: boolean;
-  constructor(
-    readonly model: BeatBarModel,
-    readonly view: BeatBarView,
-  ) {
-    this.model = model;
-    this.view = view;
-    this.sound_reserved = false;
-    this.#y1 = 0;
-    this.#y2 = PianoRollHeight.get();
-    this.updateX();
-    this.updateY();
-  }
-  updateX() {
-    this.view.updateX(
-      PianoRollConverter.scaled(this.model.time.begin),
-      PianoRollConverter.scaled(this.model.time.begin),
-    )
-  }
-  updateY() {
-    this.view.updateY(
-      this.#y1,
-      this.#y2,
-    )
-  }
-  onWindowResized() {
-    this.updateX();
-  }
-  onTimeRangeChanged = this.onWindowResized
+export const createBeatBar = (
+  model: BeatBarModel,
+  view: BeatBarView,
+): BeatBar => {
+  let y1 = 0
+  let y2 = PianoRollHeight.get()
+  let sound_reserved = false
 
-  beepBeat() {
+  const updateX = () => {
+    view.updateX(
+      PianoRollConverter.scaled(model.time.begin),
+      PianoRollConverter.scaled(model.time.begin),
+    )
+  }
+
+  const updateY = () => {
+    view.updateY(y1, y2)
+  }
+
+  const beepBeat = () => {
     const model_is_in_range = createTime(0, reservation_range)
       .map(e => e + NowAt.get())
-      .has(this.model.time.begin);
+      .has(model.time.begin)
     if (model_is_in_range) {
-      if (this.sound_reserved === false) {
-        play([220], this.model.time.begin - NowAt.get(), 0.125);
-        this.sound_reserved = true;
-        setTimeout(() => { this.sound_reserved = false; }, reservation_range * 1000);
+      if (sound_reserved === false) {
+        play([220], model.time.begin - NowAt.get(), 0.125)
+        sound_reserved = true
+        setTimeout(() => { sound_reserved = false }, reservation_range * 1000)
       }
     }
   }
-  onAudioUpdate() {
+
+  const onWindowResized = () => {
+    updateX()
+  }
+
+  const onTimeRangeChanged = onWindowResized
+
+  const onAudioUpdate = () => {
     // NOTE: うるさいので停止中
-    0 && this.beepBeat();
+    0 && beepBeat()
+  }
+
+  updateX()
+  updateY()
+
+  return {
+    model,
+    view,
+    get svg() { return view.svg },
+    onWindowResized,
+    onTimeRangeChanged,
+    onAudioUpdate,
   }
 }
 
@@ -89,24 +110,36 @@ export interface RequiredByBeatBarsSeries {
   readonly time_range: TimeRangeController,
 }
 
-export class BeatBarsSeries {
-  readonly children_model: { readonly time: Time }[];
-  #show: BeatBar[];
-  get show() { return this.#show; };
-  readonly svg: SVGGElement;
+export interface BeatBarsSeries {
+  readonly children: BeatBar[]
+  readonly children_model: { readonly time: Time }[]
+  readonly show: BeatBar[]
+  readonly svg: SVGGElement
+  onAudioUpdate(): void
+}
 
-  constructor(
-    readonly children: BeatBar[]
-  ) {
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    svg.id = "beat-bars";
-    children.forEach(e => svg.appendChild(e.svg));
+export const createBeatBarsSeries = (
+  children: BeatBar[],
+): BeatBarsSeries => {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "g")
+  svg.id = "beat-bars"
+  children.forEach(e => svg.appendChild(e.svg))
 
-    this.svg = svg;
-    this.children_model = children.map(e => e.model);
-    this.#show = children;
+  const children_model = children.map(e => e.model)
+  const show = children
+
+  return {
+    children,
+    children_model,
+    get show() { return show },
+    svg,
+    onAudioUpdate() {
+      svg.setAttribute(
+        "transform",
+        `translate(${PianoRollTranslateX.get()})`,
+      )
+    },
   }
-  onAudioUpdate() { this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
 }
 
 export interface RequiredByBeatElements {
@@ -115,39 +148,43 @@ export interface RequiredByBeatElements {
   readonly time_range: TimeRangeController,
 }
 
-export class BeatElements {
-  readonly children: BeatBarsSeries[];
-  readonly beat_bars: SVGGElement;
-  constructor(
-    beat_info: BeatInfo,
-    melodies: { time: Time }[],
-    controllers: RequiredByBeatElements
-  ) {
-    const N = Math.ceil(beat_info.tempo * melodies[melodies.length - 1].time.end) + beat_info.phase;
-    const seed = [...Array(N)];
+export interface BeatElements {
+  readonly children: BeatBarsSeries[]
+  readonly beat_bars: SVGGElement
+}
 
-    const beat_bar = seed.map((_, i) => {
-      const model = new BeatBarModel(beat_info, i);
+export const createBeatElements = (
+  beat_info: BeatInfo,
+  melodies: { time: Time }[],
+  controllers: RequiredByBeatElements,
+): BeatElements => {
+  const N = Math.ceil(
+    beat_info.tempo * melodies[melodies.length - 1].time.end,
+  ) + beat_info.phase
+  const seed = [...Array(N)]
 
-      const svg = document.createElementNS("http://www.w3.org/2000/svg", "line");
-      svg.id = "bar";
-      svg.style.stroke = "rgb(0, 0, 0)";
-      svg.style.display = "none";  //NOTE: 一旦非表示にしている
+  const beat_bar = seed.map((_, i) => {
+    const model = createBeatBarModel(beat_info, i)
 
-      const view = new BeatBarView(svg);
-      return new BeatBar(model, view)
-    })
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "line")
+    svg.id = "bar"
+    svg.style.stroke = "rgb(0, 0, 0)"
+    svg.style.display = "none" // NOTE: 一旦非表示にしている
 
-    const beat_bars = new BeatBarsSeries(beat_bar);
-    beat_bars.children
-      .map(e => e.onAudioUpdate.bind(e))
-      .map(f => controllers.audio.addListeners(f))
-    beat_bars.children
-      .map(e => e.onWindowResized.bind(e))
-      .map(f => controllers.window.addListeners(f))
-    const listeners = beat_bars.children.map(e => e.onTimeRangeChanged.bind(e))
-    controllers.time_range.addListeners(...listeners)
-    this.beat_bars = beat_bars.svg
-    this.children = [beat_bars];
+    const view = createBeatBarView(svg)
+    return createBeatBar(model, view)
+  })
+
+  const beat_bars = createBeatBarsSeries(beat_bar)
+  beat_bars.children
+    .map(e => controllers.audio.addListeners(e.onAudioUpdate))
+  beat_bars.children
+    .map(e => controllers.window.addListeners(e.onWindowResized))
+  const listeners = beat_bars.children.map(e => e.onTimeRangeChanged)
+  controllers.time_range.addListeners(...listeners)
+
+  return {
+    beat_bars: beat_bars.svg,
+    children: [beat_bars],
   }
 }
