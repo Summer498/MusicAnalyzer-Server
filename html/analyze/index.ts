@@ -66,12 +66,12 @@ const createControllers = (
   div.id = "controllers";
   div.style.marginTop = "20px";
 
-  const d_melody = new DMelodyController();
-  const hierarchy = new HierarchyLevelController(layer_count);
-  const time_range = new TimeRangeController(length);
-  const implication = new ImplicationDisplayController();
-  const gravity = new GravityController(gravity_visible);
-  const melody_beep = new MelodyBeepController();
+  const d_melody = createDMelodyController();
+  const hierarchy = createHierarchyLevelController(layer_count);
+  const time_range = createTimeRangeController(length);
+  const implication = createImplicationDisplayController();
+  const gravity = createGravityController(gravity_visible);
+  const melody_beep = createMelodyBeepController();
   const melody_color = createMelodyColorController();
 
   melody_beep.checkbox.input.checked = true;
@@ -167,7 +167,7 @@ const createApplicationManager = (
     window: window_size_mediator,
   };
 
-  const analyzed = new MusicStructureElements(
+  const analyzed = createMusicStructureElements(
     beat_info,
     romans,
     hierarchical_melody,
