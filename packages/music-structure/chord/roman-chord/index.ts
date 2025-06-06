@@ -1,1 +1,1 @@
-export { RomanChord } from "./src/roman-chord";
+export { RomanChord, createRomanChord } from "./src/roman-chord";

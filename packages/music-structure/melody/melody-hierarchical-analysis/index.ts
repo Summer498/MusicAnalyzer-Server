@@ -35,22 +35,27 @@ export const getTimeAndMelody = (
   );
 };
 
-class SerializedTimeAndAnalyzedMelodyAndIR
+export interface SerializedTimeAndAnalyzedMelodyAndIR
   extends SerializedTimeAndAnalyzedMelody {
-  constructor(
-    e: SerializedTimeAndAnalyzedMelody,
-    readonly IR: string,
-  ) {
-    super(e.time, e.head, e.note, e.melody_analysis);
-  }
+  readonly IR: string;
 }
 
-const appendIR = (e: SerializedTimeAndAnalyzedMelody) => {
-  return new SerializedTimeAndAnalyzedMelodyAndIR(
+export const createSerializedTimeAndAnalyzedMelodyAndIR = (
+  e: SerializedTimeAndAnalyzedMelody,
+  IR: string,
+): SerializedTimeAndAnalyzedMelodyAndIR => ({
+  time: e.time,
+  head: e.head,
+  note: e.note,
+  melody_analysis: e.melody_analysis,
+  IR,
+});
+
+const appendIR = (e: SerializedTimeAndAnalyzedMelody) =>
+  createSerializedTimeAndAnalyzedMelodyAndIR(
     e,
     e.melody_analysis.implication_realization.symbol,
   );
-};
 
 const analyzeAndScaleMelody = (measure: number, matrix: TimeSpan[][], musicxml: MusicXML) => (element: ReductionElement) => {
   const w = measure / 8;  // NOTE: 1 measure = 3.5

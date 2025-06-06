@@ -14,7 +14,7 @@ import { majorKey } from "@music-analyzer/tonal-objects/src/key/major-key"
 import { minorKey } from "@music-analyzer/tonal-objects/src/key/minor-key"
 import { getIntervalDegree } from "@music-analyzer/tonal-objects/src/interval/interval-degree"
 import { getChroma } from "@music-analyzer/tonal-objects/src/note/chroma"
-import { RomanChord } from "@music-analyzer/roman-chord/src/roman-chord";
+import { createRomanChord } from "@music-analyzer/roman-chord";
 import { getDistance } from "./src/get-distance"
 import { tonicDistance } from "./src/tonic-distance"
 import { regionDistance } from "./src/region-distance"
@@ -33,8 +33,8 @@ describe("tonal-pitch-space module", () => {
 const comment = () => {
   console.log(
     getDistance(
-      new RomanChord(getScale("C major"), getChord("Am7")),
-      new RomanChord(getScale("C major"), getChord("G7")),
+      createRomanChord(getScale("C major"), getChord("Am7")),
+      createRomanChord(getScale("C major"), getChord("G7")),
     ),
   );
 
@@ -139,7 +139,7 @@ const comment = () => {
         // non scale notes
         return 0;
       });
-      const received_BS = getBasicSpace(new RomanChord(scale, chord));
+      const received_BS = getBasicSpace(createRomanChord(scale, chord));
 
       createAssertion(sameArray(received_BS, expected_BS)).onFailed(() => {
         console.log(`received: ${received_BS}`);
@@ -159,7 +159,7 @@ const comment = () => {
     const src_scale = getScale(src_key.chordScales[0]);
     // 固有和音を取り出す
     const src_chord = getChord(src_key.chords[0]);
-    const src_roman = new RomanChord(src_scale, src_chord);
+    const src_roman = createRomanChord(src_scale, src_chord);
     const src_BS = getBasicSpace(src_roman);
 
     for (const dst_key of all_note_symbols
@@ -173,7 +173,7 @@ const comment = () => {
       const dst_chords = dst_key.chords.map(chord_str => getChord(chord_str));
 
       for (const dst_chord of dst_chords) {
-        const dst_roman = new RomanChord(dst_scale, dst_chord);
+        const dst_roman = createRomanChord(dst_scale, dst_chord);
         // getBasicSpace はテスト済み関数として信用する
         const dst_BS = getBasicSpace(dst_roman);
         const expected_dist = totalSum(
@@ -193,48 +193,48 @@ const comment = () => {
   // BS 距離の具体例
   createAssertion(
     getDistance(
-      new RomanChord(getScale("C major"), getChord("C")),
-      new RomanChord(getScale("C major"), getChord("F")),
+      createRomanChord(getScale("C major"), getChord("C")),
+      createRomanChord(getScale("C major"), getChord("F")),
     ) == 6,
   ).onFailed(() => {
     throw new Error();
   });
   createAssertion(
     getDistance(
-      new RomanChord(getScale("C major"), getChord("C")),
-      new RomanChord(getScale("C major"), getChord("G")),
+      createRomanChord(getScale("C major"), getChord("C")),
+      createRomanChord(getScale("C major"), getChord("G")),
     ) == 6,
   ).onFailed(() => {
     throw new Error();
   });
   createAssertion(
     getDistance(
-      new RomanChord(getScale("C major"), getChord("Dm")),
-      new RomanChord(getScale("C major"), getChord("Am")),
+      createRomanChord(getScale("C major"), getChord("Dm")),
+      createRomanChord(getScale("C major"), getChord("Am")),
     ) == 6,
   ).onFailed(() => {
     throw new Error();
   });
   createAssertion(
     getDistance(
-      new RomanChord(getScale("C major"), getChord("C")),
-      new RomanChord(getScale("C major"), getChord("Am")),
+      createRomanChord(getScale("C major"), getChord("C")),
+      createRomanChord(getScale("C major"), getChord("Am")),
     ) == 5,
   ).onFailed(() => {
     throw new Error();
   });
   createAssertion(
     getDistance(
-      new RomanChord(getScale("C major"), getChord("C")),
-      new RomanChord(getScale("C major"), getChord("Em")),
+      createRomanChord(getScale("C major"), getChord("C")),
+      createRomanChord(getScale("C major"), getChord("Em")),
     ) == 5,
   ).onFailed(() => {
     throw new Error();
   });
   createAssertion(
     getDistance(
-      new RomanChord(getScale("C major"), getChord("Dm")),
-      new RomanChord(getScale("C major"), getChord("F")),
+      createRomanChord(getScale("C major"), getChord("Dm")),
+      createRomanChord(getScale("C major"), getChord("F")),
     ) == 5,
   ).onFailed(() => {
     throw new Error();
