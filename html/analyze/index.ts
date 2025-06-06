@@ -2,7 +2,8 @@ import { setCurrentTimeRatio, setPianoRollParameters } from "@music-analyzer/vie
 import { song_list } from "@music-analyzer/gttm";
 import { createAnalyzedDataContainer } from "@music-analyzer/analyzed-data-container";
 import { createAudioViewer } from "@music-analyzer/spectrogram";
-import { PianoRoll } from "@music-analyzer/piano-roll";
+import type { PianoRoll } from "@music-analyzer/piano-roll";
+import { createPianoRoll } from "@music-analyzer/piano-roll";
 import { PianoRollHeight } from "@music-analyzer/view-parameters";
 import { PianoRollWidth } from "@music-analyzer/view-parameters";
 import { GTTMData } from "@music-analyzer/gttm";
@@ -21,17 +22,29 @@ import { SerializedMelodyAnalysisData } from "@music-analyzer/melody-analyze";
 import { xml_parser } from "@music-analyzer/serializable-data";
 import { AudioReflectableRegistry, createAudioReflectableRegistry } from "@music-analyzer/view";
 import { NowAt } from "@music-analyzer/view-parameters";
-import { MusicStructureElements } from "@music-analyzer/piano-roll";
+import type { MusicStructureElements } from "@music-analyzer/piano-roll";
+import { createMusicStructureElements } from "@music-analyzer/piano-roll";
 import { WindowReflectableRegistry, createWindowReflectableRegistry } from "@music-analyzer/view";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
-import { DMelodyController } from "@music-analyzer/controllers";
-import { GravityController } from "@music-analyzer/controllers";
-import { HierarchyLevelController } from "@music-analyzer/controllers";
-import { MelodyBeepController } from "@music-analyzer/controllers";
-import { MelodyColorController } from "@music-analyzer/controllers";
-import { TimeRangeController } from "@music-analyzer/controllers";
+import type {
+  DMelodyController,
+  GravityController,
+  HierarchyLevelController,
+  MelodyBeepController,
+  MelodyColorController,
+  TimeRangeController,
+  ImplicationDisplayController,
+} from "@music-analyzer/controllers";
+import {
+  createDMelodyController,
+  createGravityController,
+  createHierarchyLevelController,
+  createMelodyBeepController,
+  createMelodyColorController,
+  createTimeRangeController,
+  createImplicationDisplayController,
+} from "@music-analyzer/controllers";
 import { Time } from "@music-analyzer/time-and";
-import { ImplicationDisplayController } from "@music-analyzer/controllers/src/switcher";
 
 class Controllers {
   readonly div: HTMLDivElement
@@ -52,13 +65,13 @@ class Controllers {
     this.div.id = "controllers";
     this.div.style = "margin-top:20px";
 
-    this.d_melody = new DMelodyController();
-    this.hierarchy = new HierarchyLevelController(layer_count);
-    this.time_range = new TimeRangeController(length);
-    this.implication = new ImplicationDisplayController();
-    this.gravity = new GravityController(gravity_visible);
-    this.melody_beep = new MelodyBeepController();
-    this.melody_color = new MelodyColorController();
+    this.d_melody = createDMelodyController();
+    this.hierarchy = createHierarchyLevelController(layer_count);
+    this.time_range = createTimeRangeController(length);
+    this.implication = createImplicationDisplayController();
+    this.gravity = createGravityController(gravity_visible);
+    this.melody_beep = createMelodyBeepController();
+    this.melody_color = createMelodyColorController();
     this.melody_beep.checkbox.input.checked=true;
     this.implication.prospective_checkbox.input.checked = false;
     this.implication.retrospective_checkbox.input.checked = true;
@@ -135,7 +148,14 @@ class ApplicationManager {
       window: this.window_size_mediator,
     }
 
-    this.analyzed = new MusicStructureElements(beat_info, romans, hierarchical_melody, melodies, d_melodies, controllers)
+    this.analyzed = createMusicStructureElements(
+      beat_info,
+      romans,
+      hierarchical_melody,
+      melodies,
+      d_melodies,
+      controllers,
+    )
   }
 }
 
@@ -261,7 +281,11 @@ const setupUI = (
   manager: ApplicationManager,
 ) => {
   const audio_viewer = createAudioViewer(audio_player, manager.audio_time_mediator);
-  const piano_roll_view = new PianoRoll(manager.analyzed, manager.window_size_mediator, !manager.FULL_VIEW);
+  const piano_roll_view = createPianoRoll(
+    manager.analyzed,
+    manager.window_size_mediator,
+    !manager.FULL_VIEW,
+  );
   asParent(piano_roll_place)
     .appendChildren(
       /*

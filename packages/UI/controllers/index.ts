@@ -1,4 +1,4 @@
-export { SetColor } from "./src/color-selector";
+export { SetColor, type GetColor } from "./src/color-selector";
 export { MelodyColorController, createMelodyColorController } from "./src/color-selector";
 export { ControllerView } from "./src/controller";
 export type { MelodyBeepVolume, MelodyBeepSwitcher, MelodyBeepController } from "./src/melody-beep-controller";
