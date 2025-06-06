@@ -28,7 +28,7 @@ import { BeatInfo } from "@music-analyzer/beat-estimation";
 import { DMelodyController } from "@music-analyzer/controllers";
 import { GravityController } from "@music-analyzer/controllers";
 import { HierarchyLevelController } from "@music-analyzer/controllers";
-import { MelodyBeepController } from "@music-analyzer/controllers";
+import { type MelodyBeepController, createMelodyBeepController } from "@music-analyzer/controllers";
 import { MelodyColorController } from "@music-analyzer/controllers";
 import { TimeRangeController } from "@music-analyzer/controllers";
 import { Time } from "@music-analyzer/time-and";
@@ -58,7 +58,7 @@ class Controllers {
     this.time_range = new TimeRangeController(length);
     this.implication = new ImplicationDisplayController()
     this.gravity = new GravityController(gravity_visible);
-    this.melody_beep = new MelodyBeepController();
+    this.melody_beep = createMelodyBeepController();
     this.melody_color = new MelodyColorController();
     this.melody_beep.checkbox.input.checked=true;
     this.implication.prospective_checkbox.input.checked = false;
