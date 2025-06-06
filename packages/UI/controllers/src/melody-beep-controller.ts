@@ -1,4 +1,4 @@
-import { Checkbox } from "./switcher";
+import { Checkbox, createCheckbox } from "./switcher";
 import { Slider } from "./slider";
 
 class MelodyBeepVolume
@@ -15,23 +15,13 @@ class MelodyBeepVolume
   }
 }
 
-class MelodyBeepSwitcher
-  extends Checkbox {
-  constructor(id: string, label: string) {
-    super(id, label);
-  }
-  update() {
-    const visibility = this.input.checked;
-    this.listeners.forEach(e => e(visibility))
-  };
-};
 
 export class MelodyBeepController {
   readonly view: HTMLDivElement;
-  readonly checkbox: MelodyBeepSwitcher;
+  readonly checkbox: Checkbox;
   readonly volume: MelodyBeepVolume;
   constructor() {
-    const melody_beep_switcher = new MelodyBeepSwitcher("melody_beep_switcher", "Beep Melody");
+    const melody_beep_switcher = createCheckbox("melody_beep_switcher", "Beep Melody");
     const melody_beep_volume = new MelodyBeepVolume();
     this.view = document.createElement("div");
     this.view.appendChild(melody_beep_switcher.body,);
