@@ -295,7 +295,7 @@ interface IRPlotHierarchy {
   readonly model: IRPlotHierarchyModel;
   onChangedLayer: (value: number) => void;
   setShow: (layers: IRPlotLayer[]) => void;
-  readonly _show: IRPlotLayer[];
+  _show: IRPlotLayer[];
 }
 const createIRPlotHierarchy = (
   svg: SVGGElement,

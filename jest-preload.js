@@ -21,17 +21,20 @@ if (typeof global.AudioContext === 'undefined') {
   global.AudioContext = AudioContextMock;
 }
 if (typeof global.document === 'undefined') {
+  const createBaseElement = (tag) => ({
+    tagName: String(tag).toUpperCase(),
+    style: {},
+    attributes: {},
+    childNodes: [],
+    setAttribute(name, value) { this.attributes[name] = value; },
+    appendChild(node) { this.childNodes.push(node); },
+    replaceChildren() { this.childNodes = Array.from(arguments); },
+    get textContent() { return this._text || ''; },
+    set textContent(v) { this._text = v; },
+  });
   global.document = {
-    createElement: (tag) => ({
-      tagName: String(tag).toUpperCase(),
-      style: {},
-      attributes: {},
-      childNodes: [],
-      setAttribute(name, value) { this.attributes[name] = value; },
-      appendChild(node) { this.childNodes.push(node); },
-      replaceChildren() { this.childNodes = Array.from(arguments); },
-      get textContent() { return this._text || ''; },
-      set textContent(v) { this._text = v; },
-    })
+    createElement: (tag) => createBaseElement(tag),
+    createElementNS: (_ns, tag) => createBaseElement(tag),
+    createTextNode: (text) => ({ textContent: text }),
   };
 }
