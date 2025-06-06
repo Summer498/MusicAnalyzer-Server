@@ -1,5 +1,5 @@
 import { PianoRollConverter } from "@music-analyzer/view-parameters";
-import { DMelodyController, GravityController, HierarchyLevelController, MelodyBeepController, MelodyColorController, TimeRangeController } from "@music-analyzer/controllers";
+import { DMelodyController, GravityController, HierarchyLevelController, type MelodyBeepController, MelodyColorController, TimeRangeController } from "@music-analyzer/controllers";
 import { AudioReflectableRegistry, WindowReflectableRegistry } from "@music-analyzer/view";
 import { SerializedTimeAndAnalyzedMelody } from "@music-analyzer/melody-analyze";
 
