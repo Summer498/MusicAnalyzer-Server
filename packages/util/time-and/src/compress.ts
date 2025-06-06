@@ -1,4 +1,4 @@
-import { Time } from "./time";
+import { Time, createTime } from "./time";
 
 export const compress = <T>(arr: T[]) => {
   const ret: { time: Time, item: T }[] = [];
@@ -6,11 +6,11 @@ export const compress = <T>(arr: T[]) => {
   let item = arr[0];
   arr.forEach((e, end) => {
     if (item !== e) {
-      ret.push({ time: new Time(begin, end), item });
+      ret.push({ time: createTime(begin, end), item });
       begin = end;
       item = e;
     }
   });
-  ret.push({ time: new Time(begin, arr.length), item: item });
+  ret.push({ time: createTime(begin, arr.length), item: item });
   return ret;
 };

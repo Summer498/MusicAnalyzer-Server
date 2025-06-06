@@ -6153,36 +6153,36 @@ Expected id is: ${regexp}`);
     ir_gravity.children.map((e) => onAudioUpdate4(e.svg));
     return ir_gravity.svg;
   }
-  var MelodyElements = class {
-    children;
-    d_melody_collection;
-    melody_hierarchy;
-    ir_hierarchy;
-    ir_plot_svg;
-    ir_gravity;
-    chord_gravities;
-    scale_gravities;
-    time_span_tree;
-    constructor(hierarchical_melody, d_melodies, controllers) {
-      this.d_melody_collection = buildDMelody(d_melodies, controllers);
-      this.melody_hierarchy = buildMelody(hierarchical_melody, controllers);
-      this.ir_hierarchy = buildIRSymbol(hierarchical_melody, controllers);
-      this.ir_plot_svg = buildIRPlot(hierarchical_melody, controllers);
-      this.ir_gravity = buildIRGravity(hierarchical_melody, controllers);
-      this.chord_gravities = buildGravity("chord_gravity", hierarchical_melody, controllers);
-      this.scale_gravities = buildGravity("scale_gravity", hierarchical_melody, controllers);
-      this.time_span_tree = buildReduction(hierarchical_melody, controllers);
-      this.children = [
-        this.d_melody_collection,
-        this.melody_hierarchy,
-        this.ir_hierarchy,
-        this.ir_plot_svg,
-        this.chord_gravities,
-        this.scale_gravities,
-        this.time_span_tree
-      ];
-    }
-  };
+  function createMelodyElements(hierarchical_melody, d_melodies, controllers) {
+    const d_melody_collection = buildDMelody(d_melodies, controllers);
+    const melody_hierarchy = buildMelody(hierarchical_melody, controllers);
+    const ir_hierarchy = buildIRSymbol(hierarchical_melody, controllers);
+    const ir_plot_svg = buildIRPlot(hierarchical_melody, controllers);
+    const ir_gravity = buildIRGravity(hierarchical_melody, controllers);
+    const chord_gravities = buildGravity("chord_gravity", hierarchical_melody, controllers);
+    const scale_gravities = buildGravity("scale_gravity", hierarchical_melody, controllers);
+    const time_span_tree = buildReduction(hierarchical_melody, controllers);
+    const children = [
+      d_melody_collection,
+      melody_hierarchy,
+      ir_hierarchy,
+      ir_plot_svg,
+      chord_gravities,
+      scale_gravities,
+      time_span_tree
+    ];
+    return {
+      children,
+      d_melody_collection,
+      melody_hierarchy,
+      ir_hierarchy,
+      ir_plot_svg,
+      ir_gravity,
+      chord_gravities,
+      scale_gravities,
+      time_span_tree
+    };
+  }
 
   // ../../packages/UI/piano-roll/piano-roll/dist/index.mjs
   var MusicStructureElements = class {
@@ -6192,7 +6192,7 @@ Expected id is: ${regexp}`);
     constructor(beat_info, romans, hierarchical_melody, melodies, d_melodies, controllers) {
       this.beat = new BeatElements(beat_info, melodies, controllers);
       this.chord = new ChordElements(romans, controllers);
-      this.melody = new MelodyElements(hierarchical_melody, d_melodies, controllers);
+      this.melody = createMelodyElements(hierarchical_melody, d_melodies, controllers);
     }
   };
   var AnalysisView = class {

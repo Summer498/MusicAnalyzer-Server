@@ -1,17 +1,19 @@
 import { median } from "@music-analyzer/math";
 
-export class MedianFilter {
-  readonly buff;
-  readonly array;
-  constructor(
-    initializer: number[],
-    readonly window_size: number,
-  ) {
-    this.buff = initializer.slice(0, window_size);
-    this.array = initializer;
-  }
-  median(i: number) {
-    this.buff[i % this.window_size] = this.array[i];  // リングバッファに保存
-    return median(this.buff);
-  }
+export interface MedianFilter {
+  median(i: number): number;
 }
+
+export const createMedianFilter = (
+  initializer: number[],
+  window_size: number,
+): MedianFilter => {
+  const buff = initializer.slice(0, window_size);
+  const array = initializer;
+  return {
+    median(i: number) {
+      buff[i % window_size] = array[i];  // リングバッファに保存
+      return median(buff);
+    },
+  };
+};

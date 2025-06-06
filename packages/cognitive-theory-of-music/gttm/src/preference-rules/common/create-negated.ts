@@ -46,7 +46,14 @@ function createNegated<T extends object>(target: T) {
   return new Proxy(target, negation_handler) as Negated<T>;
 }
 
-export abstract class Negatable {
-  get not() { return createNegated(this); }
-  get does_not() { return createNegated(this); }
+export interface Negatable<T extends object = any> {
+  readonly not: Negated<T>;
+  readonly does_not: Negated<T>;
 }
+
+export const withNegatable = <T extends object>(target: T): T & Negatable<T> => {
+  return Object.defineProperties(target, {
+    not: { get: () => createNegated(target) },
+    does_not: { get: () => createNegated(target) },
+  }) as T & Negatable<T>;
+};

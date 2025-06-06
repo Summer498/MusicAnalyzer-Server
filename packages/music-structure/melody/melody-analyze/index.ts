@@ -1,4 +1,4 @@
-import { Time } from "@music-analyzer/time-and";
+import { Time, createTime } from "@music-analyzer/time-and";
 import { compress } from "@music-analyzer/time-and";
 import { SerializedTimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { getChord } from "@music-analyzer/tonal-objects";
@@ -181,7 +181,7 @@ const getArgsOfSerializedTimeAndAnalyzedMelody = (
 ) => {
   if (args.length === 1) {
     const [e] = args;
-    return [new Time(e.time), new Time(e.head), e.note, new SerializedMelodyAnalysis(e.melody_analysis)] as SerializedTimeAndAnalyzedMelody_Args
+    return [createTime(e.time), createTime(e.head), e.note, new SerializedMelodyAnalysis(e.melody_analysis)] as SerializedTimeAndAnalyzedMelody_Args
   }
   return args
 }
@@ -220,8 +220,8 @@ const getArgsOfTimeAndMelody = (
   if (args.length === 1) {
     const [e] = args;
     return [
-      new Time(e.time),
-      new Time(e.head),
+      createTime(e.time),
+      createTime(e.head),
       e.note
     ] as TimeAndMelody_Args
   }

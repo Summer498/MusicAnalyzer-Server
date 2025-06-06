@@ -1,10 +1,10 @@
-import { RootOfUnity } from "./root-of-unity";
+import { RootOfUnity, createRootOfUnity } from "./root-of-unity";
 import { addV2VC } from "./complex";
 import { mltV2VC } from "./complex";
 import { subV2VC } from "./complex";
 import { TypedArray } from "../typed-array";
 
-const root_of_unity = new RootOfUnity();
+const root_of_unity = createRootOfUnity();
 
 export type F32V = Float32Array<ArrayBuffer>
 
