@@ -80,4 +80,3 @@ import { createRootOfUnity } from "@music-analyzer/math";
 const time = createTime(0, 1);
 const roots = createRootOfUnity();
 ```
-
