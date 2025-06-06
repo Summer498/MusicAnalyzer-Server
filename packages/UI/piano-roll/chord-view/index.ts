@@ -38,32 +38,36 @@ export interface RequiredByChordElements {
   readonly time_range: TimeRangeController,
 }
 
-export class ChordElements {
+export interface ChordElements {
   readonly children: SVGGElement[];
   readonly chord_keys: SVGGElement;
   readonly chord_names: SVGGElement;
   readonly chord_notes: SVGGElement;
   readonly chord_romans: SVGGElement;
-  constructor(
-    romans: SerializedTimeAndRomanAnalysis[],
-    controllers: RequiredByChordElements
-  ) {
-    const data = romans.map(e => getRequiredByChordPartModel(e))
-    const chord_keys = buildChordKeySeries(data, controllers);
-    const chord_names = buildChordNameSeries(data, controllers);
-    const chord_notes = buildChordNotesSeries(data, controllers);
-    const chord_romans = buildChordRomanSeries(data, controllers);
+}
 
-    this.chord_keys = chord_keys;
-    this.chord_names = chord_names;
-    this.chord_notes = chord_notes;
-    this.chord_romans = chord_romans;
+export function createChordElements(
+  romans: SerializedTimeAndRomanAnalysis[],
+  controllers: RequiredByChordElements
+): ChordElements {
+  const data = romans.map(e => getRequiredByChordPartModel(e));
+  const chord_keys = buildChordKeySeries(data, controllers);
+  const chord_names = buildChordNameSeries(data, controllers);
+  const chord_notes = buildChordNotesSeries(data, controllers);
+  const chord_romans = buildChordRomanSeries(data, controllers);
 
-    this.children = [
-      this.chord_keys,
-      this.chord_names,
-      this.chord_notes,
-      this.chord_romans,
-    ];
-  }
+  const children = [
+    chord_keys,
+    chord_names,
+    chord_notes,
+    chord_romans,
+  ];
+
+  return {
+    children,
+    chord_keys,
+    chord_names,
+    chord_notes,
+    chord_romans,
+  };
 }

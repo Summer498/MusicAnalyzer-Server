@@ -25,14 +25,14 @@ import { MusicStructureElements } from "@music-analyzer/piano-roll";
 import { WindowReflectableRegistry, createWindowReflectableRegistry } from "@music-analyzer/view";
 import { BeatInfo } from "@music-analyzer/beat-estimation";
 
-import { DMelodyController } from "@music-analyzer/controllers";
-import { GravityController } from "@music-analyzer/controllers";
+import { DMelodyController, createDMelodyController } from "@music-analyzer/controllers";
+import { GravityController, createGravityController } from "@music-analyzer/controllers";
 import { HierarchyLevelController } from "@music-analyzer/controllers";
 import { type MelodyBeepController, createMelodyBeepController } from "@music-analyzer/controllers";
 import { MelodyColorController } from "@music-analyzer/controllers";
 import { TimeRangeController } from "@music-analyzer/controllers";
 import { Time } from "@music-analyzer/time-and";
-import { ImplicationDisplayController } from "@music-analyzer/controllers/src/switcher";
+import { ImplicationDisplayController, createImplicationDisplayController } from "@music-analyzer/controllers";
 
 class Controllers {
   readonly div: HTMLDivElement
@@ -53,7 +53,7 @@ class Controllers {
     this.div.id = "controllers";
     this.div.style = "margin-top:20px";
 
-    this.d_melody = new DMelodyController();
+    this.d_melody = createDMelodyController();
     this.hierarchy = new HierarchyLevelController(layer_count);
     this.time_range = new TimeRangeController(length);
     this.implication = new ImplicationDisplayController()

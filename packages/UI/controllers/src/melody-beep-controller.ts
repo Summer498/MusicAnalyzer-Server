@@ -1,4 +1,4 @@
-import { Checkbox } from "./switcher";
+import { Checkbox, createCheckbox } from "./switcher";
 import { Slider } from "./slider";
 
 export interface MelodyBeepVolume extends Slider<number> {}
@@ -36,7 +36,7 @@ export function createMelodyBeepSwitcher(id: string, label: string): MelodyBeepS
 
 export interface MelodyBeepController {
   readonly view: HTMLDivElement;
-  readonly checkbox: MelodyBeepSwitcher;
+  readonly checkbox: Checkbox;
   readonly volume: MelodyBeepVolume;
 }
 
