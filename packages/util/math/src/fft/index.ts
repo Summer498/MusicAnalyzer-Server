@@ -1,7 +1,7 @@
-import { Complex } from "./complex";
+import { Complex, createComplex } from "./complex";
 import { fft_core } from "./ftt-core";
 import { RootOfUnity, createRootOfUnity } from "./root-of-unity";
-export { Complex } from "./complex";
+export { Complex, createComplex } from "./complex";
 export { createRootOfUnity } from "./root-of-unity";
 
 export const fft = <T extends number>(seq: Complex<number>[]): Complex<number>[] => {
@@ -9,14 +9,14 @@ export const fft = <T extends number>(seq: Complex<number>[]): Complex<number>[]
   const N = Math.pow(2, Math.ceil(Math.log2(seq.length)));
   // zero padding
   while (seq.length < N) {
-    seq.push(new Complex<number>(0, 0));
+    seq.push(createComplex<number>(0 as number, 0 as number));
   }
   return fft_core(seq, createRootOfUnity());
 };
 
 export const ifft = <T extends number>(seq: Complex<T>[]) => {
-  const ps = fft(seq.map(e => new Complex(e.im, e.re)));
-  return ps.map(e => new Complex(e.im, e.re).divScaler(ps.length));
+  const ps = fft(seq.map(e => createComplex(e.im, e.re)));
+  return ps.map(e => createComplex(e.im, e.re).divScaler(ps.length));
 };
 
 export const convolution = <T extends number>(seq1: Complex<T>[], seq2: Complex<T>[]) => {

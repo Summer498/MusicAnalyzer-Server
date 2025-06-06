@@ -1,9 +1,9 @@
-import { ChordProgression } from "../key-estimation";
+import { createChordProgression } from "../key-estimation";
 import { remove_item } from "./remove-item";
 import { select_suitable_progression } from "./select-suitable-progression";
 import { splitArray } from "./split-array";
 import { TimeAndChordSymbol } from "./time-and-chord";
-import { SerializedTimeAndRomanAnalysis } from "./serialized-time-and-roman-analysis";
+import { createSerializedTimeAndRomanAnalysis } from "./serialized-time-and-roman-analysis";
 
 // Expected Input: "Am7 FM7 G7 CM7"
 export const calcChordProgression = (chords: TimeAndChordSymbol[]) => {
@@ -13,9 +13,9 @@ export const calcChordProgression = (chords: TimeAndChordSymbol[]) => {
   return time_and_chord_groups.flatMap(chords => {
     const time = chords.map(chord => chord.time.map(e => Math.floor(e * 1000) / 1000));
     const progression = select_suitable_progression(
-      new ChordProgression(chords.map(chord => chord.chord)).getMinimumPath(),
+      createChordProgression(chords.map(chord => chord.chord)).getMinimumPath(),
     );
-    return chords.map((_, i) => new SerializedTimeAndRomanAnalysis(
+    return chords.map((_, i) => createSerializedTimeAndRomanAnalysis(
       time[i],
       progression[i].chord.name,
       progression[i].scale.name,

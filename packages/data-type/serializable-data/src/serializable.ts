@@ -4,31 +4,26 @@ const getRecoveryURL = (url: string) => {
   return src_url.toString();
 };
 
-interface ISerializable<T extends ISerializable<T>> {
-  fromJSON<J>(json: J): ISerializable<T>
+export interface Serializable<T> {
+  toJSON(): unknown
+  serialize(): string
+  fromJSON<J>(json: J): T
 }
 
-// eslint-disable-next-line no-use-before-define
-export abstract class Serializable<T extends Serializable<T>> 
-  implements ISerializable<T> {
-  toJSON() { return this; }
-  serialize() { return JSON.stringify(this.toJSON()); }
-  fromJSON<J>(json: J): Serializable<T> {
-    console.error(`reserved:`);
-    console.error(json);
-    throw Error("Not Implemented. Please override fromJSON.");
-  }
-  static deserialize<J, T extends Serializable<T>>(
-    this: Serializable<T>,
-    json: string
-  ) {
-    return this.fromJSON(JSON.parse(json) as J);
-  }
-  static tryAndRetry<T extends Serializable<T>>(
-    deserializeAfterFetch: (url: string) => Promise<T | undefined>,
-    url: string,
-  ) {
-    return deserializeAfterFetch(url)
-      .catch(_ => deserializeAfterFetch(getRecoveryURL(url)));
-  }
-}
+export const createSerializable = <T>(ops: {
+  toJSON(): unknown
+  fromJSON<J>(json: J): T
+}): Serializable<T> => ({
+  toJSON: ops.toJSON,
+  serialize: () => JSON.stringify(ops.toJSON()),
+  fromJSON: ops.fromJSON,
+});
+
+export const deserialize = <J, T>(fromJSON: (json: J) => T, json: string) =>
+  fromJSON(JSON.parse(json) as J);
+
+export const tryAndRetry = <T>(
+  deserializeAfterFetch: (url: string) => Promise<T | undefined>,
+  url: string,
+) => deserializeAfterFetch(url)
+  .catch(() => deserializeAfterFetch(getRecoveryURL(url)));
