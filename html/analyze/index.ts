@@ -37,8 +37,8 @@ import {
   createMelodyBeepController,
   ImplicationDisplayController,
   createImplicationDisplayController,
+  MelodyColorController,
 } from "@music-analyzer/controllers";
-import { MelodyColorController } from "@music-analyzer/controllers";
 import { Time } from "@music-analyzer/time-and";
 
 class Controllers {
@@ -63,7 +63,7 @@ class Controllers {
     this.d_melody = createDMelodyController();
     this.hierarchy = createHierarchyLevelController(layer_count);
     this.time_range = createTimeRangeController(length);
-    this.implication = createImplicationDisplayController()
+    this.implication = createImplicationDisplayController();
     this.gravity = createGravityController(gravity_visible);
     this.melody_beep = createMelodyBeepController();
     this.melody_color = new MelodyColorController();
