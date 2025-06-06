@@ -303,9 +303,9 @@ const f0By_pYIN = (
   }
   else if (detectFile(e.src)) {
     makeNewDir(e.dst_dir);
-    execSync(`./sh/callPYIN.sh "${song_name}"`);
+    execFileSync("sh", ["./sh/callPYIN.sh", song_name]);
     makeNewDir(img.dst_dir);
-    execSync(`./sh/callPYIN2img.sh "${song_name}"`);
+    execFileSync("sh", ["./sh/callPYIN2img.sh", song_name]);
   }
   else {
     console.log(`required file ${e.src} not exist`)
@@ -328,7 +328,20 @@ const melodyAnalysisByCrepe = (
     const has_chord_src = detectFile(chord_src);
     if (has_midi_src && has_chord_src) {
       makeNewDir(e.dst_dir);
-      execSync(`node ./packages/melody-analyze-cli -m "${e.src}" -r "${chord_src}" -o "${e.dst}" --sampling_rate 100`)
+      execFileSync(
+        "node",
+        [
+          "./packages/melody-analyze-cli",
+          "-m",
+          e.src,
+          "-r",
+          chord_src,
+          "-o",
+          e.dst,
+          "--sampling_rate",
+          "100",
+        ],
+      );
     }
     else if (false === has_chord_src) {
       console.log(`required file ${chord_src} not exist`)
@@ -353,7 +366,20 @@ const melodyAnalysisBy_pYIN = (
   else if (detectFile(e.src) && detectFile(chord_src)) {
     const sr = 22050 / 1024;
     makeNewDir(e.dst_dir);
-    execSync(`node ./packages/melody-analyze-cli -m "${e.src}" -r "${chord_src}" -o "${e.dst}" --sampling_rate ${sr}`)
+    execFileSync(
+      "node",
+      [
+        "./packages/melody-analyze-cli",
+        "-m",
+        e.src,
+        "-r",
+        chord_src,
+        "-o",
+        e.dst,
+        "--sampling_rate",
+        `${sr}`,
+      ],
+    );
   }
   else {
     console.log(`required file ${e.src} not exist`)
@@ -392,7 +418,7 @@ const semitonesBy_pYIN = (
   }
   else if (detectFile(e.src)) {
     makeNewDir(e.dst_dir);
-    execSync(`node ./packages/cli/post-pyin "${e.src}" "${e.dst_dir}"`)
+    execFileSync("node", ["./packages/cli/post-pyin", e.src, e.dst_dir])
   }
   else {
     console.log(`required file ${e.src} not exist`)
