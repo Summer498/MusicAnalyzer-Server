@@ -28,7 +28,7 @@ Agent assignments:
 - [ ] [Alice] packages/UI/piano-roll/beat-view/src/beat-elements.ts -  BeatBarView {
 - [ ] [Alice] packages/UI/piano-roll/beat-view/src/beat-elements.ts -  BeatBarsSeries {
 - [ ] [Alice] packages/UI/piano-roll/beat-view/src/beat-elements.ts -  BeatElements {
-- [ ] [Alice] packages/UI/piano-roll/chord-view/index.ts -  ChordElements {
+- [x] [Alice] packages/UI/piano-roll/chord-view/index.ts -  ChordElements {
 - [x] packages/UI/piano-roll/melody-view/index.ts -  MelodyElements {
 - [ ] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  CacheCore {
 - [ ] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlot {

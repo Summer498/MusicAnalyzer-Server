@@ -29,7 +29,7 @@ const getRequiredByChordPartModel = (e: SerializedTimeAndRomanAnalysis) => ({
   time: e.time,
   chord: getChord(e.chord),
   scale: getScale(e.scale),
-  roman: e.scale,
+  roman: e.roman,
 } as IRequiredByChordPartModel)
 
 export interface RequiredByChordElements {
