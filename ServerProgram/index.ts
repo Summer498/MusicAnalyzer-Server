@@ -304,9 +304,9 @@ const f0By_pYIN = (
   }
   else if (detectFile(e.src)) {
     makeNewDir(e.dst_dir);
-    execSync(`./sh/callPYIN.sh "${song_name}"`);
+    execFileSync("sh", ["./sh/callPYIN.sh", song_name]);
     makeNewDir(img.dst_dir);
-    execSync(`./sh/callPYIN2img.sh "${song_name}"`);
+    execFileSync("sh", ["./sh/callPYIN2img.sh", song_name]);
   }
   else {
     console.log(`required file ${e.src} not exist`)
@@ -413,7 +413,7 @@ const semitonesBy_pYIN = (
   }
   else if (detectFile(e.src)) {
     makeNewDir(e.dst_dir);
-    execSync(`node ./packages/cli/post-pyin "${e.src}" "${e.dst_dir}"`)
+    execFileSync("node", ["./packages/cli/post-pyin", e.src, e.dst_dir])
   }
   else {
     console.log(`required file ${e.src} not exist`)
