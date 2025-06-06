@@ -10,10 +10,17 @@
     "declaration": true,
     "sourceMap": true,
     "outDir": "**/dist",
+    "baseUrl": ".",
     "paths": {
       "@music-analyzer/chord-analyze": ["./packages/chord/chord-analyze"],
       "@music-analyzer/chord-view": ["./packages/chord/chord-view"],
       "@music-analyzer/melody-view": ["./packages/melody/melody-view"],
+      "@music-analyzer/stdlib/*": ["./packages/util/stdlib/*"],
+      "@music-analyzer/color/*": ["./packages/util/color/*"],
+      "@music-analyzer/graph/*": ["./packages/util/graph/*"],
+      "@music-analyzer/html/*": ["./packages/util/html/*"],
+      "@music-analyzer/math/*": ["./packages/util/math/*"],
+      "@music-analyzer/time-and/*": ["./packages/util/time-and/*"]
     }
   },
   "exclude": ["**/dist/*"]
