@@ -1,5 +1,5 @@
 import { PianoRollRatio } from "@music-analyzer/view-parameters";
-import { ControllerView } from "./controller";
+import { createControllerView } from "./controller";
 
 export interface Slider<T> {
   readonly body: HTMLSpanElement;
@@ -19,7 +19,7 @@ export const createSlider = <T>(ops: {
   updateDisplay(input: HTMLInputElement, display: HTMLSpanElement): void;
   getValue(input: HTMLInputElement): T;
 }): Slider<T> => {
-  const view = new ControllerView("range", ops.id, ops.label);
+  const view = createControllerView("range", ops.id, ops.label);
   const { body, input } = view;
   const display = document.createElement("span");
   body.appendChild(display);
