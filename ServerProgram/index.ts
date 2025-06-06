@@ -4,7 +4,7 @@ import { Request } from "express";
 import { Response } from "express";
 import { dirname } from "path";
 import { basename } from "path";
-import { execSync } from "child_process";
+import { execSync, execFileSync } from "child_process";
 
 import { default as multer } from "multer";
 import { default as express } from "express";
@@ -329,7 +329,20 @@ const melodyAnalysisByCrepe = (
     const has_chord_src = detectFile(chord_src);
     if (has_midi_src && has_chord_src) {
       makeNewDir(e.dst_dir);
-      execSync(`node ./packages/melody-analyze-cli -m "${e.src}" -r "${chord_src}" -o "${e.dst}" --sampling_rate 100`)
+      execFileSync(
+        "node",
+        [
+          "./packages/melody-analyze-cli",
+          "-m",
+          e.src,
+          "-r",
+          chord_src,
+          "-o",
+          e.dst,
+          "--sampling_rate",
+          "100",
+        ],
+      );
     }
     else if (false === has_chord_src) {
       console.log(`required file ${chord_src} not exist`)
@@ -354,7 +367,20 @@ const melodyAnalysisBy_pYIN = (
   else if (detectFile(e.src) && detectFile(chord_src)) {
     const sr = 22050 / 1024;
     makeNewDir(e.dst_dir);
-    execSync(`node ./packages/melody-analyze-cli -m "${e.src}" -r "${chord_src}" -o "${e.dst}" --sampling_rate ${sr}`)
+    execFileSync(
+      "node",
+      [
+        "./packages/melody-analyze-cli",
+        "-m",
+        e.src,
+        "-r",
+        chord_src,
+        "-o",
+        e.dst,
+        "--sampling_rate",
+        `${sr}`,
+      ],
+    );
   }
   else {
     console.log(`required file ${e.src} not exist`)
