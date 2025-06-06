@@ -1,4 +1,4 @@
-import { Controller, createController } from "./controller";
+import { createControllerView } from "./controller";
 
 export interface Checkbox {
   readonly body: HTMLSpanElement
@@ -7,16 +7,22 @@ export interface Checkbox {
 }
 
 export const createCheckbox = (id: string, label: string): Checkbox => {
-  class CheckboxImpl extends Controller<boolean> {
-    constructor() {
-      super("checkbox", id, label)
-      this.input.checked = false
-    }
-    update() {
-      this.listeners.forEach(e => e(this.input.checked))
-    }
+  const { body, input } = createControllerView("checkbox", id, label)
+  input.checked = false
+  const listeners: ((e: boolean) => void)[] = []
+  const update = () => {
+    listeners.forEach(e => e(input.checked))
   }
-  return new CheckboxImpl()
+  input.addEventListener("input", update)
+  update()
+  return {
+    body,
+    input,
+    addListeners: (...ls: ((e: boolean) => void)[]) => {
+      listeners.push(...ls)
+      update()
+    },
+  }
 }
 
 export interface DMelodyController {
