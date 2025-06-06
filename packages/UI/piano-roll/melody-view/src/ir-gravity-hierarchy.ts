@@ -5,7 +5,7 @@ import { Time } from "@music-analyzer/time-and";
 import { AudioReflectableRegistry, PianoRollTranslateX, WindowReflectableRegistry } from "@music-analyzer/view";
 import { HierarchyLevelController, MelodyColorController, TimeRangeController } from "@music-analyzer/controllers";
 import { GetColor } from "@music-analyzer/controllers/src/color-selector";
-import { ImplicationDisplayController } from "@music-analyzer/controllers/src/switcher";
+import { ImplicationDisplayController } from "@music-analyzer/controllers";
 import { ITriad } from "@music-analyzer/irm";
 
 interface IRGravityModel {
