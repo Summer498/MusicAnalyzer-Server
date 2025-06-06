@@ -304,9 +304,9 @@ const f0By_pYIN = (
   }
   else if (detectFile(e.src)) {
     makeNewDir(e.dst_dir);
-    execSync(`./sh/callPYIN.sh "${song_name}"`);
+    execFileSync("./sh/callPYIN.sh", [song_name], { stdio: "inherit" });
     makeNewDir(img.dst_dir);
-    execSync(`./sh/callPYIN2img.sh "${song_name}"`);
+    execFileSync("./sh/callPYIN2img.sh", [song_name], { stdio: "inherit" });
   }
   else {
     console.log(`required file ${e.src} not exist`)
