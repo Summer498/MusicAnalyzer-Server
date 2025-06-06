@@ -1,4 +1,5 @@
-import { Complex, correlation } from "@music-analyzer/math";
+import { correlation, createComplex } from "@music-analyzer/math";
+import type { Complex } from "@music-analyzer/math";
 import { AudioAnalyzer } from "./audio-analyzer";
 
 export interface WaveViewer {
@@ -15,7 +16,7 @@ export const createWaveViewer = (analyser: AudioAnalyzer): WaveViewer => {
   svg.id = "sound-wave";
   svg.setAttribute("width", String(800));
   svg.setAttribute("height", String(450));
-  const old_wave = Array.from({ length: analyser.analyser.fftSize }, () => new Complex(0, 0));
+  const old_wave = Array.from({ length: analyser.analyser.fftSize }, () => createComplex(0, 0));
 
   const getDelay = (copy: Complex<number>[]) => {
     const col = correlation(old_wave, copy);
@@ -35,7 +36,7 @@ export const createWaveViewer = (analyser: AudioAnalyzer): WaveViewer => {
     const height = svg.clientHeight;
     let path_data = "";
     const copy: Complex<number>[] = [];
-    wave.forEach(e => copy.push(new Complex(e, 0)));
+    wave.forEach(e => copy.push(createComplex(e, 0)));
     const delay = getDelay(copy);
     for (let i = 0; i < wave.length / 2; i++) {
       if (isNaN(wave[i + delay] * 0)) continue;

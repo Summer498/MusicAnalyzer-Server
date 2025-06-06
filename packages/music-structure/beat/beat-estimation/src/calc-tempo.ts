@@ -1,5 +1,6 @@
 import { argmax } from "@music-analyzer/math";
-import { Complex } from "@music-analyzer/math";
+import type { Complex } from "@music-analyzer/math";
+import { createComplex } from "@music-analyzer/math";
 import { correlation } from "@music-analyzer/math";
 import { decimal } from "@music-analyzer/math";
 import { getRange } from "@music-analyzer/math";
@@ -62,7 +63,7 @@ export const calcTempo = (melodies: SerializedTimeAndAnalyzedMelody[], romans: S
   console.log("onsets");
   console.log(onsets);
   */
- const complex_onset = onsets.map(e => new Complex(e, 0));
+ const complex_onset = onsets.map(e => createComplex(e, 0));
   const tps = correlation(
     complex_onset,
     complex_onset,
