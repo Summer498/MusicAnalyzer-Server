@@ -3,17 +3,17 @@ import { getTonicChroma } from "./get-tonic-chroma";
 import { getPowerChroma } from "./get-power-chroma";
 import { getChordChroma } from "./get-chord-chroma";
 import { getScaleChroma } from "./get-scale-chroma";
-import { Assertion } from "@music-analyzer/stdlib";
+import { createAssertion } from "@music-analyzer/stdlib";
 import { getOnehot } from "@music-analyzer/math";
 import { vSum } from "@music-analyzer/math";
 
 export const getBasicSpace = (roman: RomanChord) => {
-  new Assertion(!roman.scale.empty).onFailed(() => {
+  createAssertion(!roman.scale.empty).onFailed(() => {
     console.log(`received:`);
     console.log(roman.scale);
     throw new Error("scale must not be empty");
   });
-  new Assertion(!roman.chord.empty).onFailed(() => {
+  createAssertion(!roman.chord.empty).onFailed(() => {
     console.log(`received:`);
     console.log(roman.chord);
     throw new Error("chord must not be empty");
