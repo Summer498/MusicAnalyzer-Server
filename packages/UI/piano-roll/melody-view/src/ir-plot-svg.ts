@@ -53,75 +53,80 @@ const createIRPlotHierarchyView = (
   updateCircleVisibility: (visible_layer) => circles.setShow(visible_layer),
 });
 
-class CacheCore {
-  #cache: SerializedTimeAndAnalyzedMelody[];
-  #index: number;
-  constructor(
-    readonly melody_series: SerializedTimeAndAnalyzedMelody[],
-  ) {
-    this.#cache = [];
-    this.#index = 0;
-  }
-
-  cacheHit() {
-    return this.#cache[1]?.time.has(NowAt.get());
-  }
-  cacheUpdate() {
-    if (this.cacheHit()) { return this.#cache; }
-    else {
-      this.#index = this.melody_series.findIndex((value) =>
-        value.time.has(NowAt.get())
-      );
-    }
-    const i = this.#index;
-    const N = this.melody_series.length;
-    const melodies = [
-      this.melody_series[Math.max(0, i - 1)],
-      this.melody_series[Math.max(0, i)],
-      this.melody_series[Math.min(i + 1, N - 1)],
-      this.melody_series[Math.min(i + 2, N - 1)],
-    ];
-    this.#cache = melodies;
-  }
-  get index() {
-    this.cacheUpdate();
-    return this.#index;
-  }
-  get melody() {
-    this.cacheUpdate();
-    return this.#cache;
-  }
+interface CacheCore {
+  readonly melody_series: SerializedTimeAndAnalyzedMelody[];
+  readonly index: number;
+  readonly melody: SerializedTimeAndAnalyzedMelody[];
 }
 
-class MelodiesCache {
-  #core: CacheCore;
-  constructor(
-    melody_series: SerializedTimeAndAnalyzedMelody[],
-  ) {
-    this.#core = new CacheCore(melody_series);
-  }
-  get is_visible() {
-    const i = this.#core.index;
-    return 1 <= i && i < this.#core.melody_series.length - 1;
-  }
-  getRangedMelody() { return this.#core.melody; }
-  getPositionRatio() {
-    const melodies = this.#core.melody;
-    const t = [melodies[1].time.begin, melodies[2].time.begin];
-    return (NowAt.get() - t[0]) / (t[1] - t[0]);
-  }
-  getInterval() {
-    const melodies = this.#core.melody.map(e => e.note);
-    return [
-      melodies[1] - melodies[0] || 0,
-      melodies[2] - melodies[1] || 0,
-      melodies[3] - melodies[2] || 0,
+const createCacheCore = (
+  melody_series: SerializedTimeAndAnalyzedMelody[],
+): CacheCore => {
+  let cache: SerializedTimeAndAnalyzedMelody[] = [];
+  let idx = 0;
+
+  const cacheHit = () => cache[1]?.time.has(NowAt.get());
+
+  const cacheUpdate = () => {
+    if (cacheHit()) return cache;
+    idx = melody_series.findIndex(value => value.time.has(NowAt.get()));
+    const i = idx;
+    const N = melody_series.length;
+    cache = [
+      melody_series[Math.max(0, i - 1)],
+      melody_series[Math.max(0, i)],
+      melody_series[Math.min(i + 1, N - 1)],
+      melody_series[Math.min(i + 2, N - 1)],
     ];
-  }
-  getCurrentNote() {
-    return this.#core.melody[1];
-  }
+  };
+
+  return {
+    melody_series,
+    get index() {
+      cacheUpdate();
+      return idx;
+    },
+    get melody() {
+      cacheUpdate();
+      return cache;
+    },
+  };
+};
+
+interface MelodiesCache {
+  readonly is_visible: boolean;
+  getRangedMelody(): SerializedTimeAndAnalyzedMelody[];
+  getPositionRatio(): number;
+  getInterval(): number[];
+  getCurrentNote(): SerializedTimeAndAnalyzedMelody;
 }
+
+const createMelodiesCache = (
+  melody_series: SerializedTimeAndAnalyzedMelody[],
+): MelodiesCache => {
+  const core = createCacheCore(melody_series);
+  return {
+    get is_visible() {
+      const i = core.index;
+      return 1 <= i && i < core.melody_series.length - 1;
+    },
+    getRangedMelody: () => core.melody,
+    getPositionRatio: () => {
+      const melodies = core.melody;
+      const t = [melodies[1].time.begin, melodies[2].time.begin];
+      return (NowAt.get() - t[0]) / (t[1] - t[0]);
+    },
+    getInterval: () => {
+      const melodies = core.melody.map(e => e.note);
+      return [
+        melodies[1] - melodies[0] || 0,
+        melodies[2] - melodies[1] || 0,
+        melodies[3] - melodies[2] || 0,
+      ];
+    },
+    getCurrentNote: () => core.melody[1],
+  };
+};
 
 interface IRPlotModel {
   readonly time: Time;
@@ -135,7 +140,7 @@ interface IRPlotModel {
   getCurrentNote: () => SerializedTimeAndAnalyzedMelody;
 }
 const createIRPlotModel = (melody_series: SerializedTimeAndAnalyzedMelody[]): IRPlotModel => {
-  const melody = new MelodiesCache(melody_series);
+  const melody = createMelodiesCache(melody_series);
   const model: IRPlotModel = {
     time: createTime(0, 0),
     head: createTime(0, 0),

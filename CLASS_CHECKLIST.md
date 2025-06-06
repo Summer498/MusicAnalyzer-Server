@@ -5,86 +5,86 @@ Agent assignments:
 - [Bob] Cognitive Theory of Music
 - [Charlie] Data Serialization and Utilities
 
-- [ ] [Alice] packages/UI/controllers/src/color-selector.ts -  ColorSelector<T> extends Controller<T> {
-- [ ] [Alice] packages/UI/controllers/src/color-selector.ts -  IRM_ColorSelector
-- [ ] [Alice] packages/UI/controllers/src/color-selector.ts -  MelodyColorController {
-- [ ] [Alice] packages/UI/controllers/src/color-selector.ts -  MelodyColorSelector {
-- [ ] [Alice] packages/UI/controllers/src/controller.ts -  Controller<T> {
-- [ ] [Alice] packages/UI/controllers/src/controller.ts -  ControllerView {
-- [ ] [Alice] packages/UI/controllers/src/melody-beep-controller.ts -  MelodyBeepController {
-- [ ] [Alice] packages/UI/controllers/src/melody-beep-controller.ts -  MelodyBeepSwitcher
-- [ ] [Alice] packages/UI/controllers/src/melody-beep-controller.ts -  MelodyBeepVolume
-- [ ] [Alice] packages/UI/controllers/src/slider.ts -  HierarchyLevel
-- [ ] [Alice] packages/UI/controllers/src/slider.ts -  HierarchyLevelController {
-- [ ] [Alice] packages/UI/controllers/src/slider.ts -  Slider<T> extends Controller<T> {
-- [ ] [Alice] packages/UI/controllers/src/slider.ts -  TimeRangeController {
-- [ ] [Alice] packages/UI/controllers/src/slider.ts -  TimeRangeSlider
-- [ ] [Alice] packages/UI/controllers/src/switcher.ts -  Checkbox extends Controller<boolean> {
-- [ ] [Alice] packages/UI/controllers/src/switcher.ts -  DMelodyController {
-- [ ] [Alice] packages/UI/controllers/src/switcher.ts -  GravityController {
-- [ ] [Alice] packages/UI/controllers/src/switcher.ts -  ImplicationDisplayController {
-- [ ] [Alice] packages/UI/piano-roll/beat-view/src/beat-elements.ts -  BeatBar {
-- [ ] [Alice] packages/UI/piano-roll/beat-view/src/beat-elements.ts -  BeatBarModel {
-- [ ] [Alice] packages/UI/piano-roll/beat-view/src/beat-elements.ts -  BeatBarView {
-- [ ] [Alice] packages/UI/piano-roll/beat-view/src/beat-elements.ts -  BeatBarsSeries {
-- [ ] [Alice] packages/UI/piano-roll/beat-view/src/beat-elements.ts -  BeatElements {
+- [x] [Alice] packages/UI/controllers/src/color-selector.ts -  ColorSelector<T> extends Controller<T> {
+- [x] [Alice] packages/UI/controllers/src/color-selector.ts -  IRM_ColorSelector
+- [x] [Alice] packages/UI/controllers/src/color-selector.ts -  MelodyColorController {
+- [x] [Alice] packages/UI/controllers/src/color-selector.ts -  MelodyColorSelector {
+- [x] [Alice] packages/UI/controllers/src/controller.ts -  Controller<T> {
+- [x] [Alice] packages/UI/controllers/src/controller.ts -  ControllerView {
+- [x] [Alice] packages/UI/controllers/src/melody-beep-controller.ts -  MelodyBeepController {
+- [x] [Alice] packages/UI/controllers/src/melody-beep-controller.ts -  MelodyBeepSwitcher
+- [x] [Alice] packages/UI/controllers/src/melody-beep-controller.ts -  MelodyBeepVolume
+- [x] [Alice] packages/UI/controllers/src/slider.ts -  HierarchyLevel
+- [x] [Alice] packages/UI/controllers/src/slider.ts -  HierarchyLevelController {
+- [x] [Alice] packages/UI/controllers/src/slider.ts -  Slider<T> extends Controller<T> {
+- [x] [Alice] packages/UI/controllers/src/slider.ts -  TimeRangeController {
+- [x] [Alice] packages/UI/controllers/src/slider.ts -  TimeRangeSlider
+- [x] [Alice] packages/UI/controllers/src/switcher.ts -  Checkbox extends Controller<boolean> {
+- [x] [Alice] packages/UI/controllers/src/switcher.ts -  DMelodyController {
+- [x] [Alice] packages/UI/controllers/src/switcher.ts -  GravityController {
+- [x] [Alice] packages/UI/controllers/src/switcher.ts -  ImplicationDisplayController {
+- [x] [Alice] packages/UI/piano-roll/beat-view/src/beat-elements.ts -  BeatBar {
+- [x] [Alice] packages/UI/piano-roll/beat-view/src/beat-elements.ts -  BeatBarModel {
+- [x] [Alice] packages/UI/piano-roll/beat-view/src/beat-elements.ts -  BeatBarView {
+- [x] [Alice] packages/UI/piano-roll/beat-view/src/beat-elements.ts -  BeatBarsSeries {
+- [x] [Alice] packages/UI/piano-roll/beat-view/src/beat-elements.ts -  BeatElements {
 - [x] [Alice] packages/UI/piano-roll/chord-view/index.ts -  ChordElements {
 - [x] packages/UI/piano-roll/melody-view/index.ts -  MelodyElements {
-- [ ] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  CacheCore {
-- [ ] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlot {
+- [x] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  CacheCore {
+- [x] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlot {
 - [x] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotAxis {
 - [x] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotCircles {
-- [ ] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotHierarchy {
-- [ ] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotHierarchyModel {
-- [ ] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotHierarchyView {
-- [ ] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotLayer {
-- [ ] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotLayerModel {
-- [ ] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotLayerView {
-- [ ] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotModel {
-- [ ] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotSVG {
-- [ ] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotView {
-- [ ] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotViewModel {
-- [ ] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  MelodiesCache {
-- [ ] [Alice] packages/UI/piano-roll/melody-view/src/reduction-hierarchy.ts -  Bracket {
-- [ ] [Alice] packages/UI/piano-roll/melody-view/src/reduction-hierarchy.ts -  Dot {
-- [ ] [Alice] packages/UI/piano-roll/melody-view/src/reduction-hierarchy.ts -  IRMSymbol {
-- [ ] [Alice] packages/UI/piano-roll/melody-view/src/reduction-hierarchy.ts -  Reduction {
-- [ ] [Alice] packages/UI/piano-roll/melody-view/src/reduction-hierarchy.ts -  ReductionHierarchy {
-- [ ] [Alice] packages/UI/piano-roll/melody-view/src/reduction-hierarchy.ts -  ReductionLayer {
-- [ ] [Alice] packages/UI/piano-roll/melody-view/src/reduction-hierarchy.ts -  ReductionModel {
-- [ ] [Alice] packages/UI/piano-roll/melody-view/src/reduction-hierarchy.ts -  ReductionView {
-- [ ] [Alice] packages/UI/piano-roll/melody-view/src/reduction-hierarchy.ts -  ReductionViewModel {
-- [ ] [Alice] packages/UI/piano-roll/melody-view/src/reduction-tree.ts -  Line {
-- [ ] [Alice] packages/UI/piano-roll/melody-view/src/reduction-tree.ts -  TreeHierarchy {
-- [ ] [Alice] packages/UI/piano-roll/piano-roll/src/analysis-view.ts -  AnalysisView {
-- [ ] [Alice] packages/UI/piano-roll/piano-roll/src/analysis-view.ts -  MusicStructureElements {
-- [ ] [Alice] packages/UI/piano-roll/piano-roll/src/piano-roll.ts -  BG extends Rectangle {
-- [ ] [Alice] packages/UI/piano-roll/piano-roll/src/piano-roll.ts -  BGs {
-- [ ] [Alice] packages/UI/piano-roll/piano-roll/src/piano-roll.ts -  CurrentTimeLine {
-- [ ] [Alice] packages/UI/piano-roll/piano-roll/src/piano-roll.ts -  Key extends Rectangle {
-- [ ] [Alice] packages/UI/piano-roll/piano-roll/src/piano-roll.ts -  Keys {
-- [ ] [Alice] packages/UI/piano-roll/piano-roll/src/piano-roll.ts -  PianoRoll {
-- [ ] [Alice] packages/UI/piano-roll/piano-roll/src/piano-roll.ts -  Rectangle {
-- [ ] [Alice] packages/UI/piano-roll/piano-roll/src/piano-roll.ts -  RectangleModel {
-- [ ] [Alice] packages/UI/piano-roll/piano-roll/src/piano-roll.ts -  RectangleView {
-- [ ] [Alice] packages/UI/spectrogram/src/audio-analyzer/audio-analyzer.ts -  AudioAnalyzer {
-- [ ] [Alice] packages/UI/spectrogram/src/audio-viewer.ts -  AudioViewer {
-- [ ] [Alice] packages/UI/spectrogram/src/fft-viewer.ts -  FFTViewer {
-- [ ] [Alice] packages/UI/spectrogram/src/spectrogram-viewer.ts -  spectrogramViewer {
-- [ ] [Alice] packages/UI/spectrogram/src/wave-viewer.ts -  WaveViewer {
-- [ ] [Alice] packages/UI/view-parameters/index.ts -  CurrentTimeRatio {
-- [ ] [Alice] packages/UI/view-parameters/index.ts -  CurrentTimeX {
-- [ ] [Alice] packages/UI/view-parameters/index.ts -  NoteSize {
-- [ ] [Alice] packages/UI/view-parameters/index.ts -  NowAt {
-- [ ] [Alice] packages/UI/view-parameters/index.ts -  OctaveCount {
-- [ ] [Alice] packages/UI/view-parameters/index.ts -  PianoRollBegin {
-- [ ] [Alice] packages/UI/view-parameters/index.ts -  PianoRollEnd {
-- [ ] [Alice] packages/UI/view-parameters/index.ts -  PianoRollHeight {
-- [ ] [Alice] packages/UI/view-parameters/index.ts -  PianoRollRatio {
-- [ ] [Alice] packages/UI/view-parameters/index.ts -  PianoRollTimeLength {
-- [ ] [Alice] packages/UI/view-parameters/index.ts -  PianoRollWidth {
-- [ ] [Alice] packages/UI/view-parameters/index.ts -  SongLength {
-- [ ] [Alice] packages/UI/view-parameters/index.ts -  WindowInnerWidth {
+- [x] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotHierarchy {
+- [x] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotHierarchyModel {
+- [x] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotHierarchyView {
+- [x] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotLayer {
+- [x] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotLayerModel {
+- [x] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotLayerView {
+- [x] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotModel {
+- [x] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotSVG {
+- [x] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotView {
+- [x] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  IRPlotViewModel {
+- [x] [Alice] packages/UI/piano-roll/melody-view/src/ir-plot-svg.ts -  MelodiesCache {
+- [x] [Alice] packages/UI/piano-roll/melody-view/src/reduction-hierarchy.ts -  Bracket {
+- [x] [Alice] packages/UI/piano-roll/melody-view/src/reduction-hierarchy.ts -  Dot {
+- [x] [Alice] packages/UI/piano-roll/melody-view/src/reduction-hierarchy.ts -  IRMSymbol {
+- [x] [Alice] packages/UI/piano-roll/melody-view/src/reduction-hierarchy.ts -  Reduction {
+- [x] [Alice] packages/UI/piano-roll/melody-view/src/reduction-hierarchy.ts -  ReductionHierarchy {
+- [x] [Alice] packages/UI/piano-roll/melody-view/src/reduction-hierarchy.ts -  ReductionLayer {
+- [x] [Alice] packages/UI/piano-roll/melody-view/src/reduction-hierarchy.ts -  ReductionModel {
+- [x] [Alice] packages/UI/piano-roll/melody-view/src/reduction-hierarchy.ts -  ReductionView {
+- [x] [Alice] packages/UI/piano-roll/melody-view/src/reduction-hierarchy.ts -  ReductionViewModel {
+- [x] [Alice] packages/UI/piano-roll/melody-view/src/reduction-tree.ts -  Line {
+- [x] [Alice] packages/UI/piano-roll/melody-view/src/reduction-tree.ts -  TreeHierarchy {
+- [x] [Alice] packages/UI/piano-roll/piano-roll/src/analysis-view.ts -  AnalysisView {
+- [x] [Alice] packages/UI/piano-roll/piano-roll/src/analysis-view.ts -  MusicStructureElements {
+- [x] [Alice] packages/UI/piano-roll/piano-roll/src/piano-roll.ts -  BG extends Rectangle {
+- [x] [Alice] packages/UI/piano-roll/piano-roll/src/piano-roll.ts -  BGs {
+- [x] [Alice] packages/UI/piano-roll/piano-roll/src/piano-roll.ts -  CurrentTimeLine {
+- [x] [Alice] packages/UI/piano-roll/piano-roll/src/piano-roll.ts -  Key extends Rectangle {
+- [x] [Alice] packages/UI/piano-roll/piano-roll/src/piano-roll.ts -  Keys {
+- [x] [Alice] packages/UI/piano-roll/piano-roll/src/piano-roll.ts -  PianoRoll {
+- [x] [Alice] packages/UI/piano-roll/piano-roll/src/piano-roll.ts -  Rectangle {
+- [x] [Alice] packages/UI/piano-roll/piano-roll/src/piano-roll.ts -  RectangleModel {
+- [x] [Alice] packages/UI/piano-roll/piano-roll/src/piano-roll.ts -  RectangleView {
+- [x] [Alice] packages/UI/spectrogram/src/audio-analyzer/audio-analyzer.ts -  AudioAnalyzer {
+- [x] [Alice] packages/UI/spectrogram/src/audio-viewer.ts -  AudioViewer {
+- [x] [Alice] packages/UI/spectrogram/src/fft-viewer.ts -  FFTViewer {
+- [x] [Alice] packages/UI/spectrogram/src/spectrogram-viewer.ts -  spectrogramViewer {
+- [x] [Alice] packages/UI/spectrogram/src/wave-viewer.ts -  WaveViewer {
+- [x] [Alice] packages/UI/view-parameters/index.ts -  CurrentTimeRatio {
+- [x] [Alice] packages/UI/view-parameters/index.ts -  CurrentTimeX {
+- [x] [Alice] packages/UI/view-parameters/index.ts -  NoteSize {
+- [x] [Alice] packages/UI/view-parameters/index.ts -  NowAt {
+- [x] [Alice] packages/UI/view-parameters/index.ts -  OctaveCount {
+- [x] [Alice] packages/UI/view-parameters/index.ts -  PianoRollBegin {
+- [x] [Alice] packages/UI/view-parameters/index.ts -  PianoRollEnd {
+- [x] [Alice] packages/UI/view-parameters/index.ts -  PianoRollHeight {
+- [x] [Alice] packages/UI/view-parameters/index.ts -  PianoRollRatio {
+- [x] [Alice] packages/UI/view-parameters/index.ts -  PianoRollTimeLength {
+- [x] [Alice] packages/UI/view-parameters/index.ts -  PianoRollWidth {
+- [x] [Alice] packages/UI/view-parameters/index.ts -  SongLength {
+- [x] [Alice] packages/UI/view-parameters/index.ts -  WindowInnerWidth {
 - [x] packages/UI/view/index.ts -  AudioReflectableRegistry {
 - [x] packages/UI/view/index.ts -  PianoRollTranslateX {
 - [x] packages/UI/view/index.ts -  WindowReflectableRegistry {
@@ -142,8 +142,8 @@ Agent assignments:
 - [ ] [Charlie] packages/util/graph/src/viterbi.ts -  ViterbiResult<S> {
 - [ ] [Charlie] packages/util/html/src/html.ts -  HTML {
 - [ ] [Charlie] packages/util/html/src/svg.ts -  SVG {
-- [ ] [Charlie] packages/util/math/src/fft/array/root-of-unity.ts -  RootOfUnity {
-- [ ] [Charlie] packages/util/math/src/fft/complex.ts -  Complex<T extends number> {
+- [x] [Charlie] packages/util/math/src/fft/array/root-of-unity.ts -  RootOfUnity {
+- [x] [Charlie] packages/util/math/src/fft/complex.ts -  Complex<T extends number> {
 - [x] packages/util/math/src/fft/root-of-unity.ts -  RootOfUnity {
 - [x] packages/util/math/src/reduction/compare.ts -  Compare {
 - [x] packages/util/stdlib/src/assertion/assertion.ts -  Assertion {
