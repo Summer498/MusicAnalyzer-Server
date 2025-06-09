@@ -31,14 +31,34 @@ interface I_IRGravity {
     readonly triangle: SVGPolygonElement,
     readonly line: SVGLineElement,
   },
-  readonly line_seed: ILinePos,
+  readonly line_pos: ILinePos,
+}
+
+interface I_Puddle {
+  readonly svg: SVGCircleElement,
+  readonly model: IRGravityModel,
+  readonly view: {
+    readonly svg: SVGCircleElement,
+  },
+  readonly line_pos: ILinePos,
+}
+
+interface I_Reject {
+  readonly svg: SVGGElement,
+  readonly model: IRGravityModel,
+  readonly view: {
+    readonly svg: SVGGElement,
+    readonly line1: SVGLineElement,
+    readonly line2: SVGLineElement,
+  },
+  readonly line_pos: ILinePos,
 }
 
 interface I_IRGravityLayer {
   readonly layer: number
   readonly svg: SVGGElement
-  readonly children: I_IRGravity[]
-  readonly show: I_IRGravity[];
+  readonly children: (I_IRGravity | I_Puddle | I_Reject)[]
+  readonly show:  (I_IRGravity | I_Puddle | I_Reject)[]
 }
 
 interface I_IRGravityHierarchy {
@@ -68,23 +88,23 @@ function getLinePos(
 const triangle_width = 10;
 const triangle_height = 10;
 function getTriangle() {
-  const triangle_svg = document.createElementNS("http://www.w3.org/2000/svg", "polygon")
-  triangle_svg.classList.add("triangle");
-  triangle_svg.id = "gravity-arrow";
-  triangle_svg.style.stroke = "rgb(0, 0, 0)";
-  triangle_svg.style.fill = "rgb(0, 0, 0)";
-  triangle_svg.style.strokeWidth = String(0);
-  triangle_svg.setAttribute("points", [0, 0, - triangle_width, + triangle_height, + triangle_width, + triangle_height].join(","));
-  return triangle_svg;
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "polygon")
+  svg.classList.add("triangle");
+  svg.id = "gravity-arrow";
+  svg.style.stroke = "rgb(0, 0, 0)";
+  svg.style.fill = "rgb(0, 0, 0)";
+  svg.style.strokeWidth = String(0);
+  svg.setAttribute("points", [0, 0, - triangle_width, + triangle_height, + triangle_width, + triangle_height].join(","));
+  return svg;
 }
 
 function getLine() {
-  const line_svg = document.createElementNS("http://www.w3.org/2000/svg", "line")
-  line_svg.id = "gravity-arrow";
-  line_svg.classList.add("line");
-  line_svg.style.stroke = "rgb(0, 0, 0)";
-  line_svg.style.strokeWidth = String(5);
-  return line_svg;
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "line")
+  svg.id = "gravity-arrow";
+  svg.classList.add("line");
+  svg.style.stroke = "rgb(0, 0, 0)";
+  svg.style.strokeWidth = String(5);
+  return svg;
 }
 
 function getGravitySVG(
@@ -94,6 +114,22 @@ function getGravitySVG(
   svg.id = "gravity";
   children.forEach(e => svg.appendChild(e));
   return svg
+}
+
+function getPuddleSVG() {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  svg.id = "puddle";
+  svg.style.strokeWidth = String(0);
+  svg.style.stroke = "rgba(0,0,0,0.25)";  // default (bug) color
+  svg.style.fill = "rgba(0,0,0,0.25)";  // default (bug) color
+  return svg;
+}
+
+function getCrossSVG(...children: SVGLineElement[]) {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  svg.id = "cross";
+  children.forEach(e => svg.appendChild(e));
+  return svg;
 }
 
 function getSVGG(id: string, children: SVGElement[]) {
@@ -225,7 +261,7 @@ const getProspectiveDestination = (observed: number) => {
     : getRange(-s * 0, -s * L, -s * G, -1, O < m3 ? -s * M2 : -s * L / 2)
 }
 
-const getProspectiveArrow = (layer: number) => (delayed_melody: SerializedTimeAndAnalyzedMelody[][]) => (_: unknown, i: number) => {
+const getProspectiveArrow = (layer: number) => (delayed_melody: SerializedTimeAndAnalyzedMelody[][]) => (_: unknown, i: number): I_IRGravity | undefined => {
   const first = delayed_melody[0][i];
   const second = delayed_melody[1][i];
   const third = delayed_melody[2][i];
@@ -252,8 +288,37 @@ const getProspectiveArrow = (layer: number) => (delayed_melody: SerializedTimeAn
   line.style.strokeWidth = String(2)
   const svg = getGravitySVG(triangle, line);
   const view = { svg, triangle, line };
-  return { model, view, line_pos }
+  return { svg, model, view, line_pos }
 }
+
+const getProspectiveReject = (layer: number) => (delayed_melody: SerializedTimeAndAnalyzedMelody[][]) => (_: unknown, i: number): I_Reject | undefined => {
+  const first = delayed_melody[0][i];
+  const second = delayed_melody[1][i];
+  const third = delayed_melody[2][i];
+
+  if (!isReconsidered(second.note - first.note, third.note - second.note)) { return; }
+  const implication = getProspectiveDestination(second.note - first.note)
+
+  const line_pos = getLinePos(
+    { time: second.time, note: second.note },
+    { time: third.time, note: second.note + implication.dst }
+  );
+  const model = {
+    ...second,
+    archetype: second.melody_analysis.implication_realization as Triad,
+    layer: layer || 0,
+  } as IRGravityModel;
+  const line1 = getLine();
+  const line2 = getLine();
+  const alpha = isReconsidered(second.note - first.note, third.note - second.note) ? .25 : 1;
+  const color = isAA(second.note - first.note) ? `rgba(0,0,255,${alpha})` : `rgba(255,0,0,${alpha})`;
+  line1.style.stroke = color;
+  line2.style.stroke = color;
+  const svg = getCrossSVG(line1, line2);
+  const view = { svg, line1, line2 };
+  return { svg, model, view, line_pos }
+}
+
 
 const m2 = 1;
 const M2 = 2;
@@ -267,7 +332,7 @@ const getRetrospectiveDestination = (observed: number, realized: number) => {
     : getRange(-s * 0, -s * L, -s * G, -1, O < m3 ? -s * M2 : -s * L / 2)
 }
 
-const getRetrospectiveArrow = (layer: number) => (delayed_melody: SerializedTimeAndAnalyzedMelody[][]) => (_: unknown, i: number) => {
+const getRetrospectiveArrow = (layer: number) => (delayed_melody: SerializedTimeAndAnalyzedMelody[][]) => (_: unknown, i: number): I_IRGravity => {
   const first = delayed_melody[0][i];
   const second = delayed_melody[1][i];
   const third = delayed_melody[2][i];
@@ -292,10 +357,35 @@ const getRetrospectiveArrow = (layer: number) => (delayed_melody: SerializedTime
   triangle.style.fill = color;
   line.style.stroke = color; const svg = getGravitySVG(triangle, line);
   const view = { svg, triangle, line };
-  return { model, view, line_pos };
+  return { svg, model, view, line_pos };
+}
+const getReconstructedPuddle = (layer: number) => (delayed_melody: SerializedTimeAndAnalyzedMelody[][]) => (_: unknown, i: number): I_Puddle => {
+  const first = delayed_melody[0][i];
+  const second = delayed_melody[1][i];
+  const third = delayed_melody[2][i];
+
+  const implication = getRetrospectiveDestination(second.note - first.note, third.note - second.note);
+
+  const line_pos = getLinePos(
+    { time: second.time, note: second.note },
+    { time: third.time, note: second.note + implication.dst },
+  );
+
+  const model = {
+    ...second,
+    archetype: second.melody_analysis.implication_realization as Triad,
+    layer: layer || 0,
+  } as IRGravityModel;
+  const alpha = isB(second.note - first.note, third.note - second.note) ? 1 : .25;
+  const color = isP(second.note - first.note, third.note - second.note) ? `rgba(0,0,255,${alpha})` : `rgba(255,0,0,${alpha})`;
+  const svg = getPuddleSVG();
+  svg.style.stroke = color;
+  svg.style.fill = color;
+  const view = { svg };
+  return { svg, model, view, line_pos };
 }
 
-const getReconstructedArrow = (layer: number) => (delayed_melody: SerializedTimeAndAnalyzedMelody[][]) => (_: unknown, i: number) => {
+const getReconstructedArrow = (layer: number) => (delayed_melody: SerializedTimeAndAnalyzedMelody[][]) => (_: unknown, i: number): I_IRGravity | undefined => {
   const first = delayed_melody[0][i];
   const second = delayed_melody[1][i];
   const third = delayed_melody[2][i];
@@ -327,7 +417,7 @@ const getReconstructedArrow = (layer: number) => (delayed_melody: SerializedTime
   line.style.stroke = color;
   const svg = getGravitySVG(triangle, line);
   const view = { svg, triangle, line };
-  return { model, view, line_pos };
+  return { svg, model, view, line_pos };
 }
 
 const getLayers = (
@@ -337,23 +427,28 @@ const getLayers = (
   const delayed_melody = melodies.map((_, i) => melodies.slice(i));
   if (delayed_melody.length <= 3) { return; }
   const prospective = delayed_melody[2].map(getProspectiveArrow(layer)(delayed_melody)).filter(e => e !== undefined);
+  const prospective_reject = delayed_melody[2].map(getProspectiveReject(layer)(delayed_melody)).filter(e => e !== undefined);
   const retrospective = delayed_melody[2].map(getRetrospectiveArrow(layer)(delayed_melody)).filter(e => e !== undefined);
   const reconstructed = delayed_melody[3].map(getReconstructedArrow(layer)(delayed_melody)).filter(e => e !== undefined);
+  const reconstructed_puddle = delayed_melody[3].map(getReconstructedPuddle(layer)(delayed_melody)).filter(e => e !== undefined);
 
   const children = [
     prospective,
+    prospective_reject,
     retrospective,
     reconstructed,
+    reconstructed_puddle
   ].flat()
-    .map(e => ({ svg: e.view.svg, model: e.model, view: e.view, line_seed: e.line_pos }));
   const svg = getSVGG(`layer-${layer}`, children.map(e => e.svg));
   return ({
     layer,
     svg,
     children,
     prospective,
+    prospective_reject,
     retrospective,
     reconstructed,
+    reconstructed_puddle,
     show: children,
   })
 }
@@ -364,7 +459,7 @@ const onWindowResized_IRGravity = (
   e.svg.setAttribute("width", String(PianoRollConverter.scaled(e.model.time.duration)));
   e.svg.setAttribute("height", String(black_key_height));
 
-  const line_pos = { x1: e.line_seed.x1 * NoteSize.get(), x2: e.line_seed.x2 * NoteSize.get(), y1: e.line_seed.y1 * 1, y2: e.line_seed.y2 * 1 } as ILinePos
+  const line_pos = { x1: e.line_pos.x1 * NoteSize.get(), x2: e.line_pos.x2 * NoteSize.get(), y1: e.line_pos.y1 * 1, y2: e.line_pos.y2 * 1 } as ILinePos
   const angle = Math.atan2(line_pos.y2 - line_pos.y1, line_pos.x2 - line_pos.x1);
   const marginX = triangle_height * Math.cos(angle);
   const marginY = triangle_height * Math.sin(angle);
@@ -375,7 +470,37 @@ const onWindowResized_IRGravity = (
   e.view.line.setAttribute("y2", String(line_pos.y2 - marginY));
 }
 
+const onWindowResized_Reject = (
+  e: I_Reject
+) => {
+  e.svg.setAttribute("width", String(PianoRollConverter.scaled(e.model.time.duration)));
+  e.svg.setAttribute("height", String(black_key_height));
+
+/* TODO:
+  e.view.triangle.setAttribute("transform", `translate(${line_pos.x2},${line_pos.y2}) rotate(${angle * 180 / Math.PI + 90})`);
+  e.view.line.setAttribute("x1", String(line_pos.x1));
+  e.view.line.setAttribute("y1", String(line_pos.y1));
+  e.view.line.setAttribute("x2", String(line_pos.x2 - marginX));
+  e.view.line.setAttribute("y2", String(line_pos.y2 - marginY));
+*/
+}
+const onWindowResized_Puddle = (
+  e: I_Puddle
+) => {
+  e.svg.setAttribute("width", String(PianoRollConverter.scaled(e.model.time.duration)));
+  e.svg.setAttribute("height", String(black_key_height));
+
+/*TODO:
+  e.view.triangle.setAttribute("transform", `translate(${line_pos.x2},${line_pos.y2}) rotate(${angle * 180 / Math.PI + 90})`);
+  e.view.line.setAttribute("x1", String(line_pos.x1));
+  e.view.line.setAttribute("y1", String(line_pos.y1));
+  e.view.line.setAttribute("x2", String(line_pos.x2 - marginX));
+  e.view.line.setAttribute("y2", String(line_pos.y2 - marginY));
+*/
+}
+
 const onAudioUpdate = (svg: SVGGElement) => { svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
+
 const onChangedLayer = (ir_gravity: I_IRGravityHierarchy) => (value: number) => {
   ir_gravity.show = ir_gravity.children.filter(e => value === e.layer);
   ir_gravity.show.forEach(e => onAudioUpdate(e.svg));
@@ -397,11 +522,21 @@ export function buildIRGravity(
   const svg = getSVGG("ir_gravity", children.map(e => e.svg));
   const ir_gravity = { svg, children, show: [] };
 
-  controllers.window.addListeners(...ir_gravity.children.flatMap(e => e.children).map(e => () => onWindowResized_IRGravity(e)));
-  controllers.time_range.addListeners(...ir_gravity.children.flatMap(e => e.children).map(e => () => onWindowResized_IRGravity(e)));
+  controllers.window.addListeners(...ir_gravity.children.flatMap(e => e.prospective).map(e => () => onWindowResized_IRGravity(e)));
+  controllers.window.addListeners(...ir_gravity.children.flatMap(e => e.retrospective).map(e => () => onWindowResized_IRGravity(e)));
+  controllers.window.addListeners(...ir_gravity.children.flatMap(e => e.reconstructed).map(e => () => onWindowResized_IRGravity(e)));
+  controllers.window.addListeners(...ir_gravity.children.flatMap(e => e.prospective_reject).map(e => () => onWindowResized_Reject(e)));
+  controllers.window.addListeners(...ir_gravity.children.flatMap(e => e.reconstructed_puddle).map(e => () => onWindowResized_Puddle(e)));
+  controllers.time_range.addListeners(...ir_gravity.children.flatMap(e => e.prospective).map(e => () => onWindowResized_IRGravity(e)));
+  controllers.time_range.addListeners(...ir_gravity.children.flatMap(e => e.retrospective).map(e => () => onWindowResized_IRGravity(e)));
+  controllers.time_range.addListeners(...ir_gravity.children.flatMap(e => e.reconstructed).map(e => () => onWindowResized_IRGravity(e)));
+  controllers.time_range.addListeners(...ir_gravity.children.flatMap(e => e.prospective_reject).map(e => () => onWindowResized_Reject(e)));
+  controllers.time_range.addListeners(...ir_gravity.children.flatMap(e => e.reconstructed_puddle).map(e => () => onWindowResized_Puddle(e)));
   controllers.implication.prospective_checkbox.addListeners(...ir_gravity.children.flatMap(e => e.prospective).flatMap(e => (value: boolean) => (e.view.svg.setAttribute("visibility", value ? "visible" : "hidden"))))
+  controllers.implication.prospective_checkbox.addListeners(...ir_gravity.children.flatMap(e => e.prospective_reject).flatMap(e => (value: boolean) => (e.view.svg.setAttribute("visibility", value ? "visible" : "hidden"))))
   controllers.implication.retrospective_checkbox.addListeners(...ir_gravity.children.flatMap(e => e.retrospective).flatMap(e => (value: boolean) => (e.view.svg.setAttribute("visibility", value ? "visible" : "hidden"))))
   controllers.implication.reconstructed_checkbox.addListeners(...ir_gravity.children.flatMap(e => e.reconstructed).flatMap(e => (value: boolean) => (e.view.svg.setAttribute("visibility", value ? "visible" : "hidden"))))
+  controllers.implication.reconstructed_checkbox.addListeners(...ir_gravity.children.flatMap(e => e.reconstructed_puddle).flatMap(e => (value: boolean) => (e.view.svg.setAttribute("visibility", value ? "visible" : "hidden"))))
 
   controllers.hierarchy.addListeners(onChangedLayer(ir_gravity));
   controllers.melody_color.addListeners(...ir_gravity.children.flatMap(e => e.children).map(e => (f: GetColor) => e.svg.style.fill = f(e.model.archetype)));

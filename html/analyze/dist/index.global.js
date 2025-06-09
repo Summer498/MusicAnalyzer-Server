@@ -5885,26 +5885,40 @@ Expected id is: ${regexp}`);
   var triangle_width = 10;
   var triangle_height = 10;
   function getTriangle2() {
-    const triangle_svg = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-    triangle_svg.classList.add("triangle");
-    triangle_svg.id = "gravity-arrow";
-    triangle_svg.style.stroke = "rgb(0, 0, 0)";
-    triangle_svg.style.fill = "rgb(0, 0, 0)";
-    triangle_svg.style.strokeWidth = String(0);
-    triangle_svg.setAttribute("points", [0, 0, -triangle_width, +triangle_height, +triangle_width, +triangle_height].join(","));
-    return triangle_svg;
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+    svg.classList.add("triangle");
+    svg.id = "gravity-arrow";
+    svg.style.stroke = "rgb(0, 0, 0)";
+    svg.style.fill = "rgb(0, 0, 0)";
+    svg.style.strokeWidth = String(0);
+    svg.setAttribute("points", [0, 0, -triangle_width, +triangle_height, +triangle_width, +triangle_height].join(","));
+    return svg;
   }
   function getLine2() {
-    const line_svg = document.createElementNS("http://www.w3.org/2000/svg", "line");
-    line_svg.id = "gravity-arrow";
-    line_svg.classList.add("line");
-    line_svg.style.stroke = "rgb(0, 0, 0)";
-    line_svg.style.strokeWidth = String(5);
-    return line_svg;
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    svg.id = "gravity-arrow";
+    svg.classList.add("line");
+    svg.style.stroke = "rgb(0, 0, 0)";
+    svg.style.strokeWidth = String(5);
+    return svg;
   }
   function getGravitySVG2(...children) {
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     svg.id = "gravity";
+    children.forEach((e) => svg.appendChild(e));
+    return svg;
+  }
+  function getPuddleSVG() {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    svg.id = "puddle";
+    svg.style.strokeWidth = String(0);
+    svg.style.stroke = "rgba(0,0,0,0.25)";
+    svg.style.fill = "rgba(0,0,0,0.25)";
+    return svg;
+  }
+  function getCrossSVG(...children) {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    svg.id = "cross";
     children.forEach((e) => svg.appendChild(e));
     return svg;
   }
@@ -6027,7 +6041,34 @@ Expected id is: ${regexp}`);
     line.style.strokeWidth = String(2);
     const svg = getGravitySVG2(triangle, line);
     const view = { svg, triangle, line };
-    return { model, view, line_pos };
+    return { svg, model, view, line_pos };
+  };
+  var getProspectiveReject = (layer) => (delayed_melody) => (_, i) => {
+    const first = delayed_melody[0][i];
+    const second = delayed_melody[1][i];
+    const third = delayed_melody[2][i];
+    if (!isReconsidered(second.note - first.note, third.note - second.note)) {
+      return;
+    }
+    const implication = getProspectiveDestination(second.note - first.note);
+    const line_pos = getLinePos3(
+      { time: second.time, note: second.note },
+      { time: third.time, note: second.note + implication.dst }
+    );
+    const model = {
+      ...second,
+      archetype: second.melody_analysis.implication_realization,
+      layer: layer || 0
+    };
+    const line1 = getLine2();
+    const line2 = getLine2();
+    const alpha = isReconsidered(second.note - first.note, third.note - second.note) ? 0.25 : 1;
+    const color = isAA(second.note - first.note) ? `rgba(0,0,255,${alpha})` : `rgba(255,0,0,${alpha})`;
+    line1.style.stroke = color;
+    line2.style.stroke = color;
+    const svg = getCrossSVG(line1, line2);
+    const view = { svg, line1, line2 };
+    return { svg, model, view, line_pos };
   };
   var M2 = 2;
   var getRetrospectiveDestination = (observed, realized) => {
@@ -6060,7 +6101,29 @@ Expected id is: ${regexp}`);
     line.style.stroke = color;
     const svg = getGravitySVG2(triangle, line);
     const view = { svg, triangle, line };
-    return { model, view, line_pos };
+    return { svg, model, view, line_pos };
+  };
+  var getReconstructedPuddle = (layer) => (delayed_melody) => (_, i) => {
+    const first = delayed_melody[0][i];
+    const second = delayed_melody[1][i];
+    const third = delayed_melody[2][i];
+    const implication = getRetrospectiveDestination(second.note - first.note, third.note - second.note);
+    const line_pos = getLinePos3(
+      { time: second.time, note: second.note },
+      { time: third.time, note: second.note + implication.dst }
+    );
+    const model = {
+      ...second,
+      archetype: second.melody_analysis.implication_realization,
+      layer: layer || 0
+    };
+    const alpha = isB(second.note - first.note, third.note - second.note) ? 1 : 0.25;
+    const color = isP(second.note - first.note, third.note - second.note) ? `rgba(0,0,255,${alpha})` : `rgba(255,0,0,${alpha})`;
+    const svg = getPuddleSVG();
+    svg.style.stroke = color;
+    svg.style.fill = color;
+    const view = { svg };
+    return { svg, model, view, line_pos };
   };
   var getReconstructedArrow = (layer) => (delayed_melody) => (_, i) => {
     const first = delayed_melody[0][i];
@@ -6091,7 +6154,7 @@ Expected id is: ${regexp}`);
     line.style.stroke = color;
     const svg = getGravitySVG2(triangle, line);
     const view = { svg, triangle, line };
-    return { model, view, line_pos };
+    return { svg, model, view, line_pos };
   };
   var getLayers4 = (melodies, layer) => {
     const delayed_melody = melodies.map((_, i) => melodies.slice(i));
@@ -6099,28 +6162,34 @@ Expected id is: ${regexp}`);
       return;
     }
     const prospective = delayed_melody[2].map(getProspectiveArrow(layer)(delayed_melody)).filter((e) => e !== void 0);
+    const prospective_reject = delayed_melody[2].map(getProspectiveReject(layer)(delayed_melody)).filter((e) => e !== void 0);
     const retrospective = delayed_melody[2].map(getRetrospectiveArrow(layer)(delayed_melody)).filter((e) => e !== void 0);
     const reconstructed = delayed_melody[3].map(getReconstructedArrow(layer)(delayed_melody)).filter((e) => e !== void 0);
+    const reconstructed_puddle = delayed_melody[3].map(getReconstructedPuddle(layer)(delayed_melody)).filter((e) => e !== void 0);
     const children = [
       prospective,
+      prospective_reject,
       retrospective,
-      reconstructed
-    ].flat().map((e) => ({ svg: e.view.svg, model: e.model, view: e.view, line_seed: e.line_pos }));
+      reconstructed,
+      reconstructed_puddle
+    ].flat();
     const svg = getSVGG7(`layer-${layer}`, children.map((e) => e.svg));
     return {
       layer,
       svg,
       children,
       prospective,
+      prospective_reject,
       retrospective,
       reconstructed,
+      reconstructed_puddle,
       show: children
     };
   };
   var onWindowResized_IRGravity = (e) => {
     e.svg.setAttribute("width", String(PianoRollConverter.scaled(e.model.time.duration)));
     e.svg.setAttribute("height", String(black_key_height));
-    const line_pos = { x1: e.line_seed.x1 * NoteSize.get(), x2: e.line_seed.x2 * NoteSize.get(), y1: e.line_seed.y1 * 1, y2: e.line_seed.y2 * 1 };
+    const line_pos = { x1: e.line_pos.x1 * NoteSize.get(), x2: e.line_pos.x2 * NoteSize.get(), y1: e.line_pos.y1 * 1, y2: e.line_pos.y2 * 1 };
     const angle = Math.atan2(line_pos.y2 - line_pos.y1, line_pos.x2 - line_pos.x1);
     const marginX = triangle_height * Math.cos(angle);
     const marginY = triangle_height * Math.sin(angle);
@@ -6129,6 +6198,14 @@ Expected id is: ${regexp}`);
     e.view.line.setAttribute("y1", String(line_pos.y1));
     e.view.line.setAttribute("x2", String(line_pos.x2 - marginX));
     e.view.line.setAttribute("y2", String(line_pos.y2 - marginY));
+  };
+  var onWindowResized_Reject = (e) => {
+    e.svg.setAttribute("width", String(PianoRollConverter.scaled(e.model.time.duration)));
+    e.svg.setAttribute("height", String(black_key_height));
+  };
+  var onWindowResized_Puddle = (e) => {
+    e.svg.setAttribute("width", String(PianoRollConverter.scaled(e.model.time.duration)));
+    e.svg.setAttribute("height", String(black_key_height));
   };
   var onAudioUpdate4 = (svg) => {
     svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`);
@@ -6142,11 +6219,21 @@ Expected id is: ${regexp}`);
     const children = h_melodies.map(getLayers4).filter((e) => e !== void 0);
     const svg = getSVGG7("ir_gravity", children.map((e) => e.svg));
     const ir_gravity = { svg, children, show: [] };
-    controllers.window.addListeners(...ir_gravity.children.flatMap((e) => e.children).map((e) => () => onWindowResized_IRGravity(e)));
-    controllers.time_range.addListeners(...ir_gravity.children.flatMap((e) => e.children).map((e) => () => onWindowResized_IRGravity(e)));
+    controllers.window.addListeners(...ir_gravity.children.flatMap((e) => e.prospective).map((e) => () => onWindowResized_IRGravity(e)));
+    controllers.window.addListeners(...ir_gravity.children.flatMap((e) => e.retrospective).map((e) => () => onWindowResized_IRGravity(e)));
+    controllers.window.addListeners(...ir_gravity.children.flatMap((e) => e.reconstructed).map((e) => () => onWindowResized_IRGravity(e)));
+    controllers.window.addListeners(...ir_gravity.children.flatMap((e) => e.prospective_reject).map((e) => () => onWindowResized_Reject(e)));
+    controllers.window.addListeners(...ir_gravity.children.flatMap((e) => e.reconstructed_puddle).map((e) => () => onWindowResized_Puddle(e)));
+    controllers.time_range.addListeners(...ir_gravity.children.flatMap((e) => e.prospective).map((e) => () => onWindowResized_IRGravity(e)));
+    controllers.time_range.addListeners(...ir_gravity.children.flatMap((e) => e.retrospective).map((e) => () => onWindowResized_IRGravity(e)));
+    controllers.time_range.addListeners(...ir_gravity.children.flatMap((e) => e.reconstructed).map((e) => () => onWindowResized_IRGravity(e)));
+    controllers.time_range.addListeners(...ir_gravity.children.flatMap((e) => e.prospective_reject).map((e) => () => onWindowResized_Reject(e)));
+    controllers.time_range.addListeners(...ir_gravity.children.flatMap((e) => e.reconstructed_puddle).map((e) => () => onWindowResized_Puddle(e)));
     controllers.implication.prospective_checkbox.addListeners(...ir_gravity.children.flatMap((e) => e.prospective).flatMap((e) => (value) => e.view.svg.setAttribute("visibility", value ? "visible" : "hidden")));
+    controllers.implication.prospective_checkbox.addListeners(...ir_gravity.children.flatMap((e) => e.prospective_reject).flatMap((e) => (value) => e.view.svg.setAttribute("visibility", value ? "visible" : "hidden")));
     controllers.implication.retrospective_checkbox.addListeners(...ir_gravity.children.flatMap((e) => e.retrospective).flatMap((e) => (value) => e.view.svg.setAttribute("visibility", value ? "visible" : "hidden")));
     controllers.implication.reconstructed_checkbox.addListeners(...ir_gravity.children.flatMap((e) => e.reconstructed).flatMap((e) => (value) => e.view.svg.setAttribute("visibility", value ? "visible" : "hidden")));
+    controllers.implication.reconstructed_checkbox.addListeners(...ir_gravity.children.flatMap((e) => e.reconstructed_puddle).flatMap((e) => (value) => e.view.svg.setAttribute("visibility", value ? "visible" : "hidden")));
     controllers.hierarchy.addListeners(onChangedLayer3(ir_gravity));
     controllers.melody_color.addListeners(...ir_gravity.children.flatMap((e) => e.children).map((e) => (f) => e.svg.style.fill = f(e.model.archetype)));
     controllers.audio.addListeners(...ir_gravity.children.map((e) => () => onAudioUpdate4(e.svg)));
