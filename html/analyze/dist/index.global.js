@@ -5808,15 +5808,15 @@ Expected id is: ${regexp}`);
     return svg;
   }
   function getLinePos2(e, n, g) {
-    const convert = (arg) => [
+    const convert2 = (arg) => [
       (e2) => PianoRollConverter.midi2BlackCoordinate(e2),
       (e2) => 0.5 + e2
     ].reduce((c, f) => f(c), arg);
     const line_pos = getLinePos(
       e.time.begin + e.time.duration / 2,
       n.time.begin,
-      isNaN(e.note) ? -99 : convert(e.note),
-      isNaN(e.note) ? -99 : convert(g.destination)
+      isNaN(e.note) ? -99 : convert2(e.note),
+      isNaN(e.note) ? -99 : convert2(g.destination)
     );
     return line_pos;
   }
@@ -5869,16 +5869,32 @@ Expected id is: ${regexp}`);
     gravity_hierarchy.children.map((e) => onAudioUpdate3(e.svg));
     return gravity_hierarchy.svg;
   }
+  var convert = (arg) => [
+    (e) => e - 0.5,
+    (e) => PianoRollConverter.midi2BlackCoordinate(e)
+  ].reduce((c, f) => f(c), arg);
   function getLinePos3(e, n) {
-    const convert = (arg) => [
-      (e2) => e2 - 0.5,
-      (e2) => PianoRollConverter.midi2BlackCoordinate(e2)
-    ].reduce((c, f) => f(c), arg);
     const line_pos = {
       x1: e.time.begin + e.time.duration / 2,
       x2: n.time.begin + n.time.duration / 2,
       y1: isNaN(e.note) ? -99 : convert(e.note),
       y2: isNaN(n.note) ? -99 : convert(n.note)
+    };
+    return line_pos;
+  }
+  function getPuddlePos(e) {
+    const pos = {
+      x: e.time.begin,
+      y: convert(e.note),
+      w: e.time.duration * 2,
+      h: black_key_height
+    };
+    return pos;
+  }
+  function getCrossPos(e) {
+    const line_pos = {
+      x: e.time.begin + e.time.duration / 2,
+      y: isNaN(e.note) ? -99 : convert(e.note)
     };
     return line_pos;
   }
@@ -5909,7 +5925,7 @@ Expected id is: ${regexp}`);
     return svg;
   }
   function getPuddleSVG() {
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "ellipse");
     svg.id = "puddle";
     svg.style.strokeWidth = String(0);
     svg.style.stroke = "rgba(0,0,0,0.25)";
@@ -6051,8 +6067,7 @@ Expected id is: ${regexp}`);
       return;
     }
     const implication = getProspectiveDestination(second.note - first.note);
-    const line_pos = getLinePos3(
-      { time: second.time, note: second.note },
+    const pos = getCrossPos(
       { time: third.time, note: second.note + implication.dst }
     );
     const model = {
@@ -6063,12 +6078,14 @@ Expected id is: ${regexp}`);
     const line1 = getLine2();
     const line2 = getLine2();
     const alpha = isReconsidered(second.note - first.note, third.note - second.note) ? 0.25 : 1;
-    const color = isAA(second.note - first.note) ? `rgba(0,0,255,${alpha})` : `rgba(255,0,0,${alpha})`;
+    const color = "rgb(0,0,0)";
     line1.style.stroke = color;
     line2.style.stroke = color;
+    line1.style.strokeWidth = String(1);
+    line2.style.strokeWidth = String(1);
     const svg = getCrossSVG(line1, line2);
     const view = { svg, line1, line2 };
-    return { svg, model, view, line_pos };
+    return { svg, model, view, pos };
   };
   var M2 = 2;
   var getRetrospectiveDestination = (observed, realized) => {
@@ -6107,9 +6124,11 @@ Expected id is: ${regexp}`);
     const first = delayed_melody[0][i];
     const second = delayed_melody[1][i];
     const third = delayed_melody[2][i];
+    if (!isV(second.note - first.note, third.note - second.note)) {
+      return;
+    }
     const implication = getRetrospectiveDestination(second.note - first.note, third.note - second.note);
-    const line_pos = getLinePos3(
-      { time: second.time, note: second.note },
+    const pos = getPuddlePos(
       { time: third.time, note: second.note + implication.dst }
     );
     const model = {
@@ -6123,7 +6142,7 @@ Expected id is: ${regexp}`);
     svg.style.stroke = color;
     svg.style.fill = color;
     const view = { svg };
-    return { svg, model, view, line_pos };
+    return { svg, model, view, pos };
   };
   var getReconstructedArrow = (layer) => (delayed_melody) => (_, i) => {
     const first = delayed_melody[0][i];
@@ -6189,23 +6208,37 @@ Expected id is: ${regexp}`);
   var onWindowResized_IRGravity = (e) => {
     e.svg.setAttribute("width", String(PianoRollConverter.scaled(e.model.time.duration)));
     e.svg.setAttribute("height", String(black_key_height));
-    const line_pos = { x1: e.line_pos.x1 * NoteSize.get(), x2: e.line_pos.x2 * NoteSize.get(), y1: e.line_pos.y1 * 1, y2: e.line_pos.y2 * 1 };
-    const angle = Math.atan2(line_pos.y2 - line_pos.y1, line_pos.x2 - line_pos.x1);
+    const pos = { x1: e.line_pos.x1 * NoteSize.get(), x2: e.line_pos.x2 * NoteSize.get(), y1: e.line_pos.y1 * 1, y2: e.line_pos.y2 * 1 };
+    const angle = Math.atan2(pos.y2 - pos.y1, pos.x2 - pos.x1);
     const marginX = triangle_height * Math.cos(angle);
     const marginY = triangle_height * Math.sin(angle);
-    e.view.triangle.setAttribute("transform", `translate(${line_pos.x2},${line_pos.y2}) rotate(${angle * 180 / Math.PI + 90})`);
-    e.view.line.setAttribute("x1", String(line_pos.x1));
-    e.view.line.setAttribute("y1", String(line_pos.y1));
-    e.view.line.setAttribute("x2", String(line_pos.x2 - marginX));
-    e.view.line.setAttribute("y2", String(line_pos.y2 - marginY));
+    e.view.triangle.setAttribute("transform", `translate(${pos.x2},${pos.y2}) rotate(${angle * 180 / Math.PI + 90})`);
+    e.view.line.setAttribute("x1", String(pos.x1));
+    e.view.line.setAttribute("y1", String(pos.y1));
+    e.view.line.setAttribute("x2", String(pos.x2 - marginX));
+    e.view.line.setAttribute("y2", String(pos.y2 - marginY));
   };
   var onWindowResized_Reject = (e) => {
-    e.svg.setAttribute("width", String(PianoRollConverter.scaled(e.model.time.duration)));
-    e.svg.setAttribute("height", String(black_key_height));
+    const pos = { x: e.pos.x * NoteSize.get(), y: e.pos.y * 1 };
+    e.view.line1.setAttribute("x1", String(pos.x));
+    e.view.line1.setAttribute("y1", String(pos.y + black_key_height / 2));
+    e.view.line1.setAttribute("x2", String(pos.x + black_key_height));
+    e.view.line1.setAttribute("y2", String(pos.y - black_key_height / 2));
+    e.view.line2.setAttribute("x1", String(pos.x + black_key_height));
+    e.view.line2.setAttribute("y1", String(pos.y + black_key_height / 2));
+    e.view.line2.setAttribute("x2", String(pos.x));
+    e.view.line2.setAttribute("y2", String(pos.y - black_key_height / 2));
   };
   var onWindowResized_Puddle = (e) => {
-    e.svg.setAttribute("width", String(PianoRollConverter.scaled(e.model.time.duration)));
-    e.svg.setAttribute("height", String(black_key_height));
+    const pos = { x: e.pos.x * NoteSize.get(), w: e.pos.w * NoteSize.get(), y: e.pos.y * 1, h: e.pos.h * 1 };
+    const rx = pos.w / 2;
+    const ry = pos.h / 2;
+    const cx = pos.x + rx;
+    const cy = pos.y;
+    e.view.svg.setAttribute("cx", String(cx));
+    e.view.svg.setAttribute("cy", String(cy));
+    e.view.svg.setAttribute("rx", String(rx));
+    e.view.svg.setAttribute("ry", String(ry));
   };
   var onAudioUpdate4 = (svg) => {
     svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`);

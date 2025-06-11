@@ -23,6 +23,13 @@ interface ILinePos {
   readonly y2: number,
 }
 
+interface IPos {
+  readonly x: number,
+  readonly y: number,
+  readonly w: number,
+  readonly h: number,
+}
+
 interface I_IRGravity {
   readonly svg: SVGGElement,
   readonly model: IRGravityModel,
@@ -35,12 +42,12 @@ interface I_IRGravity {
 }
 
 interface I_Puddle {
-  readonly svg: SVGCircleElement,
+  readonly svg: SVGEllipseElement,
   readonly model: IRGravityModel,
   readonly view: {
-    readonly svg: SVGCircleElement,
+    readonly svg: SVGEllipseElement,
   },
-  readonly line_pos: ILinePos,
+  readonly pos: IPos,
 }
 
 interface I_Reject {
@@ -51,14 +58,14 @@ interface I_Reject {
     readonly line1: SVGLineElement,
     readonly line2: SVGLineElement,
   },
-  readonly line_pos: ILinePos,
+  readonly pos: IPos,
 }
 
 interface I_IRGravityLayer {
   readonly layer: number
   readonly svg: SVGGElement
   readonly children: (I_IRGravity | I_Puddle | I_Reject)[]
-  readonly show:  (I_IRGravity | I_Puddle | I_Reject)[]
+  readonly show: (I_IRGravity | I_Puddle | I_Reject)[]
 }
 
 interface I_IRGravityHierarchy {
@@ -67,14 +74,15 @@ interface I_IRGravityHierarchy {
   show: I_IRGravityLayer[]
 }
 
+const convert = (arg: number) => [
+  ((e: number) => e - 0.5),
+  ((e: number) => PianoRollConverter.midi2BlackCoordinate(e)),
+].reduce((c, f) => f(c), arg)
+
 function getLinePos(
   e: { time: { begin: number, duration: number }, note: number },
   n: { time: { begin: number, duration: number }, note: number },
 ) {
-  const convert = (arg: number) => [
-    ((e: number) => e - 0.5),
-    ((e: number) => PianoRollConverter.midi2BlackCoordinate(e)),
-  ].reduce((c, f) => f(c), arg)
 
   const line_pos = {
     x1: e.time.begin + e.time.duration / 2,
@@ -84,6 +92,29 @@ function getLinePos(
   } as ILinePos
   return line_pos;
 }
+
+function getPuddlePos(
+  e: { time: { begin: number, duration: number }, note: number },
+) {
+  const pos = {
+    x: e.time.begin,
+    y: convert(e.note),
+    w: e.time.duration * 2,
+    h: black_key_height,
+  }
+  return pos
+}
+
+function getCrossPos(
+  e: { time: { begin: number, duration: number }, note: number },
+) {
+  const line_pos = {
+    x: e.time.begin + e.time.duration / 2,
+    y: isNaN(e.note) ? -99 : convert(e.note),
+  } as IPos
+  return line_pos;
+}
+
 
 const triangle_width = 10;
 const triangle_height = 10;
@@ -117,7 +148,7 @@ function getGravitySVG(
 }
 
 function getPuddleSVG() {
-  const svg = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "ellipse");
   svg.id = "puddle";
   svg.style.strokeWidth = String(0);
   svg.style.stroke = "rgba(0,0,0,0.25)";  // default (bug) color
@@ -299,8 +330,7 @@ const getProspectiveReject = (layer: number) => (delayed_melody: SerializedTimeA
   if (!isReconsidered(second.note - first.note, third.note - second.note)) { return; }
   const implication = getProspectiveDestination(second.note - first.note)
 
-  const line_pos = getLinePos(
-    { time: second.time, note: second.note },
+  const pos = getCrossPos(
     { time: third.time, note: second.note + implication.dst }
   );
   const model = {
@@ -311,12 +341,14 @@ const getProspectiveReject = (layer: number) => (delayed_melody: SerializedTimeA
   const line1 = getLine();
   const line2 = getLine();
   const alpha = isReconsidered(second.note - first.note, third.note - second.note) ? .25 : 1;
-  const color = isAA(second.note - first.note) ? `rgba(0,0,255,${alpha})` : `rgba(255,0,0,${alpha})`;
+  const color = "rgb(0,0,0)"// isAA(second.note - first.note) ? `rgba(0,0,255,${alpha})` : `rgba(255,0,0,${alpha})`;
   line1.style.stroke = color;
   line2.style.stroke = color;
+  line1.style.strokeWidth = String(1);
+  line2.style.strokeWidth = String(1);
   const svg = getCrossSVG(line1, line2);
   const view = { svg, line1, line2 };
-  return { svg, model, view, line_pos }
+  return { svg, model, view, pos }
 }
 
 
@@ -359,15 +391,16 @@ const getRetrospectiveArrow = (layer: number) => (delayed_melody: SerializedTime
   const view = { svg, triangle, line };
   return { svg, model, view, line_pos };
 }
-const getReconstructedPuddle = (layer: number) => (delayed_melody: SerializedTimeAndAnalyzedMelody[][]) => (_: unknown, i: number): I_Puddle => {
+const getReconstructedPuddle = (layer: number) => (delayed_melody: SerializedTimeAndAnalyzedMelody[][]) => (_: unknown, i: number): I_Puddle | undefined => {
   const first = delayed_melody[0][i];
   const second = delayed_melody[1][i];
   const third = delayed_melody[2][i];
 
+  if (!isV(second.note - first.note, third.note - second.note)) { return; }
+
   const implication = getRetrospectiveDestination(second.note - first.note, third.note - second.note);
 
-  const line_pos = getLinePos(
-    { time: second.time, note: second.note },
+  const pos = getPuddlePos(
     { time: third.time, note: second.note + implication.dst },
   );
 
@@ -382,7 +415,7 @@ const getReconstructedPuddle = (layer: number) => (delayed_melody: SerializedTim
   svg.style.stroke = color;
   svg.style.fill = color;
   const view = { svg };
-  return { svg, model, view, line_pos };
+  return { svg, model, view, pos };
 }
 
 const getReconstructedArrow = (layer: number) => (delayed_melody: SerializedTimeAndAnalyzedMelody[][]) => (_: unknown, i: number): I_IRGravity | undefined => {
@@ -459,44 +492,46 @@ const onWindowResized_IRGravity = (
   e.svg.setAttribute("width", String(PianoRollConverter.scaled(e.model.time.duration)));
   e.svg.setAttribute("height", String(black_key_height));
 
-  const line_pos = { x1: e.line_pos.x1 * NoteSize.get(), x2: e.line_pos.x2 * NoteSize.get(), y1: e.line_pos.y1 * 1, y2: e.line_pos.y2 * 1 } as ILinePos
-  const angle = Math.atan2(line_pos.y2 - line_pos.y1, line_pos.x2 - line_pos.x1);
+  const pos = { x1: e.line_pos.x1 * NoteSize.get(), x2: e.line_pos.x2 * NoteSize.get(), y1: e.line_pos.y1 * 1, y2: e.line_pos.y2 * 1 } as ILinePos
+  const angle = Math.atan2(pos.y2 - pos.y1, pos.x2 - pos.x1);
   const marginX = triangle_height * Math.cos(angle);
   const marginY = triangle_height * Math.sin(angle);
-  e.view.triangle.setAttribute("transform", `translate(${line_pos.x2},${line_pos.y2}) rotate(${angle * 180 / Math.PI + 90})`);
-  e.view.line.setAttribute("x1", String(line_pos.x1));
-  e.view.line.setAttribute("y1", String(line_pos.y1));
-  e.view.line.setAttribute("x2", String(line_pos.x2 - marginX));
-  e.view.line.setAttribute("y2", String(line_pos.y2 - marginY));
+  e.view.triangle.setAttribute("transform", `translate(${pos.x2},${pos.y2}) rotate(${angle * 180 / Math.PI + 90})`);
+  e.view.line.setAttribute("x1", String(pos.x1));
+  e.view.line.setAttribute("y1", String(pos.y1));
+  e.view.line.setAttribute("x2", String(pos.x2 - marginX));
+  e.view.line.setAttribute("y2", String(pos.y2 - marginY));
 }
 
 const onWindowResized_Reject = (
   e: I_Reject
 ) => {
-  e.svg.setAttribute("width", String(PianoRollConverter.scaled(e.model.time.duration)));
-  e.svg.setAttribute("height", String(black_key_height));
+//  e.svg.setAttribute("width", String(PianoRollConverter.scaled(e.model.time.duration)));
+//  e.svg.setAttribute("height", String(black_key_height));
 
-/* TODO:
-  e.view.triangle.setAttribute("transform", `translate(${line_pos.x2},${line_pos.y2}) rotate(${angle * 180 / Math.PI + 90})`);
-  e.view.line.setAttribute("x1", String(line_pos.x1));
-  e.view.line.setAttribute("y1", String(line_pos.y1));
-  e.view.line.setAttribute("x2", String(line_pos.x2 - marginX));
-  e.view.line.setAttribute("y2", String(line_pos.y2 - marginY));
-*/
+  const pos = { x: e.pos.x * NoteSize.get(), y: e.pos.y * 1 } as IPos
+  e.view.line1.setAttribute("x1", String(pos.x));
+  e.view.line1.setAttribute("y1", String(pos.y + black_key_height / 2));
+  e.view.line1.setAttribute("x2", String(pos.x + black_key_height));
+  e.view.line1.setAttribute("y2", String(pos.y - black_key_height / 2));
+
+  e.view.line2.setAttribute("x1", String(pos.x + black_key_height));
+  e.view.line2.setAttribute("y1", String(pos.y + black_key_height / 2));
+  e.view.line2.setAttribute("x2", String(pos.x));
+  e.view.line2.setAttribute("y2", String(pos.y - black_key_height / 2));
 }
 const onWindowResized_Puddle = (
   e: I_Puddle
 ) => {
-  e.svg.setAttribute("width", String(PianoRollConverter.scaled(e.model.time.duration)));
-  e.svg.setAttribute("height", String(black_key_height));
-
-/*TODO:
-  e.view.triangle.setAttribute("transform", `translate(${line_pos.x2},${line_pos.y2}) rotate(${angle * 180 / Math.PI + 90})`);
-  e.view.line.setAttribute("x1", String(line_pos.x1));
-  e.view.line.setAttribute("y1", String(line_pos.y1));
-  e.view.line.setAttribute("x2", String(line_pos.x2 - marginX));
-  e.view.line.setAttribute("y2", String(line_pos.y2 - marginY));
-*/
+  const pos = { x: e.pos.x * NoteSize.get(), w: e.pos.w * NoteSize.get(), y: e.pos.y * 1, h: e.pos.h * 1 } as IPos
+  const rx = pos.w / 2;
+  const ry = pos.h / 2;
+  const cx = pos.x + rx;
+  const cy = pos.y;
+  e.view.svg.setAttribute("cx", String(cx));
+  e.view.svg.setAttribute("cy", String(cy));
+  e.view.svg.setAttribute("rx", String(rx));
+  e.view.svg.setAttribute("ry", String(ry));
 }
 
 const onAudioUpdate = (svg: SVGGElement) => { svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
