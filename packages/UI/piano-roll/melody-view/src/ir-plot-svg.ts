@@ -12,16 +12,13 @@ class IRPlotAxis {
 }
 
 class IRPlotCircles {
-  private _show: IRPlotLayer[];
-  get show() { return this._show; }
+  private show: IRPlotLayer[] = [];
   constructor(
     readonly svg: SVGGElement,
-  ) {
-    this._show = [];
-  }
+  ) { }
   setShow(visible_layers: IRPlotLayer[]) {
-    this._show = visible_layers;
-    this.svg.replaceChildren(...this._show.map(e => e.view.svg));
+    this.show = visible_layers;
+    this.svg.replaceChildren(...this.show.map(e => e.view.svg));
   }
 }
 
@@ -237,8 +234,6 @@ class IRPlotLayerView {
 
 class IRPlotLayer {
   readonly children_model: { readonly time: Time }[];
-  #show: IRPlot[];
-  get show() { return this.#show; };
   constructor(
     readonly svg: SVGGElement,
     readonly view: IRPlotLayerView,
@@ -247,15 +242,13 @@ class IRPlotLayer {
   ) {
     this.svg = svg;
     this.children_model = this.children.map(e => e.model);
-    this.#show = children;
   }
   onAudioUpdate() { this.svg.setAttribute("transform", `translate(${PianoRollTranslateX.get()})`); }
 }
 
 class IRPlotHierarchy {
   #visible_layer: number;
-  protected _show: IRPlotLayer[] = [];
- private get show() { return this.view.circles.show }
+  private show: IRPlotLayer[] = [];
   constructor(
     readonly svg: SVGGElement,
     readonly children: IRPlotLayer[],
@@ -275,16 +268,16 @@ class IRPlotHierarchy {
     this.updateLayer();
   }
   setShow(visible_layers: IRPlotLayer[]) {
-    this._show = visible_layers;
-    this._show.forEach(e => e.onAudioUpdate());
-    this.svg.replaceChildren(...this._show.map(e => e.svg));
+    this.show = visible_layers;
+    this.show.forEach(e => e.onAudioUpdate());
+    this.svg.replaceChildren(...this.show.map(e => e.svg));
   }
 }
 
 class IRPlotSVG {
   constructor(
     readonly svg: SVGSVGElement,
-    readonly children: IRPlotHierarchy[],
+    readonly child: IRPlotHierarchy,
   ) { }
 }
 
@@ -339,7 +332,7 @@ function getAxisSVG(
   circles: { svg: SVGElement },
 ) {
   const axis_svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
-  axis_svg.id = "implication-realization plot";
+  axis_svg.id = "axis";
   axis_svg.replaceChildren(x_axis.svg, y_axis.svg, circles.svg);
   axis_svg.setAttribute("width", String(w));
   axis_svg.setAttribute("height", String(h));
@@ -390,27 +383,31 @@ export function buildIRPlot(
   const x_axis = new IRPlotAxis(x_axis_svg);
   const y_axis = new IRPlotAxis(y_axis_svg);
 
-  const circle_svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  const circle_svg = document.createElementNS("http://www.w3.org/2000/svg", "g");  // TODO: これの存在が謎
+  circle_svg.id = `circle_svg`;
+
   const circles = new IRPlotCircles(circle_svg);
   const axis_svg = getAxisSVG(w, h, x_axis, y_axis, circles);
   const view = new IRPlotHierarchyView(axis_svg, x_axis, y_axis, circles);
 
   const svgg = getSVGG("IR-plot-hierarchy", layers);
-  const hierarchy = [new IRPlotHierarchy(svgg, layers, view, h_model)]
+  const hierarchy = new IRPlotHierarchy(svgg, layers, view, h_model)
 
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.id = "IR-plot";
-  hierarchy.forEach(e => svg.appendChild(e.view.svg));
-  hierarchy.forEach(e => svg.setAttribute("width", String(e.model.width)));
-  hierarchy.forEach(e => svg.setAttribute("height", String(e.model.height)));
+  svg.appendChild(hierarchy.view.svg);
+  svg.append(hierarchy.svg);
+  svg.setAttribute("width", String(hierarchy.model.width));
+  svg.setAttribute("height", String(hierarchy.model.height));
 
   const ir_plot_svg = new IRPlotSVG(svg, hierarchy);
 
-  controllers.window.addListeners(...ir_plot_svg.children.flatMap(e => e).flatMap(e => e.children).flatMap(e => e.children).map(e => e.onWindowResized.bind(e)));
-  controllers.hierarchy.addListeners(...ir_plot_svg.children.flatMap(e => e.onChangedLayer.bind(e)));
-  controllers.melody_color.addListeners(...ir_plot_svg.children.flatMap(e => e.children).flatMap(e => e.children).map(e => e.setColor.bind(e)));
-  controllers.audio.addListeners(...ir_plot_svg.children.flatMap(e => e.children).map(e => e.onAudioUpdate.bind(e)));
-  ir_plot_svg.children.flatMap(e => e.children).map(e => e.onAudioUpdate())
+  const _hierarchy = ir_plot_svg.child;
+  controllers.window.addListeners(..._hierarchy.children.flatMap(e => e.children).map(e => e.onWindowResized.bind(e)));
+  controllers.hierarchy.addListeners(_hierarchy.onChangedLayer.bind(_hierarchy));
+  controllers.melody_color.addListeners(..._hierarchy.children.flatMap(e => e.children).map(e => e.setColor.bind(e)));
+  controllers.audio.addListeners(..._hierarchy.children.map(e => e.onAudioUpdate.bind(e)));
+  _hierarchy.children.map(e => e.onAudioUpdate())
 
   return ir_plot_svg.svg;
 }
