@@ -210,14 +210,12 @@ class ReductionHierarchy {
 
 function getReductionSVG(
   bracket: Bracket,
-  dot: Dot,
-  ir_symbol: IRMSymbol,
+  dot: { svg: SVGElement },
 ) {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
   svg.id = "time-span-node";
   svg.appendChild(bracket.svg);
-  if (true) { svg.appendChild(dot.svg); }
-  if (false) { svg.appendChild(ir_symbol.svg); }
+  svg.appendChild(dot.svg);
   return svg;
 }
 
@@ -229,6 +227,19 @@ function getIRMSymbolSVG(
   svg.id = "I-R Symbol";
   svg.style.fontFamily = "Times New Roman";
   svg.style.fontSize = `${bracket_height}em`;
+  svg.style.textAnchor = "middle";
+  return svg;
+}
+
+function getIntervalSVG(
+  model: ReductionModel
+) {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "text")
+  const I = model.archetype.intervals
+  svg.textContent = I && I.length > 1 && I[1] || "";  // NOTE: 0 のほうが良いかもしれない
+  svg.id = "interval";
+  svg.style.fontFamily = "Times New Roman";
+  svg.style.fontSize = `${bracket_height/2}em`;
   svg.style.textAnchor = "middle";
   return svg;
 }
@@ -277,9 +288,14 @@ export function buildReduction(
       const dot_svg = getDotSVG();
       const dot = new Dot(dot_svg, view_model);
       const svg_irm_symbol = getIRMSymbolSVG(model);
+      const svg_interval = getIntervalSVG(model);
       const ir_symbol = new IRMSymbol(svg_irm_symbol);
-      const svg = getReductionSVG(bracket, dot, ir_symbol);
-      const view = new ReductionView(svg, bracket, dot, ir_symbol, view_model);
+      const interval = new IRMSymbol(svg_interval);
+      // const svg = getReductionSVG(bracket, dot);
+      // const svg = getReductionSVG(bracket, ir_symbol);
+      const svg = getReductionSVG(bracket, interval);
+      //      const view = new ReductionView(svg, bracket, dot, ir_symbol, view_model);
+      const view = new ReductionView(svg, bracket, dot, interval, view_model);
       return new Reduction(model, view)
     });
     const svg = getSVGG(`layer-${l}`, parts);
