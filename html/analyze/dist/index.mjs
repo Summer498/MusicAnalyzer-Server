@@ -54,8 +54,8 @@ var Controllers = class {
       this.time_range,
       this.implication,
       // this.gravity,
-      this.melody_beep
-      // this.melody_color,
+      this.melody_beep,
+      this.melody_color
     ].forEach((e) => this.div.appendChild(e.view));
   }
 };
@@ -81,7 +81,7 @@ var getMusicAnalyzerWindow = (window2, raw_analyzed_data) => {
 var ApplicationManager = class {
   NO_CHORD = false;
   // コード関連のものを表示しない
-  FULL_VIEW = false;
+  FULL_VIEW = true;
   // 横いっぱいに分析結果を表示
   analyzed;
   controller;
@@ -264,8 +264,8 @@ var setupUI = (title_info, audio_player2, titleHead2, piano_roll_place2, manager
     piano_roll_view.svg,
     audio_player2,
     new ColumnHTML(
-      manager.controller.div
-      // manager.analyzed.melody.ir_plot_svg
+      manager.controller.div,
+      manager.analyzed.melody.ir_plot_svg
     ).div
   );
 };

@@ -5119,10 +5119,7 @@ Expected id is: ${regexp}`);
       this.#visible_layer = children.length;
     }
     #visible_layer;
-    _show = [];
-    get show() {
-      return this.view.circles.show;
-    }
+    show = [];
     updateLayer() {
       const visible_layer = this.children.filter((e) => e.children[0].model.is_visible).filter((e) => 1 < e.layer && e.layer <= this.#visible_layer);
       this.view.updateCircleVisibility(visible_layer);
@@ -5132,15 +5129,15 @@ Expected id is: ${regexp}`);
       this.updateLayer();
     }
     setShow(visible_layers) {
-      this._show = visible_layers;
-      this._show.forEach((e) => e.onAudioUpdate());
-      this.svg.replaceChildren(...this._show.map((e) => e.svg));
+      this.show = visible_layers;
+      this.show.forEach((e) => e.onAudioUpdate());
+      this.svg.replaceChildren(...this.show.map((e) => e.svg));
     }
   };
   var IRPlotSVG = class {
-    constructor(svg, children) {
+    constructor(svg, child) {
       this.svg = svg;
-      this.children = children;
+      this.child = child;
     }
   };
   function getCircle() {
@@ -5206,22 +5203,25 @@ Expected id is: ${regexp}`);
     const x_axis = new IRPlotAxis(x_axis_svg);
     const y_axis = new IRPlotAxis(y_axis_svg);
     const circle_svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    circle_svg.id = `circle_svg`;
     const circles = new IRPlotCircles(circle_svg);
     const axis_svg = getAxisSVG(w, h, x_axis, y_axis, circles);
     const view = new IRPlotHierarchyView(axis_svg, x_axis, y_axis, circles);
     const svgg = getSVGG2("IR-plot-hierarchy", layers);
-    const hierarchy = [new IRPlotHierarchy(svgg, layers, view, h_model)];
+    const hierarchy = new IRPlotHierarchy(svgg, layers, view, h_model);
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.id = "IR-plot";
-    hierarchy.forEach((e) => svg.appendChild(e.view.svg));
-    hierarchy.forEach((e) => svg.setAttribute("width", String(e.model.width)));
-    hierarchy.forEach((e) => svg.setAttribute("height", String(e.model.height)));
+    svg.appendChild(hierarchy.view.svg);
+    svg.append(hierarchy.svg);
+    svg.setAttribute("width", String(hierarchy.model.width));
+    svg.setAttribute("height", String(hierarchy.model.height));
     const ir_plot_svg = new IRPlotSVG(svg, hierarchy);
-    controllers.window.addListeners(...ir_plot_svg.children.flatMap((e) => e).flatMap((e) => e.children).flatMap((e) => e.children).map((e) => e.onWindowResized.bind(e)));
-    controllers.hierarchy.addListeners(...ir_plot_svg.children.flatMap((e) => e.onChangedLayer.bind(e)));
-    controllers.melody_color.addListeners(...ir_plot_svg.children.flatMap((e) => e.children).flatMap((e) => e.children).map((e) => e.setColor.bind(e)));
-    controllers.audio.addListeners(...ir_plot_svg.children.flatMap((e) => e.children).map((e) => e.onAudioUpdate.bind(e)));
-    ir_plot_svg.children.flatMap((e) => e.children).map((e) => e.onAudioUpdate());
+    const _hierarchy = ir_plot_svg.child;
+    controllers.window.addListeners(..._hierarchy.children.flatMap((e) => e.children).map((e) => e.onWindowResized.bind(e)));
+    controllers.hierarchy.addListeners(_hierarchy.onChangedLayer.bind(_hierarchy));
+    controllers.melody_color.addListeners(..._hierarchy.children.flatMap((e) => e.children).map((e) => e.setColor.bind(e)));
+    controllers.audio.addListeners(..._hierarchy.children.map((e) => e.onAudioUpdate.bind(e)));
+    _hierarchy.children.map((e) => e.onAudioUpdate());
     return ir_plot_svg.svg;
   }
   var getIRSymbolModel = (e, layer) => ({
@@ -5661,16 +5661,11 @@ Expected id is: ${regexp}`);
       this.setShow(visible_layer);
     }
   };
-  function getReductionSVG(bracket, dot, ir_symbol) {
+  function getReductionSVG(bracket, dot) {
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     svg.id = "time-span-node";
     svg.appendChild(bracket.svg);
-    if (true) {
-      svg.appendChild(dot.svg);
-    }
-    if (false) {
-      svg.appendChild(ir_symbol.svg);
-    }
+    svg.appendChild(dot.svg);
     return svg;
   }
   function getIRMSymbolSVG(model) {
@@ -5679,6 +5674,16 @@ Expected id is: ${regexp}`);
     svg.id = "I-R Symbol";
     svg.style.fontFamily = "Times New Roman";
     svg.style.fontSize = `${bracket_height}em`;
+    svg.style.textAnchor = "middle";
+    return svg;
+  }
+  function getIntervalSVG(model) {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    const I = model.archetype.intervals;
+    svg.textContent = I && I.length > 1 && I[1] || "";
+    svg.id = "interval";
+    svg.style.fontFamily = "Times New Roman";
+    svg.style.fontSize = `${bracket_height / 2}em`;
     svg.style.textAnchor = "middle";
     return svg;
   }
@@ -5713,9 +5718,11 @@ Expected id is: ${regexp}`);
         const dot_svg = getDotSVG();
         const dot = new Dot(dot_svg, view_model);
         const svg_irm_symbol = getIRMSymbolSVG(model);
+        const svg_interval = getIntervalSVG(model);
         const ir_symbol = new IRMSymbol(svg_irm_symbol);
-        const svg3 = getReductionSVG(bracket, dot, ir_symbol);
-        const view = new ReductionView(svg3, bracket, dot, ir_symbol, view_model);
+        const interval4 = new IRMSymbol(svg_interval);
+        const svg3 = getReductionSVG(bracket, interval4);
+        const view = new ReductionView(svg3, bracket, dot, interval4, view_model);
         return new Reduction(model, view);
       });
       const svg2 = getSVGG5(`layer-${l}`, parts);
@@ -7564,8 +7571,8 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
         this.time_range,
         this.implication,
         // this.gravity,
-        this.melody_beep
-        // this.melody_color,
+        this.melody_beep,
+        this.melody_color
       ].forEach((e) => this.div.appendChild(e.view));
     }
   };
@@ -7591,7 +7598,7 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
   var ApplicationManager = class {
     NO_CHORD = false;
     // コード関連のものを表示しない
-    FULL_VIEW = false;
+    FULL_VIEW = true;
     // 横いっぱいに分析結果を表示
     analyzed;
     controller;
@@ -7774,8 +7781,8 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
       piano_roll_view.svg,
       audio_player2,
       new ColumnHTML(
-        manager.controller.div
-        // manager.analyzed.melody.ir_plot_svg
+        manager.controller.div,
+        manager.analyzed.melody.ir_plot_svg
       ).div
     );
   };
