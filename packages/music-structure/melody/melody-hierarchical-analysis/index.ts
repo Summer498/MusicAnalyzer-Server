@@ -52,10 +52,9 @@ const appendIR = (e: SerializedTimeAndAnalyzedMelody) => {
   );
 };
 
-const analyzeAndScaleMelody = (measure: number, matrix: TimeSpan[][], musicxml: MusicXML) => (element: ReductionElement) => {
+export const scaleTime = (measure: number) => (e: TimeAndMelody) => {
   const w = measure / 8;  // NOTE: 1 measure = 3.5
   const b = 0;
-  const e = getTimeAndMelody(element, matrix, musicxml);
 
   const time = e.time.map(e => e * w + b);
   const head = e.head.map(e => e * w + b);
@@ -66,20 +65,7 @@ const analyzeAndScaleMelody = (measure: number, matrix: TimeSpan[][], musicxml: 
   );
 };
 
-const getMapOntToHierarchicalMelodyFromLayer = (measure: number, reduction: ReductionElement, matrix: TimeSpan[][], musicxml: MusicXML, roman: SerializedTimeAndRomanAnalysis[]) => (_: unknown, layer: number) => {
-  const melodies = reduction.getArrayOfLayer(layer)
-    .map(analyzeAndScaleMelody(measure, matrix, musicxml));
+export const getAnalyzedMelody = (melodies: TimeAndMelody[], roman: SerializedTimeAndRomanAnalysis[]) => {
   return analyzeMelody(melodies, roman)
     .map(e => appendIR(e));
-};
-
-export const getHierarchicalMelody = (
-  measure: number,
-  reduction: ReductionElement,
-  matrix: TimeSpan[][],
-  musicxml: MusicXML,
-  roman: SerializedTimeAndRomanAnalysis[]
-) => {
-  return [...Array(reduction.getDepthCount())]
-    .map(getMapOntToHierarchicalMelodyFromLayer(measure, reduction, matrix, musicxml, roman));
 };

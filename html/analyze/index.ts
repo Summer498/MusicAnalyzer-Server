@@ -1,5 +1,5 @@
 import { setCurrentTimeRatio, setPianoRollParameters } from "@music-analyzer/view-parameters";
-import { song_list } from "@music-analyzer/gttm";
+import { ReductionElement, song_list, TimeSpan } from "@music-analyzer/gttm";
 import { AnalyzedDataContainer } from "@music-analyzer/analyzed-data-container";
 import { AudioViewer } from "@music-analyzer/spectrogram";
 import { PianoRoll } from "@music-analyzer/piano-roll";
@@ -8,7 +8,7 @@ import { PianoRollWidth } from "@music-analyzer/view-parameters";
 import { GTTMData } from "@music-analyzer/gttm";
 import { ProlongationalReduction } from "@music-analyzer/gttm";
 import { TimeSpanReduction } from "@music-analyzer/gttm";
-import { getHierarchicalMelody } from "@music-analyzer/melody-hierarchical-analysis";
+import { getAnalyzedMelody, getTimeAndMelody, scaleTime } from "@music-analyzer/melody-hierarchical-analysis";
 import { SerializedTimeAndRomanAnalysis } from "@music-analyzer/chord-analyze";
 import { GroupingStructure } from "@music-analyzer/gttm";
 import { IProlongationalReduction } from "@music-analyzer/gttm";
@@ -60,20 +60,20 @@ class Controllers {
     this.gravity = new GravityController(gravity_visible);
     this.melody_beep = new MelodyBeepController();
     this.melody_color = new MelodyColorController();
-    this.melody_beep.checkbox.input.checked=true;
+    this.melody_beep.checkbox.input.checked = true;
     this.implication.prospective_checkbox.input.checked = false;
     this.implication.retrospective_checkbox.input.checked = true;
     this.implication.reconstructed_checkbox.input.checked = true;
 
 
     [
-//      this.d_melody,
+      // this.d_melody,
       this.hierarchy,
       this.time_range,
       this.implication,
-//      this.gravity,
+      // this.gravity,
       this.melody_beep,
-//      this.melody_color,
+      // this.melody_color,
     ].forEach(e => this.div.appendChild(e.view))
   }
 }
@@ -341,7 +341,7 @@ const setupUI = (
       audio_player,
       new ColumnHTML(
         manager.controller.div,
-//        manager.analyzed.melody.ir_plot_svg
+        // manager.analyzed.melody.ir_plot_svg
       ).div,
     )
 };
@@ -376,22 +376,29 @@ const calcIRMDistribution = (
 
     const dabs = (a: number, b: number) => Math.abs(a) - Math.sign(b)
     const cdir = (a: number, b: number) => Math.sign(a) === Math.sign(b) ? 0 : 1;
-    const count: Record<number,
-      { count: number } & Record<number, Record<number,
-        { count: number } & Record<number, Record<number,
-          number>>>>> = {}
+
+    const count: Record<string, number> = {};
+
     real.forEach((_, i) => {
       const im = impl[i];
       const reAbs = dabs(real[i], impl[i]);
       const reDir = cdir(real[i], impl[i]);
       const neAbs = dabs(next[i], impl[i]);
       const neDir = cdir(next[i], impl[i]);
-      count[im] ||= { count: 0, 0: {}, 1: {} };
-      count[im].count++;
-      count[im][reDir][reAbs] ||= { count: 0, 0: {}, 1: {} };
-      count[im][reDir][reAbs].count++;
-      count[im][reDir][reAbs][neDir][neAbs] ||= 0;
-      count[im][reDir][reAbs][neDir][neAbs]++;
+      /*
+      count[`${im}`] ||= 0;
+      count[`${im}`]++;
+      count[`${im}|${reDir}${reAbs}`] ||= 0;
+      count[`${im}|${reDir}${reAbs}`]++;
+      count[`${im}|${reDir}${reAbs}|${neDir}${neAbs}`] ||= 0;
+      count[`${im}|${reDir}${reAbs}|${neDir}${neAbs}`]++;
+      */
+      count[`${Math.abs(impl[i])}`] ||= 0;
+      count[`${Math.abs(impl[i])}`]++;
+      count[`${Math.abs(impl[i])}|${reDir ? "-" : "+"}${Math.abs(real[i])}`] ||= 0;
+      count[`${Math.abs(impl[i])}|${reDir ? "-" : "+"}${Math.abs(real[i])}`]++;
+      count[`${Math.abs(impl[i])}|${reDir ? "-" : "+"}${Math.abs(real[i])}|${neDir ? "-" : "+"}${Math.abs(next[i])}`] ||= 0;
+      count[`${Math.abs(impl[i])}|${reDir ? "-" : "+"}${Math.abs(real[i])}|${neDir ? "-" : "+"}${Math.abs(next[i])}`]++;
     })
     return count
   })
@@ -513,7 +520,30 @@ const justLoad = (
   ] as DataPromises;
 };
 
-type DataContainer = [
+const getHierarchicalMelody = (
+  title: TitleInfo,
+  roman: SerializedTimeAndRomanAnalysis[],
+  musicxml: MusicXML | undefined,
+  reduction: ReductionElement | undefined,
+  ts: TimeSpan | undefined,
+) => {
+  const reduction_matrix = reduction && [...Array(reduction.getDepthCount())]
+    .map((_, layer) => reduction.getArrayOfLayer(layer));
+
+  const matrix = ts?.getMatrixOfLayer(ts.getDepthCount() - 1);  // TimeSpan matrix
+  const raw_melody = musicxml && matrix && reduction_matrix && reduction_matrix
+    .map(layer => layer.map(layer => getTimeAndMelody(layer, matrix, musicxml)));
+
+  const measure = title.id === "doremi" ? 3.5 : 7;
+  const scale_time = raw_melody && raw_melody
+    .map(layer => layer.map(scaleTime(measure)));
+
+  const _hierarchical_melody = scale_time && scale_time
+    .map(e => getAnalyzedMelody(e, roman));
+  return _hierarchical_melody;
+}
+
+const compoundMusicData = (title: TitleInfo) => (e: [
   SerializedTimeAndRomanAnalysis[],
   SerializedTimeAndAnalyzedMelody[],
   MusicXML | undefined,
@@ -521,9 +551,7 @@ type DataContainer = [
   MetricalStructure | undefined,
   ITimeSpanReduction | undefined,
   IProlongationalReduction | undefined,
-]
-
-const compoundMusicData = (title: TitleInfo) => (e: DataContainer) => {
+]) => {
   const [roman, read_melody, musicxml, grouping, metric, time_span, prolongation] = e;
 
   const ts = time_span ? new TimeSpanReduction(time_span).tstree.ts : undefined;
@@ -535,17 +563,21 @@ const compoundMusicData = (title: TitleInfo) => (e: DataContainer) => {
     }
   })();
 
-  const measure = title.id === "doremi" ? 3.5 : 7;
-  const reduction = title.mode === "PR" && pr || title.mode === "TSR" && ts;
-  const matrix = ts?.getMatrixOfLayer(ts.getDepthCount() - 1);
-  const hierarchical_melody = reduction && matrix && musicxml && getHierarchicalMelody(measure, reduction, matrix, musicxml, roman) || [read_melody];
+  const reduction = title.mode === "PR" && pr || title.mode === "TSR" && ts || undefined;
+
+  const hierarchical_melody = getHierarchicalMelody(title, roman, musicxml, reduction, ts) || [read_melody]
 
   const melody = hierarchical_melody[hierarchical_melody.length - 1];
+
+  const compoundGTTMData = () => {
+    return new GTTMData(grouping, metric, time_span, prolongation,)
+  }
+
   return new AnalyzedMusicData(
     roman,
     melody,
     hierarchical_melody,
-    new GTTMData(grouping, metric, time_span, prolongation,)
+    compoundGTTMData()
   );
 };
 
@@ -587,15 +619,6 @@ class AnalysisURLs {
   }
 }
 
-const loadMusicAnalysis = (
-  title: TitleInfo,
-  resources: string,
-) => {
-  const tune_name = encodeURI(title.id)
-  return Promise.all(justLoad(new AnalysisURLs(title, resources), new GTTM_URLs(title, resources)))
-    .then(compoundMusicData(title));
-}
-
 const registerSong = (urls: string[], default_url: string, audio_player: HTMLAudioElement | HTMLVideoElement) => {
   const url = urls.pop();
   if (!url) {
@@ -634,10 +657,16 @@ const main = () => {
   )
   const resources = `/resources`;
   const audio_src = `https://summer498.github.io/MusicAnalyzer-Server/resources/silence.mp3`;
+  const tune_name = encodeURI(title.id)
 
   updateTitle(titleHead, title);
   setAudioPlayer(title, resources, audio_src, audio_player);
-  loadMusicAnalysis(title, resources)
+
+  const [roman_p, melody_p, msc_p, gpr_p, mpr_p, ts_p, pr_p] = justLoad(new AnalysisURLs(title, resources), new GTTM_URLs(title, resources))
+  const read_data = Promise.all([roman_p, melody_p, msc_p, gpr_p, mpr_p, ts_p, pr_p]);
+
+  read_data
+    .then(compoundMusicData(title))
     .then(setup(window, audio_player, titleHead, piano_roll_place, title));
 
 };

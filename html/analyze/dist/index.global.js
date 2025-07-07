@@ -7118,10 +7118,9 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
       e.melody_analysis.implication_realization.symbol
     );
   };
-  var analyzeAndScaleMelody = (measure, matrix, musicxml) => (element) => {
+  var scaleTime = (measure) => (e) => {
     const w = measure / 8;
     const b = 0;
-    const e = getTimeAndMelody(element, matrix, musicxml);
     const time = e.time.map((e2) => e2 * w + b);
     const head = e.head.map((e2) => e2 * w + b);
     return new TimeAndMelody(
@@ -7130,12 +7129,8 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
       e.note
     );
   };
-  var getMapOntToHierarchicalMelodyFromLayer = (measure, reduction, matrix, musicxml, roman) => (_, layer) => {
-    const melodies = reduction.getArrayOfLayer(layer).map(analyzeAndScaleMelody(measure, matrix, musicxml));
+  var getAnalyzedMelody = (melodies, roman) => {
     return analyzeMelody(melodies, roman).map((e) => appendIR(e));
-  };
-  var getHierarchicalMelody = (measure, reduction, matrix, musicxml, roman) => {
-    return [...Array(reduction.getDepthCount())].map(getMapOntToHierarchicalMelodyFromLayer(measure, reduction, matrix, musicxml, roman));
   };
 
   // ../../packages/cognitive-theory-of-music/tonal-pitch-space/dist/index.mjs
@@ -7564,13 +7559,13 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
       this.implication.retrospective_checkbox.input.checked = true;
       this.implication.reconstructed_checkbox.input.checked = true;
       [
-        //      this.d_melody,
+        // this.d_melody,
         this.hierarchy,
         this.time_range,
         this.implication,
-        //      this.gravity,
+        // this.gravity,
         this.melody_beep
-        //      this.melody_color,
+        // this.melody_color,
       ].forEach((e) => this.div.appendChild(e.view));
     }
   };
@@ -7780,7 +7775,7 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
       audio_player2,
       new ColumnHTML(
         manager.controller.div
-        //        manager.analyzed.melody.ir_plot_svg
+        // manager.analyzed.melody.ir_plot_svg
       ).div
     );
   };
@@ -7812,12 +7807,12 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
         const reDir = cdir(real[i], impl[i]);
         const neAbs = dabs(next[i], impl[i]);
         const neDir = cdir(next[i], impl[i]);
-        count2[im] ||= { count: 0, 0: {}, 1: {} };
-        count2[im].count++;
-        count2[im][reDir][reAbs] ||= { count: 0, 0: {}, 1: {} };
-        count2[im][reDir][reAbs].count++;
-        count2[im][reDir][reAbs][neDir][neAbs] ||= 0;
-        count2[im][reDir][reAbs][neDir][neAbs]++;
+        count2[`${Math.abs(impl[i])}`] ||= 0;
+        count2[`${Math.abs(impl[i])}`]++;
+        count2[`${Math.abs(impl[i])}|${reDir ? "-" : "+"}${Math.abs(real[i])}`] ||= 0;
+        count2[`${Math.abs(impl[i])}|${reDir ? "-" : "+"}${Math.abs(real[i])}`]++;
+        count2[`${Math.abs(impl[i])}|${reDir ? "-" : "+"}${Math.abs(real[i])}|${neDir ? "-" : "+"}${Math.abs(next[i])}`] ||= 0;
+        count2[`${Math.abs(impl[i])}|${reDir ? "-" : "+"}${Math.abs(real[i])}|${neDir ? "-" : "+"}${Math.abs(next[i])}`]++;
       });
       return count2;
     });
@@ -7881,6 +7876,15 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
       */
     ];
   };
+  var getHierarchicalMelody = (title2, roman, musicxml, reduction, ts) => {
+    const reduction_matrix = reduction && [...Array(reduction.getDepthCount())].map((_, layer) => reduction.getArrayOfLayer(layer));
+    const matrix = ts?.getMatrixOfLayer(ts.getDepthCount() - 1);
+    const raw_melody = musicxml && matrix && reduction_matrix && reduction_matrix.map((layer) => layer.map((layer2) => getTimeAndMelody(layer2, matrix, musicxml)));
+    const measure = title2.id === "doremi" ? 3.5 : 7;
+    const scale_time = raw_melody && raw_melody.map((layer) => layer.map(scaleTime(measure)));
+    const _hierarchical_melody = scale_time && scale_time.map((e) => getAnalyzedMelody(e, roman));
+    return _hierarchical_melody;
+  };
   var compoundMusicData = (title2) => (e) => {
     const [roman, read_melody, musicxml, grouping, metric, time_span, prolongation] = e;
     const ts = time_span ? new TimeSpanReduction(time_span).tstree.ts : void 0;
@@ -7891,16 +7895,17 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
         return void 0;
       }
     })();
-    const measure = title2.id === "doremi" ? 3.5 : 7;
-    const reduction = title2.mode === "PR" && pr || title2.mode === "TSR" && ts;
-    const matrix = ts?.getMatrixOfLayer(ts.getDepthCount() - 1);
-    const hierarchical_melody = reduction && matrix && musicxml && getHierarchicalMelody(measure, reduction, matrix, musicxml, roman) || [read_melody];
+    const reduction = title2.mode === "PR" && pr || title2.mode === "TSR" && ts || void 0;
+    const hierarchical_melody = getHierarchicalMelody(title2, roman, musicxml, reduction, ts) || [read_melody];
     const melody = hierarchical_melody[hierarchical_melody.length - 1];
+    const compoundGTTMData = () => {
+      return new GTTMData(grouping, metric, time_span, prolongation);
+    };
     return new AnalyzedMusicData(
       roman,
       melody,
       hierarchical_melody,
-      new GTTMData(grouping, metric, time_span, prolongation)
+      compoundGTTMData()
     );
   };
   var GTTM_URLs = class {
@@ -7924,10 +7929,6 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
       this.melody = `${resources}/${title2.id}/analyzed/melody/crepe/manalyze.json`;
       this.roman = `${resources}/${title2.id}/analyzed/chord/roman.json`;
     }
-  };
-  var loadMusicAnalysis = (title2, resources) => {
-    const tune_name = encodeURI(title2.id);
-    return Promise.all(justLoad(new AnalysisURLs(title2, resources), new GTTM_URLs(title2, resources))).then(compoundMusicData(title2));
   };
   var registerSong = (urls, default_url, audio_player2) => {
     const url = urls.pop();
@@ -7956,9 +7957,12 @@ Expected symbol: P, IP, VP, R, IR, VR, D, ID
     );
     const resources = `/resources`;
     const audio_src = `https://summer498.github.io/MusicAnalyzer-Server/resources/silence.mp3`;
+    const tune_name = encodeURI(title2.id);
     updateTitle(titleHead, title2);
     setAudioPlayer(title2, resources, audio_src, audio_player);
-    loadMusicAnalysis(title2, resources).then(setup(window, audio_player, titleHead, piano_roll_place, title2));
+    const [roman_p, melody_p, msc_p, gpr_p, mpr_p, ts_p, pr_p] = justLoad(new AnalysisURLs(title2, resources), new GTTM_URLs(title2, resources));
+    const read_data = Promise.all([roman_p, melody_p, msc_p, gpr_p, mpr_p, ts_p, pr_p]);
+    read_data.then(compoundMusicData(title2)).then(setup(window, audio_player, titleHead, piano_roll_place, title2));
   };
   main();
 })();
